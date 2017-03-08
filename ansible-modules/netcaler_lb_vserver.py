@@ -10,10 +10,10 @@ ANSIBLE_METADATA = {'status': ['preview'],
 # TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
-module: netscaler_lbvserver
+module: netscaler_lb_vserver
 short_description: Manage lbvserver configuration in Netscaler
 description:
-    - Manages configuration of lbvserver in Netscaler appliances
+    - Manages configuration of lb vserver in Netscaler appliances
 
 version_added: "tbd"
 options:
@@ -27,7 +27,7 @@ options:
 # TODO: Add appropriate examples
 EXAMPLES = '''
 - name: Connect to netscaler appliance
-    netscaler_lbvserver:
+    netscaler_lb_vserver:
         nsip: "172.17.0.2"
 '''
 
