@@ -1,0 +1,6 @@
+    {{argument.key}}=dict(
+        type='{{argument.type}}',
+        #{% if argument.choices -%}
+        choices={{argument.choices}}
+        #{%- endif %}
+        ),

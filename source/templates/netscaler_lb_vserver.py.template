@@ -1,0 +1,330 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# TODO review status and supported_by when migrating to github
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'commiter',
+                    'version': '1.0'}
+
+
+# TODO: Add appropriate documentation
+DOCUMENTATION = '''
+---
+module: netscaler_lb_vserver
+short_description: Manage lbvserver configuration in Netscaler
+description:
+    - Manages configuration of lb vserver in Netscaler appliances
+
+version_added: "tbd"
+options:
+    nsip:
+        description:
+            - The Nescaler ip address.
+
+        required: True
+'''
+
+# TODO: Add appropriate examples
+EXAMPLES = '''
+- name: Connect to netscaler appliance
+    netscaler_lb_vserver:
+        nsip: "172.17.0.2"
+'''
+
+# TODO: Update as module progresses
+RETURN = '''
+config_updated:
+    description: determine if a change in the netscaler configuration happened
+    returned: always
+    type: boolean
+    sample: False
+'''
+
+from ansible.module_utils.basic import AnsibleModule
+import copy
+
+# TODO
+# Actual implementation of the module goes here
+
+
+
+
+
+# TODO add actual module instantiation code
+
+def main():
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_servicegroup_binding import lbvserver_servicegroup_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_service_binding import lbvserver_service_binding
+        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+        python_sdk_imported = True
+    except ImportError as e:
+        python_sdk_imported = False
+
+    module_specific_arguments = dict(
+        #{% for argument in module_arguments.lb_lbvserver %}
+        #{% include 'single_argument_spec.template' %}
+        #{% endfor %}
+    )
+
+    argument_spec = dict()
+    argument_spec.update(module_specific_arguments)
+    argument_spec.update(netscaler_common_arguments)
+
+    # Hand wired arguments
+    argument_spec.update(dict( servicebindings=dict(type='list')))
+    argument_spec.update(dict( servicegroupbindings=dict(type='list')))
+
+    module = AnsibleModule(
+        argument_spec=argument_spec,
+        supports_check_mode=True,
+    )
+
+    module_result = dict(
+        changed=False,
+        failed=False,
+        loglines=loglines,
+    )
+
+    # Fail the module if imports failed
+    if not python_sdk_imported:
+        module.fail_json(msg='Could not load nitro python sdk')
+
+    # Fallthrough to rest of execution
+    client = get_nitro_client(module)
+    client.login()
+
+    # Instantiate lb vserver object
+    readwrite_attrs = {{ readwrite_attrs.lb_lbvserver }}
+    readonly_attrs = {{ readonly_attrs.lb_lbvserver }}
+
+    lbvserver_proxy = ConfigProxy(
+        actual=lbvserver(),
+        client=client,
+        attribute_values_dict = module.params,
+        readwrite_attrs=readwrite_attrs,
+        readonly_attrs=readonly_attrs,
+    )
+
+    def lbvserver_exists():
+        log('lbvserver_exists')
+        if lbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+            return True
+        else:
+            return False
+
+
+    def lbvserver_identical():
+        log('lbvserver_identical')
+        lbvserver_list = lbvserver.get_filtered(client, 'name:%s' % module.params['name'])
+        log('diff %s' %  lbvserver_proxy.diff_object(lbvserver_list[0]))
+        if lbvserver_proxy.has_equal_attributes(lbvserver_list[0]):
+            return True
+        else:
+            return False
+
+    def lbvserver_diff():
+        lbvserver_list = lbvserver.get_filtered(client, 'name:%s' % module.params['name'])
+        return lbvserver_proxy.diff_object(lbvserver_list[0])
+
+
+    def get_configured_service_bindings():
+
+        readwrite_attrs = {{ readwrite_attrs.lb_lbvserver_service_binding }}
+        readonly_attrs = {{ readonly_attrs.lb_lbvserver_service_binding }}
+
+        configured_bindings = {}
+        if 'servicebindings' in module.params and module.params['servicebindings'] is not None:
+            for binding in module.params['servicebindings']:
+                attribute_values_dict = copy.deepcopy(binding)
+                attribute_values_dict['name'] = module.params['name']
+                key = binding['servicename'].strip()
+                configured_bindings[key] = ConfigProxy(
+                        actual=lbvserver_service_binding(),
+                        client=client,
+                        attribute_values_dict=attribute_values_dict,
+                        readwrite_attrs=readwrite_attrs,
+                        readonly_attrs=readonly_attrs,
+                    )
+        return configured_bindings
+
+    def get_configured_servicegroup_bindings():
+        readwrite_attrs = {{ readwrite_attrs.lb_lbvserver_servicegroup_binding }}
+        readonly_attrs = {{ readonly_attrs.lb_lbvserver_servicegroup_binding }}
+
+        configured_bindings = {}
+
+        if 'servicegroupbindings' in module.params and module.params['servicegroupbindings'] is not None:
+            for binding in module.params['servicegroupbindings']:
+                attribute_values_dict = copy.deepcopy(binding)
+                attribute_values_dict['name'] = module.params['name']
+                key = binding['servicegroupname'].strip()
+                configured_bindings[key] = ConfigProxy(
+                        actual=lbvserver_servicegroup_binding(),
+                        client=client,
+                        attribute_values_dict=attribute_values_dict,
+                        readwrite_attrs=readwrite_attrs,
+                        readonly_attrs=readonly_attrs,
+                    )
+
+        return configured_bindings
+
+    def get_service_bindings():
+        if lbvserver_service_binding.count(client, module.params['name']) == 0:
+            return {}
+        bindigs_list = lbvserver_service_binding.get(client, module.params['name'])
+        bindings = {}
+        for item in bindigs_list:
+            key = item.servicename
+            bindings[key] = item
+
+        return bindings
+
+    def get_servicegroup_bindings():
+        log('count %s' % lbvserver_servicegroup_binding.count(client, module.params['name']))
+        if lbvserver_servicegroup_binding.count(client, module.params['name']) == 0:
+            return {}
+        bindigs_list = lbvserver_servicegroup_binding.get(client, module.params['name'])
+        bindings = {}
+        for item in bindigs_list:
+            key = item.servicegroupname
+            bindings[key] = item
+
+        return bindings
+
+
+
+    def service_bindings_identical():
+        log('service_bindings_identical')
+
+        # Compare servicegroup keysets
+        configured_servicegroup_bindings = get_configured_servicegroup_bindings()
+        servicegroup_bindings = get_servicegroup_bindings()
+        configured_keyset = set(configured_servicegroup_bindings.keys())
+        service_keyset = set(servicegroup_bindings.keys())
+        log('len %s' % len(configured_keyset ^ service_keyset))
+        if len(configured_keyset ^ service_keyset) > 0:
+            return False
+
+        # Compare servicegroup item to item
+        for key in configured_servicegroup_bindings.keys():
+            conf = configured_servicegroup_bindings[key]
+            serv = servicegroup_bindings[key]
+            log('sg diff %s' % conf.diff_object(serv))
+            if not conf.has_equal_attributes(serv):
+                return False
+
+        # Compare service keysets
+        configured_service_bindings = get_configured_service_bindings()
+        service_bindings = get_service_bindings()
+        configured_keyset = set(configured_service_bindings.keys())
+        service_keyset = set(service_bindings.keys())
+        if len(configured_keyset ^ service_keyset) > 0:
+            return False
+
+        # Compare service item to item
+        for key in configured_service_bindings.keys():
+            conf = configured_service_bindings[key]
+            serv = service_bindings[key]
+            log('s diff %s' % conf.diff_object(serv))
+            if not conf.has_equal_attributes(serv):
+                return False
+
+        # Fallthrough to success
+        return True
+
+    def delete_all_servicegroup_bindings():
+        log('delete_all_servicegroup_bindings')
+        if lbvserver_servicegroup_binding.count(client, module.params['name']) == 0:
+            return
+        for binding in lbvserver_servicegroup_binding.get(client, module.params['name']):
+            binding.name = module.params['name']
+            binding.servicename = None
+            log('%s %s' % (binding.servicename, binding.servicegroupname))
+            lbvserver_servicegroup_binding.delete(client, binding)
+
+    def delete_all_service_bindings():
+        log('delete_all_service_bindings')
+        if lbvserver_service_binding.count(client, module.params['name']) == 0:
+            return
+        for binding in lbvserver_service_binding.get(client, module.params['name']):
+            binding.name = module.params['name']
+            binding.servicegroupname = ''
+            binding.delete(client, binding)
+
+    def sync_service_bindings():
+        log('sync_service_bindings')
+        delete_all_service_bindings()
+        delete_all_servicegroup_bindings()
+
+        log('adding service bindings')
+        for binding in get_configured_service_bindings().values():
+            binding.add()
+
+        log('adding servicegroup bindings')
+        for binding in get_configured_servicegroup_bindings().values():
+            binding.add()
+
+
+    try:
+        if module.params['operation'] == 'present':
+            if not lbvserver_exists():
+                log('Add lb vserver')
+                if not module.check_mode:
+                    lbvserver_proxy.add()
+                    lbvserver_proxy.update()
+                    client.save_config()
+                module_result['changed'] = True
+            elif not lbvserver_identical():
+                log('Update lb vserver')
+                if not module.check_mode:
+                    lbvserver_proxy.update()
+                    client.save_config()
+                module_result['changed'] = True
+            else:
+                log('Present noop')
+
+            if not service_bindings_identical():
+                if not module.check_mode:
+                    sync_service_bindings()
+                    client.save_config()
+                module_result['changed'] = True
+
+            # Sanity check
+            if not module.check_mode:
+                if not lbvserver_exists():
+                    module.fail_json(msg='Did not create lb vserver with name %s' % module.params['name'])
+                if not lbvserver_identical():
+                    module.fail_json(msg='lb vserver %s is not configured correctly' % module.params['name'], diff=lbvserver_diff())
+                if not service_bindings_identical():
+                    module.fail_json(msg='Service bindings not identical', loglines=loglines)
+
+        elif module.params['operation'] == 'absent':
+            if lbvserver_exists():
+                if not module.check_mode:
+                    log('Delete lb vserver')
+                    lbvserver_proxy.delete()
+                    client.save_config()
+                module_result['changed'] = True
+            else:
+                log('Absent noop')
+                module_result['changed'] = False
+
+            # Sanity check
+            if not module.check_mode:
+                if lbvserver_exists():
+                    module.fail_json(msg='Lb vserver %s still exists' % module.params['name'])
+
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        module.fail_json(msg=msg, loglines=loglines)
+
+    client.logout()
+    module.exit_json(**module_result)
+
+
+if __name__ == "__main__":
+    main()
