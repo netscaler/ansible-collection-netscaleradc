@@ -1,0 +1,101 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Set service 1
+      local_action: 
+        module: netscaler_service
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        name: service-http-1
+        servicetype: HTTP
+        ip: 10.78.0.1
+        ipaddress: 10.78.0.1
+        port: 80
+
+    - name: Set service 2
+      local_action: 
+        module: netscaler_service
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        name: service-http-2
+        servicetype: HTTP
+        ip: 10.78.0.2
+        ipaddress: 10.78.0.2
+        port: 80
+
+    - name: Set service group
+      local_action:
+        module: netscaler_servicegroup
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        servicegroupname: service-group-1
+        servicetype: HTTP
+        servicemembers:
+            - ip: 10.78.78.78
+              port: 80
+              weight: 50
+            - ip: 10.79.79.79
+              port: 80
+              weight: 50
+
+
+    - name: lb vserver 1
+      local_action: 
+        module: netscaler_lb_vserver
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        name: lb_vserver_1
+        servicetype: HTTP
+        timeout: 12
+        ipv46: 6.93.3.3
+        port: 80
+        servicebindings:
+            - 
+                servicename: service-http-1
+                weight: 80
+            - 
+                servicename: service-http-2
+                weight: 20
+
+    - name: lb vserver 2
+      local_action: 
+        module: netscaler_lb_vserver
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        name: lb_vserver_2
+        servicetype: HTTP
+        ipv46: 6.92.2.2
+        port: 80
+        timeout: 10
+        servicegroupbindings:
+            - 
+                servicegroupname: service-group-1

@@ -9,29 +9,75 @@
   gather_facts: False
 
   tasks:
-    - name: Setup services
+    - name: Set server 1
       local_action:
-        module: netscaler_service_binding
-        nsip: 172.17.0.2
+        module: netscaler_server
+        nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
         ssl_cert_validation: no
-        state: enabled
+        operation: absent
 
-        weight: 100
-        name: lb_vserver_1
-        servicename: service_1
+        name: http-server-1
+        ipaddress: 10.78.78.78
 
-    - name: lb vserver test
+    - name: Set service 1
       local_action:
-        module: netscaler_service_group
-        nsip: 172.17.0.2
+        module: netscaler_service
+        nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
         ssl_cert_validation: no
-        state: enabled
+        operation: absent
 
-        weight: 100
-        name: lb_vserver_1
-        servicename: service-1
-        servicegroupname: service_group_1
+        name: http-service-1
+        servername: http-server-1
+        servicetype: HTTP
+        port: 80
+
+    - name: Set server 2
+      local_action:
+        module: netscaler_server
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: absent
+
+        name: http-server-2
+        ipaddress: 10.79.79.79
+
+    - name: Set service 2
+      local_action:
+        module: netscaler_service
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: absent
+
+        name: http-service-2
+        servername: http-server-2
+        servicetype: HTTP
+        port: 80
+
+
+    - name: Set service group
+      local_action:
+        module: netscaler_servicegroup
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+        operation: present
+
+        servicegroupname: service-group-1
+        servicetype: HTTP
+        servicemembers:
+            - ip: 10.78.78.78
+              port: 80
+              weight: 60
+            - ip: 10.79.79.79
+              port: 80
+              weight: 40
+
