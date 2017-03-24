@@ -1,0 +1,881 @@
+[
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "name", 
+        "description_lines": [
+            "Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the service has been created.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "ip", 
+        "description_lines": [
+            "IP to assign to the service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "servername", 
+        "description_lines": [
+            "Name of the server that hosts the service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "HTTP", 
+            "FTP", 
+            "TCP", 
+            "UDP", 
+            "SSL", 
+            "SSL_BRIDGE", 
+            "SSL_TCP", 
+            "DTLS", 
+            "NNTP", 
+            "RPCSVR", 
+            "DNS", 
+            "ADNS", 
+            "SNMP", 
+            "RTSP", 
+            "DHCPRA", 
+            "ANY", 
+            "SIP_UDP", 
+            "SIP_TCP", 
+            "SIP_SSL", 
+            "DNS_TCP", 
+            "ADNS_TCP", 
+            "MYSQL", 
+            "MSSQL", 
+            "ORACLE", 
+            "RADIUS", 
+            "RADIUSListener", 
+            "RDP", 
+            "DIAMETER", 
+            "SSL_DIAMETER", 
+            "TFTP", 
+            "SMPP", 
+            "PPTP", 
+            "GRE", 
+            "SYSLOGTCP", 
+            "SYSLOGUDP", 
+            "FIX", 
+            "SSL_FIX"
+        ], 
+        "type": "str", 
+        "name": "servicetype", 
+        "description_lines": [
+            "Protocol in which data is exchanged with the service.", 
+            "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS, RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "port", 
+        "description_lines": [
+            "Port number of the service.", 
+            "Range 1 - 65535", 
+            "* in CLI is represented as 65535 in NITRO API"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "cleartextport", 
+        "description_lines": [
+            "Port to which clear text data must be sent after the appliance decrypts incoming SSL traffic. Applicable to transparent SSL services.", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "TRANSPARENT", 
+            "REVERSE", 
+            "FORWARD"
+        ], 
+        "type": "str", 
+        "name": "cachetype", 
+        "description_lines": [
+            "Cache type supported by the cache server.", 
+            "Possible values = TRANSPARENT, REVERSE, FORWARD"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxclient", 
+        "description_lines": [
+            "Maximum number of simultaneous open connections to the service.", 
+            "Minimum value = 0", 
+            "Maximum value = 4294967294"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "healthmonitor", 
+        "description_lines": [
+            "Monitor the health of this service. Available settings function as follows:", 
+            "YES - Send probes to check the health of the service.", 
+            "NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.", 
+            "Default value: YES", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxreq", 
+        "description_lines": [
+            "Maximum number of requests that can be sent on a persistent connection to the service.", 
+            "Note: Connection requests beyond this value are rejected.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cacheable", 
+        "description_lines": [
+            "Use the transparent cache redirection virtual server to forward requests to the cache server.", 
+            "Note: Do not specify this parameter if you set the Cache Type parameter.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "cip", 
+        "description_lines": [
+            "Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "cipheader", 
+        "description_lines": [
+            "Name for the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the header, the appliance uses the header name specified for the global Client IP Header parameter (the cipHeader parameter in the set ns param CLI command or the Client IP Header parameter in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters). If the global Client IP Header parameter is not specified, the appliance inserts a header with the name \"client-ip.\".", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "usip", 
+        "description_lines": [
+            "Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "pathmonitor", 
+        "description_lines": [
+            "Path monitoring for clustering.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "pathmonitorindv", 
+        "description_lines": [
+            "Individual Path monitoring decisions.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "useproxyport", 
+        "description_lines": [
+            "Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.", 
+            "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "sc", 
+        "description_lines": [
+            "State of SureConnect for the service.", 
+            "Default value: OFF", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "sp", 
+        "description_lines": [
+            "Enable surge protection for the service.", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "rtspsessionidremap", 
+        "description_lines": [
+            "Enable RTSP session ID mapping for the service.", 
+            "Default value: OFF", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "clttimeout", 
+        "description_lines": [
+            "Time, in seconds, after which to terminate an idle client connection.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "svrtimeout", 
+        "description_lines": [
+            "Time, in seconds, after which to terminate an idle server connection.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "customserverid", 
+        "description_lines": [
+            "Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.", 
+            "Default value: \"None\""
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "serverid", 
+        "description_lines": [
+            "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cka", 
+        "description_lines": [
+            "Enable client keep-alive for the service.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "tcpb", 
+        "description_lines": [
+            "Enable TCP buffering for the service.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cmp", 
+        "description_lines": [
+            "Enable compression for the service.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxbandwidth", 
+        "description_lines": [
+            "Maximum bandwidth, in Kbps, allocated to the service.", 
+            "Minimum value = 0", 
+            "Maximum value = 4294967287"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "accessdown", 
+        "description_lines": [
+            "Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "monthreshold", 
+        "description_lines": [
+            "Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "state", 
+        "description_lines": [
+            "Initial state of the service.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "downstateflush", 
+        "description_lines": [
+            "Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "tcpprofilename", 
+        "description_lines": [
+            "Name of the TCP profile that contains TCP configuration settings for the service.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "httpprofilename", 
+        "description_lines": [
+            "Name of the HTTP profile that contains HTTP configuration settings for the service.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "hashid", 
+        "description_lines": [
+            "A numerical identifier that can be used by hash based load balancing methods. Must be unique for each service.", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "comment", 
+        "description_lines": [
+            "Any information about the service."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "appflowlog", 
+        "description_lines": [
+            "Enable logging of AppFlow information.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "netprofile", 
+        "description_lines": [
+            "Network profile to use for the service.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "td", 
+        "description_lines": [
+            "Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.", 
+            "Minimum value = 0", 
+            "Maximum value = 4094"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "processlocal", 
+        "description_lines": [
+            "By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.", 
+            "Default value: DISABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "dnsprofilename", 
+        "description_lines": [
+            "Name of the DNS profile to be associated with the service. DNS profile properties will applied to the transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "RESET", 
+            "FIN"
+        ], 
+        "type": "str", 
+        "name": "monconnectionclose", 
+        "description_lines": [
+            "Close monitoring connections by sending the service a connection termination message with the specified bit set.", 
+            "Default value: NONE", 
+            "Possible values = RESET, FIN"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "ipaddress", 
+        "description_lines": [
+            "The new IP address of the service."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "weight", 
+        "description_lines": [
+            "Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its binding with the service determines how much the monitor contributes toward keeping the health of the service above the value configured for the Monitor Threshold parameter.", 
+            "Minimum value = 1", 
+            "Maximum value = 100"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "monitor_name_svc", 
+        "description_lines": [
+            "Name of the monitor bound to the specified service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "riseapbrstatsmsgcode", 
+        "description_lines": [
+            "The code indicating the rise apbr status."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "delay", 
+        "description_lines": [
+            "Time, in seconds, allocated to the NetScaler appliance for a graceful shutdown of the service. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE)."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "graceful", 
+        "description_lines": [
+            "Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "bool", 
+        "name": "all", 
+        "description_lines": [
+            "Display both user-configured and dynamically learned services."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "bool", 
+        "name": "Internal", 
+        "description_lines": [
+            "Display only dynamically learned services."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "newname", 
+        "description_lines": [
+            "New name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "numofconnections", 
+        "description_lines": [
+            "This will tell the number of client side connections are still open."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "policyname", 
+        "description_lines": [
+            "The name of the policyname for which this service is bound."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "bool", 
+        "name": "serviceconftype", 
+        "description_lines": [
+            "The configuration type of the service."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "Configured", 
+            "Dynamic", 
+            "Internal"
+        ], 
+        "type": "str", 
+        "name": "serviceconftype2", 
+        "description_lines": [
+            "The configuration type of the service (Internal/Dynamic/Configured).", 
+            "Possible values = Configured, Dynamic, Internal"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "Certkey not bound", 
+            "SSL feature disabled"
+        ], 
+        "type": "str", 
+        "name": "value", 
+        "description_lines": [
+            "SSL status.", 
+            "Possible values = Certkey not bound, SSL feature disabled"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "REMOTE", 
+            "LOCAL"
+        ], 
+        "type": "str", 
+        "name": "gslb", 
+        "description_lines": [
+            "The GSLB option for the corresponding virtual server.", 
+            "Possible values = REMOTE, LOCAL"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "dup_state", 
+        "description_lines": [
+            "Added this field for getting state value from table.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "publicip", 
+        "description_lines": [
+            "public ip."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "publicport", 
+        "description_lines": [
+            "public port.", 
+            "Minimum value = 1", 
+            "Range 1 - 65535", 
+            "* in CLI is represented as 65535 in NITRO API"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "svrstate", 
+        "description_lines": [
+            "The state of the service.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "monitor_state", 
+        "description_lines": [
+            "The running state of the monitor on this service.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatcode", 
+        "description_lines": [
+            "The code indicating the monitor response."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "lastresponse", 
+        "description_lines": [
+            "The string form of monstatcode."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "responsetime", 
+        "description_lines": [
+            "Response time of this monitor."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "riseapbrstatsmsgcode2", 
+        "description_lines": [
+            "The code indicating other rise stats."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam1", 
+        "description_lines": [
+            "First parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam2", 
+        "description_lines": [
+            "Second parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam3", 
+        "description_lines": [
+            "Third parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "statechangetimesec", 
+        "description_lines": [
+            "Time when last state change happened. Seconds part."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "statechangetimemsec", 
+        "description_lines": [
+            "Time at which last state change happened. Milliseconds part."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "tickssincelaststatechange", 
+        "description_lines": [
+            "Time in 10 millisecond ticks since the last state change."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "stateupdatereason", 
+        "description_lines": [
+            "Checks state update reason on the secondary node."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonowner", 
+        "description_lines": [
+            "Tells the mon owner of the service.", 
+            "Minimum value = 0", 
+            "Maximum value = 32"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonview", 
+        "description_lines": [
+            "Tells the view id of the monitoring owner."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "serviceipstr", 
+        "description_lines": [
+            "This field has been intorduced to show the dbs services ip."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "10G", 
+            "11G"
+        ], 
+        "type": "str", 
+        "name": "oracleserverversion", 
+        "description_lines": [
+            "Oracle server version.", 
+            "Default value: 10G", 
+            "Possible values = 10G, 11G"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "__count", 
+        "description_lines": [
+            "count parameter"
+        ]
+    }
+]

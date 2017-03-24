@@ -1,0 +1,738 @@
+[
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "servicegroupname", 
+        "description_lines": [
+            "Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "HTTP", 
+            "FTP", 
+            "TCP", 
+            "UDP", 
+            "SSL", 
+            "SSL_BRIDGE", 
+            "SSL_TCP", 
+            "DTLS", 
+            "NNTP", 
+            "RPCSVR", 
+            "DNS", 
+            "ADNS", 
+            "SNMP", 
+            "RTSP", 
+            "DHCPRA", 
+            "ANY", 
+            "SIP_UDP", 
+            "SIP_TCP", 
+            "SIP_SSL", 
+            "DNS_TCP", 
+            "ADNS_TCP", 
+            "MYSQL", 
+            "MSSQL", 
+            "ORACLE", 
+            "RADIUS", 
+            "RADIUSListener", 
+            "RDP", 
+            "DIAMETER", 
+            "SSL_DIAMETER", 
+            "TFTP", 
+            "SMPP", 
+            "PPTP", 
+            "GRE", 
+            "SYSLOGTCP", 
+            "SYSLOGUDP", 
+            "FIX", 
+            "SSL_FIX"
+        ], 
+        "type": "str", 
+        "name": "servicetype", 
+        "description_lines": [
+            "Protocol used to exchange data with the service.", 
+            "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS, RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "TRANSPARENT", 
+            "REVERSE", 
+            "FORWARD"
+        ], 
+        "type": "str", 
+        "name": "cachetype", 
+        "description_lines": [
+            "Cache type supported by the cache server.", 
+            "Possible values = TRANSPARENT, REVERSE, FORWARD"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "td", 
+        "description_lines": [
+            "Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.", 
+            "Minimum value = 0", 
+            "Maximum value = 4094"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxclient", 
+        "description_lines": [
+            "Maximum number of simultaneous open connections for the service group.", 
+            "Minimum value = 0", 
+            "Maximum value = 4294967294"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxreq", 
+        "description_lines": [
+            "Maximum number of requests that can be sent on a persistent connection to the service group.", 
+            "Note: Connection requests beyond this value are rejected.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cacheable", 
+        "description_lines": [
+            "Use the transparent cache redirection virtual server to forward the request to the cache server.", 
+            "Note: Do not set this parameter if you set the Cache Type.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "cip", 
+        "description_lines": [
+            "Insert the Client IP header in requests forwarded to the service.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "cipheader", 
+        "description_lines": [
+            "Name of the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If client IP insertion is enabled, and the client IP header is not specified, the value of Client IP Header parameter or the value set by the set ns config command is used as client's IP header name.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "usip", 
+        "description_lines": [
+            "Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "pathmonitor", 
+        "description_lines": [
+            "Path monitoring for clustering.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "pathmonitorindv", 
+        "description_lines": [
+            "Individual Path monitoring decisions.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "useproxyport", 
+        "description_lines": [
+            "Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.", 
+            "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "healthmonitor", 
+        "description_lines": [
+            "Monitor the health of this service. Available settings function as follows:", 
+            "YES - Send probes to check the health of the service.", 
+            "NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.", 
+            "Default value: YES", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "sc", 
+        "description_lines": [
+            "State of the SureConnect feature for the service group.", 
+            "Default value: OFF", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "sp", 
+        "description_lines": [
+            "Enable surge protection for the service group.", 
+            "Default value: OFF", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ON", 
+            "OFF"
+        ], 
+        "type": "str", 
+        "name": "rtspsessionidremap", 
+        "description_lines": [
+            "Enable RTSP session ID mapping for the service group.", 
+            "Default value: OFF", 
+            "Possible values = ON, OFF"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "clttimeout", 
+        "description_lines": [
+            "Time, in seconds, after which to terminate an idle client connection.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "svrtimeout", 
+        "description_lines": [
+            "Time, in seconds, after which to terminate an idle server connection.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cka", 
+        "description_lines": [
+            "Enable client keep-alive for the service group.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "tcpb", 
+        "description_lines": [
+            "Enable TCP buffering for the service group.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "cmp", 
+        "description_lines": [
+            "Enable compression for the specified service.", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxbandwidth", 
+        "description_lines": [
+            "Maximum bandwidth, in Kbps, allocated for all the services in the service group.", 
+            "Minimum value = 0", 
+            "Maximum value = 4294967287"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "monthreshold", 
+        "description_lines": [
+            "Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "state", 
+        "description_lines": [
+            "Initial state of the service group.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "downstateflush", 
+        "description_lines": [
+            "Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "tcpprofilename", 
+        "description_lines": [
+            "Name of the TCP profile that contains TCP configuration settings for the service group.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "httpprofilename", 
+        "description_lines": [
+            "Name of the HTTP profile that contains HTTP configuration settings for the service group.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "comment", 
+        "description_lines": [
+            "Any information about the service group."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "appflowlog", 
+        "description_lines": [
+            "Enable logging of AppFlow information for the specified service group.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "netprofile", 
+        "description_lines": [
+            "Network profile for the service group.", 
+            "Minimum length = 1", 
+            "Maximum length = 127"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "DISABLED", 
+            "DNS", 
+            "POLICY"
+        ], 
+        "type": "str", 
+        "name": "autoscale", 
+        "description_lines": [
+            "Auto scale option for a servicegroup.", 
+            "Default value: DISABLED", 
+            "Possible values = DISABLED, DNS, POLICY"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "memberport", 
+        "description_lines": [
+            "member port."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "RESET", 
+            "FIN"
+        ], 
+        "type": "str", 
+        "name": "monconnectionclose", 
+        "description_lines": [
+            "Close monitoring connections by sending the service a connection termination message with the specified bit set.", 
+            "Default value: NONE", 
+            "Possible values = RESET, FIN"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "servername", 
+        "description_lines": [
+            "Name of the server to which to bind the service group.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "port", 
+        "description_lines": [
+            "Server port number.", 
+            "Range 1 - 65535", 
+            "* in CLI is represented as 65535 in NITRO API"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "weight", 
+        "description_lines": [
+            "Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.", 
+            "Minimum value = 1", 
+            "Maximum value = 100"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "customserverid", 
+        "description_lines": [
+            "The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.", 
+            "Default value: \"None\""
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "serverid", 
+        "description_lines": [
+            "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "hashid", 
+        "description_lines": [
+            "The hash identifier for the service. This must be unique for each service. This parameter is used by hash based load balancing methods.", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "monitor_name_svc", 
+        "description_lines": [
+            "Name of the monitor bound to the service group. Used to assign a weight to the monitor.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "dup_weight", 
+        "description_lines": [
+            "weight of the monitor that is bound to servicegroup.", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "riseapbrstatsmsgcode", 
+        "description_lines": [
+            "The code indicating the rise apbr status."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "delay", 
+        "description_lines": [
+            "Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE)."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "graceful", 
+        "description_lines": [
+            "Wait for all existing connections to the service to terminate before shutting down the service.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "bool", 
+        "name": "includemembers", 
+        "description_lines": [
+            "Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "newname", 
+        "description_lines": [
+            "New name for the service group.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "numofconnections", 
+        "description_lines": [
+            "This will tell the number of client side connections are still open."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "bool", 
+        "name": "serviceconftype", 
+        "description_lines": [
+            "The configuration type of the service group."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "Certkey not bound", 
+            "SSL feature disabled"
+        ], 
+        "type": "str", 
+        "name": "value", 
+        "description_lines": [
+            "SSL Status.", 
+            "Possible values = Certkey not bound, SSL feature disabled"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "svrstate", 
+        "description_lines": [
+            "The state of the service.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "ip", 
+        "description_lines": [
+            "IP Address."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatcode", 
+        "description_lines": [
+            "The code indicating the monitor response."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam1", 
+        "description_lines": [
+            "First parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam2", 
+        "description_lines": [
+            "Second parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "monstatparam3", 
+        "description_lines": [
+            "Third parameter for use with message code."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "statechangetimemsec", 
+        "description_lines": [
+            "Time when last state change occurred. Milliseconds part."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "stateupdatereason", 
+        "description_lines": [
+            "Checks state update reason on the secondary node."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonowner", 
+        "description_lines": [
+            "Tells the mon owner of the service."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonview", 
+        "description_lines": [
+            "Tells the view id of the monitoring owner."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "groupcount", 
+        "description_lines": [
+            "Servicegroup Count."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "riseapbrstatsmsgcode2", 
+        "description_lines": [
+            "The code indicating other rise stats."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "serviceipstr", 
+        "description_lines": [
+            "This field has been intorduced to show the dbs services ip."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "OUT OF SERVICE", 
+            "PARTIAL-UP", 
+            "PARTIAL-DOWN"
+        ], 
+        "type": "str", 
+        "name": "servicegroupeffectivestate", 
+        "description_lines": [
+            "Indicates the effective servicegroup state based on the state of the bound service items.If all services are UP the effective state is UP, if all are DOWN its DOWN,if all are OFS its OFS.If atleast one serviceis UP and rest are either DOWN or OFS, the effective state is PARTIAL-UP.If atleast one bound service is DOWN and rest are OFS the effective state is PARTIAL DOWN.", 
+            "Possible values = UP, DOWN, OUT OF SERVICE, PARTIAL-UP, PARTIAL-DOWN"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "__count", 
+        "description_lines": [
+            "count parameter"
+        ]
+    }
+]
