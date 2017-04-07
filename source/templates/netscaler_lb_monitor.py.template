@@ -1,0 +1,74 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+# TODO review status and supported_by when migrating to github
+ANSIBLE_METADATA = {'status': ['preview'],
+                    'supported_by': 'commiter',
+                    'version': '1.0'}
+
+
+# TODO: Add appropriate documentation
+DOCUMENTATION = '''
+
+#{% for item in argument_options.lb_monitor %}
+#{% include 'single_option.template' %}
+#{% endfor %}
+
+'''
+
+def main():
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+
+    try:
+        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor import lbmonitor
+        python_sdk_imported = True
+    except ImportError as e:
+        python_sdk_imported = False
+
+    module_specific_arguments = dict(
+        #{% for argument in module_arguments.lb_monitor %}
+        #{% include 'single_argument_spec.template' %}
+        #{% endfor %}
+    )
+
+    argument_spec = dict()
+    argument_spec.update(module_specific_arguments)
+    argument_spec.update(netscaler_common_arguments)
+
+    # Hand wired arguments
+    #argument_spec.update(dict( servicegroupbindings=dict(type='list')))
+
+    module = AnsibleModule(
+        argument_spec=argument_spec,
+        supports_check_mode=True,
+    )
+
+    module_result = dict(
+        changed=False,
+        failed=False,
+        loglines=loglines,
+    )
+
+    # Fail the module if imports failed
+    if not python_sdk_imported:
+        module.fail_json(msg='Could not load nitro python sdk')
+
+    # Fallthrough to rest of execution
+    client = get_nitro_client(module)
+    client.login()
+
+    # Instantiate lb vserver object
+    readwrite_attrs = {{ readwrite_attrs.lb_monitor }}
+    readonly_attrs = {{ readonly_attrs.lb_monitor }}
+
+    lbmonitor_proxy = ConfigProxy(
+        actual=lbmonitor(),
+        client=client,
+        attribute_values_dict = module.params,
+        readwrite_attrs=readwrite_attrs,
+        readonly_attrs=readonly_attrs,
+    )
+
+if __name__ == "__main__":
+    main()

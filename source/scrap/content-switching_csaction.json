@@ -1,0 +1,102 @@
+[
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "name", 
+        "description_lines": [
+            "Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.", 
+            "The following requirement applies only to the NetScaler CLI:", 
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, ?my action? or ?my action?)."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "targetlbvserver", 
+        "description_lines": [
+            "Name of the load balancing virtual server to which the content is switched."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "targetvserver", 
+        "description_lines": [
+            "Name of the VPN virtual server to which the content is switched."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "targetvserverexpr", 
+        "description_lines": [
+            "Information about this content switching action."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "comment", 
+        "description_lines": [
+            "Comments associated with this cs action."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "newname", 
+        "description_lines": [
+            "New name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters.", 
+            "The following requirement applies only to the NetScaler CLI:", 
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my name or my name).", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "hits", 
+        "description_lines": [
+            "The number of times the action has been taken."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "referencecount", 
+        "description_lines": [
+            "The number of references to the action."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "undefhits", 
+        "description_lines": [
+            "The number of times the action resulted in UNDEF."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "MODIFIABLE", 
+            "DELETABLE", 
+            "IMMUTABLE", 
+            "PARTITION_ALL"
+        ], 
+        "type": "list", 
+        "name": "builtin", 
+        "description_lines": [
+            ".", 
+            "Possible values = MODIFIABLE, DELETABLE, IMMUTABLE, PARTITION_ALL"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "__count", 
+        "description_lines": [
+            "count parameter"
+        ]
+    }
+]

@@ -100,6 +100,23 @@ class ConfigProxy(object):
                 diff_dict[attribute] = 'difference. ours: (%s) %s other: (%s) %s' % str_tuple
         return diff_dict
 
+    def get_actual_rw_attributes(self):
+        if self.actual.__class__.count_filtered(self.client, 'name:%s' % self.attribute_values_dict['name']) == 0:
+            return {}
+        server_list = self.actual.__class__.get_filtered(self.client, 'name:%s' % self.attribute_values_dict['name'])
+        actual_instance = server_list[0]
+        print('actual_instance %s' % actual_instance)
+        ret_val = {}
+        for attribute in self.readwrite_attrs:
+            if not hasattr(actual_instance, attribute):
+                continue
+            ret_val[attribute] = getattr(actual_instance, attribute)
+        return ret_val
+
+
+
+
+
 def get_nitro_client(module):
     from nssrc.com.citrix.netscaler.nitro.service.nitro_service import nitro_service
 

@@ -1,4 +1,4 @@
-    {{argument.key}}=dict(
+{{argument.key}}=dict(
         type='{{argument.type}}',
         #{% if argument.choices -%}
         choices={{argument.choices}}

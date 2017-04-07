@@ -22,6 +22,10 @@ options:
             - The Nescaler ip address.
 
         required: True
+
+#{% for item in argument_options.lb_lbvserver %}
+#{% include 'single_option.template' %}
+#{% endfor %}
 '''
 
 # TODO: Add appropriate examples
