@@ -42,6 +42,14 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
 
     return module_arguments
 
+def produce_readwrite_attrs_list(json_doc):
+    readonly_list = list()
+    for property in json_doc:
+        # Add only readonly attributes
+        if property['readonly'] == False:
+            readonly_list.append(property['name'])
+    return readonly_list
+
 def produce_readonly_attrs_list(json_doc):
     readonly_list = list()
     for property in json_doc:
@@ -91,10 +99,14 @@ def main():
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_service_binding import lbvserver_service_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_servicegroup_binding import lbvserver_servicegroup_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor import lbmonitor
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
+    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
+    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
 
     schemata = {
         'basic_service' : {
@@ -125,6 +137,22 @@ def main():
             'json_file': 'load-balancing_lbvserver_servicegroup_binding.json',
             'class' : lbvserver_servicegroup_binding,
         },
+        'lb_monitor' : {
+            'json_file': 'load-balancing_lbmonitor.json',
+            'class' : lbmonitor,
+        },
+        'cs_vserver' : {
+            'json_file': 'content-switching_csvserver.json',
+            'class' : csvserver,
+        },
+        'cs_policy' : {
+            'json_file': 'content-switching_cspolicy.json',
+            'class' : cspolicy,
+        },
+        'cs_action' : {
+            'json_file': 'content-switching_csaction.json',
+            'class' : csaction,
+        }
     }
 
     # Iterate and produce module arguments dicts
@@ -162,7 +190,7 @@ def main():
         module_arguments[key] = produce_module_arguments_from_json_schema(json_doc, skip_attrs=not_in_sdk)
 
         # readwrite attrs
-        readwrite_attrs[key] = [ item['key'] for item in module_arguments[key] ]
+        readwrite_attrs[key] = produce_readwrite_attrs_list(json_doc)
 
         # options for documentation block
         argument_options[key] = produce_module_argument_documentation(json_doc, schema['class'], skip_attrs=not_in_sdk)
@@ -177,6 +205,10 @@ def main():
         'netscaler_server.py.template',
         'netscaler_lb_vserver.py.template',
         'netscaler_servicegroup.py.template',
+        'netscaler_lb_monitor.py.template',
+        'netscaler_cs_vserver.py.template',
+        'netscaler_cs_policy.py.template',
+        'netscaler_cs_action.py.template',
     ]
     for template_file in template_list:
         template = env.get_template(template_file)
