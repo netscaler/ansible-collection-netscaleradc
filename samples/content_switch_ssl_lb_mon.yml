@@ -1,0 +1,165 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+
+
+    - name: Configure service group catalog
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+        module: netscaler_servicegroup
+
+        servicegroupname: service_group_catalog
+        servicetype: HTTP
+        servicemembers:
+          - ip: 10.78.78.78
+            port: 80
+            weight: 50
+          - ip: 10.79.79.79
+            port: 80
+            weight: 50
+
+
+    - name: Configure service group cart
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+        module: netscaler_servicegroup
+
+        servicegroupname: service_group_cart
+        servicetype: HTTP
+        servicemembers:
+          - ip: 11.78.78.78
+            port: 80
+            weight: 50
+          - ip: 11.79.79.79
+            port: 80
+            weight: 50
+
+    - name: Configure lb vserver cart
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_vserver
+        operation: present
+
+        name: lb_vserver_cart
+        servicetype: HTTP
+        ipv46: 192.168.1.1
+        port: 80
+
+    - name: Configure lb vserver catalog
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_vserver
+        operation: present
+
+        name: lb_vserver_catalog
+        servicetype: HTTP
+        ipv46: 192.168.1.2
+        port: 80
+
+    - name: Configure lb monitor for catalog
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_monitor
+        operation: present
+
+        monitorname: monitor_catalog
+        type: HTTP
+        respcode: ['200']
+
+        servicegroupbindings:
+          - servicegroupname: service_group_catalog
+
+    - name: Configure lb monitor for cart
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_monitor
+        operation: present
+
+        monitorname: monitor_cart
+        type: HTTP
+        respcode: ['200']
+
+        servicegroupbindings:
+          - servicegroupname: service_group_cart
+
+    - name: Configure catalog policy
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+        module: netscaler_cs_policy
+
+        policyname: catalog_policy
+        url: /catalog/*
+
+    - name: Configure cart policy
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+        module: netscaler_cs_policy
+
+        policyname: cart_policy
+        url: /cart/*
+
+    - name: Configure cs vserver
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+        module: netscaler_cs_vserver
+
+        name: cs_vserver_1
+        ipv46: 10.22.24.22
+        port: 443
+        servicetype: HTTP
+
+        policybindings:
+          - policyname: catalog_policy
+            targetlbvserver: lb_vserver_catalog
+          - policyname: cart_policy
+            targetlbvserver: lb_vserver_cart

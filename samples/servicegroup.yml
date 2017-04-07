@@ -1,0 +1,31 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Set service group
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_servicegroup
+        operation: present
+
+        servicegroupname: service-group-1
+        servicetype: HTTP
+        servicemembers:
+            - ip: 10.78.78.78
+              port: 80
+              weight: 50
+            - ip: 10.79.79.79
+              port: 80
+              weight: 50

@@ -12,11 +12,12 @@
 
     - name: Set service 1
       local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
         module: netscaler_service
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
         operation: present
 
         name: service-http-1
@@ -27,11 +28,12 @@
 
     - name: Set service 2
       local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
         module: netscaler_service
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
         operation: present
 
         name: service-http-2
@@ -42,11 +44,12 @@
 
     - name: Set service group
       local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
         module: netscaler_servicegroup
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
         operation: present
 
         servicegroupname: service-group-1
@@ -62,11 +65,12 @@
 
     - name: lb vserver 1
       local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
         module: netscaler_lb_vserver
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
         operation: present
 
         name: lb_vserver_1
@@ -84,11 +88,12 @@
 
     - name: lb vserver 2
       local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
         module: netscaler_lb_vserver
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
         operation: present
 
         name: lb_vserver_2

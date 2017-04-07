@@ -2,8 +2,4 @@
 
 [netscaler]
 
-172.17.0.2
-
-[host01]
-10.0.3.2
-
+172.18.0.2 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot ssl_cert_validation=no

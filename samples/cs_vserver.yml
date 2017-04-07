@@ -1,0 +1,59 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+    - name: Set lb vserver 1
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_vserver
+        operation: present
+
+        name: lbvserver_1
+        servicetype: HTTP
+        ipv46: 10.78.1.1
+        port: 80
+
+
+    - name: Set cs policy
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_cs_policy
+        operation: present
+
+        policyname: policy_1
+        url: /example/
+
+
+    - name: Set cs vserver
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_cs_vserver
+        operation: present
+
+        name: cs_vserver_1
+        ipv46: 192.168.1.1
+        port: 80
+        servicetype: HTTP
+
+        policybindings:
+          - policyname: policy_1
+            targetlbvserver: lbvserver_1
