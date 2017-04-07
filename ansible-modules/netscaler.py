@@ -40,6 +40,13 @@ class ConfigProxy(object):
                     continue
                 setattr(self.actual, attribute, attribute_value)
 
+
+    def __getattr__(self, name):
+        if name in self.attribute_values_dict:
+            return self.attribute_values_dict[name]
+        else:
+            raise AttributeError('No attribute %s found' % name)
+
     def actual_exists(self):
         pass
 

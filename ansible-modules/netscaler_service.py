@@ -329,14 +329,16 @@ config_updated:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
+import copy
 
 
 def main():
     from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
-        from nssrc.com.citrix.netscaler.nitro.resource.stat.basic.service_stats import service_stats
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_service_binding import lbmonitor_service_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
@@ -457,11 +459,17 @@ def main():
         Internal=dict(type='bool'),
     )
 
+    hand_inserted_arguments = dict(
+        monitorbindings=dict(type='list'),
+    )
+
     argument_spec = dict()
 
     argument_spec.update(netscaler_common_arguments)
 
     argument_spec.update(module_specific_arguments)
+
+    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -516,6 +524,99 @@ def main():
         service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
         return service_proxy.diff_object(service_list[0])
 
+    def get_configured_monitor_bindings():
+        log('Entering get_configured_monitor_bindings')
+        bindings = {}
+        if 'monitorbindings' in module.params and module.params['monitorbindings'] is not None:
+            for binding in module.params['monitorbindings']:
+                readwrite_attrs = [
+                    'monitorname',
+                    'servicename',
+                ]
+                readonly_attrs = []
+                if isinstance(binding, dict):
+                    attribute_values_dict = copy.deepcopy(binding)
+                else:
+                    attribute_values_dict = {
+                        'monitorname': binding
+                    }
+                attribute_values_dict['servicename'] = module.params['name']
+                binding_proxy = ConfigProxy(
+                    actual=lbmonitor_service_binding(),
+                    client=client,
+                    attribute_values_dict=attribute_values_dict,
+                    readwrite_attrs=readwrite_attrs,
+                    readonly_attrs=readonly_attrs,
+                )
+                key = attribute_values_dict['monitorname']
+                bindings[key] = binding_proxy
+        return bindings
+
+    def get_actual_monitor_bindings():
+        log('Entering get_actual_monitor_bindings')
+        bindings = {}
+        if service_lbmonitor_binding.count(client, module.params['name']) == 0:
+            return bindings
+
+        # Fallthrough to rest of execution
+        for binding in service_lbmonitor_binding.get(client, module.params['name']):
+            log('Gettign actual monitor with name %s' % binding.monitor_name)
+            key = binding.monitor_name
+            bindings[key] = binding
+
+        return bindings
+
+    def monitor_bindings_identical():
+        log('Entering monitor_bindings_identical')
+        configured_bindings = get_configured_monitor_bindings()
+        actual_bindings = get_actual_monitor_bindings()
+
+        configured_key_set = set(configured_bindings.keys())
+        actual_key_set = set(actual_bindings.keys())
+        symmetrical_diff = configured_key_set ^ actual_key_set
+        for default_monitor in ('tcp-default', 'ping-default'):
+            if default_monitor in symmetrical_diff:
+                log('Excluding %s monitor from key comparison' % default_monitor)
+                symmetrical_diff.remove(default_monitor)
+        if len(symmetrical_diff) > 0:
+            return False
+
+        # Compare key to key
+        for key in configured_key_set:
+            configured_proxy=configured_bindings[key]
+            if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
+                    configured_proxy.servicename !=  actual_bindings[key].name]):
+                return False
+
+        # Fallthrought to success
+        return True
+
+
+    def sync_monitor_bindings():
+        log('Entering sync_monitor_bindings')
+        # Delete existing bindings
+        for binding in get_actual_monitor_bindings().values():
+            b = lbmonitor_service_binding()
+            b.monitorname = binding.monitor_name
+            b.servicename = module.params['name']
+            # Cannot remove default monitor bindings
+            if b.monitorname in ('tcp-default', 'ping-default'):
+                continue
+            lbmonitor_service_binding.delete(client, b)
+            continue
+
+            binding.monitorname = binding.monitor_name
+            log('Will delete %s' % dir(binding))
+            log('Name %s' % binding.name)
+            log('monitor Name %s' % binding.monitor_name)
+            binding.delete(client, binding)
+            #service_lbmonitor_binding.delete(client, binding)
+
+        # Apply configured bindings
+
+        for binding in get_configured_monitor_bindings().values():
+            binding.add()
+
 
     try:
 
@@ -534,11 +635,21 @@ def main():
             else:
                 module_result['changed'] = False
 
+            # Check bindings
+            if not monitor_bindings_identical():
+                if not module.check_mode:
+                    sync_monitor_bindings()
+                    client.save_config()
+                module_result['changed'] = True
+
             # Sanity check for operation
             if not service_exists():
                 module.fail_json(msg='Service does not exist')
-            #if not service_identical():
-                #module.fail_json(msg='Service differs from configured', diff=diff_list())
+            if not service_identical():
+                module.fail_json(msg='Service differs from configured', diff=diff_list())
+
+            if not monitor_bindings_identical():
+                module.fail_json(msg='Monitor bindings are not identical',loglines=loglines)
 
         elif module.params['operation'] == 'absent':
             if service_exists():
@@ -558,8 +669,10 @@ def main():
         module_result['configured_service']['actual_ro_attributes'] = service_proxy.get_actual_ro_attributes()
         module_result['configured_service']['missing_rw_attributes'] = list(set(readwrite_attrs) - set(module_result['configured_service']['actual_rw_attributes'].keys()))
         module_result['configured_service']['missing_ro_attributes'] = list(set(readonly_attrs) - set(module_result['configured_service']['actual_ro_attributes'].keys()))
+
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        module_result['loglines'] = loglines
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
