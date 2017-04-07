@@ -37,6 +37,7 @@ def scrap_page(page):
             'Boolean': 'bool',
             'Double': 'float',
             'Double[]': 'list',
+            'String[]': 'list',
         }[type_text]
 
         readonly_text = items[2].text_content().strip()
@@ -81,11 +82,16 @@ def main():
         #'load-balancing/lbvserver',
         #'load-balancing/lbvserver_service_binding',
         #'load-balancing/lbvserver_servicegroup_binding',
+        #'load-balancing/lbmonitor',
+        #'content-switching/csvserver',
+        #'content-switching/cspolicy',
+        'content-switching/csaction',
     ]
     for page in pages:
         properties = scrap_page(base_url + page + '.html')
         page_file = re.sub('/','_',page)
         page_file += '.json'
+        print('writing to file %s' % page_file)
         with open(page_file, 'w') as fh:
             json.dump(properties, fh, indent=4)
 
