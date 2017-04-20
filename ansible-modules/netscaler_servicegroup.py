@@ -230,7 +230,7 @@ options:
         description:
             - Server port number.
             - Range 1 - 65535
-            - * in CLI is represented as 65535 in NITRO API
+            -  in CLI is represented as 65535 in NITRO API
 
     weight:
         description:
@@ -456,8 +456,74 @@ def main():
     client.login()
 
     # Instantiate service group configuration object
-    readwrite_attrs = [u'servicegroupname', u'servicetype', u'cachetype', u'td', u'maxclient', u'maxreq', u'cacheable', u'cip', u'cipheader', u'usip', u'pathmonitor', u'pathmonitorindv', u'useproxyport', u'healthmonitor', u'sc', u'sp', u'rtspsessionidremap', u'clttimeout', u'svrtimeout', u'cka', u'tcpb', u'cmp', u'maxbandwidth', u'monthreshold', u'state', u'downstateflush', u'tcpprofilename', u'httpprofilename', u'comment', u'appflowlog', u'netprofile', u'autoscale', u'memberport', u'servername', u'port', u'weight', u'customserverid', u'serverid', u'hashid', u'monitor_name_svc', u'dup_weight', u'riseapbrstatsmsgcode', u'delay', u'graceful', u'includemembers']
-    readonly_attrs = [u'numofconnections', u'serviceconftype', u'value', u'svrstate', u'ip', u'monstatcode', u'monstatparam1', u'monstatparam2', u'monstatparam3', u'statechangetimemsec', u'stateupdatereason', u'clmonowner', u'clmonview', u'groupcount', u'riseapbrstatsmsgcode2', u'serviceipstr', u'servicegroupeffectivestate']
+    readwrite_attrs = [
+        'servicegroupname',
+        'servicetype',
+        'cachetype',
+        'td',
+        'maxclient',
+        'maxreq',
+        'cacheable',
+        'cip',
+        'cipheader',
+        'usip',
+        'pathmonitor',
+        'pathmonitorindv',
+        'useproxyport',
+        'healthmonitor',
+        'sc',
+        'sp',
+        'rtspsessionidremap',
+        'clttimeout',
+        'svrtimeout',
+        'cka',
+        'tcpb',
+        'cmp',
+        'maxbandwidth',
+        'monthreshold',
+        'state',
+        'downstateflush',
+        'tcpprofilename',
+        'httpprofilename',
+        'comment',
+        'appflowlog',
+        'netprofile',
+        'autoscale',
+        'memberport',
+        'servername',
+        'port',
+        'weight',
+        'customserverid',
+        'serverid',
+        'hashid',
+        'monitor_name_svc',
+        'dup_weight',
+        'riseapbrstatsmsgcode',
+        'delay',
+        'graceful',
+        'includemembers'
+    ]
+
+    readonly_attrs = [
+        'numofconnections',
+        'serviceconftype',
+        'value',
+        'svrstate',
+        'ip',
+        'monstatcode',
+        'monstatparam1',
+        'monstatparam2',
+        'monstatparam3',
+        'statechangetimemsec',
+        'stateupdatereason',
+        'clmonowner',
+        'clmonview',
+        'groupcount',
+        'riseapbrstatsmsgcode2',
+        'serviceipstr',
+        'servicegroupeffectivestate'
+    ]
+
     servicegroup_proxy = ConfigProxy(
         actual=servicegroup(),
         client=client,
@@ -651,6 +717,7 @@ def main():
                 if not module.check_mode:
                     log('Adding service group')
                     servicegroup_proxy.add()
+                    servicegroup_proxy.update()
                     client.save_config()
                     #log('Updating service group')
                     #servicegroup_proxy.update()

@@ -139,7 +139,7 @@ options:
             
             - Range 1 - 65535
             
-            - * in CLI is represented as 65535 in NITRO API
+            - "* in CLI is represented as 65535 in NITRO API"
             
 
     state:
@@ -627,11 +627,11 @@ options:
             
             - A host route is injected according to the setting on the virtual servers
             
-            - * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always injects the hostroute.
+            - If set to PASSIVE on all the virtual servers that share the IP address, the appliance always injects the hostroute.
             
-            - * If set to ACTIVE on all the virtual servers that share the IP address, the appliance injects even if one virtual server is UP.
+            - If set to ACTIVE on all the virtual servers that share the IP address, the appliance injects even if one virtual server is UP.
             
-            - * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance, injects even if one virtual server set to ACTIVE is UP.
+            - If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance, injects even if one virtual server set to ACTIVE is UP.
             
             - Default value: PASSIVE
             
@@ -735,7 +735,7 @@ import StringIO
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
         from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_cspolicy_binding import csvserver_cspolicy_binding
@@ -1036,10 +1036,8 @@ def main():
             return False
 
     def cs_vserver_identical():
-        service_list = csvserver.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = csvserver_proxy.diff_object(service_list[0])
-        if 'ip' in diff_dict:
-            del diff_dict['ip']
+        csvserver_list = csvserver.get_filtered(client, 'name:%s' % module.params['name'])
+        diff_dict = csvserver_proxy.diff_object(csvserver_list[0])
         if len(diff_dict) == 0:
             return True
         else:
@@ -1047,6 +1045,9 @@ def main():
 
     def get_configured_policybindings():
         bindings = {}
+        if module.params['policybindings'] is None:
+            return bindings
+
         for binding in module.params['policybindings']:
             binding['name'] = module.params['name']
             key = binding['policyname']
@@ -1116,11 +1117,12 @@ def main():
             binding.add()
 
     def diff_list():
-        service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-        return csvserver_proxy.diff_object(service_list[0])
+        csvserver_list = csvserver.get_filtered(client, 'name:%s' % module.params['name'])
+        return csvserver_proxy.diff_object(csvserver_list[0])
 
 
     try:
+        ensure_feature_is_enabled(client, 'CS')
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':

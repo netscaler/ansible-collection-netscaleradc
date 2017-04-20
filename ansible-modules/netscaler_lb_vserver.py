@@ -55,14 +55,14 @@ options:
         description:
             - Port number for the virtual server.
             - Range 1 - 65535
-            - * in CLI is represented as 65535 in NITRO API
+            - in CLI is represented as 65535 in NITRO API
             
     range:
         description:
-            - Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows:
-            - * For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.
-            - * If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.
-            - Note: The Range parameter assigns multiple IP addresses to one virtual server. To generate an array of virtual servers, each of which owns only one IP address, use brackets in the IP Address and Name parameters to specify the range. For example:
+            - Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows
+            - For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.
+            - If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.
+            - Note: The Range parameter assigns multiple IP addresses to one virtual server. To generate an array of virtual servers, each of which owns only one IP address, use brackets in the IP Address and Name parameters to specify the range. For example
             - add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80.
             - Default value: 1
             - Minimum value = 1
@@ -71,18 +71,18 @@ options:
     persistencetype:
         choices: ['SOURCEIP', 'COOKIEINSERT', 'SSLSESSION', 'RULE', 'URLPASSIVE', 'CUSTOMSERVERID', 'DESTIP', 'SRCIPDESTIP', 'CALLID', 'RTSPSID', 'DIAMETER', 'FIXSESSION', 'NONE']
         description:
-            - Type of persistence for the virtual server. Available settings function as follows:
-            - * SOURCEIP - Connections from the same client IP address belong to the same persistence session.
-            - * COOKIEINSERT - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from a server, belong to the same persistence session.
-            - * SSLSESSION - Connections that have the same SSL Session ID belong to the same persistence session.
-            - * CUSTOMSERVERID - Connections with the same server ID form part of the same session. For this persistence type, set the Server ID (CustomServerID) parameter for each service and configure the Rule parameter to identify the server ID in a request.
-            - * RULE - All connections that match a user defined rule belong to the same persistence session.
-            - * URLPASSIVE - Requests that have the same server ID in the URL query belong to the same persistence session. The server ID is the hexadecimal representation of the IP address and port of the service to which the request must be forwarded. This persistence type requires a rule to identify the server ID in the request.
-            - * DESTIP - Connections to the same destination IP address belong to the same persistence session.
-            - * SRCIPDESTIP - Connections that have the same source IP address and destination IP address belong to the same persistence session.
-            - * CALLID - Connections that have the same CALL-ID SIP header belong to the same persistence session.
-            - * RTSPSID - Connections that have the same RTSP Session ID belong to the same persistence session.
-            - * FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same persistence session.
+            - Type of persistence for the virtual server. Available settings function as follows
+            - SOURCEIP - Connections from the same client IP address belong to the same persistence session.
+            - COOKIEINSERT - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from a server, belong to the same persistence session.
+            - SSLSESSION - Connections that have the same SSL Session ID belong to the same persistence session.
+            - CUSTOMSERVERID - Connections with the same server ID form part of the same session. For this persistence type, set the Server ID (CustomServerID) parameter for each service and configure the Rule parameter to identify the server ID in a request.
+            - RULE - All connections that match a user defined rule belong to the same persistence session.
+            - URLPASSIVE - Requests that have the same server ID in the URL query belong to the same persistence session. The server ID is the hexadecimal representation of the IP address and port of the service to which the request must be forwarded. This persistence type requires a rule to identify the server ID in the request.
+            - DESTIP - Connections to the same destination IP address belong to the same persistence session.
+            - SRCIPDESTIP - Connections that have the same source IP address and destination IP address belong to the same persistence session.
+            - CALLID - Connections that have the same CALL-ID SIP header belong to the same persistence session.
+            - RTSPSID - Connections that have the same RTSP Session ID belong to the same persistence session.
+            - FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same persistence session.
 
     timeout:
         description:
@@ -107,23 +107,23 @@ options:
     lbmethod:
         choices: ['ROUNDROBIN', 'LEASTCONNECTION', 'LEASTRESPONSETIME', 'URLHASH', 'DOMAINHASH', 'DESTINATIONIPHASH', 'SOURCEIPHASH', 'SRCIPDESTIPHASH', 'LEASTBANDWIDTH', 'LEASTPACKETS', 'TOKEN', 'SRCIPSRCPORTHASH', 'LRTM', 'CALLIDHASH', 'CUSTOMLOAD', 'LEASTREQUEST', 'AUDITLOGHASH', 'STATICPROXIMITY']
         description:
-            - Load balancing method. The available settings function as follows:
-            - * ROUNDROBIN - Distribute requests in rotation, regardless of the load. Weights can be assigned to services to enforce weighted round robin distribution.
-            - * LEASTCONNECTION (default) - Select the service with the fewest connections.
-            - * LEASTRESPONSETIME - Select the service with the lowest average response time.
-            - * LEASTBANDWIDTH - Select the service currently handling the least traffic.
-            - * LEASTPACKETS - Select the service currently serving the lowest number of packets per second.
-            - * CUSTOMLOAD - Base service selection on the SNMP metrics obtained by custom load monitors.
-            - * LRTM - Select the service with the lowest response time. Response times are learned through monitoring probes. This method also takes the number of active connections into account.
+            - Load balancing method. The available settings function as follows
+            - ROUNDROBIN - Distribute requests in rotation, regardless of the load. Weights can be assigned to services to enforce weighted round robin distribution.
+            - LEASTCONNECTION (default) - Select the service with the fewest connections.
+            - LEASTRESPONSETIME - Select the service with the lowest average response time.
+            - LEASTBANDWIDTH - Select the service currently handling the least traffic.
+            - LEASTPACKETS - Select the service currently serving the lowest number of packets per second.
+            - CUSTOMLOAD - Base service selection on the SNMP metrics obtained by custom load monitors.
+            - LRTM - Select the service with the lowest response time. Response times are learned through monitoring probes. This method also takes the number of active connections into account.
             - Also available are a number of hashing methods, in which the appliance extracts a predetermined portion of the request, creates a hash of the portion, and then checks whether any previous requests had the same hash value. If it finds a match, it forwards the request to the service that served those previous requests. Following are the hashing methods:
-            - * URLHASH - Create a hash of the request URL (or part of the URL).
-            - * DOMAINHASH - Create a hash of the domain name in the request (or part of the domain name). The domain name is taken from either the URL or the Host header. If the domain name appears in both locations, the URL is preferred. If the request does not contain a domain name, the load balancing method defaults to LEASTCONNECTION.
-            - * DESTINATIONIPHASH - Create a hash of the destination IP address in the IP header.
-            - * SOURCEIPHASH - Create a hash of the source IP address in the IP header.
-            - * TOKEN - Extract a token from the request, create a hash of the token, and then select the service to which any previous requests with the same token hash value were sent.
-            - * SRCIPDESTIPHASH - Create a hash of the string obtained by concatenating the source IP address and destination IP address in the IP header.
-            - * SRCIPSRCPORTHASH - Create a hash of the source IP address and source port in the IP header.
-            - * CALLIDHASH - Create a hash of the SIP Call-ID header.
+            - URLHASH - Create a hash of the request URL (or part of the URL).
+            - DOMAINHASH - Create a hash of the domain name in the request (or part of the domain name). The domain name is taken from either the URL or the Host header. If the domain name appears in both locations, the URL is preferred. If the request does not contain a domain name, the load balancing method defaults to LEASTCONNECTION.
+            - DESTINATIONIPHASH - Create a hash of the destination IP address in the IP header.
+            - SOURCEIPHASH - Create a hash of the source IP address in the IP header.
+            - TOKEN - Extract a token from the request, create a hash of the token, and then select the service to which any previous requests with the same token hash value were sent.
+            - SRCIPDESTIPHASH - Create a hash of the string obtained by concatenating the source IP address and destination IP address in the IP header.
+            - SRCIPSRCPORTHASH - Create a hash of the source IP address and source port in the IP header.
+            - CALLIDHASH - Create a hash of the SIP Call-ID header.
             - Default value: LEASTCONNECTION
             
     hashlength:
@@ -163,9 +163,9 @@ options:
             - Note:
             - Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
             - The following requirements apply only to the NetScaler CLI:
-            - * If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
-            - * If the expression itself includes double quotation marks, escape the quotations by using the \ character.
-            - * Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
+            - If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+            - If the expression itself includes double quotation marks, escape the quotations by using the \ character.
+            - Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
             - Default value: "none"
             
     listenpolicy:
@@ -221,10 +221,10 @@ options:
         choices: ['IP', 'MAC', 'IPTUNNEL', 'TOS']
         description:
             - Redirection mode for load balancing. Available settings function as follows:
-            - * IP - Before forwarding a request to a server, change the destination IP address to the server's IP address.
-            - * MAC - Before forwarding a request to a server, change the destination MAC address to the server's MAC address. The destination IP address is not changed. MAC-based redirection mode is used mostly in firewall load balancing deployments.
-            - * IPTUNNEL - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the destination IP address to the IP address of the server and the source IP address to the subnet IP (SNIP). The client IP packets are not modified. Applicable to both IPv4 and IPv6 packets.
-            - * TOS - Encode the virtual server's TOS ID in the TOS field of the IP header.
+            - IP - Before forwarding a request to a server, change the destination IP address to the server's IP address.
+            - MAC - Before forwarding a request to a server, change the destination MAC address to the server's MAC address. The destination IP address is not changed. MAC-based redirection mode is used mostly in firewall load balancing deployments.
+            - IPTUNNEL - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the destination IP address to the IP address of the server and the source IP address to the subnet IP (SNIP). The client IP packets are not modified. Applicable to both IPv4 and IPv6 packets.
+            - TOS - Encode the virtual server's TOS ID in the TOS field of the IP header.
             - You can use either the IPTUNNEL or the TOS option to implement Direct Server Return (DSR).
             - Default value: IP
 
@@ -263,9 +263,9 @@ options:
         choices: ['DISABLED', 'STATEFUL', 'STATELESS']
         description:
             - Mode in which the connection failover feature must operate for the virtual server. After a failover, established TCP connections and UDP packet flows are kept active and resumed on the secondary appliance. Clients remain connected to the same servers. Available settings function as follows:
-            - * STATEFUL - The primary appliance shares state information with the secondary appliance, in real time, resulting in some runtime processing overhead.
-            - * STATELESS - State information is not shared, and the new primary appliance tries to re-create the packet flow on the basis of the information contained in the packets it receives.
-            - * DISABLED - Connection failover does not occur.
+            - STATEFUL - The primary appliance shares state information with the secondary appliance, in real time, resulting in some runtime processing overhead.
+            - STATELESS - State information is not shared, and the new primary appliance tries to re-create the packet flow on the basis of the information contained in the packets it receives.
+            - DISABLED - Connection failover does not occur.
             - Default value: DISABLED
             
     redirurl:
@@ -290,11 +290,11 @@ options:
         choices: ['CONNECTION', 'DYNAMICCONNECTION', 'BANDWIDTH', 'HEALTH', 'NONE']
         description:
             - Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:
-            - * CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.
-            - * DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server exceeds the sum of the maximum client (Max Clients) settings for bound services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of bound services.
-            - * BANDWIDTH - Spillover occurs when the bandwidth consumed by the virtual server's incoming and outgoing traffic exceeds the threshold.
-            - * HEALTH - Spillover occurs when the percentage of weights of the services that are UP drops below the threshold. For example, if services svc1, svc2, and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and svc3 transition to DOWN.
-            - * NONE - Spillover does not occur.
+            - CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.
+            - DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server exceeds the sum of the maximum client (Max Clients) settings for bound services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of bound services.
+            - BANDWIDTH - Spillover occurs when the bandwidth consumed by the virtual server's incoming and outgoing traffic exceeds the threshold.
+            - HEALTH - Spillover occurs when the percentage of weights of the services that are UP drops below the threshold. For example, if services svc1, svc2, and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and svc3 transition to DOWN.
+            - NONE - Spillover does not occur.
 
     sopersistence:
         choices: ['ENABLED', 'DISABLED']
@@ -354,10 +354,10 @@ options:
     insertvserveripport:
         choices: ['OFF', 'VIPADDR', 'V6TOV4MAPPING']
         description:
-            - Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is <vipHeader>: <virtual server IP address>_<port number >, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows:
-            - * VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.
-            - * V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.
-            - * OFF - Disable header insertion.
+            - Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is <vipHeader>: <virtual server IP address>_<port number >, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows
+            - VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.
+            - V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.
+            - OFF - Disable header insertion.
             - Possible values = OFF, VIPADDR, V6TOV4MAPPING
 
     vipheader:
@@ -485,10 +485,10 @@ options:
     icmpvsrresponse:
         choices: ['PASSIVE', 'ACTIVE']
         description:
-            - How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:
-            - * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always responds to the ping requests.
-            - * If set to ACTIVE on all the virtual servers that share the IP address, the appliance responds to the ping requests if at least one of the virtual servers is UP. Otherwise, the appliance does not respond.
-            - * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance responds if at least one virtual server with the ACTIVE setting is UP. Otherwise, the appliance does not respond.
+            - How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows
+            -  If set to PASSIVE on all the virtual servers that share the IP address, the appliance always responds to the ping requests.
+            -  If set to ACTIVE on all the virtual servers that share the IP address, the appliance responds to the ping requests if at least one of the virtual servers is UP. Otherwise, the appliance does not respond.
+            -  If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance responds if at least one virtual server with the ACTIVE setting is UP. Otherwise, the appliance does not respond.
             - Note: This parameter is available at the virtual server level. A similar parameter, ICMP Response, is available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add ip command in the CLI or the Create IP dialog box in the GUI.
             - Default value: PASSIVE
 
@@ -496,9 +496,9 @@ options:
         choices: ['PASSIVE', 'ACTIVE']
         description:
             - Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
-            - * If you set RHI STATE to PASSIVE on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.
-            - * If you set RHI STATE to ACTIVE on all virtual servers, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.
-            - * If you set RHI STATE to ACTIVE on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose RHI STATE set to ACTIVE, is in UP state.
+            -  If you set RHI STATE to PASSIVE on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.
+            -  If you set RHI STATE to ACTIVE on all virtual servers, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.
+            -  If you set RHI STATE to ACTIVE on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose RHI STATE set to ACTIVE, is in UP state.
             - Default value: PASSIVE
 
     newservicerequest:
@@ -646,7 +646,7 @@ import copy
 # TODO add actual module instantiation code
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
 
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
@@ -1030,12 +1030,15 @@ def main():
         'backupvserverstatus'
     ]
 
+    json_encodes = ['resrule']
+
     lbvserver_proxy = ConfigProxy(
         actual=lbvserver(),
         client=client,
         attribute_values_dict = module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        json_encodes=json_encodes,
     )
 
     def lbvserver_exists():
@@ -1220,6 +1223,7 @@ def main():
 
 
     try:
+        ensure_feature_is_enabled(client, 'LB')
         if module.params['operation'] == 'present':
             if not lbvserver_exists():
                 log('Add lb vserver')

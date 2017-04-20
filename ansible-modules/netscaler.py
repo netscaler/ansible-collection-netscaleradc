@@ -8,13 +8,14 @@ Eventually to be merged in ansible module utils
 
 
 '''
+import json
 
 class ConfigProxyError(Exception):
     pass
 
 class ConfigProxy(object):
 
-    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs, primary_key=None):
+    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs, json_encodes=[]):
 
         # Actual config object from nitro sdk
         self.actual = actual
@@ -28,7 +29,7 @@ class ConfigProxy(object):
 
         self.readwrite_attrs = readwrite_attrs
         self.readonly_attrs = readonly_attrs
-        self.primary_key = primary_key
+        self.json_encodes = json_encodes
 
         self._copy_attributes_to_actual()
 
@@ -38,6 +39,10 @@ class ConfigProxy(object):
                 attribute_value = self.attribute_values_dict[attribute]
                 if attribute_value is None:
                     continue
+
+                # Fallthrough
+                if attribute in self.json_encodes:
+                    attribute_value = json.JSONEncoder().encode(attribute_value).strip('"')
                 setattr(self.actual, attribute, attribute_value)
 
 
@@ -142,6 +147,11 @@ class ConfigProxy(object):
 
 
 
+def ensure_feature_is_enabled(client, feature_str):
+    enabled_features = client.get_enabled_features()
+    if feature_str not in enabled_features:
+        client.enable_features(feature_str)
+        client.save_config()
 
 def get_nitro_client(module):
     from nssrc.com.citrix.netscaler.nitro.service.nitro_service import nitro_service

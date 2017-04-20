@@ -10,6 +10,7 @@ ANSIBLE_METADATA = {'status': ['preview'],
 # TODO: Add appropriate documentation
 DOCUMENTATION = '''
 
+options:
 
     monitorname:
         description:
@@ -27,9 +28,9 @@ DOCUMENTATION = '''
         description:
             - Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter.
             - Available settings function as follows:
-            - * NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
-            - * LOG - Log the event in NSLOG or SYSLOG.
-            - * DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
+            -  NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
+            -  LOG - Log the event in NSLOG or SYSLOG.
+            -  DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
             - Default value: DOWN
             
     respcode:
@@ -570,7 +571,7 @@ import copy
 from ansible.module_utils.basic import AnsibleModule
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
 
     try:
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
@@ -916,6 +917,7 @@ def main():
         attribute_values_dict = module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        json_encodes=['evalrule'],
     )
 
     def lbmonitor_exists():
@@ -1087,6 +1089,8 @@ def main():
         return configured_bindings
 
     try:
+        ensure_feature_is_enabled(client, 'LB')
+
         #get_actual_servicegroup_bindings()
         if module.params['operation'] == 'present':
             if not lbmonitor_exists():

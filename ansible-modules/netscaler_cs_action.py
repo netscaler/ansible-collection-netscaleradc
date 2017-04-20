@@ -24,87 +24,22 @@ options:
         required: True
 
     name:
-        
         description:
-            
             - Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.
-            
             - The following requirement applies only to the NetScaler CLI:
-            
             - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, ?my action? or ?my action?).
-            
 
     targetlbvserver:
-        
         description:
-            
             - Name of the load balancing virtual server to which the content is switched.
             
-
-    targetvserver:
-        
-        description:
-            
-            - Name of the VPN virtual server to which the content is switched.
-            
-
     targetvserverexpr:
-        
         description:
-            
             - Information about this content switching action.
-            
 
     comment:
-        
         description:
-            
             - Comments associated with this cs action.
-            
-
-    newname:
-        
-        description:
-            
-            - New name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters.
-            
-            - The following requirement applies only to the NetScaler CLI:
-            
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my name or my name).
-            
-            - Minimum length = 1
-            
-
-    hits:
-        
-        description:
-            
-            - The number of times the action has been taken.
-            
-
-    referencecount:
-        
-        description:
-            
-            - The number of references to the action.
-            
-
-    undefhits:
-        
-        description:
-            
-            - The number of times the action resulted in UNDEF.
-            
-
-    builtin:
-        choices: ['MODIFIABLE', 'DELETABLE', 'IMMUTABLE', 'PARTITION_ALL']
-        description:
-            
-            - .
-            
-            - Possible values = MODIFIABLE, DELETABLE, IMMUTABLE, PARTITION_ALL
-            
-
 '''
 
 # TODO: Add appropriate examples
@@ -129,7 +64,8 @@ import json
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
+
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
@@ -197,6 +133,7 @@ def main():
         attribute_values_dict = module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        json_encodes=['targetvserverexpr']
     )
 
     def action_exists():
@@ -223,6 +160,7 @@ def main():
 
     try:
 
+        ensure_feature_is_enabled(client, 'CS')
         # Apply appropriate operation
         if module.params['operation'] == 'present':
             if not action_exists():

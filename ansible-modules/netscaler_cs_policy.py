@@ -32,7 +32,7 @@ options:
 
     url:
         description:
-            - URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].
+            - "URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix]."
             - Minimum length = 1
             - Maximum length = 208
 
@@ -42,9 +42,9 @@ options:
             - Note:
             - Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
             - The following requirements apply only to the NetScaler CLI:
-            - * If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
-            - * If the expression itself includes double quotation marks, escape the quotations by using the character.
-            - * Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
+            - If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
+            - If the expression itself includes double quotation marks, escape the quotations by using the character.
+            - lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
             
     domain:
         description:
@@ -54,10 +54,6 @@ options:
     action:
         description:
             - Content switching action that names the target load balancing virtual server to which the traffic is switched.
-
-    logaction:
-        description:
-            - The log action associated with the content switching policy.
 '''
 
 # TODO: Add appropriate examples
@@ -81,7 +77,7 @@ import StringIO
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
@@ -124,8 +120,24 @@ def main():
 
 
     # Instantiate Service Config object
-    readwrite_attrs = [u'policyname', u'url', u'rule', u'domain', u'action', u'logaction']
-    readonly_attrs = [u'vstype', u'hits', u'bindhits', u'labelname', u'labeltype', u'priority', u'activepolicy', u'cspolicytype', u'__count']
+    readwrite_attrs = [
+        'policyname',
+        'url',
+        'rule',
+        'domain',
+        'action',
+        'logaction'
+    ]
+    readonly_attrs = [
+        'vstype',
+        'hits',
+        'bindhits',
+        'labelname',
+        'labeltype',
+        'priority',
+        'activepolicy',
+        'cspolicytype',
+    ]
 
     cspolicy_proxy = ConfigProxy(
         actual=cspolicy(),
@@ -159,6 +171,7 @@ def main():
 
 
     try:
+        ensure_feature_is_enabled(client, 'CS')
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':

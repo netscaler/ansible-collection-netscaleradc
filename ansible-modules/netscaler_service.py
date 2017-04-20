@@ -50,7 +50,7 @@ options:
         description:
             - Port number of the service.
             - Range 1 - 65535
-            - * in CLI is represented as 65535 in NITRO API
+            - in CLI is represented as 65535 in NITRO API
             
     cleartextport:
         description:
@@ -478,6 +478,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -488,14 +489,92 @@ def main():
     client = get_nitro_client(module)
     client.login()
 
-
-
     # Instantiate Service Config object
-    readwrite_attrs = [u'name', u'ip', u'servername', u'servicetype', u'port', u'cleartextport', u'cachetype', u'maxclient', u'healthmonitor', u'maxreq', u'cacheable', u'cip', u'cipheader', u'usip', u'pathmonitor', u'pathmonitorindv', u'useproxyport', u'sc', u'sp', u'rtspsessionidremap', u'clttimeout', u'svrtimeout', u'customserverid', u'serverid', u'cka', u'tcpb', u'cmp', u'maxbandwidth', u'accessdown', u'monthreshold', u'state', u'downstateflush', u'tcpprofilename', u'httpprofilename', u'hashid', u'comment', u'appflowlog', u'netprofile', u'td', u'processlocal', u'dnsprofilename', u'ipaddress', u'weight', u'monitor_name_svc', u'riseapbrstatsmsgcode', u'delay', u'graceful', u'all', u'Internal']
-    readonly_attrs = [u'numofconnections', u'policyname', u'serviceconftype', u'serviceconftype2', u'value', u'gslb', u'dup_state', u'publicip', u'publicport', u'svrstate', u'monitor_state', u'monstatcode', u'lastresponse', u'responsetime', u'riseapbrstatsmsgcode2', u'monstatparam1', u'monstatparam2', u'monstatparam3', u'statechangetimesec', u'statechangetimemsec', u'tickssincelaststatechange', u'stateupdatereason', u'clmonowner', u'clmonview', u'serviceipstr', u'oracleserverversion', u'__count']
+    readwrite_attrs = [
+        'name',
+        'ip',
+        'servername',
+        'servicetype',
+        'port',
+        'cleartextport',
+        'cachetype',
+        'maxclient',
+        'healthmonitor',
+        'maxreq',
+        'cacheable',
+        'cip',
+        'cipheader',
+        'usip',
+        'pathmonitor',
+        'pathmonitorindv',
+        'useproxyport',
+        'sc',
+        'sp',
+        'rtspsessionidremap',
+        'clttimeout',
+        'svrtimeout',
+        'customserverid',
+        'serverid',
+        'cka',
+        'tcpb',
+        'cmp',
+        'maxbandwidth',
+        'accessdown',
+        'monthreshold',
+        'state',
+        'downstateflush',
+        'tcpprofilename',
+        'httpprofilename',
+        'hashid',
+        'comment',
+        'appflowlog',
+        'netprofile',
+        'td',
+        'processlocal',
+        'dnsprofilename',
+        'ipaddress',
+        'weight',
+        'monitor_name_svc',
+        'riseapbrstatsmsgcode',
+        'delay',
+        'graceful',
+        'all',
+        'Internal'
+    ]
 
+    readonly_attrs = [
+        'numofconnections',
+        'policyname',
+        'serviceconftype',
+        'serviceconftype2',
+        'value',
+        'gslb',
+        'dup_state',
+        'publicip',
+        'publicport',
+        'svrstate',
+        'monitor_state',
+        'monstatcode',
+        'lastresponse',
+        'responsetime',
+        'riseapbrstatsmsgcode2',
+        'monstatparam1',
+        'monstatparam2',
+        'monstatparam3',
+        'statechangetimesec',
+        'statechangetimemsec',
+        'tickssincelaststatechange',
+        'stateupdatereason',
+        'clmonowner',
+        'clmonview',
+        'serviceipstr',
+        'oracleserverversion',
+    ]
+
+    # Translate module arguments to correspondign config oject attributes
     if module.params['ip'] is None:
         module.params['ip'] = module.params['ipaddress']
+
     service_proxy = ConfigProxy(
         actual=service(),
         client=client,
@@ -513,6 +592,9 @@ def main():
     def service_identical():
         service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
         diff_dict = service_proxy.diff_object(service_list[0])
+        log('other ipaddress is %s' % service_list[0].ipaddress)
+        # the actual ip address is stored in the ipaddress attribute
+        # of the retrieved object
         if 'ip' in diff_dict:
             del diff_dict['ip']
         if len(diff_dict) == 0:
@@ -522,7 +604,10 @@ def main():
 
     def diff_list():
         service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-        return service_proxy.diff_object(service_list[0])
+        diff_object = service_proxy.diff_object(service_list[0])
+        if 'ip' in diff_object:
+            del diff_object['ip']
+        return diff_object
 
     def get_configured_monitor_bindings():
         log('Entering get_configured_monitor_bindings')
@@ -625,6 +710,7 @@ def main():
             if not service_exists():
                 if not module.check_mode:
                     service_proxy.add()
+                    service_proxy.update()
                     client.save_config()
                 module_result['changed'] = True
             elif not service_identical():

@@ -111,7 +111,6 @@ def main():
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
-        primary_key='name',
     )
 
     def server_exists():
