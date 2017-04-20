@@ -1,5 +1,8 @@
 import unittest
 import copy
+import json
+import sys
+import yaml
 
 from . import utils
 
@@ -127,12 +130,30 @@ class LBMonitorFullInitialValues(unittest.TestCase):
             'servicegroupname'
         ]
 
+        utils.make_dbuser('dbuser1', 'password1')
+        utils.make_metrictable('metrictable1')
+        utils.make_netprofile('netprofile-1')
+
     def sub_attributes(self, attribute_list):
         for attribute in attribute_list:
             #print('examining %s' % attribute)
             if attribute in self.attributes_to_check:
                 #print('removing %s' % attribute)
                 self.attributes_to_check.remove(attribute)
+
+    def test_99_no_attribute_unchecked(self):
+        missing = [
+            'metrictable',
+            'hostname',
+            'kcdaccount',
+            'sslprofile',
+            'metric',
+            'metricthreshold',
+            'metricweight',
+            'servicename',
+            'servicegroupname'
+        ]
+        self.assertListEqual(self.attributes_to_check,missing)
 
     def test_01_full_initial_values(self):
         action = {
@@ -146,7 +167,7 @@ class LBMonitorFullInitialValues(unittest.TestCase):
             'httprequest': 'HEAD /file.html',
 
 
-            'customheaders': 'HEADER_CUSTOM: NONE\n',
+            'customheaders': 'HEADER_CUSTOM: NONE\r\n',
 
         }
         self.sub_attributes(action.keys())
@@ -182,7 +203,7 @@ class LBMonitorFullInitialValues(unittest.TestCase):
             #'rtsprequest': 'OPTIONS',
             #"msg": "nitro exception errorcode=1093,message=Argument pre-requisite missing [rtspRequest, type==RTSP]"
 
-            'customheaders': 'HEADER_CUSTOM: NONE\n',
+            'customheaders': 'HEADER_CUSTOM: NONE\r\n',
 
             'maxforwards': 5,
             'sipmethod': 'REGISTER',
@@ -648,10 +669,10 @@ class LBMonitorFullInitialValues(unittest.TestCase):
 
             'snmpversion': 'V1',
 
-            #'metric': 'cpu.load.0',
-            #'metricthreshold': 50
+            #'metric': 'iso',
+            #'metricthreshold': 5,
 
-            # 'metrictable': 'table',
+            #'metrictable': 'metrictable1',
             # "msg": "nitro exception errorcode=2174,message=Metric table does not exist"
 
         }
@@ -778,7 +799,7 @@ class LBMonitorFullInitialValues(unittest.TestCase):
             'monitorname': 'lb-monitor-diameter',
             'type': 'DIAMETER',
 
-            #'netprofile': 'someprofile',
+            'netprofile': 'netprofile-1',
             # "msg": "nitro exception errorcode=3956,message=Netprofile does not exist"
             'originhost': 'origin.host',
             'originrealm': 'some.realm',
@@ -792,6 +813,7 @@ class LBMonitorFullInitialValues(unittest.TestCase):
             'vendorspecificvendorid': 10,
             'vendorspecificauthapplicationids': ['"11"', '"22"'],
             'vendorspecificacctapplicationids': ['"12"', '"23"'],
+            'acctapplicationid': ['"1"','"2"'],
             
 
 
@@ -879,5 +901,88 @@ class LBMonitorFullInitialValues(unittest.TestCase):
         self.assertFalse(result['failed'], msg='Playbook second run returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was incorrectly set for second run')
 
-    def test_99_no_attribute_unchecked(self):
-        self.assertListEqual(self.attributes_to_check,[])
+
+    def test_23_full_initial_values_mssql(self):
+        action = {
+            'operation': 'present',
+            'module': 'netscaler_lb_monitor',
+
+            'monitorname': 'lb-monitor-mssql-ecv',
+            'type': 'MSSQL-ECV',
+
+            'username': 'dbuser1',
+            'evalrule': "True",
+            'database': 'somedb',
+            'sqlquery': 'select * from table',
+            'mssqlprotocolversion': '2000',
+            'storedb': 'ENABLED',
+
+        }
+        self.sub_attributes(action.keys())
+        action.update(utils.nitro_dict)
+
+        playbook = copy.deepcopy(self.minimal_playbook)
+        playbook[0]['tasks'][0]['name'] = 'setup http ecv monitor'
+        playbook[0]['tasks'][0]['local_action'] = action
+
+        result = utils.run_ansible_play(playbook, testcase='Full_http_ecv_monitor_initial_run')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Second run
+        result = utils.run_ansible_play(playbook, testcase='Full_http_ecv_monitor_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook second run returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was incorrectly set for second run')
+
+    def test_24_full_initial_values_oracle(self):
+        action = {
+            'operation': 'present',
+            'module': 'netscaler_lb_monitor',
+
+            'monitorname': 'lb-monitor-oracle-ecv',
+            'type': 'ORACLE-ECV',
+
+            'username': 'dbuser1',
+            'oraclesid': 'idstring',
+            'evalrule': 'True',
+            
+
+
+        }
+        self.sub_attributes(action.keys())
+        action.update(utils.nitro_dict)
+
+        playbook = copy.deepcopy(self.minimal_playbook)
+        playbook[0]['tasks'][0]['name'] = 'setup http ecv monitor'
+        playbook[0]['tasks'][0]['local_action'] = action
+
+        result = utils.run_ansible_play(playbook, testcase='Full_http_ecv_monitor_initial_run')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Second run
+        result = utils.run_ansible_play(playbook, testcase='Full_http_ecv_monitor_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook second run returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was incorrectly set for second run')
+
+class LBMonitorMissingArguments(unittest.TestCase):
+
+    def test_arguments(self):
+        with open('source/scrap/load-balancing_lbmonitor.json', 'r') as fh:
+            json_data = json.load(fh)
+
+        sys.path.append('./ansible-modules')
+        import netscaler_lb_monitor
+        yaml_data = yaml.load(netscaler_lb_monitor.DOCUMENTATION)
+
+        json_attributes = set([ item['name'] for item in json_data if item['readonly'] == False])
+        doc_attributes = set( yaml_data['options'].keys())
+        missing_from_documentation = [
+            'sslprofile',
+        ]
+        self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
+
