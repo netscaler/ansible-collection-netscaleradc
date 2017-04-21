@@ -171,3 +171,48 @@ class CSPolicyMissingArguments(unittest.TestCase):
         missing_from_documentation = ['newname', 'logaction']
         self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
 
+
+class CSPolicyDeleteEntity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
+
+    def test_create_and_delete_entity(self):
+        policy_name = 'policy-1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                'name': 'setup monitor',
+                'local_action': {
+                    'operation': 'present',
+                    'module': 'netscaler_cs_policy',
+
+                    'policyname': policy_name,
+                    'url': '/example.com',
+                },
+            }]
+        }]
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        # Create entity
+        result = utils.run_ansible_play(playbook, testcase='Create_cs_policy_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry exists only once
+        count = cspolicy.count_filtered(utils.get_nitro_client(), 'name:%s' % policy_name)
+        self.assertEqual(count,1, msg='%s was not deleted properly' % policy_name)
+
+        # Delete entity
+        playbook[0]['tasks'][0]['local_action']['operation'] = 'absent'
+        result = utils.run_ansible_play(playbook, testcase='Delete_cs_policy_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry does not exist
+        count = cspolicy.count_filtered(utils.get_nitro_client(), 'name:%s' % policy_name)
+        self.assertEqual(count,0, msg='%s was not deleted properly' % policy_name)

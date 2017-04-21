@@ -721,3 +721,49 @@ class LBVserverMissingArguments(unittest.TestCase):
         ]
         self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
 
+class LBVserverDeleteEntity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
+
+    def test_create_and_delete_entity(self):
+        vserver_name = 'lb-vserver-1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                'name': 'setup monitor',
+                'local_action': {
+                    'operation': 'present',
+                    'module': 'netscaler_lb_vserver',
+
+                    'name': vserver_name,
+                    'servicetype': 'HTTP',
+                    'ipv46': '192.168.1.1',
+                    'port': 80,
+                },
+            }]
+        }]
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        # Create entity
+        result = utils.run_ansible_play(playbook, testcase='Create_lb_vserver_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry exists only once
+        count = lbvserver.count_filtered(utils.get_nitro_client(), 'name:%s' % vserver_name)
+        self.assertEqual(count,1, msg='%s was not deleted properly' % vserver_name)
+
+        # Delete entity
+        playbook[0]['tasks'][0]['local_action']['operation'] = 'absent'
+        result = utils.run_ansible_play(playbook, testcase='Delete_lb_vserver_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry does not exist
+        count = lbvserver.count_filtered(utils.get_nitro_client(), 'name:%s' % vserver_name)
+        self.assertEqual(count,0, msg='%s was not deleted properly' % vserver_name)

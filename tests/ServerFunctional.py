@@ -14,18 +14,12 @@ def tearDownModule():
     pass
 
 
-
-
-
-
-
-
 minimal_attrs = {
     'name': 'vserver1',
     'ipaddress': '192.168.1.1',
 }
 
-class InitialServerValuesSet(unittest.TestCase):
+class ServerFullInitalValues(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):

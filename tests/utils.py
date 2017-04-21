@@ -4,6 +4,7 @@ import os
 import pyaml
 import json
 import re
+import unittest
 
 
 TESTDIR = os.path.join(os.getcwd(), 'testdir')
@@ -38,6 +39,169 @@ def ensure_cpx_up(name):
     output = subprocess.check_output('docker ps -f name=%s' % name, shell=True)
     if output == '':
         raise Exception('cpx is not up')
+
+def get_nitro_client():
+    from nssrc.com.citrix.netscaler.nitro.service.nitro_service import nitro_service
+
+    client = nitro_service(nitro_dict['nsip'], 'HTTPS')
+    client.set_credential(nitro_dict['nitro_user'], nitro_dict['nitro_pass'])
+    client.timeout = 320.0
+    client.certvalidation = False
+    client.login()
+    return client
+
+from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+
+
+def make_dnsprofile(profilename):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.dns.dnsprofile import dnsprofile
+        profile = dnsprofile()
+        profile.dnsprofilename = profilename
+        dnsprofile.add(client, profile)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+
+def make_metrictable(tablename):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmetrictable import lbmetrictable
+        table = lbmetrictable()
+        table.metrictable = tablename
+        lbmetrictable.add(client, table)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+
+def make_server(name, ipaddress):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
+        myserver = server()
+        myserver.name = name
+        myserver.ipaddress = ipaddress
+        server.add(client, myserver)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_tcpprofile(profilename):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.ns.nstcpprofile import nstcpprofile
+        profile = nstcpprofile()
+        profile.name = profilename
+        nstcpprofile.add(client, profile)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_netprofile(profilename):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.network.netprofile import netprofile
+        profile = netprofile()
+        profile.name = profilename
+        netprofile.add(client, profile)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_httpprofile(profilename):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.ns.nshttpprofile import nshttpprofile
+        profile = nshttpprofile()
+        profile.name = profilename
+        nshttpprofile.add(client, profile)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_authnprofile(profilename, authnvsname, authenticationhost, authenticationdomain, authenticationlevel):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.authentication.authenticationauthnprofile import authenticationauthnprofile
+        profile = authenticationauthnprofile()
+        profile.name = profilename
+        profile.authnvsname = authnvsname
+        profile.authenticationhost = authenticationhost
+        profile.authenticationdomain = authenticationdomain
+        profile.authenticationlevel = authenticationlevel
+        authenticationauthnprofile.add(client, profile)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_logaction(name, serverip):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.audit.auditnslogaction import auditnslogaction
+        action = auditnslogaction()
+        action.name = name
+        action.serverip = serverip
+        action.loglevel = 'ERROR'
+        auditnslogaction.add(client, action)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_dbprofile(name):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.db.dbdbprofile import dbdbprofile
+        profile = dbdbprofile()
+        profile.name = name
+        dbdbprofile.add(client, profile)
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_dbuser(username, password):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.db.dbuser import dbuser
+        user = dbuser()
+        user.username = username
+        user.password = password
+        dbuser.add(client, user)
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
+def make_vpnvserver(name,ipaddress):
+    client = get_nitro_client()
+    try:
+        from nssrc.com.citrix.netscaler.nitro.resource.config.vpn.vpnvserver import vpnvserver
+        vserver = vpnvserver()
+        vserver.name = name
+        vserver.ipv46 = ipaddress
+        vserver.servicetype = 'SSL'
+        vpnvserver.add(client, vserver)
+        client.save_config()
+    except nitro_exception as e:
+        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        print(msg)
+        raise e
+
 
 def ensure_teardown_cpx(name):
     retval = subprocess.check_call('docker stop %s' % name, shell=True)

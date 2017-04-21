@@ -448,3 +448,50 @@ class ServiceMonitorBindings(unittest.TestCase):
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
 
+class ServiceDeleteEntity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
+
+
+    def test_create_and_delete_entity(self):
+        service_name = 'service-1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                    'name': 'setup monitor',
+                    'local_action': {
+                        'operation': 'present',
+                        'module': 'netscaler_service',
+                        'name': service_name,
+                        'ipaddress': '192.168.1.1',
+                        'servicetype': 'HTTP',
+                        'port': 80
+                    
+                    },
+            }]
+        }]
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        # Create entity
+        result = utils.run_ansible_play(playbook, testcase='Create_service_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry exists only once
+        count = service.count_filtered(utils.get_nitro_client(), 'name:%s' % service_name)
+        self.assertEqual(count,1, msg='%s was not deleted properly' % service_name)
+
+        # Delete entity
+        playbook[0]['tasks'][0]['local_action']['operation'] = 'absent'
+        result = utils.run_ansible_play(playbook, testcase='Delete_service_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry does not exist
+        count = service.count_filtered(utils.get_nitro_client(), 'name:%s' % service_name)
+        self.assertEqual(count,0, msg='%s was not deleted properly' % service_name)

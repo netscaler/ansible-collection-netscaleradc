@@ -415,3 +415,51 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+class ServiceGroupDeleteEntity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
+
+
+    def test_create_and_delete_entity(self):
+        servicegroup_name = 'servicegroup-1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                    'name': 'setup monitor',
+                    'local_action': {
+                        'operation': 'present',
+                        'module': 'netscaler_servicegroup',
+
+                        'servicegroupname': servicegroup_name,
+                        'servicetype': 'HTTP',
+                        'cachetype': 'TRANSPARENT',
+                        'maxclient': 100,
+                    },
+            }]
+        }]
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        # Create entity
+        result = utils.run_ansible_play(playbook, testcase='Create_servicegroup_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry exists only once
+        count = servicegroup.count_filtered(utils.get_nitro_client(), 'name:%s' % servicegroup_name)
+        self.assertEqual(count,1, msg='%s was not deleted properly' % servicegroup_name)
+
+        # Delete entity
+        playbook[0]['tasks'][0]['local_action']['operation'] = 'absent'
+        result = utils.run_ansible_play(playbook, testcase='Delete_servicegroup_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the named entiry does not exist
+        count = servicegroup.count_filtered(utils.get_nitro_client(), 'name:%s' % servicegroup_name)
+        self.assertEqual(count,0, msg='%s was not deleted properly' % servicegroup_name)
