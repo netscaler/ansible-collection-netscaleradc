@@ -8,6 +8,8 @@ import json
 import yaml
 import sys
 
+from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+
 from . import utils
 
 
@@ -16,12 +18,6 @@ def setUpModule():
 
 def tearDownModule():
     pass
-
-
-
-
-
-
 
 
 class ServiceFullInitialValues(unittest.TestCase):
@@ -344,21 +340,30 @@ class ServiceMonitorBindings(unittest.TestCase):
                     'trofscode': 500,
                 }
             },
+            {
+                'name': 'Setup monitor 2',
+                'local_action': {
+                    'operation': 'present',
+                    'module': 'netscaler_lb_monitor',
+                    'monitorname': 'monitor-2',
+                    'type': 'PING',
+                }
+            },
         ]
         playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        playbook[0]['tasks'][1]['local_action'].update(utils.nitro_dict)
         utils.run_ansible_play(playbook, testcase='setup_service_monitor_bindings')
 
-
-    def test_01_set_monitorbindings(self):
+    def test_01_set_single_monitorbinding(self):
         playbook = copy.deepcopy(self.minimal_playbook)
-
+        service_name = 'service-1'
         playbook[0]['tasks'] = [{
             'name': 'Setup service',
             'local_action':
             {
                 'operation': 'present',
                 'module': 'netscaler_service',
-                'name': 'service-1',
+                'name': service_name,
                 'servicetype': 'HTTP',
                 'ipaddress': '192.168.1.1',
                 'port': 80,
@@ -371,6 +376,14 @@ class ServiceMonitorBindings(unittest.TestCase):
         }]
         playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
 
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
+        client = utils.get_nitro_client()
+
+        # Check monitor bindings are initially null
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, [])
 
         # Make run
         result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service')
@@ -385,39 +398,34 @@ class ServiceMonitorBindings(unittest.TestCase):
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
 
-    def test_02_unset_monitorbindings(self):
-        playbook = copy.deepcopy(self.minimal_playbook)
+        # Check we have the required bindings
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['monitor-1'])
 
-        playbook[0]['tasks'] = [{
-            'name': 'Setup service',
-            'local_action':
-            {
-                'operation': 'present',
-                'module': 'netscaler_service',
-                'name': 'service-1',
-                'servicetype': 'HTTP',
-                'ipaddress': '192.168.1.1',
-                'port': 80,
-            },
-        }]
-        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        # Unset monitor bindings
 
+        del playbook[0]['tasks'][0]['local_action']['monitorbindings']
 
-        # Make run
-        result = utils.run_ansible_play(playbook, testcase='Removing_monitor_from_service')
+        # Make delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service')
         self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
 
-        # Make second run
-        result = utils.run_ansible_play(playbook, testcase='Removing_monitor_from_service_second_run')
+        # Make second delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
 
-    def test_03_set_monitorbindings_name_only(self):
+        # Check monitor bindings deleted
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['tcp-default'])
+
+    def test_02_set_singlemonitorbinding_name_only(self):
         playbook = copy.deepcopy(self.minimal_playbook)
+        service_name = 'service-2'
 
         playbook[0]['tasks'] = [{
             'name': 'Setup service',
@@ -425,14 +433,20 @@ class ServiceMonitorBindings(unittest.TestCase):
             {
                 'operation': 'present',
                 'module': 'netscaler_service',
-                'name': 'service-1',
+                'name': service_name,
                 'servicetype': 'HTTP',
-                'ipaddress': '192.168.1.1',
+                'ipaddress': '192.168.1.2',
                 'port': 80,
                 'monitorbindings': [ 'monitor-1']
             },
         }]
         playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+
+        client = utils.get_nitro_client()
+
+        # Check monitor bindings are initially null
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, [])
 
 
         # Make run
@@ -441,12 +455,176 @@ class ServiceMonitorBindings(unittest.TestCase):
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
-
         # Make second run
         result = utils.run_ansible_play(playbook, testcase='Adding_monitor_by_name_to_service_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check we have the required bindings
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['monitor-1'])
+
+        # Unset monitor bindings
+
+        del playbook[0]['tasks'][0]['local_action']['monitorbindings']
+
+        # Make delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+
+        # Make second delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check monitor bindings deleted
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['tcp-default'])
+
+    def test_03_set_multiple_monitorbinding(self):
+        playbook = copy.deepcopy(self.minimal_playbook)
+        service_name = 'service-3'
+        playbook[0]['tasks'] = [{
+            'name': 'Setup service',
+            'local_action':
+            {
+                'operation': 'present',
+                'module': 'netscaler_service',
+                'name': service_name,
+                'servicetype': 'HTTP',
+                'ipaddress': '192.168.1.3',
+                'port': 80,
+                'monitorbindings': [
+                    {
+                        'monitorname': 'monitor-1'
+                    },
+                    {
+                        'monitorname': 'monitor-2'
+                    },
+                ]
+            },
+        }]
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
+        client = utils.get_nitro_client()
+
+        # Check monitor bindings are initially null
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, [])
+
+        # Make run
+        result = utils.run_ansible_play(playbook, testcase='Adding_multiple_monitor_to_service')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+
+        # Make second run
+        result = utils.run_ansible_play(playbook, testcase='Adding_multiple_monitor_to_service_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check we have the required bindings
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['monitor-1', 'monitor-2'])
+
+        # Unset monitor bindings
+
+        del playbook[0]['tasks'][0]['local_action']['monitorbindings']
+
+        # Make delete run
+        result = utils.run_ansible_play(playbook, testcase='Deleting_multiple_monitor_to_service')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+
+        # Make second delete run
+        result = utils.run_ansible_play(playbook, testcase='Deleting_multiple_monitor_to_service_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check monitor bindings deleted
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['tcp-default'])
+
+    def test_04_set_multiple_monitorbinding(self):
+        playbook = copy.deepcopy(self.minimal_playbook)
+        service_name = 'service-4'
+        playbook[0]['tasks'] = [{
+            'name': 'Setup service',
+            'local_action':
+            {
+                'operation': 'present',
+                'module': 'netscaler_service',
+                'name': service_name,
+                'servicetype': 'HTTP',
+                'ipaddress': '192.168.1.4',
+                'port': 80,
+                'monitorbindings': [
+                    'monitor-1',
+                    'monitor-2',
+                ]
+            },
+        }]
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
+        client = utils.get_nitro_client()
+
+        # Check monitor bindings are initially null
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, [])
+
+        # Make run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+
+        # Make second run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check we have the required bindings
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['monitor-1', 'monitor-2'])
+
+        # Unset monitor bindings
+
+        del playbook[0]['tasks'][0]['local_action']['monitorbindings']
+
+        # Make delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+
+        # Make second delete run
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_service_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Check monitor bindings deleted
+        bindings = utils.get_service_monitor_bindings_list(client, service_name)
+        self.assertListEqual(bindings, ['tcp-default'])
 
 class ServiceDeleteEntity(unittest.TestCase):
     @classmethod
