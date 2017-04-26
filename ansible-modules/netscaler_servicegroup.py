@@ -15,7 +15,7 @@ short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler
 
-version_added: "tbd"
+version_added: 2.2.3
 options:
     nsip:
         description:
@@ -25,7 +25,7 @@ options:
 
     servicegroupname:
         description:
-            - Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created.
+            - "Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created."
             - Minimum length = 1
     servicetype:
         choices: ['HTTP', 'FTP', 'TCP', 'UDP', 'SSL', 'SSL_BRIDGE', 'SSL_TCP', 'DTLS', 'NNTP', 'RPCSVR', 'DNS', 'ADNS', 'SNMP', 'RTSP', 'DHCPRA', 'ANY', 'SIP_UDP', 'SIP_TCP', 'SIP_SSL', 'DNS_TCP', 'ADNS_TCP', 'MYSQL', 'MSSQL', 'ORACLE', 'RADIUS', 'RADIUSListener', 'RDP', 'DIAMETER', 'SSL_DIAMETER', 'TFTP', 'SMPP', 'PPTP', 'GRE', 'SYSLOGTCP', 'SYSLOGUDP', 'FIX', 'SSL_FIX']
@@ -39,15 +39,6 @@ options:
         description:
             - Cache type supported by the cache server.
             - Possible values = TRANSPARENT, REVERSE, FORWARD
-            
-
-    td:
-        
-        description:
-            - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
-            - Minimum value = 0
-            - Maximum value = 4094
-            
 
     maxclient:
         description:
@@ -59,7 +50,7 @@ options:
     maxreq:
         description:
             - Maximum number of requests that can be sent on a persistent connection to the service group.
-            - Note: Connection requests beyond this value are rejected.
+            - Note. Connection requests beyond this value are rejected.
             - Minimum value = 0
             - Maximum value = 65535
 
@@ -67,8 +58,8 @@ options:
         choices: ['YES', 'NO']
         description:
             - Use the transparent cache redirection virtual server to forward the request to the cache server.
-            - Note: Do not set this parameter if you set the Cache Type.
-            - Default value: NO
+            - Note. Do not set this parameter if you set the Cache Type.
+            - Default value = NO
             - Possible values = YES, NO
             
 
@@ -103,34 +94,34 @@ options:
         choices: ['YES', 'NO']
         description:
             - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.
-            - Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
+            - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
             - Possible values = YES, NO
 
     healthmonitor:
         choices: ['YES', 'NO']
         description:
-            - Monitor the health of this service. Available settings function as follows:
+            - Monitor the health of this service. Available settings function as follows.
             - YES - Send probes to check the health of the service.
             - NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.
-            - Default value: YES
+            - Default value = YES
 
     sc:
         choices: ['ON', 'OFF']
         description:
             - State of the SureConnect feature for the service group.
-            - Default value: OFF
+            - Default value = OFF
 
     sp:
         choices: ['ON', 'OFF']
         description:
             - Enable surge protection for the service group.
-            - Default value: OFF
+            - Default value = OFF
 
     rtspsessionidremap:
         choices: ['ON', 'OFF']
         description:
             - Enable RTSP session ID mapping for the service group.
-            - Default value: OFF
+            - Default value = OFF
 
     clttimeout:
         description:
@@ -175,13 +166,13 @@ options:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Initial state of the service group.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     tcpprofilename:
         description:
@@ -203,7 +194,7 @@ options:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Enable logging of AppFlow information for the specified service group.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     netprofile:
         description:
@@ -215,71 +206,21 @@ options:
         choices: ['DISABLED', 'DNS', 'POLICY']
         description:
             - Auto scale option for a servicegroup.
-            - Default value: DISABLED
+            - Default value = DISABLED
 
     memberport:
         description:
             - member port.
 
-    servername:
-        description:
-            - Name of the server to which to bind the service group.
-            - Minimum length = 1
-
-    port:
-        description:
-            - Server port number.
-            - Range 1 - 65535
-            -  in CLI is represented as 65535 in NITRO API
-
-    weight:
-        description:
-            - Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.
-            - Minimum value = 1
-            - Maximum value = 100
-
-    customserverid:
-        description:
-            - The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.
-            - Default value: "None"
-
-    serverid:
-        description:
-            - The identifier for the service. This is used when the persistency type is set to Custom Server ID.
-
-    hashid:
-        description:
-            - The hash identifier for the service. This must be unique for each service. This parameter is used by hash based load balancing methods.
-            - Minimum value = 1
-
-    monitor_name_svc:
-        description:
-            - Name of the monitor bound to the service group. Used to assign a weight to the monitor.
-            - Minimum length = 1
-
-    dup_weight:
-        description:
-            - weight of the monitor that is bound to servicegroup.
-            - Minimum value = 1
-
-    riseapbrstatsmsgcode:
-        description:
-            - The code indicating the rise apbr status.
-
-    delay:
-        description:
-            - Time, in seconds, allocated for a shutdown of the services in the service group. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
-
     graceful:
         choices: ['YES', 'NO']
         description:
             - Wait for all existing connections to the service to terminate before shutting down the service.
-            - Default value: NO
+            - Default value = NO
 
-    includemembers:
-        description:
-            - Display the members of the listed service groups in addition to their settings. Can be specified when no service group name is provided in the command. In that case, the details displayed for each service group are identical to the details displayed when a service group name is provided, except that bound monitors are not displayed.
-            
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 # TODO: Add appropriate examples
@@ -291,11 +232,23 @@ EXAMPLES = '''
 
 # TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -325,7 +278,6 @@ def main():
             type='str',
             choices=[u'TRANSPARENT', u'REVERSE', u'FORWARD']
         ),
-        td=dict(type='float'),
         maxclient=dict(type='float'),
         maxreq=dict(type='float'),
         cacheable=dict(
@@ -406,22 +358,10 @@ def main():
             choices=[u'DISABLED', u'DNS', u'POLICY']
         ),
         memberport=dict(type='int'),
-        servername=dict(type='str'),
-        port=dict(type='int'),
-        weight=dict(type='float'),
-        customserverid=dict(type='str'),
-        serverid=dict(type='float'),
-        hashid=dict(type='float'),
-        monitor_name_svc=dict(type='str'),
-        dup_weight=dict(type='float'),
-        riseapbrstatsmsgcode=dict(type='int'),
-        delay=dict(type='float'),
         graceful=dict(
             type='str',
             choices=[u'YES', u'NO']
         ),
-        includemembers=dict(type='bool'),
-        
     )
 
     hand_inserted_arguments = dict(
@@ -444,6 +384,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -460,7 +401,6 @@ def main():
         'servicegroupname',
         'servicetype',
         'cachetype',
-        'td',
         'maxclient',
         'maxreq',
         'cacheable',
@@ -490,18 +430,7 @@ def main():
         'netprofile',
         'autoscale',
         'memberport',
-        'servername',
-        'port',
-        'weight',
-        'customserverid',
-        'serverid',
-        'hashid',
-        'monitor_name_svc',
-        'dup_weight',
-        'riseapbrstatsmsgcode',
-        'delay',
         'graceful',
-        'includemembers'
     ]
 
     readonly_attrs = [
@@ -553,6 +482,9 @@ def main():
         readonly_attrs = [u'delay', u'statechangetimesec', u'svrstate', u'tickssincelaststatechange', u'graceful', u'__count']
 
         members = []
+        if module.params['servicemembers'] is None:
+            return members
+
         for config in module.params['servicemembers']:
             # Make a copy to update
             config = copy.deepcopy(config)
@@ -747,16 +679,14 @@ def main():
 
             # Sanity check for operation
             log('sanity check')
-            '''
             if not service_group_exists():
-                module.fail_json(msg='Service group is not present', loglines=loglines)
+                module.fail_json(msg='Service group is not present', **module_result)
             if not service_group_identical():
-                module.fail_json(msg='Service group is not identical to configuration', loglines=loglines)
+                module.fail_json(msg='Service group is not identical to configuration', **module_result)
             if not service_group_servicemembers_identical():
-                module.fail_json(msg='Service group members differ from configuration', loglines=loglines)
-                '''
+                module.fail_json(msg='Service group members differ from configuration', **module_result)
             if not monitor_bindings_identical():
-                module.fail_json(msg='Monitor bindings are not identical',loglines=loglines)
+                module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
             if service_group_exists():
@@ -769,7 +699,7 @@ def main():
 
             # Sanity check for operation
             if service_group_exists():
-                module.fail_json(msg='Service group is present')
+                module.fail_json(msg='Service group is present', **module_result)
         module_result['configured_servicegroup'] = {}
         module_result['configured_servicegroup']['actual_rw_attributes'] = servicegroup_proxy.get_actual_rw_attributes(filter='servicegroupname')
         module_result['configured_servicegroup']['actual_ro_attributes'] = servicegroup_proxy.get_actual_ro_attributes(filter='servicegroupname')
@@ -778,11 +708,10 @@ def main():
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
-        module.fail_json(msg=msg, loglines=loglines)
+        module.fail_json(msg=msg, **module_result)
 
     client.logout()
-
-    module.exit_json(loglines=loglines, **module_result )
+    module.exit_json(**module_result )
 
 if __name__ == "__main__":
     main()
