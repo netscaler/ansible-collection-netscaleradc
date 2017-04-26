@@ -1,37 +1,31 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO review status and supported_by when migrating to github
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {
+    'metadata_version': '1.0',
+    'status': ['preview'],
+    'supported_by': 'commiter',
+}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_vserver
-short_description: Manage cs vserver
+module: netscaler_cs_action
+short_description: Manage content switching actions
 description:
-    - Manage service group configuration in Netscaler
+    - Manage content switching actions
 
-version_added: "tbd"
+version_added: 2.2.2
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-
-        required: True
 
     name:
         description:
-            - Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, ?my action? or ?my action?).
+            - "Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created."
 
     targetlbvserver:
         description:
             - Name of the load balancing virtual server to which the content is switched.
+            - Create the load balancing vserver with netscaler_lb_vserver if it does not exist
             
     targetvserverexpr:
         description:
@@ -40,22 +34,46 @@ options:
     comment:
         description:
             - Comments associated with this cs action.
+notes:
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 '''
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+# lb_vserver_1 must have been already created with the netscaler_lb_vserver module
+
+- name: Configure netscaler content switching action
+    local_action:
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+
+        module: netscaler_cs_action
+        operation: present
+
+        name: action-1
+        targetlbvserver: lb_vserver_1
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -77,7 +95,6 @@ def main():
         
         name=dict(type='str'),
         targetlbvserver=dict(type='str'),
-        targetvserver=dict(type='str'),
         targetvserverexpr=dict(type='str'),
         comment=dict(type='str'),
     )
@@ -95,6 +112,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines
     )
 
     # Fail the module if imports failed
@@ -111,7 +129,6 @@ def main():
     readwrite_attrs = [
         'name',
         'targetlbvserver',
-        'targetvserver',
         'targetvserverexpr',
         'comment',
     ]
@@ -178,9 +195,9 @@ def main():
 
             # Sanity check for operation
             if not action_exists():
-                module.fail_json(msg='Service does not exist')
+                module.fail_json(msg='Content switching action does not exist', **module_result)
             if not action_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list())
+                module.fail_json(msg='Content switching action differs from configured', diff=diff_list(), **module_result)
 
         elif module.params['operation'] == 'absent':
             if action_exists():
@@ -193,7 +210,7 @@ def main():
 
             # Sanity check for operation
             if action_exists():
-                module.fail_json(msg='Service still exists')
+                module.fail_json(msg='Service still exists', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
