@@ -9,13 +9,16 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 # TODO: Add appropriate documentation
 DOCUMENTATION = '''
+module: netscaler_lb_monitor
+short_description: Manage load balancing monitors
+description:
+    - Manage load balancing monitors
+version_added: 2.2.3
 
 options:
-
     monitorname:
         description:
-            - Name for the monitor. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-            - CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my monitor" or 'my monitor').
+            - "Name for the monitor. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters."
             - Minimum length = 1
 
     type:
@@ -27,11 +30,11 @@ options:
         choices: ['NONE', 'LOG', 'DOWN']
         description:
             - Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter.
-            - Available settings function as follows:
+            - Available settings function as follows.
             -  NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
             -  LOG - Log the event in NSLOG or SYSLOG.
             -  DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
-            - Default value: DOWN
+            - Default value = DOWN
             
     respcode:
         description:
@@ -52,7 +55,7 @@ options:
     maxforwards:
         description:
             - Maximum number of hops that the SIP request used for monitoring can traverse to reach the server. Applicable only to monitors of type SIP-UDP.
-            - Default value: 1
+            - Default value = 1
             - Minimum value = 0
             - Maximum value = 255
             
@@ -63,7 +66,7 @@ options:
 
     sipuri:
         description:
-            - SIP URI string to send to the service (for example, sip:sip.test). Applicable only to monitors of type SIP-UDP.
+            - "SIP URI string to send to the service (for example, sip:sip.test). Applicable only to monitors of type SIP-UDP."
             - Minimum length = 1
 
     sipreguri:
@@ -144,7 +147,7 @@ options:
     radaccounttype:
         description:
             - Account Type to be used in Account Request Packet. Applicable to monitors of type RADIUS_ACCOUNTING.
-            - Default value: 1
+            - Default value = 1
             - Minimum value = 0
             - Maximum value = 15
 
@@ -183,12 +186,12 @@ options:
         choices: ['SEC', 'MSEC', 'MIN']
         description:
             - Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created.
-            - Default value: SEC
+            - Default value = SEC
 
     interval:
         description:
             - Time interval between two successive probes. Must be greater than the value of Response Time-out.
-            - Default value: 5
+            - Default value = 5
             - Minimum value = 1
             - Maximum value = 20940
 
@@ -196,13 +199,13 @@ options:
         choices: ['SEC', 'MSEC', 'MIN']
         description:
             - monitor interval units.
-            - Default value: SEC
+            - Default value = SEC
 
     resptimeout:
         description:
             - Amount of time for which the appliance must wait before it marks a probe as FAILED. Must be less than the value specified for the Interval parameter.
-            - Note: For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply. For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.
-            - Default value: 2
+            - Note. For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply. For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.
+            - Default value = 2
             - Minimum value = 1
             - Maximum value = 20939
 
@@ -210,7 +213,7 @@ options:
         choices: ['SEC', 'MSEC', 'MIN']
         description:
             - monitor response timeout units.
-            - Default value: SEC
+            - Default value = SEC
             - Possible values = SEC, MSEC, MIN
 
     resptimeoutthresh:
@@ -222,7 +225,7 @@ options:
     retries:
         description:
             - Maximum number of probes to send to establish the state of a service for which a monitoring probe failed.
-            - Default value: 3
+            - Default value = 3
             - Minimum value = 1
             - Maximum value = 127
 
@@ -241,14 +244,14 @@ options:
     successretries:
         description:
             - Number of consecutive successful probes required to transition a service's state from DOWN to UP.
-            - Default value: 1
+            - Default value = 1
             - Minimum value = 1
             - Maximum value = 32
 
     downtime:
         description:
             - Time duration for which to wait before probing a service that has been marked as DOWN. Expressed in milliseconds, seconds, or minutes.
-            - Default value: 30
+            - Default value = 30
             - Minimum value = 1
             - Maximum value = 20939
 
@@ -256,7 +259,7 @@ options:
         choices: ['SEC', 'MSEC', 'MIN']
         description:
             - Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created.
-            - Default value: SEC
+            - Default value = SEC
             - Possible values = SEC, MSEC, MIN
 
     destip:
@@ -271,27 +274,27 @@ options:
         choices: ['ENABLED', 'DISABLED']
         description:
             - State of the monitor. The DISABLED setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     reverse:
         choices: ['YES', 'NO']
         description:
             - Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN when probe criteria are not satisfied.
-            - Default value: NO
+            - Default value = NO
             - Possible values = YES, NO
 
     transparent:
         choices: ['YES', 'NO']
         description:
             - The monitor is bound to a transparent device such as a firewall or router. The state of a transparent device depends on the responsiveness of the services behind it. If a transparent device is being monitored, a destination IP address must be specified. The probe is sent to the specified IP address by using the MAC address of the transparent device.
-            - Default value: NO
+            - Default value = NO
             - Possible values = YES, NO
 
     iptunnel:
         choices: ['YES', 'NO']
         description:
             - Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.
-            - Default value: NO
+            - Default value = NO
 
     tos:
         choices: ['YES', 'NO']
@@ -308,13 +311,13 @@ options:
         choices: ['YES', 'NO']
         description:
             - Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure connection by default.
-            - Default value: NO
+            - Default value = NO
 
     validatecred:
         choices: ['YES', 'NO']
         description:
             - Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type CITRIX-XD-DDC.
-            - Default value: NO
+            - Default value = NO
 
     domain:
         description:
@@ -360,11 +363,6 @@ options:
             - Name of the database to connect to during authentication.
             - Minimum length = 1
 
-    oraclesid:
-        description:
-            - Name of the service identifier that is used to connect to the Oracle database during authentication.
-            - Minimum length = 1
-
     sqlquery:
         description:
             - SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server after the server authenticates the connection.
@@ -379,7 +377,7 @@ options:
         choices: ['70', '2000', '2000SP1', '2005', '2008', '2008R2', '2012', '2014']
         description:
             - Version of MSSQL server that is to be monitored.
-            - Default value: 70
+            - Default value = 70
             - Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012, 2014
 
     Snmpoid:
@@ -402,12 +400,6 @@ options:
         description:
             - SNMP version to be used for SNMP monitors.
             
-    metrictable:
-        description:
-            - Metric table to which to bind metrics.
-            - Minimum length = 1
-            - Maximum length = 99
-
     application:
         description:
             - Name of the application used to determine the state of the service. Applicable to monitors of type CITRIX-XML-SERVICE.
@@ -427,12 +419,7 @@ options:
         choices: ['YES', 'NO']
         description:
             - Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For multi-tenancy configuration users my skip account service.
-            - Default value: YES
-
-    hostname:
-        description:
-            - Hostname in the FQDN format (Example: porche.cars.org). Applicable to STOREFRONT monitors.
-            - Minimum length = 1
+            - Default value = YES
 
     netprofile:
         description:
@@ -508,23 +495,17 @@ options:
             - Minimum value = 0
             - Maximum value = 4294967295
 
-    kcdaccount:
-        description:
-            - KCD Account used by MSSQL monitor.
-            - Minimum length = 1
-            - Maximum length = 32
-
     storedb:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Store the database list populated with the responses to monitor probes. Used in database specific load balancing if MSSQL-ECV/MYSQL-ECV monitor is configured.
-            - Default value: DISABLED
+            - Default value = DISABLED
 
     storefrontcheckbackendservices:
         choices: ['YES', 'NO']
         description:
             - This option will enable monitoring of services running on storefront server. Storefront services are monitored by probing to a Windows service that runs on the Storefront server and exposes details of which storefront services are running.
-            - Default value: NO
+            - Default value = NO
 
     trofscode:
         description:
@@ -534,36 +515,46 @@ options:
         description:
             - String expected from the server for the service to be marked as trofs. Applicable to HTTP-ECV/TCP-ECV monitors.
 
-    metric:
-        description:
-            - Metric name in the metric table, whose setting is changed. A value zero disables the metric and it will not be used for load calculation.
-            - Minimum length = 1
-            - Maximum length = 37
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
+'''
 
-    metricthreshold:
-        description:
-            - Threshold to be used for that metric.
+EXAMPLES = '''
+    - name: Set lb monitor
+      local_action: 
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
 
-    metricweight:
-        description:
-            - The weight for the specified service metric with respect to others.
-            - Minimum value = 1
-            - Maximum value = 100
 
-    servicename:
-        description:
-            - The name of the service to which the monitor is bound.
-            - Minimum length = 1
+        module: netscaler_lb_monitor
+        operation: present
 
-    servicegroupname:
-        description:
-            - The name of the service group to which the monitor is to be bound.
-            - Minimum length = 1
+        monitorname: monitor_1
+        type: HTTP-INLINE
+        action: DOWN
+        respcode: ['400']
+'''
+RETURN = '''
+loglines:
+    description: list of logged messages by the module
+    returned: always
+    type: list
+    sample: ['message 1', 'message 2']
 
-    lrtmconf:
-        description:
-            - State of LRTM configuration on the monitor.
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
 
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
 '''
 
 import copy
@@ -585,10 +576,7 @@ def main():
 
     module_specific_arguments = dict(
         
-        monitorname=dict(
-        type='str',
-        
-        ),
+        monitorname=dict(type='str'),
         
         type=dict(
         type='str',
@@ -704,7 +692,6 @@ def main():
         filter=dict(type='str'),
         attribute=dict(type='str'),
         database=dict(type='str'),
-        oraclesid=dict(type='str'),
         sqlquery=dict(type='str'),
         evalrule=dict(type='str'),
         mssqlprotocolversion=dict(
@@ -718,7 +705,6 @@ def main():
             type='str',
             choices=[u'V1', u'V2']
         ),
-        metrictable=dict(type='str'),
         application=dict(type='str'),
         sitepath=dict(type='str'),
         storename=dict(type='str'),
@@ -726,7 +712,6 @@ def main():
             type='str',
             choices=[u'YES', u'NO']
         ),
-        hostname=dict(type='str'),
         netprofile=dict(type='str'),
         originhost=dict(type='str'),
         originrealm=dict(type='str'),
@@ -744,7 +729,6 @@ def main():
         vendorspecificvendorid=dict(type='float'),
         vendorspecificauthapplicationids=dict(type='list'),
         vendorspecificacctapplicationids=dict(type='list'),
-        kcdaccount=dict(type='str'),
         storedb=dict(
             type='str',
             choices=[u'ENABLED', u'DISABLED']
@@ -755,23 +739,12 @@ def main():
         ),
         trofscode=dict(type='float'),
         trofsstring=dict(type='str'),
-        metric=dict(type='str'),
-        metricthreshold=dict(type='float'),
-        metricweight=dict(type='float'),
     )
 
-    hand_inserted_arguments = dict(
-        servicebindings=dict(type='list'),
-        servicegroupbindings=dict(type='list'),
-    )
 
     argument_spec = dict()
     argument_spec.update(module_specific_arguments)
-    argument_spec.update(hand_inserted_arguments)
     argument_spec.update(netscaler_common_arguments)
-
-    # Hand wired arguments
-    #argument_spec.update(dict( servicegroupbindings=dict(type='list')))
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -786,7 +759,7 @@ def main():
 
     # Fail the module if imports failed
     if not python_sdk_imported:
-        module.fail_json(msg='Could not load nitro python sdk')
+        module.fail_json(msg='Could not load nitro python sdk', **module_result)
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
@@ -859,7 +832,6 @@ def main():
         'filter', 
         'attribute', 
         'database', 
-        'oraclesid', 
         'sqlquery', 
         'evalrule', 
         'mssqlprotocolversion', 
@@ -867,12 +839,10 @@ def main():
         'snmpcommunity', 
         'snmpthreshold', 
         'snmpversion', 
-        'metrictable', 
         'application', 
         'sitepath', 
         'storename', 
         'storefrontacctservice', 
-        'hostname', 
         'netprofile', 
         'originhost', 
         'originrealm', 
@@ -887,17 +857,10 @@ def main():
         'vendorspecificvendorid', 
         'vendorspecificauthapplicationids', 
         'vendorspecificacctapplicationids', 
-        'kcdaccount', 
         'storedb', 
         'storefrontcheckbackendservices', 
         'trofscode', 
         'trofsstring', 
-        'sslprofile', 
-        'metric', 
-        'metricthreshold', 
-        'metricweight', 
-        'servicename', 
-        'servicegroupname'
     ]
 
     readonly_attrs = [
@@ -1088,6 +1051,9 @@ def main():
                     )
         return configured_bindings
 
+    def diff_list():
+        return lbmonitor_proxy.diff_object(lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])[0]),
+
     try:
         ensure_feature_is_enabled(client, 'LB')
 
@@ -1114,13 +1080,12 @@ def main():
             # Sanity check for result
             if not module.check_mode:
                 if not lbmonitor_exists():
-                    module.fail_json(msg='Monitor does not seem to exist')
+                    module.fail_json(msg='Monitor does not seem to exist', **module_result)
                 if not lbmonitor_identical():
                     module.fail_json(
                         msg='Monitor is not configured according to parameters given',
-                        diff_object=lbmonitor_proxy.diff_object(lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])[0]),
-                        actual_attributes=lbmonitor_proxy.get_actual_rw_attributes(filter='monitorname'),
-                        loglines=loglines,
+                        diff=diff_list(),
+                        **module_result,
                     )
             get_actual_service_bindings()
 
@@ -1136,7 +1101,7 @@ def main():
             # Sanity check for result
             if not module.check_mode:
                 if lbmonitor_exists():
-                    module.fail_json(msg='Server seems to be present')
+                    module.fail_json(msg='Server seems to be present', **module_result)
 
         module_result['actual_attributes'] = lbmonitor_proxy.get_actual_rw_attributes(filter='monitorname')
     except nitro_exception as e:
