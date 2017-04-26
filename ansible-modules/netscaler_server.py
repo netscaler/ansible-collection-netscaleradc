@@ -11,48 +11,64 @@ ANSIBLE_METADATA = {'status': ['preview'],
 DOCUMENTATION = '''
 ---
 module: netscaler_server
-short_description: Manage server configuration in Netscaler
+short_description: Manage server configuration
 description:
-    - Manage server configuration in Netscaler
+    - Manage server configuration
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
-version_added: "tbd"
+version_added: 2.2.3
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-
-        required: True
-
     name:
         description:
             - Name for the server.
-            - Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+            - "Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters."
             - Can be changed after the name is created.
             - Minimum length = 1
-            
 
     ipaddress:
         description:
-            - IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
+            - IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note. If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
             
-
-
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
 - name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+    local_action:
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+
+        module: netscaler_server
+        operation: present
+
+        name: vserver1
+        ipaddress: 192.168.1.1
 '''
 
 # TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -86,6 +102,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -128,6 +145,10 @@ def main():
         else:
             return False
 
+    def diff_list():
+        return server_proxy.diff_object(server.get_filtered(client, 'name:%s' % module.params['name'])[0]),
+
+
     try:
 
         # Apply appropriate operation
@@ -149,12 +170,12 @@ def main():
             # Sanity check for result
             if not module.check_mode:
                 if not server_exists():
-                    module.fail_json(msg='Server does not seem to exist')
+                    module.fail_json(msg='Server does not seem to exist', **module_result)
                 if not server_identical():
                     module.fail_json(
                         msg='Server is not configured according to parameters given',
-                        diff_object=server_proxy.diff_object(server.get_filtered(client, 'name:%s' % module.params['name'])[0]),
-                        actual_attributes=server_proxy.get_actual_rw_attributes()
+                        diff=diff_list(),
+                        **module_result,
                     )
 
         elif module.params['operation'] == 'absent':
@@ -169,7 +190,7 @@ def main():
             # Sanity check for result
             if not module.check_mode:
                 if server_exists():
-                    module.fail_json(msg='Server seems to be present')
+                    module.fail_json(msg='Server seems to be present', **module_result)
 
         module_result['actual_attributes'] = server_proxy.get_actual_rw_attributes()
     except nitro_exception as e:
