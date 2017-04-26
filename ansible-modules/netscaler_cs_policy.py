@@ -1,33 +1,26 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_vserver
-short_description: Manage cs vserver
+module: netscaler_cs_policy
+short_description: Manage content switching policy
 description:
-    - Manage service group configuration in Netscaler
+    - Manage content switching policy
+    - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance"
 
-version_added: "tbd"
+version_added: 2.2.3
+
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-
-        required: True
 
     policyname:
         description:
-            - Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my policy or my policy).
+            - "Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created."
             - Minimum length = 1
 
     url:
@@ -39,9 +32,9 @@ options:
     rule:
         description:
             - Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
-            - Note:
-            - Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"<string of 255 characters>" + "<string of 245 characters>"'
-            - The following requirements apply only to the NetScaler CLI:
+            - Note
+            - Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows '"<string of 255 characters>" + "<string of 245 characters>"'
+            - The following requirements apply only to the NetScaler CLI
             - If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
             - If the expression itself includes double quotation marks, escape the quotations by using the character.
             - lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
@@ -54,22 +47,47 @@ options:
     action:
         description:
             - Content switching action that names the target load balancing virtual server to which the traffic is switched.
+
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+- name: Create url cs policy
+    local_action:
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        ssl_cert_validation: no
+
+        module: netscaler_cs_policy
+        operation: present
+
+        policyname: policy_1
+        url: /example/
 '''
 
 # TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Could not load nitro python sdk"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'url': 'difference. ours: (str) example1 other: (str) /example1' }
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -91,7 +109,6 @@ def main():
         rule=dict(type='str'),
         domain=dict(type='str'),
         action=dict(type='str'),
-        logaction=dict(type='str'),
     )
 
     argument_spec = dict()
@@ -107,6 +124,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -126,7 +144,6 @@ def main():
         'rule',
         'domain',
         'action',
-        'logaction'
     ]
     readonly_attrs = [
         'vstype',
@@ -190,9 +207,9 @@ def main():
 
             # Sanity check for operation
             if not policy_exists():
-                module.fail_json(msg='Service does not exist')
+                module.fail_json(msg='Service does not exist', **module_result)
             if not policy_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list())
+                module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
 
         elif module.params['operation'] == 'absent':
             if policy_exists():
@@ -205,7 +222,7 @@ def main():
 
             # Sanity check for operation
             if policy_exists():
-                module.fail_json(msg='Service still exists')
+                module.fail_json(msg='Service still exists', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
