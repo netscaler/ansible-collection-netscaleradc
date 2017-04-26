@@ -15,36 +15,27 @@ short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler
 
-version_added: "tbd"
+version_added: 2.2.3
 options:
     nsip:
         description:
             - The Nescaler ip address.
-
         required: True
 
     name:
-        
         description:
-            - Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the service has been created.
+            - "Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the service has been created."
             - Minimum length = 1
-            
+
     ip:
         description:
             - IP to assign to the service.
             - Minimum length = 1
 
-    servername:
-        description:
-            - Name of the server that hosts the service.
-            - Minimum length = 1
-            
-
     servicetype:
         choices: ['HTTP', 'FTP', 'TCP', 'UDP', 'SSL', 'SSL_BRIDGE', 'SSL_TCP', 'DTLS', 'NNTP', 'RPCSVR', 'DNS', 'ADNS', 'SNMP', 'RTSP', 'DHCPRA', 'ANY', 'SIP_UDP', 'SIP_TCP', 'SIP_SSL', 'DNS_TCP', 'ADNS_TCP', 'MYSQL', 'MSSQL', 'ORACLE', 'RADIUS', 'RADIUSListener', 'RDP', 'DIAMETER', 'SSL_DIAMETER', 'TFTP', 'SMPP', 'PPTP', 'GRE', 'SYSLOGTCP', 'SYSLOGUDP', 'FIX', 'SSL_FIX']
         description:
             - Protocol in which data is exchanged with the service.
-            
 
     port:
         description:
@@ -63,7 +54,6 @@ options:
         description:
             - Cache type supported by the cache server.
             
-
     maxclient:
         description:
             - Maximum number of simultaneous open connections to the service.
@@ -74,15 +64,15 @@ options:
     healthmonitor:
         choices: ['YES', 'NO']
         description:
-            - Monitor the health of this service. Available settings function as follows:
+            - Monitor the health of this service. Available settings function as follows.
             - YES - Send probes to check the health of the service.
             - NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.
-            - Default value: YES
+            - Default value = YES
 
     maxreq:
         description:
             - Maximum number of requests that can be sent on a persistent connection to the service.
-            - Note: Connection requests beyond this value are rejected.
+            - Note. Connection requests beyond this value are rejected.
             - Minimum value = 0
             - Maximum value = 65535
             
@@ -91,8 +81,8 @@ options:
         choices: ['YES', 'NO']
         description:
             - Use the transparent cache redirection virtual server to forward requests to the cache server.
-            - Note: Do not specify this parameter if you set the Cache Type parameter.
-            - Default value: NO
+            - Note. Do not specify this parameter if you set the Cache Type parameter.
+            - Default value = NO
 
     cip:
         choices: ['ENABLED', 'DISABLED']
@@ -110,28 +100,17 @@ options:
         description:
             - Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.
 
-    pathmonitor:
-        choices: ['YES', 'NO']
-        description:
-            - Path monitoring for clustering.
-
-    pathmonitorindv:
-        choices: ['YES', 'NO']
-        description:
-            - Individual Path monitoring decisions.
-
     useproxyport:
         choices: ['YES', 'NO']
         description:
             - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.
-            - Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
+            - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
             
-
     sc:
         choices: ['ON', 'OFF']
         description:
             - State of SureConnect for the service.
-            - Default value: OFF
+            - Default value = OFF
 
     sp:
         choices: ['ON', 'OFF']
@@ -142,7 +121,7 @@ options:
         choices: ['ON', 'OFF']
         description:
             - Enable RTSP session ID mapping for the service.
-            - Default value: OFF
+            - Default value = OFF
 
     clttimeout:
         description:
@@ -156,32 +135,23 @@ options:
             - Minimum value = 0
             - Maximum value = 31536000
             
-
     customserverid:
         description:
             - Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.
-            - Default value: "None"
+            - Default value = "None"
             
-
-    serverid:
-        description:
-            - The identifier for the service. This is used when the persistency type is set to Custom Server ID.
-            
-
     cka:
         choices: ['YES', 'NO']
         description:
             - Enable client keep-alive for the service.
             - Possible values = YES, NO
             
-
     tcpb:
         choices: ['YES', 'NO']
         description:
             - Enable TCP buffering for the service.
             - Possible values = YES, NO
             
-
     cmp:
         choices: ['YES', 'NO']
         description:
@@ -199,7 +169,7 @@ options:
         choices: ['YES', 'NO']
         description:
             - Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.
-            - Default value: NO
+            - Default value = NO
 
     monthreshold:
         description:
@@ -207,17 +177,11 @@ options:
             - Minimum value = 0
             - Maximum value = 65535
 
-    state:
-        choices: ['ENABLED', 'DISABLED']
-        description:
-            - Initial state of the service.
-            - Default value: ENABLED
-
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     tcpprofilename:
         description:
@@ -239,13 +203,12 @@ options:
     comment:
         description:
             - Any information about the service.
-            
 
     appflowlog:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Enable logging of AppFlow information.
-            - Default value: ENABLED
+            - Default value = ENABLED
 
     netprofile:
         description:
@@ -253,18 +216,11 @@ options:
             - Minimum length = 1
             - Maximum length = 127
 
-    td:
-        description:
-            - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
-            - Minimum value = 0
-            - Maximum value = 4094
-            
-
     processlocal:
         choices: ['ENABLED', 'DISABLED']
         description:
             - By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.
-            - Default value: DISABLED
+            - Default value = DISABLED
 
     dnsprofilename:
         description:
@@ -277,39 +233,15 @@ options:
         description:
             - The new IP address of the service.
 
-    weight:
-        description:
-            - Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its binding with the service determines how much the monitor contributes toward keeping the health of the service above the value configured for the Monitor Threshold parameter.
-            - Minimum value = 1
-            - Maximum value = 100
-            
-    monitor_name_svc:
-        description:
-            - Name of the monitor bound to the specified service.
-            - Minimum length = 1
-            
-    riseapbrstatsmsgcode:
-        description:
-            - The code indicating the rise apbr status.
-            
-    delay:
-        description:
-            - Time, in seconds, allocated to the NetScaler appliance for a graceful shutdown of the service. During this period, new requests are sent to the service only for clients who already have persistent sessions on the appliance. Requests from new clients are load balanced among other available services. After the delay time expires, no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
-
     graceful:
         choices: ['YES', 'NO']
         description:
             - Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.
-            - Default value: NO
+            - Default value = NO
 
-    all:
-        description:
-            - Display both user-configured and dynamically learned services.
-
-    Internal:
-        description:
-            - Display only dynamically learned services.
-
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 # TODO: Add appropriate examples
@@ -321,11 +253,23 @@ EXAMPLES = '''
 
 # TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -347,7 +291,6 @@ def main():
     module_specific_arguments = dict(
         name=dict( type='str',),
         ip=dict(type='str'),
-        servername=dict(type='str'),
         servicetype=dict(
             type='str',
             choices=[u'HTTP', u'FTP', u'TCP', u'UDP', u'SSL', u'SSL_BRIDGE', u'SSL_TCP', u'DTLS', u'NNTP', u'RPCSVR', u'DNS', u'ADNS', u'SNMP', u'RTSP', u'DHCPRA', u'ANY', u'SIP_UDP', u'SIP_TCP', u'SIP_SSL', u'DNS_TCP', u'ADNS_TCP', u'MYSQL', u'MSSQL', u'ORACLE', u'RADIUS', u'RADIUSListener', u'RDP', u'DIAMETER', u'SSL_DIAMETER', u'TFTP', u'SMPP', u'PPTP', u'GRE', u'SYSLOGTCP', u'SYSLOGUDP', u'FIX', u'SSL_FIX']
@@ -377,14 +320,6 @@ def main():
             type='str',
             choices=[u'YES', u'NO']
         ),
-        pathmonitor=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        pathmonitorindv=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
         useproxyport=dict(
             type='str',
             choices=[u'YES', u'NO']
@@ -404,7 +339,6 @@ def main():
         clttimeout=dict(type='float'),
         svrtimeout=dict(type='float'),
         customserverid=dict(type='str'),
-        serverid=dict(type='float'),
         cka=dict(
             type='str',
             choices=[u'YES', u'NO']
@@ -423,10 +357,6 @@ def main():
             choices=[u'YES', u'NO']
         ),
         monthreshold=dict(type='float'),
-        state=dict(
-            type='str',
-            choices=[u'ENABLED', u'DISABLED']
-        ),
         downstateflush=dict(
             type='str',
             choices=[u'ENABLED', u'DISABLED']
@@ -440,23 +370,16 @@ def main():
             choices=[u'ENABLED', u'DISABLED']
         ),
         netprofile=dict(type='str'),
-        td=dict(type='float'),
         processlocal=dict(
             type='str',
             choices=[u'ENABLED', u'DISABLED']
         ),
         dnsprofilename=dict(type='str'),
         ipaddress=dict(type='str'),
-        weight=dict(type='float'),
-        monitor_name_svc=dict(type='str'),
-        riseapbrstatsmsgcode=dict(type='int'),
-        delay=dict(type='float'),
         graceful=dict(
             type='str',
             choices=[u'YES', u'NO']
         ),
-        all=dict(type='bool'),
-        Internal=dict(type='bool'),
     )
 
     hand_inserted_arguments = dict(
@@ -493,7 +416,6 @@ def main():
     readwrite_attrs = [
         'name',
         'ip',
-        'servername',
         'servicetype',
         'port',
         'cleartextport',
@@ -505,8 +427,6 @@ def main():
         'cip',
         'cipheader',
         'usip',
-        'pathmonitor',
-        'pathmonitorindv',
         'useproxyport',
         'sc',
         'sp',
@@ -514,14 +434,12 @@ def main():
         'clttimeout',
         'svrtimeout',
         'customserverid',
-        'serverid',
         'cka',
         'tcpb',
         'cmp',
         'maxbandwidth',
         'accessdown',
         'monthreshold',
-        'state',
         'downstateflush',
         'tcpprofilename',
         'httpprofilename',
@@ -529,17 +447,10 @@ def main():
         'comment',
         'appflowlog',
         'netprofile',
-        'td',
         'processlocal',
         'dnsprofilename',
         'ipaddress',
-        'weight',
-        'monitor_name_svc',
-        'riseapbrstatsmsgcode',
-        'delay',
         'graceful',
-        'all',
-        'Internal'
     ]
 
     readonly_attrs = [
@@ -730,12 +641,12 @@ def main():
 
             # Sanity check for operation
             if not service_exists():
-                module.fail_json(msg='Service does not exist')
+                module.fail_json(msg='Service does not exist', **module_result)
             if not service_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list())
+                module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
 
             if not monitor_bindings_identical():
-                module.fail_json(msg='Monitor bindings are not identical',loglines=loglines)
+                module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
             if service_exists():
@@ -748,7 +659,7 @@ def main():
 
             # Sanity check for operation
             if service_exists():
-                module.fail_json(msg='Service still exists')
+                module.fail_json(msg='Service still exists', **module_result)
 
         module_result['configured_service'] = {}
         module_result['configured_service']['actual_rw_attributes'] = service_proxy.get_actual_rw_attributes()
