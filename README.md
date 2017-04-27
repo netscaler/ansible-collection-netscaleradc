@@ -30,12 +30,13 @@ The modules depend on the nitro python sdk. You can download it for the 11.0 ver
 
 ## Usage
 
-The modules are to be used in the ansible control node. Documentation for each module can be found in the htmldoc directory.
+All modules are intended to be run on the ansible control machine or a jumserver with access to the netscaler appliance.
+To do this you need to use the "local_action" or the "delegate_to" options in your playbooks.
+
+Documentation for each module can be found in the htmldoc directory.
 
 Documentation regarding the Netscaler appliance can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
 
-All modules are intended to be run on the ansible control machine or a jumserver with access to the netscaler appliance.
-To do this you need to use the "local_action" or the "delegate_to" options in your playbooks.
 
 ## Directory structure
 
