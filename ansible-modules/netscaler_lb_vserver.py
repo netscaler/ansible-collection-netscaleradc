@@ -14,6 +14,7 @@ module: netscaler_lb_vserver
 short_description: Manage load balancing vserver configuration
 description:
     - Manage load balancing vserver configuration
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
 version_added: 2.2.3
 
@@ -549,14 +550,59 @@ options:
             - Name of the DNS profile to be associated with the VServer. DNS profile properties will be applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
             - Minimum length = 1
             - Maximum length = 127
-            
+
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_lb_vserver:
-        nsip: "172.17.0.2"
+# Netscaler services service-http-1, service-http-2 must have been already created with the netscaler_service module
+
+- name: Create a load balancing vserver bound to services
+  local_action: 
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    ssl_cert_validation: no
+
+    module: netscaler_lb_vserver
+    operation: present
+
+    name: lb_vserver_1
+    servicetype: HTTP
+    timeout: 12
+    ipv46: 6.93.3.3
+    port: 80
+    servicebindings:
+        - 
+            servicename: service-http-1
+            weight: 80
+        - 
+            servicename: service-http-2
+            weight: 20
+
+# Service group service-group-1 must have been already created with the netscaler_servicegroup module
+
+- name: Create load balancing vserver bound to servicegroup
+  local_action: 
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    ssl_cert_validation: no
+
+    module: netscaler_lb_vserver
+    operation: present
+
+    name: lb_vserver_2
+    servicetype: HTTP
+    ipv46: 6.92.2.2
+    port: 80
+    timeout: 10
+    servicegroupbindings:
+        - 
+            servicegroupname: service-group-1
 '''
 
 # TODO: Update as module progresses
@@ -1152,6 +1198,7 @@ def main():
     def ssl_certkey_bindings_identical():
         log('Entering ssl_certkey_bindings_identical')
         vservername = module.params['name']
+
         if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
             bindings = []
         else:
@@ -1213,18 +1260,17 @@ def main():
                     client.save_config()
                 module_result['changed'] = True
 
-            if not ssl_certkey_bindings_identical():
-                if not module.check_mode:
-                    ssl_certkey_bindings_sync()
+            if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
+                module.fail_json(msg='ssl_certkey is applicable only to SSL vservers', **module_result)
 
-                module_result['changed'] = True
+            # Check if SSL certkey is sane
+            if module.params['servicetype'] == 'SSL':
+                if not ssl_certkey_bindings_identical():
+                    if not module.check_mode:
+                        ssl_certkey_bindings_sync()
 
-            module_result['configured_service'] = {
-                'actual_rw_attributes': lbvserver_proxy.get_actual_rw_attributes(),
-                'actual_ro_attributes': lbvserver_proxy.get_actual_ro_attributes(),
-                'missing_rw_attributes':  lbvserver_proxy.get_missing_rw_attributes(),
-                'missing_ro_attributes':  lbvserver_proxy.get_missing_ro_attributes(),
-            }
+                    module_result['changed'] = True
+
             # Sanity check
             if not module.check_mode:
                 if not lbvserver_exists():
@@ -1234,8 +1280,9 @@ def main():
                 if not service_bindings_identical():
                     module.fail_json(msg='Service bindings not identical', **module_result)
 
-                if not ssl_certkey_bindings_identical():
-                    module.fail_json(msg='sll certkey bindings not identical', **module_result)
+                if module.params['servicetype'] == 'SSL':
+                    if not ssl_certkey_bindings_identical():
+                        module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
 
         elif module.params['operation'] == 'absent':

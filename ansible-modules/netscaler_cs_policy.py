@@ -11,8 +11,8 @@ DOCUMENTATION = '''
 module: netscaler_cs_policy
 short_description: Manage content switching policy
 description:
-    - Manage content switching policy
-    - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance"
+    - Manage content switching policy.
+    - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance."
 
 version_added: 2.2.3
 

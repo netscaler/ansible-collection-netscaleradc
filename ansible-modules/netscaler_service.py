@@ -14,13 +14,10 @@ module: netscaler_service_group
 short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
 version_added: 2.2.3
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-        required: True
 
     name:
         description:
@@ -239,6 +236,12 @@ options:
             - Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.
             - Default value = NO
 
+    monitorbindings:
+        description:
+            - A list of monitornames to bind to this service
+            - Note that the monitors must have already been setup using the netscaler_lb_monitor module
+
+
 extends_documentation_fragment: netscaler
 requirements:
     - nitro python sdk
@@ -246,18 +249,39 @@ requirements:
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+'''
+'''
+# Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
+
+- name: Setup http service
+  local_action: 
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    ssl_cert_validation: no
+
+    module: netscaler_service
+    operation: present
+
+    name: service-http-1
+    servicetype: HTTP
+    ip: 10.78.0.1
+    ipaddress: 10.78.0.1
+    port: 80
+
+    monitorbindings:
+      - monitor-1
 '''
 
 # TODO: Update as module progresses
 RETURN = '''
+'''
+'''
 loglines:
     description: list of logged messages by the module
     returned: always
     type: list
-    sample: ['message 1', 'message 2']
+    sample: "['message 1', 'message 2']"
 
 msg:
     description: Message detailing the failure reason
@@ -269,7 +293,7 @@ diff:
     description: List of differences between the actual configured object and the configuration specified in the module
     returned: failure
     type: dict
-    sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
+    sample: "{ 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }"
 '''
 
 from ansible.module_utils.basic import AnsibleModule
@@ -661,15 +685,8 @@ def main():
             if service_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 
-        module_result['configured_service'] = {}
-        module_result['configured_service']['actual_rw_attributes'] = service_proxy.get_actual_rw_attributes()
-        module_result['configured_service']['actual_ro_attributes'] = service_proxy.get_actual_ro_attributes()
-        module_result['configured_service']['missing_rw_attributes'] = list(set(readwrite_attrs) - set(module_result['configured_service']['actual_rw_attributes'].keys()))
-        module_result['configured_service']['missing_ro_attributes'] = list(set(readonly_attrs) - set(module_result['configured_service']['actual_ro_attributes'].keys()))
-
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
-        module_result['loglines'] = loglines
         module.fail_json(msg=msg, **module_result)
 
     client.logout()

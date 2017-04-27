@@ -15,24 +15,25 @@ short_description: Manage cs vserver
 description:
     - Manage service group configuration in Netscaler
 
-version_added: "tbd"
+version_added: 2.2
 options:
     nsip:
         description:
             - The Nescaler ip address.
-
         required: True
 
     certkey:
         description:
-            - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key pair is created.
-            - The following requirement applies only to the NetScaler CLI:
+            - "Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key pair is created."
+            - The following requirement applies only to the NetScaler CLI.
             - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cert" or 'my cert').
             - Minimum length = 1
+
     cert:
         description:
             - Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
             - Minimum length = 1
+
     key:
         description:
             - Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
@@ -55,11 +56,11 @@ options:
     inform:
         choices: ['DER', 'PEM', 'PFX']
         description:
-            - Input format of the certificate and the private-key files. The three formats supported by the appliance are:
+            - Input format of the certificate and the private-key files. The three formats supported by the appliance are.
             - PEM - Privacy Enhanced Mail
             - DER - Distinguished Encoding Rule
             - PFX - Personal Information Exchange.
-            - Default value: PEM
+            - Default value = PEM
 
     passplain:
         description:
@@ -81,7 +82,7 @@ options:
         choices: ['YES', 'NO']
         description:
             - Parse the certificate chain as a single file after linking the server certificate to its issuer's certificate within the file.
-            - Default value: NO
+            - Default value = NO
 
     linkcertkeyname:
         description:
@@ -113,6 +114,7 @@ def main():
     from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
+        from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
@@ -156,6 +158,7 @@ def main():
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -212,14 +215,23 @@ def main():
     )
 
     def key_exists():
-        if sslcertkey.count_filtered(client, 'certkey:%s' % module.params['certkey']) > 0:
+        log('Entering key_exists')
+        log('certkey is %s' % module.params['certkey'])
+        all_certificates = sslcertkey.get(client)
+        certkeys = [ item.certkey for item in all_certificates ]
+        if module.params['certkey'] in certkeys:
             return True
         else:
             return False
 
     def key_identical():
+        log('Entering key_identical')
         sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
         diff_dict = sslcertkey_proxy.diff_object(sslcertkey_list[0])
+        if 'password' in diff_dict:
+            del diff_dict['password']
+        if 'passplain' in diff_dict:
+            del diff_dict['passplain']
         if len(diff_dict) == 0:
             return True
         else:
@@ -229,17 +241,18 @@ def main():
         sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
         return sslcertkey_proxy.diff_object(sslcertkey_list[0])
 
-
     try:
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying present operation')
             if not key_exists():
                 if not module.check_mode:
+                    log('Adding certificate key')
                     sslcertkey_proxy.add()
                     client.save_config()
                 module_result['changed'] = True
-            elif not service_identical():
+            elif not key_identical():
                 if not module.check_mode:
                     sslcertkey_proxy.update()
                     client.save_config()
@@ -247,10 +260,12 @@ def main():
             else:
                 module_result['changed'] = False
 
+
+
             # Sanity check for operation
             if not key_exists():
                 module.fail_json(msg='Service does not exist')
-            if not service_identical():
+            if not key_identical():
                 module.fail_json(msg='Service differs from configured', diff=diff_list())
 
         elif module.params['operation'] == 'absent':

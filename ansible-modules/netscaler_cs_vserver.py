@@ -7,7 +7,6 @@ ANSIBLE_METADATA = {'status': ['preview'],
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
 module: netscaler_cs_vserver
@@ -342,11 +341,17 @@ options:
             - Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
             - Minimum length = 1
             - Maximum length = 127
+
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
             
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
+# policy_1 must have been already created with the netscaler_cs_policy module
+# lbvserver_1 must have been already created with the netscaler_lb_vserver module
+
 - name: Setup content switching vserver
   local_action:
     nsip: 172.18.0.2
@@ -367,7 +372,6 @@ EXAMPLES = '''
         targetlbvserver: lbvserver_1
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
 loglines:
     description: list of logged messages by the module
@@ -818,12 +822,16 @@ def main():
                     client.save_config()
                 module_result['changed'] = True
 
-            # Check ssl certkey bindings
-            if not ssl_certkey_bindings_identical():
-                if not module.check_mode:
-                    ssl_certkey_bindings_sync()
+            if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
+                module.fail_json(msg='ssl_certkey is applicable only to SSL vservers', **module_result)
 
-                module_result['changed'] = True
+            # Check ssl certkey bindings
+            if module.params['servicetype'] == 'SSL':
+                if not ssl_certkey_bindings_identical():
+                    if not module.check_mode:
+                        ssl_certkey_bindings_sync()
+
+                    module_result['changed'] = True
 
             # Sanity check for operation
             if not module.check_mode:
@@ -833,8 +841,10 @@ def main():
                     module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
                 if not cs_policybindings_identical():
                     module.fail_json(msg='Policy bindings differ')
-                if not ssl_certkey_bindings_identical():
-                    module.fail_json(msg='sll certkey bindings not identical', **module_result)
+
+                if module.params['servicetype'] == 'SSL':
+                    if not ssl_certkey_bindings_identical():
+                        module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
             if cs_vserver_exists():

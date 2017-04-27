@@ -14,8 +14,10 @@ module: netscaler_cs_action
 short_description: Manage content switching actions
 description:
     - Manage content switching actions
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
-version_added: 2.2.2
+version_added: 2.2.3
+
 options:
 
     name:
@@ -34,11 +36,12 @@ options:
     comment:
         description:
             - Comments associated with this cs action.
-notes:
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
 # lb_vserver_1 must have been already created with the netscaler_lb_vserver module
 
@@ -66,13 +69,13 @@ loglines:
 msg:
     description: Message detailing the failure reason
     returned: failure
-    type: str
+    type: string
     sample: "Action does not exist"
 
 diff:
     description: List of differences between the actual configured object and the configuration specified in the module
     returned: failure
-    type: dict
+    type: dictionary
     sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
 '''
 

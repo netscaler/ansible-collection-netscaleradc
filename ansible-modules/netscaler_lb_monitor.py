@@ -13,6 +13,8 @@ module: netscaler_lb_monitor
 short_description: Manage load balancing monitors
 description:
     - Manage load balancing monitors
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+
 version_added: 2.2.3
 
 options:
@@ -363,6 +365,11 @@ options:
             - Name of the database to connect to during authentication.
             - Minimum length = 1
 
+    oraclesid:
+        description:
+            - Name of the service identifier that is used to connect to the Oracle database during authentication.
+            - Minimum length = 1
+
     sqlquery:
         description:
             - SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server after the server authenticates the connection.
@@ -521,22 +528,23 @@ requirements:
 '''
 
 EXAMPLES = '''
-    - name: Set lb monitor
-      local_action: 
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        ssl_cert_validation: no
+- name: Set lb monitor
+  local_action: 
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    ssl_cert_validation: no
 
 
-        module: netscaler_lb_monitor
-        operation: present
+    module: netscaler_lb_monitor
+    operation: present
 
-        monitorname: monitor_1
-        type: HTTP-INLINE
-        action: DOWN
-        respcode: ['400']
+    monitorname: monitor_1
+    type: HTTP-INLINE
+    action: DOWN
+    respcode: ['400']
 '''
+
 RETURN = '''
 loglines:
     description: list of logged messages by the module
@@ -692,6 +700,7 @@ def main():
         filter=dict(type='str'),
         attribute=dict(type='str'),
         database=dict(type='str'),
+        oraclesid=dict(type='str'),
         sqlquery=dict(type='str'),
         evalrule=dict(type='str'),
         mssqlprotocolversion=dict(
@@ -832,6 +841,7 @@ def main():
         'filter', 
         'attribute', 
         'database', 
+        'oraclesid',
         'sqlquery', 
         'evalrule', 
         'mssqlprotocolversion', 
@@ -1085,7 +1095,7 @@ def main():
                     module.fail_json(
                         msg='Monitor is not configured according to parameters given',
                         diff=diff_list(),
-                        **module_result,
+                        **module_result
                     )
             get_actual_service_bindings()
 

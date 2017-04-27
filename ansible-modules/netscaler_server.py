@@ -175,7 +175,7 @@ def main():
                     module.fail_json(
                         msg='Server is not configured according to parameters given',
                         diff=diff_list(),
-                        **module_result,
+                        **module_result
                     )
 
         elif module.params['operation'] == 'absent':

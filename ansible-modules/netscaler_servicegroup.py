@@ -14,14 +14,10 @@ module: netscaler_service_group
 short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
 version_added: 2.2.3
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-
-        required: True
 
     servicegroupname:
         description:
@@ -218,6 +214,19 @@ options:
             - Wait for all existing connections to the service to terminate before shutting down the service.
             - Default value = NO
 
+    servicemembers:
+        description:
+            - A list of dictionaries describing each service member of the service group
+            - The dictionary for each member must contain the following keys. 
+            - ip. The ip address of the service member
+            - port. The port of the service member
+            - weight. The weight of this service member
+
+    monitorbindings:
+        description:
+            - A list of monitornames to bind to this service
+            - Note that the monitors must have already been setup using the netscaler_lb_monitor module
+
 extends_documentation_fragment: netscaler
 requirements:
     - nitro python sdk
@@ -225,9 +234,30 @@ requirements:
 
 # TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+# Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
+
+- name: Setup http service group
+  local_action:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    ssl_cert_validation: no
+
+    module: netscaler_servicegroup
+    operation: present
+
+    servicegroupname: service-group-1
+    servicetype: HTTP
+    servicemembers:
+        - ip: 10.78.78.78
+          port: 80
+          weight: 50
+        - ip: 10.79.79.79
+          port: 80
+          weight: 50
+
+    monitorbindings:
+      - monitor-1
 '''
 
 # TODO: Update as module progresses
