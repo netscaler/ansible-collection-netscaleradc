@@ -1,0 +1,80 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Set service 1
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_service
+        operation: present
+
+        name: service-http-1
+        servicetype: HTTP
+        ip: 10.78.0.1
+        ipaddress: 10.78.0.1
+        port: 80
+
+    - name: Set service 2
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_service
+        operation: present
+
+        name: service-http-2
+        servicetype: HTTP
+        ip: 10.78.0.2
+        ipaddress: 10.78.0.2
+        port: 80
+
+    - name: lb vserver 1
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_vserver
+        operation: present
+
+        name: lb_vserver_1
+        servicetype: SSL
+        timeout: 12
+        ipv46: 6.93.3.3
+        port: 80
+        servicebindings:
+            - 
+                servicename: service-http-1
+                weight: 80
+            - 
+                servicename: service-http-2
+                weight: 20
+
+    - name: ssl binding
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_ssl_certkey
+        operation: present
+
+        certkey: certificate_1
+        cert: server.crt
+        key: server.key

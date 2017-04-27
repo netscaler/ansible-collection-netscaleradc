@@ -10,8 +10,6 @@
 
   tasks:
 
-
-
     - name: Configure service group catalog
       local_action: 
         nsip: "{{ nsip }}"
@@ -31,7 +29,6 @@
           - ip: 10.79.79.79
             port: 80
             weight: 50
-
 
     - name: Configure service group cart
       local_action: 

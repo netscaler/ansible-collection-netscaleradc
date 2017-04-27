@@ -1,0 +1,43 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+    - name: Set ssl certificate key
+      local_action: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_ssl_certkey
+        operation: present
+
+        certkey: certificate_1
+        cert: server.crt
+        key: server.key
+        password: yes
+        passplain: nosecret
+        expirymonitor: ENABLED
+        notificationperiod: 50
+        inform: PEM
+
+    - name: Set ssl certificate key 2
+      netscaler_ssl_certkey: 
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        operation: present
+
+        certkey: certificate_2
+        cert: server2.crt
+        key: server2.key
+      delegate_to: 127.0.0.1
