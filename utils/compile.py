@@ -107,6 +107,7 @@ def main():
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
 
     schemata = {
         'basic_service' : {
@@ -152,7 +153,11 @@ def main():
         'cs_action' : {
             'json_file': 'content-switching_csaction.json',
             'class' : csaction,
-        }
+        },
+        'ssl_certkey' : {
+            'json_file': 'ssl_sslcertkey.json',
+            'class' : sslcertkey,
+        },
     }
 
     # Iterate and produce module arguments dicts
@@ -209,6 +214,7 @@ def main():
         'netscaler_cs_vserver.py.template',
         'netscaler_cs_policy.py.template',
         'netscaler_cs_action.py.template',
+        'netscaler_ssl_certkey.py.template',
     ]
     for template_file in template_list:
         template = env.get_template(template_file)

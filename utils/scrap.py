@@ -85,7 +85,8 @@ def main():
         #'load-balancing/lbmonitor',
         #'content-switching/csvserver',
         #'content-switching/cspolicy',
-        'content-switching/csaction',
+        #'content-switching/csaction',
+        'ssl/sslcertkey',
     ]
     for page in pages:
         properties = scrap_page(base_url + page + '.html')

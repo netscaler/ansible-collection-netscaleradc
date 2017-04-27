@@ -1,0 +1,290 @@
+[
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "certkey", 
+        "description_lines": [
+            "Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key pair is created.", 
+            "The following requirement applies only to the NetScaler CLI:", 
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my cert\" or 'my cert').", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "cert", 
+        "description_lines": [
+            "Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "key", 
+        "description_lines": [
+            "Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "bool", 
+        "name": "password", 
+        "description_lines": [
+            "Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys in PEM format."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "fipskey", 
+        "description_lines": [
+            "Name of the FIPS key that was created inside the Hardware Security Module (HSM) of a FIPS appliance, or a key that was imported into the HSM.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "hsmkey", 
+        "description_lines": [
+            "Name of the HSM key that was created in the External Hardware Security Module (HSM) of a FIPS appliance.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "DER", 
+            "PEM", 
+            "PFX"
+        ], 
+        "type": "str", 
+        "name": "inform", 
+        "description_lines": [
+            "Input format of the certificate and the private-key files. The three formats supported by the appliance are:", 
+            "PEM - Privacy Enhanced Mail", 
+            "DER - Distinguished Encoding Rule", 
+            "PFX - Personal Information Exchange.", 
+            "Default value: PEM", 
+            "Possible values = DER, PEM, PFX"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "passplain", 
+        "description_lines": [
+            "Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM format.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "expirymonitor", 
+        "description_lines": [
+            "Issue an alert when the certificate is about to expire.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "notificationperiod", 
+        "description_lines": [
+            "Time, in number of days, before certificate expiration, at which to generate an alert that the certificate is about to expire.", 
+            "Minimum value = 10", 
+            "Maximum value = 100"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "bundle", 
+        "description_lines": [
+            "Parse the certificate chain as a single file after linking the server certificate to its issuer's certificate within the file.", 
+            "Default value: NO", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "linkcertkeyname", 
+        "description_lines": [
+            "Name of the Certificate Authority certificate-key pair to which to link a certificate-key pair.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "bool", 
+        "name": "nodomaincheck", 
+        "description_lines": [
+            "Override the check for matching domain names during a certificate update operation."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "signaturealg", 
+        "description_lines": [
+            "Signature algorithm."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "ROOT_CERT", 
+            "INTM_CERT", 
+            "CLNT_CERT", 
+            "SRVR_CERT", 
+            "UNKNOWN", 
+            "CLIENTANDSERVER_CERT"
+        ], 
+        "type": "str", 
+        "name": "certificatetype", 
+        "description_lines": [
+            "Specifies whether the certificate is of type root-CA, intermediate-CA, server, client, or client and server.", 
+            "Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT, UNKNOWN, CLIENTANDSERVER_CERT"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "serial", 
+        "description_lines": [
+            "Serial number."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "issuer", 
+        "description_lines": [
+            "Issuer name."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "clientcertnotbefore", 
+        "description_lines": [
+            "Not-Before date."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "clientcertnotafter", 
+        "description_lines": [
+            "Not-After date."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "daystoexpiration", 
+        "description_lines": [
+            "Days remaining for the certificate to expire."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "subject", 
+        "description_lines": [
+            "Subject name."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "publickey", 
+        "description_lines": [
+            "Public key algorithm."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "publickeysize", 
+        "description_lines": [
+            "Size of the public key."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "version", 
+        "description_lines": [
+            "Version."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "priority", 
+        "description_lines": [
+            "ocsp priority."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "Valid", 
+            "Not yet valid", 
+            "Expired"
+        ], 
+        "type": "str", 
+        "name": "status", 
+        "description_lines": [
+            "Status of the certificate.", 
+            "Possible values = Valid, Not yet valid, Expired"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "passcrypt", 
+        "description_lines": [
+            "Passcrypt.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "data", 
+        "description_lines": [
+            "Vserver Id."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "servicename", 
+        "description_lines": [
+            "Service name to which the certificate key pair is bound."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "__count", 
+        "description_lines": [
+            "count parameter"
+        ]
+    }
+]
