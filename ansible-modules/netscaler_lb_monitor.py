@@ -750,10 +750,15 @@ def main():
         trofsstring=dict(type='str'),
     )
 
+    hand_inserted_arguments = dict(
+        servicegroupbindings=dict(type='list'),
+        servicebindings=dict(type='list'),
+    )
 
     argument_spec = dict()
     argument_spec.update(module_specific_arguments)
     argument_spec.update(netscaler_common_arguments)
+    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -1003,14 +1008,14 @@ def main():
         # Fallthrough to success
         return True
 
-    def delete_all_bindings():
+    def delete_all_svc_bindings():
         log('Entering delete_all_bindings')
         actual_bindings = get_actual_service_bindings()
         for binding in actual_bindings.values():
             lbmonitor_service_binding.delete(client, binding)
 
-    def sync_bindings():
-        delete_all_bindings()
+    def sync_svc_bindings():
+        delete_all_svc_bindings()
         if 'servicebindings' in module.params and module.params['servicebindings'] is not None:
             for servicebinding in module.params['servicebindings']:
                 attribute_values_dict  = copy.deepcopy(servicebinding)
@@ -1074,7 +1079,7 @@ def main():
                     log('Adding monitor')
                     lbmonitor_proxy.add()
                     lbmonitor_proxy.update()
-                    sync_bindings()
+                    sync_svc_bindings()
                     client.save_config()
                 module_result['changed'] = True
             elif not lbmonitor_identical():

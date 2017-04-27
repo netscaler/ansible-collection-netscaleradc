@@ -679,7 +679,8 @@ def main():
                 if not module.check_mode:
                     log('Adding service group')
                     servicegroup_proxy.add()
-                    servicegroup_proxy.update()
+                    # TODO: why is the line below necessary?
+                    # servicegroup_proxy.update()
                     client.save_config()
                     #log('Updating service group')
                     #servicegroup_proxy.update()
