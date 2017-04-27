@@ -166,7 +166,7 @@ netscaler_common_arguments = dict(
     nsip=dict(required=True),
     nitro_user=dict(required=True),
     nitro_pass=dict(required=True),
-    nitro_protocol=dict(choices=['http', 'https'], default='https'),
+    nitro_protocol=dict(choices=['http', 'https'], default='http'),
     nitro_timeout=dict(default=310, type='float'),
     ssl_cert_validation=dict(required=True, type='bool'),
     operation=dict(choices=[
