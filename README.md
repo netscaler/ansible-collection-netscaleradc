@@ -70,5 +70,9 @@ Examples of the modules' usage are also contained in the EXAMPLES section of the
 **GPL V3**
 See [LICENSE](./LICENSE)
 
+## COPYRIGHT
+
+**COPYRIGHT 2017 CITRIX Systems Inc**
+
 ## Contributions
 Pull requests and issues are welcome. 
