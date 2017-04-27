@@ -422,7 +422,7 @@ class CSVserverFullInitialValues(unittest.TestCase):
 class CSVserverMissingArguments(unittest.TestCase):
 
     def test_arguments(self):
-        with open('source/scrap/content-switching_csvserver.json', 'r') as fh:
+        with open('utils/source/scrap/content-switching_csvserver.json', 'r') as fh:
             json_data = json.load(fh)
 
         sys.path.append('./ansible-modules')

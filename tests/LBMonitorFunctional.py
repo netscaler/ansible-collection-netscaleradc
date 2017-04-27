@@ -972,7 +972,7 @@ class LBMonitorFullInitialValues(unittest.TestCase):
 class LBMonitorMissingArguments(unittest.TestCase):
 
     def test_arguments(self):
-        with open('source/scrap/load-balancing_lbmonitor.json', 'r') as fh:
+        with open('utils/source/scrap/load-balancing_lbmonitor.json', 'r') as fh:
             json_data = json.load(fh)
 
         sys.path.append('./ansible-modules')

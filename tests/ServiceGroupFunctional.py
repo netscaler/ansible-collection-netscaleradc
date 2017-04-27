@@ -201,7 +201,7 @@ class ServiceGrouptFullInitialValues(unittest.TestCase):
 class ServiceGroupMissingArguments(unittest.TestCase):
 
     def test_arguments(self):
-        with open('source/scrap/basic_servicegroup.json', 'r') as fh:
+        with open('utils/source/scrap/basic_servicegroup.json', 'r') as fh:
             json_data = json.load(fh)
 
         sys.path.append('./ansible-modules')

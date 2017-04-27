@@ -159,7 +159,7 @@ class CSPolicyFullInitialValues(unittest.TestCase):
 class CSPolicyMissingArguments(unittest.TestCase):
 
     def test_arguments(self):
-        with open('source/scrap/content-switching_cspolicy.json', 'r') as fh:
+        with open('utils/source/scrap/content-switching_cspolicy.json', 'r') as fh:
             json_data = json.load(fh)
 
         sys.path.append('./ansible-modules')

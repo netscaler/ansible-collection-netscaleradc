@@ -125,7 +125,7 @@ class CSActionFullInitialValues(unittest.TestCase):
 class CSActionMissingArguments(unittest.TestCase):
 
     def test_arguments(self):
-        with open('source/scrap/content-switching_csaction.json', 'r') as fh:
+        with open('utils/source/scrap/content-switching_csaction.json', 'r') as fh:
             json_data = json.load(fh)
 
         sys.path.append('./ansible-modules')
