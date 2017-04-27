@@ -309,10 +309,24 @@ class ServiceMissingArguments(unittest.TestCase):
         json_attributes = set([ item['name'] for item in json_data if item['readonly'] == False])
         doc_attributes = set( yaml_data['options'].keys())
         missing_from_documentation = [
-            'newname', 
+            'pathmonitor',
+            'pathmonitorindv',
+            'serverid',
+            'state',
+            'td',
+            'weight',
+            'monitor_name_svc',
+            'riseapbrstatsmsgcode',
+            'delay',
+            'all',
+            'Internal',
+            'servername',
             'monconnectionclose',
+            'newname', 
         ]
-        self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
+        self.assertListEqual(
+                sorted(list(json_attributes - doc_attributes)),
+                sorted(missing_from_documentation))
 
 
 class ServiceMonitorBindings(unittest.TestCase):
@@ -346,13 +360,18 @@ class ServiceMonitorBindings(unittest.TestCase):
                     'operation': 'present',
                     'module': 'netscaler_lb_monitor',
                     'monitorname': 'monitor-2',
-                    'type': 'PING',
+                    'type': 'TCP-ECV',
+
+                    'send': 'sendstring',
+                    'recv': 'recvstring',
                 }
             },
         ]
         playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
         playbook[0]['tasks'][1]['local_action'].update(utils.nitro_dict)
-        utils.run_ansible_play(playbook, testcase='setup_service_monitor_bindings')
+        result = utils.run_ansible_play(playbook, testcase='setup_service_monitor_bindings')
+        if result['failed']:
+            raise Exception('Could not setup monitor')
 
     def test_01_set_single_monitorbinding(self):
         playbook = copy.deepcopy(self.minimal_playbook)

@@ -5,7 +5,10 @@ import pyaml
 import json
 import re
 import unittest
+import sys
+import paramiko
 
+import pexpect
 
 TESTDIR = os.path.join(os.getcwd(), 'testdir')
 INVENTORY = '\n'.join(['[netscaler]', '', '172.18.1.1'])
@@ -208,6 +211,25 @@ def ensure_teardown_cpx(name):
     retval = subprocess.check_call('docker rm %s' % name, shell=True)
 
     print(retval)
+
+def copy_sslcertificate_to_cpx():
+    transport = paramiko.Transport(DOCKER_IP, 22)
+    transport.connect(username='root', password='linux')
+    sftp = paramiko.SFTPClient.from_transport(transport)
+    here = os.path.dirname(os.path.realpath(__file__))
+    for file in ['server.crt', 'server.key', 'server2.key', 'server2.crt']:
+        sftp.put(os.path.join(here, 'datafiles', file), os.path.join('/nsconfig/ssl', file))
+
+def get_service_monitor_bindings_list(client, service_name):
+    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
+    try:
+        bindings = service_lbmonitor_binding.get(client, service_name)
+        return [ item.monitor_name for item in bindings]
+    except nitro_exception as e:
+        if e.errorcode == 344:
+            return []
+        else:
+            raise e
 
 def run_ansible_play(play_dict, ansible_module_path=ANSIBLE_MODULE_PATH, inventory=INVENTORY, testdir=TESTDIR, testcase=None):
 

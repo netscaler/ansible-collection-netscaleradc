@@ -26,85 +26,30 @@ class ServerFullInitalValues(unittest.TestCase):
         utils.ensure_pristine_cpx()
 
 
-    @classmethod
-    def tearDownClass(cls):
-        #utils.ensure_teardown_cpx('test_crucible')
-        pass
-
-    def test_setup_00(self):
-        action= {}
-        action.update(utils.nitro_dict)
-        action.update({
-            'name': 'vserver1',
-            'ipaddress': '192.168.1.1',
-        })
-        action['operation'] = 'present'
-
-        minimal_playbook =  [{
+    def test_01(self):
+        playbook = [{
             'hosts': 'netscaler',
             'gather_facts': False,
-            'tasks': [
-                {
-                    'name': 'test vserver 1',
-                    'local_action': action,
+            'tasks': [{
+                'name': 'Setup server',
+                'local_action': {
+                    'module': 'netscaler_server',
+                    'operation': 'present',
+
+                    'name': 'server1',
+                    'ipaddress': '192.168.1.1',
+
                 }
-            ]
+            }]
         }]
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        result = utils.run_ansible_play(playbook, testcase='server_test_01')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
-
-        result = utils.run_ansible_play(minimal_playbook)
-        self.assertIsNotNone(result)
-        self.assertFalse(result['failed'])
-        self.assertTrue(result['changed'])
-
-    def test_setup_01(self):
-        action= {}
-        action.update(utils.nitro_dict)
-        action.update({
-            'name': 'vserver1',
-            'ipaddress': '192.168.1.1',
-        })
-        action['operation'] = 'present'
-
-        minimal_playbook =  [{
-            'hosts': 'netscaler',
-            'gather_facts': False,
-            'tasks': [
-                {
-                    'name': 'test vserver 1',
-                    'local_action': action,
-                }
-            ]
-        }]
-
-
-        result = utils.run_ansible_play(minimal_playbook)
-        self.assertIsNotNone(result)
-        self.assertFalse(result['failed'])
-        self.assertFalse(result['changed'])
-
-    def test_setup_02(self):
-        action= {}
-        action.update(utils.nitro_dict)
-        action.update({
-            'name': 'vserver1',
-            'ipaddress': '192.168.1.2',
-        })
-        action['operation'] = 'present'
-
-        minimal_playbook =  [{
-            'hosts': 'netscaler',
-            'gather_facts': False,
-            'tasks': [
-                {
-                    'name': 'test vserver 1',
-                    'local_action': action,
-                }
-            ]
-        }]
-
-
-        result = utils.run_ansible_play(minimal_playbook)
-        self.assertIsNotNone(result)
-        self.assertFalse(result['failed'])
-        self.assertTrue(result['changed'])
+        # Make second run
+        result = utils.run_ansible_play(playbook, testcase='server_test_01_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')

@@ -211,10 +211,24 @@ class ServiceGroupMissingArguments(unittest.TestCase):
         json_attributes = set([ item['name'] for item in json_data if item['readonly'] == False])
         doc_attributes = set( yaml_data['options'].keys())
         missing_from_documentation = [
+            'td',
+            'servername',
+            'port',
+            'weight',
+            'customserverid',
+            'serverid',
+            'hashid',
+            'monitor_name_svc',
+            'dup_weight',
+            'riseapbrstatsmsgcode',
+            'delay',
+            'includemembers',
+            'monconnectionclose',
             'newname',
-            'monconnectionclose'
         ]
-        self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
+        self.assertListEqual(
+                sorted(list(json_attributes - doc_attributes)),
+                sorted(missing_from_documentation))
 
 class ServiceGroupMonitorBindings(unittest.TestCase):
     
@@ -243,7 +257,9 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
             },
         ]
         playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
-        utils.run_ansible_play(playbook, testcase='setup_service_monitor_bindings')
+        result = utils.run_ansible_play(playbook, testcase='setup_service_monitor_bindings')
+        if result['failed']:
+            raise Exception('Could not setup monitor')
 
 
     def test_01_set_monitorbindings(self):
@@ -257,6 +273,8 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
                 'module': 'netscaler_servicegroup',
                 'servicegroupname': 'service-group-1',
                 'servicetype': 'HTTP',
+                'cachetype': 'TRANSPARENT',
+                'maxclient': 100,
                 'servicemembers': [
                     {
                       'ip': '10.78.78.78',
@@ -280,14 +298,14 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
 
 
         # Make run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup')
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_bydict_to_servicegroup')
         self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
 
         # Make second run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup_second_run')
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_bydict_to_servicegroup_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
@@ -321,14 +339,14 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
 
 
         # Make run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup')
+        result = utils.run_ansible_play(playbook, testcase='Unsetting_monitor_to_servicegroup')
         self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
 
         # Make second run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup_second_run')
+        result = utils.run_ansible_play(playbook, testcase='Unsetting_monitor_to_servicegroup_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
@@ -363,14 +381,14 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
 
 
         # Make run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup')
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_byname_to_servicegroup')
         self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
 
         # Make second run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup_second_run')
+        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_byname_to_servicegroup_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
@@ -404,14 +422,14 @@ class ServiceGroupMonitorBindings(unittest.TestCase):
 
 
         # Make run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup')
+        result = utils.run_ansible_play(playbook, testcase='Unsetting_monitor_byname_to_servicegroup')
         self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertTrue(result['changed'], msg='Changed status was not set correctly')
 
 
         # Make second run
-        result = utils.run_ansible_play(playbook, testcase='Adding_monitor_to_servicegroup_second_run')
+        result = utils.run_ansible_play(playbook, testcase='Unsetting_monitor_byname_to_servicegroup_second_run')
         self.assertIsNotNone(result, msg='Result from playbook second run did not return valid json')
         self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
         self.assertFalse(result['changed'], msg='Changed status was not set correctly')
@@ -437,6 +455,18 @@ class ServiceGroupDeleteEntity(unittest.TestCase):
                         'servicetype': 'HTTP',
                         'cachetype': 'TRANSPARENT',
                         'maxclient': 100,
+                        'servicemembers': [
+                            {
+                              'ip': '10.78.78.78',
+                              'port': 80,
+                              'weight': 60,
+                            },
+                            {
+                              'ip': '10.79.79.79',
+                              'port': 80,
+                              'weight': 40,
+                            },
+                        ],
                     },
             }]
         }]

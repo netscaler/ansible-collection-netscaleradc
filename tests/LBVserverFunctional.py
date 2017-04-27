@@ -714,12 +714,23 @@ class LBVserverMissingArguments(unittest.TestCase):
         json_attributes = set([ item['name'] for item in json_data if item['readonly'] == False])
         doc_attributes = set( yaml_data['options'].keys())
         missing_from_documentation = [
-            'newname', 
+            'rule',
+            'resrule',
+            'state',
+            'backupvserver',
+            'persistavpno',
+            'td',
+            'lbprofilename',
             'redirectfromport', 
             'httpsredirecturl', 
-            'lbprofilename'
+            'weight',
+            'servicename',
+            'redirurlflags',
+            'newname', 
         ]
-        self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
+        self.assertListEqual(
+                sorted(list(json_attributes - doc_attributes)),
+                sorted(missing_from_documentation))
 
 class LBVserverDeleteEntity(unittest.TestCase):
     @classmethod
@@ -767,3 +778,92 @@ class LBVserverDeleteEntity(unittest.TestCase):
         # Make sure the named entiry does not exist
         count = lbvserver.count_filtered(utils.get_nitro_client(), 'name:%s' % vserver_name)
         self.assertEqual(count,0, msg='%s was not deleted properly' % vserver_name)
+
+class LBVserverSSLCertkeyBindings(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
+        utils.copy_sslcertificate_to_cpx()
+        cls.certkeyname = 'certificate_1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                'name': 'setup monitor',
+                'local_action': {
+                    'operation': 'present',
+                    'module': 'netscaler_ssl_certkey',
+
+                    'certkey': cls.certkeyname,
+                    'cert': 'server.crt',
+                    'key': 'server.key',
+                },
+            }]
+        }]
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+        utils.run_ansible_play(playbook, testcase='Setup_sslcertkey_for_lbvserver')
+
+    def test_certificate(self):
+        vserver_name = 'lb-vserver-1'
+        playbook =  [{
+            'hosts': 'netscaler',
+            'gather_facts': False,
+            'tasks': [{
+                'name': 'setup monitor',
+                'local_action': {
+                    'operation': 'present',
+                    'module': 'netscaler_lb_vserver',
+
+                    'name': vserver_name,
+                    'servicetype': 'SSL',
+                    'ipv46': '192.168.1.1',
+                    'port': 80,
+                    'ssl_certkey': self.certkeyname
+                },
+            }]
+        }]
+
+        playbook[0]['tasks'][0]['local_action'].update(utils.nitro_dict)
+
+        from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
+        client = utils.get_nitro_client()
+        # Create entity
+        result = utils.run_ansible_play(playbook, testcase='Create_lb_vserver_with_ssl_certificate')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the bindings are ok
+        bindings = sslvserver_sslcertkey_binding.get(client, vserver_name)
+        self.assertListEqual([ item.certkeyname for item in bindings ], [ self.certkeyname ], msg='ssl cert bindings differ')
+
+        # Second run
+        result = utils.run_ansible_play(playbook, testcase='Create_lb_vserver_with_ssl_certificate_second_run')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure the bindings are ok
+        bindings = sslvserver_sslcertkey_binding.get(client, vserver_name)
+        self.assertListEqual([ item.certkeyname for item in bindings ], [ self.certkeyname ], msg='ssl cert bindings differ')
+
+        # Delete entity
+        del playbook[0]['tasks'][0]['local_action']['ssl_certkey']
+        result = utils.run_ansible_play(playbook, testcase='Delete_lb_vserver_ssl_cert_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertTrue(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure no bindings exist
+        count = sslvserver_sslcertkey_binding.count(client, vserver_name)
+        self.assertEqual(count, 0, msg='ssl certkey bindings did not get deleted')
+
+        # Delete second run
+        result = utils.run_ansible_play(playbook, testcase='Delete_lb_vserver_ssl_cert_entity')
+        self.assertIsNotNone(result, msg='Result from playbook run did not return valid json')
+        self.assertFalse(result['failed'], msg='Playbook initial returned failed status')
+        self.assertFalse(result['changed'], msg='Changed status was not set correctly')
+
+        # Make sure no bindings exist
+        count = sslvserver_sslcertkey_binding.count(client, vserver_name)
+        self.assertEqual(count, 0, msg='ssl certkey bindings did not get deleted')

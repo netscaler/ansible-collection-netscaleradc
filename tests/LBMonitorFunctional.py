@@ -982,9 +982,19 @@ class LBMonitorMissingArguments(unittest.TestCase):
         json_attributes = set([ item['name'] for item in json_data if item['readonly'] == False])
         doc_attributes = set( yaml_data['options'].keys())
         missing_from_documentation = [
+            'metric',
+            'metrictable',
+            'metricthreshold',
+            'metricweight',
+            'hostname',
+            'kcdaccount',
             'sslprofile',
+            'servicename',
+            'servicegroupname',
         ]
-        self.assertListEqual(list(json_attributes - doc_attributes),missing_from_documentation)
+        self.assertListEqual(
+                sorted(list(json_attributes - doc_attributes)),
+                sorted(missing_from_documentation))
 
 
 class LBMonitorDeleteEntity(unittest.TestCase):
@@ -1036,3 +1046,9 @@ class LBMonitorDeleteEntity(unittest.TestCase):
         # Make sure the named entiry does not exist
         count = lbmonitor.count_filtered(utils.get_nitro_client(), 'monitorname:%s' % monitor_name)
         self.assertEqual(count,0, msg='%s was not deleted properly' % monitor_name)
+
+class LBMonitorServiceBindings(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        utils.ensure_pristine_cpx()
