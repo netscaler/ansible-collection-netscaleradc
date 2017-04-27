@@ -32,6 +32,7 @@ def main():
 
     # Find ansible installation path
     ansible_path = os.path.dirname(os.path.abspath(os.path.realpath(ansible.__file__)))
+    print('Ansible path is %s' % ansible_path)
 
     # Check to see if appropriate directories exist
     module_utils_path = os.path.join(ansible_path, 'module_utils')
@@ -43,10 +44,12 @@ def main():
         sys.exit(1)
 
     extra_modules_path = os.path.join(ansible_path, 'modules', 'extras', 'network')
-    if not os.path.exists(module_utils_path):
+    if not os.path.exists(extra_modules_path):
         print('Extra modules directory (%s) does not exist' % extra_modules_path)
         sys.exit(1)
-    if not os.path.isdir(module_utils_path):
+    print('Ansible extras path is %s' % extra_modules_path)
+
+    if not os.path.isdir(extra_modules_path):
         print('Extra modules path (%s) is not a directory' % extra_modules_path)
         sys.exit(1)
 
