@@ -2,10 +2,6 @@ import unittest
 
 from tests.ServerFunctional import ServerFullInitalValues
 
-from tests.ServiceFunctional import ServiceMonitorBindings
-from tests.ServiceGroupFunctional import ServiceGroupMonitorBindings
-
-
 
 from tests.ServiceGroupFunctional import ServiceGrouptFullInitialValues
 from tests.ServiceFunctional import ServiceFullInitialValues
@@ -14,6 +10,7 @@ from tests.LBMonitorFunctional import LBMonitorFullInitialValues
 from tests.CSPolicyFunctional import CSPolicyFullInitialValues
 from tests.CSActionFunctional import CSActionFullInitialValues
 from tests.CSVserverFunctional import CSVserverFullInitialValues
+from tests.SSLCertkeyFunctional import SSLCertkeyFullInitialValues
 
 
 from tests.ServiceGroupFunctional import ServiceGroupMissingArguments
@@ -33,6 +30,13 @@ from tests.CSPolicyFunctional import CSPolicyDeleteEntity
 from tests.CSVserverFunctional import CSVserverDeleteEntity
 from tests.LBVserverFunctional import LBVserverDeleteEntity
 from tests.LBMonitorFunctional import LBMonitorDeleteEntity
+
+from tests.LBVserverFunctional import LBVserverSSLCertkeyBindings
+from tests.CSVserverFunctional import CSVserverSSLCertkeyBindings
+
+from tests.ServiceFunctional import ServiceMonitorBindings
+from tests.ServiceGroupFunctional import ServiceGroupMonitorBindings
+
 
 
 
