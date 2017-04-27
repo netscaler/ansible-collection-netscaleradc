@@ -25,7 +25,7 @@ def main():
         print('Module utils path (%s) is not a directory' % module_utils_path)
         sys.exit(1)
 
-    extra_modules_path = os.path.join(ansible_path, 'modules', 'extras')
+    extra_modules_path = os.path.join(ansible_path, 'modules', 'extras', 'network')
     if not os.path.exists(module_utils_path):
         print('Extra modules directory (%s) does not exist' % extra_modules_path)
         sys.exit(1)
@@ -33,8 +33,20 @@ def main():
         print('Extra modules path (%s) is not a directory' % extra_modules_path)
         sys.exit(1)
 
+    document_fragments_path = os.path.join(ansible_path, 'utils', 'module_docs_fragments')
+    if not os.path.exists(module_utils_path):
+        print('Documentation fragments directory (%s) does not exist' % document_fragments_path)
+        sys.exit(1)
+    if not os.path.isdir(module_utils_path):
+        print('Documentation fragments directory (%s) is not a directory' % document_fragments_path)
+        sys.exit(1)
+
     here = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
     ansible_modules_sourcedir = os.path.join(here, 'ansible-modules')
+
+    # Copy documentation fragments
+    print('Copying documentation fragments to %s' % document_fragments_path)
+    shutil.copy(os.path.join(here, 'documentation_fragments', 'netscaler.py'), os.path.join(document_fragments_path, 'netscaler.py'))
 
     # Collect files to copy
     ansible_module_files = []
