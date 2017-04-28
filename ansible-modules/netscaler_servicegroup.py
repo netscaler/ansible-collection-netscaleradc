@@ -19,13 +19,11 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
 module: netscaler_service_group
@@ -39,14 +37,53 @@ options:
 
     servicegroupname:
         description:
-            - "Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created."
+            - >
+                Name of the service group.
+                Must begin with an ASCII alphabetic or underscore (_) character, and must contain
+                only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
+                equals (=), and hyphen (-) characters. Can be changed after the name is created.
             - Minimum length = 1
     servicetype:
-        choices: ['HTTP', 'FTP', 'TCP', 'UDP', 'SSL', 'SSL_BRIDGE', 'SSL_TCP', 'DTLS', 'NNTP', 'RPCSVR', 'DNS', 'ADNS', 'SNMP', 'RTSP', 'DHCPRA', 'ANY', 'SIP_UDP', 'SIP_TCP', 'SIP_SSL', 'DNS_TCP', 'ADNS_TCP', 'MYSQL', 'MSSQL', 'ORACLE', 'RADIUS', 'RADIUSListener', 'RDP', 'DIAMETER', 'SSL_DIAMETER', 'TFTP', 'SMPP', 'PPTP', 'GRE', 'SYSLOGTCP', 'SYSLOGUDP', 'FIX', 'SSL_FIX']
+        choices:
+            - 'HTTP'
+            - 'FTP'
+            - 'TCP'
+            - 'UDP'
+            - 'SSL'
+            - 'SSL_BRIDGE'
+            - 'SSL_TCP'
+            - 'DTLS'
+            - 'NNTP'
+            - 'RPCSVR'
+            - 'DNS'
+            - 'ADNS'
+            - 'SNMP'
+            - 'RTSP'
+            - 'DHCPRA'
+            - 'ANY'
+            - 'SIP_UDP'
+            - 'SIP_TCP'
+            - 'SIP_SSL'
+            - 'DNS_TCP'
+            - 'ADNS_TCP'
+            - 'MYSQL'
+            - 'MSSQL'
+            - 'ORACLE'
+            - 'RADIUS'
+            - 'RADIUSListener'
+            - 'RDP'
+            - 'DIAMETER'
+            - 'SSL_DIAMETER'
+            - 'TFTP'
+            - 'SMPP'
+            - 'PPTP'
+            - 'GRE'
+            - 'SYSLOGTCP'
+            - 'SYSLOGUDP'
+            - 'FIX'
+            - 'SSL_FIX'
         description:
             - Protocol used to exchange data with the service.
-            - Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS, RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX
-            
 
     cachetype:
         choices: ['TRANSPARENT', 'REVERSE', 'FORWARD']
@@ -59,7 +96,7 @@ options:
             - Maximum number of simultaneous open connections for the service group.
             - Minimum value = 0
             - Maximum value = 4294967294
-            
+
 
     maxreq:
         description:
@@ -75,7 +112,7 @@ options:
             - Note. Do not set this parameter if you set the Cache Type.
             - Default value = NO
             - Possible values = YES, NO
-            
+
 
     cip:
         choices: ['ENABLED', 'DISABLED']
@@ -85,14 +122,22 @@ options:
 
     cipheader:
         description:
-            - Name of the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If client IP insertion is enabled, and the client IP header is not specified, the value of Client IP Header parameter or the value set by the set ns config command is used as client's IP header name.
+            - >
+                Name of the HTTP header whose value must be set to the IP address of the client.
+                Used with the Client IP parameter. If client IP insertion is enabled, and the client
+                IP header is not specified, the value of Client IP Header parameter or the value set
+                by the set ns config command is used as client's IP header name.
             - Minimum length = 1
-            
+
     usip:
         choices: ['YES', 'NO']
         description:
-            - Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.
-            
+            - >
+                Use client's IP address as the source IP address when initiating connection
+                to the server. With the NO setting, which is the default, a mapped IP (MIP)
+                address or subnet IP (SNIP) address is used as the source IP address to
+                initiate server side connections.
+
     pathmonitor:
         choices: ['YES', 'NO']
         description:
@@ -107,7 +152,10 @@ options:
     useproxyport:
         choices: ['YES', 'NO']
         description:
-            - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.
+            - >
+                Use the proxy port as the source port when initiating connections
+                with the server. With the NO setting, the client-side connection port
+                is used as the source port for the server-side connection.
             - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
             - Possible values = YES, NO
 
@@ -148,12 +196,12 @@ options:
             - Time, in seconds, after which to terminate an idle server connection.
             - Minimum value = 0
             - Maximum value = 31536000
-            
+
     cka:
         choices: ['YES', 'NO']
         description:
             - Enable client keep-alive for the service group.
-            
+
     tcpb:
         choices: ['YES', 'NO']
         description:
@@ -185,7 +233,10 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
+            - >
+                Flush all active transactions associated with all the services in the service
+                group whose state transitions from UP to DOWN. Do not enable this option for
+                applications that must complete their transactions.
             - Default value = ENABLED
 
     tcpprofilename:
@@ -235,7 +286,7 @@ options:
     servicemembers:
         description:
             - A list of dictionaries describing each service member of the service group
-            - The dictionary for each member must contain the following keys. 
+            - The dictionary for each member must contain the following keys.
             - ip. The ip address of the service member
             - port. The port of the service member
             - weight. The weight of this service member
@@ -250,7 +301,6 @@ requirements:
     - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
 # Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
 
@@ -278,7 +328,6 @@ EXAMPLES = '''
       - monitor-1
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
 loglines:
     description: list of logged messages by the module
@@ -320,7 +369,45 @@ def main():
         servicegroupname=dict(type='str'),
         servicetype=dict(
             type='str',
-            choices=[u'HTTP', u'FTP', u'TCP', u'UDP', u'SSL', u'SSL_BRIDGE', u'SSL_TCP', u'DTLS', u'NNTP', u'RPCSVR', u'DNS', u'ADNS', u'SNMP', u'RTSP', u'DHCPRA', u'ANY', u'SIP_UDP', u'SIP_TCP', u'SIP_SSL', u'DNS_TCP', u'ADNS_TCP', u'MYSQL', u'MSSQL', u'ORACLE', u'RADIUS', u'RADIUSListener', u'RDP', u'DIAMETER', u'SSL_DIAMETER', u'TFTP', u'SMPP', u'PPTP', u'GRE', u'SYSLOGTCP', u'SYSLOGUDP', u'FIX', u'SSL_FIX']
+            choices=[
+                'HTTP',
+                'FTP',
+                'TCP',
+                'UDP',
+                'SSL',
+                'SSL_BRIDGE',
+                'SSL_TCP',
+                'DTLS',
+                'NNTP',
+                'RPCSVR',
+                'DNS',
+                'ADNS',
+                'SNMP',
+                'RTSP',
+                'DHCPRA',
+                'ANY',
+                'SIP_UDP',
+                'SIP_TCP',
+                'SIP_SSL',
+                'DNS_TCP',
+                'ADNS_TCP',
+                'MYSQL',
+                'MSSQL',
+                'ORACLE',
+                'RADIUS',
+                'RADIUSListener',
+                'RDP',
+                'DIAMETER',
+                'SSL_DIAMETER',
+                'TFTP',
+                'SMPP',
+                'PPTP',
+                'GRE',
+                'SYSLOGTCP',
+                'SYSLOGUDP',
+                'FIX',
+                'SSL_FIX'
+            ]
         ),
         cachetype=dict(
             type='str',
@@ -547,8 +634,6 @@ def main():
             members.append(member_proxy)
         return members
 
-
-
     def service_group_servicemembers_identical():
         log('service_group_servicemembers_identical')
         service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
@@ -656,14 +741,13 @@ def main():
 
         # Compare key to key
         for key in configured_key_set:
-            configured_proxy=configured_bindings[key]
+            configured_proxy = configured_bindings[key]
             if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                    configured_proxy.servicegroupname !=  actual_bindings[key].servicegroupname]):
+                    configured_proxy.servicegroupname != actual_bindings[key].servicegroupname]):
                 return False
 
         # Fallthrought to success
         return True
-
 
     def sync_monitor_bindings():
         log('Entering sync_monitor_bindings')
@@ -683,7 +767,7 @@ def main():
             log('Name %s' % binding.name)
             log('monitor Name %s' % binding.monitor_name)
             binding.delete(client, binding)
-            #service_lbmonitor_binding.delete(client, binding)
+            # service_lbmonitor_binding.delete(client, binding)
 
         # Apply configured bindings
 
@@ -700,9 +784,9 @@ def main():
                     # TODO: why is the line below necessary?
                     # servicegroup_proxy.update()
                     client.save_config()
-                    #log('Updating service group')
-                    #servicegroup_proxy.update()
-                    #client.save_config()
+                    # log('Updating service group')
+                    # servicegroup_proxy.update()
+                    # client.save_config()
                 module_result['changed'] = True
             elif not service_group_identical():
                 if not module.check_mode:
@@ -749,18 +833,14 @@ def main():
             # Sanity check for operation
             if service_group_exists():
                 module.fail_json(msg='Service group is present', **module_result)
-        module_result['configured_servicegroup'] = {}
-        module_result['configured_servicegroup']['actual_rw_attributes'] = servicegroup_proxy.get_actual_rw_attributes(filter='servicegroupname')
-        module_result['configured_servicegroup']['actual_ro_attributes'] = servicegroup_proxy.get_actual_ro_attributes(filter='servicegroupname')
-        module_result['configured_servicegroup']['missing_rw_attributes'] = list(set(readwrite_attrs) - set(module_result['configured_servicegroup']['actual_rw_attributes'].keys()))
-        module_result['configured_servicegroup']['missing_ro_attributes'] = list(set(readonly_attrs) - set(module_result['configured_servicegroup']['actual_ro_attributes'].keys()))
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
-    module.exit_json(**module_result )
+    module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
