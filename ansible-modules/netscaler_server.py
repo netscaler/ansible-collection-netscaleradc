@@ -19,13 +19,11 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
 module: netscaler_server
@@ -39,20 +37,24 @@ options:
     name:
         description:
             - Name for the server.
-            - "Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters."
+            - >
+                Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric,
+                underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
             - Can be changed after the name is created.
             - Minimum length = 1
 
     ipaddress:
         description:
-            - IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note. If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
-            
+            - >
+                IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server,
+                instead of its IP address, when creating a service. Note. If you do not create a server entry,
+                the server IP address that you enter when you create a service becomes the name of the server.
+
 extends_documentation_fragment: netscaler
 requirements:
     - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
 - name: Connect to netscaler appliance
     local_action:
@@ -68,7 +70,6 @@ EXAMPLES = '''
         ipaddress: 192.168.1.1
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
 loglines:
     description: list of logged messages by the module
@@ -90,7 +91,6 @@ diff:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
 
 
 def main():
@@ -132,13 +132,9 @@ def main():
     client = get_nitro_client(module)
     client.login()
 
-
     # Instantiate Server Config object
     readwrite_attrs = ['name', 'ip', 'ipaddress']
     readonly_attrs = []
-    equivalent_attributes = {
-        'ip': ['ipaddress',]
-    }
 
     server_proxy = ConfigProxy(
         actual=server(),
@@ -165,7 +161,6 @@ def main():
 
     def diff_list():
         return server_proxy.diff_object(server.get_filtered(client, 'name:%s' % module.params['name'])[0]),
-
 
     try:
 
@@ -218,6 +213,7 @@ def main():
     client.logout()
 
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
