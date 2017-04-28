@@ -85,7 +85,7 @@ loglines:
     description: list of logged messages by the module
     returned: always
     type: list
-    sample: ['message 1', 'message 2']
+    sample: "['message 1', 'message 2']"
 
 msg:
     description: Message detailing the failure reason
@@ -97,7 +97,7 @@ diff:
     description: List of differences between the actual configured object and the configuration specified in the module
     returned: failure
     type: dictionary
-    sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
+    sample: "{ 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }"
 '''
 
 from ansible.module_utils.basic import AnsibleModule
