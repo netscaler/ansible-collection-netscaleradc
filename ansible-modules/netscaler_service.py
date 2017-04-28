@@ -39,7 +39,11 @@ options:
 
     name:
         description:
-            - "Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the service has been created."
+            - >
+                Name for the service.
+                Must begin with an ASCII alphabetic or underscore (_) character, and must contain
+                only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
+                equals (=), and hyphen (-) characters. Cannot be changed after the service has been created.
             - Minimum length = 1
 
     ip:
@@ -48,7 +52,44 @@ options:
             - Minimum length = 1
 
     servicetype:
-        choices: ['HTTP', 'FTP', 'TCP', 'UDP', 'SSL', 'SSL_BRIDGE', 'SSL_TCP', 'DTLS', 'NNTP', 'RPCSVR', 'DNS', 'ADNS', 'SNMP', 'RTSP', 'DHCPRA', 'ANY', 'SIP_UDP', 'SIP_TCP', 'SIP_SSL', 'DNS_TCP', 'ADNS_TCP', 'MYSQL', 'MSSQL', 'ORACLE', 'RADIUS', 'RADIUSListener', 'RDP', 'DIAMETER', 'SSL_DIAMETER', 'TFTP', 'SMPP', 'PPTP', 'GRE', 'SYSLOGTCP', 'SYSLOGUDP', 'FIX', 'SSL_FIX']
+        choices:
+            - 'HTTP'
+            - 'FTP'
+            - 'TCP'
+            - 'UDP'
+            - 'SSL'
+            - 'SSL_BRIDGE'
+            - 'SSL_TCP'
+            - 'DTLS'
+            - 'NNTP'
+            - 'RPCSVR'
+            - 'DNS'
+            - 'ADNS'
+            - 'SNMP'
+            - 'RTSP'
+            - 'DHCPRA'
+            - 'ANY'
+            - 'SIP_UDP'
+            - 'SIP_TCP'
+            - 'SIP_SSL'
+            - 'DNS_TCP'
+            - 'ADNS_TCP'
+            - 'MYSQL'
+            - 'MSSQL'
+            - 'ORACLE'
+            - 'RADIUS'
+            - 'RADIUSListener'
+            - 'RDP'
+            - 'DIAMETER'
+            - 'SSL_DIAMETER'
+            - 'TFTP'
+            - 'SMPP'
+            - 'PPTP'
+            - 'GRE'
+            - 'SYSLOGTCP'
+            - 'SYSLOGUDP'
+            - 'FIX'
+            - 'SSL_FIX'
         description:
             - Protocol in which data is exchanged with the service.
 
@@ -57,24 +98,24 @@ options:
             - Port number of the service.
             - Range 1 - 65535
             - in CLI is represented as 65535 in NITRO API
-            
+
     cleartextport:
         description:
             - Port to which clear text data must be sent after the appliance decrypts incoming SSL traffic. Applicable to transparent SSL services.
             - Minimum value = 1
-            
+
 
     cachetype:
         choices: ['TRANSPARENT', 'REVERSE', 'FORWARD']
         description:
             - Cache type supported by the cache server.
-            
+
     maxclient:
         description:
             - Maximum number of simultaneous open connections to the service.
             - Minimum value = 0
             - Maximum value = 4294967294
-            
+
 
     healthmonitor:
         choices: ['YES', 'NO']
@@ -90,7 +131,7 @@ options:
             - Note. Connection requests beyond this value are rejected.
             - Minimum value = 0
             - Maximum value = 65535
-            
+
 
     cacheable:
         choices: ['YES', 'NO']
@@ -102,25 +143,41 @@ options:
     cip:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.
-            
+            - >
+                Before forwarding a request to the service, insert an HTTP header with the client'sIPv4 or IPv6 address as its value.
+                Used if the server needs the client's IP address for security, accounting, or other purposes,
+                and setting the Use Source IP parameter is not a viable option.
+
     cipheader:
         description:
-            - Name for the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the header, the appliance uses the header name specified for the global Client IP Header parameter (the cipHeader parameter in the set ns param CLI command or the Client IP Header parameter in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters). If the global Client IP Header parameter is not specified, the appliance inserts a header with the name "client-ip.".
+            - >
+                Name for the HTTP header whose value must be set to the IP address of the client.
+                Used with the Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the header,
+                the appliance uses the header name specified for the global Client IP Header parameter
+                (the cipHeader parameter in the set ns param CLI command or the Client IP Header parameter
+                 in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters).
+                If the global Client IP Header parameter is not specified, the appliance inserts a header with the name "client-ip.".
             - Minimum length = 1
-            
+
 
     usip:
         choices: ['YES', 'NO']
         description:
-            - Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.
+            - >
+                Use the client's IP address as the source IP address when initiating a connection to the server.
+                When creating a service, if you do not set this parameter, the service inherits the global
+                Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands,
+                        or in the System > Settings > Configure modes > Configure Modes dialog box).
+                However, you can override this setting after you create the service.
 
     useproxyport:
         choices: ['YES', 'NO']
         description:
-            - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.
+            - >
+                Use the proxy port as the source port when initiating connections with the server.
+                With the NO setting, the client-side connection port is used as the source port for the server-side connection.
             - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
-            
+
     sc:
         choices: ['ON', 'OFF']
         description:
@@ -143,47 +200,49 @@ options:
             - Time, in seconds, after which to terminate an idle client connection.
             - Minimum value = 0
             - Maximum value = 31536000
-            
+
     svrtimeout:
         description:
             - Time, in seconds, after which to terminate an idle server connection.
             - Minimum value = 0
             - Maximum value = 31536000
-            
+
     customserverid:
         description:
             - Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.
             - Default value = "None"
-            
+
     cka:
         choices: ['YES', 'NO']
         description:
             - Enable client keep-alive for the service.
             - Possible values = YES, NO
-            
+
     tcpb:
         choices: ['YES', 'NO']
         description:
             - Enable TCP buffering for the service.
             - Possible values = YES, NO
-            
+
     cmp:
         choices: ['YES', 'NO']
         description:
             - Enable compression for the service.
             - Possible values = YES, NO
-            
+
 
     maxbandwidth:
         description:
             - Maximum bandwidth, in Kbps, allocated to the service.
             - Minimum value = 0
             - Maximum value = 4294967287
-            
+
     accessdown:
         choices: ['YES', 'NO']
         description:
-            - Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.
+            - >
+                Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN.
+                If the service is DOWN, and this parameter is disabled, the packets are dropped.
             - Default value = NO
 
     monthreshold:
@@ -195,7 +254,9 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
+            - >
+                Flush all active transactions associated with a service whose state transitions from UP to DOWN.
+                Do not enable this option for applications that must complete their transactions.
             - Default value = ENABLED
 
     tcpprofilename:
@@ -214,7 +275,7 @@ options:
         description:
             - A numerical identifier that can be used by hash based load balancing methods. Must be unique for each service.
             - Minimum value = 1
-            
+
     comment:
         description:
             - Any information about the service.
@@ -234,15 +295,21 @@ options:
     processlocal:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.
+            - >
+                By turning on this option packets destined to a service in a cluster will not under go any steering.
+                Turn this option for single packet request response mode or when the upstream device is performing
+                a proper RSS for connection based distribution.
             - Default value = DISABLED
 
     dnsprofilename:
         description:
-            - Name of the DNS profile to be associated with the service. DNS profile properties will applied to the transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.
+            - >
+                Name of the DNS profile to be associated with the service.
+                DNS profile properties will applied to the transactions processed by a service.
+                This parameter is valid only for ADNS and ADNS-TCP services.
             - Minimum length = 1
             - Maximum length = 127
-            
+
 
     ipaddress:
         description:
@@ -272,7 +339,7 @@ EXAMPLES = '''
 # Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
 
 - name: Setup http service
-  local_action: 
+  local_action:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
@@ -324,18 +391,55 @@ def main():
         from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
         from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
         from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_service_binding import lbmonitor_service_binding
-        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
         python_sdk_imported = False
 
     module_specific_arguments = dict(
-        name=dict( type='str',),
+        name=dict(type='str'),
         ip=dict(type='str'),
         servicetype=dict(
             type='str',
-            choices=[u'HTTP', u'FTP', u'TCP', u'UDP', u'SSL', u'SSL_BRIDGE', u'SSL_TCP', u'DTLS', u'NNTP', u'RPCSVR', u'DNS', u'ADNS', u'SNMP', u'RTSP', u'DHCPRA', u'ANY', u'SIP_UDP', u'SIP_TCP', u'SIP_SSL', u'DNS_TCP', u'ADNS_TCP', u'MYSQL', u'MSSQL', u'ORACLE', u'RADIUS', u'RADIUSListener', u'RDP', u'DIAMETER', u'SSL_DIAMETER', u'TFTP', u'SMPP', u'PPTP', u'GRE', u'SYSLOGTCP', u'SYSLOGUDP', u'FIX', u'SSL_FIX']
+            choices=[
+                'HTTP',
+                'FTP',
+                'TCP',
+                'UDP',
+                'SSL',
+                'SSL_BRIDGE',
+                'SSL_TCP',
+                'DTLS',
+                'NNTP',
+                'RPCSVR',
+                'DNS',
+                'ADNS',
+                'SNMP',
+                'RTSP',
+                'DHCPRA',
+                'ANY',
+                'SIP_UDP',
+                'SIP_TCP',
+                'SIP_SSL',
+                'DNS_TCP',
+                'ADNS_TCP',
+                'MYSQL',
+                'MSSQL',
+                'ORACLE',
+                'RADIUS',
+                'RADIUSListener',
+                'RDP',
+                'DIAMETER',
+                'SSL_DIAMETER',
+                'TFTP',
+                'SMPP',
+                'PPTP',
+                'GRE',
+                'SYSLOGTCP',
+                'SYSLOGUDP',
+                'FIX',
+                'SSL_FIX'
+            ]
         ),
         port=dict(type='int'),
         cleartextport=dict(type='int'),
@@ -438,7 +542,7 @@ def main():
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode = True,
+        supports_check_mode=True,
     )
     module_result = dict(
         changed=False,
@@ -531,7 +635,7 @@ def main():
     service_proxy = ConfigProxy(
         actual=service(),
         client=client,
-        attribute_values_dict = module.params,
+        attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
     )
@@ -621,14 +725,13 @@ def main():
 
         # Compare key to key
         for key in configured_key_set:
-            configured_proxy=configured_bindings[key]
+            configured_proxy = configured_bindings[key]
             if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                    configured_proxy.servicename !=  actual_bindings[key].name]):
+                    configured_proxy.servicename != actual_bindings[key].name]):
                 return False
 
         # Fallthrought to success
         return True
-
 
     def sync_monitor_bindings():
         log('Entering sync_monitor_bindings')
@@ -648,13 +751,12 @@ def main():
             log('Name %s' % binding.name)
             log('monitor Name %s' % binding.monitor_name)
             binding.delete(client, binding)
-            #service_lbmonitor_binding.delete(client, binding)
+            # service_lbmonitor_binding.delete(client, binding)
 
         # Apply configured bindings
 
         for binding in get_configured_monitor_bindings().values():
             binding.add()
-
 
     try:
 
@@ -709,6 +811,7 @@ def main():
 
     client.logout()
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
