@@ -26,7 +26,7 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 DOCUMENTATION = '''
 ---
-module: netscaler_service_group
+module: netscaler_servicegroup
 short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler
