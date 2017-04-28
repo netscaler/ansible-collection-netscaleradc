@@ -19,13 +19,11 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 module: netscaler_lb_monitor
 short_description: Manage load balancing monitors
@@ -1160,7 +1158,6 @@ def main():
         diff_dict = lbmonitor_proxy.diff_object(lbmonitor_list[0])
 
         # Skipping hashed fields since the cannot be compared directly
-        # TODO emulate the hash function for effective equality comparison
         hashed_fields = [
             'password',
             'secondarypassword',

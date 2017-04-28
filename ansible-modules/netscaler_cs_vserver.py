@@ -19,7 +19,6 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}

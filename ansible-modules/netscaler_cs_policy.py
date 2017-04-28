@@ -82,7 +82,6 @@ requirements:
     - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
 - name: Create url cs policy
     local_action:
@@ -98,7 +97,6 @@ EXAMPLES = '''
         url: /example/
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
 loglines:
     description: list of logged messages by the module
