@@ -19,13 +19,11 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
 module: netscaler_ssl_certkey
@@ -42,19 +40,34 @@ options:
 
     certkey:
         description:
-            - "Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key pair is created."
+            - >
+                Name for the certificate and private-key pair.
+                Must begin with an ASCII alphanumeric or underscore (_) character,
+                and must contain only ASCII alphanumeric, underscore, hash (#), period (.),
+                space, colon (:), at (@), equals (=), and hyphen (-) characters.
+                Cannot be changed after the certificate-key pair is created.
             - The following requirement applies only to the NetScaler CLI.
             - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cert" or 'my cert').
             - Minimum length = 1
 
     cert:
         description:
-            - Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
+            - >
+                Name of and, optionally, path to the X509 certificate file that is used
+                to form the certificate-key pair. The certificate file should be present
+                on the appliance's hard-disk drive or solid-state drive.
+                Storing a certificate in any location other than the default might cause
+                inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
             - Minimum length = 1
 
     key:
         description:
-            - Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
+            - >
+                Name of and, optionally, path to the private-key file that is used to form
+                the certificate-key pair. The certificate file should be present on the appliance's
+                hard-disk drive or solid-state drive. Storing a certificate in any location other
+                than the default might cause inconsistency in a high availability setup.
+                /nsconfig/ssl/ is the default path.
             - Minimum length = 1
 
     password:
@@ -89,7 +102,7 @@ options:
         choices: ['ENABLED', 'DISABLED']
         description:
             - Issue an alert when the certificate is about to expire.
-            
+
     notificationperiod:
         description:
             - Time, in number of days, before certificate expiration, at which to generate an alert that the certificate is about to expire.
@@ -108,14 +121,12 @@ options:
             - Minimum length = 1
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
 - name: Connect to netscaler appliance
     netscaler_service_group:
         nsip: "172.17.0.2"
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
 config_updated:
     description: determine if a change in the netscaler configuration happened
@@ -125,14 +136,12 @@ config_updated:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
 
 
 def main():
     from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
-        from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
@@ -171,7 +180,7 @@ def main():
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode = True,
+        supports_check_mode=True,
     )
     module_result = dict(
         changed=False,
@@ -186,8 +195,6 @@ def main():
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
     client.login()
-
-
 
     # Instantiate Service Config object
     readwrite_attrs = [
@@ -227,7 +234,7 @@ def main():
     sslcertkey_proxy = ConfigProxy(
         actual=sslcertkey(),
         client=client,
-        attribute_values_dict = module.params,
+        attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
     )
@@ -236,7 +243,7 @@ def main():
         log('Entering key_exists')
         log('certkey is %s' % module.params['certkey'])
         all_certificates = sslcertkey.get(client)
-        certkeys = [ item.certkey for item in all_certificates ]
+        certkeys = [item.certkey for item in all_certificates]
         if module.params['certkey'] in certkeys:
             return True
         else:
@@ -278,8 +285,6 @@ def main():
             else:
                 module_result['changed'] = False
 
-
-
             # Sanity check for operation
             if not key_exists():
                 module.fail_json(msg='Service does not exist')
@@ -305,6 +310,7 @@ def main():
 
     client.logout()
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
