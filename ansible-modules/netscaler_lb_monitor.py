@@ -771,7 +771,6 @@ def main():
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor import lbmonitor
         from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonbindings_service_binding import lbmonbindings_service_binding
-        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_service_binding import lbmonitor_service_binding
         python_sdk_imported = True
     except ImportError as e:
         python_sdk_imported = False
@@ -1216,7 +1215,6 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'LB')
 
-        #get_actual_servicegroup_bindings()
         if module.params['operation'] == 'present':
             if not lbmonitor_exists():
                 if not module.check_mode:
