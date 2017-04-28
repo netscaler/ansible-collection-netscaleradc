@@ -38,12 +38,18 @@ options:
 
     policyname:
         description:
-            - "Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created."
+            - >
+                Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character,
+                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
+                at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
             - Minimum length = 1
 
     url:
         description:
-            - "URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix]."
+            - >
+                URL string that is matched with the URL of a request.
+                Can contain a wildcard character.
+                Specify the string value in the following format: [[prefix] [*]] [.suffix].
             - Minimum length = 1
             - Maximum length = 208
 
@@ -51,12 +57,16 @@ options:
         description:
             - Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
             - Note
-            - Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows '"<string of 255 characters>" + "<string of 245 characters>"'
+            - >
+                Maximum length of a string literal in the expression is 255 characters.
+                A longer string can be split into smaller strings of up to 255 characters each,
+                and the smaller strings concatenated with the + operator.
+                For example, you can create a 500-character string as follows '"<string of 255 characters>" + "<string of 245 characters>"'
             - The following requirements apply only to the NetScaler CLI
             - If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
             - If the expression itself includes double quotation marks, escape the quotations by using the character.
             - lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
-            
+
     domain:
         description:
             - The domain name. The string value can range to 63 characters.
@@ -109,7 +119,6 @@ diff:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
 
 
 def main():
@@ -137,7 +146,7 @@ def main():
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode = True,
+        supports_check_mode=True,
     )
     module_result = dict(
         changed=False,
@@ -152,8 +161,6 @@ def main():
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
     client.login()
-
-
 
     # Instantiate Service Config object
     readwrite_attrs = [
@@ -177,7 +184,7 @@ def main():
     cspolicy_proxy = ConfigProxy(
         actual=cspolicy(),
         client=client,
-        attribute_values_dict = module.params,
+        attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
     )
@@ -203,7 +210,6 @@ def main():
     def diff_list():
         policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
         return cspolicy_proxy.diff_object(policy_list[0])
-
 
     try:
         ensure_feature_is_enabled(client, 'CS')
@@ -248,6 +254,7 @@ def main():
 
     client.logout()
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
