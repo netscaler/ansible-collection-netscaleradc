@@ -1210,103 +1210,6 @@ def main():
 
         return bindings
 
-    def service_bindings_identical():
-        log('service_bindings_identical')
-
-        # Compare servicegroup keysets
-        configured_servicegroup_bindings = get_configured_servicegroup_bindings()
-        servicegroup_bindings = get_actual_servicegroup_bindings()
-        configured_keyset = set(configured_servicegroup_bindings.keys())
-        service_keyset = set(servicegroup_bindings.keys())
-        log('len %s' % len(configured_keyset ^ service_keyset))
-        if len(configured_keyset ^ service_keyset) > 0:
-            return False
-
-        # Compare servicegroup item to item
-        for key in configured_servicegroup_bindings.keys():
-            conf = configured_servicegroup_bindings[key]
-            serv = servicegroup_bindings[key]
-            log('sg diff %s' % conf.diff_object(serv))
-            if not conf.has_equal_attributes(serv):
-                return False
-
-        # Compare service keysets
-        configured_service_bindings = get_configured_service_bindings()
-        service_bindings = get_actual_service_bindings()
-        configured_keyset = set(configured_service_bindings.keys())
-        service_keyset = set(service_bindings.keys())
-        if len(configured_keyset ^ service_keyset) > 0:
-            return False
-
-        # Compare service item to item
-        for key in configured_service_bindings.keys():
-            conf = configured_service_bindings[key]
-            serv = service_bindings[key]
-            log('s diff %s' % conf.diff_object(serv))
-            if not conf.has_equal_attributes(serv):
-                return False
-
-        # Fallthrough to success
-        return True
-
-    def delete_all_svc_bindings():
-        log('Entering delete_all_bindings')
-        actual_bindings = get_actual_service_bindings()
-        for binding in actual_bindings.values():
-            lbmonitor_service_binding.delete(client, binding)
-
-    def sync_svc_bindings():
-        delete_all_svc_bindings()
-        if 'servicebindings' in module.params and module.params['servicebindings'] is not None:
-            for servicebinding in module.params['servicebindings']:
-                attribute_values_dict = copy.deepcopy(servicebinding)
-                readwrite_attrs = [
-                    'servicename',
-                    'servicegroupname',
-                    'weight',
-                    'monitorname',
-                ]
-                attribute_values_dict['monitorname'] = module.params['monitorname']
-                readonly_attrs = []
-                binding_proxy = ConfigProxy(
-                    actual=lbmonitor_service_binding(),
-                    client=client,
-                    attribute_values_dict=attribute_values_dict,
-                    readwrite_attrs=readwrite_attrs,
-                    readonly_attrs=readonly_attrs,
-                )
-                binding_proxy.add()
-
-    def get_configured_servicegroup_bindings():
-
-        readwrite_attrs = [
-            'servicegroupname',
-            'port',
-            'state',
-            'hashid',
-            'serverid',
-            'customserverid',
-            'weight',
-            'passive',
-            'monstate'
-        ]
-        readonly_attrs = []
-
-        configured_bindings = {}
-        if 'servicegroupbindings' in module.params and module.params['servicegroupbindings'] is not None:
-            for binding in module.params['servicegroupbindings']:
-                attribute_values_dict = copy.deepcopy(binding)
-                attribute_values_dict['monitor_name'] = module.params['monitorname']
-                key = binding['servicegroupname'].strip()
-                configured_bindings[key] = ConfigProxy(
-                    actual=servicegroup_lbmonitor_binding(),
-                    client=client,
-                    attribute_values_dict=attribute_values_dict,
-                    readwrite_attrs=readwrite_attrs,
-                    readonly_attrs=readonly_attrs,
-                )
-        return configured_bindings
-
     def diff_list():
         return lbmonitor_proxy.diff_object(lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])[0]),
 
@@ -1320,7 +1223,6 @@ def main():
                     log('Adding monitor')
                     lbmonitor_proxy.add()
                     lbmonitor_proxy.update()
-                    sync_svc_bindings()
                     client.save_config()
                 module_result['changed'] = True
             elif not lbmonitor_identical():

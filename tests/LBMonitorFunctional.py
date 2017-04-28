@@ -1046,9 +1046,3 @@ class LBMonitorDeleteEntity(unittest.TestCase):
         # Make sure the named entiry does not exist
         count = lbmonitor.count_filtered(utils.get_nitro_client(), 'monitorname:%s' % monitor_name)
         self.assertEqual(count,0, msg='%s was not deleted properly' % monitor_name)
-
-class LBMonitorServiceBindings(unittest.TestCase):
-
-    @classmethod
-    def setUpClass(cls):
-        utils.ensure_pristine_cpx()
