@@ -21,8 +21,10 @@
 
 import json
 
+
 class ConfigProxyError(Exception):
     pass
+
 
 class ConfigProxy(object):
 
@@ -36,7 +38,6 @@ class ConfigProxy(object):
 
         # ansible attribute_values_dict
         self.attribute_values_dict = attribute_values_dict
-
 
         self.readwrite_attrs = readwrite_attrs
         self.readonly_attrs = readonly_attrs
@@ -56,7 +57,6 @@ class ConfigProxy(object):
                     attribute_value = json.JSONEncoder().encode(attribute_value).strip('"')
                 setattr(self.actual, attribute, attribute_value)
 
-
     def __getattr__(self, name):
         if name in self.attribute_values_dict:
             return self.attribute_values_dict[name]
@@ -70,15 +70,12 @@ class ConfigProxy(object):
         pass
 
     def add(self):
-        #self._copy_attributes_to_actual()
         self.actual.__class__.add(self.client, self.actual)
 
     def update(self):
-        #self._copy_attributes_to_actual()
         return self.actual.__class__.update(self.client, self.actual)
 
     def delete(self):
-        #self._copy_attributes_to_actual()
         self.actual.__class__.delete(self.client, self.actual)
 
     def get(self, *args, **kwargs):
@@ -109,7 +106,6 @@ class ConfigProxy(object):
             else:
                 diff_dict[attribute] = 'missing from other'
                 continue
-
 
             # Compare values
             param_type = self.attribute_values_dict[attribute].__class__
@@ -156,13 +152,12 @@ class ConfigProxy(object):
         return list(set(self.readonly_attrs) - set(self.get_actual_ro_attributes().keys()))
 
 
-
-
 def ensure_feature_is_enabled(client, feature_str):
     enabled_features = client.get_enabled_features()
     if feature_str not in enabled_features:
         client.enable_features(feature_str)
         client.save_config()
+
 
 def get_nitro_client(module):
     from nssrc.com.citrix.netscaler.nitro.service.nitro_service import nitro_service
@@ -172,6 +167,7 @@ def get_nitro_client(module):
     client.timeout = float(module.params['nitro_timeout'])
     client.certvalidation = module.params['ssl_cert_validation']
     return client
+
 
 netscaler_common_arguments = dict(
     nsip=dict(required=True),
@@ -188,6 +184,7 @@ netscaler_common_arguments = dict(
 
 
 loglines = []
+
 
 def log(msg):
     loglines.append(msg)
