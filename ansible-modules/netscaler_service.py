@@ -39,7 +39,7 @@ options:
 
     name:
         description:
-            - >
+            - >-
                 Name for the service.
                 Must begin with an ASCII alphabetic or underscore (_) character, and must contain
                 only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
@@ -143,19 +143,19 @@ options:
     cip:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Before forwarding a request to the service, insert an HTTP header with the client'sIPv4 or IPv6 address as its value.
                 Used if the server needs the client's IP address for security, accounting, or other purposes,
                 and setting the Use Source IP parameter is not a viable option.
 
     cipheader:
         description:
-            - >
+            - >-
                 Name for the HTTP header whose value must be set to the IP address of the client.
                 Used with the Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the header,
                 the appliance uses the header name specified for the global Client IP Header parameter
                 (the cipHeader parameter in the set ns param CLI command or the Client IP Header parameter
-                 in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters).
+                in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters).
                 If the global Client IP Header parameter is not specified, the appliance inserts a header with the name "client-ip.".
             - Minimum length = 1
 
@@ -163,17 +163,17 @@ options:
     usip:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use the client's IP address as the source IP address when initiating a connection to the server.
                 When creating a service, if you do not set this parameter, the service inherits the global
                 Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands,
-                        or in the System > Settings > Configure modes > Configure Modes dialog box).
+                or in the System > Settings > Configure modes > Configure Modes dialog box).
                 However, you can override this setting after you create the service.
 
     useproxyport:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use the proxy port as the source port when initiating connections with the server.
                 With the NO setting, the client-side connection port is used as the source port for the server-side connection.
             - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
@@ -240,7 +240,7 @@ options:
     accessdown:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN.
                 If the service is DOWN, and this parameter is disabled, the packets are dropped.
             - Default value = NO
@@ -254,7 +254,7 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Flush all active transactions associated with a service whose state transitions from UP to DOWN.
                 Do not enable this option for applications that must complete their transactions.
             - Default value = ENABLED
@@ -295,7 +295,7 @@ options:
     processlocal:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 By turning on this option packets destined to a service in a cluster will not under go any steering.
                 Turn this option for single packet request response mode or when the upstream device is performing
                 a proper RSS for connection based distribution.
@@ -303,7 +303,7 @@ options:
 
     dnsprofilename:
         description:
-            - >
+            - >-
                 Name of the DNS profile to be associated with the service.
                 DNS profile properties will applied to the transactions processed by a service.
                 This parameter is valid only for ADNS and ADNS-TCP services.

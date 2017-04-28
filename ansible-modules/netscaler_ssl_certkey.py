@@ -40,7 +40,7 @@ options:
 
     certkey:
         description:
-            - >
+            - >-
                 Name for the certificate and private-key pair.
                 Must begin with an ASCII alphanumeric or underscore (_) character,
                 and must contain only ASCII alphanumeric, underscore, hash (#), period (.),
@@ -52,7 +52,7 @@ options:
 
     cert:
         description:
-            - >
+            - >-
                 Name of and, optionally, path to the X509 certificate file that is used
                 to form the certificate-key pair. The certificate file should be present
                 on the appliance's hard-disk drive or solid-state drive.
@@ -62,7 +62,7 @@ options:
 
     key:
         description:
-            - >
+            - >-
                 Name of and, optionally, path to the private-key file that is used to form
                 the certificate-key pair. The certificate file should be present on the appliance's
                 hard-disk drive or solid-state drive. Storing a certificate in any location other

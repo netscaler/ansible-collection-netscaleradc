@@ -39,7 +39,7 @@ options:
 
     name:
         description:
-            - >
+            - >-
                 Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore (_) character,
                 and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=),
                 and hyphen (-) characters.
@@ -49,7 +49,7 @@ options:
 
     td:
         description:
-            - >
+            - >-
                 Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
                 If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
             - Minimum value = 0
@@ -94,16 +94,16 @@ options:
 
     ippattern:
         description:
-            - >
+            - >-
                 IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server.
                 The IP Mask parameter specifies which part of the destination IP address is matched against the pattern.
                 Mutually exclusive with the IP Address parameter.
-            - >
+            - >-
                 For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is 255.255.240.0 (a forward mask),
                 the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern.
                 The virtual server accepts requests with IP addresses that range from 198.51.96.1 to 198.51.111.254.
                 You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
-            - >
+            - >-
                 If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected,
                 and the associated virtual server processes the request. For example, if the virtual servers, vs1 and vs2,
                 have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255,
@@ -113,7 +113,7 @@ options:
 
     ipmask:
         description:
-            - >
+            - >-
                 IP mask, in dotted decimal notation, for the IP Pattern parameter.
                 Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255).
                 Accordingly, the mask specifies whether the first n bits or the last n bits of the destination
@@ -122,7 +122,7 @@ options:
 
     range:
         description:
-            - >
+            - >-
                 Number of consecutive IP addresses, starting with the address specified by the IP Address parameter,
                 to include in a range of addresses assigned to this virtual server.
             - Default value = 1
@@ -139,7 +139,7 @@ options:
     stateupdate:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Enable state updates for a specific content switching virtual server.
                 By default, the Content Switching virtual server is always UP, regardless
                 of the state of the Load Balancing virtual servers bound to it.
@@ -155,7 +155,7 @@ options:
     cacheable:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use this option to specify whether a virtual server, used for load balancing or content switching,
                 routes requests to the cache redirection virtual server before sending it to the configured servers.
             - Default value = NO
@@ -164,7 +164,7 @@ options:
     redirecturl:
         description:
             - URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either HTTP or SSL.
-            - >
+            - >-
                 Caution. Make sure that the domain in the URL does not match the domain specified for a content switching policy.
                 If it does, requests are continuously redirected to the unavailable virtual server.
             - Minimum length = 1
@@ -182,7 +182,7 @@ options:
     precedence:
         choices: ['RULE', 'URL']
         description:
-            - >
+            - >-
                 Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual server.
                 With the default (RULE) setting, incoming requests are evaluated against the rule-based content switching policies.
                 If none of the rules match, the URL in the request is evaluated against the URL-based content switching policies.
@@ -191,7 +191,7 @@ options:
     casesensitive:
         choices: ['ON', 'OFF']
         description:
-            - >
+            - >-
                 Consider case in URLs (for policies that use URLs instead of RULES).
                 For example, with the ON setting, the URLs /a/1.html and /A/1.HTML
                 are treated differently and can have different targets (set by content switching policies).
@@ -201,7 +201,7 @@ options:
     somethod:
         choices: ['CONNECTION', 'DYNAMICCONNECTION', 'BANDWIDTH', 'HEALTH', 'NONE']
         description:
-            - >
+            - >-
                 Type of spillover used to divert traffic to the backup virtual server when the
                 primary virtual server reaches the spillover threshold. Connection spillover is
                 based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.
@@ -221,7 +221,7 @@ options:
 
     sothreshold:
         description:
-            - >
+            - >-
                 Depending on the spillover method, the maximum number of connections
                 or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.
             - Minimum value = 1
@@ -241,7 +241,7 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Flush all active transactions associated with a virtual server whose state
                 transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
             - Default value = ENABLED
@@ -258,7 +258,7 @@ options:
             - Insert the virtual server's VIP address and port number in the request header. Available values function as follows.
             - VIPADDR - Header contains the vserver's IP address and port number without any translation.
             - OFF - The virtual IP and port header insertion option is disabled.
-            - >
+            - >-
                 V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address
                 of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.
 
@@ -288,7 +288,7 @@ options:
 
     listenpolicy:
         description:
-            - >
+            - >-
                 String specifying the listen policy for the content switching virtual server.
                 Can be either the name of an existing expression or an in-line expression.
             - Default value = "NONE"
@@ -308,21 +308,21 @@ options:
     push:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Process traffic with the push virtual server that is bound to this content switching virtual
                 server (specified by the Push VServer parameter). The service type of the push virtual server should be either HTTP or SSL.
             - Default value = DISABLED
 
     pushvserver:
         description:
-            - >
+            - >-
                 Name of the load balancing virtual server, of type PUSH or SSL_PUSH,
                 to which the server pushes updates received on the client-facing load balancing virtual server.
             - Minimum length = 1
 
     pushlabel:
         description:
-            - >
+            - >-
                 Expression for extracting the label from the response received from server.
                 This string can be either an existing rule name or an inline expression.
                 The service type of the virtual server should be either HTTP or SSL.
@@ -342,7 +342,7 @@ options:
 
     httpprofilename:
         description:
-            - >
+            - >-
                 Name of the HTTP profile containing HTTP configuration settings for the virtual server.
                 The service type of the virtual server should be either HTTP or SSL.
             - Minimum length = 1
@@ -429,7 +429,7 @@ options:
 
     dnsprofilename:
         description:
-            - >
+            - >-
                 Name of the DNS profile to be associated with the VServer.
                 DNS profile properties will applied to the transactions processed by a VServer.
                 This parameter is valid only for DNS and DNS-TCP VServers.

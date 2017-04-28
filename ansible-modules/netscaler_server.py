@@ -37,7 +37,7 @@ options:
     name:
         description:
             - Name for the server.
-            - >
+            - >-
                 Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric,
                 underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
             - Can be changed after the name is created.
@@ -45,7 +45,7 @@ options:
 
     ipaddress:
         description:
-            - >
+            - >-
                 IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server,
                 instead of its IP address, when creating a service. Note. If you do not create a server entry,
                 the server IP address that you enter when you create a service becomes the name of the server.

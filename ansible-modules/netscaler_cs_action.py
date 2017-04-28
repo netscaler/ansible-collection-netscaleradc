@@ -40,7 +40,7 @@ options:
 
     name:
         description:
-            - >
+            - >-
                 Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character,
                 and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@),
                 equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.

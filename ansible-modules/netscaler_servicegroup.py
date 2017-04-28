@@ -37,7 +37,7 @@ options:
 
     servicegroupname:
         description:
-            - >
+            - >-
                 Name of the service group.
                 Must begin with an ASCII alphabetic or underscore (_) character, and must contain
                 only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
@@ -122,7 +122,7 @@ options:
 
     cipheader:
         description:
-            - >
+            - >-
                 Name of the HTTP header whose value must be set to the IP address of the client.
                 Used with the Client IP parameter. If client IP insertion is enabled, and the client
                 IP header is not specified, the value of Client IP Header parameter or the value set
@@ -132,7 +132,7 @@ options:
     usip:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use client's IP address as the source IP address when initiating connection
                 to the server. With the NO setting, which is the default, a mapped IP (MIP)
                 address or subnet IP (SNIP) address is used as the source IP address to
@@ -152,7 +152,7 @@ options:
     useproxyport:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use the proxy port as the source port when initiating connections
                 with the server. With the NO setting, the client-side connection port
                 is used as the source port for the server-side connection.
@@ -233,7 +233,7 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Flush all active transactions associated with all the services in the service
                 group whose state transitions from UP to DOWN. Do not enable this option for
                 applications that must complete their transactions.

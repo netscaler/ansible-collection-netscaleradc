@@ -38,10 +38,10 @@ options:
 
     name:
         description:
-            - >
-            Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character,
-            and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
-            at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+            - >-
+                Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character,
+                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
+                at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
             - Minimum length = 1
 
     servicetype:
@@ -87,17 +87,17 @@ options:
 
     ippattern:
         description:
-            - >
+            - >-
                 IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server.
                 The IP Mask parameter specifies which part of the destination IP address is matched against the pattern.
                 Mutually exclusive with the IP Address parameter.
-            - >
+            - >-
                 For example, if the IP pattern assigned to the virtual server is 198.51.100.0
                 and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses
                 are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses
                 that range from 198.51.96.1 to 198.51.111.254.
                 You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
-            - >
+            - >-
                 If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected,
                 and the associated virtual server processes the request.
                 For example, if virtual servers vs1 and vs2 have the same IP pattern, 0.0.100.128, but different
@@ -107,7 +107,7 @@ options:
 
     ipmask:
         description:
-            - >
+            - >-
                 IP mask, in dotted decimal notation, for the IP Pattern parameter.
                 Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255).
                 Accordingly, the mask specifies whether the first n bits or the last n bits of the destination
@@ -122,13 +122,13 @@ options:
 
     range:
         description:
-            - >
+            - >-
                 Number of IP addresses that the appliance must generate and assign to the virtual server.
                 The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses.
                 The IP addresses are generated automatically, as follows
             - For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.
             - If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.
-            - >
+            - >-
                 Note.
                 The Range parameter assigns multiple IP addresses to one virtual server.
                 To generate an array of virtual servers, each of which owns only one IP address,
@@ -156,16 +156,16 @@ options:
         description:
             - Type of persistence for the virtual server. Available settings function as follows
             - SOURCEIP - Connections from the same client IP address belong to the same persistence session.
-            - >
+            - >-
                 COOKIEINSERT - Connections that have the same HTTP Cookie,
                 inserted by a Set-Cookie directive from a server, belong to the same persistence session.
             - SSLSESSION - Connections that have the same SSL Session ID belong to the same persistence session.
-            - >
+            - >-
                 CUSTOMSERVERID - Connections with the same server ID form part of the same session.
                 For this persistence type, set the Server ID (CustomServerID) parameter
                 for each service and configure the Rule parameter to identify the server ID in a request.
             - RULE - All connections that match a user defined rule belong to the same persistence session.
-            - >
+            - >-
                 URLPASSIVE - Requests that have the same server ID in the URL query belong to the same persistence session.
                 The server ID is the hexadecimal representation of the IP address and port of the service to which the request
                 must be forwarded. This persistence type requires a rule to identify the server ID in the request.
@@ -217,7 +217,7 @@ options:
             - 'STATICPROXIMITY'
         description:
             - Load balancing method. The available settings function as follows
-            - >
+            - >-
                 ROUNDROBIN - Distribute requests in rotation, regardless of the load.
                 Weights can be assigned to services to enforce weighted round robin distribution.
             - LEASTCONNECTION (default) - Select the service with the fewest connections.
@@ -225,24 +225,24 @@ options:
             - LEASTBANDWIDTH - Select the service currently handling the least traffic.
             - LEASTPACKETS - Select the service currently serving the lowest number of packets per second.
             - CUSTOMLOAD - Base service selection on the SNMP metrics obtained by custom load monitors.
-            - >
+            - >-
                 LRTM - Select the service with the lowest response time.
                 Response times are learned through monitoring probes.
                 This method also takes the number of active connections into account.
-            - >
+            - >-
                 Also available are a number of hashing methods,
                 in which the appliance extracts a predetermined portion of the request,
                 creates a hash of the portion, and then checks whether any previous requests had the same hash value.
                 If it finds a match, it forwards the request to the service that served those previous requests.
                 Following are the hashing methods
             - URLHASH - Create a hash of the request URL (or part of the URL).
-            - >
+            - >-
                 DOMAINHASH - Create a hash of the domain name in the request (or part of the domain name).
                 The domain name is taken from either the URL or the Host header. If the domain name appears in both locations,
                 the URL is preferred. If the request does not contain a domain name, the load balancing method defaults to LEASTCONNECTION.
             - DESTINATIONIPHASH - Create a hash of the destination IP address in the IP header.
             - SOURCEIPHASH - Create a hash of the source IP address in the IP header.
-            - >
+            - >-
                 TOKEN - Extract a token from the request, create a hash of the token,
                 and then select the service to which any previous requests with the same token hash value were sent.
             - SRCIPDESTIPHASH - Create a hash of the string obtained by concatenating the source IP address and destination IP address in the IP header.
@@ -264,7 +264,7 @@ options:
 
     v6netmasklen:
         description:
-            - >
+            - >-
                 Number of bits to consider in an IPv6 destination or source IP address,
                 for creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH load balancing methods.
             - Default value = 128
@@ -281,14 +281,14 @@ options:
 
     cookiename:
         description:
-            - >
+            - >-
                 Use this parameter to specify the cookie name for COOKIE peristence type.
                 It specifies the name of cookie with a maximum of 32 characters.
                 If not specified, cookie name is internally generated.
 
     listenpolicy:
         description:
-            - >
+            - >-
                 Default syntax expression identifying traffic accepted by the virtual server.
                 Can be either an expression (for example, CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24) or the name of a named expression.
                 In the above example, the virtual server accepts all requests whose destination IP address is in the 192.0.2.0/24 subnet.
@@ -296,7 +296,7 @@ options:
 
     listenpriority:
         description:
-            - >
+            - >-
                 Integer specifying the priority of the listen policy.
                 A higher number specifies a lower priority.
                 If a request matches the listen policies of more than one virtual server the virtual server
@@ -340,10 +340,10 @@ options:
         description:
             - Redirection mode for load balancing. Available settings function as follows
             - IP - Before forwarding a request to a server, change the destination IP address to the server's IP address.
-            - >
+            - >-
                 MAC - Before forwarding a request to a server, change the destination MAC address to the server's MAC address.
                 The destination IP address is not changed. MAC-based redirection mode is used mostly in firewall load balancing deployments.
-            - >
+            - >-
                 IPTUNNEL - Perform IP-in-IP encapsulation for client IP packets.
                 In the outer IP headers, set the destination IP address to the IP address of the server
                 and the source IP address to the subnet IP (SNIP). The client IP packets are not modified.
@@ -360,7 +360,7 @@ options:
 
     datalength:
         description:
-            - >
+            - >-
                 Length of the token to be extracted from the data segment of an incoming packet,
                 for use in the token method of load balancing. The length of the token, specified in bytes,
                 must not be greater than 24 KB. Applicable to virtual servers of type TCP.
@@ -369,7 +369,7 @@ options:
 
     dataoffset:
         description:
-            - >
+            - >-
                 Offset to be considered when extracting a token from the TCP payload.
                 Applicable to virtual servers, of type TCP, using the token method of load balancing.
                 Must be within the first 24 KB of the TCP payload.
@@ -379,7 +379,7 @@ options:
     sessionless:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Perform load balancing on a per-packet basis, without establishing sessions.
                 Recommended for load balancing of intrusion detection system (IDS) servers and scenarios
                 involving direct server return (DSR), where session information is unnecessary.
@@ -389,15 +389,15 @@ options:
     connfailover:
         choices: ['DISABLED', 'STATEFUL', 'STATELESS']
         description:
-            - >
+            - >-
                 Mode in which the connection failover feature must operate for the virtual server.
                 After a failover, established TCP connections and UDP packet flows are kept active
                 and resumed on the secondary appliance. Clients remain connected to the same servers.
                 Available settings function as follows.
-            - >
+            - >-
                 STATEFUL - The primary appliance shares state information with the secondary appliance,
                 in real time, resulting in some runtime processing overhead.
-            - >
+            - >-
                 STATELESS - State information is not shared, and the new primary appliance tries to re-create
                 the packet flow on the basis of the information contained in the packets it receives.
             - DISABLED - Connection failover does not occur.
@@ -406,7 +406,7 @@ options:
     redirurl:
         description:
             - URL to which to redirect traffic if the virtual server becomes unavailable.
-            - >
+            - >-
                 WARNING! Make sure that the domain in the URL does not match the domain specified for a content switching policy.
                 If it does, requests are continuously redirected to the unavailable virtual server.
             - Minimum length = 1
@@ -414,7 +414,7 @@ options:
     cacheable:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Route cacheable requests to a cache redirection virtual server.
                 The load balancing virtual server can forward requests only to a transparent cache redirection virtual server
                 that has an IP address and port combination of *:80, so such a cache redirection
@@ -432,12 +432,12 @@ options:
         description:
             - Type of threshold that, when exceeded, triggers spillover. Available settings function as follows
             - CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.
-            - >
+            - >-
                 DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server exceeds
                 the sum of the maximum client (Max Clients) settings for bound services.
                 Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of bound services.
             - BANDWIDTH - Spillover occurs when the bandwidth consumed by the virtual server's incoming and outgoing traffic exceeds the threshold.
-            - >
+            - >-
                 HEALTH - Spillover occurs when the percentage of weights of the services that are UP drops below the threshold.
                 For example, if services svc1, svc2, and svc3 are bound to a virtual server,
                 with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and svc3 transition to DOWN.
@@ -458,7 +458,7 @@ options:
 
     healththreshold:
         description:
-            - >
+            - >-
                 Threshold in percent of active services below which vserver state is made down.
                 If this threshold is 0, vserver state will be up even if one bound service is up.
             - Default value = 0
@@ -468,7 +468,7 @@ options:
     sothreshold:
 
         description:
-            - >
+            - >-
                 Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method,
                 a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage
                 for the HEALTH method (do not enter the percentage symbol).
@@ -489,7 +489,7 @@ options:
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN.
                 Do not enable this option for applications that must complete their transactions.
             - Default value = ENABLED
@@ -503,17 +503,17 @@ options:
     insertvserveripport:
         choices: ['OFF', 'VIPADDR', 'V6TOV4MAPPING']
         description:
-            - >
+            - >-
                 Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server.
                 The format of the header is <vipHeader>: <virtual server IP address>_<port number >, where vipHeader is the name
                 that you specify for the header.
                 If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ])
                 to separate it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address,
                 the value of this parameter determines which IP address is inserted in the header, as follows
-            - >
+            - >-
                 VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether
                 the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.
-            - >
+            - >-
                 V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server's IPv6 address.
                 If a mapped IPv4 address is not configured, insert the IPv6 address.
             - OFF - Disable header insertion.
@@ -526,7 +526,7 @@ options:
 
     authenticationhost:
         description:
-            - >
+            - >-
                 Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication.
                 Make sure that the Authentication parameter is set to ENABLED.
             - Minimum length = 3
@@ -558,7 +558,7 @@ options:
 
     pushvserver:
         description:
-            - >
+            - >-
                 Name of the load balancing virtual server, of type PUSH or SSL_PUSH,
                 to which the server pushes updates received on the load balancing virtual server that you are configuring.
             - Minimum length = 1
@@ -599,7 +599,7 @@ options:
     l2conn:
         choices: ['ON', 'OFF']
         description:
-            - >
+            - >-
                 Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple
                 (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection.
                 Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
@@ -614,7 +614,7 @@ options:
     mssqlserverversion:
         choices: ['70', '2000', '2000SP1', '2005', '2008', '2008R2', '2012', '2014']
         description:
-            - >
+            - >-
                 For a load balancing virtual server of type MSSQL, the Microsoft SQL Server version.
                 Set this parameter if you expect some clients to run a version different from the version of the database.
                 This setting provides compatibility between the client-side and server-side connections by ensuring that
@@ -648,7 +648,7 @@ options:
 
     netprofile:
         description:
-            - >
+            - >-
                 Name of the network profile to associate with the virtual server.
                 If you set this parameter, the virtual server uses only the IP addresses in the network profile
                 as source IP addresses when initiating connections with servers.
@@ -658,19 +658,19 @@ options:
     icmpvsrresponse:
         choices: ['PASSIVE', 'ACTIVE']
         description:
-            - >
+            - >-
                 How the NetScaler appliance responds to ping requests received for an IP address that is common
                 to one or more virtual servers. Available settings function as follows
             -  If set to PASSIVE on all the virtual servers that share the IP address, the appliance always responds to the ping requests.
-            -  >
+            -  >-
                 If set to ACTIVE on all the virtual servers that share the IP address,
                 the appliance responds to the ping requests if at least one of the virtual servers is UP.
                 Otherwise, the appliance does not respond.
-            -  >
+            -  >-
                 If set to ACTIVE on some virtual servers and PASSIVE on the others,
                 the appliance responds if at least one virtual server with the ACTIVE setting is UP.
                 Otherwise, the appliance does not respond.
-            - >
+            - >-
                 Note. This parameter is available at the virtual server level.
                 A similar parameter, ICMP Response, is available at the IP address level, for IPv4 addresses of type VIP.
                 To set that parameter, use the add ip command in the CLI or the Create IP dialog box in the GUI.
@@ -679,23 +679,23 @@ options:
     rhistate:
         choices: ['PASSIVE', 'ACTIVE']
         description:
-            - >
+            - >-
                 Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the
                 VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD,
                 the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE)
                 settings on the virtual servers associated with the VIP address.
             -  If you set RHI STATE to PASSIVE on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.
-            -  >
+            -  >-
                 If you set RHI STATE to ACTIVE on all virtual servers, the NetScaler ADC advertises the route for the VIP address
                 if at least one of the associated virtual servers is in UP state.
-            -  >
+            -  >-
                 If you set RHI STATE to ACTIVE on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address
                 if at least one of the associated virtual servers, whose RHI STATE set to ACTIVE, is in UP state.
             - Default value = PASSIVE
 
     newservicerequest:
         description:
-            - >
+            - >-
                 Number of requests, or percentage of the load on existing services,
                 by which to increase the load on a new service at each interval in slow-start mode.
                 A non-zero value indicates that slow-start is applicable.
@@ -712,7 +712,7 @@ options:
 
     newservicerequestincrementinterval:
         description:
-            - >
+            - >-
                 Interval, in seconds, between successive increments in the load on a new service or a service
                 whose state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.
             - Default value = 0
@@ -769,7 +769,7 @@ options:
     recursionavailable:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on.
                 Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.
             - Default value = NO
@@ -777,7 +777,7 @@ options:
     processlocal:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 By turning on this option packets destined to a vserver in a cluster will not under go any steering.
                 Turn this option for single packet request response mode or when the upstream device is performing
                 a proper RSS for connection based distribution.
@@ -786,7 +786,7 @@ options:
 
     dnsprofilename:
         description:
-            - >
+            - >-
                 Name of the DNS profile to be associated with the VServer.
                 DNS profile properties will be applied to the transactions processed by a VServer.
                 This parameter is valid only for DNS and DNS-TCP VServers.

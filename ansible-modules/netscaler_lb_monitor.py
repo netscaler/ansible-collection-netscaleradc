@@ -38,10 +38,11 @@ version_added: 2.2.3
 options:
     monitorname:
         description:
-            - >
+            - >-
                 Name for the monitor. Must begin with an ASCII alphanumeric or underscore (_) character,
                 and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
                 at (@), equals (=), and hyphen (-) characters.
+
             - Minimum length = 1
 
     type:
@@ -99,17 +100,17 @@ options:
     action:
         choices: ['NONE', 'LOG', 'DOWN']
         description:
-            - >
+            - >-
                 Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE)
                 indicates that the service is down. A service monitored by an inline monitor is considered DOWN
                 if the response code is not one of the codes that have been specified for the Response Code parameter.
             - Available settings function as follows.
-            - >
+            - >-
                 NONE - Do not take any action. However, the show service command and the show
                 lb monitor command indicate the total number of responses that were checked and
                 the number of consecutive error responses received after the last successful probe.
             -  LOG - Log the event in NSLOG or SYSLOG.
-            -  >
+            -  >-
                 DOWN - Mark the service as being down, and then do not direct any traffic to the service
                 until the configured down time has expired. Persistent connections to the service are
                 terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
@@ -117,7 +118,7 @@ options:
 
     respcode:
         description:
-            - >
+            - >-
                 Response codes for which to mark the service as UP.
                 For any other response code, the action performed depends on the monitor type.
                 HTTP monitors and RADIUS monitors mark the service as DOWN, while HTTP-INLINE
@@ -172,7 +173,7 @@ options:
     querytype:
         choices: ['Address', 'Zone', 'AAAA']
         description:
-            - >
+            - >-
                 Type of DNS record for which to send monitoring queries.
                 Set to Address for querying A records, AAAA for querying AAAA records,
                 and Zone for querying the SOA record.
@@ -196,7 +197,7 @@ options:
 
     username:
         description:
-            - >
+            - >-
                 User name with which to probe the RADIUS, NNTP, FTP, FTP-EXTENDED,
                 MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC, CITRIX-WI-EXTENDED,
                 CITRIX-XNC or CITRIX-XDM server.
@@ -204,7 +205,7 @@ options:
 
     password:
         description:
-            - >
+            - >-
                 Password that is required for logging on to the RADIUS, NNTP, FTP,
                 FTP-EXTENDED, MYSQL, MSSQL, POP3, CITRIX-AG, CITRIX-XD-DDC,
                 CITRIX-WI-EXTENDED, CITRIX-XNC-ECV or CITRIX-XDM server.
@@ -217,7 +218,7 @@ options:
 
     logonpointname:
         description:
-            - >
+            - >-
                 Name of the logon point that is configured for the Citrix Access Gateway Advanced Access Control software.
                 Required if you want to monitor the associated login page or Logon Agent.
                 Applicable to CITRIX-AAC-LAS and CITRIX-AAC-LOGINPAGE monitors.
@@ -228,7 +229,7 @@ options:
 
     radkey:
         description:
-            - >
+            - >-
                 Authentication key (shared secret text string) for RADIUS clients and servers to exchange.
                 Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
             - Minimum length = 1
@@ -240,7 +241,7 @@ options:
 
     radnasip:
         description:
-            - >
+            - >-
                 Network Access Server (NAS) IP address to use as the source IP address when monitoring a RADIUS server.
                 Applicable to monitors of type RADIUS and RADIUS_ACCOUNTING.
 
@@ -273,7 +274,7 @@ options:
     lrtm:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Calculate the least response times for bound services.
                 If this parameter is not enabled, the appliance does not learn the response times of the bound services.
                 Also used for LRTM load balancing.
@@ -281,7 +282,7 @@ options:
 
     deviation:
         description:
-            - >
+            - >-
                 Time value added to the learned average response time in dynamic response time monitoring (DRTM).
                 When a deviation is specified, the appliance learns the average response time of bound services
                 and adds the deviation to the average. The final value is then continually adjusted to accommodate
@@ -310,10 +311,10 @@ options:
 
     resptimeout:
         description:
-            - >
+            - >-
                 Amount of time for which the appliance must wait before it marks a probe as FAILED.
                 Must be less than the value specified for the Interval parameter.
-            - >
+            - >-
                 Note. For UDP-ECV monitors for which a receive string is not configured, response timeout does not apply.
                 For UDP-ECV monitors with no receive string, probe failure is indicated by an ICMP port unreachable error received from the service.
             - Default value = 2
@@ -329,7 +330,7 @@ options:
 
     resptimeoutthresh:
         description:
-            - >
+            - >-
                 Response time threshold, specified as a percentage of the Response Time-out parameter.
                 If the response to a monitor probe has not arrived when the threshold is reached,
                 the appliance generates an SNMP trap called monRespTimeoutAboveThresh.
@@ -348,7 +349,7 @@ options:
 
     failureretries:
         description:
-            - >
+            - >-
                 Number of retries that must fail, out of the number specified for the Retries parameter,
                 for a service to be marked as DOWN. For example, if the Retries parameter is set to 10
                 and the Failure Retries parameter is set to 6, out of the ten probes sent, at least
@@ -386,13 +387,13 @@ options:
 
     destip:
         description:
-            - >
+            - >-
                 IP address of the service to which to send probes.
                 If the parameter is set to 0, the IP address of the server to which the monitor is bound is considered the destination IP address.
 
     destport:
         description:
-            - >
+            - >-
                 TCP or UDP port to which to send the probe.
                 If the parameter is set to 0, the port number of the service to which the monitor
                 is bound is considered the destination port. For a monitor of type USER, however,
@@ -402,7 +403,7 @@ options:
     state:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 State of the monitor. The DISABLED setting disables not only the monitor being configured,
                 but all monitors of the same type, until the parameter is set to ENABLED.
                 If the monitor is bound to a service, the state of the monitor is not taken into account
@@ -419,7 +420,7 @@ options:
     transparent:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 The monitor is bound to a transparent device such as a firewall or router.
                 The state of a transparent device depends on the responsiveness of the services behind it.
                 If a transparent device is being monitored, a destination IP address must be specified.
@@ -447,7 +448,7 @@ options:
     secure:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Use a secure SSL connection when monitoring a service.
                 Applicable only to TCP based monitors.
                 The secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure connection by default.
@@ -461,7 +462,7 @@ options:
 
     domain:
         description:
-            - >
+            - >-
                 Domain in which the XenDesktop Desktop Delivery Controller (DDC) servers or
                 Web Interface servers are present. Required by CITRIX-XD-DDC and CITRIX-WI-EXTENDED
                 monitors for logging on to the DDC servers and Web Interface servers, respectively.
@@ -473,7 +474,7 @@ options:
 
     group:
         description:
-            - >
+            - >-
                 Name of a newsgroup available on the NNTP service that is to be monitored.
                 The appliance periodically generates an NNTP query for the name of the newsgroup and evaluates the response.
                 If the newsgroup is found on the server, the service is marked as UP.
@@ -482,7 +483,7 @@ options:
 
     filename:
         description:
-            - >
+            - >-
                 Name of a file on the FTP server.
                 The appliance monitors the FTP service by periodically checking the existence of the file on the server.
                 Applicable to FTP-EXTENDED monitors.
@@ -490,7 +491,7 @@ options:
 
     basedn:
         description:
-            - >
+            - >-
                 The base distinguished name of the LDAP service, from where the LDAP server
                 can begin the search for the attributes in the monitoring query.
                 Required for LDAP service monitoring.
@@ -508,7 +509,7 @@ options:
 
     attribute:
         description:
-            - >
+            - >-
                 Attribute to evaluate when the LDAP server responds to the query.
                 Success or failure of the monitoring probe depends on whether the attribute exists in the response.
                 Optional.
@@ -531,11 +532,11 @@ options:
 
     evalrule:
         description:
-            - >
+            - >-
                 Default syntax expression that evaluates the database server's response to
                 a MYSQL-ECV or MSSQL-ECV monitoring query. Must produce a Boolean result.
                 The result determines the state of the server. If the expression returns TRUE, the probe succeeds.
-            - >
+            - >-
                 For example, if you want the appliance to evaluate the error message to
                 determine the state of the server, use the rule MYSQL.RES.ROW(10) .TEXT_ELEM(2).EQ("MySQL").
 
@@ -573,7 +574,7 @@ options:
 
     sitepath:
         description:
-            - >
+            - >-
                 URL of the logon page.
                 For monitors of type CITRIX-WEB-INTERFACE, to monitor a dynamic page under the site path,
                 terminate the site path with a slash (/). Applicable to CITRIX-WEB-INTERFACE, CITRIX-WI-EXTENDED and CITRIX-XDM monitors.
@@ -581,7 +582,7 @@ options:
 
     storename:
         description:
-            - >
+            - >-
                 Store Name.
                 For monitors of type STOREFRONT, STORENAME is an optional argument
                 defining storefront service store name. Applicable to STOREFRONT monitors.
@@ -590,7 +591,7 @@ options:
     storefrontacctservice:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 Enable/Disable probing for Account Service.
                 Applicable only to Store Front monitors.
                 For multi-tenancy configuration users my skip account service.
@@ -614,7 +615,7 @@ options:
 
     hostipaddress:
         description:
-            - >
+            - >-
                 Host-IP-Address value for the Capabilities-Exchange-Request (CER) message to
                 use for monitoring Diameter servers. If Host-IP-Address is not specified,
                 the appliance inserts the mapped IP (MIP) address or subnet IP (SNIP) address
@@ -636,7 +637,7 @@ options:
 
     authapplicationid:
         description:
-            - >
+            - >-
                 List of Auth-Application-Id attribute value pairs (AVPs) for
                 the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
                 A maximum of eight of these AVPs are supported in a monitoring CER message.
@@ -645,7 +646,7 @@ options:
 
     acctapplicationid:
         description:
-            - >
+            - >-
                 List of Acct-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER) message
                 to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message.
             - Minimum value = 0
@@ -658,7 +659,7 @@ options:
 
     supportedvendorids:
         description:
-            - >
+            - >-
                 List of Supported-Vendor-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER)
                 message to use for monitoring Diameter servers. A maximum eight of these AVPs are supported in a monitoring message.
             - Minimum value = 1
@@ -666,7 +667,7 @@ options:
 
     vendorspecificvendorid:
         description:
-            - >
+            - >-
                 Vendor-Id to use in the Vendor-Specific-Application-Id grouped attribute-value pair (AVP) in the monitoring CER message.
                 To specify Auth-Application-Id or Acct-Application-Id in Vendor-Specific-Application-Id,
                 use vendorSpecificAuthApplicationIds or vendorSpecificAcctApplicationIds, respectively.
@@ -675,7 +676,7 @@ options:
 
     vendorspecificauthapplicationids:
         description:
-            - >
+            - >-
                 List of Vendor-Specific-Auth-Application-Id attribute value pairs (AVPs) for the Capabilities-Exchange-Request (CER)
                 message to use for monitoring Diameter servers. A maximum of eight of these AVPs are supported in a monitoring message.
                 The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP
@@ -685,7 +686,7 @@ options:
 
     vendorspecificacctapplicationids:
         description:
-            - >
+            - >-
                 List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to use for monitoring Diameter servers.
                 A maximum of eight of these AVPs are supported in a monitoring message.
                 The specified value is combined with the value of vendorSpecificVendorId to obtain the Vendor-Specific-Application-Id AVP
@@ -696,7 +697,7 @@ options:
     storedb:
         choices: ['ENABLED', 'DISABLED']
         description:
-            - >
+            - >-
                 Store the database list populated with the responses to monitor probes.
                 Used in database specific load balancing if MSSQL-ECV/MYSQL-ECV monitor is configured.
             - Default value = DISABLED
@@ -704,7 +705,7 @@ options:
     storefrontcheckbackendservices:
         choices: ['YES', 'NO']
         description:
-            - >
+            - >-
                 This option will enable monitoring of services running on storefront server.
                 Storefront services are monitored by probing to a Windows service that runs on the Storefront server
                 and exposes details of which storefront services are running.

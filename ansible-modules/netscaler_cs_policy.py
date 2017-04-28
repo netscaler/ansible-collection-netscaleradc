@@ -38,15 +38,16 @@ options:
 
     policyname:
         description:
-            - >
+            - >-
                 Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character,
                 and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
                 at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
+
             - Minimum length = 1
 
     url:
         description:
-            - >
+            - >-
                 URL string that is matched with the URL of a request.
                 Can contain a wildcard character.
                 Specify the string value in the following format: [[prefix] [*]] [.suffix].
@@ -57,7 +58,7 @@ options:
         description:
             - Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
             - Note
-            - >
+            - >-
                 Maximum length of a string literal in the expression is 255 characters.
                 A longer string can be split into smaller strings of up to 255 characters each,
                 and the smaller strings concatenated with the + operator.
