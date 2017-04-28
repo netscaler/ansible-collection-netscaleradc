@@ -19,13 +19,11 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
 module: netscaler_service
@@ -332,10 +330,7 @@ requirements:
     - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
-'''
-'''
 # Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
 
 - name: Setup http service
@@ -358,10 +353,7 @@ EXAMPLES = '''
       - monitor-1
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
-'''
-'''
 loglines:
     description: list of logged messages by the module
     returned: always
