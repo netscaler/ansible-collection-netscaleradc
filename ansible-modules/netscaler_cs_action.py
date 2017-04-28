@@ -40,13 +40,16 @@ options:
 
     name:
         description:
-            - "Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created."
+            - >
+                Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character,
+                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@),
+                equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.
 
     targetlbvserver:
         description:
             - Name of the load balancing virtual server to which the content is switched.
             - Create the load balancing vserver with netscaler_lb_vserver if it does not exist
-            
+
     targetvserverexpr:
         description:
             - Information about this content switching action.
@@ -98,7 +101,6 @@ diff:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
 import json
 
 
@@ -113,7 +115,7 @@ def main():
         python_sdk_imported = False
 
     module_specific_arguments = dict(
-        
+
         name=dict(type='str'),
         targetlbvserver=dict(type='str'),
         targetvserverexpr=dict(type='str'),
@@ -128,7 +130,7 @@ def main():
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode = True,
+        supports_check_mode=True,
     )
     module_result = dict(
         changed=False,
@@ -143,8 +145,6 @@ def main():
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
     client.login()
-
-
 
     # Instantiate Service Config object
     readwrite_attrs = [
@@ -168,7 +168,7 @@ def main():
     csaction_proxy = ConfigProxy(
         actual=csaction(),
         client=client,
-        attribute_values_dict = module.params,
+        attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         json_encodes=['targetvserverexpr']
@@ -194,7 +194,6 @@ def main():
             if json_value == module.params['targetvserverexpr']:
                 del diff_list['targetvserverexpr']
         return diff_list
-
 
     try:
 
@@ -239,6 +238,7 @@ def main():
 
     client.logout()
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()
