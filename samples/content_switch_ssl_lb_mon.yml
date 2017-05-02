@@ -9,6 +9,36 @@
   gather_facts: False
 
   tasks:
+    - name: Configure lb monitor for catalog
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_monitor
+        operation: present
+
+        monitorname: monitor_catalog
+        type: HTTP
+        respcode: ['200']
+
+        servicegroupbindings:
+          - servicegroupname: service_group_catalog
+
+    - name: Configure lb monitor for cart
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_lb_monitor
+        operation: present
+
+        monitorname: monitor_cart
+        type: HTTP
+        respcode: ['200']
 
     - name: Configure service group catalog
       local_action: 
@@ -29,6 +59,8 @@
           - ip: 10.79.79.79
             port: 80
             weight: 50
+        monitorbindings:
+          - monitorname: monitor_catalog
 
     - name: Configure service group cart
       local_action: 
@@ -49,6 +81,8 @@
           - ip: 11.79.79.79
             port: 80
             weight: 50
+        monitorbindings:
+          - monitorname: monitor_cart
 
     - name: Configure lb vserver cart
       local_action: 
@@ -80,39 +114,6 @@
         ipv46: 192.168.1.2
         port: 80
 
-    - name: Configure lb monitor for catalog
-      local_action: 
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
-
-        module: netscaler_lb_monitor
-        operation: present
-
-        monitorname: monitor_catalog
-        type: HTTP
-        respcode: ['200']
-
-        servicegroupbindings:
-          - servicegroupname: service_group_catalog
-
-    - name: Configure lb monitor for cart
-      local_action: 
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
-
-        module: netscaler_lb_monitor
-        operation: present
-
-        monitorname: monitor_cart
-        type: HTTP
-        respcode: ['200']
-
-        servicegroupbindings:
-          - servicegroupname: service_group_cart
 
     - name: Configure catalog policy
       local_action: 

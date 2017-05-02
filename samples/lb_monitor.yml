@@ -25,6 +25,20 @@
         ipaddress: 10.78.0.1
         port: 80
 
+    - name: Set lb monitor
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        operation: present
+
+        module: netscaler_lb_monitor
+        monitorname: monitor_1
+        type: HTTP-INLINE
+        action: DOWN
+        respcode: ['400']
+
     - name: Set service group
       local_action:
         module: netscaler_servicegroup
@@ -43,24 +57,6 @@
             - ip: 10.79.79.79
               port: 80
               weight: 40
-
-    - name: Set lb monitor
-      local_action: 
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
-        operation: present
-
-        module: netscaler_lb_monitor
-        monitorname: monitor_1
-        type: HTTP-INLINE
-        action: DOWN
-        respcode: ['400']
-
-        servicegroupbindings:
-            - 
-                servicename: service-http-1
-                servicegroupname: service-group-1
-                weight: 100
+        monitorbindings:
+          - monitorname: monitor_1
 
