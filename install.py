@@ -21,6 +21,7 @@
 import sys
 import os.path
 import shutil
+import re
 
 
 def main():
@@ -43,7 +44,20 @@ def main():
         print('Module utils path (%s) is not a directory' % module_utils_path)
         sys.exit(1)
 
-    extra_modules_path = os.path.join(ansible_path, 'modules', 'extras', 'network')
+    # Parse ansible version
+    m = re.match(r'^(\d)\.(\d).*$', ansible.__version__)
+    if m is None:
+        raise Exception('Cannot parse ansible version')
+
+    major = int(m.group(1))
+    minor = int(m.group(2))
+
+    # Set modules path according to ansible version
+    if major < 2 or major == 2 and minor <= 2:
+        extra_modules_path = os.path.join(ansible_path, 'modules', 'extras', 'network')
+    else:
+        extra_modules_path = os.path.join(ansible_path, 'modules', 'network')
+
     if not os.path.exists(extra_modules_path):
         print('Extra modules directory (%s) does not exist' % extra_modules_path)
         sys.exit(1)
