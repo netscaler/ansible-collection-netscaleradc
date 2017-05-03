@@ -37,6 +37,10 @@ Just copy the contents of the ansible-modules directory to the extras module dir
 
 The modules depend on the NITRO Python SDK. You can download it for the 11.0 version of Citrix NetScaler from the following link. https://www.citrix.com/downloads/netscaler-adc/sdks/netscaler-sdk-release-110.html
 
+Alternatively you can use the ```install_nitro_sdk.py``` script
+
+Use of a python virtualenv during installation is recommended.
+
 ## Usage
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix NetScaler appliance.
