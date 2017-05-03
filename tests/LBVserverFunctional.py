@@ -695,7 +695,7 @@ class LBVserverFullInitialValues(unittest.TestCase):
                     'servicetype': 'HTTP',
                     'lbmethod': 'DESTINATIONIPHASH',
                     'netmask': '255.255.255.0',
-                    'ippattern': '10.68.0.0',
+                    'ippattern': '10.69.0.0',
                     'ipmask': '255.255.0.0',
                     'v6netmasklen': 24,
                     'pushvserver': 'lb-vserver-push',
