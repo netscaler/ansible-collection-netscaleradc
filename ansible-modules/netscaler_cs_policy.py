@@ -189,12 +189,14 @@ def main():
     )
 
     def policy_exists():
+        log('Checking if policy exists')
         if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) > 0:
             return True
         else:
             return False
 
     def policy_identical():
+        log('Checking if defined policy is identical to configured')
         if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) == 0:
             return False
         policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
@@ -215,6 +217,7 @@ def main():
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Sanity checks for operation present')
             if not policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.add()
@@ -229,12 +232,14 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation present')
             if not policy_exists():
                 module.fail_json(msg='Service does not exist', **module_result)
             if not policy_identical():
                 module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.delete()
@@ -244,6 +249,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if policy_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 

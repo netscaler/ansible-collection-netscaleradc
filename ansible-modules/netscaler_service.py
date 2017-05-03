@@ -639,6 +639,7 @@ def main():
             return False
 
     def service_identical():
+        log('Checking if service is identical')
         service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
         diff_dict = service_proxy.diff_object(service_list[0])
         log('other ipaddress is %s' % service_list[0].ipaddress)
@@ -754,6 +755,7 @@ def main():
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not service_exists():
                 if not module.check_mode:
                     service_proxy.add()
@@ -776,6 +778,7 @@ def main():
                 module_result['changed'] = True
 
             # Sanity check for operation
+            log('Sanity checks for operation present')
             if not service_exists():
                 module.fail_json(msg='Service does not exist', **module_result)
             if not service_identical():
@@ -785,6 +788,7 @@ def main():
                 module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if service_exists():
                 if not module.check_mode:
                     service_proxy.delete()
@@ -794,6 +798,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if service_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 

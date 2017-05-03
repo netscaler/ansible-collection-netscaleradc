@@ -831,6 +831,7 @@ def main():
         return bindings
 
     def cs_policybindings_identical():
+        log('Checking policy bindings identical')
         actual_bindings = get_actual_policybindings()
         configured_bindings = get_configured_policybindings()
 
@@ -850,18 +851,21 @@ def main():
         return True
 
     def sync_cs_policybindings():
+        log('Syncing cs policybindings')
 
         # Delete all actual bindings
         for binding in get_actual_policybindings().values():
+            log('Deleting binding for certkey %s' % binding.certkeyname)
             csvserver_cspolicy_binding.delete(client, binding)
 
         # Add all configured bindings
 
         for binding in get_configured_policybindings().values():
+            log('Adding binding for certkey %s' % binding.certkeyname)
             binding.add()
 
     def ssl_certkey_bindings_identical():
-        log('Entering ssl_certkey_bindings_identical')
+        log('Checking if ssl cert key bindings are identical')
         vservername = module.params['name']
         if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
             bindings = []
@@ -881,19 +885,21 @@ def main():
                 return False
 
     def ssl_certkey_bindings_sync():
+        log('Syncing certkey bindings')
         vservername = module.params['name']
         if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
             bindings = []
         else:
             bindings = sslvserver_sslcertkey_binding.get(client, vservername)
-        log('bindings len is %s' % len(bindings))
 
         # Delete existing bindings
         for binding in bindings:
+            log('Deleting existing binding for certkey %s' % binding.certkeyname)
             sslvserver_sslcertkey_binding.delete(client, binding)
 
         # Add binding if appropriate
         if module.params['ssl_certkey'] is not None:
+            log('Adding binding for certkey %s' % module.params['ssl_certkey'])
             binding = sslvserver_sslcertkey_binding()
             binding.vservername = module.params['name']
             binding.certkeyname = module.params['ssl_certkey']
@@ -908,6 +914,7 @@ def main():
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.add()
@@ -940,6 +947,7 @@ def main():
                     module_result['changed'] = True
 
             # Sanity check for operation
+            log('Sanity checks for operation present')
             if not module.check_mode:
                 if not cs_vserver_exists():
                     module.fail_json(msg='Service does not exist', **module_result)
@@ -953,6 +961,7 @@ def main():
                         module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.delete()
@@ -962,6 +971,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if cs_vserver_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 

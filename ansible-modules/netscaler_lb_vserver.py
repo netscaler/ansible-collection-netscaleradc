@@ -1314,16 +1314,15 @@ def main():
     )
 
     def lbvserver_exists():
-        log('lbvserver_exists')
+        log('Checking if lb vserver exists')
         if lbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
             return True
         else:
             return False
 
     def lbvserver_identical():
-        log('lbvserver_identical')
+        log('Checking if configured lb vserver is identical')
         lbvserver_list = lbvserver.get_filtered(client, 'name:%s' % module.params['name'])
-        log('diff %s' % lbvserver_proxy.diff_object(lbvserver_list[0]))
         if lbvserver_proxy.has_equal_attributes(lbvserver_list[0]):
             return True
         else:
@@ -1334,6 +1333,7 @@ def main():
         return lbvserver_proxy.diff_object(lbvserver_list[0])
 
     def get_configured_service_bindings():
+        log('Getting configured service bindings')
 
         readwrite_attrs = [
             'weight',
@@ -1370,6 +1370,7 @@ def main():
         return configured_bindings
 
     def get_configured_servicegroup_bindings():
+        log('Getting configured service group bindings')
         readwrite_attrs = [
             'weight',
             'name',
@@ -1396,6 +1397,7 @@ def main():
         return configured_bindings
 
     def get_actual_service_bindings():
+        log('Getting actual service bindings')
         if lbvserver_service_binding.count(client, module.params['name']) == 0:
             return {}
         bindigs_list = lbvserver_service_binding.get(client, module.params['name'])
@@ -1407,6 +1409,7 @@ def main():
         return bindings
 
     def get_actual_servicegroup_bindings():
+        log('Getting actual service group bindings')
         log('count %s' % lbvserver_servicegroup_binding.count(client, module.params['name']))
         if lbvserver_servicegroup_binding.count(client, module.params['name']) == 0:
             return {}
@@ -1511,6 +1514,7 @@ def main():
                 return False
 
     def ssl_certkey_bindings_sync():
+        log('Syncing ssl certificates')
         vservername = module.params['name']
         if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
             bindings = []
@@ -1532,6 +1536,7 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'LB')
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not lbvserver_exists():
                 log('Add lb vserver')
                 if not module.check_mode:
@@ -1566,6 +1571,7 @@ def main():
                     module_result['changed'] = True
 
             # Sanity check
+            log('Sanity checks for operation present')
             if not module.check_mode:
                 if not lbvserver_exists():
                     module.fail_json(msg='Did not create lb vserver with name %s' % module.params['name'], **module_result)
@@ -1579,6 +1585,7 @@ def main():
                         module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if lbvserver_exists():
                 if not module.check_mode:
                     log('Delete lb vserver')
@@ -1590,6 +1597,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check
+            log('Sanity checks for operation absent')
             if not module.check_mode:
                 if lbvserver_exists():
                     module.fail_json(msg='Lb vserver %s still exists' % module.params['name'], **module_result)

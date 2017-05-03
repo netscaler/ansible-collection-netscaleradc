@@ -240,7 +240,7 @@ def main():
     )
 
     def key_exists():
-        log('Entering key_exists')
+        log('Checking if key exists')
         log('certkey is %s' % module.params['certkey'])
         all_certificates = sslcertkey.get(client)
         certkeys = [item.certkey for item in all_certificates]
@@ -250,7 +250,7 @@ def main():
             return False
 
     def key_identical():
-        log('Entering key_identical')
+        log('Checking if configured key is identical')
         sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
         diff_dict = sslcertkey_proxy.diff_object(sslcertkey_list[0])
         if 'password' in diff_dict:
@@ -270,7 +270,7 @@ def main():
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
-            log('Applying present operation')
+            log('Applying actions for operation present')
             if not key_exists():
                 if not module.check_mode:
                     log('Adding certificate key')
@@ -286,12 +286,14 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation present')
             if not key_exists():
                 module.fail_json(msg='Service does not exist')
             if not key_identical():
                 module.fail_json(msg='Service differs from configured', diff=diff_list())
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if key_exists():
                 if not module.check_mode:
                     sslcertkey_proxy.delete()
@@ -301,6 +303,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if key_exists():
                 module.fail_json(msg='Service still exists')
 

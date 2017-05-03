@@ -1140,14 +1140,14 @@ def main():
     )
 
     def lbmonitor_exists():
-        log('Entering lbmonitor_exists')
+        log('Checking if monitor exists')
         if lbmonitor.count_filtered(client, 'monitorname:%s' % module.params['monitorname']) > 0:
             return True
         else:
             return False
 
     def lbmonitor_identical():
-        log('Entering lbmonitor_identical')
+        log('Checking if monitor is identical')
 
         count = lbmonitor.count_filtered(client, 'monitorname:%s' % module.params['monitorname'])
         if count == 0:
@@ -1197,14 +1197,14 @@ def main():
         return configured_bindings
 
     def get_actual_service_bindings():
-        log('entering get_actual_service_bindings')
+        log('getting actual service bindings')
         if lbmonbindings_service_binding.count(client, module.params['monitorname']) == 0:
             return {}
         bindigs_list = lbmonbindings_service_binding.get(client, module.params['monitorname'])
         bindings = {}
         for item in bindigs_list:
             key = item.servicename
-            log('bound service name %s' % key)
+            log('actual bound service name %s' % key)
             bindings[key] = item
 
         return bindings
@@ -1216,6 +1216,7 @@ def main():
         ensure_feature_is_enabled(client, 'LB')
 
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not lbmonitor_exists():
                 if not module.check_mode:
                     log('Adding monitor')
@@ -1234,6 +1235,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
+            log('Sanity checks for operation present')
             if not module.check_mode:
                 if not lbmonitor_exists():
                     module.fail_json(msg='Monitor does not seem to exist', **module_result)
@@ -1246,6 +1248,7 @@ def main():
             get_actual_service_bindings()
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if lbmonitor_exists():
                 if not module.check_mode:
                     lbmonitor_proxy.delete()
@@ -1255,6 +1258,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
+            log('Sanity checks for operation absent')
             if not module.check_mode:
                 if lbmonitor_exists():
                     module.fail_json(msg='Server seems to be present', **module_result)

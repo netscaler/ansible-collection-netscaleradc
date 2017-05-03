@@ -145,12 +145,14 @@ def main():
     )
 
     def server_exists():
+        log('Checking if server exists')
         if server.count_filtered(client, 'name:%s' % module.params['name']) > 0:
             return True
         else:
             return False
 
     def server_identical():
+        log('Checking if configured server is identical')
         if server.count_filtered(client, 'name:%s' % module.params['name']) == 0:
             return False
         server_list = server.get_filtered(client, 'name:%s' % module.params['name'])
@@ -166,6 +168,7 @@ def main():
 
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not server_exists():
                 if not module.check_mode:
                     server_proxy.add()
@@ -181,6 +184,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
+            log('Sanity checks for operation present')
             if not module.check_mode:
                 if not server_exists():
                     module.fail_json(msg='Server does not seem to exist', **module_result)
@@ -192,6 +196,7 @@ def main():
                     )
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if server_exists():
                 if not module.check_mode:
                     server_proxy.delete()
@@ -201,6 +206,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
+            log('Sanity checks for operation absent')
             if not module.check_mode:
                 if server_exists():
                     module.fail_json(msg='Server seems to be present', **module_result)

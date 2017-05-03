@@ -597,14 +597,14 @@ def main():
     )
 
     def service_group_exists():
-        log('service_group_exists')
+        log('Checking if service group exists')
         if servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname']) > 0:
             return True
         else:
             return False
 
     def service_group_identical():
-        log('service_group_identical')
+        log('Checking if service group is identical')
         servicegroups = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
         if servicegroup_proxy.has_equal_attributes(servicegroups[0]):
             return True
@@ -776,7 +776,7 @@ def main():
 
     try:
         if module.params['operation'] == 'present':
-            log('Checking present')
+            log('Applying actions for operation present')
             if not service_group_exists():
                 if not module.check_mode:
                     log('Adding service group')
@@ -811,7 +811,7 @@ def main():
                 module_result['changed'] = True
 
             # Sanity check for operation
-            log('sanity check')
+            log('Sanity checks for operation present')
             if not service_group_exists():
                 module.fail_json(msg='Service group is not present', **module_result)
             if not service_group_identical():
@@ -822,6 +822,7 @@ def main():
                 module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if service_group_exists():
                 if not module.check_mode:
                     servicegroup_proxy.delete()
@@ -831,6 +832,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if service_group_exists():
                 module.fail_json(msg='Service group is present', **module_result)
 

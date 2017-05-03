@@ -200,6 +200,7 @@ def main():
         ensure_feature_is_enabled(client, 'CS')
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying actions for operation present')
             if not action_exists():
                 if not module.check_mode:
                     csaction_proxy.add()
@@ -214,12 +215,14 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation present')
             if not action_exists():
                 module.fail_json(msg='Content switching action does not exist', **module_result)
             if not action_identical():
                 module.fail_json(msg='Content switching action differs from configured', diff=diff_list(), **module_result)
 
         elif module.params['operation'] == 'absent':
+            log('Applying actions for operation absent')
             if action_exists():
                 if not module.check_mode:
                     csaction_proxy.delete()
@@ -229,6 +232,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
+            log('Sanity checks for operation absent')
             if action_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 
