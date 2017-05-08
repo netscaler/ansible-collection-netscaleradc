@@ -1,0 +1,562 @@
+[
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "servicename", 
+        "description_lines": [
+            "Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the GSLB service is created.", 
+            "CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my gslbsvc\" or 'my gslbsvc').", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "cnameentry", 
+        "description_lines": [
+            "Canonical name of the GSLB service. Used in CNAME-based GSLB.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "ip", 
+        "description_lines": [
+            "IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the NetScaler appliance, or the IP address of another load balancing device.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "servername", 
+        "description_lines": [
+            "Name of the server hosting the GSLB service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "HTTP", 
+            "FTP", 
+            "TCP", 
+            "UDP", 
+            "SSL", 
+            "SSL_BRIDGE", 
+            "SSL_TCP", 
+            "NNTP", 
+            "ANY", 
+            "SIP_UDP", 
+            "SIP_TCP", 
+            "SIP_SSL", 
+            "RADIUS", 
+            "RDP", 
+            "RTSP", 
+            "MYSQL", 
+            "MSSQL", 
+            "ORACLE"
+        ], 
+        "type": "str", 
+        "name": "servicetype", 
+        "description_lines": [
+            "Type of service to create.", 
+            "Default value: NSSVC_SERVICE_UNKNOWN", 
+            "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP, SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "port", 
+        "description_lines": [
+            "Port on which the load balancing entity represented by this GSLB service listens.", 
+            "Minimum value = 1", 
+            "Range 1 - 65535", 
+            "* in CLI is represented as 65535 in NITRO API"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "publicip", 
+        "description_lines": [
+            "The public IP address that a NAT device translates to the GSLB service's private IP address. Optional."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "int", 
+        "name": "publicport", 
+        "description_lines": [
+            "The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxclient", 
+        "description_lines": [
+            "The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.", 
+            "Minimum value = 0", 
+            "Maximum value = 4294967294"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "YES", 
+            "NO"
+        ], 
+        "type": "str", 
+        "name": "healthmonitor", 
+        "description_lines": [
+            "Monitor the health of the GSLB service.", 
+            "Default value: YES", 
+            "Possible values = YES, NO"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "sitename", 
+        "description_lines": [
+            "Name of the GSLB site to which the service belongs.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "state", 
+        "description_lines": [
+            "Enable or disable the service.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "cip", 
+        "description_lines": [
+            "In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.", 
+            "Default value: DISABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "cipheader", 
+        "description_lines": [
+            "Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the NetScaler appliance uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ConnectionProxy", 
+            "HTTPRedirect", 
+            "NONE"
+        ], 
+        "type": "str", 
+        "name": "sitepersistence", 
+        "description_lines": [
+            "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.", 
+            "Possible values = ConnectionProxy, HTTPRedirect, NONE"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "cookietimeout", 
+        "description_lines": [
+            "Timeout value, in minutes, for the cookie, when cookie based site persistence is enabled.", 
+            "Minimum value = 0", 
+            "Maximum value = 1440"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "siteprefix", 
+        "description_lines": [
+            "The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB requests to GSLB services by using their site domains."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "clttimeout", 
+        "description_lines": [
+            "Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy based site persistence is used.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "svrtimeout", 
+        "description_lines": [
+            "Idle time, in seconds, after which a server connection is terminated. Applicable if connection proxy based site persistence is used.", 
+            "Minimum value = 0", 
+            "Maximum value = 31536000"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxbandwidth", 
+        "description_lines": [
+            "Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops below the maximum."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "downstateflush", 
+        "description_lines": [
+            "Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "maxaaausers", 
+        "description_lines": [
+            "Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "monthreshold", 
+        "description_lines": [
+            "Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.", 
+            "Minimum value = 0", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "hashid", 
+        "description_lines": [
+            "Unique hash identifier for the GSLB service, used by hash based load balancing methods.", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "comment", 
+        "description_lines": [
+            "Any comments that you might want to associate with the GSLB service."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "appflowlog", 
+        "description_lines": [
+            "Enable logging appflow flow information.", 
+            "Default value: ENABLED", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "naptrreplacement", 
+        "description_lines": [
+            "The replacement domain name for this NAPTR.", 
+            "Maximum length = 255"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "naptrorder", 
+        "description_lines": [
+            "An integer specifying the order in which the NAPTR records MUST be processed in order to accurately represent the ordered list of Rules. The ordering is from lowest to highest.", 
+            "Default value: 1", 
+            "Minimum value = 1", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "naptrservices", 
+        "description_lines": [
+            "Service Parameters applicable to this delegation path.", 
+            "Maximum length = 255"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "naptrdomainttl", 
+        "description_lines": [
+            "Modify the TTL of the internally created naptr domain.", 
+            "Default value: 3600", 
+            "Minimum value = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "naptrpreference", 
+        "description_lines": [
+            "An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the number, higher the preference.", 
+            "Default value: 1", 
+            "Minimum value = 1", 
+            "Maximum value = 65535"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "ipaddress", 
+        "description_lines": [
+            "The new IP address of the service."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "viewname", 
+        "description_lines": [
+            "Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to return a predetermined IP address to a specific group of clients, which are identified by using a DNS policy.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "viewip", 
+        "description_lines": [
+            "IP address to be used for the given view."
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "float", 
+        "name": "weight", 
+        "description_lines": [
+            "Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.", 
+            "Minimum value = 1", 
+            "Maximum value = 100"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "monitor_name_svc", 
+        "description_lines": [
+            "Name of the monitor to bind to the service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": false, 
+        "type": "str", 
+        "name": "newname", 
+        "description_lines": [
+            "New name for the GSLB service.", 
+            "Minimum length = 1"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "REMOTE", 
+            "LOCAL"
+        ], 
+        "type": "str", 
+        "name": "gslb", 
+        "description_lines": [
+            ".", 
+            "Default value: GSLB", 
+            "Possible values = REMOTE, LOCAL"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "svrstate", 
+        "description_lines": [
+            "Server state.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "svreffgslbstate", 
+        "description_lines": [
+            "Effective state of the gslb svc.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "gslbthreshold", 
+        "description_lines": [
+            "Indicates if gslb svc has reached threshold."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "int", 
+        "name": "gslbsvcstats", 
+        "description_lines": [
+            "Indicates if gslb svc has stats of the primary or the whole chain."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "ENABLED", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "monstate", 
+        "description_lines": [
+            "State of the monitor bound to gslb service.", 
+            "Possible values = ENABLED, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "preferredlocation", 
+        "description_lines": [
+            "Prefered location."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "UP", 
+            "DOWN", 
+            "UNKNOWN", 
+            "BUSY", 
+            "OUT OF SERVICE", 
+            "GOING OUT OF SERVICE", 
+            "DOWN WHEN GOING OUT OF SERVICE", 
+            "NS_EMPTY_STR", 
+            "Unknown", 
+            "DISABLED"
+        ], 
+        "type": "str", 
+        "name": "monitor_state", 
+        "description_lines": [
+            "The running state of the monitor on this service.", 
+            "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "str", 
+        "name": "statechangetimesec", 
+        "description_lines": [
+            "Time when last state change happened. Seconds part."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "tickssincelaststatechange", 
+        "description_lines": [
+            "Time in 10 millisecond ticks since the last state change."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "choices": [
+            "ABOVE", 
+            "BELOW"
+        ], 
+        "type": "str", 
+        "name": "threshold", 
+        "description_lines": [
+            ".", 
+            "Possible values = ABOVE, BELOW"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonowner", 
+        "description_lines": [
+            "Tells the mon owner of the gslb service.", 
+            "Minimum value = 0", 
+            "Maximum value = 32"
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "clmonview", 
+        "description_lines": [
+            "Tells the view id of the monitoring owner."
+        ]
+    }, 
+    {
+        "readonly": true, 
+        "type": "float", 
+        "name": "__count", 
+        "description_lines": [
+            "count parameter"
+        ]
+    }
+]
