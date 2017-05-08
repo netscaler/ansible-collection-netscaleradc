@@ -1,0 +1,7 @@
+readwrite_attrs = [#{% for attribute in readwrite_attrs %}
+        '{{ attribute }}',#{% endfor %}
+    ]
+
+    readonly_attrs = [#{% for attribute in readonly_attrs %}
+        '{{ attribute }}',#{% endfor %}
+    ]
