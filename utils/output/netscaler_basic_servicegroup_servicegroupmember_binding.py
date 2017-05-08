@@ -17,68 +17,59 @@ version_added: 2.3.1
 
 options:
 
-    policyname:
+    servicegroupname:
         description:
-            - >-
-                Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_)
-                character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon
-                (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is
-                created.
-            - "The following requirement applies only to the NetScaler CLI:"
-            - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
-                example, my policy or my policy).
+            - "Name of the service group."
             - "Minimum length = 1"
 
-    url:
+    ip:
+        description:
+            - "IP Address."
+
+    port:
+        description:
+            - "Server port number."
+            - "Range 1 - 65535"
+            - "* in CLI is represented as 65535 in NITRO API"
+
+    state:
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
+        description:
+            - "Initial state of the service group."
+            - "Default value: ENABLED"
+            - "Possible values = ENABLED, DISABLED"
+
+    hashid:
         description:
             - >-
-                URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the
-                string value in the following format: [[prefix] [*]] [.suffix].
+                The hash identifier for the service. This must be unique for each service. This parameter is used by
+                hash based load balancing methods.
+            - "Minimum value = 1"
+
+    serverid:
+        description:
+            - "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
+
+    servername:
+        description:
+            - "Name of the server to which to bind the service group."
             - "Minimum length = 1"
-            - "Maximum length = 208"
 
-    rule:
+    customserverid:
+        description:
+            - "The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID."
+            - "Default value: \"None\""
+
+    weight:
         description:
             - >-
-                Expression, or name of a named expression, against which traffic is evaluated. Written in the classic
-                or default syntax.
-            - "Note:"
-            - >-
-                Maximum length of a string literal in the expression is 255 characters. A longer string can be split
-                into smaller strings of up to 255 characters each, and the smaller strings concatenated with the +
-                operator. For example, you can create a 500-character string as follows: '"<string of 255
-                characters>" + "<string of 245 characters>"'
-            - "The following requirements apply only to the NetScaler CLI:"
-            - >-
-                * If the expression includes one or more spaces, enclose the entire expression in double quotation
-                marks.
-            - >-
-                * If the expression itself includes double quotation marks, escape the quotations by using the
-                character.
-            - >-
-                * Alternatively, you can use single quotation marks to enclose the rule, in which case you do not
-                have to escape the double quotation marks.
-
-    domain:
-        description:
-            - "The domain name. The string value can range to 63 characters."
-            - "Minimum length = 1"
-
-    action:
-        description:
-            - >-
-                Content switching action that names the target load balancing virtual server to which the traffic is
-                switched.
-
-    logaction:
-        description:
-            - "The log action associated with the content switching policy."
-
-    newname:
-        description:
-            - "The new name of the content switching policy."
-            - "Minimum length = 1"
+                Weight to assign to the servers in the service group. Specifies the capacity of the servers relative
+                to the other servers in the load balancing configuration. The higher the weight, the higher the
+                percentage of requests sent to the service.
+            - "Minimum value = 1"
+            - "Maximum value = 100"
 
 
 extends_documentation_fragment: netscaler
@@ -104,13 +95,21 @@ def main():
         python_sdk_imported = False
 
     module_specific_arguments = dict(
-        policyname=dict(type='str'),
-        url=dict(type='str'),
-        rule=dict(type='str'),
-        domain=dict(type='str'),
-        action=dict(type='str'),
-        logaction=dict(type='str'),
-        newname=dict(type='str'),
+        servicegroupname=dict(type='str'),
+        ip=dict(type='str'),
+        port=dict(type='int'),
+        state=dict(
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
+        ),
+        hashid=dict(type='float'),
+        serverid=dict(type='float'),
+        servername=dict(type='str'),
+        customserverid=dict(type='str'),
+        weight=dict(type='float'),
     )
 
     hand_inserted_arguments = dict(
@@ -141,24 +140,23 @@ def main():
     client.login()
 
     readwrite_attrs = [
-        'policyname',
-        'url',
-        'rule',
-        'domain',
-        'action',
-        'logaction',
-        'newname',
+        'servicegroupname',
+        'ip',
+        'port',
+        'state',
+        'hashid',
+        'serverid',
+        'servername',
+        'customserverid',
+        'weight',
     ]
 
     readonly_attrs = [
-        'vstype',
-        'hits',
-        'bindhits',
-        'labelname',
-        'labeltype',
-        'priority',
-        'activepolicy',
-        'cspolicytype',
+        'delay',
+        'statechangetimesec',
+        'svrstate',
+        'tickssincelaststatechange',
+        'graceful',
         '__count',
     ]
 

@@ -1,1337 +1,913 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# TODO review status and supported_by when migrating to github
 ANSIBLE_METADATA = {'status': ['preview'],
                     'supported_by': 'commiter',
                     'version': '1.0'}
 
 
-# TODO: Add appropriate documentation
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_vserver
-short_description: Manage cs vserver
+module: XXX
+short_description: XXX
 description:
-    - Manage service group configuration in Netscaler
+    - XXX
 
-version_added: "tbd"
+version_added: 2.3.1
+
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-
-        required: True
 
     name:
-        
         description:
-            
-            - Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters.
-            
-            - Cannot be changed after the CS virtual server is created.
-            
-            - The following requirement applies only to the NetScaler CLI:
-            
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my server or my server).
-            
-            - Minimum length = 1
-            
+            - >-
+                Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore
+                (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
+                colon (:), at sign (@), equal sign (=), and hyphen (-) characters.
+            - "Cannot be changed after the CS virtual server is created."
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                example, my server or my server).
+            - "Minimum length = 1"
 
     td:
-        
         description:
-            
-            - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
-            
-            - Minimum value = 0
-            
-            - Maximum value = 4094
-            
+            - >-
+                Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
+                If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
+                of 0.
+            - "Minimum value = 0"
+            - "Maximum value = 4094"
 
     servicetype:
-        choices: ['HTTP', 'SSL', 'TCP', 'FTP', 'RTSP', 'SSL_TCP', 'UDP', 'DNS', 'SIP_UDP', 'SIP_TCP', 'SIP_SSL', 'ANY', 'RADIUS', 'RDP', 'MYSQL', 'MSSQL', 'DIAMETER', 'SSL_DIAMETER', 'DNS_TCP', 'ORACLE', 'SMPP']
+        choices:
+            - 'HTTP'
+            - 'SSL'
+            - 'TCP'
+            - 'FTP'
+            - 'RTSP'
+            - 'SSL_TCP'
+            - 'UDP'
+            - 'DNS'
+            - 'SIP_UDP'
+            - 'SIP_TCP'
+            - 'SIP_SSL'
+            - 'ANY'
+            - 'RADIUS'
+            - 'RDP'
+            - 'MYSQL'
+            - 'MSSQL'
+            - 'DIAMETER'
+            - 'SSL_DIAMETER'
+            - 'DNS_TCP'
+            - 'ORACLE'
+            - 'SMPP'
         description:
-            
-            - Protocol used by the virtual server.
-            
-            - Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, SIP_TCP, SIP_SSL, ANY, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, DNS_TCP, ORACLE, SMPP
-            
+            - "Protocol used by the virtual server."
+            - >-
+                Possible values = HTTP, SSL, TCP, FTP, RTSP, SSL_TCP, UDP, DNS, SIP_UDP, SIP_TCP, SIP_SSL, ANY,
+                RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, DNS_TCP, ORACLE, SMPP
 
     ipv46:
-        
         description:
-            
-            - IP address of the content switching virtual server.
-            
-            - Minimum length = 1
-            
+            - "IP address of the content switching virtual server."
+            - "Minimum length = 1"
 
     targettype:
-        choices: ['GSLB']
+        choices:
+            - 'GSLB'
         description:
-            
-            - Virtual server target type.
-            
-            - Possible values = GSLB
-            
+            - "Virtual server target type."
+            - "Possible values = GSLB"
 
     dnsrecordtype:
-        choices: ['A', 'AAAA', 'CNAME', 'NAPTR']
+        choices:
+            - 'A'
+            - 'AAAA'
+            - 'CNAME'
+            - 'NAPTR'
         description:
-            
-            - .
-            
-            - Default value: NSGSLB_IPV4
-            
-            - Possible values = A, AAAA, CNAME, NAPTR
-            
+            - "."
+            - "Default value: NSGSLB_IPV4"
+            - "Possible values = A, AAAA, CNAME, NAPTR"
 
     persistenceid:
-        
         description:
-            
-            - .
-            
-            - Minimum value = 0
-            
-            - Maximum value = 65535
-            
+            - "."
+            - "Minimum value = 0"
+            - "Maximum value = 65535"
 
     ippattern:
-        
         description:
-            
-            - IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.
-            
-            - For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
-            
-            - If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if the virtual servers, vs1 and vs2, have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255, a destination IP address of 198.51.100.128 has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
-            
+            - >-
+                IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual
+                server. The IP Mask parameter specifies which part of the destination IP address is matched against
+                the pattern. Mutually exclusive with the IP Address parameter.
+            - >-
+                For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is
+                255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses are matched with
+                the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range
+                from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as 0.0.2.2 and a mask such as
+                0.0.255.255 (a reverse mask).
+            - >-
+                If a destination IP address matches more than one IP pattern, the pattern with the longest match is
+                selected, and the associated virtual server processes the request. For example, if the virtual
+                servers, vs1 and vs2, have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255
+                and 0.0.224.255, a destination IP address of 198.51.100.128 has the longest match with the IP pattern
+                of vs1. If a destination IP address matches two or more virtual servers to the same extent, the
+                request is processed by the virtual server whose port number matches the port number in the request.
 
     ipmask:
-        
         description:
-            
-            - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
-            
+            - >-
+                IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing
+                non-zero octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether
+                the first n bits or the last n bits of the destination IP address in a client request are to be
+                matched with the corresponding bits in the IP pattern. The former is called a forward mask. The
+                latter is called a reverse mask.
 
     range:
-        
         description:
-            
-            - Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.
-            
-            - Default value: 1
-            
-            - Minimum value = 1
-            
-            - Maximum value = 254
-            
+            - >-
+                Number of consecutive IP addresses, starting with the address specified by the IP Address parameter,
+                to include in a range of addresses assigned to this virtual server.
+            - "Default value: 1"
+            - "Minimum value = 1"
+            - "Maximum value = 254"
 
     port:
-        
         description:
-            
-            - Port number for content switching virtual server.
-            
-            - Minimum value = 1
-            
-            - Range 1 - 65535
-            
-            - * in CLI is represented as 65535 in NITRO API
-            
+            - "Port number for content switching virtual server."
+            - "Minimum value = 1"
+            - "Range 1 - 65535"
+            - "* in CLI is represented as 65535 in NITRO API"
 
     state:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Initial state of the load balancing virtual server.
-            
-            - Default value: ENABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - "Initial state of the load balancing virtual server."
+            - "Default value: ENABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     stateupdate:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:
-            
-            - Global Level | Vserver Level | Result
-            
-            - ENABLED ENABLED ENABLED
-            
-            - ENABLED DISABLED ENABLED
-            
-            - DISABLED ENABLED ENABLED
-            
-            - DISABLED DISABLED DISABLED
-            
-            - If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - >-
+                Enable state updates for a specific content switching virtual server. By default, the Content
+                Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers
+                bound to it. This parameter interacts with the global setting as follows:
+            - "Global Level | Vserver Level | Result"
+            - "ENABLED ENABLED ENABLED"
+            - "ENABLED DISABLED ENABLED"
+            - "DISABLED ENABLED ENABLED"
+            - "DISABLED DISABLED DISABLED"
+            - >-
+                If you want to enable state updates for only some content switching virtual servers, be sure to
+                disable the state update parameter.
+            - "Default value: DISABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     cacheable:
-        choices: ['YES', 'NO']
+        choices:
+            - 'YES'
+            - 'NO'
         description:
-            
-            - Use this option to specify whether a virtual server, used for load balancing or content switching, routes requests to the cache redirection virtual server before sending it to the configured servers.
-            
-            - Default value: NO
-            
-            - Possible values = YES, NO
-            
+            - >-
+                Use this option to specify whether a virtual server, used for load balancing or content switching,
+                routes requests to the cache redirection virtual server before sending it to the configured servers.
+            - "Default value: NO"
+            - "Possible values = YES, NO"
 
     redirecturl:
-        
         description:
-            
-            - URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either HTTP or SSL.
-            
-            - Caution: Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.
-            
-            - Minimum length = 1
-            
+            - >-
+                URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the
+                virtual server should be either HTTP or SSL.
+            - >-
+                Caution: Make sure that the domain in the URL does not match the domain specified for a content
+                switching policy. If it does, requests are continuously redirected to the unavailable virtual server.
+            - "Minimum length = 1"
 
     clttimeout:
-        
         description:
-            
-            - Idle time, in seconds, after which the client connection is terminated. The default values are:
-            
-            - 180 seconds for HTTP/SSL-based services.
-            
-            - 9000 seconds for other TCP-based services.
-            
-            - 120 seconds for DNS-based services.
-            
-            - 120 seconds for other UDP-based services.
-            
-            - Minimum value = 0
-            
-            - Maximum value = 31536000
-            
+            - "Idle time, in seconds, after which the client connection is terminated. The default values are:"
+            - "180 seconds for HTTP/SSL-based services."
+            - "9000 seconds for other TCP-based services."
+            - "120 seconds for DNS-based services."
+            - "120 seconds for other UDP-based services."
+            - "Minimum value = 0"
+            - "Maximum value = 31536000"
 
     precedence:
-        choices: ['RULE', 'URL']
+        choices:
+            - 'RULE'
+            - 'URL'
         description:
-            
-            - Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual server. With the default (RULE) setting, incoming requests are evaluated against the rule-based content switching policies. If none of the rules match, the URL in the request is evaluated against the URL-based content switching policies.
-            
-            - Default value: RULE
-            
-            - Possible values = RULE, URL
-            
+            - >-
+                Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual
+                server. With the default (RULE) setting, incoming requests are evaluated against the rule-based
+                content switching policies. If none of the rules match, the URL in the request is evaluated against
+                the URL-based content switching policies.
+            - "Default value: RULE"
+            - "Possible values = RULE, URL"
 
     casesensitive:
-        choices: ['ON', 'OFF']
+        choices:
+            - 'ON'
+            - 'OFF'
         description:
-            
-            - Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the same target.
-            
-            - Default value: ON
-            
-            - Possible values = ON, OFF
-            
+            - >-
+                Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON
+                setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set
+                by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the
+                same target.
+            - "Default value: ON"
+            - "Possible values = ON, OFF"
 
     somethod:
-        choices: ['CONNECTION', 'DYNAMICCONNECTION', 'BANDWIDTH', 'HEALTH', 'NONE']
+        choices:
+            - 'CONNECTION'
+            - 'DYNAMICCONNECTION'
+            - 'BANDWIDTH'
+            - 'HEALTH'
+            - 'NONE'
         description:
-            
-            - Type of spillover used to divert traffic to the backup virtual server when the primary virtual server reaches the spillover threshold. Connection spillover is based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.
-            
-            - Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE
-            
+            - >-
+                Type of spillover used to divert traffic to the backup virtual server when the primary virtual server
+                reaches the spillover threshold. Connection spillover is based on the number of connections.
+                Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.
+            - "Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE"
 
     sopersistence:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Maintain source-IP based persistence on primary and backup virtual servers.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - "Maintain source-IP based persistence on primary and backup virtual servers."
+            - "Default value: DISABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     sopersistencetimeout:
-        
         description:
-            
-            - Time-out value, in minutes, for spillover persistence.
-            
-            - Default value: 2
-            
-            - Minimum value = 2
-            
-            - Maximum value = 1440
-            
+            - "Time-out value, in minutes, for spillover persistence."
+            - "Default value: 2"
+            - "Minimum value = 2"
+            - "Maximum value = 1440"
 
     sothreshold:
-        
         description:
-            
-            - Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.
-            
-            - Minimum value = 1
-            
-            - Maximum value = 4294967287
-            
+            - >-
+                Depending on the spillover method, the maximum number of connections or the maximum total bandwidth
+                (Kbps) that a virtual server can handle before spillover occurs.
+            - "Minimum value = 1"
+            - "Maximum value = 4294967287"
 
     sobackupaction:
-        choices: ['DROP', 'ACCEPT', 'REDIRECT']
+        choices:
+            - 'DROP'
+            - 'ACCEPT'
+            - 'REDIRECT'
         description:
-            
-            - Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.
-            
-            - Possible values = DROP, ACCEPT, REDIRECT
-            
+            - >-
+                Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or
+                exists.
+            - "Possible values = DROP, ACCEPT, REDIRECT"
 
     redirectportrewrite:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - State of port rewrite while performing HTTP redirect.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - "State of port rewrite while performing HTTP redirect."
+            - "Default value: DISABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     downstateflush:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
-            
-            - Default value: ENABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - >-
+                Flush all active transactions associated with a virtual server whose state transitions from UP to
+                DOWN. Do not enable this option for applications that must complete their transactions.
+            - "Default value: ENABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     backupvserver:
-        
         description:
-            
-            - Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the backup virtual server is created. You can assign a different backup virtual server or rename the existing virtual server.
-            
-            - The following requirement applies only to the NetScaler CLI:
-            
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks.
-            
-            - Minimum length = 1
-            
+            - >-
+                Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or
+                underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.),
+                space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the
+                backup virtual server is created. You can assign a different backup virtual server or rename the
+                existing virtual server.
+            - "The following requirement applies only to the NetScaler CLI:"
+            - "If the name includes one or more spaces, enclose the name in double or single quotation marks."
+            - "Minimum length = 1"
 
     disableprimaryondown:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - >-
+                Continue forwarding the traffic to backup virtual server even after the primary server comes UP from
+                the DOWN state.
+            - "Default value: DISABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     insertvserveripport:
-        choices: ['OFF', 'VIPADDR', 'V6TOV4MAPPING']
+        choices:
+            - 'OFF'
+            - 'VIPADDR'
+            - 'V6TOV4MAPPING'
         description:
-            
-            - Insert the virtual server's VIP address and port number in the request header. Available values function as follows:
-            
-            - VIPADDR - Header contains the vserver's IP address and port number without any translation.
-            
-            - OFF - The virtual IP and port header insertion option is disabled.
-            
-            - V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.
-            
-            - Possible values = OFF, VIPADDR, V6TOV4MAPPING
-            
+            - >-
+                Insert the virtual server's VIP address and port number in the request header. Available values
+                function as follows:
+            - "VIPADDR - Header contains the vserver's IP address and port number without any translation."
+            - "OFF - The virtual IP and port header insertion option is disabled."
+            - >-
+                V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the
+                vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the
+                set ns ip6 command.
+            - "Possible values = OFF, VIPADDR, V6TOV4MAPPING"
 
     vipheader:
-        
         description:
-            
-            - Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter.
-            
-            - Minimum length = 1
-            
+            - "Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter."
+            - "Minimum length = 1"
 
     rtspnat:
-        choices: ['ON', 'OFF']
+        choices:
+            - 'ON'
+            - 'OFF'
         description:
-            
-            - Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections.
-            
-            - Default value: OFF
-            
-            - Possible values = ON, OFF
-            
+            - "Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections."
+            - "Default value: OFF"
+            - "Possible values = ON, OFF"
 
     authenticationhost:
-        
         description:
-            
-            - FQDN of the authentication virtual server. The service type of the virtual server should be either HTTP or SSL.
-            
-            - Minimum length = 3
-            
-            - Maximum length = 252
-            
+            - >-
+                FQDN of the authentication virtual server. The service type of the virtual server should be either
+                HTTP or SSL.
+            - "Minimum length = 3"
+            - "Maximum length = 252"
 
     authentication:
-        choices: ['ON', 'OFF']
+        choices:
+            - 'ON'
+            - 'OFF'
         description:
-            
-            - Authenticate users who request a connection to the content switching virtual server.
-            
-            - Default value: OFF
-            
-            - Possible values = ON, OFF
-            
+            - "Authenticate users who request a connection to the content switching virtual server."
+            - "Default value: OFF"
+            - "Possible values = ON, OFF"
 
     listenpolicy:
-        
         description:
-            
-            - String specifying the listen policy for the content switching virtual server. Can be either the name of an existing expression or an in-line expression.
-            
-            - Default value: "NONE"
-            
+            - >-
+                String specifying the listen policy for the content switching virtual server. Can be either the name
+                of an existing expression or an in-line expression.
+            - "Default value: \"NONE\""
 
     listenpriority:
-        
         description:
-            
-            - Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.
-            
-            - Default value: 101
-            
-            - Minimum value = 0
-            
-            - Maximum value = 100
-            
+            - >-
+                Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If
+                a request matches the listen policies of more than one virtual server the virtual server whose listen
+                policy has the highest priority (the lowest priority number) accepts the request.
+            - "Default value: 101"
+            - "Minimum value = 0"
+            - "Maximum value = 100"
 
     authn401:
-        choices: ['ON', 'OFF']
+        choices:
+            - 'ON'
+            - 'OFF'
         description:
-            
-            - Enable HTTP 401-response based authentication.
-            
-            - Default value: OFF
-            
-            - Possible values = ON, OFF
-            
+            - "Enable HTTP 401-response based authentication."
+            - "Default value: OFF"
+            - "Possible values = ON, OFF"
 
     authnvsname:
-        
         description:
-            
-            - Name of authentication virtual server that authenticates the incoming user requests to this content switching virtual server. .
-            
-            - Minimum length = 1
-            
-            - Maximum length = 252
-            
+            - >-
+                Name of authentication virtual server that authenticates the incoming user requests to this content
+                switching virtual server. .
+            - "Minimum length = 1"
+            - "Maximum length = 252"
 
     push:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either HTTP or SSL.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - >-
+                Process traffic with the push virtual server that is bound to this content switching virtual server
+                (specified by the Push VServer parameter). The service type of the push virtual server should be
+                either HTTP or SSL.
+            - "Default value: DISABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     pushvserver:
-        
         description:
-            
-            - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the client-facing load balancing virtual server.
-            
-            - Minimum length = 1
-            
+            - >-
+                Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes
+                updates received on the client-facing load balancing virtual server.
+            - "Minimum length = 1"
 
     pushlabel:
-        
         description:
-            
-            - Expression for extracting the label from the response received from server. This string can be either an existing rule name or an inline expression. The service type of the virtual server should be either HTTP or SSL.
-            
-            - Default value: "none"
-            
+            - >-
+                Expression for extracting the label from the response received from server. This string can be either
+                an existing rule name or an inline expression. The service type of the virtual server should be
+                either HTTP or SSL.
+            - "Default value: \"none\""
 
     pushmulticlients:
-        choices: ['YES', 'NO']
+        choices:
+            - 'YES'
+            - 'NO'
         description:
-            
-            - Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.
-            
-            - Default value: NO
-            
-            - Possible values = YES, NO
-            
+            - >-
+                Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
+                updates.
+            - "Default value: NO"
+            - "Possible values = YES, NO"
 
     tcpprofilename:
-        
         description:
-            
-            - Name of the TCP profile containing TCP configuration settings for the virtual server.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 127
-            
+            - "Name of the TCP profile containing TCP configuration settings for the virtual server."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     httpprofilename:
-        
         description:
-            
-            - Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service type of the virtual server should be either HTTP or SSL.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 127
-            
+            - >-
+                Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service
+                type of the virtual server should be either HTTP or SSL.
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     dbprofilename:
-        
         description:
-            
-            - Name of the DB profile.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 127
-            
+            - "Name of the DB profile."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     oracleserverversion:
-        choices: ['10G', '11G']
+        choices:
+            - '10G'
+            - '11G'
         description:
-            
-            - Oracle server version.
-            
-            - Default value: 10G
-            
-            - Possible values = 10G, 11G
-            
+            - "Oracle server version."
+            - "Default value: 10G"
+            - "Possible values = 10G, 11G"
 
     comment:
-        
         description:
-            
-            - Information about this virtual server.
-            
+            - "Information about this virtual server."
 
     mssqlserverversion:
-        choices: ['70', '2000', '2000SP1', '2005', '2008', '2008R2', '2012', '2014']
+        choices:
+            - '70'
+            - '2000'
+            - '2000SP1'
+            - '2005'
+            - '2008'
+            - '2008R2'
+            - '2012'
+            - '2014'
         description:
-            
-            - The version of the MSSQL server.
-            
-            - Default value: 2008R2
-            
-            - Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012, 2014
-            
+            - "The version of the MSSQL server."
+            - "Default value: 2008R2"
+            - "Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012, 2014"
 
     l2conn:
-        choices: ['ON', 'OFF']
+        choices:
+            - 'ON'
+            - 'OFF'
         description:
-            
-            - Use L2 Parameters to identify a connection.
-            
-            - Possible values = ON, OFF
-            
+            - "Use L2 Parameters to identify a connection."
+            - "Possible values = ON, OFF"
 
     mysqlprotocolversion:
-        
         description:
-            
-            - The protocol version returned by the mysql vserver.
-            
-            - Default value: 10
-            
+            - "The protocol version returned by the mysql vserver."
+            - "Default value: 10"
 
     mysqlserverversion:
-        
         description:
-            
-            - The server version string returned by the mysql vserver.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 31
-            
+            - "The server version string returned by the mysql vserver."
+            - "Minimum length = 1"
+            - "Maximum length = 31"
 
     mysqlcharacterset:
-        
         description:
-            
-            - The character set returned by the mysql vserver.
-            
-            - Default value: 8
-            
+            - "The character set returned by the mysql vserver."
+            - "Default value: 8"
 
     mysqlservercapabilities:
-        
         description:
-            
-            - The server capabilities returned by the mysql vserver.
-            
-            - Default value: 41613
-            
+            - "The server capabilities returned by the mysql vserver."
+            - "Default value: 41613"
 
     appflowlog:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            
-            - Enable logging appflow flow information.
-            
-            - Default value: ENABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
+            - "Enable logging appflow flow information."
+            - "Default value: ENABLED"
+            - "Possible values = ENABLED, DISABLED"
 
     netprofile:
-        
         description:
-            
-            - The name of the network profile.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 127
-            
+            - "The name of the network profile."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     icmpvsrresponse:
-        choices: ['PASSIVE', 'ACTIVE']
+        choices:
+            - 'PASSIVE'
+            - 'ACTIVE'
         description:
-            
-            - Can be active or passive.
-            
-            - Default value: PASSIVE
-            
-            - Possible values = PASSIVE, ACTIVE
-            
+            - "Can be active or passive."
+            - "Default value: PASSIVE"
+            - "Possible values = PASSIVE, ACTIVE"
 
     rhistate:
-        choices: ['PASSIVE', 'ACTIVE']
+        choices:
+            - 'PASSIVE'
+            - 'ACTIVE'
         description:
-            
-            - A host route is injected according to the setting on the virtual servers
-            
-            - * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always injects the hostroute.
-            
-            - * If set to ACTIVE on all the virtual servers that share the IP address, the appliance injects even if one virtual server is UP.
-            
-            - * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance, injects even if one virtual server set to ACTIVE is UP.
-            
-            - Default value: PASSIVE
-            
-            - Possible values = PASSIVE, ACTIVE
-            
+            - "A host route is injected according to the setting on the virtual servers"
+            - >-
+                * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always
+                injects the hostroute.
+            - >-
+                * If set to ACTIVE on all the virtual servers that share the IP address, the appliance injects even
+                if one virtual server is UP.
+            - >-
+                * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance, injects even if
+                one virtual server set to ACTIVE is UP.
+            - "Default value: PASSIVE"
+            - "Possible values = PASSIVE, ACTIVE"
 
     authnprofile:
-        
         description:
-            
-            - Name of the authentication profile to be used when authentication is turned on.
-            
+            - "Name of the authentication profile to be used when authentication is turned on."
 
     dnsprofilename:
-        
         description:
-            
-            - Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
-            
-            - Minimum length = 1
-            
-            - Maximum length = 127
-            
+            - >-
+                Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the
+                transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     domainname:
-        
         description:
-            
-            - Domain name for which to change the time to live (TTL) and/or backup service IP address.
-            
-            - Minimum length = 1
-            
+            - "Domain name for which to change the time to live (TTL) and/or backup service IP address."
+            - "Minimum length = 1"
 
     ttl:
-        
         description:
-            
-            - .
-            
-            - Minimum value = 1
-            
+            - "."
+            - "Minimum value = 1"
 
     backupip:
-        
         description:
-            
-            - .
-            
-            - Minimum length = 1
-            
+            - "."
+            - "Minimum length = 1"
 
     cookiedomain:
-        
         description:
-            
-            - .
-            
-            - Minimum length = 1
-            
+            - "."
+            - "Minimum length = 1"
 
     cookietimeout:
-        
         description:
-            
-            - .
-            
-            - Minimum value = 0
-            
-            - Maximum value = 1440
-            
+            - "."
+            - "Minimum value = 0"
+            - "Maximum value = 1440"
 
     sitedomainttl:
-        
         description:
-            
-            - .
-            
-            - Minimum value = 1
-            
+            - "."
+            - "Minimum value = 1"
 
     newname:
-        
         description:
-            
-            - New name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters.
-            
-            - The following requirement applies only to the NetScaler CLI:
-            
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my name or my name).
-            
-            - Minimum length = 1
-            
+            - >-
+                New name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character,
+                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign
+                (@), equal sign (=), and hyphen (-) characters.
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                example, my name or my name).
+            - "Minimum length = 1"
 
-    ip:
-        
-        description:
-            
-            - The IP address of the virtual server.
-            
 
-    value:
-        choices: ['Certkey not bound', 'SSL feature disabled']
-        description:
-            
-            - The ssl card status for the transparent ssl cs vserver.
-            
-            - Possible values = Certkey not bound, SSL feature disabled
-            
-
-    ngname:
-        
-        description:
-            
-            - Nodegroup devno to which this csvserver belongs to.
-            
-
-    type:
-        choices: ['CONTENT', 'ADDRESS']
-        description:
-            
-            - Virtual server type.
-            
-            - Possible values = CONTENT, ADDRESS
-            
-
-    curstate:
-        choices: ['UP', 'DOWN', 'UNKNOWN', 'BUSY', 'OUT OF SERVICE', 'GOING OUT OF SERVICE', 'DOWN WHEN GOING OUT OF SERVICE', 'NS_EMPTY_STR', 'Unknown', 'DISABLED']
-        description:
-            
-            - The state of the cs vserver.
-            
-            - Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED
-            
-
-    sc:
-        choices: ['ON', 'OFF']
-        description:
-            
-            - The state of SureConnect the specified virtual server.
-            
-            - Possible values = ON, OFF
-            
-
-    status:
-        
-        description:
-            
-            - Status.
-            
-
-    cachetype:
-        choices: ['TRANSPARENT', 'REVERSE', 'FORWARD']
-        description:
-            
-            - Cache type.
-            
-            - Possible values = TRANSPARENT, REVERSE, FORWARD
-            
-
-    redirect:
-        choices: ['CACHE', 'POLICY', 'ORIGIN']
-        description:
-            
-            - Redirect URL string.
-            
-            - Possible values = CACHE, POLICY, ORIGIN
-            
-
-    homepage:
-        
-        description:
-            
-            - Home page.
-            
-
-    dnsvservername:
-        
-        description:
-            
-            - DNS vserver name.
-            
-
-    domain:
-        
-        description:
-            
-            - Domain.
-            
-
-    policyname:
-        
-        description:
-            
-            - Policies bound to this vserver.
-            
-
-    servicename:
-        
-        description:
-            
-            - Service name.
-            
-
-    weight:
-        
-        description:
-            
-            - Weight for this service.
-            
-
-    cachevserver:
-        
-        description:
-            
-            - Cache vserver name.
-            
-
-    targetvserver:
-        
-        description:
-            
-            - target vserver name.
-            
-
-    priority:
-        
-        description:
-            
-            - Priority for the policy.
-            
-
-    url:
-        
-        description:
-            
-            - URL string.
-            
-
-    gotopriorityexpression:
-        
-        description:
-            
-            - Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
-            
-
-    bindpoint:
-        choices: ['REQUEST', 'RESPONSE']
-        description:
-            
-            - The bindpoint to which the policy is bound.
-            
-            - Possible values = REQUEST, RESPONSE
-            
-
-    invoke:
-        
-        description:
-            
-            - Invoke flag.
-            
-
-    labeltype:
-        choices: ['reqvserver', 'resvserver', 'policylabel']
-        description:
-            
-            - The invocation type.
-            
-            - Possible values = reqvserver, resvserver, policylabel
-            
-
-    labelname:
-        
-        description:
-            
-            - Name of the label invoked.
-            
-
-    gt2gb:
-        choices: ['ENABLED', 'DISABLED']
-        description:
-            
-            - This argument has no effect.
-            
-            - Default value: DISABLED
-            
-            - Possible values = ENABLED, DISABLED
-            
-
-    statechangetimesec:
-        
-        description:
-            
-            - Time when last state change happened. Seconds part.
-            
-
-    statechangetimemsec:
-        
-        description:
-            
-            - Time at which last state change happened. Milliseconds part.
-            
-
-    tickssincelaststatechange:
-        
-        description:
-            
-            - Time in 10 millisecond ticks since the last state change.
-            
-
-    ruletype:
-        
-        description:
-            
-            - Rule type.
-            
-
-    lbvserver:
-        
-        description:
-            
-            - Name of the default lb vserver bound. Use this param for Default binding only. For Example: bind cs vserver cs1 -lbvserver lb1.
-            
-            - Minimum length = 1
-            
-
-    targetlbvserver:
-        
-        description:
-            
-            - target vserver name.
-            
-
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
-# TODO: Add appropriate examples
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
 '''
 
-# TODO: Update as module progresses
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
-    returned: always
-    type: boolean
-    sample: False
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-import StringIO
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
     try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
         python_sdk_imported = False
 
     module_specific_arguments = dict(
-        
-        name=dict(
-        type='str',
-        
-        ),
-        
-        td=dict(
-        type='float',
-        
-        ),
-        
+        name=dict(type='str'),
+        td=dict(type='float'),
         servicetype=dict(
-        type='str',
-        choices=[u'HTTP', u'SSL', u'TCP', u'FTP', u'RTSP', u'SSL_TCP', u'UDP', u'DNS', u'SIP_UDP', u'SIP_TCP', u'SIP_SSL', u'ANY', u'RADIUS', u'RDP', u'MYSQL', u'MSSQL', u'DIAMETER', u'SSL_DIAMETER', u'DNS_TCP', u'ORACLE', u'SMPP']
+            type='str',
+            choices=[
+                'HTTP',
+                'SSL',
+                'TCP',
+                'FTP',
+                'RTSP',
+                'SSL_TCP',
+                'UDP',
+                'DNS',
+                'SIP_UDP',
+                'SIP_TCP',
+                'SIP_SSL',
+                'ANY',
+                'RADIUS',
+                'RDP',
+                'MYSQL',
+                'MSSQL',
+                'DIAMETER',
+                'SSL_DIAMETER',
+                'DNS_TCP',
+                'ORACLE',
+                'SMPP',
+            ]
         ),
-        
-        ipv46=dict(
-        type='str',
-        
-        ),
-        
+        ipv46=dict(type='str'),
         targettype=dict(
-        type='str',
-        choices=[u'GSLB']
+            type='str',
+            choices=[
+                'GSLB',
+            ]
         ),
-        
         dnsrecordtype=dict(
-        type='str',
-        choices=[u'A', u'AAAA', u'CNAME', u'NAPTR']
+            type='str',
+            choices=[
+                'A',
+                'AAAA',
+                'CNAME',
+                'NAPTR',
+            ]
         ),
-        
-        persistenceid=dict(
-        type='float',
-        
-        ),
-        
-        ippattern=dict(
-        type='str',
-        
-        ),
-        
-        ipmask=dict(
-        type='str',
-        
-        ),
-        
-        range=dict(
-        type='float',
-        
-        ),
-        
-        port=dict(
-        type='int',
-        
-        ),
-        
+        persistenceid=dict(type='float'),
+        ippattern=dict(type='str'),
+        ipmask=dict(type='str'),
+        range=dict(type='float'),
+        port=dict(type='int'),
         state=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
         stateupdate=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
         cacheable=dict(
-        type='str',
-        choices=[u'YES', u'NO']
+            type='str',
+            choices=[
+                'YES',
+                'NO',
+            ]
         ),
-        
-        redirecturl=dict(
-        type='str',
-        
-        ),
-        
-        clttimeout=dict(
-        type='float',
-        
-        ),
-        
+        redirecturl=dict(type='str'),
+        clttimeout=dict(type='float'),
         precedence=dict(
-        type='str',
-        choices=[u'RULE', u'URL']
+            type='str',
+            choices=[
+                'RULE',
+                'URL',
+            ]
         ),
-        
         casesensitive=dict(
-        type='str',
-        choices=[u'ON', u'OFF']
+            type='str',
+            choices=[
+                'ON',
+                'OFF',
+            ]
         ),
-        
         somethod=dict(
-        type='str',
-        choices=[u'CONNECTION', u'DYNAMICCONNECTION', u'BANDWIDTH', u'HEALTH', u'NONE']
+            type='str',
+            choices=[
+                'CONNECTION',
+                'DYNAMICCONNECTION',
+                'BANDWIDTH',
+                'HEALTH',
+                'NONE',
+            ]
         ),
-        
         sopersistence=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
-        sopersistencetimeout=dict(
-        type='float',
-        
-        ),
-        
-        sothreshold=dict(
-        type='float',
-        
-        ),
-        
+        sopersistencetimeout=dict(type='float'),
+        sothreshold=dict(type='float'),
         sobackupaction=dict(
-        type='str',
-        choices=[u'DROP', u'ACCEPT', u'REDIRECT']
+            type='str',
+            choices=[
+                'DROP',
+                'ACCEPT',
+                'REDIRECT',
+            ]
         ),
-        
         redirectportrewrite=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
         downstateflush=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
-        backupvserver=dict(
-        type='str',
-        
-        ),
-        
+        backupvserver=dict(type='str'),
         disableprimaryondown=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
         insertvserveripport=dict(
-        type='str',
-        choices=[u'OFF', u'VIPADDR', u'V6TOV4MAPPING']
+            type='str',
+            choices=[
+                'OFF',
+                'VIPADDR',
+                'V6TOV4MAPPING',
+            ]
         ),
-        
-        vipheader=dict(
-        type='str',
-        
-        ),
-        
+        vipheader=dict(type='str'),
         rtspnat=dict(
-        type='str',
-        choices=[u'ON', u'OFF']
+            type='str',
+            choices=[
+                'ON',
+                'OFF',
+            ]
         ),
-        
-        authenticationhost=dict(
-        type='str',
-        
-        ),
-        
+        authenticationhost=dict(type='str'),
         authentication=dict(
-        type='str',
-        choices=[u'ON', u'OFF']
+            type='str',
+            choices=[
+                'ON',
+                'OFF',
+            ]
         ),
-        
-        listenpolicy=dict(
-        type='str',
-        
-        ),
-        
-        listenpriority=dict(
-        type='float',
-        
-        ),
-        
+        listenpolicy=dict(type='str'),
+        listenpriority=dict(type='float'),
         authn401=dict(
-        type='str',
-        choices=[u'ON', u'OFF']
+            type='str',
+            choices=[
+                'ON',
+                'OFF',
+            ]
         ),
-        
-        authnvsname=dict(
-        type='str',
-        
-        ),
-        
+        authnvsname=dict(type='str'),
         push=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
-        pushvserver=dict(
-        type='str',
-        
-        ),
-        
-        pushlabel=dict(
-        type='str',
-        
-        ),
-        
+        pushvserver=dict(type='str'),
+        pushlabel=dict(type='str'),
         pushmulticlients=dict(
-        type='str',
-        choices=[u'YES', u'NO']
+            type='str',
+            choices=[
+                'YES',
+                'NO',
+            ]
         ),
-        
-        tcpprofilename=dict(
-        type='str',
-        
-        ),
-        
-        httpprofilename=dict(
-        type='str',
-        
-        ),
-        
-        dbprofilename=dict(
-        type='str',
-        
-        ),
-        
+        tcpprofilename=dict(type='str'),
+        httpprofilename=dict(type='str'),
+        dbprofilename=dict(type='str'),
         oracleserverversion=dict(
-        type='str',
-        choices=[u'10G', u'11G']
+            type='str',
+            choices=[
+                '10G',
+                '11G',
+            ]
         ),
-        
-        comment=dict(
-        type='str',
-        
-        ),
-        
+        comment=dict(type='str'),
         mssqlserverversion=dict(
-        type='str',
-        choices=[u'70', u'2000', u'2000SP1', u'2005', u'2008', u'2008R2', u'2012', u'2014']
+            type='str',
+            choices=[
+                '70',
+                '2000',
+                '2000SP1',
+                '2005',
+                '2008',
+                '2008R2',
+                '2012',
+                '2014',
+            ]
         ),
-        
         l2conn=dict(
-        type='str',
-        choices=[u'ON', u'OFF']
+            type='str',
+            choices=[
+                'ON',
+                'OFF',
+            ]
         ),
-        
-        mysqlprotocolversion=dict(
-        type='float',
-        
-        ),
-        
-        mysqlserverversion=dict(
-        type='str',
-        
-        ),
-        
-        mysqlcharacterset=dict(
-        type='float',
-        
-        ),
-        
-        mysqlservercapabilities=dict(
-        type='float',
-        
-        ),
-        
+        mysqlprotocolversion=dict(type='float'),
+        mysqlserverversion=dict(type='str'),
+        mysqlcharacterset=dict(type='float'),
+        mysqlservercapabilities=dict(type='float'),
         appflowlog=dict(
-        type='str',
-        choices=[u'ENABLED', u'DISABLED']
+            type='str',
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
-        
-        netprofile=dict(
-        type='str',
-        
-        ),
-        
+        netprofile=dict(type='str'),
         icmpvsrresponse=dict(
-        type='str',
-        choices=[u'PASSIVE', u'ACTIVE']
+            type='str',
+            choices=[
+                'PASSIVE',
+                'ACTIVE',
+            ]
         ),
-        
         rhistate=dict(
-        type='str',
-        choices=[u'PASSIVE', u'ACTIVE']
+            type='str',
+            choices=[
+                'PASSIVE',
+                'ACTIVE',
+            ]
         ),
-        
-        authnprofile=dict(
-        type='str',
-        
-        ),
-        
-        dnsprofilename=dict(
-        type='str',
-        
-        ),
-        
-        domainname=dict(
-        type='str',
-        
-        ),
-        
-        ttl=dict(
-        type='float',
-        
-        ),
-        
-        backupip=dict(
-        type='str',
-        
-        ),
-        
-        cookiedomain=dict(
-        type='str',
-        
-        ),
-        
-        cookietimeout=dict(
-        type='float',
-        
-        ),
-        
-        sitedomainttl=dict(
-        type='float',
-        
-        ),
-        
-        newname=dict(
-        type='str',
-        
-        ),
-        
+        authnprofile=dict(type='str'),
+        dnsprofilename=dict(type='str'),
+        domainname=dict(type='str'),
+        ttl=dict(type='float'),
+        backupip=dict(type='str'),
+        cookiedomain=dict(type='str'),
+        cookietimeout=dict(type='float'),
+        sitedomainttl=dict(type='float'),
+        newname=dict(type='str'),
+    )
+
+    hand_inserted_arguments = dict(
     )
 
     argument_spec = dict()
 
     argument_spec.update(netscaler_common_arguments)
-
     argument_spec.update(module_specific_arguments)
+    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode = True,
+        supports_check_mode=True,
     )
     module_result = dict(
         changed=False,
         failed=False,
+        loglines=loglines,
     )
 
     # Fail the module if imports failed
@@ -1342,83 +918,180 @@ def main():
     client = get_nitro_client(module)
     client.login()
 
+    readwrite_attrs = [
+        'name',
+        'td',
+        'servicetype',
+        'ipv46',
+        'targettype',
+        'dnsrecordtype',
+        'persistenceid',
+        'ippattern',
+        'ipmask',
+        'range',
+        'port',
+        'state',
+        'stateupdate',
+        'cacheable',
+        'redirecturl',
+        'clttimeout',
+        'precedence',
+        'casesensitive',
+        'somethod',
+        'sopersistence',
+        'sopersistencetimeout',
+        'sothreshold',
+        'sobackupaction',
+        'redirectportrewrite',
+        'downstateflush',
+        'backupvserver',
+        'disableprimaryondown',
+        'insertvserveripport',
+        'vipheader',
+        'rtspnat',
+        'authenticationhost',
+        'authentication',
+        'listenpolicy',
+        'listenpriority',
+        'authn401',
+        'authnvsname',
+        'push',
+        'pushvserver',
+        'pushlabel',
+        'pushmulticlients',
+        'tcpprofilename',
+        'httpprofilename',
+        'dbprofilename',
+        'oracleserverversion',
+        'comment',
+        'mssqlserverversion',
+        'l2conn',
+        'mysqlprotocolversion',
+        'mysqlserverversion',
+        'mysqlcharacterset',
+        'mysqlservercapabilities',
+        'appflowlog',
+        'netprofile',
+        'icmpvsrresponse',
+        'rhistate',
+        'authnprofile',
+        'dnsprofilename',
+        'domainname',
+        'ttl',
+        'backupip',
+        'cookiedomain',
+        'cookietimeout',
+        'sitedomainttl',
+        'newname',
+    ]
 
+    readonly_attrs = [
+        'ip',
+        'value',
+        'ngname',
+        'type',
+        'curstate',
+        'sc',
+        'status',
+        'cachetype',
+        'redirect',
+        'homepage',
+        'dnsvservername',
+        'domain',
+        'policyname',
+        'servicename',
+        'weight',
+        'cachevserver',
+        'targetvserver',
+        'priority',
+        'url',
+        'gotopriorityexpression',
+        'bindpoint',
+        'invoke',
+        'labeltype',
+        'labelname',
+        'gt2gb',
+        'statechangetimesec',
+        'statechangetimemsec',
+        'tickssincelaststatechange',
+        'ruletype',
+        'lbvserver',
+        'targetlbvserver',
+        '__count',
+    ]
 
-    # Instantiate Service Config object
-    readwrite_attrs = [u'name', u'td', u'servicetype', u'ipv46', u'targettype', u'dnsrecordtype', u'persistenceid', u'ippattern', u'ipmask', u'range', u'port', u'state', u'stateupdate', u'cacheable', u'redirecturl', u'clttimeout', u'precedence', u'casesensitive', u'somethod', u'sopersistence', u'sopersistencetimeout', u'sothreshold', u'sobackupaction', u'redirectportrewrite', u'downstateflush', u'backupvserver', u'disableprimaryondown', u'insertvserveripport', u'vipheader', u'rtspnat', u'authenticationhost', u'authentication', u'listenpolicy', u'listenpriority', u'authn401', u'authnvsname', u'push', u'pushvserver', u'pushlabel', u'pushmulticlients', u'tcpprofilename', u'httpprofilename', u'dbprofilename', u'oracleserverversion', u'comment', u'mssqlserverversion', u'l2conn', u'mysqlprotocolversion', u'mysqlserverversion', u'mysqlcharacterset', u'mysqlservercapabilities', u'appflowlog', u'netprofile', u'icmpvsrresponse', u'rhistate', u'authnprofile', u'dnsprofilename', u'domainname', u'ttl', u'backupip', u'cookiedomain', u'cookietimeout', u'sitedomainttl', u'newname']
-    readonly_attrs = [u'ip', u'value', u'ngname', u'type', u'curstate', u'sc', u'status', u'cachetype', u'redirect', u'homepage', u'dnsvservername', u'domain', u'policyname', u'servicename', u'weight', u'cachevserver', u'targetvserver', u'priority', u'url', u'gotopriorityexpression', u'bindpoint', u'invoke', u'labeltype', u'labelname', u'gt2gb', u'statechangetimesec', u'statechangetimemsec', u'tickssincelaststatechange', u'ruletype', u'lbvserver', u'targetlbvserver', u'__count']
-
-    service_proxy = ConfigProxy(
-        actual=service(),
+    # Instantiate config proxy
+    _proxy = ConfigProxy(
+        actual=_(),
         client=client,
-        attribute_values_dict = module.params,
+        attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
     )
 
-    def service_exists():
-        if service.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+    def _exists():
+        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
             return True
         else:
             return False
 
-    def service_identical():
-        service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = service_proxy.diff_object(service_list[0])
-        if 'ip' in diff_dict:
-            del diff_dict['ip']
+    def _identical():
+        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+        diff_dict = _proxy.diff_object(_list[0])
         if len(diff_dict) == 0:
             return True
         else:
             return False
 
-    def diff_list():
-        service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-        return service_proxy.diff_object(service_list[0])
-
+    def diff():
+        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+        return _proxy.diff_object(_list[0])
 
     try:
-
+        ensure_feature_is_enabled(client, ' _')
         # Apply appropriate operation
         if module.params['operation'] == 'present':
-            if not service_exists():
+            if not _exists():
                 if not module.check_mode:
-                    service_proxy.add()
+                    _proxy.add()
                     client.save_config()
                 module_result['changed'] = True
-            elif not service_identical():
+            elif not _identical():
                 if not module.check_mode:
-                    service_proxy.update()
+                    _proxy.update()
                     client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
             # Sanity check for operation
-            if not service_exists():
-                module.fail_json(msg='Service does not exist')
-            if not service_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list())
+            if not module.check_mode:
+                if not _exists():
+                    module.fail_json(msg='Service does not exist', **module_result)
+                if not _identical():
+                    module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
 
         elif module.params['operation'] == 'absent':
-            if service_exists():
+            if _exists():
                 if not module.check_mode:
-                    service_proxy.delete()
+                    _proxy.delete()
                     client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
             # Sanity check for operation
-            if service_exists():
-                module.fail_json(msg='Service still exists')
+            if not module.check_mode:
+                if _exists():
+                    module.fail_json(msg='Service still exists', **module_result)
 
     except nitro_exception as e:
-        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
     module.exit_json(**module_result)
+
 
 if __name__ == "__main__":
     main()

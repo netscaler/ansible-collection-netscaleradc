@@ -17,68 +17,34 @@ version_added: 2.3.1
 
 options:
 
-    policyname:
+    weight:
         description:
             - >-
-                Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_)
-                character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon
-                (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is
-                created.
-            - "The following requirement applies only to the NetScaler CLI:"
+                Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the
+                capacity of the service relative to the other services in the load balancing configuration.
+                Determines the priority given to the service in load balancing decisions.
+            - "Default value: 1"
+            - "Minimum value = 1"
+            - "Maximum value = 100"
+
+    name:
+        description:
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
-                example, my policy or my policy).
+                Name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and
+                must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign
+                (@), equal sign (=), and hyphen (-) characters. Can be changed after the virtual server is created.
+                CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation
+                marks (for example, "my vserver" or 'my vserver'). .
             - "Minimum length = 1"
 
-    url:
+    servicename:
         description:
-            - >-
-                URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the
-                string value in the following format: [[prefix] [*]] [.suffix].
-            - "Minimum length = 1"
-            - "Maximum length = 208"
-
-    rule:
-        description:
-            - >-
-                Expression, or name of a named expression, against which traffic is evaluated. Written in the classic
-                or default syntax.
-            - "Note:"
-            - >-
-                Maximum length of a string literal in the expression is 255 characters. A longer string can be split
-                into smaller strings of up to 255 characters each, and the smaller strings concatenated with the +
-                operator. For example, you can create a 500-character string as follows: '"<string of 255
-                characters>" + "<string of 245 characters>"'
-            - "The following requirements apply only to the NetScaler CLI:"
-            - >-
-                * If the expression includes one or more spaces, enclose the entire expression in double quotation
-                marks.
-            - >-
-                * If the expression itself includes double quotation marks, escape the quotations by using the
-                character.
-            - >-
-                * Alternatively, you can use single quotation marks to enclose the rule, in which case you do not
-                have to escape the double quotation marks.
-
-    domain:
-        description:
-            - "The domain name. The string value can range to 63 characters."
+            - "Service to bind to the virtual server."
             - "Minimum length = 1"
 
-    action:
+    servicegroupname:
         description:
-            - >-
-                Content switching action that names the target load balancing virtual server to which the traffic is
-                switched.
-
-    logaction:
-        description:
-            - "The log action associated with the content switching policy."
-
-    newname:
-        description:
-            - "The new name of the content switching policy."
-            - "Minimum length = 1"
+            - "The service group name bound to the selected load balancing virtual server."
 
 
 extends_documentation_fragment: netscaler
@@ -104,13 +70,10 @@ def main():
         python_sdk_imported = False
 
     module_specific_arguments = dict(
-        policyname=dict(type='str'),
-        url=dict(type='str'),
-        rule=dict(type='str'),
-        domain=dict(type='str'),
-        action=dict(type='str'),
-        logaction=dict(type='str'),
-        newname=dict(type='str'),
+        weight=dict(type='float'),
+        name=dict(type='str'),
+        servicename=dict(type='str'),
+        servicegroupname=dict(type='str'),
     )
 
     hand_inserted_arguments = dict(
@@ -141,25 +104,14 @@ def main():
     client.login()
 
     readwrite_attrs = [
-        'policyname',
-        'url',
-        'rule',
-        'domain',
-        'action',
-        'logaction',
-        'newname',
+        'weight',
+        'name',
+        'servicename',
+        'servicegroupname',
+        '__count',
     ]
 
     readonly_attrs = [
-        'vstype',
-        'hits',
-        'bindhits',
-        'labelname',
-        'labeltype',
-        'priority',
-        'activepolicy',
-        'cspolicytype',
-        '__count',
     ]
 
     # Instantiate config proxy
