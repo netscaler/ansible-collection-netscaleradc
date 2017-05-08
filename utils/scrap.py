@@ -86,7 +86,10 @@ def main():
         #'content-switching/csvserver',
         #'content-switching/cspolicy',
         #'content-switching/csaction',
-        'ssl/sslcertkey',
+        #'ssl/sslcertkey',
+        #'global-server-load-balancing/gslbsite',
+        #'global-server-load-balancing/gslbservice',
+        'global-server-load-balancing/gslbvserver',
     ]
     for page in pages:
         properties = scrap_page(base_url + page + '.html')
