@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "certkey", 
@@ -11,6 +12,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "cert", 
@@ -20,6 +22,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "key", 
@@ -29,6 +32,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "password", 
@@ -37,6 +41,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "fipskey", 
@@ -46,6 +51,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "hsmkey", 
@@ -55,14 +61,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "inform", 
         "choices": [
             "DER", 
             "PEM", 
             "PFX"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "inform", 
         "description_lines": [
             "Input format of the certificate and the private-key files. The three formats supported by the appliance are:", 
             "PEM - Privacy Enhanced Mail", 
@@ -73,6 +80,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "passplain", 
@@ -82,19 +90,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "expirymonitor", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "expirymonitor", 
         "description_lines": [
             "Issue an alert when the certificate is about to expire.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "notificationperiod", 
@@ -105,13 +115,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "bundle", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "bundle", 
         "description_lines": [
             "Parse the certificate chain as a single file after linking the server certificate to its issuer's certificate within the file.", 
             "Default value: NO", 
@@ -119,6 +130,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "linkcertkeyname", 
@@ -128,6 +140,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "nodomaincheck", 
@@ -136,6 +149,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "signaturealg", 
@@ -144,7 +158,7 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "certificatetype", 
         "choices": [
             "ROOT_CERT", 
             "INTM_CERT", 
@@ -153,14 +167,16 @@
             "UNKNOWN", 
             "CLIENTANDSERVER_CERT"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "certificatetype", 
         "description_lines": [
             "Specifies whether the certificate is of type root-CA, intermediate-CA, server, client, or client and server.", 
             "Possible values = ROOT_CERT, INTM_CERT, CLNT_CERT, SRVR_CERT, UNKNOWN, CLIENTANDSERVER_CERT"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "serial", 
@@ -169,6 +185,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "issuer", 
@@ -177,6 +194,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "clientcertnotbefore", 
@@ -185,6 +203,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "clientcertnotafter", 
@@ -193,6 +212,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "daystoexpiration", 
@@ -201,6 +221,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "subject", 
@@ -209,6 +230,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "publickey", 
@@ -217,6 +239,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "publickeysize", 
@@ -225,6 +248,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "version", 
@@ -233,6 +257,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "priority", 
@@ -241,20 +266,22 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "status", 
         "choices": [
             "Valid", 
             "Not yet valid", 
             "Expired"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "status", 
         "description_lines": [
             "Status of the certificate.", 
             "Possible values = Valid, Not yet valid, Expired"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "passcrypt", 
@@ -264,6 +291,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "data", 
@@ -272,6 +300,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "servicename", 
@@ -280,6 +309,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

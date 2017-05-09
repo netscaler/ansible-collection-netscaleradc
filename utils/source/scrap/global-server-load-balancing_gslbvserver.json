@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "name", 
@@ -11,7 +12,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "servicetype", 
         "choices": [
             "HTTP", 
             "FTP", 
@@ -32,21 +33,23 @@
             "MSSQL", 
             "ORACLE"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "servicetype", 
         "description_lines": [
             "Protocol used by services bound to the virtual server.", 
             "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP, SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "iptype", 
         "choices": [
             "IPV4", 
             "IPV6"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "iptype", 
         "description_lines": [
             "The IP type for this GSLB vserver.", 
             "Default value: IPV4", 
@@ -54,15 +57,16 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "dnsrecordtype", 
         "choices": [
             "A", 
             "AAAA", 
             "CNAME", 
             "NAPTR"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "dnsrecordtype", 
         "description_lines": [
             "DNS record type to associate with the GSLB virtual server's domain name.", 
             "Default value: A", 
@@ -70,7 +74,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "lbmethod", 
         "choices": [
             "ROUNDROBIN", 
             "LEASTCONNECTION", 
@@ -82,8 +86,9 @@
             "RTT", 
             "CUSTOMLOAD"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "lbmethod", 
         "description_lines": [
             "Load balancing method for the GSLB virtual server.", 
             "Default value: LEASTCONNECTION", 
@@ -91,6 +96,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "backupsessiontimeout", 
@@ -101,7 +107,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "backuplbmethod", 
         "choices": [
             "ROUNDROBIN", 
             "LEASTCONNECTION", 
@@ -113,14 +119,16 @@
             "RTT", 
             "CUSTOMLOAD"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "backuplbmethod", 
         "description_lines": [
             "Backup load balancing method. Becomes operational if the primary load balancing method fails or cannot be used. Valid only if the primary method is based on either round-trip time (RTT) or static proximity.", 
             "Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH, LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "netmask", 
@@ -130,6 +138,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "v6netmasklen", 
@@ -141,6 +150,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "tolerance", 
@@ -151,13 +161,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "persistencetype", 
         "choices": [
             "SOURCEIP", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "persistencetype", 
         "description_lines": [
             "Use source IP address based persistence for the virtual server.", 
             "After the load balancing method selects a service for the first packet, the IP address received in response to the DNS query is used for subsequent requests from the same client.", 
@@ -165,6 +176,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "persistenceid", 
@@ -175,6 +187,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "persistmask", 
@@ -184,6 +197,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "v6persistmasklen", 
@@ -195,6 +209,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "timeout", 
@@ -206,13 +221,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "edr", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "edr", 
         "description_lines": [
             "Send clients an empty DNS response when the GSLB virtual server is DOWN.", 
             "Default value: DISABLED", 
@@ -220,13 +236,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "ecs", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "ecs", 
         "description_lines": [
             "If enabled, respond with EDNS Client Subnet (ECS) option in the response for a DNS query with ECS. The ECS address will be used for persistence and spillover persistence (if enabled) instead of the LDNS address. Persistence mask is ignored if ECS is enabled.", 
             "Default value: DISABLED", 
@@ -234,13 +251,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "ecsaddrvalidation", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "ecsaddrvalidation", 
         "description_lines": [
             "Validate if ECS address is a private or unroutable address and in such cases, use the LDNS IP.", 
             "Default value: DISABLED", 
@@ -248,13 +266,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "mir", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "mir", 
         "description_lines": [
             "Include multiple IP addresses in the DNS responses sent to clients.", 
             "Default value: DISABLED", 
@@ -262,13 +281,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "disableprimaryondown", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "disableprimaryondown", 
         "description_lines": [
             "Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to the UP state. Used when spillover is configured for the virtual server.", 
             "Default value: DISABLED", 
@@ -276,14 +296,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "dynamicweight", 
         "choices": [
             "SERVICECOUNT", 
             "SERVICEWEIGHT", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "dynamicweight", 
         "description_lines": [
             "Specify if the appliance should consider the service count, service weights, or ignore both when using weight-based load balancing methods. The state of the number of services bound to the virtual server help the appliance to select the service.", 
             "Default value: DISABLED", 
@@ -291,13 +312,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "State of the GSLB virtual server.", 
             "Default value: ENABLED", 
@@ -305,13 +327,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "considereffectivestate", 
         "choices": [
             "NONE", 
             "STATE_ONLY"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "considereffectivestate", 
         "description_lines": [
             "If the primary state of all bound GSLB services is DOWN, consider the effective states of all the GSLB services, obtained through the Metrics Exchange Protocol (MEP), when determining the state of the GSLB virtual server. To consider the effective state, set the parameter to STATE_ONLY. To disregard the effective state, set the parameter to NONE.", 
             "The effective state of a GSLB service is the ability of the corresponding virtual server to serve traffic. The effective state of the load balancing virtual server, which is transferred to the GSLB service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP state.", 
@@ -320,6 +343,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "comment", 
@@ -328,7 +352,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "somethod", 
         "choices": [
             "CONNECTION", 
             "DYNAMICCONNECTION", 
@@ -336,8 +360,9 @@
             "HEALTH", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "somethod", 
         "description_lines": [
             "Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:", 
             "* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.", 
@@ -349,13 +374,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sopersistence", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sopersistence", 
         "description_lines": [
             "If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB virtual servers.", 
             "Default value: DISABLED", 
@@ -363,6 +389,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "sopersistencetimeout", 
@@ -374,6 +401,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "sothreshold", 
@@ -384,27 +412,29 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sobackupaction", 
         "choices": [
             "DROP", 
             "ACCEPT", 
             "REDIRECT"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sobackupaction", 
         "description_lines": [
             "Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.", 
             "Possible values = DROP, ACCEPT, REDIRECT"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "appflowlog", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "appflowlog", 
         "description_lines": [
             "Enable logging appflow flow information.", 
             "Default value: ENABLED", 
@@ -412,6 +442,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "backupvserver", 
@@ -421,6 +452,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "servicename", 
@@ -430,6 +462,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "weight", 
@@ -440,6 +473,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "domainname", 
@@ -449,6 +483,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "ttl", 
@@ -458,6 +493,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "backupip", 
@@ -467,6 +503,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "cookie_domain", 
@@ -476,6 +513,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "cookietimeout", 
@@ -486,6 +524,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "sitedomainttl", 
@@ -495,6 +534,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -504,7 +544,7 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "curstate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -517,14 +557,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "curstate", 
         "description_lines": [
             "State of the gslb vserver.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "status", 
@@ -533,6 +575,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "lbrrreason", 
@@ -555,33 +598,36 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "iscname", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "iscname", 
         "description_lines": [
             "is cname feature set on vserver.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "sitepersistence", 
         "choices": [
             "ConnectionProxy", 
             "HTTPRedirect", 
             "NONE"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "sitepersistence", 
         "description_lines": [
             "Type of Site Persistence set.", 
             "Possible values = ConnectionProxy, HTTPRedirect, NONE"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "totalservices", 
@@ -590,6 +636,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "activeservices", 
@@ -598,6 +645,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "statechangetimesec", 
@@ -606,6 +654,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "statechangetimemsec", 
@@ -614,6 +663,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "tickssincelaststatechange", 
@@ -622,6 +672,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "health", 
@@ -630,6 +681,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "policyname", 
@@ -638,6 +690,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "priority", 
@@ -648,6 +701,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "gotopriorityexpression", 
@@ -666,19 +720,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "type", 
         "choices": [
             "REQUEST", 
             "RESPONSE"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "type", 
         "description_lines": [
             "The bindpoint to which the policy is bound.", 
             "Possible values = REQUEST, RESPONSE"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "vsvrbindsvcip", 
@@ -687,6 +743,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "vsvrbindsvcport", 
@@ -697,6 +754,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

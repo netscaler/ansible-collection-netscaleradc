@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "monitorname", 
@@ -10,7 +11,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "type", 
         "choices": [
             "PING", 
             "TCP", 
@@ -60,22 +61,24 @@
             "CITRIX-STA-SERVICE", 
             "CITRIX-STA-SERVICE-NHOP"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "type", 
         "description_lines": [
             "Type of monitor that you want to create.", 
             "Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP, LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, SIP-TCP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL, MYSQL-ECV, MSSQL-ECV, ORACLE-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP, RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED, DIAMETER, RADIUS_ACCOUNTING, STOREFRONT, APPC, SMPP, CITRIX-XNC-ECV, CITRIX-XDM, CITRIX-STA-SERVICE, CITRIX-STA-SERVICE-NHOP"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "action", 
         "choices": [
             "NONE", 
             "LOG", 
             "DOWN"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "action", 
         "description_lines": [
             "Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter.", 
             "Available settings function as follows:", 
@@ -87,6 +90,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "respcode", 
@@ -95,6 +99,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "httprequest", 
@@ -103,6 +108,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "rtsprequest", 
@@ -111,6 +117,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "customheaders", 
@@ -119,6 +126,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxforwards", 
@@ -130,20 +138,22 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sipmethod", 
         "choices": [
             "OPTIONS", 
             "INVITE", 
             "REGISTER"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sipmethod", 
         "description_lines": [
             "SIP method to use for the query. Applicable only to monitors of type SIP-UDP.", 
             "Possible values = OPTIONS, INVITE, REGISTER"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "sipuri", 
@@ -153,6 +163,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "sipreguri", 
@@ -162,6 +173,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "send", 
@@ -170,6 +182,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "recv", 
@@ -178,6 +191,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "query", 
@@ -186,20 +200,22 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "querytype", 
         "choices": [
             "Address", 
             "Zone", 
             "AAAA"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "querytype", 
         "description_lines": [
             "Type of DNS record for which to send monitoring queries. Set to Address for querying A records, AAAA for querying AAAA records, and Zone for querying the SOA record.", 
             "Possible values = Address, Zone, AAAA"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "scriptname", 
@@ -209,6 +225,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "scriptargs", 
@@ -217,6 +234,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "dispatcherip", 
@@ -225,6 +243,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "dispatcherport", 
@@ -233,6 +252,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "username", 
@@ -242,6 +262,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "password", 
@@ -251,6 +272,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "secondarypassword", 
@@ -259,6 +281,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "logonpointname", 
@@ -267,6 +290,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "lasversion", 
@@ -275,6 +299,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radkey", 
@@ -284,6 +309,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radnasid", 
@@ -293,6 +319,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radnasip", 
@@ -301,6 +328,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "radaccounttype", 
@@ -312,6 +340,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radframedip", 
@@ -320,6 +349,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radapn", 
@@ -329,6 +359,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radmsisdn", 
@@ -338,6 +369,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "radaccountsession", 
@@ -347,19 +379,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "lrtm", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "lrtm", 
         "description_lines": [
             "Calculate the least response times for bound services. If this parameter is not enabled, the appliance does not learn the response times of the bound services. Also used for LRTM load balancing.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "deviation", 
@@ -370,14 +404,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "units1", 
         "choices": [
             "SEC", 
             "MSEC", 
             "MIN"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "units1", 
         "description_lines": [
             "Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created.", 
             "Default value: SEC", 
@@ -385,6 +420,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "interval", 
@@ -396,14 +432,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "units3", 
         "choices": [
             "SEC", 
             "MSEC", 
             "MIN"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "units3", 
         "description_lines": [
             "monitor interval units.", 
             "Default value: SEC", 
@@ -411,6 +448,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "resptimeout", 
@@ -423,14 +461,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "units4", 
         "choices": [
             "SEC", 
             "MSEC", 
             "MIN"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "units4", 
         "description_lines": [
             "monitor response timeout units.", 
             "Default value: SEC", 
@@ -438,6 +477,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "resptimeoutthresh", 
@@ -448,6 +488,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "retries", 
@@ -459,6 +500,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "failureretries", 
@@ -469,6 +511,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "alertretries", 
@@ -479,6 +522,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "successretries", 
@@ -490,6 +534,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "downtime", 
@@ -501,14 +546,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "units2", 
         "choices": [
             "SEC", 
             "MSEC", 
             "MIN"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "units2", 
         "description_lines": [
             "Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created.", 
             "Default value: SEC", 
@@ -516,6 +562,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "destip", 
@@ -524,6 +571,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "destport", 
@@ -532,13 +580,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "State of the monitor. The DISABLED setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.", 
             "Default value: ENABLED", 
@@ -546,13 +595,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "reverse", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "reverse", 
         "description_lines": [
             "Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN when probe criteria are not satisfied.", 
             "Default value: NO", 
@@ -560,13 +610,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "transparent", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "transparent", 
         "description_lines": [
             "The monitor is bound to a transparent device such as a firewall or router. The state of a transparent device depends on the responsiveness of the services behind it. If a transparent device is being monitored, a destination IP address must be specified. The probe is sent to the specified IP address by using the MAC address of the transparent device.", 
             "Default value: NO", 
@@ -574,13 +625,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "iptunnel", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "iptunnel", 
         "description_lines": [
             "Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.", 
             "Default value: NO", 
@@ -588,19 +640,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "tos", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "tos", 
         "description_lines": [
             "Probe the service by encoding the destination IP address in the IP TOS (6) bits.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "tosid", 
@@ -611,13 +665,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "secure", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "secure", 
         "description_lines": [
             "Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure connection by default.", 
             "Default value: NO", 
@@ -625,13 +680,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "validatecred", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "validatecred", 
         "description_lines": [
             "Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type CITRIX-XD-DDC.", 
             "Default value: NO", 
@@ -639,6 +695,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "domain", 
@@ -647,6 +704,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "ipaddress", 
@@ -656,6 +714,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "group", 
@@ -665,6 +724,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "filename", 
@@ -674,6 +734,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "basedn", 
@@ -683,6 +744,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "binddn", 
@@ -692,6 +754,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "filter", 
@@ -701,6 +764,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "attribute", 
@@ -710,6 +774,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "database", 
@@ -719,6 +784,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "oraclesid", 
@@ -728,6 +794,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "sqlquery", 
@@ -737,6 +804,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "evalrule", 
@@ -746,7 +814,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "mssqlprotocolversion", 
         "choices": [
             "70", 
             "2000", 
@@ -757,8 +825,9 @@
             "2012", 
             "2014"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "mssqlprotocolversion", 
         "description_lines": [
             "Version of MSSQL server that is to be monitored.", 
             "Default value: 70", 
@@ -766,6 +835,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "Snmpoid", 
@@ -775,6 +845,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "snmpcommunity", 
@@ -784,6 +855,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "snmpthreshold", 
@@ -793,19 +865,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "snmpversion", 
         "choices": [
             "V1", 
             "V2"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "snmpversion", 
         "description_lines": [
             "SNMP version to be used for SNMP monitors.", 
             "Possible values = V1, V2"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "metrictable", 
@@ -816,6 +890,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "application", 
@@ -825,6 +900,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "sitepath", 
@@ -834,6 +910,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "storename", 
@@ -843,13 +920,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "storefrontacctservice", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "storefrontacctservice", 
         "description_lines": [
             "Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For multi-tenancy configuration users my skip account service.", 
             "Default value: YES", 
@@ -857,6 +935,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "hostname", 
@@ -866,6 +945,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "netprofile", 
@@ -876,6 +956,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "originhost", 
@@ -885,6 +966,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "originrealm", 
@@ -894,6 +976,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "hostipaddress", 
@@ -903,6 +986,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "vendorid", 
@@ -911,6 +995,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "productname", 
@@ -920,6 +1005,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "firmwarerevision", 
@@ -928,6 +1014,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "authapplicationid", 
@@ -938,6 +1025,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "acctapplicationid", 
@@ -948,19 +1036,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "inbandsecurityid", 
         "choices": [
             "NO_INBAND_SECURITY", 
             "TLS"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "inbandsecurityid", 
         "description_lines": [
             "Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.", 
             "Possible values = NO_INBAND_SECURITY, TLS"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "supportedvendorids", 
@@ -971,6 +1061,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "vendorspecificvendorid", 
@@ -980,6 +1071,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "vendorspecificauthapplicationids", 
@@ -990,6 +1082,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "vendorspecificacctapplicationids", 
@@ -1000,6 +1093,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "kcdaccount", 
@@ -1010,13 +1104,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "storedb", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "storedb", 
         "description_lines": [
             "Store the database list populated with the responses to monitor probes. Used in database specific load balancing if MSSQL-ECV/MYSQL-ECV monitor is configured.", 
             "Default value: DISABLED", 
@@ -1024,13 +1119,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "storefrontcheckbackendservices", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "storefrontcheckbackendservices", 
         "description_lines": [
             "This option will enable monitoring of services running on storefront server. Storefront services are monitored by probing to a Windows service that runs on the Storefront server and exposes details of which storefront services are running.", 
             "Default value: NO", 
@@ -1038,6 +1134,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "trofscode", 
@@ -1046,6 +1143,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "trofsstring", 
@@ -1054,6 +1152,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "sslprofile", 
@@ -1064,6 +1163,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "metric", 
@@ -1074,6 +1174,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "metricthreshold", 
@@ -1082,6 +1183,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "metricweight", 
@@ -1092,6 +1194,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servicename", 
@@ -1101,6 +1204,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servicegroupname", 
@@ -1110,6 +1214,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "lrtmconf", 
@@ -1118,19 +1223,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "lrtmconfstr", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "lrtmconfstr", 
         "description_lines": [
             "State of LRTM configuration on the monitor as STRING.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "dynamicresponsetimeout", 
@@ -1139,6 +1246,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "dynamicinterval", 
@@ -1147,6 +1255,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "list", 
         "name": "multimetrictable", 
@@ -1155,13 +1264,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "dup_state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "dup_state", 
         "description_lines": [
             ".", 
             "Default value: ENABLED", 
@@ -1169,6 +1279,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "dup_weight", 
@@ -1180,6 +1291,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "weight", 
@@ -1190,6 +1302,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

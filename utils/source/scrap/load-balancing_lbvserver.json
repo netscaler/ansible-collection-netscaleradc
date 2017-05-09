@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "name", 
@@ -10,7 +11,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "servicetype", 
         "choices": [
             "HTTP", 
             "FTP", 
@@ -45,14 +46,16 @@
             "FIX", 
             "SSL_FIX"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "servicetype", 
         "description_lines": [
             "Protocol used by the service (also called the service type).", 
             "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, DNS, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER, SSL_DIAMETER, TFTP, ORACLE, SMPP, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "ipv46", 
@@ -61,6 +64,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "ippattern", 
@@ -71,6 +75,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "ipmask", 
@@ -79,6 +84,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "int", 
         "name": "port", 
@@ -89,6 +95,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "range", 
@@ -104,7 +111,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "persistencetype", 
         "choices": [
             "SOURCEIP", 
             "COOKIEINSERT", 
@@ -120,8 +127,9 @@
             "FIXSESSION", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "persistencetype", 
         "description_lines": [
             "Type of persistence for the virtual server. Available settings function as follows:", 
             "* SOURCEIP - Connections from the same client IP address belong to the same persistence session.", 
@@ -139,6 +147,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "timeout", 
@@ -150,19 +159,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "persistencebackup", 
         "choices": [
             "SOURCEIP", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "persistencebackup", 
         "description_lines": [
             "Backup persistence type for the virtual server. Becomes operational if the primary persistence mechanism fails.", 
             "Possible values = SOURCEIP, NONE"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "backuppersistencetimeout", 
@@ -174,7 +185,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "lbmethod", 
         "choices": [
             "ROUNDROBIN", 
             "LEASTCONNECTION", 
@@ -195,8 +206,9 @@
             "AUDITLOGHASH", 
             "STATICPROXIMITY"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "lbmethod", 
         "description_lines": [
             "Load balancing method. The available settings function as follows:", 
             "* ROUNDROBIN - Distribute requests in rotation, regardless of the load. Weights can be assigned to services to enforce weighted round robin distribution.", 
@@ -220,6 +232,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "hashlength", 
@@ -231,6 +244,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "netmask", 
@@ -240,6 +254,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "v6netmasklen", 
@@ -251,7 +266,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "backuplbmethod", 
         "choices": [
             "ROUNDROBIN", 
             "LEASTCONNECTION", 
@@ -261,8 +276,9 @@
             "LEASTPACKETS", 
             "CUSTOMLOAD"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "backuplbmethod", 
         "description_lines": [
             "Backup load balancing method. Becomes operational if the primary load balancing me", 
             "thod fails or cannot be used.", 
@@ -272,6 +288,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "cookiename", 
@@ -280,6 +297,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "rule", 
@@ -295,6 +313,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "listenpolicy", 
@@ -304,6 +323,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "listenpriority", 
@@ -315,6 +335,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "resrule", 
@@ -326,6 +347,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "persistmask", 
@@ -335,6 +357,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "v6persistmasklen", 
@@ -346,13 +369,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "pq", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "pq", 
         "description_lines": [
             "Use priority queuing on the virtual server. based persistence types, for IPv6 virtual servers.", 
             "Default value: OFF", 
@@ -360,13 +384,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sc", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sc", 
         "description_lines": [
             "Use SureConnect on the virtual server.", 
             "Default value: OFF", 
@@ -374,13 +399,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "rtspnat", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "rtspnat", 
         "description_lines": [
             "Use network address translation (NAT) for RTSP data connections.", 
             "Default value: OFF", 
@@ -388,15 +414,16 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "m", 
         "choices": [
             "IP", 
             "MAC", 
             "IPTUNNEL", 
             "TOS"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "m", 
         "description_lines": [
             "Redirection mode for load balancing. Available settings function as follows:", 
             "* IP - Before forwarding a request to a server, change the destination IP address to the server's IP address.", 
@@ -409,6 +436,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "tosid", 
@@ -419,6 +447,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "datalength", 
@@ -429,6 +458,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "dataoffset", 
@@ -439,13 +469,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sessionless", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sessionless", 
         "description_lines": [
             "Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load balancing of intrusion detection system (IDS) servers and scenarios involving direct server return (DSR), where session information is unnecessary.", 
             "Default value: DISABLED", 
@@ -453,13 +484,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "State of the load balancing virtual server.", 
             "Default value: ENABLED", 
@@ -467,14 +499,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "connfailover", 
         "choices": [
             "DISABLED", 
             "STATEFUL", 
             "STATELESS"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "connfailover", 
         "description_lines": [
             "Mode in which the connection failover feature must operate for the virtual server. After a failover, established TCP connections and UDP packet flows are kept active and resumed on the secondary appliance. Clients remain connected to the same servers. Available settings function as follows:", 
             "* STATEFUL - The primary appliance shares state information with the secondary appliance, in real time, resulting in some runtime processing overhead.", 
@@ -485,6 +518,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "redirurl", 
@@ -495,13 +529,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cacheable", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cacheable", 
         "description_lines": [
             "Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can forward requests only to a transparent cache redirection virtual server that has an IP address and port combination of *:80, so such a cache redirection virtual server must be configured on the appliance.", 
             "Default value: NO", 
@@ -509,6 +544,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "clttimeout", 
@@ -519,7 +555,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "somethod", 
         "choices": [
             "CONNECTION", 
             "DYNAMICCONNECTION", 
@@ -527,8 +563,9 @@
             "HEALTH", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "somethod", 
         "description_lines": [
             "Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:", 
             "* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold.", 
@@ -540,13 +577,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sopersistence", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sopersistence", 
         "description_lines": [
             "If spillover occurs, maintain source IP address based persistence for both primary and backup virtual servers.", 
             "Default value: DISABLED", 
@@ -554,6 +592,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "sopersistencetimeout", 
@@ -565,6 +604,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "healththreshold", 
@@ -576,6 +616,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "sothreshold", 
@@ -586,27 +627,29 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sobackupaction", 
         "choices": [
             "DROP", 
             "ACCEPT", 
             "REDIRECT"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sobackupaction", 
         "description_lines": [
             "Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.", 
             "Possible values = DROP, ACCEPT, REDIRECT"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "redirectportrewrite", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "redirectportrewrite", 
         "description_lines": [
             "Rewrite the port and change the protocol to ensure successful HTTP redirects from services.", 
             "Default value: DISABLED", 
@@ -614,13 +657,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "downstateflush", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "downstateflush", 
         "description_lines": [
             "Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.", 
             "Default value: ENABLED", 
@@ -628,6 +672,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "backupvserver", 
@@ -637,13 +682,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "disableprimaryondown", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "disableprimaryondown", 
         "description_lines": [
             "If the primary virtual server goes down, do not allow it to return to primary status until manually enabled.", 
             "Default value: DISABLED", 
@@ -651,14 +697,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "insertvserveripport", 
         "choices": [
             "OFF", 
             "VIPADDR", 
             "V6TOV4MAPPING"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "insertvserveripport", 
         "description_lines": [
             "Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is <vipHeader>: <virtual server IP address>_<port number >, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows:", 
             "* VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.", 
@@ -668,6 +715,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "vipheader", 
@@ -677,6 +725,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "authenticationhost", 
@@ -687,13 +736,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "authentication", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "authentication", 
         "description_lines": [
             "Enable or disable user authentication.", 
             "Default value: OFF", 
@@ -701,13 +751,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "authn401", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "authn401", 
         "description_lines": [
             "Enable or disable user authentication with HTTP 401 responses.", 
             "Default value: OFF", 
@@ -715,6 +766,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "authnvsname", 
@@ -725,13 +777,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "push", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "push", 
         "description_lines": [
             "Process traffic with the push virtual server that is bound to this load balancing virtual server.", 
             "Default value: DISABLED", 
@@ -739,6 +792,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "pushvserver", 
@@ -748,6 +802,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "pushlabel", 
@@ -757,13 +812,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "pushmulticlients", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "pushmulticlients", 
         "description_lines": [
             "Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.", 
             "Default value: NO", 
@@ -771,6 +827,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "tcpprofilename", 
@@ -781,6 +838,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "httpprofilename", 
@@ -791,6 +849,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "dbprofilename", 
@@ -801,6 +860,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "comment", 
@@ -809,26 +869,28 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "l2conn", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "l2conn", 
         "description_lines": [
             "Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.", 
             "Possible values = ON, OFF"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "oracleserverversion", 
         "choices": [
             "10G", 
             "11G"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "oracleserverversion", 
         "description_lines": [
             "Oracle server version.", 
             "Default value: 10G", 
@@ -836,7 +898,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "mssqlserverversion", 
         "choices": [
             "70", 
             "2000", 
@@ -847,8 +909,9 @@
             "2012", 
             "2014"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "mssqlserverversion", 
         "description_lines": [
             "For a load balancing virtual server of type MSSQL, the Microsoft SQL Server version. Set this parameter if you expect some clients to run a version different from the version of the database. This setting provides compatibility between the client-side and server-side connections by ensuring that all communication conforms to the server's version.", 
             "Default value: 2008R2", 
@@ -856,6 +919,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "mysqlprotocolversion", 
@@ -864,6 +928,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "mysqlserverversion", 
@@ -874,6 +939,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "mysqlcharacterset", 
@@ -882,6 +948,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "mysqlservercapabilities", 
@@ -890,13 +957,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "appflowlog", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "appflowlog", 
         "description_lines": [
             "Apply AppFlow logging to the virtual server.", 
             "Default value: ENABLED", 
@@ -904,6 +972,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "netprofile", 
@@ -914,13 +983,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "icmpvsrresponse", 
         "choices": [
             "PASSIVE", 
             "ACTIVE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "icmpvsrresponse", 
         "description_lines": [
             "How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:", 
             "* If set to PASSIVE on all the virtual servers that share the IP address, the appliance always responds to the ping requests.", 
@@ -932,13 +1002,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "rhistate", 
         "choices": [
             "PASSIVE", 
             "ACTIVE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "rhistate", 
         "description_lines": [
             "Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:", 
             "* If you set RHI STATE to PASSIVE on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.", 
@@ -949,6 +1020,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "newservicerequest", 
@@ -958,13 +1030,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "newservicerequestunit", 
         "choices": [
             "PER_SECOND", 
             "PERCENT"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "newservicerequestunit", 
         "description_lines": [
             "Units in which to increment load at each interval in slow-start mode.", 
             "Default value: PER_SECOND", 
@@ -972,6 +1045,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "newservicerequestincrementinterval", 
@@ -983,6 +1057,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "minautoscalemembers", 
@@ -994,6 +1069,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxautoscalemembers", 
@@ -1005,6 +1081,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "list", 
         "name": "persistavpno", 
@@ -1017,14 +1094,15 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "skippersistency", 
         "choices": [
             "Bypass", 
             "ReLb", 
             "None"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "skippersistency", 
         "description_lines": [
             "This argument decides the behavior incase the service which is selected from an existing persistence session has reached threshold.", 
             "Default value: None", 
@@ -1032,6 +1110,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "td", 
@@ -1042,6 +1121,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "authnprofile", 
@@ -1050,13 +1130,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "macmoderetainvlan", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "macmoderetainvlan", 
         "description_lines": [
             "This option is used to retain vlan information of incoming packet when macmode is enabled.", 
             "Default value: DISABLED", 
@@ -1064,13 +1145,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "dbslb", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "dbslb", 
         "description_lines": [
             "Enable database specific load balancing for MySQL and MSSQL service types.", 
             "Default value: DISABLED", 
@@ -1078,26 +1160,28 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "dns64", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "dns64", 
         "description_lines": [
             "This argument is for enabling/disabling the dns64 on lbvserver.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "bypassaaaa", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "bypassaaaa", 
         "description_lines": [
             "If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns server.", 
             "Default value: NO", 
@@ -1105,13 +1189,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "recursionavailable", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "recursionavailable", 
         "description_lines": [
             "When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.", 
             "Default value: NO", 
@@ -1119,13 +1204,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "processlocal", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "processlocal", 
         "description_lines": [
             "By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.", 
             "Default value: DISABLED", 
@@ -1133,6 +1219,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "dnsprofilename", 
@@ -1143,6 +1230,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "lbprofilename", 
@@ -1151,6 +1239,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "redirectfromport", 
@@ -1162,6 +1251,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "httpsredirecturl", 
@@ -1170,6 +1260,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "weight", 
@@ -1180,6 +1271,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servicename", 
@@ -1189,6 +1281,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "redirurlflags", 
@@ -1197,6 +1290,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -1206,19 +1300,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "value", 
         "choices": [
             "Certkey not bound", 
             "SSL feature disabled"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "value", 
         "description_lines": [
             "SSL status.", 
             "Possible values = Certkey not bound, SSL feature disabled"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "ipmapping", 
@@ -1227,6 +1323,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "ngname", 
@@ -1235,20 +1332,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "type", 
         "choices": [
             "CONTENT", 
             "ADDRESS"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "type", 
         "description_lines": [
             "Type of LB vserver.", 
             "Possible values = CONTENT, ADDRESS"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "curstate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -1261,15 +1359,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "curstate", 
         "description_lines": [
             "Current LB vserver state.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "effectivestate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -1282,14 +1381,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "effectivestate", 
         "description_lines": [
             "Effective state of the LB vserver , based on the state of backup vservers.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "status", 
@@ -1298,6 +1399,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "lbrrreason", 
@@ -1320,33 +1422,36 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "redirect", 
         "choices": [
             "CACHE", 
             "POLICY", 
             "ORIGIN"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "redirect", 
         "description_lines": [
             "Cache redirect type.", 
             "Possible values = CACHE, POLICY, ORIGIN"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "precedence", 
         "choices": [
             "RULE", 
             "URL"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "precedence", 
         "description_lines": [
             "Precedence.", 
             "Possible values = RULE, URL"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "homepage", 
@@ -1355,6 +1460,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "dnsvservername", 
@@ -1363,6 +1469,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "domain", 
@@ -1371,6 +1478,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "policyname", 
@@ -1379,6 +1487,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "cachevserver", 
@@ -1387,6 +1496,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "health", 
@@ -1395,6 +1505,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "gotopriorityexpression", 
@@ -1403,6 +1514,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "ruletype", 
@@ -1411,6 +1523,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "groupname", 
@@ -1419,6 +1532,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "cookiedomain", 
@@ -1427,26 +1541,28 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "map", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "map", 
         "description_lines": [
             "Map.", 
             "Possible values = ON, OFF"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "gt2gb", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "gt2gb", 
         "description_lines": [
             "Allow for greater than 2 GB transactions on this vserver.", 
             "Default value: DISABLED", 
@@ -1454,14 +1570,15 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "consolidatedlconn", 
         "choices": [
             "GLOBAL", 
             "NO", 
             "YES"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "consolidatedlconn", 
         "description_lines": [
             "Use consolidated stats for LeastConnection.", 
             "Default value: GLOBAL", 
@@ -1469,19 +1586,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "consolidatedlconngbl", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "consolidatedlconngbl", 
         "description_lines": [
             "Fetches Global setting.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "thresholdvalue", 
@@ -1490,19 +1609,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "bindpoint", 
         "choices": [
             "REQUEST", 
             "RESPONSE"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "bindpoint", 
         "description_lines": [
             "The bindpoint to which the policy is bound.", 
             "Possible values = REQUEST, RESPONSE"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "bool", 
         "name": "invoke", 
@@ -1511,20 +1632,22 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "labeltype", 
         "choices": [
             "reqvserver", 
             "resvserver", 
             "policylabel"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "labeltype", 
         "description_lines": [
             "The invocation type.", 
             "Possible values = reqvserver, resvserver, policylabel"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "labelname", 
@@ -1533,6 +1656,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "version", 
@@ -1541,6 +1665,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "totalservices", 
@@ -1549,6 +1674,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "activeservices", 
@@ -1557,6 +1683,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "statechangetimesec", 
@@ -1565,6 +1692,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "statechangetimeseconds", 
@@ -1573,6 +1701,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "statechangetimemsec", 
@@ -1581,6 +1710,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "tickssincelaststatechange", 
@@ -1589,6 +1719,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "bool", 
         "name": "isgslb", 
@@ -1597,6 +1728,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "vsvrdynconnsothreshold", 
@@ -1605,6 +1737,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "backupvserverstatus", 
@@ -1613,6 +1746,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

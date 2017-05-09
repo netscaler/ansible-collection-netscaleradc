@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servicename", 
@@ -10,6 +11,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "cnameentry", 
@@ -19,6 +21,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "ip", 
@@ -28,6 +31,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servername", 
@@ -37,7 +41,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "servicetype", 
         "choices": [
             "HTTP", 
             "FTP", 
@@ -58,8 +62,9 @@
             "MSSQL", 
             "ORACLE"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "servicetype", 
         "description_lines": [
             "Type of service to create.", 
             "Default value: NSSVC_SERVICE_UNKNOWN", 
@@ -67,6 +72,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "int", 
         "name": "port", 
@@ -78,6 +84,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "publicip", 
@@ -86,6 +93,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "publicport", 
@@ -94,6 +102,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxclient", 
@@ -104,13 +113,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "healthmonitor", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "healthmonitor", 
         "description_lines": [
             "Monitor the health of the GSLB service.", 
             "Default value: YES", 
@@ -118,6 +128,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "sitename", 
@@ -127,13 +138,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "Enable or disable the service.", 
             "Default value: ENABLED", 
@@ -141,13 +153,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cip", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cip", 
         "description_lines": [
             "In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.", 
             "Default value: DISABLED", 
@@ -155,6 +168,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "cipheader", 
@@ -164,20 +178,22 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sitepersistence", 
         "choices": [
             "ConnectionProxy", 
             "HTTPRedirect", 
             "NONE"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sitepersistence", 
         "description_lines": [
             "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.", 
             "Possible values = ConnectionProxy, HTTPRedirect, NONE"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "cookietimeout", 
@@ -188,6 +204,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "siteprefix", 
@@ -196,6 +213,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "clttimeout", 
@@ -206,6 +224,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "svrtimeout", 
@@ -216,6 +235,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxbandwidth", 
@@ -224,19 +244,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "downstateflush", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "downstateflush", 
         "description_lines": [
             "Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxaaausers", 
@@ -247,6 +269,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "monthreshold", 
@@ -257,6 +280,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "hashid", 
@@ -266,6 +290,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "comment", 
@@ -274,13 +299,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "appflowlog", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "appflowlog", 
         "description_lines": [
             "Enable logging appflow flow information.", 
             "Default value: ENABLED", 
@@ -288,6 +314,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "naptrreplacement", 
@@ -297,6 +324,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "naptrorder", 
@@ -308,6 +336,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "naptrservices", 
@@ -317,6 +346,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "naptrdomainttl", 
@@ -327,6 +357,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "naptrpreference", 
@@ -338,6 +369,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "ipaddress", 
@@ -346,6 +378,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "viewname", 
@@ -355,6 +388,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "viewip", 
@@ -363,6 +397,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "weight", 
@@ -373,6 +408,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "monitor_name_svc", 
@@ -382,6 +418,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -391,13 +428,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "gslb", 
         "choices": [
             "REMOTE", 
             "LOCAL"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "gslb", 
         "description_lines": [
             ".", 
             "Default value: GSLB", 
@@ -405,7 +443,7 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "svrstate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -418,15 +456,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "svrstate", 
         "description_lines": [
             "Server state.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "svreffgslbstate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -439,14 +478,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "svreffgslbstate", 
         "description_lines": [
             "Effective state of the gslb svc.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "gslbthreshold", 
@@ -455,6 +496,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "gslbsvcstats", 
@@ -463,19 +505,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "monstate", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "monstate", 
         "description_lines": [
             "State of the monitor bound to gslb service.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "preferredlocation", 
@@ -484,7 +528,7 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "monitor_state", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -497,14 +541,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "monitor_state", 
         "description_lines": [
             "The running state of the monitor on this service.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "statechangetimesec", 
@@ -513,6 +559,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "tickssincelaststatechange", 
@@ -521,19 +568,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "threshold", 
         "choices": [
             "ABOVE", 
             "BELOW"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "threshold", 
         "description_lines": [
             ".", 
             "Possible values = ABOVE, BELOW"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "clmonowner", 
@@ -544,6 +593,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "clmonview", 
@@ -552,6 +602,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 
