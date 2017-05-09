@@ -1,17 +1,36 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#  Copyright (c) 2017 Citrix Systems
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
 ---
-module: XXX
-short_description: XXX
+module: _
+short_description: _
 description:
-    - XXX
+    - _
 
 version_added: 2.3.1
 
@@ -682,6 +701,16 @@ def main():
         '__count',
     ]
 
+    immutable_attrs = [
+        'name',
+        'servicetype',
+        'iptype',
+        'backupsessiontimeout',
+        'state',
+        'cookie_domain',
+        'newname',
+    ]
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -689,6 +718,7 @@ def main():
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
     )
 
     def _exists():
@@ -719,6 +749,12 @@ def main():
                     client.save_config()
                 module_result['changed'] = True
             elif not _identical():
+
+                # Check if we try to change value of immutable attributes
+                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                if immutables_changed != []:
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+
                 if not module.check_mode:
                     _proxy.update()
                     client.save_config()
@@ -729,9 +765,9 @@ def main():
             # Sanity check for operation
             if not module.check_mode:
                 if not _exists():
-                    module.fail_json(msg='Service does not exist', **module_result)
+                    module.fail_json(msg='_ does not exist', **module_result)
                 if not _identical():
-                    module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
+                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
 
         elif module.params['operation'] == 'absent':
             if _exists():
@@ -745,7 +781,7 @@ def main():
             # Sanity check for operation
             if not module.check_mode:
                 if _exists():
-                    module.fail_json(msg='Service still exists', **module_result)
+                    module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
