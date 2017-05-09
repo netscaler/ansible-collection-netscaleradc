@@ -58,6 +58,14 @@ def produce_readonly_attrs_list(json_doc):
             readonly_list.append(property['name'])
     return readonly_list
 
+def produce_immutables_list(json_doc):
+    immutables_list = []
+    for property in json_doc:
+        # Add only readonly attributes
+        if 'mutable' in property and property['mutable'] == False and property['readonly'] == False:
+            immutables_list.append(property['name'])
+    return immutables_list
+
 def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
 
     # json schema for getting the name, readonly and enum of values
@@ -212,6 +220,7 @@ def main():
     argument_options = {}
     readonly_attrs = {}
     readwrite_attrs = {}
+    immutable_attrs = {}
     for key, schema in schemata.items():
         print('Processing %s' % key)
         json_file = os.path.join(here, 'source/scrap', schema['json_file'])
@@ -249,6 +258,8 @@ def main():
         # read only attributes
         readonly_attrs[key] = produce_readonly_attrs_list(json_doc)
 
+        immutable_attrs[key] = produce_immutables_list(json_doc)
+
     # Do the instantiation of the templates
     for key in schemata.keys():
         template = env.get_template('generic_module.template')
@@ -257,6 +268,7 @@ def main():
             module_arguments=module_arguments[key],
             readonly_attrs=readonly_attrs[key],
             readwrite_attrs=readwrite_attrs[key],
+            immutable_attrs=immutable_attrs[key],
         )
         output_file = 'netscaler_%s.py' % key
         stream.dump(

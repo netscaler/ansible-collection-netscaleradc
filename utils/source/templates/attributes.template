@@ -5,3 +5,7 @@ readwrite_attrs = [#{% for attribute in readwrite_attrs %}
     readonly_attrs = [#{% for attribute in readonly_attrs %}
         '{{ attribute }}',#{% endfor %}
     ]
+
+    immutable_attrs = [#{% for attribute in immutable_attrs %}
+        '{{ attribute }}',#{% endfor %}
+    ]
