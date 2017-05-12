@@ -20,6 +20,7 @@
 #
 
 import json
+from ansible.module_utils.basic import env_fallback
 
 
 class ConfigProxyError(Exception):
@@ -170,16 +171,37 @@ def get_nitro_client(module):
 
 
 netscaler_common_arguments = dict(
-    nsip=dict(required=True),
-    nitro_user=dict(required=True),
-    nitro_pass=dict(required=True),
-    nitro_protocol=dict(choices=['http', 'https'], default='http'),
+    nsip=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NSIP']),
+    ),
+    nitro_user=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NITRO_USER']),
+        no_log=True
+    ),
+    nitro_pass=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NITRO_PASS']),
+        no_log=True
+    ),
+    nitro_protocol=dict(
+        choices=['http', 'https'],
+        fallback=(env_fallback, ['NETSCALER_NITRO_PROTOCOL']),
+        default='http'
+    ),
+    ssl_cert_validation=dict(
+        default=False,
+        type='bool'
+    ),
     nitro_timeout=dict(default=310, type='float'),
-    ssl_cert_validation=dict(required=True, type='bool'),
-    operation=dict(choices=[
-        'present',
-        'absent',
-    ])
+    operation=dict(
+        required=True,
+        choices=[
+            'present',
+            'absent',
+        ]
+    )
 )
 
 
