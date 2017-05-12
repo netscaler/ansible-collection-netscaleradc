@@ -152,9 +152,10 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+import copy
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection, get_ns_version
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
@@ -257,6 +258,16 @@ def main():
         '__count',
     ]
 
+    immutable_attrs = [
+        'sitename',
+        'sitetype',
+        'siteipaddress',
+        'publicip',
+        'parentsite',
+        'clip',
+        'publicclip',
+    ]
+
     # Instantiate config proxy
     gslb_site_proxy = ConfigProxy(
         actual=gslbsite(),
@@ -264,6 +275,7 @@ def main():
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
     )
 
     def gslb_site_exists():
@@ -286,6 +298,7 @@ def main():
 
     try:
         ensure_feature_is_enabled(client, 'GSLB')
+
         # Apply appropriate operation
         if module.params['operation'] == 'present':
             if not gslb_site_exists():
@@ -294,6 +307,12 @@ def main():
                     client.save_config()
                 module_result['changed'] = True
             elif not gslb_site_identical():
+
+                # Check if we try to change value of immutable attributes
+                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                if immutables_changed != []:
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+
                 if not module.check_mode:
                     gslb_site_proxy.update()
                     client.save_config()
@@ -304,9 +323,9 @@ def main():
             # Sanity check for operation
             if not module.check_mode:
                 if not gslb_site_exists():
-                    module.fail_json(msg='Service does not exist', **module_result)
+                    module.fail_json(msg='GSLB site does not exist', **module_result)
                 if not gslb_site_identical():
-                    module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
+                    module.fail_json(msg='GSLB site differs from configured', diff=diff(), **module_result)
 
         elif module.params['operation'] == 'absent':
             if gslb_site_exists():
@@ -327,6 +346,14 @@ def main():
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
+    for attribute in readonly_attrs:
+        ro = {
+        }
+        try:
+            ro[attribute] = getattr(gslb_site_proxy, attribute)
+        except AttributeError:
+            pass
+    module_result['ro'] = ro
     module.exit_json(**module_result)
 
 
