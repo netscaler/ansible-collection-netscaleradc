@@ -13,7 +13,7 @@ short_description: XXX
 description:
     - XXX
 
-version_added: 2.3.1
+version_added: "2.3.1"
 
 options:
 
@@ -33,6 +33,7 @@ options:
             - "Canonical name of the GSLB service. Used in CNAME-based GSLB."
             - "Minimum length = 1"
 
+# TODO move documentation to ipaddress
     ip:
         description:
             - >-
@@ -318,6 +319,7 @@ RETURN = '''
 '''
 
 from ansible.module_utils.basic import AnsibleModule
+import copy
 
 
 def main():
@@ -332,7 +334,6 @@ def main():
     module_specific_arguments = dict(
         servicename=dict(type='str'),
         cnameentry=dict(type='str'),
-        ip=dict(type='str'),
         servername=dict(type='str'),
         servicetype=dict(
             type='str',
@@ -366,7 +367,7 @@ def main():
             choices=[
                 'YES',
                 'NO',
-            ]
+            ],
         ),
         sitename=dict(type='str'),
         state=dict(
@@ -512,6 +513,9 @@ def main():
         '__count',
     ]
 
+    params = copy.deepcopy(module.params)
+    module.params['ip'] = module.params['ipaddress']
+
     # Instantiate config proxy
     gslb_service_proxy = ConfigProxy(
         actual=gslbservice(),
@@ -530,6 +534,9 @@ def main():
     def gslb_service_identical():
         gslb_service_list = gslbservice.get_filtered(client, 'servicename:%s' % module.params['servicename'])
         diff_dict = gslb_service_proxy.diff_object(gslb_service_list[0])
+        # Ignore ip attribute missing
+        if 'ip' in diff_dict:
+            del diff_dict['ip']
         if len(diff_dict) == 0:
             return True
         else:
