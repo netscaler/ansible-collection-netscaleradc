@@ -1,0 +1,16 @@
+---
+- include: http_service.yml
+
+- include: ../assert_changed.yml
+
+- include: http_service.yml
+
+- include: ../assert_not_changed.yml
+
+- include: http_service_remove.yml
+
+- include: ../assert_changed.yml
+
+- include: http_service_remove.yml
+
+- include: ../assert_not_changed.yml

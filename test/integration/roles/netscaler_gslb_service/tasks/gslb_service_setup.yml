@@ -1,0 +1,15 @@
+---
+
+- name: Setup gslb service
+
+  delegate_to: localhost
+  register: result
+
+  netscaler_gslb_service:
+    operation: present
+
+    servicename: gslb-service-1
+    servicetype: HTTP
+    sitename: gslb-site-1
+    ipaddress: 10.10.10.11
+    port: 80

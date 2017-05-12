@@ -1,0 +1,11 @@
+---
+
+- name: Setup gslb site
+  netscaler_gslb_site:
+
+    operation: absent
+
+    sitename: gslb-site-1
+
+  delegate_to: localhost
+  register: result

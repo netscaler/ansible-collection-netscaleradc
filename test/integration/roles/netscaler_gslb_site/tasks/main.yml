@@ -1,0 +1,17 @@
+---
+
+# Create basic gslb site
+- include: gslb_site.yml
+- include: ../assert_changed.yml
+
+# Check creation idempotency
+- include: gslb_site.yml
+- include: ../assert_not_changed.yml
+
+# Delete basic gslb site
+- include: gslb_site_remove.yml
+- include: ../assert_changed.yml
+#
+# Check deletion idempotency
+- include: gslb_site_remove.yml
+- include: ../assert_not_changed.yml
