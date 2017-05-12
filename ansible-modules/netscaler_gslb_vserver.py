@@ -1,17 +1,36 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#  Copyright (c) 2017 Citrix Systems
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
 ---
-module: XXX
-short_description: XXX
+module: _
+short_description: _
 description:
-    - XXX
+    - _
 
 version_added: 2.3.1
 
@@ -406,13 +425,18 @@ EXAMPLES = '''
 RETURN = '''
 '''
 
+
+import copy
+
 from ansible.module_utils.basic import AnsibleModule
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection, complete_missing_attributes
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
+        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_gslbservice_binding import gslbvserver_gslbservice_binding
+        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_domain_binding import gslbvserver_domain_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
@@ -593,6 +617,8 @@ def main():
     )
 
     hand_inserted_arguments = dict(
+        domain_bindings=dict(type='list'),
+        service_bindings=dict(type='list'),
     )
 
     argument_spec = dict()
@@ -683,6 +709,16 @@ def main():
         '__count',
     ]
 
+    immutable_attrs = [
+        'name',
+        'servicetype',
+        'iptype',
+        'backupsessiontimeout',
+        'state',
+        'cookie_domain',
+        'newname',
+    ]
+
     # Instantiate config proxy
     gslb_vserver_proxy = ConfigProxy(
         actual=gslbvserver(),
@@ -690,7 +726,190 @@ def main():
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
     )
+
+    gslbvserver_domain_binding_rw_attrs = [
+        'name',
+        'domainname',
+        'backupipflag',
+        'cookietimeout',
+        'backupip',
+        'ttl',
+        'sitedomainttl',
+        'cookie_domainflag',
+        'cookie_domain',
+    ]
+
+    gslbvserver_gslbservice_binding_rw_attrs = [
+        'name',
+        'servicename',
+        'weight',
+    ]
+
+    def get_actual_domain_bindings():
+        log('get_actual_domain_bindings')
+        # Get actual domain bindings and index them by domainname
+        actual_domain_bindings = {}
+        if gslbvserver_domain_binding.count(client, name=module.params['name']) != 0:
+            # Get all domain bindings associated with the named gslb vserver
+            fetched_domain_bindings = gslbvserver_domain_binding.get(client, name=module.params['name'])
+            # index by domainname
+            for binding in fetched_domain_bindings:
+                complete_missing_attributes(binding, gslbvserver_domain_binding_rw_attrs, fill_value=None)
+                actual_domain_bindings[binding.domainname] = binding
+        return actual_domain_bindings
+
+    def get_configured_domain_bindings_proxys():
+        log('get_configured_domain_bindings_proxys')
+        configured_domain_proxys = {}
+        # Get configured domain bindings and index them by domainname
+        if module.params['domain_bindings'] is not None:
+            for configured_domain_binding in module.params['domain_bindings']:
+                binding_values = copy.deepcopy(configured_domain_binding)
+                binding_values['name'] = module.params['name']
+                gslbvserver_domain_binding_proxy = ConfigProxy(
+                    actual=gslbvserver_domain_binding(),
+                    client=client,
+                    attribute_values_dict=binding_values,
+                    readwrite_attrs=gslbvserver_domain_binding_rw_attrs,
+                    readonly_attrs=[],
+                )
+                configured_domain_proxys[configured_domain_binding['domainname']] = gslbvserver_domain_binding_proxy
+        return configured_domain_proxys
+
+    def sync_domain_bindings():
+        log('sync_domain_bindings')
+
+        actual_domain_bindings = get_actual_domain_bindings()
+        configured_domain_proxys = get_configured_domain_bindings_proxys()
+
+        # Delete actual bindings not in configured bindings
+        for domainname, actual_domain_binding in actual_domain_bindings.items():
+            if domainname not in configured_domain_proxys.keys():
+                log('Deleting absent binding for domain %s' % domainname)
+                gslbvserver_domain_binding.delete(client, actual_domain_binding)
+
+        # Delete actual bindings that differ from configured
+        for proxy_key, binding_proxy in configured_domain_proxys.items():
+            if proxy_key in actual_domain_bindings:
+                actual_binding = actual_domain_bindings[proxy_key]
+                if not binding_proxy.has_equal_attributes(actual_binding):
+                    log('Deleting differing binding for domain %s' % binding_proxy.domainname)
+                    gslbvserver_domain_binding.delete(client, actual_binding)
+                    log('Adding anew binding for domain %s' % binding_proxy.domainname)
+                    binding_proxy.add()
+
+        # Add configured domains that are missing from actual
+        for proxy_key, binding_proxy in configured_domain_proxys.items():
+            if proxy_key not in actual_domain_bindings.keys():
+                log('Adding domain binding for domain %s' % binding_proxy.domainname)
+                binding_proxy.add()
+
+    def domain_bindings_identical():
+        actual_domain_bindings = get_actual_domain_bindings()
+        configured_domain_proxys = get_configured_domain_bindings_proxys()
+
+        actual_keyset = set(actual_domain_bindings.keys())
+        configured_keyset = set(configured_domain_proxys.keys())
+
+        symmetric_difference = actual_keyset ^ configured_keyset
+        if len(symmetric_difference) != 0:
+            return False
+
+        # Item for item equality test
+        for key, proxy in configured_domain_proxys.items():
+            if key in actual_domain_bindings.keys():
+                if not proxy.has_equal_attributes(actual_domain_bindings[key]):
+                    return False
+
+        # Fallthrough to True result
+        return True
+
+    def get_actual_service_bindings():
+        log('get_actual_service_bindings')
+        # Get actual domain bindings and index them by domainname
+        actual_bindings = {}
+        if gslbvserver_gslbservice_binding.count(client, name=module.params['name']) != 0:
+            # Get all service bindings associated with the named gslb vserver
+            fetched_bindings = gslbvserver_gslbservice_binding.get(client, name=module.params['name'])
+            # index by servicename
+            for binding in fetched_bindings:
+                complete_missing_attributes(binding, gslbvserver_gslbservice_binding_rw_attrs, fill_value=None)
+                actual_bindings[binding.servicename] = binding
+
+        return actual_bindings
+
+
+    def get_configured_service_bindings():
+        log('get_configured_service_bindings_proxys')
+        configured_proxys = {}
+        # Get configured domain bindings and index them by domainname
+        if module.params['service_bindings'] is not None:
+            for configured_binding in module.params['service_bindings']:
+                binding_values = copy.deepcopy(configured_binding)
+                binding_values['name'] = module.params['name']
+                gslbvserver_service_binding_proxy = ConfigProxy(
+                    actual=gslbvserver_gslbservice_binding(),
+                    client=client,
+                    attribute_values_dict=binding_values,
+                    readwrite_attrs=gslbvserver_gslbservice_binding_rw_attrs,
+                    readonly_attrs=[],
+                )
+                configured_proxys[configured_binding['servicename']] = gslbvserver_service_binding_proxy
+        return configured_proxys
+
+
+
+    def sync_service_bindings():
+        actual = get_actual_service_bindings()
+        configured = get_configured_service_bindings()
+
+
+        # Delete extraneous
+        extraneous_service_bindings = list(set(actual.keys()) - set(configured.keys()))
+        for servicename in extraneous_service_bindings:
+            log('Deleting missing binding from service %s' % servicename)
+            binding = actual[servicename]
+            binding.name = module.params['name']
+            gslbvserver_gslbservice_binding.delete(client, binding)
+
+        # Recreate different
+        common_service_bindings = list(set(actual.keys()) & set(configured.keys()))
+        for servicename in common_service_bindings:
+            proxy = configured[servicename]
+            binding = actual[servicename]
+            if not proxy.has_equal_attributes(actual):
+                log('Recreating differing service binding %s' % servicename)
+                gslbvserver_gslbservice_binding.delete(client, binding)
+                proxy.add()
+
+        # Add missing
+        missing_service_bindings = list(set(configured.keys()) - set(actual.keys()))
+        for servicename in missing_service_bindings:
+            proxy = configured[servicename]
+            log('Adding missing service binding %s' % servicename)
+            proxy.add()
+
+    def service_bindings_identical():
+        actual_bindings = get_actual_service_bindings()
+        configured_proxys = get_configured_service_bindings()
+
+        actual_keyset = set(actual_bindings.keys())
+        configured_keyset = set(configured_proxys.keys())
+
+        symmetric_difference = actual_keyset ^ configured_keyset
+        if len(symmetric_difference) != 0:
+            return False
+
+        # Item for item equality test
+        for key, proxy in configured_proxys.items():
+            if key in actual_bindings.keys():
+                if not proxy.has_equal_attributes(actual_bindings[key]):
+                    return False
+
+        # Fallthrough to True result
+        return True
 
     def gslb_vserver_exists():
         if gslbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
@@ -701,10 +920,13 @@ def main():
     def gslb_vserver_identical():
         gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
         diff_dict = gslb_vserver_proxy.diff_object(gslb_vserver_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
+        if len(diff_dict) != 0:
             return False
+        else:
+            return True
+
+    def all_identical():
+        return gslb_vserver_identical() and domain_bindings_identical() and service_bindings_identical()
 
     def diff():
         gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
@@ -714,16 +936,39 @@ def main():
         ensure_feature_is_enabled(client, 'GSLB')
         # Apply appropriate operation
         if module.params['operation'] == 'present':
+            log('Applying operation present')
             if not gslb_vserver_exists():
+                log('Creating object')
                 if not module.check_mode:
                     gslb_vserver_proxy.add()
+                    sync_domain_bindings()
+                    sync_service_bindings()
                     client.save_config()
                 module_result['changed'] = True
-            elif not gslb_vserver_identical():
-                if not module.check_mode:
-                    gslb_vserver_proxy.update()
-                    client.save_config()
+            elif not all_identical():
+                log('Entering update actions')
+
+                # Check if we try to change value of immutable attributes
+                if not gslb_vserver_identical():
+                    log('Updating gslb vserver')
+                    immutables_changed = get_immutables_intersection(gslb_vserver_proxy, diff().keys())
+                    if immutables_changed != []:
+                        module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    if not module.check_mode:
+                        gslb_vserver_proxy.update()
+
+                # Update domain bindings
+                if not domain_bindings_identical():
+                    if not module.check_mode:
+                        sync_domain_bindings()
+
+                # Update service bindings
+                if not service_bindings_identical():
+                    if not module.check_mode:
+                        sync_service_bindings()
+
                 module_result['changed'] = True
+                client.save_config()
             else:
                 module_result['changed'] = False
 
