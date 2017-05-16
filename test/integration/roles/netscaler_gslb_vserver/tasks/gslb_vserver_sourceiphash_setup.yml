@@ -1,0 +1,15 @@
+---
+
+- name: Setup sourceiphash gslb vserver
+
+  delegate_to: localhost
+  register: result
+
+  netscaler_gslb_vserver:
+    operation: present
+
+    name: gslb-vserver-2
+    servicetype: HTTP
+    lbmethod: SOURCEIPHASH
+    netmask: 255.255.255.0
+    v6persistmasklen: 128
