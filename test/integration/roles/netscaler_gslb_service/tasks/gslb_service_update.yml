@@ -27,5 +27,5 @@
     maxaaausers: 100
     monthreshold: 500
     hashid: 10
-    comment: cool gslb service!
+    comment: some other comment
     appflowlog: ENABLED
