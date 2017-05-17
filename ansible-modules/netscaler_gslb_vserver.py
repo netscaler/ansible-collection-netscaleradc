@@ -74,15 +74,6 @@ options:
                 Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP,
                 SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE
 
-    iptype:
-        choices:
-            - 'IPV4'
-            - 'IPV6'
-        description:
-            - "The IP type for this GSLB vserver."
-            - "Default value: IPV4"
-            - "Possible values = IPV4, IPV6"
-
     dnsrecordtype:
         choices:
             - 'A'
@@ -111,14 +102,6 @@ options:
             - >-
                 Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH,
                 LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
-
-    backupsessiontimeout:
-        description:
-            - >-
-                A non zero value enables the feature whose minimum value is 2 minutes. The feature can be disabled by
-                setting the value to zero. The created session is in effect for a specific client per domain.
-            - "Minimum value = 0"
-            - "Maximum value = 1440"
 
     backuplbmethod:
         choices:
@@ -209,15 +192,6 @@ options:
             - "Minimum value = 2"
             - "Maximum value = 1440"
 
-    edr:
-        choices:
-            - 'ENABLED'
-            - 'DISABLED'
-        description:
-            - "Send clients an empty DNS response when the GSLB virtual server is DOWN."
-            - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
-
     mir:
         choices:
             - 'ENABLED'
@@ -250,15 +224,6 @@ options:
                 server help the appliance to select the service.
             - "Default value: DISABLED"
             - "Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED"
-
-    state:
-        choices:
-            - 'ENABLED'
-            - 'DISABLED'
-        description:
-            - "State of the GSLB virtual server."
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     considereffectivestate:
         choices:
@@ -355,63 +320,38 @@ options:
             - "Default value: ENABLED"
             - "Possible values = ENABLED, DISABLED"
 
-    backupvserver:
+    domain_bindings:
         description:
             - >-
-                Name of the backup GSLB virtual server to which the appliance should to forward requests if the
-                status of the primary GSLB virtual server is down or exceeds its spillover threshold.
-            - "Minimum length = 1"
+                List of bindings for domains for this glsb vserver.
+                The following keys are valid.
+            - >-
+                domainname: Domain name for which to change the time to live (TTL) and/or backup service IP address.
 
-    servicename:
-        description:
-            - "Name of the GSLB service for which to change the weight."
-            - "Minimum length = 1"
+            - >-
+                cookietimeout: Timeout, in minutes, for the GSLB site cookie.
+            - >-
+                backupipflag: The IP address of the backup service for the specified domain name.
+                Used when all the services bound to the domain are down, or when the backup chain
+                of virtual servers is down.
+            - >-
+                ttl: Time to live (TTL) for the domain.
+            - >-
+                sitedomainttl: TTL, in seconds, for all internally created site domains (created when
+                a site prefix is configured on a GSLB service) that are associated with this virtual server.
+                Minimum value = 1
 
-    weight:
-        description:
-            - "Weight to assign to the GSLB service."
-            - "Minimum value = 1"
-            - "Maximum value = 100"
-
-    domainname:
-        description:
-            - "Domain name for which to change the time to live (TTL) and/or backup service IP address."
-            - "Minimum length = 1"
-
-    ttl:
-        description:
-            - "Time to live (TTL) for the domain."
-            - "Minimum value = 1"
-
-    backupip:
+    service_bindings:
         description:
             - >-
-                The IP address of the backup service for the specified domain name. Used when all the services bound
-                to the domain are down, or when the backup chain of virtual servers is down.
-            - "Minimum length = 1"
-
-    cookie_domain:
-        description:
-            - "The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response."
-            - "Minimum length = 1"
-
-    cookietimeout:
-        description:
-            - "Timeout, in minutes, for the GSLB site cookie."
-            - "Minimum value = 0"
-            - "Maximum value = 1440"
-
-    sitedomainttl:
-        description:
+                List of bindings for gslb services bound to this gslb virtual server.
+                The following keys are valid.
             - >-
-                TTL, in seconds, for all internally created site domains (created when a site prefix is configured on
-                a GSLB service) that are associated with this virtual server.
-            - "Minimum value = 1"
+                servicename: Name of the GSLB service for which to change the weight.
+            - >-
+                weight: Weight to assign to the GSLB service.
 
-    newname:
-        description:
-            - "New name for the GSLB virtual server."
-            - "Minimum length = 1"
+
 
 
 extends_documentation_fragment: netscaler
@@ -467,13 +407,6 @@ def main():
                 'ORACLE',
             ]
         ),
-        iptype=dict(
-            type='str',
-            choices=[
-                'IPV4',
-                'IPV6',
-            ]
-        ),
         dnsrecordtype=dict(
             type='str',
             choices=[
@@ -497,7 +430,6 @@ def main():
                 'CUSTOMLOAD',
             ]
         ),
-        backupsessiontimeout=dict(type='float'),
         backuplbmethod=dict(
             type='str',
             choices=[
@@ -526,13 +458,6 @@ def main():
         persistmask=dict(type='str'),
         v6persistmasklen=dict(type='float'),
         timeout=dict(type='float'),
-        edr=dict(
-            type='str',
-            choices=[
-                'ENABLED',
-                'DISABLED',
-            ]
-        ),
         mir=dict(
             type='str',
             choices=[
@@ -552,13 +477,6 @@ def main():
             choices=[
                 'SERVICECOUNT',
                 'SERVICEWEIGHT',
-                'DISABLED',
-            ]
-        ),
-        state=dict(
-            type='str',
-            choices=[
-                'ENABLED',
                 'DISABLED',
             ]
         ),
@@ -604,16 +522,8 @@ def main():
                 'DISABLED',
             ]
         ),
-        backupvserver=dict(type='str'),
-        servicename=dict(type='str'),
-        weight=dict(type='float'),
         domainname=dict(type='str'),
-        ttl=dict(type='float'),
-        backupip=dict(type='str'),
         cookie_domain=dict(type='str'),
-        cookietimeout=dict(type='float'),
-        sitedomainttl=dict(type='float'),
-        newname=dict(type='str'),
     )
 
     hand_inserted_arguments = dict(
@@ -648,10 +558,8 @@ def main():
     readwrite_attrs = [
         'name',
         'servicetype',
-        'iptype',
         'dnsrecordtype',
         'lbmethod',
-        'backupsessiontimeout',
         'backuplbmethod',
         'netmask',
         'v6netmasklen',
@@ -661,13 +569,9 @@ def main():
         'persistmask',
         'v6persistmasklen',
         'timeout',
-        'edr',
-        'ecs',
-        'ecsaddrvalidation',
         'mir',
         'disableprimaryondown',
         'dynamicweight',
-        'state',
         'considereffectivestate',
         'comment',
         'somethod',
@@ -676,16 +580,7 @@ def main():
         'sothreshold',
         'sobackupaction',
         'appflowlog',
-        'backupvserver',
-        'servicename',
-        'weight',
-        'domainname',
-        'ttl',
-        'backupip',
         'cookie_domain',
-        'cookietimeout',
-        'sitedomainttl',
-        'newname',
     ]
 
     readonly_attrs = [
@@ -712,11 +607,6 @@ def main():
     immutable_attrs = [
         'name',
         'servicetype',
-        'iptype',
-        'backupsessiontimeout',
-        'state',
-        'cookie_domain',
-        'newname',
     ]
 
     # Instantiate config proxy
@@ -738,7 +628,6 @@ def main():
         'ttl',
         'sitedomainttl',
         'cookie_domainflag',
-        'cookie_domain',
     ]
 
     gslbvserver_gslbservice_binding_rw_attrs = [
@@ -978,6 +867,11 @@ def main():
                     module.fail_json(msg='GSLB Vserver does not exist', **module_result)
                 if not gslb_vserver_identical():
                     module.fail_json(msg='GSLB Vserver differs from configured', diff=diff(), **module_result)
+                if not domain_bindings_identical():
+                    module.fail_json(msg='Domain bindings differ from configured', diff=diff(), **module_result)
+                if not service_bindings_identical():
+                    module.fail_json(msg='Service bindings differ from configured', diff=diff(), **module_result)
+
 
         elif module.params['operation'] == 'absent':
             if gslb_vserver_exists():
