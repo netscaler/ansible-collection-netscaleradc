@@ -41,6 +41,9 @@ Alternatively you can use the ```install_nitro_sdk.py``` script
 
 Use of a python virtualenv during installation is recommended.
 
+If using a python virtualenv you can install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
+
+
 ## Usage
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix NetScaler appliance.
