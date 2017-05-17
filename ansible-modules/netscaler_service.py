@@ -319,7 +319,7 @@ options:
             - Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.
             - Default value = NO
 
-    monitorbindings:
+    monitor_bindings:
         description:
             - A list of monitornames to bind to this service
             - Note that the monitors must have already been setup using the netscaler_lb_monitor module
@@ -349,7 +349,7 @@ EXAMPLES = '''
     ipaddress: 10.78.0.1
     port: 80
 
-    monitorbindings:
+    monitor_bindings:
       - monitor-1
 '''
 
@@ -521,7 +521,7 @@ def main():
     )
 
     hand_inserted_arguments = dict(
-        monitorbindings=dict(type='list'),
+        monitor_bindings=dict(type='list'),
     )
 
     argument_spec = dict()
@@ -620,6 +620,15 @@ def main():
         'oracleserverversion',
     ]
 
+    monitor_bindings_rw_attrs = [
+        'servicename',
+        'servicegroupname',
+        'dup_state',
+        'dup_weight',
+        'monitorname',
+        'weight',
+    ]
+
     # Translate module arguments to correspondign config oject attributes
     if module.params['ip'] is None:
         module.params['ip'] = module.params['ipaddress']
@@ -662,28 +671,18 @@ def main():
     def get_configured_monitor_bindings():
         log('Entering get_configured_monitor_bindings')
         bindings = {}
-        if 'monitorbindings' in module.params and module.params['monitorbindings'] is not None:
-            for binding in module.params['monitorbindings']:
-                readwrite_attrs = [
-                    'monitorname',
-                    'servicename',
-                ]
-                readonly_attrs = []
-                if isinstance(binding, dict):
-                    attribute_values_dict = copy.deepcopy(binding)
-                else:
-                    attribute_values_dict = {
-                        'monitorname': binding
-                    }
-                attribute_values_dict['servicename'] = module.params['name']
+        if module.params['monitor_bindings'] is not None:
+            for binding in module.params['monitor_bindings']:
+                attribute_values_dict = copy.deepcopy(binding)
+                #attribute_values_dict['servicename'] = module.params['name']
+                attribute_values_dict['servicegroupname'] = module.params['name']
                 binding_proxy = ConfigProxy(
                     actual=lbmonitor_service_binding(),
                     client=client,
                     attribute_values_dict=attribute_values_dict,
-                    readwrite_attrs=readwrite_attrs,
-                    readonly_attrs=readonly_attrs,
+                    readwrite_attrs=monitor_bindings_rw_attrs,
                 )
-                key = attribute_values_dict['monitorname']
+                key = binding_proxy.monitorname
                 bindings[key] = binding_proxy
         return bindings
 
@@ -695,32 +694,42 @@ def main():
 
         # Fallthrough to rest of execution
         for binding in service_lbmonitor_binding.get(client, module.params['name']):
+            # Excluding default monitors since we cannot operate on them
+            if binding.monitor_name in ('tcp-default', 'ping-default'):
+                continue
             log('Gettign actual monitor with name %s' % binding.monitor_name)
             key = binding.monitor_name
-            bindings[key] = binding
+            actual = lbmonitor_service_binding()
+            actual.weight = binding.weight
+            actual.monitorname = binding.monitor_name
+            actual.dup_weight = binding.dup_weight
+            actual.servicename = module.params['name']
+            bindings[key] = actual
 
         return bindings
 
     def monitor_bindings_identical():
         log('Entering monitor_bindings_identical')
-        configured_bindings = get_configured_monitor_bindings()
+        configured_proxys = get_configured_monitor_bindings()
         actual_bindings = get_actual_monitor_bindings()
 
-        configured_key_set = set(configured_bindings.keys())
+        configured_key_set = set(configured_proxys.keys())
         actual_key_set = set(actual_bindings.keys())
         symmetrical_diff = configured_key_set ^ actual_key_set
-        for default_monitor in ('tcp-default', 'ping-default'):
-            if default_monitor in symmetrical_diff:
-                log('Excluding %s monitor from key comparison' % default_monitor)
-                symmetrical_diff.remove(default_monitor)
         if len(symmetrical_diff) > 0:
+            log('Symmetrical difference %s' % symmetrical_diff)
             return False
 
         # Compare key to key
-        for key in configured_key_set:
-            configured_proxy = configured_bindings[key]
-            if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                    configured_proxy.servicename != actual_bindings[key].name]):
+        for monitor_name in configured_key_set:
+            proxy = configured_proxys[monitor_name]
+            actual = actual_bindings[monitor_name]
+            diff_dict = proxy.diff_object(actual)
+            if 'servicegroupname' in diff_dict:
+                if proxy.servicegroupname == actual.servicename:
+                    del diff_dict['servicegroupname']
+            if len(diff_dict) > 0:
+                log('Monitor diff %s' % diff_dict)
                 return False
 
         # Fallthrought to success
@@ -728,28 +737,36 @@ def main():
 
     def sync_monitor_bindings():
         log('Entering sync_monitor_bindings')
-        # Delete existing bindings
-        for binding in get_actual_monitor_bindings().values():
-            b = lbmonitor_service_binding()
-            b.monitorname = binding.monitor_name
-            b.servicename = module.params['name']
-            # Cannot remove default monitor bindings
-            if b.monitorname in ('tcp-default', 'ping-default'):
-                continue
-            lbmonitor_service_binding.delete(client, b)
-            continue
+        configured_proxys = get_configured_monitor_bindings()
+        actual_bindings = get_actual_monitor_bindings()
+        configured_keyset = set(configured_proxys.keys())
+        actual_keyset = set(actual_bindings.keys())
 
-            binding.monitorname = binding.monitor_name
-            log('Will delete %s' % dir(binding))
-            log('Name %s' % binding.name)
-            log('monitor Name %s' % binding.monitor_name)
-            binding.delete(client, binding)
-            # service_lbmonitor_binding.delete(client, binding)
+        # Delete extra
+        delete_keys = list(actual_keyset - configured_keyset)
+        for monitor_name in delete_keys:
+            log('Deleting binding for monitor %s' % monitor_name)
+            lbmonitor_service_binding.delete(client, actual_bindings[monitor_name])
 
-        # Apply configured bindings
+        # Delete and re-add modified
+        common_keyset = list(configured_keyset & actual_keyset)
+        for monitor_name in common_keyset:
+            proxy = configured_proxys[monitor_name]
+            actual = actual_bindings[monitor_name]
+            if not proxy.has_equal_attributes(actual):
+                log('Deleting and re adding binding for monitor %s' % monitor_name)
+                lbmonitor_service_binding.delete(client, actual)
+                proxy.add()
 
-        for binding in get_configured_monitor_bindings().values():
-            binding.add()
+        # Add new
+        new_keys = list(configured_keyset - actual_keyset)
+        for monitor_name in new_keys:
+            log('Adding binding for monitor %s' % monitor_name)
+            configured_proxys[monitor_name].add()
+
+    def all_identical():
+        log('all_identical')
+        return service_identical() and monitor_bindings_identical()
 
     try:
 
@@ -759,23 +776,26 @@ def main():
             if not service_exists():
                 if not module.check_mode:
                     service_proxy.add()
-                    service_proxy.update()
-                    client.save_config()
-                module_result['changed'] = True
-            elif not service_identical():
-                if not module.check_mode:
-                    service_proxy.update()
-                    client.save_config()
-                module_result['changed'] = True
-            else:
-                module_result['changed'] = False
-
-            # Check bindings
-            if not monitor_bindings_identical():
-                if not module.check_mode:
                     sync_monitor_bindings()
                     client.save_config()
                 module_result['changed'] = True
+            elif not all_identical():
+
+                # Service sync
+                if not service_identical():
+                    if not module.check_mode:
+                        service_proxy.update()
+
+                # Monitor bindings sync
+                if not monitor_bindings_identical():
+                    if not module.check_mode:
+                        sync_monitor_bindings()
+
+                module_result['changed'] = True
+                if not module.check_mode:
+                    client.save_config()
+            else:
+                module_result['changed'] = False
 
             # Sanity check for operation
             log('Sanity checks for operation present')
