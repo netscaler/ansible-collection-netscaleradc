@@ -1,0 +1,8 @@
+---
+
+- name: Remove adns service
+  delegate_to: localhost
+  register: result
+  netscaler_service:
+    operation: absent
+    name: service-adns
