@@ -552,6 +552,7 @@ def main():
             if not gslb_service_exists():
                 if not module.check_mode:
                     gslb_service_proxy.add()
+                    sync_monitor_bindings()
                     client.save_config()
                 module_result['changed'] = True
             elif not all_identical():
