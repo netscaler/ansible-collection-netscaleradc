@@ -153,12 +153,6 @@ options:
             - "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services."
             - "Possible values = ConnectionProxy, HTTPRedirect, NONE"
 
-    cookietimeout:
-        description:
-            - "Timeout value, in minutes, for the cookie, when cookie based site persistence is enabled."
-            - "Minimum value = 0"
-            - "Maximum value = 1440"
-
     siteprefix:
         description:
             - >-
@@ -172,14 +166,6 @@ options:
         description:
             - >-
                 Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy
-                based site persistence is used.
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
-
-    svrtimeout:
-        description:
-            - >-
-                Idle time, in seconds, after which a server connection is terminated. Applicable if connection proxy
                 based site persistence is used.
             - "Minimum value = 0"
             - "Maximum value = 31536000"
@@ -238,74 +224,9 @@ options:
             - "Default value: ENABLED"
             - "Possible values = ENABLED, DISABLED"
 
-    naptrreplacement:
-        description:
-            - "The replacement domain name for this NAPTR."
-            - "Maximum length = 255"
-
-    naptrorder:
-        description:
-            - >-
-                An integer specifying the order in which the NAPTR records MUST be processed in order to accurately
-                represent the ordered list of Rules. The ordering is from lowest to highest.
-            - "Default value: 1"
-            - "Minimum value = 1"
-            - "Maximum value = 65535"
-
-    naptrservices:
-        description:
-            - "Service Parameters applicable to this delegation path."
-            - "Maximum length = 255"
-
-    naptrdomainttl:
-        description:
-            - "Modify the TTL of the internally created naptr domain."
-            - "Default value: 3600"
-            - "Minimum value = 1"
-
-    naptrpreference:
-        description:
-            - >-
-                An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the
-                number, higher the preference.
-            - "Default value: 1"
-            - "Minimum value = 1"
-            - "Maximum value = 65535"
-
     ipaddress:
         description:
             - "The new IP address of the service."
-
-    viewname:
-        description:
-            - >-
-                Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to
-                return a predetermined IP address to a specific group of clients, which are identified by using a DNS
-                policy.
-            - "Minimum length = 1"
-
-    viewip:
-        description:
-            - "IP address to be used for the given view."
-
-    weight:
-        description:
-            - >-
-                Weight to assign to the monitor-service binding. A larger number specifies a greater weight.
-                Contributes to the monitoring threshold, which determines the state of the service.
-            - "Minimum value = 1"
-            - "Maximum value = 100"
-
-    monitor_name_svc:
-        description:
-            - "Name of the monitor to bind to the service."
-            - "Minimum length = 1"
-
-    newname:
-        description:
-            - "New name for the GSLB service."
-            - "Minimum length = 1"
-
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -320,12 +241,14 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 import copy
+import requests
 
 
 def main():
     from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
     try:
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
+        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding import gslbservice_lbmonitor_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
         python_sdk_imported = True
     except ImportError as e:
@@ -393,10 +316,8 @@ def main():
                 'NONE',
             ]
         ),
-        cookietimeout=dict(type='float'),
         siteprefix=dict(type='str'),
         clttimeout=dict(type='float'),
-        svrtimeout=dict(type='float'),
         maxbandwidth=dict(type='float'),
         downstateflush=dict(
             type='str',
@@ -416,20 +337,11 @@ def main():
                 'DISABLED',
             ]
         ),
-        naptrreplacement=dict(type='str'),
-        naptrorder=dict(type='float'),
-        naptrservices=dict(type='str'),
-        naptrdomainttl=dict(type='float'),
-        naptrpreference=dict(type='float'),
         ipaddress=dict(type='str'),
-        viewname=dict(type='str'),
-        viewip=dict(type='str'),
-        weight=dict(type='float'),
-        monitor_name_svc=dict(type='str'),
-        newname=dict(type='str'),
     )
 
     hand_inserted_arguments = dict(
+        monitor_bindings=dict(type='list'),
     )
 
     argument_spec = dict()
@@ -454,7 +366,10 @@ def main():
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+    try:
+        client.login()
+    except requests.exceptions.ConnectionError as e:
+        module.fail_json(msg='Could not connect to NS. %s' % str(e))
 
     readwrite_attrs = [
         'servicename',
@@ -472,10 +387,8 @@ def main():
         'cip',
         'cipheader',
         'sitepersistence',
-        'cookietimeout',
         'siteprefix',
         'clttimeout',
-        'svrtimeout',
         'maxbandwidth',
         'downstateflush',
         'maxaaausers',
@@ -483,17 +396,7 @@ def main():
         'hashid',
         'comment',
         'appflowlog',
-        'naptrreplacement',
-        'naptrorder',
-        'naptrservices',
-        'naptrdomainttl',
-        'naptrpreference',
         'ipaddress',
-        'viewname',
-        'viewip',
-        'weight',
-        'monitor_name_svc',
-        'newname',
     ]
 
     readonly_attrs = [
@@ -511,6 +414,12 @@ def main():
         'clmonowner',
         'clmonview',
         '__count',
+    ]
+
+    gslbservice_lbmonitor_binding_rw_attrs = [
+        'weight',
+        'servicename',
+        'monitor_name',
     ]
 
     params = copy.deepcopy(module.params)
@@ -542,9 +451,98 @@ def main():
         else:
             return False
 
+    def get_actual_monitor_bindings():
+        log('get_actual_monitor_bindings')
+        # Get actual monitor bindings and index them by monitor_name
+        actual_monitor_bindings = {}
+        if gslbservice_lbmonitor_binding.count(client, servicename=module.params['servicename']) != 0:
+            # Get all monitor bindings associated with the named gslb vserver
+            fetched_bindings = gslbservice_lbmonitor_binding.get(client, servicename=module.params['servicename'])
+            # index by monitor name
+            for binding in fetched_bindings:
+                #complete_missing_attributes(binding, gslbservice_lbmonitor_binding_rw_attrs, fill_value=None)
+                actual_monitor_bindings[binding.monitor_name] = binding
+        return actual_monitor_bindings
+
+    def get_configured_monitor_bindings():
+        log('get_configured_monitor_bindings')
+        configured_monitor_proxys = {}
+        # Get configured monitor bindings and index them by monitor_name
+        if module.params['monitor_bindings'] is not None:
+            for configured_monitor_bindings in module.params['monitor_bindings']:
+                binding_values = copy.deepcopy(configured_monitor_bindings)
+                binding_values['servicename'] = module.params['servicename']
+                proxy = ConfigProxy(
+                    actual=gslbservice_lbmonitor_binding(),
+                    client=client,
+                    attribute_values_dict=binding_values,
+                    readwrite_attrs=gslbservice_lbmonitor_binding_rw_attrs,
+                    readonly_attrs=[],
+                )
+                configured_monitor_proxys[configured_monitor_bindings['monitor_name']] = proxy
+        return configured_monitor_proxys
+
+
+    def monitor_bindings_identical():
+        log('monitor_bindings_identical')
+        actual_bindings = get_actual_monitor_bindings()
+        configured_proxys = get_configured_monitor_bindings()
+
+        actual_keyset = set(actual_bindings.keys())
+        configured_keyset = set(configured_proxys.keys())
+
+        symmetric_difference = actual_keyset ^ configured_keyset
+        if len(symmetric_difference) != 0:
+            log('Symmetric difference %s' % symmetric_difference)
+            return False
+
+        # Item for item equality test
+        for key, proxy in configured_proxys.items():
+            if not proxy.has_equal_attributes(actual_bindings[key]):
+                log('monitor binding difference %s' % proxy.diff_object(actual_bindings[key]))
+                return False
+
+        # Fallthrough to True result
+        return True
+
+    def sync_monitor_bindings():
+        log('sync_monitor_bindings')
+
+        actual_monitor_bindings = get_actual_monitor_bindings()
+        configured_monitor_proxys = get_configured_monitor_bindings()
+
+        # Delete actual bindings not in configured bindings
+        for monitor_name, actual_binding in actual_monitor_bindings.items():
+            if monitor_name not in configured_monitor_proxys.keys():
+                log('Deleting absent binding for monitor %s' % monitor_name)
+                log('dir is %s' % dir(actual_binding))
+                gslbservice_lbmonitor_binding.delete(client, actual_binding)
+
+        # Delete and re-add actual bindings that differ from configured
+        for proxy_key, binding_proxy in configured_monitor_proxys.items():
+            if proxy_key in actual_monitor_bindings:
+                actual_binding = actual_monitor_bindings[proxy_key]
+                if not binding_proxy.has_equal_attributes(actual_binding):
+                    log('Deleting differing binding for monitor %s' % actual_binding.monitor_name)
+                    log('dir %s' % dir(actual_binding))
+                    log('attribute monitor_name %s' % getattr(actual_binding, 'monitor_name'))
+                    log('attribute monitorname %s' % getattr(actual_binding, 'monitorname', None))
+                    gslbservice_lbmonitor_binding.delete(client, actual_binding)
+                    log('Adding anew binding for monitor %s' % binding_proxy.monitor_name)
+                    binding_proxy.add()
+
+        # Add configured monitors that are missing from actual
+        for proxy_key, binding_proxy in configured_monitor_proxys.items():
+            if proxy_key not in actual_monitor_bindings.keys():
+                log('Adding monitor binding for monitor %s' % binding_proxy.monitor_name)
+                binding_proxy.add()
+
     def diff():
         gslb_service_list = gslbservice.get_filtered(client, 'servicename:%s' % module.params['servicename'])
         return gslb_service_proxy.diff_object(gslb_service_list[0])
+
+    def all_identical():
+        return gslb_service_identical() and monitor_bindings_identical()
 
     try:
         ensure_feature_is_enabled(client, 'GSLB')
@@ -555,11 +553,20 @@ def main():
                     gslb_service_proxy.add()
                     client.save_config()
                 module_result['changed'] = True
-            elif not gslb_service_identical():
-                if not module.check_mode:
-                    gslb_service_proxy.update()
-                    client.save_config()
+            elif not all_identical():
+                # Update main configuration object
+                if not gslb_service_identical():
+                    if not module.check_mode:
+                        gslb_service_proxy.update()
+
+                # Update monitor bindigns
+                if not monitor_bindings_identical():
+                    if not module.check_mode:
+                        sync_monitor_bindings()
+
+                # Fallthrough to save and change status update
                 module_result['changed'] = True
+                client.save_config()
             else:
                 module_result['changed'] = False
 
@@ -569,6 +576,8 @@ def main():
                     module.fail_json(msg='Service does not exist', **module_result)
                 if not gslb_service_identical():
                     module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
+                if not monitor_bindings_identical():
+                    module.fail_json(msg='Monitor bindings differ from configured', diff=diff(), **module_result)
 
         elif module.params['operation'] == 'absent':
             if gslb_service_exists():
