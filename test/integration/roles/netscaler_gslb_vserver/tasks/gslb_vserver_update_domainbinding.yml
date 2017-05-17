@@ -33,15 +33,14 @@
 
     domain_bindings:
       -
-        domainname: example.com
+        domainname: anotherexample.com
         backupipflag: False
         cookietimeout: 100
         backupip: 10.10.10.10
-        ttl: 200
+        ttl: 100
         sitedomainttl: 200
 
     service_bindings:
       -
         weight: 100
         servicename: gslb-service-1
-        domainname: example.com
