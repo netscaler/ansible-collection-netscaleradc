@@ -245,8 +245,9 @@ import requests
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
+    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, monkey_patch_nitro_api
     try:
+        monkey_patch_nitro_api()
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding import gslbservice_lbmonitor_binding
         from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
