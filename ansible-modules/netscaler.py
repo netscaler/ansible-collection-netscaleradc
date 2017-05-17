@@ -31,7 +31,7 @@ class ConfigProxyError(Exception):
 
 class ConfigProxy(object):
 
-    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs, immutable_attrs=[], json_encodes=[]):
+    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs=[], immutable_attrs=[], json_encodes=[]):
 
         # Actual config object from nitro sdk
         self.actual = actual
