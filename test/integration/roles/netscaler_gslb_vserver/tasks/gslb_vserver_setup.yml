@@ -44,4 +44,3 @@
       -
         weight: 100
         servicename: gslb-service-1
-        domainname: example.com
