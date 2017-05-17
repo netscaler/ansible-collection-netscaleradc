@@ -1,0 +1,5 @@
+
+
+[netscaler]
+
+10.78.60.200 nsip=10.78.60.200 nitro_user=nsroot nitro_pass=nsroot ssl_cert_validation=no
