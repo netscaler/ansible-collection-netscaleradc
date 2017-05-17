@@ -1,0 +1,12 @@
+---
+
+- name: Setup adns service
+  delegate_to: localhost
+  register: result
+  netscaler_service:
+    operation: present
+    name: service-adns
+    ipaddress: 192.168.1.3
+    port: 80
+    servicetype: ADNS
+    dnsprofilename: dns-profile-1

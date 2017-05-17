@@ -28,7 +28,7 @@
     cka: "YES"
     tcpb: "YES"
     cmp: "NO"
-    maxbandwidth: 10000
+    maxbandwidth: 20000
     accessdown: "NO"
     monthreshold: 100
     downstateflush: ENABLED
@@ -45,10 +45,8 @@
     netprofile: net-profile-1
 
     monitor_bindings:
-      - monitorname: ping
-        weight: 50
       - monitorname: http
-        weight: 50
+        weight: 100
 
   delegate_to: localhost
   register: result
