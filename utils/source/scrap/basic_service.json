@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "name", 
@@ -9,6 +10,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "ip", 
@@ -18,6 +20,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "servername", 
@@ -27,7 +30,7 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "servicetype", 
         "choices": [
             "HTTP", 
             "FTP", 
@@ -67,14 +70,16 @@
             "FIX", 
             "SSL_FIX"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "servicetype", 
         "description_lines": [
             "Protocol in which data is exchanged with the service.", 
             "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP, RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS, RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "int", 
         "name": "port", 
@@ -85,6 +90,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "int", 
         "name": "cleartextport", 
@@ -94,20 +100,22 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cachetype", 
         "choices": [
             "TRANSPARENT", 
             "REVERSE", 
             "FORWARD"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cachetype", 
         "description_lines": [
             "Cache type supported by the cache server.", 
             "Possible values = TRANSPARENT, REVERSE, FORWARD"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxclient", 
@@ -118,13 +126,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "healthmonitor", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "healthmonitor", 
         "description_lines": [
             "Monitor the health of this service. Available settings function as follows:", 
             "YES - Send probes to check the health of the service.", 
@@ -134,6 +143,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxreq", 
@@ -145,13 +155,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cacheable", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cacheable", 
         "description_lines": [
             "Use the transparent cache redirection virtual server to forward requests to the cache server.", 
             "Note: Do not specify this parameter if you set the Cache Type parameter.", 
@@ -160,19 +171,21 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cip", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cip", 
         "description_lines": [
             "Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "cipheader", 
@@ -182,52 +195,56 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "usip", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "usip", 
         "description_lines": [
             "Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "pathmonitor", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "pathmonitor", 
         "description_lines": [
             "Path monitoring for clustering.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "pathmonitorindv", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "pathmonitorindv", 
         "description_lines": [
             "Individual Path monitoring decisions.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "useproxyport", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "useproxyport", 
         "description_lines": [
             "Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.", 
             "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.", 
@@ -235,13 +252,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sc", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sc", 
         "description_lines": [
             "State of SureConnect for the service.", 
             "Default value: OFF", 
@@ -249,26 +267,28 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "sp", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "sp", 
         "description_lines": [
             "Enable surge protection for the service.", 
             "Possible values = ON, OFF"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "rtspsessionidremap", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "rtspsessionidremap", 
         "description_lines": [
             "Enable RTSP session ID mapping for the service.", 
             "Default value: OFF", 
@@ -276,6 +296,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "clttimeout", 
@@ -286,6 +307,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "svrtimeout", 
@@ -296,6 +318,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "customserverid", 
@@ -305,6 +328,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "serverid", 
@@ -313,45 +337,49 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cka", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cka", 
         "description_lines": [
             "Enable client keep-alive for the service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "tcpb", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "tcpb", 
         "description_lines": [
             "Enable TCP buffering for the service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "cmp", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "cmp", 
         "description_lines": [
             "Enable compression for the service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "maxbandwidth", 
@@ -362,13 +390,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "accessdown", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "accessdown", 
         "description_lines": [
             "Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.", 
             "Default value: NO", 
@@ -376,6 +405,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "monthreshold", 
@@ -386,13 +416,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "Initial state of the service.", 
             "Default value: ENABLED", 
@@ -400,13 +431,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "downstateflush", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "downstateflush", 
         "description_lines": [
             "Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.", 
             "Default value: ENABLED", 
@@ -414,6 +446,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "tcpprofilename", 
@@ -424,6 +457,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "httpprofilename", 
@@ -434,6 +468,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "hashid", 
@@ -443,6 +478,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "comment", 
@@ -451,13 +487,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "appflowlog", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "appflowlog", 
         "description_lines": [
             "Enable logging of AppFlow information.", 
             "Default value: ENABLED", 
@@ -465,6 +502,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "netprofile", 
@@ -475,6 +513,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "td", 
@@ -485,13 +524,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "processlocal", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "processlocal", 
         "description_lines": [
             "By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.", 
             "Default value: DISABLED", 
@@ -499,6 +539,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "dnsprofilename", 
@@ -509,13 +550,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "monconnectionclose", 
         "choices": [
             "RESET", 
             "FIN"
         ], 
+        "readonly": false, 
+        "mutable": true, 
         "type": "str", 
-        "name": "monconnectionclose", 
         "description_lines": [
             "Close monitoring connections by sending the service a connection termination message with the specified bit set.", 
             "Default value: NONE", 
@@ -523,6 +565,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "ipaddress", 
@@ -531,6 +574,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "float", 
         "name": "weight", 
@@ -541,6 +585,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "monitor_name_svc", 
@@ -550,6 +595,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "int", 
         "name": "riseapbrstatsmsgcode", 
@@ -558,6 +604,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "delay", 
@@ -566,13 +613,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "graceful", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "graceful", 
         "description_lines": [
             "Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.", 
             "Default value: NO", 
@@ -580,6 +628,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "all", 
@@ -588,6 +637,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "Internal", 
@@ -596,6 +646,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -605,6 +656,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "numofconnections", 
@@ -613,6 +665,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "policyname", 
@@ -621,6 +674,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "bool", 
         "name": "serviceconftype", 
@@ -629,59 +683,64 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "serviceconftype2", 
         "choices": [
             "Configured", 
             "Dynamic", 
             "Internal"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "serviceconftype2", 
         "description_lines": [
             "The configuration type of the service (Internal/Dynamic/Configured).", 
             "Possible values = Configured, Dynamic, Internal"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "value", 
         "choices": [
             "Certkey not bound", 
             "SSL feature disabled"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "value", 
         "description_lines": [
             "SSL status.", 
             "Possible values = Certkey not bound, SSL feature disabled"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "gslb", 
         "choices": [
             "REMOTE", 
             "LOCAL"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "gslb", 
         "description_lines": [
             "The GSLB option for the corresponding virtual server.", 
             "Possible values = REMOTE, LOCAL"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "dup_state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "dup_state", 
         "description_lines": [
             "Added this field for getting state value from table.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "publicip", 
@@ -690,6 +749,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "publicport", 
@@ -701,7 +761,7 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "svrstate", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -714,15 +774,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "svrstate", 
         "description_lines": [
             "The state of the service.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "monitor_state", 
         "choices": [
             "UP", 
             "DOWN", 
@@ -735,14 +796,16 @@
             "Unknown", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "monitor_state", 
         "description_lines": [
             "The running state of the monitor on this service.", 
             "Possible values = UP, DOWN, UNKNOWN, BUSY, OUT OF SERVICE, GOING OUT OF SERVICE, DOWN WHEN GOING OUT OF SERVICE, NS_EMPTY_STR, Unknown, DISABLED"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "monstatcode", 
@@ -751,6 +814,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "lastresponse", 
@@ -759,6 +823,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "responsetime", 
@@ -767,6 +832,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "riseapbrstatsmsgcode2", 
@@ -775,6 +841,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "monstatparam1", 
@@ -783,6 +850,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "monstatparam2", 
@@ -791,6 +859,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "int", 
         "name": "monstatparam3", 
@@ -799,6 +868,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "statechangetimesec", 
@@ -807,6 +877,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "statechangetimemsec", 
@@ -815,6 +886,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "tickssincelaststatechange", 
@@ -823,6 +895,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "stateupdatereason", 
@@ -831,6 +904,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "clmonowner", 
@@ -841,6 +915,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "clmonview", 
@@ -849,6 +924,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "serviceipstr", 
@@ -857,13 +933,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "oracleserverversion", 
         "choices": [
             "10G", 
             "11G"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "oracleserverversion", 
         "description_lines": [
             "Oracle server version.", 
             "Default value: 10G", 
@@ -871,6 +948,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

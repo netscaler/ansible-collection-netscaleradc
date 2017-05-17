@@ -1,0 +1,22 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Setup gslb vserver
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        ssl_cert_validation: "{{ ssl_cert_validation }}"
+
+        module: netscaler_gslb_vserver
+        operation: present
+
+        name: gslb-vserver-1
+        servicetype: HTTP

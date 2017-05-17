@@ -1,8 +1,7 @@
-    {{ item.option_name }}:
-        #{% if item.choices is defined -%}
-        choices: {{ item.choices }}
-        #{%- endif %}
-        description:
-            #{% for line in item.description %}
-            - {{ line }}
-            #{% endfor %}
+    {{ item.option_name }}:#{% if item.choices is defined %}
+        choices:#{% for choice in item.choices %}
+            - '{{ choice }}'#{% endfor %}#{% endif %}
+        description:#{% for line in item.description %}#{% if line is not string %}
+            - >-#{% for item in line %}
+                {{ item }}#{% endfor %}#{% else %}
+            - {{ line }}#{% endif %}#{% endfor %}

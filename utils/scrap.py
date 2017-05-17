@@ -10,6 +10,8 @@ from lxml import html
 def scrap_page(page):
     properties = []
     r = requests.get(page)
+    if r.status_code != 200:
+        raise Exception('status %s' % r.status_code)
     htmltree = html.fromstring(r.content)
     tables = htmltree.xpath('''//table[@class='cx-table']''')
     if len(tables) > 1:
@@ -17,7 +19,7 @@ def scrap_page(page):
 
     rows = htmltree.xpath('''//table[@class='cx-table']/tbody//tr''')
     if len(rows) == 0:
-        raise Exception('Could not find documentation table')
+        raise Exception('Could not find documentation table for %s' % page)
 
     for row in rows:
         entry = {}
@@ -69,29 +71,69 @@ def scrap_page(page):
         properties.append(entry)
     return properties
 
+def update_for_immutables(properties, base_command_url, item):
+    m = re.match(r'^.*/(.*)$', item)
+    if m is None:
+        raise Exception('Cannot match item: ' % item)
+    command_with_dashes = m.group(1)
+    command_with_spaces = m.group(1).replace('-',' ')
 
+    page = base_command_url + item + '.html'
+
+    r = requests.get(page)
+    htmltree = html.fromstring(r.content)
+    id = 'set-%s' % command_with_dashes
+    h2s = htmltree.xpath('''//h2/following-sibling::p''' )
+    for h2 in h2s:
+        if h2.text is not None:
+            doc_text = h2.text.strip().lower()
+            if doc_text.startswith('set %s' % command_with_spaces):
+                break
+    else:
+        raise Exception('Cannot find "set %s"' % command_with_spaces)
+    #print(doc_text)
+    mutable_options = [ item[1:] for item in re.findall(r'-\w+', doc_text)]
+    #print('Mutables %s' % mutable_options)
+    updated_properties = []
+    for property in properties:
+        #print('Muting property %s' % property['name'])
+        property['mutable'] = property['name'] in mutable_options
+        #print('new property %s' % property)
+        updated_properties.append(property)
+    return updated_properties
+    #print('options: %s' % [ item[1:] for item in re.findall(r'-\w+', doc_text)])
+    
 
 
 def main():
-    base_url = 'http://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
+    base_nitro_url = 'http://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
+    base_command_url = 'http://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
     pages = [
-        #'basic/servicegroup',
-        #'basic/service',
-        #'basic/server',
-        #'basic/servicegroup_servicegroupmember_binding',
-        #'load-balancing/lbvserver',
+        ('basic/servicegroup', 'basic/servicegroup'),
+        ('basic/service', 'basic/service'),
+        ('basic/server', 'basic/server'),
+        #('basic/servicegroup_servicegroupmember_binding')
+        ('load-balancing/lbvserver', 'lb/lb-vserver'),
         #'load-balancing/lbvserver_service_binding',
         #'load-balancing/lbvserver_servicegroup_binding',
-        #'load-balancing/lbmonitor',
-        #'content-switching/csvserver',
-        #'content-switching/cspolicy',
-        #'content-switching/csaction',
-        'ssl/sslcertkey',
+        ('load-balancing/lbmonitor', 'lb/lb-monitor'),
+        ('content-switching/csvserver', 'cs/cs-vserver'),
+        ('content-switching/cspolicy', 'cs/cs-policy'),
+        ('content-switching/csaction', 'cs/cs-action'),
+        ('ssl/sslcertkey', 'ssl/ssl-certkey'),
+        ('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
+        ('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
+        ('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
+
     ]
     for page in pages:
-        properties = scrap_page(base_url + page + '.html')
-        page_file = re.sub('/','_',page)
+        page_file = re.sub('/','_',page[0])
         page_file += '.json'
+        if os.path.exists(page_file):
+            print('Skipping %s' % page_file)
+            continue
+        properties = scrap_page(base_nitro_url + page[0] + '.html')
+        properties = update_for_immutables(properties, base_command_url, page[1] )
         print('writing to file %s' % page_file)
         with open(page_file, 'w') as fh:
             json.dump(properties, fh, indent=4)

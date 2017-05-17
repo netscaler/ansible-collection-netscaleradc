@@ -20,6 +20,9 @@
 #
 
 import json
+import re
+
+from ansible.module_utils.basic import env_fallback
 
 
 class ConfigProxyError(Exception):
@@ -28,7 +31,7 @@ class ConfigProxyError(Exception):
 
 class ConfigProxy(object):
 
-    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs, json_encodes=[]):
+    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs, immutable_attrs=[], json_encodes=[]):
 
         # Actual config object from nitro sdk
         self.actual = actual
@@ -41,6 +44,7 @@ class ConfigProxy(object):
 
         self.readwrite_attrs = readwrite_attrs
         self.readonly_attrs = readonly_attrs
+        self.immutable_attrs = immutable_attrs
         self.json_encodes = json_encodes
 
         self._copy_attributes_to_actual()
@@ -62,12 +66,6 @@ class ConfigProxy(object):
             return self.attribute_values_dict[name]
         else:
             raise AttributeError('No attribute %s found' % name)
-
-    def actual_exists(self):
-        pass
-
-    def actual_identical(self):
-        pass
 
     def add(self):
         self.actual.__class__.add(self.client, self.actual)
@@ -151,6 +149,12 @@ class ConfigProxy(object):
     def get_missing_ro_attributes(self):
         return list(set(self.readonly_attrs) - set(self.get_actual_ro_attributes().keys()))
 
+def get_immutables_intersection(config_proxy, keys):
+    immutables_set = set(config_proxy.immutable_attrs)
+    keys_set = set(keys)
+    # Return list of sets' intersection
+    return list(immutables_set & keys_set)
+
 
 def ensure_feature_is_enabled(client, feature_str):
     enabled_features = client.get_enabled_features()
@@ -170,21 +174,58 @@ def get_nitro_client(module):
 
 
 netscaler_common_arguments = dict(
-    nsip=dict(required=True),
-    nitro_user=dict(required=True),
-    nitro_pass=dict(required=True),
-    nitro_protocol=dict(choices=['http', 'https'], default='http'),
+    nsip=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NSIP']),
+    ),
+    nitro_user=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NITRO_USER']),
+        no_log=True
+    ),
+    nitro_pass=dict(
+        required=True,
+        fallback=(env_fallback, ['NETSCALER_NITRO_PASS']),
+        no_log=True
+    ),
+    nitro_protocol=dict(
+        choices=['http', 'https'],
+        fallback=(env_fallback, ['NETSCALER_NITRO_PROTOCOL']),
+        default='http'
+    ),
+    ssl_cert_validation=dict(
+        default=False,
+        type='bool'
+    ),
     nitro_timeout=dict(default=310, type='float'),
-    ssl_cert_validation=dict(required=True, type='bool'),
-    operation=dict(choices=[
-        'present',
-        'absent',
-    ])
+    operation=dict(
+        required=True,
+        choices=[
+            'present',
+            'absent',
+        ]
+    )
 )
 
 
 loglines = []
 
 
+def complete_missing_attributes(actual, attrs_list, fill_value=None):
+    for attribute in attrs_list:
+        if not hasattr(actual, attribute):
+            setattr(actual, attribute, fill_value)
+
+
 def log(msg):
     loglines.append(msg)
+
+
+def get_ns_version(client):
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ns.nsversion import nsversion
+    result = nsversion.get(client)
+    m = re.match(r'^.*NS(\d+)\.(\d+).*$', result[0].version)
+    if m is None:
+        return None
+    else:
+        return int(m.group(1)), int(m.group(2))

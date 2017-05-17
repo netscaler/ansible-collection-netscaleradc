@@ -1,0 +1,87 @@
+---
+
+# Setup auxiliary entities
+
+- name: Setup gslb site
+  netscaler_gslb_site:
+
+    operation: present
+
+    sitename: gslb-site-1
+    siteipaddress: 192.168.1.1
+    sitetype: LOCAL
+    publicip: 192.168.1.1
+    metricexchange: ENABLED
+    nwmetricexchange: ENABLED
+    sessionexchange: ENABLED
+    triggermonitor: ALWAYS
+
+
+  delegate_to: localhost
+  register: result
+
+- name: Setup gslb service
+
+  delegate_to: localhost
+  register: result
+
+  netscaler_gslb_service:
+    operation: present
+
+    servicename: gslb-service-1
+    servicetype: HTTP
+    sitename: gslb-site-1
+    ipaddress: 10.10.10.11
+    port: 80
+
+
+
+- include: gslb_vserver_setup.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_setup.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_update.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_update.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_update_domainbinding.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_update_domainbinding.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_update_gslbservice_binding.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_update_gslbservice_binding.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_remove.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_remove.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_sourceiphash_setup.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_sourceiphash_setup.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_vserver_sourceiphash_remove.yml
+- include: ../assert_changed.yml
+- include: gslb_vserver_sourceiphash_remove.yml
+- include: ../assert_not_changed.yml
+
+# Remove auxiliary entities
+
+- name: Setup gslb site
+  delegate_to: localhost
+
+  netscaler_gslb_site:
+    operation: absent
+    sitename: gslb-site-1
+
+- name: Setup gslb service
+  delegate_to: localhost
+  netscaler_gslb_service:
+    operation: absent
+    servicename: gslb-service-1

@@ -58,10 +58,39 @@ def produce_readonly_attrs_list(json_doc):
             readonly_list.append(property['name'])
     return readonly_list
 
+def produce_immutables_list(json_doc):
+    immutables_list = []
+    for property in json_doc:
+        # Add only readonly attributes
+        if 'mutable' in property and property['mutable'] == False and property['readonly'] == False:
+            immutables_list.append(property['name'])
+    return immutables_list
+
 def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
 
     # json schema for getting the name, readonly and enum of values
     # config_class for getting the actual docstring from the config object
+    def split_description_line(line, width=100):
+        line = str(line)
+        if len(line) <= width:
+            # Escape double quotes
+            line  = line.replace('"', r'\"')
+            # Put double quotes around line to avoid yaml
+            # invalid characters breaking the documentation redering
+            return ''.join(['"', line, '"'])
+
+        words = line.split()
+        line_splits = []
+        line = []
+        for word in words:
+            if len(' '.join(line)) + len(word) > width:
+                line_splits.append(' '.join(line))
+                line = []
+            line.append(word)
+        if len(line) > 0:
+            line_splits.append(' '.join(line))
+
+        return line_splits
 
 
     options_list = []
@@ -75,8 +104,12 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
         entry['option_name'] = property['name']
         entry['readonly'] = property['readonly']
 
+        # Skip readonly attributes
+        if entry['readonly']:
+            continue
+
         # Fallthrough
-        entry['description'] = [str(line) for line in property['description_lines']]
+        entry['description'] = [ split_description_line(line) for line in property['description_lines']]
 
         if 'choices' in property:
             entry['choices'] = [ str(choice) for choice in property['choices'] ]
@@ -91,7 +124,9 @@ def main():
     env = Environment(
         # keep python templates valid python
         block_start_string='#{%',
-        loader=FileSystemLoader(os.path.join(here, 'source', 'templates'))
+        loader=FileSystemLoader(os.path.join(here, 'source', 'templates')),
+        #trim_blocks=True,
+        #lstrip_blocks=True,
     )
 
     # Compile the json schemata
@@ -100,14 +135,21 @@ def main():
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_service_binding import lbvserver_service_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_servicegroup_binding import lbvserver_servicegroup_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor import lbmonitor
+
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
+
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
+
     from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
+
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
 
     schemata = {
         'basic_service' : {
@@ -158,6 +200,18 @@ def main():
             'json_file': 'ssl_sslcertkey.json',
             'class' : sslcertkey,
         },
+        'gslb_site' : {
+            'json_file': 'global-server-load-balancing_gslbsite.json',
+            'class' : gslbsite,
+        },
+        'gslb_service' : {
+            'json_file': 'global-server-load-balancing_gslbservice.json',
+            'class' : gslbservice,
+        },
+        'gslb_vserver' : {
+            'json_file': 'global-server-load-balancing_gslbvserver.json',
+            'class' : gslbvserver,
+        },
     }
 
     # Iterate and produce module arguments dicts
@@ -166,6 +220,7 @@ def main():
     argument_options = {}
     readonly_attrs = {}
     readwrite_attrs = {}
+    immutable_attrs = {}
     for key, schema in schemata.items():
         print('Processing %s' % key)
         json_file = os.path.join(here, 'source/scrap', schema['json_file'])
@@ -203,28 +258,19 @@ def main():
         # read only attributes
         readonly_attrs[key] = produce_readonly_attrs_list(json_doc)
 
+        immutable_attrs[key] = produce_immutables_list(json_doc)
+
     # Do the instantiation of the templates
-    template_list = [
-        'netscaler.py.template',
-        'netscaler_service.py.template',
-        'netscaler_server.py.template',
-        'netscaler_lb_vserver.py.template',
-        'netscaler_servicegroup.py.template',
-        'netscaler_lb_monitor.py.template',
-        'netscaler_cs_vserver.py.template',
-        'netscaler_cs_policy.py.template',
-        'netscaler_cs_action.py.template',
-        'netscaler_ssl_certkey.py.template',
-    ]
-    for template_file in template_list:
-        template = env.get_template(template_file)
+    for key in schemata.keys():
+        template = env.get_template('generic_module.template')
         stream = template.stream(
-            argument_options=argument_options,
-            module_arguments=module_arguments,
-            readonly_attrs=readonly_attrs,
-            readwrite_attrs=readwrite_attrs,
+            argument_options=argument_options[key],
+            module_arguments=module_arguments[key],
+            readonly_attrs=readonly_attrs[key],
+            readwrite_attrs=readwrite_attrs[key],
+            immutable_attrs=immutable_attrs[key],
         )
-        output_file= re.sub(r'\.template$', '', template_file)
+        output_file = 'netscaler_%s.py' % key
         stream.dump(
             os.path.join('output', output_file),
             encoding='utf-8'

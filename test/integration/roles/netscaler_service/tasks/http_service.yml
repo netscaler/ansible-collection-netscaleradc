@@ -1,0 +1,46 @@
+---
+
+- name: Setup http service
+  netscaler_service:
+
+    operation: present
+
+    name: service-http
+    ip: 192.168.1.1
+    ipaddress: 192.168.1.1
+    port: 80
+    servicetype: HTTP
+    cachetype: TRANSPARENT
+    maxclient: 100
+    healthmonitor: "NO"
+    maxreq: 200
+    cacheable: "NO"
+    cip: ENABLED
+    cipheader: client-ip
+    usip: "YES"
+    useproxyport: "YES"
+    sc: "OFF"
+    sp: "OFF"
+    rtspsessionidremap: "OFF"
+    clttimeout: 100
+    svrtimeout: 100
+    customserverid: 476
+    cka: "YES"
+    tcpb: "YES"
+    cmp: "NO"
+    maxbandwidth: 10000
+    accessdown: "NO"
+    monthreshold: 100
+    downstateflush: ENABLED
+    hashid: 10
+    comment: some comment
+    appflowlog: ENABLED
+    processlocal: ENABLED
+    graceful: "NO"
+
+#tcpprofilename: tcp-profile-1
+#httpprofilename: http-profile-1
+#netprofile: netprofile-1
+
+  delegate_to: localhost
+  register: result

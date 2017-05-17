@@ -1,0 +1,75 @@
+---
+
+- name: setup dependency gslb site
+  delegate_to: localhost
+  netscaler_gslb_site:
+    operation: present
+
+    sitename: gslb-site-1
+    siteipaddress: 192.168.1.1
+
+- include: gslb_service_setup.yml
+- include: ../assert_changed.yml
+- include: gslb_service_setup.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_update.yml
+- include: ../assert_changed.yml
+- include: gslb_service_update.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_remove.yml
+- include: ../assert_changed.yml
+- include: gslb_service_remove.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_cname_setup.yml
+- include: ../assert_changed.yml
+- include: gslb_service_cname_setup.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_cname_update.yml
+- include: ../assert_changed.yml
+- include: gslb_service_cname_update.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_cname_remove.yml
+- include: ../assert_changed.yml
+- include: gslb_service_cname_remove.yml
+- include: ../assert_not_changed.yml
+
+- name: setup standin server
+  delegate_to: localhost
+  netscaler_server:
+    operation: present
+    name: test-server-1
+    ipaddress: 192.168.1.1
+
+
+- include: gslb_service_servername_setup.yml
+- include: ../assert_changed.yml
+- include: gslb_service_servername_setup.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_servername_update.yml
+- include: ../assert_changed.yml
+- include: gslb_service_servername_update.yml
+- include: ../assert_not_changed.yml
+
+- include: gslb_service_servername_remove.yml
+- include: ../assert_changed.yml
+- include: gslb_service_servername_remove.yml
+- include: ../assert_not_changed.yml
+
+- name: remove standin server
+  delegate_to: localhost
+  netscaler_server:
+    operation: absent
+    name: test-server-1
+
+- name: remove dependency gslb site
+  delegate_to: localhost
+  netscaler_gslb_site:
+    operation: absent
+
+    sitename: gslb-site-1

@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "name", 
@@ -11,6 +12,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "ipaddress", 
@@ -19,6 +21,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "domain", 
@@ -28,6 +31,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "translationip", 
@@ -36,6 +40,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "translationmask", 
@@ -44,6 +49,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "int", 
         "name": "domainresolveretry", 
@@ -55,13 +61,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "state", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "state", 
         "description_lines": [
             "Initial state of the server.", 
             "Default value: ENABLED", 
@@ -69,13 +76,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "ipv6address", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "ipv6address", 
         "description_lines": [
             "Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use the server in the IPv4 addressing mode.", 
             "Default value: NO", 
@@ -83,6 +91,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "comment", 
@@ -91,6 +100,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "td", 
@@ -101,6 +111,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "bool", 
         "name": "domainresolvenow", 
@@ -109,6 +120,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "float", 
         "name": "delay", 
@@ -117,13 +129,14 @@
         ]
     }, 
     {
-        "readonly": false, 
+        "name": "graceful", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": false, 
+        "mutable": false, 
         "type": "str", 
-        "name": "graceful", 
         "description_lines": [
             "Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.", 
             "Default value: NO", 
@@ -131,6 +144,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "bool", 
         "name": "Internal", 
@@ -139,6 +153,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -148,6 +163,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "statechangetimesec", 
@@ -156,6 +172,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "tickssincelaststatechange", 
@@ -164,14 +181,15 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "autoscale", 
         "choices": [
             "DISABLED", 
             "DNS", 
             "POLICY"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "autoscale", 
         "description_lines": [
             "Auto scale option for a servicegroup.", 
             "Default value: DISABLED", 
@@ -179,6 +197,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "customserverid", 
@@ -188,6 +207,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "monthreshold", 
@@ -198,6 +218,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "maxclient", 
@@ -208,6 +229,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "maxreq", 
@@ -219,6 +241,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "maxbandwidth", 
@@ -229,58 +252,63 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "usip", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "usip", 
         "description_lines": [
             "Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "cka", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cka", 
         "description_lines": [
             "Enable client keep-alive for the service group.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "tcpb", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "tcpb", 
         "description_lines": [
             "Enable TCP buffering for the service group.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "cmp", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cmp", 
         "description_lines": [
             "Enable compression for the specified service.", 
             "Possible values = YES, NO"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "clttimeout", 
@@ -291,6 +319,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "svrtimeout", 
@@ -301,6 +330,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "cipheader", 
@@ -310,26 +340,28 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "cip", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cip", 
         "description_lines": [
             "Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.", 
             "Possible values = ENABLED, DISABLED"
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "cacheable", 
         "choices": [
             "YES", 
             "NO"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cacheable", 
         "description_lines": [
             "Use the transparent cache redirection virtual server to forward the request to the cache server.", 
             "Default value: NO", 
@@ -337,13 +369,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "sc", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "sc", 
         "description_lines": [
             "State of the SureConnect feature for the service group.", 
             "Default value: OFF", 
@@ -351,13 +384,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "sp", 
         "choices": [
             "ON", 
             "OFF"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "sp", 
         "description_lines": [
             "Enable surge protection for the service group.", 
             "Default value: OFF", 
@@ -365,13 +399,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "downstateflush", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "downstateflush", 
         "description_lines": [
             "Perform delayed clean-up of connections to all services in the service group.", 
             "Default value: ENABLED", 
@@ -379,13 +414,14 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "appflowlog", 
         "choices": [
             "ENABLED", 
             "DISABLED"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "appflowlog", 
         "description_lines": [
             "Enable logging of AppFlow information for the specified service group.", 
             "Default value: ENABLED", 
@@ -393,6 +429,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "boundtd", 
@@ -403,6 +440,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 

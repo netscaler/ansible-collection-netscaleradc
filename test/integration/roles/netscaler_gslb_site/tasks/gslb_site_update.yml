@@ -1,0 +1,19 @@
+---
+
+- name: Setup gslb site
+  netscaler_gslb_site:
+
+    operation: present
+
+    sitename: gslb-site-1
+    siteipaddress: 192.168.1.1
+    sitetype: LOCAL
+    publicip: 192.168.1.1
+    metricexchange: DISABLED
+    nwmetricexchange: ENABLED
+    sessionexchange: ENABLED
+    triggermonitor: ALWAYS
+
+
+  delegate_to: localhost
+  register: result

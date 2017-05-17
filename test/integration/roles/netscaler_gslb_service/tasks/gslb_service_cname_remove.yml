@@ -1,0 +1,11 @@
+---
+
+- name: Setup gslb service cname
+
+  delegate_to: localhost
+  register: result
+
+  netscaler_gslb_service:
+    operation: absent
+
+    servicename: gslb-service-2

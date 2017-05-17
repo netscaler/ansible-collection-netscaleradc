@@ -1,0 +1,11 @@
+---
+
+- name: Remove gslb-service-3
+
+  delegate_to: localhost
+  register: result
+
+  netscaler_gslb_service:
+    operation: absent
+
+    servicename: gslb-service-3

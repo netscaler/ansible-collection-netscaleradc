@@ -1,5 +1,6 @@
 [
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "policyname", 
@@ -11,6 +12,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "url", 
@@ -21,6 +23,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "rule", 
@@ -35,6 +38,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "domain", 
@@ -44,6 +48,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "action", 
@@ -52,6 +57,7 @@
         ]
     }, 
     {
+        "mutable": true, 
         "readonly": false, 
         "type": "str", 
         "name": "logaction", 
@@ -60,6 +66,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": false, 
         "type": "str", 
         "name": "newname", 
@@ -69,6 +76,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "vstype", 
@@ -77,6 +85,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "hits", 
@@ -85,6 +94,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "bindhits", 
@@ -93,6 +103,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "str", 
         "name": "labelname", 
@@ -101,20 +112,22 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "labeltype", 
         "choices": [
             "reqvserver", 
             "resvserver", 
             "policylabel"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "labeltype", 
         "description_lines": [
             "The invocation type.", 
             "Possible values = reqvserver, resvserver, policylabel"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "priority", 
@@ -123,6 +136,7 @@
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "bool", 
         "name": "activepolicy", 
@@ -131,19 +145,21 @@
         ]
     }, 
     {
-        "readonly": true, 
+        "name": "cspolicytype", 
         "choices": [
             "Classic Policy", 
             "Advanced Policy"
         ], 
+        "readonly": true, 
+        "mutable": false, 
         "type": "str", 
-        "name": "cspolicytype", 
         "description_lines": [
             "Indicates whether policy is PI or not.(used only during display).", 
             "Possible values = Classic Policy, Advanced Policy"
         ]
     }, 
     {
+        "mutable": false, 
         "readonly": true, 
         "type": "float", 
         "name": "__count", 
