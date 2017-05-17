@@ -2,7 +2,7 @@
 Generally:
 
 ```
-ansible-playbook  -i inventory.txt  -M <location of installed netscaler modules> <playbook yml>
+ansible-playbook  -i inventory.txt   <playbook yml>
 ```
 # Specifying the ip / login / password of the NetScaler
 This can be done in two ways: in the inventory file, or inline inside the playbook. What is in the playbook will take precedence over the inventory file
