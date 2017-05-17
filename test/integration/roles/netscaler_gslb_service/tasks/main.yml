@@ -1,5 +1,16 @@
 ---
 
+- name: setup dependency lb monitor
+  delegate_to: localhost
+  netscaler_lb_monitor:
+    operation: present
+
+    monitorname: lb-monitor-1
+    type: HTTP
+#action: DOWN
+    respcode: [ "200", "203"]
+    httprequest: HEAD /file.html
+
 - name: setup dependency gslb site
   delegate_to: localhost
   netscaler_gslb_site:
@@ -73,3 +84,11 @@
     operation: absent
 
     sitename: gslb-site-1
+
+- name: remove dependency lb monitor
+  delegate_to: localhost
+  netscaler_lb_monitor:
+    operation: absent
+
+    monitorname: lb-monitor-1
+    type: HTTP

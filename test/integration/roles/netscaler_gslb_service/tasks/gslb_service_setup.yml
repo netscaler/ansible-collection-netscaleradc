@@ -29,3 +29,8 @@
     hashid: 10
     comment: cool gslb service!
     appflowlog: ENABLED
+
+    monitor_bindings:
+      -
+        monitor_name: lb-monitor-1
+        weight: 100
