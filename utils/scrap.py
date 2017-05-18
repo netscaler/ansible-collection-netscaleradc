@@ -4,6 +4,7 @@
 import requests
 import re
 import json
+import os
 from lxml import html
 
 
@@ -109,21 +110,22 @@ def main():
     base_nitro_url = 'http://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
     base_command_url = 'http://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
     pages = [
-        ('basic/servicegroup', 'basic/servicegroup'),
-        ('basic/service', 'basic/service'),
-        ('basic/server', 'basic/server'),
-        #('basic/servicegroup_servicegroupmember_binding')
-        ('load-balancing/lbvserver', 'lb/lb-vserver'),
-        #'load-balancing/lbvserver_service_binding',
-        #'load-balancing/lbvserver_servicegroup_binding',
-        ('load-balancing/lbmonitor', 'lb/lb-monitor'),
-        ('content-switching/csvserver', 'cs/cs-vserver'),
-        ('content-switching/cspolicy', 'cs/cs-policy'),
-        ('content-switching/csaction', 'cs/cs-action'),
-        ('ssl/sslcertkey', 'ssl/ssl-certkey'),
-        ('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
-        ('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
-        ('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
+        #('basic/servicegroup', 'basic/servicegroup'),
+        #('basic/service', 'basic/service'),
+        #('basic/server', 'basic/server'),
+        #('basic/servicegroup_servicegroupmember_binding', None)
+        #('load-balancing/lbvserver', 'lb/lb-vserver'),
+        #('load-balancing/lbvserver_service_binding', None)
+        #('load-balancing/lbvserver_servicegroup_binding', None)
+        #('load-balancing/lbmonitor', 'lb/lb-monitor'),
+        #('content-switching/csvserver', 'cs/cs-vserver'),
+        #('content-switching/cspolicy', 'cs/cs-policy'),
+        #('content-switching/csaction', 'cs/cs-action'),
+        #('ssl/sslcertkey', 'ssl/ssl-certkey'),
+        #('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
+        #('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
+        #('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
+        ('global-server-load-balancing/gslbvserver_domain_binding', None),
 
     ]
     for page in pages:
@@ -133,7 +135,8 @@ def main():
             print('Skipping %s' % page_file)
             continue
         properties = scrap_page(base_nitro_url + page[0] + '.html')
-        properties = update_for_immutables(properties, base_command_url, page[1] )
+        if page[1] is not None:
+            properties = update_for_immutables(properties, base_command_url, page[1] )
         print('writing to file %s' % page_file)
         with open(page_file, 'w') as fh:
             json.dump(properties, fh, indent=4)
