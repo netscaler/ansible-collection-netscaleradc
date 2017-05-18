@@ -224,7 +224,7 @@ options:
             - >-
                 Unique identifier for the service. Used when the persistency type for the virtual server is set to
                 Custom Server ID.
-            - "Default value: \"None\""
+            - "Default value: \\"None\\""
 
     serverid:
         description:
@@ -373,10 +373,6 @@ options:
             dup_weight:
                 description:
                     - Weight to assign to the binding between the monitor and service.
-
-
-
-
 
 extends_documentation_fragment: netscaler
 requirements:
