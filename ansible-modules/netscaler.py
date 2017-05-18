@@ -31,7 +31,7 @@ class ConfigProxyError(Exception):
 
 class ConfigProxy(object):
 
-    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, readonly_attrs=[], immutable_attrs=[], json_encodes=[]):
+    def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, transforms={}, readonly_attrs=[], immutable_attrs=[], json_encodes=[]):
 
         # Actual config object from nitro sdk
         self.actual = actual
@@ -46,13 +46,29 @@ class ConfigProxy(object):
         self.readonly_attrs = readonly_attrs
         self.immutable_attrs = immutable_attrs
         self.json_encodes = json_encodes
+        self.transforms = transforms
+
+        self.attribute_values_processed = {}
+        for attribute, value in self.attribute_values_dict.items():
+            if attribute in transforms:
+                for transform in self.transforms[attribute]:
+                    if transform == 'bool_yes_no':
+                        value = 'YES' if value is True else 'NO'
+                    elif transform == 'bool_on_off':
+                        value = 'ON' if value is True else 'OFF'
+                    elif callable(transform):
+                        value = transform(value)
+                    else:
+                        raise Exception('Invalid transform %s' % transform)
+            self.attribute_values_processed[attribute] = value
 
         self._copy_attributes_to_actual()
 
     def _copy_attributes_to_actual(self):
         for attribute in self.readwrite_attrs:
-            if attribute in self.attribute_values_dict:
-                attribute_value = self.attribute_values_dict[attribute]
+            if attribute in self.attribute_values_processed:
+                attribute_value = self.attribute_values_processed[attribute]
+
                 if attribute_value is None:
                     continue
 
@@ -89,13 +105,13 @@ class ConfigProxy(object):
 
     def diff_object(self, other):
         diff_dict = {}
-        for attribute in self.attribute_values_dict:
+        for attribute in self.attribute_values_processed:
             # Skip readonly attributes
             if attribute not in self.readwrite_attrs:
                 continue
 
             # Skip attributes not present in module arguments
-            if self.attribute_values_dict[attribute] is None:
+            if self.attribute_values_processed[attribute] is None:
                 continue
 
             # Check existence
@@ -106,11 +122,11 @@ class ConfigProxy(object):
                 continue
 
             # Compare values
-            param_type = self.attribute_values_dict[attribute].__class__
-            if param_type(attribute_value) != self.attribute_values_dict[attribute]:
+            param_type = self.attribute_values_processed[attribute].__class__
+            if param_type(attribute_value) != self.attribute_values_processed[attribute]:
                 str_tuple = (
-                    type(self.attribute_values_dict[attribute]),
-                    self.attribute_values_dict[attribute],
+                    type(self.attribute_values_processed[attribute]),
+                    self.attribute_values_processed[attribute],
                     type(attribute_value),
                     attribute_value,
                 )
