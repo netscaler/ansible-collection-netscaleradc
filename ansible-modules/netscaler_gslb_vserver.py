@@ -729,7 +729,6 @@ def main():
 
         return actual_bindings
 
-
     def get_configured_service_bindings():
         log('get_configured_service_bindings_proxys')
         configured_proxys = {}
@@ -748,12 +747,9 @@ def main():
                 configured_proxys[configured_binding['servicename']] = gslbvserver_service_binding_proxy
         return configured_proxys
 
-
-
     def sync_service_bindings():
         actual = get_actual_service_bindings()
         configured = get_configured_service_bindings()
-
 
         # Delete extraneous
         extraneous_service_bindings = list(set(actual.keys()) - set(configured.keys()))
@@ -871,7 +867,6 @@ def main():
                     module.fail_json(msg='Domain bindings differ from configured', diff=diff(), **module_result)
                 if not service_bindings_identical():
                     module.fail_json(msg='Service bindings differ from configured', diff=diff(), **module_result)
-
 
         elif module.params['operation'] == 'absent':
             if gslb_vserver_exists():
