@@ -89,7 +89,7 @@ def main():
             ansible_module_files.append(filename)
 
     # Copy netscaler.py to module_utils
-    if not 'netscaler.py' in ansible_module_files:
+    if 'netscaler.py' not in ansible_module_files:
         print('Could not find netscaler module utils file')
         sys.exit(1)
 
@@ -106,7 +106,7 @@ def main():
 
     # Copy module files
     for file in ansible_module_files:
-        #print('Copying %s to %s' % (file, netscaler_module_dir))
+        # print('Copying %s to %s' % (file, netscaler_module_dir))
         source = os.path.join(ansible_modules_sourcedir, file)
         destination = os.path.join(netscaler_module_dir, file)
         if os.path.exists(destination):
@@ -115,8 +115,26 @@ def main():
             print('Copying %s' % destination)
         shutil.copy(source, destination)
 
+    # Try to find the units test directory
+    # and copy our units tests to the appropriate directory
+    unit_tests_dir = os.path.join(ansible_path, '..', '..', 'test', 'units')
+    if os.path.exists(unit_tests_dir):
+        print('Found unit tests dir under %s' % unit_tests_dir)
+        netscaler_unit_tests_dir = os.path.join(unit_tests_dir, 'modules', 'network', 'netscaler')
+        if os.path.exists(netscaler_unit_tests_dir):
+            print('Cleaning up previous netscaler tests')
+            shutil.rmtree(netscaler_unit_tests_dir)
+        os.mkdir(netscaler_unit_tests_dir)
 
-
+        local_units_dir = os.path.join(here, 'test', 'units')
+        for file in os.listdir(local_units_dir):
+            print('Copying unit test file %s' % file)
+            shutil.copy(
+                src=os.path.join(local_units_dir, file),
+                dst=os.path.join(netscaler_unit_tests_dir, file)
+            )
+    else:
+        print('Could not find units tests dir')
 
 
 if __name__ == '__main__':
