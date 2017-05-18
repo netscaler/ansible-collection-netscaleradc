@@ -100,3 +100,33 @@
 * "linkcertkeyname". Not in the nitro response object.
 * "hsmkey". Did not have hardware module to test.
 * "fipskey". Did not have hardware module to test.
+
+## netscaler gslb site
+
+* "parentsite". Throwing exception
+* "clip". Could not setup cluster to test
+* "publicclip". Could not setup cluster to test
+
+## netscaler gslb service
+
+* "cookietimeout" not returned in nitro object
+* "srvtimeout" is mispelled as svrtimeout nitro object does not have this attribute as a result
+* "naptr..." all naptr options are unavailable on netscaler 10.5
+* "view..." views are unavailable on NS10.5
+* "monitor\_name\_svc" the underscores cause the python sdk call to fail
+* "weight" can be used only with monitor\_name\_svc
+
+## netscaler gslb vserver
+
+* "backupsessiontimeout" missing from other
+* "iptype" missing from other
+* "ecs" not supported by nitro api
+* "ecsaddrvalidation" not supported by nitro api
+* "edr" not supported by nitro api
+* "state" missing from nitro api
+* "backupvserver" not present in nitro return object
+
+### domain bindings
+* "cookie\_domainflag", "cookie\_domain" nitro api gets confused by the underscore.
+
+### glsb service bindings
