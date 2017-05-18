@@ -3,60 +3,75 @@
 
 from jinja2 import Environment, FileSystemLoader
 import os.path
-import pprint as pp
 import json
 import inspect
-import re
 import __builtin__
 
 type_conversions = {
-    'string' : 'str',
-    'integer' : 'int',
-    'boolean' : 'bool',
-    'object' : 'dict',
+    'string': 'str',
+    'integer': 'int',
+    'boolean': 'bool',
+    'object': 'dict',
 }
+
 
 def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
     module_arguments = list()
     for property in json_doc:
         # Skip readonly attributes
-        if property['readonly'] == True:
+        if property['readonly'] is True:
             continue
 
         # Skip attributes in skip_attrs
         if property['name'] in skip_attrs:
             continue
 
+        key = property['name']
         entry = {}
+        entry['key'] = key
+        entry['transforms'] = []
 
         # Convert json type to ansible module argument type declaration
+
         entry['type'] = property['type']
 
         # Add choices if applicable
         if 'choices' in property:
-            entry['choices'] = property['choices']
-        entry['key'] = property['name']
+            choice_set = frozenset([ choice.lower() for choice in property['choices']])
+            if choice_set == frozenset(['yes', 'no']):
+                # Overwrite type to bool
+                entry['type'] = 'bool'
+                entry['transforms'] = ['bool_yes_no']
+            elif choice_set == frozenset(['on', 'off']):
+                # Overwrite type to bool
+                entry['type'] = 'bool'
+                entry['transforms'] = ['bool_on_off']
+            else:
+                entry['choices'] = property['choices']
 
         # Add to ansible modules argument
         module_arguments.append(entry)
 
     return module_arguments
 
+
 def produce_readwrite_attrs_list(json_doc):
     readonly_list = list()
     for property in json_doc:
         # Add only readonly attributes
-        if property['readonly'] == False:
+        if property['readonly'] is False:
             readonly_list.append(property['name'])
     return readonly_list
+
 
 def produce_readonly_attrs_list(json_doc):
     readonly_list = list()
     for property in json_doc:
         # Add only readonly attributes
-        if property['readonly'] == True:
+        if property['readonly'] is True:
             readonly_list.append(property['name'])
     return readonly_list
+
 
 def produce_immutables_list(json_doc):
     immutables_list = []
@@ -74,7 +89,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
         line = str(line)
         if len(line) <= width:
             # Escape double quotes
-            line  = line.replace('"', r'\"')
+            line = line.replace('"', r'\\"')
             # Put double quotes around line to avoid yaml
             # invalid characters breaking the documentation redering
             return ''.join(['"', line, '"'])
@@ -92,7 +107,6 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
 
         return line_splits
 
-
     options_list = []
     for property in json_doc:
 
@@ -109,10 +123,28 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
             continue
 
         # Fallthrough
-        entry['description'] = [ split_description_line(line) for line in property['description_lines']]
+        #entry['description'] = [ split_description_line(line) for line in property['description_lines']]
+        entry['description'] = []
+
+        bool_choice_sets = (
+            frozenset(['yes', 'no']),
+            frozenset(['on', 'off']),
+        )
 
         if 'choices' in property:
-            entry['choices'] = [ str(choice) for choice in property['choices'] ]
+            choice_set = frozenset([choice.lower() for choice in property['choices']])
+            print('choice set is %s' % choice_set)
+            if choice_set not in bool_choice_sets:
+                entry['choices'] = [str(choice) for choice in property['choices']]
+
+            # Append lines rejecting possible values lines
+            for line in property['description_lines']:
+                if line.startswith('Possible values'):
+                    continue
+                entry['description'].append(split_description_line(line))
+        else:
+            # pass all lines to description
+            entry['description'] = [split_description_line(line) for line in property['description_lines']]
 
         options_list.append(entry)
 
@@ -221,6 +253,7 @@ def main():
     readonly_attrs = {}
     readwrite_attrs = {}
     immutable_attrs = {}
+    transforms = {}
     for key, schema in schemata.items():
         print('Processing %s' % key)
         json_file = os.path.join(here, 'source/scrap', schema['json_file'])
@@ -260,6 +293,12 @@ def main():
 
         immutable_attrs[key] = produce_immutables_list(json_doc)
 
+        transforms[key] = {}
+        for entry in module_arguments[key]:
+            if entry['transforms'] != []:
+                transform_key = entry['key']
+                transforms[key][transform_key] = entry['transforms']
+
     # Do the instantiation of the templates
     for key in schemata.keys():
         template = env.get_template('generic_module.template')
@@ -269,14 +308,13 @@ def main():
             readonly_attrs=readonly_attrs[key],
             readwrite_attrs=readwrite_attrs[key],
             immutable_attrs=immutable_attrs[key],
+            transforms=transforms[key],
         )
         output_file = 'netscaler_%s.py' % key
         stream.dump(
             os.path.join('output', output_file),
             encoding='utf-8'
         )
-
-
 
 
 if __name__ == '__main__':
