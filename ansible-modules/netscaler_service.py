@@ -34,6 +34,7 @@ description:
 
 version_added: "2.4"
 author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
@@ -95,11 +96,6 @@ options:
             - 'SSL_FIX'
         description:
             - "Protocol in which data is exchanged with the service."
-            - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP,
-                RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS,
-                RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX,
-                SSL_FIX
 
     port:
         description:
@@ -121,7 +117,6 @@ options:
             - 'FORWARD'
         description:
             - "Cache type supported by the cache server."
-            - "Possible values = TRANSPARENT, REVERSE, FORWARD"
 
     maxclient:
         description:
@@ -130,9 +125,6 @@ options:
             - "Maximum value = 4294967294"
 
     healthmonitor:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Monitor the health of this service. Available settings function as follows:"
             - "YES - Send probes to check the health of the service."
@@ -140,7 +132,6 @@ options:
                 NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
             - "Default value: YES"
-            - "Possible values = YES, NO"
 
     maxreq:
         description:
@@ -150,14 +141,10 @@ options:
             - "Maximum value = 65535"
 
     cacheable:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Use the transparent cache redirection virtual server to forward requests to the cache server."
             - "Note: Do not specify this parameter if you set the Cache Type parameter."
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     cip:
         choices:
@@ -168,7 +155,6 @@ options:
                 Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6
                 address as its value. Used if the server needs the client's IP address for security, accounting, or
                 other purposes, and setting the Use Source IP parameter is not a viable option.
-            - "Possible values = ENABLED, DISABLED"
 
     cipheader:
         description:
@@ -183,9 +169,6 @@ options:
             - "Minimum length = 1"
 
     usip:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use the client's IP address as the source IP address when initiating a connection to the server. When
@@ -193,44 +176,35 @@ options:
                 setting (available in the enable ns mode and disable ns mode CLI commands, or in the System >
                 Settings > Configure modes > Configure Modes dialog box). However, you can override this setting
                 after you create the service.
-            - "Possible values = YES, NO"
+
+    pathmonitor:
+        description:
+            - "Path monitoring for clustering."
+
+    pathmonitorindv:
+        description:
+            - "Individual Path monitoring decisions."
 
     useproxyport:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use the proxy port as the source port when initiating connections with the server. With the NO
                 setting, the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
-            - "Possible values = YES, NO"
 
     sc:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "State of SureConnect for the service."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     sp:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable surge protection for the service."
-            - "Possible values = ON, OFF"
 
     rtspsessionidremap:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable RTSP session ID mapping for the service."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     clttimeout:
         description:
@@ -256,28 +230,16 @@ options:
             - "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
 
     cka:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable client keep-alive for the service."
-            - "Possible values = YES, NO"
 
     tcpb:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable TCP buffering for the service."
-            - "Possible values = YES, NO"
 
     cmp:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable compression for the service."
-            - "Possible values = YES, NO"
 
     maxbandwidth:
         description:
@@ -286,15 +248,11 @@ options:
             - "Maximum value = 4294967287"
 
     accessdown:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service
                 is DOWN, and this parameter is disabled, the packets are dropped.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     monthreshold:
         description:
@@ -313,7 +271,6 @@ options:
                 Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do
                 not enable this option for applications that must complete their transactions.
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     tcpprofilename:
         description:
@@ -345,7 +302,6 @@ options:
         description:
             - "Enable logging of AppFlow information."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     netprofile:
         description:
@@ -372,7 +328,6 @@ options:
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dnsprofilename:
         description:
@@ -387,15 +342,11 @@ options:
             - "The new IP address of the service."
 
     graceful:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Shut down gracefully, not accepting any new connections, and disabling the service when all of its
                 connections are closed.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     monitor_bindings:
         description:
@@ -523,21 +474,9 @@ def main():
             ]
         ),
         maxclient=dict(type='float'),
-        healthmonitor=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        healthmonitor=dict(type='bool'),
         maxreq=dict(type='float'),
-        cacheable=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        cacheable=dict(type='bool'),
         cip=dict(
             type='str',
             choices=[
@@ -546,73 +485,19 @@ def main():
             ]
         ),
         cipheader=dict(type='str'),
-        usip=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        useproxyport=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        sc=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        sp=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        rtspsessionidremap=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
+        usip=dict(type='bool'),
+        useproxyport=dict(type='bool'),
+        sc=dict(type='bool'),
+        sp=dict(type='bool'),
+        rtspsessionidremap=dict(type='bool'),
         clttimeout=dict(type='float'),
         svrtimeout=dict(type='float'),
         customserverid=dict(type='str'),
-        cka=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        tcpb=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        cmp=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        cka=dict(type='bool'),
+        tcpb=dict(type='bool'),
+        cmp=dict(type='bool'),
         maxbandwidth=dict(type='float'),
-        accessdown=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        accessdown=dict(type='bool'),
         monthreshold=dict(type='float'),
         downstateflush=dict(
             type='str',
@@ -642,10 +527,7 @@ def main():
         ),
         dnsprofilename=dict(type='str'),
         ipaddress=dict(type='str'),
-        graceful=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
+        graceful=dict(type='bool'),
     )
 
     hand_inserted_arguments = dict(
@@ -769,6 +651,23 @@ def main():
         'newname',
     ]
 
+    transforms = {
+        'pathmonitorindv': ['bool_yes_no'],
+        'cacheable': ['bool_yes_no'],
+        'cka': ['bool_yes_no'],
+        'pathmonitor': ['bool_yes_no'],
+        'tcpb': ['bool_yes_no'],
+        'sp': ['bool_on_off'],
+        'graceful': ['bool_yes_no'],
+        'usip': ['bool_yes_no'],
+        'healthmonitor': ['bool_yes_no'],
+        'useproxyport': ['bool_yes_no'],
+        'rtspsessionidremap': ['bool_on_off'],
+        'sc': ['bool_on_off'],
+        'accessdown': ['bool_yes_no'],
+        'cmp': ['bool_yes_no'],
+    }
+
     monitor_bindings_rw_attrs = [
         'servicename',
         'servicegroupname',
@@ -789,6 +688,7 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
 
     def service_exists():
@@ -979,7 +879,7 @@ def main():
                 module.fail_json(msg='Service still exists', **module_result)
 
     except nitro_exception as e:
-        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
