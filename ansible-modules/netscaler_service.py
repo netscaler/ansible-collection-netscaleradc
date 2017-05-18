@@ -33,6 +33,7 @@ description:
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
 version_added: "2.4"
+
 author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
@@ -350,8 +351,31 @@ options:
 
     monitor_bindings:
         description:
-            - A list of monitornames to bind to this service
-            - Note that the monitors must have already been setup using the netscaler_lb_monitor module
+            - A list of monitors to bind to this service.
+            - Each monitor entry is a dictionary which may contain the following options.
+            - Note that if not using the built in monitors they must first be setup.
+        suboptions:
+            monitorname:
+                description:
+                    - Name of the monitor.
+            weight:
+                description:
+                    - Weight to assign to the binding between the monitor and service.
+            dup_state:
+                choices:
+                    - 'ENABLED'
+                    - 'DISABLED'
+                description:
+                    - State of the monitor.
+                    - The state setting for a monitor of a given type affects all monitors of that type.
+                    - For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.
+                    - If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.
+            dup_weight:
+                description:
+                    - Weight to assign to the binding between the monitor and service.
+
+
+
 
 
 extends_documentation_fragment: netscaler
