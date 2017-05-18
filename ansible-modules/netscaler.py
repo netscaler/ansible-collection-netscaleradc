@@ -165,6 +165,7 @@ class ConfigProxy(object):
     def get_missing_ro_attributes(self):
         return list(set(self.readonly_attrs) - set(self.get_actual_ro_attributes().keys()))
 
+
 def get_immutables_intersection(config_proxy, keys):
     immutables_set = set(config_proxy.immutable_attrs)
     keys_set = set(keys)
@@ -246,13 +247,15 @@ def get_ns_version(client):
     else:
         return int(m.group(1)), int(m.group(2))
 
+
 def monkey_patch_nitro_api():
 
     from nssrc.com.citrix.netscaler.nitro.resource.base.Json import Json
+
     def new_resource_to_string_convert(self, resrc):
         try:
             # Line below is the actual patch
-            dict_valid_values = dict((k.replace('_','', 1), v) for k, v in resrc.__dict__.items() if v)
+            dict_valid_values = dict((k.replace('_', '', 1), v) for k, v in resrc.__dict__.items() if v)
             return json.dumps(dict_valid_values)
         except Exception as e:
             raise e
@@ -266,24 +269,23 @@ def monkey_patch_nitro_api():
             str_ = ""
             flds = obj.__dict__
             # Line below is the actual patch
-            flds = dict((k.replace('_','', 1), v) for k, v in flds.items() if v)
+            flds = dict((k.replace('_', '', 1), v) for k, v in flds.items() if v)
             if (flds):
-                for k,v in flds.items() :
+                for k, v in flds.items():
                     str_ = str_ + "\"" + k + "\":"
-                    if type(v) is unicode :
-                        v = v.encode('utf8');
-                    if type(v) is bool :
+                    if type(v) is unicode:
+                        v = v.encode('utf8')
+                    if type(v) is bool:
                         str_ = str_ + v
-                    elif type(v) is str :
+                    elif type(v) is str:
                         str_ = str_ + "\"" + v + "\""
-                    elif type(v) is int :
+                    elif type(v) is int:
                         str_ = str_ + "\"" + str(v) + "\""
-                    if str_ :
+                    if str_:
                         str_ = str_ + ","
             return str_
         except Exception as e:
             raise e
-
 
     @classmethod
     def object_to_string_withoutquotes_new(cls, obj):
@@ -291,21 +293,21 @@ def monkey_patch_nitro_api():
             str_ = ""
             flds = obj.__dict__
             # Line below is the actual patch
-            flds = dict((k.replace('_','', 1), v) for k, v in flds.items() if v)
+            flds = dict((k.replace('_', '', 1), v) for k, v in flds.items() if v)
             i = 0
             if (flds):
-                for k,v in flds.items() :
+                for k, v in flds.items():
                     str_ = str_ + k + ":"
-                    if type(v) is unicode :
-                        v = v.encode('utf8');
-                    if type(v) is bool :
+                    if type(v) is unicode:
+                        v = v.encode('utf8')
+                    if type(v) is bool:
                         str_ = str_ + v
-                    elif type(v) is str :
+                    elif type(v) is str:
                         str_ = str_ + cls.encode(v)
-                    elif type(v) is int :
+                    elif type(v) is int:
                         str_ = str_ + str(v)
                     i = i + 1
-                    if i != (len(flds.items())) and str_ :
+                    if i != (len(flds.items())) and str_:
                         str_ = str_ + ","
             return str_
         except Exception as e:
