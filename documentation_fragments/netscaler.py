@@ -5,7 +5,7 @@ options:
     nsip:
         description:
             - The ip address of the netscaler appliance where the nitro API calls will be made.
-            - "The port can be specified with the colon (:). E.g. 192.168.1.1:555"
+            - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
         required: True
 
     nitro_user:
@@ -33,7 +33,7 @@ options:
         choices: ['present', 'absent']
         required: True
         description:
-            - The operation to perform for the given netscaler module
-            - When present the resource will be created if needed and configured according to the module's parameters
-            - When absent the resource will be deleted from the netscaler node
+            - The operation to perform for the given netscaler module.
+            - When present the resource will be created if needed and configured according to the module's parameters.
+            - When absent the resource will be deleted from the netscaler node.
 '''
