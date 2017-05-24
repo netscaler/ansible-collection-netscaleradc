@@ -24,10 +24,6 @@ import re
 from ansible.module_utils.basic import env_fallback
 
 
-class ConfigProxyError(Exception):
-    pass
-
-
 class ConfigProxy(object):
 
     def __init__(self, actual, client, attribute_values_dict, readwrite_attrs, transforms={}, readonly_attrs=[], immutable_attrs=[], json_encodes=[]):
