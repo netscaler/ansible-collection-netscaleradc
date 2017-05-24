@@ -411,12 +411,6 @@ loglines:
     type: list
     sample: "['message 1', 'message 2']"
 
-msg:
-    description: Message detailing the failure reason
-    returned: failure
-    type: str
-    sample: "Action does not exist"
-
 diff:
     description: A dictionary with a list of differences between the actual configured object and the configuration specified in the module
     returned: failure
