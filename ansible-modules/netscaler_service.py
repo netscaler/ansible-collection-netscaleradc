@@ -27,12 +27,14 @@ ANSIBLE_METADATA = {'metadata_version': '1.0',
 DOCUMENTATION = '''
 ---
 module: netscaler_service
-short_description: Manage service group configuration in Netscaler
+short_description: Manage service configuration in Netscaler
 description:
-    - Manage service group configuration in Netscaler
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - Manage service configuration in Netscaler.
+    - This module allows the creation, deletion and modification of Netscaler services.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+    - This module supports check mode.
 
-version_added: "2.4"
+version_added: "2.4.0"
 
 author: George Nikolopoulos (@giorgos-nikolopoulos)
 
@@ -351,7 +353,7 @@ options:
 
     monitor_bindings:
         description:
-            - A list of monitors to bind to this service.
+            - A list of load balancing monitors to bind to this service.
             - Each monitor entry is a dictionary which may contain the following options.
             - Note that if not using the built in monitors they must first be setup.
         suboptions:
@@ -380,21 +382,21 @@ requirements:
 '''
 
 EXAMPLES = '''
-# Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
+# Monitor monitor-1 must have been already setup
 
 - name: Setup http service
-  local_action:
+  gather_facts: False
+  delegate_to: localhost
+  netscaler_service:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
 
     module: netscaler_service
     operation: present
 
     name: service-http-1
     servicetype: HTTP
-    ip: 10.78.0.1
     ipaddress: 10.78.0.1
     port: 80
 
@@ -416,7 +418,7 @@ msg:
     sample: "Action does not exist"
 
 diff:
-    description: List of differences between the actual configured object and the configuration specified in the module
+    description: A dictionary with a list of differences between the actual configured object and the configuration specified in the module
     returned: failure
     type: dict
     sample: "{ 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }"
@@ -445,10 +447,8 @@ def service_exists(client, module):
 
 
 def service_identical(client, module, service_proxy):
-    log('Checking if service is identical')
     service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
     diff_dict = service_proxy.diff_object(service_list[0])
-    log('other ipaddress is %s' % service_list[0].ipaddress)
     # the actual ip address is stored in the ipaddress attribute
     # of the retrieved object
     if 'ip' in diff_dict:
@@ -468,7 +468,6 @@ def diff(client, module, service_proxy):
 
 
 def get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs):
-    log('Entering get_configured_monitor_bindings')
     bindings = {}
     if module.params['monitor_bindings'] is not None:
         for binding in module.params['monitor_bindings']:
@@ -487,7 +486,6 @@ def get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs):
 
 
 def get_actual_monitor_bindings(client, module):
-    log('Entering get_actual_monitor_bindings')
     bindings = {}
     if service_lbmonitor_binding.count(client, module.params['name']) == 0:
         return bindings
@@ -497,7 +495,6 @@ def get_actual_monitor_bindings(client, module):
         # Excluding default monitors since we cannot operate on them
         if binding.monitor_name in ('tcp-default', 'ping-default'):
             continue
-        log('Gettign actual monitor with name %s' % binding.monitor_name)
         key = binding.monitor_name
         actual = lbmonitor_service_binding()
         actual.weight = binding.weight
@@ -510,7 +507,6 @@ def get_actual_monitor_bindings(client, module):
 
 
 def monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
-    log('Entering monitor_bindings_identical')
     configured_proxys = get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs)
     actual_bindings = get_actual_monitor_bindings(client, module)
 
@@ -518,7 +514,6 @@ def monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
     actual_key_set = set(actual_bindings.keys())
     symmetrical_diff = configured_key_set ^ actual_key_set
     if len(symmetrical_diff) > 0:
-        log('Symmetrical difference %s' % symmetrical_diff)
         return False
 
     # Compare key to key
@@ -530,7 +525,6 @@ def monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
             if proxy.servicegroupname == actual.servicename:
                 del diff_dict['servicegroupname']
         if len(diff_dict) > 0:
-            log('Monitor diff %s' % diff_dict)
             return False
 
     # Fallthrought to success
@@ -538,7 +532,6 @@ def monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
 
 
 def sync_monitor_bindings(client, module, monitor_bindings_rw_attrs):
-    log('Entering sync_monitor_bindings')
     configured_proxys = get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs)
     actual_bindings = get_actual_monitor_bindings(client, module)
     configured_keyset = set(configured_proxys.keys())
@@ -568,7 +561,6 @@ def sync_monitor_bindings(client, module, monitor_bindings_rw_attrs):
 
 
 def all_identical(client, module, service_proxy, monitor_bindings_rw_attrs):
-    log('all_identical')
     return service_identical(client, module, service_proxy) and monitor_bindings_identical(client, module, monitor_bindings_rw_attrs)
 
 
@@ -924,7 +916,6 @@ def main():
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
-    print('After end of execution')
     module.exit_json(**module_result)
 
 
