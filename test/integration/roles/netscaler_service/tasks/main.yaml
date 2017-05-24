@@ -1,5 +1,9 @@
 ---
 - include: http_service.yml
+
+- assert:
+    that: result|changed
+
 - include: ../assert_changed.yml
 - include: http_service.yml
 - include: ../assert_not_changed.yml
