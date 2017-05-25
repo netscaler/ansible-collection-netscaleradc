@@ -699,17 +699,17 @@ def main():
     if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
-    # Fail if no connection can be established
-    try:
-        client = get_nitro_client(module)
-    except requests.exceptions.ConnectionError as e:
-        module.fail_json(msg='Connection error %s' % str(e))
+    client = get_nitro_client(module)
 
-    # Fail on SSLError
     try:
         client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
     except requests.exceptions.SSLError as e:
         module.fail_json(msg='SSL Error %s' % str(e))
+    except requests.exceptions.ConnectionError as e:
+        module.fail_json(msg='Connection error %s' % str(e))
 
     # Fallthrough to rest of execution
 
