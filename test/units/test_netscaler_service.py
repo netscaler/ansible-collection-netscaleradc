@@ -82,6 +82,24 @@ class TestNetscalerServiceModule(TestModule):
         result = self.failed()
         self.assertEqual(result['msg'], 'Could not load nitro python sdk')
 
+    def test_graceful_nitro_error_on_login(self):
+        self.set_module_operation('present')
+        from ansible.modules.network.netscaler import netscaler_service
+
+        class MockException(Exception):
+            def __init__(self, *args, **kwargs):
+                self.errorcode = 0
+                self.message = ''
+
+        client_mock = Mock()
+        client_mock.login = Mock(side_effect=MockException)
+        m = Mock(return_value=client_mock)
+        with patch('ansible.modules.network.netscaler.netscaler_service.get_nitro_client', m):
+            with patch('ansible.modules.network.netscaler.netscaler_service.nitro_exception', MockException):
+                self.module = netscaler_service
+                result = self.failed()
+                self.assertTrue(result['msg'].startswith('nitro exception'), msg='nitro exception during login not handled properly')
+
     def test_graceful_no_connection_error(self):
         self.set_module_operation('present')
         from ansible.modules.network.netscaler import netscaler_service
