@@ -152,7 +152,6 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
-import copy
 
 def main():
     from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection, get_ns_version
