@@ -1,0 +1,21 @@
+---
+
+- include: "{{ role_path }}/tests/nitro/adns_service/setup.yaml"
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/adns_service/setup.yaml"
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/adns_service/remove.yaml"
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/adns_service/remove.yaml"
+
+- assert:
+    that: not result|changed

@@ -1,17 +1,11 @@
 - hosts: netscaler
 
-  gather_facts: False
+  gather_facts: no
+  connection: local
+
+  vars:
+    limit_to: "*"
+    debug: false
 
   roles:
-    -
-      role: netscaler_gslb_service
-      tags: gslb_service
-    -
-      role: netscaler_gslb_site
-      tags: gslb_site
-    -
-      role: netscaler_gslb_vserver
-      tags: gslb_vserver
-    -
-      role: netscaler_service
-      tags: basic_service
+    - { role: netscaler_service, when: "limit_to in ['*', 'netscaler_service']" }

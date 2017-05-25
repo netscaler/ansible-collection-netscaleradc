@@ -3,6 +3,10 @@
 - name: Setup http service
   netscaler_service:
 
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
     operation: present
 
     name: service-http
@@ -28,7 +32,7 @@
     cka: "YES"
     tcpb: "YES"
     cmp: "NO"
-    maxbandwidth: 20000
+    maxbandwidth: 10000
     accessdown: "NO"
     monthreshold: 100
     downstateflush: ENABLED
@@ -38,15 +42,11 @@
     processlocal: ENABLED
     graceful: "NO"
 
-    # These need to be setup manually
-    # since there is no corresponding ansible module
-    tcpprofilename: tcp-profile-1
-    httpprofilename: http-profile-1
-    netprofile: net-profile-1
-
     monitor_bindings:
+      - monitorname: ping
+        weight: 50
       - monitorname: http
-        weight: 100
+        weight: 50
 
   delegate_to: localhost
   register: result
