@@ -881,14 +881,15 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
-            log('Sanity checks for operation present')
-            if not service_exists(client, module):
-                module.fail_json(msg='Service does not exist', **module_result)
-            if not service_identical(client, module, service_proxy):
-                module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
+            if not module.check_mode:
+                log('Sanity checks for operation present')
+                if not service_exists(client, module):
+                    module.fail_json(msg='Service does not exist', **module_result)
+                if not service_identical(client, module, service_proxy):
+                    module.fail_json(msg='Service differs from configured', diff=diff(), **module_result)
 
-            if not monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
-                module.fail_json(msg='Monitor bindings are not identical', **module_result)
+                if not monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
+                    module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['operation'] == 'absent':
             log('Applying actions for operation absent')
@@ -901,9 +902,10 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for operation
-            log('Sanity checks for operation absent')
-            if service_exists(client, module):
-                module.fail_json(msg='Service still exists', **module_result)
+            if not module.check_mode:
+                log('Sanity checks for operation absent')
+                if service_exists(client, module):
+                    module.fail_json(msg='Service still exists', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
