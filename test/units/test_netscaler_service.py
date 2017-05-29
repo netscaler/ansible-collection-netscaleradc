@@ -103,8 +103,18 @@ class TestNetscalerServiceModule(TestModule):
     def test_graceful_no_connection_error(self):
         self.set_module_operation('present')
         from ansible.modules.network.netscaler import netscaler_service
-        m = Mock(side_effect=requests.exceptions.ConnectionError)
-        with patch('ansible.modules.network.netscaler.netscaler_service.get_nitro_client', m):
+
+        class MockException(Exception):
+            pass
+        client_mock = Mock()
+        attrs = {'login.side_effect': requests.exceptions.ConnectionError}
+        client_mock.configure_mock(**attrs)
+        m = Mock(return_value=client_mock)
+        with patch.multiple(
+            'ansible.modules.network.netscaler.netscaler_service',
+            get_nitro_client=m,
+            nitro_exception=MockException,
+        ):
             self.module = netscaler_service
             result = self.failed()
             self.assertTrue(result['msg'].startswith('Connection error'), msg='Connection error was not handled gracefully')
@@ -112,10 +122,18 @@ class TestNetscalerServiceModule(TestModule):
     def test_graceful_login_error(self):
         self.set_module_operation('present')
         from ansible.modules.network.netscaler import netscaler_service
+
+        class MockException(Exception):
+            pass
         client_mock = Mock()
-        client_mock.login = Mock(side_effect=requests.exceptions.SSLError)
+        attrs = {'login.side_effect': requests.exceptions.SSLError}
+        client_mock.configure_mock(**attrs)
         m = Mock(return_value=client_mock)
-        with patch('ansible.modules.network.netscaler.netscaler_service.get_nitro_client', m):
+        with patch.multiple(
+            'ansible.modules.network.netscaler.netscaler_service',
+            get_nitro_client=m,
+            nitro_exception=MockException,
+        ):
             self.module = netscaler_service
             result = self.failed()
             self.assertTrue(result['msg'].startswith('SSL Error'), msg='SSL Error was not handled gracefully')
