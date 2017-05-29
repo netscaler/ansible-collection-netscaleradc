@@ -16,22 +16,22 @@
     servicetype: HTTP
     cachetype: TRANSPARENT
     maxclient: 100
-    healthmonitor: "NO"
+    healthmonitor: no
     maxreq: 200
-    cacheable: "NO"
+    cacheable: no
     cip: ENABLED
     cipheader: client-ip
-    usip: "YES"
-    useproxyport: "YES"
-    sc: "OFF"
-    sp: "OFF"
-    rtspsessionidremap: "OFF"
+    usip: yes
+    useproxyport: yes
+    sc: off
+    sp: off
+    rtspsessionidremap: off
     clttimeout: 100
     svrtimeout: 100
     customserverid: 476
-    cka: "YES"
-    tcpb: "YES"
-    cmp: "NO"
+    cka: yes
+    tcpb: yes
+    cmp: no
     maxbandwidth: 10000
     accessdown: "NO"
     monthreshold: 100
@@ -40,7 +40,7 @@
     comment: some comment
     appflowlog: ENABLED
     processlocal: ENABLED
-    graceful: "NO"
+    graceful: no
 
     monitor_bindings:
       - monitorname: ping

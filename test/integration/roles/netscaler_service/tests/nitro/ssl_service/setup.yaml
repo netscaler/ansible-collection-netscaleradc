@@ -16,4 +16,3 @@
     port: 80
     servicetype: SSL
     cleartextport: 88
-
