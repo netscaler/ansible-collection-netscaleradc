@@ -54,3 +54,4 @@
 
   delegate_to: localhost
   register: result
+  check_mode: "{{ check_mode }}"
