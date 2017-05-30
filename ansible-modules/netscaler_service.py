@@ -129,11 +129,7 @@ options:
 
     healthmonitor:
         description:
-            - "Monitor the health of this service. Available settings function as follows:"
-            - "YES - Send probes to check the health of the service."
-            - >-
-                NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
-                the service as UP at all times.
+            - "Monitor the health of this service"
             - "Default value: YES"
 
     maxreq:
