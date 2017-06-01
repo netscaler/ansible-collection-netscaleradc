@@ -24,10 +24,11 @@ options:
         description:
             - Which protocol to use when accessing the nitro API objects.
 
-    ssl_cert_validation:
+ S   validate_certs:
         description:
-            - Whether to check the ssl certificate validity when using https to communicate with the netsaler node.
-        required: True
+            - If C(no), SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+        required: false
+        default: 'yes'
 
     nitro_timeout:
         description:
