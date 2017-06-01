@@ -416,7 +416,6 @@ diff:
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.netscaler import (ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, get_immutables_intersection)
 import copy
-import requests
 
 try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
@@ -725,10 +724,13 @@ def main():
     except nitro_exception as e:
         msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg)
-    except requests.exceptions.SSLError as e:
-        module.fail_json(msg='SSL Error %s' % str(e))
-    except requests.exceptions.ConnectionError as e:
-        module.fail_json(msg='Connection error %s' % str(e))
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            raise
 
     # Fallthrough to rest of execution
 
