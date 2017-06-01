@@ -388,7 +388,6 @@ EXAMPLES = '''
     nitro_user: nsroot
     nitro_pass: nsroot
 
-    module: netscaler_service
     operation: present
 
     name: service-http-1
