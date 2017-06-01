@@ -32,16 +32,16 @@ description:
     - Manage service group configuration in Netscaler
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
-version_added: 2.2.3
+version_added: "2.4.0"
 options:
 
     servicegroupname:
         description:
             - >-
                 Name of the service group.
-                Must begin with an ASCII alphabetic or underscore (_) character, and must contain
-                only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
-                equals (=), and hyphen (-) characters. Can be changed after the name is created.
+                Must begin with an ASCII alphabetic or underscore C(_) character, and must contain
+                only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space, colon C(:), at C(@),
+                equals C(=), and hyphen C(-) characters. Can be changed after the name is created.
             - Minimum length = 1
     servicetype:
         choices:
@@ -290,11 +290,57 @@ options:
             - ip. The ip address of the service member
             - port. The port of the service member
             - weight. The weight of this service member
+        suboptions:
+            ip:
+                description: ip address of the service. Must not overlap with an existing server entity defined by name.
+
+            port:
+                description:
+                    - Server port number.
+                    - Range 1 - 65535
+                    - "* in CLI is represented as 65535 in NITRO API"
+            hashid:
+                description:
+                    - The hash identifier for the service.
+                    - This must be unique for each service.
+                    - This parameter is used by hash based load balancing methods.
+                    - Minimum value = 1
+                type: float
+
+            serverid:
+                description:
+                    - The identifier for the service.
+                    - This is used when the persistency type is set to Custom Server ID.
+
+            servername:
+                description:
+                    - Name of the server to which to bind the service group.
+                    - The server must already be configured as a named server.
+                    - Minimum length = 1
+
+            customserverid:
+                description:
+                    - The identifier for this IP:Port pair.
+                    - Used when the persistency type is set to Custom Server ID.
+                default: 'None'
+
+            weight:
+                description:
+                    - Weight to assign to the servers in the service group.
+                    - Specifies the capacity of the servers relative to the other servers in the load balancing configuration.
+                    - The higher the weight, the higher the percentage of requests sent to the service.
+                    - Minimum value = 1
+                    - Maximum value = 100
+                type: float
 
     monitorbindings:
         description:
             - A list of monitornames to bind to this service
-            - Note that the monitors must have already been setup using the netscaler_lb_monitor module
+            - Note that the monitors must have already been setup possibly using the M(netscaler_lb_monitor) module or some other method
+        suboptions:
+            monitorname:
+                description: The monitor name to bind to this servicegroup
+
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -302,16 +348,17 @@ requirements:
 '''
 
 EXAMPLES = '''
-# Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
+# The LB Monitor monitor-1 must already exist
+# Service members defined by C(ip) must not redefine an existing server's ip address.
+# Service members defined by C(servername) must already exist.
 
-- name: Setup http service group
-  local_action:
+- name: Setup http service with ip members
+  delegate_to: localhost
+  netscaler_servicegroup:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
 
-    module: netscaler_servicegroup
     operation: present
 
     servicegroupname: service-group-1
@@ -322,10 +369,14 @@ EXAMPLES = '''
           weight: 50
         - ip: 10.79.79.79
           port: 80
-          weight: 50
+          weight: 40
+        - servername: server-1
+          port: 80
+          weight: 10
 
     monitorbindings:
       - monitor-1
+
 '''
 
 RETURN = '''
