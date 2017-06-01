@@ -44,7 +44,7 @@ options:
         description:
             - >-
                 Name for the service. Must begin with an ASCII alphabetic or underscore C(_) character, and must
-                contain only ASCII alphanumeric, underscore, hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
+                contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
                 C(=), and hyphen C(-) characters. Cannot be changed after the service has been created.
             - "Minimum length = 1"
 
