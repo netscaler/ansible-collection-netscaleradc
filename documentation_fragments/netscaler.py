@@ -20,11 +20,11 @@ options:
 
     nitro_protocol:
         choices: [ 'http', 'https' ]
-        default: https
+        default: http
         description:
             - Which protocol to use when accessing the nitro API objects.
 
- S   validate_certs:
+    validate_certs:
         description:
             - If C(no), SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
         required: false
