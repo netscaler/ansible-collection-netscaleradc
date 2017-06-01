@@ -1,0 +1,190 @@
+.. _netscaler_cs_action:
+
+
+netscaler_cs_action - Manage content switching actions
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. versionadded:: 2.2.3
+
+
+.. contents::
+   :local:
+   :depth: 2
+
+
+Synopsis
+--------
+
+* Manage content switching actions
+* This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+
+
+Requirements (on host that executes module)
+-------------------------------------------
+
+  * nitro python sdk
+
+
+Options
+-------
+
+.. raw:: html
+
+    <table border=1 cellpadding=4>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                <tr><td>comment<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Comments associated with this cs action.</div>        </td></tr>
+                <tr><td>name<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.</div>        </td></tr>
+                <tr><td>nitro_pass<br/><div style="font-size: small;"></div></td>
+    <td>yes</td>
+    <td></td>
+        <td></td>
+        <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
+                <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>https</td>
+        <td><ul><li>http</li><li>https</li></ul></td>
+        <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
+    <td>yes</td>
+    <td></td>
+        <td></td>
+        <td><div>The username with which to authenticate to the netscaler node.</div>        </td></tr>
+                <tr><td>nsip<br/><div style="font-size: small;"></div></td>
+    <td>yes</td>
+    <td></td>
+        <td></td>
+        <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
+                <tr><td>operation<br/><div style="font-size: small;"></div></td>
+    <td>yes</td>
+    <td></td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
+                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
+    <td>yes</td>
+    <td></td>
+        <td></td>
+        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
+                <tr><td>targetlbvserver<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Name of the load balancing virtual server to which the content is switched.</div><div>Create the load balancing vserver with netscaler_lb_vserver if it does not exist</div>        </td></tr>
+                <tr><td>targetvserverexpr<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Information about this content switching action.</div>        </td></tr>
+        </table>
+    </br>
+
+
+
+Examples
+--------
+
+ ::
+
+    
+    # lb_vserver_1 must have been already created with the netscaler_lb_vserver module
+    
+    - name: Configure netscaler content switching action
+        local_action:
+            nsip: 172.18.0.2
+            nitro_user: nsroot
+            nitro_pass: nsroot
+            ssl_cert_validation: no
+    
+            module: netscaler_cs_action
+            operation: present
+    
+            name: action-1
+            targetlbvserver: lb_vserver_1
+
+Return Values
+-------------
+
+Common return values are documented here :doc:`common_return_values`, the following are the fields unique to this module:
+
+.. raw:: html
+
+    <table border=1 cellpadding=4>
+    <tr>
+    <th class="head">name</th>
+    <th class="head">description</th>
+    <th class="head">returned</th>
+    <th class="head">type</th>
+    <th class="head">sample</th>
+    </tr>
+
+        <tr>
+        <td> msg </td>
+        <td> Message detailing the failure reason </td>
+        <td align=center> failure </td>
+        <td align=center> string </td>
+        <td align=center> Action does not exist </td>
+    </tr>
+            <tr>
+        <td> diff </td>
+        <td> List of differences between the actual configured object and the configuration specified in the module </td>
+        <td align=center> failure </td>
+        <td align=center> dictionary </td>
+        <td align=center> { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' } </td>
+    </tr>
+        <tr><td>contains: </td>
+    <td colspan=4>
+        <table border=1 cellpadding=2>
+        <tr>
+        <th class="head">name</th>
+        <th class="head">description</th>
+        <th class="head">returned</th>
+        <th class="head">type</th>
+        <th class="head">sample</th>
+        </tr>
+
+        
+        </table>
+    </td></tr>
+
+            <tr>
+        <td> loglines </td>
+        <td> list of logged messages by the module </td>
+        <td align=center> always </td>
+        <td align=center> list </td>
+        <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+        
+    </table>
+    </br></br>
+
+
+
+
+Status
+~~~~~~
+
+This module is flagged as **preview** which means that it is not guaranteed to have a backwards compatible interface.
+
+
+Support
+~~~~~~~
+
+
+
+For more information on what this means please read :doc:`modules_support`
+
+
+For help in developing on modules, should you be so inclined, please read :doc:`community`, :doc:`dev_guide/developing_test_pr` and :doc:`dev_guide/developing_modules`.
