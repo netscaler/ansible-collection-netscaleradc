@@ -222,7 +222,7 @@ options:
             - >-
                 Unique identifier for the service. Used when the persistency type for the virtual server is set to
                 Custom Server ID.
-            default: \\"None\\"
+        default: 'None'
 
     serverid:
         description:
