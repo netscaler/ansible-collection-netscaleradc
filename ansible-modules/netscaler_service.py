@@ -43,9 +43,9 @@ options:
     name:
         description:
             - >-
-                Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must
-                contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals
-                (=), and hyphen (-) characters. Cannot be changed after the service has been created.
+                Name for the service. Must begin with an ASCII alphabetic or underscore C(_) character, and must
+                contain only ASCII alphanumeric, underscore, hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
+                C(=), and hyphen C(-) characters. Cannot be changed after the service has been created.
             - "Minimum length = 1"
 
     ip:
