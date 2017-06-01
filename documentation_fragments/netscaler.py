@@ -29,6 +29,11 @@ options:
             - Whether to check the ssl certificate validity when using https to communicate with the netsaler node.
         required: True
 
+    nitro_timeout:
+        description:
+            - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+        default: 310
+
     operation:
         choices: ['present', 'absent']
         required: True
