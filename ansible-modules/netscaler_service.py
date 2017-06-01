@@ -130,7 +130,7 @@ options:
     healthmonitor:
         description:
             - "Monitor the health of this service"
-        default: True
+        default: yes
 
     maxreq:
         description:
@@ -143,7 +143,7 @@ options:
         description:
             - "Use the transparent cache redirection virtual server to forward requests to the cache server."
             - "Note: Do not specify this parameter if you set the Cache Type parameter."
-        default: False
+        default: no
 
     cip:
         choices:
@@ -194,7 +194,7 @@ options:
     sc:
         description:
             - "State of SureConnect for the service."
-        default: False
+        default: off
 
     sp:
         description:
@@ -203,7 +203,7 @@ options:
     rtspsessionidremap:
         description:
             - "Enable RTSP session ID mapping for the service."
-        default: False
+        default: off
 
     clttimeout:
         description:
@@ -251,7 +251,7 @@ options:
             - >-
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service
                 is DOWN, and this parameter is disabled, the packets are dropped.
-        default: False
+        default: no
 
     monthreshold:
         description:
@@ -345,7 +345,7 @@ options:
             - >-
                 Shut down gracefully, not accepting any new connections, and disabling the service when all of its
                 connections are closed.
-        default: False
+        default: no
 
     monitor_bindings:
         description:
