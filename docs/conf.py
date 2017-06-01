@@ -216,7 +216,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'F5Ansibledoc'
+htmlhelp_basename = 'NetscalerAnsibledoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -238,8 +238,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'F5Ansible.tex', u'F5 Ansible Documentation',
-     u'F5 Networks', 'manual'),
+    (master_doc, 'NetscalerAnsible.tex', u'Netscaler Ansible Documentation',
+     u'Netscaler Networks', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -268,7 +268,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'f5ansible', u'F5 Ansible Documentation',
+    (master_doc, 'netscaleransible', u'Netscaler Ansible Documentation',
      [author], 1)
 ]
 
@@ -282,8 +282,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'F5Ansible', u'F5 Ansible Documentation',
-     author, 'F5Ansible', 'One line description of project.',
+    (master_doc, 'NetscalerAnsible', u'Netscaler Ansible Documentation',
+     author, 'NetscalerAnsible', 'One line description of project.',
      'Miscellaneous'),
 ]
 
