@@ -1,0 +1,44 @@
+---
+- hosts: netscaler
+
+  vars:
+    save_config: no
+    operation: present
+
+  gather_facts: False
+
+  tasks:
+    - name: Set server 1
+      delegate_to: localhost
+      notify: save config
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        save_config: "{{ save_config }}"
+
+        operation: "{{ operation }}"
+        name: server-1
+        ipaddress: 192.168.1.1
+
+    - name: Set server 2
+      delegate_to: localhost
+      notify: save config
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        save_config: "{{ save_config }}"
+
+        operation: "{{ operation }}"
+        name: server-2
+        ipaddress: 192.168.1.2
+
+  handlers:
+    - name: save config
+      delegate_to: localhost
+      netscaler_save_config:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        operation: "{{ operation }}"
