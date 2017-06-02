@@ -324,32 +324,42 @@ options:
         description:
             - >-
                 List of bindings for domains for this glsb vserver.
-                The following keys are valid.
-            - >-
-                domainname: Domain name for which to change the time to live (TTL) and/or backup service IP address.
+            suboptions:
 
-            - >-
-                cookietimeout: Timeout, in minutes, for the GSLB site cookie.
-            - >-
-                backupipflag: The IP address of the backup service for the specified domain name.
-                Used when all the services bound to the domain are down, or when the backup chain
-                of virtual servers is down.
-            - >-
-                ttl: Time to live (TTL) for the domain.
-            - >-
-                sitedomainttl: TTL, in seconds, for all internally created site domains (created when
-                a site prefix is configured on a GSLB service) that are associated with this virtual server.
-                Minimum value = 1
+                backupipflag:
+                    description:
+                        - The IP address of the backup service for the specified domain name.
+                        - Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.
+
+                cookietimeout:
+                    description:
+                        - Timeout, in minutes, for the GSLB site cookie.
+
+                domainname:
+                    description:
+                        - Domain name for which to change the time to live (TTL) and/or backup service IP address.
+
+                ttl:
+                    description:
+                        - Time to live (TTL) for the domain.
+
+                sitedomainttl:
+                    description:
+                        - >-
+                            TTL, in seconds, for all internally created site domains (created when a site prefix is
+                            configured on a GSLB service) that are associated with this virtual server.
+                        - Minimum value = 1
 
     service_bindings:
         description:
-            - >-
-                List of bindings for gslb services bound to this gslb virtual server.
-                The following keys are valid.
-            - >-
-                servicename: Name of the GSLB service for which to change the weight.
-            - >-
-                weight: Weight to assign to the GSLB service.
+            - List of bindings for gslb services bound to this gslb virtual server.
+            suboptions:
+                servicename:
+                    description:
+                        - Name of the GSLB service for which to change the weight.
+                weight:
+                    description:
+                        - Weight to assign to the GSLB service.
 
 
 
