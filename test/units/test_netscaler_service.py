@@ -56,12 +56,12 @@ class TestNetscalerServiceModule(TestModule):
         cls.nitro_base_patcher.stop()
         cls.nitro_specific_patcher.stop()
 
-    def set_module_operation(self, operation):
+    def set_module_state(self, state):
         set_module_args(dict(
             nitro_user='user',
             nitro_pass='pass',
             nsip='1.1.1.1',
-            operation=operation,
+            state=state,
         ))
 
     def setUp(self):
@@ -76,7 +76,7 @@ class TestNetscalerServiceModule(TestModule):
 
     def test_graceful_nitro_api_import_error(self):
         # Stop nitro api patching to cause ImportError
-        self.set_module_operation('present')
+        self.set_module_state('present')
         self.nitro_base_patcher.stop()
         self.nitro_specific_patcher.stop()
         from ansible.modules.network.netscaler import netscaler_service
@@ -85,7 +85,7 @@ class TestNetscalerServiceModule(TestModule):
         self.assertEqual(result['msg'], 'Could not load nitro python sdk')
 
     def test_graceful_nitro_error_on_login(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
 
         class MockException(Exception):
@@ -106,7 +106,7 @@ class TestNetscalerServiceModule(TestModule):
 
         if sys.version_info[:2] == (2, 6):
             self.skipTest('requests library not available under python2.6')
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
 
         class MockException(Exception):
@@ -125,7 +125,7 @@ class TestNetscalerServiceModule(TestModule):
             self.assertTrue(result['msg'].startswith('Connection error'), msg='Connection error was not handled gracefully')
 
     def test_graceful_login_error(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
 
         if sys.version_info[:2] == (2, 6):
@@ -147,21 +147,24 @@ class TestNetscalerServiceModule(TestModule):
             self.assertTrue(result['msg'].startswith('SSL Error'), msg='SSL Error was not handled gracefully')
 
     def test_create_non_existing_service(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
+            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
         m = MagicMock(return_value=service_proxy_mock)
         service_exists_mock = Mock(side_effect=[False, True])
+        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
             ConfigProxy=m,
             service_exists=service_exists_mock,
+            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -169,11 +172,12 @@ class TestNetscalerServiceModule(TestModule):
             self.assertTrue(result['changed'], msg='Change not recorded')
 
     def test_update_service_when_service_differs(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
+            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -182,6 +186,7 @@ class TestNetscalerServiceModule(TestModule):
         service_identical_mock = Mock(side_effect=[False, True])
         monitor_bindings_identical_mock = Mock(side_effect=[True, True])
         all_identical_mock = Mock(side_effect=[False])
+        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -190,6 +195,7 @@ class TestNetscalerServiceModule(TestModule):
             service_identical=service_identical_mock,
             monitor_bindings_identical=monitor_bindings_identical_mock,
             all_identical=all_identical_mock,
+            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -197,11 +203,12 @@ class TestNetscalerServiceModule(TestModule):
             self.assertTrue(result['changed'], msg='Change not recorded')
 
     def test_update_service_when_monitor_bindings_differ(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
+            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -211,6 +218,7 @@ class TestNetscalerServiceModule(TestModule):
         monitor_bindings_identical_mock = Mock(side_effect=[False, True])
         all_identical_mock = Mock(side_effect=[False])
         sync_monitor_bindings_mock = Mock()
+        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -220,6 +228,7 @@ class TestNetscalerServiceModule(TestModule):
             monitor_bindings_identical=monitor_bindings_identical_mock,
             all_identical=all_identical_mock,
             sync_monitor_bindings=sync_monitor_bindings_mock,
+            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -228,11 +237,12 @@ class TestNetscalerServiceModule(TestModule):
         self.assertTrue(result['changed'], msg='Change not recorded')
 
     def test_no_change_to_module_when_all_identical(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
+            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -240,6 +250,7 @@ class TestNetscalerServiceModule(TestModule):
         service_exists_mock = Mock(side_effect=[True, True])
         service_identical_mock = Mock(side_effect=[True, True])
         monitor_bindings_identical_mock = Mock(side_effect=[True, True])
+        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -247,13 +258,14 @@ class TestNetscalerServiceModule(TestModule):
             service_exists=service_exists_mock,
             service_identical=service_identical_mock,
             monitor_bindings_identical=monitor_bindings_identical_mock,
+            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
             self.assertFalse(result['changed'], msg='Erroneous changed status update')
 
     def test_absent_operation(self):
-        self.set_module_operation('absent')
+        self.set_module_state('absent')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
@@ -276,7 +288,7 @@ class TestNetscalerServiceModule(TestModule):
             self.assertTrue(result['changed'], msg='Changed status not set correctly')
 
     def test_absent_operation_no_change(self):
-        self.set_module_operation('absent')
+        self.set_module_state('absent')
         from ansible.modules.network.netscaler import netscaler_service
         service_proxy_mock = MagicMock()
         attrs = {
@@ -299,7 +311,7 @@ class TestNetscalerServiceModule(TestModule):
             self.assertFalse(result['changed'], msg='Changed status not set correctly')
 
     def test_graceful_nitro_exception_operation_present(self):
-        self.set_module_operation('present')
+        self.set_module_state('present')
         from ansible.modules.network.netscaler import netscaler_service
 
         class MockException(Exception):
@@ -321,7 +333,7 @@ class TestNetscalerServiceModule(TestModule):
             )
 
     def test_graceful_nitro_exception_operation_absent(self):
-        self.set_module_operation('absent')
+        self.set_module_state('absent')
         from ansible.modules.network.netscaler import netscaler_service
 
         class MockException(Exception):
