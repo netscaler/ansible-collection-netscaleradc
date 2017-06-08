@@ -8,7 +8,6 @@
     nsip: "{{nsip}}"
 
     state: present
-    disabled: yes
 
     name: service-http
     ip: 192.168.1.1
