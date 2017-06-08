@@ -152,19 +152,16 @@ class TestNetscalerServiceModule(TestModule):
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
-            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
         m = MagicMock(return_value=service_proxy_mock)
         service_exists_mock = Mock(side_effect=[False, True])
-        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
             ConfigProxy=m,
             service_exists=service_exists_mock,
-            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -177,7 +174,6 @@ class TestNetscalerServiceModule(TestModule):
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
-            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -186,7 +182,6 @@ class TestNetscalerServiceModule(TestModule):
         service_identical_mock = Mock(side_effect=[False, True])
         monitor_bindings_identical_mock = Mock(side_effect=[True, True])
         all_identical_mock = Mock(side_effect=[False])
-        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -195,7 +190,6 @@ class TestNetscalerServiceModule(TestModule):
             service_identical=service_identical_mock,
             monitor_bindings_identical=monitor_bindings_identical_mock,
             all_identical=all_identical_mock,
-            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -208,7 +202,6 @@ class TestNetscalerServiceModule(TestModule):
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
-            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -218,7 +211,6 @@ class TestNetscalerServiceModule(TestModule):
         monitor_bindings_identical_mock = Mock(side_effect=[False, True])
         all_identical_mock = Mock(side_effect=[False])
         sync_monitor_bindings_mock = Mock()
-        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -228,7 +220,6 @@ class TestNetscalerServiceModule(TestModule):
             monitor_bindings_identical=monitor_bindings_identical_mock,
             all_identical=all_identical_mock,
             sync_monitor_bindings=sync_monitor_bindings_mock,
-            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
@@ -242,7 +233,6 @@ class TestNetscalerServiceModule(TestModule):
         service_proxy_mock = MagicMock()
         attrs = {
             'diff_object.return_value': {},
-            'get_actual_ro_attributes.return_value': {'svrstate': 'UP'},
         }
         service_proxy_mock.configure_mock(**attrs)
 
@@ -250,7 +240,6 @@ class TestNetscalerServiceModule(TestModule):
         service_exists_mock = Mock(side_effect=[True, True])
         service_identical_mock = Mock(side_effect=[True, True])
         monitor_bindings_identical_mock = Mock(side_effect=[True, True])
-        needs_state_change_mock = Mock(side_effect=[False, False])
 
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_service',
@@ -258,7 +247,6 @@ class TestNetscalerServiceModule(TestModule):
             service_exists=service_exists_mock,
             service_identical=service_identical_mock,
             monitor_bindings_identical=monitor_bindings_identical_mock,
-            needs_state_change=needs_state_change_mock,
         ):
             self.module = netscaler_service
             result = self.exited()
