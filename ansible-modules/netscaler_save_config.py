@@ -29,18 +29,52 @@ DOCUMENTATION = '''
 module: netscaler_server
 short_description: Manage server configuration
 description:
-    - Manage server configuration
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - This module uncoditionally saves the configuration on the target netscaler node.
+    - This module does not support check mode.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 version_added: "2.4.0"
 
-extends_documentation_fragment: netscaler
+options:
+    nsip:
+        description:
+            - The ip address of the netscaler appliance where the nitro API calls will be made.
+            - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
+        required: True
+
+    nitro_user:
+        description:
+            - The username with which to authenticate to the netscaler node.
+        required: True
+
+    nitro_pass:
+        description:
+            - The password with which to authenticate to the netscaler node.
+        required: True
+
+    nitro_protocol:
+        choices: [ 'http', 'https' ]
+        default: http
+        description:
+            - Which protocol to use when accessing the nitro API objects.
+
+    validate_certs:
+        description:
+            - If C(no), SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+        required: false
+        default: 'yes'
+
+    nitro_timeout:
+        description:
+            - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+        default: 310
+
 requirements:
     - nitro python sdk
 '''
 
 EXAMPLES = '''
-- name: Save nitro configuration
+- name: Save netscaler configuration
     delegate_to: localhost
     netscaler_save_config:
         nsip: 172.18.0.2
@@ -62,33 +96,34 @@ msg:
     type: str
     sample: "Action does not exist"
 
-diff:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: failure
-    type: dict
-    sample: { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
 '''
 
+import copy
+
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.netscaler import get_nitro_client, log, loglines, netscaler_common_arguments
+
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
-    argument_spec = dict()
+    argument_spec = copy.deepcopy(netscaler_common_arguments)
 
-    argument_spec.update(netscaler_common_arguments)
+    # Delete common arguments irrelevant to this module
+    del argument_spec['state']
+    del argument_spec['save_config']
+
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode=True,
+        supports_check_mode=False,
     )
+
     module_result = dict(
         changed=False,
         failed=False,
@@ -96,22 +131,33 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
-
     client = get_nitro_client(module)
-    client.login()
 
     try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
+
+    try:
+        log('Saving configuration')
         client.save_config()
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
-
     module.exit_json(**module_result)
 
 
