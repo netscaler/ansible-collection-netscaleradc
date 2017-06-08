@@ -14,19 +14,20 @@ def scrap_page(page):
     if r.status_code != 200:
         raise Exception('status %s' % r.status_code)
     htmltree = html.fromstring(r.content)
-    tables = htmltree.xpath('''//table[@class='cx-table']''')
+    tables = htmltree.xpath('''//table[@class='citrix-table fixedtable']''')
     if len(tables) > 1:
         raise Exception('Found too many documentation tables')
 
-    rows = htmltree.xpath('''//table[@class='cx-table']/tbody//tr''')
+    rows = htmltree.xpath('''//table[@class='citrix-table fixedtable']/tbody//tr''')
     if len(rows) == 0:
         raise Exception('Could not find documentation table for %s' % page)
 
     for row in rows:
         entry = {}
-        items = row.xpath('''./td/div/div[2]''')
+        items = row.xpath('''./td/div''')
         # Skip empty rows
         if items == []:
+            print ("Empty row")
             continue
         entry['name'] = items[0].text_content().strip()
         type_text = items[1].text_content().strip()
@@ -107,24 +108,24 @@ def update_for_immutables(properties, base_command_url, item):
 
 
 def main():
-    base_nitro_url = 'http://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
-    base_command_url = 'http://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
+    base_nitro_url = 'https://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
+    base_command_url = 'https://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
     pages = [
-        #('basic/servicegroup', 'basic/servicegroup'),
-        #('basic/service', 'basic/service'),
-        #('basic/server', 'basic/server'),
-        #('basic/servicegroup_servicegroupmember_binding', None)
-        #('load-balancing/lbvserver', 'lb/lb-vserver'),
-        #('load-balancing/lbvserver_service_binding', None)
-        #('load-balancing/lbvserver_servicegroup_binding', None)
-        #('load-balancing/lbmonitor', 'lb/lb-monitor'),
-        #('content-switching/csvserver', 'cs/cs-vserver'),
-        #('content-switching/cspolicy', 'cs/cs-policy'),
-        #('content-switching/csaction', 'cs/cs-action'),
-        #('ssl/sslcertkey', 'ssl/ssl-certkey'),
-        #('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
-        #('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
-        #('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
+        ('basic/servicegroup', 'basic/servicegroup'),
+        ('basic/service', 'basic/service'),
+        ('basic/server', 'basic/server'),
+        ('basic/servicegroup_servicegroupmember_binding', None),
+        ('load-balancing/lbvserver', 'lb/lb-vserver'),
+        ('load-balancing/lbvserver_service_binding', None),
+        ('load-balancing/lbvserver_servicegroup_binding', None),
+        ('load-balancing/lbmonitor', 'lb/lb-monitor'),
+        ('content-switching/csvserver', 'cs/cs-vserver'),
+        ('content-switching/cspolicy', 'cs/cs-policy'),
+        ('content-switching/csaction', 'cs/cs-action'),
+        ('ssl/sslcertkey', 'ssl/ssl-certkey'),
+        ('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
+        ('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
+        ('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
         ('global-server-load-balancing/gslbvserver_domain_binding', None),
 
     ]
