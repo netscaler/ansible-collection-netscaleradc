@@ -15,8 +15,8 @@
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
-        operation: absent
+        validate_certs: no
+        state: absent
 
         name: http-server-1
         ipaddress: 10.78.78.78
@@ -27,8 +27,8 @@
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
-        operation: absent
+        validate_certs: no
+        state: absent
 
         name: http-service-1
         servername: http-server-1
@@ -41,8 +41,8 @@
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
-        operation: absent
+        validate_certs: no
+        state: absent
 
         name: http-server-2
         ipaddress: 10.79.79.79
@@ -53,8 +53,8 @@
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
-        operation: absent
+        validate_certs: no
+        state: absent
 
         name: http-service-2
         servername: http-server-2
@@ -68,8 +68,8 @@
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
-        operation: present
+        validate_certs: no
+        state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP

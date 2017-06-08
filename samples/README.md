@@ -17,7 +17,7 @@ $ docker port cpx 80
 
 $ cat inventory.txt
 [netscaler]
-127.0.0.1 nsip=127.0.0.1:32773 nitro_user=nsroot nitro_pass=nsroot ssl_cert_validation=no
+127.0.0.1 nsip=127.0.0.1:32773 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
 $ cat lb_vserver.yml
 

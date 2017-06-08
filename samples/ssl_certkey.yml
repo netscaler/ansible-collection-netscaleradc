@@ -14,10 +14,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_ssl_certkey
-        operation: present
+        state: present
 
         certkey: certificate_1
         cert: server.crt
@@ -33,9 +33,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
 
         certkey: certificate_2
         cert: server2.crt

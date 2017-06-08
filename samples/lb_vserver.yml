@@ -15,10 +15,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_service
-        operation: present
+        state: present
 
         name: service-http-1
         servicetype: HTTP
@@ -31,10 +31,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_service
-        operation: present
+        state: present
 
         name: service-http-2
         servicetype: HTTP
@@ -47,10 +47,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_servicegroup
-        operation: present
+        state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP
@@ -68,10 +68,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        operation: present
+        state: present
 
         name: lb_vserver_1
         servicetype: HTTP
@@ -91,10 +91,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        operation: present
+        state: present
 
         name: lb_vserver_2
         servicetype: HTTP

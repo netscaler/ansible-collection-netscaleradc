@@ -14,10 +14,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_monitor
-        operation: present
+        state: present
 
         monitorname: monitor_catalog
         type: HTTP
@@ -31,10 +31,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_monitor
-        operation: present
+        state: present
 
         monitorname: monitor_cart
         type: HTTP
@@ -45,9 +45,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_servicegroup
 
         servicegroupname: service_group_catalog
@@ -67,9 +67,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_servicegroup
 
         servicegroupname: service_group_cart
@@ -89,10 +89,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        operation: present
+        state: present
 
         name: lb_vserver_cart
         servicetype: HTTP
@@ -104,10 +104,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        operation: present
+        state: present
 
         name: lb_vserver_catalog
         servicetype: HTTP
@@ -120,9 +120,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_cs_policy
 
         policyname: catalog_policy
@@ -133,9 +133,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_cs_policy
 
         policyname: cart_policy
@@ -146,9 +146,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_cs_vserver
 
         name: cs_vserver_1

@@ -15,9 +15,9 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
-        operation: present
+        state: present
         module: netscaler_service
 
         name: service-http-1
@@ -30,8 +30,8 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
-        operation: present
+        validate_certs: "{{ validate_certs }}"
+        state: present
 
         module: netscaler_lb_monitor
         monitorname: monitor_1
@@ -45,8 +45,8 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
-        operation: present
+        validate_certs: "{{ validate_certs }}"
+        state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP

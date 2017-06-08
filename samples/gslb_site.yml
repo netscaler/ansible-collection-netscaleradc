@@ -12,10 +12,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_gslb_site
-        operation: present
+        state: present
 
         sitename: gslb-site-1
         siteipaddress: 192.168.1.1

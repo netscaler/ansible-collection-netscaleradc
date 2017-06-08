@@ -14,10 +14,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        operation: present
+        state: present
 
         name: lbvserver_1
         servicetype: HTTP
@@ -30,10 +30,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_cs_policy
-        operation: present
+        state: present
 
         policyname: policy_1
         url: /example/
@@ -44,10 +44,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_cs_vserver
-        operation: present
+        state: present
 
         name: cs_vserver_1
         ipv46: 192.168.1.1

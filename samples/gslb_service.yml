@@ -13,10 +13,10 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
+        validate_certs: "{{ validate_certs }}"
 
         module: netscaler_gslb_service
-        operation: present
+        state: present
 
         servicename: gslb-service-1
         servicetype: HTTP

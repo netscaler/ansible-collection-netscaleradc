@@ -1,5 +1,4 @@
 ---
-
 - hosts: netscaler
 
   vars:
@@ -9,23 +8,45 @@
   gather_facts: False
 
   tasks:
+    - name: Set server 1
+      delegate_to: localhost
+      gather_facts: false
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+        name: server-1
+        ipaddress: 192.168.1.1
+
+    - name: Set server 2
+      delegate_to: localhost
+      gather_facts: false
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+        name: server-2
+        ipaddress: 192.168.1.2
 
     - name: Set service group
       local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        ssl_cert_validation: "{{ ssl_cert_validation }}"
 
         module: netscaler_servicegroup
-        operation: present
+        state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP
         servicemembers:
-            - ip: 10.78.78.78
+            - servername: server-1
               port: 80
-              weight: 50
-            - ip: 10.79.79.79
+              weight: 60
+            - servername: server-2
               port: 80
-              weight: 50
+              weight: 40
