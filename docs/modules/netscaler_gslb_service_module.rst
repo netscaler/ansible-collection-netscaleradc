@@ -107,6 +107,35 @@ Options
     <td></td>
         <td></td>
         <td><div>The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.</div><div>Minimum value = 0</div><div>Maximum value = 4294967294</div>        </td></tr>
+                <tr><td rowspan="2">monitor_bindings<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td><td></td>
+    <td> <div>Bind monitors to this gslb service</div>    </tr>
+    <tr>
+    <td colspan="5">
+    <table border=1 cellpadding=4>
+    <caption><b>Dictionary object monitor_bindings</b></caption>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                    <tr><td>monitor_name<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Monitor name.</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the monitor-service binding.</div><div>A larger number specifies a greater weight.</div><div>Contributes to the monitoring threshold, which determines the state of the service.</div><div>Minimum value = 1</div><div>Maximum value = 100</div>        </td></tr>
+        </table>
+    </td>
+    </tr>
+        </td></tr>
                 <tr><td>monthreshold<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -119,9 +148,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -182,16 +216,16 @@ Options
     <td></td>
         <td></td>
         <td><div>The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB requests to GSLB services by using their site domains.</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
         <td><div>Enable or disable the service.</div><div>Default value: ENABLED</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 

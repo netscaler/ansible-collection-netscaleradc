@@ -4,7 +4,7 @@
 netscaler_servicegroup - Manage service group configuration in Netscaler
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.2.3
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -128,11 +128,30 @@ Options
     <td></td>
         <td></td>
         <td><div>member port.</div>        </td></tr>
-                <tr><td>monitorbindings<br/><div style="font-size: small;"></div></td>
+                <tr><td rowspan="2">monitorbindings<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td></td><td></td>
+    <td> <div>A list of monitornames to bind to this service</div><div>Note that the monitors must have already been setup possibly using the <span class='module'>netscaler_lb_monitor</span> module or some other method</div>    </tr>
+    <tr>
+    <td colspan="5">
+    <table border=1 cellpadding=4>
+    <caption><b>Dictionary object monitorbindings</b></caption>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                    <tr><td>monitorname<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
         <td></td>
-        <td><div>A list of monitornames to bind to this service</div><div>Note that the monitors must have already been setup using the netscaler_lb_monitor module</div>        </td></tr>
+                <td></td>
+                <td><div>T</div><div>h</div><div>e</div><div> </div><div>m</div><div>o</div><div>n</div><div>i</div><div>t</div><div>o</div><div>r</div><div> </div><div>n</div><div>a</div><div>m</div><div>e</div><div> </div><div>t</div><div>o</div><div> </div><div>b</div><div>i</div><div>n</div><div>d</div><div> </div><div>t</div><div>o</div><div> </div><div>t</div><div>h</div><div>i</div><div>s</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>i</div><div>c</div><div>e</div><div>g</div><div>r</div><div>o</div><div>u</div><div>p</div>        </td></tr>
+        </table>
+    </td>
+    </tr>
+        </td></tr>
                 <tr><td>monthreshold<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -150,9 +169,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -192,12 +216,61 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
-                <tr><td>servicemembers<br/><div style="font-size: small;"></div></td>
+        <td><div>Name of the service group. Must begin with an ASCII alphabetic or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
+                <tr><td rowspan="2">servicemembers<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td></td><td></td>
+    <td> <div>A list of dictionaries describing each service member of the service group</div><div>The dictionary for each member must contain the following keys.</div><div>ip. The ip address of the service member</div><div>port. The port of the service member</div><div>weight. The weight of this service member</div>    </tr>
+    <tr>
+    <td colspan="5">
+    <table border=1 cellpadding=4>
+    <caption><b>Dictionary object servicemembers</b></caption>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
         <td></td>
-        <td><div>A list of dictionaries describing each service member of the service group</div><div>The dictionary for each member must contain the following keys.</div><div>ip. The ip address of the service member</div><div>port. The port of the service member</div><div>weight. The weight of this service member</div>        </td></tr>
+                <td></td>
+                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = 1</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the servers in the service group.</div><div>Specifies the capacity of the servers relative to the other servers in the load balancing configuration.</div><div>The higher the weight, the higher the percentage of requests sent to the service.</div><div>Minimum value = 1</div><div>Maximum value = 100</div>        </td></tr>
+                    <tr><td>ip<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>i</div><div>p</div><div> </div><div>a</div><div>d</div><div>d</div><div>r</div><div>e</div><div>s</div><div>s</div><div> </div><div>o</div><div>f</div><div> </div><div>t</div><div>h</div><div>e</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>i</div><div>c</div><div>e</div><div>.</div><div> </div><div>M</div><div>u</div><div>s</div><div>t</div><div> </div><div>n</div><div>o</div><div>t</div><div> </div><div>o</div><div>v</div><div>e</div><div>r</div><div>l</div><div>a</div><div>p</div><div> </div><div>w</div><div>i</div><div>t</div><div>h</div><div> </div><div>a</div><div>n</div><div> </div><div>e</div><div>x</div><div>i</div><div>s</div><div>t</div><div>i</div><div>n</div><div>g</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>e</div><div>r</div><div> </div><div>e</div><div>n</div><div>t</div><div>i</div><div>t</div><div>y</div><div> </div><div>d</div><div>e</div><div>f</div><div>i</div><div>n</div><div>e</div><div>d</div><div> </div><div>b</div><div>y</div><div> </div><div>n</div><div>a</div><div>m</div><div>e</div><div>.</div>        </td></tr>
+                    <tr><td>customserverid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td>None</td>
+                <td></td>
+                <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
+                    <tr><td>servername<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Name of the server to which to bind the service group.</div><div>The server must already be configured as a named server.</div><div>Minimum length = 1</div>        </td></tr>
+                    <tr><td>serverid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>The identifier for the service.</div><div>This is used when the persistency type is set to Custom Server ID.</div>        </td></tr>
+                    <tr><td>port<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Server port number.</div><div>Range 1 - 65535</div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
+        </table>
+    </td>
+    </tr>
+        </td></tr>
                 <tr><td>servicetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -208,11 +281,6 @@ Options
     <td></td>
         <td><ul><li>ON</li><li>OFF</li></ul></td>
         <td><div>Enable surge protection for the service group.</div><div>Default value = OFF</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -243,6 +311,11 @@ Options
     <td></td>
         <td><ul><li>YES</li><li>NO</li></ul></td>
         <td><div>Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 
@@ -254,16 +327,17 @@ Examples
  ::
 
     
-    # Monitor monitor-1 must have been already setup with the netscaler_lb_monitor module
+    # The LB Monitor monitor-1 must already exist
+    # Service members defined by C(ip) must not redefine an existing server's ip address.
+    # Service members defined by C(servername) must already exist.
     
-    - name: Setup http service group
-      local_action:
+    - name: Setup http service with ip members
+      delegate_to: localhost
+      netscaler_servicegroup:
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
     
-        module: netscaler_servicegroup
         operation: present
     
         servicegroupname: service-group-1
@@ -274,10 +348,14 @@ Examples
               weight: 50
             - ip: 10.79.79.79
               port: 80
-              weight: 50
+              weight: 40
+            - servername: server-1
+              port: 80
+              weight: 10
     
         monitorbindings:
           - monitor-1
+    
 
 Return Values
 -------------

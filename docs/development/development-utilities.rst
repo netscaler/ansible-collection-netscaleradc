@@ -71,4 +71,3 @@ or names that start with a single underscore.
 
 Replacing the placemholders, implementing the object bindings if there are any, and
 verifying and correcting the control flow are the most common manual steps that follow.
-

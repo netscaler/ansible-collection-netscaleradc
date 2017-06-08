@@ -195,9 +195,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -303,11 +308,6 @@ Options
     <td></td>
         <td></td>
         <td><div>Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.</div><div>Minimum value = 1</div><div>Maximum value = 4294967287</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
                 <tr><td>stateupdate<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -323,6 +323,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.</div><div>Minimum value = 0</div><div>Maximum value = 4094</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
                 <tr><td>vipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -347,7 +352,7 @@ Examples
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
+        validate_certs: no
     
         module: netscaler_cs_vserver
         operation: present

@@ -44,17 +44,17 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.</div><div>Default value: NO</div>        </td></tr>
+        <td><div>Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.</div>        </td></tr>
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>ENABLED</td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Enable logging of AppFlow information.</div><div>Default value: ENABLED</div>        </td></tr>
+        <td><div>Enable logging of AppFlow information.</div>        </td></tr>
                 <tr><td>cacheable<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Use the transparent cache redirection virtual server to forward requests to the cache server.</div><div>Note: Do not specify this parameter if you set the Cache Type parameter.</div><div>Default value: NO</div>        </td></tr>
+        <td><div>Use the transparent cache redirection virtual server to forward requests to the cache server.</div><div>Note: Do not specify this parameter if you set the Cache Type parameter.</div>        </td></tr>
                 <tr><td>cachetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -97,9 +97,9 @@ Options
         <td><div>Any information about the service.</div>        </td></tr>
                 <tr><td>customserverid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>None</td>
         <td></td>
-        <td><div>Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.</div><div>Default value: "None"</div>        </td></tr>
+        <td><div>Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.</div>        </td></tr>
                 <tr><td>dnsprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -107,14 +107,14 @@ Options
         <td><div>Name of the DNS profile to be associated with the service. DNS profile properties will applied to the transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.</div><div>Minimum length = 1</div><div>Maximum length = 127</div>        </td></tr>
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>ENABLED</td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div><div>Default value: ENABLED</div>        </td></tr>
+        <td><div>Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>graceful<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.</div><div>Default value: NO</div>        </td></tr>
+        <td><div>Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.</div>        </td></tr>
                 <tr><td>hashid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -122,9 +122,9 @@ Options
         <td><div>A numerical identifier that can be used by hash based load balancing methods. Must be unique for each service.</div><div>Minimum value = 1</div>        </td></tr>
                 <tr><td>healthmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>True</td>
         <td></td>
-        <td><div>Monitor the health of this service</div><div>Default value: YES</div>        </td></tr>
+        <td><div>Monitor the health of this service</div>        </td></tr>
                 <tr><td>httpprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -203,7 +203,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the service has been created.</div><div>Minimum length = 1</div>        </td></tr>
+        <td><div>Name for the service. Must begin with an ASCII alphabetic or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters. Cannot be changed after the service has been created.</div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td>netprofile<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -251,19 +251,19 @@ Options
         <td><div>Port number of the service.</div><div>Range 1 - 65535</div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
                 <tr><td>processlocal<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>DISABLED</td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.</div><div>Default value: DISABLED</div>        </td></tr>
+        <td><div>By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.</div>        </td></tr>
                 <tr><td>rtspsessionidremap<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Enable RTSP session ID mapping for the service.</div><div>Default value: OFF</div>        </td></tr>
+        <td><div>Enable RTSP session ID mapping for the service.</div>        </td></tr>
                 <tr><td>sc<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>State of SureConnect for the service.</div><div>Default value: OFF</div>        </td></tr>
+        <td><div>State of SureConnect for the service.</div>        </td></tr>
                 <tr><td>serverid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -340,7 +340,6 @@ Examples
         nitro_user: nsroot
         nitro_pass: nsroot
     
-        module: netscaler_service
         operation: present
     
         name: service-http-1

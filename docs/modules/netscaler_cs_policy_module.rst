@@ -55,9 +55,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -83,16 +88,16 @@ Options
     <td></td>
         <td></td>
         <td><div>Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.</div><div>Note</div><div>Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows '"&lt;string of 255 characters&gt;" + "&lt;string of 245 characters&gt;"'</div><div>The following requirements apply only to the NetScaler CLI</div><div>If the expression includes one or more spaces, enclose the entire expression in double quotation marks.</div><div>If the expression itself includes double quotation marks, escape the quotations by using the character.</div><div>lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
                 <tr><td>url<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
         <td><div>URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].</div><div>Minimum length = 1</div><div>Maximum length = 208</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 
@@ -109,7 +114,7 @@ Examples
             nsip: 172.18.0.2
             nitro_user: nsroot
             nitro_pass: nsroot
-            ssl_cert_validation: no
+            validate_certs: no
     
             module: netscaler_cs_policy
             operation: present
