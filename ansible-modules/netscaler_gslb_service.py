@@ -553,7 +553,8 @@ def main():
                 if not module.check_mode:
                     gslb_service_proxy.add()
                     sync_monitor_bindings()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not all_identical():
                 # Update main configuration object
@@ -568,7 +569,8 @@ def main():
 
                 # Fallthrough to save and change status update
                 module_result['changed'] = True
-                client.save_config()
+                if module.params['save_config']:
+                    client.save_config()
             else:
                 module_result['changed'] = False
 
@@ -585,7 +587,8 @@ def main():
             if gslb_service_exists():
                 if not module.check_mode:
                     gslb_service_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

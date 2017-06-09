@@ -1542,13 +1542,15 @@ def main():
                 if not module.check_mode:
                     lbvserver_proxy.add()
                     lbvserver_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not lbvserver_identical():
                 log('Update lb vserver')
                 if not module.check_mode:
                     lbvserver_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 log('Present noop')
@@ -1556,7 +1558,8 @@ def main():
             if not service_bindings_identical():
                 if not module.check_mode:
                     sync_service_bindings()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
 
             if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
@@ -1590,7 +1593,8 @@ def main():
                 if not module.check_mode:
                     log('Delete lb vserver')
                     lbvserver_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 log('Absent noop')

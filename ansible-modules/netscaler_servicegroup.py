@@ -832,17 +832,14 @@ def main():
                 if not module.check_mode:
                     log('Adding service group')
                     servicegroup_proxy.add()
-                    # TODO: why is the line below necessary?
-                    # servicegroup_proxy.update()
-                    client.save_config()
-                    # log('Updating service group')
-                    # servicegroup_proxy.update()
-                    # client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not service_group_identical():
                 if not module.check_mode:
                     servicegroup_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
@@ -851,14 +848,16 @@ def main():
             if not monitor_bindings_identical():
                 if not module.check_mode:
                     sync_monitor_bindings()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
 
             if not service_group_servicemembers_identical():
                 if not module.check_mode:
                     delete_all_servicegroup_members()
                     add_all_servicegroup_members()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
 
             # Sanity check for operation
@@ -877,7 +876,8 @@ def main():
             if service_group_exists():
                 if not module.check_mode:
                     servicegroup_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

@@ -918,12 +918,14 @@ def main():
             if not cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not cs_vserver_identical():
                 if not module.check_mode:
                     csvserver_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
@@ -932,7 +934,8 @@ def main():
             if not cs_policybindings_identical():
                 if not module.check_mode:
                     sync_cs_policybindings()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
 
             if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
@@ -965,7 +968,8 @@ def main():
             if cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

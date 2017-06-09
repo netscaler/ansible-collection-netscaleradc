@@ -838,7 +838,8 @@ def main():
                     gslb_vserver_proxy.add()
                     sync_domain_bindings()
                     sync_service_bindings()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not all_identical():
                 log('Entering update actions')
@@ -863,7 +864,9 @@ def main():
                         sync_service_bindings()
 
                 module_result['changed'] = True
-                client.save_config()
+                if not module.check_mode:
+                    if module.params['save_config']:
+                        client.save_config()
             else:
                 module_result['changed'] = False
 
@@ -882,7 +885,8 @@ def main():
             if gslb_vserver_exists():
                 if not module.check_mode:
                     gslb_vserver_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

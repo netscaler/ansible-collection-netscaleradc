@@ -1222,13 +1222,15 @@ def main():
                     log('Adding monitor')
                     lbmonitor_proxy.add()
                     lbmonitor_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not lbmonitor_identical():
                 if not module.check_mode:
                     log('Updating monitor')
                     lbmonitor_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 log('Doing nothing for monitor')
@@ -1252,7 +1254,8 @@ def main():
             if lbmonitor_exists():
                 if not module.check_mode:
                     lbmonitor_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

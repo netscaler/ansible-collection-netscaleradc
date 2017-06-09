@@ -204,12 +204,14 @@ def main():
             if not action_exists():
                 if not module.check_mode:
                     csaction_proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not action_identical():
                 if not module.check_mode:
                     csaction_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
@@ -226,7 +228,8 @@ def main():
             if action_exists():
                 if not module.check_mode:
                     csaction_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

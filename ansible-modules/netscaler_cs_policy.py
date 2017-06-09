@@ -221,12 +221,14 @@ def main():
             if not policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not policy_identical():
                 if not module.check_mode:
                     cspolicy_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
@@ -243,7 +245,8 @@ def main():
             if policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False

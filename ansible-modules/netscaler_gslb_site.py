@@ -303,7 +303,8 @@ def main():
             if not gslb_site_exists():
                 if not module.check_mode:
                     gslb_site_proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             elif not gslb_site_identical():
 
@@ -314,7 +315,8 @@ def main():
 
                 if not module.check_mode:
                     gslb_site_proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
@@ -330,7 +332,8 @@ def main():
             if gslb_site_exists():
                 if not module.check_mode:
                     gslb_site_proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
