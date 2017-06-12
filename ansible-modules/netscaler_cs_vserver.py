@@ -450,10 +450,10 @@ EXAMPLES = '''
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
+    validate_certs: no
 
     module: netscaler_cs_vserver
-    operation: present
+    state: present
 
     name: cs_vserver_1
     ipv46: 192.168.1.1
@@ -855,13 +855,13 @@ def main():
 
         # Delete all actual bindings
         for binding in get_actual_policybindings().values():
-            log('Deleting binding for certkey %s' % binding.certkeyname)
+            log('Deleting binding for policy %s' % binding.policyname)
             csvserver_cspolicy_binding.delete(client, binding)
 
         # Add all configured bindings
 
         for binding in get_configured_policybindings().values():
-            log('Adding binding for certkey %s' % binding.certkeyname)
+            log('Adding binding for policy %s' % binding.policyname)
             binding.add()
 
     def ssl_certkey_bindings_identical():
@@ -912,9 +912,9 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'CS')
 
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            log('Applying actions for operation present')
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            log('Applying actions for state present')
             if not cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.add()
@@ -949,8 +949,8 @@ def main():
 
                     module_result['changed'] = True
 
-            # Sanity check for operation
-            log('Sanity checks for operation present')
+            # Sanity check for state
+            log('Sanity checks for state present')
             if not module.check_mode:
                 if not cs_vserver_exists():
                     module.fail_json(msg='Service does not exist', **module_result)
@@ -963,8 +963,8 @@ def main():
                     if not ssl_certkey_bindings_identical():
                         module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if cs_vserver_exists():
                 if not module.check_mode:
                     csvserver_proxy.delete()
@@ -974,8 +974,8 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation absent')
+            # Sanity check for state
+            log('Sanity checks for state absent')
             if cs_vserver_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 
