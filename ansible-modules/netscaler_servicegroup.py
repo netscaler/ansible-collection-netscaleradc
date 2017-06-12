@@ -224,12 +224,6 @@ options:
             - Minimum value = 0
             - Maximum value = 65535
 
-    state:
-        choices: ['ENABLED', 'DISABLED']
-        description:
-            - Initial state of the service group.
-            - Default value = ENABLED
-
     downstateflush:
         choices: ['ENABLED', 'DISABLED']
         description:
@@ -359,7 +353,7 @@ EXAMPLES = '''
     nitro_user: nsroot
     nitro_pass: nsroot
 
-    operation: present
+    state: present
 
     servicegroupname: service-group-1
     servicetype: HTTP
@@ -523,10 +517,6 @@ def main():
         ),
         maxbandwidth=dict(type='float'),
         monthreshold=dict(type='float'),
-        state=dict(
-            type='str',
-            choices=[u'ENABLED', u'DISABLED']
-        ),
         downstateflush=dict(
             type='str',
             choices=[u'ENABLED', u'DISABLED']
@@ -607,7 +597,6 @@ def main():
         'cmp',
         'maxbandwidth',
         'monthreshold',
-        'state',
         'downstateflush',
         'tcpprofilename',
         'httpprofilename',
@@ -664,7 +653,7 @@ def main():
 
     def get_servicegroups_from_module_params():
         log('get_servicegroups_from_module_params')
-        readwrite_attrs = [u'servicegroupname', u'ip', u'port', u'state', u'hashid', u'serverid', u'servername', u'customserverid', u'weight']
+        readwrite_attrs = [u'servicegroupname', u'ip', u'port', u'hashid', u'serverid', u'servername', u'customserverid', u'weight']
         readonly_attrs = [u'delay', u'statechangetimesec', u'svrstate', u'tickssincelaststatechange', u'graceful', u'__count']
 
         members = []
@@ -826,8 +815,8 @@ def main():
             binding.add()
 
     try:
-        if module.params['operation'] == 'present':
-            log('Applying actions for operation present')
+        if module.params['state'] == 'present':
+            log('Applying actions for state present')
             if not service_group_exists():
                 if not module.check_mode:
                     log('Adding service group')
@@ -860,8 +849,8 @@ def main():
                         client.save_config()
                 module_result['changed'] = True
 
-            # Sanity check for operation
-            log('Sanity checks for operation present')
+            # Sanity check for state
+            log('Sanity checks for state present')
             if not service_group_exists():
                 module.fail_json(msg='Service group is not present', **module_result)
             if not service_group_identical():
@@ -871,8 +860,8 @@ def main():
             if not monitor_bindings_identical():
                 module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if service_group_exists():
                 if not module.check_mode:
                     servicegroup_proxy.delete()
@@ -882,8 +871,8 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation absent')
+            # Sanity check for state
+            log('Sanity checks for state absent')
             if service_group_exists():
                 module.fail_json(msg='Service group is present', **module_result)
 
