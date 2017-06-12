@@ -19,15 +19,15 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
 
 DOCUMENTATION = '''
 ---
-module: netscaler_server
-short_description: Manage server configuration
+module: netscaler_save_config
+short_description: Save Netscaler configuration.
 description:
     - This module uncoditionally saves the configuration on the target netscaler node.
     - This module does not support check mode.
@@ -35,11 +35,13 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
     nsip:
         description:
             - The ip address of the netscaler appliance where the nitro API calls will be made.
-            - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
+            - "The port can be specified with the colon (:). E.g. C(192.168.1.1:555)."
         required: True
 
     nitro_user:
@@ -66,7 +68,7 @@ options:
 
     nitro_timeout:
         description:
-            - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+            - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler.
         default: 310
 
 requirements:
@@ -74,13 +76,35 @@ requirements:
 '''
 
 EXAMPLES = '''
+---
 - name: Save netscaler configuration
-    delegate_to: localhost
-    netscaler_save_config:
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
+  delegate_to: localhost
+  netscaler_save_config:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
 
+- name: Setup server without saving  configuration
+  delegate_to: localhost
+  notify: Save configuration
+  netscaler_server:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+
+    save_config: no
+
+    name: server-1
+    ipaddress: 192.168.1.1
+
+# Under playbook's handlers
+
+- name: Save configuration
+  delegate_to: localhost
+  netscaler_save_config:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
 '''
 
 RETURN = '''
@@ -117,7 +141,6 @@ def main():
     # Delete common arguments irrelevant to this module
     del argument_spec['state']
     del argument_spec['save_config']
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
