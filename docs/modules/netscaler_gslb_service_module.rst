@@ -166,11 +166,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>port<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -186,6 +181,11 @@ Options
     <td></td>
         <td></td>
         <td><div>The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional.</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
                 <tr><td>servername<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -218,9 +218,9 @@ Options
         <td><div>The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB requests to GSLB services by using their site domains.</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Enable or disable the service.</div><div>Default value: ENABLED</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>yes</td>

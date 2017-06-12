@@ -93,8 +93,7 @@ Last we are going to see how to make a simple playbook.
            nitro_user: nsroot
            nitro_pass: nsroot
 
-           module: netscaler_server
-           operation: present
+           state: present
 
            name: test-server-1
            ipaddress: 192.168.1.1

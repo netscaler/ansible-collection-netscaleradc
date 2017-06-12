@@ -73,11 +73,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>policyname<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -88,6 +83,16 @@ Options
     <td></td>
         <td></td>
         <td><div>Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.</div><div>Note</div><div>Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows '"&lt;string of 255 characters&gt;" + "&lt;string of 245 characters&gt;"'</div><div>The following requirements apply only to the NetScaler CLI</div><div>If the expression includes one or more spaces, enclose the entire expression in double quotation marks.</div><div>If the expression itself includes double quotation marks, escape the quotations by using the character.</div><div>lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>url<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -117,7 +122,7 @@ Examples
             validate_certs: no
     
             module: netscaler_cs_policy
-            operation: present
+            state: present
     
             policyname: policy_1
             url: /example/

@@ -4,7 +4,7 @@
 netscaler_server - Manage server configuration
 ++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.2.3
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -15,8 +15,8 @@ netscaler_server - Manage server configuration
 Synopsis
 --------
 
-* Manage server configuration
-* This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+* Manage server entities configuration.
+* This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 
 Requirements (on host that executes module)
@@ -38,16 +38,41 @@ Options
     <th class="head">choices</th>
     <th class="head">comments</th>
     </tr>
+                <tr><td>comment<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Any information about the server.</div>        </td></tr>
+                <tr><td>disabled<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>When set to <code>true</code> the server state will be set to DISABLED.</div><div>When set to <code>false</code> the server state will be set to ENABLED.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
+                <tr><td>domain<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Domain name of the server. For a domain based configuration, you must create the server first.</div><div>Minimum length = 1</div>        </td></tr>
+                <tr><td>domainresolveretry<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>5</td>
+        <td></td>
+        <td><div>Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.</div><div>Minimum value = <code>5</code></div><div>Maximum value = <code>20939</code></div>        </td></tr>
                 <tr><td>ipaddress<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note. If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.</div>        </td></tr>
+        <td><div>IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.</div>        </td></tr>
+                <tr><td>ipv6address<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use the server in the IPv4 addressing mode.</div>        </td></tr>
                 <tr><td>name<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name for the server.</div><div>Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.</div><div>Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
+        <td><div>Name for the server.</div><div>Must begin with an ASCII alphabetic or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters.</div><div>Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td>nitro_pass<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -73,11 +98,31 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
         <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
+                <tr><td>td<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>4094</code></div>        </td></tr>
+                <tr><td>translationip<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>IP address used to transform the server's DNS-resolved IP address.</div>        </td></tr>
+                <tr><td>translationmask<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>The netmask of the translation ip.</div>        </td></tr>
                 <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>yes</td>
@@ -94,18 +139,17 @@ Examples
  ::
 
     
-    - name: Connect to netscaler appliance
-        local_action:
-            nsip: 172.18.0.2
-            nitro_user: nsroot
-            nitro_pass: nsroot
-            ssl_cert_validation: no
+    - name: Setup server
+      delegate_to: localhost
+      netscaler_server:
+          nsip: 172.18.0.2
+          nitro_user: nsroot
+          nitro_pass: nsroot
     
-            module: netscaler_server
-            operation: present
+          state: present
     
-            name: vserver1
-            ipaddress: 192.168.1.1
+          name: server-1
+          ipaddress: 192.168.1.1
 
 Return Values
 -------------
@@ -160,7 +204,7 @@ This module is flagged as **preview** which means that it is not guaranteed to h
 Support
 ~~~~~~~
 
-
+This module is community maintained without core committer oversight.
 
 For more information on what this means please read :doc:`modules_support`
 

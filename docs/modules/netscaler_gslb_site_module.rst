@@ -59,9 +59,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -77,11 +82,6 @@ Options
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
         <td><div>Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.</div><div>Default value: ENABLED</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>parentsite<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -97,6 +97,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Public IP address for the local site. Required only if the appliance is deployed in a private address space and the site has a public IP address hosted on an external firewall or a NAT device.</div><div>Minimum length = 1</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
                 <tr><td>sessionexchange<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -117,16 +122,21 @@ Options
     <td></td>
         <td><ul><li>REMOTE</li><li>LOCAL</li></ul></td>
         <td><div>Type of site to create. If the type is not specified, the appliance automatically detects and sets the type on the basis of the IP address being assigned to the site. If the specified site IP address is owned by the appliance (for example, a MIP address or SNIP address), the site is a local site. Otherwise, it is a remote site.</div><div>Default value: NONE</div><div>Possible values = REMOTE, LOCAL</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>triggermonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>ALWAYS</li><li>MEPDOWN</li><li>MEPDOWN_SVCDOWN</li></ul></td>
         <td><div>Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:</div><div>* ALWAYS - Monitor the GSLB service at all times.</div><div>* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.</div><div>MEPDOWN_SVCDOWN - Monitor the service in either of the following situations:</div><div>* The exchange of metrics through MEP is disabled.</div><div>* The exchange of metrics through MEP is enabled but the status of the service, learned through metrics exchange, is DOWN.</div><div>Default value: ALWAYS</div><div>Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 

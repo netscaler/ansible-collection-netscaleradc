@@ -216,9 +216,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -229,11 +234,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>pathmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -259,6 +259,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Enable RTSP session ID mapping for the service.</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
                 <tr><td>sc<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -284,11 +289,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Enable surge protection for the service.</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>svrtimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -319,6 +324,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System &gt; Settings &gt; Configure modes &gt; Configure Modes dialog box). However, you can override this setting after you create the service.</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 
@@ -340,7 +350,7 @@ Examples
         nitro_user: nsroot
         nitro_pass: nsroot
     
-        operation: present
+        state: present
     
         name: service-http-1
         servicetype: HTTP

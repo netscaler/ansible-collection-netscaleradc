@@ -187,11 +187,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>pathmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -207,6 +202,11 @@ Options
     <td></td>
         <td><ul><li>ON</li><li>OFF</li></ul></td>
         <td><div>Enable RTSP session ID mapping for the service group.</div><div>Default value = OFF</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
                 <tr><td>sc<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -283,9 +283,9 @@ Options
         <td><div>Enable surge protection for the service group.</div><div>Default value = OFF</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Initial state of the service group.</div><div>Default value = ENABLED</div>        </td></tr>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>svrtimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -338,7 +338,7 @@ Examples
         nitro_user: nsroot
         nitro_pass: nsroot
     
-        operation: present
+        state: present
     
         servicegroupname: service-group-1
         servicetype: HTTP

@@ -1,10 +1,10 @@
-.. __:
+.. _netscaler_gslb_vserver:
 
 
-_ - _
-+++++
+netscaler_gslb_vserver - Configure gslb vserver entities in Netscaler.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.3.1
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -15,7 +15,7 @@ _ - _
 Synopsis
 --------
 
-* _
+* Configure gslb vserver entities in Netscaler.
 
 
 Requirements (on host that executes module)
@@ -67,11 +67,50 @@ Options
     <td></td>
         <td><ul><li>A</li><li>AAAA</li><li>CNAME</li><li>NAPTR</li></ul></td>
         <td><div>DNS record type to associate with the GSLB virtual server's domain name.</div><div>Default value: A</div><div>Possible values = A, AAAA, CNAME, NAPTR</div>        </td></tr>
-                <tr><td>domain_bindings<br/><div style="font-size: small;"></div></td>
+                <tr><td rowspan="2">domain_bindings<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td></td><td></td>
+    <td> <div>List of bindings for domains for this glsb vserver.</div>    </tr>
+    <tr>
+    <td colspan="5">
+    <table border=1 cellpadding=4>
+    <caption><b>Dictionary object domain_bindings</b></caption>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                    <tr><td>backupipflag<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
         <td></td>
-        <td><div>List of bindings for domains for this glsb vserver. The following keys are valid.</div><div>domainname: Domain name for which to change the time to live (TTL) and/or backup service IP address.</div><div>cookietimeout: Timeout, in minutes, for the GSLB site cookie.</div><div>backupipflag: The IP address of the backup service for the specified domain name. Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.</div><div>ttl: Time to live (TTL) for the domain.</div><div>sitedomainttl: TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server. Minimum value = 1</div>        </td></tr>
+                <td></td>
+                <td><div>The IP address of the backup service for the specified domain name.</div><div>Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.</div>        </td></tr>
+                    <tr><td>domainname<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Domain name for which to change the time to live (TTL) and/or backup service IP address.</div>        </td></tr>
+                    <tr><td>cookietimeout<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Timeout, in minutes, for the GSLB site cookie.</div>        </td></tr>
+                    <tr><td>sitedomainttl<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.</div><div>Minimum value = 1</div>        </td></tr>
+                    <tr><td>ttl<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Time to live (TTL) for the domain.</div>        </td></tr>
+        </table>
+    </td>
+    </tr>
+        </td></tr>
                 <tr><td>dynamicweight<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -104,9 +143,14 @@ Options
         <td><div>The password with which to authenticate to the netscaler node.</div>        </td></tr>
                 <tr><td>nitro_protocol<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>https</td>
+    <td>http</td>
         <td><ul><li>http</li><li>https</li></ul></td>
         <td><div>Which protocol to use when accessing the nitro API objects.</div>        </td></tr>
+                <tr><td>nitro_timeout<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>310</td>
+        <td></td>
+        <td><div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>        </td></tr>
                 <tr><td>nitro_user<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -117,11 +161,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>persistenceid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -137,11 +176,40 @@ Options
     <td></td>
         <td></td>
         <td><div>The optional IPv4 network mask applied to IPv4 addresses to establish source IP address based persistence.</div><div>Minimum length = 1</div>        </td></tr>
-                <tr><td>service_bindings<br/><div style="font-size: small;"></div></td>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
+                <tr><td rowspan="2">service_bindings<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td><td></td>
+    <td> <div>List of bindings for gslb services bound to this gslb virtual server.</div>    </tr>
+    <tr>
+    <td colspan="5">
+    <table border=1 cellpadding=4>
+    <caption><b>Dictionary object service_bindings</b></caption>
+    <tr>
+    <th class="head">parameter</th>
+    <th class="head">required</th>
+    <th class="head">default</th>
+    <th class="head">choices</th>
+    <th class="head">comments</th>
+    </tr>
+                    <tr><td>servicename<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
         <td></td>
-        <td><div>List of bindings for gslb services bound to this gslb virtual server. The following keys are valid.</div><div>servicename: Name of the GSLB service for which to change the weight.</div><div>weight: Weight to assign to the GSLB service.</div>        </td></tr>
+                <td></td>
+                <td><div>Name of the GSLB service for which to change the weight.</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the GSLB service.</div>        </td></tr>
+        </table>
+    </td>
+    </tr>
+        </td></tr>
                 <tr><td>servicetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -172,11 +240,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage for the HEALTH method (do not enter the percentage symbol).</div><div>Minimum value = 1</div><div>Maximum value = 4294967287</div>        </td></tr>
-                <tr><td>ssl_cert_validation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td></td>
-        <td><div>Whether to check the ssl certificate validity when using https to communicate with the netsaler node.</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>timeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -197,6 +265,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Number of bits to consider in an IPv6 source IP address when creating source IP address based persistence sessions.</div><div>Default value: 128</div><div>Minimum value = 1</div><div>Maximum value = 128</div>        </td></tr>
+                <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>yes</td>
+        <td></td>
+        <td><div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>        </td></tr>
         </table>
     </br>
 

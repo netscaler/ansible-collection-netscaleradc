@@ -213,11 +213,6 @@ Options
     <td></td>
         <td></td>
         <td><div>The ip address of the netscaler appliance where the nitro API calls will be made.</div><div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>        </td></tr>
-                <tr><td>operation<br/><div style="font-size: small;"></div></td>
-    <td>yes</td>
-    <td></td>
-        <td><ul><li>present</li><li>absent</li></ul></td>
-        <td><div>The operation to perform for the given netscaler module.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>oracleserverversion<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -278,6 +273,11 @@ Options
     <td></td>
         <td><ul><li>ON</li><li>OFF</li></ul></td>
         <td><div>Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections.</div><div>Default value = OFF</div>        </td></tr>
+                <tr><td>save_config<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>True</td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
                 <tr><td>servicetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -308,6 +308,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.</div><div>Minimum value = 1</div><div>Maximum value = 4294967287</div>        </td></tr>
+                <tr><td>state<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td>present</td>
+        <td><ul><li>present</li><li>absent</li></ul></td>
+        <td><div>The state of the resource being configured by the module on the netscaler node.</div><div>When present the resource will be created if needed and configured according to the module's parameters.</div><div>When absent the resource will be deleted from the netscaler node.</div>        </td></tr>
                 <tr><td>stateupdate<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -355,7 +360,7 @@ Examples
         validate_certs: no
     
         module: netscaler_cs_vserver
-        operation: present
+        state: present
     
         name: cs_vserver_1
         ipv46: 192.168.1.1
