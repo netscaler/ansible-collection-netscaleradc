@@ -27,12 +27,12 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 DOCUMENTATION = '''
 ---
-module: _
-short_description: _
+module: netscaler_gslb_vserver
+short_description: Configure gslb vserver entities in Netscaler.
 description:
-    - _
+    - Configure gslb vserver entities in Netscaler.
 
-version_added: 2.3.1
+version_added: "2.4.0"
 
 options:
 
