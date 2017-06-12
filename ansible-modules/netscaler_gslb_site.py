@@ -298,8 +298,8 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'GSLB')
 
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
+        # Apply appropriate state
+        if module.params['state'] == 'present':
             if not gslb_site_exists():
                 if not module.check_mode:
                     gslb_site_proxy.add()
@@ -321,14 +321,14 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if not gslb_site_exists():
                     module.fail_json(msg='GSLB site does not exist', **module_result)
                 if not gslb_site_identical():
                     module.fail_json(msg='GSLB site differs from configured', diff=diff(), **module_result)
 
-        elif module.params['operation'] == 'absent':
+        elif module.params['state'] == 'absent':
             if gslb_site_exists():
                 if not module.check_mode:
                     gslb_site_proxy.delete()
@@ -338,7 +338,7 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if gslb_site_exists():
                     module.fail_json(msg='Service still exists', **module_result)
