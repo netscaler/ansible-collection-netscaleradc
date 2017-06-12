@@ -4,6 +4,7 @@ This repository provides [Ansible](https://www.ansible.com)  modules for configu
 
 The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be availble with Ansible automatically.
 
+Documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
 
 Currently the following modules are implemented
 
