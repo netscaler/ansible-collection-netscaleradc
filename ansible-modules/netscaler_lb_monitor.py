@@ -398,16 +398,6 @@ options:
                 the destination port is the port number that is included in the HTTP request sent to the dispatcher.
                 Does not apply to monitors of type PING.
 
-    state:
-        choices: ['ENABLED', 'DISABLED']
-        description:
-            - >-
-                State of the monitor. The DISABLED setting disables not only the monitor being configured,
-                but all monitors of the same type, until the parameter is set to ENABLED.
-                If the monitor is bound to a service, the state of the monitor is not taken into account
-                when the state of the service is determined.
-            - Default value = ENABLED
-
     reverse:
         choices: ['YES', 'NO']
         description:
@@ -728,11 +718,11 @@ EXAMPLES = '''
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
+    validate_certs: no
 
 
     module: netscaler_lb_monitor
-    operation: present
+    state: present
 
     monitorname: monitor_1
     type: HTTP-INLINE
@@ -903,10 +893,6 @@ def main():
         ),
         destip=dict(type='str'),
         destport=dict(type='int'),
-        state=dict(
-            type='str',
-            choices=[u'ENABLED', u'DISABLED']
-        ),
         reverse=dict(
             type='str',
             choices=[u'YES', u'NO']
@@ -1070,7 +1056,6 @@ def main():
         'units2',
         'destip',
         'destport',
-        'state',
         'reverse',
         'transparent',
         'iptunnel',
@@ -1215,8 +1200,8 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'LB')
 
-        if module.params['operation'] == 'present':
-            log('Applying actions for operation present')
+        if module.params['state'] == 'present':
+            log('Applying actions for state present')
             if not lbmonitor_exists():
                 if not module.check_mode:
                     log('Adding monitor')
@@ -1237,7 +1222,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
-            log('Sanity checks for operation present')
+            log('Sanity checks for state present')
             if not module.check_mode:
                 if not lbmonitor_exists():
                     module.fail_json(msg='Monitor does not seem to exist', **module_result)
@@ -1249,8 +1234,8 @@ def main():
                     )
             get_actual_service_bindings()
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if lbmonitor_exists():
                 if not module.check_mode:
                     lbmonitor_proxy.delete()
@@ -1261,7 +1246,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for result
-            log('Sanity checks for operation absent')
+            log('Sanity checks for state absent')
             if not module.check_mode:
                 if lbmonitor_exists():
                     module.fail_json(msg='Server seems to be present', **module_result)
