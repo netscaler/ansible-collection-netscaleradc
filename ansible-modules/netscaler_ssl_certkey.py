@@ -268,9 +268,9 @@ def main():
 
     try:
 
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            log('Applying actions for operation present')
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            log('Applying actions for state present')
             if not key_exists():
                 if not module.check_mode:
                     log('Adding certificate key')
@@ -287,15 +287,15 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation present')
+            # Sanity check for state
+            log('Sanity checks for state present')
             if not key_exists():
                 module.fail_json(msg='Service does not exist')
             if not key_identical():
                 module.fail_json(msg='Service differs from configured', diff=diff_list())
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if key_exists():
                 if not module.check_mode:
                     sslcertkey_proxy.delete()
@@ -305,8 +305,8 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation absent')
+            # Sanity check for state
+            log('Sanity checks for state absent')
             if key_exists():
                 module.fail_json(msg='Service still exists')
 
