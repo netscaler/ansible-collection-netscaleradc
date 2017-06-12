@@ -88,10 +88,10 @@ EXAMPLES = '''
         nsip: 172.18.0.2
         nitro_user: nsroot
         nitro_pass: nsroot
-        ssl_cert_validation: no
+        validate_certs: no
 
         module: netscaler_cs_policy
-        operation: present
+        state: present
 
         policyname: policy_1
         url: /example/
@@ -215,9 +215,9 @@ def main():
     try:
         ensure_feature_is_enabled(client, 'CS')
 
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            log('Sanity checks for operation present')
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            log('Sanity checks for state present')
             if not policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.add()
@@ -233,15 +233,15 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation present')
+            # Sanity check for state
+            log('Sanity checks for state present')
             if not policy_exists():
                 module.fail_json(msg='Service does not exist', **module_result)
             if not policy_identical():
                 module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if policy_exists():
                 if not module.check_mode:
                     cspolicy_proxy.delete()
@@ -251,8 +251,8 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
-            log('Sanity checks for operation absent')
+            # Sanity check for state
+            log('Sanity checks for state absent')
             if policy_exists():
                 module.fail_json(msg='Service still exists', **module_result)
 
