@@ -829,9 +829,9 @@ def main():
 
     try:
         ensure_feature_is_enabled(client, 'GSLB')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            log('Applying operation present')
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            log('Applying state present')
             if not gslb_vserver_exists():
                 log('Creating object')
                 if not module.check_mode:
@@ -870,7 +870,7 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if not gslb_vserver_exists():
                     module.fail_json(msg='GSLB Vserver does not exist', **module_result)
@@ -881,7 +881,7 @@ def main():
                 if not service_bindings_identical():
                     module.fail_json(msg='Service bindings differ from configured', diff=diff(), **module_result)
 
-        elif module.params['operation'] == 'absent':
+        elif module.params['state'] == 'absent':
             if gslb_vserver_exists():
                 if not module.check_mode:
                     gslb_vserver_proxy.delete()
@@ -891,7 +891,7 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if gslb_vserver_exists():
                     module.fail_json(msg='GSLB Vserver still exists', **module_result)
