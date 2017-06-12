@@ -4,7 +4,7 @@
 netscaler_cs_vserver - Manage content switching vserver
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.2.3
+.. versionadded:: 2.4.0
 
 
 .. contents::

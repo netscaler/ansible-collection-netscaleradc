@@ -1,10 +1,10 @@
-.. _XXX:
+.. _netscaler_gslb_service:
 
 
-XXX - XXX
-+++++++++
+netscaler_gslb_service - Manage gslb service entities in Netscaler.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.3.1
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -15,7 +15,7 @@ XXX - XXX
 Synopsis
 --------
 
-* XXX
+* Manage gslb service entities in Netscaler.
 
 
 Requirements (on host that executes module)

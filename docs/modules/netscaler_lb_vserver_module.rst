@@ -4,7 +4,7 @@
 netscaler_lb_vserver - Manage load balancing vserver configuration
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.2.3
+.. versionadded:: 2.4.0
 
 
 .. contents::

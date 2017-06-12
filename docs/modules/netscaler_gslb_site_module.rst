@@ -1,10 +1,10 @@
-.. _XXX:
+.. _netscaler_gslb_site:
 
 
-XXX - XXX
-+++++++++
+netscaler_gslb_site - Manage gslb site entities in Netscaler.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.3.1
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -15,7 +15,7 @@ XXX - XXX
 Synopsis
 --------
 
-* XXX
+* Manage gslb site entities in Netscaler.
 
 
 Requirements (on host that executes module)

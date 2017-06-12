@@ -1,10 +1,10 @@
 .. _netscaler_ssl_certkey:
 
 
-netscaler_ssl_certkey - Manage cs vserver
-+++++++++++++++++++++++++++++++++++++++++
+netscaler_ssl_certkey - Manage ssl cerificate keys.
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.2
+.. versionadded:: 2.4.0
 
 
 .. contents::
@@ -15,7 +15,7 @@ netscaler_ssl_certkey - Manage cs vserver
 Synopsis
 --------
 
-* Manage service group configuration in Netscaler
+* Manage ssl cerificate keys.
 
 
 
