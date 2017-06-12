@@ -115,15 +115,6 @@ options:
             - "Name of the GSLB site to which the service belongs."
             - "Minimum length = 1"
 
-    state:
-        choices:
-            - 'ENABLED'
-            - 'DISABLED'
-        description:
-            - "Enable or disable the service."
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
-
     cip:
         choices:
             - 'ENABLED'
@@ -228,6 +219,23 @@ options:
         description:
             - "The new IP address of the service."
 
+    monitor_bindings:
+        description:
+            - Bind monitors to this gslb service
+        suboptions:
+
+            weight:
+                description:
+                    - Weight to assign to the monitor-service binding.
+                    - A larger number specifies a greater weight.
+                    - Contributes to the monitoring threshold, which determines the state of the service.
+                    - Minimum value = 1
+                    - Maximum value = 100
+
+            monitor_name:
+                description:
+                    - Monitor name.
+
 extends_documentation_fragment: netscaler
 requirements:
     - nitro python sdk
@@ -245,7 +253,15 @@ import requests
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, monkey_patch_nitro_api
+    from ansible.module_utils.netscaler import (
+        ConfigProxy,
+        get_nitro_client,
+        netscaler_common_arguments,
+        log,
+        loglines,
+        ensure_feature_is_enabled,
+        monkey_patch_nitro_api
+    )
     try:
         monkey_patch_nitro_api()
         from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
@@ -294,13 +310,6 @@ def main():
             ],
         ),
         sitename=dict(type='str'),
-        state=dict(
-            type='str',
-            choices=[
-                'ENABLED',
-                'DISABLED',
-            ]
-        ),
         cip=dict(
             type='str',
             choices=[
@@ -384,7 +393,6 @@ def main():
         'maxclient',
         'healthmonitor',
         'sitename',
-        'state',
         'cip',
         'cipheader',
         'sitepersistence',
@@ -423,7 +431,7 @@ def main():
         'monitor_name',
     ]
 
-    params = copy.deepcopy(module.params)
+    # params = copy.deepcopy(module.params)
     module.params['ip'] = module.params['ipaddress']
 
     # Instantiate config proxy
@@ -461,7 +469,7 @@ def main():
             fetched_bindings = gslbservice_lbmonitor_binding.get(client, servicename=module.params['servicename'])
             # index by monitor name
             for binding in fetched_bindings:
-                #complete_missing_attributes(binding, gslbservice_lbmonitor_binding_rw_attrs, fill_value=None)
+                # complete_missing_attributes(binding, gslbservice_lbmonitor_binding_rw_attrs, fill_value=None)
                 actual_monitor_bindings[binding.monitor_name] = binding
         return actual_monitor_bindings
 
@@ -482,7 +490,6 @@ def main():
                 )
                 configured_monitor_proxys[configured_monitor_bindings['monitor_name']] = proxy
         return configured_monitor_proxys
-
 
     def monitor_bindings_identical():
         log('monitor_bindings_identical')
@@ -547,8 +554,8 @@ def main():
 
     try:
         ensure_feature_is_enabled(client, 'GSLB')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
+        # Apply appropriate state
+        if module.params['state'] == 'present':
             if not gslb_service_exists():
                 if not module.check_mode:
                     gslb_service_proxy.add()
@@ -574,7 +581,7 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if not gslb_service_exists():
                     module.fail_json(msg='Service does not exist', **module_result)
@@ -583,7 +590,7 @@ def main():
                 if not monitor_bindings_identical():
                     module.fail_json(msg='Monitor bindings differ from configured', diff=diff(), **module_result)
 
-        elif module.params['operation'] == 'absent':
+        elif module.params['state'] == 'absent':
             if gslb_service_exists():
                 if not module.check_mode:
                     gslb_service_proxy.delete()
@@ -593,7 +600,7 @@ def main():
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
                 if gslb_service_exists():
                     module.fail_json(msg='Service still exists', **module_result)
