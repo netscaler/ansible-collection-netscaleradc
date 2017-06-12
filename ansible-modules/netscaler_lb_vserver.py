@@ -806,10 +806,10 @@ EXAMPLES = '''
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
+    validate_certs: no
 
     module: netscaler_lb_vserver
-    operation: present
+    state: present
 
     name: lb_vserver_1
     servicetype: HTTP
@@ -831,10 +831,10 @@ EXAMPLES = '''
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
-    ssl_cert_validation: no
+    validate_certs: no
 
     module: netscaler_lb_vserver
-    operation: present
+    state: present
 
     name: lb_vserver_2
     servicetype: HTTP
@@ -1535,8 +1535,8 @@ def main():
 
     try:
         ensure_feature_is_enabled(client, 'LB')
-        if module.params['operation'] == 'present':
-            log('Applying actions for operation present')
+        if module.params['state'] == 'present':
+            log('Applying actions for state present')
             if not lbvserver_exists():
                 log('Add lb vserver')
                 if not module.check_mode:
@@ -1574,7 +1574,7 @@ def main():
                     module_result['changed'] = True
 
             # Sanity check
-            log('Sanity checks for operation present')
+            log('Sanity checks for state present')
             if not module.check_mode:
                 if not lbvserver_exists():
                     module.fail_json(msg='Did not create lb vserver with name %s' % module.params['name'], **module_result)
@@ -1587,8 +1587,8 @@ def main():
                     if not ssl_certkey_bindings_identical():
                         module.fail_json(msg='sll certkey bindings not identical', **module_result)
 
-        elif module.params['operation'] == 'absent':
-            log('Applying actions for operation absent')
+        elif module.params['state'] == 'absent':
+            log('Applying actions for state absent')
             if lbvserver_exists():
                 if not module.check_mode:
                     log('Delete lb vserver')
@@ -1601,7 +1601,7 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check
-            log('Sanity checks for operation absent')
+            log('Sanity checks for state absent')
             if not module.check_mode:
                 if lbvserver_exists():
                     module.fail_json(msg='Lb vserver %s still exists' % module.params['name'], **module_result)
