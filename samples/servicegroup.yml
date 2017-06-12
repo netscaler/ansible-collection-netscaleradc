@@ -10,7 +10,6 @@
   tasks:
     - name: Set server 1
       delegate_to: localhost
-      gather_facts: false
       netscaler_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
@@ -22,7 +21,6 @@
 
     - name: Set server 2
       delegate_to: localhost
-      gather_facts: false
       netscaler_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"

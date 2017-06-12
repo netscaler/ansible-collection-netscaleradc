@@ -1,0 +1,61 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Setup gslb site
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        module: netscaler_gslb_site
+        state: present
+
+        sitename: gslb-site-full
+        siteipaddress: 192.168.1.4
+
+    - name: Setup gslb service
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        module: netscaler_gslb_service
+        state: present
+
+        servicename: gslb-service-full
+        servicetype: HTTP
+        port: 80
+        ipaddress: 10.10.10.10
+        sitename: gslb-site-full
+
+    - name: Setup gslb vserver
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        module: netscaler_gslb_vserver
+        state: present
+
+        name: gslb-vserver-full
+        servicetype: HTTP
+
+        domain_bindings:
+          -
+            domainname: yourname.org
+            ttl: 400
+
+        service_bindings:
+          -
+            servicename: gslb-service-full
+            weight: 10

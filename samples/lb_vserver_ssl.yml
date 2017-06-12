@@ -4,6 +4,7 @@
 
   vars:
     max_clients: 5
+    state: present
 
   remote_user: root
   gather_facts: False
@@ -18,10 +19,10 @@
         validate_certs: "{{ validate_certs }}"
 
         module: netscaler_service
-        state: present
+        state: "{{ state }}"
 
         name: service-http-1
-        servicetype: HTTP
+        servicetype: SSL
         ip: 10.78.0.1
         ipaddress: 10.78.0.1
         port: 80
@@ -34,10 +35,10 @@
         validate_certs: "{{ validate_certs }}"
 
         module: netscaler_service
-        state: present
+        state: "{{ state }}"
 
         name: service-http-2
-        servicetype: HTTP
+        servicetype: SSL
         ip: 10.78.0.2
         ipaddress: 10.78.0.2
         port: 80
@@ -50,7 +51,7 @@
         validate_certs: "{{ validate_certs }}"
 
         module: netscaler_lb_vserver
-        state: present
+        state: "{{ state }}"
 
         name: lb_vserver_1
         servicetype: SSL
@@ -73,7 +74,7 @@
         validate_certs: "{{ validate_certs }}"
 
         module: netscaler_ssl_certkey
-        state: present
+        state: "{{ state }}"
 
         certkey: certificate_1
         cert: server.crt

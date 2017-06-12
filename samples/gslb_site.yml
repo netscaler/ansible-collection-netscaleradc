@@ -17,5 +17,5 @@
         module: netscaler_gslb_site
         state: present
 
-        sitename: gslb-site-1
+        sitename: gslb-site-test-2
         siteipaddress: 192.168.1.1

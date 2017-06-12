@@ -1,0 +1,19 @@
+---
+- hosts: netscaler
+
+  gather_facts: False
+
+  tasks:
+
+    - name: Setup service
+      delegate_to: localhost
+      netscaler_service:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+        name: service-http
+        servicetype: HTTP
+        ipaddress: 172.18.0.4
+        port: 5000

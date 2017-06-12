@@ -3,7 +3,7 @@
 
   vars:
     save_config: no
-    operation: present
+    state: present
 
   gather_facts: False
 
@@ -17,7 +17,7 @@
         nitro_pass: "{{ nitro_pass }}"
         save_config: "{{ save_config }}"
 
-        operation: "{{ operation }}"
+        state: "{{ state }}"
         name: server-1
         ipaddress: 192.168.1.1
 
@@ -30,7 +30,7 @@
         nitro_pass: "{{ nitro_pass }}"
         save_config: "{{ save_config }}"
 
-        operation: "{{ operation }}"
+        state: "{{ state }}"
         name: server-2
         ipaddress: 192.168.1.2
 
@@ -41,4 +41,3 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
-        operation: "{{ operation }}"

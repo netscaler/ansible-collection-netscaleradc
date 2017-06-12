@@ -96,7 +96,7 @@
 
         name: lb_vserver_cart
         servicetype: HTTP
-        ipv46: 192.168.1.1
+        ipv46: 10.8.0.1
         port: 80
 
     - name: Configure lb vserver catalog
@@ -111,7 +111,7 @@
 
         name: lb_vserver_catalog
         servicetype: HTTP
-        ipv46: 192.168.1.2
+        ipv46: 10.8.0.2
         port: 80
 
 
@@ -153,7 +153,7 @@
 
         name: cs_vserver_1
         ipv46: 10.22.24.22
-        port: 443
+        port: 80
         servicetype: HTTP
 
         policybindings:
