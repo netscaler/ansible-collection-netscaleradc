@@ -37,7 +37,7 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
 
         # Add choices if applicable
         if 'choices' in property:
-            choice_set = frozenset([ choice.lower() for choice in property['choices']])
+            choice_set = frozenset([choice.lower() for choice in property['choices']])
             if choice_set == frozenset(['yes', 'no']):
                 # Overwrite type to bool
                 entry['type'] = 'bool'
@@ -77,9 +77,10 @@ def produce_immutables_list(json_doc):
     immutables_list = []
     for property in json_doc:
         # Add only readonly attributes
-        if 'mutable' in property and property['mutable'] == False and property['readonly'] == False:
+        if 'mutable' in property and not property['mutable'] and not property['readonly']:
             immutables_list.append(property['name'])
     return immutables_list
+
 
 def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
 
@@ -123,7 +124,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
             continue
 
         # Fallthrough
-        #entry['description'] = [ split_description_line(line) for line in property['description_lines']]
+        # entry['description'] = [ split_description_line(line) for line in property['description_lines']]
         entry['description'] = []
 
         bool_choice_sets = (
@@ -148,8 +149,8 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
 
         options_list.append(entry)
 
-
     return options_list
+
 
 def main():
     here = os.path.dirname(os.path.realpath(__file__))
@@ -157,8 +158,8 @@ def main():
         # keep python templates valid python
         block_start_string='#{%',
         loader=FileSystemLoader(os.path.join(here, 'source', 'templates')),
-        #trim_blocks=True,
-        #lstrip_blocks=True,
+        # trim_blocks=True,
+        # lstrip_blocks=True,
     )
 
     # Compile the json schemata
@@ -184,65 +185,65 @@ def main():
     from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
 
     schemata = {
-        'basic_service' : {
+        'basic_service': {
             'json_file': 'basic_service.json',
-            'class' : service,
+            'class': service,
         },
-        'basic_server' : {
+        'basic_server': {
             'json_file': 'basic_server.json',
-            'class' : server,
+            'class': server,
         },
         'basic_servicegroup': {
-            'json_file' : 'basic_servicegroup.json',
-            'class' : servicegroup,
+            'json_file': 'basic_servicegroup.json',
+            'class': servicegroup,
         },
         'basic_servicegroup_servicegroupmember_binding': {
-            'json_file' : 'basic_servicegroup_servicegroupmember_binding.json',
-            'class' : servicegroup_servicegroupmember_binding,
+            'json_file': 'basic_servicegroup_servicegroupmember_binding.json',
+            'class': servicegroup_servicegroupmember_binding,
         },
-        'lb_lbvserver' : {
+        'lb_lbvserver': {
             'json_file': 'load-balancing_lbvserver.json',
-            'class' : lbvserver,
+            'class': lbvserver,
         },
-        'lb_lbvserver_service_binding' : {
+        'lb_lbvserver_service_binding': {
             'json_file': 'load-balancing_lbvserver_service_binding.json',
-            'class' : lbvserver_service_binding,
+            'class': lbvserver_service_binding,
         },
-        'lb_lbvserver_servicegroup_binding' : {
+        'lb_lbvserver_servicegroup_binding': {
             'json_file': 'load-balancing_lbvserver_servicegroup_binding.json',
-            'class' : lbvserver_servicegroup_binding,
+            'class': lbvserver_servicegroup_binding,
         },
-        'lb_monitor' : {
+        'lb_monitor': {
             'json_file': 'load-balancing_lbmonitor.json',
-            'class' : lbmonitor,
+            'class': lbmonitor,
         },
-        'cs_vserver' : {
+        'cs_vserver': {
             'json_file': 'content-switching_csvserver.json',
-            'class' : csvserver,
+            'class': csvserver,
         },
-        'cs_policy' : {
+        'cs_policy': {
             'json_file': 'content-switching_cspolicy.json',
-            'class' : cspolicy,
+            'class': cspolicy,
         },
-        'cs_action' : {
+        'cs_action': {
             'json_file': 'content-switching_csaction.json',
-            'class' : csaction,
+            'class': csaction,
         },
-        'ssl_certkey' : {
+        'ssl_certkey': {
             'json_file': 'ssl_sslcertkey.json',
-            'class' : sslcertkey,
+            'class': sslcertkey,
         },
-        'gslb_site' : {
+        'gslb_site': {
             'json_file': 'global-server-load-balancing_gslbsite.json',
-            'class' : gslbsite,
+            'class': gslbsite,
         },
-        'gslb_service' : {
+        'gslb_service': {
             'json_file': 'global-server-load-balancing_gslbservice.json',
-            'class' : gslbservice,
+            'class': gslbservice,
         },
-        'gslb_vserver' : {
+        'gslb_vserver': {
             'json_file': 'global-server-load-balancing_gslbvserver.json',
-            'class' : gslbvserver,
+            'class': gslbvserver,
         },
     }
 
@@ -268,7 +269,7 @@ def main():
                 sdk_property_list.append(member[0])
 
         # Show diffs
-        scrap_properties_set = set([v['name'] for v in json_doc ])
+        scrap_properties_set = set([v['name'] for v in json_doc])
         sdk_properties_set = set(sdk_property_list)
 
         not_in_sdk = list(scrap_properties_set - sdk_properties_set)
@@ -277,7 +278,7 @@ def main():
 
         not_in_properties = list(sdk_properties_set - scrap_properties_set)
         if len(not_in_properties) > 0:
-            print('Properties present in sdk but not in scrapped' % not_in_sdk)
+            print('Properties present in sdk but not in scrapped' % not_in_properties)
 
         # module arguments
         module_arguments[key] = produce_module_arguments_from_json_schema(json_doc, skip_attrs=not_in_sdk)
