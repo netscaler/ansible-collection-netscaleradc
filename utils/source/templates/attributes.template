@@ -9,3 +9,7 @@ readwrite_attrs = [#{% for attribute in readwrite_attrs %}
     immutable_attrs = [#{% for attribute in immutable_attrs %}
         '{{ attribute }}',#{% endfor %}
     ]
+
+    transforms = {{ '{' }}#{% for (attribute, value) in transforms.items()%}
+        '{{ attribute }}': {{ value }},#{% endfor %}
+    }
