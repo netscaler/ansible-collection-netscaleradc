@@ -1,5 +1,5 @@
 Netscaler Ansible Docs
-===============
+======================
 
 This project implements a set of Ansible modules for the Citrix Netscaler 
 Users of these modules can create, edit, update, and delete configuration
@@ -19,6 +19,7 @@ listed below.
    :caption: User Documentation
 
    usage/getting_started
+   usage/speeding_up_execution
 
 .. toctree::
    :maxdepth: 2
