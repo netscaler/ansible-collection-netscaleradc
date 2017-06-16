@@ -19,9 +19,9 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+ANSIBLE_METADATA = {'metadata_version': '1.0',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
 
 
 DOCUMENTATION = '''
@@ -968,7 +968,6 @@ from ansible.module_utils.netscaler import (
     ensure_feature_is_enabled
 )
 import copy
-import time
 
 try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
