@@ -119,8 +119,6 @@ class TestNetscalerLBVServerModule(TestModule):
         ))
         from ansible.modules.network.netscaler import netscaler_lb_vserver
 
-        class MockException(Exception):
-            pass
         client_mock = Mock()
         attrs = {'login.side_effect': requests.exceptions.ConnectionError}
         client_mock.configure_mock(**attrs)
@@ -128,7 +126,7 @@ class TestNetscalerLBVServerModule(TestModule):
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_lb_vserver',
             get_nitro_client=m,
-            nitro_exception=MockException,
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -146,8 +144,6 @@ class TestNetscalerLBVServerModule(TestModule):
         if sys.version_info[:2] == (2, 6):
             self.skipTest('requests library not available under python2.6')
 
-        class MockException(Exception):
-            pass
         client_mock = Mock()
         attrs = {'login.side_effect': requests.exceptions.SSLError}
         client_mock.configure_mock(**attrs)
@@ -155,7 +151,7 @@ class TestNetscalerLBVServerModule(TestModule):
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_lb_vserver',
             get_nitro_client=m,
-            nitro_exception=MockException,
+            nitro_exception=self.MockException,
             do_state_change=Mock(return_value=Mock(errorcode=0)),
         ):
             self.module = netscaler_lb_vserver
@@ -531,10 +527,11 @@ class TestNetscalerLBVServerModule(TestModule):
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=(Mock(return_value=[])),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
-            ssl_sync_mock.assert_called()
+            self.assertTrue(len(ssl_sync_mock.mock_calls) > 0, msg='ssl cert_key bindings not called')
             self.assertTrue(result['changed'])
 
     def test_ssl_bindings_not_called_for_non_ssl_service(self):
@@ -598,6 +595,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -630,6 +628,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=(Mock(return_value=[])),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -660,6 +659,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=(Mock(return_value=[])),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -690,6 +690,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=(Mock(return_value=[])),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -720,6 +721,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=(Mock(return_value=[])),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -760,6 +762,7 @@ class TestNetscalerLBVServerModule(TestModule):
 
         lb_vserver_proxy_mock = Mock()
 
+
         client_mock = Mock()
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_lb_vserver',
@@ -767,6 +770,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             lb_vserver_exists=Mock(side_effect=[True, True]),
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -822,6 +826,7 @@ class TestNetscalerLBVServerModule(TestModule):
             lb_vserver_identical=Mock(side_effect=[False]),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
             get_immutables_intersection=m,
+            nitro_exception=self.MockException,
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
