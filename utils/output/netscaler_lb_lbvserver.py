@@ -83,10 +83,6 @@ options:
             - 'SSL_FIX'
         description:
             - "Protocol used by the service (also called the service type)."
-            - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, DNS, DHCPRA, ANY,
-                SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, RTSP, PUSH, SSL_PUSH, RADIUS, RDP, MYSQL, MSSQL, DIAMETER,
-                SSL_DIAMETER, TFTP, ORACLE, SMPP, SYSLOGTCP, SYSLOGUDP, FIX, SSL_FIX
 
     ipv46:
         description:
@@ -187,9 +183,6 @@ options:
             - >-
                 * FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same
                 persistence session.
-            - >-
-                Possible values = SOURCEIP, COOKIEINSERT, SSLSESSION, RULE, URLPASSIVE, CUSTOMSERVERID, DESTIP,
-                SRCIPDESTIP, CALLID, RTSPSID, DIAMETER, FIXSESSION, NONE
 
     timeout:
         description:
@@ -206,7 +199,6 @@ options:
             - >-
                 Backup persistence type for the virtual server. Becomes operational if the primary persistence
                 mechanism fails.
-            - "Possible values = SOURCEIP, NONE"
 
     backuppersistencetimeout:
         description:
@@ -270,10 +262,6 @@ options:
             - "* SRCIPSRCPORTHASH - Create a hash of the source IP address and source port in the IP header."
             - "* CALLIDHASH - Create a hash of the SIP Call-ID header."
             - "Default value: LEASTCONNECTION"
-            - >-
-                Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, URLHASH, DOMAINHASH,
-                DESTINATIONIPHASH, SOURCEIPHASH, SRCIPDESTIPHASH, LEASTBANDWIDTH, LEASTPACKETS, TOKEN,
-                SRCIPSRCPORTHASH, LRTM, CALLIDHASH, CUSTOMLOAD, LEASTREQUEST, AUDITLOGHASH, STATICPROXIMITY
 
     hashlength:
         description:
@@ -314,9 +302,6 @@ options:
             - "thod fails or cannot be used."
             - "Valid only if the primary method is based on static proximity."
             - "Default value: ROUNDROBIN"
-            - >-
-                Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH,
-                LEASTPACKETS, CUSTOMLOAD
 
     cookiename:
         description:
@@ -345,7 +330,7 @@ options:
             - >-
                 * Alternatively, you can use single quotation marks to enclose the rule, in which case you do not
                 have to escape the double quotation marks.
-            - "Default value: \"none\""
+            - "Default value: \\"none\\""
 
     listenpolicy:
         description:
@@ -354,7 +339,7 @@ options:
                 expression (for example, CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24) or the name of a named expression. In
                 the above example, the virtual server accepts all requests whose destination IP address is in the
                 192.0.2.0/24 subnet.
-            - "Default value: \"NONE\""
+            - "Default value: \\"NONE\\""
 
     listenpriority:
         description:
@@ -373,8 +358,8 @@ options:
                 persistence sessions (persistence type RULE). Can be either an expression or the name of a named
                 expression.
             - "Example:"
-            - "HTTP.RES.HEADER(\"setcookie\").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE(\"server1\")."
-            - "Default value: \"none\""
+            - "HTTP.RES.HEADER(\\"setcookie\\").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE(\\"server1\\")."
+            - "Default value: \\"none\\""
 
     persistmask:
         description:
@@ -389,31 +374,19 @@ options:
             - "Maximum value = 128"
 
     pq:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Use priority queuing on the virtual server. based persistence types, for IPv6 virtual servers."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     sc:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Use SureConnect on the virtual server."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     rtspnat:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Use network address translation (NAT) for RTSP data connections."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     m:
         choices:
@@ -437,7 +410,6 @@ options:
             - "* TOS - Encode the virtual server's TOS ID in the TOS field of the IP header."
             - "You can use either the IPTUNNEL or the TOS option to implement Direct Server Return (DSR)."
             - "Default value: IP"
-            - "Possible values = IP, MAC, IPTUNNEL, TOS"
 
     tosid:
         description:
@@ -474,7 +446,6 @@ options:
                 balancing of intrusion detection system (IDS) servers and scenarios involving direct server return
                 (DSR), where session information is unnecessary.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     state:
         choices:
@@ -483,7 +454,6 @@ options:
         description:
             - "State of the load balancing virtual server."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     connfailover:
         choices:
@@ -503,7 +473,6 @@ options:
                 packet flow on the basis of the information contained in the packets it receives.
             - "* DISABLED - Connection failover does not occur."
             - "Default value: DISABLED"
-            - "Possible values = DISABLED, STATEFUL, STATELESS"
 
     redirurl:
         description:
@@ -514,9 +483,6 @@ options:
             - "Minimum length = 1"
 
     cacheable:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can
@@ -524,7 +490,6 @@ options:
                 port combination of *:80, so such a cache redirection virtual server must be configured on the
                 appliance.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     clttimeout:
         description:
@@ -556,7 +521,6 @@ options:
                 weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2
                 and svc3 transition to DOWN.
             - "* NONE - Spillover does not occur."
-            - "Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE"
 
     sopersistence:
         choices:
@@ -567,7 +531,6 @@ options:
                 If spillover occurs, maintain source IP address based persistence for both primary and backup virtual
                 servers.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     sopersistencetimeout:
         description:
@@ -603,7 +566,6 @@ options:
             - >-
                 Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or
                 exists.
-            - "Possible values = DROP, ACCEPT, REDIRECT"
 
     redirectportrewrite:
         choices:
@@ -612,7 +574,6 @@ options:
         description:
             - "Rewrite the port and change the protocol to ensure successful HTTP redirects from services."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     downstateflush:
         choices:
@@ -623,7 +584,6 @@ options:
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
                 DOWN. Do not enable this option for applications that must complete their transactions.
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     backupvserver:
         description:
@@ -641,7 +601,6 @@ options:
                 If the primary virtual server goes down, do not allow it to return to primary status until manually
                 enabled.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     insertvserveripport:
         choices:
@@ -664,7 +623,6 @@ options:
                 * V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a
                 mapped IPv4 address is not configured, insert the IPv6 address.
             - "* OFF - Disable header insertion."
-            - "Possible values = OFF, VIPADDR, V6TOV4MAPPING"
 
     vipheader:
         description:
@@ -680,22 +638,14 @@ options:
             - "Maximum length = 252"
 
     authentication:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable or disable user authentication."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     authn401:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable or disable user authentication with HTTP 401 responses."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     authnvsname:
         description:
@@ -710,7 +660,6 @@ options:
         description:
             - "Process traffic with the push virtual server that is bound to this load balancing virtual server."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     pushvserver:
         description:
@@ -724,18 +673,14 @@ options:
             - >-
                 Expression for extracting a label from the server's response. Can be either an expression or the name
                 of a named expression.
-            - "Default value: \"none\""
+            - "Default value: \\"none\\""
 
     pushmulticlients:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
                 updates.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     tcpprofilename:
         description:
@@ -760,15 +705,11 @@ options:
             - "Any comments that you might want to associate with the virtual server."
 
     l2conn:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - >-
                 Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source
                 IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows
                 multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
-            - "Possible values = ON, OFF"
 
     oracleserverversion:
         choices:
@@ -777,7 +718,6 @@ options:
         description:
             - "Oracle server version."
             - "Default value: 10G"
-            - "Possible values = 10G, 11G"
 
     mssqlserverversion:
         choices:
@@ -796,7 +736,6 @@ options:
                 This setting provides compatibility between the client-side and server-side connections by ensuring
                 that all communication conforms to the server's version.
             - "Default value: 2008R2"
-            - "Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012, 2014"
 
     mysqlprotocolversion:
         description:
@@ -823,7 +762,6 @@ options:
         description:
             - "Apply AppFlow logging to the virtual server."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     netprofile:
         description:
@@ -857,7 +795,6 @@ options:
                 available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add
                 ip command in the CLI or the Create IP dialog box in the GUI.
             - "Default value: PASSIVE"
-            - "Possible values = PASSIVE, ACTIVE"
 
     rhistate:
         choices:
@@ -880,7 +817,6 @@ options:
                 route for the VIP address if at least one of the associated virtual servers, whose RHI STATE set to
                 ACTIVE, is in UP state.
             - "Default value: PASSIVE"
-            - "Possible values = PASSIVE, ACTIVE"
 
     newservicerequest:
         description:
@@ -899,7 +835,6 @@ options:
         description:
             - "Units in which to increment load at each interval in slow-start mode."
             - "Default value: PER_SECOND"
-            - "Possible values = PER_SECOND, PERCENT"
 
     newservicerequestincrementinterval:
         description:
@@ -942,7 +877,6 @@ options:
                 This argument decides the behavior incase the service which is selected from an existing persistence
                 session has reached threshold.
             - "Default value: None"
-            - "Possible values = Bypass, ReLb, None"
 
     td:
         description:
@@ -964,7 +898,6 @@ options:
         description:
             - "This option is used to retain vlan information of incoming packet when macmode is enabled."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dbslb:
         choices:
@@ -973,7 +906,6 @@ options:
         description:
             - "Enable database specific load balancing for MySQL and MSSQL service types."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dns64:
         choices:
@@ -981,30 +913,21 @@ options:
             - 'DISABLED'
         description:
             - "This argument is for enabling/disabling the dns64 on lbvserver."
-            - "Possible values = ENABLED, DISABLED"
 
     bypassaaaa:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns
                 server.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     recursionavailable:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on.
                 Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers
                 thatsupport recursive queries.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     processlocal:
         choices:
@@ -1016,7 +939,6 @@ options:
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dnsprofilename:
         description:
@@ -1060,14 +982,36 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def _exists(client, module):
+    if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def _identical(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = _proxy.diff_object(_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    return _proxy.diff_object(_list[0])
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         name=dict(type='str'),
@@ -1185,27 +1129,9 @@ def main():
         resrule=dict(type='str'),
         persistmask=dict(type='str'),
         v6persistmasklen=dict(type='float'),
-        pq=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        sc=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        rtspnat=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
+        pq=dict(type='bool'),
+        sc=dict(type='bool'),
+        rtspnat=dict(type='bool'),
         m=dict(
             type='str',
             choices=[
@@ -1241,13 +1167,7 @@ def main():
             ]
         ),
         redirurl=dict(type='str'),
-        cacheable=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        cacheable=dict(type='bool'),
         clttimeout=dict(type='float'),
         somethod=dict(
             type='str',
@@ -1309,20 +1229,8 @@ def main():
         ),
         vipheader=dict(type='str'),
         authenticationhost=dict(type='str'),
-        authentication=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        authn401=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
+        authentication=dict(type='bool'),
+        authn401=dict(type='bool'),
         authnvsname=dict(type='str'),
         push=dict(
             type='str',
@@ -1333,24 +1241,12 @@ def main():
         ),
         pushvserver=dict(type='str'),
         pushlabel=dict(type='str'),
-        pushmulticlients=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        pushmulticlients=dict(type='bool'),
         tcpprofilename=dict(type='str'),
         httpprofilename=dict(type='str'),
         dbprofilename=dict(type='str'),
         comment=dict(type='str'),
-        l2conn=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
+        l2conn=dict(type='bool'),
         oracleserverversion=dict(
             type='str',
             choices=[
@@ -1440,20 +1336,8 @@ def main():
                 'DISABLED',
             ]
         ),
-        bypassaaaa=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        recursionavailable=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        bypassaaaa=dict(type='bool'),
+        recursionavailable=dict(type='bool'),
         processlocal=dict(
             type='str',
             choices=[
@@ -1488,12 +1372,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'name',
@@ -1651,6 +1547,19 @@ def main():
         'newname',
     ]
 
+    transforms = {
+        'pq': ['bool_on_off'],
+        'rtspnat': ['bool_on_off'],
+        'authn401': ['bool_on_off'],
+        'bypassaaaa': ['bool_yes_no'],
+        'authentication': ['bool_on_off'],
+        'cacheable': ['bool_yes_no'],
+        'l2conn': ['bool_on_off'],
+        'sc': ['bool_on_off'],
+        'pushmulticlients': ['bool_yes_no'],
+        'recursionavailable': ['bool_yes_no'],
+    }
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -1659,68 +1568,54 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
-
-    def _exists():
-        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def _identical():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = _proxy.diff_object(_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        return _proxy.diff_object(_list[0])
 
     try:
         ensure_feature_is_enabled(client, ' _')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            if not _exists():
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            if not _exists(client, module):
                 if not module.check_mode:
                     _proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
-            elif not _identical():
+            elif not _identical(client, module, _proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(_proxy, diff_list(client, module, _proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(client, module, _proxy), **module_result)
 
                 if not module.check_mode:
                     _proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if not _exists():
+                if not _exists(client, module):
                     module.fail_json(msg='_ does not exist', **module_result)
-                if not _identical():
-                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
+                if not _identical(client, module, _proxy):
+                    module.fail_json(msg='_ differs from configured', diff=diff(client, module, _proxy), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            if _exists():
+        elif module.params['state'] == 'absent':
+            if _exists(client, module):
                 if not module.check_mode:
                     _proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if _exists():
+                if _exists(client, module):
                     module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:

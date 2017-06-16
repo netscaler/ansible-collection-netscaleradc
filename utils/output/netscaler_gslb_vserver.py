@@ -70,9 +70,6 @@ options:
             - 'ORACLE'
         description:
             - "Protocol used by services bound to the virtual server."
-            - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP,
-                SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE
 
     iptype:
         choices:
@@ -81,7 +78,6 @@ options:
         description:
             - "The IP type for this GSLB vserver."
             - "Default value: IPV4"
-            - "Possible values = IPV4, IPV6"
 
     dnsrecordtype:
         choices:
@@ -92,7 +88,6 @@ options:
         description:
             - "DNS record type to associate with the GSLB virtual server's domain name."
             - "Default value: A"
-            - "Possible values = A, AAAA, CNAME, NAPTR"
 
     lbmethod:
         choices:
@@ -108,9 +103,6 @@ options:
         description:
             - "Load balancing method for the GSLB virtual server."
             - "Default value: LEASTCONNECTION"
-            - >-
-                Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH,
-                LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 
     backupsessiontimeout:
         description:
@@ -136,9 +128,6 @@ options:
                 Backup load balancing method. Becomes operational if the primary load balancing method fails or
                 cannot be used. Valid only if the primary method is based on either round-trip time (RTT) or static
                 proximity.
-            - >-
-                Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH,
-                LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 
     netmask:
         description:
@@ -175,7 +164,6 @@ options:
             - >-
                 After the load balancing method selects a service for the first packet, the IP address received in
                 response to the DNS query is used for subsequent requests from the same client.
-            - "Possible values = SOURCEIP, NONE"
 
     persistenceid:
         description:
@@ -216,7 +204,6 @@ options:
         description:
             - "Send clients an empty DNS response when the GSLB virtual server is DOWN."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     mir:
         choices:
@@ -225,7 +212,6 @@ options:
         description:
             - "Include multiple IP addresses in the DNS responses sent to clients."
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     disableprimaryondown:
         choices:
@@ -236,7 +222,6 @@ options:
                 Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to
                 the UP state. Used when spillover is configured for the virtual server.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dynamicweight:
         choices:
@@ -249,7 +234,6 @@ options:
                 using weight-based load balancing methods. The state of the number of services bound to the virtual
                 server help the appliance to select the service.
             - "Default value: DISABLED"
-            - "Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED"
 
     state:
         choices:
@@ -258,7 +242,6 @@ options:
         description:
             - "State of the GSLB virtual server."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     considereffectivestate:
         choices:
@@ -276,7 +259,6 @@ options:
                 service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP
                 state.
             - "Default value: NONE"
-            - "Possible values = NONE, STATE_ONLY"
 
     comment:
         description:
@@ -306,7 +288,6 @@ options:
                 server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if gslbSvc1
                 and gslbSvc3 or gslbSvc2 and gslbSvc3 transition to DOWN.
             - "* NONE - Spillover does not occur."
-            - "Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE"
 
     sopersistence:
         choices:
@@ -317,7 +298,6 @@ options:
                 If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB
                 virtual servers.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     sopersistencetimeout:
         description:
@@ -344,7 +324,6 @@ options:
             - >-
                 Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or
                 exists.
-            - "Possible values = DROP, ACCEPT, REDIRECT"
 
     appflowlog:
         choices:
@@ -353,7 +332,6 @@ options:
         description:
             - "Enable logging appflow flow information."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     backupvserver:
         description:
@@ -427,14 +405,36 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def _exists(client, module):
+    if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def _identical(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = _proxy.diff_object(_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    return _proxy.diff_object(_list[0])
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         name=dict(type='str'),
@@ -630,12 +630,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'name',
@@ -711,6 +723,9 @@ def main():
         'newname',
     ]
 
+    transforms = {
+    }
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -719,68 +734,54 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
-
-    def _exists():
-        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def _identical():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = _proxy.diff_object(_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        return _proxy.diff_object(_list[0])
 
     try:
         ensure_feature_is_enabled(client, ' _')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            if not _exists():
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            if not _exists(client, module):
                 if not module.check_mode:
                     _proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
-            elif not _identical():
+            elif not _identical(client, module, _proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(_proxy, diff_list(client, module, _proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(client, module, _proxy), **module_result)
 
                 if not module.check_mode:
                     _proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if not _exists():
+                if not _exists(client, module):
                     module.fail_json(msg='_ does not exist', **module_result)
-                if not _identical():
-                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
+                if not _identical(client, module, _proxy):
+                    module.fail_json(msg='_ differs from configured', diff=diff(client, module, _proxy), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            if _exists():
+        elif module.params['state'] == 'absent':
+            if _exists(client, module):
                 if not module.check_mode:
                     _proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if _exists():
+                if _exists(client, module):
                     module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:

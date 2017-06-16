@@ -87,9 +87,6 @@ options:
         description:
             - "Type of service to create."
             - "Default value: NSSVC_SERVICE_UNKNOWN"
-            - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP,
-                SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE
 
     port:
         description:
@@ -120,13 +117,9 @@ options:
             - "Maximum value = 4294967294"
 
     healthmonitor:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Monitor the health of the GSLB service."
             - "Default value: YES"
-            - "Possible values = YES, NO"
 
     sitename:
         description:
@@ -140,7 +133,6 @@ options:
         description:
             - "Enable or disable the service."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     cip:
         choices:
@@ -151,7 +143,6 @@ options:
                 In the request that is forwarded to the GSLB service, insert a header that stores the client's IP
                 address. Client IP header insertion is used in connection-proxy based site persistence.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     cipheader:
         description:
@@ -169,7 +160,6 @@ options:
             - 'NONE'
         description:
             - "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services."
-            - "Possible values = ConnectionProxy, HTTPRedirect, NONE"
 
     cookietimeout:
         description:
@@ -218,7 +208,6 @@ options:
                 Flush all active transactions associated with the GSLB service when its state transitions from UP to
                 DOWN. Do not enable this option for services that must complete their transactions. Applicable if
                 connection proxy based site persistence is used.
-            - "Possible values = ENABLED, DISABLED"
 
     maxaaausers:
         description:
@@ -254,7 +243,6 @@ options:
         description:
             - "Enable logging appflow flow information."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     naptrreplacement:
         description:
@@ -338,14 +326,36 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def _exists(client, module):
+    if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def _identical(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = _proxy.diff_object(_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    return _proxy.diff_object(_list[0])
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         servicename=dict(type='str'),
@@ -379,13 +389,7 @@ def main():
         publicip=dict(type='str'),
         publicport=dict(type='int'),
         maxclient=dict(type='float'),
-        healthmonitor=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        healthmonitor=dict(type='bool'),
         sitename=dict(type='str'),
         state=dict(
             type='str',
@@ -466,12 +470,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'servicename',
@@ -548,6 +564,10 @@ def main():
         'newname',
     ]
 
+    transforms = {
+        'healthmonitor': ['bool_yes_no'],
+    }
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -556,68 +576,54 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
-
-    def _exists():
-        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def _identical():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = _proxy.diff_object(_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        return _proxy.diff_object(_list[0])
 
     try:
         ensure_feature_is_enabled(client, ' _')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            if not _exists():
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            if not _exists(client, module):
                 if not module.check_mode:
                     _proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
-            elif not _identical():
+            elif not _identical(client, module, _proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(_proxy, diff_list(client, module, _proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(client, module, _proxy), **module_result)
 
                 if not module.check_mode:
                     _proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if not _exists():
+                if not _exists(client, module):
                     module.fail_json(msg='_ does not exist', **module_result)
-                if not _identical():
-                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
+                if not _identical(client, module, _proxy):
+                    module.fail_json(msg='_ differs from configured', diff=diff(client, module, _proxy), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            if _exists():
+        elif module.params['state'] == 'absent':
+            if _exists(client, module):
                 if not module.check_mode:
                     _proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if _exists():
+                if _exists(client, module):
                     module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:

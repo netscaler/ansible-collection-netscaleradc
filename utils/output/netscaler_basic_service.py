@@ -95,11 +95,6 @@ options:
             - 'SSL_FIX'
         description:
             - "Protocol in which data is exchanged with the service."
-            - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, DTLS, NNTP, RPCSVR, DNS, ADNS, SNMP,
-                RTSP, DHCPRA, ANY, SIP_UDP, SIP_TCP, SIP_SSL, DNS_TCP, ADNS_TCP, MYSQL, MSSQL, ORACLE, RADIUS,
-                RADIUSListener, RDP, DIAMETER, SSL_DIAMETER, TFTP, SMPP, PPTP, GRE, SYSLOGTCP, SYSLOGUDP, FIX,
-                SSL_FIX
 
     port:
         description:
@@ -121,7 +116,6 @@ options:
             - 'FORWARD'
         description:
             - "Cache type supported by the cache server."
-            - "Possible values = TRANSPARENT, REVERSE, FORWARD"
 
     maxclient:
         description:
@@ -130,9 +124,6 @@ options:
             - "Maximum value = 4294967294"
 
     healthmonitor:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Monitor the health of this service. Available settings function as follows:"
             - "YES - Send probes to check the health of the service."
@@ -140,7 +131,6 @@ options:
                 NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
             - "Default value: YES"
-            - "Possible values = YES, NO"
 
     maxreq:
         description:
@@ -150,14 +140,10 @@ options:
             - "Maximum value = 65535"
 
     cacheable:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Use the transparent cache redirection virtual server to forward requests to the cache server."
             - "Note: Do not specify this parameter if you set the Cache Type parameter."
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     cip:
         choices:
@@ -168,7 +154,6 @@ options:
                 Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6
                 address as its value. Used if the server needs the client's IP address for security, accounting, or
                 other purposes, and setting the Use Source IP parameter is not a viable option.
-            - "Possible values = ENABLED, DISABLED"
 
     cipheader:
         description:
@@ -183,9 +168,6 @@ options:
             - "Minimum length = 1"
 
     usip:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use the client's IP address as the source IP address when initiating a connection to the server. When
@@ -193,60 +175,35 @@ options:
                 setting (available in the enable ns mode and disable ns mode CLI commands, or in the System >
                 Settings > Configure modes > Configure Modes dialog box). However, you can override this setting
                 after you create the service.
-            - "Possible values = YES, NO"
 
     pathmonitor:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Path monitoring for clustering."
-            - "Possible values = YES, NO"
 
     pathmonitorindv:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Individual Path monitoring decisions."
-            - "Possible values = YES, NO"
 
     useproxyport:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use the proxy port as the source port when initiating connections with the server. With the NO
                 setting, the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
-            - "Possible values = YES, NO"
 
     sc:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "State of SureConnect for the service."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     sp:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable surge protection for the service."
-            - "Possible values = ON, OFF"
 
     rtspsessionidremap:
-        choices:
-            - 'ON'
-            - 'OFF'
         description:
             - "Enable RTSP session ID mapping for the service."
             - "Default value: OFF"
-            - "Possible values = ON, OFF"
 
     clttimeout:
         description:
@@ -265,35 +222,23 @@ options:
             - >-
                 Unique identifier for the service. Used when the persistency type for the virtual server is set to
                 Custom Server ID.
-            - "Default value: \"None\""
+            - "Default value: \\"None\\""
 
     serverid:
         description:
             - "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
 
     cka:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable client keep-alive for the service."
-            - "Possible values = YES, NO"
 
     tcpb:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable TCP buffering for the service."
-            - "Possible values = YES, NO"
 
     cmp:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Enable compression for the service."
-            - "Possible values = YES, NO"
 
     maxbandwidth:
         description:
@@ -302,15 +247,11 @@ options:
             - "Maximum value = 4294967287"
 
     accessdown:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service
                 is DOWN, and this parameter is disabled, the packets are dropped.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     monthreshold:
         description:
@@ -327,7 +268,6 @@ options:
         description:
             - "Initial state of the service."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     downstateflush:
         choices:
@@ -338,7 +278,6 @@ options:
                 Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do
                 not enable this option for applications that must complete their transactions.
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     tcpprofilename:
         description:
@@ -370,7 +309,6 @@ options:
         description:
             - "Enable logging of AppFlow information."
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     netprofile:
         description:
@@ -397,7 +335,6 @@ options:
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dnsprofilename:
         description:
@@ -439,15 +376,11 @@ options:
                 marked as unavailable (OUT OF SERVICE).
 
     graceful:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Shut down gracefully, not accepting any new connections, and disabling the service when all of its
                 connections are closed.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     all:
         description:
@@ -479,14 +412,36 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def _exists(client, module):
+    if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def _identical(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = _proxy.diff_object(_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    return _proxy.diff_object(_list[0])
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         name=dict(type='str'),
@@ -545,21 +500,9 @@ def main():
             ]
         ),
         maxclient=dict(type='float'),
-        healthmonitor=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        healthmonitor=dict(type='bool'),
         maxreq=dict(type='float'),
-        cacheable=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        cacheable=dict(type='bool'),
         cip=dict(
             type='str',
             choices=[
@@ -568,88 +511,22 @@ def main():
             ]
         ),
         cipheader=dict(type='str'),
-        usip=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        pathmonitor=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        pathmonitorindv=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        useproxyport=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        sc=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        sp=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
-        rtspsessionidremap=dict(
-            type='str',
-            choices=[
-                'ON',
-                'OFF',
-            ]
-        ),
+        usip=dict(type='bool'),
+        pathmonitor=dict(type='bool'),
+        pathmonitorindv=dict(type='bool'),
+        useproxyport=dict(type='bool'),
+        sc=dict(type='bool'),
+        sp=dict(type='bool'),
+        rtspsessionidremap=dict(type='bool'),
         clttimeout=dict(type='float'),
         svrtimeout=dict(type='float'),
         customserverid=dict(type='str'),
         serverid=dict(type='float'),
-        cka=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        tcpb=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        cmp=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        cka=dict(type='bool'),
+        tcpb=dict(type='bool'),
+        cmp=dict(type='bool'),
         maxbandwidth=dict(type='float'),
-        accessdown=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        accessdown=dict(type='bool'),
         monthreshold=dict(type='float'),
         state=dict(
             type='str',
@@ -691,13 +568,7 @@ def main():
         monitor_name_svc=dict(type='str'),
         riseapbrstatsmsgcode=dict(type='int'),
         delay=dict(type='float'),
-        graceful=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        graceful=dict(type='bool'),
         all=dict(type='bool'),
         Internal=dict(type='bool'),
         newname=dict(type='str'),
@@ -723,12 +594,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'name',
@@ -835,6 +718,23 @@ def main():
         'newname',
     ]
 
+    transforms = {
+        'pathmonitorindv': ['bool_yes_no'],
+        'cacheable': ['bool_yes_no'],
+        'cka': ['bool_yes_no'],
+        'pathmonitor': ['bool_yes_no'],
+        'tcpb': ['bool_yes_no'],
+        'sp': ['bool_on_off'],
+        'graceful': ['bool_yes_no'],
+        'usip': ['bool_yes_no'],
+        'healthmonitor': ['bool_yes_no'],
+        'useproxyport': ['bool_yes_no'],
+        'rtspsessionidremap': ['bool_on_off'],
+        'sc': ['bool_on_off'],
+        'accessdown': ['bool_yes_no'],
+        'cmp': ['bool_yes_no'],
+    }
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -843,68 +743,54 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
-
-    def _exists():
-        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def _identical():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = _proxy.diff_object(_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        return _proxy.diff_object(_list[0])
 
     try:
         ensure_feature_is_enabled(client, ' _')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            if not _exists():
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            if not _exists(client, module):
                 if not module.check_mode:
                     _proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
-            elif not _identical():
+            elif not _identical(client, module, _proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(_proxy, diff_list(client, module, _proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(client, module, _proxy), **module_result)
 
                 if not module.check_mode:
                     _proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if not _exists():
+                if not _exists(client, module):
                     module.fail_json(msg='_ does not exist', **module_result)
-                if not _identical():
-                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
+                if not _identical(client, module, _proxy):
+                    module.fail_json(msg='_ differs from configured', diff=diff(client, module, _proxy), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            if _exists():
+        elif module.params['state'] == 'absent':
+            if _exists(client, module):
                 if not module.check_mode:
                     _proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if _exists():
+                if _exists(client, module):
                     module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:

@@ -98,13 +98,6 @@ options:
             - 'CITRIX-STA-SERVICE-NHOP'
         description:
             - "Type of monitor that you want to create."
-            - >-
-                Possible values = PING, TCP, HTTP, TCP-ECV, HTTP-ECV, UDP-ECV, DNS, FTP, LDNS-PING, LDNS-TCP,
-                LDNS-DNS, RADIUS, USER, HTTP-INLINE, SIP-UDP, SIP-TCP, LOAD, FTP-EXTENDED, SMTP, SNMP, NNTP, MYSQL,
-                MYSQL-ECV, MSSQL-ECV, ORACLE-ECV, LDAP, POP3, CITRIX-XML-SERVICE, CITRIX-WEB-INTERFACE, DNS-TCP,
-                RTSP, ARP, CITRIX-AG, CITRIX-AAC-LOGINPAGE, CITRIX-AAC-LAS, CITRIX-XD-DDC, ND6, CITRIX-WI-EXTENDED,
-                DIAMETER, RADIUS_ACCOUNTING, STOREFRONT, APPC, SMPP, CITRIX-XNC-ECV, CITRIX-XDM, CITRIX-STA-SERVICE,
-                CITRIX-STA-SERVICE-NHOP
 
     action:
         choices:
@@ -127,7 +120,6 @@ options:
                 configured down time has expired. Persistent connections to the service are terminated as soon as the
                 service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
             - "Default value: DOWN"
-            - "Possible values = NONE, LOG, DOWN"
 
     respcode:
         description:
@@ -138,11 +130,11 @@ options:
 
     httprequest:
         description:
-            - "HTTP request to send to the server (for example, \"HEAD /file.html\")."
+            - "HTTP request to send to the server (for example, \\"HEAD /file.html\\")."
 
     rtsprequest:
         description:
-            - "RTSP request to send to the server (for example, \"OPTIONS *\")."
+            - "RTSP request to send to the server (for example, \\"OPTIONS *\\")."
 
     customheaders:
         description:
@@ -164,7 +156,6 @@ options:
             - 'REGISTER'
         description:
             - "SIP method to use for the query. Applicable only to monitors of type SIP-UDP."
-            - "Possible values = OPTIONS, INVITE, REGISTER"
 
     sipuri:
         description:
@@ -203,7 +194,6 @@ options:
             - >-
                 Type of DNS record for which to send monitoring queries. Set to Address for querying A records, AAAA
                 for querying AAAA records, and Zone for querying the SOA record.
-            - "Possible values = Address, Zone, AAAA"
 
     scriptname:
         description:
@@ -316,7 +306,6 @@ options:
             - >-
                 Calculate the least response times for bound services. If this parameter is not enabled, the
                 appliance does not learn the response times of the bound services. Also used for LRTM load balancing.
-            - "Possible values = ENABLED, DISABLED"
 
     deviation:
         description:
@@ -336,7 +325,6 @@ options:
         description:
             - "Unit of measurement for the Deviation parameter. Cannot be changed after the monitor is created."
             - "Default value: SEC"
-            - "Possible values = SEC, MSEC, MIN"
 
     interval:
         description:
@@ -353,7 +341,6 @@ options:
         description:
             - "monitor interval units."
             - "Default value: SEC"
-            - "Possible values = SEC, MSEC, MIN"
 
     resptimeout:
         description:
@@ -376,7 +363,6 @@ options:
         description:
             - "monitor response timeout units."
             - "Default value: SEC"
-            - "Possible values = SEC, MSEC, MIN"
 
     resptimeoutthresh:
         description:
@@ -441,7 +427,6 @@ options:
         description:
             - "Unit of measurement for the Down Time parameter. Cannot be changed after the monitor is created."
             - "Default value: SEC"
-            - "Possible values = SEC, MSEC, MIN"
 
     destip:
         description:
@@ -468,23 +453,15 @@ options:
                 service, the state of the monitor is not taken into account when the state of the service is
                 determined.
             - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     reverse:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN
                 when probe criteria are not satisfied.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     transparent:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 The monitor is bound to a transparent device such as a firewall or router. The state of a transparent
@@ -492,26 +469,17 @@ options:
                 monitored, a destination IP address must be specified. The probe is sent to the specified IP address
                 by using the MAC address of the transparent device.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     iptunnel:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Send the monitoring probe to the service through an IP tunnel. A destination IP address must be
                 specified.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     tos:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - "Probe the service by encoding the destination IP address in the IP TOS (6) bits."
-            - "Possible values = YES, NO"
 
     tosid:
         description:
@@ -520,27 +488,19 @@ options:
             - "Maximum value = 63"
 
     secure:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Use a secure SSL connection when monitoring a service. Applicable only to TCP based monitors. The
                 secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure
                 connection by default.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     validatecred:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type
                 CITRIX-XD-DDC.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     domain:
         description:
@@ -638,7 +598,6 @@ options:
         description:
             - "Version of MSSQL server that is to be monitored."
             - "Default value: 70"
-            - "Possible values = 70, 2000, 2000SP1, 2005, 2008, 2008R2, 2012, 2014"
 
     Snmpoid:
         description:
@@ -661,7 +620,6 @@ options:
             - 'V2'
         description:
             - "SNMP version to be used for SNMP monitors."
-            - "Possible values = V1, V2"
 
     metrictable:
         description:
@@ -692,15 +650,11 @@ options:
             - "Minimum length = 1"
 
     storefrontacctservice:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For
                 multi-tenancy configuration users my skip account service.
             - "Default value: YES"
-            - "Possible values = YES, NO"
 
     hostname:
         description:
@@ -780,7 +734,6 @@ options:
             - >-
                 Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter
                 servers.
-            - "Possible values = NO_INBAND_SECURITY, TLS"
 
     supportedvendorids:
         description:
@@ -837,19 +790,14 @@ options:
                 Store the database list populated with the responses to monitor probes. Used in database specific
                 load balancing if MSSQL-ECV/MYSQL-ECV monitor is configured.
             - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     storefrontcheckbackendservices:
-        choices:
-            - 'YES'
-            - 'NO'
         description:
             - >-
                 This option will enable monitoring of services running on storefront server. Storefront services are
                 monitored by probing to a Windows service that runs on the Storefront server and exposes details of
                 which storefront services are running.
             - "Default value: NO"
-            - "Possible values = YES, NO"
 
     trofscode:
         description:
@@ -903,14 +851,36 @@ RETURN = '''
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection
+try:
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def _exists(client, module):
+    if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def _identical(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = _proxy.diff_object(_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, _proxy):
+    _list = _.get_filtered(client, 'name:%s' % module.params['name'])
+    return _proxy.diff_object(_list[0])
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         monitorname=dict(type='str'),
@@ -1074,49 +1044,13 @@ def main():
                 'DISABLED',
             ]
         ),
-        reverse=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        transparent=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        iptunnel=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        tos=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        reverse=dict(type='bool'),
+        transparent=dict(type='bool'),
+        iptunnel=dict(type='bool'),
+        tos=dict(type='bool'),
         tosid=dict(type='float'),
-        secure=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
-        validatecred=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        secure=dict(type='bool'),
+        validatecred=dict(type='bool'),
         domain=dict(type='str'),
         ipaddress=dict(type='list'),
         group=dict(type='str'),
@@ -1156,13 +1090,7 @@ def main():
         application=dict(type='str'),
         sitepath=dict(type='str'),
         storename=dict(type='str'),
-        storefrontacctservice=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        storefrontacctservice=dict(type='bool'),
         hostname=dict(type='str'),
         netprofile=dict(type='str'),
         originhost=dict(type='str'),
@@ -1192,13 +1120,7 @@ def main():
                 'DISABLED',
             ]
         ),
-        storefrontcheckbackendservices=dict(
-            type='str',
-            choices=[
-                'YES',
-                'NO',
-            ]
-        ),
+        storefrontcheckbackendservices=dict(type='bool'),
         trofscode=dict(type='float'),
         trofsstring=dict(type='str'),
         metric=dict(type='str'),
@@ -1228,12 +1150,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'monitorname',
@@ -1367,6 +1301,17 @@ def main():
         'servicegroupname',
     ]
 
+    transforms = {
+        'storefrontcheckbackendservices': ['bool_yes_no'],
+        'secure': ['bool_yes_no'],
+        'tos': ['bool_yes_no'],
+        'validatecred': ['bool_yes_no'],
+        'storefrontacctservice': ['bool_yes_no'],
+        'iptunnel': ['bool_yes_no'],
+        'transparent': ['bool_yes_no'],
+        'reverse': ['bool_yes_no'],
+    }
+
     # Instantiate config proxy
     _proxy = ConfigProxy(
         actual=_(),
@@ -1375,68 +1320,54 @@ def main():
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
         immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
-
-    def _exists():
-        if _.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def _identical():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = _proxy.diff_object(_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        _list = _.get_filtered(client, 'name:%s' % module.params['name'])
-        return _proxy.diff_object(_list[0])
 
     try:
         ensure_feature_is_enabled(client, ' _')
-        # Apply appropriate operation
-        if module.params['operation'] == 'present':
-            if not _exists():
+        # Apply appropriate state
+        if module.params['state'] == 'present':
+            if not _exists(client, module):
                 if not module.check_mode:
                     _proxy.add()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
-            elif not _identical():
+            elif not _identical(client, module, _proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(_proxy, diff_list(client, module, _proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(client, module, _proxy), **module_result)
 
                 if not module.check_mode:
                     _proxy.update()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if not _exists():
+                if not _exists(client, module):
                     module.fail_json(msg='_ does not exist', **module_result)
-                if not _identical():
-                    module.fail_json(msg='_ differs from configured', diff=diff(), **module_result)
+                if not _identical(client, module, _proxy):
+                    module.fail_json(msg='_ differs from configured', diff=diff(client, module, _proxy), **module_result)
 
-        elif module.params['operation'] == 'absent':
-            if _exists():
+        elif module.params['state'] == 'absent':
+            if _exists(client, module):
                 if not module.check_mode:
                     _proxy.delete()
-                    client.save_config()
+                    if module.params['save_config']:
+                        client.save_config()
                 module_result['changed'] = True
             else:
                 module_result['changed'] = False
 
-            # Sanity check for operation
+            # Sanity check for state
             if not module.check_mode:
-                if _exists():
+                if _exists(client, module):
                     module.fail_json(msg='_ still exists', **module_result)
 
     except nitro_exception as e:
