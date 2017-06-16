@@ -34,6 +34,8 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
@@ -340,7 +342,7 @@ options:
     rtspnat:
         description:
             - "Use network address translation (NAT) for RTSP data connections."
-            - "Default value: OFF"
+        type: bool
 
     m:
         choices:
@@ -351,26 +353,25 @@ options:
         description:
             - "Redirection mode for load balancing. Available settings function as follows:"
             - >-
-                * IP - Before forwarding a request to a server, change the destination IP address to the server's IP
+                * C(IP) - Before forwarding a request to a server, change the destination IP address to the server's IP
                 address.
             - >-
-                * MAC - Before forwarding a request to a server, change the destination MAC address to the server's
+                * C(MAC) - Before forwarding a request to a server, change the destination MAC address to the server's
                 MAC address. The destination IP address is not changed. MAC-based redirection mode is used mostly in
                 firewall load balancing deployments.
             - >-
-                * IPTUNNEL - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the
+                * C(IPTUNNEL) - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the
                 destination IP address to the IP address of the server and the source IP address to the subnet IP
                 (SNIP). The client IP packets are not modified. Applicable to both IPv4 and IPv6 packets.
-            - "* TOS - Encode the virtual server's TOS ID in the TOS field of the IP header."
-            - "You can use either the IPTUNNEL or the TOS option to implement Direct Server Return (DSR)."
-            - "Default value: IP"
+            - "* C(TOS) - Encode the virtual server's TOS ID in the TOS field of the IP header."
+            - "You can use either the C(IPTUNNEL) or the C(TOS) option to implement Direct Server Return (DSR)."
 
     tosid:
         description:
             - >-
                 TOS ID of the virtual server. Applicable only when the load balancing redirection mode is set to TOS.
-            - "Minimum value = 1"
-            - "Maximum value = 63"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(63)"
 
     datalength:
         description:
@@ -378,8 +379,8 @@ options:
                 Length of the token to be extracted from the data segment of an incoming packet, for use in the token
                 method of load balancing. The length of the token, specified in bytes, must not be greater than 24
                 KB. Applicable to virtual servers of type TCP.
-            - "Minimum value = 1"
-            - "Maximum value = 100"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(100)"
 
     dataoffset:
         description:
@@ -387,8 +388,8 @@ options:
                 Offset to be considered when extracting a token from the TCP payload. Applicable to virtual servers,
                 of type TCP, using the token method of load balancing. Must be within the first 24 KB of the TCP
                 payload.
-            - "Minimum value = 0"
-            - "Maximum value = 25400"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(25400)"
 
     sessionless:
         choices:
@@ -399,7 +400,6 @@ options:
                 Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load
                 balancing of intrusion detection system (IDS) servers and scenarios involving direct server return
                 (DSR), where session information is unnecessary.
-            - "Default value: DISABLED"
 
     connfailover:
         choices:
@@ -412,13 +412,12 @@ options:
                 established TCP connections and UDP packet flows are kept active and resumed on the secondary
                 appliance. Clients remain connected to the same servers. Available settings function as follows:
             - >-
-                * STATEFUL - The primary appliance shares state information with the secondary appliance, in real
+                * C(STATEFUL) - The primary appliance shares state information with the secondary appliance, in real
                 time, resulting in some runtime processing overhead.
             - >-
-                * STATELESS - State information is not shared, and the new primary appliance tries to re-create the
+                * C(STATELESS) - State information is not shared, and the new primary appliance tries to re-create the
                 packet flow on the basis of the information contained in the packets it receives.
-            - "* DISABLED - Connection failover does not occur."
-            - "Default value: DISABLED"
+            - "* C(DISABLED) - Connection failover does not occur."
 
     redirurl:
         description:
@@ -435,13 +434,13 @@ options:
                 forward requests only to a transparent cache redirection virtual server that has an IP address and
                 port combination of *:80, so such a cache redirection virtual server must be configured on the
                 appliance.
-            - "Default value: NO"
+        type: bool
 
     clttimeout:
         description:
             - "Idle time, in seconds, after which a client connection is terminated."
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
 
     somethod:
         choices:
@@ -452,21 +451,21 @@ options:
             - 'NONE'
         description:
             - "Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:"
-            - "* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold."
+            - "* C(CONNECTION) - Spillover occurs when the number of client connections exceeds the threshold."
             - >-
                 * DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server
                 exceeds the sum of the maximum client (Max Clients) settings for bound services. Do not specify a
                 spillover threshold for this setting, because the threshold is implied by the Max Clients settings of
                 bound services.
             - >-
-                * BANDWIDTH - Spillover occurs when the bandwidth consumed by the virtual server's incoming and
+                * C(BANDWIDTH) - Spillover occurs when the bandwidth consumed by the virtual server's incoming and
                 outgoing traffic exceeds the threshold.
             - >-
-                * HEALTH - Spillover occurs when the percentage of weights of the services that are UP drops below
+                * C(HEALTH) - Spillover occurs when the percentage of weights of the services that are UP drops below
                 the threshold. For example, if services svc1, svc2, and svc3 are bound to a virtual server, with
                 weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2
                 and svc3 transition to DOWN.
-            - "* NONE - Spillover does not occur."
+            - "* C(NONE) - Spillover does not occur."
 
     sopersistence:
         choices:
@@ -476,32 +475,29 @@ options:
             - >-
                 If spillover occurs, maintain source IP address based persistence for both primary and backup virtual
                 servers.
-            - "Default value: DISABLED"
 
     sopersistencetimeout:
         description:
             - "Timeout for spillover persistence, in minutes."
-            - "Default value: 2"
-            - "Minimum value = 2"
-            - "Maximum value = 1440"
+            - "Minimum value = C(2)"
+            - "Maximum value = C(1440)"
 
     healththreshold:
         description:
             - >-
                 Threshold in percent of active services below which vserver state is made down. If this threshold is
                 0, vserver state will be up even if one bound service is up.
-            - "Default value: 0"
-            - "Minimum value = 0"
-            - "Maximum value = 100"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
 
     sothreshold:
         description:
             - >-
-                Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a
-                bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a
-                percentage for the HEALTH method (do not enter the percentage symbol).
-            - "Minimum value = 1"
-            - "Maximum value = 4294967287"
+                Threshold at which spillover occurs. Specify an integer for the C(CONNECTION) spillover method, a
+                bandwidth value in kilobits per second for the C(BANDWIDTH) method (do not enter the units), or a
+                percentage for the C(HEALTH) method (do not enter the percentage symbol).
+            - "Minimum value = C(1)"
+            - "Maximum value = C(4294967287)"
 
     sobackupaction:
         choices:
@@ -519,7 +515,6 @@ options:
             - 'DISABLED'
         description:
             - "Rewrite the port and change the protocol to ensure successful HTTP redirects from services."
-            - "Default value: DISABLED"
 
     downstateflush:
         choices:
@@ -529,7 +524,6 @@ options:
             - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
                 DOWN. Do not enable this option for applications that must complete their transactions.
-            - "Default value: ENABLED"
 
     disableprimaryondown:
         choices:
@@ -539,7 +533,6 @@ options:
             - >-
                 If the primary virtual server goes down, do not allow it to return to primary status until manually
                 enabled.
-            - "Default value: DISABLED"
 
     insertvserveripport:
         choices:
@@ -555,13 +548,13 @@ options:
                 it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address, the
                 value of this parameter determines which IP address is inserted in the header, as follows:
             - >-
-                * VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether the
+                * C(VIPADDR) - Insert the IP address of the virtual server in the HTTP header regardless of whether the
                 virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is
                 ignored.
             - >-
-                * V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a
+                * C(V6TOV4MAPPING) - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a
                 mapped IPv4 address is not configured, insert the IPv6 address.
-            - "* OFF - Disable header insertion."
+            - "* C(OFF) - Disable header insertion."
 
     vipheader:
         description:
@@ -579,12 +572,12 @@ options:
     authentication:
         description:
             - "Enable or disable user authentication."
-            - "Default value: OFF"
+        type: bool
 
     authn401:
         description:
             - "Enable or disable user authentication with HTTP 401 responses."
-            - "Default value: OFF"
+        type: bool
 
     authnvsname:
         description:
@@ -598,7 +591,6 @@ options:
             - 'DISABLED'
         description:
             - "Process traffic with the push virtual server that is bound to this load balancing virtual server."
-            - "Default value: DISABLED"
 
     pushvserver:
         description:
@@ -612,14 +604,13 @@ options:
             - >-
                 Expression for extracting a label from the server's response. Can be either an expression or the name
                 of a named expression.
-            - "Default value: \\"none\\""
 
     pushmulticlients:
         description:
             - >-
                 Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
                 updates.
-            - "Default value: NO"
+        type: bool
 
     tcpprofilename:
         description:
@@ -649,6 +640,7 @@ options:
                 Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source
                 IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows
                 multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
+        type: bool
 
     oracleserverversion:
         choices:
@@ -656,7 +648,6 @@ options:
             - '11G'
         description:
             - "Oracle server version."
-            - "Default value: 10G"
 
     mssqlserverversion:
         choices:
@@ -670,11 +661,10 @@ options:
             - '2014'
         description:
             - >-
-                For a load balancing virtual server of type MSSQL, the Microsoft SQL Server version. Set this
+                For a load balancing virtual server of type C(MSSQL), the Microsoft SQL Server version. Set this
                 parameter if you expect some clients to run a version different from the version of the database.
                 This setting provides compatibility between the client-side and server-side connections by ensuring
                 that all communication conforms to the server's version.
-            - "Default value: 2008R2"
 
     mysqlprotocolversion:
         description:
@@ -700,7 +690,6 @@ options:
             - 'DISABLED'
         description:
             - "Apply AppFlow logging to the virtual server."
-            - "Default value: ENABLED"
 
     netprofile:
         description:
@@ -720,20 +709,19 @@ options:
                 How the NetScaler appliance responds to ping requests received for an IP address that is common to
                 one or more virtual servers. Available settings function as follows:
             - >-
-                * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always
+                * If set to C(PASSIVE) on all the virtual servers that share the IP address, the appliance always
                 responds to the ping requests.
             - >-
-                * If set to ACTIVE on all the virtual servers that share the IP address, the appliance responds to
+                * If set to C(ACTIVE) on all the virtual servers that share the IP address, the appliance responds to
                 the ping requests if at least one of the virtual servers is UP. Otherwise, the appliance does not
                 respond.
             - >-
-                * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance responds if at
+                * If set to C(ACTIVE) on some virtual servers and PASSIVE on the others, the appliance responds if at
                 least one virtual server with the ACTIVE setting is UP. Otherwise, the appliance does not respond.
             - >-
                 Note: This parameter is available at the virtual server level. A similar parameter, ICMP Response, is
                 available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add
                 ip command in the CLI or the Create IP dialog box in the GUI.
-            - "Default value: PASSIVE"
 
     rhistate:
         choices:
@@ -746,16 +734,15 @@ options:
                 VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate
                 (RHI STATE) settings on the virtual servers associated with the VIP address:
             - >-
-                * If you set RHI STATE to PASSIVE on all virtual servers, the NetScaler ADC always advertises the
+                * If you set C(rhistate) to C(PASSIVE) on all virtual servers, the NetScaler ADC always advertises the
                 route for the VIP address.
             - >-
-                * If you set RHI STATE to ACTIVE on all virtual servers, the NetScaler ADC advertises the route for
+                * If you set C(rhistate) to C(ACTIVE) on all virtual servers, the NetScaler ADC advertises the route for
                 the VIP address if at least one of the associated virtual servers is in UP state.
             - >-
-                * If you set RHI STATE to ACTIVE on some and PASSIVE on others, the NetScaler ADC advertises the
-                route for the VIP address if at least one of the associated virtual servers, whose RHI STATE set to
-                ACTIVE, is in UP state.
-            - "Default value: PASSIVE"
+                * If you set C(rhistate) to C(ACTIVE) on some and PASSIVE on others, the NetScaler ADC advertises the
+                route for the VIP address if at least one of the associated virtual servers, whose C(rhistate) set to
+                C(ACTIVE), is in UP state.
 
     newservicerequest:
         description:
@@ -765,7 +752,6 @@ options:
                 applicable. A zero value indicates that the global RR startup parameter is applied. Changing the
                 value to zero will cause services currently in slow start to take the full traffic as determined by
                 the LB method. Subsequently, any new services added will use the global RR factor.
-            - "Default value: 0"
 
     newservicerequestunit:
         choices:
@@ -773,30 +759,26 @@ options:
             - 'PERCENT'
         description:
             - "Units in which to increment load at each interval in slow-start mode."
-            - "Default value: PER_SECOND"
 
     newservicerequestincrementinterval:
         description:
             - >-
                 Interval, in seconds, between successive increments in the load on a new service or a service whose
                 state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.
-            - "Default value: 0"
-            - "Minimum value = 0"
-            - "Maximum value = 3600"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(3600)"
 
     minautoscalemembers:
         description:
             - "Minimum number of members expected to be present when vserver is used in Autoscale."
-            - "Default value: 0"
-            - "Minimum value = 0"
-            - "Maximum value = 5000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(5000)"
 
     maxautoscalemembers:
         description:
             - "Maximum number of members expected to be present when vserver is used in Autoscale."
-            - "Default value: 0"
-            - "Minimum value = 0"
-            - "Maximum value = 5000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(5000)"
 
     persistavpno:
         description:
@@ -804,7 +786,7 @@ options:
             - "In case this AVP is not defined in Base RFC 3588 and it is nested inside a Grouped AVP,"
             - "define a sequence of AVP numbers (max 3) in order of parent to child. So say persist AVP number X"
             - "is nested inside AVP Y which is nested in Z, then define the list as Z Y X."
-            - "Minimum value = 1"
+            - "Minimum value = C(1)"
 
     skippersistency:
         choices:
@@ -815,7 +797,6 @@ options:
             - >-
                 This argument decides the behavior incase the service which is selected from an existing persistence
                 session has reached threshold.
-            - "Default value: None"
 
     td:
         description:
@@ -823,8 +804,8 @@ options:
                 Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
                 If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
                 of 0.
-            - "Minimum value = 0"
-            - "Maximum value = 4094"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4094)"
 
     authnprofile:
         description:
@@ -836,7 +817,6 @@ options:
             - 'DISABLED'
         description:
             - "This option is used to retain vlan information of incoming packet when macmode is enabled."
-            - "Default value: DISABLED"
 
     dbslb:
         choices:
@@ -844,21 +824,20 @@ options:
             - 'DISABLED'
         description:
             - "Enable database specific load balancing for MySQL and MSSQL service types."
-            - "Default value: DISABLED"
 
     dns64:
         choices:
             - 'ENABLED'
             - 'DISABLED'
         description:
-            - "This argument is for enabling/disabling the dns64 on lbvserver."
+            - "This argument is for enabling/disabling the C(dns64) on lbvserver."
 
     bypassaaaa:
         description:
             - >-
                 If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns
                 server.
-            - "Default value: NO"
+        type: bool
 
     recursionavailable:
         description:
@@ -866,7 +845,7 @@ options:
                 When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on.
                 Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers
                 thatsupport recursive queries.
-            - "Default value: NO"
+        type: bool
 
     processlocal:
         choices:
@@ -877,7 +856,6 @@ options:
                 By turning on this option packets destined to a vserver in a cluster will not under go any steering.
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
-            - "Default value: DISABLED"
 
     dnsprofilename:
         description:
@@ -890,8 +868,8 @@ options:
     weight:
         description:
             - "Weight to assign to the specified service."
-            - "Minimum value = 1"
-            - "Maximum value = 100"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(100)"
 
     servicename:
         description:
@@ -980,7 +958,15 @@ diff:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.netscaler import (ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, get_immutables_intersection, ensure_feature_is_enabled)
+from ansible.module_utils.netscaler import (
+    ConfigProxy,
+    get_nitro_client,
+    netscaler_common_arguments,
+    log,
+    loglines,
+    get_immutables_intersection,
+    ensure_feature_is_enabled
+)
 import copy
 import time
 
@@ -1637,7 +1623,7 @@ def main():
 
     # Fail the module if imports failed
     if not PYTHON_SDK_IMPORTED:
-        module.fail_json(msg='Could not load nitro python sdk: %s' % IMPORT_ERROR)
+        module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
@@ -1826,11 +1812,6 @@ def main():
                 log('Add lb vserver')
                 if not module.check_mode:
                     lbvserver_proxy.add()
-                    time.sleep(5)
-                    # wait to also do update
-                    # timeout is only updated
-                    #time.sleep(2)
-                    #lbvserver_proxy.update()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
