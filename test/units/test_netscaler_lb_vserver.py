@@ -395,6 +395,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=Mock(return_value=[]),
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
@@ -437,6 +438,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
@@ -486,6 +488,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
@@ -527,6 +530,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
@@ -561,6 +565,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
@@ -624,6 +629,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -653,6 +659,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -682,6 +689,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -711,6 +719,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=(Mock(return_value=[])),
         ):
             self.module = netscaler_lb_vserver
             result = self.failed()
@@ -788,3 +797,35 @@ class TestNetscalerLBVServerModule(TestModule):
         ):
             self.module = netscaler_lb_vserver
             result = self.exited()
+
+    def test_get_immutables_failure(self):
+        set_module_args(dict(
+            nitro_user='user',
+            nitro_pass='pass',
+            nsip='1.1.1.1',
+            state='present',
+        ))
+
+        from ansible.modules.network.netscaler import netscaler_lb_vserver
+
+        lb_vserver_proxy_mock = Mock()
+        state_change_mock = Mock()
+
+        client_mock = Mock()
+        m = Mock(return_value=['some'])
+        with patch.multiple(
+            'ansible.modules.network.netscaler.netscaler_lb_vserver',
+            get_nitro_client=Mock(return_value=client_mock),
+            ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
+            ensure_feature_is_enabled=Mock(),
+            lb_vserver_exists=Mock(side_effect=[True, True]),
+            lb_vserver_identical=Mock(side_effect=[False]),
+            do_state_change=Mock(return_value=Mock(errorcode=0)),
+            get_immutables_intersection=m,
+        ):
+            self.module = netscaler_lb_vserver
+            result = self.failed()
+            self.assertTrue(
+                result['msg'].startswith('Cannot update immutable attributes'),
+                msg='Did not handle immutables error correctly',
+            )
