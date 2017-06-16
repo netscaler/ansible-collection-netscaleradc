@@ -762,7 +762,6 @@ class TestNetscalerLBVServerModule(TestModule):
 
         lb_vserver_proxy_mock = Mock()
 
-
         client_mock = Mock()
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_lb_vserver',
@@ -788,8 +787,8 @@ class TestNetscalerLBVServerModule(TestModule):
         from ansible.modules.network.netscaler import netscaler_lb_vserver
 
         lb_vserver_proxy_mock = Mock()
-        state_change_mock = Mock()
 
+        do_state_change_mock = Mock(return_value=Mock(errorcode=0))
         client_mock = Mock()
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_lb_vserver',
@@ -797,10 +796,11 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_vserver_proxy_mock),
             ensure_feature_is_enabled=Mock(return_value=True),
             lb_vserver_exists=Mock(side_effect=[True, True]),
-            do_state_change=Mock(return_value=Mock(errorcode=0)),
+            do_state_change=do_state_change_mock,
         ):
             self.module = netscaler_lb_vserver
-            result = self.exited()
+            self.exited()
+            self.assertTrue(len(do_state_change_mock.mock_calls) > 0, msg='Did not call state change')
 
     def test_get_immutables_failure(self):
         set_module_args(dict(
@@ -813,7 +813,6 @@ class TestNetscalerLBVServerModule(TestModule):
         from ansible.modules.network.netscaler import netscaler_lb_vserver
 
         lb_vserver_proxy_mock = Mock()
-        state_change_mock = Mock()
 
         client_mock = Mock()
         m = Mock(return_value=['some'])
