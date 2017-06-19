@@ -865,26 +865,54 @@ options:
             - "Minimum length = 1"
             - "Maximum length = 127"
 
-    weight:
+    servicebindings:
         description:
-            - "Weight to assign to the specified service."
-            - "Minimum value = C(1)"
-            - "Maximum value = C(100)"
+            - List of services along with the weights that are load balanced.
+            - The following suboptions are available.
+        suboptions:
+            servicename:
+                description:
+                    - "Service to bind to the virtual server."
+                    - "Minimum length = 1"
+            weight:
+                description:
+                    - "Weight to assign to the specified service."
+                    - "Minimum value = C(1)"
+                    - "Maximum value = C(100)"
 
-    servicename:
+    servicegroupbindings:
         description:
-            - "Service to bind to the virtual server."
-            - "Minimum length = 1"
+            - List of service groups along with the weights that are load balanced.
+            - The following suboptions are available.
+        suboptions:
+            servicegroupname:
+                description:
+                    - "The service group name bound to the selected load balancing virtual server."
+            weight:
+                description:
+                    - >-
+                        Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the
+                        capacity of the service relative to the other services in the load balancing configuration.
+                        Determines the priority given to the service in load balancing decisions.
+                    - "Minimum value = C(1)"
+                    - "Maximum value = C(100)"
 
-    redirurlflags:
+    ssl_certkey:
         description:
-            - "The redirect URL to be unset."
+            - The name of the ssl certificate that is bound to this service.
+            - The ssl certificate must already exist.
+            - Creating the certificate can be done with the M(netscaler_ssl_certkey) module.
+            - This option is only applicable only when C(servicetype) is C(SSL).
 
-    newname:
+    disabled:
         description:
-            - "New name for the virtual server."
-            - "Minimum length = 1"
-
+            - When set to C(yes) the lb vserver will be disabled.
+            - When set to C(no) the lb vserver will be enabled.
+            - >-
+                Note that due to limitations of the underlying NITRO API a C(disabled) state change alone
+                does not cause the module result to report a changed status.
+        type: bool
+        default: 'no'
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -910,12 +938,10 @@ EXAMPLES = '''
     ipv46: 6.93.3.3
     port: 80
     servicebindings:
-        -
-            servicename: service-http-1
-            weight: 80
-        -
-            servicename: service-http-2
-            weight: 20
+        - servicename: service-http-1
+          weight: 80
+        - servicename: service-http-2
+          weight: 20
 
 # Service group service-group-1 must have been already created with the netscaler_servicegroup module
 
@@ -1227,6 +1253,8 @@ def ssl_certkey_bindings_identical(client, module):
     else:
         bindings = sslvserver_sslcertkey_binding.get(client, vservername)
 
+    log('Existing certs %s' % bindings)
+
     if module.params['ssl_certkey'] is None:
         if len(bindings) == 0:
             return True
@@ -1234,6 +1262,7 @@ def ssl_certkey_bindings_identical(client, module):
             return False
     else:
         certificate_list = [item.certkeyname for item in bindings]
+        log('certificate_list %s' % certificate_list)
         if certificate_list == [module.params['ssl_certkey']]:
             return True
         else:
@@ -1776,9 +1805,6 @@ def main():
         'vipheader',
         'newservicerequestunit',
         'td',
-        'servicename',
-        'redirurlflags',
-        'newname',
     ]
 
     transforms = {
