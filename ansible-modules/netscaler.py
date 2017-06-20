@@ -60,9 +60,15 @@ class ConfigProxy(object):
             if attribute in transforms:
                 for transform in self.transforms[attribute]:
                     if transform == 'bool_yes_no':
-                        value = 'YES' if value is True else 'NO'
+                        if value is True:
+                            value = 'YES'
+                        elif value is False:
+                            value = 'NO'
                     elif transform == 'bool_on_off':
-                        value = 'ON' if value is True else 'OFF'
+                        if value is True:
+                            value = 'ON'
+                        elif value is False:
+                            value = 'OFF'
                     elif callable(transform):
                         value = transform(value)
                     else:
