@@ -55,6 +55,8 @@ class ConfigProxy(object):
 
         self.attribute_values_processed = {}
         for attribute, value in self.attribute_values_dict.items():
+            if value is None:
+                continue
             if attribute in transforms:
                 for transform in self.transforms[attribute]:
                     if transform == 'bool_yes_no':
