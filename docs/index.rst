@@ -20,6 +20,7 @@ listed below.
 
    usage/getting_started
    usage/speeding_up_execution
+   usage/rolling_upgrades
 
 .. toctree::
    :maxdepth: 2
