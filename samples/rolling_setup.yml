@@ -1,0 +1,137 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+    - name: Bring cpx up
+      delegate_to: localhost
+      register: cpx_result
+      docker_container:
+        name: cpx_lb
+        image: cpx:11.1-48.10
+        published_ports:
+          - 22
+          - 80
+          - 161
+        env:
+          EULA-yes: "yes"
+        ulimits:
+          - "core:-1"
+        tty: yes
+        privileged: yes
+
+    - name: Wait for cpx to come up
+      delegate_to: localhost
+      when: cpx_result|changed
+      pause:
+        seconds: 10
+
+    - name: Check cpx ip address
+      delegate_to: localhost
+      assert:
+        that: cpx_result['ansible_facts']['docker_container']['NetworkSettings']['IPAddress'] == "172.17.0.2"
+
+
+- hosts: webservers
+
+  gather_facts: False
+  serial: 1
+  tasks:
+    - name: Setup backend "{{ servername }}"
+      delegate_to: localhost
+      register: server_result
+      docker_container:
+        name: "{{ servername }}"
+        image: myapp
+        command: python /webapp/app.py "Hello I am {{ servername }}"
+
+    - name: Check "{{ servername }}" ip address
+      delegate_to: localhost
+      assert:
+        that: server_result['ansible_facts']['docker_container']['NetworkSettings']['IPAddress'] == "{{ hostip }}"
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+  tasks:
+    - name: Setup server 1
+      delegate_to: localhost
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        name: server_1
+        ipaddress: 172.17.0.3
+
+    - name: Setup server 2
+      delegate_to: localhost
+      netscaler_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        name: server_2
+        ipaddress: 172.17.0.4
+
+    - name: Setup service 1
+      delegate_to: localhost
+      netscaler_service:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        name: service_1
+        servicetype: HTTP
+        servername: server_1
+        port: 8000
+
+    - name: Setup service 2
+      delegate_to: localhost
+      netscaler_service:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        name: service_2
+        servicetype: HTTP
+        servername: server_2
+        port: 8000
+
+    - name: Setup lb vserver
+      delegate_to: localhost
+      netscaler_lb_vserver:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        name: lb_vserver_1
+        lbmethod: ROUNDROBIN
+        servicetype: HTTP
+        ipv46: 172.17.0.200
+        port: 8000
+        servicebindings:
+          - servicename: service_1
+            weight: 50
+          - servicename: service_2
+            weight: 50
