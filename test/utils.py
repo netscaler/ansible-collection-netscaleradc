@@ -26,8 +26,6 @@ import unittest
 import sys
 import paramiko
 
-import pexpect
-
 TESTDIR = os.path.join(os.getcwd(), 'testdir')
 INVENTORY = '\n'.join(['[netscaler]', '', '172.18.1.1'])
 ANSIBLE_MODULE_PATH = os.path.join(os.getcwd(), 'ansible-modules')
@@ -40,7 +38,7 @@ nitro_dict = {
     'nsip': DOCKER_IP,
     'nitro_user': 'nsroot',
     'nitro_pass': 'nsroot',
-    'ssl_cert_validation': 'no',
+    'validate_certs': 'no',
 }
 
 
@@ -64,7 +62,7 @@ def ensure_cpx_up(name):
 def get_nitro_client():
     from nssrc.com.citrix.netscaler.nitro.service.nitro_service import nitro_service
 
-    client = nitro_service(nitro_dict['nsip'], 'HTTPS')
+    client = nitro_service(nitro_dict['nsip'], 'HTTP')
     client.set_credential(nitro_dict['nitro_user'], nitro_dict['nitro_pass'])
     client.timeout = 320.0
     client.certvalidation = False
