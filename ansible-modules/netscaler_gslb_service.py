@@ -8,12 +8,12 @@ ANSIBLE_METADATA = {'status': ['preview'],
 
 DOCUMENTATION = '''
 ---
-module: XXX
-short_description: XXX
+module: netscaler_gslb_service
+short_description: Manage gslb service entities in Netscaler.
 description:
-    - XXX
+    - Manage gslb service entities in Netscaler.
 
-version_added: "2.3.1"
+version_added: "2.4.0"
 
 options:
 

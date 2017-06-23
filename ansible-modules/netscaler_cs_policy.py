@@ -32,7 +32,7 @@ description:
     - Manage content switching policy.
     - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance."
 
-version_added: 2.2.3
+version_added: "2.4.0"
 
 options:
 

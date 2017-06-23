@@ -27,11 +27,11 @@ ANSIBLE_METADATA = {'status': ['preview'],
 DOCUMENTATION = '''
 ---
 module: netscaler_ssl_certkey
-short_description: Manage cs vserver
+short_description: Manage ssl cerificate keys.
 description:
-    - Manage service group configuration in Netscaler
+    - Manage ssl cerificate keys.
 
-version_added: 2.2
+version_added: "2.4.0"
 options:
     nsip:
         description:
