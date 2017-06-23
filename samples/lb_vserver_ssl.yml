@@ -11,8 +11,22 @@
 
   tasks:
 
+    - name: ssl binding
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+        module: netscaler_ssl_certkey
+        state: "{{ state }}"
+
+        certkey: certificate_1
+        cert: server.crt
+        key: server.key
+
     - name: Set service 1
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -28,7 +42,7 @@
         port: 80
 
     - name: Set service 2
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -44,7 +58,7 @@
         port: 80
 
     - name: lb vserver 1
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -55,27 +69,13 @@
 
         name: lb_vserver_1
         servicetype: SSL
-        timeout: 12
+        timeout: 2
         ipv46: 6.93.3.3
         port: 80
         servicebindings:
-            - 
+            -
                 servicename: service-http-1
                 weight: 80
-            - 
+            -
                 servicename: service-http-2
                 weight: 20
-
-    - name: ssl binding
-      local_action: 
-        nsip: "{{ nsip }}"
-        nitro_user: "{{ nitro_user }}"
-        nitro_pass: "{{ nitro_pass }}"
-        validate_certs: "{{ validate_certs }}"
-
-        module: netscaler_ssl_certkey
-        state: "{{ state }}"
-
-        certkey: certificate_1
-        cert: server.crt
-        key: server.key

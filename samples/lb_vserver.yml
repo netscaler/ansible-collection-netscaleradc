@@ -11,7 +11,7 @@
   tasks:
 
     - name: Set service 1
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -27,7 +27,7 @@
         port: 80
 
     - name: Set service 2
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -64,7 +64,7 @@
 
 
     - name: lb vserver 1
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -73,21 +73,20 @@
         module: netscaler_lb_vserver
         state: present
 
-        name: lb_vserver_1
+        name: lb-vserver-1
         servicetype: HTTP
         timeout: 12
         ipv46: 6.93.3.3
         port: 80
         servicebindings:
-            - 
-                servicename: service-http-1
-                weight: 80
-            - 
-                servicename: service-http-2
-                weight: 20
+            - servicename: service-http-1
+              weight: 70
+            - servicename: service-http-2
+              weight: 30
+        disabled: no
 
     - name: lb vserver 2
-      local_action: 
+      local_action:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -96,11 +95,10 @@
         module: netscaler_lb_vserver
         state: present
 
-        name: lb_vserver_2
+        name: lb-vserver-2
         servicetype: HTTP
         ipv46: 6.92.2.2
         port: 80
         timeout: 10
         servicegroupbindings:
-            - 
-                servicegroupname: service-group-1
+            - servicegroupname: service-group-1
