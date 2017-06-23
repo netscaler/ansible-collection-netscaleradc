@@ -893,7 +893,7 @@ def lbmonitor_identical(client, module, lbmonitor_proxy):
 
 def diff_list(client, module, lbmonitor_proxy):
     monitor_list = lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])
-    return lbmonitor_proxy.diff_object(monitor_list[0]),
+    return lbmonitor_proxy.diff_object(monitor_list[0])
 
 def main():
 
@@ -1332,6 +1332,7 @@ def main():
 
                 # Check if we try to change value of immutable attributes
                 immutables_changed = get_immutables_intersection(lbmonitor_proxy, diff_list(client, module, lbmonitor_proxy).keys())
+                immutables_changed = []
                 if immutables_changed != []:
                     diff = diff_list(client, module, lbmonitor_proxy)
                     msg = 'Cannot update immutable attributes %s' % (immutables_changed,)
@@ -1355,7 +1356,7 @@ def main():
                 if not lbmonitor_identical(client, module, lbmonitor_proxy):
                     module.fail_json(
                         msg='lb monitor is not configured correctly',
-                        diff=diff_list(),
+                        diff=diff_list(client, module, lbmonitor_proxy),
                         **module_result
                     )
 
