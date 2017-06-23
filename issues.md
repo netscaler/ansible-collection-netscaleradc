@@ -58,6 +58,7 @@
 * "servicename". Set through bindings
 * "redirurlflags". Attribute not supported by the nitro object.
 * "newname". Renaming function is not supported 
+* "pq", "sc". Missing from other (since 12.0)
 
 ## netscaler service
 
@@ -75,6 +76,7 @@
 * "servername". Could not setup server for test
 * "monconnectionclose". Attribute not supported by nitro config object.
 * "newname". Rename function is not supported
+* "sc". Missing from nitro object (since 12.0)
 
 ## netscaler servicegroup
 
@@ -130,3 +132,9 @@
 * "cookie\_domainflag", "cookie\_domain" nitro api gets confused by the underscore.
 
 ### glsb service bindings
+
+## netscaler server
+
+* "delay". Missing from nitro object
+* "graceful". Missing from nitro object
+* "domainresolvenow". Missing from nitro object
