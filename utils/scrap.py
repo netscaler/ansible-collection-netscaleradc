@@ -123,6 +123,7 @@ def main():
         ('content-switching/cspolicy', 'cs/cs-policy'),
         ('content-switching/csaction', 'cs/cs-action'),
         ('ssl/sslcertkey', 'ssl/ssl-certkey'),
+        ('ssl/sslvserver_sslcertkey_binding', None),
         ('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
         ('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
         ('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),

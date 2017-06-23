@@ -179,6 +179,7 @@ def main():
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
 
     from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
 
     from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
     from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
@@ -232,6 +233,10 @@ def main():
         'ssl_certkey': {
             'json_file': 'ssl_sslcertkey.json',
             'class': sslcertkey,
+        },
+        'sslvserver_sslcertkey_binding ': {
+            'json_file': 'ssl_sslvserver_sslcertkey_binding.json',
+            'class': sslvserver_sslcertkey_binding,
         },
         'gslb_site': {
             'json_file': 'global-server-load-balancing_gslbsite.json',
