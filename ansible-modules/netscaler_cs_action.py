@@ -35,6 +35,8 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
