@@ -391,19 +391,208 @@ diff:
 from ansible.module_utils.basic import AnsibleModule
 import copy
 
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+try:
+    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
+    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+
+    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_lbmonitor_binding import servicegroup_lbmonitor_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_servicegroup_binding import lbmonitor_servicegroup_binding
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def service_group_exists(client, module):
+    log('Checking if service group exists')
+    if servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname']) > 0:
+        return True
+    else:
+        return False
+
+
+def service_group_identical(client, module, servicegroup_proxy):
+    log('Checking if service group is identical')
+    servicegroups = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
+    if servicegroup_proxy.has_equal_attributes(servicegroups[0]):
+        return True
+    else:
+        return False
+
+
+def get_servicegroups_from_module_params(client, module):
+    log('get_servicegroups_from_module_params')
+    readwrite_attrs = [u'servicegroupname', u'ip', u'port', u'hashid', u'serverid', u'servername', u'customserverid', u'weight']
+    readonly_attrs = [u'delay', u'statechangetimesec', u'svrstate', u'tickssincelaststatechange', u'graceful', u'__count']
+
+    members = []
+    if module.params['servicemembers'] is None:
+        return members
+
+    for config in module.params['servicemembers']:
+        # Make a copy to update
+        config = copy.deepcopy(config)
+        config['servicegroupname'] = module.params['servicegroupname']
+        member_proxy = ConfigProxy(
+            actual=servicegroup_servicegroupmember_binding(),
+            client=client,
+            attribute_values_dict=config,
+            readwrite_attrs=readwrite_attrs,
+            readonly_attrs=readonly_attrs
+        )
+        members.append(member_proxy)
+    return members
+
+
+def service_group_servicemembers_identical(client, module):
+    log('service_group_servicemembers_identical')
+    service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
+    module_service_groups = get_servicegroups_from_module_params(client, module)
+    log('Number of service group members %s' % len(service_group_members))
+    if len(service_group_members) != len(module_service_groups):
+        return False
+
+    # Fallthrough to member evaluation
+    identical_count = 0
+    for actual_member in service_group_members:
+        for member in module_service_groups:
+            if member.has_equal_attributes(actual_member):
+                identical_count += 1
+                break
+    if identical_count != len(service_group_members):
+        return False
+
+    # Fallthrough to success
+    return True
+
+
+def delete_all_servicegroup_members(client, module):
+    log('delete_all_servicegroup_members')
+    if servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']) == 0:
+        return
+    service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
+    log('len %s' % len(service_group_members))
+    log('count %s' % servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']))
+    for member in service_group_members:
+        log('%s' % dir(member))
+        log('ip %s' % member.ip)
+        log('servername %s' % member.servername)
+        if all([
+            hasattr(member, 'ip'),
+            member.ip is not None,
+            hasattr(member, 'servername'),
+            member.servername is not None,
+        ]):
+            member.ip = None
+
+        member.servicegroupname = module.params['servicegroupname']
+        servicegroup_servicegroupmember_binding.delete(client, member)
+
+
+def add_all_servicegroup_members(client, module):
+    log('add_all_servicegroup_members')
+    for member in get_servicegroups_from_module_params(client, module):
+        member.add()
+
+
+def get_configured_monitor_bindings(client, module):
+    log('Entering get_configured_monitor_bindings')
+    bindings = {}
+    if 'monitorbindings' in module.params and module.params['monitorbindings'] is not None:
+        for binding in module.params['monitorbindings']:
+            readwrite_attrs = [
+                'monitorname',
+                'servicegroupname',
+            ]
+            readonly_attrs = []
+            if isinstance(binding, dict):
+                attribute_values_dict = copy.deepcopy(binding)
+            else:
+                attribute_values_dict = {
+                    'monitorname': binding
+                }
+            attribute_values_dict['servicegroupname'] = module.params['servicegroupname']
+            binding_proxy = ConfigProxy(
+                actual=lbmonitor_servicegroup_binding(),
+                client=client,
+                attribute_values_dict=attribute_values_dict,
+                readwrite_attrs=readwrite_attrs,
+                readonly_attrs=readonly_attrs,
+            )
+            key = attribute_values_dict['monitorname']
+            bindings[key] = binding_proxy
+    return bindings
+
+
+def get_actual_monitor_bindings(client, module):
+    log('Entering get_actual_monitor_bindings')
+    bindings = {}
+    if servicegroup_lbmonitor_binding.count(client, module.params['servicegroupname']) == 0:
+        return bindings
+
+    # Fallthrough to rest of execution
+    for binding in servicegroup_lbmonitor_binding.get(client, module.params['servicegroupname']):
+        log('Gettign actual monitor with name %s' % binding.monitor_name)
+        key = binding.monitor_name
+        bindings[key] = binding
+
+    return bindings
+
+
+def monitor_bindings_identical(client, module):
+    log('Entering monitor_bindings_identical')
+    configured_bindings = get_configured_monitor_bindings(client, module)
+    actual_bindings = get_actual_monitor_bindings(client, module)
+
+    configured_key_set = set(configured_bindings.keys())
+    actual_key_set = set(actual_bindings.keys())
+    symmetrical_diff = configured_key_set ^ actual_key_set
+    for default_monitor in ('tcp-default', 'ping-default'):
+        if default_monitor in symmetrical_diff:
+            log('Excluding %s monitor from key comparison' % default_monitor)
+            symmetrical_diff.remove(default_monitor)
+    if len(symmetrical_diff) > 0:
+        return False
+
+    # Compare key to key
+    for key in configured_key_set:
+        configured_proxy = configured_bindings[key]
+        if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
+                configured_proxy.servicegroupname != actual_bindings[key].servicegroupname]):
+            return False
+
+    # Fallthrought to success
+    return True
+
+
+def sync_monitor_bindings(client, module):
+    log('Entering sync_monitor_bindings')
+    # Delete existing bindings
+    for binding in get_actual_monitor_bindings(client, module).values():
+        b = lbmonitor_servicegroup_binding()
+        b.monitorname = binding.monitor_name
+        b.servicegroupname = module.params['servicegroupname']
+        # Cannot remove default monitor bindings
+        if b.monitorname in ('tcp-default', 'ping-default'):
+            continue
+        lbmonitor_servicegroup_binding.delete(client, b)
+        continue
+
+        binding.monitorname = binding.monitor_name
+        log('Will delete %s' % dir(binding))
+        log('Name %s' % binding.name)
+        log('monitor Name %s' % binding.monitor_name)
+        binding.delete(client, binding)
+        # service_lbmonitor_binding.delete(client, binding)
+
+    # Apply configured bindings
+
+    for binding in get_configured_monitor_bindings(client, module).values():
+        binding.add()
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
-        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-
-        from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_lbmonitor_binding import servicegroup_lbmonitor_binding
-        from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_servicegroup_binding import lbmonitor_servicegroup_binding
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         servicegroupname=dict(type='str'),
@@ -535,7 +724,7 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
@@ -647,195 +836,17 @@ def main():
         transforms=transforms,
     )
 
-    def service_group_exists():
-        log('Checking if service group exists')
-        if servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname']) > 0:
-            return True
-        else:
-            return False
-
-    def service_group_identical():
-        log('Checking if service group is identical')
-        servicegroups = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
-        if servicegroup_proxy.has_equal_attributes(servicegroups[0]):
-            return True
-        else:
-            return False
-
-    def get_servicegroups_from_module_params():
-        log('get_servicegroups_from_module_params')
-        readwrite_attrs = [u'servicegroupname', u'ip', u'port', u'hashid', u'serverid', u'servername', u'customserverid', u'weight']
-        readonly_attrs = [u'delay', u'statechangetimesec', u'svrstate', u'tickssincelaststatechange', u'graceful', u'__count']
-
-        members = []
-        if module.params['servicemembers'] is None:
-            return members
-
-        for config in module.params['servicemembers']:
-            # Make a copy to update
-            config = copy.deepcopy(config)
-            config['servicegroupname'] = module.params['servicegroupname']
-            member_proxy = ConfigProxy(
-                actual=servicegroup_servicegroupmember_binding(),
-                client=client,
-                attribute_values_dict=config,
-                readwrite_attrs=readwrite_attrs,
-                readonly_attrs=readonly_attrs
-            )
-            members.append(member_proxy)
-        return members
-
-    def service_group_servicemembers_identical():
-        log('service_group_servicemembers_identical')
-        service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
-        module_service_groups = get_servicegroups_from_module_params()
-        log('Number of service group members %s' % len(service_group_members))
-        if len(service_group_members) != len(module_service_groups):
-            return False
-
-        # Fallthrough to member evaluation
-        identical_count = 0
-        for actual_member in service_group_members:
-            for member in module_service_groups:
-                if member.has_equal_attributes(actual_member):
-                    identical_count += 1
-                    break
-        if identical_count != len(service_group_members):
-            return False
-
-        # Fallthrough to success
-        return True
-
-    def delete_all_servicegroup_members():
-        log('delete_all_servicegroup_members')
-        if servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']) == 0:
-            return
-        service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
-        log('len %s' % len(service_group_members))
-        log('count %s' % servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']))
-        for member in service_group_members:
-            log('%s' % dir(member))
-            log('ip %s' % member.ip)
-            log('servername %s' % member.servername)
-            if all([
-                hasattr(member, 'ip'),
-                member.ip is not None,
-                hasattr(member, 'servername'),
-                member.servername is not None,
-            ]):
-                member.ip = None
-
-            member.servicegroupname = module.params['servicegroupname']
-            servicegroup_servicegroupmember_binding.delete(client, member)
-
-    def add_all_servicegroup_members():
-        log('add_all_servicegroup_members')
-        for member in get_servicegroups_from_module_params():
-            member.add()
-
-    def get_configured_monitor_bindings():
-        log('Entering get_configured_monitor_bindings')
-        bindings = {}
-        if 'monitorbindings' in module.params and module.params['monitorbindings'] is not None:
-            for binding in module.params['monitorbindings']:
-                readwrite_attrs = [
-                    'monitorname',
-                    'servicegroupname',
-                ]
-                readonly_attrs = []
-                if isinstance(binding, dict):
-                    attribute_values_dict = copy.deepcopy(binding)
-                else:
-                    attribute_values_dict = {
-                        'monitorname': binding
-                    }
-                attribute_values_dict['servicegroupname'] = module.params['servicegroupname']
-                binding_proxy = ConfigProxy(
-                    actual=lbmonitor_servicegroup_binding(),
-                    client=client,
-                    attribute_values_dict=attribute_values_dict,
-                    readwrite_attrs=readwrite_attrs,
-                    readonly_attrs=readonly_attrs,
-                )
-                key = attribute_values_dict['monitorname']
-                bindings[key] = binding_proxy
-        return bindings
-
-    def get_actual_monitor_bindings():
-        log('Entering get_actual_monitor_bindings')
-        bindings = {}
-        if servicegroup_lbmonitor_binding.count(client, module.params['servicegroupname']) == 0:
-            return bindings
-
-        # Fallthrough to rest of execution
-        for binding in servicegroup_lbmonitor_binding.get(client, module.params['servicegroupname']):
-            log('Gettign actual monitor with name %s' % binding.monitor_name)
-            key = binding.monitor_name
-            bindings[key] = binding
-
-        return bindings
-
-    def monitor_bindings_identical():
-        log('Entering monitor_bindings_identical')
-        configured_bindings = get_configured_monitor_bindings()
-        actual_bindings = get_actual_monitor_bindings()
-
-        configured_key_set = set(configured_bindings.keys())
-        actual_key_set = set(actual_bindings.keys())
-        symmetrical_diff = configured_key_set ^ actual_key_set
-        for default_monitor in ('tcp-default', 'ping-default'):
-            if default_monitor in symmetrical_diff:
-                log('Excluding %s monitor from key comparison' % default_monitor)
-                symmetrical_diff.remove(default_monitor)
-        if len(symmetrical_diff) > 0:
-            return False
-
-        # Compare key to key
-        for key in configured_key_set:
-            configured_proxy = configured_bindings[key]
-            if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                    configured_proxy.servicegroupname != actual_bindings[key].servicegroupname]):
-                return False
-
-        # Fallthrought to success
-        return True
-
-    def sync_monitor_bindings():
-        log('Entering sync_monitor_bindings')
-        # Delete existing bindings
-        for binding in get_actual_monitor_bindings().values():
-            b = lbmonitor_servicegroup_binding()
-            b.monitorname = binding.monitor_name
-            b.servicegroupname = module.params['servicegroupname']
-            # Cannot remove default monitor bindings
-            if b.monitorname in ('tcp-default', 'ping-default'):
-                continue
-            lbmonitor_servicegroup_binding.delete(client, b)
-            continue
-
-            binding.monitorname = binding.monitor_name
-            log('Will delete %s' % dir(binding))
-            log('Name %s' % binding.name)
-            log('monitor Name %s' % binding.monitor_name)
-            binding.delete(client, binding)
-            # service_lbmonitor_binding.delete(client, binding)
-
-        # Apply configured bindings
-
-        for binding in get_configured_monitor_bindings().values():
-            binding.add()
-
     try:
         if module.params['state'] == 'present':
             log('Applying actions for state present')
-            if not service_group_exists():
+            if not service_group_exists(client, module):
                 if not module.check_mode:
                     log('Adding service group')
                     servicegroup_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not service_group_identical():
+            elif not service_group_identical(client, module, servicegroup_proxy):
                 if not module.check_mode:
                     servicegroup_proxy.update()
                     if module.params['save_config']:
@@ -845,35 +856,35 @@ def main():
                 module_result['changed'] = False
 
             # Check bindings
-            if not monitor_bindings_identical():
+            if not monitor_bindings_identical(client, module):
                 if not module.check_mode:
-                    sync_monitor_bindings()
+                    sync_monitor_bindings(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
 
-            if not service_group_servicemembers_identical():
+            if not service_group_servicemembers_identical(client, module):
                 if not module.check_mode:
-                    delete_all_servicegroup_members()
-                    add_all_servicegroup_members()
+                    delete_all_servicegroup_members(client, module)
+                    add_all_servicegroup_members(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
 
             # Sanity check for state
             log('Sanity checks for state present')
-            if not service_group_exists():
+            if not service_group_exists(client, module):
                 module.fail_json(msg='Service group is not present', **module_result)
-            if not service_group_identical():
+            if not service_group_identical(client, module, servicegroup_proxy):
                 module.fail_json(msg='Service group is not identical to configuration', **module_result)
-            if not service_group_servicemembers_identical():
+            if not service_group_servicemembers_identical(client, module):
                 module.fail_json(msg='Service group members differ from configuration', **module_result)
-            if not monitor_bindings_identical():
+            if not monitor_bindings_identical(client, module):
                 module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
-            if service_group_exists():
+            if service_group_exists(client, module):
                 if not module.check_mode:
                     servicegroup_proxy.delete()
                     if module.params['save_config']:
@@ -884,7 +895,7 @@ def main():
 
             # Sanity check for state
             log('Sanity checks for state absent')
-            if service_group_exists():
+            if service_group_exists(client, module):
                 module.fail_json(msg='Service group is present', **module_result)
 
     except nitro_exception as e:
