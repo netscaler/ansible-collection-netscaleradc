@@ -70,17 +70,17 @@ EXAMPLES = '''
 # lb_vserver_1 must have been already created with the netscaler_lb_vserver module
 
 - name: Configure netscaler content switching action
-    delegate_to: localhost
-    netscaler_cs_action:
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        validate_certs: no
+  delegate_to: localhost
+  netscaler_cs_action:
+      nsip: 172.18.0.2
+      nitro_user: nsroot
+      nitro_pass: nsroot
+      validate_certs: no
 
-        state: present
+      state: present
 
-        name: action-1
-        targetlbvserver: lb_vserver_1
+      name: action-1
+      targetlbvserver: lb_vserver_1
 '''
 
 RETURN = '''
