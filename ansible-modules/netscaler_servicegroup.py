@@ -19,9 +19,10 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
@@ -38,11 +39,11 @@ options:
     servicegroupname:
         description:
             - >-
-                Name of the service group.
-                Must begin with an ASCII alphabetic or underscore C(_) character, and must contain
-                only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space, colon C(:), at C(@),
-                equals C(=), and hyphen C(-) characters. Can be changed after the name is created.
-            - Minimum length = 1
+                Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must
+                contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals
+                (=), and hyphen (-) characters. Can be changed after the name is created.
+            - "Minimum length = 1"
+
     servicetype:
         choices:
             - 'HTTP'
@@ -83,199 +84,193 @@ options:
             - 'FIX'
             - 'SSL_FIX'
         description:
-            - Protocol used to exchange data with the service.
+            - "Protocol used to exchange data with the service."
 
     cachetype:
-        choices: ['TRANSPARENT', 'REVERSE', 'FORWARD']
+        choices:
+            - 'TRANSPARENT'
+            - 'REVERSE'
+            - 'FORWARD'
         description:
-            - Cache type supported by the cache server.
-            - Possible values = TRANSPARENT, REVERSE, FORWARD
+            - "Cache type supported by the cache server."
 
     maxclient:
         description:
-            - Maximum number of simultaneous open connections for the service group.
-            - Minimum value = 0
-            - Maximum value = 4294967294
-
+            - "Maximum number of simultaneous open connections for the service group."
+            - "Minimum value = 0"
+            - "Maximum value = 4294967294"
 
     maxreq:
         description:
-            - Maximum number of requests that can be sent on a persistent connection to the service group.
-            - Note. Connection requests beyond this value are rejected.
-            - Minimum value = 0
-            - Maximum value = 65535
+            - "Maximum number of requests that can be sent on a persistent connection to the service group."
+            - "Note: Connection requests beyond this value are rejected."
+            - "Minimum value = 0"
+            - "Maximum value = 65535"
 
     cacheable:
-        choices: ['YES', 'NO']
         description:
-            - Use the transparent cache redirection virtual server to forward the request to the cache server.
-            - Note. Do not set this parameter if you set the Cache Type.
-            - Default value = NO
-            - Possible values = YES, NO
-
+            - "Use the transparent cache redirection virtual server to forward the request to the cache server."
+            - "Note: Do not set this parameter if you set the Cache Type."
+            - "Default value: NO"
 
     cip:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            - Insert the Client IP header in requests forwarded to the service.
-            - Possible values = ENABLED, DISABLED
+            - "Insert the Client IP header in requests forwarded to the service."
 
     cipheader:
         description:
             - >-
-                Name of the HTTP header whose value must be set to the IP address of the client.
-                Used with the Client IP parameter. If client IP insertion is enabled, and the client
-                IP header is not specified, the value of Client IP Header parameter or the value set
-                by the set ns config command is used as client's IP header name.
-            - Minimum length = 1
+                Name of the HTTP header whose value must be set to the IP address of the client. Used with the Client
+                IP parameter. If client IP insertion is enabled, and the client IP header is not specified, the value
+                of Client IP Header parameter or the value set by the set ns config command is used as client's IP
+                header name.
+            - "Minimum length = 1"
 
     usip:
-        choices: ['YES', 'NO']
         description:
             - >-
-                Use client's IP address as the source IP address when initiating connection
-                to the server. With the NO setting, which is the default, a mapped IP (MIP)
-                address or subnet IP (SNIP) address is used as the source IP address to
-                initiate server side connections.
+                Use client's IP address as the source IP address when initiating connection to the server. With the
+                NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as
+                the source IP address to initiate server side connections.
 
     pathmonitor:
-        choices: ['YES', 'NO']
         description:
-            - Path monitoring for clustering.
+            - "Path monitoring for clustering."
 
     pathmonitorindv:
-        choices: ['YES', 'NO']
         description:
-            - Individual Path monitoring decisions.
-            - Possible values = YES, NO
+            - "Individual Path monitoring decisions."
 
     useproxyport:
-        choices: ['YES', 'NO']
         description:
             - >-
-                Use the proxy port as the source port when initiating connections
-                with the server. With the NO setting, the client-side connection port
-                is used as the source port for the server-side connection.
-            - Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
-            - Possible values = YES, NO
+                Use the proxy port as the source port when initiating connections with the server. With the NO
+                setting, the client-side connection port is used as the source port for the server-side connection.
+            - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
 
     healthmonitor:
-        choices: ['YES', 'NO']
         description:
-            - Monitor the health of this service. Available settings function as follows.
-            - YES - Send probes to check the health of the service.
-            - NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.
-            - Default value = YES
+            - "Monitor the health of this service. Available settings function as follows:"
+            - "YES - Send probes to check the health of the service."
+            - >-
+                NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
+                the service as UP at all times.
+            - "Default value: YES"
 
     sc:
-        choices: ['ON', 'OFF']
         description:
-            - State of the SureConnect feature for the service group.
-            - Default value = OFF
+            - "State of the SureConnect feature for the service group."
+            - "Default value: OFF"
 
     sp:
-        choices: ['ON', 'OFF']
         description:
-            - Enable surge protection for the service group.
-            - Default value = OFF
+            - "Enable surge protection for the service group."
+            - "Default value: OFF"
 
     rtspsessionidremap:
-        choices: ['ON', 'OFF']
         description:
-            - Enable RTSP session ID mapping for the service group.
-            - Default value = OFF
+            - "Enable RTSP session ID mapping for the service group."
+            - "Default value: OFF"
 
     clttimeout:
         description:
-            - Time, in seconds, after which to terminate an idle client connection.
-            - Minimum value = 0
-            - Maximum value = 31536000
+            - "Time, in seconds, after which to terminate an idle client connection."
+            - "Minimum value = 0"
+            - "Maximum value = 31536000"
 
     svrtimeout:
         description:
-            - Time, in seconds, after which to terminate an idle server connection.
-            - Minimum value = 0
-            - Maximum value = 31536000
+            - "Time, in seconds, after which to terminate an idle server connection."
+            - "Minimum value = 0"
+            - "Maximum value = 31536000"
 
     cka:
-        choices: ['YES', 'NO']
         description:
-            - Enable client keep-alive for the service group.
+            - "Enable client keep-alive for the service group."
 
     tcpb:
-        choices: ['YES', 'NO']
         description:
-            - Enable TCP buffering for the service group.
+            - "Enable TCP buffering for the service group."
 
     cmp:
-        choices: ['YES', 'NO']
         description:
-            - Enable compression for the specified service.
+            - "Enable compression for the specified service."
 
     maxbandwidth:
         description:
-            - Maximum bandwidth, in Kbps, allocated for all the services in the service group.
-            - Minimum value = 0
-            - Maximum value = 4294967287
+            - "Maximum bandwidth, in Kbps, allocated for all the services in the service group."
+            - "Minimum value = 0"
+            - "Maximum value = 4294967287"
 
     monthreshold:
         description:
-            - Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.
-            - Minimum value = 0
-            - Maximum value = 65535
+            - >-
+                Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to
+                mark a service as UP or DOWN.
+            - "Minimum value = 0"
+            - "Maximum value = 65535"
 
     downstateflush:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
             - >-
-                Flush all active transactions associated with all the services in the service
-                group whose state transitions from UP to DOWN. Do not enable this option for
-                applications that must complete their transactions.
-            - Default value = ENABLED
+                Flush all active transactions associated with all the services in the service group whose state
+                transitions from UP to DOWN. Do not enable this option for applications that must complete their
+                transactions.
+            - "Default value: ENABLED"
 
     tcpprofilename:
         description:
-            - Name of the TCP profile that contains TCP configuration settings for the service group.
-            - Minimum length = 1
-            - Maximum length = 127
+            - "Name of the TCP profile that contains TCP configuration settings for the service group."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     httpprofilename:
         description:
-            - Name of the HTTP profile that contains HTTP configuration settings for the service group.
-            - Minimum length = 1
-            - Maximum length = 127
+            - "Name of the HTTP profile that contains HTTP configuration settings for the service group."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     comment:
         description:
-            - Any information about the service group.
+            - "Any information about the service group."
 
     appflowlog:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            - Enable logging of AppFlow information for the specified service group.
-            - Default value = ENABLED
+            - "Enable logging of AppFlow information for the specified service group."
+            - "Default value: ENABLED"
 
     netprofile:
         description:
-            - Network profile for the service group.
-            - Minimum length = 1
-            - Maximum length = 127
+            - "Network profile for the service group."
+            - "Minimum length = 1"
+            - "Maximum length = 127"
 
     autoscale:
-        choices: ['DISABLED', 'DNS', 'POLICY']
+        choices:
+            - 'DISABLED'
+            - 'DNS'
+            - 'POLICY'
         description:
-            - Auto scale option for a servicegroup.
-            - Default value = DISABLED
+            - "Auto scale option for a servicegroup."
+            - "Default value: DISABLED"
 
     memberport:
         description:
-            - member port.
+            - "member port."
 
     graceful:
-        choices: ['YES', 'NO']
         description:
-            - Wait for all existing connections to the service to terminate before shutting down the service.
-            - Default value = NO
+            - "Wait for all existing connections to the service to terminate before shutting down the service."
+            - "Default value: NO"
 
     servicemembers:
         description:
@@ -451,93 +446,71 @@ def main():
                 'SYSLOGTCP',
                 'SYSLOGUDP',
                 'FIX',
-                'SSL_FIX'
+                'SSL_FIX',
             ]
         ),
         cachetype=dict(
             type='str',
-            choices=[u'TRANSPARENT', u'REVERSE', u'FORWARD']
+            choices=[
+                'TRANSPARENT',
+                'REVERSE',
+                'FORWARD',
+            ]
         ),
         maxclient=dict(type='float'),
         maxreq=dict(type='float'),
-        cacheable=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
+        cacheable=dict(type='bool'),
         cip=dict(
             type='str',
-            choices=[u'ENABLED', u'DISABLED']
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
         cipheader=dict(type='str'),
-        usip=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        pathmonitor=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        pathmonitorindv=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        useproxyport=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        healthmonitor=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        sc=dict(
-            type='str',
-            choices=[u'ON', u'OFF']
-        ),
-        sp=dict(
-            type='str',
-            choices=[u'ON', u'OFF']
-        ),
-        rtspsessionidremap=dict(
-            type='str',
-            choices=[u'ON', u'OFF']
-        ),
+        usip=dict(type='bool'),
+        pathmonitor=dict(type='bool'),
+        pathmonitorindv=dict(type='bool'),
+        useproxyport=dict(type='bool'),
+        healthmonitor=dict(type='bool'),
+        sc=dict(type='bool'),
+        sp=dict(type='bool'),
+        rtspsessionidremap=dict(type='bool'),
         clttimeout=dict(type='float'),
         svrtimeout=dict(type='float'),
-        cka=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        tcpb=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        cmp=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
+        cka=dict(type='bool'),
+        tcpb=dict(type='bool'),
+        cmp=dict(type='bool'),
         maxbandwidth=dict(type='float'),
         monthreshold=dict(type='float'),
         downstateflush=dict(
             type='str',
-            choices=[u'ENABLED', u'DISABLED']
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
         tcpprofilename=dict(type='str'),
         httpprofilename=dict(type='str'),
         comment=dict(type='str'),
         appflowlog=dict(
             type='str',
-            choices=[u'ENABLED', u'DISABLED']
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
         netprofile=dict(type='str'),
         autoscale=dict(
             type='str',
-            choices=[u'DISABLED', u'DNS', u'POLICY']
+            choices=[
+                'DISABLED',
+                'DNS',
+                'POLICY',
+            ]
         ),
         memberport=dict(type='int'),
-        graceful=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
+        graceful=dict(type='bool'),
     )
 
     hand_inserted_arguments = dict(
@@ -548,9 +521,7 @@ def main():
     argument_spec = dict()
 
     argument_spec.update(netscaler_common_arguments)
-
     argument_spec.update(module_specific_arguments)
-
     argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
@@ -628,12 +599,52 @@ def main():
         'servicegroupeffectivestate'
     ]
 
+    immutable_attrs = [
+        'servicegroupname',
+        'servicetype',
+        'cachetype',
+        'td',
+        'cipheader',
+        'state',
+        'autoscale',
+        'memberport',
+        'servername',
+        'port',
+        'serverid',
+        'monitor_name_svc',
+        'dup_weight',
+        'riseapbrstatsmsgcode',
+        'delay',
+        'graceful',
+        'includemembers',
+        'newname',
+    ]
+
+    transforms = {
+        'pathmonitorindv': ['bool_yes_no'],
+        'cacheable': ['bool_yes_no'],
+        'cka': ['bool_yes_no'],
+        'pathmonitor': ['bool_yes_no'],
+        'tcpb': ['bool_yes_no'],
+        'sp': ['bool_on_off'],
+        'usip': ['bool_yes_no'],
+        'healthmonitor': ['bool_yes_no'],
+        'useproxyport': ['bool_yes_no'],
+        'rtspsessionidremap': ['bool_on_off'],
+        'sc': ['bool_on_off'],
+        'graceful': ['bool_yes_no'],
+        'cmp': ['bool_yes_no'],
+    }
+
+    # Instantiate config proxy
     servicegroup_proxy = ConfigProxy(
         actual=servicegroup(),
         client=client,
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
-        readonly_attrs=readonly_attrs
+        readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
+        transforms=transforms,
     )
 
     def service_group_exists():
