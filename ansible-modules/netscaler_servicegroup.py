@@ -30,18 +30,20 @@ DOCUMENTATION = '''
 module: netscaler_servicegroup
 short_description: Manage service group configuration in Netscaler
 description:
-    - Manage service group configuration in Netscaler
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - Manage service group configuration in Netscaler.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 version_added: "2.4.0"
-options:
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
+options:
     servicegroupname:
         description:
             - >-
-                Name of the service group. Must begin with an ASCII alphabetic or underscore (_) character, and must
-                contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals
-                (=), and hyphen (-) characters. Can be changed after the name is created.
+                Name of the service group. Must begin with an ASCII alphabetic or underscore C(_) character, and must
+                contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
+                C(=), and hyphen C(-) characters. Can be changed after the name is created.
             - "Minimum length = 1"
 
     servicetype:
@@ -97,21 +99,21 @@ options:
     maxclient:
         description:
             - "Maximum number of simultaneous open connections for the service group."
-            - "Minimum value = 0"
-            - "Maximum value = 4294967294"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4294967294)"
 
     maxreq:
         description:
             - "Maximum number of requests that can be sent on a persistent connection to the service group."
             - "Note: Connection requests beyond this value are rejected."
-            - "Minimum value = 0"
-            - "Maximum value = 65535"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
 
     cacheable:
         description:
             - "Use the transparent cache redirection virtual server to forward the request to the cache server."
             - "Note: Do not set this parameter if you set the Cache Type."
-            - "Default value: NO"
+        type: bool
 
     cip:
         choices:
@@ -149,69 +151,73 @@ options:
             - >-
                 Use the proxy port as the source port when initiating connections with the server. With the NO
                 setting, the client-side connection port is used as the source port for the server-side connection.
-            - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
+            - "Note: This parameter is available only when the Use Source IP C(usip) parameter is set to C(yes)."
+        type: bool
 
     healthmonitor:
         description:
             - "Monitor the health of this service. Available settings function as follows:"
-            - "YES - Send probes to check the health of the service."
+            - "C(yes) - Send probes to check the health of the service."
             - >-
-                NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
+                C(no) - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
-            - "Default value: YES"
+        type: bool
 
     sc:
         description:
             - "State of the SureConnect feature for the service group."
-            - "Default value: OFF"
+        type: bool
 
     sp:
         description:
             - "Enable surge protection for the service group."
-            - "Default value: OFF"
+        type: bool
 
     rtspsessionidremap:
         description:
             - "Enable RTSP session ID mapping for the service group."
-            - "Default value: OFF"
+        type: bool
 
     clttimeout:
         description:
             - "Time, in seconds, after which to terminate an idle client connection."
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
 
     svrtimeout:
         description:
             - "Time, in seconds, after which to terminate an idle server connection."
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
 
     cka:
         description:
             - "Enable client keep-alive for the service group."
+        type: bool
 
     tcpb:
         description:
             - "Enable TCP buffering for the service group."
+        type: bool
 
     cmp:
         description:
             - "Enable compression for the specified service."
+        type: bool
 
     maxbandwidth:
         description:
             - "Maximum bandwidth, in Kbps, allocated for all the services in the service group."
-            - "Minimum value = 0"
-            - "Maximum value = 4294967287"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4294967287)"
 
     monthreshold:
         description:
             - >-
                 Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to
                 mark a service as UP or DOWN.
-            - "Minimum value = 0"
-            - "Maximum value = 65535"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
 
     downstateflush:
         choices:
@@ -222,7 +228,6 @@ options:
                 Flush all active transactions associated with all the services in the service group whose state
                 transitions from UP to DOWN. Do not enable this option for applications that must complete their
                 transactions.
-            - "Default value: ENABLED"
 
     tcpprofilename:
         description:
@@ -246,7 +251,6 @@ options:
             - 'DISABLED'
         description:
             - "Enable logging of AppFlow information for the specified service group."
-            - "Default value: ENABLED"
 
     netprofile:
         description:
@@ -261,7 +265,6 @@ options:
             - 'POLICY'
         description:
             - "Auto scale option for a servicegroup."
-            - "Default value: DISABLED"
 
     memberport:
         description:
@@ -270,31 +273,27 @@ options:
     graceful:
         description:
             - "Wait for all existing connections to the service to terminate before shutting down the service."
-            - "Default value: NO"
+        type: bool
 
     servicemembers:
         description:
-            - A list of dictionaries describing each service member of the service group
-            - The dictionary for each member must contain the following keys.
-            - ip. The ip address of the service member
-            - port. The port of the service member
-            - weight. The weight of this service member
+            - A list of dictionaries describing each service member of the service group.
         suboptions:
             ip:
-                description: ip address of the service. Must not overlap with an existing server entity defined by name.
+                description:
+                    - IP address of the service. Must not overlap with an existing server entity defined by name.
 
             port:
                 description:
                     - Server port number.
-                    - Range 1 - 65535
+                    - Range C(1) - C(65535)
                     - "* in CLI is represented as 65535 in NITRO API"
             hashid:
                 description:
                     - The hash identifier for the service.
                     - This must be unique for each service.
                     - This parameter is used by hash based load balancing methods.
-                    - Minimum value = 1
-                type: float
+                    - Minimum value = C(1)
 
             serverid:
                 description:
@@ -311,16 +310,14 @@ options:
                 description:
                     - The identifier for this IP:Port pair.
                     - Used when the persistency type is set to Custom Server ID.
-                default: 'None'
 
             weight:
                 description:
                     - Weight to assign to the servers in the service group.
                     - Specifies the capacity of the servers relative to the other servers in the load balancing configuration.
                     - The higher the weight, the higher the percentage of requests sent to the service.
-                    - Minimum value = 1
-                    - Maximum value = 100
-                type: float
+                    - Minimum value = C(1)
+                    - Maximum value = C(100)
 
     monitorbindings:
         description:
@@ -328,7 +325,11 @@ options:
             - Note that the monitors must have already been setup possibly using the M(netscaler_lb_monitor) module or some other method
         suboptions:
             monitorname:
-                description: The monitor name to bind to this servicegroup
+                description:
+                    - The monitor name to bind to this servicegroup.
+            weight:
+                description:
+                    - Weight to assign to the binding between the monitor and servicegroup.
 
 
 extends_documentation_fragment: netscaler
@@ -337,7 +338,7 @@ requirements:
 '''
 
 EXAMPLES = '''
-# The LB Monitor monitor-1 must already exist
+# The LB Monitors monitor-1 and monitor-2 must already exist
 # Service members defined by C(ip) must not redefine an existing server's ip address.
 # Service members defined by C(servername) must already exist.
 
@@ -353,18 +354,21 @@ EXAMPLES = '''
     servicegroupname: service-group-1
     servicetype: HTTP
     servicemembers:
-        - ip: 10.78.78.78
-          port: 80
-          weight: 50
-        - ip: 10.79.79.79
-          port: 80
-          weight: 40
-        - servername: server-1
-          port: 80
-          weight: 10
+      - ip: 10.78.78.78
+        port: 80
+        weight: 50
+      - ip: 10.79.79.79
+        port: 80
+        weight: 40
+      - servername: server-1
+        port: 80
+        weight: 10
 
     monitorbindings:
-      - monitor-1
+      - monitorname: monitor-1
+        weight: 50
+      - monitorname: monitor-2
+        weight: 50
 
 '''
 
@@ -391,7 +395,7 @@ diff:
 from ansible.module_utils.basic import AnsibleModule
 import copy
 
-from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, get_immutables_intersection
 try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
@@ -404,15 +408,17 @@ except ImportError as e:
     PYTHON_SDK_IMPORTED = False
 
 
-def service_group_exists(client, module):
+def servicegroup_exists(client, module):
     log('Checking if service group exists')
-    if servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname']) > 0:
+    count = servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
+    log('count is %s' % count)
+    if count > 0:
         return True
     else:
         return False
 
 
-def service_group_identical(client, module, servicegroup_proxy):
+def servicegroup_identical(client, module, servicegroup_proxy):
     log('Checking if service group is identical')
     servicegroups = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
     if servicegroup_proxy.has_equal_attributes(servicegroups[0]):
@@ -421,10 +427,25 @@ def service_group_identical(client, module, servicegroup_proxy):
         return False
 
 
-def get_servicegroups_from_module_params(client, module):
-    log('get_servicegroups_from_module_params')
-    readwrite_attrs = [u'servicegroupname', u'ip', u'port', u'hashid', u'serverid', u'servername', u'customserverid', u'weight']
-    readonly_attrs = [u'delay', u'statechangetimesec', u'svrstate', u'tickssincelaststatechange', u'graceful', u'__count']
+def get_configured_service_members(client, module):
+    log('get_configured_service_members')
+    readwrite_attrs = [
+        'servicegroupname',
+        'ip',
+        'port',
+        'hashid',
+        'serverid',
+        'servername',
+        'customserverid',
+        'weight'
+    ]
+    readonly_attrs = [
+        'delay',
+        'statechangetimesec',
+        'svrstate',
+        'tickssincelaststatechange',
+        'graceful',
+    ]
 
     members = []
     if module.params['servicemembers'] is None:
@@ -445,36 +466,57 @@ def get_servicegroups_from_module_params(client, module):
     return members
 
 
-def service_group_servicemembers_identical(client, module):
-    log('service_group_servicemembers_identical')
-    service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
-    module_service_groups = get_servicegroups_from_module_params(client, module)
-    log('Number of service group members %s' % len(service_group_members))
-    if len(service_group_members) != len(module_service_groups):
+def servicemembers_identical(client, module):
+    log('servicemembers_identical')
+    try:
+        # count() raises nitro exception instead of returning 0
+        count = servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname'])
+        if count > 0:
+            servicegroup_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
+        else:
+            servicegroup_members = []
+    except nitro_exception as e:
+        if e.errorcode == 258:
+            servicegroup_members = []
+        else:
+            raise
+
+    log('servicemembers %s' % servicegroup_members)
+    module_servicegroups = get_configured_service_members(client, module)
+    log('Number of service group members %s' % len(servicegroup_members))
+    if len(servicegroup_members) != len(module_servicegroups):
         return False
 
     # Fallthrough to member evaluation
     identical_count = 0
-    for actual_member in service_group_members:
-        for member in module_service_groups:
+    for actual_member in servicegroup_members:
+        for member in module_servicegroups:
             if member.has_equal_attributes(actual_member):
                 identical_count += 1
                 break
-    if identical_count != len(service_group_members):
+    if identical_count != len(servicegroup_members):
         return False
 
     # Fallthrough to success
     return True
 
 
+def sync_service_members(client, module):
+    log('sync_service_members')
+    delete_all_servicegroup_members(client, module)
+
+    for member in get_configured_service_members(client, module):
+        member.add()
+
+
 def delete_all_servicegroup_members(client, module):
     log('delete_all_servicegroup_members')
     if servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']) == 0:
         return
-    service_group_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
-    log('len %s' % len(service_group_members))
+    servicegroup_members = servicegroup_servicegroupmember_binding.get(client, module.params['servicegroupname'])
+    log('len %s' % len(servicegroup_members))
     log('count %s' % servicegroup_servicegroupmember_binding.count(client, module.params['servicegroupname']))
-    for member in service_group_members:
+    for member in servicegroup_members:
         log('%s' % dir(member))
         log('ip %s' % member.ip)
         log('servername %s' % member.servername)
@@ -490,12 +532,6 @@ def delete_all_servicegroup_members(client, module):
         servicegroup_servicegroupmember_binding.delete(client, member)
 
 
-def add_all_servicegroup_members(client, module):
-    log('add_all_servicegroup_members')
-    for member in get_servicegroups_from_module_params(client, module):
-        member.add()
-
-
 def get_configured_monitor_bindings(client, module):
     log('Entering get_configured_monitor_bindings')
     bindings = {}
@@ -504,14 +540,10 @@ def get_configured_monitor_bindings(client, module):
             readwrite_attrs = [
                 'monitorname',
                 'servicegroupname',
+                'weight',
             ]
             readonly_attrs = []
-            if isinstance(binding, dict):
-                attribute_values_dict = copy.deepcopy(binding)
-            else:
-                attribute_values_dict = {
-                    'monitorname': binding
-                }
+            attribute_values_dict = copy.deepcopy(binding)
             attribute_values_dict['servicegroupname'] = module.params['servicegroupname']
             binding_proxy = ConfigProxy(
                 actual=lbmonitor_servicegroup_binding(),
@@ -528,7 +560,16 @@ def get_configured_monitor_bindings(client, module):
 def get_actual_monitor_bindings(client, module):
     log('Entering get_actual_monitor_bindings')
     bindings = {}
-    if servicegroup_lbmonitor_binding.count(client, module.params['servicegroupname']) == 0:
+    try:
+        # count() raises nitro exception instead of returning 0
+        count = servicegroup_lbmonitor_binding.count(client, module.params['servicegroupname'])
+    except nitro_exception as e:
+        if e.errorcode == 258:
+            return bindings
+        else:
+            raise
+
+    if count == 0:
         return bindings
 
     # Fallthrough to rest of execution
@@ -558,8 +599,11 @@ def monitor_bindings_identical(client, module):
     # Compare key to key
     for key in configured_key_set:
         configured_proxy = configured_bindings[key]
+        log('configured_proxy %s' % [configured_proxy.monitorname, configured_proxy.servicegroupname, configured_proxy.weight])
+        log('actual_bindings %s' % [actual_bindings[key].monitor_name, actual_bindings[key].servicegroupname, actual_bindings[key].weight])
         if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                configured_proxy.servicegroupname != actual_bindings[key].servicegroupname]):
+                configured_proxy.servicegroupname != actual_bindings[key].servicegroupname,
+                configured_proxy.weight != float(actual_bindings[key].weight)]):
             return False
 
     # Fallthrought to success
@@ -577,19 +621,18 @@ def sync_monitor_bindings(client, module):
         if b.monitorname in ('tcp-default', 'ping-default'):
             continue
         lbmonitor_servicegroup_binding.delete(client, b)
-        continue
-
-        binding.monitorname = binding.monitor_name
-        log('Will delete %s' % dir(binding))
-        log('Name %s' % binding.name)
-        log('monitor Name %s' % binding.monitor_name)
-        binding.delete(client, binding)
-        # service_lbmonitor_binding.delete(client, binding)
 
     # Apply configured bindings
 
     for binding in get_configured_monitor_bindings(client, module).values():
+        log('Adding %s' % binding.monitorname)
         binding.add()
+
+
+def diff(client, module, servicegroup_proxy):
+    servicegroup_list = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
+    diff_object = servicegroup_proxy.diff_object(servicegroup_list[0])
+    return diff_object
 
 
 def main():
@@ -728,9 +771,20 @@ def main():
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
-
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     # Instantiate service group configuration object
     readwrite_attrs = [
@@ -839,14 +893,22 @@ def main():
     try:
         if module.params['state'] == 'present':
             log('Applying actions for state present')
-            if not service_group_exists(client, module):
+            if not servicegroup_exists(client, module):
                 if not module.check_mode:
                     log('Adding service group')
                     servicegroup_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not service_group_identical(client, module, servicegroup_proxy):
+            elif not servicegroup_identical(client, module, servicegroup_proxy):
+
+                # Check if we try to change value of immutable attributes
+                diff_dict = diff(client, module, servicegroup_proxy)
+                immutables_changed = get_immutables_intersection(servicegroup_proxy, diff_dict.keys())
+                if immutables_changed != []:
+                    msg = 'Cannot update immutable attributes %s. Must delete and recreate entity.' % (immutables_changed,)
+                    module.fail_json(msg=msg, diff=diff_dict, **module_result)
+
                 if not module.check_mode:
                     servicegroup_proxy.update()
                     if module.params['save_config']:
@@ -863,28 +925,28 @@ def main():
                         client.save_config()
                 module_result['changed'] = True
 
-            if not service_group_servicemembers_identical(client, module):
+            if not servicemembers_identical(client, module):
                 if not module.check_mode:
-                    delete_all_servicegroup_members(client, module)
-                    add_all_servicegroup_members(client, module)
+                    sync_service_members(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
 
             # Sanity check for state
-            log('Sanity checks for state present')
-            if not service_group_exists(client, module):
-                module.fail_json(msg='Service group is not present', **module_result)
-            if not service_group_identical(client, module, servicegroup_proxy):
-                module.fail_json(msg='Service group is not identical to configuration', **module_result)
-            if not service_group_servicemembers_identical(client, module):
-                module.fail_json(msg='Service group members differ from configuration', **module_result)
-            if not monitor_bindings_identical(client, module):
-                module.fail_json(msg='Monitor bindings are not identical', **module_result)
+            if not module.check_mode:
+                log('Sanity checks for state present')
+                if not servicegroup_exists(client, module):
+                    module.fail_json(msg='Service group is not present', **module_result)
+                if not servicegroup_identical(client, module, servicegroup_proxy):
+                    module.fail_json(msg='Service group is not identical to configuration', **module_result)
+                if not servicemembers_identical(client, module):
+                    module.fail_json(msg='Service group members differ from configuration', **module_result)
+                if not monitor_bindings_identical(client, module):
+                    module.fail_json(msg='Monitor bindings are not identical', **module_result)
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
-            if service_group_exists(client, module):
+            if servicegroup_exists(client, module):
                 if not module.check_mode:
                     servicegroup_proxy.delete()
                     if module.params['save_config']:
@@ -894,9 +956,10 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for state
-            log('Sanity checks for state absent')
-            if service_group_exists(client, module):
-                module.fail_json(msg='Service group is present', **module_result)
+            if not module.check_mode:
+                log('Sanity checks for state absent')
+                if servicegroup_exists(client, module):
+                    module.fail_json(msg='Service group is present', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
