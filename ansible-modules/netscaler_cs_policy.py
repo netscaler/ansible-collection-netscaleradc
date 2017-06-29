@@ -19,9 +19,10 @@
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
@@ -34,48 +35,53 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     policyname:
         description:
             - >-
-                Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character,
-                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:),
-                at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.
-
-            - Minimum length = 1
+                Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore C(_)
+                character, and must contain only ASCII alphanumeric, underscore, hash C(#), period C(.), space C( ), colon
+                C(:), at sign C(@), equal sign C(=), and hyphen C(-) characters. Cannot be changed after a policy is
+                created.
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                example, my policy or my policy).
+            - "Minimum length = 1"
 
     url:
         description:
             - >-
-                URL string that is matched with the URL of a request.
-                Can contain a wildcard character.
-                Specify the string value in the following format: [[prefix] [*]] [.suffix].
-            - Minimum length = 1
-            - Maximum length = 208
+                URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the
+                string value in the following format: C([[prefix] [*]] [.suffix]).
+            - "Minimum length = 1"
+            - "Maximum length = 208"
 
     rule:
         description:
-            - Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
-            - Note
             - >-
-                Maximum length of a string literal in the expression is 255 characters.
-                A longer string can be split into smaller strings of up to 255 characters each,
-                and the smaller strings concatenated with the + operator.
-                For example, you can create a 500-character string as follows '"<string of 255 characters>" + "<string of 245 characters>"'
-            - The following requirements apply only to the NetScaler CLI
-            - If the expression includes one or more spaces, enclose the entire expression in double quotation marks.
-            - If the expression itself includes double quotation marks, escape the quotations by using the character.
-            - lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.
+                Expression, or name of a named expression, against which traffic is evaluated. Written in the classic
+                or default syntax.
+            - "Note:"
+            - >-
+                Maximum length of a string literal in the expression is 255 characters. A longer string can be split
+                into smaller strings of up to 255 characters each, and the smaller strings concatenated with the +
+                operator. For example, you can create a 500-character string as follows: '"<string of 255
+                characters>" + "<string of 245 characters>"'
 
     domain:
         description:
-            - The domain name. The string value can range to 63 characters.
-            - Minimum length = 1
+            - "The domain name. The string value can range to 63 characters."
+            - "Minimum length = 1"
 
     action:
         description:
-            - Content switching action that names the target load balancing virtual server to which the traffic is switched.
+            - >-
+                Content switching action that names the target load balancing virtual server to which the traffic is
+                switched.
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -84,17 +90,17 @@ requirements:
 
 EXAMPLES = '''
 - name: Create url cs policy
-    local_action:
-        nsip: 172.18.0.2
-        nitro_user: nsroot
-        nitro_pass: nsroot
-        validate_certs: no
+  delegate_to: localhost
+  netscaler_cs_policy:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    validate_certs: no
 
-        module: netscaler_cs_policy
-        state: present
+    state: present
 
-        policyname: policy_1
-        url: /example/
+    policyname: policy_1
+    url: /example/
 '''
 
 RETURN = '''
@@ -118,16 +124,43 @@ diff:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
+try:
+    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def policy_exists(client, module):
+    log('Checking if policy exists')
+    if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) > 0:
+        return True
+    else:
+        return False
+
+
+def policy_identical(client, module, cspolicy_proxy):
+    log('Checking if defined policy is identical to configured')
+    if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) == 0:
+        return False
+    policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
+    diff_dict = cspolicy_proxy.diff_object(policy_list[0])
+    if 'ip' in diff_dict:
+        del diff_dict['ip']
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, cspolicy_proxy):
+    policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
+    return cspolicy_proxy.diff_object(policy_list[0])
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         policyname=dict(type='str'),
@@ -137,11 +170,14 @@ def main():
         action=dict(type='str'),
     )
 
+    hand_inserted_arguments = dict(
+    )
+
     argument_spec = dict()
 
     argument_spec.update(netscaler_common_arguments)
-
     argument_spec.update(module_specific_arguments)
+    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -154,14 +190,25 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
 
-    # Instantiate Service Config object
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
+
     readwrite_attrs = [
         'policyname',
         'url',
@@ -180,37 +227,18 @@ def main():
         'cspolicytype',
     ]
 
+    transforms = {
+    }
+
+    # Instantiate config proxy
     cspolicy_proxy = ConfigProxy(
         actual=cspolicy(),
         client=client,
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        transforms=transforms,
     )
-
-    def policy_exists():
-        log('Checking if policy exists')
-        if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) > 0:
-            return True
-        else:
-            return False
-
-    def policy_identical():
-        log('Checking if defined policy is identical to configured')
-        if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) == 0:
-            return False
-        policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
-        diff_dict = cspolicy_proxy.diff_object(policy_list[0])
-        if 'ip' in diff_dict:
-            del diff_dict['ip']
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff_list():
-        policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
-        return cspolicy_proxy.diff_object(policy_list[0])
 
     try:
         ensure_feature_is_enabled(client, 'CS')
@@ -218,13 +246,13 @@ def main():
         # Apply appropriate state
         if module.params['state'] == 'present':
             log('Sanity checks for state present')
-            if not policy_exists():
+            if not policy_exists(client, module):
                 if not module.check_mode:
                     cspolicy_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not policy_identical():
+            elif not policy_identical(client, module, cspolicy_proxy):
                 if not module.check_mode:
                     cspolicy_proxy.update()
                     if module.params['save_config']:
@@ -234,15 +262,16 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for state
-            log('Sanity checks for state present')
-            if not policy_exists():
-                module.fail_json(msg='Service does not exist', **module_result)
-            if not policy_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list(), **module_result)
+            if not module.check_mode:
+                log('Sanity checks for state present')
+                if not policy_exists(client, module):
+                    module.fail_json(msg='Policy does not exist', **module_result)
+                if not policy_identical(client, module, cspolicy_proxy):
+                    module.fail_json(msg='Policy differs from configured', diff=diff_list(client, module, cspolicy_proxy), **module_result)
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
-            if policy_exists():
+            if policy_exists(client, module):
                 if not module.check_mode:
                     cspolicy_proxy.delete()
                     if module.params['save_config']:
@@ -252,12 +281,13 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for state
-            log('Sanity checks for state absent')
-            if policy_exists():
-                module.fail_json(msg='Service still exists', **module_result)
+            if not module.check_mode:
+                log('Sanity checks for state absent')
+                if policy_exists(client, module):
+                    module.fail_json(msg='Policy still exists', **module_result)
 
     except nitro_exception as e:
-        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
