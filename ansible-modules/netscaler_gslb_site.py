@@ -1,9 +1,28 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+#  Copyright (c) 2017 Citrix Systems
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
@@ -15,17 +34,16 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     sitename:
         description:
             - >-
-                Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore (_) character, and must
-                contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals
-                (=), and hyphen (-) characters. Cannot be changed after the virtual server is created.
-            - >-
-                CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation
-                marks (for example, "my gslbsite" or 'my gslbsite').
+                Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore C(_) character, and must
+                contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
+                C(=), and hyphen C(-) characters. Cannot be changed after the virtual server is created.
             - "Minimum length = 1"
 
     sitetype:
@@ -38,8 +56,6 @@ options:
                 the type on the basis of the IP address being assigned to the site. If the specified site IP address
                 is owned by the appliance (for example, a MIP address or SNIP address), the site is a local site.
                 Otherwise, it is a remote site.
-            - "Default value: NONE"
-            - "Possible values = REMOTE, LOCAL"
 
     siteipaddress:
         description:
@@ -70,8 +86,6 @@ options:
                 balancing method (such as least connection) is in operation, the appliance falls back to round robin.
                 Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB
                 services. Otherwise, the service is marked as DOWN.
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     nwmetricexchange:
         choices:
@@ -82,8 +96,6 @@ options:
                 Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from
                 communications with various local DNS (LDNS) servers used by clients. RTT information is used in the
                 dynamic RTT load balancing method, and is exchanged every 5 seconds.
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     sessionexchange:
         choices:
@@ -91,8 +103,6 @@ options:
             - 'DISABLED'
         description:
             - "Exchange persistent session entries with other GSLB sites every five seconds."
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     triggermonitor:
         choices:
@@ -103,17 +113,15 @@ options:
             - >-
                 Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound.
                 Available settings function as follows:
-            - "* ALWAYS - Monitor the GSLB service at all times."
+            - "* C(ALWAYS) - Monitor the GSLB service at all times."
             - >-
-                * MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange
+                * C(MEPDOWN) - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange
                 Protocol (MEP) is disabled.
-            - "MEPDOWN_SVCDOWN - Monitor the service in either of the following situations:"
+            - "C(MEPDOWN_SVCDOWN) - Monitor the service in either of the following situations:"
             - "* The exchange of metrics through MEP is disabled."
             - >-
                 * The exchange of metrics through MEP is enabled but the status of the service, learned through
                 metrics exchange, is DOWN.
-            - "Default value: ALWAYS"
-            - "Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN"
 
     parentsite:
         description:
@@ -145,22 +153,85 @@ requirements:
 '''
 
 EXAMPLES = '''
+- name: Setup gslb site
+  delegate_to: localhost
+  netscaler_gslb_site:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+
+    sitename: gslb-site-1
+    siteipaddress: 192.168.1.1
+    sitetype: LOCAL
+    publicip: 192.168.1.1
+    metricexchange: ENABLED
+    nwmetricexchange: ENABLED
+    sessionexchange: ENABLED
+    triggermonitor: ALWAYS
+
 '''
 
 RETURN = '''
+loglines:
+    description: list of logged messages by the module
+    returned: always
+    type: list
+    sample: "['message 1', 'message 2']"
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: string
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dictionary
+    sample: "{ 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }"
 '''
 
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.netscaler import (
+    ConfigProxy,
+    get_nitro_client,
+    netscaler_common_arguments,
+    log,
+    loglines,
+    ensure_feature_is_enabled,
+    get_immutables_intersection,
+)
+
+try:
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def gslb_site_exists(client, module):
+    if gslbsite.count_filtered(client, 'sitename:%s' % module.params['sitename']) > 0:
+        return True
+    else:
+        return False
+
+
+def gslb_site_identical(client, module, gslb_site_proxy):
+    gslb_site_list = gslbsite.get_filtered(client, 'sitename:%s' % module.params['sitename'])
+    diff_dict = gslb_site_proxy.diff_object(gslb_site_list[0])
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, gslb_site_proxy):
+    gslb_site_list = gslbsite.get_filtered(client, 'sitename:%s' % module.params['sitename'])
+    return gslb_site_proxy.diff_object(gslb_site_list[0])
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection, get_ns_version
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         sitename=dict(type='str'),
@@ -228,12 +299,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'sitename',
@@ -277,41 +360,28 @@ def main():
         immutable_attrs=immutable_attrs,
     )
 
-    def gslb_site_exists():
-        if gslbsite.count_filtered(client, 'sitename:%s' % module.params['sitename']) > 0:
-            return True
-        else:
-            return False
-
-    def gslb_site_identical():
-        gslb_site_list = gslbsite.get_filtered(client, 'sitename:%s' % module.params['sitename'])
-        diff_dict = gslb_site_proxy.diff_object(gslb_site_list[0])
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff():
-        gslb_site_list = gslbsite.get_filtered(client, 'sitename:%s' % module.params['sitename'])
-        return gslb_site_proxy.diff_object(gslb_site_list[0])
-
     try:
         ensure_feature_is_enabled(client, 'GSLB')
 
         # Apply appropriate state
         if module.params['state'] == 'present':
-            if not gslb_site_exists():
+            log('Applying actions for state present')
+            if not gslb_site_exists(client, module):
                 if not module.check_mode:
                     gslb_site_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not gslb_site_identical():
+            elif not gslb_site_identical(client, module, gslb_site_proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff().keys())
+                immutables_changed = get_immutables_intersection(gslb_site_proxy, diff_list(client, module, gslb_site_proxy).keys())
                 if immutables_changed != []:
-                    module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                    module.fail_json(
+                        msg='Cannot update immutable attributes %s' % (immutables_changed,),
+                        diff=diff_list(client, module, gslb_site_proxy),
+                        **module_result
+                    )
 
                 if not module.check_mode:
                     gslb_site_proxy.update()
@@ -323,13 +393,15 @@ def main():
 
             # Sanity check for state
             if not module.check_mode:
-                if not gslb_site_exists():
+                log('Sanity checks for state present')
+                if not gslb_site_exists(client, module):
                     module.fail_json(msg='GSLB site does not exist', **module_result)
-                if not gslb_site_identical():
-                    module.fail_json(msg='GSLB site differs from configured', diff=diff(), **module_result)
+                if not gslb_site_identical(client, module, gslb_site_proxy):
+                    module.fail_json(msg='GSLB site differs from configured', diff=diff_list(client, module, gslb_site_proxy), **module_result)
 
         elif module.params['state'] == 'absent':
-            if gslb_site_exists():
+            log('Applying actions for state absent')
+            if gslb_site_exists(client, module):
                 if not module.check_mode:
                     gslb_site_proxy.delete()
                     if module.params['save_config']:
@@ -340,22 +412,15 @@ def main():
 
             # Sanity check for state
             if not module.check_mode:
-                if gslb_site_exists():
-                    module.fail_json(msg='Service still exists', **module_result)
+                log('Sanity checks for state absent')
+                if gslb_site_exists(client, module):
+                    module.fail_json(msg='GSLB site still exists', **module_result)
 
     except nitro_exception as e:
         msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
-    for attribute in readonly_attrs:
-        ro = {
-        }
-        try:
-            ro[attribute] = getattr(gslb_site_proxy, attribute)
-        except AttributeError:
-            pass
-    module_result['ro'] = ro
     module.exit_json(**module_result)
 
 
