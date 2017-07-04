@@ -20,8 +20,8 @@
 #
 
 ANSIBLE_METADATA = {'status': ['preview'],
-                    'supported_by': 'commiter',
-                    'version': '1.0'}
+                    'supported_by': 'community',
+                    'metadata_version': '1.0'}
 
 
 DOCUMENTATION = '''
@@ -32,144 +32,194 @@ description:
     - Manage ssl cerificate keys.
 
 version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
-    nsip:
-        description:
-            - The Nescaler ip address.
-        required: True
 
     certkey:
         description:
             - >-
-                Name for the certificate and private-key pair.
-                Must begin with an ASCII alphanumeric or underscore (_) character,
-                and must contain only ASCII alphanumeric, underscore, hash (#), period (.),
-                space, colon (:), at (@), equals (=), and hyphen (-) characters.
-                Cannot be changed after the certificate-key pair is created.
-            - The following requirement applies only to the NetScaler CLI.
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cert" or 'my cert').
-            - Minimum length = 1
+                Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore
+                C(_) character, and must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ),
+                colon C(:), at C(@), equals C(=), and hyphen C(-) characters. Cannot be changed after the certificate-key
+                pair is created.
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                example, "my cert" or 'my cert').
+            - "Minimum length = 1"
 
     cert:
         description:
             - >-
-                Name of and, optionally, path to the X509 certificate file that is used
-                to form the certificate-key pair. The certificate file should be present
-                on the appliance's hard-disk drive or solid-state drive.
-                Storing a certificate in any location other than the default might cause
-                inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
-            - Minimum length = 1
+                Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key
+                pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive.
+                Storing a certificate in any location other than the default might cause inconsistency in a high
+                availability setup. /nsconfig/ssl/ is the default path.
+            - "Minimum length = 1"
 
     key:
         description:
             - >-
-                Name of and, optionally, path to the private-key file that is used to form
-                the certificate-key pair. The certificate file should be present on the appliance's
-                hard-disk drive or solid-state drive. Storing a certificate in any location other
-                than the default might cause inconsistency in a high availability setup.
-                /nsconfig/ssl/ is the default path.
-            - Minimum length = 1
+                Name of and, optionally, path to the private-key file that is used to form the certificate-key pair.
+                The certificate file should be present on the appliance's hard-disk drive or solid-state drive.
+                Storing a certificate in any location other than the default might cause inconsistency in a high
+                availability setup. /nsconfig/ssl/ is the default path.
+            - "Minimum length = 1"
 
     password:
         description:
-            - Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys in PEM format.
-
-    fipskey:
-        description:
-            - Name of the FIPS key that was created inside the Hardware Security Module (HSM) of a FIPS appliance, or a key that was imported into the HSM.
-            - Minimum length = 1
-
-    hsmkey:
-        description:
-            - Name of the HSM key that was created in the External Hardware Security Module (HSM) of a FIPS appliance.
-            - Minimum length = 1
+            - >-
+                Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys
+                in PEM format.
 
     inform:
-        choices: ['DER', 'PEM', 'PFX']
+        choices:
+            - 'DER'
+            - 'PEM'
+            - 'PFX'
         description:
-            - Input format of the certificate and the private-key files. The three formats supported by the appliance are.
-            - PEM - Privacy Enhanced Mail
-            - DER - Distinguished Encoding Rule
-            - PFX - Personal Information Exchange.
-            - Default value = PEM
+            - >-
+                Input format of the certificate and the private-key files. The three formats supported by the
+                appliance are:
+            - "PEM - Privacy Enhanced Mail"
+            - "DER - Distinguished Encoding Rule"
+            - "PFX - Personal Information Exchange."
 
     passplain:
         description:
-            - Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM format.
-            - Minimum length = 1
+            - >-
+                Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM
+                format.
+            - "Minimum length = 1"
 
     expirymonitor:
-        choices: ['ENABLED', 'DISABLED']
+        choices:
+            - 'ENABLED'
+            - 'DISABLED'
         description:
-            - Issue an alert when the certificate is about to expire.
+            - "Issue an alert when the certificate is about to expire."
 
     notificationperiod:
         description:
-            - Time, in number of days, before certificate expiration, at which to generate an alert that the certificate is about to expire.
-            - Minimum value = 10
-            - Maximum value = 100
+            - >-
+                Time, in number of days, before certificate expiration, at which to generate an alert that the
+                certificate is about to expire.
+            - "Minimum value = C(10)"
+            - "Maximum value = C(100)"
 
-    bundle:
-        choices: ['YES', 'NO']
-        description:
-            - Parse the certificate chain as a single file after linking the server certificate to its issuer's certificate within the file.
-            - Default value = NO
 
-    linkcertkeyname:
-        description:
-            - Name of the Certificate Authority certificate-key pair to which to link a certificate-key pair.
-            - Minimum length = 1
+extends_documentation_fragment: netscaler
+requirements:
+    - nitro python sdk
 '''
 
 EXAMPLES = '''
-- name: Connect to netscaler appliance
-    netscaler_service_group:
-        nsip: "172.17.0.2"
+
+- name: Setup ssl certkey
+  delegate_to: localhost
+  netscaler_ssl_certkey:
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    nsip: 172.18.0.2
+
+    certkey: certirificate_1
+    cert: server.crt
+    key: server.key
+    expirymonitor: ENABLED
+    notificationperiod: 30
+    inform: PEM
+    password: False
+    passplain: somesecret
 '''
 
 RETURN = '''
-config_updated:
-    description: determine if a change in the netscaler configuration happened
+loglines:
+    description: list of logged messages by the module
     returned: always
-    type: boolean
-    sample: False
+    type: list
+    sample: "['message 1', 'message 2']"
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: string
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dictionary
+    sample: "{ 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }"
 '''
 
 from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, get_immutables_intersection
+
+try:
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+def key_exists(client, module):
+    log('Checking if key exists')
+    log('certkey is %s' % module.params['certkey'])
+    all_certificates = sslcertkey.get(client)
+    certkeys = [item.certkey for item in all_certificates]
+    if module.params['certkey'] in certkeys:
+        return True
+    else:
+        return False
+
+
+def key_identical(client, module, sslcertkey_proxy):
+    log('Checking if configured key is identical')
+    sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
+    diff_dict = sslcertkey_proxy.diff_object(sslcertkey_list[0])
+    if 'password' in diff_dict:
+        del diff_dict['password']
+    if 'passplain' in diff_dict:
+        del diff_dict['passplain']
+    if len(diff_dict) == 0:
+        return True
+    else:
+        return False
+
+
+def diff_list(client, module, sslcertkey_proxy):
+    sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
+    return sslcertkey_proxy.diff_object(sslcertkey_list[0])
 
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         certkey=dict(type='str'),
         cert=dict(type='str'),
         key=dict(type='str'),
         password=dict(type='bool'),
-        fipskey=dict(type='str'),
-        hsmkey=dict(type='str'),
         inform=dict(
             type='str',
-            choices=[u'DER', u'PEM', u'PFX']
+            choices=[
+                'DER',
+                'PEM',
+                'PFX',
+            ]
         ),
         passplain=dict(type='str'),
         expirymonitor=dict(
             type='str',
-            choices=[u'ENABLED', u'DISABLED']
+            choices=[
+                'ENABLED',
+                'DISABLED',
+            ]
         ),
         notificationperiod=dict(type='float'),
-        bundle=dict(
-            type='str',
-            choices=[u'YES', u'NO']
-        ),
-        linkcertkeyname=dict(type='str'),
-        nodomaincheck=dict(type='bool'),
+        bundle=dict(type='bool'),
     )
 
     argument_spec = dict()
@@ -189,29 +239,36 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
 
-    # Instantiate Service Config object
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
+
     readwrite_attrs = [
         'certkey',
         'cert',
         'key',
         'password',
-        'fipskey',
-        'hsmkey',
         'inform',
         'passplain',
         'expirymonitor',
         'notificationperiod',
-        'bundle',
-        'linkcertkeyname',
-        'nodomaincheck'
     ]
+
     readonly_attrs = [
         'signaturealg',
         'certificatetype',
@@ -231,54 +288,47 @@ def main():
         'servicename',
     ]
 
+    immutable_attrs = [
+        'certkey',
+        'cert',
+        'key',
+        'password',
+        'inform',
+        'passplain',
+    ]
+
+    # Instantiate config proxy
     sslcertkey_proxy = ConfigProxy(
         actual=sslcertkey(),
         client=client,
         attribute_values_dict=module.params,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
     )
-
-    def key_exists():
-        log('Checking if key exists')
-        log('certkey is %s' % module.params['certkey'])
-        all_certificates = sslcertkey.get(client)
-        certkeys = [item.certkey for item in all_certificates]
-        if module.params['certkey'] in certkeys:
-            return True
-        else:
-            return False
-
-    def key_identical():
-        log('Checking if configured key is identical')
-        sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
-        diff_dict = sslcertkey_proxy.diff_object(sslcertkey_list[0])
-        if 'password' in diff_dict:
-            del diff_dict['password']
-        if 'passplain' in diff_dict:
-            del diff_dict['passplain']
-        if len(diff_dict) == 0:
-            return True
-        else:
-            return False
-
-    def diff_list():
-        sslcertkey_list = sslcertkey.get_filtered(client, 'certkey:%s' % module.params['certkey'])
-        return sslcertkey_proxy.diff_object(sslcertkey_list[0])
 
     try:
 
-        # Apply appropriate state
         if module.params['state'] == 'present':
             log('Applying actions for state present')
-            if not key_exists():
+            if not key_exists(client, module):
                 if not module.check_mode:
                     log('Adding certificate key')
                     sslcertkey_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not key_identical():
+            elif not key_identical(client, module, sslcertkey_proxy):
+
+                # Check if we try to change value of immutable attributes
+                immutables_changed = get_immutables_intersection(sslcertkey_proxy, diff_list(client, module, sslcertkey_proxy).keys())
+                if immutables_changed != []:
+                    module.fail_json(
+                        msg='Cannot update immutable attributes %s' % (immutables_changed,),
+                        diff=diff_list(client, module, sslcertkey_proxy),
+                        **module_result
+                    )
+
                 if not module.check_mode:
                     sslcertkey_proxy.update()
                     if module.params['save_config']:
@@ -288,15 +338,16 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for state
-            log('Sanity checks for state present')
-            if not key_exists():
-                module.fail_json(msg='Service does not exist')
-            if not key_identical():
-                module.fail_json(msg='Service differs from configured', diff=diff_list())
+            if not module.check_mode:
+                log('Sanity checks for state present')
+                if not key_exists(client, module):
+                    module.fail_json(msg='SSL certkey does not exist')
+                if not key_identical(client, module, sslcertkey_proxy):
+                    module.fail_json(msg='SSL certkey differs from configured', diff=diff_list(client, module, sslcertkey_proxy))
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
-            if key_exists():
+            if key_exists(client, module):
                 if not module.check_mode:
                     sslcertkey_proxy.delete()
                     if module.params['save_config']:
@@ -306,12 +357,13 @@ def main():
                 module_result['changed'] = False
 
             # Sanity check for state
-            log('Sanity checks for state absent')
-            if key_exists():
-                module.fail_json(msg='Service still exists')
+            if not module.check_mode:
+                log('Sanity checks for state absent')
+                if key_exists(client, module):
+                    module.fail_json(msg='SSL certkey still exists')
 
     except nitro_exception as e:
-        msg = "nitro exception errorcode=" + str(e.errorcode) + ",message=" + e.message
+        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
 
     client.logout()
