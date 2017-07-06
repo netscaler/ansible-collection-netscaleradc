@@ -137,7 +137,7 @@ class ConfigProxy(object):
 
             # Compare values
             param_type = self.attribute_values_processed[attribute].__class__
-            if param_type(attribute_value) != self.attribute_values_processed[attribute]:
+            if attribute_value is None or param_type(attribute_value) != self.attribute_values_processed[attribute]:
                 str_tuple = (
                     type(self.attribute_values_processed[attribute]),
                     self.attribute_values_processed[attribute],
