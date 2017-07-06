@@ -30,6 +30,7 @@
 
 import json
 import re
+import sys
 
 from ansible.module_utils.basic import env_fallback
 
@@ -288,7 +289,7 @@ def monkey_patch_nitro_api():
             if (flds):
                 for k, v in flds.items():
                     str_ = str_ + "\"" + k + "\":"
-                    if type(v) is unicode:
+                    if sys.version_info[0] == 2 and type(v) is unicode:
                         v = v.encode('utf8')
                     if type(v) is bool:
                         str_ = str_ + v
@@ -313,7 +314,7 @@ def monkey_patch_nitro_api():
             if (flds):
                 for k, v in flds.items():
                     str_ = str_ + k + ":"
-                    if type(v) is unicode:
+                    if sys.version_info[0] == 2 and type(v) is unicode:
                         v = v.encode('utf8')
                     if type(v) is bool:
                         str_ = str_ + v
