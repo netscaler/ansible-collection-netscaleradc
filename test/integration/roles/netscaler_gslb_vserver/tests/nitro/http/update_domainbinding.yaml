@@ -4,9 +4,12 @@
 
   delegate_to: localhost
   register: result
+  check_mode: "{{ check_mode }}"
 
   netscaler_gslb_vserver:
-    operation: present
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
 
     name: gslb-vserver-1
     servicetype: HTTP
@@ -32,15 +35,12 @@
     appflowlog: DISABLED
 
     domain_bindings:
-      -
-        domainname: anotherexample.com
-        backupipflag: False
+      - domainname: anotherexample.com
         cookietimeout: 100
         backupip: 10.10.10.10
         ttl: 100
         sitedomainttl: 200
 
     service_bindings:
-      -
-        weight: 100
+      - weight: 100
         servicename: gslb-service-1

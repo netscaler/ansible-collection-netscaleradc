@@ -4,8 +4,13 @@
 
   delegate_to: localhost
   register: result
+  check_mode: "{{ check_mode }}"
 
   netscaler_gslb_vserver:
-    operation: absent
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
+    state: absent
 
     name: gslb-vserver-2
