@@ -4,6 +4,7 @@
 
   delegate_to: localhost
   register: result
+  check_mode: "{{ check_mode }}"
 
   netscaler_gslb_service:
     operation: present
