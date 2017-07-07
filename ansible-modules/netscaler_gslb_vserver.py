@@ -34,18 +34,16 @@ description:
 
 version_added: "2.4.0"
 
+author: George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
         description:
             - >-
-                Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or underscore (_) character,
-                and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),
-                equals (=), and hyphen (-) characters. Can be changed after the virtual server is created.
-            - "CLI Users:"
-            - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
-                example, "my vserver" or 'my vserver').
+                Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or underscore C(_) character,
+                and must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space, colon C(:), at C(@),
+                equals C(=), and hyphen C(-) characters. Can be changed after the virtual server is created.
             - "Minimum length = 1"
 
     servicetype:
@@ -71,8 +69,6 @@ options:
         description:
             - "Protocol used by services bound to the virtual server."
             - >-
-                Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP,
-                SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE
 
     dnsrecordtype:
         choices:
@@ -119,9 +115,6 @@ options:
                 Backup load balancing method. Becomes operational if the primary load balancing method fails or
                 cannot be used. Valid only if the primary method is based on either round-trip time (RTT) or static
                 proximity.
-            - >-
-                Possible values = ROUNDROBIN, LEASTCONNECTION, LEASTRESPONSETIME, SOURCEIPHASH, LEASTBANDWIDTH,
-                LEASTPACKETS, STATICPROXIMITY, RTT, CUSTOMLOAD
 
     netmask:
         description:
@@ -132,10 +125,10 @@ options:
         description:
             - >-
                 Number of bits to consider, in an IPv6 source IP address, for creating the hash that is required by
-                the SOURCEIPHASH load balancing method.
-            - "Default value: 128"
-            - "Minimum value = 1"
-            - "Maximum value = 128"
+                the C(SOURCEIPHASH) load balancing method.
+            - "Default value: C(128)"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(128)"
 
     tolerance:
         description:
@@ -146,8 +139,8 @@ options:
                 robin method of global server load balancing between sites whose RTT values are within the specified
                 tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the
                 site with the lowest RTT.
-            - "Minimum value = 0"
-            - "Maximum value = 100"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
 
     persistencetype:
         choices:
@@ -158,7 +151,6 @@ options:
             - >-
                 After the load balancing method selects a service for the first packet, the IP address received in
                 response to the DNS query is used for subsequent requests from the same client.
-            - "Possible values = SOURCEIP, NONE"
 
     persistenceid:
         description:
@@ -166,8 +158,8 @@ options:
                 The persistence ID for the GSLB virtual server. The ID is a positive integer that enables GSLB sites
                 to identify the GSLB virtual server, and is required if source IP address based or spill over based
                 persistence is enabled on the virtual server.
-            - "Minimum value = 0"
-            - "Maximum value = 65535"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
 
     persistmask:
         description:
@@ -181,16 +173,16 @@ options:
             - >-
                 Number of bits to consider in an IPv6 source IP address when creating source IP address based
                 persistence sessions.
-            - "Default value: 128"
-            - "Minimum value = 1"
-            - "Maximum value = 128"
+            - "Default value: C(128)"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(128)"
 
     timeout:
         description:
             - "Idle time, in minutes, after which a persistence entry is cleared."
-            - "Default value: 2"
-            - "Minimum value = 2"
-            - "Maximum value = 1440"
+            - "Default value: C(2)"
+            - "Minimum value = C(2)"
+            - "Maximum value = C(1440)"
 
     mir:
         choices:
@@ -198,8 +190,6 @@ options:
             - 'DISABLED'
         description:
             - "Include multiple IP addresses in the DNS responses sent to clients."
-            - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     disableprimaryondown:
         choices:
@@ -209,8 +199,6 @@ options:
             - >-
                 Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to
                 the UP state. Used when spillover is configured for the virtual server.
-            - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     dynamicweight:
         choices:
@@ -222,8 +210,6 @@ options:
                 Specify if the appliance should consider the service count, service weights, or ignore both when
                 using weight-based load balancing methods. The state of the number of services bound to the virtual
                 server help the appliance to select the service.
-            - "Default value: DISABLED"
-            - "Possible values = SERVICECOUNT, SERVICEWEIGHT, DISABLED"
 
     considereffectivestate:
         choices:
@@ -240,8 +226,6 @@ options:
                 traffic. The effective state of the load balancing virtual server, which is transferred to the GSLB
                 service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP
                 state.
-            - "Default value: NONE"
-            - "Possible values = NONE, STATE_ONLY"
 
     comment:
         description:
@@ -256,22 +240,21 @@ options:
             - 'NONE'
         description:
             - "Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:"
-            - "* CONNECTION - Spillover occurs when the number of client connections exceeds the threshold."
+            - "* C(CONNECTION) - Spillover occurs when the number of client connections exceeds the threshold."
             - >-
-                * DYNAMICCONNECTION - Spillover occurs when the number of client connections at the GSLB virtual
+                * C(DYNAMICCONNECTION) - Spillover occurs when the number of client connections at the GSLB virtual
                 server exceeds the sum of the maximum client (Max Clients) settings for bound GSLB services. Do not
                 specify a spillover threshold for this setting, because the threshold is implied by the Max Clients
                 settings of the bound GSLB services.
             - >-
-                * BANDWIDTH - Spillover occurs when the bandwidth consumed by the GSLB virtual server's incoming and
+                * C(BANDWIDTH) - Spillover occurs when the bandwidth consumed by the GSLB virtual server's incoming and
                 outgoing traffic exceeds the threshold.
             - >-
-                * HEALTH - Spillover occurs when the percentage of weights of the GSLB services that are UP drops
+                * C(HEALTH) - Spillover occurs when the percentage of weights of the GSLB services that are UP drops
                 below the threshold. For example, if services gslbSvc1, gslbSvc2, and gslbSvc3 are bound to a virtual
                 server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if gslbSvc1
                 and gslbSvc3 or gslbSvc2 and gslbSvc3 transition to DOWN.
-            - "* NONE - Spillover does not occur."
-            - "Possible values = CONNECTION, DYNAMICCONNECTION, BANDWIDTH, HEALTH, NONE"
+            - "* C(NONE) - Spillover does not occur."
 
     sopersistence:
         choices:
@@ -281,15 +264,13 @@ options:
             - >-
                 If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB
                 virtual servers.
-            - "Default value: DISABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     sopersistencetimeout:
         description:
             - "Timeout for spillover persistence, in minutes."
-            - "Default value: 2"
-            - "Minimum value = 2"
-            - "Maximum value = 1440"
+            - "Default value: C(2)"
+            - "Minimum value = C(2)"
+            - "Maximum value = C(1440)"
 
     sothreshold:
         description:
@@ -297,8 +278,8 @@ options:
                 Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a
                 bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a
                 percentage for the HEALTH method (do not enter the percentage symbol).
-            - "Minimum value = 1"
-            - "Maximum value = 4294967287"
+            - "Minimum value = C(1)"
+            - "Maximum value = C(4294967287)"
 
     sobackupaction:
         choices:
@@ -309,7 +290,6 @@ options:
             - >-
                 Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or
                 exists.
-            - "Possible values = DROP, ACCEPT, REDIRECT"
 
     appflowlog:
         choices:
@@ -317,19 +297,12 @@ options:
             - 'DISABLED'
         description:
             - "Enable logging appflow flow information."
-            - "Default value: ENABLED"
-            - "Possible values = ENABLED, DISABLED"
 
     domain_bindings:
         description:
             - >-
                 List of bindings for domains for this glsb vserver.
         suboptions:
-            backupipflag:
-                description:
-                    - The IP address of the backup service for the specified domain name.
-                    - Used when all the services bound to the domain are down, or when the backup chain of virtual servers is down.
-
             cookietimeout:
                 description:
                     - Timeout, in minutes, for the GSLB site cookie.
@@ -347,7 +320,7 @@ options:
                     - >-
                         TTL, in seconds, for all internally created site domains (created when a site prefix is
                         configured on a GSLB service) that are associated with this virtual server.
-                    - Minimum value = 1
+                    - Minimum value = C(1)
 
     service_bindings:
         description:
@@ -359,6 +332,16 @@ options:
             weight:
                 description:
                     - Weight to assign to the GSLB service.
+
+    disabled:
+        description:
+            - When set to C(yes) the GSLB Vserver state will be set to DISABLED.
+            - When set to C(no) the GSLB Vserver state will be set to ENABLED.
+            - >-
+                Note that due to limitations of the underlying NITRO API a C(disabled) state change alone
+                does not cause the module result to report a changed status.
+        type: bool
+        default: false
 
 
 
@@ -379,17 +362,256 @@ import copy
 
 from ansible.module_utils.basic import AnsibleModule
 
+from ansible.module_utils.netscaler import (
+    ConfigProxy,
+    get_nitro_client,
+    netscaler_common_arguments,
+    log,
+    loglines,
+    ensure_feature_is_enabled,
+    get_immutables_intersection,
+    complete_missing_attributes
+)
+try:
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_gslbservice_binding import gslbvserver_gslbservice_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_domain_binding import gslbvserver_domain_binding
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
+
+
+gslbvserver_domain_binding_rw_attrs = [
+    'name',
+    'domainname',
+    'backupipflag',
+    'cookietimeout',
+    'backupip',
+    'ttl',
+    'sitedomainttl',
+    'cookie_domainflag',
+]
+
+gslbvserver_gslbservice_binding_rw_attrs = [
+    'name',
+    'servicename',
+    'weight',
+]
+
+
+def get_actual_domain_bindings(client, module):
+    log('get_actual_domain_bindings')
+    # Get actual domain bindings and index them by domainname
+    actual_domain_bindings = {}
+    if gslbvserver_domain_binding.count(client, name=module.params['name']) != 0:
+        # Get all domain bindings associated with the named gslb vserver
+        fetched_domain_bindings = gslbvserver_domain_binding.get(client, name=module.params['name'])
+        # index by domainname
+        for binding in fetched_domain_bindings:
+            complete_missing_attributes(binding, gslbvserver_domain_binding_rw_attrs, fill_value=None)
+            actual_domain_bindings[binding.domainname] = binding
+    return actual_domain_bindings
+
+
+def get_configured_domain_bindings_proxys(client, module):
+    log('get_configured_domain_bindings_proxys')
+    configured_domain_proxys = {}
+    # Get configured domain bindings and index them by domainname
+    if module.params['domain_bindings'] is not None:
+        for configured_domain_binding in module.params['domain_bindings']:
+            binding_values = copy.deepcopy(configured_domain_binding)
+            binding_values['name'] = module.params['name']
+            gslbvserver_domain_binding_proxy = ConfigProxy(
+                actual=gslbvserver_domain_binding(),
+                client=client,
+                attribute_values_dict=binding_values,
+                readwrite_attrs=gslbvserver_domain_binding_rw_attrs,
+                readonly_attrs=[],
+            )
+            configured_domain_proxys[configured_domain_binding['domainname']] = gslbvserver_domain_binding_proxy
+    return configured_domain_proxys
+
+
+def sync_domain_bindings(client, module):
+    log('sync_domain_bindings')
+
+    actual_domain_bindings = get_actual_domain_bindings(client, module)
+    configured_domain_proxys = get_configured_domain_bindings_proxys(client, module)
+
+    # Delete actual bindings not in configured bindings
+    for domainname, actual_domain_binding in actual_domain_bindings.items():
+        if domainname not in configured_domain_proxys.keys():
+            log('Deleting absent binding for domain %s' % domainname)
+            gslbvserver_domain_binding.delete(client, actual_domain_binding)
+
+    # Delete actual bindings that differ from configured
+    for proxy_key, binding_proxy in configured_domain_proxys.items():
+        if proxy_key in actual_domain_bindings:
+            actual_binding = actual_domain_bindings[proxy_key]
+            if not binding_proxy.has_equal_attributes(actual_binding):
+                log('Deleting differing binding for domain %s' % binding_proxy.domainname)
+                gslbvserver_domain_binding.delete(client, actual_binding)
+                log('Adding anew binding for domain %s' % binding_proxy.domainname)
+                binding_proxy.add()
+
+    # Add configured domains that are missing from actual
+    for proxy_key, binding_proxy in configured_domain_proxys.items():
+        if proxy_key not in actual_domain_bindings.keys():
+            log('Adding domain binding for domain %s' % binding_proxy.domainname)
+            binding_proxy.add()
+
+
+def domain_bindings_identical(client, module):
+    log('domain_bindings_identical')
+    actual_domain_bindings = get_actual_domain_bindings(client, module)
+    configured_domain_proxys = get_configured_domain_bindings_proxys(client, module)
+
+    actual_keyset = set(actual_domain_bindings.keys())
+    configured_keyset = set(configured_domain_proxys.keys())
+
+    symmetric_difference = actual_keyset ^ configured_keyset
+
+    log('symmetric difference %s' % symmetric_difference)
+    if len(symmetric_difference) != 0:
+        return False
+
+    # Item for item equality test
+    for key, proxy in configured_domain_proxys.items():
+        diff = proxy.diff_object(actual_domain_bindings[key])
+        if 'backupipflag' in diff:
+            del diff['backupipflag']
+        if not len(diff) == 0:
+            return False
+    # Fallthrough to True result
+    return True
+
+
+def get_actual_service_bindings(client, module):
+    log('get_actual_service_bindings')
+    # Get actual domain bindings and index them by domainname
+    actual_bindings = {}
+    if gslbvserver_gslbservice_binding.count(client, name=module.params['name']) != 0:
+        # Get all service bindings associated with the named gslb vserver
+        fetched_bindings = gslbvserver_gslbservice_binding.get(client, name=module.params['name'])
+        # index by servicename
+        for binding in fetched_bindings:
+            complete_missing_attributes(binding, gslbvserver_gslbservice_binding_rw_attrs, fill_value=None)
+            actual_bindings[binding.servicename] = binding
+
+    return actual_bindings
+
+
+def get_configured_service_bindings(client, module):
+    log('get_configured_service_bindings_proxys')
+    configured_proxys = {}
+    # Get configured domain bindings and index them by domainname
+    if module.params['service_bindings'] is not None:
+        for configured_binding in module.params['service_bindings']:
+            binding_values = copy.deepcopy(configured_binding)
+            binding_values['name'] = module.params['name']
+            gslbvserver_service_binding_proxy = ConfigProxy(
+                actual=gslbvserver_gslbservice_binding(),
+                client=client,
+                attribute_values_dict=binding_values,
+                readwrite_attrs=gslbvserver_gslbservice_binding_rw_attrs,
+                readonly_attrs=[],
+            )
+            configured_proxys[configured_binding['servicename']] = gslbvserver_service_binding_proxy
+    return configured_proxys
+
+
+def sync_service_bindings(client, module):
+    actual = get_actual_service_bindings(client, module)
+    configured = get_configured_service_bindings(client, module)
+
+    # Delete extraneous
+    extraneous_service_bindings = list(set(actual.keys()) - set(configured.keys()))
+    for servicename in extraneous_service_bindings:
+        log('Deleting missing binding from service %s' % servicename)
+        binding = actual[servicename]
+        binding.name = module.params['name']
+        gslbvserver_gslbservice_binding.delete(client, binding)
+
+    # Recreate different
+    common_service_bindings = list(set(actual.keys()) & set(configured.keys()))
+    for servicename in common_service_bindings:
+        proxy = configured[servicename]
+        binding = actual[servicename]
+        if not proxy.has_equal_attributes(actual):
+            log('Recreating differing service binding %s' % servicename)
+            gslbvserver_gslbservice_binding.delete(client, binding)
+            proxy.add()
+
+    # Add missing
+    missing_service_bindings = list(set(configured.keys()) - set(actual.keys()))
+    for servicename in missing_service_bindings:
+        proxy = configured[servicename]
+        log('Adding missing service binding %s' % servicename)
+        proxy.add()
+
+
+def service_bindings_identical(client, module):
+    actual_bindings = get_actual_service_bindings(client, module)
+    configured_proxys = get_configured_service_bindings(client, module)
+
+    actual_keyset = set(actual_bindings.keys())
+    configured_keyset = set(configured_proxys.keys())
+
+    symmetric_difference = actual_keyset ^ configured_keyset
+    if len(symmetric_difference) != 0:
+        return False
+
+    # Item for item equality test
+    for key, proxy in configured_proxys.items():
+        if key in actual_bindings.keys():
+            if not proxy.has_equal_attributes(actual_bindings[key]):
+                return False
+
+    # Fallthrough to True result
+    return True
+
+
+def gslb_vserver_exists(client, module):
+    if gslbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+        return True
+    else:
+        return False
+
+
+def gslb_vserver_identical(client, module, gslb_vserver_proxy):
+    gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
+    diff_dict = gslb_vserver_proxy.diff_object(gslb_vserver_list[0])
+    if len(diff_dict) != 0:
+        return False
+    else:
+        return True
+
+
+def all_identical(client, module, gslb_vserver_proxy):
+    return (
+        gslb_vserver_identical(client, module, gslb_vserver_proxy) and
+        domain_bindings_identical(client, module) and
+        service_bindings_identical(client, module)
+    )
+
+
+def diff_list(client, module, gslb_vserver_proxy):
+    gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
+    return gslb_vserver_proxy.diff_object(gslb_vserver_list[0])
+
+
+def do_state_change(client, module, gslb_vserver_proxy):
+    if module.params['disabled']:
+        log('Disabling glsb_vserver')
+        result = gslbvserver.disable(client, gslb_vserver_proxy.actual)
+    else:
+        log('Enabling gslbvserver')
+        result = gslbvserver.enable(client, gslb_vserver_proxy.actual)
+    return result
+
 
 def main():
-    from ansible.module_utils.netscaler import ConfigProxy, get_nitro_client, netscaler_common_arguments, log, loglines, ensure_feature_is_enabled, get_immutables_intersection, complete_missing_attributes
-    try:
-        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
-        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_gslbservice_binding import gslbvserver_gslbservice_binding
-        from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver_domain_binding import gslbvserver_domain_binding
-        from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-        python_sdk_imported = True
-    except ImportError as e:
-        python_sdk_imported = False
 
     module_specific_arguments = dict(
         name=dict(type='str'),
@@ -538,6 +760,10 @@ def main():
     hand_inserted_arguments = dict(
         domain_bindings=dict(type='list'),
         service_bindings=dict(type='list'),
+        disabled=dict(
+            type='bool',
+            default=False,
+        ),
     )
 
     argument_spec = dict()
@@ -557,12 +783,24 @@ def main():
     )
 
     # Fail the module if imports failed
-    if not python_sdk_imported:
+    if not PYTHON_SDK_IMPORTED:
         module.fail_json(msg='Could not load nitro python sdk')
 
     # Fallthrough to rest of execution
     client = get_nitro_client(module)
-    client.login()
+
+    try:
+        client.login()
+    except nitro_exception as e:
+        msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
+        module.fail_json(msg=msg)
+    except Exception as e:
+        if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
+            module.fail_json(msg='Connection error %s' % str(e))
+        elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
+            module.fail_json(msg='SSL Error %s' % str(e))
+        else:
+            module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
         'name',
@@ -628,239 +866,45 @@ def main():
         immutable_attrs=immutable_attrs,
     )
 
-    gslbvserver_domain_binding_rw_attrs = [
-        'name',
-        'domainname',
-        'backupipflag',
-        'cookietimeout',
-        'backupip',
-        'ttl',
-        'sitedomainttl',
-        'cookie_domainflag',
-    ]
-
-    gslbvserver_gslbservice_binding_rw_attrs = [
-        'name',
-        'servicename',
-        'weight',
-    ]
-
-    def get_actual_domain_bindings():
-        log('get_actual_domain_bindings')
-        # Get actual domain bindings and index them by domainname
-        actual_domain_bindings = {}
-        if gslbvserver_domain_binding.count(client, name=module.params['name']) != 0:
-            # Get all domain bindings associated with the named gslb vserver
-            fetched_domain_bindings = gslbvserver_domain_binding.get(client, name=module.params['name'])
-            # index by domainname
-            for binding in fetched_domain_bindings:
-                complete_missing_attributes(binding, gslbvserver_domain_binding_rw_attrs, fill_value=None)
-                actual_domain_bindings[binding.domainname] = binding
-        return actual_domain_bindings
-
-    def get_configured_domain_bindings_proxys():
-        log('get_configured_domain_bindings_proxys')
-        configured_domain_proxys = {}
-        # Get configured domain bindings and index them by domainname
-        if module.params['domain_bindings'] is not None:
-            for configured_domain_binding in module.params['domain_bindings']:
-                binding_values = copy.deepcopy(configured_domain_binding)
-                binding_values['name'] = module.params['name']
-                gslbvserver_domain_binding_proxy = ConfigProxy(
-                    actual=gslbvserver_domain_binding(),
-                    client=client,
-                    attribute_values_dict=binding_values,
-                    readwrite_attrs=gslbvserver_domain_binding_rw_attrs,
-                    readonly_attrs=[],
-                )
-                configured_domain_proxys[configured_domain_binding['domainname']] = gslbvserver_domain_binding_proxy
-        return configured_domain_proxys
-
-    def sync_domain_bindings():
-        log('sync_domain_bindings')
-
-        actual_domain_bindings = get_actual_domain_bindings()
-        configured_domain_proxys = get_configured_domain_bindings_proxys()
-
-        # Delete actual bindings not in configured bindings
-        for domainname, actual_domain_binding in actual_domain_bindings.items():
-            if domainname not in configured_domain_proxys.keys():
-                log('Deleting absent binding for domain %s' % domainname)
-                gslbvserver_domain_binding.delete(client, actual_domain_binding)
-
-        # Delete actual bindings that differ from configured
-        for proxy_key, binding_proxy in configured_domain_proxys.items():
-            if proxy_key in actual_domain_bindings:
-                actual_binding = actual_domain_bindings[proxy_key]
-                if not binding_proxy.has_equal_attributes(actual_binding):
-                    log('Deleting differing binding for domain %s' % binding_proxy.domainname)
-                    gslbvserver_domain_binding.delete(client, actual_binding)
-                    log('Adding anew binding for domain %s' % binding_proxy.domainname)
-                    binding_proxy.add()
-
-        # Add configured domains that are missing from actual
-        for proxy_key, binding_proxy in configured_domain_proxys.items():
-            if proxy_key not in actual_domain_bindings.keys():
-                log('Adding domain binding for domain %s' % binding_proxy.domainname)
-                binding_proxy.add()
-
-    def domain_bindings_identical():
-        actual_domain_bindings = get_actual_domain_bindings()
-        configured_domain_proxys = get_configured_domain_bindings_proxys()
-
-        actual_keyset = set(actual_domain_bindings.keys())
-        configured_keyset = set(configured_domain_proxys.keys())
-
-        symmetric_difference = actual_keyset ^ configured_keyset
-        if len(symmetric_difference) != 0:
-            return False
-
-        # Item for item equality test
-        for key, proxy in configured_domain_proxys.items():
-            if key in actual_domain_bindings.keys():
-                if not proxy.has_equal_attributes(actual_domain_bindings[key]):
-                    return False
-
-        # Fallthrough to True result
-        return True
-
-    def get_actual_service_bindings():
-        log('get_actual_service_bindings')
-        # Get actual domain bindings and index them by domainname
-        actual_bindings = {}
-        if gslbvserver_gslbservice_binding.count(client, name=module.params['name']) != 0:
-            # Get all service bindings associated with the named gslb vserver
-            fetched_bindings = gslbvserver_gslbservice_binding.get(client, name=module.params['name'])
-            # index by servicename
-            for binding in fetched_bindings:
-                complete_missing_attributes(binding, gslbvserver_gslbservice_binding_rw_attrs, fill_value=None)
-                actual_bindings[binding.servicename] = binding
-
-        return actual_bindings
-
-    def get_configured_service_bindings():
-        log('get_configured_service_bindings_proxys')
-        configured_proxys = {}
-        # Get configured domain bindings and index them by domainname
-        if module.params['service_bindings'] is not None:
-            for configured_binding in module.params['service_bindings']:
-                binding_values = copy.deepcopy(configured_binding)
-                binding_values['name'] = module.params['name']
-                gslbvserver_service_binding_proxy = ConfigProxy(
-                    actual=gslbvserver_gslbservice_binding(),
-                    client=client,
-                    attribute_values_dict=binding_values,
-                    readwrite_attrs=gslbvserver_gslbservice_binding_rw_attrs,
-                    readonly_attrs=[],
-                )
-                configured_proxys[configured_binding['servicename']] = gslbvserver_service_binding_proxy
-        return configured_proxys
-
-    def sync_service_bindings():
-        actual = get_actual_service_bindings()
-        configured = get_configured_service_bindings()
-
-        # Delete extraneous
-        extraneous_service_bindings = list(set(actual.keys()) - set(configured.keys()))
-        for servicename in extraneous_service_bindings:
-            log('Deleting missing binding from service %s' % servicename)
-            binding = actual[servicename]
-            binding.name = module.params['name']
-            gslbvserver_gslbservice_binding.delete(client, binding)
-
-        # Recreate different
-        common_service_bindings = list(set(actual.keys()) & set(configured.keys()))
-        for servicename in common_service_bindings:
-            proxy = configured[servicename]
-            binding = actual[servicename]
-            if not proxy.has_equal_attributes(actual):
-                log('Recreating differing service binding %s' % servicename)
-                gslbvserver_gslbservice_binding.delete(client, binding)
-                proxy.add()
-
-        # Add missing
-        missing_service_bindings = list(set(configured.keys()) - set(actual.keys()))
-        for servicename in missing_service_bindings:
-            proxy = configured[servicename]
-            log('Adding missing service binding %s' % servicename)
-            proxy.add()
-
-    def service_bindings_identical():
-        actual_bindings = get_actual_service_bindings()
-        configured_proxys = get_configured_service_bindings()
-
-        actual_keyset = set(actual_bindings.keys())
-        configured_keyset = set(configured_proxys.keys())
-
-        symmetric_difference = actual_keyset ^ configured_keyset
-        if len(symmetric_difference) != 0:
-            return False
-
-        # Item for item equality test
-        for key, proxy in configured_proxys.items():
-            if key in actual_bindings.keys():
-                if not proxy.has_equal_attributes(actual_bindings[key]):
-                    return False
-
-        # Fallthrough to True result
-        return True
-
-    def gslb_vserver_exists():
-        if gslbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-            return True
-        else:
-            return False
-
-    def gslb_vserver_identical():
-        gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
-        diff_dict = gslb_vserver_proxy.diff_object(gslb_vserver_list[0])
-        if len(diff_dict) != 0:
-            return False
-        else:
-            return True
-
-    def all_identical():
-        return gslb_vserver_identical() and domain_bindings_identical() and service_bindings_identical()
-
-    def diff():
-        gslb_vserver_list = gslbvserver.get_filtered(client, 'name:%s' % module.params['name'])
-        return gslb_vserver_proxy.diff_object(gslb_vserver_list[0])
-
     try:
         ensure_feature_is_enabled(client, 'GSLB')
         # Apply appropriate state
         if module.params['state'] == 'present':
             log('Applying state present')
-            if not gslb_vserver_exists():
+            if not gslb_vserver_exists(client, module):
                 log('Creating object')
                 if not module.check_mode:
                     gslb_vserver_proxy.add()
-                    sync_domain_bindings()
-                    sync_service_bindings()
+                    sync_domain_bindings(client, module)
+                    sync_service_bindings(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not all_identical():
+            elif not all_identical(client, module, gslb_vserver_proxy):
                 log('Entering update actions')
 
                 # Check if we try to change value of immutable attributes
-                if not gslb_vserver_identical():
+                if not gslb_vserver_identical(client, module, gslb_vserver_proxy):
                     log('Updating gslb vserver')
-                    immutables_changed = get_immutables_intersection(gslb_vserver_proxy, diff().keys())
+                    immutables_changed = get_immutables_intersection(gslb_vserver_proxy, diff_list(client, module, gslb_vserver_proxy).keys())
                     if immutables_changed != []:
-                        module.fail_json(msg='Cannot update immutable attributes %s' % (immutables_changed,), diff=diff(), **module_result)
+                        module.fail_json(
+                            msg='Cannot update immutable attributes %s' % (immutables_changed,),
+                            diff=diff_list(client, module, gslb_vserver_proxy),
+                            **module_result
+                        )
                     if not module.check_mode:
                         gslb_vserver_proxy.update()
 
                 # Update domain bindings
-                if not domain_bindings_identical():
+                if not domain_bindings_identical(client, module):
                     if not module.check_mode:
-                        sync_domain_bindings()
+                        sync_domain_bindings(client, module)
 
                 # Update service bindings
-                if not service_bindings_identical():
+                if not service_bindings_identical(client, module):
                     if not module.check_mode:
-                        sync_service_bindings()
+                        sync_service_bindings(client, module)
 
                 module_result['changed'] = True
                 if not module.check_mode:
@@ -869,19 +913,26 @@ def main():
             else:
                 module_result['changed'] = False
 
+            if not module.check_mode:
+                res = do_state_change(client, module, gslb_vserver_proxy)
+                if res.errorcode != 0:
+                    msg = 'Error when setting disabled state. errorcode: %s message: %s' % (res.errorcode, res.message)
+                    module.fail_json(msg=msg, **module_result)
+
             # Sanity check for state
             if not module.check_mode:
-                if not gslb_vserver_exists():
+                if not gslb_vserver_exists(client, module):
                     module.fail_json(msg='GSLB Vserver does not exist', **module_result)
-                if not gslb_vserver_identical():
-                    module.fail_json(msg='GSLB Vserver differs from configured', diff=diff(), **module_result)
-                if not domain_bindings_identical():
-                    module.fail_json(msg='Domain bindings differ from configured', diff=diff(), **module_result)
-                if not service_bindings_identical():
-                    module.fail_json(msg='Service bindings differ from configured', diff=diff(), **module_result)
+                if not gslb_vserver_identical(client, module, gslb_vserver_proxy):
+                    module.fail_json(msg='GSLB Vserver differs from configured', diff=diff_list(client, module, gslb_vserver_proxy), **module_result)
+                if not domain_bindings_identical(client, module):
+                    module.fail_json(msg='Domain bindings differ from configured', diff=diff_list(client, module, gslb_vserver_proxy), **module_result)
+                if not service_bindings_identical(client, module):
+                    module.fail_json(msg='Service bindings differ from configured', diff=diff_list(client, module, gslb_vserver_proxy), **module_result)
 
         elif module.params['state'] == 'absent':
-            if gslb_vserver_exists():
+
+            if gslb_vserver_exists(client, module):
                 if not module.check_mode:
                     gslb_vserver_proxy.delete()
                     if module.params['save_config']:
@@ -892,7 +943,7 @@ def main():
 
             # Sanity check for state
             if not module.check_mode:
-                if gslb_vserver_exists():
+                if gslb_vserver_exists(client, module):
                     module.fail_json(msg='GSLB Vserver still exists', **module_result)
 
     except nitro_exception as e:
