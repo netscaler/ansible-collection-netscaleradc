@@ -422,6 +422,7 @@ try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_service_binding import lbmonitor_service_binding
     from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+
     PYTHON_SDK_IMPORTED = True
 except ImportError as e:
     PYTHON_SDK_IMPORTED = False
@@ -630,10 +631,11 @@ def main():
         cipheader=dict(type='str'),
         usip=dict(type='bool'),
         useproxyport=dict(type='bool'),
-        sc=dict(
-            type='bool',
-            default=False,
-        ),
+
+        #sc=dict(
+            #type='bool',
+            #default=False,
+        #),
         sp=dict(type='bool'),
         rtspsessionidremap=dict(
             type='bool',
@@ -751,7 +753,7 @@ def main():
         'cipheader',
         'usip',
         'useproxyport',
-        'sc',
+        #'sc',
         'sp',
         'rtspsessionidremap',
         'clttimeout',
@@ -837,7 +839,7 @@ def main():
         'healthmonitor': ['bool_yes_no'],
         'useproxyport': ['bool_yes_no'],
         'rtspsessionidremap': ['bool_on_off'],
-        'sc': ['bool_on_off'],
+        #'sc': ['bool_on_off'],
         'accessdown': ['bool_yes_no'],
         'cmp': ['bool_yes_no'],
     }
