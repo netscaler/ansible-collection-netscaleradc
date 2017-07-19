@@ -127,6 +127,7 @@
 * "edr" not supported by nitro api
 * "state" missing from nitro api
 * "backupvserver" not present in nitro return object
+* "backupipflag" in gslbvserver\_domain\_binding is None in the nitro object.
 
 ### domain bindings
 * "cookie\_domainflag", "cookie\_domain" nitro api gets confused by the underscore.
