@@ -930,7 +930,11 @@ def main():
                 if not servicegroup_exists(client, module):
                     module.fail_json(msg='Service group is not present', **module_result)
                 if not servicegroup_identical(client, module, servicegroup_proxy):
-                    module.fail_json(msg='Service group is not identical to configuration', **module_result)
+                    module.fail_json(
+                        msg='Service group is not identical to configuration',
+                        diff=diff(client, module, servicegroup_proxy),
+                        **module_result
+                    )
                 if not servicemembers_identical(client, module):
                     module.fail_json(msg='Service group members differ from configuration', **module_result)
                 if not monitor_bindings_identical(client, module):
