@@ -13,3 +13,4 @@
 
     name: test-server-1
     ipaddress: 11.11.11.11
+    disabled: yes
