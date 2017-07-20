@@ -4,6 +4,7 @@
 ## netscaler cs action
 
 *  "targetvserver". Requires sslvpn feature which is unavailable in CPX
+*  "targetvserverexpr" does not work under CPX 11.1
 
 ### Read write options missing from module arguments
 
