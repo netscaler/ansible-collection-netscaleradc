@@ -24,7 +24,6 @@
     pathmonitorindv: no
     useproxyport: no
     healthmonitor: no
-    sc: off
     sp: off
     rtspsessionidremap: off
     clttimeout: 2000
