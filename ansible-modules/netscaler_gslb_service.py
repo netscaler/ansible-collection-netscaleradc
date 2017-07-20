@@ -413,7 +413,10 @@ def sync_monitor_bindings(client, module):
 
 def diff_list(client, module, gslb_service_proxy):
     gslb_service_list = gslbservice.get_filtered(client, 'servicename:%s' % module.params['servicename'])
-    return gslb_service_proxy.diff_object(gslb_service_list[0])
+    diff_list = gslb_service_proxy.diff_object(gslb_service_list[0])
+    if 'ip' in diff_list:
+        del diff_list['ip']
+    return diff_list
 
 
 def all_identical(client, module, gslb_service_proxy):
@@ -609,8 +612,10 @@ def main():
         actual=gslbservice(),
         client=client,
         attribute_values_dict=module.params,
+        transforms=transforms,
         readwrite_attrs=readwrite_attrs,
         readonly_attrs=readonly_attrs,
+        immutable_attrs=immutable_attrs,
     )
 
     try:
