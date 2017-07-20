@@ -264,6 +264,12 @@ def get_ns_version(client):
         return int(m.group(1)), int(m.group(2))
 
 
+def get_ns_hardware(client):
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ns.nshardware import nshardware
+    result = nshardware.get(client)
+    return result
+
+
 def monkey_patch_nitro_api():
 
     from nssrc.com.citrix.netscaler.nitro.resource.base.Json import Json
