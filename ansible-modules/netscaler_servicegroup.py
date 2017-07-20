@@ -163,11 +163,6 @@ options:
                 the service as UP at all times.
         type: bool
 
-    sc:
-        description:
-            - "State of the SureConnect feature for the service group."
-        type: bool
-
     sp:
         description:
             - "Enable surge protection for the service group."
@@ -705,7 +700,6 @@ def main():
         pathmonitorindv=dict(type='bool'),
         useproxyport=dict(type='bool'),
         healthmonitor=dict(type='bool'),
-        sc=dict(type='bool'),
         sp=dict(type='bool'),
         rtspsessionidremap=dict(type='bool'),
         clttimeout=dict(type='float'),
@@ -801,7 +795,6 @@ def main():
         'pathmonitorindv',
         'useproxyport',
         'healthmonitor',
-        'sc',
         'sp',
         'rtspsessionidremap',
         'clttimeout',
@@ -874,7 +867,6 @@ def main():
         'healthmonitor': ['bool_yes_no'],
         'useproxyport': ['bool_yes_no'],
         'rtspsessionidremap': ['bool_on_off'],
-        'sc': ['bool_on_off'],
         'graceful': ['bool_yes_no'],
         'cmp': ['bool_yes_no'],
     }
