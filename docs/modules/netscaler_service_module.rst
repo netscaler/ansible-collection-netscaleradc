@@ -170,22 +170,22 @@ Options
     <th class="head">choices</th>
     <th class="head">comments</th>
     </tr>
-                    <tr><td>monitorname<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>Name of the monitor.</div>        </td></tr>
                     <tr><td>dup_state<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
                 <td><div>State of the monitor.</div><div>The state setting for a monitor of a given type affects all monitors of that type.</div><div>For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.</div><div>If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.</div>        </td></tr>
-                    <tr><td>dup_weight<br/><div style="font-size: small;"></div></td>
+                    <tr><td>monitorname<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Name of the monitor.</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
                 <td><div>Weight to assign to the binding between the monitor and service.</div>        </td></tr>
-                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+                    <tr><td>dup_weight<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
@@ -377,18 +377,18 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </tr>
 
         <tr>
-        <td> diff </td>
-        <td> A dictionary with a list of differences between the actual configured object and the configuration specified in the module </td>
-        <td align=center> failure </td>
-        <td align=center> dict </td>
-        <td align=center> { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' } </td>
-    </tr>
-            <tr>
         <td> loglines </td>
         <td> list of logged messages by the module </td>
         <td align=center> always </td>
         <td align=center> list </td>
         <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+            <tr>
+        <td> diff </td>
+        <td> A dictionary with a list of differences between the actual configured object and the configuration specified in the module </td>
+        <td align=center> failure </td>
+        <td align=center> dict </td>
+        <td align=center> { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' } </td>
     </tr>
         
     </table>

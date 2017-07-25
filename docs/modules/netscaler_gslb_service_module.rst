@@ -41,12 +41,12 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Enable logging appflow flow information.</div><div>Default value: ENABLED</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+        <td><div>Enable logging appflow flow information.</div>        </td></tr>
                 <tr><td>cip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.</div><div>Default value: DISABLED</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+        <td><div>In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.</div>        </td></tr>
                 <tr><td>cipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -71,32 +71,27 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+        <td><div>Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.</div>        </td></tr>
                 <tr><td>hashid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Unique hash identifier for the GSLB service, used by hash based load balancing methods.</div><div>Minimum value = 1</div>        </td></tr>
+        <td><div>Unique hash identifier for the GSLB service, used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
                 <tr><td>healthmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Monitor the health of the GSLB service.</div><div>Default value: YES</div><div>Possible values = YES, NO</div>        </td></tr>
-                <tr><td>ip<br/><div style="font-size: small;"></div></td>
-    <td>no</td>
-    <td></td>
-        <td></td>
-        <td><div>IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the NetScaler appliance, or the IP address of another load balancing device.</div><div>Minimum length = 1</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Monitor the health of the GSLB service.</div>        </td></tr>
                 <tr><td>ipaddress<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>The new IP address of the service.</div>        </td></tr>
+        <td><div>IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the NetScaler appliance, or the IP address of another load balancing device.</div>        </td></tr>
                 <tr><td>maxaaausers<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.</div><div>Minimum value = 0</div><div>Maximum value = 65535</div>        </td></tr>
+        <td><div>Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>65535</code></div>        </td></tr>
                 <tr><td>maxbandwidth<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -106,7 +101,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.</div><div>Minimum value = 0</div><div>Maximum value = 4294967294</div>        </td></tr>
+        <td><div>The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>4294967294</code></div>        </td></tr>
                 <tr><td rowspan="2">monitor_bindings<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td><td></td>
@@ -131,7 +126,7 @@ Options
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>Weight to assign to the monitor-service binding.</div><div>A larger number specifies a greater weight.</div><div>Contributes to the monitoring threshold, which determines the state of the service.</div><div>Minimum value = 1</div><div>Maximum value = 100</div>        </td></tr>
+                <td><div>Weight to assign to the monitor-service binding.</div><div>A larger number specifies a greater weight.</div><div>Contributes to the monitoring threshold, which determines the state of the service.</div><div>Minimum value = <code>1</code></div><div>Maximum value = <code>100</code></div>        </td></tr>
         </table>
     </td>
     </tr>
@@ -140,7 +135,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.</div><div>Minimum value = 0</div><div>Maximum value = 65535</div>        </td></tr>
+        <td><div>Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>65535</code></div>        </td></tr>
                 <tr><td>nitro_pass<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -195,12 +190,12 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the GSLB service is created.</div><div>CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my gslbsvc" or 'my gslbsvc').</div><div>Minimum length = 1</div>        </td></tr>
+        <td><div>Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the GSLB service is created.</div><div></div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td>servicetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>HTTP</li><li>FTP</li><li>TCP</li><li>UDP</li><li>SSL</li><li>SSL_BRIDGE</li><li>SSL_TCP</li><li>NNTP</li><li>ANY</li><li>SIP_UDP</li><li>SIP_TCP</li><li>SIP_SSL</li><li>RADIUS</li><li>RDP</li><li>RTSP</li><li>MYSQL</li><li>MSSQL</li><li>ORACLE</li></ul></td>
-        <td><div>Type of service to create.</div><div>Default value: NSSVC_SERVICE_UNKNOWN</div><div>Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP, SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE</div>        </td></tr>
+        <td><div>Type of service to create.</div>        </td></tr>
                 <tr><td>sitename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -210,7 +205,7 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>ConnectionProxy</li><li>HTTPRedirect</li><li>NONE</li></ul></td>
-        <td><div>Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.</div><div>Possible values = ConnectionProxy, HTTPRedirect, NONE</div>        </td></tr>
+        <td><div>Use cookie-based site persistence. Applicable only to <code>HTTP</code> and <code>SSL</code> GSLB services.</div>        </td></tr>
                 <tr><td>siteprefix<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -237,7 +232,74 @@ Examples
  ::
 
     
+    - name: Setup gslb service 2
+    
+      delegate_to: localhost
+      register: result
+      check_mode: "{{ check_mode }}"
+    
+      netscaler_gslb_service:
+        operation: present
+    
+        servicename: gslb-service-2
+        cnameentry: example.com
+        sitename: gslb-site-1
 
+Return Values
+-------------
+
+Common return values are documented here :doc:`common_return_values`, the following are the fields unique to this module:
+
+.. raw:: html
+
+    <table border=1 cellpadding=4>
+    <tr>
+    <th class="head">name</th>
+    <th class="head">description</th>
+    <th class="head">returned</th>
+    <th class="head">type</th>
+    <th class="head">sample</th>
+    </tr>
+
+        <tr>
+        <td> msg </td>
+        <td> Message detailing the failure reason </td>
+        <td align=center> failure </td>
+        <td align=center> string </td>
+        <td align=center> Action does not exist </td>
+    </tr>
+            <tr>
+        <td> loglines </td>
+        <td> list of logged messages by the module </td>
+        <td align=center> always </td>
+        <td align=center> list </td>
+        <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+            <tr>
+        <td> diff </td>
+        <td> List of differences between the actual configured object and the configuration specified in the module </td>
+        <td align=center> failure </td>
+        <td align=center> dictionary </td>
+        <td align=center> { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' } </td>
+    </tr>
+        <tr><td>contains: </td>
+    <td colspan=4>
+        <table border=1 cellpadding=2>
+        <tr>
+        <th class="head">name</th>
+        <th class="head">description</th>
+        <th class="head">returned</th>
+        <th class="head">type</th>
+        <th class="head">sample</th>
+        </tr>
+
+        
+        </table>
+    </td></tr>
+
+        
+    </table>
+    </br></br>
 
 
 
@@ -251,7 +313,7 @@ This module is flagged as **preview** which means that it is not guaranteed to h
 Support
 ~~~~~~~
 
-
+This module is community maintained without core committer oversight.
 
 For more information on what this means please read :doc:`modules_support`
 

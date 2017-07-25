@@ -47,7 +47,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name for the content switching action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the content switching action is created.</div>        </td></tr>
+        <td><div>Name for the content switching action. Must begin with an ASCII alphanumeric or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at sign <code>@</code>, equal sign <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the content switching action is created.</div>        </td></tr>
                 <tr><td>nitro_pass<br/><div style="font-size: small;"></div></td>
     <td>yes</td>
     <td></td>
@@ -87,7 +87,12 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name of the load balancing virtual server to which the content is switched.</div><div>Create the load balancing vserver with netscaler_lb_vserver if it does not exist</div>        </td></tr>
+        <td><div>Name of the load balancing virtual server to which the content is switched.</div>        </td></tr>
+                <tr><td>targetvserver<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>Name of the VPN virtual server to which the content is switched.</div>        </td></tr>
                 <tr><td>targetvserverexpr<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -112,17 +117,17 @@ Examples
     # lb_vserver_1 must have been already created with the netscaler_lb_vserver module
     
     - name: Configure netscaler content switching action
-        local_action:
-            nsip: 172.18.0.2
-            nitro_user: nsroot
-            nitro_pass: nsroot
-            validate_certs: no
+      delegate_to: localhost
+      netscaler_cs_action:
+          nsip: 172.18.0.2
+          nitro_user: nsroot
+          nitro_pass: nsroot
+          validate_certs: no
     
-            module: netscaler_cs_action
-            state: present
+          state: present
     
-            name: action-1
-            targetlbvserver: lb_vserver_1
+          name: action-1
+          targetlbvserver: lb_vserver_1
 
 Return Values
 -------------
@@ -148,6 +153,13 @@ Common return values are documented here :doc:`common_return_values`, the follow
         <td align=center> Action does not exist </td>
     </tr>
             <tr>
+        <td> loglines </td>
+        <td> list of logged messages by the module </td>
+        <td align=center> always </td>
+        <td align=center> list </td>
+        <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+            <tr>
         <td> diff </td>
         <td> List of differences between the actual configured object and the configuration specified in the module </td>
         <td align=center> failure </td>
@@ -169,13 +181,6 @@ Common return values are documented here :doc:`common_return_values`, the follow
         </table>
     </td></tr>
 
-            <tr>
-        <td> loglines </td>
-        <td> list of logged messages by the module </td>
-        <td align=center> always </td>
-        <td align=center> list </td>
-        <td align=center> ['message 1', 'message 2'] </td>
-    </tr>
         
     </table>
     </br></br>
@@ -192,7 +197,7 @@ This module is flagged as **preview** which means that it is not guaranteed to h
 Support
 ~~~~~~~
 
-
+This module is community maintained without core committer oversight.
 
 For more information on what this means please read :doc:`modules_support`
 

@@ -15,8 +15,8 @@ netscaler_servicegroup - Manage service group configuration in Netscaler
 Synopsis
 --------
 
-* Manage service group configuration in Netscaler
-* This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+* Manage service group configuration in Netscaler.
+* This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 
 Requirements (on host that executes module)
@@ -42,27 +42,27 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Enable logging of AppFlow information for the specified service group.</div><div>Default value = ENABLED</div>        </td></tr>
+        <td><div>Enable logging of AppFlow information for the specified service group.</div>        </td></tr>
                 <tr><td>autoscale<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>DISABLED</li><li>DNS</li><li>POLICY</li></ul></td>
-        <td><div>Auto scale option for a servicegroup.</div><div>Default value = DISABLED</div>        </td></tr>
+        <td><div>Auto scale option for a servicegroup.</div>        </td></tr>
                 <tr><td>cacheable<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Use the transparent cache redirection virtual server to forward the request to the cache server.</div><div>Note. Do not set this parameter if you set the Cache Type.</div><div>Default value = NO</div><div>Possible values = YES, NO</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Use the transparent cache redirection virtual server to forward the request to the cache server.</div><div>Note: Do not set this parameter if you set the Cache Type.</div>        </td></tr>
                 <tr><td>cachetype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>TRANSPARENT</li><li>REVERSE</li><li>FORWARD</li></ul></td>
-        <td><div>Cache type supported by the cache server.</div><div>Possible values = TRANSPARENT, REVERSE, FORWARD</div>        </td></tr>
+        <td><div>Cache type supported by the cache server.</div>        </td></tr>
                 <tr><td>cip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Insert the Client IP header in requests forwarded to the service.</div><div>Possible values = ENABLED, DISABLED</div>        </td></tr>
+        <td><div>Insert the Client IP header in requests forwarded to the service.</div>        </td></tr>
                 <tr><td>cipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -71,17 +71,17 @@ Options
                 <tr><td>cka<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
         <td><div>Enable client keep-alive for the service group.</div>        </td></tr>
                 <tr><td>clttimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Time, in seconds, after which to terminate an idle client connection.</div><div>Minimum value = 0</div><div>Maximum value = 31536000</div>        </td></tr>
+        <td><div>Time, in seconds, after which to terminate an idle client connection.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>31536000</code></div>        </td></tr>
                 <tr><td>cmp<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
         <td><div>Enable compression for the specified service.</div>        </td></tr>
                 <tr><td>comment<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -92,17 +92,17 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div><div>Default value = ENABLED</div>        </td></tr>
+        <td><div>Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>graceful<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Wait for all existing connections to the service to terminate before shutting down the service.</div><div>Default value = NO</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Wait for all existing connections to the service to terminate before shutting down the service.</div>        </td></tr>
                 <tr><td>healthmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Monitor the health of this service. Available settings function as follows.</div><div>YES - Send probes to check the health of the service.</div><div>NO - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.</div><div>Default value = YES</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Monitor the health of this service. Available settings function as follows:</div><div><code>yes</code> - Send probes to check the health of the service.</div><div><code>no</code> - Do not send probes to check the health of the service. With the NO option, the appliance shows the service as UP at all times.</div>        </td></tr>
                 <tr><td>httpprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -112,17 +112,17 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Maximum bandwidth, in Kbps, allocated for all the services in the service group.</div><div>Minimum value = 0</div><div>Maximum value = 4294967287</div>        </td></tr>
+        <td><div>Maximum bandwidth, in Kbps, allocated for all the services in the service group.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>4294967287</code></div>        </td></tr>
                 <tr><td>maxclient<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Maximum number of simultaneous open connections for the service group.</div><div>Minimum value = 0</div><div>Maximum value = 4294967294</div>        </td></tr>
+        <td><div>Maximum number of simultaneous open connections for the service group.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>4294967294</code></div>        </td></tr>
                 <tr><td>maxreq<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Maximum number of requests that can be sent on a persistent connection to the service group.</div><div>Note. Connection requests beyond this value are rejected.</div><div>Minimum value = 0</div><div>Maximum value = 65535</div>        </td></tr>
+        <td><div>Maximum number of requests that can be sent on a persistent connection to the service group.</div><div>Note: Connection requests beyond this value are rejected.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>65535</code></div>        </td></tr>
                 <tr><td>memberport<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -147,7 +147,12 @@ Options
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>T</div><div>h</div><div>e</div><div> </div><div>m</div><div>o</div><div>n</div><div>i</div><div>t</div><div>o</div><div>r</div><div> </div><div>n</div><div>a</div><div>m</div><div>e</div><div> </div><div>t</div><div>o</div><div> </div><div>b</div><div>i</div><div>n</div><div>d</div><div> </div><div>t</div><div>o</div><div> </div><div>t</div><div>h</div><div>i</div><div>s</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>i</div><div>c</div><div>e</div><div>g</div><div>r</div><div>o</div><div>u</div><div>p</div>        </td></tr>
+                <td><div>The monitor name to bind to this servicegroup.</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the binding between the monitor and servicegroup.</div>        </td></tr>
         </table>
     </td>
     </tr>
@@ -156,7 +161,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.</div><div>Minimum value = 0</div><div>Maximum value = 65535</div>        </td></tr>
+        <td><div>Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>65535</code></div>        </td></tr>
                 <tr><td>netprofile<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -190,37 +195,32 @@ Options
                 <tr><td>pathmonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
+        <td></td>
         <td><div>Path monitoring for clustering.</div>        </td></tr>
                 <tr><td>pathmonitorindv<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Individual Path monitoring decisions.</div><div>Possible values = YES, NO</div>        </td></tr>
+        <td></td>
+        <td><div>Individual Path monitoring decisions.</div>        </td></tr>
                 <tr><td>rtspsessionidremap<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ON</li><li>OFF</li></ul></td>
-        <td><div>Enable RTSP session ID mapping for the service group.</div><div>Default value = OFF</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Enable RTSP session ID mapping for the service group.</div>        </td></tr>
                 <tr><td>save_config<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>True</td>
         <td><ul><li>yes</li><li>no</li></ul></td>
         <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
-                <tr><td>sc<br/><div style="font-size: small;"></div></td>
-    <td>no</td>
-    <td></td>
-        <td><ul><li>ON</li><li>OFF</li></ul></td>
-        <td><div>State of the SureConnect feature for the service group.</div><div>Default value = OFF</div>        </td></tr>
                 <tr><td>servicegroupname<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name of the service group. Must begin with an ASCII alphabetic or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
+        <td><div>Name of the service group. Must begin with an ASCII alphabetic or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore <code>_</code>, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at <code>@</code>, equals <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the name is created.</div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td rowspan="2">servicemembers<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td><td></td>
-    <td> <div>A list of dictionaries describing each service member of the service group</div><div>The dictionary for each member must contain the following keys.</div><div>ip. The ip address of the service member</div><div>port. The port of the service member</div><div>weight. The weight of this service member</div>    </tr>
+    <td> <div>A list of dictionaries describing each service member of the service group.</div>    </tr>
     <tr>
     <td colspan="5">
     <table border=1 cellpadding=4>
@@ -232,41 +232,41 @@ Options
     <th class="head">choices</th>
     <th class="head">comments</th>
     </tr>
-                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = 1</div>        </td></tr>
-                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>Weight to assign to the servers in the service group.</div><div>Specifies the capacity of the servers relative to the other servers in the load balancing configuration.</div><div>The higher the weight, the higher the percentage of requests sent to the service.</div><div>Minimum value = 1</div><div>Maximum value = 100</div>        </td></tr>
                     <tr><td>ip<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>i</div><div>p</div><div> </div><div>a</div><div>d</div><div>d</div><div>r</div><div>e</div><div>s</div><div>s</div><div> </div><div>o</div><div>f</div><div> </div><div>t</div><div>h</div><div>e</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>i</div><div>c</div><div>e</div><div>.</div><div> </div><div>M</div><div>u</div><div>s</div><div>t</div><div> </div><div>n</div><div>o</div><div>t</div><div> </div><div>o</div><div>v</div><div>e</div><div>r</div><div>l</div><div>a</div><div>p</div><div> </div><div>w</div><div>i</div><div>t</div><div>h</div><div> </div><div>a</div><div>n</div><div> </div><div>e</div><div>x</div><div>i</div><div>s</div><div>t</div><div>i</div><div>n</div><div>g</div><div> </div><div>s</div><div>e</div><div>r</div><div>v</div><div>e</div><div>r</div><div> </div><div>e</div><div>n</div><div>t</div><div>i</div><div>t</div><div>y</div><div> </div><div>d</div><div>e</div><div>f</div><div>i</div><div>n</div><div>e</div><div>d</div><div> </div><div>b</div><div>y</div><div> </div><div>n</div><div>a</div><div>m</div><div>e</div><div>.</div>        </td></tr>
+                <td><div>IP address of the service. Must not overlap with an existing server entity defined by name.</div>        </td></tr>
                     <tr><td>customserverid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td>None</td>
-                <td></td>
-                <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
-                    <tr><td>servername<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>Name of the server to which to bind the service group.</div><div>The server must already be configured as a named server.</div><div>Minimum length = 1</div>        </td></tr>
+                <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
+                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
+                    <tr><td>port<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Server port number.</div><div>Range <code>1</code> - <code>65535</code></div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
                     <tr><td>serverid<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
                 <td><div>The identifier for the service.</div><div>This is used when the persistency type is set to Custom Server ID.</div>        </td></tr>
-                    <tr><td>port<br/><div style="font-size: small;"></div></td>
+                    <tr><td>servername<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>Server port number.</div><div>Range 1 - 65535</div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
+                <td><div>Name of the server to which to bind the service group.</div><div>The server must already be configured as a named server.</div><div>Minimum length = 1</div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the servers in the service group.</div><div>Specifies the capacity of the servers relative to the other servers in the load balancing configuration.</div><div>The higher the weight, the higher the percentage of requests sent to the service.</div><div>Minimum value = <code>1</code></div><div>Maximum value = <code>100</code></div>        </td></tr>
         </table>
     </td>
     </tr>
@@ -279,8 +279,8 @@ Options
                 <tr><td>sp<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ON</li><li>OFF</li></ul></td>
-        <td><div>Enable surge protection for the service group.</div><div>Default value = OFF</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Enable surge protection for the service group.</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>present</td>
@@ -290,11 +290,11 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Time, in seconds, after which to terminate an idle server connection.</div><div>Minimum value = 0</div><div>Maximum value = 31536000</div>        </td></tr>
+        <td><div>Time, in seconds, after which to terminate an idle server connection.</div><div>Minimum value = <code>0</code></div><div>Maximum value = <code>31536000</code></div>        </td></tr>
                 <tr><td>tcpb<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
         <td><div>Enable TCP buffering for the service group.</div>        </td></tr>
                 <tr><td>tcpprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -304,12 +304,12 @@ Options
                 <tr><td>useproxyport<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
-        <td><div>Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.</div><div>Note. This parameter is available only when the Use Source IP (USIP) parameter is set to YES.</div><div>Possible values = YES, NO</div>        </td></tr>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.</div><div>Note: This parameter is available only when the Use Source IP <code>usip</code> parameter is set to <code>yes</code>.</div>        </td></tr>
                 <tr><td>usip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>YES</li><li>NO</li></ul></td>
+        <td></td>
         <td><div>Use client's IP address as the source IP address when initiating connection to the server. With the NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the source IP address to initiate server side connections.</div>        </td></tr>
                 <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -327,7 +327,7 @@ Examples
  ::
 
     
-    # The LB Monitor monitor-1 must already exist
+    # The LB Monitors monitor-1 and monitor-2 must already exist
     # Service members defined by C(ip) must not redefine an existing server's ip address.
     # Service members defined by C(servername) must already exist.
     
@@ -343,18 +343,21 @@ Examples
         servicegroupname: service-group-1
         servicetype: HTTP
         servicemembers:
-            - ip: 10.78.78.78
-              port: 80
-              weight: 50
-            - ip: 10.79.79.79
-              port: 80
-              weight: 40
-            - servername: server-1
-              port: 80
-              weight: 10
+          - ip: 10.78.78.78
+            port: 80
+            weight: 50
+          - ip: 10.79.79.79
+            port: 80
+            weight: 40
+          - servername: server-1
+            port: 80
+            weight: 10
     
         monitorbindings:
-          - monitor-1
+          - monitorname: monitor-1
+            weight: 50
+          - monitorname: monitor-2
+            weight: 50
     
 
 Return Values
@@ -381,18 +384,18 @@ Common return values are documented here :doc:`common_return_values`, the follow
         <td align=center> Action does not exist </td>
     </tr>
             <tr>
-        <td> diff </td>
-        <td> List of differences between the actual configured object and the configuration specified in the module </td>
-        <td align=center> failure </td>
-        <td align=center> dict </td>
-        <td align=center> {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'} </td>
-    </tr>
-            <tr>
         <td> loglines </td>
         <td> list of logged messages by the module </td>
         <td align=center> always </td>
         <td align=center> list </td>
         <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+            <tr>
+        <td> diff </td>
+        <td> List of differences between the actual configured object and the configuration specified in the module </td>
+        <td align=center> failure </td>
+        <td align=center> dict </td>
+        <td align=center> {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'} </td>
     </tr>
         
     </table>
@@ -410,7 +413,7 @@ This module is flagged as **preview** which means that it is not guaranteed to h
 Support
 ~~~~~~~
 
-
+This module is community maintained without core committer oversight.
 
 For more information on what this means please read :doc:`modules_support`
 

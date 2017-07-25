@@ -77,12 +77,12 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen (-) characters. Cannot be changed after a policy is created.</div><div>Minimum length = 1</div>        </td></tr>
+        <td><div>Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at sign <code>@</code>, equal sign <code>=</code>, and hyphen <code>-</code> characters. Cannot be changed after a policy is created.</div><div>The following requirement applies only to the NetScaler CLI:</div><div>If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my policy or my policy).</div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td>rule<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.</div><div>Note</div><div>Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows '"&lt;string of 255 characters&gt;" + "&lt;string of 245 characters&gt;"'</div><div>The following requirements apply only to the NetScaler CLI</div><div>If the expression includes one or more spaces, enclose the entire expression in double quotation marks.</div><div>If the expression itself includes double quotation marks, escape the quotations by using the character.</div><div>lternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.</div>        </td></tr>
+        <td><div>Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.</div><div>Note:</div><div>Maximum length of a string literal in the expression is 255 characters. A longer string can be split into smaller strings of up to 255 characters each, and the smaller strings concatenated with the + operator. For example, you can create a 500-character string as follows: '"&lt;string of 255 characters&gt;" + "&lt;string of 245 characters&gt;"'</div>        </td></tr>
                 <tr><td>save_config<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>True</td>
@@ -97,7 +97,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: [[prefix] [*]] [.suffix].</div><div>Minimum length = 1</div><div>Maximum length = 208</div>        </td></tr>
+        <td><div>URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: <code>[[prefix] [*]] [.suffix]</code>.</div><div>Minimum length = 1</div><div>Maximum length = 208</div>        </td></tr>
                 <tr><td>validate_certs<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>yes</td>
@@ -115,17 +115,17 @@ Examples
 
     
     - name: Create url cs policy
-        local_action:
-            nsip: 172.18.0.2
-            nitro_user: nsroot
-            nitro_pass: nsroot
-            validate_certs: no
+      delegate_to: localhost
+      netscaler_cs_policy:
+        nsip: 172.18.0.2
+        nitro_user: nsroot
+        nitro_pass: nsroot
+        validate_certs: no
     
-            module: netscaler_cs_policy
-            state: present
+        state: present
     
-            policyname: policy_1
-            url: /example/
+        policyname: policy_1
+        url: /example/
 
 Return Values
 -------------
@@ -151,18 +151,18 @@ Common return values are documented here :doc:`common_return_values`, the follow
         <td align=center> Could not load nitro python sdk </td>
     </tr>
             <tr>
-        <td> diff </td>
-        <td> List of differences between the actual configured object and the configuration specified in the module </td>
-        <td align=center> failure </td>
-        <td align=center> dict </td>
-        <td align=center> {'url': 'difference. ours: (str) example1 other: (str) /example1'} </td>
-    </tr>
-            <tr>
         <td> loglines </td>
         <td> list of logged messages by the module </td>
         <td align=center> always </td>
         <td align=center> list </td>
         <td align=center> ['message 1', 'message 2'] </td>
+    </tr>
+            <tr>
+        <td> diff </td>
+        <td> List of differences between the actual configured object and the configuration specified in the module </td>
+        <td align=center> failure </td>
+        <td align=center> dict </td>
+        <td align=center> {'url': 'difference. ours: (str) example1 other: (str) /example1'} </td>
     </tr>
         
     </table>
@@ -180,7 +180,7 @@ This module is flagged as **preview** which means that it is not guaranteed to h
 Support
 ~~~~~~~
 
-
+This module is community maintained without core committer oversight.
 
 For more information on what this means please read :doc:`modules_support`
 
