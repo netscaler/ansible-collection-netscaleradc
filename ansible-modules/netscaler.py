@@ -189,6 +189,10 @@ def get_immutables_intersection(config_proxy, keys):
 
 def ensure_feature_is_enabled(client, feature_str):
     enabled_features = client.get_enabled_features()
+
+    if enabled_features is None:
+        enabled_features = []
+
     if feature_str not in enabled_features:
         client.enable_features(feature_str)
         client.save_config()
