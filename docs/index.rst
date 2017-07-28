@@ -1,7 +1,7 @@
 Netscaler Ansible Docs
 ======================
 
-This project implements a set of Ansible modules for the Citrix Netscaler 
+This project implements a set of Ansible modules for the Citrix Netscaler.
 Users of these modules can create, edit, update, and delete configuration
 objects on a Netscaler. For more information on the basic principals that the
 modules use, see the :doc:`usage/index`.
