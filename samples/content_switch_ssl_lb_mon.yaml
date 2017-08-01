@@ -10,30 +10,27 @@
 
   tasks:
     - name: Configure lb monitor for catalog
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_monitor:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_monitor
         state: present
 
         monitorname: monitor_catalog
         type: HTTP
         respcode: ['200']
 
-        servicegroupbindings:
-          - servicegroupname: service_group_catalog
-
     - name: Configure lb monitor for cart
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_monitor:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_monitor
         state: present
 
         monitorname: monitor_cart
@@ -41,14 +38,14 @@
         respcode: ['200']
 
     - name: Configure service group catalog
-      local_action: 
+      delegate_to: localhost
+      netscaler_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_servicegroup
 
         servicegroupname: service_group_catalog
         servicetype: HTTP
@@ -61,16 +58,17 @@
             weight: 50
         monitorbindings:
           - monitorname: monitor_catalog
+            weight: 100
 
     - name: Configure service group cart
-      local_action: 
+      delegate_to: localhost
+      netscaler_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_servicegroup
 
         servicegroupname: service_group_cart
         servicetype: HTTP
@@ -83,15 +81,16 @@
             weight: 50
         monitorbindings:
           - monitorname: monitor_cart
+            weight: 100
 
     - name: Configure lb vserver cart
-      local_action: 
+      delegate_to: localhost
+      netscaler_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: present
 
         name: lb_vserver_cart
@@ -100,13 +99,13 @@
         port: 80
 
     - name: Configure lb vserver catalog
-      local_action: 
+      delegate_to: localhost
+      netscaler_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: present
 
         name: lb_vserver_catalog
@@ -116,40 +115,40 @@
 
 
     - name: Configure catalog policy
-      local_action: 
+      delegate_to: localhost
+      netscaler_cs_policy:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_cs_policy
 
         policyname: catalog_policy
         url: /catalog/*
 
     - name: Configure cart policy
-      local_action: 
+      delegate_to: localhost
+      netscaler_cs_policy:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_cs_policy
 
         policyname: cart_policy
         url: /cart/*
 
     - name: Configure cs vserver
-      local_action: 
+      delegate_to: localhost
+      netscaler_cs_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_cs_vserver
 
         name: cs_vserver_1
         ipv46: 10.22.24.22
