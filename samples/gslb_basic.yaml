@@ -8,13 +8,13 @@
 
   tasks:
     - name: Setup ADNS service
-      local_action:
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_service
         state: present
 
         name: service-adns-1
@@ -23,13 +23,13 @@
         port: 80
 
     - name: Setup gslb site 1
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_site
         state: present
 
         sitename: gslb-site-basic
@@ -39,13 +39,13 @@
         metricexchange: ENABLED
 
     - name: Setup gslb site 2
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_site
         state: present
 
         sitename: gslb-site-2

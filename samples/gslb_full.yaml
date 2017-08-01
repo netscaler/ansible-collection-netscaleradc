@@ -9,26 +9,26 @@
   tasks:
 
     - name: Setup gslb site
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_site
         state: present
 
         sitename: gslb-site-full
         siteipaddress: 192.168.1.4
 
     - name: Setup gslb service
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_service
         state: present
 
         servicename: gslb-service-full
@@ -38,13 +38,13 @@
         sitename: gslb-site-full
 
     - name: Setup gslb vserver
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_vserver
         state: present
 
         name: gslb-vserver-full

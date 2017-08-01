@@ -9,13 +9,13 @@
   tasks:
 
     - name: Setup gslb service
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_service
         state: present
 
         servicename: gslb-service-test
@@ -23,4 +23,4 @@
         port: 80
         sitename: gslb-site-test
         ipaddress: 192.168.3.5
-        healthmonitor: "YES"
+        healthmonitor: yes

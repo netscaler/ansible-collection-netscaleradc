@@ -9,13 +9,13 @@
   tasks:
 
     - name: Setup gslb vserver
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_vserver
         state: present
 
         name: gslb-vserver-1

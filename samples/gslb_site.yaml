@@ -8,13 +8,13 @@
 
   tasks:
     - name: Setup gslb site
-      local_action:
+      delegate_to: localhost
+      netscaler_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_gslb_site
         state: present
 
         sitename: gslb-site-test-2
