@@ -10,13 +10,13 @@
 
   tasks:
     - name: Set lb vserver 1
-      local_action: 
+      delegate_to: localhost
+      netscaler_lb_vserver: 
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: present
 
         name: lbvserver_1
@@ -26,13 +26,13 @@
 
 
     - name: Set cs policy
-      local_action: 
+      delegate_to: localhost
+      netscaler_cs_policy: 
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_cs_policy
         state: present
 
         policyname: policy_1
@@ -40,18 +40,18 @@
 
 
     - name: Set cs vserver
-      local_action:
+      delegate_to: localhost
+      netscaler_cs_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_cs_vserver
         state: present
 
-        name: cs_vserver_1
+        name: cs-vserver-1
         ipv46: 192.168.1.1
-        port: 80
+        port: 90
         servicetype: HTTP
 
         policybindings:
