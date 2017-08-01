@@ -12,13 +12,13 @@
   tasks:
 
     - name: ssl binding
-      local_action:
+      delegate_to: localhost
+      netscaler_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_ssl_certkey
         state: "{{ state }}"
 
         certkey: certificate_1
@@ -26,13 +26,13 @@
         key: server.key
 
     - name: Set service 1
-      local_action:
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_service
         state: "{{ state }}"
 
         name: service-http-1
@@ -42,13 +42,13 @@
         port: 80
 
     - name: Set service 2
-      local_action:
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_service
         state: "{{ state }}"
 
         name: service-http-2
@@ -58,13 +58,13 @@
         port: 80
 
     - name: lb vserver 1
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: "{{ state }}"
 
         name: lb_vserver_1
