@@ -1,0 +1,54 @@
+---
+
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: monitor 1
+      delegate_to: localhost
+      netscaler_lb_monitor:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        monitorname: monitor-1
+        type: HTTP
+
+    - name: monitor 2
+      delegate_to: localhost
+      netscaler_lb_monitor:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        monitorname: monitor-2
+        type: HTTP
+
+    - name: Set service group
+      delegate_to: localhost
+      netscaler_servicegroup:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        servicegroupname: service-group-1
+        servicetype: HTTP
+        maxclient: 4000
+        servicemembers:
+            - ip: 10.78.78.78
+              port: 80
+              weight: 60
+            - ip: 10.79.79.79
+              port: 80
+              weight: 40
+        monitorbindings:
+          - monitorname: monitor-1
+            weight: 40
+          - monitorname: monitor-2
+            weight: 60
