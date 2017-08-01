@@ -11,14 +11,14 @@
   tasks:
 
     - name: Set service 1
-      local_action: 
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
         state: present
-        module: netscaler_service
 
         name: service-http-1
         servicetype: HTTP
@@ -26,22 +26,22 @@
         port: 80
 
     - name: Set lb monitor
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_monitor:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
         state: present
 
-        module: netscaler_lb_monitor
         monitorname: monitor_1
         type: HTTP-INLINE
         action: DOWN
         respcode: ['400']
 
     - name: Set service group
-      local_action:
-        module: netscaler_servicegroup
+      delegate_to: localhost
+      netscaler_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -59,4 +59,4 @@
               weight: 40
         monitorbindings:
           - monitorname: monitor_1
-
+            weight: 100
