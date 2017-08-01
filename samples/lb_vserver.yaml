@@ -11,13 +11,13 @@
   tasks:
 
     - name: Set service 1
-      local_action:
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_service
         state: present
 
         name: service-http-1
@@ -27,13 +27,13 @@
         port: 80
 
     - name: Set service 2
-      local_action:
+      delegate_to: localhost
+      netscaler_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_service
         state: present
 
         name: service-http-2
@@ -43,13 +43,13 @@
         port: 80
 
     - name: Set service group
-      local_action:
+      delegate_to: localhost
+      netscaler_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_servicegroup
         state: present
 
         servicegroupname: service-group-1
@@ -64,13 +64,13 @@
 
 
     - name: lb vserver 1
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: present
 
         name: lb-vserver-1
@@ -86,13 +86,13 @@
         disabled: no
 
     - name: lb vserver 2
-      local_action:
+      delegate_to: localhost
+      netscaler_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_lb_vserver
         state: present
 
         name: lb-vserver-2
