@@ -11,13 +11,13 @@
   tasks:
 
     - name: Set service 1
-      local_action: 
+      delegate_to: localhost
+      netscaler_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_server
         state: present
 
         name: server_2
