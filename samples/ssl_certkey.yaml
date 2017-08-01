@@ -10,13 +10,13 @@
 
   tasks:
     - name: Set ssl certificate key
-      local_action: 
+      delegate_to: localhost
+      netscaler_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         validate_certs: "{{ validate_certs }}"
 
-        module: netscaler_ssl_certkey
         state: present
 
         certkey: certificate_1
@@ -29,7 +29,7 @@
         inform: PEM
 
     - name: Set ssl certificate key 2
-      netscaler_ssl_certkey: 
+      netscaler_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
