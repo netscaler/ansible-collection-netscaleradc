@@ -232,6 +232,16 @@ Options
     <th class="head">choices</th>
     <th class="head">comments</th>
     </tr>
+                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
+                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Weight to assign to the servers in the service group.</div><div>Specifies the capacity of the servers relative to the other servers in the load balancing configuration.</div><div>The higher the weight, the higher the percentage of requests sent to the service.</div><div>Minimum value = <code>1</code></div><div>Maximum value = <code>100</code></div>        </td></tr>
                     <tr><td>ip<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
@@ -242,31 +252,21 @@ Options
         <td></td>
                 <td></td>
                 <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
-                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
-                    <tr><td>port<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>Server port number.</div><div>Range <code>1</code> - <code>65535</code></div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
-                    <tr><td>serverid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>The identifier for the service.</div><div>This is used when the persistency type is set to Custom Server ID.</div>        </td></tr>
                     <tr><td>servername<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
                 <td><div>Name of the server to which to bind the service group.</div><div>The server must already be configured as a named server.</div><div>Minimum length = 1</div>        </td></tr>
-                    <tr><td>weight<br/><div style="font-size: small;"></div></td>
+                    <tr><td>serverid<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
-                <td><div>Weight to assign to the servers in the service group.</div><div>Specifies the capacity of the servers relative to the other servers in the load balancing configuration.</div><div>The higher the weight, the higher the percentage of requests sent to the service.</div><div>Minimum value = <code>1</code></div><div>Maximum value = <code>100</code></div>        </td></tr>
+                <td><div>The identifier for the service.</div><div>This is used when the persistency type is set to Custom Server ID.</div>        </td></tr>
+                    <tr><td>port<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>Server port number.</div><div>Range <code>1</code> - <code>65535</code></div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
         </table>
     </td>
     </tr>
@@ -384,18 +384,18 @@ Common return values are documented here :doc:`common_return_values`, the follow
         <td align=center> Action does not exist </td>
     </tr>
             <tr>
-        <td> loglines </td>
-        <td> list of logged messages by the module </td>
-        <td align=center> always </td>
-        <td align=center> list </td>
-        <td align=center> ['message 1', 'message 2'] </td>
-    </tr>
-            <tr>
         <td> diff </td>
         <td> List of differences between the actual configured object and the configuration specified in the module </td>
         <td align=center> failure </td>
         <td align=center> dict </td>
         <td align=center> {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'} </td>
+    </tr>
+            <tr>
+        <td> loglines </td>
+        <td> list of logged messages by the module </td>
+        <td align=center> always </td>
+        <td align=center> list </td>
+        <td align=center> ['message 1', 'message 2'] </td>
     </tr>
         
     </table>

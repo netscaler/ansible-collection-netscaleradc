@@ -151,18 +151,18 @@ Common return values are documented here :doc:`common_return_values`, the follow
         <td align=center> Could not load nitro python sdk </td>
     </tr>
             <tr>
-        <td> loglines </td>
-        <td> list of logged messages by the module </td>
-        <td align=center> always </td>
-        <td align=center> list </td>
-        <td align=center> ['message 1', 'message 2'] </td>
-    </tr>
-            <tr>
         <td> diff </td>
         <td> List of differences between the actual configured object and the configuration specified in the module </td>
         <td align=center> failure </td>
         <td align=center> dict </td>
         <td align=center> {'url': 'difference. ours: (str) example1 other: (str) /example1'} </td>
+    </tr>
+            <tr>
+        <td> loglines </td>
+        <td> list of logged messages by the module </td>
+        <td align=center> always </td>
+        <td align=center> list </td>
+        <td align=center> ['message 1', 'message 2'] </td>
     </tr>
         
     </table>
