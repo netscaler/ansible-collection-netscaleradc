@@ -266,14 +266,6 @@ diff:
 
 import copy
 
-try:
-    monkey_patch_nitro_api()
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding import gslbservice_lbmonitor_binding
-    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-    PYTHON_SDK_IMPORTED = True
-except ImportError as e:
-    PYTHON_SDK_IMPORTED = False
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.netscaler import (
@@ -286,6 +278,15 @@ from ansible.module_utils.netscaler import (
     monkey_patch_nitro_api,
     get_immutables_intersection,
 )
+
+try:
+    monkey_patch_nitro_api()
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
+    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding import gslbservice_lbmonitor_binding
+    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    PYTHON_SDK_IMPORTED = True
+except ImportError as e:
+    PYTHON_SDK_IMPORTED = False
 
 
 def gslb_service_exists(client, module):
