@@ -180,11 +180,6 @@ options:
                 setting, the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
 
-    sc:
-        description:
-            - "State of SureConnect for the service."
-        default: off
-
     sp:
         description:
             - "Enable surge protection for the service."
