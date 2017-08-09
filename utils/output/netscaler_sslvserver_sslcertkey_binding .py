@@ -38,109 +38,42 @@ author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
-    certkey:
+    ca:
         description:
-            - >-
-                Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore
-                (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
-                colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key
-                pair is created.
-            - "The following requirement applies only to the NetScaler CLI:"
-            - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
-                example, "my cert" or 'my cert').
-            - "Minimum length = 1"
+            - "CA certificate."
 
-    cert:
-        description:
-            - >-
-                Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key
-                pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive.
-                Storing a certificate in any location other than the default might cause inconsistency in a high
-                availability setup. /nsconfig/ssl/ is the default path.
-            - "Minimum length = 1"
-
-    key:
-        description:
-            - >-
-                Name of and, optionally, path to the private-key file that is used to form the certificate-key pair.
-                The certificate file should be present on the appliance's hard-disk drive or solid-state drive.
-                Storing a certificate in any location other than the default might cause inconsistency in a high
-                availability setup. /nsconfig/ssl/ is the default path.
-            - "Minimum length = 1"
-
-    password:
-        description:
-            - >-
-                Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys
-                in PEM format.
-
-    fipskey:
-        description:
-            - >-
-                Name of the FIPS key that was created inside the Hardware Security Module (HSM) of a FIPS appliance,
-                or a key that was imported into the HSM.
-            - "Minimum length = 1"
-
-    hsmkey:
-        description:
-            - >-
-                Name of the HSM key that was created in the External Hardware Security Module (HSM) of a FIPS
-                appliance.
-            - "Minimum length = 1"
-
-    inform:
+    crlcheck:
         choices:
-            - 'DER'
-            - 'PEM'
-            - 'PFX'
+            - 'Mandatory'
+            - 'Optional'
         description:
-            - >-
-                Input format of the certificate and the private-key files. The three formats supported by the
-                appliance are:
-            - "PEM - Privacy Enhanced Mail"
-            - "DER - Distinguished Encoding Rule"
-            - "PFX - Personal Information Exchange."
-            - "Default value: PEM"
+            - "The state of the CRL check parameter. (Mandatory/Optional)."
 
-    passplain:
+    vservername:
         description:
-            - >-
-                Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM
-                format.
+            - "Name of the SSL virtual server."
             - "Minimum length = 1"
 
-    expirymonitor:
+    certkeyname:
+        description:
+            - "The name of the certificate key pair binding."
+
+    skipcaname:
+        description:
+            - >-
+                The flag is used to indicate whether this particular CA certificate's CA_Name needs to be sent to the
+                SSL client while requesting for client certificate in a SSL handshake.
+
+    snicert:
+        description:
+            - "The name of the CertKey. Use this option to bind Certkey(s) which will be used in SNI processing."
+
+    ocspcheck:
         choices:
-            - 'disabled'
-            - 'enabled'
+            - 'Mandatory'
+            - 'Optional'
         description:
-            - "Issue an alert when the certificate is about to expire."
-
-    notificationperiod:
-        description:
-            - >-
-                Time, in number of days, before certificate expiration, at which to generate an alert that the
-                certificate is about to expire.
-            - "Minimum value = 10"
-            - "Maximum value = 100"
-
-    bundle:
-        description:
-            - >-
-                Parse the certificate chain as a single file after linking the server certificate to its issuer's
-                certificate within the file.
-            - "Default value: NO"
-        type: bool
-
-    linkcertkeyname:
-        description:
-            - "Name of the Certificate Authority certificate-key pair to which to link a certificate-key pair."
-            - "Minimum length = 1"
-
-    nodomaincheck:
-        description:
-            - "Override the check for matching domain names during a certificate update operation."
+            - "The state of the OCSP check parameter. (Mandatory/Optional)."
 
 
 extends_documentation_fragment: netscaler
@@ -188,32 +121,25 @@ def diff_list(client, module, _proxy):
 def main():
 
     module_specific_arguments = dict(
-        certkey=dict(type='str'),
-        cert=dict(type='str'),
-        key=dict(type='str'),
-        password=dict(type='bool'),
-        fipskey=dict(type='str'),
-        hsmkey=dict(type='str'),
-        inform=dict(
+        ca=dict(type='bool'),
+        crlcheck=dict(
             type='str',
             choices=[
-                'DER',
-                'PEM',
-                'PFX',
+                'Mandatory',
+                'Optional',
             ]
         ),
-        passplain=dict(type='str'),
-        expirymonitor=dict(
+        vservername=dict(type='str'),
+        certkeyname=dict(type='str'),
+        skipcaname=dict(type='bool'),
+        snicert=dict(type='bool'),
+        ocspcheck=dict(
             type='str',
             choices=[
-                'enabled',
-                'disabled',
+                'Mandatory',
+                'Optional',
             ]
         ),
-        notificationperiod=dict(type='float'),
-        bundle=dict(type='bool'),
-        linkcertkeyname=dict(type='str'),
-        nodomaincheck=dict(type='bool'),
     )
 
     hand_inserted_arguments = dict(
@@ -256,57 +182,24 @@ def main():
             module.fail_json(msg='Unexpected error during login %s' % str(e))
 
     readwrite_attrs = [
-        'certkey',
-        'cert',
-        'key',
-        'password',
-        'fipskey',
-        'hsmkey',
-        'inform',
-        'passplain',
-        'expirymonitor',
-        'notificationperiod',
-        'bundle',
-        'linkcertkeyname',
-        'nodomaincheck',
+        'ca',
+        'crlcheck',
+        'vservername',
+        'certkeyname',
+        'skipcaname',
+        'snicert',
+        'ocspcheck',
     ]
 
     readonly_attrs = [
-        'signaturealg',
-        'certificatetype',
-        'serial',
-        'issuer',
-        'clientcertnotbefore',
-        'clientcertnotafter',
-        'daystoexpiration',
-        'subject',
-        'publickey',
-        'publickeysize',
-        'version',
-        'priority',
-        'status',
-        'passcrypt',
-        'data',
-        'servicename',
+        'cleartextport',
         '__count',
     ]
 
     immutable_attrs = [
-        'certkey',
-        'cert',
-        'key',
-        'password',
-        'fipskey',
-        'hsmkey',
-        'inform',
-        'passplain',
-        'bundle',
-        'linkcertkeyname',
-        'nodomaincheck',
     ]
 
     transforms = {
-        'bundle': ['bool_yes_no'],
     }
 
     # Instantiate config proxy

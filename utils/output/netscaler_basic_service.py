@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -131,6 +133,7 @@ options:
                 NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
             - "Default value: YES"
+        type: bool
 
     maxreq:
         description:
@@ -144,11 +147,12 @@ options:
             - "Use the transparent cache redirection virtual server to forward requests to the cache server."
             - "Note: Do not specify this parameter if you set the Cache Type parameter."
             - "Default value: NO"
+        type: bool
 
     cip:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6
@@ -175,14 +179,17 @@ options:
                 setting (available in the enable ns mode and disable ns mode CLI commands, or in the System >
                 Settings > Configure modes > Configure Modes dialog box). However, you can override this setting
                 after you create the service.
+        type: bool
 
     pathmonitor:
         description:
             - "Path monitoring for clustering."
+        type: bool
 
     pathmonitorindv:
         description:
             - "Individual Path monitoring decisions."
+        type: bool
 
     useproxyport:
         description:
@@ -190,20 +197,24 @@ options:
                 Use the proxy port as the source port when initiating connections with the server. With the NO
                 setting, the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
+        type: bool
 
     sc:
         description:
             - "State of SureConnect for the service."
             - "Default value: OFF"
+        type: bool
 
     sp:
         description:
             - "Enable surge protection for the service."
+        type: bool
 
     rtspsessionidremap:
         description:
             - "Enable RTSP session ID mapping for the service."
             - "Default value: OFF"
+        type: bool
 
     clttimeout:
         description:
@@ -231,14 +242,17 @@ options:
     cka:
         description:
             - "Enable client keep-alive for the service."
+        type: bool
 
     tcpb:
         description:
             - "Enable TCP buffering for the service."
+        type: bool
 
     cmp:
         description:
             - "Enable compression for the service."
+        type: bool
 
     maxbandwidth:
         description:
@@ -252,6 +266,7 @@ options:
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service
                 is DOWN, and this parameter is disabled, the packets are dropped.
             - "Default value: NO"
+        type: bool
 
     monthreshold:
         description:
@@ -263,21 +278,21 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Initial state of the service."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     downstateflush:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do
                 not enable this option for applications that must complete their transactions.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     tcpprofilename:
         description:
@@ -304,11 +319,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable logging of AppFlow information."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     netprofile:
         description:
@@ -327,14 +342,14 @@ options:
 
     processlocal:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 By turning on this option packets destined to a service in a cluster will not under go any steering.
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     dnsprofilename:
         description:
@@ -381,6 +396,7 @@ options:
                 Shut down gracefully, not accepting any new connections, and disabling the service when all of its
                 connections are closed.
             - "Default value: NO"
+        type: bool
 
     all:
         description:
@@ -506,8 +522,8 @@ def main():
         cip=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         cipheader=dict(type='str'),
@@ -531,15 +547,15 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         downstateflush=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         tcpprofilename=dict(type='str'),
@@ -549,8 +565,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         netprofile=dict(type='str'),
@@ -558,8 +574,8 @@ def main():
         processlocal=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         dnsprofilename=dict(type='str'),

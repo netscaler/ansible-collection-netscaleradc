@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -158,30 +160,30 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Initial state of the load balancing virtual server."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     stateupdate:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Enable state updates for a specific content switching virtual server. By default, the Content
                 Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers
                 bound to it. This parameter interacts with the global setting as follows:
             - "Global Level | Vserver Level | Result"
-            - "ENABLED ENABLED ENABLED"
-            - "ENABLED DISABLED ENABLED"
-            - "DISABLED ENABLED ENABLED"
-            - "DISABLED DISABLED DISABLED"
+            - "enabled enabled enabled"
+            - "enabled disabled enabled"
+            - "disabled enabled enabled"
+            - "disabled disabled disabled"
             - >-
                 If you want to enable state updates for only some content switching virtual servers, be sure to
                 disable the state update parameter.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     cacheable:
         description:
@@ -189,6 +191,7 @@ options:
                 Use this option to specify whether a virtual server, used for load balancing or content switching,
                 routes requests to the cache redirection virtual server before sending it to the configured servers.
             - "Default value: NO"
+        type: bool
 
     redirecturl:
         description:
@@ -230,6 +233,7 @@ options:
                 by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the
                 same target.
             - "Default value: ON"
+        type: bool
 
     somethod:
         choices:
@@ -246,11 +250,11 @@ options:
 
     sopersistence:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Maintain source-IP based persistence on primary and backup virtual servers."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     sopersistencetimeout:
         description:
@@ -279,21 +283,21 @@ options:
 
     redirectportrewrite:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "State of port rewrite while performing HTTP redirect."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     downstateflush:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
                 DOWN. Do not enable this option for applications that must complete their transactions.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     backupvserver:
         description:
@@ -309,13 +313,13 @@ options:
 
     disableprimaryondown:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Continue forwarding the traffic to backup virtual server even after the primary server comes UP from
                 the DOWN state.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     insertvserveripport:
         choices:
@@ -342,6 +346,7 @@ options:
         description:
             - "Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections."
             - "Default value: OFF"
+        type: bool
 
     authenticationhost:
         description:
@@ -355,6 +360,7 @@ options:
         description:
             - "Authenticate users who request a connection to the content switching virtual server."
             - "Default value: OFF"
+        type: bool
 
     listenpolicy:
         description:
@@ -377,6 +383,7 @@ options:
         description:
             - "Enable HTTP 401-response based authentication."
             - "Default value: OFF"
+        type: bool
 
     authnvsname:
         description:
@@ -388,14 +395,14 @@ options:
 
     push:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Process traffic with the push virtual server that is bound to this content switching virtual server
                 (specified by the Push VServer parameter). The service type of the push virtual server should be
                 either HTTP or SSL.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     pushvserver:
         description:
@@ -418,6 +425,7 @@ options:
                 Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
                 updates.
             - "Default value: NO"
+        type: bool
 
     tcpprofilename:
         description:
@@ -468,6 +476,7 @@ options:
     l2conn:
         description:
             - "Use L2 Parameters to identify a connection."
+        type: bool
 
     mysqlprotocolversion:
         description:
@@ -492,11 +501,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable logging appflow flow information."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     netprofile:
         description:
@@ -682,15 +691,15 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         stateupdate=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         cacheable=dict(type='bool'),
@@ -717,8 +726,8 @@ def main():
         sopersistence=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         sopersistencetimeout=dict(type='float'),
@@ -734,23 +743,23 @@ def main():
         redirectportrewrite=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         downstateflush=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         backupvserver=dict(type='str'),
         disableprimaryondown=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         insertvserveripport=dict(
@@ -772,8 +781,8 @@ def main():
         push=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         pushvserver=dict(type='str'),
@@ -811,8 +820,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         netprofile=dict(type='str'),

@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -121,11 +123,12 @@ options:
             - "Use the transparent cache redirection virtual server to forward the request to the cache server."
             - "Note: Do not set this parameter if you set the Cache Type."
             - "Default value: NO"
+        type: bool
 
     cip:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Insert the Client IP header in requests forwarded to the service."
 
@@ -144,14 +147,17 @@ options:
                 Use client's IP address as the source IP address when initiating connection to the server. With the
                 NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as
                 the source IP address to initiate server side connections.
+        type: bool
 
     pathmonitor:
         description:
             - "Path monitoring for clustering."
+        type: bool
 
     pathmonitorindv:
         description:
             - "Individual Path monitoring decisions."
+        type: bool
 
     useproxyport:
         description:
@@ -159,6 +165,7 @@ options:
                 Use the proxy port as the source port when initiating connections with the server. With the NO
                 setting, the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
+        type: bool
 
     healthmonitor:
         description:
@@ -168,21 +175,25 @@ options:
                 NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
             - "Default value: YES"
+        type: bool
 
     sc:
         description:
             - "State of the SureConnect feature for the service group."
             - "Default value: OFF"
+        type: bool
 
     sp:
         description:
             - "Enable surge protection for the service group."
             - "Default value: OFF"
+        type: bool
 
     rtspsessionidremap:
         description:
             - "Enable RTSP session ID mapping for the service group."
             - "Default value: OFF"
+        type: bool
 
     clttimeout:
         description:
@@ -199,14 +210,17 @@ options:
     cka:
         description:
             - "Enable client keep-alive for the service group."
+        type: bool
 
     tcpb:
         description:
             - "Enable TCP buffering for the service group."
+        type: bool
 
     cmp:
         description:
             - "Enable compression for the specified service."
+        type: bool
 
     maxbandwidth:
         description:
@@ -224,22 +238,22 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Initial state of the service group."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     downstateflush:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Flush all active transactions associated with all the services in the service group whose state
                 transitions from UP to DOWN. Do not enable this option for applications that must complete their
                 transactions.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     tcpprofilename:
         description:
@@ -259,11 +273,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable logging of AppFlow information for the specified service group."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     netprofile:
         description:
@@ -347,6 +361,7 @@ options:
         description:
             - "Wait for all existing connections to the service to terminate before shutting down the service."
             - "Default value: NO"
+        type: bool
 
     includemembers:
         description:
@@ -465,8 +480,8 @@ def main():
         cip=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         cipheader=dict(type='str'),
@@ -488,15 +503,15 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         downstateflush=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         tcpprofilename=dict(type='str'),
@@ -505,8 +520,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         netprofile=dict(type='str'),

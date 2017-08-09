@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -120,6 +122,7 @@ options:
         description:
             - "Monitor the health of the GSLB service."
             - "Default value: YES"
+        type: bool
 
     sitename:
         description:
@@ -128,21 +131,21 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable or disable the service."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     cip:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 In the request that is forwarded to the GSLB service, insert a header that stores the client's IP
                 address. Client IP header insertion is used in connection-proxy based site persistence.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     cipheader:
         description:
@@ -201,8 +204,8 @@ options:
 
     downstateflush:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Flush all active transactions associated with the GSLB service when its state transitions from UP to
@@ -238,11 +241,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable logging appflow flow information."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     naptrreplacement:
         description:
@@ -394,15 +397,15 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         cip=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         cipheader=dict(type='str'),
@@ -422,8 +425,8 @@ def main():
         downstateflush=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         maxaaausers=dict(type='float'),
@@ -433,8 +436,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         naptrreplacement=dict(type='str'),

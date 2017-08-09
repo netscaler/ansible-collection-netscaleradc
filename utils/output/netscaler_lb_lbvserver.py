@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -377,16 +379,19 @@ options:
         description:
             - "Use priority queuing on the virtual server. based persistence types, for IPv6 virtual servers."
             - "Default value: OFF"
+        type: bool
 
     sc:
         description:
             - "Use SureConnect on the virtual server."
             - "Default value: OFF"
+        type: bool
 
     rtspnat:
         description:
             - "Use network address translation (NAT) for RTSP data connections."
             - "Default value: OFF"
+        type: bool
 
     m:
         choices:
@@ -438,22 +443,22 @@ options:
 
     sessionless:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load
                 balancing of intrusion detection system (IDS) servers and scenarios involving direct server return
                 (DSR), where session information is unnecessary.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "State of the load balancing virtual server."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     connfailover:
         choices:
@@ -490,6 +495,7 @@ options:
                 port combination of *:80, so such a cache redirection virtual server must be configured on the
                 appliance.
             - "Default value: NO"
+        type: bool
 
     clttimeout:
         description:
@@ -524,13 +530,13 @@ options:
 
     sopersistence:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 If spillover occurs, maintain source IP address based persistence for both primary and backup virtual
                 servers.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     sopersistencetimeout:
         description:
@@ -569,21 +575,21 @@ options:
 
     redirectportrewrite:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Rewrite the port and change the protocol to ensure successful HTTP redirects from services."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     downstateflush:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
                 DOWN. Do not enable this option for applications that must complete their transactions.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     backupvserver:
         description:
@@ -594,13 +600,13 @@ options:
 
     disableprimaryondown:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 If the primary virtual server goes down, do not allow it to return to primary status until manually
                 enabled.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     insertvserveripport:
         choices:
@@ -641,11 +647,13 @@ options:
         description:
             - "Enable or disable user authentication."
             - "Default value: OFF"
+        type: bool
 
     authn401:
         description:
             - "Enable or disable user authentication with HTTP 401 responses."
             - "Default value: OFF"
+        type: bool
 
     authnvsname:
         description:
@@ -655,11 +663,11 @@ options:
 
     push:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Process traffic with the push virtual server that is bound to this load balancing virtual server."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     pushvserver:
         description:
@@ -681,6 +689,7 @@ options:
                 Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
                 updates.
             - "Default value: NO"
+        type: bool
 
     tcpprofilename:
         description:
@@ -710,6 +719,7 @@ options:
                 Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source
                 IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows
                 multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
+        type: bool
 
     oracleserverversion:
         choices:
@@ -757,11 +767,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Apply AppFlow logging to the virtual server."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     netprofile:
         description:
@@ -893,24 +903,24 @@ options:
 
     macmoderetainvlan:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "This option is used to retain vlan information of incoming packet when macmode is enabled."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     dbslb:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable database specific load balancing for MySQL and MSSQL service types."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     dns64:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "This argument is for enabling/disabling the dns64 on lbvserver."
 
@@ -920,6 +930,7 @@ options:
                 If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns
                 server.
             - "Default value: NO"
+        type: bool
 
     recursionavailable:
         description:
@@ -928,17 +939,18 @@ options:
                 Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers
                 thatsupport recursive queries.
             - "Default value: NO"
+        type: bool
 
     processlocal:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 By turning on this option packets destined to a vserver in a cluster will not under go any steering.
                 Turn this option for single packet request response mode or when the upstream device is performing a
                 proper RSS for connection based distribution.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     dnsprofilename:
         description:
@@ -1147,15 +1159,15 @@ def main():
         sessionless=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         connfailover=dict(
@@ -1182,8 +1194,8 @@ def main():
         sopersistence=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         sopersistencetimeout=dict(type='float'),
@@ -1200,23 +1212,23 @@ def main():
         redirectportrewrite=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         downstateflush=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         backupvserver=dict(type='str'),
         disableprimaryondown=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         insertvserveripport=dict(
@@ -1235,8 +1247,8 @@ def main():
         push=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         pushvserver=dict(type='str'),
@@ -1274,8 +1286,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         netprofile=dict(type='str'),
@@ -1318,22 +1330,22 @@ def main():
         macmoderetainvlan=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         dbslb=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         dns64=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         bypassaaaa=dict(type='bool'),
@@ -1341,8 +1353,8 @@ def main():
         processlocal=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         dnsprofilename=dict(type='str'),

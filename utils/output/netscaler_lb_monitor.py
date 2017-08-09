@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -300,8 +302,8 @@ options:
 
     lrtm:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Calculate the least response times for bound services. If this parameter is not enabled, the
@@ -444,15 +446,15 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
-                State of the monitor. The DISABLED setting disables not only the monitor being configured, but all
-                monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a
+                State of the monitor. The disabled setting disables not only the monitor being configured, but all
+                monitors of the same type, until the parameter is set to enabled. If the monitor is bound to a
                 service, the state of the monitor is not taken into account when the state of the service is
                 determined.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     reverse:
         description:
@@ -460,6 +462,7 @@ options:
                 Mark a service as DOWN, instead of UP, when probe criteria are satisfied, and as UP instead of DOWN
                 when probe criteria are not satisfied.
             - "Default value: NO"
+        type: bool
 
     transparent:
         description:
@@ -469,6 +472,7 @@ options:
                 monitored, a destination IP address must be specified. The probe is sent to the specified IP address
                 by using the MAC address of the transparent device.
             - "Default value: NO"
+        type: bool
 
     iptunnel:
         description:
@@ -476,10 +480,12 @@ options:
                 Send the monitoring probe to the service through an IP tunnel. A destination IP address must be
                 specified.
             - "Default value: NO"
+        type: bool
 
     tos:
         description:
             - "Probe the service by encoding the destination IP address in the IP TOS (6) bits."
+        type: bool
 
     tosid:
         description:
@@ -494,6 +500,7 @@ options:
                 secure option cannot be used with a CITRIX-AG monitor, because a CITRIX-AG monitor uses a secure
                 connection by default.
             - "Default value: NO"
+        type: bool
 
     validatecred:
         description:
@@ -501,6 +508,7 @@ options:
                 Validate the credentials of the Xen Desktop DDC server user. Applicable to monitors of type
                 CITRIX-XD-DDC.
             - "Default value: NO"
+        type: bool
 
     domain:
         description:
@@ -655,6 +663,7 @@ options:
                 Enable/Disable probing for Account Service. Applicable only to Store Front monitors. For
                 multi-tenancy configuration users my skip account service.
             - "Default value: YES"
+        type: bool
 
     hostname:
         description:
@@ -783,13 +792,13 @@ options:
 
     storedb:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Store the database list populated with the responses to monitor probes. Used in database specific
                 load balancing if MSSQL-ECV/MYSQL-ECV monitor is configured.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     storefrontcheckbackendservices:
         description:
@@ -798,6 +807,7 @@ options:
                 monitored by probing to a Windows service that runs on the Storefront server and exposes details of
                 which storefront services are running.
             - "Default value: NO"
+        type: bool
 
     trofscode:
         description:
@@ -990,8 +1000,8 @@ def main():
         lrtm=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         deviation=dict(type='float'),
@@ -1040,8 +1050,8 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         reverse=dict(type='bool'),
@@ -1116,8 +1126,8 @@ def main():
         storedb=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         storefrontcheckbackendservices=dict(type='bool'),

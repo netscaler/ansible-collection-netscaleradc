@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -76,8 +78,8 @@ options:
 
     metricexchange:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The
@@ -88,26 +90,26 @@ options:
                 balancing method (such as least connection) is in operation, the appliance falls back to round robin.
                 Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB
                 services. Otherwise, the service is marked as DOWN.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     nwmetricexchange:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from
                 communications with various local DNS (LDNS) servers used by clients. RTT information is used in the
                 dynamic RTT load balancing method, and is exchanged every 5 seconds.
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     sessionexchange:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Exchange persistent session entries with other GSLB sites every five seconds."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     triggermonitor:
         choices:
@@ -211,22 +213,22 @@ def main():
         metricexchange=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         nwmetricexchange=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         sessionexchange=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         triggermonitor=dict(

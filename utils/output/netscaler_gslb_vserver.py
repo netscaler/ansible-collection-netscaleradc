@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -199,29 +201,29 @@ options:
 
     edr:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Send clients an empty DNS response when the GSLB virtual server is DOWN."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     mir:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Include multiple IP addresses in the DNS responses sent to clients."
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     disableprimaryondown:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to
                 the UP state. Used when spillover is configured for the virtual server.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     dynamicweight:
         choices:
@@ -237,11 +239,11 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "State of the GSLB virtual server."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     considereffectivestate:
         choices:
@@ -291,13 +293,13 @@ options:
 
     sopersistence:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - >-
                 If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB
                 virtual servers.
-            - "Default value: DISABLED"
+            - "Default value: disabled"
 
     sopersistencetimeout:
         description:
@@ -327,11 +329,11 @@ options:
 
     appflowlog:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Enable logging appflow flow information."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     backupvserver:
         description:
@@ -523,22 +525,22 @@ def main():
         edr=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         mir=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         disableprimaryondown=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         dynamicweight=dict(
@@ -552,8 +554,8 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         considereffectivestate=dict(
@@ -577,8 +579,8 @@ def main():
         sopersistence=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         sopersistencetimeout=dict(type='float'),
@@ -594,8 +596,8 @@ def main():
         appflowlog=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         backupvserver=dict(type='str'),

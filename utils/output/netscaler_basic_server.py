@@ -32,7 +32,9 @@ short_description: _
 description:
     - _
 
-version_added: 2.3.1
+version_added: "2.4.0"
+
+author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
@@ -78,11 +80,11 @@ options:
 
     state:
         choices:
-            - 'ENABLED'
-            - 'DISABLED'
+            - 'disabled'
+            - 'enabled'
         description:
             - "Initial state of the server."
-            - "Default value: ENABLED"
+            - "Default value: enabled"
 
     ipv6address:
         description:
@@ -90,6 +92,7 @@ options:
                 Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use
                 the server in the IPv4 addressing mode.
             - "Default value: NO"
+        type: bool
 
     comment:
         description:
@@ -118,6 +121,7 @@ options:
                 Shut down gracefully, without accepting any new connections, and disabling each service when all of
                 its connections are closed.
             - "Default value: NO"
+        type: bool
 
     Internal:
         description:
@@ -186,8 +190,8 @@ def main():
         state=dict(
             type='str',
             choices=[
-                'ENABLED',
-                'DISABLED',
+                'enabled',
+                'disabled',
             ]
         ),
         ipv6address=dict(type='bool'),
