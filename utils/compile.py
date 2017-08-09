@@ -46,6 +46,8 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
                 # Overwrite type to bool
                 entry['type'] = 'bool'
                 entry['transforms'] = ['bool_on_off']
+            elif choice_set == frozenset(['enabled', 'disabled']):
+                entry['choices'] = ['enabled', 'disabled']
             else:
                 entry['choices'] = property['choices']
 
@@ -132,17 +134,35 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
             frozenset(['on', 'off']),
         )
 
+        enabled_disabled_set = (
+            frozenset(['enabled', 'disabled']),
+        )
+
         if 'choices' in property:
             choice_set = frozenset([choice.lower() for choice in property['choices']])
             print('choice set is %s' % choice_set)
-            if choice_set not in bool_choice_sets:
+            if choice_set not in (bool_choice_sets + enabled_disabled_set):
                 entry['choices'] = [str(choice) for choice in property['choices']]
+            elif choice_set in enabled_disabled_set:
+                entry['choices'] = list(enabled_disabled_set[0])
+            elif choice_set in bool_choice_sets:
+                entry['type'] = 'bool'
 
             # Append lines rejecting possible values lines
             for line in property['description_lines']:
                 if line.startswith('Possible values'):
                     continue
-                entry['description'].append(split_description_line(line))
+                if choice_set in enabled_disabled_set:
+                    lines = split_description_line(line)
+                    if isinstance(lines, list):
+                        lines = [line.replace('ENABLED', 'enabled') for line in lines]
+                        lines = [line.replace('DISABLED', 'disabled') for line in lines]
+                    else:
+                        lines = lines.replace('ENABLED', 'enabled')
+                        lines = lines.replace('DISABLED', 'disabled')
+                    entry['description'].append(lines)
+                else:
+                    entry['description'].append(split_description_line(line))
         else:
             # pass all lines to description
             entry['description'] = [split_description_line(line) for line in property['description_lines']]
