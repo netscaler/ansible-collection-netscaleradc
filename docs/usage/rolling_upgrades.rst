@@ -22,6 +22,21 @@ To create the docker containers from the checkout root run the following
 To setup the cpx image you will need to run the rolling_init.yaml playbook
 ``ansible-playbook -i inventory.txt rolling_init.yaml``
 
+TIP: if you are running this using Docker for Mac or Docker for Windows, then ansible will not be able to reach the NetScaler CPX container on the specified IP in the inventory. You have to change the inventory.txt file to point to the actual port that the CPX API port is mapped to
+
+.. code-block:: bash
+
+    docker port netscalerrollingupdatesexample_cpx_1
+    161/tcp -> 0.0.0.0:32805
+    22/tcp -> 0.0.0.0:32807
+    443/tcp -> 0.0.0.0:32804
+    80/tcp -> 0.0.0.0:32806
+    cat inventory.txt 
+       [all:vars]
+       nsip=127.0.0.1:32806
+
+
+
 This will initialize the testbed to the topology shown below.
 
 
