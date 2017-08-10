@@ -86,8 +86,13 @@ To check that the load balancer works correctly run the following command
         curl 172.30.0.200:8000
 
 You should see a ``Hello webapp1``.
-
 Running the same a second time should output ``Hello webapp2``.
+
+TIP: If you are running this example using Docker for Mac or Docker for Windows,  the docker network is not visible to your OS. In this case, use another container to execute this curl
+
+.. code-block:: bash
+
+        docker run --rm --network=netscalerrollingupdatesexample_netscaler --entrypoint "/bin/sh"  byrnedo/alpine-curl -c "while true; do curl  -s http://172.30.0.200:8000; sleep 1; done"
 
 Upgrade process
 ~~~~~~~~~~~~~~~
