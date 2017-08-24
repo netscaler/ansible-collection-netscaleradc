@@ -4,8 +4,8 @@ Development Utilities
 Under the utils/ directory there exists a number of scripts and data files
 that aid in the development process.
 
-By advised that the state of the scripts is always in flux, so this documentation page may
-lag behind the actual imlementation at times.
+Be advised that the state of the scripts is always in flux, so this documentation page may
+lag behind the actual implementation at times.
 
 Developing a new module
 +++++++++++++++++++++++
@@ -29,15 +29,15 @@ that object combined with that module's main nitro object.
 Getting the spec of a nitro object
 ++++++++++++++++++++++++++++++++++
 
-To get the specification of a nitro object there is a script named scarp.py.
+To get the specification of a nitro object there is a script named scrape.py.
 
-This script scraps the nitro reference web site for each object defined in a
-hardcoded list and produces for each page scrapped a json file.
+This script scrapes the nitro reference web site for each object defined in a
+hardcoded list and produces for each page scraped a json file.
 
 This json file contains information about the properties of the nitro object
 and is used by subsequent scripts.
 
-The operation of `scrap.py` is based on parsing the HTML DOM for each page and
+The operation of `scrape.py` is based on parsing the HTML DOM for each page and
 may fail for some nitro objects.
 
 To add an object to be scrapped just edit the hardcoded list of objects and
@@ -52,15 +52,15 @@ This script has a hardcoded list of objects and generates for each an initial ve
 of the corresponding module.
 
 This script has as input for each nitro object the json data file which was obtained
-by the `scrap.py` script and the actual class of the Python NITRO SDK that corresponds
+by the `scrape.py` script and the actual class of the Python NITRO SDK that corresponds
 to this object. The Python SDK must be importable when this script is run.
 
 The script checks if there are differences between the attributes defined in the SDK
-and the attributes from the scrapped json and will output warnings for each attribute
+and the attributes from the scraped json and will output warnings for each attribute
 missing. The attributes that will go into the generated code will be the ones present
 in both the SDK object and the json data file.
 
-The json data file must be under utils/source/scrap.
+The json data file must be under utils/source/scrape.
 
 The output python file is put under utils/output
 
@@ -69,5 +69,5 @@ the instantiation of a ConfigProxy object for the object and the control flow st
 for the main module execution. Placeholders are marked by a single underscore "\_"
 or names that start with a single underscore.
 
-Replacing the placemholders, implementing the object bindings if there are any, and
+Replacing the placeholders, implementing the object bindings if there are any, and
 verifying and correcting the control flow are the most common manual steps that follow.
