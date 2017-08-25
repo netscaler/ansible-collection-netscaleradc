@@ -500,7 +500,7 @@ class TestNetscalerLBVServerModule(TestModule):
             ConfigProxy=Mock(return_value=lb_monitor_proxy_mock),
             ensure_feature_is_enabled=Mock(),
             lbmonitor_exists=Mock(side_effect=[True, True]),
-            lbmonitor_identical=Mock(side_effect=[False]),
+            lbmonitor_identical=Mock(side_effect=[False, True]),
             get_immutables_intersection=m,
             diff_list=Mock(return_value={}),
             nitro_exception=self.MockException,
