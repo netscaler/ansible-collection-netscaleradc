@@ -11,23 +11,30 @@ from lxml import html
 def scrap_page(page):
     properties = []
     r = requests.get(page)
+    print('Scraping %s' % page)
     if r.status_code != 200:
         raise Exception('status %s' % r.status_code)
     htmltree = html.fromstring(r.content)
-    tables = htmltree.xpath('''//table[@class='citrix-table fixedtable']''')
+    with open('out.html', 'w') as fh:
+        fh.write(html.tostring(htmltree))
+    tables = htmltree.xpath('''//div[@class='rst-content']//table''')
+
+    if len(tables) == 0:
+        raise Exception('Cannot find documentation table')
+
     if len(tables) > 1:
         raise Exception('Found too many documentation tables')
 
-    rows = htmltree.xpath('''//table[@class='citrix-table fixedtable']/tbody//tr''')
+    rows = htmltree.xpath('''//div[@class='rst-content']//table/tbody//tr''')
     if len(rows) == 0:
         raise Exception('Could not find documentation table for %s' % page)
 
     for row in rows:
         entry = {}
-        items = row.xpath('''./td/div''')
+        items = row.xpath('''./td''')
         # Skip empty rows
         if items == []:
-            print ("Empty row")
+            #print ("Empty row")
             continue
         entry['name'] = items[0].text_content().strip()
         type_text = items[1].text_content().strip()
@@ -53,18 +60,10 @@ def scrap_page(page):
             raise Exception('Got unexpected value for read only attribute "%s"' % readonly_text)
 
         # Description
-        description_lines = []
-        description_lines.append(items[3].text.strip())
-        for br in items[3].getchildren():
-            if br.tag != 'br':
-                raise Exception('Got unexpected tag in description div "%s"' % br.tag)
-            if br.tail is not None:
-                description_lines.append(br.tail.strip())
-
-        entry['description_lines'] = description_lines
+        entry['description_lines'] = items[3].text.strip().split('<br>')
 
         # Check if we have choices list
-        for line in description_lines:
+        for line in entry['description_lines']:
             if line.startswith('Possible values'):
                 choices = []
                 values_str = re.sub('Possible values = ', '', line)
@@ -81,8 +80,9 @@ def update_for_immutables(properties, base_command_url, item):
     # command_with_dashes = m.group(1)
     command_with_spaces = m.group(1).replace('-', ' ')
 
-    page = base_command_url + item + '.html'
+    page = base_command_url + item + '/'
 
+    print('Scraping %s' % page)
     r = requests.get(page)
     htmltree = html.fromstring(r.content)
     # id = 'set-%s' % command_with_dashes
@@ -108,35 +108,39 @@ def update_for_immutables(properties, base_command_url, item):
 
 
 def main():
-    base_nitro_url = 'https://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
-    base_command_url = 'https://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
-    pages = [
-        ('basic/servicegroup', 'basic/servicegroup'),
-        ('basic/service', 'basic/service'),
-        ('basic/server', 'basic/server'),
-        ('basic/servicegroup_servicegroupmember_binding', None),
-        ('load-balancing/lbvserver', 'lb/lb-vserver'),
-        ('load-balancing/lbvserver_service_binding', None),
-        ('load-balancing/lbvserver_servicegroup_binding', None),
-        ('load-balancing/lbmonitor', 'lb/lb-monitor'),
-        ('content-switching/csvserver', 'cs/cs-vserver'),
-        ('content-switching/cspolicy', 'cs/cs-policy'),
-        ('content-switching/csaction', 'cs/cs-action'),
-        ('ssl/sslcertkey', 'ssl/ssl-certkey'),
-        ('ssl/sslvserver_sslcertkey_binding', None),
-        ('global-server-load-balancing/gslbsite', 'gslb/gslb-site'),
-        ('global-server-load-balancing/gslbservice', 'gslb/gslb-service'),
-        ('global-server-load-balancing/gslbvserver', 'gslb/gslb-vserver'),
-        ('global-server-load-balancing/gslbvserver_domain_binding', None),
+    #base_nitro_url = 'https://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
+    #base_command_url = 'https://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
 
+    base_nitro_url = 'https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/'
+    base_command_url = 'https://developer-docs.citrix.com/projects/netscaler-command-reference/en/12.0/'
+    pages = [
+        ('basic/service/service', 'basic/service/service'),
+        ('basic/servicegroup/servicegroup', 'basic/servicegroup/servicegroup'),
+        ('basic/server/server', 'basic/server/server'),
+        ('basic/servicegroup_servicegroupmember_binding/servicegroup_servicegroupmember_binding', None),
+        ('load-balancing/lbvserver/lbvserver', 'lb/lb-vserver/lb-vserver'),
+        ('load-balancing/lbvserver_service_binding/lbvserver_service_binding', None),
+        ('load-balancing/lbvserver_servicegroup_binding/lbvserver_servicegroup_binding', None),
+        ('load-balancing/lbmonitor/lbmonitor', 'lb/lb-monitor/lb-monitor'),
+        ('content-switching/csvserver/csvserver', 'cs/cs-vserver/cs-vserver'),
+        ('content-switching/cspolicy/cspolicy', 'cs/cs-policy/cs-policy'),
+        ('content-switching/csaction/csaction', 'cs/cs-action/cs-action'),
+
+        ('ssl/sslcertkey/sslcertkey', 'ssl/ssl-certkey/ssl-certkey'),
+        ('ssl/sslvserver_sslcertkey_binding/sslvserver_sslcertkey_binding', None),
+        ('global-server-load-balancing/gslbsite/gslbsite', 'gslb/gslb-site/gslb-site'),
+        ('global-server-load-balancing/gslbservice/gslbservice', 'gslb/gslb-service/gslb-service'),
+        ('global-server-load-balancing/gslbvserver/gslbvserver', 'gslb/gslb-vserver/gslb-vserver'),
+        ('global-server-load-balancing/gslbvserver_domain_binding/gslbvserver_domain_binding', None),
     ]
     for page in pages:
         page_file = re.sub('/', '_', page[0])
+        page_file = page_file[:page_file.rindex('_')]
         page_file += '.json'
         if os.path.exists(page_file):
             print('Skipping %s' % page_file)
             continue
-        properties = scrap_page(base_nitro_url + page[0] + '.html')
+        properties = scrap_page(base_nitro_url + page[0] + '/')
         if page[1] is not None:
             properties = update_for_immutables(properties, base_command_url, page[1])
         print('writing to file %s' % page_file)
