@@ -22,7 +22,10 @@ To create the docker containers from the checkout root run the following
 To setup the cpx image you will need to run the rolling_init.yaml playbook
 ``ansible-playbook -i inventory.txt rolling_init.yaml``
 
-TIP: if you are running this using Docker for Mac or Docker for Windows, then ansible will not be able to reach the NetScaler CPX container on the specified IP in the inventory. You have to change the inventory.txt file to point to the actual port that the CPX API port is mapped to
+        *TIP:* if you are running this using Docker for Mac or Docker for Windows, then ansible will
+        not be able to reach the NetScaler CPX container on the specified IP in the inventory.
+        You have to change the inventory.txt file to point to the actual port that the CPX API
+        port is mapped to
 
 .. code-block:: bash
 
@@ -31,7 +34,7 @@ TIP: if you are running this using Docker for Mac or Docker for Windows, then an
     22/tcp -> 0.0.0.0:32807
     443/tcp -> 0.0.0.0:32804
     80/tcp -> 0.0.0.0:32806
-    cat inventory.txt 
+    cat inventory.txt
        [all:vars]
        nsip=127.0.0.1:32806
 
@@ -103,7 +106,9 @@ To check that the load balancer works correctly run the following command
 You should see a ``Hello webapp1``.
 Running the same a second time should output ``Hello webapp2``.
 
-TIP: If you are running this example using Docker for Mac or Docker for Windows,  the docker network is not visible to your OS. In this case, use another container to execute this curl
+        *TIP:* If you are running this example using Docker for Mac or Docker for Windows,
+        the docker network is not visible to your OS. In this case, use another container
+        to execute this curl
 
 .. code-block:: bash
 
