@@ -21,6 +21,7 @@ listed below.
    usage/getting_started
    usage/speeding_up_execution
    usage/rolling_upgrades
+   usage/rolling_upgrades_vpx
    usage/docker_image
 
 .. toctree::
