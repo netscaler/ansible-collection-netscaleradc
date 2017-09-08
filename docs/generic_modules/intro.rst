@@ -25,3 +25,15 @@ The source files referenced in the following sections along with more examples c
 found on this `github repository`_.
 
 .. _github repository: https://github.com/citrix/ansible-nitro-api-calls
+
+References
+==========
+
+NITRO API overview
+~~~~~~~~~~~~~~~~~~
+
+http://docs.citrix.com/en-us/netscaler/12/nitro-api/nitro-rest.html
+
+NITRO API reference
+~~~~~~~~~~~~~~~~~~~
+https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/
