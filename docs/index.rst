@@ -26,6 +26,14 @@ listed below.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Using generic ansible modules
+
+   generic_modules/intro
+   generic_modules/template_ns_conf
+   generic_modules/nitro_api_calls
+
+.. toctree::
+   :maxdepth: 2
    :caption: Module Documentation
 
    general
