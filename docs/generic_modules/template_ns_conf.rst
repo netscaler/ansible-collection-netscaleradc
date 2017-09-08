@@ -35,8 +35,8 @@ Netscaler configuration.
 
 In fact this is how the following example was constructed.
 
-Example
-~~~~~~~
+Playbook
+~~~~~~~~
 
 In the following example we showcase how we can setup a load balancer which
 balances two backend services. The full content of the referenced files can
@@ -239,6 +239,10 @@ Ansible NITRO API calls repository
 
 https://github.com/citrix/ansible-nitro-api-calls
 
+Ansible template module documentation
+=====================================
+
+http://docs.ansible.com/ansible/latest/template_module.html
 
 
 
