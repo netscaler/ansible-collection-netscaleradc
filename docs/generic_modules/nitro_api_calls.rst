@@ -127,7 +127,7 @@ The next task leverages Ansible's `assert module`_ to distinguish between an
 expected failure and an unexpected one. In the case of an unexpected failure
 this task fails and prevents any further execution.
 
-Next there two tasks, one creating the resource and one updating the existing
+Next there are two tasks, one creating the resource and one updating the existing
 resource. Which one executes depends on the condition defined in each task's
 ``when:`` option.
 
