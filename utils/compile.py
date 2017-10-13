@@ -5,7 +5,12 @@ from jinja2 import Environment, FileSystemLoader
 import os.path
 import json
 import inspect
-import __builtin__
+import argparse
+import sys
+if sys.version_info[0] == 2:
+    import __builtin__
+elif sys.version_info[0] == 3:
+    import builtins as __builtin__
 
 type_conversions = {
     'string': 'str',
@@ -182,165 +187,85 @@ def main():
         # lstrip_blocks=True,
     )
 
-    # Compile the json schemata
+    parser = argparse.ArgumentParser(description='Produce boilerplate module from attributes json description')
+    parser.add_argument('--json-data', help='Json input file', required=True)
+    parser.add_argument('--nitro-section', help='Section of NITRO API to use', required=True)
+    parser.add_argument('--nitro-object', help='NITRO class to use', required=True)
 
-    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver import lbvserver
-    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_service_binding import lbvserver_service_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_servicegroup_binding import lbvserver_servicegroup_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor import lbmonitor
-
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup import servicegroup
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmember_binding import servicegroup_servicegroupmember_binding
-
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.cspolicy import cspolicy
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csaction import csaction
-
-    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslcertkey import sslcertkey
-    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
-
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbsite import gslbsite
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbvserver import gslbvserver
-
-    schemata = {
-        'basic_service': {
-            'json_file': 'basic_service.json',
-            'class': service,
-        },
-        'basic_server': {
-            'json_file': 'basic_server.json',
-            'class': server,
-        },
-        'basic_servicegroup': {
-            'json_file': 'basic_servicegroup.json',
-            'class': servicegroup,
-        },
-        'basic_servicegroup_servicegroupmember_binding': {
-            'json_file': 'basic_servicegroup_servicegroupmember_binding.json',
-            'class': servicegroup_servicegroupmember_binding,
-        },
-        'lb_lbvserver': {
-            'json_file': 'load-balancing_lbvserver.json',
-            'class': lbvserver,
-        },
-        'lb_lbvserver_service_binding': {
-            'json_file': 'load-balancing_lbvserver_service_binding.json',
-            'class': lbvserver_service_binding,
-        },
-        'lb_lbvserver_servicegroup_binding': {
-            'json_file': 'load-balancing_lbvserver_servicegroup_binding.json',
-            'class': lbvserver_servicegroup_binding,
-        },
-        'lb_monitor': {
-            'json_file': 'load-balancing_lbmonitor.json',
-            'class': lbmonitor,
-        },
-        'cs_vserver': {
-            'json_file': 'content-switching_csvserver.json',
-            'class': csvserver,
-        },
-        'cs_policy': {
-            'json_file': 'content-switching_cspolicy.json',
-            'class': cspolicy,
-        },
-        'cs_action': {
-            'json_file': 'content-switching_csaction.json',
-            'class': csaction,
-        },
-        'ssl_certkey': {
-            'json_file': 'ssl_sslcertkey.json',
-            'class': sslcertkey,
-        },
-        'sslvserver_sslcertkey_binding ': {
-            'json_file': 'ssl_sslvserver_sslcertkey_binding.json',
-            'class': sslvserver_sslcertkey_binding,
-        },
-        'gslb_site': {
-            'json_file': 'global-server-load-balancing_gslbsite.json',
-            'class': gslbsite,
-        },
-        'gslb_service': {
-            'json_file': 'global-server-load-balancing_gslbservice.json',
-            'class': gslbservice,
-        },
-        'gslb_vserver': {
-            'json_file': 'global-server-load-balancing_gslbvserver.json',
-            'class': gslbvserver,
-        },
-    }
+    args = parser.parse_args()
 
     # Iterate and produce module arguments dicts
     # and argument_options documentation entries
-    module_arguments = {}
-    argument_options = {}
-    readonly_attrs = {}
-    readwrite_attrs = {}
-    immutable_attrs = {}
+    # print('Processing %s' % key)
+    # json_file = os.path.join(here, 'source/scrap', schema['json_file'])
+    json_file = args.json_data
+    with open(json_file, 'r') as fh:
+        json_doc = json.load(fh)
+
+    # Get properties of config_class
+    nitro_module = __import__(
+        'nssrc.com.citrix.netscaler.nitro.resource.config.%s.%s' % (args.nitro_section, args.nitro_object),
+        globals(),
+        locals(),
+        [args.nitro_object],
+    )
+
+    nitro_class = getattr(nitro_module, args.nitro_object)
+    sdk_property_list = []
+    # for member in inspect.getmembers(schema['class']):
+    for member in inspect.getmembers(nitro_class):
+        # We are interested only in property instances
+        if isinstance(member[1], __builtin__.property):
+            sdk_property_list.append(member[0])
+
+    # Show diffs
+    scrap_properties_set = set([v['name'] for v in json_doc])
+    sdk_properties_set = set(sdk_property_list)
+
+    not_in_sdk = list(scrap_properties_set - sdk_properties_set)
+    if len(not_in_sdk) > 0:
+        print('Properties present in scrapped but not found in sdk object %s' % not_in_sdk)
+
+    not_in_properties = list(sdk_properties_set - scrap_properties_set)
+    if len(not_in_properties) > 0:
+        print('Properties present in sdk but not in scrapped' % not_in_properties)
+
+    # module arguments
+    module_arguments = produce_module_arguments_from_json_schema(json_doc, skip_attrs=not_in_sdk)
+
+    # readwrite attrs
+    readwrite_attrs = produce_readwrite_attrs_list(json_doc)
+
+    # options for documentation block
+    argument_options = produce_module_argument_documentation(json_doc, nitro_class, skip_attrs=not_in_sdk)
+
+    # read only attributes
+    readonly_attrs = produce_readonly_attrs_list(json_doc)
+
+    immutable_attrs = produce_immutables_list(json_doc)
+
     transforms = {}
-    for key, schema in schemata.items():
-        print('Processing %s' % key)
-        json_file = os.path.join(here, 'source/scrap', schema['json_file'])
-        with open(json_file, 'rb') as fh:
-            json_doc = json.load(fh)
-
-        # Get properties of config_class
-        sdk_property_list = []
-        for member in inspect.getmembers(schema['class']):
-            # We are interested only in property instances
-            if isinstance(member[1], __builtin__.property):
-                sdk_property_list.append(member[0])
-
-        # Show diffs
-        scrap_properties_set = set([v['name'] for v in json_doc])
-        sdk_properties_set = set(sdk_property_list)
-
-        not_in_sdk = list(scrap_properties_set - sdk_properties_set)
-        if len(not_in_sdk) > 0:
-            print('Properties present in scrapped but not found in sdk object %s' % not_in_sdk)
-
-        not_in_properties = list(sdk_properties_set - scrap_properties_set)
-        if len(not_in_properties) > 0:
-            print('Properties present in sdk but not in scrapped' % not_in_properties)
-
-        # module arguments
-        module_arguments[key] = produce_module_arguments_from_json_schema(json_doc, skip_attrs=not_in_sdk)
-
-        # readwrite attrs
-        readwrite_attrs[key] = produce_readwrite_attrs_list(json_doc)
-
-        # options for documentation block
-        argument_options[key] = produce_module_argument_documentation(json_doc, schema['class'], skip_attrs=not_in_sdk)
-
-        # read only attributes
-        readonly_attrs[key] = produce_readonly_attrs_list(json_doc)
-
-        immutable_attrs[key] = produce_immutables_list(json_doc)
-
-        transforms[key] = {}
-        for entry in module_arguments[key]:
-            if entry['transforms'] != []:
-                transform_key = entry['key']
-                transforms[key][transform_key] = entry['transforms']
+    for entry in module_arguments:
+        if entry['transforms'] != []:
+            transform_key = entry['key']
+            transforms[transform_key] = entry['transforms']
 
     # Do the instantiation of the templates
-    for key in schemata.keys():
-        template = env.get_template('generic_module.template')
-        stream = template.stream(
-            argument_options=argument_options[key],
-            module_arguments=module_arguments[key],
-            readonly_attrs=readonly_attrs[key],
-            readwrite_attrs=readwrite_attrs[key],
-            immutable_attrs=immutable_attrs[key],
-            transforms=transforms[key],
-        )
-        output_file = 'netscaler_%s.py' % key
-        stream.dump(
-            os.path.join('output', output_file),
-            encoding='utf-8'
-        )
+    template = env.get_template('generic_module.template')
+    stream = template.stream(
+        argument_options=argument_options,
+        module_arguments=module_arguments,
+        readonly_attrs=readonly_attrs,
+        readwrite_attrs=readwrite_attrs,
+        immutable_attrs=immutable_attrs,
+        transforms=transforms,
+    )
+    output_file = 'netscaler_%s_%s.py' % (args.nitro_section, args.nitro_object)
+    stream.dump(
+        output_file,
+        encoding='utf-8'
+    )
+    print('Wrote to file %s' % output_file)
 
 
 if __name__ == '__main__':
