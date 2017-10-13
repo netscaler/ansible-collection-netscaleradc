@@ -4,4 +4,5 @@
         description:#{% for line in item.description %}#{% if line is not string %}
             - >-#{% for item in line %}
                 {{ item }}#{% endfor %}#{% else %}
-            - {{ line }}#{% endif %}#{% endfor %}
+            - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
+        type: {{ item.type }}#{% endif %}
