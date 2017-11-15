@@ -1,7 +1,7 @@
 ---
 
 
-- name: Setup cs vserver
+- name: Remove one policybinding
   delegate_to: localhost
   register: result
   check_mode: "{{ check_mode }}"
@@ -17,6 +17,3 @@
     policybindings:
       - policyname: policy-1
         targetlbvserver: lb-vserver-1
-
-      - policyname: policy-2
-        targetlbvserver: lb-vserver-2
