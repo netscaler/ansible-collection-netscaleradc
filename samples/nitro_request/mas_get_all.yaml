@@ -1,0 +1,40 @@
+- hosts: mas
+  gather_facts: no
+  vars:
+    resource: lbvserver
+    attributes:
+      name: test-server-1
+      ipaddress: 192.168.1.6
+
+  tasks:
+    - name: Do mas login
+      delegate_to: localhost
+      register: login_result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: mas_login
+
+    - name: Get all servers
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_auth_token: "{{ login_result.nitro_auth_token }}"
+        instance_ip: 10.78.60.202
+
+        operation: get_all
+
+        resource: server
+
+    - name: save config
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_auth_token: "{{ login_result.nitro_auth_token }}"
+        instance_ip: 10.78.60.202
+
+        operation: save_config

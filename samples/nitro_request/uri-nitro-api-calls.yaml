@@ -1,0 +1,68 @@
+
+- hosts: netscaler
+  gather_facts: no
+  vars:
+    resource: server
+    request_payload:
+      server:
+        name: test-server-1
+        ipaddress: 192.168.1.6
+
+  tasks:
+    - name: Get resource
+      delegate_to: localhost
+      ignore_errors: true
+      register: result
+      uri:
+        url: "http://{{ nsip }}/nitro/v1/config/{{ resource }}/{{ request_payload.server.name }}"
+        method: GET
+        status_code: 200
+        return_content: yes
+        headers:
+          X-NITRO-USER: "{{ nitro_user }}"
+          X-NITRO-PASS: "{{ nitro_pass }}"
+
+    - name: Check success or expected failure
+      assert:
+        that: result|succeeded or ( result|failed and result.json.errorcode == 258 )
+
+    - name: Add resource when not existing
+      delegate_to: localhost
+      when: result|failed
+      uri:
+        url: "http://{{ nsip }}/nitro/v1/config/{{ resource }}"
+        method: POST
+        status_code: 201
+        return_content: yes
+        headers:
+          X-NITRO-USER: "{{ nitro_user }}"
+          X-NITRO-PASS: "{{ nitro_pass }}"
+        body_format: json
+        body: "{{ request_payload }}"
+
+    - name: Update resource if existing
+      delegate_to: localhost
+      when: result|succeeded
+      uri:
+        url: "http://{{ nsip }}/nitro/v1/config/{{ resource }}"
+        method: PUT
+        status_code: 200
+        return_content: yes
+        headers:
+          X-NITRO-USER: "{{ nitro_user }}"
+          X-NITRO-PASS: "{{ nitro_pass }}"
+        body_format: json
+        body: "{{ request_payload }}"
+
+    - name: Save running configuration
+      delegate_to: localhost
+      uri:
+        url: "http://{{ nsip }}/nitro/v1/config/nsconfig?action=save"
+        method: POST
+        status_code: 200
+        headers:
+          X-NITRO-USER: "{{ nitro_user }}"
+          X-NITRO-PASS: "{{ nitro_pass }}"
+        body_format: json
+        body:
+          nsconfig: {}

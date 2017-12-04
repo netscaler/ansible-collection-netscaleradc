@@ -1,0 +1,22 @@
+- hosts: netscaler
+  gather_facts: no
+  vars:
+    resource: lbvserver
+    attributes:
+      name: test-server-1
+      ipaddress: 192.168.1.6
+
+  tasks:
+    - name: Get all servers
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: get_by_args
+
+        resource: "{{ resource }}"
+        args:
+          ipv46: lb_vserver_catalog

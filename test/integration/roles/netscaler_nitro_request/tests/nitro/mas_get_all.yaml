@@ -1,0 +1,3 @@
+- include: "{{ role_path }}/tests/nitro/mas_get_all/main.yaml"
+  when:
+    - mas_ip is defined
