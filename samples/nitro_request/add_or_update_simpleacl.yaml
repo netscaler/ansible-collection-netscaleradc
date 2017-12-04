@@ -1,0 +1,66 @@
+
+- hosts: netscaler
+  gather_facts: no
+
+# nscli commands simulated
+#
+# show simpleacl test-acl-rule1
+#
+# If show returned no result
+# add simpleacl test-acl-rule1 DENY -srcIP 10.102.29.5 -TTL 600
+#
+# If show returned result
+# set simpleacl test-acl-rule1 DENY -srcIP 10.102.29.5 -TTL 600
+
+  vars:
+    resource: nssimpleacl
+    attributes:
+      aclname: test-acl-rule-1
+      aclaction: DENY
+      srcip: 10.102.29.5
+      ttl: 600
+
+  tasks:
+    - name: Get resource
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        expected_nitro_errorcode: [0, 258]
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: get
+
+        resource: "{{ resource }}"
+        name: "{{ attributes.aclname }}"
+
+
+    - name: Add resource when not existing
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: add
+
+        resource: "{{ resource }}"
+        attributes: "{{ attributes }}"
+
+      when: result.nitro_errorcode == 258
+
+    - name: Update resource when existing
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: update
+
+        resource: "{{ resource }}"
+        name: "{{ attributes.aclname }}"
+        attributes: "{{ attributes }}"
+
+      when: result.nitro_errorcode == 0
