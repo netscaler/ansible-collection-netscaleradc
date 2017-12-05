@@ -36,7 +36,7 @@ def main():
     print('Ansible path is %s' % ansible_path)
 
     # Check to see if appropriate directories exist
-    module_utils_path = os.path.join(ansible_path, 'module_utils')
+    module_utils_path = os.path.join(ansible_path, 'module_utils', 'network', 'netscaler')
     if not os.path.exists(module_utils_path):
         print('Module utils directory (%s) does not exist' % module_utils_path)
         sys.exit(1)
