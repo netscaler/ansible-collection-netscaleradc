@@ -47,7 +47,7 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>yes</li><li>no</li></ul></td>
-        <td><div>When set to <code>true</code> the server state will be set to DISABLED.</div><div>When set to <code>false</code> the server state will be set to ENABLED.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
+        <td><div>When set to <code>true</code> the server state will be set to <code>disabled</code>.</div><div>When set to <code>false</code> the server state will be set to <code>enabled</code>.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
                 <tr><td>domain<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -58,6 +58,11 @@ Options
     <td>5</td>
         <td></td>
         <td><div>Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.</div><div>Minimum value = <code>5</code></div><div>Maximum value = <code>20939</code></div>        </td></tr>
+                <tr><td>graceful<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.</div><div>Default value: NO</div>        </td></tr>
                 <tr><td>ipaddress<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -192,6 +197,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

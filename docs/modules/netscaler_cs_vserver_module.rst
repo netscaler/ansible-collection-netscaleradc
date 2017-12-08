@@ -4,7 +4,7 @@
 netscaler_cs_vserver - Manage content switching vserver
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
@@ -41,7 +41,7 @@ Options
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable logging appflow flow information.</div>        </td></tr>
                 <tr><td>authentication<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -121,7 +121,7 @@ Options
                 <tr><td>disableprimaryondown<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.</div>        </td></tr>
                 <tr><td>dnsprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -136,7 +136,7 @@ Options
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>httpprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -256,7 +256,7 @@ Options
                 <tr><td>push<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either <code>HTTP</code> or <code>SSL</code>.</div>        </td></tr>
                 <tr><td>pushlabel<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -281,7 +281,7 @@ Options
                 <tr><td>redirectportrewrite<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>State of port rewrite while performing HTTP redirect.</div>        </td></tr>
                 <tr><td>redirecturl<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -326,7 +326,7 @@ Options
                 <tr><td>sopersistence<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Maintain source-IP based persistence on primary and backup virtual servers.</div>        </td></tr>
                 <tr><td>sopersistencetimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -346,8 +346,8 @@ Options
                 <tr><td>stateupdate<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:</div><div>Global Level | Vserver Level | Result</div><div>ENABLED ENABLED ENABLED</div><div>ENABLED DISABLED ENABLED</div><div>DISABLED ENABLED ENABLED</div><div>DISABLED DISABLED DISABLED</div><div>If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.</div>        </td></tr>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
+        <td><div>Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:</div><div>Global Level | Vserver Level | Result</div><div>enabled enabled enabled</div><div>enabled disabled enabled</div><div>disabled enabled enabled</div><div>disabled disabled disabled</div><div>If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.</div>        </td></tr>
                 <tr><td>targettype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -451,6 +451,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

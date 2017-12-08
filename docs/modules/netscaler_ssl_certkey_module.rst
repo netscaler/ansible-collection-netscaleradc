@@ -50,7 +50,7 @@ Options
                 <tr><td>expirymonitor<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Issue an alert when the certificate is about to expire.</div>        </td></tr>
                 <tr><td>inform<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -139,7 +139,7 @@ Examples
         certkey: certirificate_1
         cert: server.crt
         key: server.key
-        expirymonitor: ENABLED
+        expirymonitor: enabled
         notificationperiod: 30
         inform: PEM
         password: False
@@ -201,6 +201,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 
