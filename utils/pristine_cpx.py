@@ -22,8 +22,9 @@ elif sys.argv[1] == '111':
 cmd = 'docker ps -a --filter name=%s' % DOCKER_NAME
 print('cmd: %s' % cmd)
 output = subprocess.check_output(cmd, shell=True)
+print('output is %s' % str(output))
 print('output len %s' % len(str(output).split('\n')))
-if len(str(output).split('\n')) != 1:
+if DOCKER_NAME in str(output):
     print('Removing existing container')
     subprocess.check_call('docker stop %s' % DOCKER_NAME, shell=True)
     subprocess.check_call('docker rm %s' % DOCKER_NAME, shell=True)
