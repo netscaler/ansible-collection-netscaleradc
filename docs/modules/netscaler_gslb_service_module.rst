@@ -4,7 +4,7 @@
 netscaler_gslb_service - Manage gslb service entities in Netscaler.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
