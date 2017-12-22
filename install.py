@@ -31,19 +31,6 @@ def main():
         print('Could not load ansible module')
         sys.exit(1)
 
-    # Find ansible installation path
-    ansible_path = os.path.dirname(os.path.abspath(os.path.realpath(ansible.__file__)))
-    print('Ansible path is %s' % ansible_path)
-
-    # Check to see if appropriate directories exist
-    module_utils_path = os.path.join(ansible_path, 'module_utils', 'network', 'netscaler')
-    if not os.path.exists(module_utils_path):
-        print('Module utils directory (%s) does not exist' % module_utils_path)
-        sys.exit(1)
-    if not os.path.isdir(module_utils_path):
-        print('Module utils path (%s) is not a directory' % module_utils_path)
-        sys.exit(1)
-
     # Parse ansible version
     m = re.match(r'^(\d)\.(\d).*$', ansible.__version__)
     if m is None:
@@ -51,6 +38,22 @@ def main():
 
     major = int(m.group(1))
     minor = int(m.group(2))
+
+    # Find ansible installation path
+    ansible_path = os.path.dirname(os.path.abspath(os.path.realpath(ansible.__file__)))
+    print('Ansible path is %s' % ansible_path)
+
+    # Check to see if appropriate directories exist
+    if (major, minor) == (2, 4):
+        module_utils_path = os.path.join(ansible_path, 'module_utils')
+    else:
+        module_utils_path = os.path.join(ansible_path, 'module_utils', 'network', 'netscaler')
+    if not os.path.exists(module_utils_path):
+        print('Module utils directory (%s) does not exist' % module_utils_path)
+        sys.exit(1)
+    if not os.path.isdir(module_utils_path):
+        print('Module utils path (%s) is not a directory' % module_utils_path)
+        sys.exit(1)
 
     # Set modules path according to ansible version
     if major < 2 or major == 2 and minor <= 2:
