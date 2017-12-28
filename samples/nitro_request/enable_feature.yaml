@@ -1,0 +1,20 @@
+
+- hosts: netscaler
+  gather_facts: no
+
+  tasks:
+    - name: Enable feature
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: action
+        action: enable
+
+        resource: nsfeature
+        attributes:
+          feature:
+            - "CMP"
