@@ -593,6 +593,10 @@ def monitor_bindings_identical(client, module):
     # Compare key to key
     for key in configured_key_set:
         configured_proxy = configured_bindings[key]
+
+        # Follow nscli convention for missing weight value
+        if not hasattr(configured_proxy, 'weight'):
+            configured_proxy.weight = 1
         log('configured_proxy %s' % [configured_proxy.monitorname, configured_proxy.servicegroupname, configured_proxy.weight])
         log('actual_bindings %s' % [actual_bindings[key].monitor_name, actual_bindings[key].servicegroupname, actual_bindings[key].weight])
         if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
