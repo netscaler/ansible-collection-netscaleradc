@@ -271,6 +271,12 @@ options:
                     - Server port number.
                     - Range C(1) - C(65535)
                     - "* in CLI is represented as 65535 in NITRO API"
+            state:
+                choices:
+                    - 'enabled'
+                    - 'disabled'
+                description:
+                    - Initial state of the service after binding.
             hashid:
                 description:
                     - The hash identifier for the service.
@@ -427,6 +433,7 @@ def get_configured_service_members(client, module):
         'servicegroupname',
         'ip',
         'port',
+        'state',
         'hashid',
         'serverid',
         'servername',
