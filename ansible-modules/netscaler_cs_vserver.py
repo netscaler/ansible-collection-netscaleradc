@@ -500,6 +500,11 @@ options:
             - "."
             - "Minimum value = C(1)"
 
+    lbvserver:
+        description:
+            - The default Load Balancing virtual server.
+
+
     disabled:
         description:
             - When set to C(yes) the cs vserver will be disabled.
@@ -570,6 +575,7 @@ from ansible.module_utils.network.netscaler.netscaler import (
 )
 try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
+    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_lbvserver_binding import csvserver_lbvserver_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_cspolicy_binding import csvserver_cspolicy_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
     from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
@@ -623,6 +629,74 @@ def get_configured_policybindings(client, module):
         bindings[key] = binding_proxy
     return bindings
 
+
+def get_default_lb_vserver(client, module):
+    try:
+        default_lb_vserver = csvserver_lbvserver_binding.get(client, module.params['name'])
+        return default_lb_vserver[0]
+    except nitro_exception as e:
+        if e.errorcode == 258:
+            return csvserver_lbvserver_binding()
+        else:
+            raise
+
+
+def default_lb_vserver_identical(client, module):
+    d = get_default_lb_vserver(client, module)
+    configured = ConfigProxy(
+        actual=csvserver_lbvserver_binding(),
+        client=client,
+        readwrite_attrs=[
+            'name',
+            'lbvserver',
+        ],
+        attribute_values_dict={
+            'name': module.params['name'],
+            'lbvserver': module.params['lbvserver'],
+        }
+    )
+    log('default lb vserver %s' % ((d.name, d.lbvserver),))
+    if d.name is None and module.params['lbvserver'] is None:
+        log('Default lb vserver identical missing')
+        return True
+    elif d.name is not None and module.params['lbvserver'] is None:
+        log('Default lb vserver needs removing')
+        return False
+    elif configured.has_equal_attributes(d):
+        log('Default lb vserver identical')
+        return True
+    else:
+        log('Default lb vserver not identical')
+        return False
+
+
+def sync_default_lb_vserver(client, module):
+    d = get_default_lb_vserver(client, module)
+
+    if module.params['lbvserver'] is not None:
+        configured = ConfigProxy(
+            actual=csvserver_lbvserver_binding(),
+            client=client,
+            readwrite_attrs=[
+                'name',
+                'lbvserver',
+            ],
+            attribute_values_dict={
+                'name': module.params['name'],
+                'lbvserver': module.params['lbvserver'],
+            }
+        )
+
+        if not configured.has_equal_attributes(d):
+            if d.name is not None:
+                log('Deleting default lb vserver %s' % d.lbvserver)
+                csvserver_lbvserver_binding.delete(client, d)
+            log('Adding default lb vserver %s' % configured.lbvserver)
+            configured.add()
+    else:
+        if d.name is not None:
+            log('Deleting default lb vserver %s' % d.lbvserver)
+            csvserver_lbvserver_binding.delete(client, d)
 
 def get_actual_policybindings(client, module):
     log('Getting actual policy bindigs')
@@ -949,6 +1023,7 @@ def main():
             type='bool',
             default=False
         ),
+        lbvserver=dict(type='str'),
     )
 
     argument_spec = dict()
@@ -1167,6 +1242,13 @@ def main():
                         ssl_certkey_bindings_sync(client, module)
 
                     module_result['changed'] = True
+
+            # Check default lb vserver
+            if not default_lb_vserver_identical(client, module):
+                if not module.check_mode:
+                    sync_default_lb_vserver(client, module)
+                module_result['changed'] = True
+
 
             if not module.check_mode:
                 res = do_state_change(client, module, csvserver_proxy)
