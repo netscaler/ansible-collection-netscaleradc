@@ -552,6 +552,12 @@ def sync_service_members(client, module):
         # Fallthrough to addition
         configured_service.add()
 
+def monitor_binding_equal(configured, actual):
+    if any([configured.monitorname != actual.monitor_name,
+            configured.servicegroupname != actual.servicegroupname,
+            configured.weight != float(actual.weight)]):
+        return False
+    return True
 
 def get_configured_monitor_bindings(client, module):
     log('Entering get_configured_monitor_bindings')
@@ -626,9 +632,7 @@ def monitor_bindings_identical(client, module):
             configured_proxy.weight = 1
         log('configured_proxy %s' % [configured_proxy.monitorname, configured_proxy.servicegroupname, configured_proxy.weight])
         log('actual_bindings %s' % [actual_bindings[key].monitor_name, actual_bindings[key].servicegroupname, actual_bindings[key].weight])
-        if any([configured_proxy.monitorname != actual_bindings[key].monitor_name,
-                configured_proxy.servicegroupname != actual_bindings[key].servicegroupname,
-                configured_proxy.weight != float(actual_bindings[key].weight)]):
+        if not monitor_binding_equal(configured_proxy, actual_bindings[key]):
             return False
 
     # Fallthrought to success
@@ -637,8 +641,23 @@ def monitor_bindings_identical(client, module):
 
 def sync_monitor_bindings(client, module):
     log('Entering sync_monitor_bindings')
-    # Delete existing bindings
-    for binding in get_actual_monitor_bindings(client, module).values():
+
+    actual_bindings = get_actual_monitor_bindings(client, module)
+
+    # Exclude default monitors from deletion
+    for monitorname in ('tcp-default', 'ping-default'):
+        if monitorname in actual_bindings:
+            del actual_bindings[monitorname]
+
+    configured_bindings = get_configured_monitor_bindings(client, module)
+
+    to_remove = list(set(actual_bindings.keys()) - set(configured_bindings.keys()))
+    to_add = list(set(configured_bindings.keys()) - set(actual_bindings.keys()))
+    to_modify = list(set(configured_bindings.keys()) & set(actual_bindings.keys()))
+
+    # Delete existing and modifiable bindings
+    for key in to_remove + to_modify:
+        binding = actual_bindings[key]
         b = lbmonitor_servicegroup_binding()
         b.monitorname = binding.monitor_name
         b.servicegroupname = module.params['servicegroupname']
@@ -647,9 +666,9 @@ def sync_monitor_bindings(client, module):
             continue
         lbmonitor_servicegroup_binding.delete(client, b)
 
-    # Apply configured bindings
-
-    for binding in get_configured_monitor_bindings(client, module).values():
+    # Add new and modified bindings
+    for key in to_add + to_modify:
+        binding = configured_bindings[key]
         log('Adding %s' % binding.monitorname)
         binding.add()
 
