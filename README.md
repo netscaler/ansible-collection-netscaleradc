@@ -46,6 +46,18 @@ If the ansible installation is on a dirctory that requires root access, the inst
 If the isntallation script fails and you know where ansible is located on your system you can do a manual installation.
 Just copy the contents of the ansible-modules directory to the extras module directory and the netscaler.py file to the module_utils directory of ansible.
 
+### Backport for Ansible 2.4.x
+
+The modules are developed against the latest development version of ansible.
+
+Some changes made by the core ansible developers caused the modules to lose backwards portability to ansible 2.4.
+
+If you need the latest version of the modules present in this repository and are restricted to using ansible 2.4 you can use
+the backport branch [backport_2.4](https://github.com/citrix/netscaler-ansible-modules/tree/backport_2.4) which
+contains the fixes needed for the modules to run under ansible 2.4 while also containing the latest changes.
+
+This branch will be kept up to date with the master branch.
+
 ## Usage
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix NetScaler appliance.
