@@ -14,3 +14,4 @@
     ipaddress: 11.11.11.11
     disabled: yes
     graceful: yes
+    delay: 20

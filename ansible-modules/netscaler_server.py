@@ -92,8 +92,15 @@ options:
             - >-
                 Shut down gracefully, without accepting any new connections, and disabling each service when all of
                 its connections are closed.
+            - This option is meaningful only when setting the I(disabled) option to C(false)
             - "Default value: NO"
         type: bool
+
+    delay:
+        description:
+            - Time, in seconds, after which all the services configured on the server are disabled.
+            - This option is meaningful only when setting the I(disabled) option to C(false)
+        type: float
 
     disabled:
         description:
@@ -169,8 +176,13 @@ def server_identical(client, module, server_proxy):
     if server.count_filtered(client, 'name:%s' % module.params['name']) == 0:
         return False
     diff = diff_list(client, module, server_proxy)
-    if 'graceful' in diff:
-        del diff['graceful']
+
+    # Remove options that are not present in nitro server object
+    # These are special options relevant to the disabled action
+    for option in ['graceful', 'delay']:
+        if option in diff:
+            del diff[option]
+
     if diff == {}:
         return True
     else:
@@ -208,6 +220,7 @@ def main():
         comment=dict(type='str'),
         td=dict(type='float'),
         graceful=dict(type='bool'),
+        delay=dict(type='float')
     )
 
     hand_inserted_arguments = dict(
