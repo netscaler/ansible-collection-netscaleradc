@@ -504,6 +504,12 @@ options:
         description:
             - The default Load Balancing virtual server.
 
+    ssl_certkey:
+        description:
+            - The name of the ssl certificate that is bound to this service.
+            - The ssl certificate must already exist.
+            - Creating the certificate can be done with the M(netscaler_ssl_certkey) module.
+            - This option is only applicable only when C(servicetype) is C(SSL).
 
     disabled:
         description:
