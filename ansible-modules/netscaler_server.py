@@ -275,6 +275,7 @@ def main():
         'domainresolveretry',
         'ipv6address',
         'graceful',
+        'delay',
         'comment',
         'td',
     ]
