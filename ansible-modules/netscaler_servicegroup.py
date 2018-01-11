@@ -509,7 +509,6 @@ def servicemembers_identical(client, module):
 
 def sync_service_members(client, module):
     log('sync_service_members')
-    # delete_all_servicegroup_members(client, module)
     configured_service_members = get_configured_service_members(client, module)
     actual_service_members = get_actual_service_members(client, module)
     skip_add = []
