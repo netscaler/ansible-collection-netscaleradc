@@ -92,14 +92,13 @@ options:
             - >-
                 Shut down gracefully, without accepting any new connections, and disabling each service when all of
                 its connections are closed.
-            - This option is meaningful only when setting the I(disabled) option to C(false)
-            - "Default value: NO"
+            - This option is meaningful only when setting the I(disabled) option to C(true)
         type: bool
 
     delay:
         description:
             - Time, in seconds, after which all the services configured on the server are disabled.
-            - This option is meaningful only when setting the I(disabled) option to C(false)
+            - This option is meaningful only when setting the I(disabled) option to C(true)
         type: float
 
     disabled:
@@ -276,6 +275,7 @@ def main():
         'domainresolveretry',
         'ipv6address',
         'graceful',
+        'delay',
         'comment',
         'td',
     ]

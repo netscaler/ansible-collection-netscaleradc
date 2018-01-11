@@ -16,4 +16,5 @@
 
         name: test-server-1
         ipaddress: 192.168.2.2
-        disabled: no
+        disabled: yes
+        graceful: yes
