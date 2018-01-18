@@ -1,4 +1,23 @@
 
 [netscaler]
 
-netscaler01 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+# netscaler_lb  nsip=172.17.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+# netscaler_cpx111 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+# netscaler_cpx120 nsip=172.18.0.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+#netscaler_vpx105 nsip=10.78.60.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+#netscaler_vpx111 nsip=10.78.60.201 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+netscaler_vpx120 nsip=10.78.60.202 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+[mas]
+
+mas_12 nsip=10.78.60.204 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+[webservers]
+
+172.17.0.3 nsip=172.17.0.2 nitro_user=nsroot nitro_pass=nsroot servername=server_1 hostip=172.17.0.3
+172.17.0.4 nsip=172.17.0.2 nitro_user=nsroot nitro_pass=nsroot servername=server_2 hostip=172.17.0.4
