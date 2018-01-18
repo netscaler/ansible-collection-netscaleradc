@@ -40,7 +40,7 @@ Options
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable logging appflow flow information.</div>        </td></tr>
                 <tr><td>backuplbmethod<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -61,11 +61,11 @@ Options
     <td>no</td>
     <td></td>
         <td><ul><li>yes</li><li>no</li></ul></td>
-        <td><div>When set to <code>yes</code> the GSLB Vserver state will be set to DISABLED.</div><div>When set to <code>no</code> the GSLB Vserver state will be set to ENABLED.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
+        <td><div>When set to <code>yes</code> the GSLB Vserver state will be set to <code>disabled</code>.</div><div>When set to <code>no</code> the GSLB Vserver state will be set to <code>enabled</code>.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
                 <tr><td>disableprimaryondown<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Continue to direct traffic to the backup chain even after the primary GSLB virtual server returns to the UP state. Used when spillover is configured for the virtual server.</div>        </td></tr>
                 <tr><td>dnsrecordtype<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -124,7 +124,7 @@ Options
                 <tr><td>mir<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Include multiple IP addresses in the DNS responses sent to clients.</div>        </td></tr>
                 <tr><td>name<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -228,7 +228,7 @@ Options
                 <tr><td>sopersistence<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>If spillover occurs, maintain source IP address based persistence for both primary and backup GSLB virtual servers.</div>        </td></tr>
                 <tr><td>sopersistencetimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -283,6 +283,11 @@ Examples
     
 
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

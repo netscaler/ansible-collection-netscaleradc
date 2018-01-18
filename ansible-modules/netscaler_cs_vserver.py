@@ -503,6 +503,7 @@ options:
     lbvserver:
         description:
             - The default Load Balancing virtual server.
+        version_added: "2.5"
 
     ssl_certkey:
         description:
@@ -510,6 +511,7 @@ options:
             - The ssl certificate must already exist.
             - Creating the certificate can be done with the M(netscaler_ssl_certkey) module.
             - This option is only applicable only when C(servicetype) is C(SSL).
+        version_added: "2.5"
 
     disabled:
         description:
@@ -703,6 +705,7 @@ def sync_default_lb_vserver(client, module):
         if d.name is not None:
             log('Deleting default lb vserver %s' % d.lbvserver)
             csvserver_lbvserver_binding.delete(client, d)
+
 
 def get_actual_policybindings(client, module):
     log('Getting actual policy bindigs')
@@ -1254,7 +1257,6 @@ def main():
                 if not module.check_mode:
                     sync_default_lb_vserver(client, module)
                 module_result['changed'] = True
-
 
             if not module.check_mode:
                 res = do_state_change(client, module, csvserver_proxy)

@@ -177,6 +177,7 @@ class TestNetscalerServerModule(TestModule):
             get_nitro_client=m,
             server_exists=Mock(side_effect=[False, True]),
             ConfigProxy=Mock(return_value=server_proxy_mock),
+            diff_list=Mock(return_value={}),
             do_state_change=Mock(return_value=Mock(errorcode=0))
         ):
             self.module = netscaler_server
@@ -203,6 +204,7 @@ class TestNetscalerServerModule(TestModule):
             get_nitro_client=m,
             server_exists=Mock(side_effect=[True, False]),
             ConfigProxy=Mock(return_value=server_proxy_mock),
+            diff_list=Mock(return_value={}),
             do_state_change=Mock(return_value=Mock(errorcode=0))
         ):
             self.module = netscaler_server
@@ -230,6 +232,7 @@ class TestNetscalerServerModule(TestModule):
             get_nitro_client=m,
             server_exists=Mock(side_effect=[False, True]),
             ConfigProxy=Mock(return_value=server_proxy_mock),
+            diff_list=Mock(return_value={}),
             do_state_change=Mock(return_value=Mock(errorcode=0))
         ):
             self.module = netscaler_server
@@ -284,6 +287,7 @@ class TestNetscalerServerModule(TestModule):
             get_nitro_client=m,
             server_exists=Mock(side_effect=[True, False]),
             ConfigProxy=Mock(return_value=server_proxy_mock),
+            diff_list=Mock(return_value={}),
             do_state_change=Mock(return_value=Mock(errorcode=1, message='Failed on purpose'))
         ):
             self.module = netscaler_server
@@ -307,7 +311,10 @@ class TestNetscalerServerModule(TestModule):
 
         server_proxy_mock = Mock()
 
-        d = {'graceful': True}
+        d = {
+            'graceful': True,
+            'delay': 20,
+        }
         with patch.multiple(
             'ansible.modules.network.netscaler.netscaler_server',
             nitro_exception=self.MockException,
@@ -320,8 +327,7 @@ class TestNetscalerServerModule(TestModule):
         ):
             self.module = netscaler_server
             result = self.exited()
-            self.assertEqual(d, {}, 'Graceful was not discarded from the diff_list with the actual object')
-            #self.assertEqual(result['msg'], 'Error when setting disabled state. errorcode: 1 message: Failed on purpose')
+            self.assertEqual(d, {}, 'Graceful disable options were not discarded from the diff_list with the actual object')
 
     def test_new_server_execution_flow(self):
         set_module_args(dict(

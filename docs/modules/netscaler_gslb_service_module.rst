@@ -4,7 +4,7 @@
 netscaler_gslb_service - Manage gslb service entities in Netscaler.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
@@ -40,12 +40,12 @@ Options
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable logging appflow flow information.</div>        </td></tr>
                 <tr><td>cip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.</div>        </td></tr>
                 <tr><td>cipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -70,7 +70,7 @@ Options
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.</div>        </td></tr>
                 <tr><td>hashid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -301,6 +301,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

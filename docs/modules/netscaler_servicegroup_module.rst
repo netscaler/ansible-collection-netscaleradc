@@ -4,7 +4,7 @@
 netscaler_servicegroup - Manage service group configuration in Netscaler
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
@@ -41,7 +41,7 @@ Options
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable logging of AppFlow information for the specified service group.</div>        </td></tr>
                 <tr><td>autoscale<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -61,7 +61,7 @@ Options
                 <tr><td>cip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Insert the Client IP header in requests forwarded to the service.</div>        </td></tr>
                 <tr><td>cipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -88,10 +88,15 @@ Options
     <td></td>
         <td></td>
         <td><div>Any information about the service group.</div>        </td></tr>
+                <tr><td>disabled<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>When set to <code>yes</code> the service group state will be set to DISABLED.</div><div>When set to <code>no</code> the service group state will be set to ENABLED.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Flush all active transactions associated with all the services in the service group whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>graceful<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -232,11 +237,6 @@ Options
     <th class="head">choices</th>
     <th class="head">comments</th>
     </tr>
-                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
                     <tr><td>weight<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
@@ -247,16 +247,26 @@ Options
         <td></td>
                 <td></td>
                 <td><div>IP address of the service. Must not overlap with an existing server entity defined by name.</div>        </td></tr>
-                    <tr><td>customserverid<br/><div style="font-size: small;"></div></td>
-        <td>no</td>
-        <td></td>
-                <td></td>
-                <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
                     <tr><td>servername<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
                 <td></td>
                 <td><div>Name of the server to which to bind the service group.</div><div>The server must already be configured as a named server.</div><div>Minimum length = 1</div>        </td></tr>
+                    <tr><td>state<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td><ul><li>enabled</li><li>disabled</li></ul></td>
+                <td><div>Initial state of the service after binding.</div>        </td></tr>
+                    <tr><td>customserverid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>The identifier for this IP:Port pair.</div><div>Used when the persistency type is set to Custom Server ID.</div>        </td></tr>
+                    <tr><td>hashid<br/><div style="font-size: small;"></div></td>
+        <td>no</td>
+        <td></td>
+                <td></td>
+                <td><div>The hash identifier for the service.</div><div>This must be unique for each service.</div><div>This parameter is used by hash based load balancing methods.</div><div>Minimum value = <code>1</code></div>        </td></tr>
                     <tr><td>serverid<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
@@ -401,6 +411,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

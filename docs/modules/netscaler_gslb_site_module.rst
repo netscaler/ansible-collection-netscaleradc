@@ -45,7 +45,7 @@ Options
                 <tr><td>metricexchange<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The appliances in the GSLB setup exchange health information once every second.</div><div>If you disable metrics exchange, you can use only static load balancing methods (such as round robin, static proximity, or the hash-based methods), and if you disable metrics exchange when a dynamic load balancing method (such as least connection) is in operation, the appliance falls back to round robin. Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB services. Otherwise, the service is marked as DOWN.</div>        </td></tr>
                 <tr><td>naptrreplacementsuffix<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -80,7 +80,7 @@ Options
                 <tr><td>nwmetricexchange<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.</div>        </td></tr>
                 <tr><td>parentsite<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -105,7 +105,7 @@ Options
                 <tr><td>sessionexchange<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Exchange persistent session entries with other GSLB sites every five seconds.</div>        </td></tr>
                 <tr><td>siteipaddress<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -159,9 +159,9 @@ Examples
         siteipaddress: 192.168.1.1
         sitetype: LOCAL
         publicip: 192.168.1.1
-        metricexchange: ENABLED
-        nwmetricexchange: ENABLED
-        sessionexchange: ENABLED
+        metricexchange: enabled
+        nwmetricexchange: enabled
+        sessionexchange: enabled
         triggermonitor: ALWAYS
     
 
@@ -221,6 +221,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

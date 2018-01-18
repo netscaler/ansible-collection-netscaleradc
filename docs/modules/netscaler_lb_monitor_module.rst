@@ -4,7 +4,7 @@
 netscaler_lb_monitor - Manage load balancing monitors
 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
@@ -211,7 +211,7 @@ Options
                 <tr><td>lrtm<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Calculate the least response times for bound services. If this parameter is not enabled, the appliance does not learn the response times of the bound services. Also used for LRTM load balancing.</div>        </td></tr>
                 <tr><td>maxforwards<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -445,13 +445,13 @@ Options
         <td><div>SQL query for a <code>MYSQL-ECV</code> or <code>MSSQL-ECV</code> monitor. Sent to the database server after the server authenticates the connection.</div><div>Minimum length = 1</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
-        <td><div>State of the monitor. The <code>DISABLED</code> setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to <code>ENABLED</code>. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.</div>        </td></tr>
+    <td>present</td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
+        <td><div>State of the monitor. The <code>disabled</code> setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to <code>enabled</code>. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.</div>        </td></tr>
                 <tr><td>storedb<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Store the database list populated with the responses to monitor probes. Used in database specific load balancing if <code>MSSQL-ECV</code>/<code>MYSQL-ECV</code> monitor is configured.</div>        </td></tr>
                 <tr><td>storefrontacctservice<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -631,6 +631,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

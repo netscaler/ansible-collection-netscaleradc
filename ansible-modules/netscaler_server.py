@@ -94,12 +94,13 @@ options:
                 its connections are closed.
             - This option is meaningful only when setting the I(disabled) option to C(true)
         type: bool
+        version_added: "2.5"
 
     delay:
         description:
             - Time, in seconds, after which all the services configured on the server are disabled.
             - This option is meaningful only when setting the I(disabled) option to C(true)
-        type: float
+        version_added: "2.5"
 
     disabled:
         description:

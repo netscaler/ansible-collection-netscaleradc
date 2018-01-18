@@ -47,8 +47,8 @@ Options
         <td><div>Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.</div>        </td></tr>
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>ENABLED</td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+    <td></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable logging of AppFlow information.</div>        </td></tr>
                 <tr><td>cacheable<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -63,7 +63,7 @@ Options
                 <tr><td>cip<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.</div>        </td></tr>
                 <tr><td>cipheader<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -100,6 +100,11 @@ Options
     <td>None</td>
         <td></td>
         <td><div>Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.</div>        </td></tr>
+                <tr><td>disabled<br/><div style="font-size: small;"></div></td>
+    <td>no</td>
+    <td></td>
+        <td><ul><li>yes</li><li>no</li></ul></td>
+        <td><div>When set to <code>yes</code> the service state will be set to DISABLED.</div><div>When set to <code>no</code> the service state will be set to ENABLED.</div><div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>        </td></tr>
                 <tr><td>dnsprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -107,8 +112,8 @@ Options
         <td><div>Name of the DNS profile to be associated with the service. DNS profile properties will applied to the transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.</div><div>Minimum length = 1</div><div>Maximum length = 127</div>        </td></tr>
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>ENABLED</td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+    <td></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>graceful<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -178,7 +183,7 @@ Options
                     <tr><td>dup_state<br/><div style="font-size: small;"></div></td>
         <td>no</td>
         <td></td>
-                <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+                <td><ul><li>enabled</li><li>disabled</li></ul></td>
                 <td><div>State of the monitor.</div><div>The state setting for a monitor of a given type affects all monitors of that type.</div><div>For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.</div><div>If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.</div>        </td></tr>
                     <tr><td>dup_weight<br/><div style="font-size: small;"></div></td>
         <td>no</td>
@@ -251,8 +256,8 @@ Options
         <td><div>Port number of the service.</div><div>Range 1 - 65535</div><div>* in CLI is represented as 65535 in NITRO API</div>        </td></tr>
                 <tr><td>processlocal<br/><div style="font-size: small;"></div></td>
     <td>no</td>
-    <td>DISABLED</td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+    <td></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.</div>        </td></tr>
                 <tr><td>rtspsessionidremap<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -264,11 +269,6 @@ Options
     <td>True</td>
         <td><ul><li>yes</li><li>no</li></ul></td>
         <td><div>If true the module will save the configuration on the netscaler node if it makes any changes.</div><div>The module will not save the configuration on the netscaler node if it made no changes.</div>        </td></tr>
-                <tr><td>sc<br/><div style="font-size: small;"></div></td>
-    <td>no</td>
-    <td></td>
-        <td></td>
-        <td><div>State of SureConnect for the service.</div>        </td></tr>
                 <tr><td>serverid<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -394,6 +394,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

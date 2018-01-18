@@ -551,12 +551,14 @@ def sync_service_members(client, module):
         # Fallthrough to addition
         configured_service.add()
 
+
 def monitor_binding_equal(configured, actual):
     if any([configured.monitorname != actual.monitor_name,
             configured.servicegroupname != actual.servicegroupname,
             configured.weight != float(actual.weight)]):
         return False
     return True
+
 
 def get_configured_monitor_bindings(client, module):
     log('Entering get_configured_monitor_bindings')

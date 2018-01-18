@@ -4,7 +4,7 @@
 netscaler_lb_vserver - Manage load balancing vserver configuration
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.4
 
 
 .. contents::
@@ -41,7 +41,7 @@ Options
                 <tr><td>appflowlog<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Apply AppFlow logging to the virtual server.</div>        </td></tr>
                 <tr><td>authentication<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -52,7 +52,7 @@ Options
     <td>no</td>
     <td></td>
         <td></td>
-        <td><div>Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication. Make sure that the Authentication parameter is set to ENABLED.</div><div>Minimum length = 3</div><div>Maximum length = 252</div>        </td></tr>
+        <td><div>Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication. Make sure that the Authentication parameter is set to <code>yes</code>.</div><div>Minimum length = 3</div><div>Maximum length = 252</div>        </td></tr>
                 <tr><td>authn401<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -126,7 +126,7 @@ Options
                 <tr><td>dbslb<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Enable database specific load balancing for MySQL and MSSQL service types.</div>        </td></tr>
                 <tr><td>disabled<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -136,12 +136,12 @@ Options
                 <tr><td>disableprimaryondown<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>If the primary virtual server goes down, do not allow it to return to primary status until manually enabled.</div>        </td></tr>
                 <tr><td>dns64<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>This argument is for enabling/disabling the <code>dns64</code> on lbvserver.</div>        </td></tr>
                 <tr><td>dnsprofilename<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -151,7 +151,7 @@ Options
                 <tr><td>downstateflush<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>        </td></tr>
                 <tr><td>hashlength<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -221,7 +221,7 @@ Options
                 <tr><td>macmoderetainvlan<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>This option is used to retain vlan information of incoming packet when macmode is enabled.</div>        </td></tr>
                 <tr><td>maxautoscalemembers<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -346,12 +346,12 @@ Options
                 <tr><td>processlocal<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.</div>        </td></tr>
                 <tr><td>push<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Process traffic with the push virtual server that is bound to this load balancing virtual server.</div>        </td></tr>
                 <tr><td>pushlabel<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -381,7 +381,7 @@ Options
                 <tr><td>redirectportrewrite<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Rewrite the port and change the protocol to ensure successful HTTP redirects from services.</div>        </td></tr>
                 <tr><td>redirurl<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -474,7 +474,7 @@ Options
                 <tr><td>sessionless<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load balancing of intrusion detection system (IDS) servers and scenarios involving direct server return (DSR), where session information is unnecessary.</div>        </td></tr>
                 <tr><td>skippersistency<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -494,7 +494,7 @@ Options
                 <tr><td>sopersistence<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
-        <td><ul><li>ENABLED</li><li>DISABLED</li></ul></td>
+        <td><ul><li>enabled</li><li>disabled</li></ul></td>
         <td><div>If spillover occurs, maintain source IP address based persistence for both primary and backup virtual servers.</div>        </td></tr>
                 <tr><td>sopersistencetimeout<br/><div style="font-size: small;"></div></td>
     <td>no</td>
@@ -650,6 +650,11 @@ Common return values are documented here :doc:`common_return_values`, the follow
     </table>
     </br></br>
 
+Notes
+-----
+
+.. note::
+    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
 
 
 

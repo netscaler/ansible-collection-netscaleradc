@@ -1,3 +1,11 @@
 [netscaler]
 
-192.168.1.1
+# netscaler_cpx_111 nsip=172.18.0.2
+
+# netscaler_vpx_105 nsip=10.78.60.200
+
+# netscaler_vpx_111 nsip=10.78.60.201
+
+netscaler_vpx_120 nsip=10.78.60.202 mas_ip=10.78.60.204
+
+# netscaler_cpx_120 nsip=172.18.0.200
