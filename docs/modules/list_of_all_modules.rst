@@ -11,6 +11,7 @@ All Modules
   netscaler_gslb_vserver - Configure gslb vserver entities in Netscaler. <netscaler_gslb_vserver_module>
   netscaler_lb_monitor - Manage load balancing monitors <netscaler_lb_monitor_module>
   netscaler_lb_vserver - Manage load balancing vserver configuration <netscaler_lb_vserver_module>
+  netscaler_nitro_request - Issue Nitro API requests to a Netscaler instance. <netscaler_nitro_request_module>
   netscaler_save_config - Save Netscaler configuration. <netscaler_save_config_module>
   netscaler_server - Manage server configuration <netscaler_server_module>
   netscaler_service - Manage service configuration in Netscaler <netscaler_service_module>

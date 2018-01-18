@@ -173,6 +173,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Use L2 Parameters to identify a connection.</div>        </td></tr>
+                <tr><td>lbvserver<br/><div style="font-size: small;"> (added in 2.5)</div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>The default Load Balancing virtual server.</div>        </td></tr>
                 <tr><td>listenpolicy<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td></td>
@@ -338,6 +343,11 @@ Options
     <td></td>
         <td></td>
         <td><div>Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.</div><div>Minimum value = <code>1</code></div><div>Maximum value = <code>4294967287</code></div>        </td></tr>
+                <tr><td>ssl_certkey<br/><div style="font-size: small;"> (added in 2.5)</div></td>
+    <td>no</td>
+    <td></td>
+        <td></td>
+        <td><div>The name of the ssl certificate that is bound to this service.</div><div>The ssl certificate must already exist.</div><div>Creating the certificate can be done with the <span class='module'>netscaler_ssl_certkey</span> module.</div><div>This option is only applicable only when <code>servicetype</code> is <code>SSL</code>.</div>        </td></tr>
                 <tr><td>state<br/><div style="font-size: small;"></div></td>
     <td>no</td>
     <td>present</td>
