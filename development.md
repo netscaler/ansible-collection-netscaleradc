@@ -217,6 +217,18 @@ When the PR is submitted the ansible CI will run the full set of tests. Make sur
 any errors that arise since this is a requirement for the PR to proceed and
 receive attention by a maintainer.
 
+## Backport branch
+
+We maintain a backport branch `backport_2.4` which is rebased on top of master on
+every change merged.
+
+This branch applies a patch needed to succesfully import the NetScaler module utils
+for each module since there was a directory reorganization in Ansible 2.5 for the
+network modules.
+
+The purpose of this branch is to accommodate users who are restricted to using ansible 2.4
+but also want the latest changes for the netscaler modules.
+
 
 [1]: https://github.com/citrix/netscaler-ansible-modules
 [2]: https://github.com/ansible/ansible
