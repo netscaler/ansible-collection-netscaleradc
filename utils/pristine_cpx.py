@@ -62,4 +62,4 @@ transport.connect(username='root', password='linux')
 sftp = paramiko.SFTPClient.from_transport(transport)
 here = os.path.dirname(os.path.realpath(__file__))
 for file in ['server.crt', 'server.key', 'server2.key', 'server2.crt']:
-    sftp.put(os.path.join(here, 'datafiles', file), os.path.join('/nsconfig/ssl', file))
+    sftp.put(os.path.join(here, '..', 'test', 'datafiles', file), os.path.join('/nsconfig/ssl', file))
