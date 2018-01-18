@@ -4,14 +4,15 @@
 import requests
 import re
 import json
+import argparse
 import os
 from lxml import html
 
 
-def scrap_page(page):
+def scrape_page(page):
     properties = []
+    print('Scraping page %s' % page)
     r = requests.get(page)
-    print('Scraping %s' % page)
     if r.status_code != 200:
         raise Exception('status %s' % r.status_code)
     htmltree = html.fromstring(r.content)
@@ -80,11 +81,12 @@ def update_for_immutables(properties, base_command_url, item):
     # command_with_dashes = m.group(1)
     command_with_spaces = m.group(1).replace('-', ' ')
 
-    page = base_command_url + item + '/'
+    page = base_command_url + item
 
     print('Scraping %s' % page)
     r = requests.get(page)
     htmltree = html.fromstring(r.content)
+    #print(htmltree)
     # id = 'set-%s' % command_with_dashes
     h2s = htmltree.xpath('''//h2/following-sibling::p''')
     for h2 in h2s:
@@ -94,9 +96,9 @@ def update_for_immutables(properties, base_command_url, item):
                 break
     else:
         raise Exception('Cannot find "set %s"' % command_with_spaces)
-    # print(doc_text)
+    #print(doc_text)
     mutable_options = [item[1:] for item in re.findall(r'-\w+', doc_text)]
-    # print('Mutables %s' % mutable_options)
+    #print('Mutables %s' % mutable_options)
     updated_properties = []
     for property in properties:
         # print('Muting property %s' % property['name'])
@@ -111,41 +113,53 @@ def main():
     #base_nitro_url = 'https://docs.citrix.com/en-us/netscaler/11-1/nitro-api/nitro-rest/api-reference/configuration/'
     #base_command_url = 'https://docs.citrix.com/en-us/netscaler/11-1/reference/netscaler-command-reference/'
 
-    base_nitro_url = 'https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/'
-    base_command_url = 'https://developer-docs.citrix.com/projects/netscaler-command-reference/en/12.0/'
-    pages = [
-        ('basic/service/service', 'basic/service/service'),
-        ('basic/servicegroup/servicegroup', 'basic/servicegroup/servicegroup'),
-        ('basic/server/server', 'basic/server/server'),
-        ('basic/servicegroup_servicegroupmember_binding/servicegroup_servicegroupmember_binding', None),
-        ('load-balancing/lbvserver/lbvserver', 'lb/lb-vserver/lb-vserver'),
-        ('load-balancing/lbvserver_service_binding/lbvserver_service_binding', None),
-        ('load-balancing/lbvserver_servicegroup_binding/lbvserver_servicegroup_binding', None),
-        ('load-balancing/lbmonitor/lbmonitor', 'lb/lb-monitor/lb-monitor'),
-        ('content-switching/csvserver/csvserver', 'cs/cs-vserver/cs-vserver'),
-        ('content-switching/cspolicy/cspolicy', 'cs/cs-policy/cs-policy'),
-        ('content-switching/csaction/csaction', 'cs/cs-action/cs-action'),
+    parser = argparse.ArgumentParser(description='Scrape html page for nitro object attributes')
+    parser.add_argument(
+        '--base-nitro-url',
+        default='https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/12.0/configuration/',
+        help='The base url for the nitro object'
+    )
+    parser.add_argument(
+        '--base-command-url',
+        default='https://developer-docs.citrix.com/projects/netscaler-command-reference/en/12.0/',
+        help='The base url for the nitro command'
+    )
+    parser.add_argument(
+        '--nitro-url',
+        required=True,
+        help='The full url to the nitro object documentation page'
+    )
+    parser.add_argument(
+        '--command-url',
+        help='The full url to the nitro command documentation page'
+    )
 
-        ('ssl/sslcertkey/sslcertkey', 'ssl/ssl-certkey/ssl-certkey'),
-        ('ssl/sslvserver_sslcertkey_binding/sslvserver_sslcertkey_binding', None),
-        ('global-server-load-balancing/gslbsite/gslbsite', 'gslb/gslb-site/gslb-site'),
-        ('global-server-load-balancing/gslbservice/gslbservice', 'gslb/gslb-service/gslb-service'),
-        ('global-server-load-balancing/gslbvserver/gslbvserver', 'gslb/gslb-vserver/gslb-vserver'),
-        ('global-server-load-balancing/gslbvserver_domain_binding/gslbvserver_domain_binding', None),
-    ]
-    for page in pages:
-        page_file = re.sub('/', '_', page[0])
-        page_file = page_file[:page_file.rindex('_')]
-        page_file += '.json'
-        if os.path.exists(page_file):
-            print('Skipping %s' % page_file)
-            continue
-        properties = scrap_page(base_nitro_url + page[0] + '/')
-        if page[1] is not None:
-            properties = update_for_immutables(properties, base_command_url, page[1])
-        print('writing to file %s' % page_file)
-        with open(page_file, 'w') as fh:
-            json.dump(properties, fh, indent=4)
+    args = parser.parse_args()
+
+    # Scrape nitro object
+    if args.base_nitro_url not in args.nitro_url:
+        raise Exception('Cannot find base nitro url in %s' % args.nitro_url)
+
+    truncate_start = args.nitro_url.find(args.base_nitro_url) + len(args.base_nitro_url)
+    nitro_page = args.nitro_url[truncate_start:]
+    page_file = re.sub('/', '_', nitro_page)
+    page_file = page_file[:page_file.rindex('_')]
+    page_file += '.json'
+
+    properties = scrape_page(args.base_nitro_url + nitro_page)
+
+    # Apply command url processing
+    if args.command_url is not None:
+        if args.base_command_url not in args.command_url:
+            raise Exception('Cannot find base command url in %s' % args.command_url)
+        truncate_start = args.nitro_url.find(args.base_command_url) + len(args.base_command_url)
+        command_page = args.command_url[truncate_start:]
+        properties = update_for_immutables(properties, args.base_command_url, command_page)
+
+    # Write json file
+    print('writing to file %s' % page_file)
+    with open(page_file, 'w') as fh:
+        json.dump(properties, fh, indent=4)
 
 
 if __name__ == '__main__':
