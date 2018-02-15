@@ -22,5 +22,5 @@
     - { role: netscaler_gslb_service, when: "limit_to in ['*', 'netscaler_gslb_service']" }
     - { role: netscaler_gslb_site, when: "limit_to in ['*', 'netscaler_gslb_site']" }
     - { role: netscaler_gslb_vserver, when: "limit_to in ['*', 'netscaler_gslb_vserver']" }
-    - { role: netscaler_ssl_certkey, when: "limit_to in ['*', 'netscaler_ssl_certkey']" }
     - { role: netscaler_nitro_request, when: "limit_to in ['*', 'netscaler_nitro_request']" }
+    - { role: netscaler_ssl_certkey, when: "limit_to in ['*', 'netscaler_ssl_certkey']" }
