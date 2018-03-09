@@ -609,7 +609,7 @@ def cs_vserver_identical(client, module, csvserver_proxy):
 
 
 def get_configured_policybindings(client, module):
-    log('Getting configured policy bindigs')
+    log('Getting configured policy bindings')
     bindings = {}
     if module.params['policybindings'] is None:
         return bindings
@@ -708,7 +708,7 @@ def sync_default_lb_vserver(client, module):
 
 
 def get_actual_policybindings(client, module):
-    log('Getting actual policy bindigs')
+    log('Getting actual policy bindings')
     bindings = {}
     try:
         count = csvserver_cspolicy_binding.count(client, name=module.params['name'])
