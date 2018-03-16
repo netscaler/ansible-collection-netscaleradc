@@ -179,9 +179,9 @@ def main():
     def get_service_bindings():
         if lbvserver_service_binding.count(client, module.params['name']) == 0:
             return {}
-        bindings_list = lbvserver_service_binding.get(client, module.params['name'])
+        bindigs_list = lbvserver_service_binding.get(client, module.params['name'])
         bindings = {}
-        for item in bindings_list:
+        for item in bindigs_list:
             key = item.servicename
             bindings[key] = item
 
@@ -191,9 +191,9 @@ def main():
         log('count %s' % lbvserver_servicegroup_binding.count(client, module.params['name']))
         if lbvserver_servicegroup_binding.count(client, module.params['name']) == 0:
             return {}
-        bindings_list = lbvserver_servicegroup_binding.get(client, module.params['name'])
+        bindigs_list = lbvserver_servicegroup_binding.get(client, module.params['name'])
         bindings = {}
-        for item in bindings_list:
+        for item in bindigs_list:
             key = item.servicegroupname
             bindings[key] = item
 
