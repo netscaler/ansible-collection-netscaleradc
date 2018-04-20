@@ -1,0 +1,17 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    action: DOWN
+    customheaders: "HEADER_CUSTOM: NONE\r\n"
+    httprequest: 'HEAD /new_file.html'
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-1
+    respcode:
+      - 200-201
+    state: present
+    type: HTTP-INLINE
+  register: result

@@ -1,0 +1,15 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    Snmpoid: some.id
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-snmp
+    snmpcommunity: some.community
+    snmpthreshold: threshold
+    state: present
+    type: SNMP
+  register: result

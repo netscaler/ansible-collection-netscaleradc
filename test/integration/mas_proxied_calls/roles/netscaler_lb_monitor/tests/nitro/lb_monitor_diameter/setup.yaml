@@ -1,0 +1,35 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    acctapplicationid:
+      - '1'
+      - '2'
+    authapplicationid:
+      - '100'
+      - '200'
+    firmwarerevision: 10
+    hostipaddress: 192.168.1.1
+    inbandsecurityid: NO_INBAND_SECURITY
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-diameter
+    originhost: origin.host
+    originrealm: some.realm
+    productname: someproduct
+    state: present
+    supportedvendorids:
+      - '10'
+      - '20'
+    type: DIAMETER
+    vendorid: 20
+    vendorspecificacctapplicationids:
+      - '12'
+      - '23'
+    vendorspecificauthapplicationids:
+      - '11'
+      - '22'
+    vendorspecificvendorid: 10
+  register: result

@@ -1,0 +1,20 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-radius-accounting
+    password: somepass
+    radaccountsession: sessionid
+    radaccounttype: 10
+    radapn: someapn
+    radframedip: 192.168.1.1
+    radkey: somekey
+    radmsisdn: someisdn
+    state: present
+    type: RADIUS_ACCOUNTING
+    username: someuser
+  register: result

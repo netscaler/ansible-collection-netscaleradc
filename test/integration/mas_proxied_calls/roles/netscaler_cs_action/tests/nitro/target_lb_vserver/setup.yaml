@@ -1,0 +1,12 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup cs action'
+  netscaler_cs_action:
+    comment: 'some comment'
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: action-1
+    targetlbvserver: lb-vserver-1
+  register: result

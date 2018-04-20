@@ -1,0 +1,14 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup without default lb vserver'
+  netscaler_cs_vserver:
+    instance_ip: '{{ instance_ip }}'
+    ipv46: 192.168.1.3
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: cs-vserver-3
+    port: 80
+    servicetype: HTTP
+    state: absent
+  register: result

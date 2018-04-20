@@ -1,0 +1,34 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    alertretries: 2
+    destip: 10.10.10.10
+    destport: 1111
+    deviation: 100
+    downtime: 60
+    failureretries: 3
+    instance_ip: '{{ instance_ip }}'
+    interval: 5
+    iptunnel: false
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-rtsp
+    resptimeout: 10
+    resptimeoutthresh: 10
+    retries: 5
+    reverse: true
+    rtsprequest: OPTIONS
+    secure: false
+    state: present
+    successretries: 4
+    tos: true
+    tosid: 20
+    transparent: true
+    type: RTSP
+    units1: MSEC
+    units2: MSEC
+    units3: SEC
+    units4: MSEC
+  register: result

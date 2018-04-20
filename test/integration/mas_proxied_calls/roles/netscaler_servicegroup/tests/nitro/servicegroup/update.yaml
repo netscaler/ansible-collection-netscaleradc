@@ -1,0 +1,45 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup servicegroup'
+  netscaler_servicegroup:
+    appflowlog: enabled
+    autoscale: POLICY
+    cacheable: false
+    cachetype: TRANSPARENT
+    cip: enabled
+    cipheader: cip-header
+    cka: true
+    clttimeout: 1000
+    cmp: false
+    comment: 'some comment'
+    downstateflush: disabled
+    graceful: false
+    healthmonitor: false
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    maxbandwidth: 5000
+    maxclient: 100
+    maxreq: 100
+    memberport: 80
+    monthreshold: 100
+    pathmonitor: false
+    pathmonitorindv: false
+    rtspsessionidremap: false
+    servicegroupname: service-group-1
+    servicemembers:
+      - ip: 10.78.78.78
+        port: 80
+        weight: 50
+      - ip: 10.79.79.79
+        port: 80
+        weight: 50
+    servicetype: HTTP
+    sp: false
+    state: present
+    svrtimeout: 1000
+    tcpb: true
+    useproxyport: false
+    usip: false
+  register: result

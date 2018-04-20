@@ -1,0 +1,12 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup basic server'
+  netscaler_server:
+    instance_ip: '{{ instance_ip }}'
+    ipaddress: ff::fb:0
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: test-server-ipv6
+    state: present
+  register: result

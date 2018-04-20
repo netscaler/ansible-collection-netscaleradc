@@ -1,0 +1,11 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'remove http lb vserver'
+  netscaler_lb_vserver:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: lb-vserver-7
+    state: absent
+  register: result

@@ -1,0 +1,36 @@
+- check_mode: '{{ check_mode }}'
+  delay: 1
+  delegate_to: localhost
+  name: 'Flap service'
+  netscaler_service:
+    disabled: '{{ item|int % 2 }}'
+    instance_ip: '{{ instance_ip }}'
+    ip: 192.168.1.1
+    ipaddress: 192.168.1.1
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: service-http
+    port: 80
+    servicetype: HTTP
+    state: present
+  register: result
+  with_sequence: count=20
+- check_mode: '{{ check_mode }}'
+  delay: 5
+  delegate_to: localhost
+  name: 'Flap service'
+  netscaler_service:
+    disabled: '{{ item|int % 2 }}'
+    instance_ip: '{{ instance_ip }}'
+    ip: 192.168.1.1
+    ipaddress: 192.168.1.1
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: service-http
+    port: 80
+    servicetype: HTTP
+    state: present
+  register: result
+  with_sequence: count=20
