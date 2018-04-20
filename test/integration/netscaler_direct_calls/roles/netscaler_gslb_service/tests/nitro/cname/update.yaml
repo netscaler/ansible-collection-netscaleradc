@@ -11,8 +11,6 @@
     nitro_pass: "{{nitro_pass}}"
     nsip: "{{nsip}}"
 
-    operation: present
-
     servicename: gslb-service-2
     cnameentry: example.com
     comment: added comment

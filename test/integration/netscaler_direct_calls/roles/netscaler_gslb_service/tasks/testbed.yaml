@@ -32,3 +32,16 @@
 
     send: sendstring
     recv: recvstring
+
+- delegate_to: localhost
+  name: 'setup server'
+  netscaler_server:
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
+
+    state: '{{ state }}'
+
+    name: '10.10.10.10'
+    ipaddress: 10.10.10.10
