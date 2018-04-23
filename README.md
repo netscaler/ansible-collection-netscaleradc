@@ -73,7 +73,7 @@ Documentation regarding the Citrix NetScaler appliance configuration in general 
 
 There is also the ability to proxy module NITRO calls through a MAS to a target Netscaler.
 
-In order to do that you need to follow these 2 steps.
+In order to do that you need a NITRO Python SDK that has the MAS proxy calls capability and also follow these 2 steps.
 
 1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
 2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which netscaler to proxy the calls.
