@@ -141,24 +141,6 @@ def main():
     else:
         print('Could not find units tests dir')
 
-    integration_tests_dir = os.path.join(ansible_path, '..', '..', 'test', 'integration')
-    if os.path.exists(integration_tests_dir):
-        print('Found integration tests dir %s' % integration_tests_dir)
-        # copy netscaler yaml and everything under roles
-        shutil.copy(os.path.join(here, 'test', 'integration', 'netscaler.yaml'), integration_tests_dir)
-        roles_dir = os.path.join(here, 'test', 'integration', 'roles')
-        for item in os.listdir(roles_dir):
-            full_item = os.path.join(roles_dir, item)
-            target_item = os.path.join(integration_tests_dir, 'roles', item)
-            if os.path.isdir(full_item):
-                if os.path.exists(target_item):
-                    print('Deleting existing role dir %s' % target_item)
-                    shutil.rmtree(target_item)
-                print('Copying roles dir %s' % full_item)
-                shutil.copytree(full_item, target_item)
-    else:
-        print('Could not find integration tests dir')
-
 
 if __name__ == '__main__':
     main()
