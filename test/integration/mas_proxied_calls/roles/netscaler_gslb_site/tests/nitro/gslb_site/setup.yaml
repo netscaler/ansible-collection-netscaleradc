@@ -1,0 +1,17 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup gslb site'
+  netscaler_gslb_site:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    metricexchange: enabled
+    nwmetricexchange: enabled
+    publicip: 192.168.1.1
+    sessionexchange: enabled
+    siteipaddress: 192.168.1.1
+    sitename: gslb-site-1
+    sitetype: LOCAL
+    triggermonitor: ALWAYS
+  register: result

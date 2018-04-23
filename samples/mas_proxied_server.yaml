@@ -1,0 +1,35 @@
+- hosts: mas
+
+  vars:
+    max_clients: 5
+  gather_facts: False
+
+  tasks:
+
+    - name: Get MAS authentication token
+      delegate_to: localhost
+      netscaler_nitro_request:
+        mas_ip: "{{ nsip }}"
+        mas_user: "{{ nitro_user }}"
+        mas_pass: "{{ nitro_pass }}"
+
+        operation: mas_login
+
+      register: mas_login_result
+
+
+    - name: Setup server through MAS proxy
+      delegate_to: localhost
+      netscaler_server:
+        mas_ip: "{{ nsip }}"
+        mas_auth_token: "{{ mas_login_result.nitro_auth_token }}"
+        mas_proxy_call: true
+        instance_ip: "{{ instance_ip }}"
+
+        state: present
+
+
+        name: test-server-1
+        ipaddress: 192.168.2.2
+        disabled: yes
+        graceful: yes

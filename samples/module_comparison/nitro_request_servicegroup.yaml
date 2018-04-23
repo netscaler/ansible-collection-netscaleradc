@@ -1,0 +1,112 @@
+---
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+    resource: servicegroup
+    attributes:
+      servicegroupname: service-group-1
+      servicetype: HTTP
+
+    servicebindings:
+      - ip: 192.168.10.1
+        port: 80
+        weight: 60
+      - ip: 192.168.10.2
+        port: 80
+        weight: 40
+
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+    - name: Check if servicegroup exists
+      delegate_to: localhost
+      netscaler_nitro_request:
+
+      register: result
+      netscaler_nitro_request:
+        expected_nitro_errorcode: [0, 258]
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: get
+
+        resource: "{{ resource }}"
+        name: "{{ attributes.servicegroupname }}"
+        attributes: "{{ attributes }}"
+
+    - name: Add resource when not existing
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: add
+
+        resource: "{{ resource }}"
+        attributes: "{{ attributes }}"
+
+      when: result.nitro_errorcode == 258
+
+    - name: get configured service bindings
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: get
+
+        resource: servicegroup_servicegroupmember_binding
+        name: "{{ attributes.servicegroupname }}"
+      register: get_bindings_result
+
+    - name: delete configured service bindings
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: delete_by_args
+
+        resource: servicegroup_servicegroupmember_binding
+        args:
+          servicegroupname: "{{ attributes.servicegroupname }}"
+          servername: "{{ item.servername }}"
+          port: "{{ item.port }}"
+
+      with_items: "{{ get_bindings_result.nitro_object }}"
+
+
+    - name: Create specified bindings
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: add
+
+        resource: servicegroup_servicegroupmember_binding
+        attributes:
+          servicegroupname: "{{ attributes.servicegroupname }}"
+          ip: "{{ item.ip }}"
+          port: "{{ item.port }}"
+          weight: "{{ item.weight }}"
+
+      with_items: "{{ servicebindings }}"
+
+    - name: Save configuration
+      delegate_to: localhost
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: save_config

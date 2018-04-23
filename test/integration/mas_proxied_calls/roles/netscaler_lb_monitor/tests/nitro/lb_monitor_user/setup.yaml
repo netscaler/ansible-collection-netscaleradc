@@ -1,0 +1,16 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'setup lb monitor'
+  netscaler_lb_monitor:
+    dispatcherip: 10.10.10.10
+    dispatcherport: 22
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: lb-monitor-user
+    scriptargs: 'argument1 argument2'
+    scriptname: myscript.sh
+    state: present
+    type: USER
+  register: result

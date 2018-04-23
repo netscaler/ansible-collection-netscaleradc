@@ -9,3 +9,7 @@
 netscaler_vpx_120 nsip=10.78.60.202 mas_ip=10.78.60.204
 
 # netscaler_cpx_120 nsip=172.18.0.200
+
+[mas]
+
+mas_120 nsip=10.78.60.204 nitro_user=nsroot nitro_pass=nsroot validate_certs=no instance_ip=10.78.60.202

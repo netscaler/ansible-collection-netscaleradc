@@ -1,3 +1,3 @@
 paramiko
-file:../netscaler-ansible-modules/deps/nitro-python-1.0_oban_51_11.tar.gz
+file:../netscaler-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz
 git+https://github.com/ansible/ansible.git

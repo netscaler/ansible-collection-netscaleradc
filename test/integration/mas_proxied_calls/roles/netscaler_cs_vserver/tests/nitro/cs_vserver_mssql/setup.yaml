@@ -1,0 +1,14 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup cs vserver'
+  netscaler_cs_vserver:
+    instance_ip: '{{ instance_ip }}'
+    ipv46: 192.168.1.4
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    mssqlserverversion: 2000
+    name: cs-vserver-4
+    port: 80
+    servicetype: MSSQL
+  register: result

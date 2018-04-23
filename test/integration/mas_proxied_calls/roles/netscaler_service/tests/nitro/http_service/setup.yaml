@@ -1,0 +1,46 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup http service'
+  netscaler_service:
+    accessdown: NO
+    appflowlog: enabled
+    cacheable: false
+    cachetype: TRANSPARENT
+    cip: enabled
+    cipheader: client-ip
+    cka: true
+    clttimeout: 100
+    cmp: false
+    comment: 'some comment'
+    customserverid: 476
+    downstateflush: enabled
+    graceful: false
+    hashid: 10
+    healthmonitor: false
+    instance_ip: '{{ instance_ip }}'
+    ip: 192.168.1.1
+    ipaddress: 192.168.1.1
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    maxbandwidth: 10000
+    maxclient: 100
+    maxreq: 200
+    monitor_bindings:
+      - monitorname: ping
+        weight: 50
+      - monitorname: http
+        weight: 50
+    monthreshold: 100
+    name: service-http
+    port: 80
+    processlocal: enabled
+    rtspsessionidremap: false
+    servicetype: HTTP
+    sp: false
+    state: present
+    svrtimeout: 100
+    tcpb: true
+    useproxyport: true
+    usip: true
+  register: result

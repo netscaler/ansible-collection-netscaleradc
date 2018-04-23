@@ -1,0 +1,14 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup adns service'
+  netscaler_service:
+    instance_ip: '{{ instance_ip }}'
+    ipaddress: 192.168.1.3
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: service-adns
+    port: 80
+    servicetype: ADNS
+    state: present
+  register: result

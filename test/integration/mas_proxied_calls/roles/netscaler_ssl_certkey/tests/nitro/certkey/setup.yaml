@@ -1,0 +1,18 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Setup cs action'
+  netscaler_ssl_certkey:
+    cert: server.crt
+    certkey: certirificate_1
+    expirymonitor: enabled
+    inform: PEM
+    instance_ip: '{{ instance_ip }}'
+    key: server.key
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    notificationperiod: 30
+    passplain: somesecret
+    password: false
+    state: present
+  register: result

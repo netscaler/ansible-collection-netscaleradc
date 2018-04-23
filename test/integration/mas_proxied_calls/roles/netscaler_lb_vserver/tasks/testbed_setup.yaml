@@ -1,0 +1,70 @@
+- delegate_to: localhost
+  name: 'Setup server'
+  netscaler_server:
+    instance_ip: '{{ instance_ip }}'
+    ipaddress: '192.168.1.{{ item }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: 'server-{{ item }}'
+    state: '{{ state }}'
+  with_sequence: count=6
+- delegate_to: localhost
+  name: 'Setup http service'
+  netscaler_service:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: 'service-http-{{ item }}'
+    port: 80
+    servername: 'server-{{ item }}'
+    servicetype: HTTP
+    state: '{{ state }}'
+  with_sequence: count=2
+- delegate_to: localhost
+  name: 'Setup service group'
+  netscaler_servicegroup:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    servicegroupname: service-group-1
+    servicemembers:
+      - port: 80
+        servername: server-3
+        weight: 50
+      - port: 80
+        servername: server-4
+        weight: 50
+    servicetype: HTTP
+    state: '{{ state }}'
+- delegate_to: localhost
+  name: 'Setup service group'
+  netscaler_servicegroup:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    servicegroupname: service-group-2
+    servicemembers:
+      - port: 80
+        servername: server-5
+        weight: 50
+      - port: 80
+        servername: server-6
+        weight: 50
+    servicetype: HTTP
+    state: '{{ state }}'
+- delegate_to: localhost
+  name: 'Setup push vserver'
+  netscaler_lb_vserver:
+    instance_ip: '{{ instance_ip }}'
+    ipv46: 193.1.1.1
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: lb-vserver-push
+    port: 80
+    servicetype: PUSH
+    state: '{{ state }}'

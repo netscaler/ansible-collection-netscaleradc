@@ -1,0 +1,12 @@
+- check_mode: '{{ check_mode }}'
+  delegate_to: localhost
+  name: 'Remove basic server'
+  netscaler_server:
+    instance_ip: '{{ instance_ip }}'
+    ipaddress: 10.10.10.10
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    name: test-server-1
+    state: absent
+  register: result

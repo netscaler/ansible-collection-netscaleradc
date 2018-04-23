@@ -1,0 +1,20 @@
+- delegate_to: localhost
+  name: 'setup monitor'
+  netscaler_lb_monitor:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: monitor-1
+    state: '{{ state }}'
+    type: HTTP
+- delegate_to: localhost
+  name: 'setup monitor'
+  netscaler_lb_monitor:
+    instance_ip: '{{ instance_ip }}'
+    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
+    mas_ip: '{{ nsip }}'
+    mas_proxy_call: true
+    monitorname: monitor-2
+    state: '{{ state }}'
+    type: HTTP
