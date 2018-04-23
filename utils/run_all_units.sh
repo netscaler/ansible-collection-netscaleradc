@@ -21,7 +21,7 @@ netscaler_ssl_certkey \
 
 HERE_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 # Run unit tests
-pversions=("2.6" "2.7" "3.5" "3.6")
+pversions=("2.7" "3.5")
 for module in "${modules[@]}" ; do
     ${HERE_DIR}/run_units.sh $module
 done
