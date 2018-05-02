@@ -24,7 +24,7 @@ Currently the following modules are implemented
 
 ## Pre-requisites
 
-* NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc/sdks/netscaler-sdk-release-110.html)
+* NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc or from the "Downloads" tab of the Netscaler GUI)
 * Ansible       
 * Python 2.7 or 3.x
 
@@ -39,7 +39,7 @@ Use of a python virtualenv during installation is recommended.
 
 ### Global install
 * Install Ansible (`sudo pip install ansible`)
-* Install NetScaler SDK (`sudo python install_nitro_sdk.py`)
+* Install NetScaler SDK (`pip install deps/nitro-python-1.0_kamet.tar.gz`)
 * Install NetScaler modules (`sudo python install.py`). It tries to find the ansible installation directory and then copies the module files to the appropriate places.
 
 If the ansible installation is on a dirctory that requires root access, the install script should be run with root privileges.
