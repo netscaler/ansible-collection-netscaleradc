@@ -971,7 +971,6 @@ diff:
     type: dict
     sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
-
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.network.netscaler.netscaler import (
     ConfigProxy,
@@ -999,24 +998,29 @@ except ImportError as e:
 
 def lb_vserver_exists(client, module):
     log('Checking if lb vserver exists')
-    if lbvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+    try:
+        lbvserver.get(client, module.params['name'])
         return True
-    else:
+    except nitro_exception:
         return False
 
 
 def lb_vserver_identical(client, module, lbvserver_proxy):
     log('Checking if configured lb vserver is identical')
-    lbvserver_list = lbvserver.get_filtered(client, 'name:%s' % module.params['name'])
-    if lbvserver_proxy.has_equal_attributes(lbvserver_list[0]):
+    try:
+        lbvserver_inst = lbvserver.get(client, module.params['name'])
+    except nitro_exception:
+        return False
+
+    if lbvserver_proxy.has_equal_attributes(lbvserver_inst):
         return True
     else:
         return False
 
 
 def lb_vserver_diff(client, module, lbvserver_proxy):
-    lbvserver_list = lbvserver.get_filtered(client, 'name:%s' % module.params['name'])
-    return lbvserver_proxy.diff_object(lbvserver_list[0])
+    lbvserver_inst = lbvserver.get(client, module.params['name'])
+    return lbvserver_proxy.diff_object(lbvserver_inst)
 
 
 def get_configured_service_bindings(client, module):

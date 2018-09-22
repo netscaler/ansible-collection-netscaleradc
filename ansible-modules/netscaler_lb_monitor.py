@@ -845,23 +845,18 @@ except ImportError as e:
     PYTHON_SDK_IMPORTED = False
 
 
-def lbmonitor_exists(client, module):
-    log('Checking if monitor exists')
-    if lbmonitor.count_filtered(client, 'monitorname:%s' % module.params['monitorname']) > 0:
-        return True
-    else:
-        return False
+def lbmonitor_get(client, module):
+    log('Getting lb monitor')
+    try:
+        lbmonitor_inst = lbmonitor.get(client, module.params['monitorname'])
+        return True, lbmonitor_inst
+    except nitro_exception:
+        return False, None
 
-
-def lbmonitor_identical(client, module, lbmonitor_proxy):
+def lbmonitor_identical(lbmonitor_inst, lbmonitor_proxy):
     log('Checking if monitor is identical')
 
-    count = lbmonitor.count_filtered(client, 'monitorname:%s' % module.params['monitorname'])
-    if count == 0:
-        return False
-
-    lbmonitor_list = lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])
-    diff_dict = lbmonitor_proxy.diff_object(lbmonitor_list[0])
+    diff_dict = lbmonitor_proxy.diff_object(lbmonitor_inst)
 
     # Skipping hashed fields since the cannot be compared directly
     hashed_fields = [
@@ -879,9 +874,8 @@ def lbmonitor_identical(client, module, lbmonitor_proxy):
         return False
 
 
-def diff_list(client, module, lbmonitor_proxy):
-    monitor_list = lbmonitor.get_filtered(client, 'monitorname:%s' % module.params['monitorname'])
-    return lbmonitor_proxy.diff_object(monitor_list[0])
+def diff_list(lbmonitor_inst, lbmonitor_proxy):
+    return lbmonitor_proxy.diff_object(lbmonitor_inst)
 
 
 def main():
@@ -1312,19 +1306,20 @@ def main():
 
         if module.params['state'] == 'present':
             log('Applying actions for state present')
-            if not lbmonitor_exists(client, module):
+            lbmonitor_exists, lbmonitor_inst = lbmonitor_get(client, module)
+            if not lbmonitor_exists:
                 if not module.check_mode:
                     log('Adding monitor')
                     lbmonitor_proxy.add()
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
-            elif not lbmonitor_identical(client, module, lbmonitor_proxy):
+            elif not lbmonitor_identical(lbmonitor_inst, lbmonitor_proxy):
 
                 # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(lbmonitor_proxy, diff_list(client, module, lbmonitor_proxy).keys())
+                immutables_changed = get_immutables_intersection(lbmonitor_proxy, diff_list(lbmonitor_inst, lbmonitor_proxy).keys())
                 if immutables_changed != []:
-                    diff = diff_list(client, module, lbmonitor_proxy)
+                    diff = diff_list(lbmonitor_inst, lbmonitor_proxy)
                     msg = 'Cannot update immutable attributes %s' % (immutables_changed,)
                     module.fail_json(msg=msg, diff=diff, **module_result)
 
@@ -1341,18 +1336,20 @@ def main():
             # Sanity check for result
             log('Sanity checks for state present')
             if not module.check_mode:
-                if not lbmonitor_exists(client, module):
+                lbmonitor_exists, lbmonitor_inst = lbmonitor_get(client, module)
+                if not lbmonitor_exists:
                     module.fail_json(msg='lb monitor does not exist', **module_result)
-                if not lbmonitor_identical(client, module, lbmonitor_proxy):
+                if not lbmonitor_identical(lbmonitor_inst, lbmonitor_proxy):
                     module.fail_json(
                         msg='lb monitor is not configured correctly',
-                        diff=diff_list(client, module, lbmonitor_proxy),
+                        diff=diff_list(lbmonitor_inst, lbmonitor_proxy),
                         **module_result
                     )
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
-            if lbmonitor_exists(client, module):
+            lbmonitor_exists, lbmonitor_inst = lbmonitor_get(client, module)
+            if lbmonitor_exists:
                 if not module.check_mode:
                     lbmonitor_proxy.delete()
                     if module.params['save_config']:
@@ -1364,7 +1361,8 @@ def main():
             # Sanity check for result
             log('Sanity checks for state absent')
             if not module.check_mode:
-                if lbmonitor_exists(client, module):
+                lbmonitor_exists, lbmonitor_inst = lbmonitor_get(client, module)
+                if lbmonitor_exists:
                     module.fail_json(msg='lb monitor still exists', **module_result)
 
         module_result['actual_attributes'] = lbmonitor_proxy.get_actual_rw_attributes(filter='monitorname')

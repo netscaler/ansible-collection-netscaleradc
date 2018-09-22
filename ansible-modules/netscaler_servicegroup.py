@@ -410,18 +410,23 @@ except ImportError as e:
 
 def servicegroup_exists(client, module):
     log('Checking if service group exists')
-    count = servicegroup.count_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
-    log('count is %s' % count)
-    if count > 0:
+    try:
+        servicegroup.get(client, module.params['servicegroupname'])
+        log('Servicegroup exists')
         return True
-    else:
+    except nitro_exception:
+        log('Servicegroup doesn not exist')
         return False
 
 
 def servicegroup_identical(client, module, servicegroup_proxy):
     log('Checking if service group is identical')
-    servicegroups = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
-    if servicegroup_proxy.has_equal_attributes(servicegroups[0]):
+    try:
+        servicegroup_inst = servicegroup.get(client, module.params['servicegroupname'])
+    except nitro_exception:
+        return False
+
+    if servicegroup_proxy.has_equal_attributes(servicegroup_inst):
         return True
     else:
         return False
@@ -675,8 +680,12 @@ def sync_monitor_bindings(client, module):
 
 
 def diff(client, module, servicegroup_proxy):
-    servicegroup_list = servicegroup.get_filtered(client, 'servicegroupname:%s' % module.params['servicegroupname'])
-    diff_object = servicegroup_proxy.diff_object(servicegroup_list[0])
+    try:
+        servicegroup_inst = servicegroup.get(client, module.params['servicegroupname'])
+    except nitro_exception:
+        return False
+
+    diff_object = servicegroup_proxy.diff_object(servicegroup_inst)
     return diff_object
 
 

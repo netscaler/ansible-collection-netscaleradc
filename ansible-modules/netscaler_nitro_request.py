@@ -365,6 +365,7 @@ class NitroAPICaller(object):
         instance_ip=dict(type='str'),
         instance_name=dict(type='str'),
         instance_id=dict(type='str'),
+        timeout=dict(type='int', default=45),
     )
 
     def __init__(self):
@@ -525,13 +526,14 @@ class NitroAPICaller(object):
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
-
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             data=data,
             method='POST',
+            timeout=timeout,
         )
 
         result = {}
@@ -563,13 +565,14 @@ class NitroAPICaller(object):
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
-
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             data=data,
             method='PUT',
+            timeout=timeout,
         )
 
         result = {}
@@ -595,11 +598,13 @@ class NitroAPICaller(object):
             self._module.params['name'],
         )
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='GET',
+            timeout=timeout,
         )
 
         result = {}
@@ -630,11 +635,13 @@ class NitroAPICaller(object):
 
         url = '?'.join([url, args])
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='GET',
+            timeout=timeout,
         )
         result = {}
         self.edit_response_data(r, info, result, success_status=200)
@@ -663,11 +670,13 @@ class NitroAPICaller(object):
             filter_str,
         )
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='GET',
+            timeout=timeout,
         )
 
         result = {}
@@ -688,11 +697,13 @@ class NitroAPICaller(object):
         )
 
         print('headers %s' % self._headers)
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='GET',
+            timeout=timeout,
         )
 
         result = {}
@@ -717,12 +728,14 @@ class NitroAPICaller(object):
             self._module.params['resource'],
             self._module.params['name'],
         )
+        timeout = self._module.params['timeout']
 
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='DELETE',
+            timeout=timeout,
         )
 
         result = {}
@@ -754,11 +767,14 @@ class NitroAPICaller(object):
         args = 'args=' + args
 
         url = '?'.join([url, args])
+
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='DELETE',
+            timeout=timeout,
         )
         result = {}
         self.edit_response_data(r, info, result, success_status=200)
@@ -780,11 +796,13 @@ class NitroAPICaller(object):
             self._module.params['resource'],
         )
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             method='GET',
+            timeout=timeout,
         )
 
         result = {}
@@ -821,12 +839,14 @@ class NitroAPICaller(object):
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             data=data,
             method='POST',
+            timeout=timeout,
         )
 
         result = {}
@@ -856,12 +876,14 @@ class NitroAPICaller(object):
 
         data = 'object=\n%s' % self._module.jsonify(login_credentials)
 
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             data=data,
             method='POST',
+            timeout=timeout,
         )
         print(r, info)
 
@@ -888,12 +910,15 @@ class NitroAPICaller(object):
                 'nsconfig': {},
             }
         )
+
+        timeout = self._module.params['timeout']
         r, info = fetch_url(
             self._module,
             url=url,
             headers=self._headers,
             data=data,
             method='POST',
+            timeout=timeout,
         )
 
         result = {}
@@ -905,7 +930,6 @@ class NitroAPICaller(object):
 
 
 def main():
-
     nitro_api_caller = NitroAPICaller()
     nitro_api_caller.main()
 

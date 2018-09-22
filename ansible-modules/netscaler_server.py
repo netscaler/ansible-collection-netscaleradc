@@ -154,6 +154,7 @@ diff:
 try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.server import server
     from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+
     PYTHON_SDK_IMPORTED = True
 except ImportError as e:
     PYTHON_SDK_IMPORTED = False
@@ -165,15 +166,18 @@ from ansible.module_utils.network.netscaler.netscaler import ConfigProxy, get_ni
 
 def server_exists(client, module):
     log('Checking if server exists')
-    if server.count_filtered(client, 'name:%s' % module.params['name']) > 0:
+    try:
+        server.get(client, module.params['name'])
         return True
-    else:
+    except nitro_exception:
         return False
 
 
 def server_identical(client, module, server_proxy):
     log('Checking if configured server is identical')
-    if server.count_filtered(client, 'name:%s' % module.params['name']) == 0:
+    try:
+        server.get(client, module.params['name'])
+    except nitro_exception:
         return False
     diff = diff_list(client, module, server_proxy)
 
@@ -190,7 +194,7 @@ def server_identical(client, module, server_proxy):
 
 
 def diff_list(client, module, server_proxy):
-    ret_val = server_proxy.diff_object(server.get_filtered(client, 'name:%s' % module.params['name'])[0]),
+    ret_val = server_proxy.diff_object(server.get(client, module.params['name'])),
     return ret_val[0]
 
 
