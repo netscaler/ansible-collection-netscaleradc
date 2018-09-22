@@ -158,6 +158,10 @@ def main():
         rule=dict(type='str'),
         domain=dict(type='str'),
         action=dict(type='str'),
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
     )
 
     hand_inserted_arguments = dict(

@@ -1297,6 +1297,10 @@ def main():
 
     module_specific_arguments = dict(
         name=dict(type='str'),
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
         servicetype=dict(
             type='str',
             choices=[

@@ -883,7 +883,10 @@ def main():
     module_specific_arguments = dict(
 
         monitorname=dict(type='str'),
-
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
         type=dict(
             type='str',
             choices=[

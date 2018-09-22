@@ -212,7 +212,10 @@ def main():
 
     module_specific_arguments = dict(
         name=dict(type='str'),
-        ipaddress=dict(type='str'),
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),        ipaddress=dict(type='str'),
         domain=dict(type='str'),
         translationip=dict(type='str'),
         translationmask=dict(type='str'),

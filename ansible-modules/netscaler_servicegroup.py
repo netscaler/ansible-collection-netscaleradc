@@ -703,6 +703,10 @@ def main():
 
     module_specific_arguments = dict(
         servicegroupname=dict(type='str'),
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
         servicetype=dict(
             type='str',
             choices=[
