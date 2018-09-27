@@ -1368,7 +1368,6 @@ def main():
                 if lbmonitor_exists:
                     module.fail_json(msg='lb monitor still exists', **module_result)
 
-        module_result['actual_attributes'] = lbmonitor_proxy.get_actual_rw_attributes(filter='monitorname')
     except nitro_exception as e:
         msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
         module.fail_json(msg=msg, **module_result)
