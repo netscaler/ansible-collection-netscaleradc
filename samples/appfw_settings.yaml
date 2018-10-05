@@ -1,0 +1,33 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+
+  tasks:
+    - name: setup appfw settings
+      delegate_to: localhost
+      netscaler_appfw_settings:
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        nsip: '{{ nsip }}'
+        state: present
+        defaultprofile: APPFW_BYPASS
+        undefaction: APPFW_BLOCK
+        sessiontimeout: "1000"
+        learnratelimit: "555"
+        sessionlifetime: "2000"
+        sessioncookiename: cookie_name
+        clientiploggingheader: header_name
+        importsizelimit: "268435456"
+        signatureautoupdate: on
+        signatureurl: http://signature.url
+        cookiepostencryptprefix: prepend
+        logmalformedreq: on
+        geolocationlogging: on
+        ceflogging: on
+        entitydecoding: on
+        useconfigurablesecretkey: on
+        sessionlimit: "10000"
