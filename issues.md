@@ -140,3 +140,9 @@
 * "delay". Missing from nitro object
 * "graceful". Missing from nitro object
 * "domainresolvenow". Missing from nitro object
+
+## netscaler appfw profile
+
+* "sqlinjectiononlycheckfieldswithsqlchars" missing from other
+* "xmlsqlinjectiononlycheckfieldswithsqlchars" missing from other
+* "stripcomments" missing from other

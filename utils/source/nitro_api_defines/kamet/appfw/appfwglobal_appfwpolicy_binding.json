@@ -1,0 +1,97 @@
+[
+    {
+        "option_name": "policyname",
+        "description": [
+            "Name of the policy."
+        ],
+        "type": "str",
+        "is_get_id": false,
+        "is_delete_id": true
+    },
+    {
+        "option_name": "priority",
+        "description": [
+            "The priority of the policy."
+        ],
+        "type": "float",
+        "is_get_id": false,
+        "is_delete_id": true
+    },
+    {
+        "option_name": "gotopriorityexpression",
+        "description": [
+            "Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE."
+        ],
+        "type": "str",
+        "is_get_id": false,
+        "is_delete_id": false
+    },
+    {
+        "option_name": "invoke",
+        "description": [
+            "If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label."
+        ],
+        "type": "bool",
+        "is_get_id": false,
+        "is_delete_id": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "description": [
+            "Enable or disable the binding to activate or deactivate the policy. This is applicable to classic policies only."
+        ],
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false
+    },
+    {
+        "option_name": "labeltype",
+        "type": "str",
+        "description": [
+            "Type of policy label invocation."
+        ],
+        "choices": [
+            "reqvserver",
+            "policylabel"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false
+    },
+    {
+        "option_name": "labelname",
+        "description": [
+            "Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label."
+        ],
+        "type": "str",
+        "is_get_id": false,
+        "is_delete_id": false
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "description": null,
+        "choices": [
+            "REQ_OVERRIDE",
+            "REQ_DEFAULT",
+            "NONE"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true
+    },
+    {
+        "option_name": "globalbindtype",
+        "type": "str",
+        "description": null,
+        "choices": [
+            "SYSTEM_GLOBAL",
+            "VPN_GLOBAL",
+            "RNAT_GLOBAL"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false
+    }
+]

@@ -1,0 +1,58 @@
+[
+    {
+        "is_get_id": true,
+        "option_name": "name",
+        "is_delete_id": true,
+        "type": "str",
+        "description": [
+            "Name for the policy. ",
+            "Must begin with a letter, number, or the underscore character \\(_\\), and must contain only letters, numbers, and the hyphen \\(-\\), period \\(.\\) pound \\(\\#\\), space \\( \\), at (@), equals \\(=\\), colon \\(:\\), and underscore characters. Can be changed after the policy is created.",
+            "",
+            "The following requirement applies only to the NetScaler CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks \\(for example, \"my policy\" or 'my policy'\\)."
+        ]
+    },
+    {
+        "is_get_id": false,
+        "option_name": "rule",
+        "is_delete_id": false,
+        "type": "str",
+        "description": [
+            "Name of the NetScaler named rule, or a NetScaler default syntax expression, that the policy uses to determine whether to filter the connection through the application firewall with the designated profile."
+        ]
+    },
+    {
+        "is_get_id": false,
+        "option_name": "profilename",
+        "is_delete_id": false,
+        "type": "str",
+        "description": [
+            "Name of the application firewall profile to use if the policy matches."
+        ]
+    },
+    {
+        "is_get_id": false,
+        "option_name": "comment",
+        "is_delete_id": false,
+        "type": "str",
+        "description": [
+            "Any comments to preserve information about the policy for later reference."
+        ]
+    },
+    {
+        "is_get_id": false,
+        "option_name": "logaction",
+        "is_delete_id": false,
+        "type": "str",
+        "description": [
+            "Where to log information for connections that match this policy."
+        ]
+    },
+    {
+        "is_get_id": false,
+        "option_name": "newname",
+        "is_delete_id": false,
+        "type": "str",
+        "description": null
+    }
+]

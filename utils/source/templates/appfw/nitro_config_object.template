@@ -1,0 +1,18 @@
+'{{ item.resource_name }}': {
+                'attributes_list': [
+                    #{% for attribute in item.attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+                'transforms': {
+                    #{% for transform_key, transform_value in item.transforms.items() %}
+                    '{{ transform_key }}': {{ transform_value }},#{% endfor %}
+                },
+                'get_id_attributes': [
+                    #{% for attribute in item.get_id_attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+                'delete_id_attributes': [
+                    #{% for attribute in item.delete_id_attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+            },

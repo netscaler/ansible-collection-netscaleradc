@@ -1,0 +1,26 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+
+  tasks:
+    - name: Setup appfw profile
+      delegate_to: localhost
+      netscaler_appfw_profile:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: present
+
+        name: profile_basic_integration_test
+        signatures: 'all_sig_enabled'
+
+        denyurl_bindings:
+          mode: exact
+          attributes:
+            - state: enabled
+              denyurl: denyme.*
+              comment: 'denyurl comment'

@@ -3,7 +3,7 @@
 
 set -e
 
-pversions=("2.7" "3.5" "3.6")
+pversions=("2.7" "3.5")
 for version in "${pversions[@]}" ; do
 ansible-test sanity --tox --python "$version" --test yamllint
 ansible-test sanity --tox --python "$version" --test pep8

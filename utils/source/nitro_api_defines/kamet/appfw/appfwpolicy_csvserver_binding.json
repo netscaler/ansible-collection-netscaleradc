@@ -1,0 +1,18 @@
+[
+    {
+        "description": [
+            "The entity name to which policy is bound"
+        ],
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": false,
+        "option_name": "boundto"
+    },
+    {
+        "description": null,
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": true,
+        "option_name": "name"
+    }
+]

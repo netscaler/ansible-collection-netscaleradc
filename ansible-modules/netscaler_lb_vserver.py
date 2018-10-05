@@ -989,6 +989,7 @@ try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_servicegroup_binding import lbvserver_servicegroup_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_service_binding import lbvserver_service_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_appfwpolicy_binding import lbvserver_appfwpolicy_binding
     from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
 
     PYTHON_SDK_IMPORTED = True
@@ -1231,6 +1232,101 @@ def sync_servicegroup_bindings(client, module):
             actual_bindings[key].servicename = None
             actual_bindings[key].delete(client, actual_bindings[key])
             configured_bindigns[key].add()
+
+def get_actual_appfwpolicybindings(client, module):
+    log('Getting actual appfw policy bindings')
+    bindings = {}
+    try:
+        count = lbvserver_appfwpolicy_binding.count(client, name=module.params['name'])
+        if count == 0:
+            return bindings
+    except nitro_exception as e:
+        if e.errorcode == 258:
+            log('errorcode 258')
+            return bindings
+        else:
+            raise
+
+    for binding in lbvserver_appfwpolicy_binding.get(client, name=module.params['name']):
+        key = binding.policyname
+        bindings[key] = binding
+
+    return bindings
+
+def get_configured_appfwpolicybindings(client, module):
+    log('Getting configured appfw policy bindings')
+    bindings = {}
+    if module.params['appfw_policybindings'] is None:
+        return bindings
+
+    for binding in module.params['appfw_policybindings']:
+        binding['name'] = module.params['name']
+        key = binding['policyname']
+        binding_proxy = ConfigProxy(
+            actual=lbvserver_appfwpolicy_binding(),
+            client=client,
+            readwrite_attrs=[
+                'name',
+                'priority',
+                'bindpoint',
+                'policyname',
+                'labelname',
+                'gotopriorityexpression',
+                'invoke',
+                'labeltype',
+                'sc',
+            ],
+            readonly_attrs=[],
+            attribute_values_dict=binding
+        )
+        bindings[key] = binding_proxy
+    return bindings
+    pass
+
+def sync_appfw_policybindings(client, module):
+    log('Syncing cs appfw policybindings')
+    actual_bindings = get_actual_appfwpolicybindings(client, module)
+    configured_bindings = get_configured_appfwpolicybindings(client, module)
+
+    # Delete actual bindings not in configured
+    delete_keys = list(set(actual_bindings.keys()) - set(configured_bindings.keys()))
+    for key in delete_keys:
+        log('Deleting appfw binding for policy %s' % key)
+        lbvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
+
+    # Add configured bindings not in actual
+    add_keys = list(set(configured_bindings.keys()) - set(actual_bindings.keys()))
+    for key in add_keys:
+        log('Adding binding for appfw policy %s' % key)
+        configured_bindings[key].add()
+
+    # Update existing if changed
+    modify_keys = list(set(configured_bindings.keys()) & set(actual_bindings.keys()))
+    for key in modify_keys:
+        if not configured_bindings[key].has_equal_attributes(actual_bindings[key]):
+            log('Updating binding for appfw policy %s' % key)
+            lbvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
+            configured_bindings[key].add()
+
+def appfw_policybindings_identical(client, module):
+    log('Checking policy bindings identical')
+    actual_bindings = get_actual_appfwpolicybindings(client, module)
+    configured_bindings = get_configured_appfwpolicybindings(client, module)
+
+    actual_keyset = set(actual_bindings.keys())
+    configured_keyset = set(configured_bindings.keys())
+    if len(actual_keyset ^ configured_keyset) > 0:
+        return False
+
+    # Compare item to item
+    for key in actual_bindings.keys():
+        configured_binding_proxy = configured_bindings[key]
+        actual_binding_object = actual_bindings[key]
+        if not configured_binding_proxy.has_equal_attributes(actual_binding_object):
+            return False
+
+    # Fallthrough to success
+    return True
 
 
 def ssl_certkey_bindings_identical(client, module):
@@ -1615,6 +1711,7 @@ def main():
     hand_inserted_arguments = dict(
         servicebindings=dict(type='list'),
         servicegroupbindings=dict(type='list'),
+        appfw_policybindings=dict(type='list'),
         ssl_certkey=dict(type='str'),
         disabled=dict(
             type='bool',
@@ -1869,6 +1966,13 @@ def main():
             if not servicegroup_bindings_identical(client, module):
                 if not module.check_mode:
                     sync_servicegroup_bindings(client, module)
+                    if module.params['save_config']:
+                        client.save_config()
+                module_result['changed'] = True
+
+            if not appfw_policybindings_identical(client, module):
+                if not module.check_mode:
+                    sync_appfw_policybindings(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True

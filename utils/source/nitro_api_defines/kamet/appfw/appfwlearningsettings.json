@@ -1,0 +1,209 @@
+[
+    {
+        "is_get_id": true,
+        "option_name": "profilename",
+        "type": "str",
+        "description": [
+            "Name of the profile."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "starturlminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn start URLs."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "starturlpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular start URL pattern for the learning engine to learn that start URL."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "cookieconsistencyminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn cookies."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "cookieconsistencypercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular cookie pattern for the learning engine to learn that cookie."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "csrftagminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn cross-site request forgery (CSRF) tags."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "csrftagpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the learning engine to learn that CSRF tag."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "fieldconsistencyminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn field consistency information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "fieldconsistencypercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular field consistency pattern for the learning engine to learn that field consistency pattern."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "crosssitescriptingminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn HTML cross-site scripting patterns."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "crosssitescriptingpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular cross-site scripting pattern for the learning engine to learn that cross-site scripting pattern."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "sqlinjectionminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn HTML SQL injection patterns."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "sqlinjectionpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection pattern for the learning engine to learn that HTML SQL injection pattern."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "fieldformatminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn field formats."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "fieldformatpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular web form field pattern for the learning engine to recommend a field format for that form field."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "creditcardnumberminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum threshold to learn Credit Card information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "creditcardnumberpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum threshold in percent to learn Credit Card information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "contenttypeminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum threshold to learn Content Type information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "contenttypepercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum threshold in percent to learn Content Type information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "xmlwsiminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn web services interoperability (WSI) information."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "xmlwsipercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular pattern for the learning engine to learn a web services interoperability (WSI) pattern."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "xmlattachmentminthreshold",
+        "type": "float",
+        "description": [
+            "Minimum number of application firewall sessions that the learning engine must observe to learn XML attachment patterns."
+        ],
+        "is_delete_id": false
+    },
+    {
+        "is_get_id": false,
+        "option_name": "xmlattachmentpercentthreshold",
+        "type": "float",
+        "description": [
+            "Minimum percentage of application firewall sessions that must contain a particular XML attachment pattern for the learning engine to learn that XML attachment pattern."
+        ],
+        "is_delete_id": false
+    }
+]
