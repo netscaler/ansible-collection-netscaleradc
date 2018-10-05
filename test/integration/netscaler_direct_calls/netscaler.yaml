@@ -10,6 +10,10 @@
     debug: false
 
   roles:
+    - { role: netscaler_appfw_policy, when: "limit_to in ['*', 'netscaler_appfw_policy']" }
+    - { role: netscaler_appfw_policylabel, when: "limit_to in ['*', 'netscaler_appfw_policylabel']" }
+    - { role: netscaler_appfw_profile, when: "limit_to in ['*', 'netscaler_appfw_profile']" }
+    - { role: netscaler_appfw_settings, when: "limit_to in ['*', 'netscaler_appfw_settings']" }
     - { role: netscaler_cs_action, when: "limit_to in ['*', 'netscaler_cs_action']" }
     - { role: netscaler_cs_policy, when: "limit_to in ['*', 'netscaler_cs_policy']" }
     - { role: netscaler_cs_vserver, when: "limit_to in ['*', 'netscaler_cs_vserver']" }
