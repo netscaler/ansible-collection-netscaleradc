@@ -1,0 +1,9 @@
+
+[netscaler]
+
+netscaler_vpx_121 nsip=10.78.17.71 mas_ip=10.78.60.204 validate_certs=no
+
+[mas]
+
+mas_120 nsip=10.78.17.72  nitro_user=nsroot nitro_pass=nsroot validate_certs=no instance_ip=10.78.17.71
+

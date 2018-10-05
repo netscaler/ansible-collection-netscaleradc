@@ -1,0 +1,117 @@
+[
+    {
+        "description": [
+            "The web form field name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "option_name": "sqlinjection",
+        "type": "str"
+    },
+    {
+        "description": [
+            "Is the web form field name a regular expression?"
+        ],
+        "is_delete_id": false,
+        "option_name": "isregex_sql",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "The web form action URL."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "option_name": "formactionurl_sql",
+        "type": "str"
+    },
+    {
+        "description": [
+            "Location of SQL injection exception - form field, header or cookie."
+        ],
+        "is_delete_id": true,
+        "option_name": "as_scan_location_sql",
+        "type": "str",
+        "choices": [
+            "FORMFIELD",
+            "HEADER",
+            "COOKIE"
+        ],
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "The web form value type."
+        ],
+        "is_delete_id": true,
+        "option_name": "as_value_type_sql",
+        "type": "str",
+        "choices": [
+            "Keyword",
+            "SpecialString",
+            "Wildchar"
+        ],
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "The web form value expression."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "option_name": "as_value_expr_sql",
+        "type": "str"
+    },
+    {
+        "description": [
+            "Is the web form field value a regular expression?"
+        ],
+        "is_delete_id": false,
+        "option_name": "isvalueregex_sql",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "Enabled."
+        ],
+        "is_delete_id": false,
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "option_name": "comment",
+        "type": "str"
+    },
+    {
+        "description": [
+            "Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.",
+            "",
+            "The following requirement applies only to the NetScaler CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my profile\" or 'my profile')."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "option_name": "name",
+        "type": "str"
+    }
+]

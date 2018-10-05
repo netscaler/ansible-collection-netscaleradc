@@ -1,0 +1,131 @@
+[
+    {
+        "description": [
+            "XML Validation URL regular expression."
+        ],
+        "option_name": "xmlvalidationurl",
+        "is_delete_id": true,
+        "type": "str",
+        "is_get_id": false
+    },
+    {
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Validate response message."
+        ],
+        "is_delete_id": false,
+        "is_get_id": false,
+        "option_name": "xmlvalidateresponse",
+        "transform": "lambda v: 'ON' if v else 'OFF'",
+        "type": "str"
+    },
+    {
+        "description": [
+            "WSDL object for soap request validation."
+        ],
+        "option_name": "xmlwsdl",
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": false
+    },
+    {
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Allow addtional soap headers."
+        ],
+        "is_delete_id": false,
+        "is_get_id": false,
+        "option_name": "xmladditionalsoapheaders",
+        "transform": "lambda v: 'ON' if v else 'OFF'",
+        "type": "str"
+    },
+    {
+        "choices": [
+            "ABSOLUTE",
+            "RELATIVE"
+        ],
+        "description": [
+            "Modifies the behaviour of the Request URL validation w.r.t. the Service URL.",
+            "\tIf set to ABSOLUTE, the entire request URL is validated with the entire URL mentioned in Service of the associated WSDL.",
+            "\t\teg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService would FAIL the validation.",
+            "\tIf set to RELAIVE, only the non-hostname part of the request URL is validated against the non-hostname part of the Service URL.",
+            "\t\teg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService would PASS the validation."
+        ],
+        "is_delete_id": false,
+        "is_get_id": false,
+        "option_name": "xmlendpointcheck",
+        "type": "str"
+    },
+    {
+        "description": [
+            "XML Schema object for request validation ."
+        ],
+        "option_name": "xmlrequestschema",
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "XML Schema object for response validation."
+        ],
+        "option_name": "xmlresponseschema",
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": false
+    },
+    {
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Validate SOAP Evelope only."
+        ],
+        "is_delete_id": false,
+        "is_get_id": false,
+        "option_name": "xmlvalidatesoapenvelope",
+        "transform": "lambda v: 'ON' if v else 'OFF'",
+        "type": "str"
+    },
+    {
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enabled."
+        ],
+        "is_delete_id": false,
+        "is_get_id": false,
+        "option_name": "state",
+        "type": "str"
+    },
+    {
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "option_name": "comment",
+        "is_delete_id": false,
+        "type": "str",
+        "is_get_id": false
+    },
+    {
+        "description": [
+            "Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.",
+            "",
+            "The following requirement applies only to the NetScaler CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my profile\" or 'my profile')."
+        ],
+        "option_name": "name",
+        "is_delete_id": true,
+        "type": "str",
+        "is_get_id": true
+    }
+]

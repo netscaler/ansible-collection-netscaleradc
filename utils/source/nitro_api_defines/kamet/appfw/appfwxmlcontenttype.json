@@ -1,0 +1,24 @@
+[
+    {
+        "is_delete_id": true,
+        "description": [
+            "Content type to be classified as XML"
+        ],
+        "type": "str",
+        "option_name": "xmlcontenttypevalue",
+        "is_get_id": true
+    },
+    {
+        "description": [
+            "Is field name a regular expression?"
+        ],
+        "type": "str",
+        "is_get_id": false,
+        "is_delete_id": false,
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "option_name": "isregex"
+    }
+]

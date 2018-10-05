@@ -1,0 +1,77 @@
+[
+    {
+        "is_get_id": false,
+        "description": [
+            "Name of the policy."
+        ],
+        "type": "str",
+        "is_delete_id": true,
+        "option_name": "policyname"
+    },
+    {
+        "is_get_id": false,
+        "description": [
+            "The priority of the policy."
+        ],
+        "type": "float",
+        "is_delete_id": true,
+        "option_name": "priority"
+    },
+    {
+        "is_get_id": false,
+        "description": [
+            "Enable or disable the binding to activate or deactivate the policy. This is applicable to classic policies only."
+        ],
+        "is_delete_id": false,
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "option_name": "state"
+    },
+    {
+        "is_get_id": true,
+        "description": null,
+        "is_delete_id": true,
+        "type": "str",
+        "choices": [
+            "REQ_OVERRIDE",
+            "REQ_DEFAULT",
+            "NONE"
+        ],
+        "option_name": "type"
+    },
+    {
+        "is_get_id": false,
+        "description": null,
+        "type": "str",
+        "is_delete_id": false,
+        "option_name": "gotopriorityexpression"
+    },
+    {
+        "is_get_id": false,
+        "description": null,
+        "type": "bool",
+        "is_delete_id": false,
+        "option_name": "invoke"
+    },
+    {
+        "is_get_id": false,
+        "description": null,
+        "is_delete_id": false,
+        "type": "str",
+        "choices": [
+            "reqvserver",
+            "policylabel"
+        ],
+        "option_name": "labeltype"
+    },
+    {
+        "is_get_id": false,
+        "description": null,
+        "type": "str",
+        "is_delete_id": false,
+        "option_name": "labelname"
+    }
+]
