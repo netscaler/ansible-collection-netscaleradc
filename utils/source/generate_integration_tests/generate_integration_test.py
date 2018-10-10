@@ -22,7 +22,7 @@ def main():
     integration_test_type = args.test_type.lower()
     module_list = list(args.module)
 
-    DEFAULT_DIR_PATH = os.path.join('../../', 'test', 'integration', integration_test_type, 'roles')
+    DEFAULT_DIR_PATH = os.path.join('../../../', 'test', 'integration', integration_test_type, 'roles')
     if args.dir_path is None:
         integration_dir_path = DEFAULT_DIR_PATH
     else:

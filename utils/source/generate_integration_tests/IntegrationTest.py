@@ -86,6 +86,8 @@ class IntegrationTest(object):
             operation = input_data[sub_module]
             for op_item in operation:
                 for op_name in op_item: # only one {op_name:op_data} will be there
+                    if op_name.strip() == 'run_once': # "run_once" is not an operation, but a flag, hence skip
+                        continue
                     output_op_data = op_item[op_name]
                     operation_file = os.path.join(self.tests_nitro_dir, sub_module, "{}.yaml".format(op_name))
                     fileop.python_to_yaml(operation_file, output_op_data)
