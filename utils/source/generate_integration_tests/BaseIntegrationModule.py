@@ -2,7 +2,8 @@ from collections import OrderedDict
 
 class BaseIntegrationModule(object):
     """docstring for SubModule"""
-    def __init__(self, entity_name, sub_mod_name=''):
+    def __init__(self, test_type, entity_name, sub_mod_name=''):
+        self.test_type = test_type
         self.entity_name = entity_name 
         self.sub_mod_name = entity_name if not sub_mod_name else sub_mod_name
         self.submodule_attrib = [] # OrderedDict() 
@@ -27,10 +28,15 @@ class BaseIntegrationModule(object):
         #op_dict['VERIFY_IDEMPOTENCY'] = True 
 
         op_dict[self.entity_name] = OrderedDict()
-        op_dict[self.entity_name]['nitro_user'] = "{{ nitro_user }}"
-        op_dict[self.entity_name]['nitro_pass'] = "{{ nitro_pass }}"
-        op_dict[self.entity_name]['nsip'] = "{{ nsip }}"
-        op_dict[self.entity_name]['nsip'] = "{{ nsip }}"
+        if self.test_type.strip() == 'sumanth_mas': #mas_proxied_calls':
+            op_dict[self.entity_name]['instance_ip'] = "{{ instance_ip }}"
+            op_dict[self.entity_name]['mas_auth_token'] = "{{ mas_login_result.nitro_auth_token }}"
+            op_dict[self.entity_name]['mas_ip'] = "{{ nsip }}"
+            op_dict[self.entity_name]['mas_proxy_call'] = True 
+        else: # netscaler_direct_calls
+            op_dict[self.entity_name]['nitro_user'] = "{{ nitro_user }}"
+            op_dict[self.entity_name]['nitro_pass'] = "{{ nitro_pass }}"
+            op_dict[self.entity_name]['nsip'] = "{{ nsip }}"
 
     def add_testbed(self, testbed_name, testbed_data):
         testbed_dict = OrderedDict()
