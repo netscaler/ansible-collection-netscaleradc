@@ -10,7 +10,7 @@ SKELETON = [
         ('register', 'get_result'),
         ('netscaler_nitro_request', 
             OrderedDict([
-                ('nsip', '{{ nsip }}'),
+                ('nsip', '{{ instance_ip }}'),
                 ('nitro_user', '{{ nitro_user }}'),
                 ('nitro_pass', '{{ nitro_pass }}'),
                 ('operation', 'get'),
