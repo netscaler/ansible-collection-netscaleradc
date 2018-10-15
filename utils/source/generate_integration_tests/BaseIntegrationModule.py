@@ -28,7 +28,7 @@ class BaseIntegrationModule(object):
         #op_dict['VERIFY_IDEMPOTENCY'] = True 
 
         op_dict[self.entity_name] = OrderedDict()
-        if self.test_type.strip() == 'sumanth_mas': #mas_proxied_calls':
+        if self.test_type.strip() == 'mas_proxied_calls':
             op_dict[self.entity_name]['instance_ip'] = "{{ instance_ip }}"
             op_dict[self.entity_name]['mas_auth_token'] = "{{ mas_login_result.nitro_auth_token }}"
             op_dict[self.entity_name]['mas_ip'] = "{{ nsip }}"
