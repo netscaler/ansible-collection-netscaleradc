@@ -4,77 +4,90 @@ import copy
 from BaseIntegrationModule import BaseIntegrationModule
 
 ENTITY_NAME = '' #TODO: Module name here
-input_data = OrderedDict()
-testbed_data = []
+
+####### TESTBED DATA STARTS ###########
 
 # PREREQUISITES/Testbed
-testbedObj = BaseIntegrationModule('') #TODO: prerequisite module here
-testbed = OrderedDict(
-    [
-        ('', ''),
-        ('', ''),
-    ]
-)
-testbed_data.append(testbedObj.add_testbed('setup', testbed))
+def get_testbed_data(test_type='netscaler_direct_calls', ns_version='12.1'):
+    testbed_data = []
 
-testbed = OrderedDict(
-    [
-        ('', ''),
-        ('', ''),
-    ]
-)
-testbed_data.append(testbedObj.add_testbed('setup', testbed))
+    testbedObj = BaseIntegrationModule(test_type, '')  #TODO: prerequisite module here
+    testbed = OrderedDict(
+        [
+            ('name', 'sample testbed name'),
+            ('', ''),
+        ]
+    )
+    if '12.0' == ns_version:
+        testbed['name'] = 'testbed name for 12.0'
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+    
+    # --------------
+
+    testbedObj = BaseIntegrationModule(test_type, '')  #TODO: prerequisite module here
+    testbed = OrderedDict(
+        [
+            ('', ''),
+            ('', ''),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
+    return testbed_data
+    
+####### TESTBED DATA ENDS ###########
 
 
 
-# For Submodule '' #TODO: submodule name
-submodObj = BaseIntegrationModule(ENTITY_NAME, '') #TODO: submodule name here
-setup_data = OrderedDict(
-    [
-        ('', ''),
-        ('', ''),
-        ('', ''),
-    ]
-)
 
-update_data = OrderedDict(
-    [
-        ('', ''),
-        ('', ''),
-        ('', ''),
-    ]
-)
+####### ACTUAL MODULE INPUT DATA STARTS ###############
 
-remove_data = OrderedDict(
-    [
-        ('name', ''),
-        ('state', 'absent'),
-    ]
-)
+def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
+    input_data = OrderedDict()
+    # For Submodule '' #TODO: submodule name
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, '') #TODO: submodule name here
+    setup_data = OrderedDict(
+        [
+            ('name', 'default name'),
+            ('', ''),
+            ('', ''),
+        ]
+    )
+    if '12.0' == ns_version:
+        setup_data['name'] = 'default name for 12.0'
+    
+    update_data = copy.deepcopy(setup_data)
+    update_data['name'] = 'name updated'    
 
-submodObj.add_operation('setup', setup_data)
-submodObj.add_operation('update', update_data)
-submodObj.add_operation('remove', remove_data)
+    remove_data = copy.deepcopy(update_data)
+    remove_data['state'] = 'absent'    
 
-input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
+    submodObj.add_operation('setup', setup_data)
+    submodObj.add_operation('update', update_data)
+    submodObj.add_operation('remove', remove_data)
+    
+    input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
+    
+    # --------------
 
-# For Submodule '' #TODO: submodule name
-submodObj = BaseIntegrationModule(ENTITY_NAME, '') #TODO: submodule name here
-setup_data = OrderedDict(
-    [
-        ('name', ''),
-        ('', ''),
-    ]
-)
+    # For Submodule '' #TODO: submodule name
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, '') #TODO: submodule name here
+    setup_data = OrderedDict(
+        [
+            ('name', ''),
+            ('', ''),
+        ]
+    )
+    
 
-remove_data = OrderedDict(
-    [
-        ('name', ''),
-        ('state', 'absent'),
-    ]
-)
+    remove_data = copy.deepcopy(setup_data)
+    remove_data['state'] = 'absent'    
+    
+    submodObj.add_operation('setup', setup_data)
+    submodObj.add_operation('remove', remove_data)
+    
+    input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
 
-submodObj.add_operation('setup', setup_data)
-submodObj.add_operation('remove', remove_data)
+    return input_data
 
-input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
+####### ACTUAL MODULE INPUT DATA ENDS ###############
