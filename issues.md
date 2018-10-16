@@ -146,3 +146,7 @@
 * "sqlinjectiononlycheckfieldswithsqlchars" missing from other
 * "xmlsqlinjectiononlycheckfieldswithsqlchars" missing from other
 * "stripcomments" missing from other
+
+## netscaler appfw fieldtype
+
+* "nocharmaps" attribute does not work correctly

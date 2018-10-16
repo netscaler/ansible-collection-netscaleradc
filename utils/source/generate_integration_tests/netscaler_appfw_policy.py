@@ -57,34 +57,9 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
     
     submodObj.add_operation('setup', copy.deepcopy(attributes))
     
-    # Verify previous step
-    verification_dict = sanitize_values(attributes, skip_keys=['rule'])
-    verification_dict['rule'] = r'"HTTP.REQ.HOSTNAME.DOMAIN.EQ(\"blog.example.com\")"'
-    
-    data = helpers.get_verification_playbook_dict(
-        nitro_resource='appfwpolicy',
-        nitro_resource_name=attributes['name'],
-        verification_dict=verification_dict,
-    )
-    submodObj.add_raw_operation('setup_verify', data, run_once=True)
-    
-    
-    
     attributes['comment'] = 'Some other policy comment'
     
     submodObj.add_operation('update', copy.deepcopy(attributes))
-    
-    # Verify previous step
-    verification_dict = sanitize_values(attributes, skip_keys=['rule'])
-    verification_dict['rule'] = r'"HTTP.REQ.HOSTNAME.DOMAIN.EQ(\"blog.example.com\")"'
-    
-    data = helpers.get_verification_playbook_dict(
-        nitro_resource='appfwpolicy',
-        nitro_resource_name=attributes['name'],
-        verification_dict=verification_dict,
-    )
-    submodObj.add_raw_operation('update_verify', data, run_once=True)
-    
     
     attributes['state'] = 'absent'
     

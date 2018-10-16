@@ -152,13 +152,6 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
     
     
     process_verification_dict()
-    # Verify
-    data = helpers.get_verification_playbook_dict(
-        nitro_resource='appfwprofile',
-        nitro_resource_name=attributes['name'],
-        verification_dict=verification_dict,
-    )
-    submodObj.add_raw_operation('setup_verify', data, run_once=True)
     
     # Change comment
     attributes['comment'] = 'Some other profile comment'
