@@ -361,7 +361,6 @@ def main():
         #{% include 'single_argument_spec.template' %}
         #{% endfor %}
 
-        # FIXME generate the proper argument list
         #{% for item in bindings %}
         {{ item.binding_key }}=dict(type='dict'),#{% endfor %}
     )

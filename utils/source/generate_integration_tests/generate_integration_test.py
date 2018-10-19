@@ -16,13 +16,15 @@ def main():
     parser.add_argument('--test-type', help='Integration Test Type (default: netscaler_direct_calls)', default='netscaler_direct_calls', choices=test_type_choices)
     parser.add_argument('--module', required=True, nargs='+')
     parser.add_argument('--dir-path', default=None, help="Directory path to where the integration tests to be generated")
+    parser.add_argument('--ns-version', default='12.1', help="Target Netscaler version")
 
     args = parser.parse_args()
 
     integration_test_type = args.test_type.lower()
     module_list = list(args.module)
+    ns_version = args.ns_version
 
-    DEFAULT_DIR_PATH = os.path.join('../../', 'test', 'integration', integration_test_type, 'roles')
+    DEFAULT_DIR_PATH = os.path.join('../../../', 'test', 'integration', integration_test_type, 'roles')
     if args.dir_path is None:
         integration_dir_path = DEFAULT_DIR_PATH
     else:
@@ -43,8 +45,8 @@ def main():
             print('Entity Name should start with "netscaler_" prefix.')
             exit()
     
-        is_testbed = True if module_name.testbed_data else False
-        entity_obj = IntegrationTest(module_name, entity_name, integration_test_type, integration_dir_path, is_testbed)
+        is_testbed = True if module_name.get_testbed_data(integration_test_type, ns_version) else False
+        entity_obj = IntegrationTest(module_name, ns_version, entity_name, integration_test_type, integration_dir_path, is_testbed)
     
         # Create a directory structure required for integration tests
         entity_obj.create_directory_structure()
@@ -55,7 +57,7 @@ def main():
         entity_obj.create_tasks_nitro_file()
 
         #check if any prerequisite/testbed is required
-        if module_name.testbed_data:
+        if module_name.get_testbed_data(integration_test_type, ns_version):
             entity_obj.create_tasks_testbed_file()
     
         entity_obj.create_operation_files()

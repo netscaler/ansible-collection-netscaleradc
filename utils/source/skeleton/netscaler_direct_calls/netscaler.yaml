@@ -10,6 +10,11 @@
     debug: false
 
   roles:
+    - { role: netscaler_appfw_confidfield, when: "limit_to in ['*', 'netscaler_appfw_confidfield']" }
+    - { role: netscaler_appfw_fieldtype, when: "limit_to in ['*', 'netscaler_appfw_fieldtype']" }
+    - { role: netscaler_appfw_jsoncontenttype, when: "limit_to in ['*', 'netscaler_appfw_jsoncontenttype']" }
+    - { role: netscaler_appfw_xmlcontenttype, when: "limit_to in ['*', 'netscaler_appfw_xmlcontenttype']" }
+    - { role: netscaler_appfw_learningsettings, when: "limit_to in ['*', 'netscaler_appfw_learningsettings']" }
     - { role: netscaler_appfw_policy, when: "limit_to in ['*', 'netscaler_appfw_policy']" }
     - { role: netscaler_appfw_policylabel, when: "limit_to in ['*', 'netscaler_appfw_policylabel']" }
     - { role: netscaler_appfw_profile, when: "limit_to in ['*', 'netscaler_appfw_profile']" }

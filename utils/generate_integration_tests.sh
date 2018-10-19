@@ -38,11 +38,12 @@ python generate_integration_test.py \
 --test-type netscaler_direct_calls \
 --dir-path $target_dir/netscaler_direct_calls/roles
 
+
+python generate_integration_test.py \
+--module $module \
+--test-type mas_proxied_calls \
+--dir-path $target_dir/netscaler_mas_proxied_calls/roles
+
 done
 
 cd -
-
-# Use the transpile script to generate the mas proxy calls
-python ${HERE}/transpile_integration_tests_to_mas.py \
---source ${target_dir}/netscaler_direct_calls/roles \
---target ${target_dir}/netscaler_mas_proxied_calls/roles

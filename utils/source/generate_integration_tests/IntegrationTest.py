@@ -7,7 +7,7 @@ import template_yaml
 
 
 class IntegrationTest(object):
-    def __init__(self, module_name, entity_name, integration_test_type, integration_dir_path, is_testbed=False):
+    def __init__(self, module_name, ns_version, entity_name, integration_test_type, integration_dir_path, is_testbed=False):
         """
             Initialize for the below tree structrue:
                 defaults
@@ -25,6 +25,7 @@ class IntegrationTest(object):
                         <entity_name>.yaml
         """
         self.module_name = module_name
+        self.ns_version = ns_version 
         self.entity_name = entity_name
         self.integration_test_type = integration_test_type
         self.integration_dir_path = integration_dir_path
@@ -58,7 +59,7 @@ class IntegrationTest(object):
         fileop.create_directory(self.tests_nitro_dir)
 
         # mkdir tests/nitro/<entity_name>
-        input_data = self.module_name.input_data
+        input_data = self.module_name.get_input_data(self.integration_test_type, self.ns_version)
         for sub_module in input_data:
             sub_module_dir = os.path.join(self.tests_nitro_dir, sub_module)
             fileop.create_directory(sub_module_dir)
@@ -77,15 +78,17 @@ class IntegrationTest(object):
         fileop.yamlstr_to_yaml(self.tasks_nitro_file, template_yaml.tasks_nitro_data)
 
     def create_tasks_testbed_file(self):
-        testbed_data = self.module_name.testbed_data
+        testbed_data = self.module_name.get_testbed_data(self.integration_test_type, self.ns_version)
         fileop.python_to_yaml(self.tasks_testbed_file, testbed_data)
 
     def create_operation_files(self):
-        input_data = self.module_name.input_data
+        input_data = self.module_name.get_input_data(self.integration_test_type, self.ns_version)
         for sub_module in input_data:
             operation = input_data[sub_module]
             for op_item in operation:
                 for op_name in op_item: # only one {op_name:op_data} will be there
+                    if op_name.strip() == 'run_once': # "run_once" is not an operation, but a flag, hence skip
+                        continue
                     output_op_data = op_item[op_name]
                     operation_file = os.path.join(self.tests_nitro_dir, sub_module, "{}.yaml".format(op_name))
                     fileop.python_to_yaml(operation_file, output_op_data)
@@ -119,7 +122,7 @@ class IntegrationTest(object):
 
     def create_integration_test_file(self):
         # Assuming that VERIFY_CHECK_MODE and VERIFY_IDEMPOTENCY is always True
-        input_data = self.module_name.input_data
+        input_data = self.module_name.get_input_data(self.integration_test_type, self.ns_version)
         for sub_module in input_data:
             integration_test_data = []
             operation = input_data[sub_module]
