@@ -5,13 +5,12 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 
 from __future__ import absolute_import, division, print_function
-__metaclass__ = type
 
+__metaclass__ = type
 
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
-
 
 DOCUMENTATION = '''
 ---
@@ -123,18 +122,21 @@ except ImportError as e:
 
 def policy_exists(client, module):
     log('Checking if policy exists')
-    if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) > 0:
+    try:
+        cspolicy.get(client, module.params['policyname'])
         return True
-    else:
+    except:
         return False
 
 
 def policy_identical(client, module, cspolicy_proxy):
     log('Checking if defined policy is identical to configured')
-    if cspolicy.count_filtered(client, 'policyname:%s' % module.params['policyname']) == 0:
+    try:
+        policy_list = cspolicy.get(client, module.params['policyname'])
+    except:
         return False
-    policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
-    diff_dict = cspolicy_proxy.diff_object(policy_list[0])
+
+    diff_dict = cspolicy_proxy.diff_object(policy_list)
     if 'ip' in diff_dict:
         del diff_dict['ip']
     if len(diff_dict) == 0:
@@ -144,8 +146,8 @@ def policy_identical(client, module, cspolicy_proxy):
 
 
 def diff_list(client, module, cspolicy_proxy):
-    policy_list = cspolicy.get_filtered(client, 'policyname:%s' % module.params['policyname'])
-    return cspolicy_proxy.diff_object(policy_list[0])
+    policy_list = cspolicy.get(client, module.params['policyname'])
+    return cspolicy_proxy.diff_object(policy_list)
 
 
 def main():
@@ -156,6 +158,10 @@ def main():
         rule=dict(type='str'),
         domain=dict(type='str'),
         action=dict(type='str'),
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
     )
 
     hand_inserted_arguments = dict(
@@ -256,7 +262,8 @@ def main():
                 if not policy_exists(client, module):
                     module.fail_json(msg='Policy does not exist', **module_result)
                 if not policy_identical(client, module, cspolicy_proxy):
-                    module.fail_json(msg='Policy differs from configured', diff=diff_list(client, module, cspolicy_proxy), **module_result)
+                    module.fail_json(msg='Policy differs from configured',
+                                     diff=diff_list(client, module, cspolicy_proxy), **module_result)
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
