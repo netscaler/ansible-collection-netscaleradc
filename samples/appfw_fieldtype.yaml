@@ -1,0 +1,22 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+
+  tasks:
+    - name: setup appfw conf id field
+      delegate_to: localhost
+      register: result
+      netscaler_appfw_fieldtype:
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        nsip: '{{ nsip }}'
+        state: present
+
+        name: field_type_name
+        regex: "reman"
+        priority: "100"
+        comment: field type comment
