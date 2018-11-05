@@ -143,8 +143,9 @@ class ModuleExecutor(object):
         try:
             main_object_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
         except NitroException as e:
-            if e.errorcode == 3377: 
-                # errorcoode 3377: "WSDL does not exist"
+            if e.errorcode == 3377 or e.errorcode == 3187: 
+                # errorcoode 3377: "WSDL does not exist" in NS12.1
+                # errorcoode 3187: "WSDL does not exist" in NS12.0
                 return False
             else:
                 raise
