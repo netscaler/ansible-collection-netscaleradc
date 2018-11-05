@@ -1,0 +1,22 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+
+  tasks:
+    - name: setup appfw xmlschema
+      delegate_to: localhost
+      register: result
+      netscaler_appfw_xmlschema:
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        nsip: '{{ nsip }}'
+        state: present 
+
+        name: "from_yaml"
+        src: "local://error.xsd"
+        comment: Some comment
+        overwrite: yes 

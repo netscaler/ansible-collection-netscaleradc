@@ -724,6 +724,8 @@ class NitroResourceConfig(object):
                 self.actual_dict = retval[0]
             elif len(retval) == 0:
                 self.actual_dict = {}
+        elif isinstance(retval, dict):
+            self.actual_dict = retval
         else:
             raise Exception('Cannot handle retval from _get_actual_instance')
 
@@ -812,6 +814,66 @@ class NitroResourceConfig(object):
 
         # Fallthrough to success
         return True
+
+    def import_object(self):
+        if self.values_dict == {}:
+            raise Exception('Cannot create NITRO object without any attribute values')
+
+        post_data = {
+            self.resource: self.values_dict
+        }
+
+        import_object_resource = "{}{}".format(self.resource, "?action=Import")
+        result = self.fetcher.post(post_data=post_data, resource=import_object_resource)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 200:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
+
+    def update_object(self):
+        if self.values_dict == {}:
+            raise Exception('Cannot create NITRO object without any attribute values')
+
+        update_object_resource_dict = {'name': self.values_dict['name']}
+        post_data = {
+            self.resource: update_object_resource_dict 
+        }
+
+        update_object_resource = "{}{}".format(self.resource, "?action=update")
+        result = self.fetcher.post(post_data=post_data, resource=update_object_resource)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 200:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
+
+
+
 
     def create(self):
         if self.values_dict == {}:
