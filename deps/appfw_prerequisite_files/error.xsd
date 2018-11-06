@@ -1,0 +1,109 @@
+ <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                  xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+                  targetNamespace="http://www.w3.org/2001/04/xmlenc#"
+                  elementFormDefault="qualified"
+                  version="1.0">
+                  <xsd:xsd:import namespace="http://www.w3.org/2000/09/xmldsig#"/>
+         <xsd:element name="CipherData" type="xenc:CipherDataType"/>
+         <xsd:element name="CipherReference" type="xenc:CipherReferenceType"/>
+         <xsd:element name="EncryptedData" type="xenc:EncryptedDataType"/>
+         <xsd:element name="EncryptedKey" type="xenc:EncryptedKeyType"/>
+         <xsd:element name="AgreementMethod" type="xenc:AgreementMethodType"/>
+         <xsd:element name="ReferenceList">
+				        <xsd:complexType>
+					          <xsd:choice minOccurs="1" maxOccurs="unbounded">
+						            <xsd:element name="DataReference" type="xenc:ReferenceType"/>
+						            <xsd:element name="KeyReference" type="xenc:ReferenceType"/>
+					          </xsd:choice>
+				        </xsd:complexType>
+			      </xsd:element>
+         <xsd:element name="EncryptionProperties" type="xenc:EncryptionPropertiesType"/>
+         <xsd:element name="EncryptionProperty" type="xenc:EncryptionPropertyType"/>
+         <xsd:simpleType name="KeySizeType">
+				        <xsd:restriction base="integer"/>
+			      </xsd:simpleType>
+         <xsd:complexType name="EncryptedType" abstract="true">
+				        <xsd:sequence>
+					          <xsd:element name="EncryptionMethod" type="xenc:EncryptionMethodType" minOccurs="0"/>
+					          <xsd:element ref="ds:KeyInfo" minOccurs="0"/>
+					          <xsd:element ref="xenc:CipherData"/>
+					          <xsd:element ref="xenc:EncryptionProperties" minOccurs="0"/>
+				        </xsd:sequence>
+				        <xsd:attribute name="Id" type="ID" use="optional"/>
+				        <xsd:attribute name="Type" type="anyURI" use="optional"/>
+				        <xsd:attribute name="MimeType" type="string" use="optional"/>
+				        <xsd:attribute name="Encoding" type="anyURI" use="optional"/>
+			      </xsd:complexType>
+         <xsd:complexType name="EncryptionMethodType" mixed="true">
+				        <xsd:sequence>
+					          <xsd:element name="KeySize" type="xenc:KeySizeType" minOccurs="0"/>
+					          <xsd:element name="OAEPparams" type="base64Binary" minOccurs="0"/>
+					          <xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+				        </xsd:sequence>
+				        <xsd:attribute name="Algorithm" type="anyURI" use="required"/>
+			      </xsd:complexType>
+         <xsd:complexType name="CipherDataType">
+				        <xsd:choice>
+					          <xsd:element name="CipherValue" type="base64Binary"/>
+					          <xsd:element ref="xenc:CipherReference"/>
+				        </xsd:choice>
+			      </xsd:complexType>
+         <xsd:complexType name="CipherReferenceType">
+				        <xsd:choice>
+					          <xsd:element name="Transforms" type="xenc:TransformsType" minOccurs="0"/>
+				        </xsd:choice>
+				        <xsd:attribute name="URI" type="anyURI" use="required"/>
+			      </xsd:complexType>
+         <xsd:complexType name="TransformsType">
+				        <xsd:sequence>
+					          <xsd:element ref="ds:Transform" maxOccurs="unbounded"/>
+				        </xsd:sequence>
+			      </xsd:complexType>
+         <xsd:complexType name="EncryptedDataType">
+				        <xsd:complexContent>
+					          <xsd:extension base="xenc:EncryptedType"/>
+				        </xsd:complexContent>
+			      </xsd:complexType>
+         <xsd:complexType name="EncryptedKeyType">
+				        <xsd:complexContent>
+					          <xsd:extension base="xenc:EncryptedType">
+						            <xsd:sequence>
+							              <xsd:element ref="xenc:ReferenceList" minOccurs="0"/>
+							              <xsd:element name="CarriedKeyName" type="string" minOccurs="0"/>
+						            </xsd:sequence>
+						            <xsd:attribute name="Recipient" type="string" use="optional"/>
+					          </xsd:extension>
+				        </xsd:complexContent>
+			      </xsd:complexType>
+         <xsd:complexType name="AgreementMethodType" mixed="true">
+				        <xsd:sequence>
+					          <xsd:element name="KA-Nonce" type="base64Binary" minOccurs="0"/>
+					          <xsd:!-- <xsd:element ref="ds:DigestMethod" minOccurs="0"/> -->
+					<xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+					          <xsd:element name="OriginatorKeyInfo" type="ds:KeyInfoType" minOccurs="0"/>
+					          <xsd:element name="RecipientKeyInfo" type="ds:KeyInfoType" minOccurs="0"/>
+				        </xsd:sequence>
+				        <xsd:attribute name="Algorithm" type="anyURI" use="required"/>
+			      </xsd:complexType>
+         <xsd:complexType name="ReferenceType">
+				        <xsd:sequence>
+					          <xsd:any namespace="##other" minOccurs="0" maxOccurs="unbounded"/>
+				        </xsd:sequence>
+				        <xsd:attribute name="URI" type="anyURI" use="required"/>
+			      </xsd:complexType>
+         <xsd:complexType name="EncryptionPropertiesType">
+				        <xsd:sequence>
+					          <xsd:element ref="xenc:EncryptionProperty" maxOccurs="unbounded"/>
+				        </xsd:sequence>
+				        <xsd:attribute name="Id" type="ID" use="optional"/>
+			      </xsd:complexType>
+         <xsd:complexType name="EncryptionPropertyType" mixed="true">
+				        <xsd:choice maxOccurs="unbounded">
+					          <xsd:any namespace="##other" processContents="lax"/>
+				        </xsd:choice>
+				        <xsd:attribute name="Target" type="anyURI" use="optional"/>
+				        <xsd:attribute name="Id" type="ID" use="optional"/>
+				        <xsd:anyAttribute namespace="http://www.w3.org/XML/1998/namespace"/>
+			      </xsd:complexType>
+      </xsd:xsd:schema>
+
