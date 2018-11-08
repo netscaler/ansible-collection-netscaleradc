@@ -1,0 +1,21 @@
+- hosts: netscaler
+  gather_facts: no
+
+  tasks:
+    - name: Export appfw learnt data in csv format to the location /var/learnt_data/
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: action
+        action: export 
+
+        resource: appfwlearningdata 
+
+        attributes: 
+          profilename: testprofile
+          securitycheck: starturl
+          target: test_starturl.csv # to be saved in NetScaler@./var/learnt_data/test_starturl.csv

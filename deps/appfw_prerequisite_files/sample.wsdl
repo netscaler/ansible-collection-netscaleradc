@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.danskebank.dk/Gemini/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.danskebank.dk/Gemini/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.danskebank.dk/Gemini/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetMainProduct">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="productName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="lsid" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMainProductResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMainProductResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UIPanelSoapHeader" type="tns:UIPanelSoapHeader" />
+      <s:complexType name="UIPanelSoapHeader">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="TraceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TraceLevel" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Center" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mvs" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Db2Member" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="QueueManager" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrontendCics" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RunUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="nscontext" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="InvokeActionGIN">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="actionId" type="tns:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="inputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="lsid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userContextLastModified" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="uniqueId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvokeActionGINResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvokeActionGINResult" type="tns:Result" />
+            <s:element minOccurs="0" maxOccurs="1" name="outputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="moduleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Result">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ReturnCode" type="tns:ReturnCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReasonCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReturnCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="Ok" />
+          <s:enumeration value="ValidationError" />
+          <s:enumeration value="NoDataError" />
+          <s:enumeration value="TechnicalError" />
+          <s:enumeration value="UnAuthorized" />
+          <s:enumeration value="Closed" />
+          <s:enumeration value="TimeOut" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="InvokeValidateDigitalSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="digitalSignatureId" type="tns:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="inputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="lsid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="userContextLastModified" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="uniqueId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signatureInputNotPartOfInputXml" type="tns:ArrayOfSerializableKeyValuePairOfStringString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSerializableKeyValuePairOfStringString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SerializableKeyValuePairOfStringString" type="tns:SerializableKeyValuePairOfStringString" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SerializableKeyValuePairOfStringString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvokeValidateDigitalSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvokeValidateDigitalSignatureResult" type="tns:Result" />
+            <s:element minOccurs="0" maxOccurs="1" name="outputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="securityInfo" type="tns:DigitalSignatureSecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="moduleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DigitalSignatureSecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SecData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecAdm" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XslData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="GuiStyle" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InvokeAcceptDigitalSignature">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="digitalSignatureId" type="tns:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="inputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="lsid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="userId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="securityInfo" type="tns:DigitalSignatureSecurityInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="userContextLastModified" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="uniqueId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="signatureInputNotPartOfInputXml" type="tns:ArrayOfSerializableKeyValuePairOfStringString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvokeAcceptDigitalSignatureResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvokeAcceptDigitalSignatureResult" type="tns:Result" />
+            <s:element minOccurs="0" maxOccurs="1" name="outputXmls" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="moduleId" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMainProductSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMainProduct" />
+  </wsdl:message>
+  <wsdl:message name="GetMainProductSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMainProductResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMainProductUIPanelSoapHeader">
+    <wsdl:part name="UIPanelSoapHeader" element="tns:UIPanelSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="InvokeActionGINSoapIn">
+    <wsdl:part name="parameters" element="tns:InvokeActionGIN" />
+  </wsdl:message>
+  <wsdl:message name="InvokeActionGINSoapOut">
+    <wsdl:part name="parameters" element="tns:InvokeActionGINResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvokeActionGINUIPanelSoapHeader">
+    <wsdl:part name="UIPanelSoapHeader" element="tns:UIPanelSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="InvokeValidateDigitalSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:InvokeValidateDigitalSignature" />
+  </wsdl:message>
+  <wsdl:message name="InvokeValidateDigitalSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:InvokeValidateDigitalSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvokeValidateDigitalSignatureUIPanelSoapHeader">
+    <wsdl:part name="UIPanelSoapHeader" element="tns:UIPanelSoapHeader" />
+  </wsdl:message>
+  <wsdl:message name="InvokeAcceptDigitalSignatureSoapIn">
+    <wsdl:part name="parameters" element="tns:InvokeAcceptDigitalSignature" />
+  </wsdl:message>
+  <wsdl:message name="InvokeAcceptDigitalSignatureSoapOut">
+    <wsdl:part name="parameters" element="tns:InvokeAcceptDigitalSignatureResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvokeAcceptDigitalSignatureUIPanelSoapHeader">
+    <wsdl:part name="UIPanelSoapHeader" element="tns:UIPanelSoapHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ActionSISoap">
+    <wsdl:operation name="GetMainProduct">
+      <wsdl:input message="tns:GetMainProductSoapIn" />
+      <wsdl:output message="tns:GetMainProductSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvokeActionGIN">
+      <wsdl:input message="tns:InvokeActionGINSoapIn" />
+      <wsdl:output message="tns:InvokeActionGINSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvokeValidateDigitalSignature">
+      <wsdl:input message="tns:InvokeValidateDigitalSignatureSoapIn" />
+      <wsdl:output message="tns:InvokeValidateDigitalSignatureSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvokeAcceptDigitalSignature">
+      <wsdl:input message="tns:InvokeAcceptDigitalSignatureSoapIn" />
+      <wsdl:output message="tns:InvokeAcceptDigitalSignatureSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ActionSISoap" type="tns:ActionSISoap">
+    <wsdl:documentation>
+      <wsi:Claim conformsTo="http://ws-i.org/profiles/basic/1.1" xmlns:wsi="http://ws-i.org/schemas/conformanceClaim/" />
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMainProduct">
+      <soap:operation soapAction="http://www.danskebank.dk/Gemini/GetMainProduct" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetMainProductUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeActionGIN">
+      <soap:operation soapAction="http://www.danskebank.dk/Gemini/InvokeActionGIN" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InvokeActionGINUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeValidateDigitalSignature">
+      <soap:operation soapAction="http://www.danskebank.dk/Gemini/InvokeValidateDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InvokeValidateDigitalSignatureUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeAcceptDigitalSignature">
+      <soap:operation soapAction="http://www.danskebank.dk/Gemini/InvokeAcceptDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:InvokeAcceptDigitalSignatureUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ActionSISoap12" type="tns:ActionSISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMainProduct">
+      <soap12:operation soapAction="http://www.danskebank.dk/Gemini/GetMainProduct" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetMainProductUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeActionGIN">
+      <soap12:operation soapAction="http://www.danskebank.dk/Gemini/InvokeActionGIN" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InvokeActionGINUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeValidateDigitalSignature">
+      <soap12:operation soapAction="http://www.danskebank.dk/Gemini/InvokeValidateDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InvokeValidateDigitalSignatureUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvokeAcceptDigitalSignature">
+      <soap12:operation soapAction="http://www.danskebank.dk/Gemini/InvokeAcceptDigitalSignature" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:InvokeAcceptDigitalSignatureUIPanelSoapHeader" part="UIPanelSoapHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ActionSI">
+    <wsdl:port name="ActionSISoap" binding="tns:ActionSISoap">
+      <soap:address location="http://localhost/UIPanelServices/ActionService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ActionSISoap12" binding="tns:ActionSISoap12">
+      <soap12:address location="http://localhost/UIPanelServices/ActionService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

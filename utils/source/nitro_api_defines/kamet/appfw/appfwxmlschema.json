@@ -1,0 +1,44 @@
+[
+    {
+        "is_get_id": true,
+        "type": "str",
+        "description": [
+            "Name of the XML Schema object to remove.",
+            "Minimum length =  1",
+            "Maximum length =  31"
+        ],
+        "is_delete_id": true,
+        "option_name": "name"
+    },
+    {
+        "is_get_id": false,
+        "type": "str",
+        "description": [
+            "URL (protocol, host, path, and file name) for the location at which to store the imported XML Schema.",
+            "NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.",
+            "Minimum length =  1",
+            "Maximum length =  2047"
+        ],
+        "is_delete_id": false,
+        "option_name": "src"
+    },
+    {
+        "is_get_id": false,
+        "type": "str",
+        "description": [
+            "Any comments to preserve information about the XML Schema object.",
+            "Maximum length =  128"
+        ],
+        "is_delete_id": false,
+        "option_name": "comment"
+    },
+    {
+        "is_get_id": false,
+        "type": "bool",
+        "description": [
+            "Overwrite any existing XML Schema object of the same name."
+        ],
+        "is_delete_id": false,
+        "option_name": "overwrite"
+    }
+]

@@ -26,6 +26,7 @@
     - { role: netscaler_appfw_confidfield, when: "limit_to in ['*', 'netscaler_appfw_confidfield']", mas_login_result: "{{ primary_mas_login_result }}"  }
     - { role: netscaler_appfw_fieldtype, when: "limit_to in ['*', 'netscaler_appfw_fieldtype']", mas_login_result: "{{ primary_mas_login_result }}"  }
     - { role: netscaler_appfw_jsoncontenttype, when: "limit_to in ['*', 'netscaler_appfw_jsoncontenttype']", mas_login_result: "{{ primary_mas_login_result }}"  }
+    - { role: netscaler_appfw_global_bindings, when: "limit_to in ['*', 'netscaler_appfw_global_bindings']", mas_login_result: "{{ primary_mas_login_result }}"  }
     - { role: netscaler_appfw_learningsettings, when: "limit_to in ['*', 'netscaler_appfw_learningsettings']", mas_login_result: "{{ primary_mas_login_result }}"  }
     - { role: netscaler_appfw_policy, when: "limit_to in ['*', 'netscaler_appfw_policy']", mas_login_result: "{{ primary_mas_login_result }}" }
     - { role: netscaler_appfw_policylabel, when: "limit_to in ['*', 'netscaler_appfw_policylabel']", mas_login_result: "{{ primary_mas_login_result }}" }

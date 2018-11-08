@@ -1,0 +1,18 @@
+- hosts: netscaler
+  gather_facts: no
+
+  tasks:
+    - name: Delete unreviewed appfw learningdata for the specified appfw profile
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        expected_nitro_errorcode: [0, 258]
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: delete_by_args
+
+        resource: appfwlearningdata
+        args:
+          profilename: testprofile

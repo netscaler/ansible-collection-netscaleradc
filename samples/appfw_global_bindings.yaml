@@ -1,0 +1,57 @@
+- hosts: netscaler
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+
+  tasks:
+    - name: Setup appfw policy
+      delegate_to: localhost
+      netscaler_appfw_policy:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: present
+
+        name: policy_test_2
+        rule: 'HTTP.REQ.HOSTNAME.DOMAIN.EQ("blog.example.com")'
+        profilename: APPFW_BLOCK
+        comment: 'policy test comment'
+
+    - name: setup appfw global bindings
+      delegate_to: localhost
+      register: result
+      netscaler_appfw_global_bindings:
+        nitro_user: '{{ nitro_user }}'
+        nitro_pass: '{{ nitro_pass }}'
+        nsip: '{{ nsip }}'
+        state: present
+
+        appfwpolicy_bindings:
+          mode: bind
+          attributes:
+            - policyname: policy_test_2
+              priority: "100"
+              globalbindtype: SYSTEM_GLOBAL
+              state: ENABLED
+
+        auditnslogpolicy_bindings:
+          mode: unbind
+          attributes:
+            - policyname: test_nslog_policy
+              priority: "100"
+              labelname: some label
+              invoke: true
+              labeltype: reqvserver
+
+        auditsyslogpolicy_bindings:
+          mode: unbind
+          attributes:
+            - policyname: test_audit_policy
+              priority: "100"
+              labelname: some label
+              invoke: true
+              labeltype: reqvserver
+
