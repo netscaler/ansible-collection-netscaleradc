@@ -1,0 +1,20 @@
+- hosts: netscaler
+  gather_facts: no
+
+  tasks:
+    - name: Remove all databases. Make transaction count zero
+      delegate_to: localhost
+      register: result
+      netscaler_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        operation: action
+        action: reset
+
+        resource: appfwlearningdata 
+        args:
+          profilename: testprofile 
+          securitycheck: starturl 
+        attributes: {}

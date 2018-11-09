@@ -128,7 +128,11 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
             #('archivename', 'archive.tar'),
         ]
     )
-    
+
+    if ns_version == '11.1':
+        del attributes['percentdecoderecursively']
+        del attributes['multipleheaderaction']
+
     # Initial values
     submodObj.add_operation('setup', copy.deepcopy(attributes))
     
@@ -582,6 +586,10 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
         ('comment', 'safe_obj_name comment'),
         ('action', ['log']),
     ])
+
+    if ns_version == '11.1':
+        first_binding['expression'] = first_binding['as_expression']
+        del first_binding['as_expression']
     
     first_modified = copy.deepcopy(first_binding)
     first_modified['comment'] = 'other comment'
@@ -594,6 +602,10 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
         ('comment', 'safe_obj_name comment too'),
         ('action', ['block']),
     ])
+
+    if ns_version == '11.1':
+        second_binding['expression'] = second_binding['as_expression']
+        del second_binding['as_expression']
     
     
     bindings_list = [
