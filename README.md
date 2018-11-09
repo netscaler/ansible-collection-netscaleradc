@@ -20,7 +20,23 @@ Currently the following modules are implemented
 * netscaler\_gslb\_vserver. Configure GSLB vserver
 * netscaler\_gslb\_service. Configure GSLB service
 * netscaler\_gslb\_site. Configure GSLB sites
-
+* netscaler\_appfw\_confidfield.py. Configure AppFW Confidfield
+* netscaler\_appfw\_fieldtype.py. Configure AppFW FieldType
+* netscaler\_appfw\_global\_bindings.py. Configure AppFW GlobalBindings
+* netscaler\_appfw\_htmlerrorpage. Configure AppFW HTMLErrorpage
+* netscaler\_appfw\_jsoncontenttype. Configure AppFW JSONContentType
+* netscaler\_appfw\_learningsettings. Configure AppFW LearningSettings
+* netscaler\_appfw\_policy. Configure AppFW Policy
+* netscaler\_appfw\_policylabel. Configure AppFW PolicyLabel
+* netscaler\_appfw\_profile. Configure AppFW Profile
+* netscaler\_appfw\_settings. Configure AppFW Settings
+* netscaler\_appfw\_signatures. Configure AppFW Signatures
+* netscaler\_appfw\_wsdl. Configure AppFW WSDL
+* netscaler\_appfw\_xmlcontenttype. Configure AppFW XMLContentType
+* netscaler\_appfw\_xmlerrorpage. Configure AppFW XMLErrorPage
+* netscaler\_appfw\_xmlschema. Configure AppFW XMLSchema
+* netscaler\_nitro\_request. Customize the configuration 
+* netscaler\_save\_config. Save Config
 
 ## Pre-requisites
 
