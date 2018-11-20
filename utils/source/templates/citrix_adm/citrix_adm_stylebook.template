@@ -145,6 +145,37 @@ class ModuleExecutor(object):
 
         return result
 
+    def get_stylebook(self):
+        filter = {}
+        for attribute in self.attribute_config['stylebook']['get_id_attributes']:
+            attr_val = self.module.params.get(attribute)
+            if attr_val is not None:
+                filter[attribute] = attr_val
+        result = self.nitro_api_fetcher.get(resource='stylebooks', filter=filter)
+
+        if result['http_response_data']['status'] != 200:
+            message_tuple = (
+                result['http_response_data']['status'],
+                result['nitro_errorcode'],
+                result['nitro_message'],
+                result['nitro_severity'],
+            )
+            self.module.fail_json(msg='GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
+
+        log('result of get  stylebooks %s' % result)
+        stylebooks = result['data']['stylebooks']
+        if not isinstance(stylebooks, list):
+            msg = 'Unexpected stylebooks result type %s' % type(stylebooks)
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if stylebooks == []:
+            self.module.fail_json('Failed to get the created stylebook', **self.module_result)
+        elif len(stylebooks) > 1:
+            self.module.fail_json('Multiple stylebooks were returned', **self.module_result)
+        else:
+            return stylebooks[0]
+
+
 
 
     def create(self):
@@ -193,6 +224,8 @@ class ModuleExecutor(object):
 
             if self.module.params['state'] == 'present':
                 self.create()
+                created_stylebook = self.get_stylebook()
+                self.module_result.update(dict(stylebook=created_stylebook))
             elif self.module.params['state'] == 'absent':
                 self.delete()
 
