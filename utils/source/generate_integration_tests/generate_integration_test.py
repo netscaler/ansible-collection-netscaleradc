@@ -11,7 +11,10 @@ def main():
     parser = argparse.ArgumentParser(description="Netscaler Ansible Integration Tests Generator")
     test_type_choices = [
             'netscaler_direct_calls',
+            'mas_direct_calls',
             'mas_proxied_calls',
+            'citrix_adm',
+            'citrix_adm_auth_token',
             ]
     parser.add_argument('--test-type', help='Integration Test Type (default: netscaler_direct_calls)', default='netscaler_direct_calls', choices=test_type_choices)
     parser.add_argument('--module', required=True, nargs='+')
@@ -41,9 +44,6 @@ def main():
             exit()
 
         entity_name = module_name.ENTITY_NAME
-        if not entity_name.startswith('netscaler_'):
-            print('Entity Name should start with "netscaler_" prefix.')
-            exit()
     
         is_testbed = True if module_name.get_testbed_data(integration_test_type, ns_version) else False
         entity_obj = IntegrationTest(module_name, ns_version, entity_name, integration_test_type, integration_dir_path, is_testbed)
