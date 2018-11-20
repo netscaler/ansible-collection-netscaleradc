@@ -1,0 +1,23 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Get all ns
+      delegate_to: localhost
+      register: ns_facts
+      citrix_adm_ns_facts:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        id: "some_name"
+        name: "some_name"
+
+    - name: Show return data
+      debug:
+        msg: "{{ ns_facts.ns }}"
+

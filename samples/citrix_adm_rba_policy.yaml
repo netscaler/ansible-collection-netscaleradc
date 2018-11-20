@@ -1,0 +1,37 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Login to mas
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+    - name: Setup appfw policy
+      delegate_to: localhost
+      citrix_adm_rba_policy:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        name: app_owner_policy
+        description: some description
+        tenant_id: "0ea1d85a-06b8-4225-9fc8-5a7065fdd590"
+        statement:
+          - access_type: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_gslbservice
+        ui:
+          - access_type: true
+            display_name: ""
+            name: ContentSwitching
+            parent_name: rba_policy

@@ -1,0 +1,33 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Setup mpsuser
+      delegate_to: localhost
+      citrix_adm_mpsgroup:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        state: absent
+
+        name: playbook_test_mpsgroup_2
+        permission: read-only
+        allow_application_only: true
+        session_timeout: 10
+        session_timeout_unit: Minutes
+        description: some description
+        assign_all_apps: true
+        enable_session_timeout: true
+        assign_all_devices: false
+        role: admin
+        roles: 
+          - admin
+        application_names_without_regex: []
+        application_names: []
+        application_names_with_regex: []
+        standalone_instances_id: []

@@ -1,0 +1,22 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Setup rba role
+      delegate_to: localhost
+      citrix_adm_rba_role:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        state: present
+
+        name: playbook_test_role
+        description: some description
+        tenant_id: 0ea1d85a-06b8-4225-9fc8-5a7065fdd590
+        policies: 
+          - playbook_test_policy
