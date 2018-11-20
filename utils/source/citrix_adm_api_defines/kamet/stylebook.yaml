@@ -1,0 +1,42 @@
+- option_name: source
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Source definition of the StyleBook.
+    - Minimum length = 1
+    - Maximum length = 32
+
+- option_name: namespace
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Namespace of the StyleBook.
+    - Minimum length = 1
+    - Maximum length = 32
+
+- option_name: version
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Version of the StyleBook.
+    - Minimum length = 1
+    - Maximum length = 32
+
+- option_name: name
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Name of the StyleBook.
+
+- option_name: display_name
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Display name of the StyleBook.
+    - Minimum length = 1
+    - Maximum length = 128
