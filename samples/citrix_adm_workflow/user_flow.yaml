@@ -3,21 +3,6 @@
   vars:
     max_clients: 5
 
-    stylebook_params:
-      name: "basic-lb-config"
-      namespace: "com.example.stylebooks"
-      version: "0.1"
-      configpack_payload:
-        parameters:
-          name: "playbook5_test_application_name"
-          ip: "192.168.5.2"
-          lb-alg: "ROUNDROBIN"
-          svc-servers:
-            - "192.168.5.3"
-          svc-port: "80"
-        targets:
-          - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
-
   gather_facts: False
 
   tasks:
@@ -36,9 +21,9 @@
         mas_ip: "{{ mas_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
-        state: absent
+        state: present
 
-        name: app2.app1.acme.com
+        name: app1.acme.com
         description: some description
 
     - name: Get ns instance
@@ -50,6 +35,24 @@
 
         ip_address: 10.78.60.209
 
+    - name: Set facts
+      set_fact:
+        stylebook_facts:
+          name: "basic-lb-config"
+          namespace: "com.example.stylebooks"
+          version: "0.1"
+          configpack_payload:
+            parameters:
+              name: "test_application_6"
+              ip: "192.169.10.2"
+              lb-alg: "ROUNDROBIN"
+              svc-servers:
+                - "192.169.10.3"
+              svc-port: "80"
+            targets:
+              - id: "{{ ns_facts.ns[0].id }}"
+
+
     - name: Setup application
       delegate_to: localhost
       citrix_adm_application:
@@ -59,19 +62,5 @@
         state: present
 
         app_category: test_category
-        name: playbook5_test_application_name-lb_10.78.60.209_lb
-        stylebook_params: "{{ stylebook_params | to_json }}"
-        stylebook_params: |
-          name: "basic-lb-config"
-          namespace: "com.example.stylebooks"
-          version: "0.1"
-          configpack_payload:
-            parameters:
-              name: "playbook5_test_application_name"
-              ip: "192.168.5.2"
-              lb-alg: "ROUNDROBIN"
-              svc-servers:
-                - "192.168.5.3"
-              svc-port: "80"
-            targets:
-              - id: "{{ ns_facts.ns[0].id }}"
+        name: test_application_6
+        stylebook_params: "{{ stylebook_facts | to_json }}"

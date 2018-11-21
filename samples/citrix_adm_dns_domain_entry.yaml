@@ -13,7 +13,7 @@
         mas_user: "{{ mas_user }}"
         mas_pass: "{{ mas_pass }}"
 
-        state: absent
+        state: present
 
         name: test.com
         description: some description
