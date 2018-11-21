@@ -18,7 +18,10 @@ DOCUMENTATION = '''
 ---
 module: citrix_adm_rba_policy
 short_description: Manage Citrix ADM rba policies.
-description: Manage Citrix ADM rba policies.
+description:
+    - Manage Citrix ADM rba policies.
+    - Note that due to limitations on the underlying NITRO API an update is not possible.
+    -  Instead delete and recreate the rba_policy.
 
 version_added: "2.8.0"
 
@@ -105,6 +108,12 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+rba_policy:
+    description: Dictionary containing the attributes of the created rba_policy
+    returned: success
+    type: dict
+
 '''
 
 import copy
@@ -181,7 +190,7 @@ class ModuleExecutor(object):
         return config
 
 
-    def update_or_create(self):
+    def create(self):
         # Check if main object exists
         config = self.get_main_config()
 
@@ -189,11 +198,6 @@ class ModuleExecutor(object):
             self.module_result['changed'] = True
             if not self.module.check_mode:
                 config.create()
-        else:
-            if not config.values_subset_of_actual():
-                self.module_result['changed'] = True
-                if not self.module.check_mode:
-                    config.update(id_attribute='id')
 
         # Return the actual object
         config.get_actual_instance(
@@ -217,7 +221,7 @@ class ModuleExecutor(object):
         try:
 
             if self.module.params['state'] == 'present':
-                self.update_or_create()
+                self.create()
             elif self.module.params['state'] == 'absent':
                 self.delete()
 

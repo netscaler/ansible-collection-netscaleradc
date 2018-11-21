@@ -208,6 +208,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+application:
+    description: Dictionary containing all the attributes of the created application
+    returned: success
+    type: dict
 '''
 
 import codecs
@@ -404,7 +409,7 @@ class ModuleExecutor(object):
         log('info: %s' % info)
 
         data = self._parse_response_body(r)
-        nitro_errorcode = data.get('errorcode'),
+        nitro_errorcode = data.get('errorcode')
 
         status = info.get('status')
         http_msg = info.get('msg')
@@ -417,10 +422,13 @@ class ModuleExecutor(object):
             data.get('severity'),
         )
         if status != 200:
-            msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            log('Fail due to status')
+            msg = 'HTTP status fail status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
         elif nitro_errorcode not in (0, None):
-            msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            log('Fail due to nitro_errorcode')
+            log('nitro error code %s %s' % (type(nitro_errorcode), nitro_errorcode))
+            msg = 'nitro_errorcode fail HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
 
@@ -458,7 +466,7 @@ class ModuleExecutor(object):
 
         data = self._parse_response_body(r)
 
-        nitro_errorcode = data.get('errorcode'),
+        nitro_errorcode = data.get('errorcode')
 
         # Anything but a 200 is an error
         status = info.get('status')
@@ -472,10 +480,10 @@ class ModuleExecutor(object):
             data.get('severity'),
         )
         if status != 200:
-            msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            msg = 'HTTP status fail status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
         elif nitro_errorcode not in (0, None):
-            msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            msg = 'nitro_errorcode fail. HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
     def delete_application(self, application):
@@ -502,7 +510,7 @@ class ModuleExecutor(object):
         log('info: %s' % info)
 
         data = self._parse_response_body(r)
-        nitro_errorcode = data.get('errorcode'),
+        nitro_errorcode = data.get('errorcode')
 
         status = info.get('status')
         http_msg = info.get('msg')

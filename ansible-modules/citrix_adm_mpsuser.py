@@ -112,6 +112,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+mpsuser:
+    description: Dictionary containing the attributes of the created mpsuser
+    returned: success
+    type: dict
 '''
 
 import copy

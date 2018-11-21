@@ -178,6 +178,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+mpsgroup:
+    description: Dictionary containing the attributes of the created mpsgroup
+    returned: success
+    type: dict
 '''
 
 import copy
@@ -221,10 +226,10 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'allow_application_only': lambda v: "true" if v else "false",
-                    'assign_all_devices': lambda v: "true" if v else "false",
-                    'assign_all_apps': lambda v: "true" if v else "false",
                     'enable_session_timeout': lambda v: "true" if v else "false",
+                    'allow_application_only': lambda v: "true" if v else "false",
+                    'assign_all_apps': lambda v: "true" if v else "false",
+                    'assign_all_devices': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
                     

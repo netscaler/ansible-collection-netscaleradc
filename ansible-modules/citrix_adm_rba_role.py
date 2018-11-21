@@ -98,6 +98,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+rba_role:
+    description: Dictionary contatining the attributes of the created rba_role.
+    returned: success
+    type: dict
 '''
 
 import copy

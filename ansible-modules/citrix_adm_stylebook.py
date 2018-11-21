@@ -92,6 +92,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+stylebook:
+    description: Dictionary containing the attributes of the created stylebook.
+    returned: success
+    type: dict
 '''
 
 import copy

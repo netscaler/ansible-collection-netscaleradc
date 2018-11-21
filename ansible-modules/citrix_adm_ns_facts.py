@@ -84,6 +84,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+ns_facts:
+    description: List containing the details of the requested ns instances
+    returned: success
+    type: list
 '''
 
 import codecs
