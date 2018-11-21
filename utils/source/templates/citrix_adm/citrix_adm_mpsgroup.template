@@ -70,6 +70,11 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
+
+mpsgroup:
+    description: Dictionary containing the attributes of the created mpsgroup
+    returned: success
+    type: dict
 '''
 
 import copy
