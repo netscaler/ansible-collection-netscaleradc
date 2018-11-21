@@ -1001,12 +1001,14 @@ class MASResourceConfig(object):
             if self.values_dict.get(id_attribute) is not None:
                 defined_ids.append(id_attribute)
 
-        defined_id_attributes_dict = { id: self.values_dict[id] for id in defined_ids }
+        defined_id_attributes_dict = {}
+        for id in defined_ids:
+            defined_id_attributes_dict[id] = self.values_dict[id]
 
         if len(defined_ids) == 0:
             raise Exception('Cannot get resource without some get_id attribute defined')
         elif use_filter:
-            result = self.fetcher.get(self.resource,filter=defined_id_attributes_dict)
+            result = self.fetcher.get(self.resource, filter=defined_id_attributes_dict)
         else:
             args = { id: self.values_dict[id] for id in defined_ids }
             result = self.fetcher.get(self.resource,args=defined_id_attributes_dict)
