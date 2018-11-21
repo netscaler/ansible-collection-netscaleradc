@@ -1,0 +1,68 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+    stylebook_params:
+      name: "basic-lb-config"
+      namespace: "com.example.stylebooks"
+      version: "0.1"
+      configpack_payload:
+        parameters:
+          name: "test_application_2"
+          ip: "192.169.5.2"
+          lb-alg: "ROUNDROBIN"
+          svc-servers:
+            - "192.169.5.3"
+          svc-port: "80"
+        targets:
+          - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
+
+
+  gather_facts: False
+
+  tasks:
+    - name: Login to citrix_adm
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+    - name: Get ns instance
+      delegate_to: localhost
+      register: ns_facts
+      citrix_adm_ns_facts:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        ip_address: 10.78.60.209
+
+    - name: Set facts
+      set_fact:
+        stylebook_facts:
+          name: "basic-lb-config"
+          namespace: "com.example.stylebooks"
+          version: "0.1"
+          configpack_payload:
+            parameters:
+              name: "test_application_3"
+              ip: "192.169.7.2"
+              lb-alg: "ROUNDROBIN"
+              svc-servers:
+                - "192.169.7.3"
+              svc-port: "80"
+            targets:
+              - id: "{{ ns_facts.ns[0].id }}"
+
+    - name: Setup application
+      delegate_to: localhost
+      citrix_adm_application:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        app_category: test_category
+        name: test_application_3
+        stylebook_params: "{{ stylebook_facts | to_json }}"

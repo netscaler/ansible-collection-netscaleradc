@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 if [[ "$1" == "" ]] ; then
 echo Must provide target dir
 exit 1
@@ -51,6 +53,21 @@ python generate_integration_test.py \
 --test-type mas_proxied_calls \
 --ns-version $NS_VERSION \
 --dir-path $target_dir/netscaler_mas_proxied_calls/roles
+
+done
+
+for file in citrix_adm_*.py ; do
+module=${file%.py}
+
+python generate_integration_test.py \
+--module $module \
+--test-type citrix_adm \
+--dir-path $target_dir/citrix_adm/roles
+
+python generate_integration_test.py \
+--module $module \
+--test-type citrix_adm_auth_token \
+--dir-path $target_dir/citrix_adm_auth_token/roles
 
 done
 

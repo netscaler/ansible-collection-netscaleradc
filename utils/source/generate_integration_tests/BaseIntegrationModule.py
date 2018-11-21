@@ -33,6 +33,17 @@ class BaseIntegrationModule(object):
             op_dict[self.entity_name]['mas_auth_token'] = "{{ mas_login_result.nitro_auth_token }}"
             op_dict[self.entity_name]['mas_ip'] = "{{ nsip }}"
             op_dict[self.entity_name]['mas_proxy_call'] = True 
+        elif self.test_type.strip() == 'mas_direct_calls':
+            op_dict[self.entity_name]['mas_user'] = "{{ mas_user }}"
+            op_dict[self.entity_name]['mas_pass'] = "{{ mas_pass }}"
+            op_dict[self.entity_name]['mas_ip'] = "{{ mas_ip }}"
+        elif self.test_type.strip() == 'citrix_adm':
+            op_dict[self.entity_name]['mas_user'] = "{{ mas_user }}"
+            op_dict[self.entity_name]['mas_pass'] = "{{ mas_pass }}"
+            op_dict[self.entity_name]['mas_ip'] = "{{ mas_ip }}"
+        elif self.test_type.strip() == 'citrix_adm_auth_token':
+            op_dict[self.entity_name]['mas_ip'] = "{{ mas_ip }}"
+            op_dict[self.entity_name]['nitro_auth_token'] = "{{ login_result.session_id }}"
         else: # netscaler_direct_calls
             op_dict[self.entity_name]['nitro_user'] = "{{ nitro_user }}"
             op_dict[self.entity_name]['nitro_pass'] = "{{ nitro_pass }}"

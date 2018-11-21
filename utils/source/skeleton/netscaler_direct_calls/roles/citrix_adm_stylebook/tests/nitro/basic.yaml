@@ -1,0 +1,40 @@
+- include: '{{ role_path }}/tests/nitro/basic/setup.yaml'
+  vars:
+    check_mode: true
+- assert:
+    that: 'result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/setup.yaml'
+  vars:
+    check_mode: false
+- assert:
+    that: 'result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/setup.yaml'
+  vars:
+    check_mode: true
+- assert:
+    that: 'not result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/setup.yaml'
+  vars:
+    check_mode: false
+- assert:
+    that: 'not result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/remove.yaml'
+  vars:
+    check_mode: true
+- assert:
+    that: 'result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/remove.yaml'
+  vars:
+    check_mode: false
+- assert:
+    that: 'result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/remove.yaml'
+  vars:
+    check_mode: true
+- assert:
+    that: 'not result is changed'
+- include: '{{ role_path }}/tests/nitro/basic/remove.yaml'
+  vars:
+    check_mode: false
+- assert:
+    that: 'not result is changed'

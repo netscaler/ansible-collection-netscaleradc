@@ -1,0 +1,150 @@
+- option_name: authscope_props
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - authscope_props
+
+- option_name: allow_application_only
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Checks if only application centic page is needed.
+
+- option_name: session_timeout
+  type: float
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Session timeout for the Group.
+
+- option_name: permission
+  type: str
+  choices:
+    - admin
+    - read-only
+  is_get_id: false
+  is_delete_id: false
+  choices:
+    - admin
+    - read-only
+  description: 
+    - Permission for the group (admin/read-only).
+    - Minimum length = 1
+    - Maximum length = 128
+
+- option_name: name
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Group Name.
+    - Minimum length = 1
+    - Maximum length = 64
+
+- option_name: session_timeout_unit
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Session timeout unit for the Group.
+
+- option_name: description
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Description of Group.
+    - Minimum length = 1
+    - Maximum length = 1024
+
+- option_name: assign_all_apps
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Assign All Applications (YES|NO).
+
+- option_name: enable_session_timeout
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Enables session timeout for group.
+
+- option_name: tenant_id
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Id of the tenant.
+    - Minimum length = 1
+    - Maximum length = 128
+
+- option_name: assign_all_devices
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Assign All Instances (YES|NO).
+
+- option_name: id
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Id is system generated key for all the system groups.
+
+- option_name: role
+  type: str
+  choices:
+    - admin
+    - nonadmin
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Role (admin|nonadmin).
+
+- option_name: roles
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Roles assigned to the group.
+
+- option_name: application_names_without_regex
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - selected application names that are part of this group.
+
+- option_name: standalone_instances_id
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Stand alone instances belong to this groupp.
+
+- option_name: users
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Users belong to the group.
+
+- option_name: application_names
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+   - All Application names that are part of this group.
+   - This includes selected appnames as well as applications which are result of defined regex.
+
+- option_name: application_names_with_regex
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Application names defined with regex that are part of this group

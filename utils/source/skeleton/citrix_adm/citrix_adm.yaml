@@ -1,0 +1,18 @@
+---
+
+- hosts: citrix_adm
+
+  gather_facts: no
+  connection: local
+
+  vars:
+    limit_to: "*"
+    debug: false
+
+  roles:
+    - { role: citrix_adm_rba_role, when: "limit_to in ['*', 'citrix_adm_rba_role']" }
+    - { role: citrix_adm_rba_policy, when: "limit_to in ['*', 'citrix_adm_rba_policy']" }
+    - { role: citrix_adm_mpsuser, when: "limit_to in ['*', 'citrix_adm_mpsuser']" }
+    - { role: citrix_adm_mpsgroup, when: "limit_to in ['*', 'citrix_adm_mpsgroup']" }
+    - { role: citrix_adm_ns_facts, when: "limit_to in ['*', 'citrix_adm_ns_facts']" }
+    - { role: citrix_adm_dns_domain_entry, when: "limit_to in ['*', 'citrix_adm_dns_domain_entry']" }

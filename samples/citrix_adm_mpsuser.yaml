@@ -1,0 +1,26 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Setup mpsuser
+      delegate_to: localhost
+      citrix_adm_mpsuser:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        state: present
+
+        name: test_user
+        password: welcome
+
+        session_timeout: 10
+        session_timeout_unit: Minutes
+        external_authentication: false
+        enable_session_timeout: true
+        groups: 
+          - sample_tenant_1_admin_group

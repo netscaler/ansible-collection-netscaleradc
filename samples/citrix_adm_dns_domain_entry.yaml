@@ -1,0 +1,19 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Setup appfw policy
+      delegate_to: localhost
+      citrix_adm_dns_domain_entry:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        state: present
+
+        name: test.com
+        description: some description

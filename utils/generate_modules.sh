@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 
+set -e
 # All script path locations are relative to HERE
 HERE=$(realpath $( dirname ${BASH_SOURCE[0]}))
 

@@ -1,0 +1,112 @@
+- name: Setup stylebook
+  delegate_to: localhost
+  check_mode: '{{ check_mode }}'
+  register: result
+  netscaler_mas_stylebook:
+    mas_ip: "{{ mas_ip }}"
+    nitro_auth_token: "{{ login_result.session_id }}"
+
+    state: present
+
+    name: integration-test-stylebook
+    namespace: com.example.stylebooks
+    version: "0.1"
+    display_name: Integration Test Stylebook
+
+    source: |
+      ---
+      name: integration-test-stylebook
+      namespace: com.example.stylebooks
+      version: "0.1"
+      display-name: Integration Test Stylebook
+      description: This StyleBook defines a simple load balancing configuration.
+      schema-version: "1.0"
+
+      import-stylebooks:
+        -
+          namespace: netscaler.nitro.config
+          version: "10.5"
+          prefix: ns
+
+      parameters:
+        -
+          name: name
+          type: string
+          label: Application Name
+          description: Give a name to the application configuration.
+          required: true
+        -
+          name: ip
+          type: ipaddress
+          label: Application Virtual IP (VIP)
+          description: The Application VIP that clients access
+          required: true
+        -
+          name: lb-alg
+          type: string
+          label: LoadBalancing Algorithm
+          description: Choose the loadbalancing algorithm (method) used for loadbalancing client requests between the application servers.
+          allowed-values:
+          - ROUNDROBIN
+          - LEASTCONNECTION
+          default: ROUNDROBIN
+        -
+          name: svc-servers
+          type: ipaddress[]
+          label: Application Server IPs
+          description: The IP addresses of all the servers of this application
+          required: true
+        -
+          name: svc-port
+          type: tcp-port
+          label: Server Port
+          description: The TCP port open on the Application Servers to receive requests.
+          default: 80
+
+      components:
+        -
+          name: lbvserver-comp
+          type: ns::lbvserver
+          properties:
+            name: $parameters.name + "-lb"
+            servicetype: HTTP
+            ipv46: $parameters.ip
+            port: 80
+            lbmethod: $parameters.lb-alg
+
+          components:
+            -
+              name: svcg-comp
+              type: ns::servicegroup
+              properties:
+                servicegroupname: $parameters.name + "-svcgrp"
+                servicetype: HTTP
+
+              components:
+                -
+                  name: lbvserver-svg-binding-comp
+                  type: ns::lbvserver_servicegroup_binding
+                  properties:
+                    name: $parent.parent.properties.name
+                    servicegroupname: $parent.properties.servicegroupname
+                -
+                  name: members-svcg-comp
+                  type: ns::servicegroup_servicegroupmember_binding
+                  repeat: $parameters.svc-servers
+                  repeat-item: srv
+                  properties:
+                    ip: $srv
+                    port: $parameters.svc-port
+                    servicegroupname: $parent.properties.servicegroupname
+
+      outputs:
+        -
+          name: lbvserver-comp
+          value: $components.lbvserver-comp
+          description: The component that builds the Nitro lbvserver configuration object
+        -
+          name: servicegroup-comp
+          value: $components.lbvserver-comp.components.svcg-comp
+          description: The component that builds the Nitro servicegroup configuration object
+
+

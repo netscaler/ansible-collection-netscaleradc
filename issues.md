@@ -150,3 +150,9 @@
 ## netscaler appfw fieldtype
 
 * "nocharmaps" attribute does not work correctly
+
+## citrix adm
+
+* All citrix adm modules do not work with version 12.0. Only 12.1.
+* citrix\_adm\_rba\_policy does not support update operation
+* citrix\_adm\_application not included in integration test suite

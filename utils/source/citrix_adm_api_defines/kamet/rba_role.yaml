@@ -1,0 +1,55 @@
+- option_name: tenant_id
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - 'Tenant Id of the RBA roles.'
+    - 'Minimum length = 1'
+    - 'Maximum length = 128'
+
+- option_name: name
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - 'Role Name.'
+    - 'Minimum length = 1'
+    - 'Maximum length = 128'
+
+- option_name: id
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - 'Id is system generated key for all the RBA roles.'
+
+- option_name: description
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - 'Description of Role.'
+    - 'Minimum length = 1'
+    - 'Maximum length = 1024'
+
+- option_name: resourcegroups
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - 'Resourcegroups attached to this role..'
+
+- option_name: groups
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - 'Groups to which this role is assigned.'
+
+
+- option_name: policies
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - 'Policies attached to this role..'

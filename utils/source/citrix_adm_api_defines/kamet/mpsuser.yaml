@@ -1,0 +1,77 @@
+- option_name: session_timeout
+  type: float
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Session timeout for the user.
+
+- option_name: permission
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - This property is not supported, permission will be taken from groups only.
+    - Actions that this user is authorized to perform.
+    - Maximum length = 128
+
+- option_name: name
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - User Name.
+    - Minimum length = 1
+    - Maximum length = 128
+
+- option_name: session_timeout_unit
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Session timeout unit for the user.
+
+- option_name: external_authentication
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Enable external authentication.
+
+- option_name: enable_session_timeout
+  type: bool
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Enables session timeout for user.
+
+- option_name: tenant_id
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Tenant Id of the system users.
+    - Minimum length = 1
+    - Maximum length = 128
+
+- option_name: password
+  type: str
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Password.
+    - Minimum length = 1
+    - Maximum length = 128
+
+- option_name: id
+  type: str
+  is_get_id: true
+  is_delete_id: true
+  description: 
+    - Id is system generated key for all the system users.
+
+- option_name: groups
+  type: list
+  is_get_id: false
+  is_delete_id: false
+  description: 
+    - Groups to which user belongs.
