@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -9,7 +9,7 @@
   tasks:
     - name: Setup gslb site
       delegate_to: localhost
-      netscaler_gslb_site:
+      citrix_adc_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

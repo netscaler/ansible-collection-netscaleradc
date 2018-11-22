@@ -1,5 +1,5 @@
 ---
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -10,7 +10,7 @@
   tasks:
     - name: Set server 1
       delegate_to: localhost
-      netscaler_server:
+      citrix_adc_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -21,7 +21,7 @@
 
     - name: Set server 2
       delegate_to: localhost
-      netscaler_server:
+      citrix_adc_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -32,7 +32,7 @@
 
     - name: Set service group
       delegate_to: localhost
-      netscaler_servicegroup:
+      citrix_adc_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

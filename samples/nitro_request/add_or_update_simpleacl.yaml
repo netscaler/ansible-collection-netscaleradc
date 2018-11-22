@@ -1,5 +1,5 @@
 
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
 
 # nscli commands simulated
@@ -24,7 +24,7 @@
     - name: Get resource
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         expected_nitro_errorcode: [0, 258]
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
@@ -38,7 +38,7 @@
 
     - name: Add resource when not existing
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -52,7 +52,7 @@
 
     - name: Update resource when existing
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

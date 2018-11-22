@@ -10,13 +10,12 @@ import file_operations as fileop
 def main():
     parser = argparse.ArgumentParser(description="Netscaler Ansible Integration Tests Generator")
     test_type_choices = [
-            'netscaler_direct_calls',
-            'mas_direct_calls',
+            'citrix_adc_direct_calls',
             'mas_proxied_calls',
             'citrix_adm',
             'citrix_adm_auth_token',
             ]
-    parser.add_argument('--test-type', help='Integration Test Type (default: netscaler_direct_calls)', default='netscaler_direct_calls', choices=test_type_choices)
+    parser.add_argument('--test-type', help='Integration Test Type (default: citrix_adc_direct_calls)', default='citrix_adc_direct_calls', choices=test_type_choices)
     parser.add_argument('--module', required=True, nargs='+')
     parser.add_argument('--dir-path', default=None, help="Directory path to where the integration tests to be generated")
     parser.add_argument('--ns-version', default='12.1', help="Target Netscaler version")

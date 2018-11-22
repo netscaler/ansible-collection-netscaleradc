@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -7,7 +7,7 @@
   tasks:
     - name: Setup server
       delegate_to: localhost
-      netscaler_server:
+      citrix_adc_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

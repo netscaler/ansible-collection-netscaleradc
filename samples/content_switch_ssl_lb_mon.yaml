@@ -1,6 +1,6 @@
 ---
 
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -11,7 +11,7 @@
   tasks:
     - name: Configure lb monitor for catalog
       delegate_to: localhost
-      netscaler_lb_monitor:
+      citrix_adc_lb_monitor:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -25,7 +25,7 @@
 
     - name: Configure lb monitor for cart
       delegate_to: localhost
-      netscaler_lb_monitor:
+      citrix_adc_lb_monitor:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -39,7 +39,7 @@
 
     - name: Configure service group catalog
       delegate_to: localhost
-      netscaler_servicegroup:
+      citrix_adc_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -62,7 +62,7 @@
 
     - name: Configure service group cart
       delegate_to: localhost
-      netscaler_servicegroup:
+      citrix_adc_servicegroup:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -85,7 +85,7 @@
 
     - name: Configure lb vserver cart
       delegate_to: localhost
-      netscaler_lb_vserver:
+      citrix_adc_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -100,7 +100,7 @@
 
     - name: Configure lb vserver catalog
       delegate_to: localhost
-      netscaler_lb_vserver:
+      citrix_adc_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -116,7 +116,7 @@
 
     - name: Configure catalog policy
       delegate_to: localhost
-      netscaler_cs_policy:
+      citrix_adc_cs_policy:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -129,7 +129,7 @@
 
     - name: Configure cart policy
       delegate_to: localhost
-      netscaler_cs_policy:
+      citrix_adc_cs_policy:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -142,7 +142,7 @@
 
     - name: Configure cs vserver
       delegate_to: localhost
-      netscaler_cs_vserver:
+      citrix_adc_cs_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

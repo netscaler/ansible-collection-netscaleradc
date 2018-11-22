@@ -8,7 +8,7 @@ SKELETON = [
         ('name', 'Get object'),
         ('delegate_to', 'localhost'),
         ('register', 'get_result'),
-        ('netscaler_nitro_request', 
+        ('citrix_adc_nitro_request', 
             OrderedDict([
                 ('nsip', '{{ instance_ip }}'),
                 ('nitro_user', '{{ nitro_user }}'),
@@ -36,7 +36,7 @@ SKELETON_BY_ARGS = [
         ('name', 'Get object'),
         ('delegate_to', 'localhost'),
         ('register', 'get_result'),
-        ('netscaler_nitro_request', 
+        ('citrix_adc_nitro_request', 
             OrderedDict([
                 ('nsip', '{{ instance_ip }}'),
                 ('nitro_user', '{{ nitro_user }}'),
@@ -59,7 +59,7 @@ SKELETON_BY_ARGS = [
 ]
 def get_verification_playbook_dict(nitro_resource, nitro_resource_name, verification_dict):
     playbook = copy.deepcopy(SKELETON)
-    get_dict = playbook[0]['netscaler_nitro_request']
+    get_dict = playbook[0]['citrix_adc_nitro_request']
 
 
     get_dict['resource'] = nitro_resource
@@ -75,7 +75,7 @@ def get_verification_playbook_dict(nitro_resource, nitro_resource_name, verifica
 
 def get_verification_playbook_dict_by_args(nitro_resource, get_by_args, verification_dict):
     playbook = copy.deepcopy(SKELETON_BY_ARGS)
-    get_dict = playbook[0]['netscaler_nitro_request']
+    get_dict = playbook[0]['citrix_adc_nitro_request']
 
 
     get_dict['resource'] = nitro_resource

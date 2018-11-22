@@ -33,28 +33,50 @@ mkdir -p $target_dir
 fi
 
 # Copy skeletons to target dir
-rsync -avP $HERE/source/skeleton/ $target_dir
+#rsync -avP $HERE/source/skeleton/ $target_dir
 
 # Generate direct integration tests
 cd $HERE/source/generate_integration_tests
 
-for file in netscaler_*.py ; do
+DIRECT_CALLS_ROLE_FILE=$target_dir/citrix_adc_direct_calls/citrix_adc.yaml
+mkdir -p $(realpath $(dirname $DIRECT_CALLS_ROLE_FILE))
+
+touch $DIRECT_CALLS_ROLE_FILE
+
+echo "---
+
+- hosts: citrix_adc
+
+  gather_facts: no
+  connection: local
+
+  vars:
+    limit_to: \"*\"
+    debug: false
+
+  roles:" > $DIRECT_CALLS_ROLE_FILE
+
+for file in citrix_adc_*.py ; do
 module=${file%.py}
 
-python generate_integration_test.py \
---module $module \
---test-type netscaler_direct_calls \
---ns-version $NS_VERSION \
---dir-path $target_dir/netscaler_direct_calls/roles
 
+    echo "    - { role: $module, when: \"limit_to in ['*', '$module']\" }" >> $DIRECT_CALLS_ROLE_FILE 
 
-python generate_integration_test.py \
---module $module \
---test-type mas_proxied_calls \
---ns-version $NS_VERSION \
---dir-path $target_dir/netscaler_mas_proxied_calls/roles
-
+    python generate_integration_test.py \
+    --module $module \
+    --test-type citrix_adc_direct_calls \
+    --ns-version $NS_VERSION \
+    --dir-path $target_dir/citrix_adc_direct_calls/roles
+    
 done
+    #TODO: complete the mas_api integratin tests generation
+    
+    #python generate_integration_test.py \
+    #--module $module \
+    #--test-type mas_proxied_calls \
+    #--ns-version $NS_VERSION \
+    #--dir-path $target_dir/citrix_adc_mas_proxied_calls/roles
+    
 
 for file in citrix_adm_*.py ; do
 module=${file%.py}

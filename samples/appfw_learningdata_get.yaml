@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
   vars:
     resource: appfwlearningdata 
@@ -7,7 +7,7 @@
     - name: Get the unreviewed appfw learningdata for the specified profile and security check 
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

@@ -1,11 +1,11 @@
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
 
   tasks:
     - name: Delete unreviewed appfw learningdata for the specified appfw profile
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         expected_nitro_errorcode: [0, 258]
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"

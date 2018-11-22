@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: false
 
   tasks:
@@ -6,7 +6,7 @@
   - name: Setup cs action
     delegate_to: localhost
     register: result
-    netscaler_cs_action:
+    citrix_adc_cs_action:
       nitro_user: "{{nitro_user}}"
       nitro_pass: "{{nitro_pass}}"
       nsip: "{{nsip}}"

@@ -8,7 +8,7 @@ ENTITY_NAME = '' #TODO: Module name here
 ####### TESTBED DATA STARTS ###########
 
 # PREREQUISITES/Testbed
-def get_testbed_data(test_type='netscaler_direct_calls', ns_version='12.1'):
+def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data = []
 
     testbedObj = BaseIntegrationModule(test_type, '')  #TODO: prerequisite module here
@@ -42,7 +42,7 @@ def get_testbed_data(test_type='netscaler_direct_calls', ns_version='12.1'):
 
 ####### ACTUAL MODULE INPUT DATA STARTS ###############
 
-def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
+def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     input_data = OrderedDict()
     # For Submodule '' #TODO: submodule name
     submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, '') #TODO: submodule name here

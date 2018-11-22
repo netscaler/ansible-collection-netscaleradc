@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: no
 
@@ -6,7 +6,7 @@
 
     - name: Setup local gslb site
       delegate_to: localhost
-      netscaler_gslb_site:
+      citrix_adc_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -16,7 +16,7 @@
 
     - name: Setup remote gslb site
       delegate_to: localhost
-      netscaler_gslb_site:
+      citrix_adc_gslb_site:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -27,7 +27,7 @@
 
     - name: Setup local gslb service
       delegate_to: localhost
-      netscaler_gslb_service:
+      citrix_adc_gslb_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -42,7 +42,7 @@
 
     - name: Setup remote gslb service
       delegate_to: localhost
-      netscaler_gslb_service:
+      citrix_adc_gslb_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -57,7 +57,7 @@
 
     - name: Setup gslb vserver
       delegate_to: localhost
-      netscaler_gslb_vserver:
+      citrix_adc_gslb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

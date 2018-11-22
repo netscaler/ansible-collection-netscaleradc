@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
   vars:
     resource: lbvserver
@@ -10,7 +10,7 @@
     - name: Get filtered
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

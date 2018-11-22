@@ -1,12 +1,12 @@
 
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
 
   tasks:
     - name: Enable feature
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

@@ -1,5 +1,5 @@
 
 
-[netscaler]
+[citrix_adc]
 
 10.78.60.200 nsip=10.78.60.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no

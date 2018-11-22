@@ -1,6 +1,6 @@
 ---
 
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -13,7 +13,7 @@
 
     - name: ssl binding
       delegate_to: localhost
-      netscaler_ssl_certkey:
+      citrix_adc_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -27,7 +27,7 @@
 
     - name: Set service 1
       delegate_to: localhost
-      netscaler_service:
+      citrix_adc_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -43,7 +43,7 @@
 
     - name: Set service 2
       delegate_to: localhost
-      netscaler_service:
+      citrix_adc_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -59,7 +59,7 @@
 
     - name: lb vserver 1
       delegate_to: localhost
-      netscaler_lb_vserver:
+      citrix_adc_lb_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

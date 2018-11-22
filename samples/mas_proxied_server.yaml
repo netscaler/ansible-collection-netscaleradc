@@ -8,7 +8,7 @@
 
     - name: Get MAS authentication token
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         mas_ip: "{{ nsip }}"
         mas_user: "{{ nitro_user }}"
         mas_pass: "{{ nitro_pass }}"
@@ -20,7 +20,7 @@
 
     - name: Setup server through MAS proxy
       delegate_to: localhost
-      netscaler_server:
+      citrix_adc_server:
         mas_ip: "{{ nsip }}"
         mas_auth_token: "{{ mas_login_result.nitro_auth_token }}"
         mas_proxy_call: true
