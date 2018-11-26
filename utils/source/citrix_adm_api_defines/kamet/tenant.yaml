@@ -1,0 +1,8 @@
+- option_name: name
+  type: str
+  is_get_id: true
+  is_delete_id: false
+  description: 
+    - Name of the Tenant.
+    - Minimum length = 1
+    - Maximum length = 512

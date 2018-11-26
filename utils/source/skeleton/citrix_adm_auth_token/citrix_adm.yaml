@@ -28,4 +28,5 @@
     - { role: citrix_adm_mpsuser, when: "limit_to in ['*', 'citrix_adm_mpsuser']", login_result: "{{ primary_login_result }}" }
     - { role: citrix_adm_mpsgroup, when: "limit_to in ['*', 'citrix_adm_mpsgroup']", login_result: "{{ primary_login_result }}" }
     - { role: citrix_adm_ns_facts, when: "limit_to in ['*', 'citrix_adm_ns_facts']", login_result: "{{ primary_login_result }}" }
+    - { role: citrix_adm_tenant_facts, when: "limit_to in ['*', 'citrix_adm_tenant_facts']", login_result: "{{ primary_login_result }}" }
     - { role: citrix_adm_stylebook, when: "limit_to in ['*', 'citrix_adm_stylebook']", login_result: "{{ primary_login_result }}" }
