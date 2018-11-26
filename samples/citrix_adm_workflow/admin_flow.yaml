@@ -14,6 +14,15 @@
         mas_user: "{{ mas_user }}"
         mas_pass: "{{ mas_pass }}"
 
+    - name: Get tenant facts
+      delegate_to: localhost
+      register: tenant_facts
+      citrix_adm_tenant_facts:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        name: sample_tenant_1
+
     - name: Setup rba policy
       delegate_to: localhost
       citrix_adm_rba_policy:
@@ -24,7 +33,7 @@
 
         description: 'This policy consists of admin permissions for Applications only'
         name: app_admin_policy
-        tenant_id: 0ea1d85a-06b8-4225-9fc8-5a7065fdd590
+        tenant_id: "{{ tenant_facts.tenant[0].id }}"
         statement:
           - access_type: true
             dependent_resources: true
@@ -1956,7 +1965,7 @@
         state: present
 
         name: app_admin_role
-        tenant_id: 0ea1d85a-06b8-4225-9fc8-5a7065fdd590
+        tenant_id: "{{ tenant_facts.tenant[0].id }}"
         policies: 
           - app_admin_policy
 

@@ -1,0 +1,23 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Get all tenants
+      delegate_to: localhost
+      register: tenant_facts
+      citrix_adm_tenant_facts:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        name: sample_tenant_2
+
+
+    - name: Show return data
+      debug:
+        msg: "{{ tenant_facts.tenant[0].id }}"
+
