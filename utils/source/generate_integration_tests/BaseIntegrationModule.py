@@ -44,7 +44,7 @@ class BaseIntegrationModule(object):
         elif self.test_type.strip() == 'citrix_adm_auth_token':
             op_dict[self.entity_name]['mas_ip'] = "{{ mas_ip }}"
             op_dict[self.entity_name]['nitro_auth_token'] = "{{ login_result.session_id }}"
-        else: # netscaler_direct_calls
+        else: # citrix_adc_direct_calls
             op_dict[self.entity_name]['nitro_user'] = "{{ nitro_user }}"
             op_dict[self.entity_name]['nitro_pass'] = "{{ nitro_pass }}"
             op_dict[self.entity_name]['nsip'] = "{{ nsip }}"

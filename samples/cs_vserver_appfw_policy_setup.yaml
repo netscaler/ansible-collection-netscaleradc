@@ -1,6 +1,6 @@
 ---
 
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -12,7 +12,7 @@
     - name: 'SETUP cs_vserver_appfwpolicy_binding'
       delegate_to: localhost
       register: result
-      netscaler_cs_vserver:
+      citrix_adc_cs_vserver:
         nitro_user: '{{ nitro_user }}'
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'

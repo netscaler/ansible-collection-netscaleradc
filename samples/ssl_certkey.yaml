@@ -1,6 +1,6 @@
 ---
 
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -11,7 +11,7 @@
   tasks:
     - name: Set ssl certificate key
       delegate_to: localhost
-      netscaler_ssl_certkey:
+      citrix_adc_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -29,7 +29,7 @@
         inform: PEM
 
     - name: Set ssl certificate key 2
-      netscaler_ssl_certkey:
+      citrix_adc_ssl_certkey:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

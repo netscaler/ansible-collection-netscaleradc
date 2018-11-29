@@ -1,5 +1,5 @@
 
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
   vars:
     resource: server

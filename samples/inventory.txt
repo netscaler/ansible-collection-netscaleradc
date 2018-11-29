@@ -1,19 +1,19 @@
 
-[netscaler]
+[citrix_adc]
 
-# netscaler_lb  nsip=172.17.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+# citrix_adc_lb  nsip=172.17.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-# netscaler_cpx111 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+# citrix_adc_cpx111 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-# netscaler_cpx120 nsip=172.18.0.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+# citrix_adc_cpx120 nsip=172.18.0.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-#netscaler_vpx105 nsip=10.78.60.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+#citrix_adc_vpx105 nsip=10.78.60.200 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-#netscaler_vpx111 nsip=10.78.60.201 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+#citrix_adc_vpx111 nsip=10.78.60.201 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-#netscaler_vpx120 nsip=10.78.60.202 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+#citrix_adc_vpx120 nsip=10.78.60.202 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
-netscaler_vpx121 nsip=10.78.17.71 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+citrix_adc_vpx121 nsip=10.78.60.205 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
 
 [mas]
 

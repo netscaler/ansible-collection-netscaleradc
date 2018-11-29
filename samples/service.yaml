@@ -1,5 +1,5 @@
 ---
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
 
@@ -7,7 +7,7 @@
 
     - name: Setup service
       delegate_to: localhost
-      netscaler_service:
+      citrix_adc_service:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

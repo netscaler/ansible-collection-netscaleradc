@@ -1,5 +1,5 @@
 ---
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -24,10 +24,10 @@
   tasks:
     - name: Check if servicegroup exists
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
 
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         expected_nitro_errorcode: [0, 258]
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
@@ -41,7 +41,7 @@
 
     - name: Add resource when not existing
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -55,7 +55,7 @@
 
     - name: get configured service bindings
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -68,7 +68,7 @@
 
     - name: delete configured service bindings
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -86,7 +86,7 @@
 
     - name: Create specified bindings
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -104,7 +104,7 @@
 
     - name: Save configuration
       delegate_to: localhost
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

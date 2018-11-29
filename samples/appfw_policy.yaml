@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -9,7 +9,7 @@
   tasks:
     - name: Setup appfw policy
       delegate_to: localhost
-      netscaler_appfw_policy:
+      citrix_adc_appfw_policy:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

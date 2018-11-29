@@ -1,6 +1,6 @@
 ---
 
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -11,7 +11,7 @@
   tasks:
     - name: Set lb vserver 1
       delegate_to: localhost
-      netscaler_lb_vserver: 
+      citrix_adc_lb_vserver: 
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -27,7 +27,7 @@
 
     - name: Set cs policy
       delegate_to: localhost
-      netscaler_cs_policy: 
+      citrix_adc_cs_policy: 
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -41,7 +41,7 @@
 
     - name: Set cs vserver
       delegate_to: localhost
-      netscaler_cs_vserver:
+      citrix_adc_cs_vserver:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

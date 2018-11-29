@@ -1,11 +1,11 @@
-- hosts: netscaler
+- hosts: citrix_adc
   gather_facts: no
 
   tasks:
     - name: Export appfw learnt data in csv format to the location /var/learnt_data/
       delegate_to: localhost
       register: result
-      netscaler_nitro_request:
+      citrix_adc_nitro_request:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"

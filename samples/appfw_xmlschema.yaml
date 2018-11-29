@@ -1,4 +1,4 @@
-- hosts: netscaler
+- hosts: citrix_adc
 
   vars:
     max_clients: 5
@@ -10,7 +10,7 @@
     - name: setup appfw xmlschema
       delegate_to: localhost
       register: result
-      netscaler_appfw_xmlschema:
+      citrix_adc_appfw_xmlschema:
         nitro_user: '{{ nitro_user }}'
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'
