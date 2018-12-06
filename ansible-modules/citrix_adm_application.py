@@ -18,7 +18,9 @@ DOCUMENTATION = '''
 ---
 module: citrix_adm_application
 short_description: Manage applications on Citrix ADM.
-description: Manage applications on Citrix ADM.
+description:
+    - Manage applications on Citrix ADM.
+    - Note that due to limitations on the underlying NITRO API an update is always forced when I(state=present).
 
 version_added: "2.8.0"
 
@@ -155,6 +157,34 @@ options:
         type: list
 
 
+    poll_after_delete:
+        description:
+            - Poll the instances after deleting an application to update the application list immediately.
+            - By default Citrix ADM will poll every 30 minutes.
+        type: bool
+        default: false
+
+    poll_delay:
+        description:
+            - Time in seconds to wait between the delete operation and the subsequent poll operation.
+            - This is only relevant when I(state) is set to C(absent) and I(poll_after_delete) is set to C(true).
+        type: int
+        default: 10
+
+    check_create:
+        description:
+            - Check if the application was created on the target citrix adm.
+            - Return the created application in the module results.
+        type: bool
+        default: true
+
+    check_create_delay:
+        description:
+            - Time in seconds to wait between the create/update operation and retrieval of the created application.
+            - This delay should be non zero as the newly created/updated application might not be immediately available to be fetched by the target Citrix ADM.
+        type: int
+        default: 10
+
 extends_documentation_fragment: netscaler
 '''
 
@@ -216,6 +246,7 @@ application:
 '''
 
 import codecs
+import time
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.urls import fetch_url
@@ -223,14 +254,14 @@ from ansible.module_utils.network.netscaler.netscaler import netscaler_common_ar
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'application'
 
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
-        self.attibute_config = {
+        self.attribute_config = {
             
             'application': {
                 'attributes_list': [
@@ -316,13 +347,13 @@ class ModuleExecutor(object):
 
 
     def get_application(self):
-        url = '%s://%s/nitro/v1/config/application' % (
+        url = '%s://%s/nitro/v2/config/application' % (
             self.module.params['nitro_protocol'],
             self.module.params['nsip'],
         )
 
         filter_list = []
-        for attribute in self.attibute_config['application']['get_id_attributes']:
+        for attribute in self.attribute_config['application']['get_id_attributes']:
             attribute_value = self.module.params.get(attribute)
             if attribute_value is not None:
                 filter_list.append('%s:%s' % (attribute, attribute_value))
@@ -337,7 +368,6 @@ class ModuleExecutor(object):
             headers=self.http_headers,
             method='GET',
         )
-        log('r: %s' % r)
         log('info: %s' % info)
 
         # Anything but a 200 is an error
@@ -373,7 +403,7 @@ class ModuleExecutor(object):
 
     def construct_request_data(self):
         data_dict = {}
-        for attribute in self.attibute_config['application']['attributes_list']:
+        for attribute in self.attribute_config['application']['attributes_list']:
             attr_val = self.module.params.get(attribute)
             if attr_val is not None:
                 data_dict[attribute] = attr_val
@@ -384,12 +414,12 @@ class ModuleExecutor(object):
     def post_application(self):
         log('post_application')
         request_data = self.construct_request_data()
-        payload='object=%s' % self.module.jsonify(request_data)
+        payload = '%s' % self.module.jsonify(request_data)
 
         log('request data %s' % request_data)
         log('payload %s' % payload)
 
-        url = '%s://%s/nitro/v1/config/application' % (
+        url = '%s://%s/nitro/v2/config/application' % (
             self.module.params['nitro_protocol'],
             self.module.params['nsip'],
         )
@@ -405,7 +435,6 @@ class ModuleExecutor(object):
             method='POST',
         )
 
-        log('r: %s' % r)
         log('info: %s' % info)
 
         data = self._parse_response_body(r)
@@ -444,15 +473,15 @@ class ModuleExecutor(object):
         if application_id is None:
             self.module.fail_json('Cannot update application without id', **self.module_result)
 
-        url = '%s://%s/nitro/v1/config/application/%s' % (
+        url = '%s://%s/nitro/v2/config/application/%s' % (
             self.module.params['nitro_protocol'],
             self.module.params['nsip'],
             application_id,
         )
 
         log('url %s' % url)
-
         log('headers %s' % self.http_headers)
+
         r, info = fetch_url(
             self.module,
             url=url,
@@ -461,7 +490,6 @@ class ModuleExecutor(object):
             method='PUT',
         )
 
-        log('r: %s' % r)
         log('info: %s' % info)
 
         data = self._parse_response_body(r)
@@ -493,10 +521,17 @@ class ModuleExecutor(object):
         if application_id is None:
             self.module.fail_json('Cannot delete application without id', **self.module_result)
 
-        url = '%s://%s/nitro/v1/config/application/%s' % (
+        stylebook_params = self.module.from_json(self.module.params['stylebook_params'])
+        log('stylebook_params %s' % stylebook_params)
+
+        url = '%s://%s/nitro/v2/config/application/%s?args=stylebook_params:%s/%s/%s,configpack_id:%s' % (
             self.module.params['nitro_protocol'],
             self.module.params['nsip'],
             application_id,
+            stylebook_params['namespace'],
+            stylebook_params['version'],
+            stylebook_params['name'],
+            application['configpack_id'],
         )
 
         r, info = fetch_url(
@@ -506,7 +541,6 @@ class ModuleExecutor(object):
             method='DELETE',
         )
 
-        log('r: %s' % r)
         log('info: %s' % info)
 
         data = self._parse_response_body(r)
@@ -530,7 +564,38 @@ class ModuleExecutor(object):
             msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
+    def poll_instances(self):
+        log('poll_instances')
 
+        url = '%s://%s/nitro/v2/config/ns_emon_poll_policy' % (
+            self.module.params['nitro_protocol'],
+            self.module.params['nsip'],
+        )
+
+        poll_payload = {
+            "params":{
+                "action":"do_poll"
+            },
+            "ns_emon_poll_policy":{},
+        }
+
+        r, info = fetch_url(
+            self.module,
+            url=url,
+            headers=self.http_headers,
+            data=self.module.jsonify(poll_payload),
+            method='POST',
+        )
+
+        log('r: %s' % r.read())
+        log('info: %s' % info)
+
+        # Anything but a 200 is an error
+        status = info.get('status')
+        http_msg = info.get('msg')
+        if status != 200:
+            msg = 'Poll instances failure. HTTP status %s, msg: %s' % (status, http_msg)
+            self.module.fail_json(msg=msg, **self.module_result)
 
     def main(self):
         try:
@@ -544,12 +609,22 @@ class ModuleExecutor(object):
                     self.put_application(application)
 
                 # Return the created/updated application in the module results
-                self.module_result.update(dict(application=self.get_application()))
+                if self.module.params['check_create']:
+                    time.sleep(self.module.params['check_create_delay'])
+                    created_application = self.get_application()
+                    if created_application is None:
+                        self.module.fail_json(msg='Failed to create application', **self.module_result)
+                    else:
+                        self.module_result.update(dict(application=created_application))
 
             elif self.module.params['state'] == 'absent':
                 if application is not None:
                     self.module_result['changed'] = True
                     self.delete_application(application=application)
+
+                if self.module.params['poll_after_delete']:
+                    time.sleep(self.module.params['poll_delay'])
+                    self.poll_instances()
 
             self.module.exit_json(**self.module_result)
 
@@ -641,6 +716,22 @@ def main():
         application_ids=dict(type='list',),
 
         
+        poll_after_delete=dict(
+            type='bool',
+            default=False,
+        ),
+        poll_delay=dict(
+            type='int',
+            default=10,
+        ),
+        check_create=dict(
+            type='bool',
+            default=True,
+        ),
+        check_create_delay=dict(
+            type='int',
+            default=10,
+        )
     )
 
 
@@ -650,7 +741,7 @@ def main():
 
     module = AnsibleModule(
         argument_spec=argument_spec,
-        supports_check_mode=True,
+        supports_check_mode=False,
     )
 
     executor = ModuleExecutor(module=module)
