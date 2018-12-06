@@ -14,6 +14,7 @@ NS_VERSION="12.1"
 fi
 
 
+
 # All script path locations are relative to HERE
 HERE=$(realpath $( dirname ${BASH_SOURCE[0]}))
 
@@ -33,7 +34,7 @@ mkdir -p $target_dir
 fi
 
 # Copy skeletons to target dir
-#rsync -avP $HERE/source/skeleton/ $target_dir
+rsync -avP $HERE/source/skeleton/ $target_dir
 
 # Generate direct integration tests
 cd $HERE/source/generate_integration_tests
@@ -83,11 +84,13 @@ module=${file%.py}
 
 python generate_integration_test.py \
 --module $module \
+--ns-version $NS_VERSION \
 --test-type citrix_adm \
 --dir-path $target_dir/citrix_adm/roles
 
 python generate_integration_test.py \
 --module $module \
+--ns-version $NS_VERSION \
 --test-type citrix_adm_auth_token \
 --dir-path $target_dir/citrix_adm_auth_token/roles
 
