@@ -119,7 +119,7 @@ class ModuleExecutor(object):
 
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
-        self.attibute_config = {
+        self.attribute_config = {
             
             'rba_role': {
                 'attributes_list': [
@@ -159,7 +159,7 @@ class ModuleExecutor(object):
     def main_object_exists(self, config):
         try:
             main_object_exists = config.exists(
-                get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'],
+                get_id_attributes=self.attribute_config[self.main_nitro_class]['get_id_attributes'],
                 use_filter=True,
             )
         except NitroException as e:
@@ -172,8 +172,9 @@ class ModuleExecutor(object):
             module=self.module,
             resource=self.main_nitro_class,
             attribute_values_dict=self.module.params,
-            attributes_list=self.attibute_config[self.main_nitro_class]['attributes_list'],
-            transforms=self.attibute_config[self.main_nitro_class]['transforms'],
+            attributes_list=self.attribute_config[self.main_nitro_class]['attributes_list'],
+            transforms=self.attribute_config[self.main_nitro_class]['transforms'],
+            api_path='nitro/v2/config',
         )
 
         return config
@@ -195,7 +196,7 @@ class ModuleExecutor(object):
 
         # Return the actual object
         config.get_actual_instance(
-            get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'],
+            get_id_attributes=self.attribute_config[self.main_nitro_class]['get_id_attributes'],
             success_codes=[None, 0],
             use_filter=True
         )
@@ -209,7 +210,7 @@ class ModuleExecutor(object):
         if self.main_object_exists(config):
             self.module_result['changed'] = True
             if not self.module.check_mode:
-                config.delete(delete_id_attributes=self.attibute_config[self.main_nitro_class]['delete_id_attributes'])
+                config.delete(delete_id_attributes=self.attribute_config[self.main_nitro_class]['delete_id_attributes'])
 
     def main(self):
         try:
