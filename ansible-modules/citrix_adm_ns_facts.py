@@ -106,7 +106,7 @@ class ModuleExecutor(object):
 
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
-        self.attibute_config = {
+        self.attribute_config = {
             
             'ns': {
                 'attributes_list': [
@@ -173,13 +173,13 @@ class ModuleExecutor(object):
         return data
 
     def get_ns_facts(self):
-        url = '%s://%s/nitro/v1/config/ns' % (
+        url = '%s://%s/nitro/v2/config/ns' % (
             self.module.params['nitro_protocol'],
             self.module.params['nsip'],
         )
 
         filter_list = []
-        for attribute in self.attibute_config['ns']['get_id_attributes']:
+        for attribute in self.attribute_config['ns']['get_id_attributes']:
             attribute_value = self.module.params.get(attribute)
             if attribute_value is not None:
                 filter_list.append('%s:%s' % (attribute, attribute_value))
