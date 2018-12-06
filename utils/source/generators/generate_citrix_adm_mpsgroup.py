@@ -2,6 +2,7 @@ import os
 import copy
 import json
 import yaml
+from collections import OrderedDict
 from jinja2 import Environment, FileSystemLoader
 
 from helpers import calculate_transforms_for_attribute, calculate_doc_list, calculate_attributes_config_dict
@@ -56,12 +57,12 @@ def main():
 
     main_data = calculate_attributes_config_dict('mpsgroup', main_object_attributes)
 
-    main_data['transforms'] = {
-        'assign_all_apps': 'lambda v: "true" if v else "false"',
-        'assign_all_devices': 'lambda v: "true" if v else "false"',
-        'allow_application_only': 'lambda v: "true" if v else "false"',
-        'enable_session_timeout': 'lambda v: "true" if v else "false"',
-    }
+    main_data['transforms'] = OrderedDict([
+        ('enable_session_timeout', 'lambda v: "true" if v else "false"'),
+        ('allow_application_only', 'lambda v: "true" if v else "false"'),
+        ('assign_all_apps', 'lambda v: "true" if v else "false"'),
+        ('assign_all_devices', 'lambda v: "true" if v else "false"'),
+    ])
 
     attributes_config_list.append(main_data)
 
