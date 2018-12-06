@@ -18,7 +18,10 @@ DOCUMENTATION = '''
 ---
 module: citrix_adm_stylebook
 short_description: Create or delete Citrix ADM stylebooks.
-description: Create or delete Citrix ADM stylebooks.
+description:
+    - Create or delete Citrix ADM stylebooks.
+    - Note that due to API limitations this module does not work with basic authentication.
+    - Instead use the I(nitro_auth_token) option.
 
 version_added: "2.8.0"
 
@@ -106,7 +109,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroAPIFetcher, Ni
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.nitro_api_fetcher = NitroAPIFetcher(module, api_path='stylebook/nitro/v1/config')
@@ -229,9 +232,9 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
         if stylebooks == []:
-            self.module.fail_json('Failed to get the created stylebook', **self.module_result)
+            self.module.fail_json(msg='Failed to get the created stylebook', **self.module_result)
         elif len(stylebooks) > 1:
-            self.module.fail_json('Multiple stylebooks were returned', **self.module_result)
+            self.module.fail_json(msg='Multiple stylebooks were returned', **self.module_result)
         else:
             return stylebooks[0]
 
@@ -244,6 +247,8 @@ class ModuleExecutor(object):
             self.module_result['changed'] = True
             if not self.module.check_mode:
                 self.create_stylebook()
+                created_stylebook = self.get_stylebook()
+                self.module_result.update(dict(stylebook=created_stylebook))
 
     def delete_stylebook(self):
         # Check if all attributes are present
@@ -284,8 +289,6 @@ class ModuleExecutor(object):
 
             if self.module.params['state'] == 'present':
                 self.create()
-                created_stylebook = self.get_stylebook()
-                self.module_result.update(dict(stylebook=created_stylebook))
             elif self.module.params['state'] == 'absent':
                 self.delete()
 
