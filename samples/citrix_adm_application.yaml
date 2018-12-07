@@ -46,11 +46,11 @@
           version: "0.1"
           configpack_payload:
             parameters:
-              name: "test_application_3"
-              ip: "192.169.7.2"
+              name: "test_application_19"
+              ip: "192.180.19.2"
               lb-alg: "ROUNDROBIN"
               svc-servers:
-                - "192.169.7.3"
+                - "192.180.19.3"
               svc-port: "80"
             targets:
               - id: "{{ ns_facts.ns[0].id }}"
@@ -63,6 +63,9 @@
 
         state: present
 
+        poll_after_delete: true
+        poll_delay: 10
+
         app_category: test_category
-        name: test_application_3
+        name: test_application_19
         stylebook_params: "{{ stylebook_facts | to_json }}"

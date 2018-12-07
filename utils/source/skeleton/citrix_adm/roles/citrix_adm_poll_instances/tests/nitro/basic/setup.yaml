@@ -1,0 +1,13 @@
+- name: Pause before poll
+  delegate_to: localhost
+  pause:
+    seconds: 10
+
+- name: Poll instances
+  delegate_to: localhost
+  check_mode: '{{ check_mode }}'
+  register: result
+  citrix_adm_poll_instances:
+    mas_ip: "{{ mas_ip }}"
+    mas_pass: '{{ mas_pass }}'
+    mas_user: '{{ mas_user }}'

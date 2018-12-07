@@ -12,7 +12,7 @@
       citrix_adm_login:
         mas_ip: "{{ mas_ip }}"
         mas_user: "{{ mas_user }}"
-        mas_pass: "this is not the correct password"
+        mas_pass: "{{ mas_pass }}"
 
     - name: Setup mpsuser
       delegate_to: localhost

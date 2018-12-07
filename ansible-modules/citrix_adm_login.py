@@ -63,7 +63,7 @@ def main():
     )
 
     try:
-        fetcher = NitroAPIFetcher(module)
+        fetcher = NitroAPIFetcher(module, api_path='nitro/v2/config')
 
         module_result = dict(
             changed=False,

@@ -38,6 +38,11 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
             ('standalone_instances_id', []),
         ]
     )
+
+    if ns_version == '12.0':
+        del attributes['application_names_with_regex']
+        del attributes['application_names_without_regex']
+        del attributes['description']
     
     submodObj.add_operation('setup', copy.deepcopy(attributes))
     

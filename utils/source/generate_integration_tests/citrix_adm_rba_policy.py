@@ -21,7 +21,7 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
     attributes = OrderedDict(
         [
             ('state',  'present'),
-            ('name', 'playbook_test_policy'),
+            ('name', 'integration_test_policy'),
             ('description', 'some description'),
             ('statement', [{
                 'access_type': True,
@@ -41,9 +41,34 @@ def get_input_data(test_type='netscaler_direct_calls', ns_version='12.1'):
     )
     
     submodObj.add_operation('setup', copy.deepcopy(attributes), run_once=True)
+
+    attributes['description'] = 'Other description'
+    submodObj.add_operation('change_description', copy.deepcopy(attributes), run_once=True)
+
+    attributes['statement'].append({
+                    "access_type": True,
+                    "parent_name": "rba_policy",
+                    "operation_name": "add",
+                    "resource_type": "DeviceAPIProxy"
+                })
+    submodObj.add_operation('add_statement_item', copy.deepcopy(attributes), run_once=True)
+
+    attributes['statement'].pop()
+    submodObj.add_operation('remove_statement_item', copy.deepcopy(attributes), run_once=True)
+
+    attributes['ui'].append({
+                    "name": "ApplicationsDashboard",
+                    "access_type": True,
+                    "parent_name": "rba_policy",
+                    "display_name": ""
+                })
+    submodObj.add_operation('add_ui_item', copy.deepcopy(attributes), run_once=True)
+
+
+    attributes['ui'].pop()
+    submodObj.add_operation('remove_ui_item', copy.deepcopy(attributes), run_once=True)
     
     attributes['state'] = 'absent'
-    
     submodObj.add_operation('remove', copy.deepcopy(attributes))
     
     

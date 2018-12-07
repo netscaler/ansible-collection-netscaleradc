@@ -13,7 +13,7 @@
 
     - name: Get Citrix ADM authentication token
       delegate_to: localhost
-      netscaler_mas_login:
+      citrix_adm_login:
         mas_ip: "{{ mas_ip }}"
         mas_user: "{{ mas_user }}"
         mas_pass: "{{ mas_pass }}"
@@ -30,3 +30,5 @@
     - { role: citrix_adm_ns_facts, when: "limit_to in ['*', 'citrix_adm_ns_facts']", login_result: "{{ primary_login_result }}" }
     - { role: citrix_adm_tenant_facts, when: "limit_to in ['*', 'citrix_adm_tenant_facts']", login_result: "{{ primary_login_result }}" }
     - { role: citrix_adm_stylebook, when: "limit_to in ['*', 'citrix_adm_stylebook']", login_result: "{{ primary_login_result }}" }
+    - { role: citrix_adm_application, when: "limit_to in ['*', 'citrix_adm_application']", login_result: "{{ primary_login_result }}" }
+    - { role: citrix_adm_poll_instances, when: "limit_to in ['*', 'citrix_adm_poll_instances']", login_result: "{{ primary_login_result }}" }
