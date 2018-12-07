@@ -192,8 +192,6 @@ class ModuleExecutor(object):
             self.module_result['changed'] = True
             if not self.module.check_mode:
                 self.create_stylebook()
-                created_stylebook = self.get_stylebook()
-                self.module_result.update(dict(stylebook=created_stylebook))
 
     def delete_stylebook(self):
         # Check if all attributes are present
@@ -234,6 +232,9 @@ class ModuleExecutor(object):
 
             if self.module.params['state'] == 'present':
                 self.create()
+                if not self.module.check_mode:
+                    created_stylebook = self.get_stylebook()
+                    self.module_result.update(dict(stylebook=created_stylebook))
             elif self.module.params['state'] == 'absent':
                 self.delete()
 
