@@ -235,11 +235,6 @@ def get_plugin_info(module_dir, limit_to=None, verbose=False):
         if module_path.endswith('__init__.py'):
             continue
 
-        # Monkey edit start
-        if module_path.endswith('/netscaler.py'):
-            continue
-        # Monkey edit stop
-
         # Do not list blacklisted modules
         module = os.path.splitext(os.path.basename(module_path))[0]
         if module in plugin_docs.BLACKLIST['MODULE'] or module == 'base':
@@ -271,7 +266,6 @@ def get_plugin_info(module_dir, limit_to=None, verbose=False):
         #
 
         # use ansible core library to parse out doc metadata YAML and plaintext examples
-        print('module_path type %s %s' % (type(module_path), module_path))
         doc, examples, returndocs, metadata = plugin_docs.get_docstring(module_path, fragment_loader, verbose=verbose)
 
         if metadata and 'removed' in metadata.get('status'):
@@ -292,8 +286,6 @@ def get_plugin_info(module_dir, limit_to=None, verbose=False):
             module_categories.append(new_cat)
             category = category[new_cat]
 
-        if category.get('_modules') is None:
-            category['_modules'] = []
         category['_modules'].append(module)
 
         # the category we will use in links (so list_of_all_plugins can point to plugins/action_plugins/*'
@@ -545,9 +537,6 @@ def process_categories(plugin_info, categories, templates, output_dir, output_na
     # We should track that down and fix it at some point in the future.
     plugin_info = deepcopy(plugin_info)
     for category in sorted(categories.keys()):
-        if category == '_modules':
-            continue
-        print('category %s' % category)
         module_map = categories[category]
         category_filename = output_name % category
 
