@@ -1,4 +1,13 @@
 
-
     def sync_{{ item.binding_key }}(self):
-        self.sync_binding_with_data({{ item }})
+        self.sync_binding_with_data(
+            {
+                'binding_key': '{{ item.binding_key }}',
+                'binding_object': '{{ item.binding_object }}',
+                'get_all_id': '{{ item.get_all_id }}',
+                'link_to_main': {
+                    'main_key': '{{ item.link_to_main.main_key }}',
+                    'bind_key': '{{ item.link_to_main.bind_key }}',
+                }
+            }
+        )

@@ -331,8 +331,7 @@ class ModuleExecutor(object):
         #{% endfor %}
 
 
-        #{% for item in bindings %}
-        #{% include 'appfwprofile_binding_methods.template' %}
+        #{% for item in bindings %}#{% include 'appfwprofile_binding_methods.template' %}
         #{% endfor %}
 
 

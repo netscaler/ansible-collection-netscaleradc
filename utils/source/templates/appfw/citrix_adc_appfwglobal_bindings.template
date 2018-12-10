@@ -161,8 +161,7 @@ class ModuleExecutor(object):
         #{% endfor %}
 
 
-        #{% for item in bindings %}
-        #{% include 'appfwglobal_binding_methods.template' %}
+        #{% for item in bindings %}#{% include 'appfwglobal_binding_methods.template' %}
         #{% endfor %}
 
     def main(self):
