@@ -1,9 +1,9 @@
-.. _all_modules:
+.. _community_supported:
 
-All modules
-```````````
+:orphan:
 
-
+Modules Maintained by the Ansible Community
+```````````````````````````````````````````
 
   * :ref:`citrix_adc_appfw_confidfield_module` 
   * :ref:`citrix_adc_appfw_fieldtype_module` 
@@ -45,7 +45,6 @@ All modules
   * :ref:`citrix_adm_rba_role_module` 
   * :ref:`citrix_adm_stylebook_module` 
   * :ref:`citrix_adm_tenant_facts_module` 
-
 
 .. note::
     - **(D)**: This marks a module as deprecated, which means a module is kept for backwards compatibility but usage is discouraged.
