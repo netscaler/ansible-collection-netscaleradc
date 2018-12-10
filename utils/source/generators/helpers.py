@@ -12,6 +12,34 @@ def calculate_transforms_for_attribute(attribute):
     elif set(choice_set) == set(['ENABLED', 'DISABLED']):
         return 'lambda v: v.upper()'
 
+
+def split_description_line(line, width=100):
+    line = str(line)
+    if len(line) <= width:
+        # Escape double quotes
+        line = line.replace('"', r'\\"')
+        # Put double quotes around line to avoid yaml
+        # invalid characters breaking the documentation rendering
+        return ''.join(['"', line, '"'])
+
+    else:
+        words = line.split()
+        line_splits = []
+        line = []
+        for word in words:
+            if len(' '.join(line)) + len(word) > width:
+                line_splits.append(' '.join(line))
+                line = []
+            else:
+                line.append(word)
+
+        if len(line) > 0:
+            line_splits.append(' '.join(line))
+
+        return line_splits
+
+
+
 def calculate_doc_list(attribute_list, skip_attributes=[]):
     doc_list = []
     for attribute in attribute_list:
@@ -38,7 +66,7 @@ def calculate_doc_list(attribute_list, skip_attributes=[]):
         if description is None:
             raise Exception('Cannot find description for attribute %s' % attribute['option_name'])
         else:
-            doc_item['description'] = attribute['description']
+            doc_item['description'] = [split_description_line(line) for line in description]
 
         # Copy type
         attribute_type = attribute.get('type')
