@@ -230,11 +230,11 @@ class ModuleExecutor(object):
                 'transforms': {
                     
                     'signatureautoupdate': lambda v: 'ON' if v else 'OFF',
-                    'useconfigurablesecretkey': lambda v: 'ON' if v else 'OFF',
                     'logmalformedreq': lambda v: 'ON' if v else 'OFF',
-                    'entitydecoding': lambda v: 'ON' if v else 'OFF',
-                    'ceflogging': lambda v: 'ON' if v else 'OFF',
                     'geolocationlogging': lambda v: 'ON' if v else 'OFF',
+                    'ceflogging': lambda v: 'ON' if v else 'OFF',
+                    'entitydecoding': lambda v: 'ON' if v else 'OFF',
+                    'useconfigurablesecretkey': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
                     
