@@ -1773,32 +1773,32 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
+                    'starturlclosure': lambda v: 'ON' if v else 'OFF',
+                    'cookietransforms': lambda v: 'ON' if v else 'OFF',
                     'crosssitescriptingtransformunsafehtml': lambda v: 'ON' if v else 'OFF',
-                    'urldecoderequestcookies': lambda v: 'ON' if v else 'OFF',
-                    'optimizepartialreqs': lambda v: 'ON' if v else 'OFF',
+                    'crosssitescriptingcheckcompleteurls': lambda v: 'ON' if v else 'OFF',
+                    'sqlinjectiontransformspecialchars': lambda v: 'ON' if v else 'OFF',
+                    'sqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
+                    'sqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
+                    'creditcardxout': lambda v: 'ON' if v else 'OFF',
+                    'dosecurecreditcardlogging': lambda v: 'ON' if v else 'OFF',
+                    'streaming': lambda v: 'ON' if v else 'OFF',
+                    'trace': lambda v: 'ON' if v else 'OFF',
+                    'xmlsqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
+                    'xmlsqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
                     'usehtmlerrorobject': lambda v: 'ON' if v else 'OFF',
+                    'logeverypolicyhit': lambda v: 'ON' if v else 'OFF',
+                    'stripcomments': lambda v: 'ON' if v else 'OFF',
+                    'exemptclosureurlsfromsecuritychecks': lambda v: 'ON' if v else 'OFF',
+                    'canonicalizehtmlresponse': lambda v: 'ON' if v else 'OFF',
                     'enableformtagging': lambda v: 'ON' if v else 'OFF',
                     'sessionlessurlclosure': lambda v: 'ON' if v else 'OFF',
-                    'cookietransforms': lambda v: 'ON' if v else 'OFF',
-                    'creditcardxout': lambda v: 'ON' if v else 'OFF',
-                    'xmlsqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
-                    'xmlsqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
-                    'trace': lambda v: 'ON' if v else 'OFF',
-                    'sqlinjectiontransformspecialchars': lambda v: 'ON' if v else 'OFF',
-                    'crosssitescriptingcheckcompleteurls': lambda v: 'ON' if v else 'OFF',
-                    'logeverypolicyhit': lambda v: 'ON' if v else 'OFF',
-                    'sqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
-                    'canonicalizehtmlresponse': lambda v: 'ON' if v else 'OFF',
-                    'checkrequestheaders': lambda v: 'ON' if v else 'OFF',
-                    'stripcomments': lambda v: 'ON' if v else 'OFF',
-                    'percentdecoderecursively': lambda v: 'ON' if v else 'OFF',
-                    'dosecurecreditcardlogging': lambda v: 'ON' if v else 'OFF',
-                    'starturlclosure': lambda v: 'ON' if v else 'OFF',
-                    'sqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
                     'semicolonfieldseparator': lambda v: 'ON' if v else 'OFF',
-                    'exemptclosureurlsfromsecuritychecks': lambda v: 'ON' if v else 'OFF',
                     'excludefileuploadfromchecks': lambda v: 'ON' if v else 'OFF',
-                    'streaming': lambda v: 'ON' if v else 'OFF',
+                    'checkrequestheaders': lambda v: 'ON' if v else 'OFF',
+                    'optimizepartialreqs': lambda v: 'ON' if v else 'OFF',
+                    'urldecoderequestcookies': lambda v: 'ON' if v else 'OFF',
+                    'percentdecoderecursively': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
                     
@@ -2160,8 +2160,8 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'xmlattachmentcontenttypecheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxattachmentsizecheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlattachmentcontenttypecheck': lambda v: 'ON' if v else 'OFF',
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
@@ -2221,26 +2221,26 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'xmlblockpi': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxattributescheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlminfilesizecheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementdepthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxnodescheck': lambda v: 'ON' if v else 'OFF',
-                    'state': lambda v: v.upper(),
-                    'xmlmaxentityexpansionscheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxelementchildrencheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxentityexpansiondepthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlblockdtd': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxnamespacescheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxelementscheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxfilesizecheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxnamespaceurilengthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementnamelengthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxelementscheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxelementchildrencheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxnodescheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxentityexpansionscheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxentityexpansiondepthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxattributescheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxattributenamelengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlsoaparraycheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxattributevaluelengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlblockexternalentities': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxnamespacescheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxnamespaceurilengthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxchardatalengthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxfilesizecheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlminfilesizecheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlblockpi': lambda v: 'ON' if v else 'OFF',
+                    'xmlblockdtd': lambda v: 'ON' if v else 'OFF',
+                    'xmlblockexternalentities': lambda v: 'ON' if v else 'OFF',
+                    'xmlsoaparraycheck': lambda v: 'ON' if v else 'OFF',
+                    'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
                     
@@ -2298,8 +2298,8 @@ class ModuleExecutor(object):
                     
                     'xmlvalidateresponse': lambda v: 'ON' if v else 'OFF',
                     'xmladditionalsoapheaders': lambda v: 'ON' if v else 'OFF',
-                    'state': lambda v: v.upper(),
                     'xmlvalidatesoapenvelope': lambda v: 'ON' if v else 'OFF',
+                    'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
                     
@@ -2594,100 +2594,252 @@ class ModuleExecutor(object):
 
 
         
-        
-
     def sync_contenttype_bindings(self):
-        self.sync_binding_with_data({'description': 'contenttype bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'contenttype_bindings', 'binding_object': 'appfwprofile_contenttype_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['contenttype', 'name'], 'resource_name': 'contenttype_bindings', 'attributes': ['contenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['contenttype', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'contenttype_bindings',
+                'binding_object': 'appfwprofile_contenttype_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_cookieconsistency_bindings(self):
-        self.sync_binding_with_data({'description': 'cookieconsistency bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'cookieconsistency_bindings', 'binding_object': 'appfwprofile_cookieconsistency_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['cookieconsistency', 'name'], 'resource_name': 'cookieconsistency_bindings', 'attributes': ['cookieconsistency', 'isregex', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['cookieconsistency', 'isregex', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'cookieconsistency_bindings',
+                'binding_object': 'appfwprofile_cookieconsistency_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_creditcardnumber_bindings(self):
-        self.sync_binding_with_data({'description': 'creditcardnumber bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'creditcardnumber_bindings', 'binding_object': 'appfwprofile_creditcardnumber_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['creditcardnumber', 'creditcardnumberurl', 'name'], 'resource_name': 'creditcardnumber_bindings', 'attributes': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'creditcardnumber_bindings',
+                'binding_object': 'appfwprofile_creditcardnumber_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_crosssitescripting_bindings(self):
-        self.sync_binding_with_data({'description': 'crosssitescripting bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'crosssitescripting_bindings', 'binding_object': 'appfwprofile_crosssitescripting_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['crosssitescripting', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'name'], 'resource_name': 'crosssitescripting_bindings', 'attributes': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'crosssitescripting_bindings',
+                'binding_object': 'appfwprofile_crosssitescripting_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_csrftag_bindings(self):
-        self.sync_binding_with_data({'description': 'csrftag bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'csrftag_bindings', 'binding_object': 'appfwprofile_csrftag_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['csrftag', 'csrfformactionurl', 'name'], 'resource_name': 'csrftag_bindings', 'attributes': ['csrftag', 'csrfformactionurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['csrftag', 'csrfformactionurl', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'csrftag_bindings',
+                'binding_object': 'appfwprofile_csrftag_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_denyurl_bindings(self):
-        self.sync_binding_with_data({'description': 'denyurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'denyurl_bindings', 'binding_object': 'appfwprofile_denyurl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['denyurl', 'name'], 'resource_name': 'denyurl_bindings', 'attributes': ['denyurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['denyurl', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'denyurl_bindings',
+                'binding_object': 'appfwprofile_denyurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_excluderescontenttype_bindings(self):
-        self.sync_binding_with_data({'description': 'excluderescontenttype bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'excluderescontenttype_bindings', 'binding_object': 'appfwprofile_excluderescontenttype_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['excluderescontenttype', 'name'], 'resource_name': 'excluderescontenttype_bindings', 'attributes': ['excluderescontenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['excluderescontenttype', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'excluderescontenttype_bindings',
+                'binding_object': 'appfwprofile_excluderescontenttype_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_fieldconsistency_bindings(self):
-        self.sync_binding_with_data({'description': 'fieldconsistency bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'fieldconsistency_bindings', 'binding_object': 'appfwprofile_fieldconsistency_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['fieldconsistency', 'formactionurl_ffc', 'name'], 'resource_name': 'fieldconsistency_bindings', 'attributes': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'fieldconsistency_bindings',
+                'binding_object': 'appfwprofile_fieldconsistency_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_fieldformat_bindings(self):
-        self.sync_binding_with_data({'description': 'fieldformat bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'fieldformat_bindings', 'binding_object': 'appfwprofile_fieldformat_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['fieldformat', 'formactionurl_ff', 'name'], 'resource_name': 'fieldformat_bindings', 'attributes': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'fieldformat_bindings',
+                'binding_object': 'appfwprofile_fieldformat_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_safeobject_bindings(self):
-        self.sync_binding_with_data({'description': 'safeobject bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'safeobject_bindings', 'binding_object': 'appfwprofile_safeobject_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['safeobject', 'name'], 'resource_name': 'safeobject_bindings', 'attributes': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'safeobject_bindings',
+                'binding_object': 'appfwprofile_safeobject_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_sqlinjection_bindings(self):
-        self.sync_binding_with_data({'description': 'sqlinjection bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'sqlinjection_bindings', 'binding_object': 'appfwprofile_sqlinjection_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['sqlinjection', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'name'], 'resource_name': 'sqlinjection_bindings', 'attributes': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'sqlinjection_bindings',
+                'binding_object': 'appfwprofile_sqlinjection_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_starturl_bindings(self):
-        self.sync_binding_with_data({'description': 'starturl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'starturl_bindings', 'binding_object': 'appfwprofile_starturl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['starturl', 'name'], 'resource_name': 'starturl_bindings', 'attributes': ['starturl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['starturl', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'starturl_bindings',
+                'binding_object': 'appfwprofile_starturl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_trustedlearningclients_bindings(self):
-        self.sync_binding_with_data({'description': 'trustedlearningclients bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'trustedlearningclients_bindings', 'binding_object': 'appfwprofile_trustedlearningclients_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['trustedlearningclients', 'name'], 'resource_name': 'trustedlearningclients_bindings', 'attributes': ['trustedlearningclients', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['trustedlearningclients', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'trustedlearningclients_bindings',
+                'binding_object': 'appfwprofile_trustedlearningclients_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmlattachmenturl_bindings(self):
-        self.sync_binding_with_data({'description': 'xmlattachmenturl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlattachmenturl_bindings', 'binding_object': 'appfwprofile_xmlattachmenturl_binding', 'attributes_config_list': {'transforms': {'xmlattachmentcontenttypecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattachmentsizecheck': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlattachmenturl', 'name'], 'resource_name': 'xmlattachmenturl_bindings', 'attributes': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlattachmenturl_bindings',
+                'binding_object': 'appfwprofile_xmlattachmenturl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmldosurl_bindings(self):
-        self.sync_binding_with_data({'description': 'xmldosurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmldosurl_bindings', 'binding_object': 'appfwprofile_xmldosurl_binding', 'attributes_config_list': {'transforms': {'xmlblockpi': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlminfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementdepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnodescheck': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()', 'xmlmaxentityexpansionscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementchildrencheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxentityexpansiondepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlblockdtd': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespacescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespaceurilengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementnamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributenamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlsoaparraycheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributevaluelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlblockexternalentities': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxchardatalengthcheck': "lambda v: 'ON' if v else 'OFF'"}, 'delete_id_attributes': ['xmldosurl', 'name'], 'resource_name': 'xmldosurl_bindings', 'attributes': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmldosurl_bindings',
+                'binding_object': 'appfwprofile_xmldosurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmlsqlinjection_bindings(self):
-        self.sync_binding_with_data({'description': 'xmlsqlinjection bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlsqlinjection_bindings', 'binding_object': 'appfwprofile_xmlsqlinjection_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlsqlinjection', 'as_scan_location_xmlsql', 'name'], 'resource_name': 'xmlsqlinjection_bindings', 'attributes': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlsqlinjection_bindings',
+                'binding_object': 'appfwprofile_xmlsqlinjection_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmlvalidationurl_bindings(self):
-        self.sync_binding_with_data({'description': 'xmlvalidationurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlvalidationurl_bindings', 'binding_object': 'appfwprofile_xmlvalidationurl_binding', 'attributes_config_list': {'transforms': {'xmlvalidateresponse': "lambda v: 'ON' if v else 'OFF'", 'xmladditionalsoapheaders': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()', 'xmlvalidatesoapenvelope': "lambda v: 'ON' if v else 'OFF'"}, 'delete_id_attributes': ['xmlvalidationurl', 'name'], 'resource_name': 'xmlvalidationurl_bindings', 'attributes': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlvalidationurl_bindings',
+                'binding_object': 'appfwprofile_xmlvalidationurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmlwsiurl_bindings(self):
-        self.sync_binding_with_data({'description': 'xmlwsiurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlwsiurl_bindings', 'binding_object': 'appfwprofile_xmlwsiurl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlwsiurl', 'name'], 'resource_name': 'xmlwsiurl_bindings', 'attributes': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlwsiurl_bindings',
+                'binding_object': 'appfwprofile_xmlwsiurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
-        
-
     def sync_xmlxss_bindings(self):
-        self.sync_binding_with_data({'description': 'xmlxss bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlxss_bindings', 'binding_object': 'appfwprofile_xmlxss_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlxss', 'as_scan_location_xmlxss', 'name'], 'resource_name': 'xmlxss_bindings', 'attributes': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment']})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlxss_bindings',
+                'binding_object': 'appfwprofile_xmlxss_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
+                }
+            }
+        )
         
 
 
