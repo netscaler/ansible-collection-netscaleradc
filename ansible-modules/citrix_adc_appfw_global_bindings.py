@@ -311,17 +311,29 @@ class ModuleExecutor(object):
 
 
         
-        
     def sync_appfwpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'appfwpolicy_bindings', 'attributes_config_list': {'get_id_attributes': ['type'], 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}, 'resource_name': 'appfwpolicy_bindings', 'attributes': ['policyname', 'priority', 'gotopriorityexpression', 'invoke', 'state', 'labeltype', 'labelname', 'type', 'globalbindtype']}, 'doc_list': ['policyname', 'priority', 'gotopriorityexpression', 'invoke', 'state', 'labeltype', 'labelname', 'type', 'globalbindtype'], 'description': 'appfwpolicy bindings', 'binding_object': 'appfwglobal_appfwpolicy_binding'})
-        
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'appfwpolicy_bindings',
+                'binding_object': 'appfwglobal_appfwpolicy_binding',
+            }
+        )
         
     def sync_auditnslogpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'auditnslogpolicy_bindings', 'attributes_config_list': {'get_id_attributes': ['type'], 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}, 'resource_name': 'auditnslogpolicy_bindings', 'attributes': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname']}, 'doc_list': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'description': 'auditnslogpolicy bindings', 'binding_object': 'appfwglobal_auditnslogpolicy_binding'})
-        
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditnslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditnslogpolicy_binding',
+            }
+        )
         
     def sync_auditsyslogpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'auditsyslogpolicy_bindings', 'attributes_config_list': {'get_id_attributes': ['type'], 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}, 'resource_name': 'auditsyslogpolicy_bindings', 'attributes': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname']}, 'doc_list': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'description': 'auditsyslogpolicy bindings', 'binding_object': 'appfwglobal_auditsyslogpolicy_binding'})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditsyslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
+            }
+        )
         
 
     def main(self):
