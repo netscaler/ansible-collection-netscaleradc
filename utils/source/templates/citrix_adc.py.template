@@ -2,7 +2,7 @@
 
 '''
 
-Netscaler utility classes and functions
+Citrix ADC utility classes and functions
 
 Eventually to be merged in ansible module utils
 

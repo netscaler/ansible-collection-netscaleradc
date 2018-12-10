@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_gslb_service
+module: citrix_adc_gslb_service
 short_description: Manage gslb service entities in Netscaler.
 description:
     - Manage gslb service entities in Netscaler.
@@ -236,7 +236,7 @@ EXAMPLES = '''
   register: result
   check_mode: "{{ check_mode }}"
 
-  netscaler_gslb_service:
+  citrix_adc_gslb_service:
     operation: present
 
     servicename: gslb-service-2

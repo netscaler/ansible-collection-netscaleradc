@@ -16,24 +16,33 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_profile
-short_description: Manage Netscaler Web Application Firewall profiles.
+module: citrix_adc_appfw_profile
+short_description: Manage Citrix ADC Web Application Firewall profiles.
 description:
-    - Manage Netscaler Web Application Firewall profiles.
-    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Netscaler.
+    - Manage Citrix ADC Web Application Firewall profiles.
+    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations the module may incorrectly report a changed status when no configuration change has taken place.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     name:
         description:
-            - Name for the profile. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), colon (:), and underscore (_) characters. Cannot be changed after the profile is added.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my profile" or 'my profile').
+            - >-
+                Name for the profile. Must begin with a letter, number, or the underscore character (_), and must
+                only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=),
+                (:), and underscore (_) characters. Cannot be changed after the profile is added.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my profile" or 'my profile').
         type: str
 
     defaults:
@@ -41,9 +50,15 @@ options:
             - 'basic'
             - 'advanced'
         description:
-            - Default configuration to apply to the profile. Basic defaults are intended for standard content that requires little further configuration, such as static web site content. Advanced defaults are intended for specialized content that requires significant specialized configuration, such as heavily scripted or dynamic content.
-            - 
-            - CLI users: When adding an application firewall profile, you can set either the defaults or the type, but not both. To set both options, create the profile by using the add appfw profile command, and then use the set appfw profile command to configure the other option.
+            - >-
+                Default configuration to apply to the profile. Basic defaults are intended for standard content that
+                little further configuration, such as static web site content. Advanced defaults are intended for
+                content that requires significant specialized configuration, such as heavily scripted or dynamic
+            - ""
+            - >-
+                CLI users: When adding an application firewall profile, you can set either the defaults or the type,
+                not both. To set both options, create the profile by using the add appfw profile command, and then
+                the set appfw profile command to configure the other option.
         type: str
 
     starturlaction:
@@ -54,14 +69,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Start URL actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".
+            - "One or more Start URL actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".
         type: list
 
     contenttypeaction:
@@ -72,14 +89,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Content-type actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -contentTypeaction none".
+            - "One or more Content-type actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -contentTypeaction none".
         type: list
 
     inspectcontenttypes:
@@ -89,17 +108,19 @@ options:
             - 'multipart/form-data'
             - 'text/x-gwt-rpc'
         description:
-            - One or more InspectContentType lists. 
-            - * application/x-www-form-urlencoded
-            - * multipart/form-data
-            - * text/x-gwt-rpc
-            - 
-            - CLI users: To enable, type "set appfw profile -InspectContentTypes" followed by the content types to be inspected.
+            - "One or more InspectContentType lists. "
+            - "* application/x-www-form-urlencoded"
+            - "* multipart/form-data"
+            - "* text/x-gwt-rpc"
+            - ""
+            - >-
+                CLI users: To enable, type "set appfw profile -InspectContentTypes" followed by the content types to
+                inspected.
         type: list
 
     starturlclosure:
         description:
-            - Toggle  the state of Start URL Closure.
+            - "Toggle  the state of Start URL Closure."
         type: bool
 
     denyurlaction:
@@ -110,15 +131,20 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Deny URL actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the Deny URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if the same URL would otherwise be allowed by the Start URL check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".
+            - "One or more Deny URL actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the
+                URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if
+                same URL would otherwise be allowed by the Start URL check.
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".
         type: list
 
     refererheadercheck:
@@ -128,9 +154,13 @@ options:
             - 'AlwaysExceptStartURLs'
             - 'AlwaysExceptFirstRequest'
         description:
-            - Enable validation of Referer headers. 
-            - Referer validation ensures that a web form that a user sends to your web site originally came from your web site, not an outside attacker. 
-            - Although this parameter is part of the Start URL check, referer validation protects against cross-site request forgery (CSRF) attacks, not Start URL attacks.
+            - "Enable validation of Referer headers. "
+            - >-
+                Referer validation ensures that a web form that a user sends to your web site originally came from
+                web site, not an outside attacker.
+            - >-
+                Although this parameter is part of the Start URL check, referer validation protects against
+                request forgery (CSRF) attacks, not Start URL attacks.
         type: str
 
     cookieconsistencyaction:
@@ -141,24 +171,30 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Cookie Consistency actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction none".
+            - "One or more Cookie Consistency actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed
+                the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction
         type: list
 
     cookietransforms:
         description:
-            - Perform the specified type of cookie transformation. 
-            - Available settings function as follows: 
-            - * Encryption - Encrypt cookies.
-            - * Proxying - Mask contents of server cookies by sending proxy cookie to users.
-            - * Cookie flags - Flag cookies as HTTP only to prevent scripts on user's browser from accessing and possibly modifying them.
-            - CAUTION: Make sure that this parameter is set to ON if you are configuring any cookie transformations. If it is set to OFF, no cookie transformations are performed regardless of any other settings.
+            - "Perform the specified type of cookie transformation. "
+            - "Available settings function as follows: "
+            - "* Encryption - Encrypt cookies."
+            - "* Proxying - Mask contents of server cookies by sending proxy cookie to users."
+            - >-
+                * Cookie flags - Flag cookies as HTTP only to prevent scripts on user's browser from accessing and
+                modifying them.
+            - >-
+                CAUTION: Make sure that this parameter is set to ON if you are configuring any cookie
+                If it is set to OFF, no cookie transformations are performed regardless of any other settings.
         type: bool
 
     cookieencryption:
@@ -168,11 +204,11 @@ options:
             - 'encryptSessionOnly'
             - 'encryptAll'
         description:
-            - Type of cookie encryption. Available settings function as follows:
-            - * None - Do not encrypt cookies.
-            - * Decrypt Only - Decrypt encrypted cookies, but do not encrypt cookies.
-            - * Encrypt Session Only - Encrypt session cookies, but not permanent cookies.
-            - * Encrypt All - Encrypt all cookies.
+            - "Type of cookie encryption. Available settings function as follows:"
+            - "* None - Do not encrypt cookies."
+            - "* Decrypt Only - Decrypt encrypted cookies, but do not encrypt cookies."
+            - "* Encrypt Session Only - Encrypt session cookies, but not permanent cookies."
+            - "* Encrypt All - Encrypt all cookies."
         type: str
 
     cookieproxying:
@@ -180,9 +216,10 @@ options:
             - 'none'
             - 'sessionOnly'
         description:
-            - Cookie proxy setting. Available settings function as follows:
-            - * None - Do not proxy cookies.
-            - * Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent cookies.
+            - "Cookie proxy setting. Available settings function as follows:"
+            - "* None - Do not proxy cookies."
+            - >-
+                * Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent
         type: str
 
     addcookieflags:
@@ -192,11 +229,11 @@ options:
             - 'secure'
             - 'all'
         description:
-            - Add the specified flags to cookies. Available settings function as follows:
-            - * None - Do not add flags to cookies.
-            - * HTTP Only - Add the HTTP Only flag to cookies, which prevents scripts from accessing cookies.
-            - * Secure - Add Secure flag to cookies.
-            - * All - Add both HTTPOnly and Secure flags to cookies.
+            - "Add the specified flags to cookies. Available settings function as follows:"
+            - "* None - Do not add flags to cookies."
+            - "* HTTP Only - Add the HTTP Only flag to cookies, which prevents scripts from accessing cookies."
+            - "* Secure - Add Secure flag to cookies."
+            - "* All - Add both HTTPOnly and Secure flags to cookies."
         type: str
 
     fieldconsistencyaction:
@@ -207,14 +244,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Form Field Consistency actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction none".
+            - "One or more Form Field Consistency actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed
+                the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction
         type: list
 
     csrftagaction:
@@ -225,14 +264,17 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".
+            - >-
+                One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available settings function as
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".
         type: list
 
     crosssitescriptingaction:
@@ -243,25 +285,31 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Cross-Site Scripting (XSS) actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction none".
+            - "One or more Cross-Site Scripting (XSS) actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed
+                the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction
         type: list
 
     crosssitescriptingtransformunsafehtml:
         description:
-            - Transform cross-site scripts. This setting configures the application firewall to disable dangerous HTML instead of blocking the request. 
-            - CAUTION: Make sure that this parameter is set to ON if you are configuring any cross-site scripting transformations. If it is set to OFF, no cross-site scripting transformations are performed regardless of any other settings.
+            - >-
+                Transform cross-site scripts. This setting configures the application firewall to disable dangerous
+                instead of blocking the request.
+            - >-
+                CAUTION: Make sure that this parameter is set to ON if you are configuring any cross-site scripting
+                If it is set to OFF, no cross-site scripting transformations are performed regardless of any other
         type: bool
 
     crosssitescriptingcheckcompleteurls:
         description:
-            - Check complete URLs for cross-site scripts, instead of just the query portions of URLs.
+            - "Check complete URLs for cross-site scripts, instead of just the query portions of URLs."
         type: bool
 
     sqlinjectionaction:
@@ -272,26 +320,35 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more HTML SQL Injection actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".
+            - "One or more HTML SQL Injection actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".
         type: list
 
     sqlinjectiontransformspecialchars:
         description:
-            - Transform injected SQL code. This setting configures the application firewall to disable SQL special strings instead of blocking the request. Since most SQL servers require a special string to activate an SQL keyword, in most cases a request that contains injected SQL code is safe if special strings are disabled.
-            - CAUTION: Make sure that this parameter is set to ON if you are configuring any SQL injection transformations. If it is set to OFF, no SQL injection transformations are performed regardless of any other settings.
+            - >-
+                Transform injected SQL code. This setting configures the application firewall to disable SQL special
+                instead of blocking the request. Since most SQL servers require a special string to activate an SQL
+                in most cases a request that contains injected SQL code is safe if special strings are disabled.
+            - >-
+                CAUTION: Make sure that this parameter is set to ON if you are configuring any SQL injection
+                If it is set to OFF, no SQL injection transformations are performed regardless of any other settings.
         type: bool
 
     sqlinjectiononlycheckfieldswithsqlchars:
         description:
-            - Check only form fields that contain SQL special strings (characters) for injected SQL code.
-            - Most SQL servers require a special string to activate an SQL request, so SQL code without a special string is harmless to most SQL servers.
+            - "Check only form fields that contain SQL special strings (characters) for injected SQL code."
+            - >-
+                Most SQL servers require a special string to activate an SQL request, so SQL code without a special
+                is harmless to most SQL servers.
         type: bool
 
     sqlinjectiontype:
@@ -301,16 +358,16 @@ options:
             - 'SQLSplCharORKeyword'
             - 'SQLSplCharANDKeyword'
         description:
-            - Available SQL injection types. 
-            - -SQLSplChar              : Checks for SQL Special Chars
-            - -SQLKeyword		 : Checks for SQL Keywords
-            - -SQLSplCharANDKeyword    : Checks for both and blocks if both are found
-            - -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found
+            - "Available SQL injection types. "
+            - "-SQLSplChar              : Checks for SQL Special Chars"
+            - "-SQLKeyword		 : Checks for SQL Keywords"
+            - "-SQLSplCharANDKeyword    : Checks for both and blocks if both are found"
+            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found"
         type: str
 
     sqlinjectionchecksqlwildchars:
         description:
-            - Check for form fields that contain SQL wild chars .
+            - "Check for form fields that contain SQL wild chars ."
         type: bool
 
     fieldformataction:
@@ -321,30 +378,39 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Field Format actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of suggested web form fields and field format assignments.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".
+            - "One or more Field Format actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - >-
+                * Learn - Use the learning engine to generate a list of suggested web form fields and field format
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".
         type: list
 
     defaultfieldformattype:
         description:
-            - Designate a default field type to be applied to web form fields that do not have a field type explicitly assigned to them.
+            - >-
+                Designate a default field type to be applied to web form fields that do not have a field type
+                assigned to them.
         type: str
 
     defaultfieldformatminlength:
         description:
-            - Minimum length, in characters, for data entered into a field that is assigned the default field type. 
-            - To disable the minimum and maximum length settings and allow data of any length to be entered into the field, set this parameter to zero (0).
+            - >-
+                Minimum length, in characters, for data entered into a field that is assigned the default field type.
+            - >-
+                To disable the minimum and maximum length settings and allow data of any length to be entered into
+                field, set this parameter to zero (0).
         type: str
 
     defaultfieldformatmaxlength:
         description:
-            - Maximum length, in characters, for data entered into a field that is assigned the default field type.
+            - >-
+                Maximum length, in characters, for data entered into a field that is assigned the default field type.
         type: str
 
     bufferoverflowaction:
@@ -355,28 +421,35 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Buffer Overflow actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".
+            - "One or more Buffer Overflow actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".
         type: list
 
     bufferoverflowmaxurllength:
         description:
-            - Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are blocked.
+            - >-
+                Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are
         type: str
 
     bufferoverflowmaxheaderlength:
         description:
-            - Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. Requests with longer headers are blocked.
+            - >-
+                Maximum length, in characters, for HTTP headers in requests sent to your protected web sites.
+                with longer headers are blocked.
         type: str
 
     bufferoverflowmaxcookielength:
         description:
-            - Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer cookies are blocked.
+            - >-
+                Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer
+                are blocked.
         type: str
 
     creditcardaction:
@@ -387,13 +460,15 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Credit Card actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".
+            - "One or more Credit Card actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".
         type: list
 
     creditcard:
@@ -406,44 +481,55 @@ options:
             - 'jcb'
             - 'dinersclub'
         description:
-            - Credit card types that the application firewall should protect.
+            - "Credit card types that the application firewall should protect."
         type: list
 
     creditcardmaxallowed:
         description:
-            - This parameter value is used by the block action. It represents the maximum number of credit card numbers that can appear on a web page served by your protected web sites. Pages that contain more credit card numbers are blocked.
+            - >-
+                This parameter value is used by the block action. It represents the maximum number of credit card
+                that can appear on a web page served by your protected web sites. Pages that contain more credit card
+                are blocked.
         type: str
 
     creditcardxout:
         description:
-            - Mask any credit card number detected in a response by replacing each digit, except the digits in the final group, with the letter "X."
+            - >-
+                Mask any credit card number detected in a response by replacing each digit, except the digits in the
+                group, with the letter "X."
         type: bool
 
     dosecurecreditcardlogging:
         description:
-            - Setting this option logs credit card numbers in the response when the match is found.
+            - "Setting this option logs credit card numbers in the response when the match is found."
         type: bool
 
     streaming:
         description:
-            - Setting this option converts content-length form submission requests (requests with content-type "application/x-www-form-urlencoded" or "multipart/form-data") to chunked requests when atleast one of the following protections : SQL injection protection, XSS protection, form field consistency protection, starturl closure, CSRF tagging is enabled. Please make sure that the backend server accepts chunked requests before enabling this option.
+            - >-
+                Setting this option converts content-length form submission requests (requests with content-type
+                or "multipart/form-data") to chunked requests when atleast one of the following protections : SQL
+                protection, XSS protection, form field consistency protection, starturl closure, CSRF tagging is
+                Please make sure that the backend server accepts chunked requests before enabling this option.
         type: bool
 
     trace:
         description:
-            - Toggle  the state of trace
+            - "Toggle  the state of trace"
         type: bool
 
     requestcontenttype:
         description:
-            - Default Content-Type header for requests. 
-            - A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.
+            - "Default Content-Type header for requests. "
+            - >-
+                A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
         type: str
 
     responsecontenttype:
         description:
-            - Default Content-Type header for responses. 
-            - A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_) characters.
+            - "Default Content-Type header for responses. "
+            - >-
+                A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
         type: str
 
     xmldosaction:
@@ -454,14 +540,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML Denial-of-Service (XDoS) actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".
+            - "One or more XML Denial-of-Service (XDoS) actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".
         type: list
 
     xmlformataction:
@@ -472,13 +560,15 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML Format actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".
+            - "One or more XML Format actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".
         type: list
 
     xmlsqlinjectionaction:
@@ -489,18 +579,22 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML SQL Injection actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".
+            - "One or more XML SQL Injection actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".
         type: list
 
     xmlsqlinjectiononlycheckfieldswithsqlchars:
         description:
-            - Check only form fields that contain SQL special characters, which most SQL servers require before accepting an SQL command, for injected SQL.
+            - >-
+                Check only form fields that contain SQL special characters, which most SQL servers require before
+                an SQL command, for injected SQL.
         type: bool
 
     xmlsqlinjectiontype:
@@ -510,16 +604,16 @@ options:
             - 'SQLSplCharORKeyword'
             - 'SQLSplCharANDKeyword'
         description:
-            - Available SQL injection types.
-            - -SQLSplChar              : Checks for SQL Special Chars
-            - -SQLKeyword              : Checks for SQL Keywords
-            - -SQLSplCharANDKeyword    : Checks for both and blocks if both are found
-            - -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found
+            - "Available SQL injection types."
+            - "-SQLSplChar              : Checks for SQL Special Chars"
+            - "-SQLKeyword              : Checks for SQL Keywords"
+            - "-SQLSplCharANDKeyword    : Checks for both and blocks if both are found"
+            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found"
         type: str
 
     xmlsqlinjectionchecksqlwildchars:
         description:
-            - Check for form fields that contain SQL wild chars .
+            - "Check for form fields that contain SQL wild chars ."
         type: bool
 
     xmlsqlinjectionparsecomments:
@@ -529,11 +623,14 @@ options:
             - 'nested'
             - 'ansinested'
         description:
-            - Parse comments in XML Data and exempt those sections of the request that are from the XML SQL Injection check. You must configure the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
-            - * Check all - Check all content.
-            - * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
-            - * Nested - Exempt content that is part of a nested (Microsoft-style) comment.
-            - * ANSI Nested - Exempt content that is part of any type of comment.
+            - >-
+                Parse comments in XML Data and exempt those sections of the request that are from the XML SQL
+                check. You must configure the type of comments that the application firewall is to detect and exempt
+                this security check. Available settings function as follows:
+            - "* Check all - Check all content."
+            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. "
+            - "* Nested - Exempt content that is part of a nested (Microsoft-style) comment."
+            - "* ANSI Nested - Exempt content that is part of any type of comment."
         type: str
 
     xmlxssaction:
@@ -544,13 +641,15 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML Cross-Site Scripting actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".
+            - "One or more XML Cross-Site Scripting actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".
         type: list
 
     xmlwsiaction:
@@ -561,14 +660,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more Web Services Interoperability (WSI) actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".
+            - "One or more Web Services Interoperability (WSI) actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".
         type: list
 
     xmlattachmentaction:
@@ -579,14 +680,16 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML Attachment actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Learn - Use the learning engine to generate a list of exceptions to this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".
+            - "One or more XML Attachment actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Learn - Use the learning engine to generate a list of exceptions to this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".
         type: list
 
     xmlvalidationaction:
@@ -597,34 +700,43 @@ options:
             - 'log'
             - 'stats'
         description:
-            - One or more XML Validation actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check. 
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".
+            - "One or more XML Validation actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check. "
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".
         type: list
 
     xmlerrorobject:
         description:
-            - Name to assign to the XML Error Object, which the application firewall displays when a user request is blocked.
-            - Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the XML error object is added.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my XML error object" or 'my XML error object'\).
+            - >-
+                Name to assign to the XML Error Object, which the application firewall displays when a user request
+                blocked.
+            - >-
+                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
+                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
+                characters. Cannot be changed after the XML error object is added.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
+                "my XML error object" or 'my XML error object'\).
         type: str
 
     customsettings:
         description:
-            - Object name for custom settings.
-            - This check is applicable to Profile Type: HTML, XML. 
+            - "Object name for custom settings."
+            - "This check is applicable to Profile Type: HTML, XML. "
         type: str
 
     signatures:
         description:
-            - Object name for signatures.
-            - This check is applicable to Profile Type: HTML, XML. 
+            - "Object name for signatures."
+            - "This check is applicable to Profile Type: HTML, XML. "
         type: str
 
     xmlsoapfaultaction:
@@ -635,44 +747,53 @@ options:
             - 'remove'
             - 'stats'
         description:
-            - One or more XML SOAP Fault Filtering actions. Available settings function as follows:
-            - * Block - Block connections that violate this security check.
-            - * Log - Log violations of this security check.
-            - * Stats - Generate statistics for this security check.
-            - * None - Disable all actions for this security check.
-            - * Remove - Remove all violations for this security check.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by the actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".
+            - "One or more XML SOAP Fault Filtering actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - "* Remove - Remove all violations for this security check."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".
         type: list
 
     usehtmlerrorobject:
         description:
-            - Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the user to the designated Error URL.
+            - >-
+                Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the
+                to the designated Error URL.
         type: bool
 
     errorurl:
         description:
-            - URL that application firewall uses as the Error URL.
+            - "URL that application firewall uses as the Error URL."
         type: str
 
     htmlerrorobject:
         description:
-            - Name to assign to the HTML Error Object. 
-            - Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Cannot be changed after the HTML error object is added.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my HTML error object" or 'my HTML error object'\).
+            - "Name to assign to the HTML Error Object. "
+            - >-
+                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
+                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
+                characters. Cannot be changed after the HTML error object is added.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
+                "my HTML error object" or 'my HTML error object'\).
         type: str
 
     logeverypolicyhit:
         description:
-            - Log every profile match, regardless of security checks results.
+            - "Log every profile match, regardless of security checks results."
         type: bool
 
     stripcomments:
         description:
-            - Strip HTML comments.
-            - This check is applicable to Profile Type: HTML. 
+            - "Strip HTML comments."
+            - "This check is applicable to Profile Type: HTML. "
         type: bool
 
     striphtmlcomments:
@@ -681,7 +802,8 @@ options:
             - 'all'
             - 'exclude_script_tag'
         description:
-            - Strip HTML comments before forwarding a web page sent by a protected web site in response to a user request.
+            - >-
+                Strip HTML comments before forwarding a web page sent by a protected web site in response to a user
         type: str
 
     stripxmlcomments:
@@ -689,45 +811,55 @@ options:
             - 'none'
             - 'all'
         description:
-            - Strip XML comments before forwarding a web page sent by a protected web site in response to a user request.
+            - >-
+                Strip XML comments before forwarding a web page sent by a protected web site in response to a user
         type: str
 
     exemptclosureurlsfromsecuritychecks:
         description:
-            - Exempt URLs that pass the Start URL closure check from SQL injection, cross-site script, field format and field consistency security checks at locations other than headers.
+            - >-
+                Exempt URLs that pass the Start URL closure check from SQL injection, cross-site script, field format
+                field consistency security checks at locations other than headers.
         type: bool
 
     defaultcharset:
         description:
-            - Default character set for protected web pages. Web pages sent by your protected web sites in response to user requests are assigned this character set if the page does not already specify a character set. The character sets supported by the application firewall are: 
-            - * iso-8859-1 (English US)
-            - * big5 (Chinese Traditional)
-            - * gb2312 (Chinese Simplified)
-            - * sjis (Japanese Shift-JIS)
-            - * euc-jp (Japanese EUC-JP)
-            - * iso-8859-9 (Turkish)
-            - * utf-8 (Unicode)
-            - * euc-kr (Korean)
+            - >-
+                Default character set for protected web pages. Web pages sent by your protected web sites in response
+                user requests are assigned this character set if the page does not already specify a character set.
+                character sets supported by the application firewall are:
+            - "* iso-8859-1 (English US)"
+            - "* big5 (Chinese Traditional)"
+            - "* gb2312 (Chinese Simplified)"
+            - "* sjis (Japanese Shift-JIS)"
+            - "* euc-jp (Japanese EUC-JP)"
+            - "* iso-8859-9 (Turkish)"
+            - "* utf-8 (Unicode)"
+            - "* euc-kr (Korean)"
         type: str
 
     postbodylimit:
         description:
-            - Maximum allowed HTTP post body size, in bytes.
+            - "Maximum allowed HTTP post body size, in bytes."
         type: str
 
     fileuploadmaxnum:
         description:
-            - Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) allows an unlimited number of uploads.
+            - >-
+                Maximum allowed number of file uploads per form-submission request. The maximum setting (65535)
+                an unlimited number of uploads.
         type: str
 
     canonicalizehtmlresponse:
         description:
-            - Perform HTML entity encoding for any special characters in responses sent by your protected web sites.
+            - >-
+                Perform HTML entity encoding for any special characters in responses sent by your protected web
         type: bool
 
     enableformtagging:
         description:
-            - Enable tagging of web form fields for use by the Form Field Consistency and CSRF Form Tagging checks.
+            - >-
+                Enable tagging of web form fields for use by the Form Field Consistency and CSRF Form Tagging checks.
         type: bool
 
     sessionlessfieldconsistency:
@@ -736,23 +868,23 @@ options:
             - 'ON'
             - 'postOnly'
         description:
-            - Perform sessionless Field Consistency Checks.
+            - "Perform sessionless Field Consistency Checks."
         type: str
 
     sessionlessurlclosure:
         description:
-            - Enable session less URL Closure Checks.
-            - This check is applicable to Profile Type: HTML. 
+            - "Enable session less URL Closure Checks."
+            - "This check is applicable to Profile Type: HTML. "
         type: bool
 
     semicolonfieldseparator:
         description:
-            - Allow ';' as a form field separator in URL queries and POST form bodies. 
+            - "Allow ';' as a form field separator in URL queries and POST form bodies. "
         type: bool
 
     excludefileuploadfromchecks:
         description:
-            - Exclude uploaded files from Form checks.
+            - "Exclude uploaded files from Form checks."
         type: bool
 
     sqlinjectionparsecomments:
@@ -762,11 +894,14 @@ options:
             - 'nested'
             - 'ansinested'
         description:
-            - Parse HTML comments and exempt them from the HTML SQL Injection check. You must specify the type of comments that the application firewall is to detect and exempt from this security check. Available settings function as follows:
-            - * Check all - Check all content.
-            - * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
-            - * Nested - Exempt content that is part of a nested (Microsoft-style) comment.
-            - * ANSI Nested - Exempt content that is part of any type of comment.
+            - >-
+                Parse HTML comments and exempt them from the HTML SQL Injection check. You must specify the type of
+                that the application firewall is to detect and exempt from this security check. Available settings
+                as follows:
+            - "* Check all - Check all content."
+            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. "
+            - "* Nested - Exempt content that is part of a nested (Microsoft-style) comment."
+            - "* ANSI Nested - Exempt content that is part of any type of comment."
         type: str
 
     invalidpercenthandling:
@@ -775,10 +910,12 @@ options:
             - 'asp_mode'
             - 'secure_mode'
         description:
-            - Configure the method that the application firewall uses to handle percent-encoded names and values. Available settings function as follows: 
-            - * apache_mode - Apache format.
-            - * asp_mode - Microsoft ASP format.
-            - * secure_mode - Secure format.
+            - >-
+                Configure the method that the application firewall uses to handle percent-encoded names and values.
+                settings function as follows:
+            - "* apache_mode - Apache format."
+            - "* asp_mode - Microsoft ASP format."
+            - "* secure_mode - Secure format."
         type: str
 
     type:
@@ -786,38 +923,43 @@ options:
             - 'HTML'
             - 'XML'
         description:
-            - Application firewall profile type, which controls which security checks and settings are applied to content that is filtered with the profile. Available settings function as follows:
-            - * HTML - HTML-based web sites.
-            - * XML - XML-based web sites and services.
-            - * HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and RSS feeds.
+            - >-
+                Application firewall profile type, which controls which security checks and settings are applied to
+                that is filtered with the profile. Available settings function as follows:
+            - "* HTML - HTML-based web sites."
+            - "* XML - XML-based web sites and services."
+            - >-
+                * HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and
+                feeds.
         type: list
 
     checkrequestheaders:
         description:
-            - Check request headers as well as web forms for injected SQL and cross-site scripts.
+            - "Check request headers as well as web forms for injected SQL and cross-site scripts."
         type: bool
 
     optimizepartialreqs:
         description:
-            - Optimize handle of HTTP partial requests i.e. those with range headers.
-            - Available settings are as follows: 
-            - * ON  - Partial requests by the client result in partial requests to the backend server in most cases.
-            - * OFF - Partial requests by the client are changed to full requests to the backend server
+            - "Optimize handle of HTTP partial requests i.e. those with range headers."
+            - "Available settings are as follows: "
+            - >-
+                * ON - Partial requests by the client result in partial requests to the backend server in most cases.
+            - "* OFF - Partial requests by the client are changed to full requests to the backend server"
         type: bool
 
     urldecoderequestcookies:
         description:
-            - URL Decode request cookies before subjecting them to SQL and cross-site scripting checks.
+            - "URL Decode request cookies before subjecting them to SQL and cross-site scripting checks."
         type: bool
 
     comment:
         description:
-            - Any comments about the purpose of profile, or other useful information about the profile.
+            - "Any comments about the purpose of profile, or other useful information about the profile."
         type: str
 
     percentdecoderecursively:
         description:
-            - Configure whether the application firewall should use percentage recursive decoding
+            - "Configure whether the application firewall should use percentage recursive decoding"
         type: bool
 
     multipleheaderaction:
@@ -827,37 +969,39 @@ options:
             - 'log'
             - 'none'
         description:
-            - One or more multiple header actions. Available settings function as follows:
-            - * Block - Block connections that have multiple headers.
-            - * Log - Log connections that have multiple headers.
-            - * KeepLast - Keep only last header when multiple headers are present.
-            - 
-            - CLI users: To enable one or more actions, type "set appfw profile -multipleHeaderAction" followed by the actions to be enabled.
+            - "One or more multiple header actions. Available settings function as follows:"
+            - "* Block - Block connections that have multiple headers."
+            - "* Log - Log connections that have multiple headers."
+            - "* KeepLast - Keep only last header when multiple headers are present."
+            - ""
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -multipleHeaderAction" followed by
+                actions to be enabled.
         type: list
 
     archivename:
         description:
-            - Source for tar archive.
+            - "Source for tar archive."
         type: str
 
 
 
 
     contenttype_bindings:
-        desription: 
+        description: contenttype bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -873,20 +1017,20 @@ options:
                     
 
     cookieconsistency_bindings:
-        desription: 
+        description: cookieconsistency bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -903,20 +1047,20 @@ options:
                     
 
     creditcardnumber_bindings:
-        desription: 
+        description: creditcardnumber bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -933,20 +1077,20 @@ options:
                     
 
     crosssitescripting_bindings:
-        desription: 
+        description: crosssitescripting bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -968,20 +1112,20 @@ options:
                     
 
     csrftag_bindings:
-        desription: 
+        description: csrftag bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -998,20 +1142,20 @@ options:
                     
 
     denyurl_bindings:
-        desription: 
+        description: denyurl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1027,20 +1171,20 @@ options:
                     
 
     excluderescontenttype_bindings:
-        desription: 
+        description: excluderescontenttype bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1056,20 +1200,20 @@ options:
                     
 
     fieldconsistency_bindings:
-        desription: 
+        description: fieldconsistency bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1087,20 +1231,20 @@ options:
                     
 
     fieldformat_bindings:
-        desription: 
+        description: fieldformat bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1121,20 +1265,20 @@ options:
                     
 
     safeobject_bindings:
-        desription: 
+        description: safeobject bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1153,20 +1297,20 @@ options:
                     
 
     sqlinjection_bindings:
-        desription: 
+        description: sqlinjection bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1188,20 +1332,20 @@ options:
                     
 
     starturl_bindings:
-        desription: 
+        description: starturl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1217,20 +1361,20 @@ options:
                     
 
     trustedlearningclients_bindings:
-        desription: 
+        description: trustedlearningclients bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1246,20 +1390,20 @@ options:
                     
 
     xmlattachmenturl_bindings:
-        desription: 
+        description: xmlattachmenturl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1279,20 +1423,20 @@ options:
                     
 
     xmldosurl_bindings:
-        desription: 
+        description: xmldosurl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1344,20 +1488,20 @@ options:
                     
 
     xmlsqlinjection_bindings:
-        desription: 
+        description: xmlsqlinjection bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1375,20 +1519,20 @@ options:
                     
 
     xmlvalidationurl_bindings:
-        desription: 
+        description: xmlvalidationurl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1411,20 +1555,20 @@ options:
                     
 
     xmlwsiurl_bindings:
-        desription: 
+        description: xmlwsiurl bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1441,20 +1585,20 @@ options:
                     
 
     xmlxss_bindings:
-        desription: 
+        description: xmlxss bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(exact): 
-                    - Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.
-                    - Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
-                    - Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - exact
@@ -1478,7 +1622,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: setup profile with basic presets
   delegate_to: localhost
-  netscaler_appfw_profile:
+  citrix_adc_appfw_profile:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1
@@ -1488,7 +1632,7 @@ EXAMPLES = '''
 
 - name: setup profile with denyurl bindings
   delegate_to: localhost
-  netscaler_appfw_profile:
+  citrix_adc_appfw_profile:
     nitro_user: ''
     nitro_pass: ''
     nsip: ''
@@ -1503,7 +1647,7 @@ EXAMPLES = '''
 
 - name: remove profile
   delegate_to: localhost
-  netscaler_appfw_profile:
+  citrix_adc_appfw_profile:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1
@@ -1629,32 +1773,32 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'optimizepartialreqs': lambda v: 'ON' if v else 'OFF',
-                    'creditcardxout': lambda v: 'ON' if v else 'OFF',
-                    'percentdecoderecursively': lambda v: 'ON' if v else 'OFF',
-                    'crosssitescriptingcheckcompleteurls': lambda v: 'ON' if v else 'OFF',
-                    'exemptclosureurlsfromsecuritychecks': lambda v: 'ON' if v else 'OFF',
+                    'crosssitescriptingtransformunsafehtml': lambda v: 'ON' if v else 'OFF',
                     'urldecoderequestcookies': lambda v: 'ON' if v else 'OFF',
-                    'starturlclosure': lambda v: 'ON' if v else 'OFF',
-                    'semicolonfieldseparator': lambda v: 'ON' if v else 'OFF',
+                    'optimizepartialreqs': lambda v: 'ON' if v else 'OFF',
                     'usehtmlerrorobject': lambda v: 'ON' if v else 'OFF',
                     'enableformtagging': lambda v: 'ON' if v else 'OFF',
-                    'crosssitescriptingtransformunsafehtml': lambda v: 'ON' if v else 'OFF',
-                    'dosecurecreditcardlogging': lambda v: 'ON' if v else 'OFF',
+                    'sessionlessurlclosure': lambda v: 'ON' if v else 'OFF',
+                    'cookietransforms': lambda v: 'ON' if v else 'OFF',
+                    'creditcardxout': lambda v: 'ON' if v else 'OFF',
                     'xmlsqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
                     'xmlsqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
-                    'excludefileuploadfromchecks': lambda v: 'ON' if v else 'OFF',
-                    'sqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
                     'trace': lambda v: 'ON' if v else 'OFF',
                     'sqlinjectiontransformspecialchars': lambda v: 'ON' if v else 'OFF',
-                    'streaming': lambda v: 'ON' if v else 'OFF',
-                    'cookietransforms': lambda v: 'ON' if v else 'OFF',
-                    'checkrequestheaders': lambda v: 'ON' if v else 'OFF',
-                    'canonicalizehtmlresponse': lambda v: 'ON' if v else 'OFF',
+                    'crosssitescriptingcheckcompleteurls': lambda v: 'ON' if v else 'OFF',
                     'logeverypolicyhit': lambda v: 'ON' if v else 'OFF',
                     'sqlinjectiononlycheckfieldswithsqlchars': lambda v: 'ON' if v else 'OFF',
-                    'sessionlessurlclosure': lambda v: 'ON' if v else 'OFF',
+                    'canonicalizehtmlresponse': lambda v: 'ON' if v else 'OFF',
+                    'checkrequestheaders': lambda v: 'ON' if v else 'OFF',
                     'stripcomments': lambda v: 'ON' if v else 'OFF',
+                    'percentdecoderecursively': lambda v: 'ON' if v else 'OFF',
+                    'dosecurecreditcardlogging': lambda v: 'ON' if v else 'OFF',
+                    'starturlclosure': lambda v: 'ON' if v else 'OFF',
+                    'sqlinjectionchecksqlwildchars': lambda v: 'ON' if v else 'OFF',
+                    'semicolonfieldseparator': lambda v: 'ON' if v else 'OFF',
+                    'exemptclosureurlsfromsecuritychecks': lambda v: 'ON' if v else 'OFF',
+                    'excludefileuploadfromchecks': lambda v: 'ON' if v else 'OFF',
+                    'streaming': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
                     
@@ -2077,26 +2221,26 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'state': lambda v: v.upper(),
-                    'xmlmaxattributevaluelengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxchardatalengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxfilesizecheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxentityexpansionscheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxentityexpansiondepthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlblockpi': lambda v: 'ON' if v else 'OFF',
-                    'xmlblockexternalentities': lambda v: 'ON' if v else 'OFF',
-                    'xmlblockdtd': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxattributescheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlminfilesizecheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementdepthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxnodescheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlminfilesizecheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxattributenamelengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlsoaparraycheck': lambda v: 'ON' if v else 'OFF',
+                    'state': lambda v: v.upper(),
+                    'xmlmaxentityexpansionscheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxelementchildrencheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxentityexpansiondepthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlblockdtd': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxnamespacescheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxelementscheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxfilesizecheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxnamespaceurilengthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementnamelengthcheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxattributescheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxelementchildrencheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxelementscheck': lambda v: 'ON' if v else 'OFF',
-                    'xmlmaxnamespacescheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxattributenamelengthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlsoaparraycheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxattributevaluelengthcheck': lambda v: 'ON' if v else 'OFF',
+                    'xmlblockexternalentities': lambda v: 'ON' if v else 'OFF',
+                    'xmlmaxchardatalengthcheck': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
                     
@@ -2152,9 +2296,9 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'state': lambda v: v.upper(),
-                    'xmladditionalsoapheaders': lambda v: 'ON' if v else 'OFF',
                     'xmlvalidateresponse': lambda v: 'ON' if v else 'OFF',
+                    'xmladditionalsoapheaders': lambda v: 'ON' if v else 'OFF',
+                    'state': lambda v: v.upper(),
                     'xmlvalidatesoapenvelope': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
@@ -2453,97 +2597,97 @@ class ModuleExecutor(object):
         
 
     def sync_contenttype_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['contenttype', 'state', 'comment'], 'binding_key': 'contenttype_bindings', 'binding_object': 'appfwprofile_contenttype_binding', 'attributes_config_list': {'attributes': ['contenttype', 'state', 'comment', 'name'], 'resource_name': 'contenttype_bindings', 'delete_id_attributes': ['contenttype', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'contenttype bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'contenttype_bindings', 'binding_object': 'appfwprofile_contenttype_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['contenttype', 'name'], 'resource_name': 'contenttype_bindings', 'attributes': ['contenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['contenttype', 'state', 'comment']})
         
         
 
     def sync_cookieconsistency_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['cookieconsistency', 'isregex', 'state', 'comment'], 'binding_key': 'cookieconsistency_bindings', 'binding_object': 'appfwprofile_cookieconsistency_binding', 'attributes_config_list': {'attributes': ['cookieconsistency', 'isregex', 'state', 'comment', 'name'], 'resource_name': 'cookieconsistency_bindings', 'delete_id_attributes': ['cookieconsistency', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'cookieconsistency bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'cookieconsistency_bindings', 'binding_object': 'appfwprofile_cookieconsistency_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['cookieconsistency', 'name'], 'resource_name': 'cookieconsistency_bindings', 'attributes': ['cookieconsistency', 'isregex', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['cookieconsistency', 'isregex', 'state', 'comment']})
         
         
 
     def sync_creditcardnumber_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment'], 'binding_key': 'creditcardnumber_bindings', 'binding_object': 'appfwprofile_creditcardnumber_binding', 'attributes_config_list': {'attributes': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment', 'name'], 'resource_name': 'creditcardnumber_bindings', 'delete_id_attributes': ['creditcardnumber', 'creditcardnumberurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'creditcardnumber bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'creditcardnumber_bindings', 'binding_object': 'appfwprofile_creditcardnumber_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['creditcardnumber', 'creditcardnumberurl', 'name'], 'resource_name': 'creditcardnumber_bindings', 'attributes': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['creditcardnumber', 'creditcardnumberurl', 'state', 'comment']})
         
         
 
     def sync_crosssitescripting_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment'], 'binding_key': 'crosssitescripting_bindings', 'binding_object': 'appfwprofile_crosssitescripting_binding', 'attributes_config_list': {'attributes': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment', 'name'], 'resource_name': 'crosssitescripting_bindings', 'delete_id_attributes': ['crosssitescripting', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'crosssitescripting bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'crosssitescripting_bindings', 'binding_object': 'appfwprofile_crosssitescripting_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['crosssitescripting', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'name'], 'resource_name': 'crosssitescripting_bindings', 'attributes': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['crosssitescripting', 'isregex_xss', 'formactionurl_xss', 'as_scan_location_xss', 'as_value_type_xss', 'as_value_expr_xss', 'isvalueregex_xss', 'state', 'comment']})
         
         
 
     def sync_csrftag_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['csrftag', 'csrfformactionurl', 'state', 'comment'], 'binding_key': 'csrftag_bindings', 'binding_object': 'appfwprofile_csrftag_binding', 'attributes_config_list': {'attributes': ['csrftag', 'csrfformactionurl', 'state', 'comment', 'name'], 'resource_name': 'csrftag_bindings', 'delete_id_attributes': ['csrftag', 'csrfformactionurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'csrftag bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'csrftag_bindings', 'binding_object': 'appfwprofile_csrftag_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['csrftag', 'csrfformactionurl', 'name'], 'resource_name': 'csrftag_bindings', 'attributes': ['csrftag', 'csrfformactionurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['csrftag', 'csrfformactionurl', 'state', 'comment']})
         
         
 
     def sync_denyurl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['denyurl', 'state', 'comment'], 'binding_key': 'denyurl_bindings', 'binding_object': 'appfwprofile_denyurl_binding', 'attributes_config_list': {'attributes': ['denyurl', 'state', 'comment', 'name'], 'resource_name': 'denyurl_bindings', 'delete_id_attributes': ['denyurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'denyurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'denyurl_bindings', 'binding_object': 'appfwprofile_denyurl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['denyurl', 'name'], 'resource_name': 'denyurl_bindings', 'attributes': ['denyurl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['denyurl', 'state', 'comment']})
         
         
 
     def sync_excluderescontenttype_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['excluderescontenttype', 'state', 'comment'], 'binding_key': 'excluderescontenttype_bindings', 'binding_object': 'appfwprofile_excluderescontenttype_binding', 'attributes_config_list': {'attributes': ['excluderescontenttype', 'state', 'comment', 'name'], 'resource_name': 'excluderescontenttype_bindings', 'delete_id_attributes': ['excluderescontenttype', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'excluderescontenttype bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'excluderescontenttype_bindings', 'binding_object': 'appfwprofile_excluderescontenttype_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['excluderescontenttype', 'name'], 'resource_name': 'excluderescontenttype_bindings', 'attributes': ['excluderescontenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['excluderescontenttype', 'state', 'comment']})
         
         
 
     def sync_fieldconsistency_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment'], 'binding_key': 'fieldconsistency_bindings', 'binding_object': 'appfwprofile_fieldconsistency_binding', 'attributes_config_list': {'attributes': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment', 'name'], 'resource_name': 'fieldconsistency_bindings', 'delete_id_attributes': ['fieldconsistency', 'formactionurl_ffc', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'fieldconsistency bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'fieldconsistency_bindings', 'binding_object': 'appfwprofile_fieldconsistency_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['fieldconsistency', 'formactionurl_ffc', 'name'], 'resource_name': 'fieldconsistency_bindings', 'attributes': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['fieldconsistency', 'isregex_ffc', 'formactionurl_ffc', 'state', 'comment']})
         
         
 
     def sync_fieldformat_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment'], 'binding_key': 'fieldformat_bindings', 'binding_object': 'appfwprofile_fieldformat_binding', 'attributes_config_list': {'attributes': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment', 'name'], 'resource_name': 'fieldformat_bindings', 'delete_id_attributes': ['fieldformat', 'formactionurl_ff', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'fieldformat bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'fieldformat_bindings', 'binding_object': 'appfwprofile_fieldformat_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['fieldformat', 'formactionurl_ff', 'name'], 'resource_name': 'fieldformat_bindings', 'attributes': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['fieldformat', 'isregex_ff', 'formactionurl_ff', 'fieldtype', 'fieldformatminlength', 'fieldformatmaxlength', 'state', 'comment']})
         
         
 
     def sync_safeobject_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment'], 'binding_key': 'safeobject_bindings', 'binding_object': 'appfwprofile_safeobject_binding', 'attributes_config_list': {'attributes': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment', 'name'], 'resource_name': 'safeobject_bindings', 'delete_id_attributes': ['safeobject', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'safeobject bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'safeobject_bindings', 'binding_object': 'appfwprofile_safeobject_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['safeobject', 'name'], 'resource_name': 'safeobject_bindings', 'attributes': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['safeobject', 'as_expression', 'maxmatchlength', 'action', 'state', 'comment']})
         
         
 
     def sync_sqlinjection_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment'], 'binding_key': 'sqlinjection_bindings', 'binding_object': 'appfwprofile_sqlinjection_binding', 'attributes_config_list': {'attributes': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment', 'name'], 'resource_name': 'sqlinjection_bindings', 'delete_id_attributes': ['sqlinjection', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'sqlinjection bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'sqlinjection_bindings', 'binding_object': 'appfwprofile_sqlinjection_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['sqlinjection', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'name'], 'resource_name': 'sqlinjection_bindings', 'attributes': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['sqlinjection', 'isregex_sql', 'formactionurl_sql', 'as_scan_location_sql', 'as_value_type_sql', 'as_value_expr_sql', 'isvalueregex_sql', 'state', 'comment']})
         
         
 
     def sync_starturl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['starturl', 'state', 'comment'], 'binding_key': 'starturl_bindings', 'binding_object': 'appfwprofile_starturl_binding', 'attributes_config_list': {'attributes': ['starturl', 'state', 'comment', 'name'], 'resource_name': 'starturl_bindings', 'delete_id_attributes': ['starturl', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'starturl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'starturl_bindings', 'binding_object': 'appfwprofile_starturl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['starturl', 'name'], 'resource_name': 'starturl_bindings', 'attributes': ['starturl', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['starturl', 'state', 'comment']})
         
         
 
     def sync_trustedlearningclients_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['trustedlearningclients', 'state', 'comment'], 'binding_key': 'trustedlearningclients_bindings', 'binding_object': 'appfwprofile_trustedlearningclients_binding', 'attributes_config_list': {'attributes': ['trustedlearningclients', 'state', 'comment', 'name'], 'resource_name': 'trustedlearningclients_bindings', 'delete_id_attributes': ['trustedlearningclients', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'trustedlearningclients bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'trustedlearningclients_bindings', 'binding_object': 'appfwprofile_trustedlearningclients_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['trustedlearningclients', 'name'], 'resource_name': 'trustedlearningclients_bindings', 'attributes': ['trustedlearningclients', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['trustedlearningclients', 'state', 'comment']})
         
         
 
     def sync_xmlattachmenturl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment'], 'binding_key': 'xmlattachmenturl_bindings', 'binding_object': 'appfwprofile_xmlattachmenturl_binding', 'attributes_config_list': {'attributes': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment', 'name'], 'resource_name': 'xmlattachmenturl_bindings', 'delete_id_attributes': ['xmlattachmenturl', 'name'], 'transforms': {'xmlattachmentcontenttypecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattachmentsizecheck': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmlattachmenturl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlattachmenturl_bindings', 'binding_object': 'appfwprofile_xmlattachmenturl_binding', 'attributes_config_list': {'transforms': {'xmlattachmentcontenttypecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattachmentsizecheck': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlattachmenturl', 'name'], 'resource_name': 'xmlattachmenturl_bindings', 'attributes': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlattachmenturl', 'xmlmaxattachmentsizecheck', 'xmlmaxattachmentsize', 'xmlattachmentcontenttypecheck', 'xmlattachmentcontenttype', 'state', 'comment']})
         
         
 
     def sync_xmldosurl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment'], 'binding_key': 'xmldosurl_bindings', 'binding_object': 'appfwprofile_xmldosurl_binding', 'attributes_config_list': {'attributes': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment', 'name'], 'resource_name': 'xmldosurl_bindings', 'delete_id_attributes': ['xmldosurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()', 'xmlmaxattributevaluelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxchardatalengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxentityexpansionscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxentityexpansiondepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlblockpi': "lambda v: 'ON' if v else 'OFF'", 'xmlblockexternalentities': "lambda v: 'ON' if v else 'OFF'", 'xmlblockdtd': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementdepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnodescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlminfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributenamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlsoaparraycheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespaceurilengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementnamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementchildrencheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespacescheck': "lambda v: 'ON' if v else 'OFF'"}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmldosurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmldosurl_bindings', 'binding_object': 'appfwprofile_xmldosurl_binding', 'attributes_config_list': {'transforms': {'xmlblockpi': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlminfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementdepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnodescheck': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()', 'xmlmaxentityexpansionscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementchildrencheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxentityexpansiondepthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlblockdtd': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespacescheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementscheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxfilesizecheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxnamespaceurilengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxelementnamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributenamelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlsoaparraycheck': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxattributevaluelengthcheck': "lambda v: 'ON' if v else 'OFF'", 'xmlblockexternalentities': "lambda v: 'ON' if v else 'OFF'", 'xmlmaxchardatalengthcheck': "lambda v: 'ON' if v else 'OFF'"}, 'delete_id_attributes': ['xmldosurl', 'name'], 'resource_name': 'xmldosurl_bindings', 'attributes': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmldosurl', 'xmlmaxelementdepthcheck', 'xmlmaxelementdepth', 'xmlmaxelementnamelengthcheck', 'xmlmaxelementnamelength', 'xmlmaxelementscheck', 'xmlmaxelements', 'xmlmaxelementchildrencheck', 'xmlmaxelementchildren', 'xmlmaxnodescheck', 'xmlmaxnodes', 'xmlmaxentityexpansionscheck', 'xmlmaxentityexpansions', 'xmlmaxentityexpansiondepthcheck', 'xmlmaxentityexpansiondepth', 'xmlmaxattributescheck', 'xmlmaxattributes', 'xmlmaxattributenamelengthcheck', 'xmlmaxattributenamelength', 'xmlmaxattributevaluelengthcheck', 'xmlmaxattributevaluelength', 'xmlmaxnamespacescheck', 'xmlmaxnamespaces', 'xmlmaxnamespaceurilengthcheck', 'xmlmaxnamespaceurilength', 'xmlmaxchardatalengthcheck', 'xmlmaxchardatalength', 'xmlmaxfilesizecheck', 'xmlmaxfilesize', 'xmlminfilesizecheck', 'xmlminfilesize', 'xmlblockpi', 'xmlblockdtd', 'xmlblockexternalentities', 'xmlsoaparraycheck', 'xmlmaxsoaparraysize', 'xmlmaxsoaparrayrank', 'state', 'comment']})
         
         
 
     def sync_xmlsqlinjection_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment'], 'binding_key': 'xmlsqlinjection_bindings', 'binding_object': 'appfwprofile_xmlsqlinjection_binding', 'attributes_config_list': {'attributes': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment', 'name'], 'resource_name': 'xmlsqlinjection_bindings', 'delete_id_attributes': ['xmlsqlinjection', 'as_scan_location_xmlsql', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmlsqlinjection bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlsqlinjection_bindings', 'binding_object': 'appfwprofile_xmlsqlinjection_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlsqlinjection', 'as_scan_location_xmlsql', 'name'], 'resource_name': 'xmlsqlinjection_bindings', 'attributes': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlsqlinjection', 'isregex_xmlsql', 'as_scan_location_xmlsql', 'state', 'comment']})
         
         
 
     def sync_xmlvalidationurl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment'], 'binding_key': 'xmlvalidationurl_bindings', 'binding_object': 'appfwprofile_xmlvalidationurl_binding', 'attributes_config_list': {'attributes': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment', 'name'], 'resource_name': 'xmlvalidationurl_bindings', 'delete_id_attributes': ['xmlvalidationurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()', 'xmladditionalsoapheaders': "lambda v: 'ON' if v else 'OFF'", 'xmlvalidateresponse': "lambda v: 'ON' if v else 'OFF'", 'xmlvalidatesoapenvelope': "lambda v: 'ON' if v else 'OFF'"}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmlvalidationurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlvalidationurl_bindings', 'binding_object': 'appfwprofile_xmlvalidationurl_binding', 'attributes_config_list': {'transforms': {'xmlvalidateresponse': "lambda v: 'ON' if v else 'OFF'", 'xmladditionalsoapheaders': "lambda v: 'ON' if v else 'OFF'", 'state': 'lambda v: v.upper()', 'xmlvalidatesoapenvelope': "lambda v: 'ON' if v else 'OFF'"}, 'delete_id_attributes': ['xmlvalidationurl', 'name'], 'resource_name': 'xmlvalidationurl_bindings', 'attributes': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlvalidationurl', 'xmlvalidateresponse', 'xmlwsdl', 'xmladditionalsoapheaders', 'xmlendpointcheck', 'xmlrequestschema', 'xmlresponseschema', 'xmlvalidatesoapenvelope', 'state', 'comment']})
         
         
 
     def sync_xmlwsiurl_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment'], 'binding_key': 'xmlwsiurl_bindings', 'binding_object': 'appfwprofile_xmlwsiurl_binding', 'attributes_config_list': {'attributes': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment', 'name'], 'resource_name': 'xmlwsiurl_bindings', 'delete_id_attributes': ['xmlwsiurl', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmlwsiurl bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlwsiurl_bindings', 'binding_object': 'appfwprofile_xmlwsiurl_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlwsiurl', 'name'], 'resource_name': 'xmlwsiurl_bindings', 'attributes': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlwsiurl', 'xmlwsichecks', 'state', 'comment']})
         
         
 
     def sync_xmlxss_bindings(self):
-        self.sync_binding_with_data({'doc_list': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment'], 'binding_key': 'xmlxss_bindings', 'binding_object': 'appfwprofile_xmlxss_binding', 'attributes_config_list': {'attributes': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment', 'name'], 'resource_name': 'xmlxss_bindings', 'delete_id_attributes': ['xmlxss', 'as_scan_location_xmlxss', 'name'], 'transforms': {'state': 'lambda v: v.upper()'}, 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}})
+        self.sync_binding_with_data({'description': 'xmlxss bindings', 'link_to_main': {'bind_key': 'name', 'main_key': 'name'}, 'binding_key': 'xmlxss_bindings', 'binding_object': 'appfwprofile_xmlxss_binding', 'attributes_config_list': {'transforms': {'state': 'lambda v: v.upper()'}, 'delete_id_attributes': ['xmlxss', 'as_scan_location_xmlxss', 'name'], 'resource_name': 'xmlxss_bindings', 'attributes': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment', 'name'], 'get_id_attributes': ['name']}, 'get_all_id': 'name', 'doc_list': ['xmlxss', 'isregex_xmlxss', 'as_scan_location_xmlxss', 'state', 'comment']})
         
 
 
@@ -3037,7 +3181,6 @@ def main():
         archivename=dict(type='str'),
         
 
-        # FIXME generate the proper argument list
         
         contenttype_bindings=dict(type='dict'),
         cookieconsistency_bindings=dict(type='dict'),

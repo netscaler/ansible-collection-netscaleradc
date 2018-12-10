@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_lb_vserver
+module: citrix_adc_lb_vserver
 short_description: Manage load balancing vserver configuration
 description:
     - Manage load balancing vserver configuration
@@ -890,7 +890,7 @@ options:
         description:
             - The name of the ssl certificate that is bound to this service.
             - The ssl certificate must already exist.
-            - Creating the certificate can be done with the M(netscaler_ssl_certkey) module.
+            - Creating the certificate can be done with the M(citrix_adc_ssl_certkey) module.
             - This option is only applicable only when C(servicetype) is C(SSL).
 
     disabled:
@@ -909,11 +909,11 @@ requirements:
 '''
 
 EXAMPLES = '''
-# Netscaler services service-http-1, service-http-2 must have been already created with the netscaler_service module
+# Netscaler services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
 
 - name: Create a load balancing vserver bound to services
   delegate_to: localhost
-  netscaler_lb_vserver:
+  citrix_adc_lb_vserver:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
@@ -932,11 +932,11 @@ EXAMPLES = '''
         - servicename: service-http-2
           weight: 20
 
-# Service group service-group-1 must have been already created with the netscaler_servicegroup module
+# Service group service-group-1 must have been already created with the citrix_adc_servicegroup module
 
 - name: Create load balancing vserver bound to servicegroup
   delegate_to: localhost
-  netscaler_lb_vserver:
+  citrix_adc_lb_vserver:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

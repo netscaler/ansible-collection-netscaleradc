@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_save_config
+module: citrix_adc_save_config
 short_description: Save Netscaler configuration.
 description:
     - This module uncoditionally saves the configuration on the target netscaler node.
@@ -68,7 +68,7 @@ EXAMPLES = '''
 ---
 - name: Save netscaler configuration
   delegate_to: localhost
-  netscaler_save_config:
+  citrix_adc_save_config:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
@@ -76,7 +76,7 @@ EXAMPLES = '''
 - name: Setup server without saving  configuration
   delegate_to: localhost
   notify: Save configuration
-  netscaler_server:
+  citrix_adc_server:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot
@@ -90,7 +90,7 @@ EXAMPLES = '''
 
 - name: Save configuration
   delegate_to: localhost
-  netscaler_save_config:
+  citrix_adc_save_config:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

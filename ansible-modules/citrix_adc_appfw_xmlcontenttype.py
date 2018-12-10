@@ -16,17 +16,21 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_xmlcontenttype
+module: citrix_adc_appfw_xmlcontenttype
 short_description: Configuration for XML Content type resource.
 description: Configuration for XML Content type resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     xmlcontenttypevalue:
         description:
-            - Content type to be classified as XML
+            - "Content type to be classified as XML"
         type: str
 
     isregex:
@@ -34,7 +38,7 @@ options:
             - 'REGEX'
             - 'NOTREGEX'
         description:
-            - Is field name a regular expression?
+            - "Is field name a regular expression?"
         type: str
 
 
@@ -42,13 +46,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup xml content type
       delegate_to: localhost
-      netscaler_appfw_xmlcontenttype:
+      citrix_adc_appfw_xmlcontenttype:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

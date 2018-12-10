@@ -16,61 +16,68 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_signatures
+module: citrix_adc_appfw_signatures
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     name:
         description:
-            - Name of the signature object.
-            - Minimum length =  1
-            - Maximum length =  31
+            - "Name of the signature object."
+            - "Minimum length =  1"
+            - "Maximum length =  31"
         type: str
 
     src:
         description:
-            - URL (protocol, host, path, and file name) for the location at which to store the imported signatures object.
-            - NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.
-            - Minimum length =  1
-            - Maximum length =  2047
+            - >-
+                URL (protocol, host, path, and file name) for the location at which to store the imported signatures
+            - >-
+                NOTE: The import fails if the object to be imported is on an HTTPS server that requires client
+                authentication for access.
+            - "Minimum length =  1"
+            - "Maximum length =  2047"
         type: str
 
     xslt:
         description:
-            - XSLT file source.
-            - Maximum length =  2047
+            - "XSLT file source."
+            - "Maximum length =  2047"
         type: str
 
     comment:
         description:
-            - Any comments to preserve information about the signatures object.
-            - Maximum length =  128
+            - "Any comments to preserve information about the signatures object."
+            - "Maximum length =  128"
         type: str
 
     overwrite:
         description:
-            - Overwrite any existing signatures object of the same name.
+            - "Overwrite any existing signatures object of the same name."
         type: bool
 
     merge:
         description:
-            - Merges the existing Signature with new signature rules.
+            - "Merges the existing Signature with new signature rules."
         type: bool
 
     sha1:
         description:
-            - File path for sha1 file to validate signature file.
-            - Minimum length =  1
-            - Maximum length =  2047
+            - "File path for sha1 file to validate signature file."
+            - "Minimum length =  1"
+            - "Maximum length =  2047"
         type: str
 
     mergedefault:
         description:
-            - Merges signature file with default signature file.
+            - "Merges signature file with default signature file."
         type: bool
 
 
@@ -85,13 +92,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup confidential field id
       delegate_to: localhost
-      netscaler_appfw_signatures:
+      citrix_adc_appfw_signatures:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

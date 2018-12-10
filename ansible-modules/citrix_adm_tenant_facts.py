@@ -22,13 +22,16 @@ description: Retrieve facts about Citrix ADM tenants.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
         description:
-            - Name of the Tenant.
-            - Minimum length = 1
-            - Maximum length = 512
+            - "Name of the Tenant."
+            - "Minimum length = 1"
+            - "Maximum length = 512"
         type: str
 
 

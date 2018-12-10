@@ -16,127 +16,164 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_learningsettings
+module: citrix_adc_appfw_learningsettings
 short_description: Configuration for learning settings resource.
 description: Configuration for learning settings resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     profilename:
         description:
-            - Name of the profile.
+            - "Name of the profile."
         type: str
 
     starturlminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn start URLs.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn start
         type: str
 
     starturlpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular start URL pattern for the learning engine to learn that start URL.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular start URL pattern
+                the learning engine to learn that start URL.
         type: str
 
     cookieconsistencyminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn cookies.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn
         type: str
 
     cookieconsistencypercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular cookie pattern for the learning engine to learn that cookie.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular cookie pattern for
+                learning engine to learn that cookie.
         type: str
 
     csrftagminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn cross-site request forgery (CSRF) tags.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn
+                request forgery (CSRF) tags.
         type: str
 
     csrftagpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the learning engine to learn that CSRF tag.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the
+                engine to learn that CSRF tag.
         type: str
 
     fieldconsistencyminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn field consistency information.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn field
+                information.
         type: str
 
     fieldconsistencypercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular field consistency pattern for the learning engine to learn that field consistency pattern.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular field consistency
+                for the learning engine to learn that field consistency pattern.
         type: str
 
     crosssitescriptingminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn HTML cross-site scripting patterns.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn HTML
+                scripting patterns.
         type: str
 
     crosssitescriptingpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular cross-site scripting pattern for the learning engine to learn that cross-site scripting pattern.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular cross-site
+                pattern for the learning engine to learn that cross-site scripting pattern.
         type: str
 
     sqlinjectionminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn HTML SQL injection patterns.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn HTML
+                injection patterns.
         type: str
 
     sqlinjectionpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection pattern for the learning engine to learn that HTML SQL injection pattern.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection
+                for the learning engine to learn that HTML SQL injection pattern.
         type: str
 
     fieldformatminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn field formats.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn field
         type: str
 
     fieldformatpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular web form field pattern for the learning engine to recommend a field format for that form field.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular web form field
+                for the learning engine to recommend a field format for that form field.
         type: str
 
     creditcardnumberminthreshold:
         description:
-            - Minimum threshold to learn Credit Card information.
+            - "Minimum threshold to learn Credit Card information."
         type: str
 
     creditcardnumberpercentthreshold:
         description:
-            - Minimum threshold in percent to learn Credit Card information.
+            - "Minimum threshold in percent to learn Credit Card information."
         type: str
 
     contenttypeminthreshold:
         description:
-            - Minimum threshold to learn Content Type information.
+            - "Minimum threshold to learn Content Type information."
         type: str
 
     contenttypepercentthreshold:
         description:
-            - Minimum threshold in percent to learn Content Type information.
+            - "Minimum threshold in percent to learn Content Type information."
         type: str
 
     xmlwsiminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn web services interoperability (WSI) information.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn web
+                interoperability (WSI) information.
         type: str
 
     xmlwsipercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular pattern for the learning engine to learn a web services interoperability (WSI) pattern.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular pattern for the
+                engine to learn a web services interoperability (WSI) pattern.
         type: str
 
     xmlattachmentminthreshold:
         description:
-            - Minimum number of application firewall sessions that the learning engine must observe to learn XML attachment patterns.
+            - >-
+                Minimum number of application firewall sessions that the learning engine must observe to learn XML
+                patterns.
         type: str
 
     xmlattachmentpercentthreshold:
         description:
-            - Minimum percentage of application firewall sessions that must contain a particular XML attachment pattern for the learning engine to learn that XML attachment pattern.
+            - >-
+                Minimum percentage of application firewall sessions that must contain a particular XML attachment
+                for the learning engine to learn that XML attachment pattern.
         type: str
 
 
@@ -145,13 +182,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup learning settings
       delegate_to: localhost
-      netscaler_appfw_learningsettings:
+      citrix_adc_appfw_learningsettings:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

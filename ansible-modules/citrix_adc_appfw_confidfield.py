@@ -16,22 +16,26 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_confidfield
+module: citrix_adc_appfw_confidfield
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     fieldname:
         description:
-            - Name of the form field to designate as confidential.
+            - "Name of the form field to designate as confidential."
         type: str
 
     url:
         description:
-            - URL of the web page that contains the web form.
+            - "URL of the web page that contains the web form."
         type: str
 
     isregex:
@@ -39,14 +43,14 @@ options:
             - 'REGEX'
             - 'NOTREGEX'
         description:
-            - Method of specifying the form field name. Available settings function as follows:
-            - * REGEX. Form field is a regular expression.
-            - * NOTREGEX. Form field is a literal string.
+            - "Method of specifying the form field name. Available settings function as follows:"
+            - "* REGEX. Form field is a regular expression."
+            - "* NOTREGEX. Form field is a literal string."
         type: str
 
     comment:
         description:
-            - Any comments to preserve information about the form field designation.
+            - "Any comments to preserve information about the form field designation."
         type: str
 
 
@@ -61,13 +65,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup confidential field id
       delegate_to: localhost
-      netscaler_appfw_confidfield:
+      citrix_adc_appfw_confidfield:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

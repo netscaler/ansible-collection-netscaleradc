@@ -25,39 +25,42 @@ description:
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     source:
         description:
-            - Source definition of the StyleBook.
-            - Minimum length = 1
-            - Maximum length = 32
+            - "Source definition of the StyleBook."
+            - "Minimum length = 1"
+            - "Maximum length = 32"
         type: str
 
     namespace:
         description:
-            - Namespace of the StyleBook.
-            - Minimum length = 1
-            - Maximum length = 32
+            - "Namespace of the StyleBook."
+            - "Minimum length = 1"
+            - "Maximum length = 32"
         type: str
 
     version:
         description:
-            - Version of the StyleBook.
-            - Minimum length = 1
-            - Maximum length = 32
+            - "Version of the StyleBook."
+            - "Minimum length = 1"
+            - "Maximum length = 32"
         type: str
 
     name:
         description:
-            - Name of the StyleBook.
+            - "Name of the StyleBook."
         type: str
 
     display_name:
         description:
-            - Display name of the StyleBook.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Display name of the StyleBook."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
 

@@ -25,47 +25,50 @@ description:
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     tenant_id:
         description:
-            - Tenant Id of the RBA roles.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Tenant Id of the RBA roles."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     statement:
         description:
-            - RBA statement.
+            - "RBA statement."
         type: list
 
     ui:
         description:
-            - RBA for UI components.
+            - "RBA for UI components."
         type: list
 
     name:
         description:
-            - Policy Name.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Policy Name."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - Id is system generated key for all the system policys.
+            - "Id is system generated key for all the system policys."
         type: str
 
     description:
         description:
-            - Description of Policy.
-            - Minimum length = 1
-            - Maximum length = 1024
+            - "Description of Policy."
+            - "Minimum length = 1"
+            - "Maximum length = 1024"
         type: str
 
     roles:
         description:
-            - Roles to which this policy attached.
+            - "Roles to which this policy attached."
         type: list
 
 

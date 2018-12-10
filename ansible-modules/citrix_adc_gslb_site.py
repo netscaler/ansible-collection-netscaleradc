@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_gslb_site
+module: citrix_adc_gslb_site
 short_description: Manage gslb site entities in Netscaler.
 description:
     - Manage gslb site entities in Netscaler.
@@ -143,7 +143,7 @@ requirements:
 EXAMPLES = '''
 - name: Setup gslb site
   delegate_to: localhost
-  netscaler_gslb_site:
+  citrix_adc_gslb_site:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

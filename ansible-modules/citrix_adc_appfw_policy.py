@@ -16,44 +16,55 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_policy
-short_description: Manage Netscaler Web Application Firewall policies.
+module: citrix_adc_appfw_policy
+short_description: Manage Citrix ADC Web Application Firewall policies.
 description:
-    - Manage Netscaler Web Application Firewall policies.
-    - The module uses the NITRO API to make configuration changes to WAF policies on a target Netscaler.
+    - Manage Citrix ADC Web Application Firewall policies.
+    - The module uses the NITRO API to make configuration changes to WAF policies on a target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
 version_added: "2.8.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
 
 options:
 
     name:
         description:
-            - Name for the policy. 
-            - Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and underscore characters. Can be changed after the policy is created.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks \(for example, "my policy" or 'my policy'\).
+            - "Name for the policy. "
+            - >-
+                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
+                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
+                characters. Can be changed after the policy is created.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
+                "my policy" or 'my policy'\).
         type: str
 
     rule:
         description:
-            - Name of the NetScaler named rule, or a NetScaler default syntax expression, that the policy uses to determine whether to filter the connection through the application firewall with the designated profile.
+            - >-
+                Name of the NetScaler named rule, or a NetScaler default syntax expression, that the policy uses to
+                whether to filter the connection through the application firewall with the designated profile.
         type: str
 
     profilename:
         description:
-            - Name of the application firewall profile to use if the policy matches.
+            - "Name of the application firewall profile to use if the policy matches."
         type: str
 
     comment:
         description:
-            - Any comments to preserve information about the policy for later reference.
+            - "Any comments to preserve information about the policy for later reference."
         type: str
 
     logaction:
         description:
-            - Where to log information for connections that match this policy.
+            - "Where to log information for connections that match this policy."
         type: str
 
 
@@ -63,7 +74,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: Setup appfw policy
   delegate_to: localhost
-  netscaler_appfw_policy:
+  citrix_adc_appfw_policy:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1
@@ -75,7 +86,7 @@ EXAMPLES = '''
 
 - name: Remove appfw policy
   delegate_to: localhost
-  netscaler_appfw_policy:
+  citrix_adc_appfw_policy:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1

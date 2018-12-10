@@ -24,136 +24,139 @@ description:
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     throughput_avg:
         description:
-            - Sum of throughput across all vips of the app.
+            - "Sum of throughput across all vips of the app."
         type: str
 
     app_category:
         description:
-            - Application Category.
-            - Minimum length = 1
-            - Maximum length = 255
+            - "Application Category."
+            - "Minimum length = 1"
+            - "Maximum length = 255"
         type: str
 
     curclntconnections:
         description:
-            - curclntconnections Value across all vips of the app.
+            - "curclntconnections Value across all vips of the app."
         type: str
 
     name:
         description:
-            - Application Name.
-            - Maximum length = 1024
+            - "Application Name."
+            - "Maximum length = 1024"
         type: str
 
     cursrvrconnections:
         description:
-            - cursrvrconnections Value across all vips of the app.
+            - "cursrvrconnections Value across all vips of the app."
         type: str
 
     application_managed:
         description:
-            - Managed field.
+            - "Managed field."
         type: bool
 
     id:
         description:
-            - Id is system generated key..
+            - "Id is system generated key.."
         type: str
 
     family:
         description:
-            - Application Family.
-            - Minimum length = 1
-            - Maximum length = 255
+            - "Application Family."
+            - "Minimum length = 1"
+            - "Maximum length = 255"
         type: str
 
     app_criteria:
         description:
-            - Application criteria.
+            - "Application criteria."
         type: list
 
     app_components:
         description:
-            - Application components.
+            - "Application components."
         type: list
 
     no_of_auth:
         description:
-            - Number of AUTH VIPs.
+            - "Number of AUTH VIPs."
         type: str
 
     no_of_gslb:
         description:
-            - Number of GSLB VIPs.
+            - "Number of GSLB VIPs."
         type: str
 
     no_of_gslbsvc:
         description:
-            - Number of LB VIPs.
+            - "Number of LB VIPs."
         type: str
 
     no_of_cr:
         description:
-            - Number of CR VIPs.
+            - "Number of CR VIPs."
         type: str
 
     no_of_cs:
         description:
-            - Number of CS VIPs.
+            - "Number of CS VIPs."
         type: str
 
     no_of_svc:
         description:
-            - Number of Services.
+            - "Number of Services."
         type: str
 
     no_of_svcgrp:
         description:
-            - Number of Service Groups.
+            - "Number of Service Groups."
         type: str
 
     no_of_haproxy_be:
         description:
-            - Number of Banckends.
+            - "Number of Banckends."
         type: str
 
     force_delete:
         description:
-            - force delete.
+            - "force delete."
         type: bool
 
     no_of_svr:
         description:
-            - Number of Servers.
+            - "Number of Servers."
         type: str
 
     stylebook_params:
         description:
-            - Stylebook Parameter.
+            - "Stylebook Parameter."
         type: str
 
     no_of_lb:
         description:
-            - Number of LB VIPs.
+            - "Number of LB VIPs."
         type: str
 
     no_of_vpn:
         description:
-            - Number of VPN VIPs.
+            - "Number of VPN VIPs."
         type: str
 
     no_of_haproxy_fe:
         description:
-            - Number of Frontends.
+            - "Number of Frontends."
         type: str
 
     application_ids:
         description:
-            - Application IDs that are part of this application.
+            - "Application IDs that are part of this application."
         type: list
 
 

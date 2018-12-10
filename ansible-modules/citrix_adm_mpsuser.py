@@ -22,57 +22,60 @@ description: Manage Citrix ADM users.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     session_timeout:
         description:
-            - Session timeout for the user.
+            - "Session timeout for the user."
         type: str
 
     name:
         description:
-            - User Name.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "User Name."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     session_timeout_unit:
         description:
-            - Session timeout unit for the user.
+            - "Session timeout unit for the user."
         type: str
 
     external_authentication:
         description:
-            - Enable external authentication.
+            - "Enable external authentication."
         type: bool
 
     enable_session_timeout:
         description:
-            - Enables session timeout for user.
+            - "Enables session timeout for user."
         type: bool
 
     tenant_id:
         description:
-            - Tenant Id of the system users.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Tenant Id of the system users."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     password:
         description:
-            - Password.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Password."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - Id is system generated key for all the system users.
+            - "Id is system generated key for all the system users."
         type: str
 
     groups:
         description:
-            - Groups to which user belongs.
+            - "Groups to which user belongs."
         type: list
 
 

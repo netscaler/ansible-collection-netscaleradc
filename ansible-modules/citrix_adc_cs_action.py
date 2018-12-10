@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_action
+module: citrix_adc_cs_action
 short_description: Manage content switching actions
 description:
     - Manage content switching actions
@@ -57,11 +57,11 @@ requirements:
 '''
 
 EXAMPLES = '''
-# lb_vserver_1 must have been already created with the netscaler_lb_vserver module
+# lb_vserver_1 must have been already created with the citrix_adc_lb_vserver module
 
 - name: Configure netscaler content switching action
   delegate_to: localhost
-  netscaler_cs_action:
+  citrix_adc_cs_action:
       nsip: 172.18.0.2
       nitro_user: nsroot
       nitro_pass: nsroot

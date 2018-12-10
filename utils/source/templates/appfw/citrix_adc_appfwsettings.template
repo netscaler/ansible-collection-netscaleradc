@@ -16,15 +16,19 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_settings
-short_description: Manage Netscaler Web Application Firewall settings.
+module: citrix_adc_appfw_settings
+short_description: Manage Citrix ADC Web Application Firewall settings.
 description:
-    - Manage Netscaler Web Application Firewall settings.
-    - The module uses the NITRO API to make configuration changes to WAF settings on the target Netscaler.
+    - Manage Citrix ADC Web Application Firewall settings.
+    - The module uses the NITRO API to make configuration changes to WAF settings on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations this module will always report a changed status even when configuration changes have not taken place.
 
 version_added: "2.8.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
 
 options:
 #{% for item in main_object_doc_list %}
@@ -38,7 +42,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: setup basic settings
   delegate_to: localhost
-  netscaler_appfw_settings:
+  citrix_adc_appfw_settings:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 172.18.0.2

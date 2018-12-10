@@ -16,38 +16,44 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_wsdl
+module: citrix_adc_appfw_wsdl
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     name:
         description:
-            - Name of the WSDL file to remove.
-            - Minimum length =  1
-            - Maximum length =  31
+            - "Name of the WSDL file to remove."
+            - "Minimum length =  1"
+            - "Maximum length =  31"
         type: str
 
     src:
         description:
-            - URL (protocol, host, path, and name) of the WSDL file to be imported is stored.
-            - NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.
-            - Minimum length =  1
-            - Maximum length =  2047
+            - "URL (protocol, host, path, and name) of the WSDL file to be imported is stored."
+            - >-
+                NOTE: The import fails if the object to be imported is on an HTTPS server that requires client
+                authentication for access.
+            - "Minimum length =  1"
+            - "Maximum length =  2047"
         type: str
 
     comment:
         description:
-            - Any comments to preserve information about the WSDL.
-            - Maximum length =  128
+            - "Any comments to preserve information about the WSDL."
+            - "Maximum length =  128"
         type: str
 
     overwrite:
         description:
-            - Overwrite any existing WSDL of the same name.
+            - "Overwrite any existing WSDL of the same name."
         type: bool
 
 
@@ -62,13 +68,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup confidential field id
       delegate_to: localhost
-      netscaler_appfw_wsdl:
+      citrix_adc_appfw_wsdl:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2
