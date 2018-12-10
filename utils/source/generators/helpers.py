@@ -1,4 +1,4 @@
-
+from collections import OrderedDict
 
 def calculate_transforms_for_attribute(attribute):
 
@@ -87,7 +87,7 @@ def calculate_attributes_config_dict(resource_name, attribute_list, skip_attribu
     attributes_config_dict['resource_name'] = resource_name
     attributes_config_dict['attributes'] = [item['option_name'] for item in attribute_list]
 
-    attributes_config_dict['transforms'] = {}
+    attributes_config_dict['transforms'] = OrderedDict()
     for attribute in attribute_list:
 
         # Skip attribute
