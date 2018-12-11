@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_service
+module: citrix_adc_service
 short_description: Manage service configuration in Netscaler
 description:
     - Manage service configuration in Netscaler.
@@ -374,7 +374,7 @@ EXAMPLES = '''
 - name: Setup http service
   gather_facts: False
   delegate_to: localhost
-  netscaler_service:
+  citrix_adc_service:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

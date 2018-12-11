@@ -62,6 +62,7 @@ def main():
         json_file=os.path.join(json_dir, 'appfwglobal_appfwpolicy_binding.json'),
         binding_dict={
             'binding_key': 'appfwpolicy_bindings',
+            'description': 'appfwpolicy bindings',
             'binding_object': 'appfwglobal_appfwpolicy_binding',
             },
     )
@@ -70,6 +71,7 @@ def main():
         json_file=os.path.join(json_dir, 'appfwglobal_auditnslogpolicy_binding.json'),
         binding_dict={
             'binding_key': 'auditnslogpolicy_bindings',
+            'description': 'auditnslogpolicy bindings',
             'binding_object': 'appfwglobal_auditnslogpolicy_binding',
             },
     )
@@ -78,6 +80,7 @@ def main():
         json_file=os.path.join(json_dir, 'appfwglobal_auditsyslogpolicy_binding.json'),
         binding_dict={
             'binding_key': 'auditsyslogpolicy_bindings',
+            'description': 'auditsyslogpolicy bindings',
             'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
             },
     )

@@ -16,14 +16,18 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_policylabel
-short_description: Manage Netscaler Web Application Firewall policy labels.
+module: citrix_adc_appfw_policylabel
+short_description: Manage Citrix ADC Web Application Firewall policy labels.
 description:
-    - Manage Netscaler Web Application Firewall policy labels.
-    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Netscaler.
+    - Manage Citrix ADC Web Application Firewall policy labels.
+    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
 version_added: "2.8.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
 
 options:
 #{% for item in main_object_doc_list %}
@@ -33,7 +37,7 @@ options:
 
 #{% for binding in bindings %}
     {{ binding.binding_id }}:
-        desription: {{ binding.description }}
+        description: {{ binding.description }}
         suboptions:
             mode:
                 choices:
@@ -55,7 +59,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: Setup policy label
   delegate_to: localhost
-  netscaler_appfw_policylabel:
+  citrix_adc_appfw_policylabel:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1
@@ -65,7 +69,7 @@ EXAMPLES = '''
 
 - name: Remove policy label
   delegate_to: localhost
-  netscaler_appfw_policylabel:
+  citrix_adc_appfw_policylabel:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1

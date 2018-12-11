@@ -22,21 +22,24 @@ description: Manage Citrix ADM user groups.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     authscope_props:
         description:
-            - authscope_props
+            - "authscope_props"
         type: list
 
     allow_application_only:
         description:
-            - Checks if only application centic page is needed.
+            - "Checks if only application centic page is needed."
         type: bool
 
     session_timeout:
         description:
-            - Session timeout for the Group.
+            - "Session timeout for the Group."
         type: str
 
     permission:
@@ -44,55 +47,55 @@ options:
             - 'admin'
             - 'read-only'
         description:
-            - Permission for the group (admin/read-only).
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Permission for the group (admin/read-only)."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     name:
         description:
-            - Group Name.
-            - Minimum length = 1
-            - Maximum length = 64
+            - "Group Name."
+            - "Minimum length = 1"
+            - "Maximum length = 64"
         type: str
 
     session_timeout_unit:
         description:
-            - Session timeout unit for the Group.
+            - "Session timeout unit for the Group."
         type: str
 
     description:
         description:
-            - Description of Group.
-            - Minimum length = 1
-            - Maximum length = 1024
+            - "Description of Group."
+            - "Minimum length = 1"
+            - "Maximum length = 1024"
         type: str
 
     assign_all_apps:
         description:
-            - Assign All Applications (YES|NO).
+            - "Assign All Applications (YES|NO)."
         type: bool
 
     enable_session_timeout:
         description:
-            - Enables session timeout for group.
+            - "Enables session timeout for group."
         type: bool
 
     tenant_id:
         description:
-            - Id of the tenant.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Id of the tenant."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     assign_all_devices:
         description:
-            - Assign All Instances (YES|NO).
+            - "Assign All Instances (YES|NO)."
         type: bool
 
     id:
         description:
-            - Id is system generated key for all the system groups.
+            - "Id is system generated key for all the system groups."
         type: str
 
     role:
@@ -100,38 +103,38 @@ options:
             - 'admin'
             - 'nonadmin'
         description:
-            - Role (admin|nonadmin).
+            - "Role (admin|nonadmin)."
         type: str
 
     roles:
         description:
-            - Roles assigned to the group.
+            - "Roles assigned to the group."
         type: list
 
     application_names_without_regex:
         description:
-            - selected application names that are part of this group.
+            - "selected application names that are part of this group."
         type: list
 
     standalone_instances_id:
         description:
-            - Stand alone instances belong to this groupp.
+            - "Stand alone instances belong to this groupp."
         type: list
 
     users:
         description:
-            - Users belong to the group.
+            - "Users belong to the group."
         type: list
 
     application_names:
         description:
-            - All Application names that are part of this group.
-            - This includes selected appnames as well as applications which are result of defined regex.
+            - "All Application names that are part of this group."
+            - "This includes selected appnames as well as applications which are result of defined regex."
         type: list
 
     application_names_with_regex:
         description:
-            - Application names defined with regex that are part of this group
+            - "Application names defined with regex that are part of this group"
         type: list
 
 

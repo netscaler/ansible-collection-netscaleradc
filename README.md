@@ -4,39 +4,69 @@ This repository provides [Ansible](https://www.ansible.com)  modules for configu
 
 The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be availble with Ansible automatically.
 
+## Module renaming
+
+Note that as of this [commit](https://github.com/citrix/netscaler-ansible-modules/commit/b53935432646741d9af27d9617480517a28aa86d)
+all modules were renamed to match the new Citrix product names.
+
+See [here](https://www.citrix.com/about/citrix-product-guide) for reference.
+
+All modules which previously started with the `netscaler_` prefix have been renamed to
+to start with the `citrix_adc_` prefix.
+
+All new modules will follow this convention as well.
+
+Until these changes are integrated into the Ansible distribution the Citrix ADC
+module names will differ depending on where they were installed from.
+
+## Documentation
+
 Documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
 
 Currently the following modules are implemented
 
-* netscaler\_cs\_action. Configure content switching actions.
-* netscaler\_cs\_policy. Configure content switching policies
-* netscaler\_cs\_vserver. Configure content swtiching virtual servers.
-* netscaler\_lb\_monitor. Configure load balancing monitors.
-* netscaler\_lb\_vserver. Configure load balancing virtual servers.
-* netscaler\_server. Configure server instances.
-* netscaler\_service. Configure NetScaler services.
-* netscaler\_servicegroup. Configure NetScaler service groups.
-* netscaler\_ssl\_cert\_key. Configure NetScaler ssl certs
-* netscaler\_gslb\_vserver. Configure GSLB vserver
-* netscaler\_gslb\_service. Configure GSLB service
-* netscaler\_gslb\_site. Configure GSLB sites
-* netscaler\_appfw\_confidfield.py. Configure AppFW Confidfield
-* netscaler\_appfw\_fieldtype.py. Configure AppFW FieldType
-* netscaler\_appfw\_global\_bindings.py. Configure AppFW GlobalBindings
-* netscaler\_appfw\_htmlerrorpage. Configure AppFW HTMLErrorpage
-* netscaler\_appfw\_jsoncontenttype. Configure AppFW JSONContentType
-* netscaler\_appfw\_learningsettings. Configure AppFW LearningSettings
-* netscaler\_appfw\_policy. Configure AppFW Policy
-* netscaler\_appfw\_policylabel. Configure AppFW PolicyLabel
-* netscaler\_appfw\_profile. Configure AppFW Profile
-* netscaler\_appfw\_settings. Configure AppFW Settings
-* netscaler\_appfw\_signatures. Configure AppFW Signatures
-* netscaler\_appfw\_wsdl. Configure AppFW WSDL
-* netscaler\_appfw\_xmlcontenttype. Configure AppFW XMLContentType
-* netscaler\_appfw\_xmlerrorpage. Configure AppFW XMLErrorPage
-* netscaler\_appfw\_xmlschema. Configure AppFW XMLSchema
-* netscaler\_nitro\_request. Customize the configuration 
-* netscaler\_save\_config. Save Config
+* citrix\_adc\_appfw\_confidfield - Configuration for configured confidential form fields resource
+* citrix\_adc\_appfw\_fieldtype - Configuration for application firewall form field type resource
+* citrix\_adc\_appfw\_global\_bindings - Define global bindings for AppFW
+* citrix\_adc\_appfw\_htmlerrorpage - Configuration for configured confidential form fields resource
+* citrix\_adc\_appfw\_jsoncontenttype - Configuration for JSON content type resource
+* citrix\_adc\_appfw\_learningsettings - Configuration for learning settings resource
+* citrix\_adc\_appfw\_policy - Manage Netscaler Web Application Firewall policies
+* citrix\_adc\_appfw\_policylabel - Manage Netscaler Web Application Firewall policy labels
+* citrix\_adc\_appfw\_profile - Manage Netscaler Web Application Firewall profiles
+* citrix\_adc\_appfw\_settings - Manage Netscaler Web Application Firewall settings
+* citrix\_adc\_appfw\_signatures - Configuration for configured confidential form fields resource
+* citrix\_adc\_appfw\_wsdl - Configuration for configured confidential form fields resource
+* citrix\_adc\_appfw\_xmlcontenttype - Configuration for XML Content type resource
+* citrix\_adc\_appfw\_xmlerrorpage - Configuration for configured confidential form fields resource
+* citrix\_adc\_appfw\_xmlschema - Configuration for configured confidential form fields resource
+* citrix\_adc\_cs\_action - Manage content switching actions
+* citrix\_adc\_cs\_policy - Manage content switching policy
+* citrix\_adc\_cs\_vserver - Manage content switching vserver
+* citrix\_adc\_gslb\_service - Manage gslb service entities in Netscaler
+* citrix\_adc\_gslb\_site - Manage gslb site entities in Netscaler
+* citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Netscaler
+* citrix\_adc\_lb\_monitor - Manage load balancing monitors
+* citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
+* citrix\_adc\_nitro\_request - Issue Nitro API requests to a Netscaler instance
+* citrix\_adc\_save\_config - Save Netscaler configuration
+* citrix\_adc\_server - Manage server configuration
+* citrix\_adc\_service - Manage service configuration in Netscaler
+* citrix\_adc\_servicegroup - Manage service group configuration in Netscaler
+* citrix\_adc\_ssl\_certkey - Manage ssl cerificate keys
+* citrix\_adm\_application - Manage applications on Citrix ADM
+* citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
+* citrix\_adm\_login - Login to a Citrix ADM instance
+* citrix\_adm\_mpsgroup - Manage Citrix ADM user groups
+* citrix\_adm\_mpsuser - Manage Citrix ADM users
+* citrix\_adm\_ns\_facts - Retrieve facts about Citrix ADM managed instances
+* citrix\_adm\_poll\_instances - Force the poll instances network function on the target Citrix ADM
+* citrix\_adm\_rba\_policy - Manage Citrix ADM rba policies
+* citrix\_adm\_rba\_role - Manage Citrix ADM rba roles
+* citrix\_adm\_stylebook - Create or delete Citrix ADM stylebooks
+* citrix\_adm\_tenant\_facts - Retrieve facts about Citrix ADM tenants
+
+
 
 ## Pre-requisites
 

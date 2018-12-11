@@ -16,41 +16,52 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_fieldtype
+module: citrix_adc_appfw_fieldtype
 short_description: Configuration for application firewall form field type resource.
 description: Configuration for application firewall form field type resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     name:
         description:
-            - Name for the field type.
-            - Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the field type is added.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my field type" or 'my field type').
+            - "Name for the field type."
+            - >-
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Cannot be changed after the field type is added.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my field type" or 'my field type').
         type: str
 
     regex:
         description:
-            - PCRE - format regular expression defining the characters and length allowed for this field type.
+            - "PCRE - format regular expression defining the characters and length allowed for this field type."
         type: str
 
     priority:
         description:
-            - Positive integer specifying the priority of the field type. A lower number specifies a higher priority. Field types are checked in the order of their priority numbers.
+            - >-
+                Positive integer specifying the priority of the field type. A lower number specifies a higher
+                Field types are checked in the order of their priority numbers.
         type: str
 
     comment:
         description:
-            - Comment describing the type of field that this field type is intended to match.
+            - "Comment describing the type of field that this field type is intended to match."
         type: str
 
     nocharmaps:
         description:
-            - will not show internal field types added as part of FieldFormat learn rules deployment
+            - "will not show internal field types added as part of FieldFormat learn rules deployment"
         type: bool
 
 
@@ -58,13 +69,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup an AppFW fieldtype
       delegate_to: localhost
-      netscaler_appfw_fieldtype:
+      citrix_adc_appfw_fieldtype:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

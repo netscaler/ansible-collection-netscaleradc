@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_gslb_vserver
+module: citrix_adc_gslb_vserver
 short_description: Configure gslb vserver entities in Netscaler.
 description:
     - Configure gslb vserver entities in Netscaler.

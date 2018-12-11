@@ -22,32 +22,35 @@ description: Manage Citrix ADM domain names.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     tenant_id:
         description:
-            - Tenant Id of the DNS Domain Entries.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Tenant Id of the DNS Domain Entries."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     name:
         description:
-            - DNS Domain Name.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "DNS Domain Name."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - Id is system generated key for all the DNS Domain Entries.
+            - "Id is system generated key for all the DNS Domain Entries."
         type: str
 
     description:
         description:
-            - Description of DNS Domain Entry.
-            - Minimum length = 1
-            - Maximum length = 1024
+            - "Description of DNS Domain Entry."
+            - "Minimum length = 1"
+            - "Maximum length = 1024"
         type: str
 
 

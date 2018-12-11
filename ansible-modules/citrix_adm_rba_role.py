@@ -22,47 +22,50 @@ description: Manage Citrix ADM rba roles.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     tenant_id:
         description:
-            - Tenant Id of the RBA roles.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Tenant Id of the RBA roles."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     name:
         description:
-            - Role Name.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Role Name."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - Id is system generated key for all the RBA roles.
+            - "Id is system generated key for all the RBA roles."
         type: str
 
     description:
         description:
-            - Description of Role.
-            - Minimum length = 1
-            - Maximum length = 1024
+            - "Description of Role."
+            - "Minimum length = 1"
+            - "Maximum length = 1024"
         type: str
 
     resourcegroups:
         description:
-            - Resourcegroups attached to this role..
+            - "Resourcegroups attached to this role.."
         type: list
 
     groups:
         description:
-            - Groups to which this role is assigned.
+            - "Groups to which this role is assigned."
         type: list
 
     policies:
         description:
-            - Policies attached to this role..
+            - "Policies attached to this role.."
         type: list
 
 

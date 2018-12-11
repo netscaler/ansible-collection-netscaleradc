@@ -22,6 +22,9 @@ description: Retrieve facts about Citrix ADM managed instances.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 #{% for item in main_object_doc_list %}
 #{% include 'single_option.template' %}

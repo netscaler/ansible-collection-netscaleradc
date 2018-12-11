@@ -16,27 +16,35 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_policylabel
-short_description: Manage Netscaler Web Application Firewall policy labels.
+module: citrix_adc_appfw_policylabel
+short_description: Manage Citrix ADC Web Application Firewall policy labels.
 description:
-    - Manage Netscaler Web Application Firewall policy labels.
-    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Netscaler.
+    - Manage Citrix ADC Web Application Firewall policy labels.
+    - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
 version_added: "2.8.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
 
 options:
 
     labelname:
         description:
-            - Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is set to Policy Label.
+            - >-
+                Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is
+                and Label Type is set to Policy Label.
         type: str
 
     policylabeltype:
         choices:
             - 'http_req'
         description:
-            - Type of transformations allowed by the policies bound to the label. Always http_req for application firewall policy labels.
+            - >-
+                Type of transformations allowed by the policies bound to the label. Always http_req for application
+                policy labels.
         type: str
 
 
@@ -49,7 +57,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: Setup policy label
   delegate_to: localhost
-  netscaler_appfw_policylabel:
+  citrix_adc_appfw_policylabel:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1
@@ -59,7 +67,7 @@ EXAMPLES = '''
 
 - name: Remove policy label
   delegate_to: localhost
-  netscaler_appfw_policylabel:
+  citrix_adc_appfw_policylabel:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 192.168.1.1

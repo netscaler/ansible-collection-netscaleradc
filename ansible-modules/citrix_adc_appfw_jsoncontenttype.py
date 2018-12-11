@@ -16,17 +16,21 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_jsoncontenttype
+module: citrix_adc_appfw_jsoncontenttype
 short_description: Configuration for JSON content type resource.
 description: Configuration for JSON content type resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     jsoncontenttypevalue:
         description:
-            - Content type to be classified as JSON
+            - "Content type to be classified as JSON"
         type: str
 
     isregex:
@@ -34,7 +38,7 @@ options:
             - 'REGEX'
             - 'NOTREGEX'
         description:
-            - Is json content type a regular expression?
+            - "Is json content type a regular expression?"
         type: str
 
 
@@ -42,13 +46,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup json content type
       delegate_to: localhost
-      netscaler_appfw_jsoncontenttype:
+      citrix_adc_appfw_jsoncontenttype:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

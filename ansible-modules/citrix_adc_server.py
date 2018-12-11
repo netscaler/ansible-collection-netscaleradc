@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_server
+module: citrix_adc_server
 short_description: Manage server configuration
 description:
     - Manage server entities configuration.
@@ -120,7 +120,7 @@ requirements:
 EXAMPLES = '''
 - name: Setup server
   delegate_to: localhost
-  netscaler_server:
+  citrix_adc_server:
       nsip: 172.18.0.2
       nitro_user: nsroot
       nitro_pass: nsroot

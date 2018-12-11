@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 
 DOCUMENTATION = '''
-module: netscaler_lb_monitor
+module: citrix_adc_lb_monitor
 short_description: Manage load balancing monitors
 description:
     - Manage load balancing monitors.
@@ -796,7 +796,7 @@ EXAMPLES = '''
     validate_certs: no
 
 
-    module: netscaler_lb_monitor
+    module: citrix_adc_lb_monitor
     state: present
 
     monitorname: monitor_1

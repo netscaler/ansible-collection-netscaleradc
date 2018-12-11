@@ -16,38 +16,45 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_xmlschema
+module: citrix_adc_appfw_xmlschema
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     name:
         description:
-            - Name of the XML Schema object to remove.
-            - Minimum length =  1
-            - Maximum length =  31
+            - "Name of the XML Schema object to remove."
+            - "Minimum length =  1"
+            - "Maximum length =  31"
         type: str
 
     src:
         description:
-            - URL (protocol, host, path, and file name) for the location at which to store the imported XML Schema.
-            - NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.
-            - Minimum length =  1
-            - Maximum length =  2047
+            - >-
+                URL (protocol, host, path, and file name) for the location at which to store the imported XML Schema.
+            - >-
+                NOTE: The import fails if the object to be imported is on an HTTPS server that requires client
+                authentication for access.
+            - "Minimum length =  1"
+            - "Maximum length =  2047"
         type: str
 
     comment:
         description:
-            - Any comments to preserve information about the XML Schema object.
-            - Maximum length =  128
+            - "Any comments to preserve information about the XML Schema object."
+            - "Maximum length =  128"
         type: str
 
     overwrite:
         description:
-            - Overwrite any existing XML Schema object of the same name.
+            - "Overwrite any existing XML Schema object of the same name."
         type: bool
 
 
@@ -62,13 +69,13 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-- hosts: netscaler
+- hosts: citrix_adc
 
   gather_facts: False
   tasks:
     - name: Setup confidential field id
       delegate_to: localhost
-      netscaler_appfw_xmlschema:
+      citrix_adc_appfw_xmlschema:
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2

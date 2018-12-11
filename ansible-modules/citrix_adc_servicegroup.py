@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_servicegroup
+module: citrix_adc_servicegroup
 short_description: Manage service group configuration in Netscaler
 description:
     - Manage service group configuration in Netscaler.
@@ -311,7 +311,7 @@ options:
     monitorbindings:
         description:
             - A list of monitornames to bind to this service
-            - Note that the monitors must have already been setup possibly using the M(netscaler_lb_monitor) module or some other method
+            - Note that the monitors must have already been setup possibly using the M(citrix_adc_lb_monitor) module or some other method
         suboptions:
             monitorname:
                 description:
@@ -343,7 +343,7 @@ EXAMPLES = '''
 
 - name: Setup http service with ip members
   delegate_to: localhost
-  netscaler_servicegroup:
+  citrix_adc_servicegroup:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

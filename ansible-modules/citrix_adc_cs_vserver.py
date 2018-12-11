@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_vserver
+module: citrix_adc_cs_vserver
 short_description: Manage content switching vserver
 description:
     - Manage content switching vserver
@@ -509,7 +509,7 @@ options:
         description:
             - The name of the ssl certificate that is bound to this service.
             - The ssl certificate must already exist.
-            - Creating the certificate can be done with the M(netscaler_ssl_certkey) module.
+            - Creating the certificate can be done with the M(citrix_adc_ssl_certkey) module.
             - This option is only applicable only when C(servicetype) is C(SSL).
         version_added: "2.5"
 
@@ -529,12 +529,12 @@ requirements:
 '''
 
 EXAMPLES = '''
-# policy_1 must have been already created with the netscaler_cs_policy module
-# lbvserver_1 must have been already created with the netscaler_lb_vserver module
+# policy_1 must have been already created with the citrix_adc_cs_policy module
+# lbvserver_1 must have been already created with the citrix_adc_lb_vserver module
 
 - name: Setup content switching vserver
   delegate_to: localhost
-  netscaler_cs_vserver:
+  citrix_adc_cs_vserver:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

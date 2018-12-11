@@ -16,13 +16,17 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_global_bindings
+module: citrix_adc_appfw_global_bindings
 short_description: Define global bindings for AppFW
 description: 
     - Define global bindings for AppFW
     - Note that due to limitations in the NITRO API this module will always report a changed status.
 
 version_added: "2.8.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
 
 options:
 #{% for item in main_object_doc_list %}
@@ -31,15 +35,15 @@ options:
 
 #{% for binding in bindings %}
     {{ binding.binding_key }}:
-        desription: {{ binding.description }}
+        description: {{ binding.description }}
         suboptions:
             mode:
                 description:
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - bind
@@ -157,8 +161,7 @@ class ModuleExecutor(object):
         #{% endfor %}
 
 
-        #{% for item in bindings %}
-        #{% include 'appfwglobal_binding_methods.template' %}
+        #{% for item in bindings %}#{% include 'appfwglobal_binding_methods.template' %}
         #{% endfor %}
 
     def main(self):

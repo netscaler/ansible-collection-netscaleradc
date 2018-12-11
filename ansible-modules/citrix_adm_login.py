@@ -17,8 +17,10 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adm_login
-short_description: FIXME
-description: FIXME
+short_description: Login to a Citrix ADM instance.
+description:
+    - Login to a Citrix ADM instance.
+    - The session token is returned in the module result.
 
 version_added: "2.8.0"
 
@@ -26,7 +28,34 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-FIXME
+- hosts: citrix_adm
+
+  gather_facts: False
+
+  tasks:
+    - name: Login to mas
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+    - name: Setup mpsuser
+      delegate_to: localhost
+      citrix_adm_mpsuser:
+        mas_ip: "{{ mas_ip }}"
+        mas_auth_token: "{{ login_result.session_id }}"
+
+        state: absent
+
+        name: playbook_test_mpsuser_2
+        password: 1234567
+
+        session_timeout: 10
+        session_timeout_unit: Minutes
+        external_authentication: false
+        enable_session_timeout: true
 '''
 
 RETURN = '''

@@ -23,7 +23,6 @@ description:
 
 version_added: "2.8.0"
 
-options: []
 
 
 extends_documentation_fragment: netscaler

@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_ssl_certkey
+module: citrix_adc_ssl_certkey
 short_description: Manage ssl cerificate keys.
 description:
     - Manage ssl cerificate keys.
@@ -108,7 +108,7 @@ EXAMPLES = '''
 
 - name: Setup ssl certkey
   delegate_to: localhost
-  netscaler_ssl_certkey:
+  citrix_adc_ssl_certkey:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 172.18.0.2

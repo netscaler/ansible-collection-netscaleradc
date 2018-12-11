@@ -16,7 +16,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_global_bindings
+module: citrix_adc_appfw_global_bindings
 short_description: Define global bindings for AppFW
 description: 
     - Define global bindings for AppFW
@@ -24,20 +24,24 @@ description:
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
 
 
     appfwpolicy_bindings:
-        desription: 
+        description: appfwpolicy bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - bind
@@ -58,15 +62,15 @@ options:
                     
 
     auditnslogpolicy_bindings:
-        desription: 
+        description: auditnslogpolicy bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - bind
@@ -86,15 +90,15 @@ options:
                     
 
     auditsyslogpolicy_bindings:
-        desription: 
+        description: auditsyslogpolicy bindings
         suboptions:
             mode:
                 description:
                     - If mode is C(bind):
-                    - Any bindings in the attributes list that do not exist will be created on the target Netscaler.
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
-                    - Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
                     - bind
@@ -307,20 +311,29 @@ class ModuleExecutor(object):
 
 
         
-        
-
     def sync_appfwpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'appfwpolicy_bindings', 'doc_list': ['policyname', 'priority', 'gotopriorityexpression', 'invoke', 'state', 'labeltype', 'labelname', 'type', 'globalbindtype'], 'binding_object': 'appfwglobal_appfwpolicy_binding', 'attributes_config_list': {'get_id_attributes': ['type'], 'attributes': ['policyname', 'priority', 'gotopriorityexpression', 'invoke', 'state', 'labeltype', 'labelname', 'type', 'globalbindtype'], 'resource_name': 'appfwpolicy_bindings', 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}}})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'appfwpolicy_bindings',
+                'binding_object': 'appfwglobal_appfwpolicy_binding',
+            }
+        )
         
-        
-
     def sync_auditnslogpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'auditnslogpolicy_bindings', 'doc_list': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'binding_object': 'appfwglobal_auditnslogpolicy_binding', 'attributes_config_list': {'get_id_attributes': ['type'], 'attributes': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'resource_name': 'auditnslogpolicy_bindings', 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}}})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditnslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditnslogpolicy_binding',
+            }
+        )
         
-        
-
     def sync_auditsyslogpolicy_bindings(self):
-        self.sync_binding_with_data({'binding_key': 'auditsyslogpolicy_bindings', 'doc_list': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'binding_object': 'appfwglobal_auditsyslogpolicy_binding', 'attributes_config_list': {'get_id_attributes': ['type'], 'attributes': ['policyname', 'priority', 'state', 'type', 'gotopriorityexpression', 'invoke', 'labeltype', 'labelname'], 'resource_name': 'auditsyslogpolicy_bindings', 'delete_id_attributes': ['policyname', 'priority', 'type'], 'transforms': {'state': 'lambda v: v.upper()'}}})
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditsyslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
+            }
+        )
         
 
     def main(self):

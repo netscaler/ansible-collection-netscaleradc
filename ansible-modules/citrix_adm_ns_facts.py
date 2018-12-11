@@ -22,37 +22,40 @@ description: Retrieve facts about Citrix ADM managed instances.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 options:
 
     name:
         description:
-            - Name of managed device.
-            - Minimum length = 1
-            - Maximum length = 128
+            - "Name of managed device."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - Id is system generated key for all the managed devices.
+            - "Id is system generated key for all the managed devices."
         type: str
 
     ipv4_address:
         description:
-            - IPv4 Address.
-            - Minimum length = 1
-            - Maximum length = 64
+            - "IPv4 Address."
+            - "Minimum length = 1"
+            - "Maximum length = 64"
         type: str
 
     ipv6_address:
         description:
-            - IPv6 Address.
+            - "IPv6 Address."
         type: str
 
     ip_address:
         description:
-            - IP Address for this managed device.
-            - Minimum length = 1
-            - Maximum length = 64
+            - "IP Address for this managed device."
+            - "Minimum length = 1"
+            - "Maximum length = 64"
         type: str
 
 

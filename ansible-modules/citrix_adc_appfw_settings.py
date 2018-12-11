@@ -16,106 +16,133 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_appfw_settings
-short_description: Manage Netscaler Web Application Firewall settings.
+module: citrix_adc_appfw_settings
+short_description: Manage Citrix ADC Web Application Firewall settings.
 description:
-    - Manage Netscaler Web Application Firewall settings.
-    - The module uses the NITRO API to make configuration changes to WAF settings on the target Netscaler.
+    - Manage Citrix ADC Web Application Firewall settings.
+    - The module uses the NITRO API to make configuration changes to WAF settings on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations this module will always report a changed status even when configuration changes have not taken place.
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+    - Sumanth Lingappa (@sumanth-lingappa)
+
 options:
 
     defaultprofile:
         description:
-            - Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which sends unmatched connections back to the NetScaler appliance without attempting to filter them further.
+            - >-
+                Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which
+                unmatched connections back to the NetScaler appliance without attempting to filter them further.
         type: str
 
     undefaction:
         description:
-            - Profile to use when an application firewall policy evaluates to undefined (UNDEF). 
-            - An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default setting. You can specify a different built-in or user-created profile as the UNDEF profile.
+            - "Profile to use when an application firewall policy evaluates to undefined (UNDEF). "
+            - >-
+                An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default
+                You can specify a different built-in or user-created profile as the UNDEF profile.
         type: str
 
     sessiontimeout:
         description:
-            - Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.
+            - >-
+                Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected
+                site, the user must establish a new session by opening a designated start URL.
         type: str
 
     learnratelimit:
         description:
-            - Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.
+            - >-
+                Maximum number of connections per second that the application firewall learning engine examines to
+                new relaxations for learning-enabled security checks. The application firewall drops any connections
+                this limit from the list of connections used by the learning engine.
         type: str
 
     sessionlifetime:
         description:
-            - Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.
+            - >-
+                Maximum amount of time (in seconds) that the application firewall allows a user session to remain
+                regardless of user activity. After this time, the user session is terminated. Before continuing to
+                the protected web site, the user must establish a new session by opening a designated start URL.
         type: str
 
     sessioncookiename:
         description:
-            - Name of the session cookie that the application firewall uses to track user sessions. 
-            - Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.
-            - 
-            - The following requirement applies only to the NetScaler CLI:
-            - If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cookie name" or 'my cookie name').
+            - "Name of the session cookie that the application firewall uses to track user sessions. "
+            - >-
+                Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen
+                and underscore (_) symbols.
+            - ""
+            - "The following requirement applies only to the NetScaler CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my cookie name" or 'my cookie name').
         type: str
 
     clientiploggingheader:
         description:
-            - Name of an HTTP header that contains the IP address that the client used to connect to the protected web site or service.
+            - >-
+                Name of an HTTP header that contains the IP address that the client used to connect to the protected
+                site or service.
         type: str
 
     importsizelimit:
         description:
-            - Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.
+            - >-
+                Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user
+                to upload files with a total byte count higher than the specified limit, the application firewall
+                the request.
         type: str
 
     signatureautoupdate:
         description:
-            - Flag used to enable/disable auto update signatures
+            - "Flag used to enable/disable auto update signatures"
         type: bool
 
     signatureurl:
         description:
-            - URL to download the mapping file from server
+            - "URL to download the mapping file from server"
         type: str
 
     cookiepostencryptprefix:
         description:
-            - String that is prepended to all encrypted cookie values.
+            - "String that is prepended to all encrypted cookie values."
         type: str
 
     logmalformedreq:
         description:
-            - Log requests that are so malformed that application firewall parsing doesn't occur.
+            - "Log requests that are so malformed that application firewall parsing doesn't occur."
         type: bool
 
     geolocationlogging:
         description:
-            - Enable Geo-Location Logging in CEF format logs.
+            - "Enable Geo-Location Logging in CEF format logs."
         type: bool
 
     ceflogging:
         description:
-            - Enable CEF format logs.
+            - "Enable CEF format logs."
         type: bool
 
     entitydecoding:
         description:
-            - Transform multibyte (double- or half-width) characters to single width characters.
+            - "Transform multibyte (double- or half-width) characters to single width characters."
         type: bool
 
     useconfigurablesecretkey:
         description:
-            - Use configurable secret key in AppFw operations.
+            - "Use configurable secret key in AppFw operations."
         type: bool
 
     sessionlimit:
         description:
-            - Maximum number of sessions that the application firewall allows to be active, regardless of user activity. After the max_limit reaches, No more user session will be created .
+            - >-
+                Maximum number of sessions that the application firewall allows to be active, regardless of user
+                After the max_limit reaches, No more user session will be created .
         type: str
 
 
@@ -126,7 +153,7 @@ extends_documentation_fragment: netscaler
 EXAMPLES = '''
 - name: setup basic settings
   delegate_to: localhost
-  netscaler_appfw_settings:
+  citrix_adc_appfw_settings:
     nitro_user: nsroot
     nitro_pass: nsroot
     nsip: 172.18.0.2
@@ -202,12 +229,12 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     
-                    'ceflogging': lambda v: 'ON' if v else 'OFF',
-                    'logmalformedreq': lambda v: 'ON' if v else 'OFF',
-                    'useconfigurablesecretkey': lambda v: 'ON' if v else 'OFF',
-                    'entitydecoding': lambda v: 'ON' if v else 'OFF',
                     'signatureautoupdate': lambda v: 'ON' if v else 'OFF',
+                    'logmalformedreq': lambda v: 'ON' if v else 'OFF',
                     'geolocationlogging': lambda v: 'ON' if v else 'OFF',
+                    'ceflogging': lambda v: 'ON' if v else 'OFF',
+                    'entitydecoding': lambda v: 'ON' if v else 'OFF',
+                    'useconfigurablesecretkey': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
                     

@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: netscaler_cs_policy
+module: citrix_adc_cs_policy
 short_description: Manage content switching policy
 description:
     - Manage content switching policy.
@@ -78,7 +78,7 @@ requirements:
 EXAMPLES = '''
 - name: Create url cs policy
   delegate_to: localhost
-  netscaler_cs_policy:
+  citrix_adc_cs_policy:
     nsip: 172.18.0.2
     nitro_user: nsroot
     nitro_pass: nsroot

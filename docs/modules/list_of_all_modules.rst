@@ -1,25 +1,52 @@
-All Modules
+.. _all_modules:
+
+All modules
 ```````````
 
-.. toctree:: :maxdepth: 1
 
-  netscaler_cs_action - Manage content switching actions <netscaler_cs_action_module>
-  netscaler_cs_policy - Manage content switching policy <netscaler_cs_policy_module>
-  netscaler_cs_vserver - Manage content switching vserver <netscaler_cs_vserver_module>
-  netscaler_gslb_service - Manage gslb service entities in Netscaler. <netscaler_gslb_service_module>
-  netscaler_gslb_site - Manage gslb site entities in Netscaler. <netscaler_gslb_site_module>
-  netscaler_gslb_vserver - Configure gslb vserver entities in Netscaler. <netscaler_gslb_vserver_module>
-  netscaler_lb_monitor - Manage load balancing monitors <netscaler_lb_monitor_module>
-  netscaler_lb_vserver - Manage load balancing vserver configuration <netscaler_lb_vserver_module>
-  netscaler_nitro_request - Issue Nitro API requests to a Netscaler instance. <netscaler_nitro_request_module>
-  netscaler_save_config - Save Netscaler configuration. <netscaler_save_config_module>
-  netscaler_server - Manage server configuration <netscaler_server_module>
-  netscaler_service - Manage service configuration in Netscaler <netscaler_service_module>
-  netscaler_servicegroup - Manage service group configuration in Netscaler <netscaler_servicegroup_module>
-  netscaler_ssl_certkey - Manage ssl cerificate keys. <netscaler_ssl_certkey_module>
 
+  * :ref:`citrix_adc_appfw_confidfield_module` 
+  * :ref:`citrix_adc_appfw_fieldtype_module` 
+  * :ref:`citrix_adc_appfw_global_bindings_module` 
+  * :ref:`citrix_adc_appfw_htmlerrorpage_module` 
+  * :ref:`citrix_adc_appfw_jsoncontenttype_module` 
+  * :ref:`citrix_adc_appfw_learningsettings_module` 
+  * :ref:`citrix_adc_appfw_policy_module` 
+  * :ref:`citrix_adc_appfw_policylabel_module` 
+  * :ref:`citrix_adc_appfw_profile_module` 
+  * :ref:`citrix_adc_appfw_settings_module` 
+  * :ref:`citrix_adc_appfw_signatures_module` 
+  * :ref:`citrix_adc_appfw_wsdl_module` 
+  * :ref:`citrix_adc_appfw_xmlcontenttype_module` 
+  * :ref:`citrix_adc_appfw_xmlerrorpage_module` 
+  * :ref:`citrix_adc_appfw_xmlschema_module` 
+  * :ref:`citrix_adc_cs_action_module` 
+  * :ref:`citrix_adc_cs_policy_module` 
+  * :ref:`citrix_adc_cs_vserver_module` 
+  * :ref:`citrix_adc_gslb_service_module` 
+  * :ref:`citrix_adc_gslb_site_module` 
+  * :ref:`citrix_adc_gslb_vserver_module` 
+  * :ref:`citrix_adc_lb_monitor_module` 
+  * :ref:`citrix_adc_lb_vserver_module` 
+  * :ref:`citrix_adc_nitro_request_module` 
+  * :ref:`citrix_adc_save_config_module` 
+  * :ref:`citrix_adc_server_module` 
+  * :ref:`citrix_adc_service_module` 
+  * :ref:`citrix_adc_servicegroup_module` 
+  * :ref:`citrix_adc_ssl_certkey_module` 
+  * :ref:`citrix_adm_application_module` 
+  * :ref:`citrix_adm_dns_domain_entry_module` 
+  * :ref:`citrix_adm_login_module` 
+  * :ref:`citrix_adm_mpsgroup_module` 
+  * :ref:`citrix_adm_mpsuser_module` 
+  * :ref:`citrix_adm_ns_facts_module` 
+  * :ref:`citrix_adm_poll_instances_module` 
+  * :ref:`citrix_adm_rba_policy_module` 
+  * :ref:`citrix_adm_rba_role_module` 
+  * :ref:`citrix_adm_stylebook_module` 
+  * :ref:`citrix_adm_tenant_facts_module` 
 
 
 .. note::
-    -  (D): This marks a module as deprecated, which means a module is kept for backwards compatibility but usage is discouraged.
-       The module documentation details page may explain more about this rationale.
+    - **(D)**: This marks a module as deprecated, which means a module is kept for backwards compatibility but usage is discouraged.
+      The module documentation details page may explain more about this rationale.
