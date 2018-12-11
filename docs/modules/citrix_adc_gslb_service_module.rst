@@ -233,6 +233,17 @@ Parameters
                                                             <tr>
                                                     <td class="elbow-placeholder"></td>
                                                 <td colspan="1">
+                    <b>monitor_name</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Monitor name.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
                     <b>weight</b>
                                                                             </td>
                                 <td>
@@ -243,17 +254,6 @@ Parameters
                                                     <div>Contributes to the monitoring threshold, which determines the state of the service.</div>
                                                     <div>Minimum value = <code>1</code></div>
                                                     <div>Maximum value = <code>100</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>monitor_name</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Monitor name.</div>
                                                                                 </td>
             </tr>
                     

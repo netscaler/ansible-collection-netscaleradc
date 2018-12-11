@@ -200,21 +200,7 @@ Examples
 .. code-block:: yaml+jinja
 
     
-    - name: Get single tenant
-      delegate_to: localhost
-      register: tenant_facts
-      citrix_adm_tenant_facts:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
-
-        name: sample_tenant_2
-
-
-    - name: Show return data
-      debug:
-        msg: "{{ tenant_facts.tenant[0].id }}"
-
+    FIXME
 
 
 
@@ -295,7 +281,7 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
 
 
 .. hint::

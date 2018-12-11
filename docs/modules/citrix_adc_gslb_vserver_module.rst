@@ -160,23 +160,34 @@ Parameters
                                                             <tr>
                                                     <td class="elbow-placeholder"></td>
                                                 <td colspan="1">
-                    <b>ttl</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Time to live (TTL) for the domain.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
                     <b>cookietimeout</b>
                                                                             </td>
                                 <td>
                                                                                                                                                             </td>
                                                                 <td>
                                                                         <div>Timeout, in minutes, for the GSLB site cookie.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>domainname</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Domain name for which to change the time to live (TTL) and/or backup service IP address.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>ttl</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Time to live (TTL) for the domain.</div>
                                                                                 </td>
             </tr>
                                 <tr>
@@ -189,17 +200,6 @@ Parameters
                                                                 <td>
                                                                         <div>TTL, in seconds, for all internally created site domains (created when a site prefix is configured on a GSLB service) that are associated with this virtual server.</div>
                                                     <div>Minimum value = <code>1</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>domainname</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Domain name for which to change the time to live (TTL) and/or backup service IP address.</div>
                                                                                 </td>
             </tr>
                     

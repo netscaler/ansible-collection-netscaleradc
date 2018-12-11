@@ -520,52 +520,12 @@ Parameters
                                                             <tr>
                                                     <td class="elbow-placeholder"></td>
                                                 <td colspan="1">
-                    <b>customserverid</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The identifier for this IP:Port pair.</div>
-                                                    <div>Used when the persistency type is set to Custom Server ID.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
                     <b>ip</b>
                                                                             </td>
                                 <td>
                                                                                                                                                             </td>
                                                                 <td>
                                                                         <div>IP address of the service. Must not overlap with an existing server entity defined by name.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>state</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Initial state of the service after binding.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>servername</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the server to which to bind the service group.</div>
-                                                    <div>The server must already be configured as a named server.</div>
-                                                    <div>Minimum length = 1</div>
                                                                                 </td>
             </tr>
                                 <tr>
@@ -597,6 +557,19 @@ Parameters
                                 <tr>
                                                     <td class="elbow-placeholder"></td>
                                                 <td colspan="1">
+                    <b>servername</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Name of the server to which to bind the service group.</div>
+                                                    <div>The server must already be configured as a named server.</div>
+                                                    <div>Minimum length = 1</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
                     <b>port</b>
                                                                             </td>
                                 <td>
@@ -605,6 +578,33 @@ Parameters
                                                                         <div>Server port number.</div>
                                                     <div>Range <code>1</code> - <code>65535</code></div>
                                                     <div>* in CLI is represented as 65535 in NITRO API</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>state</b>
+                                                                            </td>
+                                <td>
+                                                                                                                            <ul><b>Choices:</b>
+                                                                                                                                                                <li>enabled</li>
+                                                                                                                                                                                                <li>disabled</li>
+                                                                                    </ul>
+                                                                            </td>
+                                                                <td>
+                                                                        <div>Initial state of the service after binding.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>customserverid</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>The identifier for this IP:Port pair.</div>
+                                                    <div>Used when the persistency type is set to Custom Server ID.</div>
                                                                                 </td>
             </tr>
                                 <tr>

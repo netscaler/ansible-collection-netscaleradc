@@ -621,7 +621,7 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
 
 
 .. hint::
