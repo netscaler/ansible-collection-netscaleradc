@@ -5,8 +5,8 @@
 .. _citrix_adc_appfw_policylabel_module:
 
 
-citrix_adc_appfw_policylabel - Manage Netscaler Web Application Firewall policy labels
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_appfw_policylabel - Manage Citrix ADC Web Application Firewall policy labels
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 2.8.0
 
@@ -17,8 +17,8 @@ citrix_adc_appfw_policylabel - Manage Netscaler Web Application Firewall policy 
 
 Synopsis
 --------
-- Manage Netscaler Web Application Firewall policy labels.
-- The module uses the NITRO API to make configuration changes to WAF policy labels on the target Netscaler.
+- Manage Citrix ADC Web Application Firewall policy labels.
+- The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
 - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
 
@@ -302,7 +302,8 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
+- Sumanth Lingappa (@sumanth-lingappa)
 
 
 .. hint::

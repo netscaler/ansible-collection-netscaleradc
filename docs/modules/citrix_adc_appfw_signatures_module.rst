@@ -304,7 +304,7 @@ Examples
 .. code-block:: yaml+jinja
 
     
-    - hosts: netscaler
+    - hosts: citrix_adc
 
       gather_facts: False
       tasks:
@@ -388,7 +388,8 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
+- Sumanth Lingappa (@sumanth-lingappa)
 
 
 .. hint::

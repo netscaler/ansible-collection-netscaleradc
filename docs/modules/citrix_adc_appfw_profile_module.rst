@@ -5,8 +5,8 @@
 .. _citrix_adc_appfw_profile_module:
 
 
-citrix_adc_appfw_profile - Manage Netscaler Web Application Firewall profiles
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_appfw_profile - Manage Citrix ADC Web Application Firewall profiles
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 2.8.0
 
@@ -17,8 +17,8 @@ citrix_adc_appfw_profile - Manage Netscaler Web Application Firewall profiles
 
 Synopsis
 --------
-- Manage Netscaler Web Application Firewall profiles.
-- The module uses the NITRO API to make configuration changes to WAF policy labels on the target Netscaler.
+- Manage Citrix ADC Web Application Firewall profiles.
+- The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
 - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 - Note that due to NITRO API limitations the module may incorrectly report a changed status when no configuration change has taken place.
 
@@ -181,15 +181,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -257,15 +257,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -441,15 +441,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -508,15 +508,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -619,15 +619,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -772,15 +772,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -901,15 +901,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -967,15 +967,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -1045,15 +1045,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -1414,15 +1414,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -1539,15 +1539,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -1705,15 +1705,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -1883,15 +1883,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2015,15 +2015,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2095,15 +2095,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2244,15 +2244,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2412,15 +2412,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2495,15 +2495,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2548,15 +2548,15 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>exact</code>&#x27;: None}</div>
-                                                    <div>Any bindings existing in the target Netscaler that are not defined in the attributes list will be removed.</div>
-                                                    <div>Any bindings not existing in the target Netscaler that are defined in the attributes list will be created.</div>
+                                                    <div>Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.</div>
+                                                    <div>Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.</div>
                                                     <div>Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
-                                                    <div>Any bindings defined in the attributes list that exist on the target Netscaler but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
+                                                    <div>Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -2721,7 +2721,8 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
+- Sumanth Lingappa (@sumanth-lingappa)
 
 
 .. hint::

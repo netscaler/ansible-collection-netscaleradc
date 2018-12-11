@@ -369,34 +369,23 @@ Parameters
                                                             <tr>
                                                     <td class="elbow-placeholder"></td>
                                                 <td colspan="1">
-                    <b>monitorname</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the monitor.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>weight</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Weight to assign to the binding between the monitor and service.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
                     <b>dup_weight</b>
                                                                             </td>
                                 <td>
                                                                                                                                                             </td>
                                                                 <td>
                                                                         <div>Weight to assign to the binding between the monitor and service.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>monitorname</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Name of the monitor.</div>
                                                                                 </td>
             </tr>
                                 <tr>
@@ -415,6 +404,17 @@ Parameters
                                                     <div>The state setting for a monitor of a given type affects all monitors of that type.</div>
                                                     <div>For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.</div>
                                                     <div>If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.</div>
+                                                                                </td>
+            </tr>
+                                <tr>
+                                                    <td class="elbow-placeholder"></td>
+                                                <td colspan="1">
+                    <b>weight</b>
+                                                                            </td>
+                                <td>
+                                                                                                                                                            </td>
+                                                                <td>
+                                                                        <div>Weight to assign to the binding between the monitor and service.</div>
                                                                                 </td>
             </tr>
                     

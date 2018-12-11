@@ -57,10 +57,10 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -109,10 +109,10 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -160,10 +160,10 @@ Parameters
                                                                             </td>
                                                                 <td>
                                                                         <div>{&#x27;If mode is <code>bind</code>&#x27;: None}</div>
-                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Netscaler.</div>
+                                                    <div>Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                     <div>{&#x27;If mode is <code>unbind</code>&#x27;: None}</div>
-                                                    <div>Any bindings defined in the attributes list that also exist on the target Netscaler will be removed.</div>
+                                                    <div>Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.</div>
                                                     <div>Existing bindings that are not on the attributes list remain unaffected.</div>
                                                                                 </td>
             </tr>
@@ -412,7 +412,8 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
+- Sumanth Lingappa (@sumanth-lingappa)
 
 
 .. hint::

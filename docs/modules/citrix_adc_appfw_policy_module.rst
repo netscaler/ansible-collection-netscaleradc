@@ -5,8 +5,8 @@
 .. _citrix_adc_appfw_policy_module:
 
 
-citrix_adc_appfw_policy - Manage Netscaler Web Application Firewall policies
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_appfw_policy - Manage Citrix ADC Web Application Firewall policies
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 2.8.0
 
@@ -17,8 +17,8 @@ citrix_adc_appfw_policy - Manage Netscaler Web Application Firewall policies
 
 Synopsis
 --------
-- Manage Netscaler Web Application Firewall policies.
-- The module uses the NITRO API to make configuration changes to WAF policies on a target Netscaler.
+- Manage Citrix ADC Web Application Firewall policies.
+- The module uses the NITRO API to make configuration changes to WAF policies on a target Citrix ADC.
 - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
 
@@ -333,7 +333,8 @@ For a list of other modules that are also maintained by the Ansible Community, s
 Author
 ~~~~~~
 
-- UNKNOWN
+- George Nikolopoulos (@giorgos-nikolopoulos)
+- Sumanth Lingappa (@sumanth-lingappa)
 
 
 .. hint::

@@ -443,7 +443,7 @@ Common return values are documented :ref:`here <common_return_values>`, the foll
                                             <div>The object returned from the NITRO operation. This is applicable to the various get operations which return an object.</div>
                                         <br/>
                                             <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">[{&#x27;ipv6address&#x27;: &#x27;NO&#x27;, &#x27;sp&#x27;: &#x27;OFF&#x27;, &#x27;name&#x27;: &#x27;test-server-1&#x27;, &#x27;port&#x27;: 0, &#x27;maxbandwidth&#x27;: &#x27;0&#x27;, &#x27;ipaddress&#x27;: &#x27;192.168.1.8&#x27;, &#x27;state&#x27;: &#x27;ENABLED&#x27;}]</div>
+                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">[{&#x27;ipv6address&#x27;: &#x27;NO&#x27;, &#x27;maxbandwidth&#x27;: &#x27;0&#x27;, &#x27;state&#x27;: &#x27;ENABLED&#x27;, &#x27;name&#x27;: &#x27;test-server-1&#x27;, &#x27;port&#x27;: 0, &#x27;ipaddress&#x27;: &#x27;192.168.1.8&#x27;, &#x27;sp&#x27;: &#x27;OFF&#x27;}]</div>
                                     </td>
             </tr>
                                 <tr>

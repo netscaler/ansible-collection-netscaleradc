@@ -23,6 +23,9 @@ description:
 
 version_added: "2.8.0"
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 
 
 extends_documentation_fragment: netscaler

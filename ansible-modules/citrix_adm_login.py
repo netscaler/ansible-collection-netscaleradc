@@ -22,6 +22,9 @@ description:
     - Login to a Citrix ADM instance.
     - The session token is returned in the module result.
 
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
 version_added: "2.8.0"
 
 extends_documentation_fragment: netscaler
