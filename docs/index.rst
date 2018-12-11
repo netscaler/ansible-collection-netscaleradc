@@ -23,6 +23,7 @@ listed below.
    usage/rolling_upgrades
    usage/rolling_upgrades_vpx
    usage/docker_image
+   usage/citrix_adm_application_delays_explained
 
 .. toctree::
    :maxdepth: 2
