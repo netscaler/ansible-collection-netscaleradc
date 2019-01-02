@@ -139,7 +139,8 @@ def main():
                 dst=os.path.join(netscaler_unit_tests_dir, file)
             )
     else:
-        print('Could not find units tests dir')
+        print('Warning. Could not install unit tests. You will not be able to run the unit tests for the modules.')
+        print('This does not affect normal module functionality.')
 
 
 if __name__ == '__main__':
