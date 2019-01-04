@@ -1,4 +1,4 @@
-# Citrix NetScaler Ansible modules
+# Citrix ADC & Citrix ADM Ansible modules
 
 This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix NetScaler](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix NetScaler are supported.
 
