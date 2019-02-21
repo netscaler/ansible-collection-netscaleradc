@@ -804,7 +804,7 @@ Examples
         port: 80
 
         monitor_bindings:
-          - monitor-1
+          - monitorname: monitor-1
 
 
 
