@@ -1,0 +1,27 @@
+---
+- hosts: citrix_adc
+  gather_facts: false
+
+
+  tasks:
+    - name: Calling shell module
+      connection: ssh_citrix_adc
+      remote_user: nsroot
+      vars:
+        ansible_python_interpreter: /var/python/bin/python
+      shell: "echo hello"
+      register: echo_result
+
+    - name: Show command output
+      debug:
+        msg: "{{ echo_result }}"
+
+    - name: Setup server
+      delegate_to: localhost
+      citrix_adc_server:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        name: test-server-1
+        ipaddress: 192.168.2.2

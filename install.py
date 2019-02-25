@@ -142,6 +142,13 @@ def main():
         print('Warning. Could not install unit tests. You will not be able to run the unit tests for the modules.')
         print('This does not affect normal module functionality.')
 
+    # Install connection plugin
+
+    print('Installing Citrix ADC connection plugin')
+    install_path = os.path.join(ansible_path, 'plugins', 'connection')
+    source_file = os.path.join(here, 'ansible-plugins', 'ssh_citrix_adc.py')
+    shutil.copy(source_file, install_path)
+
 
 if __name__ == '__main__':
     main()
