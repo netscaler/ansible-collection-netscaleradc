@@ -126,9 +126,50 @@ In order to do that you need a NITRO Python SDK that has the MAS proxy calls cap
 
 A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/netscaler-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
 
+## Citrix ADC connection plugin
+
+The Citrix ADC connection plugin allows the use of standard Ansible modules, such as `shell` and `fetch`, with Citrix ADC.
+
+### Installation
+
+The installation script provided here `install.py` will install the plugin to the ansible path inside the standard Ansible connection plugin directory.
+
+You can also manually copy the connection plugin source file located in `ansible-plugin/ssh\_citrix\_adc.py` to a custom location that Ansible will search for it. Refer to the Ansible documentation for details.
+
+### Usage
+
+In order for a standard Ansible module to work properly with the Citrix ADC connection plugin the following conditions must hold true.
+
+* Modify the playbook so that it uses the connection plugin (`connection: ssh_citrix_adc`).
+* Citrix ADC does not have the python interpreter path defined, so one should pass this path when defining the host group (`ansible_python_interpreter: /var/python/bin/python`).
+* The plugin works only with ssh key based authentication. The remote Citrix ADC must have the public ssh key of the controlling machine in their authorized_keys file (`/flash/nsconfig/ssh/authorized_keys`).
+* In the local ansible.cfg file make sure the following lines exist:
+```
+[defaults]
+host_key_checking = False
+
+[ssh_connection]
+scp_if_ssh = True
+```
+
+You can find usage samples in this [folder](samples/citrix_adc_connection_plugin).
+
+### Citrix ADC and standard Ansible modules in a single playbook
+
+There are some conflicting configuration options when using a standard Ansible module with a Citrix ADC specific module in the same playbook.
+
+To have such a playbook execute correctly the following solutions are proposed.
+
+* Have a single playbook with multiple plays ( [sample](samples/citrix_adc_connection_plugin/multiple_plays.yaml) ).
+* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](samples/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
+* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](samples/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
+
+
 ## Directory structure
 
 * `ansible-modules.` Contains all the ansible modules available. These are the files that must be installed on an ansible control node in order for the functionality to be present
+
+* `ansible-plugins.` Contains all the ansible plugins available.
 
 * `tests.` Contains the test suite for the modules. It requires some extra dependencies than the plain modules in order to run.
 
