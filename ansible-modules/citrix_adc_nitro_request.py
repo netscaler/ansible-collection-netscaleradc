@@ -21,6 +21,7 @@ description:
     - This is intended to be a short hand for using the uri Ansible module to issue the raw HTTP requests directly.
     - It provides consistent return values and has no other dependencies apart from the base Ansible runtime environment.
     - This module is intended to run either on the Ansible control node or a bastion (jumpserver) with access to the actual Netscaler instance
+    - Note. This module does not check the target Citrix ADC if a configuration change has actually taken place. It will instead always report a I(changed=yes) status.
 
 
 version_added: "2.5.0"
