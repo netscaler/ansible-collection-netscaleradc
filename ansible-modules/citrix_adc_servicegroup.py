@@ -558,9 +558,9 @@ def sync_service_members(client, module):
 
 
 def monitor_binding_equal(configured, actual):
-    if any([configured.monitorname != actual.monitor_name,
-            configured.servicegroupname != actual.servicegroupname,
-            configured.weight != float(actual.weight)]):
+    if any([configured.monitorname != actual.monitor_name.encode("utf-8"),
+            configured.servicegroupname != actual.servicegroupname.encode("utf-8"),
+            configured.weight != actual.weight.encode("utf-8")]):
         return False
     return True
 
