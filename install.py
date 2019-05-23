@@ -70,7 +70,12 @@ def main():
         print('Extra modules path (%s) is not a directory' % extra_modules_path)
         sys.exit(1)
 
-    document_fragments_path = os.path.join(ansible_path, 'utils', 'module_docs_fragments')
+
+    # Initialize needed paths
+    here = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
+    ansible_modules_sourcedir = os.path.join(here, 'ansible-modules')
+
+
     if not os.path.exists(module_utils_path):
         print('Documentation fragments directory (%s) does not exist' % document_fragments_path)
         sys.exit(1)
@@ -78,12 +83,20 @@ def main():
         print('Documentation fragments directory (%s) is not a directory' % document_fragments_path)
         sys.exit(1)
 
-    here = os.path.dirname(os.path.abspath(os.path.realpath(__file__)))
-    ansible_modules_sourcedir = os.path.join(here, 'ansible-modules')
 
     # Copy documentation fragments
-    print('Copying documentation fragments to %s' % document_fragments_path)
-    shutil.copy(os.path.join(here, 'documentation_fragments', 'netscaler.py'), os.path.join(document_fragments_path, 'netscaler.py'))
+    document_fragments_paths = [
+        os.path.join(ansible_path, 'utils', 'module_docs_fragments'),
+        os.path.join(ansible_path, 'plugins', 'doc_fragments'),
+    ]
+
+    for document_fragments_path in document_fragments_paths:
+        if os.path.exists(document_fragments_path) and os.path.isdir(document_fragments_path):
+            print('Copying documentation fragments to %s' % document_fragments_path)
+            shutil.copy(os.path.join(here, 'documentation_fragments', 'netscaler.py'), os.path.join(document_fragments_path, 'netscaler.py'))
+            break
+    else:
+        print("Warning could not find installation path for document fragments. This is not crucial for correct module operation.")
 
     # Collect files to copy
     ansible_module_files = []
