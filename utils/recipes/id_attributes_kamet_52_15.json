@@ -1,0 +1,5149 @@
+{
+    "aaacertparams": {
+        "id_attributes": []
+    }, 
+    "aaaglobal_aaapreauthenticationpolicy_binding": {
+        "id_attributes": [
+            "policy"
+        ]
+    }, 
+    "aaaglobal_authenticationnegotiateaction_binding": {
+        "id_attributes": [
+            "windowsprofile"
+        ]
+    }, 
+    "aaaglobal_binding": {
+        "id_attributes": []
+    }, 
+    "aaagroup": {
+        "id_attributes": []
+    }, 
+    "aaagroup_aaauser_binding": {
+        "id_attributes": [
+            "username"
+        ]
+    }, 
+    "aaagroup_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_authorizationpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "aaagroup_intranetip6_binding": {
+        "id_attributes": [
+            "intranetip6", 
+            "numaddr"
+        ]
+    }, 
+    "aaagroup_intranetip_binding": {
+        "id_attributes": [
+            "intranetip", 
+            "netmask"
+        ]
+    }, 
+    "aaagroup_tmsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_vpnintranetapplication_binding": {
+        "id_attributes": [
+            "intranetapplication"
+        ]
+    }, 
+    "aaagroup_vpnsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_vpntrafficpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaagroup_vpnurl_binding": {
+        "id_attributes": [
+            "urlname"
+        ]
+    }, 
+    "aaakcdaccount": {
+        "id_attributes": []
+    }, 
+    "aaaldapparams": {
+        "id_attributes": []
+    }, 
+    "aaaparameter": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationaction": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationparameter": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationpolicy": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationpolicy_aaaglobal_binding": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "aaapreauthenticationpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "aaaradiusparams": {
+        "id_attributes": []
+    }, 
+    "aaasession": {
+        "id_attributes": []
+    }, 
+    "aaatacacsparams": {
+        "id_attributes": []
+    }, 
+    "aaauser": {
+        "id_attributes": []
+    }, 
+    "aaauser_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "aaauser_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_authorizationpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "aaauser_intranetip6_binding": {
+        "id_attributes": [
+            "intranetip6", 
+            "numaddr"
+        ]
+    }, 
+    "aaauser_intranetip_binding": {
+        "id_attributes": [
+            "intranetip", 
+            "netmask"
+        ]
+    }, 
+    "aaauser_tmsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_vpnintranetapplication_binding": {
+        "id_attributes": [
+            "intranetapplication"
+        ]
+    }, 
+    "aaauser_vpnsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_vpntrafficpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type"
+        ]
+    }, 
+    "aaauser_vpnurl_binding": {
+        "id_attributes": [
+            "urlname"
+        ]
+    }, 
+    "analyticsprofile": {
+        "id_attributes": []
+    }, 
+    "appalgparam": {
+        "id_attributes": []
+    }, 
+    "appflowaction": {
+        "id_attributes": []
+    }, 
+    "appflowaction_analyticsprofile_binding": {
+        "id_attributes": [
+            "analyticsprofile"
+        ]
+    }, 
+    "appflowaction_binding": {
+        "id_attributes": []
+    }, 
+    "appflowcollector": {
+        "id_attributes": []
+    }, 
+    "appflowglobal_appflowpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "appflowglobal_binding": {
+        "id_attributes": []
+    }, 
+    "appflowparam": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_appflowglobal_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_appflowpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "appflowpolicylabel": {
+        "id_attributes": []
+    }, 
+    "appflowpolicylabel_appflowpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "appflowpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "appfwarchive": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "appfwconfidfield": {
+        "id_attributes": [
+            "fieldname", 
+            "url"
+        ]
+    }, 
+    "appfwcustomsettings": {
+        "id_attributes": []
+    }, 
+    "appfwfieldtype": {
+        "id_attributes": []
+    }, 
+    "appfwglobal_appfwpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "appfwglobal_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "appfwglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "appfwglobal_binding": {
+        "id_attributes": []
+    }, 
+    "appfwhtmlerrorpage": {
+        "id_attributes": []
+    }, 
+    "appfwjsoncontenttype": {
+        "id_attributes": []
+    }, 
+    "appfwlearningdata": {
+        "id_attributes": [
+            "profilename", 
+            "starturl", 
+            "cookieconsistency", 
+            "fieldconsistency", 
+            "formactionurl_ffc", 
+            "contenttype", 
+            "crosssitescripting", 
+            "formactionurl_xss", 
+            "as_scan_location_xss", 
+            "as_value_type_xss", 
+            "as_value_expr_xss", 
+            "sqlinjection", 
+            "formactionurl_sql", 
+            "as_scan_location_sql", 
+            "as_value_type_sql", 
+            "as_value_expr_sql", 
+            "fieldformat", 
+            "formactionurl_ff", 
+            "csrftag", 
+            "csrfformoriginurl", 
+            "creditcardnumber", 
+            "creditcardnumberurl", 
+            "xmldoscheck", 
+            "xmlwsicheck", 
+            "xmlattachmentcheck", 
+            "totalxmlrequests"
+        ]
+    }, 
+    "appfwlearningsettings": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy_appfwglobal_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy_appfwpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicylabel": {
+        "id_attributes": []
+    }, 
+    "appfwpolicylabel_appfwpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "appfwpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "appfwpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "appfwprofile": {
+        "id_attributes": []
+    }, 
+    "appfwprofile_binding": {
+        "id_attributes": []
+    }, 
+    "appfwprofile_contenttype_binding": {
+        "id_attributes": [
+            "contenttype"
+        ]
+    }, 
+    "appfwprofile_cookieconsistency_binding": {
+        "id_attributes": [
+            "cookieconsistency"
+        ]
+    }, 
+    "appfwprofile_creditcardnumber_binding": {
+        "id_attributes": [
+            "creditcardnumber", 
+            "creditcardnumberurl"
+        ]
+    }, 
+    "appfwprofile_crosssitescripting_binding": {
+        "id_attributes": [
+            "crosssitescripting", 
+            "formactionurl_xss", 
+            "as_scan_location_xss", 
+            "as_value_type_xss", 
+            "as_value_expr_xss"
+        ]
+    }, 
+    "appfwprofile_csrftag_binding": {
+        "id_attributes": [
+            "csrftag", 
+            "csrfformactionurl"
+        ]
+    }, 
+    "appfwprofile_denyurl_binding": {
+        "id_attributes": [
+            "denyurl"
+        ]
+    }, 
+    "appfwprofile_excluderescontenttype_binding": {
+        "id_attributes": [
+            "excluderescontenttype"
+        ]
+    }, 
+    "appfwprofile_fieldconsistency_binding": {
+        "id_attributes": [
+            "fieldconsistency", 
+            "formactionurl_ffc"
+        ]
+    }, 
+    "appfwprofile_fieldformat_binding": {
+        "id_attributes": [
+            "fieldformat", 
+            "formactionurl_ff"
+        ]
+    }, 
+    "appfwprofile_logexpression_binding": {
+        "id_attributes": [
+            "logexpression"
+        ]
+    }, 
+    "appfwprofile_safeobject_binding": {
+        "id_attributes": [
+            "safeobject"
+        ]
+    }, 
+    "appfwprofile_sqlinjection_binding": {
+        "id_attributes": [
+            "sqlinjection", 
+            "formactionurl_sql", 
+            "as_scan_location_sql", 
+            "as_value_type_sql", 
+            "as_value_expr_sql"
+        ]
+    }, 
+    "appfwprofile_starturl_binding": {
+        "id_attributes": [
+            "starturl"
+        ]
+    }, 
+    "appfwprofile_trustedlearningclients_binding": {
+        "id_attributes": [
+            "trustedlearningclients"
+        ]
+    }, 
+    "appfwprofile_xmlattachmenturl_binding": {
+        "id_attributes": [
+            "xmlattachmenturl"
+        ]
+    }, 
+    "appfwprofile_xmldosurl_binding": {
+        "id_attributes": [
+            "xmldosurl"
+        ]
+    }, 
+    "appfwprofile_xmlsqlinjection_binding": {
+        "id_attributes": [
+            "xmlsqlinjection", 
+            "as_scan_location_xmlsql"
+        ]
+    }, 
+    "appfwprofile_xmlvalidationurl_binding": {
+        "id_attributes": [
+            "xmlvalidationurl"
+        ]
+    }, 
+    "appfwprofile_xmlwsiurl_binding": {
+        "id_attributes": [
+            "xmlwsiurl"
+        ]
+    }, 
+    "appfwprofile_xmlxss_binding": {
+        "id_attributes": [
+            "xmlxss", 
+            "as_scan_location_xmlxss"
+        ]
+    }, 
+    "appfwsettings": {
+        "id_attributes": []
+    }, 
+    "appfwsignatures": {
+        "id_attributes": []
+    }, 
+    "appfwtransactionrecords": {
+        "id_attributes": []
+    }, 
+    "appfwwsdl": {
+        "id_attributes": []
+    }, 
+    "appfwxmlcontenttype": {
+        "id_attributes": []
+    }, 
+    "appfwxmlerrorpage": {
+        "id_attributes": []
+    }, 
+    "appfwxmlschema": {
+        "id_attributes": []
+    }, 
+    "application": {
+        "id_attributes": [
+            "appname"
+        ]
+    }, 
+    "appqoeaction": {
+        "id_attributes": []
+    }, 
+    "appqoecustomresp": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "appqoeparameter": {
+        "id_attributes": []
+    }, 
+    "appqoepolicy": {
+        "id_attributes": []
+    }, 
+    "appqoepolicy_binding": {
+        "id_attributes": []
+    }, 
+    "appqoepolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "arp": {
+        "id_attributes": [
+            "ipaddress", 
+            "td", 
+            "ownernode", 
+            "all"
+        ]
+    }, 
+    "arpparam": {
+        "id_attributes": []
+    }, 
+    "auditmessageaction": {
+        "id_attributes": []
+    }, 
+    "auditmessages": {
+        "id_attributes": []
+    }, 
+    "auditnslogaction": {
+        "id_attributes": []
+    }, 
+    "auditnslogglobal_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "globalbindtype"
+        ]
+    }, 
+    "auditnslogglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogparams": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_appfwglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_auditnslogglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_tmglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditnslogpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogaction": {
+        "id_attributes": []
+    }, 
+    "auditsyslogglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "globalbindtype"
+        ]
+    }, 
+    "auditsyslogglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogparams": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_auditsyslogglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_rnatglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_tmglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "auditsyslogpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationauthnprofile": {
+        "id_attributes": []
+    }, 
+    "authenticationazurekeyvault": {
+        "id_attributes": []
+    }, 
+    "authenticationcaptchaaction": {
+        "id_attributes": []
+    }, 
+    "authenticationcertaction": {
+        "id_attributes": []
+    }, 
+    "authenticationcertpolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationcertpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationcertpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationcertpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationcertpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationdfaaction": {
+        "id_attributes": []
+    }, 
+    "authenticationdfapolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationdfapolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationdfapolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationemailaction": {
+        "id_attributes": []
+    }, 
+    "authenticationepaaction": {
+        "id_attributes": []
+    }, 
+    "authenticationldapaction": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationldappolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationlocalpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationloginschema": {
+        "id_attributes": []
+    }, 
+    "authenticationloginschemapolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationloginschemapolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationloginschemapolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationloginschemapolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiateaction": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiatepolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiatepolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiatepolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiatepolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationnegotiatepolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationnoauthaction": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthaction": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthidppolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthidppolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthidppolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthidppolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationoauthidpprofile": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicy_authenticationpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicylabel": {
+        "id_attributes": []
+    }, 
+    "authenticationpolicylabel_authenticationpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "authenticationpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationpushservice": {
+        "id_attributes": []
+    }, 
+    "authenticationradiusaction": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationradiuspolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlaction": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlidppolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlidppolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlidppolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlidppolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlidpprofile": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlpolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationsamlpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationstorefrontauthaction": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacsaction": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationtacacspolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationvserver": {
+        "id_attributes": []
+    }, 
+    "authenticationvserver_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationcertpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationldappolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationlocalpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationloginschemapolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationnegotiatepolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationoauthidppolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationradiuspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationsamlidppolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationsamlpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationtacacspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_authenticationwebauthpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationvserver_cspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_tmsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "authenticationvserver_vpnportaltheme_binding": {
+        "id_attributes": [
+            "portaltheme"
+        ]
+    }, 
+    "authenticationwebauthaction": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy_systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "authenticationwebauthpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationaction": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_authorizationpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicylabel": {
+        "id_attributes": []
+    }, 
+    "authorizationpolicylabel_authorizationpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "authorizationpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "autoscaleaction": {
+        "id_attributes": []
+    }, 
+    "autoscalepolicy": {
+        "id_attributes": []
+    }, 
+    "autoscalepolicy_binding": {
+        "id_attributes": []
+    }, 
+    "autoscalepolicy_nstimer_binding": {
+        "id_attributes": []
+    }, 
+    "autoscaleprofile": {
+        "id_attributes": []
+    }, 
+    "bfdsession": {
+        "id_attributes": []
+    }, 
+    "bridgegroup": {
+        "id_attributes": []
+    }, 
+    "bridgegroup_binding": {
+        "id_attributes": []
+    }, 
+    "bridgegroup_nsip6_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "td", 
+            "ownergroup", 
+            "netmask"
+        ]
+    }, 
+    "bridgegroup_nsip_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "td", 
+            "netmask", 
+            "ownergroup"
+        ]
+    }, 
+    "bridgegroup_vlan_binding": {
+        "id_attributes": [
+            "vlan"
+        ]
+    }, 
+    "bridgetable": {
+        "id_attributes": [
+            "mac", 
+            "vxlan", 
+            "vtep", 
+            "devicevlan"
+        ]
+    }, 
+    "caaction": {
+        "id_attributes": []
+    }, 
+    "cachecontentgroup": {
+        "id_attributes": []
+    }, 
+    "cacheforwardproxy": {
+        "id_attributes": [
+            "ipaddress", 
+            "port"
+        ]
+    }, 
+    "cacheglobal_binding": {
+        "id_attributes": []
+    }, 
+    "cacheglobal_cachepolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "cacheobject": {
+        "id_attributes": []
+    }, 
+    "cacheparameter": {
+        "id_attributes": []
+    }, 
+    "cachepolicy": {
+        "id_attributes": []
+    }, 
+    "cachepolicy_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicy_cacheglobal_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicy_cachepolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicylabel": {
+        "id_attributes": []
+    }, 
+    "cachepolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cachepolicylabel_cachepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "cachepolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "cacheselector": {
+        "id_attributes": []
+    }, 
+    "caglobal_binding": {
+        "id_attributes": []
+    }, 
+    "caglobal_capolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "callhome": {
+        "id_attributes": []
+    }, 
+    "capolicy": {
+        "id_attributes": []
+    }, 
+    "capolicy_binding": {
+        "id_attributes": []
+    }, 
+    "capolicy_caglobal_binding": {
+        "id_attributes": []
+    }, 
+    "capolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "capolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "channel": {
+        "id_attributes": []
+    }, 
+    "channel_binding": {
+        "id_attributes": []
+    }, 
+    "channel_interface_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "ci": {
+        "id_attributes": []
+    }, 
+    "cloudautoscalegroup": {
+        "id_attributes": []
+    }, 
+    "cloudcredential": {
+        "id_attributes": []
+    }, 
+    "cloudparameter": {
+        "id_attributes": []
+    }, 
+    "cloudparaminternal": {
+        "id_attributes": []
+    }, 
+    "cloudprofile": {
+        "id_attributes": []
+    }, 
+    "cloudvserverip": {
+        "id_attributes": []
+    }, 
+    "cluster": {
+        "id_attributes": []
+    }, 
+    "clusterfiles": {
+        "id_attributes": []
+    }, 
+    "clusterinstance": {
+        "id_attributes": []
+    }, 
+    "clusterinstance_binding": {
+        "id_attributes": []
+    }, 
+    "clusterinstance_clusternode_binding": {
+        "id_attributes": []
+    }, 
+    "clusternode": {
+        "id_attributes": [
+            "clearnodegroupconfig"
+        ]
+    }, 
+    "clusternode_binding": {
+        "id_attributes": []
+    }, 
+    "clusternode_routemonitor_binding": {
+        "id_attributes": [
+            "routemonitor", 
+            "netmask"
+        ]
+    }, 
+    "clusternodegroup": {
+        "id_attributes": []
+    }, 
+    "clusternodegroup_authenticationvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_binding": {
+        "id_attributes": []
+    }, 
+    "clusternodegroup_clusternode_binding": {
+        "id_attributes": [
+            "node", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_crvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_csvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_gslbsite_binding": {
+        "id_attributes": [
+            "gslbsite", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_gslbvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_lbvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_nslimitidentifier_binding": {
+        "id_attributes": [
+            "identifiername"
+        ]
+    }, 
+    "clusternodegroup_service_binding": {
+        "id_attributes": [
+            "service", 
+            "name"
+        ]
+    }, 
+    "clusternodegroup_streamidentifier_binding": {
+        "id_attributes": [
+            "identifiername"
+        ]
+    }, 
+    "clusternodegroup_vpnvserver_binding": {
+        "id_attributes": [
+            "vserver", 
+            "name"
+        ]
+    }, 
+    "clusterpropstatus": {
+        "id_attributes": []
+    }, 
+    "clustersync": {
+        "id_attributes": []
+    }, 
+    "cmpaction": {
+        "id_attributes": []
+    }, 
+    "cmpglobal_binding": {
+        "id_attributes": []
+    }, 
+    "cmpglobal_cmppolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "cmpparameter": {
+        "id_attributes": []
+    }, 
+    "cmppolicy": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_cmpglobal_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_cmppolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicylabel": {
+        "id_attributes": []
+    }, 
+    "cmppolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cmppolicylabel_cmppolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "cmppolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionaction": {
+        "id_attributes": []
+    }, 
+    "contentinspectionglobal_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionglobal_contentinspectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "contentinspectionpolicy": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicy_contentinspectionglobal_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicy_contentinspectionpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicylabel": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionpolicylabel_contentinspectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "contentinspectionpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "contentinspectionprofile": {
+        "id_attributes": []
+    }, 
+    "craction": {
+        "id_attributes": []
+    }, 
+    "crpolicy": {
+        "id_attributes": []
+    }, 
+    "crpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "crpolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "crvserver": {
+        "id_attributes": []
+    }, 
+    "crvserver_appflowpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_appfwpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_appqoepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "crvserver_cachepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_cmppolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_crpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_cspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_feopolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_filterpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_icapolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_lbvserver_binding": {
+        "id_attributes": [
+            "lbvserver"
+        ]
+    }, 
+    "crvserver_policymap_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_responderpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_rewritepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "crvserver_spilloverpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "bindpoint", 
+            "priority"
+        ]
+    }, 
+    "csaction": {
+        "id_attributes": []
+    }, 
+    "csparameter": {
+        "id_attributes": []
+    }, 
+    "cspolicy": {
+        "id_attributes": []
+    }, 
+    "cspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "cspolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cspolicy_cspolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cspolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "cspolicylabel": {
+        "id_attributes": []
+    }, 
+    "cspolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "cspolicylabel_cspolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "csvserver": {
+        "id_attributes": []
+    }, 
+    "csvserver_appflowpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_appfwpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_appqoepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_authorizationpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "csvserver_cachepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_cmppolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_contentinspectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_cspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_domain_binding": {
+        "id_attributes": [
+            "domainname"
+        ]
+    }, 
+    "csvserver_feopolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_filterpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_gslbvserver_binding": {
+        "id_attributes": [
+            "vserver"
+        ]
+    }, 
+    "csvserver_lbvserver_binding": {
+        "id_attributes": [
+            "lbvserver"
+        ]
+    }, 
+    "csvserver_responderpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_rewritepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_spilloverpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "bindpoint", 
+            "priority"
+        ]
+    }, 
+    "csvserver_tmtrafficpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_transformpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "csvserver_vpnvserver_binding": {
+        "id_attributes": [
+            "vserver"
+        ]
+    }, 
+    "dbdbprofile": {
+        "id_attributes": []
+    }, 
+    "dbsmonitors": {
+        "id_attributes": []
+    }, 
+    "dbuser": {
+        "id_attributes": []
+    }, 
+    "dnsaaaarec": {
+        "id_attributes": [
+            "hostname", 
+            "ipv6address", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnsaction": {
+        "id_attributes": []
+    }, 
+    "dnsaction64": {
+        "id_attributes": []
+    }, 
+    "dnsaddrec": {
+        "id_attributes": [
+            "ipaddress", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnscnamerec": {
+        "id_attributes": [
+            "ecssubnet"
+        ]
+    }, 
+    "dnsglobal_binding": {
+        "id_attributes": []
+    }, 
+    "dnsglobal_dnspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type"
+        ]
+    }, 
+    "dnskey": {
+        "id_attributes": []
+    }, 
+    "dnsmxrec": {
+        "id_attributes": [
+            "mx", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnsnameserver": {
+        "id_attributes": [
+            "ip", 
+            "dnsvservername"
+        ]
+    }, 
+    "dnsnaptrrec": {
+        "id_attributes": [
+            "order", 
+            "preference", 
+            "flags", 
+            "services", 
+            "regexp", 
+            "replacement", 
+            "recordid", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnsnsecrec": {
+        "id_attributes": []
+    }, 
+    "dnsnsrec": {
+        "id_attributes": [
+            "nameserver", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnsparameter": {
+        "id_attributes": []
+    }, 
+    "dnspolicy": {
+        "id_attributes": []
+    }, 
+    "dnspolicy64": {
+        "id_attributes": []
+    }, 
+    "dnspolicy64_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicy64_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicy_dnsglobal_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicy_dnspolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicylabel": {
+        "id_attributes": []
+    }, 
+    "dnspolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "dnspolicylabel_dnspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "dnspolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "dnsprofile": {
+        "id_attributes": []
+    }, 
+    "dnsproxyrecords": {
+        "id_attributes": []
+    }, 
+    "dnsptrrec": {
+        "id_attributes": [
+            "domain", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnssoarec": {
+        "id_attributes": [
+            "ecssubnet"
+        ]
+    }, 
+    "dnssrvrec": {
+        "id_attributes": [
+            "domain", 
+            "target", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnssubnetcache": {
+        "id_attributes": []
+    }, 
+    "dnssuffix": {
+        "id_attributes": []
+    }, 
+    "dnstxtrec": {
+        "id_attributes": [
+            "String", 
+            "recordid", 
+            "ecssubnet"
+        ]
+    }, 
+    "dnsview": {
+        "id_attributes": []
+    }, 
+    "dnsview_binding": {
+        "id_attributes": []
+    }, 
+    "dnsview_dnspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "dnsview_gslbservice_binding": {
+        "id_attributes": []
+    }, 
+    "dnszone": {
+        "id_attributes": []
+    }, 
+    "dnszone_binding": {
+        "id_attributes": []
+    }, 
+    "dnszone_dnskey_binding": {
+        "id_attributes": []
+    }, 
+    "dnszone_domain_binding": {
+        "id_attributes": []
+    }, 
+    "dospolicy": {
+        "id_attributes": []
+    }, 
+    "extendedmemoryparam": {
+        "id_attributes": []
+    }, 
+    "feoaction": {
+        "id_attributes": []
+    }, 
+    "feoglobal_binding": {
+        "id_attributes": []
+    }, 
+    "feoglobal_feopolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "feoparameter": {
+        "id_attributes": []
+    }, 
+    "feopolicy": {
+        "id_attributes": []
+    }, 
+    "feopolicy_binding": {
+        "id_attributes": []
+    }, 
+    "feopolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "feopolicy_feoglobal_binding": {
+        "id_attributes": []
+    }, 
+    "feopolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "filteraction": {
+        "id_attributes": []
+    }, 
+    "filterglobal_binding": {
+        "id_attributes": []
+    }, 
+    "filterglobal_filterpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "filterhtmlinjectionparameter": {
+        "id_attributes": []
+    }, 
+    "filterhtmlinjectionvariable": {
+        "id_attributes": []
+    }, 
+    "filterpolicy": {
+        "id_attributes": []
+    }, 
+    "filterpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "filterpolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "filterpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "filterpolicy_filterglobal_binding": {
+        "id_attributes": []
+    }, 
+    "filterpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "filterpostbodyinjection": {
+        "id_attributes": []
+    }, 
+    "filterprebodyinjection": {
+        "id_attributes": []
+    }, 
+    "fis": {
+        "id_attributes": []
+    }, 
+    "fis_binding": {
+        "id_attributes": []
+    }, 
+    "fis_channel_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "fis_interface_binding": {
+        "id_attributes": [
+            "ifnum", 
+            "name"
+        ]
+    }, 
+    "forwardingsession": {
+        "id_attributes": []
+    }, 
+    "gslbconfig": {
+        "id_attributes": []
+    }, 
+    "gslbdomain": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_binding": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_gslbservice_binding": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_gslbservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_gslbservicegroupmember_binding": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_gslbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "gslbdomain_lbmonitor_binding": {
+        "id_attributes": []
+    }, 
+    "gslbldnsentries": {
+        "id_attributes": []
+    }, 
+    "gslbldnsentry": {
+        "id_attributes": [
+            "ipaddress"
+        ]
+    }, 
+    "gslbparameter": {
+        "id_attributes": []
+    }, 
+    "gslbrunningconfig": {
+        "id_attributes": []
+    }, 
+    "gslbservice": {
+        "id_attributes": []
+    }, 
+    "gslbservice_binding": {
+        "id_attributes": []
+    }, 
+    "gslbservice_dnsview_binding": {
+        "id_attributes": [
+            "viewname"
+        ]
+    }, 
+    "gslbservice_lbmonitor_binding": {
+        "id_attributes": [
+            "monitor_name"
+        ]
+    }, 
+    "gslbservicegroup": {
+        "id_attributes": []
+    }, 
+    "gslbservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "gslbservicegroup_gslbservicegroupmember_binding": {
+        "id_attributes": [
+            "ip", 
+            "port", 
+            "servername"
+        ]
+    }, 
+    "gslbservicegroup_lbmonitor_binding": {
+        "id_attributes": [
+            "monitor_name", 
+            "port"
+        ]
+    }, 
+    "gslbservicegroup_servicegroupentitymonbindings_binding": {
+        "id_attributes": []
+    }, 
+    "gslbsite": {
+        "id_attributes": []
+    }, 
+    "gslbsite_binding": {
+        "id_attributes": []
+    }, 
+    "gslbsite_gslbservice_binding": {
+        "id_attributes": []
+    }, 
+    "gslbsite_gslbservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "gslbsite_gslbservicegroupmember_binding": {
+        "id_attributes": []
+    }, 
+    "gslbsyncstatus": {
+        "id_attributes": []
+    }, 
+    "gslbvserver": {
+        "id_attributes": []
+    }, 
+    "gslbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "gslbvserver_domain_binding": {
+        "id_attributes": [
+            "domainname", 
+            "backupipflag", 
+            "cookie_domainflag"
+        ]
+    }, 
+    "gslbvserver_gslbservice_binding": {
+        "id_attributes": [
+            "servicename", 
+            "domainname"
+        ]
+    }, 
+    "gslbvserver_gslbservicegroup_binding": {
+        "id_attributes": [
+            "servicegroupname"
+        ]
+    }, 
+    "gslbvserver_gslbservicegroupmember_binding": {
+        "id_attributes": []
+    }, 
+    "gslbvserver_spilloverpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "hafailover": {
+        "id_attributes": []
+    }, 
+    "hafiles": {
+        "id_attributes": []
+    }, 
+    "hanode": {
+        "id_attributes": []
+    }, 
+    "hanode_binding": {
+        "id_attributes": []
+    }, 
+    "hanode_ci_binding": {
+        "id_attributes": []
+    }, 
+    "hanode_fis_binding": {
+        "id_attributes": []
+    }, 
+    "hanode_partialfailureinterfaces_binding": {
+        "id_attributes": []
+    }, 
+    "hanode_routemonitor6_binding": {
+        "id_attributes": [
+            "routemonitor", 
+            "netmask"
+        ]
+    }, 
+    "hanode_routemonitor_binding": {
+        "id_attributes": [
+            "routemonitor", 
+            "netmask"
+        ]
+    }, 
+    "hasync": {
+        "id_attributes": []
+    }, 
+    "icaaccessprofile": {
+        "id_attributes": []
+    }, 
+    "icaaction": {
+        "id_attributes": []
+    }, 
+    "icaglobal_binding": {
+        "id_attributes": []
+    }, 
+    "icaglobal_icapolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "icalatencyprofile": {
+        "id_attributes": []
+    }, 
+    "icaparameter": {
+        "id_attributes": []
+    }, 
+    "icapolicy": {
+        "id_attributes": []
+    }, 
+    "icapolicy_binding": {
+        "id_attributes": []
+    }, 
+    "icapolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "icapolicy_icaglobal_binding": {
+        "id_attributes": []
+    }, 
+    "icapolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "inat": {
+        "id_attributes": []
+    }, 
+    "inatparam": {
+        "id_attributes": []
+    }, 
+    "install": {
+        "id_attributes": []
+    }, 
+    "interfacepair": {
+        "id_attributes": []
+    }, 
+    "ip6tunnel": {
+        "id_attributes": []
+    }, 
+    "ip6tunnelparam": {
+        "id_attributes": []
+    }, 
+    "ipsecalgprofile": {
+        "id_attributes": []
+    }, 
+    "ipsecalgsession": {
+        "id_attributes": []
+    }, 
+    "ipsecparameter": {
+        "id_attributes": []
+    }, 
+    "ipsecprofile": {
+        "id_attributes": []
+    }, 
+    "ipset": {
+        "id_attributes": []
+    }, 
+    "ipset_binding": {
+        "id_attributes": []
+    }, 
+    "ipset_nsip6_binding": {
+        "id_attributes": [
+            "ipaddress"
+        ]
+    }, 
+    "ipset_nsip_binding": {
+        "id_attributes": [
+            "ipaddress"
+        ]
+    }, 
+    "iptunnel": {
+        "id_attributes": []
+    }, 
+    "iptunnelparam": {
+        "id_attributes": []
+    }, 
+    "ipv6": {
+        "id_attributes": []
+    }, 
+    "l2param": {
+        "id_attributes": []
+    }, 
+    "l3param": {
+        "id_attributes": []
+    }, 
+    "l4param": {
+        "id_attributes": []
+    }, 
+    "lacp": {
+        "id_attributes": []
+    }, 
+    "lbgroup": {
+        "id_attributes": []
+    }, 
+    "lbgroup_binding": {
+        "id_attributes": []
+    }, 
+    "lbgroup_lbvserver_binding": {
+        "id_attributes": [
+            "vservername"
+        ]
+    }, 
+    "lbmetrictable": {
+        "id_attributes": []
+    }, 
+    "lbmetrictable_binding": {
+        "id_attributes": []
+    }, 
+    "lbmetrictable_metric_binding": {
+        "id_attributes": [
+            "metric"
+        ]
+    }, 
+    "lbmonbindings": {
+        "id_attributes": []
+    }, 
+    "lbmonbindings_binding": {
+        "id_attributes": []
+    }, 
+    "lbmonbindings_gslbservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "lbmonbindings_service_binding": {
+        "id_attributes": []
+    }, 
+    "lbmonbindings_servicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "lbmonitor": {
+        "id_attributes": [
+            "type", 
+            "respcode"
+        ]
+    }, 
+    "lbmonitor_binding": {
+        "id_attributes": []
+    }, 
+    "lbmonitor_metric_binding": {
+        "id_attributes": [
+            "metric"
+        ]
+    }, 
+    "lbmonitor_service_binding": {
+        "id_attributes": [
+            "monitorname", 
+            "servicename", 
+            "servicegroupname"
+        ]
+    }, 
+    "lbmonitor_servicegroup_binding": {
+        "id_attributes": [
+            "monitorname", 
+            "servicename", 
+            "servicegroupname"
+        ]
+    }, 
+    "lbmonitor_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname", 
+            "ca"
+        ]
+    }, 
+    "lbparameter": {
+        "id_attributes": []
+    }, 
+    "lbpersistentsessions": {
+        "id_attributes": []
+    }, 
+    "lbprofile": {
+        "id_attributes": []
+    }, 
+    "lbroute": {
+        "id_attributes": [
+            "network", 
+            "netmask", 
+            "td"
+        ]
+    }, 
+    "lbroute6": {
+        "id_attributes": [
+            "network", 
+            "td"
+        ]
+    }, 
+    "lbsipparameters": {
+        "id_attributes": []
+    }, 
+    "lbvserver": {
+        "id_attributes": []
+    }, 
+    "lbvserver_analyticsprofile_binding": {
+        "id_attributes": [
+            "analyticsprofile"
+        ]
+    }, 
+    "lbvserver_appflowpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_appfwpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_appqoepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_authorizationpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "lbvserver_cachepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_capolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_cmppolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_contentinspectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "lbvserver_dnspolicy64_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_dospolicy_binding": {
+        "id_attributes": []
+    }, 
+    "lbvserver_feopolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_filterpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_pqpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_responderpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_rewritepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_scpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_service_binding": {
+        "id_attributes": [
+            "servicename", 
+            "servicegroupname"
+        ]
+    }, 
+    "lbvserver_servicegroup_binding": {
+        "id_attributes": [
+            "servicegroupname", 
+            "servicename"
+        ]
+    }, 
+    "lbvserver_servicegroupmember_binding": {
+        "id_attributes": []
+    }, 
+    "lbvserver_spilloverpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "bindpoint", 
+            "priority"
+        ]
+    }, 
+    "lbvserver_tmtrafficpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_transformpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_videooptimizationdetectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbvserver_videooptimizationpacingpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "bindpoint"
+        ]
+    }, 
+    "lbwlm": {
+        "id_attributes": []
+    }, 
+    "lbwlm_binding": {
+        "id_attributes": []
+    }, 
+    "lbwlm_lbvserver_binding": {
+        "id_attributes": [
+            "vservername"
+        ]
+    }, 
+    "linkset": {
+        "id_attributes": []
+    }, 
+    "linkset_binding": {
+        "id_attributes": []
+    }, 
+    "linkset_channel_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "linkset_interface_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "lldpneighbors": {
+        "id_attributes": []
+    }, 
+    "lldpparam": {
+        "id_attributes": []
+    }, 
+    "location": {
+        "id_attributes": [
+            "ipto"
+        ]
+    }, 
+    "locationdata": {
+        "id_attributes": []
+    }, 
+    "locationfile": {
+        "id_attributes": []
+    }, 
+    "locationfile6": {
+        "id_attributes": []
+    }, 
+    "locationparameter": {
+        "id_attributes": []
+    }, 
+    "lsnappsprofile": {
+        "id_attributes": []
+    }, 
+    "lsnappsprofile_binding": {
+        "id_attributes": []
+    }, 
+    "lsnappsprofile_port_binding": {
+        "id_attributes": [
+            "lsnport"
+        ]
+    }, 
+    "lsnclient": {
+        "id_attributes": []
+    }, 
+    "lsnclient_binding": {
+        "id_attributes": []
+    }, 
+    "lsnclient_network6_binding": {
+        "id_attributes": [
+            "network6", 
+            "network", 
+            "netmask", 
+            "td"
+        ]
+    }, 
+    "lsnclient_network_binding": {
+        "id_attributes": [
+            "network", 
+            "netmask", 
+            "td"
+        ]
+    }, 
+    "lsnclient_nsacl6_binding": {
+        "id_attributes": [
+            "acl6name", 
+            "td"
+        ]
+    }, 
+    "lsnclient_nsacl_binding": {
+        "id_attributes": [
+            "aclname", 
+            "td"
+        ]
+    }, 
+    "lsndeterministicnat": {
+        "id_attributes": []
+    }, 
+    "lsngroup": {
+        "id_attributes": []
+    }, 
+    "lsngroup_binding": {
+        "id_attributes": []
+    }, 
+    "lsngroup_ipsecalgprofile_binding": {
+        "id_attributes": [
+            "ipsecalgprofile"
+        ]
+    }, 
+    "lsngroup_lsnappsprofile_binding": {
+        "id_attributes": [
+            "appsprofilename"
+        ]
+    }, 
+    "lsngroup_lsnhttphdrlogprofile_binding": {
+        "id_attributes": [
+            "httphdrlogprofilename"
+        ]
+    }, 
+    "lsngroup_lsnlogprofile_binding": {
+        "id_attributes": [
+            "logprofilename"
+        ]
+    }, 
+    "lsngroup_lsnpool_binding": {
+        "id_attributes": [
+            "poolname"
+        ]
+    }, 
+    "lsngroup_lsnrtspalgprofile_binding": {
+        "id_attributes": [
+            "rtspalgprofilename"
+        ]
+    }, 
+    "lsngroup_lsnsipalgprofile_binding": {
+        "id_attributes": [
+            "sipalgprofilename"
+        ]
+    }, 
+    "lsngroup_lsntransportprofile_binding": {
+        "id_attributes": [
+            "transportprofilename"
+        ]
+    }, 
+    "lsngroup_pcpserver_binding": {
+        "id_attributes": [
+            "pcpserver"
+        ]
+    }, 
+    "lsnhttphdrlogprofile": {
+        "id_attributes": []
+    }, 
+    "lsnip6profile": {
+        "id_attributes": []
+    }, 
+    "lsnlogprofile": {
+        "id_attributes": []
+    }, 
+    "lsnparameter": {
+        "id_attributes": []
+    }, 
+    "lsnpool": {
+        "id_attributes": []
+    }, 
+    "lsnpool_binding": {
+        "id_attributes": []
+    }, 
+    "lsnpool_lsnip_binding": {
+        "id_attributes": [
+            "lsnip", 
+            "ownernode"
+        ]
+    }, 
+    "lsnrtspalgprofile": {
+        "id_attributes": []
+    }, 
+    "lsnrtspalgsession": {
+        "id_attributes": []
+    }, 
+    "lsnrtspalgsession_binding": {
+        "id_attributes": []
+    }, 
+    "lsnrtspalgsession_datachannel_binding": {
+        "id_attributes": []
+    }, 
+    "lsnsession": {
+        "id_attributes": []
+    }, 
+    "lsnsipalgcall": {
+        "id_attributes": []
+    }, 
+    "lsnsipalgcall_binding": {
+        "id_attributes": []
+    }, 
+    "lsnsipalgcall_controlchannel_binding": {
+        "id_attributes": []
+    }, 
+    "lsnsipalgcall_datachannel_binding": {
+        "id_attributes": []
+    }, 
+    "lsnsipalgprofile": {
+        "id_attributes": []
+    }, 
+    "lsnstatic": {
+        "id_attributes": []
+    }, 
+    "lsntransportprofile": {
+        "id_attributes": []
+    }, 
+    "mapbmr": {
+        "id_attributes": []
+    }, 
+    "mapbmr_binding": {
+        "id_attributes": []
+    }, 
+    "mapbmr_bmrv4network_binding": {
+        "id_attributes": [
+            "network", 
+            "netmask"
+        ]
+    }, 
+    "mapdmr": {
+        "id_attributes": []
+    }, 
+    "mapdomain": {
+        "id_attributes": []
+    }, 
+    "mapdomain_binding": {
+        "id_attributes": []
+    }, 
+    "mapdomain_mapbmr_binding": {
+        "id_attributes": [
+            "mapbmrname"
+        ]
+    }, 
+    "nat64": {
+        "id_attributes": []
+    }, 
+    "nat64param": {
+        "id_attributes": []
+    }, 
+    "nd6": {
+        "id_attributes": [
+            "neighbor", 
+            "vlan", 
+            "vxlan", 
+            "td"
+        ]
+    }, 
+    "nd6ravariables": {
+        "id_attributes": []
+    }, 
+    "nd6ravariables_binding": {
+        "id_attributes": []
+    }, 
+    "nd6ravariables_onlinkipv6prefix_binding": {
+        "id_attributes": [
+            "ipv6prefix"
+        ]
+    }, 
+    "netbridge": {
+        "id_attributes": []
+    }, 
+    "netbridge_binding": {
+        "id_attributes": []
+    }, 
+    "netbridge_iptunnel_binding": {
+        "id_attributes": [
+            "tunnel"
+        ]
+    }, 
+    "netbridge_nsip6_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask"
+        ]
+    }, 
+    "netbridge_nsip_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask"
+        ]
+    }, 
+    "netbridge_vlan_binding": {
+        "id_attributes": [
+            "vlan"
+        ]
+    }, 
+    "netprofile": {
+        "id_attributes": []
+    }, 
+    "netprofile_binding": {
+        "id_attributes": []
+    }, 
+    "netprofile_natrule_binding": {
+        "id_attributes": [
+            "natrule", 
+            "netmask"
+        ]
+    }, 
+    "netprofile_srcportset_binding": {
+        "id_attributes": [
+            "srcportrange"
+        ]
+    }, 
+    "nsacl": {
+        "id_attributes": []
+    }, 
+    "nsacl6": {
+        "id_attributes": []
+    }, 
+    "nsacls": {
+        "id_attributes": []
+    }, 
+    "nsacls6": {
+        "id_attributes": []
+    }, 
+    "nsappflowcollector": {
+        "id_attributes": []
+    }, 
+    "nsappflowparam": {
+        "id_attributes": []
+    }, 
+    "nsaptlicense": {
+        "id_attributes": []
+    }, 
+    "nsassignment": {
+        "id_attributes": []
+    }, 
+    "nscapacity": {
+        "id_attributes": []
+    }, 
+    "nscentralmanagementserver": {
+        "id_attributes": []
+    }, 
+    "nsconfig": {
+        "id_attributes": []
+    }, 
+    "nsconnectiontable": {
+        "id_attributes": []
+    }, 
+    "nsconsoleloginprompt": {
+        "id_attributes": []
+    }, 
+    "nscqaparam": {
+        "id_attributes": []
+    }, 
+    "nsdhcpip": {
+        "id_attributes": []
+    }, 
+    "nsdhcpparams": {
+        "id_attributes": []
+    }, 
+    "nsdiameter": {
+        "id_attributes": []
+    }, 
+    "nsencryptionkey": {
+        "id_attributes": []
+    }, 
+    "nsencryptionparams": {
+        "id_attributes": []
+    }, 
+    "nsevents": {
+        "id_attributes": []
+    }, 
+    "nsextension": {
+        "id_attributes": []
+    }, 
+    "nsextension_binding": {
+        "id_attributes": []
+    }, 
+    "nsextension_extensionfunction_binding": {
+        "id_attributes": []
+    }, 
+    "nsfeature": {
+        "id_attributes": []
+    }, 
+    "nshardware": {
+        "id_attributes": []
+    }, 
+    "nshmackey": {
+        "id_attributes": []
+    }, 
+    "nshostname": {
+        "id_attributes": []
+    }, 
+    "nshttpparam": {
+        "id_attributes": []
+    }, 
+    "nshttpprofile": {
+        "id_attributes": []
+    }, 
+    "nsicapprofile": {
+        "id_attributes": []
+    }, 
+    "nsip": {
+        "id_attributes": [
+            "ipaddress", 
+            "td"
+        ]
+    }, 
+    "nsip6": {
+        "id_attributes": [
+            "ipv6address", 
+            "td"
+        ]
+    }, 
+    "nslicense": {
+        "id_attributes": []
+    }, 
+    "nslicenseproxyserver": {
+        "id_attributes": [
+            "serverip", 
+            "servername"
+        ]
+    }, 
+    "nslicenseserver": {
+        "id_attributes": [
+            "licenseserverip", 
+            "servername"
+        ]
+    }, 
+    "nslicenseserverpool": {
+        "id_attributes": []
+    }, 
+    "nslimitidentifier": {
+        "id_attributes": []
+    }, 
+    "nslimitidentifier_binding": {
+        "id_attributes": []
+    }, 
+    "nslimitidentifier_nslimitsessions_binding": {
+        "id_attributes": []
+    }, 
+    "nslimitselector": {
+        "id_attributes": []
+    }, 
+    "nslimitsessions": {
+        "id_attributes": []
+    }, 
+    "nsmode": {
+        "id_attributes": []
+    }, 
+    "nsparam": {
+        "id_attributes": []
+    }, 
+    "nspartition": {
+        "id_attributes": []
+    }, 
+    "nspartition_binding": {
+        "id_attributes": []
+    }, 
+    "nspartition_bridgegroup_binding": {
+        "id_attributes": [
+            "bridgegroup"
+        ]
+    }, 
+    "nspartition_vlan_binding": {
+        "id_attributes": [
+            "vlan"
+        ]
+    }, 
+    "nspartition_vxlan_binding": {
+        "id_attributes": [
+            "vxlan"
+        ]
+    }, 
+    "nspartitionmac": {
+        "id_attributes": []
+    }, 
+    "nspbr": {
+        "id_attributes": []
+    }, 
+    "nspbr6": {
+        "id_attributes": []
+    }, 
+    "nspbrs": {
+        "id_attributes": []
+    }, 
+    "nsratecontrol": {
+        "id_attributes": []
+    }, 
+    "nsrollbackcmd": {
+        "id_attributes": []
+    }, 
+    "nsrpcnode": {
+        "id_attributes": []
+    }, 
+    "nsrunningconfig": {
+        "id_attributes": []
+    }, 
+    "nssavedconfig": {
+        "id_attributes": []
+    }, 
+    "nsservicefunction": {
+        "id_attributes": []
+    }, 
+    "nsservicepath": {
+        "id_attributes": []
+    }, 
+    "nsservicepath_binding": {
+        "id_attributes": []
+    }, 
+    "nsservicepath_nsservicefunction_binding": {
+        "id_attributes": [
+            "servicefunction"
+        ]
+    }, 
+    "nssimpleacl": {
+        "id_attributes": []
+    }, 
+    "nssimpleacl6": {
+        "id_attributes": []
+    }, 
+    "nssourceroutecachetable": {
+        "id_attributes": []
+    }, 
+    "nsspparams": {
+        "id_attributes": []
+    }, 
+    "nsstats": {
+        "id_attributes": []
+    }, 
+    "nssurgeq": {
+        "id_attributes": []
+    }, 
+    "nstcpbufparam": {
+        "id_attributes": []
+    }, 
+    "nstcpparam": {
+        "id_attributes": []
+    }, 
+    "nstcpprofile": {
+        "id_attributes": []
+    }, 
+    "nstimeout": {
+        "id_attributes": []
+    }, 
+    "nstimer": {
+        "id_attributes": []
+    }, 
+    "nstimer_autoscalepolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "nstimer_binding": {
+        "id_attributes": []
+    }, 
+    "nstimezone": {
+        "id_attributes": []
+    }, 
+    "nstrace": {
+        "id_attributes": []
+    }, 
+    "nstrafficdomain": {
+        "id_attributes": []
+    }, 
+    "nstrafficdomain_binding": {
+        "id_attributes": []
+    }, 
+    "nstrafficdomain_bridgegroup_binding": {
+        "id_attributes": [
+            "bridgegroup"
+        ]
+    }, 
+    "nstrafficdomain_vlan_binding": {
+        "id_attributes": [
+            "vlan"
+        ]
+    }, 
+    "nstrafficdomain_vxlan_binding": {
+        "id_attributes": [
+            "vxlan"
+        ]
+    }, 
+    "nsvariable": {
+        "id_attributes": []
+    }, 
+    "nsversion": {
+        "id_attributes": []
+    }, 
+    "nsvpxparam": {
+        "id_attributes": []
+    }, 
+    "nsweblogparam": {
+        "id_attributes": []
+    }, 
+    "nsxmlnamespace": {
+        "id_attributes": []
+    }, 
+    "ntpparam": {
+        "id_attributes": []
+    }, 
+    "ntpserver": {
+        "id_attributes": [
+            "serverip", 
+            "servername"
+        ]
+    }, 
+    "ntpstatus": {
+        "id_attributes": []
+    }, 
+    "ntpsync": {
+        "id_attributes": []
+    }, 
+    "onlinkipv6prefix": {
+        "id_attributes": []
+    }, 
+    "pcpmap": {
+        "id_attributes": []
+    }, 
+    "pcpprofile": {
+        "id_attributes": []
+    }, 
+    "pcpserver": {
+        "id_attributes": []
+    }, 
+    "ping": {
+        "id_attributes": []
+    }, 
+    "ping6": {
+        "id_attributes": []
+    }, 
+    "policydataset": {
+        "id_attributes": []
+    }, 
+    "policydataset_binding": {
+        "id_attributes": []
+    }, 
+    "policydataset_value_binding": {
+        "id_attributes": [
+            "value"
+        ]
+    }, 
+    "policyevaluation": {
+        "id_attributes": []
+    }, 
+    "policyexpression": {
+        "id_attributes": []
+    }, 
+    "policyhttpcallout": {
+        "id_attributes": []
+    }, 
+    "policymap": {
+        "id_attributes": []
+    }, 
+    "policyparam": {
+        "id_attributes": []
+    }, 
+    "policypatset": {
+        "id_attributes": []
+    }, 
+    "policypatset_binding": {
+        "id_attributes": []
+    }, 
+    "policypatset_pattern_binding": {
+        "id_attributes": []
+    }, 
+    "policystringmap": {
+        "id_attributes": []
+    }, 
+    "policystringmap_binding": {
+        "id_attributes": []
+    }, 
+    "policystringmap_pattern_binding": {
+        "id_attributes": []
+    }, 
+    "policyurlset": {
+        "id_attributes": []
+    }, 
+    "pqbinding": {
+        "id_attributes": []
+    }, 
+    "pqpolicy": {
+        "id_attributes": []
+    }, 
+    "protocolhttpband": {
+        "id_attributes": []
+    }, 
+    "ptp": {
+        "id_attributes": []
+    }, 
+    "radiusnode": {
+        "id_attributes": []
+    }, 
+    "raid": {
+        "id_attributes": []
+    }, 
+    "rdpclientprofile": {
+        "id_attributes": []
+    }, 
+    "rdpconnections": {
+        "id_attributes": []
+    }, 
+    "rdpserverprofile": {
+        "id_attributes": []
+    }, 
+    "reboot": {
+        "id_attributes": []
+    }, 
+    "reporting": {
+        "id_attributes": []
+    }, 
+    "reputationsettings": {
+        "id_attributes": []
+    }, 
+    "responderaction": {
+        "id_attributes": []
+    }, 
+    "responderglobal_binding": {
+        "id_attributes": []
+    }, 
+    "responderglobal_responderpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "responderhtmlpage": {
+        "id_attributes": []
+    }, 
+    "responderparam": {
+        "id_attributes": []
+    }, 
+    "responderpolicy": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_crvserver_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_responderglobal_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicy_responderpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicylabel": {
+        "id_attributes": []
+    }, 
+    "responderpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "responderpolicylabel_responderpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "rewriteaction": {
+        "id_attributes": []
+    }, 
+    "rewriteglobal_binding": {
+        "id_attributes": []
+    }, 
+    "rewriteglobal_rewritepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "rewriteparam": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy_rewriteglobal_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicy_rewritepolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicylabel": {
+        "id_attributes": []
+    }, 
+    "rewritepolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "rewritepolicylabel_rewritepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "riseapbrsvc": {
+        "id_attributes": []
+    }, 
+    "riseparam": {
+        "id_attributes": []
+    }, 
+    "riseprofile": {
+        "id_attributes": []
+    }, 
+    "riseprofile_binding": {
+        "id_attributes": []
+    }, 
+    "riseprofile_interface_binding": {
+        "id_attributes": []
+    }, 
+    "riserhi": {
+        "id_attributes": []
+    }, 
+    "rnat": {
+        "id_attributes": []
+    }, 
+    "rnat6": {
+        "id_attributes": []
+    }, 
+    "rnat6_binding": {
+        "id_attributes": []
+    }, 
+    "rnat6_nsip6_binding": {
+        "id_attributes": [
+            "natip6", 
+            "ownergroup"
+        ]
+    }, 
+    "rnatglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "all"
+        ]
+    }, 
+    "rnatglobal_binding": {
+        "id_attributes": []
+    }, 
+    "rnatparam": {
+        "id_attributes": []
+    }, 
+    "rnatsession": {
+        "id_attributes": []
+    }, 
+    "route": {
+        "id_attributes": [
+            "network", 
+            "netmask", 
+            "gateway", 
+            "td", 
+            "ownergroup"
+        ]
+    }, 
+    "route6": {
+        "id_attributes": [
+            "network", 
+            "gateway", 
+            "vlan", 
+            "vxlan", 
+            "td", 
+            "ownergroup"
+        ]
+    }, 
+    "routerdynamicrouting": {
+        "id_attributes": [
+            "commandstring"
+        ]
+    }, 
+    "rsskeytype": {
+        "id_attributes": []
+    }, 
+    "scparameter": {
+        "id_attributes": []
+    }, 
+    "scpolicy": {
+        "id_attributes": []
+    }, 
+    "server": {
+        "id_attributes": []
+    }, 
+    "server_binding": {
+        "id_attributes": []
+    }, 
+    "server_gslbservice_binding": {
+        "id_attributes": []
+    }, 
+    "server_gslbservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "server_service_binding": {
+        "id_attributes": []
+    }, 
+    "server_servicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "service": {
+        "id_attributes": []
+    }, 
+    "service_binding": {
+        "id_attributes": []
+    }, 
+    "service_dospolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "service_lbmonitor_binding": {
+        "id_attributes": [
+            "monitor_name"
+        ]
+    }, 
+    "service_scpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "servicegroup": {
+        "id_attributes": []
+    }, 
+    "servicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "servicegroup_lbmonitor_binding": {
+        "id_attributes": [
+            "monitor_name", 
+            "port"
+        ]
+    }, 
+    "servicegroup_servicegroupentitymonbindings_binding": {
+        "id_attributes": []
+    }, 
+    "servicegroup_servicegroupmember_binding": {
+        "id_attributes": [
+            "ip", 
+            "port", 
+            "servername"
+        ]
+    }, 
+    "servicegroupbindings": {
+        "id_attributes": []
+    }, 
+    "shutdown": {
+        "id_attributes": []
+    }, 
+    "smppparam": {
+        "id_attributes": []
+    }, 
+    "smppuser": {
+        "id_attributes": []
+    }, 
+    "snmpalarm": {
+        "id_attributes": []
+    }, 
+    "snmpcommunity": {
+        "id_attributes": []
+    }, 
+    "snmpengineid": {
+        "id_attributes": []
+    }, 
+    "snmpgroup": {
+        "id_attributes": [
+            "name", 
+            "securitylevel"
+        ]
+    }, 
+    "snmpmanager": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask"
+        ]
+    }, 
+    "snmpmib": {
+        "id_attributes": []
+    }, 
+    "snmpoid": {
+        "id_attributes": []
+    }, 
+    "snmpoption": {
+        "id_attributes": []
+    }, 
+    "snmptrap": {
+        "id_attributes": [
+            "trapclass", 
+            "trapdestination", 
+            "version", 
+            "td"
+        ]
+    }, 
+    "snmptrap_binding": {
+        "id_attributes": []
+    }, 
+    "snmptrap_snmpuser_binding": {
+        "id_attributes": [
+            "username", 
+            "trapclass", 
+            "trapdestination", 
+            "td", 
+            "version"
+        ]
+    }, 
+    "snmpuser": {
+        "id_attributes": []
+    }, 
+    "snmpview": {
+        "id_attributes": [
+            "name", 
+            "subtree"
+        ]
+    }, 
+    "spilloveraction": {
+        "id_attributes": []
+    }, 
+    "spilloverpolicy": {
+        "id_attributes": []
+    }, 
+    "spilloverpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "spilloverpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "spilloverpolicy_gslbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "spilloverpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslaction": {
+        "id_attributes": []
+    }, 
+    "sslcacertgroup": {
+        "id_attributes": []
+    }, 
+    "sslcacertgroup_binding": {
+        "id_attributes": []
+    }, 
+    "sslcacertgroup_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname"
+        ]
+    }, 
+    "sslcert": {
+        "id_attributes": []
+    }, 
+    "sslcertbundle": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "sslcertchain": {
+        "id_attributes": []
+    }, 
+    "sslcertchain_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertchain_sslcertkey_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertfile": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "sslcertkey": {
+        "id_attributes": []
+    }, 
+    "sslcertkey_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertkey_crldistribution_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertkey_service_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertkey_sslocspresponder_binding": {
+        "id_attributes": [
+            "ocspresponder", 
+            "ca"
+        ]
+    }, 
+    "sslcertkey_sslprofile_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertkey_sslvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslcertlink": {
+        "id_attributes": []
+    }, 
+    "sslcertreq": {
+        "id_attributes": []
+    }, 
+    "sslcipher": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslcipher_binding": {
+        "id_attributes": []
+    }, 
+    "sslcipher_individualcipher_binding": {
+        "id_attributes": []
+    }, 
+    "sslcipher_service_binding": {
+        "id_attributes": []
+    }, 
+    "sslcipher_servicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "sslcipher_sslciphersuite_binding": {
+        "id_attributes": [
+            "ciphername", 
+            "ciphergroupname"
+        ]
+    }, 
+    "sslcipher_sslprofile_binding": {
+        "id_attributes": []
+    }, 
+    "sslcipher_sslvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslciphersuite": {
+        "id_attributes": []
+    }, 
+    "sslcrl": {
+        "id_attributes": []
+    }, 
+    "sslcrl_binding": {
+        "id_attributes": []
+    }, 
+    "sslcrl_serialnumber_binding": {
+        "id_attributes": []
+    }, 
+    "sslcrlfile": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "ssldhfile": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "ssldhparam": {
+        "id_attributes": []
+    }, 
+    "ssldsakey": {
+        "id_attributes": []
+    }, 
+    "ssldtlsprofile": {
+        "id_attributes": []
+    }, 
+    "sslecdsakey": {
+        "id_attributes": []
+    }, 
+    "sslfips": {
+        "id_attributes": []
+    }, 
+    "sslfipskey": {
+        "id_attributes": []
+    }, 
+    "sslfipssimsource": {
+        "id_attributes": []
+    }, 
+    "sslfipssimtarget": {
+        "id_attributes": []
+    }, 
+    "sslglobal_binding": {
+        "id_attributes": []
+    }, 
+    "sslglobal_sslpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "sslhsmkey": {
+        "id_attributes": [
+            "hsmtype", 
+            "serialnum", 
+            "password"
+        ]
+    }, 
+    "sslkeyfile": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "ssllogprofile": {
+        "id_attributes": []
+    }, 
+    "sslocspresponder": {
+        "id_attributes": []
+    }, 
+    "sslparameter": {
+        "id_attributes": []
+    }, 
+    "sslpkcs12": {
+        "id_attributes": []
+    }, 
+    "sslpkcs8": {
+        "id_attributes": []
+    }, 
+    "sslpolicy": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_sslglobal_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_sslpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_sslservice_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicy_sslvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicylabel": {
+        "id_attributes": []
+    }, 
+    "sslpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "sslpolicylabel_sslpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "sslprofile": {
+        "id_attributes": []
+    }, 
+    "sslprofile_binding": {
+        "id_attributes": []
+    }, 
+    "sslprofile_ecccurve_binding": {
+        "id_attributes": [
+            "ecccurvename"
+        ]
+    }, 
+    "sslprofile_sslcertkey_binding": {
+        "id_attributes": [
+            "sslicacertkey"
+        ]
+    }, 
+    "sslprofile_sslcipher_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslprofile_sslciphersuite_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslprofile_sslvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslrsakey": {
+        "id_attributes": []
+    }, 
+    "sslservice": {
+        "id_attributes": []
+    }, 
+    "sslservice_binding": {
+        "id_attributes": []
+    }, 
+    "sslservice_ecccurve_binding": {
+        "id_attributes": [
+            "ecccurvename"
+        ]
+    }, 
+    "sslservice_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname", 
+            "crlcheck", 
+            "ca", 
+            "snicert"
+        ]
+    }, 
+    "sslservice_sslcipher_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslservice_sslciphersuite_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslservice_sslpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "sslservicegroup": {
+        "id_attributes": []
+    }, 
+    "sslservicegroup_binding": {
+        "id_attributes": []
+    }, 
+    "sslservicegroup_ecccurve_binding": {
+        "id_attributes": [
+            "ecccurvename"
+        ]
+    }, 
+    "sslservicegroup_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname", 
+            "crlcheck", 
+            "ca", 
+            "snicert"
+        ]
+    }, 
+    "sslservicegroup_sslcipher_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslservicegroup_sslciphersuite_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslvserver": {
+        "id_attributes": []
+    }, 
+    "sslvserver_binding": {
+        "id_attributes": []
+    }, 
+    "sslvserver_ecccurve_binding": {
+        "id_attributes": [
+            "ecccurvename"
+        ]
+    }, 
+    "sslvserver_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname", 
+            "crlcheck", 
+            "ocspcheck", 
+            "ca", 
+            "snicert"
+        ]
+    }, 
+    "sslvserver_sslcipher_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslvserver_sslciphersuite_binding": {
+        "id_attributes": [
+            "ciphername"
+        ]
+    }, 
+    "sslvserver_sslpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "sslwrapkey": {
+        "id_attributes": [
+            "wrapkeyname"
+        ]
+    }, 
+    "streamidentifier": {
+        "id_attributes": []
+    }, 
+    "streamidentifier_binding": {
+        "id_attributes": []
+    }, 
+    "streamidentifier_streamsession_binding": {
+        "id_attributes": []
+    }, 
+    "streamselector": {
+        "id_attributes": []
+    }, 
+    "streamsession": {
+        "id_attributes": []
+    }, 
+    "subscribergxinterface": {
+        "id_attributes": []
+    }, 
+    "subscriberparam": {
+        "id_attributes": []
+    }, 
+    "subscriberprofile": {
+        "id_attributes": [
+            "ip", 
+            "vlan"
+        ]
+    }, 
+    "subscriberradiusinterface": {
+        "id_attributes": []
+    }, 
+    "subscribersessions": {
+        "id_attributes": []
+    }, 
+    "svcbindings": {
+        "id_attributes": []
+    }, 
+    "systembackup": {
+        "id_attributes": []
+    }, 
+    "systemcmdpolicy": {
+        "id_attributes": []
+    }, 
+    "systemcollectionparam": {
+        "id_attributes": []
+    }, 
+    "systemcore": {
+        "id_attributes": []
+    }, 
+    "systemcountergroup": {
+        "id_attributes": []
+    }, 
+    "systemcounters": {
+        "id_attributes": []
+    }, 
+    "systemdatasource": {
+        "id_attributes": []
+    }, 
+    "systementity": {
+        "id_attributes": []
+    }, 
+    "systementitydata": {
+        "id_attributes": [
+            "type", 
+            "name", 
+            "alldeleted", 
+            "allinactive", 
+            "datasource", 
+            "core"
+        ]
+    }, 
+    "systementitytype": {
+        "id_attributes": []
+    }, 
+    "systemeventhistory": {
+        "id_attributes": []
+    }, 
+    "systemextramgmtcpu": {
+        "id_attributes": []
+    }, 
+    "systemfile": {
+        "id_attributes": [
+            "filename", 
+            "filelocation"
+        ]
+    }, 
+    "systemglobal_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_authenticationldappolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_authenticationlocalpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_authenticationpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_authenticationradiuspolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_authenticationtacacspolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemglobal_binding": {
+        "id_attributes": []
+    }, 
+    "systemglobaldata": {
+        "id_attributes": []
+    }, 
+    "systemgroup": {
+        "id_attributes": []
+    }, 
+    "systemgroup_binding": {
+        "id_attributes": []
+    }, 
+    "systemgroup_nspartition_binding": {
+        "id_attributes": [
+            "partitionname"
+        ]
+    }, 
+    "systemgroup_systemcmdpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemgroup_systemuser_binding": {
+        "id_attributes": [
+            "username"
+        ]
+    }, 
+    "systemhwerror": {
+        "id_attributes": []
+    }, 
+    "systemkek": {
+        "id_attributes": []
+    }, 
+    "systemparameter": {
+        "id_attributes": []
+    }, 
+    "systemsession": {
+        "id_attributes": []
+    }, 
+    "systemsshkey": {
+        "id_attributes": [
+            "name", 
+            "sshkeytype"
+        ]
+    }, 
+    "systemuser": {
+        "id_attributes": []
+    }, 
+    "systemuser_binding": {
+        "id_attributes": []
+    }, 
+    "systemuser_nspartition_binding": {
+        "id_attributes": [
+            "partitionname"
+        ]
+    }, 
+    "systemuser_systemcmdpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "systemuser_systemgroup_binding": {
+        "id_attributes": []
+    }, 
+    "techsupport": {
+        "id_attributes": []
+    }, 
+    "tmformssoaction": {
+        "id_attributes": []
+    }, 
+    "tmglobal_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "tmglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "tmglobal_binding": {
+        "id_attributes": []
+    }, 
+    "tmglobal_tmsessionpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "tmglobal_tmtrafficpolicy_binding": {
+        "id_attributes": [
+            "policyname"
+        ]
+    }, 
+    "tmsamlssoprofile": {
+        "id_attributes": []
+    }, 
+    "tmsessionaction": {
+        "id_attributes": []
+    }, 
+    "tmsessionparameter": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy_authenticationvserver_binding": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "tmsessionpolicy_tmglobal_binding": {
+        "id_attributes": []
+    }, 
+    "tmtrafficaction": {
+        "id_attributes": []
+    }, 
+    "tmtrafficpolicy": {
+        "id_attributes": []
+    }, 
+    "tmtrafficpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "tmtrafficpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "tmtrafficpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "tmtrafficpolicy_tmglobal_binding": {
+        "id_attributes": []
+    }, 
+    "traceroute": {
+        "id_attributes": []
+    }, 
+    "traceroute6": {
+        "id_attributes": []
+    }, 
+    "transformaction": {
+        "id_attributes": []
+    }, 
+    "transformglobal_binding": {
+        "id_attributes": []
+    }, 
+    "transformglobal_transformpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "transformpolicy": {
+        "id_attributes": []
+    }, 
+    "transformpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicy_csvserver_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicy_transformglobal_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicy_transformpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicylabel": {
+        "id_attributes": []
+    }, 
+    "transformpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "transformpolicylabel_transformpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "transformprofile": {
+        "id_attributes": []
+    }, 
+    "transformprofile_binding": {
+        "id_attributes": []
+    }, 
+    "transformprofile_transformaction_binding": {
+        "id_attributes": []
+    }, 
+    "tunnelglobal_binding": {
+        "id_attributes": []
+    }, 
+    "tunnelglobal_tunneltrafficpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority", 
+            "type"
+        ]
+    }, 
+    "tunneltrafficpolicy": {
+        "id_attributes": []
+    }, 
+    "tunneltrafficpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "tunneltrafficpolicy_tunnelglobal_binding": {
+        "id_attributes": []
+    }, 
+    "ulfdserver": {
+        "id_attributes": []
+    }, 
+    "urlfilteringcategories": {
+        "id_attributes": []
+    }, 
+    "urlfilteringcategorization": {
+        "id_attributes": []
+    }, 
+    "urlfilteringcategorygroups": {
+        "id_attributes": []
+    }, 
+    "urlfilteringparameter": {
+        "id_attributes": []
+    }, 
+    "userprotocol": {
+        "id_attributes": []
+    }, 
+    "uservserver": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionaction": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicy": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicy_videooptimizationglobaldetection_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicylabel": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "videooptimizationglobaldetection_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationglobaldetection_videooptimizationdetectionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "videooptimizationglobalpacing_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationglobalpacing_videooptimizationpacingpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "type", 
+            "priority"
+        ]
+    }, 
+    "videooptimizationpacingaction": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicy": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicy_lbvserver_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicy_videooptimizationglobalpacing_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicylabel": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicylabel_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicylabel_policybinding_binding": {
+        "id_attributes": []
+    }, 
+    "videooptimizationpacingpolicylabel_videooptimizationpacingpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "priority"
+        ]
+    }, 
+    "videooptimizationparameter": {
+        "id_attributes": []
+    }, 
+    "vlan": {
+        "id_attributes": []
+    }, 
+    "vlan_binding": {
+        "id_attributes": []
+    }, 
+    "vlan_channel_binding": {
+        "id_attributes": [
+            "ifnum", 
+            "tagged", 
+            "ownergroup"
+        ]
+    }, 
+    "vlan_interface_binding": {
+        "id_attributes": [
+            "ifnum", 
+            "tagged", 
+            "ownergroup"
+        ]
+    }, 
+    "vlan_linkset_binding": {
+        "id_attributes": [
+            "ifnum", 
+            "tagged", 
+            "ownergroup"
+        ]
+    }, 
+    "vlan_nsip6_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "td", 
+            "ownergroup", 
+            "netmask"
+        ]
+    }, 
+    "vlan_nsip_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask", 
+            "td", 
+            "ownergroup"
+        ]
+    }, 
+    "vpnalwaysonprofile": {
+        "id_attributes": []
+    }, 
+    "vpnclientlessaccesspolicy": {
+        "id_attributes": []
+    }, 
+    "vpnclientlessaccesspolicy_binding": {
+        "id_attributes": []
+    }, 
+    "vpnclientlessaccesspolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "vpnclientlessaccesspolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "vpnclientlessaccessprofile": {
+        "id_attributes": []
+    }, 
+    "vpnepaprofile": {
+        "id_attributes": []
+    }, 
+    "vpneula": {
+        "id_attributes": []
+    }, 
+    "vpnformssoaction": {
+        "id_attributes": []
+    }, 
+    "vpnglobal_appcontroller_binding": {
+        "id_attributes": [
+            "appcontroller"
+        ]
+    }, 
+    "vpnglobal_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationcertpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationldappolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationlocalpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationnegotiatepolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationradiuspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationsamlpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_authenticationtacacspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "vpnglobal_domain_binding": {
+        "id_attributes": [
+            "intranetdomain"
+        ]
+    }, 
+    "vpnglobal_intranetip6_binding": {
+        "id_attributes": [
+            "intranetip6", 
+            "numaddr"
+        ]
+    }, 
+    "vpnglobal_intranetip_binding": {
+        "id_attributes": [
+            "intranetip", 
+            "netmask"
+        ]
+    }, 
+    "vpnglobal_sharefileserver_binding": {
+        "id_attributes": [
+            "sharefile"
+        ]
+    }, 
+    "vpnglobal_sslcertkey_binding": {
+        "id_attributes": [
+            "certkeyname", 
+            "cacert", 
+            "userdataencryptionkey"
+        ]
+    }, 
+    "vpnglobal_staserver_binding": {
+        "id_attributes": [
+            "staserver"
+        ]
+    }, 
+    "vpnglobal_vpnclientlessaccesspolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_vpneula_binding": {
+        "id_attributes": [
+            "eula"
+        ]
+    }, 
+    "vpnglobal_vpnintranetapplication_binding": {
+        "id_attributes": [
+            "intranetapplication"
+        ]
+    }, 
+    "vpnglobal_vpnnexthopserver_binding": {
+        "id_attributes": [
+            "nexthopserver"
+        ]
+    }, 
+    "vpnglobal_vpnportaltheme_binding": {
+        "id_attributes": [
+            "portaltheme"
+        ]
+    }, 
+    "vpnglobal_vpnsessionpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_vpntrafficpolicy_binding": {
+        "id_attributes": [
+            "policyname", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnglobal_vpnurl_binding": {
+        "id_attributes": [
+            "urlname"
+        ]
+    }, 
+    "vpnicaconnection": {
+        "id_attributes": []
+    }, 
+    "vpnicadtlsconnection": {
+        "id_attributes": []
+    }, 
+    "vpnintranetapplication": {
+        "id_attributes": []
+    }, 
+    "vpnnexthopserver": {
+        "id_attributes": []
+    }, 
+    "vpnparameter": {
+        "id_attributes": []
+    }, 
+    "vpnpcoipconnection": {
+        "id_attributes": []
+    }, 
+    "vpnpcoipprofile": {
+        "id_attributes": []
+    }, 
+    "vpnpcoipvserverprofile": {
+        "id_attributes": []
+    }, 
+    "vpnportaltheme": {
+        "id_attributes": []
+    }, 
+    "vpnsamlssoprofile": {
+        "id_attributes": []
+    }, 
+    "vpnsessionaction": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "vpnsessionpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "vpnsfconfig": {
+        "id_attributes": []
+    }, 
+    "vpnstoreinfo": {
+        "id_attributes": []
+    }, 
+    "vpntrafficaction": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy_aaagroup_binding": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy_aaauser_binding": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy_binding": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy_vpnglobal_binding": {
+        "id_attributes": []
+    }, 
+    "vpntrafficpolicy_vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "vpnurl": {
+        "id_attributes": []
+    }, 
+    "vpnvserver": {
+        "id_attributes": []
+    }, 
+    "vpnvserver_aaapreauthenticationpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_appcontroller_binding": {
+        "id_attributes": [
+            "appcontroller"
+        ]
+    }, 
+    "vpnvserver_appflowpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "bindpoint", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnvserver_auditnslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_auditsyslogpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationcertpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationdfapolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationldappolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationlocalpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationloginschemapolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationnegotiatepolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationoauthidppolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationradiuspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationsamlidppolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationsamlpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationtacacspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_authenticationwebauthpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_binding": {
+        "id_attributes": []
+    }, 
+    "vpnvserver_cachepolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_cspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_feopolicy_binding": {
+        "id_attributes": [
+            "bindpoint", 
+            "policy", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnvserver_icapolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_intranetip6_binding": {
+        "id_attributes": [
+            "intranetip6", 
+            "numaddr"
+        ]
+    }, 
+    "vpnvserver_intranetip_binding": {
+        "id_attributes": [
+            "intranetip", 
+            "netmask"
+        ]
+    }, 
+    "vpnvserver_responderpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_rewritepolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "bindpoint", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnvserver_sharefileserver_binding": {
+        "id_attributes": [
+            "sharefile"
+        ]
+    }, 
+    "vpnvserver_staserver_binding": {
+        "id_attributes": [
+            "staserver"
+        ]
+    }, 
+    "vpnvserver_vpnclientlessaccesspolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "bindpoint", 
+            "secondary", 
+            "groupextraction"
+        ]
+    }, 
+    "vpnvserver_vpnepaprofile_binding": {
+        "id_attributes": [
+            "epaprofile"
+        ]
+    }, 
+    "vpnvserver_vpneula_binding": {
+        "id_attributes": [
+            "eula"
+        ]
+    }, 
+    "vpnvserver_vpnintranetapplication_binding": {
+        "id_attributes": [
+            "intranetapplication"
+        ]
+    }, 
+    "vpnvserver_vpnnexthopserver_binding": {
+        "id_attributes": [
+            "nexthopserver"
+        ]
+    }, 
+    "vpnvserver_vpnportaltheme_binding": {
+        "id_attributes": [
+            "portaltheme"
+        ]
+    }, 
+    "vpnvserver_vpnsessionpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_vpntrafficpolicy_binding": {
+        "id_attributes": [
+            "policy", 
+            "secondary", 
+            "groupextraction", 
+            "bindpoint"
+        ]
+    }, 
+    "vpnvserver_vpnurl_binding": {
+        "id_attributes": [
+            "urlname"
+        ]
+    }, 
+    "vrid": {
+        "id_attributes": [
+            "all"
+        ]
+    }, 
+    "vrid6": {
+        "id_attributes": [
+            "all"
+        ]
+    }, 
+    "vrid6_binding": {
+        "id_attributes": []
+    }, 
+    "vrid6_channel_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "vrid6_interface_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "vrid6_nsip6_binding": {
+        "id_attributes": []
+    }, 
+    "vrid6_nsip_binding": {
+        "id_attributes": []
+    }, 
+    "vrid6_trackinterface_binding": {
+        "id_attributes": [
+            "trackifnum"
+        ]
+    }, 
+    "vrid_binding": {
+        "id_attributes": []
+    }, 
+    "vrid_channel_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "vrid_interface_binding": {
+        "id_attributes": [
+            "ifnum"
+        ]
+    }, 
+    "vrid_nsip6_binding": {
+        "id_attributes": []
+    }, 
+    "vrid_nsip_binding": {
+        "id_attributes": []
+    }, 
+    "vrid_trackinterface_binding": {
+        "id_attributes": [
+            "trackifnum"
+        ]
+    }, 
+    "vridparam": {
+        "id_attributes": []
+    }, 
+    "vserver": {
+        "id_attributes": [
+            "name"
+        ]
+    }, 
+    "vxlan": {
+        "id_attributes": []
+    }, 
+    "vxlan_binding": {
+        "id_attributes": []
+    }, 
+    "vxlan_iptunnel_binding": {
+        "id_attributes": []
+    }, 
+    "vxlan_nsip6_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask"
+        ]
+    }, 
+    "vxlan_nsip_binding": {
+        "id_attributes": [
+            "ipaddress", 
+            "netmask"
+        ]
+    }, 
+    "vxlan_srcip_binding": {
+        "id_attributes": [
+            "srcip"
+        ]
+    }, 
+    "vxlanvlanmap": {
+        "id_attributes": []
+    }, 
+    "vxlanvlanmap_binding": {
+        "id_attributes": []
+    }, 
+    "vxlanvlanmap_vxlan_binding": {
+        "id_attributes": [
+            "vxlan"
+        ]
+    }, 
+    "wfpackage": {
+        "id_attributes": []
+    }, 
+    "wfsite": {
+        "id_attributes": []
+    }, 
+    "wipackage": {
+        "id_attributes": []
+    }, 
+    "wisite": {
+        "id_attributes": []
+    }, 
+    "wisite_accessmethod_binding": {
+        "id_attributes": [
+            "clientipaddress", 
+            "clientnetmask"
+        ]
+    }, 
+    "wisite_binding": {
+        "id_attributes": []
+    }, 
+    "wisite_farmname_binding": {
+        "id_attributes": [
+            "farmname"
+        ]
+    }, 
+    "wisite_translationinternalip_binding": {
+        "id_attributes": [
+            "translationinternalip", 
+            "translationinternalport", 
+            "translationexternalip", 
+            "translationexternalport"
+        ]
+    }, 
+    "xmdeployment": {
+        "id_attributes": []
+    }, 
+    "xmpackage": {
+        "id_attributes": []
+    }
+}
