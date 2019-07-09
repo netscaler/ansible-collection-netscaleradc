@@ -1,0 +1,11 @@
+- include_tasks: get_and_compare.yaml
+
+- include_tasks: delete_resource.yaml
+  when:
+    - role_operation == 'recreate'
+    - not processed_role_input.dry_run
+
+- include_tasks: create_resource.yaml
+  when:
+    - role_operation == 'create' or role_operation == 'recreate'
+    - not processed_role_input.dry_run

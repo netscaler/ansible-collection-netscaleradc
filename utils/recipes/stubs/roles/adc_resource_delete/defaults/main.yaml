@@ -1,0 +1,5 @@
+nitro_user: "nsroot"
+nitro_pass: "nsroot"
+get_acceptable_error_codes: "{{ [ 0 ] | union(resource_missing_errorcode) }}"
+debug_prefix: ""
+dry_run: false

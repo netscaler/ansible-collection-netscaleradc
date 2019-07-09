@@ -1,0 +1,6 @@
+- include_tasks: get_resource.yaml
+
+- include_tasks: delete_resource.yaml
+  when: 
+    - not processed_role_input.dry_run
+    - resource_exists

@@ -1,0 +1,467 @@
+- hosts: citrix_adc
+  gather_facts: no
+
+#######################
+# Create dependencies #
+#######################
+
+  tasks:
+    - name: Create parent lb vserver
+      import_role:
+        name: adc_resource_create_or_update
+      vars:
+        role_input:
+          resource: lbvserver
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicetype: HTTP
+            ipv46: 12.21.33.33
+            port: 80
+
+    - name: Create services
+      import_role:
+        name: adc_resource_create_or_update
+      vars:
+        role_input:
+          resource: service
+          resource_name: inte_test_service1
+          resource_missing_errorcode:
+            - 344
+          resource_attributes:
+            name: inte_test_service1
+            ipaddress: 192.1.1.3
+            ip: 192.1.1.3
+            port: 80
+            servicetype: HTTP
+
+    - name: Create services
+      import_role:
+        name: adc_resource_create_or_update
+      vars:
+        role_input:
+          resource: service
+          resource_name: inte_test_service2
+          resource_missing_errorcode:
+            - 344
+          resource_attributes:
+            name: inte_test_service2
+            ipaddress: 192.1.1.4
+            ip: 192.1.1.4
+            port: 80
+            servicetype: HTTP
+
+##########################
+# Assert error not found #
+##########################
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver_not_exists
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver_not_exists
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource not found
+      assert:
+        that: 
+          - role_output.fail_resource_not_found
+        fail_msg: Resource should not be found
+        success_msg: Resource correctly flagged as not found
+
+##################
+# Create binding #
+##################
+
+    - name: Create binding dry run
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource created
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'create'
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource created
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'create'
+
+####################
+# Create identical #
+####################
+
+    - name: Create binding dry run
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource created dry run
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'none'
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource created
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'none'
+
+####################
+# Recreate binding #
+####################
+
+    - name: Create binding dry run
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "11"
+
+    - name: Assert resource recreated dry run
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'recreate'
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "11"
+
+    - name: Assert resource recreated
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'recreate'
+
+#########################
+# Create second binding #
+#########################
+
+    - name: Create binding dry run
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service2
+            weight: "10"
+
+    - name: Assert resource created dry run
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'create'
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service2
+            weight: "10"
+
+    - name: Assert resource created
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'create'
+
+##########################
+# Assert multiples found #
+##########################
+
+    - name: Create binding
+      import_role:
+        name: adc_resource_binding_create
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            weight: "10"
+
+    - name: Assert resource failed with multiple matches
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - role_output.fail_multiple_matches
+          - role_output.operation == 'none'
+
+#######################################
+# Assert resource not found on delete #
+#######################################
+
+    - name: Delete binding
+      import_role:
+        name: adc_resource_binding_delete
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver_not_exists
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver_not_exists
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource failed with resource not found
+      assert:
+        that: 
+          - role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'none'
+
+##################################################
+# Assert resource found multiple on delete fails #
+##################################################
+
+    - name: Delete binding
+      import_role:
+        name: adc_resource_binding_delete
+      vars:
+        role_input:
+          dry_run: true
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            weight: "10"
+
+    - name: Assert resource failed with multiple matches found
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - role_output.fail_multiple_matches
+          - role_output.operation == 'none'
+
+#######################################
+# Assert successful delete operations #
+#######################################
+
+    - name: Delete bindings
+      import_role:
+        name: adc_resource_binding_delete
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service1
+            weight: "10"
+
+    - name: Assert resource was deleted successfully
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'delete'
+
+    - name: Delete bindings
+      import_role:
+        name: adc_resource_binding_delete
+      vars:
+        role_input:
+          resource: lbvserver_service_binding
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          id_attributes:
+            - servicename
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicename: inte_test_service2
+            weight: "10"
+
+    - name: Assert resource was deleted successfully
+      assert:
+        that: 
+          - not role_output.fail_resource_not_found
+          - not role_output.fail_multiple_matches
+          - role_output.operation == 'delete'
+
+#######################
+# Delete dependencies #
+#######################
+
+    - name: Delete lb vserver
+      import_role:
+        name: adc_resource_delete
+      vars:
+        role_input:
+          resource: lbvserver
+          resource_name: inte_test_lbvserver
+          resource_missing_errorcode:
+            - 258
+          resource_attributes:
+            name: inte_test_lbvserver
+            servicetype: HTTP
+            ipv46: 12.21.33.33
+            port: 80
+
+    - name: Delete services
+      import_role:
+        name: adc_resource_delete
+      vars:
+        role_input:
+          resource: service
+          resource_name: inte_test_service1
+          resource_missing_errorcode:
+            - 344
+          resource_attributes:
+            name: inte_test_service1
+            ipaddress: 192.1.1.3
+            port: 80
+            servicetype: HTTP
+
+    - name: Delete services
+      import_role:
+        name: adc_resource_delete
+      vars:
+        role_input:
+          resource: service
+          resource_name: inte_test_service2
+          resource_missing_errorcode:
+            - 344
+          resource_attributes:
+            name: inte_test_service2
+            ipaddress: 192.1.1.4
+            port: 80
+            servicetype: HTTP

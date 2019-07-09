@@ -1,0 +1,12 @@
+- name: Update resource
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+
+    operation: update
+
+    resource: "{{ resource }}"
+    name: "{{ resource_name }}"
+    attributes: "{{ resource_update_attributes }}"
