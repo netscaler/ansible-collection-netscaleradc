@@ -165,6 +165,61 @@ To have such a playbook execute correctly the following solutions are proposed.
 * Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](samples/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
 
+## What if there is no module for your configuration?
+
+When there is no module that covers the ADC configuration you want to apply there are
+a few options that will allow you to still apply the configuration through an ansible playbook.
+
+### Use the citrix\_adc\_nitro\_request module.
+
+This a module that is a thin wrapper around the NITRO REST API.
+It provides a number of operations which it then translates into HTTP requests
+and provides the resulting NITRO API response in a well defined return value.
+
+You can find examples of using the module in this [folder](samples/nitro_request)
+
+### Use the roles leveraging citrix\_adc\_nitro\_request module
+
+Using the citrix\_adc\_nitro\_request module is quite barebones as all workflow
+must be handled by the user.
+
+A step up in functionality are the roles that leverage this module to provide
+a more complex workflow that resembles that of a fully fledged module.
+
+Roles invoke the citrix\_adc\_nitro\_request module multiple times and
+also have logic programmed into them to apply the correct operation
+under the current configuration state.
+
+Using a role to create a configuration entity is different from calling
+the generic citrix\_adc\_nitro\_request module, since the role will
+search for the configuration item and if it exists it will compare it
+to the configuration input.
+
+Depending on the processing result it will either create, update, recreate, delete or simply
+do a noop for the configuration passed. It will also populate an output variable
+that will contain information for the processing that took place and the user
+can test these values to see what actually happened.
+
+Additionally roles provide a `dry_run` option during which no actual change is made
+but the output variables are populated just as in a normal run. This is useful to verify
+that given a configuration the operations performed will be what the user expects.
+
+Examples can be found in this [folder](samples/recipes)
+
+
+### Use the connection plugin with the `shell` Ansible module
+
+As a last resort the user can user the `shell` Ansible module
+along with the Citrix ADC connection plugin to issue `nscli` commands
+to the target ADC.
+
+This provides the least feedback but it is useful for one off
+configuration steps or when nothing else is applicable.
+
+Examples can be found in this [folder](samples/citrix_adc_connection_plugin)
+
+
+
 ## Directory structure
 
 * `ansible-modules.` Contains all the ansible modules available. These are the files that must be installed on an ansible control node in order for the functionality to be present
