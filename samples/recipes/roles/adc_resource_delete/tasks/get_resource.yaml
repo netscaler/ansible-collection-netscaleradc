@@ -1,0 +1,51 @@
+- name: Process role input values
+  set_fact:
+    processed_role_input: |
+      {% set ns = namespace(processed_role_input={'get_acceptable_error_codes':[]}) -%}
+      {% set dud = ns.processed_role_input.update(role_input) -%}
+      {% if  'dry_run' not in ns.processed_role_input -%}
+        {% set dud = ns.processed_role_input.update({'dry_run': false }) -%}
+      {%- endif %}
+      {% set dud = ns.processed_role_input['get_acceptable_error_codes'].extend([0]) -%}
+      {% set dud = ns.processed_role_input['get_acceptable_error_codes'].extend(role_input['resource_missing_errorcode']) -%}
+      {{ ns.processed_role_input }}
+
+- name: Get entity
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+
+    operation: get
+    
+    expected_nitro_errorcode: "{{ processed_role_input.get_acceptable_error_codes }}"
+
+    resource: "{{ processed_role_input.resource }}"
+    name: "{{ processed_role_input.resource_name }}"
+  register: get_result
+
+- name: Set get entity output variables
+  set_fact:
+    resource_exists: "{{ get_result.nitro_errorcode == 0 }}"
+
+
+- name: Set output variables
+  delegate_to: localhost
+  set_fact:
+    role_output: |
+      {% set ns = namespace(res = {}) -%}
+      {% if resource_exists -%}
+        {% set dud = ns.res.update({'nitro_object': get_result['nitro_object'][0] }) -%}
+      {%- else -%}
+        {% set dud = ns.res.update({'nitro_object': 'none' }) -%}
+      {%- endif %}
+      {% if resource_exists -%}
+        {% set dud = ns.res.update({'operation': 'delete' }) -%}
+      {%- else -%}
+        {% set dud = ns.res.update({'operation': 'none' }) -%}
+      {%- endif %}
+      {{ ns.res }}
