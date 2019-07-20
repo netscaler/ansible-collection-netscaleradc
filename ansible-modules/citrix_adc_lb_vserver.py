@@ -1892,7 +1892,6 @@ def main():
     immutable_attrs = [
         'name',
         'servicetype',
-        'ipv46',
         'port',
         'range',
         'state',

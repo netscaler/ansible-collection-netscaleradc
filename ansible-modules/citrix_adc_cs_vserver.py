@@ -1273,7 +1273,6 @@ def main():
         'name',
         'td',
         'servicetype',
-        'ipv46',
         'targettype',
         'range',
         'port',
