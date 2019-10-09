@@ -2,7 +2,7 @@
 - name: Do mas login
   delegate_to: localhost
   register: login_result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -12,7 +12,7 @@
 - name: Get resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     expected_nitro_errorcode: [258]
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
@@ -27,7 +27,7 @@
 
 - name: Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -43,7 +43,7 @@
 - name: Get resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -65,7 +65,7 @@
 
 - name: Update resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -81,7 +81,7 @@
 - name: Get resource by args
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -102,7 +102,7 @@
 - name: Get resource by filter
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -123,7 +123,7 @@
 - name: Delete resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -135,7 +135,7 @@
 
 - name: Re Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -151,7 +151,7 @@
 - name: Delete resource by args
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -165,7 +165,7 @@
 - name: Save configuration with unvalidated https
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"

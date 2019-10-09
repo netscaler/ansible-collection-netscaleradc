@@ -1,6 +1,6 @@
 - name: Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -15,7 +15,7 @@
 
 - name: Rename resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -29,7 +29,7 @@
 - name: Delete resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"

@@ -1,7 +1,7 @@
 - name: Do mas login
   delegate_to: localhost
   register: login_result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -10,7 +10,7 @@
 - name: Get all servers
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -26,7 +26,7 @@
 
 - name: Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -42,7 +42,7 @@
 - name: Get all servers
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -62,7 +62,7 @@
 
 - name: Delete resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"

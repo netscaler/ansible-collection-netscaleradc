@@ -1,7 +1,7 @@
 - name: Get resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     expected_nitro_errorcode: [258]
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
@@ -16,7 +16,7 @@
 
 - name: Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -32,7 +32,7 @@
 - name: Get resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -52,7 +52,7 @@
 
 - name: Update resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -68,7 +68,7 @@
 - name: Get resource by args
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -89,7 +89,7 @@
 - name: Get resource by filter
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -110,7 +110,7 @@
 - name: Delete resource
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -122,7 +122,7 @@
 
 - name: Re Add resource
   delegate_to: localhost
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -139,7 +139,7 @@
 - name: Delete resource by args
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -153,7 +153,7 @@
 - name: Save configuration with https unvalidated
   delegate_to: localhost
   register: result
-  netscaler_nitro_request:
+  citrix_adc_nitro_request:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
