@@ -32,7 +32,7 @@ def main():
         sys.exit(1)
 
     # Parse ansible version
-    m = re.match(r'^(\d)\.(\d).*$', ansible.__version__)
+    m = re.match(r'^(\d)\.(\d+).*$', ansible.__version__)
     if m is None:
         raise Exception('Cannot parse ansible version')
 

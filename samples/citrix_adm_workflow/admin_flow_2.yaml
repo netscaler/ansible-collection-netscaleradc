@@ -1,0 +1,1605 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+    tenant_name: sample_tenant_3
+    tenant_user: sample_tenant3_user
+    tenant_user_password: welcome
+    domain_name: app1.tenant3.com
+    target_ns_ip: 10.78.60.205
+
+  gather_facts: False
+
+  tasks:
+    - name: Login to mas
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+    - name: Get tenant facts
+      delegate_to: localhost
+      register: tenant_facts
+      citrix_adm_tenant_facts:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        name: "{{ tenant_name }}"
+
+
+    - name: Setup rba policy
+      delegate_to: localhost
+      citrix_adm_rba_policy:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        description: 'This policy consists of admin permissions for Applications only'
+        name: "app_admin_policy_for_{{ tenant_name }}"
+        tenant_id: "{{ tenant_facts.tenant[0].id }}"
+        statement:
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_visualizer_cs_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: syslog_messages
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_csvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_lbvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_visualizer_gslb_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: app_health_dashboard_details
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_content_switching_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_authenticationvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: export_report_job
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_visualizer_lb_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_vserver_license
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_lb_vserver_report
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: dns_domain_entry
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: export_report_job
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_crvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_lbvserver
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: application
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_cache_redirection_report
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: dns_domain_entry
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_csvserver
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_vpnvserver
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: haproxy_frontend
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_servicegroup
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_authentication_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_gslbvserver_domain
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_servicegroup
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_crvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_servicegroupmember_binding
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_servicegroupmember_binding
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_global_server_load_balancing_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_visualizer_lb_bindings
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: app_category
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_gslbvserver_domain
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: stylebooks
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: app_summary
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: configpacks
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: configpacks
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_backend
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: perf_ssl_vpn_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: stylebooks
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_visualizer_gslb_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_visualizer_cs_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_vserver_license
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_frontend_stats
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: stylebooks_system_settings
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: app_category
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: application
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_gslbvserver
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_gslbservice
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_authenticationvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: slack_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_gslbvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_frontend
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_backend
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: haproxy_frontend
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_visualizer_lb_bindings
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_vpnvserver
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_gslbservice
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: stylebooks_system_settings
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_vserver_license
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_visualizer_lb_bindings
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: download
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: stylebooks
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: mail_profile
+          - access_type: true
+            dependent_resources: ""
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: ns_service
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: lb_export_report
+          - access_type: true
+            dependent_resources: true
+            operation_name: get
+            parent_name: rba_policy
+            resource_type: smtp_server
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: poll_activity_status
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_emon_poll_policy
+          - access_type: true
+            dependent_resources: ""
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: ns_service
+          - access_type: true
+            dependent_resources: true
+            operation_name: add
+            parent_name: rba_policy
+            resource_type: DeviceAPIProxy
+        ui:
+          - access_type: true
+            display_name: 'Device API Proxy'
+            name: DeviceAPIProxy
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Servers
+            name: Servers
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Configpacks
+            name: Stylebooks
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Cache Redirection'
+            name: CacheRedirection
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Services
+            name: Services
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Settings
+            name: StylebooksSettings
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Auditing
+            name: MonitoringAuditing
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Virtual Server'
+            name: GSLBVirtualServer
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Virtual Servers'
+            name: VirtualServers
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Dashboard
+            name: ApplicationsDashboard
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Export Schedules'
+            name: Export
+            parent_name: rba_policy
+          - access_type: true
+            display_name: StyleBooks
+            name: Stylebooks
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Service Groups'
+            name: ServiceGroups
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Authentication
+            name: Authentication
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Domains
+            name: GSLBDomains
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'NetScaler Gateway'
+            name: NetScalerGateway
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Services
+            name: GSLBServices
+            parent_name: rba_policy
+          - access_type: true
+            display_name: Settings
+            name: MonitoringSettings
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'Content Switching'
+            name: ContentSwitching
+            parent_name: rba_policy
+          - access_type: true
+            display_name: 'DNS Domain Names'
+            name: DNSDomainNames
+            parent_name: rba_policy
+          - access_type: true
+            display_name: HAProxy
+            name: HAProxy
+            parent_name: rba_policy
+
+
+    - name: Setup rba role
+      delegate_to: localhost
+      citrix_adm_rba_role:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        name: "app_admin_role_for_{{ tenant_name }}"
+        tenant_id: "{{ tenant_facts.tenant[0].id }}"
+        policies: 
+          -  "app_admin_policy_for_{{ tenant_name }}"
+
+    - name: Setup stylebook
+      delegate_to: localhost
+      register: stylebook_result
+      citrix_adm_stylebook:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+
+        state: present
+
+        name: basic-lb-config
+        namespace: com.example.stylebooks
+        version: "0.1"
+
+        source: |
+          ---
+          name: basic-lb-config
+          namespace: com.example.stylebooks
+          version: "0.1"
+          display-name: Load Balancing Configuration
+          description: This StyleBook defines a simple load balancing configuration.
+          schema-version: "1.0"
+
+          import-stylebooks:
+            -
+              namespace: netscaler.nitro.config
+              version: "10.5"
+              prefix: ns
+
+          parameters:
+            -
+              name: name
+              type: string
+              label: Application Name
+              description: Give a name to the application configuration.
+              required: true
+            -
+              name: ip
+              type: ipaddress
+              label: Application Virtual IP (VIP)
+              description: The Application VIP that clients access
+              required: true
+            -
+              name: lb-alg
+              type: string
+              label: LoadBalancing Algorithm
+              description: Choose the loadbalancing algorithm (method) used for loadbalancing client requests between the application servers.
+              allowed-values:
+              - ROUNDROBIN
+              - LEASTCONNECTION
+              default: ROUNDROBIN
+            -
+              name: svc-servers
+              type: ipaddress[]
+              label: Application Server IPs
+              description: The IP addresses of all the servers of this application
+              required: true
+            -
+              name: svc-port
+              type: tcp-port
+              label: Server Port
+              description: The TCP port open on the Application Servers to receive requests.
+              default: 80
+
+          components:
+            -
+              name: lbvserver-comp
+              type: ns::lbvserver
+              properties:
+                name: $parameters.name + "-lb"
+                servicetype: HTTP
+                ipv46: $parameters.ip
+                port: 80
+                lbmethod: $parameters.lb-alg
+
+              components:
+                -
+                  name: svcg-comp
+                  type: ns::servicegroup
+                  properties:
+                    servicegroupname: $parameters.name + "-svcgrp"
+                    servicetype: HTTP
+
+                  components:
+                    -
+                      name: lbvserver-svg-binding-comp
+                      type: ns::lbvserver_servicegroup_binding
+                      properties:
+                        name: $parent.parent.properties.name
+                        servicegroupname: $parent.properties.servicegroupname
+                    -
+                      name: members-svcg-comp
+                      type: ns::servicegroup_servicegroupmember_binding
+                      repeat: $parameters.svc-servers
+                      repeat-item: srv
+                      properties:
+                        ip: $srv
+                        port: $parameters.svc-port
+                        servicegroupname: $parent.properties.servicegroupname
+
+          outputs:
+            -
+              name: lbvserver-comp
+              value: $components.lbvserver-comp
+              description: The component that builds the Nitro lbvserver configuration object
+            -
+              name: servicegroup-comp
+              value: $components.lbvserver-comp.components.svcg-comp
+              description: The component that builds the Nitro servicegroup configuration object
+
+    - name: Setup dns domain entry
+      delegate_to: localhost
+      register: domain_result
+      citrix_adm_dns_domain_entry:
+        mas_ip: "{{ mas_ip }}"
+        mas_user: "{{ mas_user }}"
+        mas_pass: "{{ mas_pass }}"
+
+        state: present
+
+        name: "{{ domain_name }}"
+        tenant_id: "{{ tenant_facts.tenant[0].id }}"
+
+    - name: Get all ns
+      delegate_to: localhost
+      register: ns_facts
+      citrix_adm_ns_facts:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        ip_address: "{{ target_ns_ip }}"
+
+
+    - name: Setup mpsgroup
+      delegate_to: localhost
+      citrix_adm_mpsgroup:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        name: "app_owner_group_for_{{ tenant_name }}"
+        permission: admin
+        allow_application_only: true
+        assign_all_apps: false
+        enable_session_timeout: false
+        assign_all_devices: false
+        role: nonadmin
+        roles: 
+          - "app_admin_role_for_{{ tenant_name }}"
+        application_names_without_regex: []
+        application_names: []
+        application_names_with_regex: []
+        standalone_instances_id:
+          - "{{ ns_facts.ns[0].id }}"
+        authscope_props:
+          - propname: configuration_template_id
+            propvalues: ["NONE"]
+          - propname: dns_domain_entry_id
+            propvalues:
+              - "{{ domain_result.dns_domain_entry.id }}"
+          - propname: stylebook_id
+            propvalues:
+              - "{{ stylebook_result.stylebook.id }}"
+
+    - name: Setup mpsuser
+      delegate_to: localhost
+      citrix_adm_mpsuser:
+        mas_ip: "{{ mas_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+        state: present
+
+        name: "{{ tenant_user }}"
+        password: "{{ tenant_user_password }}"
+
+        session_timeout: 10
+        session_timeout_unit: Minutes
+        external_authentication: false
+        enable_session_timeout: true
+        groups: 
+          - app_owner_group_for_sample_tenant_2
