@@ -126,6 +126,28 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     # auditsyslogpolicy
     submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'appfwauditsyslog_bindings')
 
+    # test_audit_server
+    test_audit_server = [OrderedDict([
+        ('name', 'setup audit server'),
+        ('delegate_to', 'localhost'),
+        ('citrix_adc_nitro_request', OrderedDict([
+            ('nitro_user', '{{ nitro_user }}'),
+            ('nitro_pass', '{{ nitro_pass }}'),
+            ('nsip', '{{ nsip }}'),
+
+            ('operation', 'add'),
+
+            ('resource', 'auditsyslogaction'),
+            ('attributes', OrderedDict([
+                ('name', 'test_audit_server'),
+                ('serverip', '192.168.22.44'),
+                ('loglevel', 'ERROR'),
+            ])),
+        ])),
+    ])]
+
+    submodObj.add_raw_operation('Create audit sys log action', copy.deepcopy(test_audit_server), run_once=True)
+
     auditnslog_policy = [OrderedDict([
         ('name', 'setup auditsyslogpolicy'),
         ('delegate_to', 'localhost'),
@@ -140,8 +162,6 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('attributes', OrderedDict([
                 ('name', 'integration_test_auditsyslogpolicy'),
                 ('rule', 'ns_true'),
-
-                # FIXME try to create test_audit_server automatically
                 ('action', 'test_audit_server'),
             ])),
         ])),
@@ -183,6 +203,23 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     auditnslog_policy[0]['citrix_adc_nitro_request']['operation'] = 'delete'
     auditnslog_policy[0]['citrix_adc_nitro_request']['name'] = auditnslog_policy[0]['citrix_adc_nitro_request']['attributes']['name']
     submodObj.add_raw_operation('Remove audit nslogpolicy', copy.deepcopy(auditnslog_policy), run_once=True)
+
+    remove_test_audit_server = [OrderedDict([
+        ('name', 'Remove audit server'),
+        ('delegate_to', 'localhost'),
+        ('citrix_adc_nitro_request', OrderedDict([
+            ('nitro_user', '{{ nitro_user }}'),
+            ('nitro_pass', '{{ nitro_pass }}'),
+            ('nsip', '{{ nsip }}'),
+
+            ('operation', 'delete'),
+
+            ('resource', 'auditsyslogaction'),
+            ('name', 'test_audit_server'),
+        ])),
+    ])]
+
+    submodObj.add_raw_operation('Remove audit server', copy.deepcopy(remove_test_audit_server), run_once=True)
 
     input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
 
