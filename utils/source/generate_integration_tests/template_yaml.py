@@ -14,9 +14,9 @@ tasks_main_data = """
 
 tasks_main_data_with_testbed = """
 ---
-- { include: testbed.yaml, state: present }
-- { include: nitro.yaml, tags: ['nitro'] }
-- { include: testbed.yaml, state: absent }
+- { include_tasks: testbed.yaml, vars: {state: present} }
+- { include_tasks: nitro.yaml, tags: ['nitro'] }
+- { include_tasks: testbed.yaml, vars: { state: absent } }
 """
 
 tasks_nitro_data = """
