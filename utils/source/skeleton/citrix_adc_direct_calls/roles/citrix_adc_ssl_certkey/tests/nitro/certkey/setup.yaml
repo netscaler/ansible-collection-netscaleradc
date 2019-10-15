@@ -13,8 +13,8 @@
     state: present
 
     certkey: certirificate_1
-    cert: server.crt
-    key: server.key
+    cert: /var/tmp/certificate1.crt
+    key: /var/tmp/key1.pem
     expirymonitor: enabled
     notificationperiod: 30
     inform: PEM

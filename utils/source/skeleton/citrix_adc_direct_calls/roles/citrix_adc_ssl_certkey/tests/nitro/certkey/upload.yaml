@@ -1,0 +1,25 @@
+- name: 'upload certificate'
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nitro_user: '{{ nitro_user }}'
+    nitro_pass: '{{ nitro_pass }}'
+    nsip: '{{ nsip }}'
+    operation: add
+    resource: systemfile
+    attributes:
+      filename: certificate1.crt
+      filecontent: "{{ lookup('file', './certificate1.crt') | b64encode }}"
+      filelocation: /var/tmp
+
+- name: 'upload key'
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nitro_user: '{{ nitro_user }}'
+    nitro_pass: '{{ nitro_pass }}'
+    nsip: '{{ nsip }}'
+    operation: add
+    resource: systemfile
+    attributes:
+      filename: key1.pem
+      filecontent: "{{ lookup('file', './key1.pem') | b64encode }}"
+      filelocation: /var/tmp
