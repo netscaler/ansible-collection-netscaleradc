@@ -8,7 +8,34 @@ ENTITY_NAME = 'citrix_adc_service'
 
 def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data = []
-    #TODO: testbed data here
+
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', '192.168.1.3'),
+            ('ipaddress', '192.168.1.3'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', '192.168.1.2'),
+            ('ipaddress', '192.168.1.2'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', '192.168.1.1'),
+            ('ipaddress', '192.168.1.1'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
     return testbed_data
 
 
