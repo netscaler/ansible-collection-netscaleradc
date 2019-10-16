@@ -26,7 +26,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_lb_monitor')
     testbed = OrderedDict(
         [
-            ('monitorname', 'lb-monitor-1'),
+            ('monitorname', 'lb-monitor-for-gslb-service'),
             ('type', 'TCP-ECV'),
             ('send', 'sendstring'),
             ('recv', 'recvstring'),
@@ -106,7 +106,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('monitor_bindings',[
                                     OrderedDict(
                                         [
-                                            ('monitor_name','lb-monitor-1'),
+                                            ('monitor_name','lb-monitor-for-gslb-service'),
                                             ('weight',100),
                                         ]
                                     ),
