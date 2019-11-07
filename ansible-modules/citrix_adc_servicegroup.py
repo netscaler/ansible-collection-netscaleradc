@@ -73,6 +73,11 @@ options:
             - 'SYSLOGUDP'
             - 'FIX'
             - 'SSL_FIX'
+            - 'USER_TCP'
+            - 'USER_SSL_TCP'
+            - 'QUIC'
+            - 'IPFIX'
+            - 'LOGSTREAM'
         description:
             - "Protocol used to exchange data with the service."
 
@@ -83,6 +88,15 @@ options:
             - 'FORWARD'
         description:
             - "Cache type supported by the cache server."
+
+    td:
+        description:
+            - >-
+                Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
+                If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
+                of C(0).
+            - "Minimum value =  C(0)"
+            - "Maximum value =  C(4094)"
 
     maxclient:
         description:
@@ -125,14 +139,17 @@ options:
                 Use client's IP address as the source IP address when initiating connection to the server. With the
                 NO setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as
                 the source IP address to initiate server side connections.
+        type: bool
 
     pathmonitor:
         description:
             - "Path monitoring for clustering."
+        type: bool
 
     pathmonitorindv:
         description:
             - "Individual Path monitoring decisions."
+        type: bool
 
     useproxyport:
         description:
@@ -149,6 +166,12 @@ options:
             - >-
                 C(no) - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 the service as UP at all times.
+        type: bool
+
+    sc:
+        description:
+            - "State of the SureConnect feature for the service group."
+            - "Default value: OFF"
         type: bool
 
     sp:
@@ -246,6 +269,8 @@ options:
             - 'DISABLED'
             - 'DNS'
             - 'POLICY'
+            - 'CLOUD'
+            - 'API'
         description:
             - "Auto scale option for a servicegroup."
 
@@ -747,6 +772,11 @@ def main():
                 'SYSLOGUDP',
                 'FIX',
                 'SSL_FIX',
+                'USER_TCP',
+                'USER_SSL_TCP',
+                'QUIC',
+                'IPFIX',
+                'LOGSTREAM',
             ]
         ),
         cachetype=dict(
@@ -757,6 +787,7 @@ def main():
                 'FORWARD',
             ]
         ),
+        td=dict(type='int'),
         maxclient=dict(type='float'),
         maxreq=dict(type='float'),
         cacheable=dict(type='bool'),
@@ -773,6 +804,7 @@ def main():
         pathmonitorindv=dict(type='bool'),
         useproxyport=dict(type='bool'),
         healthmonitor=dict(type='bool'),
+        sc=dict(type='bool'),
         sp=dict(type='bool'),
         rtspsessionidremap=dict(type='bool'),
         clttimeout=dict(type='float'),
@@ -806,6 +838,8 @@ def main():
                 'DISABLED',
                 'DNS',
                 'POLICY',
+                'CLOUD',
+                'API',
             ]
         ),
         memberport=dict(type='int'),
@@ -863,6 +897,7 @@ def main():
         'servicegroupname',
         'servicetype',
         'cachetype',
+        'td',
         'maxclient',
         'maxreq',
         'cacheable',
@@ -873,6 +908,7 @@ def main():
         'pathmonitorindv',
         'useproxyport',
         'healthmonitor',
+        'sc',
         'sp',
         'rtspsessionidremap',
         'clttimeout',
@@ -936,6 +972,7 @@ def main():
 
     transforms = {
         'pathmonitorindv': ['bool_yes_no'],
+        'sc': ['bool_on_off'],
         'cacheable': ['bool_yes_no'],
         'cka': ['bool_yes_no'],
         'pathmonitor': ['bool_yes_no'],
