@@ -167,7 +167,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('name',  'cs-vserver-flap'),
             ('servicetype',  'HTTP'),
-            ('ipv46',  '192.168.1.1'),
+            ('ipv46',  '192.168.1.2'),
             ('port',  80),
             ('td',  0),
             ('disabled',  "{{ item|int % 2 }}"),
@@ -184,7 +184,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('name',  'cs-vserver-flap'),
             ('servicetype',  'HTTP'),
-            ('ipv46',  '192.168.1.1'),
+            ('ipv46',  '192.168.1.2'),
             ('port',  80),
             ('td',  0),
             ('disabled',  "{{ item|int % 2 }}"),
@@ -216,7 +216,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('name', 'cs-vserver-1'),
             ('servicetype', 'HTTP'),
-            ('ipv46', '192.168.1.1'),
+            ('ipv46', '192.168.1.3'),
             ('td', 0),
             ('port', 80),
             ('dnsrecordtype', 'A'),
@@ -259,7 +259,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('name', 'cs-vserver-1'),
             ('servicetype', 'HTTP'),
-            ('ipv46', '192.168.1.1'),
+            ('ipv46', '192.168.1.3'),
             ('td', 0),
             ('port', 80),
             ('dnsrecordtype', 'A'),

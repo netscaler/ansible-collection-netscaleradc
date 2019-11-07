@@ -8,6 +8,14 @@ ENTITY_NAME = 'citrix_adc_gslb_vserver'
 # PREREQUISITES/Testbed
 def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data = []
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', '10.10.10.11'),
+            ('ipaddress', '10.10.10.11'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
     testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_gslb_site')
     testbed = OrderedDict(
         [

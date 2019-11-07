@@ -70,6 +70,18 @@ module=${file%.py}
     --dir-path $target_dir/citrix_adc_direct_calls/roles
     
 done
+
+# Add skeleton modules
+skeleton_modules=(
+"citrix_adc_nitro_request"
+"citrix_adc_save_config"
+"citrix_adc_ssl_certkey"
+
+)
+for module in ${skeleton_modules[@]} ; do
+	echo "    - { role: $module, when: \"limit_to in ['*', '$module']\" }" >> $DIRECT_CALLS_ROLE_FILE 
+done
+
     #TODO: complete the mas_api integratin tests generation
     
     #python generate_integration_test.py \
@@ -97,3 +109,6 @@ python generate_integration_test.py \
 done
 
 cd -
+
+# Since we have `set -e` let the user know all was good
+echo All Good!

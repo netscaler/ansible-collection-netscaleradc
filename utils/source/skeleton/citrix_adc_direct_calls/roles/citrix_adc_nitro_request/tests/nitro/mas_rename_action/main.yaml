@@ -1,0 +1,52 @@
+- name: MAS login
+  delegate_to: localhost
+  register: login_result
+  citrix_adc_nitro_request:
+    nsip: "{{ mas_ip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+
+    operation: mas_login
+
+- name: Add resource
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nsip: "{{ mas_ip }}"
+    instance_ip: "{{ nsip }}"
+    nitro_auth_token: "{{ login_result.nitro_auth_token }}"
+
+    operation: add
+
+    resource: server
+    name: test-server-1
+    attributes:
+      name: test-server-1
+      ipaddress: 192.168.1.7
+
+- name: Rename resource
+  delegate_to: localhost
+  citrix_adc_nitro_request:
+    nsip: "{{ mas_ip }}"
+    instance_ip: "{{ nsip }}"
+    nitro_auth_token: "{{ login_result.nitro_auth_token }}"
+
+    operation: action
+    action: rename
+
+    resource: server
+    attributes:
+      name: test-server-1
+      newname: test-server-2
+
+- name: Delete resource
+  delegate_to: localhost
+  register: result
+  citrix_adc_nitro_request:
+    nsip: "{{ mas_ip }}"
+    instance_ip: "{{ nsip }}"
+    nitro_auth_token: "{{ login_result.nitro_auth_token }}"
+
+    operation: delete
+
+    resource: server
+    name: test-server-2
