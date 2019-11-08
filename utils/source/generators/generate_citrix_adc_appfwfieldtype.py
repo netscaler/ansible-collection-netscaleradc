@@ -2,6 +2,7 @@ import os
 import copy
 import json
 from jinja2 import Environment, FileSystemLoader
+import yaml
 
 from helpers import calculate_transforms_for_attribute, calculate_doc_list, calculate_attributes_config_dict
 
@@ -28,6 +29,8 @@ def populate_template(template_dir, **kwargs):
     )
 
 def main():
+    with open(os.path.join(HERE, 'generator_options.yaml'), 'r') as fh:
+        options = yaml.load(fh)
 
     # Find template dir
     template_dir = os.path.join(HERE, '..', 'templates', 'appfw')
@@ -35,7 +38,8 @@ def main():
         raise Exception('Cannot find template dir')
 
     # Find nscli json data dir
-    json_dir = os.path.join(HERE, '..', 'nitro_api_defines/kamet/appfw')
+    nitro_api_defines = 'nitro_api_defines/mana_41_28'
+    json_dir = os.path.join(HERE, options['nitro_api_defines'])
     if not os.path.exists(json_dir):
         raise Exception('Cannot find json dir')
 

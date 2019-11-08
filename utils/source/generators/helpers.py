@@ -1,4 +1,5 @@
 from collections import OrderedDict
+import re
 
 def calculate_transforms_for_attribute(attribute):
 
@@ -66,6 +67,7 @@ def calculate_doc_list(attribute_list, skip_attributes=[]):
         if description is None:
             raise Exception('Cannot find description for attribute %s' % attribute['option_name'])
         else:
+            description = process_raw_description_lines(description)
             doc_item['description'] = [split_description_line(line) for line in description]
 
         # Copy type
@@ -81,6 +83,36 @@ def calculate_doc_list(attribute_list, skip_attributes=[]):
         doc_list.append(doc_item)
 
     return doc_list
+
+def process_raw_description_lines(description_lines):
+    ret_val = []
+    for line in description_lines:
+        # Skip possible values lines
+        # Documentation will contain the choices option as parsed from the NITRO xml
+        if line.startswith('Possible values'):
+            continue
+
+        # Skip default value lines
+        if line.startswith('Default value'):
+            continue
+
+        # Try to eclose minimum values in C()
+        if line.startswith('Minimum value'):
+            m = re.match(r'Minimum value *= *(\d)+ *', line)
+            if m is None:
+                raise Exception('Could not parse minimum value for line "{}"'.format(line))
+            line = 'Minimum value = C({})'.format(m.group(1))
+
+        # Try to eclose maximum values in C()
+        if line.startswith('Maximum value'):
+            m = re.match(r'Maximum value *= *(\d)+ *', line)
+            if m is None:
+                raise Exception('Could not parse maximum value for line "{}"'.format(line))
+            line = 'Minimum value = C({})'.format(m.group(1))
+
+        ret_val.append(line)
+    return ret_val
+
 
 def calculate_attributes_config_dict(resource_name, attribute_list, skip_attributes=[]):
     attributes_config_dict = {}
