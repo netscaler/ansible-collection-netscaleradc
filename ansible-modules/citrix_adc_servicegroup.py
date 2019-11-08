@@ -333,6 +333,29 @@ options:
                     - Minimum value = C(1)
                     - Maximum value = C(100)
 
+    servicememeberlist:
+        description:
+            - Desired servicegroupmember binding set.
+            - Any existing servicegroupmember which is not part of the input will be deleted or disabled based on graceful setting on servicegroup.
+        suboptions:
+            ip:
+                description:
+                    - IP Address.
+            port:
+                description:
+                    - The port number of the service to be enabled.
+            weight:
+                description:
+                    - "Minimum value = C(1)"
+                    - "Maximum value = C(100)"
+            state:
+                description:
+                    - Initial state of the service group.
+                choices:
+                    - 'enabled'
+                    - 'disabled'
+
+
     monitorbindings:
         description:
             - A list of monitornames to bind to this service
@@ -428,6 +451,7 @@ try:
 
     from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_lbmonitor_binding import servicegroup_lbmonitor_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_servicegroup_binding import lbmonitor_servicegroup_binding
+    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.servicegroup_servicegroupmemberlist_binding import servicegroup_servicegroupmemberlist_binding
     PYTHON_SDK_IMPORTED = True
 except ImportError as e:
     PYTHON_SDK_IMPORTED = False
@@ -580,6 +604,32 @@ def sync_service_members(client, module):
 
         # Fallthrough to addition
         configured_service.add()
+
+def service_memberlist_identical(client, module):
+    log('service_memberlist_identical')
+    if module.params['servicememberlist'] is not None:
+        return False
+    else:
+        return True
+
+def sync_service_memberlist(client, module):
+    log('sync_service_memberlist')
+    # The nature of the option is such that we always need to send the whole object
+    attribute_values_dict = {
+        'servicegroupname': module.params['servicegroupname'],
+        'members': copy.deepcopy(module.params['servicememberlist']),
+    }
+    readwrite_attrs = [
+        'servicegroupname',
+        'members',
+    ]
+    binding_proxy = ConfigProxy(
+        actual=servicegroup_servicegroupmemberlist_binding(),
+        client=client,
+        attribute_values_dict=attribute_values_dict,
+        readwrite_attrs=readwrite_attrs,
+    )
+    binding_proxy.update()
 
 
 def monitor_binding_equal(configured, actual):
@@ -848,6 +898,7 @@ def main():
 
     hand_inserted_arguments = dict(
         servicemembers=dict(type='list'),
+        servicememeberlist=dict(type='list'),
         monitorbindings=dict(type='list'),
         disabled=dict(
             type='bool',
@@ -1038,6 +1089,13 @@ def main():
             if not servicemembers_identical(client, module):
                 if not module.check_mode:
                     sync_service_members(client, module)
+                    if module.params['save_config']:
+                        client.save_config()
+                module_result['changed'] = True
+
+            if not service_memberlist_identical(client, module):
+                if not module.check_mode:
+                    sync_service_memberlist(client, module)
                     if module.params['save_config']:
                         client.save_config()
                 module_result['changed'] = True
