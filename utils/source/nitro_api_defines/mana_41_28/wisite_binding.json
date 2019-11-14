@@ -1,0 +1,14 @@
+[
+    {
+        "option_name": "sitepath",
+        "type": "str",
+        "description": [
+            "Path of a Web Interface site whose details you want the Citrix ADC to display.",
+            "Minimum length =  1",
+            "Maximum length =  250"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

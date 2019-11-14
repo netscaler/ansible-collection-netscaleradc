@@ -1,0 +1,25 @@
+[
+    {
+        "option_name": "vxlan",
+        "type": "float",
+        "description": [
+            "Identifier of the vxlan that is assigned to this partition.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "partitionname",
+        "type": "str",
+        "description": [
+            "Name of the Partition. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

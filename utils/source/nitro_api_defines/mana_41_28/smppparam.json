@@ -1,0 +1,87 @@
+[
+    {
+        "option_name": "clientmode",
+        "type": "str",
+        "choices": [
+            "TRANSCEIVER",
+            "TRANSMITTERONLY",
+            "RECEIVERONLY"
+        ],
+        "description": [
+            "Mode in which the client binds to the ADC. Applicable settings function as follows:",
+            "* TRANSCEIVER - Client can send and receive messages to and from the message center.",
+            "* TRANSMITTERONLY - Client can only send messages.",
+            "* RECEIVERONLY - Client can only receive messages.",
+            "Default value: TRANSCEIVER",
+            "Possible values = TRANSCEIVER, TRANSMITTERONLY, RECEIVERONLY"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "msgqueue",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Queue SMPP messages if a client that is capable of receiving the destination address messages is not available.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "msgqueuesize",
+        "type": "float",
+        "description": [
+            "Maximum number of SMPP messages that can be queued. After the limit is reached, the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message, to the message center.",
+            "Default value: 10000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "addrton",
+        "type": "float",
+        "description": [
+            "Type of Number, such as an international number or a national number, used in the ESME address sent in the bind request.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  256"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "addrnpi",
+        "type": "float",
+        "description": [
+            "Numbering Plan Indicator, such as landline, data, or WAP client, used in the ESME address sent in the bind request.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  256"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "addrrange",
+        "type": "str",
+        "description": [
+            "Set of SME addresses, sent in the bind request, serviced by the ESME.",
+            "Default value: \"\\\\d*\""
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

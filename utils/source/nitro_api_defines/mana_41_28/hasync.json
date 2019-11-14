@@ -1,0 +1,27 @@
+[
+    {
+        "option_name": "force",
+        "type": "bool",
+        "description": [
+            "Force synchronization regardless of the state of HA propagation and HA synchronization on either node."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "save",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "After synchronization, automatically save the configuration in the secondary node configuration file (ns.conf) without prompting for confirmation.",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

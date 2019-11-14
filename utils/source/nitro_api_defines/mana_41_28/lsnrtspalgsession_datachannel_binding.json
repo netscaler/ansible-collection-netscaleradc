@@ -1,0 +1,22 @@
+[
+    {
+        "option_name": "channelip",
+        "type": "str",
+        "description": [
+            "IP address of the channel."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "sessionid",
+        "type": "str",
+        "description": [
+            "Session ID for the RTSP call."
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "The name of the network bridge."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "vxlanvlanmap",
+        "type": "str",
+        "description": [
+            "The vlan to vxlan mapping to be applied to this netbridge."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "option_name": "clid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster.",
+            "Minimum value =  1",
+            "Maximum value =  16"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

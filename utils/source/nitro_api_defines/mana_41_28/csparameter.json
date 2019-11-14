@@ -1,0 +1,18 @@
+[
+    {
+        "option_name": "stateupdate",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Specifies whether the virtual server checks the attached load balancing server for state information.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

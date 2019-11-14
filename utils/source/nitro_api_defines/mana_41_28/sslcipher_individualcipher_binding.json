@@ -1,0 +1,72 @@
+[
+    {
+        "option_name": "ciphername",
+        "type": "str",
+        "description": [
+            "Cipher name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "description",
+        "type": "str",
+        "description": [
+            "Cipher suite description."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "cipherpriority",
+        "type": "float",
+        "description": [
+            "This indicates priority assigned to the particular cipher.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ciphergroupname",
+        "type": "str",
+        "description": [
+            "Name of the user-defined cipher group.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "cipheroperation",
+        "type": "str",
+        "choices": [
+            "ADD",
+            "REM",
+            "ORD"
+        ],
+        "description": [
+            "The operation that is performed when adding the cipher-suite.  Possible cipher operations are: \tADD - Appends the given cipher-suite to the existing one configured for the virtual server. \tREM - Removes the given cipher-suite from the existing one configured for the virtual server. \tORD - Overrides the current configured cipher-suite for the virtual server with the given cipher-suite.",
+            "Default value: 0",
+            "Possible values = ADD, REM, ORD"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ciphgrpals",
+        "type": "str",
+        "description": [
+            "A cipher-suite can consist of an individual cipher name, the system predefined cipher-alias name, or user defined cipher-group name.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

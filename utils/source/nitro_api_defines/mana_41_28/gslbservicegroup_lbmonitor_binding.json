@@ -1,0 +1,129 @@
+[
+    {
+        "option_name": "monitor_name",
+        "type": "str",
+        "description": [
+            "Monitor name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "monstate",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Monitor state.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "weight",
+        "type": "float",
+        "description": [
+            "Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.",
+            "Minimum value =  1",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "passive",
+        "type": "bool",
+        "description": [
+            "Indicates if load monitor is passive. A passive load monitor does not remove service from LB decision when threshold is breached."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicegroupname",
+        "type": "str",
+        "description": [
+            "Name of the GSLB service group.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "Port number of the GSLB service. Each service must have a unique port number.",
+            "Range 1 - 65535",
+            "* in CLI is represented as 65535 in NITRO API"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Initial state of the service after binding.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "hashid",
+        "type": "float",
+        "description": [
+            "Unique numerical identifier used by hash based load balancing methods to identify a service.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "publicip",
+        "type": "str",
+        "description": [
+            "The public IP address that a NAT device translates to the GSLB service's private IP address. Optional."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "publicport",
+        "type": "int",
+        "description": [
+            "The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "siteprefix",
+        "type": "str",
+        "description": [
+            "The site's prefix string. When the GSLB service group is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound serviceitem-domain pair by concatenating the site prefix of the service item and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the Citrix ADC redirects GSLB requests to GSLB services by using their site domains."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

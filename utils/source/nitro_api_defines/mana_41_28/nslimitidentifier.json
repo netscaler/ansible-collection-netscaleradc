@@ -1,0 +1,121 @@
+[
+    {
+        "option_name": "limitidentifier",
+        "type": "str",
+        "description": [
+            "Name for a rate limit identifier. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Reserved words must not be used."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "threshold",
+        "type": "float",
+        "description": [
+            "Maximum number of requests that are allowed in the given timeslice when requests (mode is set as REQUEST_RATE) are tracked per timeslice.",
+            "When connections (mode is set as CONNECTION) are tracked, it is the total number of connections that would be let through.",
+            "Default value: 1",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "timeslice",
+        "type": "float",
+        "description": [
+            "Time interval, in milliseconds, specified in multiples of 10, during which requests are tracked to check if they cross the threshold. This argument is needed only when the mode is set to REQUEST_RATE.",
+            "Default value: 1000",
+            "Minimum value =  10"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "mode",
+        "type": "str",
+        "choices": [
+            "CONNECTION",
+            "REQUEST_RATE",
+            "NONE"
+        ],
+        "description": [
+            "Defines the type of traffic to be tracked.",
+            "* REQUEST_RATE - Tracks requests/timeslice.",
+            "* CONNECTION - Tracks active transactions.",
+            "Examples",
+            "1. To permit 20 requests in 10 ms and 2 traps in 10 ms:",
+            "add limitidentifier limit_req -mode request_rate -limitType smooth -timeslice 1000 -Threshold 2000 -trapsInTimeSlice 200",
+            "2. To permit 50 requests in 10 ms:",
+            "set  limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5000 -limitType smooth",
+            "3. To permit 1 request in 40 ms:",
+            "set limitidentifier limit_req -mode request_rate -timeslice 2000 -Threshold 50 -limitType smooth",
+            "4. To permit 1 request in 200 ms and 1 trap in 130 ms:",
+            "set limitidentifier limit_req -mode request_rate -timeslice 1000 -Threshold 5 -limitType smooth -trapsInTimeSlice 8",
+            "5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:",
+            "set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold 5000 -limitType BURSTY.",
+            "Default value: REQUEST_RATE",
+            "Possible values = CONNECTION, REQUEST_RATE, NONE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "limittype",
+        "type": "str",
+        "choices": [
+            "BURSTY",
+            "SMOOTH"
+        ],
+        "description": [
+            "Smooth or bursty request type.",
+            "* SMOOTH - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice",
+            "* BURSTY - When you want the permitted number of requests to exhaust the quota anytime within the timeslice.",
+            "This argument is needed only when the mode is set to REQUEST_RATE.",
+            "Default value: BURSTY",
+            "Possible values = BURSTY, SMOOTH"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "selectorname",
+        "type": "str",
+        "description": [
+            "Name of the rate limit selector. If this argument is NULL, rate limiting will be applied on all traffic received by the virtual server or the Citrix ADC (depending on whether the limit identifier is bound to a virtual server or globally) without any filtering.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxbandwidth",
+        "type": "float",
+        "description": [
+            "Maximum bandwidth permitted, in kbps.",
+            "Minimum value =  0",
+            "Maximum value =  4294967287"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "trapsintimeslice",
+        "type": "float",
+        "description": [
+            "Number of traps to be sent in the timeslice configured. A value of 0 indicates that traps are disabled.",
+            "Minimum value =  0",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

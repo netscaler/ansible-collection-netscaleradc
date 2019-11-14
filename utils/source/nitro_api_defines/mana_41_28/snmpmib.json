@@ -1,0 +1,71 @@
+[
+    {
+        "option_name": "contact",
+        "type": "str",
+        "description": [
+            "Name of the administrator for this Citrix ADC. Along with the name, you can include information on how to contact this person, such as a phone number or an email address. Can consist of 1 to 127 characters that include uppercase and  lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the information includes one or more spaces, enclose it in double or single quotation marks (for example, \"my contact\" or 'my contact').",
+            "Default value: \"WebMaster (default)\"",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for this Citrix ADC. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.  You should choose a name that helps identify the Citrix ADC appliance.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose it in double or single quotation marks (for example, \"my name\" or 'my name').",
+            "Default value: \"NetScaler\"",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "location",
+        "type": "str",
+        "description": [
+            "Physical location of the Citrix ADC. For example, you can specify building name, lab number, and rack number. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the location includes one or more spaces, enclose it in double or single quotation marks (for example, \"my location\" or 'my location').",
+            "Default value: \"POP (default)\"",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "customid",
+        "type": "str",
+        "description": [
+            "Custom identification number for the Citrix ADC. Can consist of 1 to 127 characters that include uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore (_) characters. You should choose a custom identification that helps identify the Citrix ADC appliance.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the ID includes one or more spaces, enclose it in double or single quotation marks (for example, \"my ID\" or 'my ID').",
+            "Default value: \"Default\"",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ownernode",
+        "type": "float",
+        "description": [
+            "ID of the cluster node for which we are setting the mib. This is a mandatory argument to set snmp mib on CLIP.",
+            "Default value: -1",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

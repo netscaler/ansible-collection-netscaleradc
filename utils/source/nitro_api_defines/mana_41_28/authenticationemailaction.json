@@ -1,0 +1,105 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the new email action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after an action is created.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my action\" or 'my action').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "username",
+        "type": "str",
+        "description": [
+            "Username/Clientid/EmailID to be used to authenticate to the server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "password",
+        "type": "str",
+        "description": [
+            "Password/Clientsecret to use when authenticating to the server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "serverurl",
+        "type": "str",
+        "description": [
+            "Address of the server that delivers the message. It is fully qualified fqdn such as http(s):// or smtp(s):// for http and smtp protocols respectively. For SMTP, the port number is mandatory like smtps://smtp.example.com:25.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "content",
+        "type": "str",
+        "description": [
+            "Content to be delivered to the user. \"$code\" string within the content will be replaced with the actual one-time-code to be sent."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "defaultauthenticationgroup",
+        "type": "str",
+        "description": [
+            "This is the group that is added to user sessions that match current IdP policy. It can be used in policies to identify relying party trust."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "timeout",
+        "type": "float",
+        "description": [
+            "Time after which the code expires.",
+            "Default value: 30"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "SMTP",
+            "ATHENA"
+        ],
+        "description": [
+            "Type of the email action. Default type is SMTP.",
+            "Default value: SMTP",
+            "Possible values = SMTP, ATHENA"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "emailaddress",
+        "type": "str",
+        "description": [
+            "An optional expression that yields user's email. When not configured, user's default mail address would be used. When configured, result of this expression is used as destination email address."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

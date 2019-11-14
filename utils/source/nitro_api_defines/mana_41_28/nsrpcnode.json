@@ -1,0 +1,49 @@
+[
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "IP address of the node. This has to be in the same subnet as the NSIP address.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "password",
+        "type": "str",
+        "description": [
+            "Password to be used in authentication with the peer system node.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "srcip",
+        "type": "str",
+        "description": [
+            "Source IP address to be used to communicate with the peer system node. The default value is 0, which means that the appliance uses the NSIP address as the source IP address."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "secure",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "State of the channel when talking to the node.",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

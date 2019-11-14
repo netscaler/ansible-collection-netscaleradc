@@ -1,0 +1,104 @@
+[
+    {
+        "option_name": "nattype",
+        "type": "str",
+        "choices": [
+            "NAT44",
+            "DS-Lite",
+            "NAT64"
+        ],
+        "description": [
+            "Type of sessions to be displayed.",
+            "Default value: NAT44",
+            "Possible values = NAT44, DS-Lite, NAT64"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "clientname",
+        "type": "str",
+        "description": [
+            "Name of the LSN Client entity."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "network",
+        "type": "str",
+        "description": [
+            "IP address or network address of subscriber(s)."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "netmask",
+        "type": "str",
+        "description": [
+            "Subnet mask for the IP address specified by the network parameter."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "network6",
+        "type": "str",
+        "description": [
+            "IPv6 address of the LSN subscriber or B4 device."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "td",
+        "type": "float",
+        "description": [
+            "Traffic domain ID of the LSN client entity.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "natip",
+        "type": "str",
+        "description": [
+            "Mapped NAT IP address used in LSN sessions."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "natport2",
+        "type": "int",
+        "description": [
+            "Mapped NAT port used in the LSN sessions."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

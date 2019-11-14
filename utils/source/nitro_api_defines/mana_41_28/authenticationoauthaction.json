@@ -1,0 +1,403 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the OAuth Authentication action.",
+            "Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the profile is created.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my authentication action\" or 'my authentication action').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "oauthtype",
+        "type": "str",
+        "choices": [
+            "GENERIC",
+            "INTUNE",
+            "ATHENA"
+        ],
+        "description": [
+            "Type of the OAuth implementation. Default value is generic implementation that is applicable for most deployments.",
+            "Default value: GENERIC",
+            "Possible values = GENERIC, INTUNE, ATHENA"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "authorizationendpoint",
+        "type": "str",
+        "description": [
+            "Authorization endpoint/url to which unauthenticated user will be redirected. Citrix ADC redirects user to this endpoint by adding query parameters including clientid. If this parameter not specified then as default value we take Token Endpoint/URL value. Please note that Authorization Endpoint or Token Endpoint is mandatory for oauthAction."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tokenendpoint",
+        "type": "str",
+        "description": [
+            "URL to which OAuth token will be posted to verify its authenticity. User obtains this token from Authorization server upon successful authentication. Citrix ADC will validate presented token by posting it to the URL configured."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "idtokendecryptendpoint",
+        "type": "str",
+        "description": [
+            "URL to which obtained idtoken will be posted to get a decrypted user identity. Encrypted idtoken will be obtained by posting OAuth token to token endpoint. In order to decrypt idtoken, Citrix ADC posts request to the URL configured."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientid",
+        "type": "str",
+        "description": [
+            "Unique identity of the client/user who is getting authenticated. Authorization server infers client configuration using this ID.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientsecret",
+        "type": "str",
+        "description": [
+            "Secret string established by user and authorization server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "defaultauthenticationgroup",
+        "type": "str",
+        "description": [
+            "This is the default group that is chosen when the authentication succeeds in addition to extracted groups."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute1",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute1."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute2",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute2."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute3",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute3."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute4",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute4."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute5",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute5."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute6",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute6."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute7",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute7."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute8",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute8."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute9",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute9."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute10",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute10."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute11",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute11."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute12",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute12."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute13",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute13."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute14",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute14."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute15",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute15."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attribute16",
+        "type": "str",
+        "description": [
+            "Name of the attribute to be extracted from OAuth Token and to be stored in the attribute16."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "attributes",
+        "type": "str",
+        "description": [
+            "List of attribute names separated by ',' which needs to be extracted.",
+            "Note that preceding and trailing spaces will be removed.",
+            "Attribute name can be 127 bytes and total length of this string should not cross 1023 bytes.",
+            "These attributes have multi-value support separated by ',' and stored as key-value pair in AAA session."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tenantid",
+        "type": "str",
+        "description": [
+            "TenantID of the application. This is usually specific to providers such as Microsoft and usually refers to the deployment identifier."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "graphendpoint",
+        "type": "str",
+        "description": [
+            "URL of the Graph API service to learn Enterprise Mobility Services (EMS) endpoints."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "refreshinterval",
+        "type": "float",
+        "description": [
+            "Interval at which services are monitored for necessary configuration.",
+            "Default value: 1440"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "certendpoint",
+        "type": "str",
+        "description": [
+            "URL of the endpoint that contains JWKs (Json Web Key) for JWT (Json Web Token) verification."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "audience",
+        "type": "str",
+        "description": [
+            "Audience for which token sent by Authorization server is applicable. This is typically entity name or url that represents the recipient."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "usernamefield",
+        "type": "str",
+        "description": [
+            "Attribute in the token from which username should be extracted.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "skewtime",
+        "type": "float",
+        "description": [
+            "This option specifies the allowed clock skew in number of minutes that Citrix ADC allows on an incoming token. For example, if skewTime is 10, then token would be valid from (current time - 10) min to (current time + 10) min, ie 20min in all.",
+            "Default value: 5"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "issuer",
+        "type": "str",
+        "description": [
+            "Identity of the server whose tokens are to be accepted."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "userinfourl",
+        "type": "str",
+        "description": [
+            "URL to which OAuth access token will be posted to obtain user information."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "certfilepath",
+        "type": "str",
+        "description": [
+            "Path to the file that contains JWKs (Json Web Key) for JWT (Json Web Token) verification."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "granttype",
+        "type": "str",
+        "choices": [
+            "CODE",
+            "PASSWORD"
+        ],
+        "description": [
+            "Grant type support. value can be code or password.",
+            "Default value: CODE",
+            "Possible values = CODE, PASSWORD"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "authentication",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "If authentication is disabled, password is not sent in the request. .",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

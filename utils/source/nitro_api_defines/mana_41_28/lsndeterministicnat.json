@@ -1,0 +1,56 @@
+[
+    {
+        "option_name": "clientname",
+        "type": "str",
+        "description": [
+            "The name of the LSN Client."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "network6",
+        "type": "str",
+        "description": [
+            "IPv6 address of the LSN subscriber or B4 device."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "subscrip",
+        "type": "str",
+        "description": [
+            "The Client IP address."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "td",
+        "type": "float",
+        "description": [
+            "The LSN client TD.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "natip",
+        "type": "str",
+        "description": [
+            "The NAT IP address.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,83 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the filtering action. Must begin with a letter, number, or the underscore character (_). Other characters allowed, after the first character, are the hyphen (-), period (.) hash (#), space ( ), at sign (@), equals (=), and colon (:) characters. Choose a name that helps identify the type of action. The name of a filter action cannot be changed after it is created.",
+            "CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my action\" or 'my action').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "qual",
+        "type": "str",
+        "choices": [
+            "reset",
+            "add",
+            "corrupt",
+            "forward",
+            "errorcode",
+            "drop"
+        ],
+        "description": [
+            "Qualifier, which is the action to be performed. The qualifier cannot be changed after it is set. The available options function as follows:",
+            "ADD - Adds the specified HTTP header.",
+            "RESET - Terminates the connection, sending the appropriate termination notice to the user's browser.",
+            "FORWARD - Redirects the request to the designated service. You must specify either a service name or a page, but not both.",
+            "DROP - Silently deletes the request, without sending a response to the user's browser.",
+            "CORRUPT - Modifies the designated HTTP header to prevent it from performing the function it was intended to perform, then sends the request/response to the server/browser.",
+            "ERRORCODE. Returns the designated HTTP error code to the user's browser (for example, 404, the standard HTTP code for a non-existent Web page).",
+            "Possible values = reset, add, corrupt, forward, errorcode, drop"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicename",
+        "type": "str",
+        "description": [
+            "Service to which to forward HTTP requests. Required if the qualifier is FORWARD.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "value",
+        "type": "str",
+        "description": [
+            "String containing the header_name and header_value. If the qualifier is ADD, specify <header_name>:<header_value>. If the qualifier is CORRUPT, specify only the header_name.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "respcode",
+        "type": "float",
+        "description": [
+            "Response code to be returned for HTTP requests (for use with the ERRORCODE qualifier).",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "page",
+        "type": "str",
+        "description": [
+            "HTML page to return for HTTP requests (For use with the ERRORCODE qualifier).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -1,0 +1,46 @@
+[
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "An integer that uniquely identifies the bridge group.",
+            "Minimum value =  1",
+            "Maximum value =  1000"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "dynamicrouting",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable dynamic routing for this bridgegroup.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ipv6dynamicrouting",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable all IPv6 dynamic routing protocols on all VLANs bound to this bridgegroup. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

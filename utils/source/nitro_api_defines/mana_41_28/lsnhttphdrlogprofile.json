@@ -1,0 +1,78 @@
+[
+    {
+        "option_name": "httphdrlogprofilename",
+        "type": "str",
+        "description": [
+            "The name of the HTTP header logging Profile.",
+            "Minimum length =  1",
+            "Maximum length =  127"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logurl",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "URL information is logged if option is enabled.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logmethod",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "HTTP method information is logged if option is enabled.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logversion",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Version information is logged if option is enabled.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "loghost",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Host information is logged if option is enabled.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

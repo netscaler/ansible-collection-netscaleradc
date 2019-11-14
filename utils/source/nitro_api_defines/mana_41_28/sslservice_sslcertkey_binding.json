@@ -1,0 +1,83 @@
+[
+    {
+        "option_name": "certkeyname",
+        "type": "str",
+        "description": [
+            "The certificate key pair binding."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "crlcheck",
+        "type": "str",
+        "choices": [
+            "Mandatory",
+            "Optional"
+        ],
+        "description": [
+            "The state of the CRL check parameter. (Mandatory/Optional).",
+            "Possible values = Mandatory, Optional"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ocspcheck",
+        "type": "str",
+        "choices": [
+            "Mandatory",
+            "Optional"
+        ],
+        "description": [
+            "Rule to use for the OCSP responder associated with the CA certificate during client authentication. If MANDATORY is specified, deny all SSL clients if the OCSP check fails because of connectivity issues with the remote OCSP server, or any other reason that prevents the OCSP check. With the OPTIONAL setting, allow SSL clients even if the OCSP check fails except when the client certificate is revoked.",
+            "Possible values = Mandatory, Optional"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ca",
+        "type": "bool",
+        "description": [
+            "CA certificate."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "snicert",
+        "type": "bool",
+        "description": [
+            "The name of the CertKey. Use this option to bind Certkey(s) which will be used in SNI processing."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "skipcaname",
+        "type": "bool",
+        "description": [
+            "The flag is used to indicate whether this particular CA certificate's CA_Name needs to be sent to the SSL client while requesting      for client certificate in a SSL handshake."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicename",
+        "type": "str",
+        "description": [
+            "Name of the SSL service for which to set advanced configuration.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

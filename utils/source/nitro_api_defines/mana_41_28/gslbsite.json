@@ -1,0 +1,175 @@
+[
+    {
+        "option_name": "sitename",
+        "type": "str",
+        "description": [
+            "Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the virtual server is created.",
+            "CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my gslbsite\" or 'my gslbsite').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sitetype",
+        "type": "str",
+        "choices": [
+            "REMOTE",
+            "LOCAL"
+        ],
+        "description": [
+            "Type of site to create. If the type is not specified, the appliance automatically detects and sets the type on the basis of the IP address being assigned to the site. If the specified site IP address is owned by the appliance (for example, a MIP address or SNIP address), the site is a local site. Otherwise, it is a remote site.",
+            "Default value: NONE",
+            "Possible values = REMOTE, LOCAL"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "siteipaddress",
+        "type": "str",
+        "description": [
+            "IP address for the GSLB site. The GSLB site uses this IP address to communicate with other GSLB sites. For a local site, use any IP address that is owned by the appliance (for example, a SNIP or MIP address, or the IP address of the ADNS service).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "publicip",
+        "type": "str",
+        "description": [
+            "Public IP address for the local site. Required only if the appliance is deployed in a private address space and the site has a public IP address hosted on an external firewall or a NAT device.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "metricexchange",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange Protocol (MEP). The appliances in the GSLB setup exchange health information once every second.",
+            "If you disable metrics exchange, you can use only static load balancing methods (such as round robin, static proximity, or the hash-based methods), and if you disable metrics exchange when a dynamic load balancing method (such as least connection) is in operation, the appliance falls back to round robin. Also, if you disable metrics exchange, you must use a monitor to determine the state of GSLB services. Otherwise, the service is marked as DOWN.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nwmetricexchange",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Exchange, with other GSLB sites, network metrics such as round-trip time (RTT), learned from communications with various local DNS (LDNS) servers used by clients. RTT information is used in the dynamic RTT load balancing method, and is exchanged every 5 seconds.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessionexchange",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Exchange persistent session entries with other GSLB sites every five seconds.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "triggermonitor",
+        "type": "str",
+        "choices": [
+            "ALWAYS",
+            "MEPDOWN",
+            "MEPDOWN_SVCDOWN"
+        ],
+        "description": [
+            "Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:",
+            "* ALWAYS - Monitor the GSLB service at all times.",
+            "* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.",
+            "MEPDOWN_SVCDOWN - Monitor the service in either of the following situations:",
+            "* The exchange of metrics through MEP is disabled.",
+            "* The exchange of metrics through MEP is enabled but the status of the service, learned through metrics exchange, is DOWN.",
+            "Default value: ALWAYS",
+            "Possible values = ALWAYS, MEPDOWN, MEPDOWN_SVCDOWN"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "parentsite",
+        "type": "str",
+        "description": [
+            "Parent site of the GSLB site, in a parent-child topology."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "clip",
+        "type": "str",
+        "description": [
+            "Cluster IP address. Specify this parameter to connect to the remote cluster site for GSLB auto-sync. Note: The cluster IP address is defined when creating the cluster."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "publicclip",
+        "type": "str",
+        "description": [
+            "IP address to be used to globally access the remote cluster when it is deployed behind a NAT. It can be same as the normal cluster IP address."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "naptrreplacementsuffix",
+        "type": "str",
+        "description": [
+            "The naptr replacement suffix configured here will be used to construct the naptr replacement field in NAPTR record.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "backupparentlist",
+        "type": "list",
+        "description": [
+            "The list of backup gslb sites configured in preferred order. Need to be parent gsb sites.",
+            "Default value: \"None\""
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

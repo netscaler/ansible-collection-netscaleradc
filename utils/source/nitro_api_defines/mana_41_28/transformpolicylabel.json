@@ -1,0 +1,42 @@
+[
+    {
+        "option_name": "labelname",
+        "type": "str",
+        "description": [
+            "Name for the policy label. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed after the URL Transformation policy label is added.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \u0093my transform policylabel\u0094 or \u0091my transform policylabel)."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "policylabeltype",
+        "type": "str",
+        "choices": [
+            "http_req"
+        ],
+        "description": [
+            "Types of transformations allowed by the policies bound to the label. For URL transformation, always http_req (HTTP Request).",
+            "Possible values = http_req"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "newname",
+        "type": "str",
+        "description": [
+            "New name for the policy label.",
+            "Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \u0093my transform policylabel\u0094 or \u0091my transform policylabel).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,257 @@
+[
+    {
+        "option_name": "defaultprofile",
+        "type": "str",
+        "description": [
+            "Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which sends unmatched connections back to the Citrix ADC without attempting to filter them further.",
+            "Default value: APPFW_BYPASS",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "undefaction",
+        "type": "str",
+        "description": [
+            "Profile to use when an application firewall policy evaluates to undefined (UNDEF).",
+            "An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default setting. You can specify a different built-in or user-created profile as the UNDEF profile.",
+            "Default value: APPFW_BLOCK",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessiontimeout",
+        "type": "float",
+        "description": [
+            "Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.",
+            "Default value: 900",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "learnratelimit",
+        "type": "float",
+        "description": [
+            "Maximum number of connections per second that the application firewall learning engine examines to generate new relaxations for learning-enabled security checks. The application firewall drops any connections above this limit from the list of connections used by the learning engine.",
+            "Default value: 400",
+            "Minimum value =  1",
+            "Maximum value =  1000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessionlifetime",
+        "type": "float",
+        "description": [
+            "Maximum amount of time (in seconds) that the application firewall allows a user session to remain active, regardless of user activity. After this time, the user session is terminated. Before continuing to use the protected web site, the user must establish a new session by opening a designated start URL.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  2147483647"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessioncookiename",
+        "type": "str",
+        "description": [
+            "Name of the session cookie that the application firewall uses to track user sessions.",
+            "Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my cookie name\" or 'my cookie name').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientiploggingheader",
+        "type": "str",
+        "description": [
+            "Name of an HTTP header that contains the IP address that the client used to connect to the protected web site or service."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "importsizelimit",
+        "type": "float",
+        "description": [
+            "Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user attempts to upload files with a total byte count higher than the specified limit, the application firewall blocks the request.",
+            "Default value: 134217728",
+            "Minimum value =  1",
+            "Maximum value =  268435456"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "signatureautoupdate",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Flag used to enable/disable auto update signatures.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "signatureurl",
+        "type": "str",
+        "description": [
+            "URL to download the mapping file from server.",
+            "Default value: https://s3.amazonaws.com/NSAppFwSignatures/SignaturesMapping.xml"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cookiepostencryptprefix",
+        "type": "str",
+        "description": [
+            "String that is prepended to all encrypted cookie values.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logmalformedreq",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Log requests that are so malformed that application firewall parsing doesn't occur.",
+            "Default value: ON",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "geolocationlogging",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Enable Geo-Location Logging in CEF format logs.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "ceflogging",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Enable CEF format logs.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "entitydecoding",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Transform multibyte (double- or half-width) characters to single width characters.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "useconfigurablesecretkey",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Use configurable secret key in AppFw operations.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "sessionlimit",
+        "type": "float",
+        "description": [
+            "Maximum number of sessions that the application firewall allows to be active, regardless of user activity. After the max_limit reaches, No more user session will be created .",
+            "Default value: 100000",
+            "Minimum value =  0",
+            "Maximum value =  500000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "malformedreqaction",
+        "type": "list",
+        "choices": [
+            "none",
+            "block",
+            "log",
+            "stats"
+        ],
+        "description": [
+            "flag to define action on malformed requests that application firewall cannot parse.",
+            "Possible values = none, block, log, stats"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

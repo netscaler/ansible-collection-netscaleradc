@@ -1,0 +1,142 @@
+[
+    {
+        "option_name": "profilename",
+        "type": "str",
+        "description": [
+            "Name for the Citrix Gateway clientless access profile. Must begin with an ASCII alphabetic or underscore (_) character, and must consist only of ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the profile is created.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my profile\" or 'my profile').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "urlrewritepolicylabel",
+        "type": "str",
+        "description": [
+            "Name of the configured URL rewrite policy label. If you do not specify a policy label name, then URLs are not rewritten.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "javascriptrewritepolicylabel",
+        "type": "str",
+        "description": [
+            "Name of the configured JavaScript rewrite policy label.  If you do not specify a policy label name, then JAVA scripts are not rewritten.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "reqhdrrewritepolicylabel",
+        "type": "str",
+        "description": [
+            "Name of the configured Request rewrite policy label.  If you do not specify a policy label name, then requests are not rewritten.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "reshdrrewritepolicylabel",
+        "type": "str",
+        "description": [
+            "Name of the configured Response rewrite policy label.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "regexforfindingurlinjavascript",
+        "type": "str",
+        "description": [
+            "Name of the pattern set that contains the regular expressions, which match the URL in Java script.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "regexforfindingurlincss",
+        "type": "str",
+        "description": [
+            "Name of the pattern set that contains the regular expressions, which match the URL in the CSS.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "regexforfindingurlinxcomponent",
+        "type": "str",
+        "description": [
+            "Name of the pattern set that contains the regular expressions, which match the URL in X Component.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "regexforfindingurlinxml",
+        "type": "str",
+        "description": [
+            "Name of the pattern set that contains the regular expressions, which match the URL in XML.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "regexforfindingcustomurls",
+        "type": "str",
+        "description": [
+            "Name of the pattern set that contains the regular expressions, which match the URLs in the custom content type other than HTML, CSS, XML, XCOMP, and JavaScript. The custom content type should be included in the patset ns_cvpn_custom_content_types.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientconsumedcookies",
+        "type": "str",
+        "description": [
+            "Specify the name of the pattern set containing the names of the cookies, which are allowed between the client and the server. If a pattern set is not specified, Citrix Gateway does not allow any cookies between the client and the server. A cookie that is not specified in the pattern set is handled by Citrix Gateway on behalf of the client.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "requirepersistentcookie",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Specify whether a persistent session cookie is set and accepted for clientless access. If this parameter is set to ON, COM objects, such as MSOffice, which are invoked by the browser can access the files using clientless access. Use caution because the persistent cookie is stored on the disk.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    }
+]

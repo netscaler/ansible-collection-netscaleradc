@@ -1,0 +1,57 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the video optimization detection action. Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "clear_text_pd",
+            "clear_text_abr",
+            "encrypted_abr",
+            "trigger_enc_abr",
+            "trigger_body_detection"
+        ],
+        "description": [
+            "Type of video optimization action. Available settings function as follows:",
+            "* clear_text_pd - Cleartext PD type is detected.",
+            "* clear_text_abr - Cleartext ABR is detected.",
+            "* encrypted_abr - Encrypted ABR is detected.",
+            "* trigger_enc_abr - Possible encrypted ABR is detected.",
+            "* trigger_body_detection - Possible cleartext ABR is detected. Triggers body content detection.",
+            "Possible values = clear_text_pd, clear_text_abr, encrypted_abr, trigger_enc_abr, trigger_body_detection"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Comment. Any type of information about this video optimization detection action."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "newname",
+        "type": "str",
+        "description": [
+            "New name for the videooptimization detection action.",
+            "Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore characters.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

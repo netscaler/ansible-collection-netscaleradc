@@ -1,0 +1,38 @@
+[
+    {
+        "option_name": "ip",
+        "type": "str",
+        "description": [
+            "Subscriber IP Address.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vlan",
+        "type": "float",
+        "description": [
+            "The vlan number on which the subscriber is located.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  4096"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

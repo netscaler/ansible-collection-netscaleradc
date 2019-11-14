@@ -1,0 +1,42 @@
+[
+    {
+        "option_name": "labelname",
+        "type": "str",
+        "description": [
+            "Name for the label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the label is created."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "evaluates",
+        "type": "str",
+        "choices": [
+            "REQ",
+            "RES",
+            "MSSQL_REQ",
+            "MSSQL_RES",
+            "MYSQL_REQ",
+            "MYSQL_RES"
+        ],
+        "description": [
+            "When to evaluate policies bound to this label: request-time or response-time.",
+            "Possible values = REQ, RES, MSSQL_REQ, MSSQL_RES, MYSQL_REQ, MYSQL_RES"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "newname",
+        "type": "str",
+        "description": [
+            "New name for the cache-policy label. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

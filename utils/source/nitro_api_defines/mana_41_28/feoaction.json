@@ -1,0 +1,236 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "The name of the front end optimization action.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "pageextendcache",
+        "type": "bool",
+        "description": [
+            "Extend the time period during which the browser can use the cached resource."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cachemaxage",
+        "type": "float",
+        "description": [
+            "Maxage for cache extension.",
+            "Default value: 30",
+            "Minimum value =  0",
+            "Maximum value =  360"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imgshrinktoattrib",
+        "type": "bool",
+        "description": [
+            "Shrink image dimensions as per the height and width attributes specified in the <img> tag."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imggiftopng",
+        "type": "bool",
+        "description": [
+            "Convert GIF image formats to PNG formats."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imgtowebp",
+        "type": "bool",
+        "description": [
+            "Convert JPEG, GIF, PNG image formats to WEBP format."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imgtojpegxr",
+        "type": "bool",
+        "description": [
+            "Convert JPEG, GIF, PNG image formats to JXR format."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imginline",
+        "type": "bool",
+        "description": [
+            "Inline images whose size is less than 2KB."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cssimginline",
+        "type": "bool",
+        "description": [
+            "Inline small images (less than 2KB) referred within CSS files as background-URLs."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "jpgoptimize",
+        "type": "bool",
+        "description": [
+            "Remove non-image data such as comments from JPEG images."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "imglazyload",
+        "type": "bool",
+        "description": [
+            "Download images, only when the user scrolls the page to view them."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cssminify",
+        "type": "bool",
+        "description": [
+            "Remove comments and whitespaces from CSSs."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cssinline",
+        "type": "bool",
+        "description": [
+            "Inline CSS files, whose size is less than 2KB, within the main page."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "csscombine",
+        "type": "bool",
+        "description": [
+            "Combine one or more CSS files into one file."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "convertimporttolink",
+        "type": "bool",
+        "description": [
+            "Convert CSS import statements to HTML link tags."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "jsminify",
+        "type": "bool",
+        "description": [
+            "Remove comments and whitespaces from JavaScript."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "jsinline",
+        "type": "bool",
+        "description": [
+            "Convert linked JavaScript files (less than 2KB) to inline JavaScript files."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "htmlminify",
+        "type": "bool",
+        "description": [
+            "Remove comments and whitespaces from an HTML page."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cssmovetohead",
+        "type": "bool",
+        "description": [
+            "Move any CSS file present within the body tag of an HTML page to the head tag."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "jsmovetoend",
+        "type": "bool",
+        "description": [
+            "Move any JavaScript present in the body tag to the end of the body tag."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "domainsharding",
+        "type": "str",
+        "description": [
+            "Domain name of the server."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "dnsshards",
+        "type": "list",
+        "description": [
+            "Set of domain names that replaces the parent domain."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientsidemeasurements",
+        "type": "bool",
+        "description": [
+            "Send AppFlow records about the web pages optimized by this action. The records provide FEO statistics, such as the number of HTTP requests that have been reduced for this page. You must enable the Appflow feature before enabling this parameter."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

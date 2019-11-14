@@ -1,0 +1,13 @@
+[
+    {
+        "option_name": "value",
+        "type": "str",
+        "description": [
+            ".",
+            "Maximum length =  64"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

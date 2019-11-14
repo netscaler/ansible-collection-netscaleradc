@@ -1,0 +1,47 @@
+[
+    {
+        "option_name": "metric",
+        "type": "str",
+        "description": [
+            "Metric name in the metric table, whose setting is changed. A value zero disables the metric and it will not be used for load calculation.",
+            "Minimum length =  1",
+            "Maximum length =  37"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "metricweight",
+        "type": "float",
+        "description": [
+            "The weight for the specified service metric with respect to others.",
+            "Minimum value =  1",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "metricthreshold",
+        "type": "float",
+        "description": [
+            "Threshold to be used for that metric."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "monitorname",
+        "type": "str",
+        "description": [
+            "Name of the monitor.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

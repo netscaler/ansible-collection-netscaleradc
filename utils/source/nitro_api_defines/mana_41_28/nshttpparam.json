@@ -1,0 +1,160 @@
+[
+    {
+        "option_name": "dropinvalreqs",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Drop invalid HTTP requests or responses.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "markhttp09inval",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Mark HTTP/0.9 requests as invalid.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "markconnreqinval",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Mark CONNECT requests as invalid.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "insnssrvrhdr",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Enable or disable Citrix ADC server header insertion for Citrix ADC generated HTTP responses.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "nssrvrhdr",
+        "type": "str",
+        "description": [
+            "The server header value to be inserted. If no explicit header is specified then NSBUILD.RELEASE is used as default server header.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logerrresp",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Server header value to be inserted.",
+            "Default value: ON",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "conmultiplex",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Reuse server connections for requests from more than one client connections.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxreusepool",
+        "type": "float",
+        "description": [
+            "Maximum limit on the number of connections, from the Citrix ADC to a particular server that are kept in the reuse pool. This setting is helpful for optimal memory utilization and for reducing the idle connections to the server just after the peak time.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  360000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "http2serverside",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Enable/Disable HTTP/2 on server side.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "ignoreconnectcodingscheme",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Ignore Coding scheme in CONNECT request.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

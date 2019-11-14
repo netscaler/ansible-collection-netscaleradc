@@ -1,0 +1,12 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the videooptimization pacing policy for which to display settings.Must provide policy name."
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

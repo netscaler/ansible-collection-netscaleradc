@@ -1,0 +1,3 @@
+{
+    "CalledProcessError": "Command '['python', 'generate_data.py', '--main-nitro-class', 'policystringmap_pattern_binding', '--nitro-xml-file', 'source/mana_41_28/Nitro.xml.eo', '--html-doc', 'source/mana_41_28/html/config/policy/policystringmap_pattern_binding.html', '--output-json', 'output/mana_41_28/policystringmap_pattern_binding.json']' returned non-zero exit status 1"
+}

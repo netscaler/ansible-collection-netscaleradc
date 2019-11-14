@@ -1,0 +1,47 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the new Citrix Authentication action. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after an action is created.",
+            "The following requirement applies only to the NetScaler CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my action\" or 'my action').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "authenticationtype",
+        "type": "str",
+        "choices": [
+            "CITRIXCONNECTOR",
+            "ATHENA"
+        ],
+        "description": [
+            "Type of the Citrix Authentication implementation. Default implementation uses Citrix Cloud Connector.",
+            "Default value: CITRIXCONNECTOR",
+            "Possible values = CITRIXCONNECTOR, ATHENA"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "authentication",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Authentication needs to be disabled for searching user object without performing authentication.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

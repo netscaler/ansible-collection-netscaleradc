@@ -1,0 +1,226 @@
+[
+    {
+        "option_name": "vserver",
+        "type": "str",
+        "description": [
+            "Name of the load balancing, or content switching vserver to which the Gx connections are established. The service type of the virtual server must be DIAMETER/SSL_DIAMETER. Mutually exclusive with the service parameter. Therefore, you cannot set both service and the Virtual Server in the Gx Interface.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "service",
+        "type": "str",
+        "description": [
+            "Name of DIAMETER/SSL_DIAMETER service corresponding to PCRF to which the Gx connection is established. The service type of the service must be DIAMETER/SSL_DIAMETER. Mutually exclusive with vserver parameter. Therefore, you cannot set both Service and the Virtual Server in the Gx Interface.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "pcrfrealm",
+        "type": "str",
+        "description": [
+            "PCRF realm is of type DiameterIdentity and contains the realm of PCRF to which the message is to be routed. This is the realm used in Destination-Realm AVP by Citrix ADC Gx client (as a Diameter node).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "holdonsubscriberabsence",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Set this setting to yes if Citrix ADC needs to Hold pakcets till subscriber session is fetched from PCRF. Else set to NO. By default set to yes. If this setting is set to NO, then till Citrix ADC fetches subscriber from PCRF, default subscriber profile will be applied to this subscriber if configured. If default subscriber profile is also not configured an undef would be raised to expressions which use Subscriber attributes. .",
+            "Default value: YES",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "requesttimeout",
+        "type": "float",
+        "description": [
+            "q!Time, in seconds, within which the Gx CCR request must complete. If the request does not complete within this time, the request is retransmitted for requestRetryAttempts time. If still reuqest is not complete then default subscriber profile will be applied to this subscriber if configured. If default subscriber profile is also not configured an undef would be raised to expressions which use Subscriber attributes.",
+            "Zero disables the timeout. !.",
+            "Default value: 10",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "requestretryattempts",
+        "type": "float",
+        "description": [
+            "If the request does not complete within requestTimeout time, the request is retransmitted for requestRetryAttempts time.",
+            "Default value: 3"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "idlettl",
+        "type": "float",
+        "description": [
+            "q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after any PCRF activity on a session. Any RAR or CCA message resets the timer.",
+            "Zero value disables the idle timeout. !.",
+            "Default value: 900",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "revalidationtimeout",
+        "type": "float",
+        "description": [
+            "q!Revalidation Timeout, in seconds, after which the Gx CCR-U request will be sent after any PCRF activity on a session. Any RAR or CCA message resets the timer.",
+            "Zero value disables the idle timeout. !.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "healthcheck",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "q!Set this setting to yes if Citrix ADC should send DWR packets to PCRF server. When the session is idle, healthcheck timer expires and DWR packets are initiated in order to check that PCRF server is active. By default set to No. !.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "healthcheckttl",
+        "type": "float",
+        "description": [
+            "q!Healthcheck timeout, in seconds, after which the DWR will be sent in order to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets the timer. !.",
+            "Default value: 30",
+            "Minimum value =  6",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cerrequesttimeout",
+        "type": "float",
+        "description": [
+            "q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers that no CCA packet received to the initiated CCR. After this time Citrix ADC should send again CCR to PCRF server. !.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "negativettl",
+        "type": "float",
+        "description": [
+            "q!Negative TTL, in seconds, after which the Gx CCR-I request will be resent for sessions that have not been resolved by PCRF due to server being down or no response or failed response. Instead of polling the PCRF server constantly, negative-TTL makes Citrix ADC stick to un-resolved session. Meanwhile Citrix ADC installs a negative session to avoid going to PCRF.",
+            "For Negative Sessions, Netcaler inherits the attributes from default subscriber profile if default subscriber is configured. A default subscriber could be configured as 'add subscriber profile *'. Or these attributes can be inherited from Radius as well if Radius is configued.",
+            "Zero value disables the Negative Sessions. And Citrix ADC does not install Negative sessions even if subscriber session could not be fetched. !.",
+            "Default value: 600",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "negativettllimitedsuccess",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Set this to YES if Citrix ADC should create negative session for Result-Code DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to NO, regular session is created.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "purgesdbongxfailure",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Set this setting to YES if needed to purge Subscriber Database in case of Gx failure. By default set to NO. .",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "servicepathavp",
+        "type": "list",
+        "description": [
+            "The AVP code in which PCRF sends service path applicable for subscriber.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "servicepathvendorid",
+        "type": "float",
+        "description": [
+            "The vendorid of the AVP in which PCRF sends service path for subscriber."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

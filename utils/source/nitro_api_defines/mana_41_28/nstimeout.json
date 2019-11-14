@@ -1,0 +1,210 @@
+[
+    {
+        "option_name": "zombie",
+        "type": "float",
+        "description": [
+            "Interval, in seconds, at which the Citrix ADC zombie cleanup process must run. This process cleans up inactive TCP connections.",
+            "Default value: 120",
+            "Minimum value =  1",
+            "Maximum value =  600"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "client",
+        "type": "float",
+        "description": [
+            "Client idle timeout (in seconds). If zero, the service-type default value is taken when service is created.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "server",
+        "type": "float",
+        "description": [
+            "Server idle timeout (in seconds).  If zero, the service-type default value is taken when service is created.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "httpclient",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for client connections of HTTP service type. This value is over ridden by the client timeout that is configured on individual entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "httpserver",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for server connections of HTTP service type. This value is over ridden by the server timeout that is configured on individual entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tcpclient",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for non-HTTP client connections of TCP service type. This value is over ridden by the client timeout that is configured on individual entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tcpserver",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for non-HTTP server connections of TCP service type. This value is over ridden by the server timeout that is configured on entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  18000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "anyclient",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for non-TCP client connections. This value is over ridden by the client timeout that is configured on individual entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "anyserver",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for non TCP server connections. This value is over ridden by the server timeout that is configured on individual entities.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "anytcpclient",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for TCP client connections. This value takes precedence over  entity level timeout settings (vserver/service). This is applicable only to transport protocol TCP.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "anytcpserver",
+        "type": "float",
+        "description": [
+            "Global idle timeout, in seconds, for TCP server connections. This value takes precedence over entity level timeout settings ( vserver/service). This is applicable only to transport protocol TCP.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "halfclose",
+        "type": "float",
+        "description": [
+            "Idle timeout, in seconds, for connections that are in TCP half-closed state.",
+            "Default value: 10",
+            "Minimum value =  1",
+            "Maximum value =  600"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nontcpzombie",
+        "type": "float",
+        "description": [
+            "Interval at which the zombie clean-up process for non-TCP connections should run. Inactive IP NAT connections will be cleaned up.",
+            "Default value: 60",
+            "Minimum value =  1",
+            "Maximum value =  600"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "reducedfintimeout",
+        "type": "float",
+        "description": [
+            "Alternative idle timeout, in seconds, for closed TCP NATPCB connections.",
+            "Default value: 30",
+            "Minimum value =  1",
+            "Maximum value =  300"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "reducedrsttimeout",
+        "type": "float",
+        "description": [
+            "Timer interval, in seconds, for abruptly terminated TCP NATPCB connections.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  300"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "newconnidletimeout",
+        "type": "float",
+        "description": [
+            "Timer interval, in seconds, for new TCP NATPCB connections on which no data was received.",
+            "Default value: 4",
+            "Minimum value =  1",
+            "Maximum value =  120"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

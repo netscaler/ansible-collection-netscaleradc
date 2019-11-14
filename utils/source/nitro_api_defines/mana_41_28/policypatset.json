@@ -1,0 +1,38 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Unique name of the pattern set. Not case sensitive. Must begin with an ASCII letter or underscore (_) character and must contain only alphanumeric and underscore characters. Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "indextype",
+        "type": "str",
+        "choices": [
+            "Auto-generated",
+            "User-defined"
+        ],
+        "description": [
+            "Index type.",
+            "Possible values = Auto-generated, User-defined"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments to preserve information about this patset."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

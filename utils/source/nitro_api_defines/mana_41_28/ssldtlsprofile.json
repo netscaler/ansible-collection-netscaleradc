@@ -1,0 +1,99 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the DTLS profile. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-) characters. Cannot be changed after the profile is created.",
+            "Minimum length =  1",
+            "Maximum length =  127"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "pmtudiscovery",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Source for the maximum record size value. If ENABLED, the value is taken from the PMTU table. If DISABLED, the value is taken from the profile.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxrecordsize",
+        "type": "float",
+        "description": [
+            "Maximum size of records that can be sent if PMTU is disabled.",
+            "Default value: 1459",
+            "Minimum value =  250",
+            "Maximum value =  1459"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxretrytime",
+        "type": "float",
+        "description": [
+            "Wait for the specified time, in seconds, before resending the request.",
+            "Default value: 3"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "helloverifyrequest",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Send a Hello Verify request to validate the client.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "terminatesession",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Terminate the session if the message authentication code (MAC) of the client and server do not match.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxpacketsize",
+        "type": "float",
+        "description": [
+            "Maximum number of packets to reassemble. This value helps protect against a fragmented packet attack.",
+            "Default value: 120",
+            "Minimum value =  0",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

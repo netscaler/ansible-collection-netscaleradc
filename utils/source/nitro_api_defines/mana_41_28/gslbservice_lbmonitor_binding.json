@@ -1,0 +1,50 @@
+[
+    {
+        "option_name": "monitor_name",
+        "type": "str",
+        "description": [
+            "Monitor name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "monstate",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "State of the monitor bound to gslb service.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "weight",
+        "type": "float",
+        "description": [
+            "Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.",
+            "Minimum value =  1",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicename",
+        "type": "str",
+        "description": [
+            "Name of the GSLB service.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the nodegroup to be displayed. If a name is not provided, information about all nodegroups is displayed.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

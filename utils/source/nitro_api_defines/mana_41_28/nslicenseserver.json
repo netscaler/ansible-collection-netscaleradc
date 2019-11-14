@@ -1,0 +1,45 @@
+[
+    {
+        "option_name": "licenseserverip",
+        "type": "str",
+        "description": [
+            "IP address of the License server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "servername",
+        "type": "str",
+        "description": [
+            "Fully qualified domain name of the License server."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "port",
+        "type": "float",
+        "description": [
+            "License server port."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

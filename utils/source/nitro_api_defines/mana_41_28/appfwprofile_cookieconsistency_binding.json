@@ -1,0 +1,78 @@
+[
+    {
+        "option_name": "cookieconsistency",
+        "type": "str",
+        "description": [
+            "The name of the cookie to be checked."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isregex",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "description": [
+            "Is the cookie name a regular expression?.",
+            "Possible values = REGEX, NOTREGEX"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enabled.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isautodeployed",
+        "type": "str",
+        "choices": [
+            "AUTODEPLOYED",
+            "NOTAUTODEPLOYED"
+        ],
+        "description": [
+            "Is the rule auto deployed by dynamic profile ?.",
+            "Possible values = AUTODEPLOYED, NOTAUTODEPLOYED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the profile to which to bind an exemption or rule.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

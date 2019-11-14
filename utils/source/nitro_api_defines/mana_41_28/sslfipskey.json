@@ -1,0 +1,130 @@
+[
+    {
+        "option_name": "fipskeyname",
+        "type": "str",
+        "description": [
+            "Name for the FIPS key. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Cannot be changed after the FIPS key is created.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my fipskey\" or 'my fipskey').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "keytype",
+        "type": "str",
+        "choices": [
+            "RSA",
+            "ECDSA"
+        ],
+        "description": [
+            "Only RSA key and ECDSA Key are supported.",
+            "Default value: RSA",
+            "Possible values = RSA, ECDSA"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "exponent",
+        "type": "str",
+        "choices": [
+            "3",
+            "F4"
+        ],
+        "description": [
+            "Exponent value for the FIPS key to be created. Available values function as follows:",
+            "3=3 (hexadecimal)",
+            "F4=10001 (hexadecimal).",
+            "Default value: 3",
+            "Possible values = 3, F4"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "modulus",
+        "type": "float",
+        "description": [
+            "Modulus, in multiples of 64, of the FIPS key to be created.",
+            "Minimum value =  0",
+            "Maximum value =  4096"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "curve",
+        "type": "str",
+        "choices": [
+            "P_256",
+            "P_384"
+        ],
+        "description": [
+            "Only p_256 (prime256v1) and P_384 (secp384r1) are supported.",
+            "Default value: P_256",
+            "Possible values = P_256, P_384"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "key",
+        "type": "str",
+        "description": [
+            "Name of and, optionally, path to the key file to be imported.",
+            "/nsconfig/ssl/ is the default path.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "inform",
+        "type": "str",
+        "choices": [
+            "SIM",
+            "DER",
+            "PEM"
+        ],
+        "description": [
+            "Input format of the key file. Available formats are:",
+            "SIM - Secure Information Management; select when importing a FIPS key. If the external FIPS key is encrypted, first decrypt it, and then import it.",
+            "PEM - Privacy Enhanced Mail; select when importing a non-FIPS key.",
+            "Default value: SIM",
+            "Possible values = SIM, DER, PEM"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "wrapkeyname",
+        "type": "str",
+        "description": [
+            "Name of the wrap key to use for importing the key. Required for importing a non-FIPS key.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "iv",
+        "type": "str",
+        "description": [
+            "Initialization Vector (IV) to use for importing the key. Required for importing a non-FIPS key.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

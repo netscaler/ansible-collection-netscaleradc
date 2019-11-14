@@ -1,0 +1,27 @@
+[
+    {
+        "option_name": "filename",
+        "type": "str",
+        "description": [
+            "File that contains the commands for which the rollback commands must be generated. Specify the full path of the file name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "outtype",
+        "type": "str",
+        "choices": [
+            "cli",
+            "xml"
+        ],
+        "description": [
+            "Format in which the rollback commands must be generated.",
+            "Possible values = cli, xml"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

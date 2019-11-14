@@ -1,0 +1,60 @@
+[
+    {
+        "option_name": "expression",
+        "type": "str",
+        "description": [
+            "Expression string. For example: http.req.body(100).contains(\"this\")."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "action",
+        "type": "str",
+        "description": [
+            "Rewrite action name. Supported rewrite action types are:",
+            "-delete",
+            "-delete_all",
+            "-delete_http_header",
+            "-insert_after",
+            "-insert_after_all",
+            "-insert_before",
+            "-insert_before_all",
+            "-insert_http_header",
+            "-replace",
+            "-replace_all",
+            ".",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "HTTP_REQ",
+            "HTTP_RES",
+            "TEXT"
+        ],
+        "description": [
+            "Indicates request or response input packet.",
+            "Possible values = HTTP_REQ, HTTP_RES, TEXT"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "input",
+        "type": "str",
+        "description": [
+            "Text representation of input packet."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]
