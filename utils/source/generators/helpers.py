@@ -1,15 +1,20 @@
 from collections import OrderedDict
+import copy
 import re
 
 def calculate_transforms_for_attribute(attribute):
 
     # Check for ON, OFF
     choice_set = set(attribute.get('choices',[]))
-    print(choice_set)
+    #print(choice_set)
     if set(choice_set) == set(['on', 'off']):
         return "lambda v: 'ON' if v else 'OFF'"
     elif set(choice_set) == set(['ON', 'OFF']):
         return "lambda v: 'ON' if v else 'OFF'"
+    elif set(choice_set) == set(['yes', 'no']):
+        return "lambda v: 'YES' if v else 'NO'"
+    elif set(choice_set) == set(['YES', 'NO']):
+        return "lambda v: 'YES' if v else 'NO'"
     elif set(choice_set) == set(['ENABLED', 'DISABLED']):
         return 'lambda v: v.upper()'
 
@@ -57,8 +62,12 @@ def calculate_doc_list(attribute_list, skip_attributes=[]):
         choice_set = set(attribute.get('choices',[]))
         if choice_set == set(['ON', 'OFF']):
             doc_item['choices'] = ['on', 'off']
+        elif choice_set == set(['YES', 'NO']):
+            doc_item['choices'] = ['yes', 'no']
         elif choice_set == set(['ENABLE', 'DISABLE']):
             doc_item['choices'] = ['enable', 'disable']
+        elif choice_set == set(['ENABLED', 'DISABLED']):
+            doc_item['choices'] = ['enabled', 'disabled']
         elif 'choices' in attribute:
             doc_item['choices'] = attribute['choices']
 
@@ -73,6 +82,9 @@ def calculate_doc_list(attribute_list, skip_attributes=[]):
         # Copy type
         attribute_type = attribute.get('type')
         if doc_item.get('choices') == ['on', 'off']:
+            doc_item['type'] = 'bool'
+            del doc_item['choices']
+        elif doc_item.get('choices') == ['yes', 'no']:
             doc_item['type'] = 'bool'
             del doc_item['choices']
         elif attribute_type == 'float':
@@ -96,28 +108,30 @@ def process_raw_description_lines(description_lines):
         if line.startswith('Default value'):
             continue
 
+        outline = copy.deepcopy(line)
         # Try to eclose minimum values in C()
         if line.startswith('Minimum value'):
-            m = re.match(r'Minimum value *= *(\d)+ *', line)
+            m = re.match(r'Minimum value *= *(\d+) *', line)
             if m is None:
                 raise Exception('Could not parse minimum value for line "{}"'.format(line))
-            line = 'Minimum value = C({})'.format(m.group(1))
+            outline = 'Minimum value = C({})'.format(m.group(1))
 
         # Try to eclose maximum values in C()
         if line.startswith('Maximum value'):
-            m = re.match(r'Maximum value *= *(\d)+ *', line)
-            if m is None:
+            m2 = re.match(r'Maximum value *= *(\d+) *', line)
+            if m2 is None:
                 raise Exception('Could not parse maximum value for line "{}"'.format(line))
-            line = 'Minimum value = C({})'.format(m.group(1))
+            outline = 'Maximum value = C({})'.format(m2.group(1))
 
-        ret_val.append(line)
+        ret_val.append(outline)
     return ret_val
 
 
 def calculate_attributes_config_dict(resource_name, attribute_list, skip_attributes=[]):
     attributes_config_dict = {}
     attributes_config_dict['resource_name'] = resource_name
-    attributes_config_dict['attributes'] = [item['option_name'] for item in attribute_list]
+    #attributes_config_dict['attributes'] = [item['option_name'] for item in attribute_list]
+    attributes_config_dict['attributes'] = []
 
     attributes_config_dict['transforms'] = OrderedDict()
     for attribute in attribute_list:
@@ -126,6 +140,7 @@ def calculate_attributes_config_dict(resource_name, attribute_list, skip_attribu
         if attribute['option_name'] in skip_attributes:
             continue
 
+        attributes_config_dict['attributes'].append(attribute['option_name'])
         transform = calculate_transforms_for_attribute(attribute)
         if transform is not None:
             key = attribute['option_name']

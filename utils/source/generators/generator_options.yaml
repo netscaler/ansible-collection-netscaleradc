@@ -1,5 +1,5 @@
 # Put generator options that are common across all generators here
 
 # Relative to HERE path
-nitro_api_defines: '../nitro_api_defines/kamet/appfw'
-#nitro_api_defines: '../nitro_api_defines/mana_41_28'
+#nitro_api_defines: '../nitro_api_defines/kamet/appfw'
+nitro_api_defines: '../nitro_api_defines/mana_41_28'

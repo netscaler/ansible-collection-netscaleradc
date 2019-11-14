@@ -1,0 +1,1005 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
+#  Copyright (c) 2018 Citrix Systems
+# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
+
+ANSIBLE_METADATA = {'metadata_version': '1.1',
+                    'status': ['preview'],
+                    'supported_by': 'community'}
+
+
+
+DOCUMENTATION = '''
+---
+module: citrix_adc_servicegroup
+short_description: Manage service group configuration in Netscaler
+description:
+    - Manage service group configuration in Netscaler.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+
+version_added: "2.4.0"
+
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
+
+options:
+#{% for item in main_object_doc_list %}
+#{% include 'single_option.template' %}
+#{% endfor %}
+
+    disabled:
+        description:
+            - When set to C(true) the server state will be set to C(disabled).
+            - When set to C(false) the server state will be set to C(enabled).
+        type: bool
+        default: false
+
+    servicemembers:
+        description: A list of dictionaries describing each service member of the service group.
+        suboptions:
+            mode:
+                description:
+                    - If mode is C(exact): 
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
+                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
+                    - If mode is C(bind):
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Existing bindings that are not on the attributes list remain unaffected.
+                    - If mode is C(unbind):
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
+                    - Existing bindings that are not on the attributes list remain unaffected.
+                    - If mode is C(dsapi):
+                    - The desired state api will be used to bind/unbind members.
+                    - As far as selection is concerned it is identical to the C(exact) method.
+                    - Note that in order to use this mode the servicegroup must have set the following option value I(autoscale=API).
+                    - Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)
+                choices:
+                    - exact
+                    - bind
+                    - unbind
+                    - dsapi
+            attributes:
+                type: list
+                suboptions: 
+                    #{% for item in servicemembers.doc_list %}{{ item.option_name }}:#{% if item.choices is defined %}
+                        choices:#{% for choice in item.choices %}
+                            - '{{ choice }}'#{% endfor %}#{% endif %}
+                        description:#{% for line in item.description %}#{% if line is not string %}
+                            - >-#{% for line_item in line %}
+                                {{ line_item }}#{% endfor %}#{% else %}
+                            - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
+                        type: {{ item.type }}#{% endif %}
+                    #{% endfor %}
+
+
+    monitor_bindings:
+        description: A list of monitor to bind to the servicegroup
+        suboptions:
+            mode:
+                description:
+                    - If mode is C(exact): 
+                    - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
+                    - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
+                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
+                    - If mode is C(bind):
+                    - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
+                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - Existing bindings that are not on the attributes list remain unaffected.
+                    - If mode is C(unbind):
+                    - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
+                    - Existing bindings that are not on the attributes list remain unaffected.
+                choices:
+                    - exact
+                    - bind
+                    - unbind
+            attributes:
+                type: list
+                suboptions: 
+                    #{% for item in monitor_bindings.doc_list %}{{ item.option_name }}:#{% if item.choices is defined %}
+                        choices:#{% for choice in item.choices %}
+                            - '{{ choice }}'#{% endfor %}#{% endif %}
+                        description:#{% for line in item.description %}#{% if line is not string %}
+                            - >-#{% for line_item in line %}
+                                {{ line_item }}#{% endfor %}#{% else %}
+                            - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
+                        type: {{ item.type }}#{% endif %}
+                    #{% endfor %}
+
+extends_documentation_fragment: netscaler
+'''
+
+EXAMPLES = '''
+# The LB Monitors monitor-1 and monitor-2 must already exist
+# Service members defined by C(ip) must not redefine an existing server's ip address.
+# Service members defined by C(servername) must already exist.
+
+- name: Setup http service with ip members
+  delegate_to: localhost
+  citrix_adc_servicegroup:
+    nsip: 172.18.0.2
+    nitro_user: nsroot
+    nitro_pass: nsroot
+
+    state: present
+
+    servicegroupname: service-group-1
+    servicetype: HTTP
+    servicemembers:
+        mode: exact
+        attributes:
+          - ip: 10.78.78.78
+            port: 80
+            weight: 50
+          - ip: 10.79.79.79
+            port: 80
+            weight: 40
+          - servername: server-1
+            port: 80
+            weight: 10
+
+    monitor_bindings:
+        mode: exact
+        attributes:
+          - monitorname: monitor-1
+            weight: 50
+          - monitorname: monitor-2
+            weight: 50
+'''
+
+RETURN = '''
+loglines:
+    description: list of logged messages by the module
+    returned: always
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+'''
+
+import copy
+from ansible.module_utils.basic import AnsibleModule
+from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
+
+
+class ModuleExecutor(object):
+    
+    def __init__(self, module):
+        self.module = module
+        self.fetcher = NitroAPIFetcher(self.module)
+        self.main_nitro_class = '{{ main_nitro_class }}'
+
+        # Dictionary containing attribute information
+        # for each NITRO object utilized by this module
+        self.attribute_config = {
+            #{% for item in attributes_config_list %}
+            '{{ item.resource_name }}': {
+                'attributes_list': [
+                    #{% for attribute in item.attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+                'transforms': {
+                    #{% for transform_key, transform_value in item.transforms.items() %}
+                    '{{ transform_key }}': {{ transform_value }},#{% endfor %}
+                },
+                'get_id_attributes': [
+                    #{% for attribute in item.get_id_attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+                'delete_id_attributes': [
+                    #{% for attribute in item.delete_id_attributes %}
+                    '{{ attribute }}',#{% endfor %}
+                ],
+                'non_updateable_attributes': [
+                    #{% for attribute in item.non_updateable_attributes %}
+                        '{{ attribute }}',#{% endfor %}
+                ],
+            },
+            #{% endfor %}
+            'servicemembers': {
+                'attributes_list': [
+                    #{%- for item in servicemembers.attributes_config.attributes %}
+                        '{{ item }}',#{% endfor %}
+                ],
+                'transforms': {
+                    #{%- for attribute, transform in servicemembers.attributes_config.transforms.items() %}
+                        '{{ attribute }}': {{ transform }},#{% endfor %}
+                },
+                'get_id_attributes': [
+                    #{%- for item in servicemembers.attributes_config.get_id_attributes %}
+                        '{{ item }}',#{% endfor %}
+                ],
+                'delete_id_attributes': [
+                    #{%- for item in servicemembers.attributes_config.delete_id_attributes %}
+                        '{{ item }}',#{% endfor %}
+                ]
+            },
+            'monitor_bindings': {
+                'attributes_list': [
+                    #{%- for item in monitor_bindings.attributes_config.attributes %}
+                        '{{ item }}',#{% endfor %}
+                ],
+                'transforms': {
+                    #{%- for attribute, transform in monitor_bindings.attributes_config.transforms.items() %}
+                        '{{ attribute }}': {{ transform }},#{% endfor %}
+                },
+                'get_id_attributes': [
+                    #{%- for item in monitor_bindings.attributes_config.get_id_attributes %}
+                        '{{ item }}',#{% endfor %}
+                ],
+                'delete_id_attributes': [
+                    #{%- for item in monitor_bindings.attributes_config.delete_id_attributes %}
+                        '{{ item }}',#{% endfor %}
+                ]
+            }
+        }
+
+        self.module_result = dict(
+            changed=False,
+            failed=False,
+            loglines=loglines,
+        )
+
+        self.calculate_configured_servicegroup()
+        self.calculate_configured_servicemembers()
+        self.calculate_configured_monitor_bindings()
+
+    def calculate_configured_servicegroup(self):
+        log('ModuleExecutor.calculate_configured_servicegroup()')
+        self.configured_servicegroup = {}
+        for attribute in self.attribute_config['servicegroup']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['servicegroup']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_servicegroup[attribute] = value
+
+        log('calculated configured servicegroup %s' % self.configured_servicegroup)
+
+    def calculate_configured_servicemembers(self):
+        log('ModuleExecutor.calculate_configured_servicemembers()')
+        self.configured_servicemembers = []
+        if self.module.params.get('servicemembers') is None:
+            return
+        for servicemember in self.module.params['servicemembers']['attributes']:
+            member = {}
+            member['servicegroupname'] = self.module.params['servicegroupname']
+            for attribute in self.attribute_config['servicemembers']['attributes_list']:
+                # Disregard null values
+                value = servicemember.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['servicemembers']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                member[attribute] = value
+            self.configured_servicemembers.append(member)
+        log('calculated configured service members %s' % self.configured_servicemembers)
+
+    def calculate_configured_monitor_bindings(self):
+        log('ModuleExecutor.calculate_configured_monitor_bindings()')
+        self.configured_monitor_bindings = []
+        if self.module.params.get('monitor_bindings') is None:
+            return
+        for monitor_binding in self.module.params['monitor_bindings']['attributes']:
+            member = {}
+            member['servicegroupname'] = self.module.params['servicegroupname']
+            for attribute in self.attribute_config['monitor_bindings']['attributes_list']:
+                # Disregard null values
+                value = monitor_binding.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['monitor_bindings']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                member[attribute] = value
+            self.configured_monitor_bindings.append(member)
+        log('calculated configured monitor bindings %s' % self.configured_monitor_bindings)
+
+
+    def servicegroup_exists(self):
+        log('ModuleExecutor.servicegroup_exists()')
+        result = self.fetcher.get('servicegroup', self.module.params['servicegroupname'])
+
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+            return True
+        elif result['nitro_errorcode'] == 258:
+            return False
+        else:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def _construct_present_values_dict(self):
+        non_null_attributes = self._get_non_null_attributes()
+        present_attributes = list(set(self.attribute_config['servicegroup']['attributes_list']) & set(non_null_attributes))
+        values_dict = {}
+        for attribute in present_attributes:
+            if attribute in self.attribute_config['servicegroup']['transforms']:
+                log('Found transform for %s' % attribute)
+                configured_value = self.attribute_config['servicegroup']['transforms'][attribute](self.module.params[attribute])
+            else:
+                configured_value = self.module.params[attribute]
+            values_dict[attribute] = configured_value
+        return values_dict
+
+    def create_servicegroup(self):
+        log('ModuleExecutor.create_servicegroup()')
+
+        post_data = {
+            'servicegroup': self.configured_servicegroup
+        }
+
+        result = self.fetcher.post(post_data=post_data, resource='servicegroup')
+        log('post data: %s' % post_data)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 201:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status']
+            self.module.fail_json(msg=msg, **self.module_result)
+
+    def update_servicegroup(self):
+        log('ModuleExecutor.update_servicegroup()')
+
+        # Catching trying to change non updateable attributes is done in self.servicegroup_identical()
+        put_payload = copy.deepcopy(self.configured_servicegroup)
+        for attribute in self.attribute_config['servicegroup']['non_updateable_attributes']:
+            if attribute in put_payload:
+                del put_payload[attribute]
+        # Check that non updateable values have not changed
+        put_data = {
+            'servicegroup': put_payload
+        }
+    
+        log('request put data: %s' % put_data)
+        result = self.fetcher.put(put_data=put_data, resource='servicegroup')
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def _get_non_null_attributes(self):
+        attributes_list = []
+        for key in self.module.params.keys():
+            if self.module.params.get(key) is not None:
+                attributes_list.append(key)
+
+        return attributes_list
+
+    def servicegroup_identical(self):
+        log('ModuleExecutor.servicegroup_identical()')
+        result = self.fetcher.get('servicegroup', self.module.params['servicegroupname'])
+        retrieved_object = result['data']['servicegroup'][0]
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+        # Only compare present attributes
+        non_null_attributes = self._get_non_null_attributes()
+        present_attributes = list(set(self.attribute_config['servicegroup']['attributes_list']) & set(non_null_attributes))
+        diff_list = []
+        non_updateable_list = []
+        for attribute in self.configured_servicegroup.keys():
+            retrieved_value = retrieved_object.get(attribute)
+            configured_value = self.configured_servicegroup.get(attribute)
+            if retrieved_value != configured_value:
+                str_tuple = (
+                    attribute,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                # Also append changed values to the non updateable list
+                if attribute in self.attribute_config['servicegroup']['non_updateable_attributes']:
+                    non_updateable_list.append(attribute)
+
+        self.module_result['diff_list'] = diff_list
+        if non_updateable_list != []:
+            msg = 'Cannot change value for the following non updateable attributes %s' % non_updateable_list
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if diff_list != []:
+            return False
+        else:
+            return True
+
+    def update_or_create(self):
+        log('ModuleExecutor.update_or_create()')
+
+        # Create or update main object
+        if not self.servicegroup_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                log('Service group does not exist. Will create.')
+                self.create_servicegroup()
+        else:
+            if not self.servicegroup_identical():
+                log('Existing servicegroup does not have identical values to configured. Will update.')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.update_servicegroup()
+            else:
+                log('Existing servicegroup has identical values to configured.')
+
+        self.sync_bindings()
+
+    def delete_servicegroup(self):
+
+        result = self.fetcher.delete(resource='servicegroup', id=self.module.params['servicegroupname'])
+        log('delete result %s' % result)
+
+        '''
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        '''
+
+    def delete(self):
+        log('ModuleExecutor.delete()')
+
+        if self.servicegroup_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.delete_servicegroup()
+
+
+
+    def get_existing_servicemembers(self):
+        log('ModuleExecutor.get_existing_servicemembers()')
+        result = self.fetcher.get('servicegroup_servicegroupmember_binding', self.module.params['servicegroupname'])
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'servicegroup_servicegroupmember_binding' in result['data']:
+            return result['data']['servicegroup_servicegroupmember_binding']
+        else:
+            return []
+
+    def servicemember_identical(self, configured, retrieved):
+        log('ModuleExecutor.servicemember_identical()')
+
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Servicemember attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
+
+    def _get_transformed_dict(self, transforms, values_dict):
+        actual_values_dict = {}
+        for key in values_dict:
+            value = values_dict.get(key)
+            transform = transforms.get(key)
+            if transform is not None:
+                value = transform(values_dict.get(key))
+            actual_values_dict[key] = value
+
+        return actual_values_dict
+
+    def add_servicemember(self, configured_dict):
+        put_values = copy.deepcopy(configured_dict)
+        put_values['servicegroupname'] = self.module.params['servicegroupname']
+        put_values = self._get_transformed_dict(
+            transforms = self.attribute_config['servicemembers']['transforms'],
+            values_dict = put_values
+        )
+        put_data = { 'servicegroup_servicegroupmember_binding': put_values }
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='servicegroup_servicegroupmember_binding',
+            id=self.module.params['servicegroupname'],
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_servicemember(self, configured_dict):
+        log('ModuleExecutor.delete_servicemember()')
+        servicemember = copy.deepcopy(configured_dict)
+        # If both ip and servername are present favor servername
+        if servicemember.get('ip') is not None and servicemember.get('servername') is not None:
+            del servicemember['ip']
+
+        args = {}
+        for attribute in self.attribute_config['servicemembers']['delete_id_attributes']:
+            value = servicemember.get(attribute)
+            if value is not None:
+                args[attribute] = value
+
+        result = self.fetcher.delete(
+            resource='servicegroup_servicegroupmember_binding',
+            id=self.module.params['servicegroupname'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def apply_dsapi(self):
+        log('ModuleExecutor.apply_dsapi()')
+
+        members = []
+        for configured in self.configured_servicemembers:
+            member = copy.deepcopy(configured)
+            del member['servicegroupname']
+            members.append(member)
+
+        put_data = {
+            'servicegroup_servicegroupmemberlist_binding': {
+                'servicegroupname': self.module.params['servicegroupname'],
+                'members': members,
+            }
+        }
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='servicegroup_servicegroupmemberlist_binding',
+        )
+
+        log('put result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def sync_servicemembers(self):
+
+        binding_key = 'servicemembers'
+        binding_object = 'servicegroup_servicegroupmember_binding'
+
+        def filter_delete_values_dict(existing_binding_values_dict):
+            # If both ip and servername are present favor servername
+            if existing_binding_values_dict.get('ip') is not None and existing_binding_values_dict.get('servername') is not None:
+                del existing_binding_values_dict['ip']
+
+        if self.module.params.get(binding_key) is None:
+            return
+
+        log('ModuleExecutor syncing binding %s' % binding_key)
+
+        mode = self.module.params[binding_key]['mode']
+        log('mode is %s' % mode)
+
+        try:
+            existing_servicemembers = self.get_existing_servicemembers()
+        except NitroException as e:
+            if e.errorcode == 258:
+                log('Parent Servicegroup does not exist. Nothing to do for binding.')
+                return
+            else:
+                raise
+
+        log('existing_servicemembers %s' % existing_servicemembers)
+
+        # First get the existing bindings
+        configured_already_present = []
+        if mode == 'exact':
+            # Delete any binding that is not exactly as the configured
+            for existing_servicemember in existing_servicemembers:
+                for configured_servicemember in self.configured_servicemembers:
+                    if self.servicemember_identical(configured_servicemember, existing_servicemember):
+                        configured_already_present.append(configured_servicemember)
+                        break
+                else:
+                    log('Will delete binding')
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.delete_servicemember(existing_servicemember)
+
+            # Create the bindings objects that we marked in previous loop
+            log('configured_already_present %s' % configured_already_present)
+            for configured_servicemember in self.configured_servicemembers:
+                if configured_servicemember in configured_already_present:
+                    log('Configured binding already exists')
+                    continue
+                else:
+                    log('Configured binding does not already exist')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.add_servicemember(configured_servicemember)
+
+        elif mode == 'bind':
+            for configured_servicemember in self.configured_servicemembers:
+                create_servicemember = True
+                for existing_servicemember in existing_servicemembers:
+                    if self.servicemember_identical(configured_servicemember, existing_servicemember):
+                        create_servicemember = False
+                        break
+                if create_servicemember:
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                       self.add_servicemember(configured_servicemember)
+
+        elif mode == 'unbind':
+            for configured_servicemember in self.configured_servicemembers:
+                delete_servicemember = False
+                for existing_servicemember in existing_servicemembers:
+                    if self.servicemember_identical(configured_servicemember, existing_servicemember):
+                        delete_servicemember = True
+                        break
+                if delete_servicemember:
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.delete_servicemember(configured_servicemember)
+        elif mode == 'dsapi':
+            log('dsapi application pondering')
+            apply_dsapi = False
+            log('lens %s %s' % (len(self.configured_servicemembers), len(existing_servicemembers)))
+            if len(self.configured_servicemembers) != len(existing_servicemembers):
+                apply_dsapi = True
+            else:
+                num_identical = 0
+                for configured_servicemember in self.configured_servicemembers:
+                    for existing_servicemember in existing_servicemembers:
+                        log('existing vs configured %s %s' % (existing_servicemember, configured_servicemember))
+                        if self.servicemember_identical(configured_servicemember, existing_servicemember):
+                            num_identical += 1
+                if num_identical > 0 and num_identical < len(self.configured_servicemembers):
+                    apply_dsapi = True
+            if apply_dsapi:
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.apply_dsapi()
+
+    def get_existing_monitor_bindings(self):
+        log('ModuleExecutor.get_existing_monitor_bindings()')
+        result = self.fetcher.get('servicegroup_lbmonitor_binding', self.module.params['servicegroupname'])
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'servicegroup_lbmonitor_binding' in result['data']:
+            return result['data']['servicegroup_lbmonitor_binding']
+        else:
+            return []
+
+    def add_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.add_monitor_binding()')
+
+        put_values = copy.deepcopy(configured_dict)
+        put_values['servicegroupname'] = self.module.params['servicegroupname']
+        put_values = self._get_transformed_dict(
+            transforms = self.attribute_config['monitor_bindings']['transforms'],
+            values_dict = put_values
+        )
+        put_data = { 'servicegroup_lbmonitor_binding': put_values }
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='servicegroup_lbmonitor_binding',
+            id=self.module.params['servicegroupname'],
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.delete_monitor_binding()')
+
+        monitor_binding = copy.deepcopy(configured_dict)
+
+        args = {}
+        for attribute in self.attribute_config['monitor_bindings']['delete_id_attributes']:
+            value = monitor_binding.get(attribute)
+            if value is not None:
+                args[attribute] = value
+
+        result = self.fetcher.delete(
+            resource='servicegroup_lbmonitor_binding',
+            id=self.module.params['servicegroupname'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def monitor_binding_identical(self, configured, retrieved):
+        log('ModuleExecutor.monitor_binding_identical()')
+
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Monitor binding attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
+
+    def sync_monitor_bindings(self):
+
+        if self.module.params.get('monitor_bindings') is None:
+            return
+
+        log('ModuleExecutor syncing monitor bindings')
+
+        mode = self.module.params['monitor_bindings']['mode']
+
+        try:
+            existing_monitor_bindings = self.get_existing_monitor_bindings()
+        except NitroException as e:
+            if e.errorcode == 258:
+                log('Parent Servicegroup does not exist. Nothing to do for binding.')
+                return
+            else:
+                raise
+
+        log('existing_monitor_bindings %s' % existing_monitor_bindings)
+
+        # First get the existing bindings
+        configured_already_present = []
+        if mode == 'exact':
+            # Delete any binding that is not exactly as the configured
+            for existing_monitor_binding in existing_monitor_bindings:
+                for configured_monitor_binding in self.configured_monitor_bindings:
+                    if self.monitor_binding_identical(configured_monitor_binding, existing_monitor_binding):
+                        configured_already_present.append(configured_monitor_binding)
+                        break
+                else:
+                    log('Will delete binding')
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.delete_monitor_binding(existing_monitor_binding)
+
+            # Create the bindings objects that we marked in previous loop
+            log('configured_already_present %s' % configured_already_present)
+            for configured_monitor_binding in self.configured_monitor_bindings:
+                if configured_monitor_binding in configured_already_present:
+                    log('Configured binding already exists')
+                    continue
+                else:
+                    log('Configured binding does not already exist')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.add_monitor_binding(configured_monitor_binding)
+
+        elif mode == 'bind':
+            for configured_monitor_binding in self.configured_monitor_bindings:
+                create_servicemember = True
+                for existing_monitor_binding in existing_monitor_bindings:
+                    if self.monitor_binding_identical(configured_monitor_binding, existing_monitor_binding):
+                        create_servicemember = False
+                        break
+                if create_servicemember:
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                       self.add_monitor_binding(configured_monitor_binding)
+
+        elif mode == 'unbind':
+            for configured_monitor_binding in self.configured_monitor_bindings:
+                delete_servicemember = False
+                for existing_monitor_binding in existing_monitor_bindings:
+                    if self.monitor_binding_identical(configured_monitor_binding, existing_monitor_binding):
+                        delete_servicemember = True
+                        break
+                if delete_servicemember:
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.delete_servicemember(configured_monitor_binding)
+
+
+    def sync_bindings(self):
+        log('ModuleExecutor.sync_bindings()')
+        self.sync_servicemembers()
+        self.sync_monitor_bindings()
+
+    def do_state_change(self):
+        log('ModuleExecutor.do_state_change()')
+        if self.module.check_mode:
+            return
+
+        # Fallthrough
+        operation_attributes = [
+            'graceful',
+            'delay',
+        ]
+        post_data = {
+            'servicegroup':{
+                'servicegroupname': self.configured_servicegroup['servicegroupname'],
+            }
+        }
+        for attribute in operation_attributes:
+            value = self.configured_servicegroup.get(attribute)
+            if value is not None:
+                post_data['servicegroup'][attribute] = value
+
+        disabled = self.module.params['disabled']
+        args = {}
+        if disabled:
+            action = 'disable'
+        else:
+            action = 'enable'
+
+        log('disable/enable post data %s' % post_data)
+        result = self.fetcher.post(post_data=post_data, resource='servicegroup', action=action)
+        log('result of post %s' % result)
+
+        if result['http_response_data']['status'] != 200:
+            msg = 'Disable/Enable operation failed'
+            self.module.fail_json(msg=msg, **self.module_result)
+
+
+
+    def main(self):
+        try:
+
+            if self.module.params['state'] == 'present':
+                self.update_or_create()
+                self.do_state_change()
+            elif self.module.params['state'] == 'absent':
+                self.delete()
+
+            self.module.exit_json(**self.module_result)
+
+        except NitroException as e:
+            msg = "nitro exception errorcode=%s, message=%s, severity=%s" % (str(e.errorcode), e.message, e.severity)
+            self.module.fail_json(msg=msg, **self.module_result)
+        except Exception as e:
+            msg = 'Exception %s: %s' % (type(e), str(e))
+            self.module.fail_json(msg=msg, **self.module_result)
+
+
+
+def main():
+
+
+    argument_spec = dict()
+
+    module_specific_arguments = dict(
+        #{% for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' %}
+        #{% endfor %}
+
+        disabled=dict(
+            type='bool',
+            default=False,
+        ),
+
+        servicemembers=dict(type='dict',
+            options=dict(
+                mode=dict(type='str', choices=['exact', 'bind', 'unbind', 'dsapi']),
+                attributes=dict(
+                    type='list',
+                    options=dict(
+                    #{%- for item in servicemembers.doc_list %}
+                        {{item.option_name}}=dict(#{% if item.choices -%}
+                        type='{{item.type}}',
+                            choices=[#{% for choice in item.choices %}
+                                '{{ choice }}',#{% endfor %}
+                            ]
+                        ),#{% else %}type='{{item.type}}'),#{% endif %}
+                    #{%- endfor %}
+                    ),
+                ),
+            )
+        ),
+
+        monitor_bindings=dict(type='dict',
+            options=dict(
+                mode=dict(type='str', choices=['exact', 'bind', 'unbind']),
+                attributes=dict(
+                    type='list',
+                    options=dict(
+                    #{%- for item in monitor_bindings.doc_list %}
+                        {{item.option_name}}=dict(#{% if item.choices -%}
+                        type='{{item.type}}',
+                            choices=[#{% for choice in item.choices %}
+                                '{{ choice }}',#{% endfor %}
+                            ]
+                        ),#{% else %}type='{{item.type}}'),#{% endif %}
+                    #{%- endfor %}
+                    ),
+                ),
+            )
+        ),
+    )
+
+
+    argument_spec.update(netscaler_common_arguments)
+    argument_spec.update(module_specific_arguments)
+
+
+    module = AnsibleModule(
+        argument_spec=argument_spec,
+        supports_check_mode=True,
+    )
+
+    executor = ModuleExecutor(module=module)
+    executor.main()
+
+
+if __name__ == '__main__':
+    main()
