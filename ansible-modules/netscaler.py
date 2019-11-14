@@ -455,7 +455,7 @@ class NitroAPIFetcher(object):
         query_dict = {}
 
         # Construct args
-        args_val = ','.join(['%s:%s' % (k, quote(args[k], safe='')) for k in args])
+        args_val = ','.join(['%s:%s' % (k, quote(codecs.encode(str(args[k])), safe='')) for k in args])
 
         if args_val != '':
             args_val = 'args=%s' % args_val
@@ -491,15 +491,19 @@ class NitroAPIFetcher(object):
 
         return query_params
 
-    def put(self, put_data, resource, id):
+    def put(self, put_data, resource=None, id=None):
 
-        url = '%s://%s/%s/%s/%s' % (
+        url = '%s://%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
             self.api_path,
-            resource,
-            id,
         )
+
+        if resource is not None:
+            url = '%s/%s' % (url, resource)
+
+        if id is not None:
+            url = '%s/%s' % (url, id)
 
         data = self._module.jsonify(put_data)
 
@@ -859,6 +863,7 @@ class NitroResourceConfig(object):
 
         update_object_resource = "{}{}".format(self.resource, "?action=update")
         result = self.fetcher.post(post_data=post_data, resource=update_object_resource)
+        log('post data: %s' % post_data)
         log('result of post: %s' % result)
         if result['http_response_data']['status'] == 200:
             if result.get('nitro_errorcode') is not None:
@@ -889,6 +894,7 @@ class NitroResourceConfig(object):
         }
 
         result = self.fetcher.post(post_data=post_data, resource=self.resource)
+        log('post data: %s' % post_data)
         log('result of post: %s' % result)
         if result['http_response_data']['status'] == 201:
             if result.get('nitro_errorcode') is not None:
@@ -1087,6 +1093,7 @@ class MASResourceConfig(object):
             self.resource: self.values_dict
         }
         result = self.fetcher.post(post_data=post_data, resource=self.resource)
+        log('post data: %s' % post_data)
         log('result of post: %s' % result)
         if result['nitro_errorcode'] not in success_codes:
             raise NitroException(
@@ -1115,6 +1122,7 @@ class MASResourceConfig(object):
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource=self.resource, id=id)
 
+        log('put data: ' % put_data)
         log('result of put: %s' % result)
 
         if result['nitro_errorcode'] not in success_codes:
