@@ -394,6 +394,9 @@ options:
                     - If mode is C(dsapi):
                     - The desired state api will be used to bind/unbind members.
                     - As far as selection is concerned it is identical to the C(exact) method.
+                    - In this mode a result of C(changed=true) will always be reported.
+                    - The reason is in order to capitalize on the speed of the desired state API we do not read the existing members from the servicegroup.
+                    - As a result of this we are unable to assert if the declared configuration will actually change the target ADC configuration.
                     - Note that in order to use this mode the servicegroup must have set the following option value I(autoscale=API).
                     - Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)
                 choices:
@@ -978,14 +981,12 @@ class ModuleExecutor(object):
         result = self.fetcher.delete(resource='servicegroup', id=self.module.params['servicegroupname'])
         log('delete result %s' % result)
 
-        '''
         if result['nitro_errorcode'] != 0:
             raise NitroException(
                 errorcode=result['nitro_errorcode'],
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
-        '''
 
     def delete(self):
         log('ModuleExecutor.delete()')
@@ -1204,24 +1205,10 @@ class ModuleExecutor(object):
                     if not self.module.check_mode:
                         self.delete_servicemember(configured_servicemember)
         elif mode == 'dsapi':
-            log('dsapi application pondering')
-            apply_dsapi = False
-            log('lens %s %s' % (len(self.configured_servicemembers), len(existing_servicemembers)))
-            if len(self.configured_servicemembers) != len(existing_servicemembers):
-                apply_dsapi = True
-            else:
-                num_identical = 0
-                for configured_servicemember in self.configured_servicemembers:
-                    for existing_servicemember in existing_servicemembers:
-                        log('existing vs configured %s %s' % (existing_servicemember, configured_servicemember))
-                        if self.servicemember_identical(configured_servicemember, existing_servicemember):
-                            num_identical += 1
-                if num_identical > 0 and num_identical < len(self.configured_servicemembers):
-                    apply_dsapi = True
-            if apply_dsapi:
-                self.module_result['changed'] = True
-                if not self.module.check_mode:
-                    self.apply_dsapi()
+            log('dsapi application')
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.apply_dsapi()
 
     def get_existing_monitor_bindings(self):
         log('ModuleExecutor.get_existing_monitor_bindings()')

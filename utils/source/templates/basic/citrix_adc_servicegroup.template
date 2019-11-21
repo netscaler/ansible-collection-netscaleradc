@@ -29,8 +29,15 @@ author:
 
 options:
 #{% for item in main_object_doc_list %}
-#{% include 'single_option.template' %}
-#{% endfor %}
+    {{ item.option_name }}:#{% if item.choices is defined %}
+        choices:#{% for choice in item.choices %}
+            - '{{ choice }}'#{% endfor %}#{% endif %}
+        description:#{% for line in item.description %}#{% if line is not string %}
+            - >-#{% for line_item in line %}
+                {{ line_item }}#{% endfor %}#{% else %}
+            - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
+        type: {{ item.type }}#{% endif -%}
+#{% endfor -%}
 
     disabled:
         description:
@@ -44,7 +51,7 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - If mode is C(exact):
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
@@ -55,8 +62,11 @@ options:
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(dsapi):
-                    - The desired state api will be used to bind/unbind members.
+                    - The desired state API will be used to bind/unbind members.
                     - As far as selection is concerned it is identical to the C(exact) method.
+                    - In this mode a result of C(changed=true) will always be reported.
+                    - The reason is in order to capitalize on the speed of the desired state API we do not read the existing members from the servicegroup.
+                    - As a result of this we are unable to assert if the declared configuration will actually change the target ADC configuration.
                     - Note that in order to use this mode the servicegroup must have set the following option value I(autoscale=API).
                     - Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)
                 choices:
@@ -66,7 +76,7 @@ options:
                     - dsapi
             attributes:
                 type: list
-                suboptions: 
+                suboptions:
                     #{% for item in servicemembers.doc_list %}{{ item.option_name }}:#{% if item.choices is defined %}
                         choices:#{% for choice in item.choices %}
                             - '{{ choice }}'#{% endfor %}#{% endif %}
@@ -74,8 +84,7 @@ options:
                             - >-#{% for line_item in line %}
                                 {{ line_item }}#{% endfor %}#{% else %}
                             - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
-                        type: {{ item.type }}#{% endif %}
-                    #{% endfor %}
+                        type: {{ item.type }}#{% endif %}#{% endfor %}
 
 
     monitor_bindings:
@@ -83,7 +92,7 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - If mode is C(exact):
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
@@ -100,7 +109,7 @@ options:
                     - unbind
             attributes:
                 type: list
-                suboptions: 
+                suboptions:
                     #{% for item in monitor_bindings.doc_list %}{{ item.option_name }}:#{% if item.choices is defined %}
                         choices:#{% for choice in item.choices %}
                             - '{{ choice }}'#{% endfor %}#{% endif %}
@@ -108,8 +117,7 @@ options:
                             - >-#{% for line_item in line %}
                                 {{ line_item }}#{% endfor %}#{% else %}
                             - {{ line }}#{% endif %}#{% endfor %}#{% if item.type is defined %}
-                        type: {{ item.type }}#{% endif %}
-                    #{% endfor %}
+                        type: {{ item.type }}#{% endif %}#{% endfor %}
 
 extends_documentation_fragment: netscaler
 '''
@@ -172,7 +180,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.fetcher = NitroAPIFetcher(self.module)
@@ -181,30 +189,30 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
+            #{%- for item in attributes_config_list %}
             '{{ item.resource_name }}': {
                 'attributes_list': [
-                    #{% for attribute in item.attributes %}
+                    #{%- for attribute in item.attributes %}
                     '{{ attribute }}',#{% endfor %}
                 ],
                 'transforms': {
-                    #{% for transform_key, transform_value in item.transforms.items() %}
+                    #{%- for transform_key, transform_value in item.transforms.items() %}
                     '{{ transform_key }}': {{ transform_value }},#{% endfor %}
                 },
                 'get_id_attributes': [
-                    #{% for attribute in item.get_id_attributes %}
+                    #{%- for attribute in item.get_id_attributes %}
                     '{{ attribute }}',#{% endfor %}
                 ],
                 'delete_id_attributes': [
-                    #{% for attribute in item.delete_id_attributes %}
+                    #{%- for attribute in item.delete_id_attributes %}
                     '{{ attribute }}',#{% endfor %}
                 ],
                 'non_updateable_attributes': [
-                    #{% for attribute in item.non_updateable_attributes %}
+                    #{%- for attribute in item.non_updateable_attributes %}
                         '{{ attribute }}',#{% endfor %}
                 ],
             },
-            #{% endfor %}
+            #{% endfor -%}
             'servicemembers': {
                 'attributes_list': [
                     #{%- for item in servicemembers.attributes_config.attributes %}
@@ -378,7 +386,7 @@ class ModuleExecutor(object):
         put_data = {
             'servicegroup': put_payload
         }
-    
+
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource='servicegroup')
 
@@ -468,14 +476,12 @@ class ModuleExecutor(object):
         result = self.fetcher.delete(resource='servicegroup', id=self.module.params['servicegroupname'])
         log('delete result %s' % result)
 
-        '''
         if result['nitro_errorcode'] != 0:
             raise NitroException(
                 errorcode=result['nitro_errorcode'],
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
-        '''
 
     def delete(self):
         log('ModuleExecutor.delete()')
@@ -694,24 +700,10 @@ class ModuleExecutor(object):
                     if not self.module.check_mode:
                         self.delete_servicemember(configured_servicemember)
         elif mode == 'dsapi':
-            log('dsapi application pondering')
-            apply_dsapi = False
-            log('lens %s %s' % (len(self.configured_servicemembers), len(existing_servicemembers)))
-            if len(self.configured_servicemembers) != len(existing_servicemembers):
-                apply_dsapi = True
-            else:
-                num_identical = 0
-                for configured_servicemember in self.configured_servicemembers:
-                    for existing_servicemember in existing_servicemembers:
-                        log('existing vs configured %s %s' % (existing_servicemember, configured_servicemember))
-                        if self.servicemember_identical(configured_servicemember, existing_servicemember):
-                            num_identical += 1
-                if num_identical > 0 and num_identical < len(self.configured_servicemembers):
-                    apply_dsapi = True
-            if apply_dsapi:
-                self.module_result['changed'] = True
-                if not self.module.check_mode:
-                    self.apply_dsapi()
+            log('dsapi application')
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.apply_dsapi()
 
     def get_existing_monitor_bindings(self):
         log('ModuleExecutor.get_existing_monitor_bindings()')
@@ -939,8 +931,13 @@ def main():
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        {{item.option_name}}=dict(#{% if item.choices %}
+                    type='{{item.type}}',
+                    choices=[#{% for choice in item.choices %}
+                        '{{ choice }}',#{% endfor %}
+                    ]
+                ),#{% else %}type='{{item.type}}'),#{% endif -%}
         #{% endfor %}
 
         disabled=dict(
