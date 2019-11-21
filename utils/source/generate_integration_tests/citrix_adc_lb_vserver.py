@@ -42,22 +42,21 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('servicegroupname', 'service-group-1'),
             ('servicetype', 'HTTP'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
-                                            ('servername','server-3'),
-                                            ('port', 80),
-                                            ('weight', 50),
-                                        ]
-                                    ),
-                                    OrderedDict(
-                                        [
-                                            ('servername','server-4'),
-                                            ('port', 80),
-                                            ('weight', 50),
-                                        ]
-                                    ),
-                                ]
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [ 
+                                        OrderedDict([
+                                                ('servername','server-3'),
+                                                ('port', 80),
+                                                ('weight', 50),
+                                        ]),
+                                        OrderedDict([
+                                                ('servername','server-4'),
+                                                ('port', 80),
+                                                ('weight', 50),
+                                        ]),
+                                    ])
+                                ])
             ),
         ]
     )
@@ -68,22 +67,21 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('servicegroupname', 'service-group-2'),
             ('servicetype', 'HTTP'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
-                                            ('servername','server-5'),
-                                            ('port', 80),
-                                            ('weight', 50),
-                                        ]
-                                    ),
-                                    OrderedDict(
-                                        [
-                                            ('servername','server-6'),
-                                            ('port', 80),
-                                            ('weight', 50),
-                                        ]
-                                    ),
-                                ]
+            ('servicemembers',  OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                         OrderedDict([
+                                                ('servername','server-5'),
+                                                ('port', 80),
+                                                ('weight', 50),
+                                        ]),
+                                        OrderedDict([
+                                                ('servername','server-6'),
+                                                ('port', 80),
+                                                ('weight', 50),
+                                        ]),
+                                    ])
+                                ])
             ),
         ]
     )
