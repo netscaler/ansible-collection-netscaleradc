@@ -150,21 +150,21 @@ def dsapi_test(input_data):
             ),
         ]
     )
-    submodObj.add_operation('setup', copy.deepcopy(data))
+    submodObj.add_operation('setup', copy.deepcopy(data), run_once=True)
 
     altered_member_1 = copy.deepcopy(member_1)
     altered_member_1['weight'] = 50
     data['servicemembers']['attributes'] = [altered_member_1, member_2]
-    submodObj.add_operation('update_alter_member', copy.deepcopy(data))
+    submodObj.add_operation('update_alter_member', copy.deepcopy(data), run_once=True)
 
     data['servicemembers']['attributes'] = [member_2]
-    submodObj.add_operation('update_remove_member', copy.deepcopy(data))
+    submodObj.add_operation('update_remove_member', copy.deepcopy(data), run_once=True)
 
     data['servicemembers']['attributes'] = [member_2, member_1]
-    submodObj.add_operation('update_readd_member', copy.deepcopy(data))
+    submodObj.add_operation('update_readd_member', copy.deepcopy(data), run_once=True)
 
     data['state'] = 'absent'
-    submodObj.add_operation('remove', copy.deepcopy(data))
+    submodObj.add_operation('remove', copy.deepcopy(data), run_once=True)
 
     input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
 
