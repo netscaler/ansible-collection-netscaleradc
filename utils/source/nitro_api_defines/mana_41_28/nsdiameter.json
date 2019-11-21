@@ -1,0 +1,61 @@
+[
+    {
+        "option_name": "identity",
+        "type": "str",
+        "description": [
+            "DiameterIdentity to be used by NS. DiameterIdentity is used to identify a Diameter node uniquely. Before setting up diameter configuration, Citrix ADC (as a Diameter node) MUST be assigned a unique DiameterIdentity.",
+            "example =>",
+            "set ns diameter -identity netscaler.com",
+            "Now whenever Citrix ADC needs to use identity in diameter messages. It will use 'netscaler.com' as Origin-Host AVP as defined in RFC3588",
+            ".",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "realm",
+        "type": "str",
+        "description": [
+            "Diameter Realm to be used by NS.",
+            "example =>",
+            "set ns diameter -realm com",
+            "Now whenever Citrix ADC system needs to use realm in diameter messages. It will use 'com' as Origin-Realm AVP as defined in RFC3588",
+            ".",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "serverclosepropagation",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "when a Server connection goes down, whether to close the corresponding client connection if there were requests pending on the server.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ownernode",
+        "type": "float",
+        "description": [
+            "ID of the cluster node for which the diameter id is set, can be configured only through CLIP.",
+            "Default value: -1",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -11,8 +11,17 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_lb_monitor')
     testbed = OrderedDict(
         [
-            ('monitorname', 'monitor-1'),
+            ('monitorname', 'monitor-http'),
             ('type', 'HTTP'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_lb_monitor')
+    testbed = OrderedDict(
+        [
+            ('monitorname', 'monitor-http-inline'),
+            ('type', 'HTTP-INLINE'),
         ]
     )
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
@@ -20,8 +29,8 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_lb_monitor')
     testbed = OrderedDict(
         [
-            ('monitorname', 'monitor-2'),
-            ('type', 'HTTP'),
+            ('monitorname', 'monitor-tcp'),
+            ('type', 'TCP'),
         ]
     )
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
@@ -44,8 +53,121 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     )
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
 
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', 'server_by_name_1'),
+            ('ipaddress', '10.80.80.80'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbed = OrderedDict(
+        [
+            ('name', 'server_by_name_2'),
+            ('ipaddress', '10.90.90.90'),
+        ]
+    )
+    testbed_data.append(testbedObj.add_testbed('setup', testbed))
+
     return testbed_data
-    
+
+def bind_unbind_servicemembers(input_data):
+    test_type='citrix_adc_direct_calls'
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'servicegroup_bind_unbind')
+    member_by_ip = OrderedDict([
+                                ('ip','10.78.78.78'),
+                                ('port',80),
+                                ('weight',100),
+                            ])
+    member_by_name = OrderedDict([
+                        ('servername', 'server_by_name_1'),
+                        ('port', 80),
+                        ('weight', 100),
+                    ])
+    data = OrderedDict(
+        [
+            ('servicegroupname', 'service-group-bind-unbind'),
+            ('servicetype', 'HTTP'),
+            ('state', 'present'),
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'bind'),
+                                    ('attributes', [ member_by_ip ]),
+                                ]),
+            ),
+        ]
+    )
+    submodObj.add_operation('setup', copy.deepcopy(data))
+
+    # Add a member
+    data['servicemembers']['attributes'].append(member_by_name)
+
+    submodObj.add_operation('bind_additional_servicemember', copy.deepcopy(data))
+
+    # Unbind members
+    data['servicemembers']['mode'] = 'unbind'
+    data['servicemembers']['attributes'] = [member_by_name]
+    submodObj.add_operation('unbind_servicemember_by_name', copy.deepcopy(data))
+
+
+    data['servicemembers']['attributes'] = [ member_by_name, member_by_ip]
+    submodObj.add_operation('unbind_servicemember_by_ip', copy.deepcopy(data))
+
+    data['state'] = 'absent'
+
+    submodObj.add_operation('remove', copy.deepcopy(data))
+
+    input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
+
+
+def dsapi_test(input_data):
+    test_type='citrix_adc_direct_calls'
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'servicegroup_dsapi')
+
+    member_1 = OrderedDict([
+                ('ip','10.78.78.78'),
+                ('port',80),
+                ('weight',100),
+            ])
+
+    member_2 = OrderedDict([
+                ('ip','10.79.79.79'),
+                ('port',80),
+                ('weight',100),
+            ])
+
+    data = OrderedDict(
+        [
+            ('servicegroupname', 'service-group-dsapi'),
+            ('servicetype', 'HTTP'),
+            ('state', 'present'),
+            ('autoscale', 'API'),
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'dsapi'),
+                                    ('attributes', [ member_1, member_2 ]),
+                                ]),
+            ),
+        ]
+    )
+    submodObj.add_operation('setup', copy.deepcopy(data), run_once=True)
+
+    altered_member_1 = copy.deepcopy(member_1)
+    altered_member_1['weight'] = 50
+    data['servicemembers']['attributes'] = [altered_member_1, member_2]
+    submodObj.add_operation('update_alter_member', copy.deepcopy(data), run_once=True)
+
+    data['servicemembers']['attributes'] = [member_2]
+    submodObj.add_operation('update_remove_member', copy.deepcopy(data), run_once=True)
+
+    data['servicemembers']['attributes'] = [member_2, member_1]
+    submodObj.add_operation('update_readd_member', copy.deepcopy(data), run_once=True)
+
+    data['state'] = 'absent'
+    submodObj.add_operation('remove', copy.deepcopy(data), run_once=True)
+
+    input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
+
 
 def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     input_data = OrderedDict()
@@ -56,15 +178,16 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('state','present'),
             ('servicegroupname','service-group-1'),
             ('servicetype','HTTP'),
-            ('servicemembers',[
-                                OrderedDict(
-                                    [
-                                        ('ip','10.78.78.78'),
-                                        ('port', 80),
-                                        ('weight', 100),
-                                    ]
-                                ),
-                              ]
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes',  [OrderedDict(
+                                        [
+                                            ('ip','10.78.78.78'),
+                                            ('port', 80),
+                                            ('weight', 100),
+                                        ]
+                                      )]),
+                                ])
             ),
             ('disabled','{{ item|int % 2 }}'),
         ]
@@ -81,15 +204,16 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('state','present'),
             ('servicegroupname','service-group-1'),
             ('servicetype','HTTP'),
-            ('servicemembers',[
-                                OrderedDict(
+            ('servicemembers', OrderedDict([
+                                ('mode', 'exact'),
+                                ('attributes', [OrderedDict(
                                     [
                                         ('ip','10.78.78.78'),
                                         ('port', 80),
                                         ('weight', 100),
                                     ]
-                                ),
-                              ]
+                                )]),
+                              ])
             ),
             ('disabled','{{ item|int % 2 }}'),
         ]
@@ -148,16 +272,16 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('appflowlog', 'enabled'),
             # ('autoscale', 'POLICY'),
             # ('memberport', 80),
-            ('graceful', 'no'),
-            ('servicemembers', [
-                                    OrderedDict(
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [OrderedDict(
                                         [
                                             ('ip','10.78.78.78'),
                                             ('port',80),
                                             ('weight',100),
                                         ]
-                                    ),
-                                ]
+                                    )]),
+                                ])
             )
         ]
     )
@@ -191,23 +315,21 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('appflowlog', 'enabled'),
             # ('autoscale', 'POLICY'),
             # ('memberport', 80),
-            ('graceful', 'no'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
-                                            ('ip','10.78.78.78'),
-                                            ('port',80),
-                                            ('weight',100),
-                                        ]
-                                    ),
-                                    OrderedDict(
-                                        [
-                                            ('ip','10.79.79.79'),
-                                            ('port',80),
-                                            ('weight',50),
-                                        ]
-                                    ),
-                                ]
+            ('servicemembers', OrderedDict([
+                                        ('mode', 'exact'),
+                                        ('attributes', [
+                                            OrderedDict([
+                                                ('ip','10.78.78.78'),
+                                                ('port',80),
+                                                ('weight', 100),
+                                            ]),
+                                            OrderedDict([
+                                                ('ip','10.79.79.79'),
+                                                ('port',80),
+                                                ('weight', 50),
+                                            ]),
+                                        ])
+                                    ]),
             ),
         ]
     )
@@ -232,77 +354,86 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
         [
             ('servicegroupname', 'service-group-1'),
             ('servicetype', 'HTTP'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
-                                            ('ip','10.78.78.78'),
-                                            ('port',80),
-                                            ('weight',100),
-                                        ]
-                                    ),
-                                ]
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                        OrderedDict(
+                                            [
+                                                ('ip','10.78.78.78'),
+                                                ('port',80),
+                                                ('weight', 100),
+                                            ]
+                                        ),
+                                    ])
+                                ]),
             ),
-            ('monitorbindings', [
-                                    OrderedDict(
-                                        [
-                                            ('monitorname','monitor-1'),
-                                            ('weight',50),
-                                        ]
-                                    ),
-                                    OrderedDict(
-                                        [
-                                            ('monitorname','monitor-2'),
-                                            ('weight',50),
-                                        ]
-                                    ),
-                                ]
+            ('monitor_bindings', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                         OrderedDict(
+                                            [
+                                                ('monitor_name','monitor-http'),
+                                                ('weight',50),
+                                            ]
+                                        ),
+                                        OrderedDict(
+                                            [
+                                                ('monitor_name','monitor-tcp'),
+                                                ('weight',50),
+                                            ]
+                                        ),
+                                    ]),
+                                ])
             ),
-        ]
-    )
-    update_data = OrderedDict(
-        [
+    ])
+    update_data = OrderedDict([
             ('servicegroupname', 'service-group-1'),
             ('servicetype', 'HTTP'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                        OrderedDict([
                                             ('ip','10.78.78.78'),
                                             ('port',80),
-                                            ('weight',100),
-                                        ]
-                                    ),
-                                ]
+                                            ('weight', 100),
+                                        ])
+                                    ]),
+                                ])
             ),
-            ('monitorbindings', [
-                                    OrderedDict(
-                                        [
-                                            ('monitorname','monitor-1'),
+            ('monitor_bindings', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                        OrderedDict([
+                                            ('monitor_name','monitor-http'),
                                             ('weight',80),
-                                        ]
-                                    ),
-                                    OrderedDict(
-                                        [
-                                            ('monitorname','monitor-2'),
+                                        ]),
+                                        OrderedDict([
+                                            ('monitor_name','monitor-tcp'),
                                             ('weight',20),
-                                        ]
-                                    ),
-                                ]
-            ),
-        ]
-    )
+                                        ]),
+                                    ])
+                                ]),
+            )
+        ])
     default_only_data = OrderedDict(
         [
             ('servicegroupname', 'service-group-1'),
             ('servicetype', 'HTTP'),
-            ('servicemembers', [
-                                    OrderedDict(
-                                        [
+            ('servicemembers', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [
+                                        OrderedDict([
                                             ('ip','10.78.78.78'),
                                             ('port',80),
                                             ('weight',100),
-                                        ]
-                                    ),
-                                ]
+                                        ]),
+                                    ])
+                                ])
+            ),
+            ('monitor_bindings', OrderedDict([
+                                    ('mode', 'exact'),
+                                    ('attributes', [])
+                                ]),
             ),
         ]
     )
@@ -320,6 +451,12 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     submodObj.add_operation('update',update_data)
     submodObj.add_operation('default_only', default_only_data)
     submodObj.add_operation('remove', remove_data)
+
+    # Do the bind unbind tests
+    bind_unbind_servicemembers(input_data)
+
+    # Do the dsapi tests
+    dsapi_test(input_data)
     
     input_data.update({submodObj.get_sub_mod_name(): copy.deepcopy(submodObj.get_mod_attrib())})
     return input_data

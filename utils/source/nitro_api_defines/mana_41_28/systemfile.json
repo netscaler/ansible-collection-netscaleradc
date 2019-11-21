@@ -1,0 +1,45 @@
+[
+    {
+        "option_name": "filename",
+        "type": "str",
+        "description": [
+            "Name of the file. It should not include filepath.",
+            "Maximum length =  63"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "filecontent",
+        "type": "str",
+        "description": [
+            "file content in Base64 format."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "filelocation",
+        "type": "str",
+        "description": [
+            "location of the file on Citrix ADC.",
+            "Maximum length =  127"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "fileencoding",
+        "type": "str",
+        "description": [
+            "encoding type of the file content.",
+            "Default value: \"BASE64\""
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

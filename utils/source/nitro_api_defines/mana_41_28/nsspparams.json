@@ -1,0 +1,32 @@
+[
+    {
+        "option_name": "basethreshold",
+        "type": "int",
+        "description": [
+            "Maximum number of server connections that can be opened before surge protection is activated.",
+            "Default value: 200",
+            "Minimum value =  0",
+            "Maximum value =  32767"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "throttle",
+        "type": "str",
+        "choices": [
+            "Aggressive",
+            "Normal",
+            "Relaxed"
+        ],
+        "description": [
+            "Rate at which the system opens connections to the server.",
+            "Default value: Normal",
+            "Possible values = Aggressive, Normal, Relaxed"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

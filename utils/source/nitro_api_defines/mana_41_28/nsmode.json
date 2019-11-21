@@ -1,0 +1,41 @@
+[
+    {
+        "option_name": "mode",
+        "type": "list",
+        "choices": [
+            "FR",
+            "FastRamp",
+            "L2",
+            "L2mode",
+            "L3",
+            "L3mode",
+            "USIP",
+            "UseSourceIP",
+            "CKA",
+            "ClientKeepAlive",
+            "TCPB",
+            "TCPBuffering",
+            "MBF",
+            "MACbasedforwarding",
+            "Edge",
+            "USNIP",
+            "SRADV",
+            "DRADV",
+            "IRADV",
+            "SRADV6",
+            "DRADV6",
+            "PMTUD",
+            "RISE_APBR",
+            "RISE_RHI",
+            "BridgeBPDUs",
+            "ULFD"
+        ],
+        "description": [
+            "Mode to be enabled. Multiple modes can be specified by providing a blank space between each mode.",
+            "Possible values = FR, FastRamp, L2, L2mode, L3, L3mode, USIP, UseSourceIP, CKA, ClientKeepAlive, TCPB, TCPBuffering, MBF, MACbasedforwarding, Edge, USNIP, SRADV, DRADV, IRADV, SRADV6, DRADV6, PMTUD, RISE_APBR, RISE_RHI, BridgeBPDUs, ULFD"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

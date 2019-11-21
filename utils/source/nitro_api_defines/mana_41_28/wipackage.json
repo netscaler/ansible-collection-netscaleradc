@@ -1,0 +1,48 @@
+[
+    {
+        "option_name": "jre",
+        "type": "str",
+        "description": [
+            "Complete path to the JRE tar file.",
+            "You can use OpenJDK7 package for FreeBSD 8.x/amd64.The Java package can be downloaded from http://ftp-archive.freebsd.org/pub/FreeBSD-Archive/old-releases/amd64/amd64/8.4-RELEASE/packages/java/openjdk-7.17.02_2.tbz.",
+            "Default value: \"file://tmp/diablo-jdk-freebsd6.amd64.1.6.0.07.02.tbz\"",
+            "Minimum length =  1",
+            "Maximum length =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "wi",
+        "type": "str",
+        "description": [
+            "Complete path to the Web Interface tar file for installing the Web Interface on the Citrix ADC. This file includes Apache Tomcat Web server. The file name has the following format: nswi-<version number>.tgz (for example, nswi-1.5.tgz).",
+            "Default value: \"http://citrix.com/downloads/nswi-1.7.tgz\"",
+            "Minimum length =  1",
+            "Maximum length =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "maxsites",
+        "type": "str",
+        "choices": [
+            "3",
+            "25",
+            "50",
+            "100",
+            "200",
+            "500"
+        ],
+        "description": [
+            "Maximum number of Web Interface sites that can be created on the Citrix ADC; changes the amount of RAM reserved for Web Interface usage; changing its value results in restart of Tomcat server and invalidates any existing Web Interface sessions.",
+            "Possible values = 3, 25, 50, 100, 200, 500"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

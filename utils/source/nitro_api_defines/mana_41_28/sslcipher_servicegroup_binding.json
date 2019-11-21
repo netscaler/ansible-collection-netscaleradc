@@ -1,0 +1,95 @@
+[
+    {
+        "option_name": "ciphergroupname",
+        "type": "str",
+        "description": [
+            "Name of the user-defined cipher group.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicename",
+        "type": "str",
+        "description": [
+            "The name of the SSL service name to which the cipher-suite is to be bound.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "service",
+        "type": "bool",
+        "description": [
+            "Indicates that the cipher operation is to be performed on the named SSL service or service group."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicegroupname",
+        "type": "str",
+        "description": [
+            "The name of the SSL service name to which the cipher-suite is to be bound.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicegroup",
+        "type": "bool",
+        "description": [
+            "Indicates that the cipher operation is to be performed on the named SSL service or service group."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "cipheroperation",
+        "type": "str",
+        "choices": [
+            "ADD",
+            "REM",
+            "ORD"
+        ],
+        "description": [
+            "The operation that is performed when adding the cipher-suite.  Possible cipher operations are: \tADD - Appends the given cipher-suite to the existing one configured for the virtual server. \tREM - Removes the given cipher-suite from the existing one configured for the virtual server. \tORD - Overrides the current configured cipher-suite for the virtual server with the given cipher-suite.",
+            "Default value: 0",
+            "Possible values = ADD, REM, ORD"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ciphgrpals",
+        "type": "str",
+        "description": [
+            "A cipher-suite can consist of an individual cipher name, the system predefined cipher-alias name, or user defined cipher-group name.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "cipherpriority",
+        "type": "float",
+        "description": [
+            "Priority of the cipher to be added.",
+            "Minimum value =  1",
+            "Maximum value =  1000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

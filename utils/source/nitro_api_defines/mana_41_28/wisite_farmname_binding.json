@@ -1,0 +1,113 @@
+[
+    {
+        "option_name": "farmname",
+        "type": "str",
+        "description": [
+            "Name for the logical representation of a XenApp or XenDesktop farm to be bound to the Web Interface site. Must begin with an ASCII alphabetic or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlserveraddresses",
+        "type": "str",
+        "description": [
+            "Comma-separated IP addresses or host names of XenApp or XenDesktop servers providing XML services."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlport",
+        "type": "float",
+        "description": [
+            "Port number at which to contact the XML service."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "transport",
+        "type": "str",
+        "choices": [
+            "HTTP",
+            "HTTPS",
+            "SSLRELAY"
+        ],
+        "description": [
+            "Transport protocol to use for transferring data, related to the Web Interface site, between the Citrix ADC and the XML service.",
+            "Possible values = HTTP, HTTPS, SSLRELAY"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "sslrelayport",
+        "type": "float",
+        "description": [
+            "TCP port at which the XenApp or XenDesktop servers listenfor SSL Relay traffic from the Citrix ADC. This parameter is required if you have set SSL Relay as the transport protocol.              Web Interface uses root certificates when authenticating a server running SSL Relay. Make sure that all the servers running SSL Relay are configured to listen on the same port."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "loadbalance",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Use all the XML servers (load balancing mode) or only one server (failover mode).",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "groups",
+        "type": "str",
+        "description": [
+            "Active Directory groups that are permitted to enumerate resources from server farms. Including a setting for this parameter activates the user roaming feature. A maximum of 512 user groups can be specified for each farm defined with the Farm<n> parameter.  The groups must be comma separated."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "recoveryfarm",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Binded farm is set as a recovery farm.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "sitepath",
+        "type": "str",
+        "description": [
+            "Path to the Web Interface site.",
+            "Minimum length =  1",
+            "Maximum length =  250"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

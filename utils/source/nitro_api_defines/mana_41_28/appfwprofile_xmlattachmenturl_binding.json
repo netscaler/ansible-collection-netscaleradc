@@ -1,0 +1,115 @@
+[
+    {
+        "option_name": "xmlattachmenturl",
+        "type": "str",
+        "description": [
+            "XML attachment URL regular expression length."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxattachmentsizecheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max attachment size Check is ON or OFF. Protects against XML requests with large attachment data.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxattachmentsize",
+        "type": "float",
+        "description": [
+            "Specify maximum attachment size."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlattachmentcontenttypecheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML attachment content-type check is ON or OFF. Protects against XML requests with illegal attachments.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlattachmentcontenttype",
+        "type": "str",
+        "description": [
+            "Specify content-type regular expression."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enabled.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isautodeployed",
+        "type": "str",
+        "choices": [
+            "AUTODEPLOYED",
+            "NOTAUTODEPLOYED"
+        ],
+        "description": [
+            "Is the rule auto deployed by dynamic profile ?.",
+            "Possible values = AUTODEPLOYED, NOTAUTODEPLOYED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the profile to which to bind an exemption or rule.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

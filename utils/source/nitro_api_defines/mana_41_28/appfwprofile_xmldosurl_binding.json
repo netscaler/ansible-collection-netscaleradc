@@ -1,0 +1,537 @@
+[
+    {
+        "option_name": "xmldosurl",
+        "type": "str",
+        "description": [
+            "XML DoS URL regular expression length."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxelementdepthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max element depth check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxelementdepth",
+        "type": "float",
+        "description": [
+            "Maximum nesting (depth) of XML elements. This check protects against documents that have excessive hierarchy depths."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxelementnamelengthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max element name length check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxelementnamelength",
+        "type": "float",
+        "description": [
+            "Specify the longest name of any element (including the expanded namespace) to protect against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxelementscheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max elements check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxelements",
+        "type": "float",
+        "description": [
+            "Specify the maximum number of XML elements allowed. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxelementchildrencheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max element children check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxelementchildren",
+        "type": "float",
+        "description": [
+            "Specify the maximum number of children allowed per XML element. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxnodescheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max nodes check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxnodes",
+        "type": "float",
+        "description": [
+            "Specify the maximum number of XML nodes. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxentityexpansionscheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max Entity Expansions Check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxentityexpansions",
+        "type": "float",
+        "description": [
+            "Specify maximum allowed number of entity expansions. Protects aganist Entity Expansion Attack."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxentityexpansiondepthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max Entity Expansions Depth Check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxentityexpansiondepth",
+        "type": "float",
+        "description": [
+            "Specify maximum entity expansion depth. Protects aganist Entity Expansion Attack."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxattributescheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max attributes check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxattributes",
+        "type": "float",
+        "description": [
+            "Specify maximum number of attributes per XML element. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxattributenamelengthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max attribute name length check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxattributenamelength",
+        "type": "float",
+        "description": [
+            "Specify the longest name of any XML attribute. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxattributevaluelengthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max atribute value length is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxattributevaluelength",
+        "type": "float",
+        "description": [
+            "Specify the longest value of any XML attribute. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxnamespacescheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max namespaces check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxnamespaces",
+        "type": "float",
+        "description": [
+            "Specify maximum number of active namespaces. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxnamespaceurilengthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max namespace URI length check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxnamespaceurilength",
+        "type": "float",
+        "description": [
+            "Specify the longest URI of any XML namespace. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxchardatalengthcheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max CDATA length check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxchardatalength",
+        "type": "float",
+        "description": [
+            "Specify the maximum size of CDATA. Protects against overflow attacks and large quantities of unparsed data within XML messages."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxfilesizecheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Max file size check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxfilesize",
+        "type": "float",
+        "description": [
+            "Specify the maximum size of XML messages. Protects against overflow attacks."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlminfilesizecheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Min file size check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlminfilesize",
+        "type": "float",
+        "description": [
+            "Enforces minimum message size."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlblockpi",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Block PI is ON or OFF. Protects resources from denial of service attacks as SOAP messages cannot have processing instructions (PI) in messages.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlblockdtd",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML DTD is ON or OFF. Protects against recursive Document Type Declaration (DTD) entity expansion attacks. Also, SOAP messages cannot have DTDs in messages. .",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlblockexternalentities",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML Block External Entities Check is ON or OFF. Protects against XML External Entity (XXE) attacks that force applications to parse untrusted external entities (sources) in XML documents.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlsoaparraycheck",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "State if XML SOAP Array check is ON or OFF.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "xmlmaxsoaparraysize",
+        "type": "float",
+        "description": [
+            "XML Max Total SOAP Array Size. Protects against SOAP Array Abuse attack."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "xmlmaxsoaparrayrank",
+        "type": "float",
+        "description": [
+            "XML Max Individual SOAP Array Rank. This is the dimension of the SOAP array."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enabled.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isautodeployed",
+        "type": "str",
+        "choices": [
+            "AUTODEPLOYED",
+            "NOTAUTODEPLOYED"
+        ],
+        "description": [
+            "Is the rule auto deployed by dynamic profile ?.",
+            "Possible values = AUTODEPLOYED, NOTAUTODEPLOYED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the profile to which to bind an exemption or rule.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

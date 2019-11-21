@@ -1,0 +1,32 @@
+---
+
+- hosts: citrix_adc
+
+  vars:
+    max_clients: 5
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+
+    - name: Handle servicegroup
+      delegate_to: localhost
+      citrix_adc_servicegroup:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        state: present
+
+        servicegroupname: service-group-1
+        servicetype: HTTP
+        maxclient: 4000
+        autoscale: API
+        servicemembers:
+          mode: dsapi
+          attributes:
+            - ip: 10.11.11.1
+              port: 80
+            - ip: 10.11.11.2
+              port: 80

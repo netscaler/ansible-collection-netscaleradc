@@ -1,0 +1,32 @@
+[
+    {
+        "option_name": "encryption",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "To encrypt otp secret in AD or not. Default value is OFF.",
+            "Default value: OFF",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "maxotpdevices",
+        "type": "float",
+        "description": [
+            "Maximum number of otp devices user can register. Default value is 4. Max value is 255.",
+            "Default value: 4",
+            "Minimum value =  0",
+            "Maximum value =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

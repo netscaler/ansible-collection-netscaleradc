@@ -1,0 +1,101 @@
+[
+    {
+        "option_name": "policyname",
+        "type": "str",
+        "description": [
+            "Name of the videooptimization pacing policy."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "REQ_OVERRIDE",
+            "REQ_DEFAULT",
+            "RES_OVERRIDE",
+            "RES_DEFAULT"
+        ],
+        "description": [
+            "Specifies the bind point whose policies you want to display.",
+            "Possible values = REQ_OVERRIDE, REQ_DEFAULT, RES_OVERRIDE, RES_DEFAULT"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "priority",
+        "type": "float",
+        "description": [
+            "Specifies the priority of the policy."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "gotopriorityexpression",
+        "type": "str",
+        "description": [
+            "Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "globalbindtype",
+        "type": "str",
+        "choices": [
+            "SYSTEM_GLOBAL",
+            "VPN_GLOBAL",
+            "RNAT_GLOBAL"
+        ],
+        "description": [
+            ".",
+            "Default value: SYSTEM_GLOBAL",
+            "Possible values = SYSTEM_GLOBAL, VPN_GLOBAL, RNAT_GLOBAL"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "invoke",
+        "type": "bool",
+        "description": [
+            "If the current policy evaluates to TRUE, terminate evaluation of policies bound to the current policy label, and then forward the request to the specified virtual server or evaluate the specified policy label."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "labeltype",
+        "type": "str",
+        "choices": [
+            "vserver",
+            "policylabel"
+        ],
+        "description": [
+            "Type of invocation, Available settings function as follows: * vserver - Forward the request to the specified virtual server. * policylabel - Invoke the specified policy label.",
+            "Possible values = vserver, policylabel"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "labelname",
+        "type": "str",
+        "description": [
+            "Name of the policy label to invoke. If the current policy evaluates to TRUE, the invoke parameter is set, and Label Type is policylabel."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

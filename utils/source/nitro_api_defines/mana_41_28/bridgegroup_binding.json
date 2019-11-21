@@ -1,0 +1,14 @@
+[
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "The name of the bridge group.",
+            "Minimum value =  1",
+            "Maximum value =  1000"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

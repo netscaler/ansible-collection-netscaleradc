@@ -1,0 +1,56 @@
+[
+    {
+        "option_name": "hoursbetweendbupdates",
+        "type": "float",
+        "description": [
+            "URL Filtering hours between DB updates.",
+            "Minimum value =  0",
+            "Maximum value =  720"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "timeofdaytoupdatedb",
+        "type": "str",
+        "description": [
+            "URL Filtering time of day to update DB."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "localdatabasethreads",
+        "type": "float",
+        "description": [
+            "URL Filtering Local DB number of threads.",
+            "Minimum value =  1",
+            "Maximum value =  4"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cloudhost",
+        "type": "str",
+        "description": [
+            "URL Filtering Cloud host."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "seeddbpath",
+        "type": "str",
+        "description": [
+            "URL Filtering Seed DB path."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

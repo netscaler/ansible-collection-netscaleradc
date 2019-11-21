@@ -1,0 +1,13 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the string map to display. If a name is not provided, a list of all the configured string maps is shown.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

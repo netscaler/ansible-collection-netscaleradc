@@ -1,0 +1,32 @@
+[
+    {
+        "option_name": "hostname",
+        "type": "str",
+        "description": [
+            "Name of the domain.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "ALL",
+            "ADNS",
+            "PROXY"
+        ],
+        "description": [
+            "Type of records to display. Available settings function as follows:",
+            "* ADNS - Display all authoritative address records.",
+            "* PROXY - Display all proxy address records.",
+            "* ALL - Display all address records.",
+            "Possible values = ALL, ADNS, PROXY"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

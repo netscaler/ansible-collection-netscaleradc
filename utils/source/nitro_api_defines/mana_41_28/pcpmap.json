@@ -1,0 +1,19 @@
+[
+    {
+        "option_name": "nattype",
+        "type": "str",
+        "choices": [
+            "NAT44",
+            "DS-Lite",
+            "NAT64"
+        ],
+        "description": [
+            "Type of sessions to be displayed.",
+            "Default value: NAT44",
+            "Possible values = NAT44, DS-Lite, NAT64"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

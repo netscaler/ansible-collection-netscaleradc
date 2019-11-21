@@ -1,6 +1,7 @@
 import os
 import copy
 import json
+import yaml
 from jinja2 import Environment, FileSystemLoader
 
 from helpers import calculate_transforms_for_attribute, calculate_doc_list, calculate_attributes_config_dict
@@ -44,6 +45,8 @@ def patch_missing_doscriptions(main_object_attributes):
 
 
 def main():
+    with open(os.path.join(HERE, 'generator_options.yaml'), 'r') as fh:
+        options = yaml.load(fh)
 
     # Find template dir
     template_dir = os.path.join(HERE, '..', 'templates', 'appfw')
@@ -51,7 +54,7 @@ def main():
         raise Exception('Cannot find template dir')
 
     # Find nscli json data dir
-    json_dir = os.path.join(HERE, '..', 'nitro_api_defines/kamet/appfw')
+    json_dir = os.path.join(HERE, options['nitro_api_defines'])
     if not os.path.exists(json_dir):
         raise Exception('Cannot find json dir')
 

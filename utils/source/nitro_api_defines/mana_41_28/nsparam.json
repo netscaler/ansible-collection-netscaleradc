@@ -1,0 +1,370 @@
+[
+    {
+        "option_name": "httpport",
+        "type": "list",
+        "description": [
+            "HTTP ports on the web server. This allows the system to perform connection off-load for any client request that has a destination port matching one of these configured ports.",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxconn",
+        "type": "float",
+        "description": [
+            "Maximum number of connections that will be made from the appliance to the web server(s) attached to it. The value entered here is applied globally to all attached servers.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  4294967294"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxreq",
+        "type": "float",
+        "description": [
+            "Maximum number of requests that the system can pass on a particular connection between the appliance and a server attached to it. Setting this value to 0 allows an unlimited number of requests to be passed. This value is overridden by the maximum number of requests configured on the individual service.",
+            "Minimum value =  0",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cip",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable or disable the insertion of the actual client IP address into the HTTP header request passed from the client to one, some, or all servers attached to the system. The passed address can then be accessed through a minor modification to the server.",
+            "* If the CIP header is specified, it will be used as the client IP header.",
+            "* If the CIP header is not specified, the value that has been set will be used as the client IP header.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cipheader",
+        "type": "str",
+        "description": [
+            "Text that will be used as the client IP address header.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cookieversion",
+        "type": "str",
+        "choices": [
+            "0",
+            "1"
+        ],
+        "description": [
+            "Version of the cookie inserted by the system.",
+            "Possible values = 0, 1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "securecookie",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable or disable secure flag for persistence cookie.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "pmtumin",
+        "type": "float",
+        "description": [
+            "Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation needed message. If the ICMP message contains a value less than this value, then this value is used instead.",
+            "Default value: 576",
+            "Minimum value =  168",
+            "Maximum value =  1500"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "pmtutimeout",
+        "type": "float",
+        "description": [
+            "Interval, in minutes, for flushing the PMTU entries.",
+            "Default value: 10",
+            "Minimum value =  1",
+            "Maximum value =  1440"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ftpportrange",
+        "type": "str",
+        "description": [
+            "Minimum and maximum port (port range) that FTP services are allowed to use.",
+            "Minimum length =  1024",
+            "Maximum length =  64000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "crportrange",
+        "type": "str",
+        "description": [
+            "Port range for cache redirection services.",
+            "Minimum length =  1",
+            "Maximum length =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "timezone",
+        "type": "str",
+        "description": [
+            "Time zone for the Citrix ADC. Name of the time zone should be specified as argument.",
+            "Default value: CoordinatedUniversalTime",
+            "Minimum length =  1",
+            "Maximum length =  63"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "grantquotamaxclient",
+        "type": "float",
+        "description": [
+            "Percentage of shared quota to be granted at a time for maxClient.",
+            "Default value: 10",
+            "Minimum value =  0",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "exclusivequotamaxclient",
+        "type": "float",
+        "description": [
+            "Percentage of maxClient to be given to PEs.",
+            "Default value: 80",
+            "Minimum value =  0",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "grantquotaspillover",
+        "type": "float",
+        "description": [
+            "Percentage of shared quota to be granted at a time for spillover.",
+            "Default value: 10",
+            "Minimum value =  0",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "exclusivequotaspillover",
+        "type": "float",
+        "description": [
+            "Percentage of maximum limit to be given to PEs.",
+            "Default value: 80",
+            "Minimum value =  0",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "useproxyport",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable/Disable use_proxy_port setting.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "internaluserlogin",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enables/disables the internal user from logging in to the appliance. Before disabling internal user login, you must have key-based authentication set up on the appliance. The file name for the key pair must be \"ns_comm_key\".",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "aftpallowrandomsourceport",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Allow the FTP server to come from a random source port for active FTP data connections.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "icaports",
+        "type": "list",
+        "description": [
+            "The ICA ports on the Web server. This allows the system to perform connection off-load for any",
+            "client request that has a destination port matching one of these configured ports.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tcpcip",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable or disable the insertion of the client TCP/IP header in TCP payload passed from the client to one, some, or all servers attached to the system. The passed address can then be accessed through a minor modification to the server.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "servicepathingressvlan",
+        "type": "float",
+        "description": [
+            "VLAN on which the subscriber traffic arrives on the appliance.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "secureicaports",
+        "type": "list",
+        "description": [
+            "The Secure ICA ports on the Web server. This allows the system to perform connection off-load for any",
+            "client request that has a destination port matching one of these configured ports.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "mgmthttpport",
+        "type": "int",
+        "description": [
+            "This allow the configuration of management HTTP port.",
+            "Default value: 80",
+            "Minimum value =  1",
+            "Maximum value =  65534"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "mgmthttpsport",
+        "type": "int",
+        "description": [
+            "This allows the configuration of management HTTPS port.",
+            "Default value: 443",
+            "Minimum value =  1",
+            "Maximum value =  65534"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "proxyprotocol",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Disable/Enable v1 or v2 proxy protocol header for client info insertion.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "advancedanalyticsstats",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Disable/Enable advanace analytics stats.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

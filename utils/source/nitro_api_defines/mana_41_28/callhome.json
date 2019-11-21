@@ -1,0 +1,105 @@
+[
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "mode",
+        "type": "str",
+        "choices": [
+            "Default",
+            "CSP"
+        ],
+        "description": [
+            "CallHome mode of operation.",
+            "Default value: Default",
+            "Possible values = Default, CSP"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "emailaddress",
+        "type": "str",
+        "description": [
+            "Email address of the contact administrator.",
+            "Maximum length =  78"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "hbcustominterval",
+        "type": "float",
+        "description": [
+            "Interval (in days) between CallHome heartbeats.",
+            "Default value: 7",
+            "Minimum value =  1",
+            "Maximum value =  30"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "proxymode",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Enables or disables the proxy mode. The proxy server can be set by either specifying the IP address of the server or the name of the service representing the proxy server.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "IP address of the proxy server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "proxyauthservice",
+        "type": "str",
+        "description": [
+            "Name of the service that represents the proxy server.",
+            "Maximum length =  128"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "HTTP port on the Proxy server. This is a mandatory parameter for both IP address and service name based configuration.",
+            "Minimum value =  1",
+            "Range 1 - 65535",
+            "* in CLI is represented as 65535 in NITRO API"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

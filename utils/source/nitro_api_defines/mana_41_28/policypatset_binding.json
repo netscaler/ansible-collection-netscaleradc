@@ -1,0 +1,13 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the pattern set for which to display the detailed information. If a name is not provided, a list of all pattern sets configured on the appliance is shown.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

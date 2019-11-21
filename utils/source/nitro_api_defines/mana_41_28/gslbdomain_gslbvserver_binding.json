@@ -1,0 +1,23 @@
+[
+    {
+        "option_name": "vservername",
+        "type": "str",
+        "description": [
+            "."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the Domain.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

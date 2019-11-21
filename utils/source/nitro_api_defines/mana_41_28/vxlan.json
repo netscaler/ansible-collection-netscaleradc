@@ -1,0 +1,121 @@
+[
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "A positive integer, which is also called VXLAN Network Identifier (VNI), that uniquely identifies a VXLAN.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "vlan",
+        "type": "float",
+        "description": [
+            "ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part of any other VXLANs.",
+            "Minimum value =  2",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "Specifies UDP destination port for VXLAN packets.",
+            "Default value: 4789",
+            "Minimum value =  1",
+            "Maximum value =  65534"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "dynamicrouting",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable dynamic routing on this VXLAN.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ipv6dynamicrouting",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable all IPv6 dynamic routing protocols on this VXLAN. Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing protocols from the VTYSH command line.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "VXLAN",
+            "VXLANGPE"
+        ],
+        "description": [
+            "VXLAN encapsulation type. VXLAN, VXLANGPE.",
+            "Default value: VXLAN",
+            "Possible values = VXLAN, VXLANGPE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "protocol",
+        "type": "str",
+        "choices": [
+            "IPv4",
+            "IPv6",
+            "ETHERNET",
+            "NSH"
+        ],
+        "description": [
+            "VXLAN-GPE next protocol. RESERVED, IPv4, IPv6, ETHERNET, NSH.",
+            "Default value: ETHERNET",
+            "Possible values = IPv4, IPv6, ETHERNET, NSH"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "innervlantagging",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN tag.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

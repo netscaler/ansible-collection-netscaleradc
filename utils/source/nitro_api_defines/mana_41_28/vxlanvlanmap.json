@@ -1,0 +1,13 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the mapping table.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

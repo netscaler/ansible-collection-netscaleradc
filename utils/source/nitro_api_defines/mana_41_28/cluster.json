@@ -1,0 +1,22 @@
+[
+    {
+        "option_name": "clip",
+        "type": "str",
+        "description": [
+            "Cluster IP address to which to add the node."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "password",
+        "type": "str",
+        "description": [
+            "Password for the nsroot account of the configuration coordinator (CCO)."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -41,6 +41,8 @@
         servicetype: HTTP
         maxclient: 4000
         servicemembers:
+          mode: exact
+          attributes:
             - ip: 10.78.78.78
               port: 80
               weight: 60
@@ -48,7 +50,9 @@
               port: 80
               weight: 40
         monitorbindings:
-          - monitorname: monitor-1
-            weight: 40
-          - monitorname: monitor-2
-            weight: 60
+          mode: exact
+          attributes:
+            - monitorname: monitor-1
+              weight: 40
+            - monitorname: monitor-2
+              weight: 60

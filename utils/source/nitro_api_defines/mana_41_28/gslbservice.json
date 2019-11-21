@@ -1,0 +1,467 @@
+[
+    {
+        "option_name": "servicename",
+        "type": "str",
+        "description": [
+            "Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. Can be changed after the GSLB service is created.",
+            "CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my gslbsvc\" or 'my gslbsvc').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cnameentry",
+        "type": "str",
+        "description": [
+            "Canonical name of the GSLB service. Used in CNAME-based GSLB.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ip",
+        "type": "str",
+        "description": [
+            "IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the Citrix ADC, or the IP address of another load balancing device.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servername",
+        "type": "str",
+        "description": [
+            "Name of the server hosting the GSLB service.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicetype",
+        "type": "str",
+        "choices": [
+            "HTTP",
+            "FTP",
+            "TCP",
+            "UDP",
+            "SSL",
+            "SSL_BRIDGE",
+            "SSL_TCP",
+            "NNTP",
+            "ANY",
+            "SIP_UDP",
+            "SIP_TCP",
+            "SIP_SSL",
+            "RADIUS",
+            "RDP",
+            "RTSP",
+            "MYSQL",
+            "MSSQL",
+            "ORACLE"
+        ],
+        "description": [
+            "Type of service to create.",
+            "Default value: NSSVC_SERVICE_UNKNOWN",
+            "Possible values = HTTP, FTP, TCP, UDP, SSL, SSL_BRIDGE, SSL_TCP, NNTP, ANY, SIP_UDP, SIP_TCP, SIP_SSL, RADIUS, RDP, RTSP, MYSQL, MSSQL, ORACLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "Port on which the load balancing entity represented by this GSLB service listens.",
+            "Minimum value =  1",
+            "Range 1 - 65535",
+            "* in CLI is represented as 65535 in NITRO API"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "publicip",
+        "type": "str",
+        "description": [
+            "The public IP address that a NAT device translates to the GSLB service's private IP address. Optional."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "publicport",
+        "type": "int",
+        "description": [
+            "The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxclient",
+        "type": "float",
+        "description": [
+            "The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.",
+            "Minimum value =  0",
+            "Maximum value =  4294967294"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "healthmonitor",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Monitor the health of the GSLB service.",
+            "Default value: YES",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sitename",
+        "type": "str",
+        "description": [
+            "Name of the GSLB site to which the service belongs.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable or disable the service.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "cip",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.",
+            "Default value: DISABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cipheader",
+        "type": "str",
+        "description": [
+            "Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the Citrix ADC uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sitepersistence",
+        "type": "str",
+        "choices": [
+            "ConnectionProxy",
+            "HTTPRedirect",
+            "NONE"
+        ],
+        "description": [
+            "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.",
+            "Possible values = ConnectionProxy, HTTPRedirect, NONE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cookietimeout",
+        "type": "float",
+        "description": [
+            "Timeout value, in minutes, for the cookie, when cookie based site persistence is enabled.",
+            "Minimum value =  0",
+            "Maximum value =  1440"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "siteprefix",
+        "type": "str",
+        "description": [
+            "The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the Citrix ADC redirects GSLB requests to GSLB services by using their site domains."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clttimeout",
+        "type": "float",
+        "description": [
+            "Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy based site persistence is used.",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "svrtimeout",
+        "type": "float",
+        "description": [
+            "Idle time, in seconds, after which a server connection is terminated. Applicable if connection proxy based site persistence is used.",
+            "Minimum value =  0",
+            "Maximum value =  31536000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "maxbandwidth",
+        "type": "float",
+        "description": [
+            "Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops below the maximum."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "downstateflush",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "maxaaausers",
+        "type": "float",
+        "description": [
+            "Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.",
+            "Minimum value =  0",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "monthreshold",
+        "type": "float",
+        "description": [
+            "Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.",
+            "Minimum value =  0",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "hashid",
+        "type": "float",
+        "description": [
+            "Unique hash identifier for the GSLB service, used by hash based load balancing methods.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments that you might want to associate with the GSLB service."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "appflowlog",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enable logging appflow flow information.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "naptrreplacement",
+        "type": "str",
+        "description": [
+            "The replacement domain name for this NAPTR.",
+            "Maximum length =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "naptrorder",
+        "type": "float",
+        "description": [
+            "An integer specifying the order in which the NAPTR records MUST be processed in order to accurately represent the ordered list of Rules. The ordering is from lowest to highest.",
+            "Default value: 1",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "naptrservices",
+        "type": "str",
+        "description": [
+            "Service Parameters applicable to this delegation path.",
+            "Maximum length =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "naptrdomainttl",
+        "type": "float",
+        "description": [
+            "Modify the TTL of the internally created naptr domain.",
+            "Default value: 3600",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "naptrpreference",
+        "type": "float",
+        "description": [
+            "An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the number, higher the preference.",
+            "Default value: 1",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "The new IP address of the service."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "viewname",
+        "type": "str",
+        "description": [
+            "Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to return a predetermined IP address to a specific group of clients, which are identified by using a DNS policy.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "viewip",
+        "type": "str",
+        "description": [
+            "IP address to be used for the given view."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "weight",
+        "type": "float",
+        "description": [
+            "Weight to assign to the monitor-service binding. A larger number specifies a greater weight. Contributes to the monitoring threshold, which determines the state of the service.",
+            "Minimum value =  1",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "monitor_name_svc",
+        "type": "str",
+        "description": [
+            "Name of the monitor to bind to the service.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "newname",
+        "type": "str",
+        "description": [
+            "New name for the GSLB service.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

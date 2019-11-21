@@ -1,0 +1,29 @@
+[
+    {
+        "option_name": "xmlcontenttypevalue",
+        "type": "str",
+        "description": [
+            "Content type to be classified as XML.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isregex",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "description": [
+            "Is field name a regular expression?.",
+            "Default value: NOTREGEX",
+            "Possible values = REGEX, NOTREGEX"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

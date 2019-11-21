@@ -1,0 +1,127 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Unique name of the url set. Not case sensitive. Must begin with an ASCII letter or underscore (_) character and must contain only alphanumeric and underscore characters. Must not be the name of an existing named expression, pattern set, dataset, string map, or HTTP callout.",
+            "Minimum length =  1",
+            "Maximum length =  127"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments to preserve information about this url set."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "imported",
+        "type": "bool",
+        "description": [
+            "when set, display shows all imported urlsets.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "overwrite",
+        "type": "bool",
+        "description": [
+            "Overwrites the existing file.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "delimiter",
+        "type": "str",
+        "description": [
+            "CSV file record delimiter.",
+            "Default value: 44"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "rowseparator",
+        "type": "str",
+        "description": [
+            "CSV file row separator.",
+            "Default value: 10"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "url",
+        "type": "str",
+        "description": [
+            "URL (protocol, host, path and file name) from where the CSV (comma separated file) file will be imported or exported. Each record/line will one entry within the urlset. The first field contains the URL pattern, subsequent fields contains the metadata, if available. HTTP, HTTPS and FTP protocols are supported. NOTE: The operation fails if the destination HTTPS server requires client certificate authentication for access.",
+            "Minimum length =  1",
+            "Maximum length =  2047"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "interval",
+        "type": "float",
+        "description": [
+            "The interval, in seconds, rounded down to the nearest 15 minutes, at which the update of urlset occurs.",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  2592000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "privateset",
+        "type": "bool",
+        "description": [
+            "Prevent this urlset from being exported.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "subdomainexactmatch",
+        "type": "bool",
+        "description": [
+            "Force exact subdomain matching, ex. given an entry 'google.com' in the urlset, a request to 'news.google.com' won't match, if subdomainExactMatch is set.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "canaryurl",
+        "type": "str",
+        "description": [
+            "Add this URL to this urlset. Used for testing when contents of urlset is kept confidential.",
+            "Minimum length =  1",
+            "Maximum length =  2047"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

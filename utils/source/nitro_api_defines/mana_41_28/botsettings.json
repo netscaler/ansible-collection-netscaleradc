@@ -1,0 +1,64 @@
+[
+    {
+        "option_name": "defaultprofile",
+        "type": "str",
+        "description": [
+            "Profile to use when a connection does not match any policy. Default setting is \" \", which sends unmatched connections back to the Citrix ADC without attempting to filter them further.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "javascriptname",
+        "type": "str",
+        "description": [
+            "Name of the JavaScript that the BotNet feature  uses in response.",
+            "Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my cookie name\" or 'my cookie name').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessiontimeout",
+        "type": "float",
+        "description": [
+            "Timeout, in seconds, after which a user session is terminated.",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sessioncookiename",
+        "type": "str",
+        "description": [
+            "Name of the SessionCookie that the BotNet feature use it for tracking.",
+            "Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.",
+            "The following requirement applies only to the Citrix ADC CLI:",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my cookie name\" or 'my cookie name').",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "dfprequestlimit",
+        "type": "float",
+        "description": [
+            "Number of requests to allow without bot session cookie if device fingerprint is enabled.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

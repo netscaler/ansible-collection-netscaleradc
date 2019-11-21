@@ -1,0 +1,161 @@
+[
+    {
+        "option_name": "sqlinjection",
+        "type": "str",
+        "description": [
+            "The web form field name."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isregex_sql",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "description": [
+            "Is the web form field name a regular expression?.",
+            "Possible values = REGEX, NOTREGEX"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "formactionurl_sql",
+        "type": "str",
+        "description": [
+            "The web form action URL."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "as_scan_location_sql",
+        "type": "str",
+        "choices": [
+            "FORMFIELD",
+            "HEADER",
+            "COOKIE"
+        ],
+        "description": [
+            "Location of SQL injection exception - form field, header or cookie.",
+            "Possible values = FORMFIELD, HEADER, COOKIE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "as_value_type_sql",
+        "type": "str",
+        "choices": [
+            "Keyword",
+            "SpecialString",
+            "Wildchar"
+        ],
+        "description": [
+            "The web form value type.",
+            "Possible values = Keyword, SpecialString, Wildchar"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "as_value_expr_sql",
+        "type": "str",
+        "description": [
+            "The web form value expression."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isvalueregex_sql",
+        "type": "str",
+        "choices": [
+            "REGEX",
+            "NOTREGEX"
+        ],
+        "description": [
+            "Is the web form field value a regular expression?.",
+            "Possible values = REGEX, NOTREGEX"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Enabled.",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments about the purpose of profile, or other useful information about the profile."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "isautodeployed",
+        "type": "str",
+        "choices": [
+            "AUTODEPLOYED",
+            "NOTAUTODEPLOYED"
+        ],
+        "description": [
+            "Is the rule auto deployed by dynamic profile ?.",
+            "Possible values = AUTODEPLOYED, NOTAUTODEPLOYED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "alertonly",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "Send SNMP alert?.",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the profile to which to bind an exemption or rule.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

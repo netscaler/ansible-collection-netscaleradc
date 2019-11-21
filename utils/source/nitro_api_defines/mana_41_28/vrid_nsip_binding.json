@@ -1,0 +1,24 @@
+[
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "The IP address bound to the VRID."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "Integer that uniquely identifies the VMAC address. The generic VMAC address is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c, where 3c is the hexadecimal representation of 60.",
+            "Minimum value =  1",
+            "Maximum value =  255"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

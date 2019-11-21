@@ -1,0 +1,12 @@
+[
+    {
+        "option_name": "labelname",
+        "type": "str",
+        "description": [
+            "Name of the content switching policy label to display."
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

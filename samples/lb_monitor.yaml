@@ -51,6 +51,8 @@
         servicegroupname: service-group-1
         servicetype: HTTP
         servicemembers:
+          mode: exact
+          attributes:
             - ip: 10.78.78.78
               port: 80
               weight: 60
@@ -58,5 +60,7 @@
               port: 80
               weight: 40
         monitorbindings:
-          - monitorname: monitor_1
-            weight: 100
+          mode: exact
+          attributes:
+            - monitorname: monitor_1
+              weight: 100

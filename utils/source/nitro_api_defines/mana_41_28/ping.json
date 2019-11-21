@@ -1,0 +1,129 @@
+[
+    {
+        "option_name": "c",
+        "type": "float",
+        "description": [
+            "Number of packets to send. The default value is infinite. For Nitro API, defalut value is taken as 5.",
+            "Minimum value =  1",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "i",
+        "type": "float",
+        "description": [
+            "Waiting time, in seconds. The default value is 1 second.",
+            "Minimum value =  0",
+            "Maximum value =  65535"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "I",
+        "type": "str",
+        "description": [
+            "Network interface on which to ping, if you have multiple interfaces.",
+            "Minimum length =  1",
+            "Maximum length =  15"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "n",
+        "type": "bool",
+        "description": [
+            "Numeric output only. No name resolution."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "p",
+        "type": "str",
+        "description": [
+            "Pattern to fill in packets.  Can be up to 16 bytes, useful for diagnosing data-dependent problems.",
+            "Minimum length =  1",
+            "Maximum length =  32"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "q",
+        "type": "bool",
+        "description": [
+            "Quiet output. Only the summary is printed. For Nitro API, this flag is set by default."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "s",
+        "type": "float",
+        "description": [
+            "Data size, in bytes. The default value is 56.",
+            "Minimum value =  0",
+            "Maximum value =  65507"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "S",
+        "type": "str",
+        "description": [
+            "Source IP address to be used in the outgoing query packets. If the IP addrESS does not belongs to this appliance, an error is returned and nothing is sent.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "T",
+        "type": "float",
+        "description": [
+            "Traffic Domain Id.",
+            "Minimum value =  1",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "t",
+        "type": "float",
+        "description": [
+            "Time-out, in seconds, before ping exits.",
+            "Minimum value =  1",
+            "Maximum value =  3600"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "hostName",
+        "type": "str",
+        "description": [
+            "Address of host to ping.",
+            "Minimum length =  1",
+            "Maximum length =  256"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

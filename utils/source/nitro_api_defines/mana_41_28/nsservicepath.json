@@ -1,0 +1,15 @@
+[
+    {
+        "option_name": "servicepathname",
+        "type": "str",
+        "description": [
+            "Name for the Service path. Must begin with an ASCII alphanumeric or underscore (_) character, and must",
+            "contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)",
+            "characters.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,295 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "The name of the rdp profile.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdpurloverride",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting determines whether the RDP parameters supplied in the vpn url override those specified in the RDP profile.",
+            "Default value: ENABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "redirectclipboard",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the Clipboard check box on the Local Resources tab under Options in RDC.",
+            "Default value: ENABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "redirectdrives",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the selections for Drives under More on the Local Resources tab under Options in RDC.",
+            "Default value: DISABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "redirectprinters",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the selection in the Printers check box on the Local Resources tab under Options in RDC.",
+            "Default value: ENABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "redirectcomports",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the selections for comports under More on the Local Resources tab under Options in RDC.",
+            "Default value: DISABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "redirectpnpdevices",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the selections for pnpdevices under More on the Local Resources tab under Options in RDC.",
+            "Default value: DISABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "keyboardhook",
+        "type": "str",
+        "choices": [
+            "OnLocal",
+            "OnRemote",
+            "InFullScreenMode"
+        ],
+        "description": [
+            "This setting corresponds to the selection in the Keyboard drop-down list on the Local Resources tab under Options in RDC.",
+            "Default value: InFullScreenMode",
+            "Possible values = OnLocal, OnRemote, InFullScreenMode"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "audiocapturemode",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting corresponds to the selections in the Remote audio area on the Local Resources tab under Options in RDC.",
+            "Default value: DISABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "videoplaybackmode",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "This setting determines if Remote Desktop Connection (RDC) will use RDP efficient multimedia streaming for video playback.",
+            "Default value: ENABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "multimonitorsupport",
+        "type": "str",
+        "choices": [
+            "enable",
+            "disable"
+        ],
+        "description": [
+            "Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).",
+            "Default value: ENABLE",
+            "Possible values = ENABLE, DISABLE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true,
+        "transform": "lambda v: v.lower()"
+    },
+    {
+        "option_name": "rdpcookievalidity",
+        "type": "float",
+        "description": [
+            "RDP cookie validity period. RDP cookie validity time is applicable for new connection and also for any re-connection that might happen, mostly due to network disruption or during fail-over.",
+            "Default value: 60",
+            "Minimum value =  1",
+            "Maximum value =  86400"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "addusernameinrdpfile",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Add username in rdp file.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdpfilename",
+        "type": "str",
+        "description": [
+            "RDP file name to be sent to End User.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdphost",
+        "type": "str",
+        "description": [
+            "Fully-qualified domain name (FQDN) of the RDP Listener.",
+            "Maximum length =  252"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdplistener",
+        "type": "str",
+        "description": [
+            "IP address (or) Fully-qualified domain name(FQDN) of the RDP Listener with the port in the format IP:Port (or) FQDN:Port.",
+            "Maximum length =  255"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdpcustomparams",
+        "type": "str",
+        "description": [
+            "Option for RDP custom parameters settings (if any). Custom params needs to be separated by '&'.",
+            "Default value: 0",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "psk",
+        "type": "str",
+        "description": [
+            "Pre shared key value.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "randomizerdpfilename",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Will generate unique filename everytime rdp file is downloaded by appending output of time() function in the format <rdpfileName>_<time>.rdp. This tries to avoid the pop-up for replacement of existing rdp file during each rdp connection launch, hence providing better end-user experience.",
+            "Default value: NO",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rdplinkattribute",
+        "type": "str",
+        "description": [
+            "Citrix Gateway allows the configuration of rdpLinkAttribute parameter which can be used to fetch a list of RDP servers(IP/FQDN) that a user can access, from an Authentication server attribute(Example: LDAP, SAML). Based on the list received, the RDP links will be generated and displayed to the user.",
+            "Note: The Attribute mentioned in the rdpLinkAttribute should be fetched through corresponding authentication method."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -1,0 +1,45 @@
+[
+    {
+        "option_name": "holdtimetxmult",
+        "type": "float",
+        "description": [
+            "A multiplier for calculating the duration for which the receiving device stores the LLDP information in its database before discarding or removing it. The duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter value multiplied by the timer (Timer) parameter value.",
+            "Default value: 4",
+            "Minimum value =  1",
+            "Maximum value =  20"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "timer",
+        "type": "float",
+        "description": [
+            "Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the Citrix ADC sends to a directly connected device.",
+            "Default value: 30",
+            "Minimum value =  1",
+            "Maximum value =  3000"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "mode",
+        "type": "str",
+        "choices": [
+            "NONE",
+            "TRANSMITTER",
+            "RECEIVER",
+            "TRANSCEIVER"
+        ],
+        "description": [
+            "Global mode of Link Layer Discovery Protocol (LLDP) on the Citrix ADC. The resultant LLDP mode of an interface depends on the LLDP mode configured at the global and the interface levels.",
+            "Possible values = NONE, TRANSMITTER, RECEIVER, TRANSCEIVER"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "option_name": "size",
+        "type": "float",
+        "description": [
+            "TCP buffering size per connection, in kilobytes.",
+            "Default value: 64",
+            "Minimum value =  4",
+            "Maximum value =  20480"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "memlimit",
+        "type": "float",
+        "description": [
+            "Maximum memory, in megabytes, that can be used for buffering.",
+            "Default value: 64"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

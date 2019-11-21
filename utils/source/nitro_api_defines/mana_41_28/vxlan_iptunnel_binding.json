@@ -1,0 +1,24 @@
+[
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "A positive integer, which is also called VXLAN Network Identifier (VNI), that uniquely identifies a VXLAN.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "tunnel",
+        "type": "str",
+        "description": [
+            "Specifies the name of the configured tunnel to be associated with this VXLAN."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,25 @@
+[
+    {
+        "option_name": "servicefunctionname",
+        "type": "str",
+        "description": [
+            "Name of the service function to be created. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ingressvlan",
+        "type": "float",
+        "description": [
+            "VLAN ID on which the traffic from service function reaches Citrix ADC.",
+            "Minimum value =  1",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

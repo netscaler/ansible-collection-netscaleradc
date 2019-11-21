@@ -1,0 +1,14 @@
+[
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "ID of the node whose HA settings you want to display. (The ID of the local node is always 0.).",
+            "Minimum value =  0",
+            "Maximum value =  64"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

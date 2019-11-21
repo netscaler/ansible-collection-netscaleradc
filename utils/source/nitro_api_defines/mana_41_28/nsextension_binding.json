@@ -1,0 +1,14 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the extension object.",
+            "Minimum length =  1",
+            "Maximum length =  31"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

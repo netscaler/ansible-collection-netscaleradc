@@ -1,0 +1,109 @@
+[
+    {
+        "option_name": "keyfile",
+        "type": "str",
+        "description": [
+            "Name for and, optionally, path to the RSA key file. /nsconfig/ssl/ is the default path.",
+            "Maximum length =  63"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "bits",
+        "type": "float",
+        "description": [
+            "Size, in bits, of the RSA key.",
+            "Minimum value =  512",
+            "Maximum value =  4096"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "exponent",
+        "type": "str",
+        "choices": [
+            "3",
+            "F4"
+        ],
+        "description": [
+            "Public exponent for the RSA key. The exponent is part of the cipher algorithm and is required for creating the RSA key.",
+            "Default value: F4",
+            "Possible values = 3, F4"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "keyform",
+        "type": "str",
+        "choices": [
+            "DER",
+            "PEM"
+        ],
+        "description": [
+            "Format in which the RSA key file is stored on the appliance.",
+            "Default value: PEM",
+            "Possible values = DER, PEM"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "des",
+        "type": "bool",
+        "description": [
+            "Encrypt the generated RSA key by using the DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "des3",
+        "type": "bool",
+        "description": [
+            "Encrypt the generated RSA key by using the Triple-DES algorithm. On the command line, you are prompted to enter the pass phrase (password) that is used to encrypt the key."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "aes256",
+        "type": "bool",
+        "description": [
+            "Encrypt the generated RSA key by using the AES algorithm."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "password",
+        "type": "str",
+        "description": [
+            "Pass phrase to use for encryption if DES or DES3 option is selected.",
+            "Minimum length =  1",
+            "Maximum length =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "pkcs8",
+        "type": "bool",
+        "description": [
+            "Create the private key in PKCS#8 format."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name to assign to the imported certificate bundle. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. The following requirement applies only to the Citrix ADC CLI: If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my file\" or 'my file').",
+            "Minimum length =  1",
+            "Maximum length =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "src",
+        "type": "str",
+        "description": [
+            "URL specifying the protocol, host, and path, including file name, to the certificate bundle to be imported or exported. For example, http://www.example.com/cert_bundle_file.",
+            "NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.",
+            "Minimum length =  1",
+            "Maximum length =  2047"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

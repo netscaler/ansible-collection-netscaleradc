@@ -1,0 +1,127 @@
+[
+    {
+        "option_name": "ip",
+        "type": "str",
+        "description": [
+            "IP Address."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "Server port number.",
+            "Range 1 - 65535",
+            "* in CLI is represented as 65535 in NITRO API"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "weight",
+        "type": "float",
+        "description": [
+            "Weight to assign to the servers in the service group. Specifies the capacity of the servers relative to the other servers in the load balancing configuration. The higher the weight, the higher the percentage of requests sent to the service.",
+            "Minimum value =  1",
+            "Maximum value =  100"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servername",
+        "type": "str",
+        "description": [
+            "Name of the server to which to bind the service group.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "customserverid",
+        "type": "str",
+        "description": [
+            "The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID.",
+            "Default value: \"None\""
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "serverid",
+        "type": "float",
+        "description": [
+            "The  identifier for the service. This is used when the persistency type is set to Custom Server ID."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "Initial state of the service group.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "hashid",
+        "type": "float",
+        "description": [
+            "The hash identifier for the service. This must be unique for each service. This parameter is used by hash based load balancing methods.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "nameserver",
+        "type": "str",
+        "description": [
+            "Specify the nameserver to which the query for bound domain needs to be sent. If not specified, use the global nameserver."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "dbsttl",
+        "type": "float",
+        "description": [
+            "Specify the TTL for DNS record for domain based service.The default value of ttl is 0 which indicates to use the TTL received in DNS response for monitors.",
+            "Default value: 0"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "servicegroupname",
+        "type": "str",
+        "description": [
+            "Name of the service group.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,34 @@
+[
+    {
+        "option_name": "communityname",
+        "type": "str",
+        "description": [
+            "SNMPv1 community name for authentication."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "loglevel",
+        "type": "str",
+        "description": [
+            "specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "datapath",
+        "type": "str",
+        "description": [
+            "specify the data path to the database.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

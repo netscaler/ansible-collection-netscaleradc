@@ -1,0 +1,141 @@
+[
+    {
+        "option_name": "policyname",
+        "type": "str",
+        "description": [
+            "Name of the audit syslog policy."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "priority",
+        "type": "float",
+        "description": [
+            "Specifies the priority of the policy.",
+            "Minimum value =  1",
+            "Maximum value =  2147483647"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "globalbindtype",
+        "type": "str",
+        "choices": [
+            "SYSTEM_GLOBAL",
+            "VPN_GLOBAL",
+            "RNAT_GLOBAL"
+        ],
+        "description": [
+            ".",
+            "Default value: SYSTEM_GLOBAL",
+            "Possible values = SYSTEM_GLOBAL, VPN_GLOBAL, RNAT_GLOBAL"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "builtin",
+        "type": "list",
+        "choices": [
+            "MODIFIABLE",
+            "DELETABLE",
+            "IMMUTABLE",
+            "PARTITION_ALL"
+        ],
+        "description": [
+            "Indicates that a variable is a built-in (SYSTEM INTERNAL) type.",
+            "Possible values = MODIFIABLE, DELETABLE, IMMUTABLE, PARTITION_ALL"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "feature",
+        "type": "str",
+        "choices": [
+            "WL",
+            "WebLogging",
+            "SP",
+            "SurgeProtection",
+            "LB",
+            "LoadBalancing",
+            "CS",
+            "ContentSwitching",
+            "CR",
+            "CacheRedirection",
+            "SC",
+            "SureConnect",
+            "CMP",
+            "CMPcntl",
+            "CompressionControl",
+            "PQ",
+            "PriorityQueuing",
+            "HDOSP",
+            "HttpDoSProtection",
+            "SSLVPN",
+            "AAA",
+            "GSLB",
+            "GlobalServerLoadBalancing",
+            "SSL",
+            "SSLOffload",
+            "SSLOffloading",
+            "CF",
+            "ContentFiltering",
+            "IC",
+            "IntegratedCaching",
+            "OSPF",
+            "OSPFRouting",
+            "RIP",
+            "RIPRouting",
+            "BGP",
+            "BGPRouting",
+            "REWRITE",
+            "IPv6PT",
+            "IPv6protocoltranslation",
+            "AppFw",
+            "ApplicationFirewall",
+            "RESPONDER",
+            "HTMLInjection",
+            "push",
+            "NSPush",
+            "NetScalerPush",
+            "AppFlow",
+            "CloudBridge",
+            "ISIS",
+            "ISISRouting",
+            "CH",
+            "CallHome",
+            "AppQoE",
+            "ContentAccelerator",
+            "SYSTEM",
+            "RISE",
+            "FEO",
+            "LSN",
+            "LargeScaleNAT",
+            "RDPProxy",
+            "Rep",
+            "Reputation",
+            "URLFiltering",
+            "VideoOptimization",
+            "ForwardProxy",
+            "SSLInterception",
+            "AdaptiveTCP",
+            "CQA",
+            "CI",
+            "ContentInspection",
+            "Bot"
+        ],
+        "description": [
+            "The feature to be checked while applying this config."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

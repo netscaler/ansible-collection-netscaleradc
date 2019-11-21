@@ -23,15 +23,12 @@ type_conversions = {
 def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
     module_arguments = list()
     for property in json_doc:
-        # Skip readonly attributes
-        if property['readonly'] is True:
-            continue
 
         # Skip attributes in skip_attrs
-        if property['name'] in skip_attrs:
+        if property['option_name'] in skip_attrs:
             continue
 
-        key = property['name']
+        key = property['option_name']
         entry = {}
         entry['key'] = key
         entry['transforms'] = []
@@ -63,20 +60,14 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
 
 
 def produce_readwrite_attrs_list(json_doc):
-    readonly_list = list()
+    readwrite_attrs  = list()
     for property in json_doc:
-        # Add only readonly attributes
-        if property['readonly'] is False:
-            readonly_list.append(property['name'])
-    return readonly_list
+        readwrite_attrs .append(property['option_name'])
+    return readwrite_attrs
 
 
 def produce_readonly_attrs_list(json_doc):
     readonly_list = list()
-    for property in json_doc:
-        # Add only readonly attributes
-        if property['readonly'] is True:
-            readonly_list.append(property['name'])
     return readonly_list
 
 
@@ -84,8 +75,8 @@ def produce_immutables_list(json_doc):
     immutables_list = []
     for property in json_doc:
         # Add only readonly attributes
-        if 'mutable' in property and not property['mutable'] and not property['readonly']:
-            immutables_list.append(property['name'])
+        if not property['is_updateable']:
+            immutables_list.append(property['option_name'])
     return immutables_list
 
 
@@ -119,16 +110,11 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
     for property in json_doc:
 
         # Skip attributes in skip list
-        if property['name'] in skip_attrs:
+        if property['option_name'] in skip_attrs:
             continue
 
         entry = {}
-        entry['option_name'] = property['name']
-        entry['readonly'] = property['readonly']
-
-        # Skip readonly attributes
-        if entry['readonly']:
-            continue
+        entry['option_name'] = property['option_name']
 
         # Fallthrough
         # entry['description'] = [ split_description_line(line) for line in property['description_lines']]
@@ -154,7 +140,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
                 entry['type'] = 'bool'
 
             # Append lines rejecting possible values lines
-            for line in property['description_lines']:
+            for line in property['description']:
                 if line.startswith('Possible values'):
                     continue
                 if choice_set in enabled_disabled_set:
@@ -170,7 +156,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
                     entry['description'].append(split_description_line(line))
         else:
             # pass all lines to description
-            entry['description'] = [split_description_line(line) for line in property['description_lines']]
+            entry['description'] = [split_description_line(line) for line in property['description']]
 
         options_list.append(entry)
 
@@ -191,6 +177,7 @@ def main():
     parser.add_argument('--json-data', help='Json input file', required=True)
     parser.add_argument('--nitro-section', help='Section of NITRO API to use', required=True)
     parser.add_argument('--nitro-object', help='NITRO class to use', required=True)
+    parser.add_argument('--output-dir', help='Output directory. Will be created if not present.', required=False)
 
     args = parser.parse_args()
 
@@ -219,7 +206,7 @@ def main():
             sdk_property_list.append(member[0])
 
     # Show diffs
-    scrap_properties_set = set([v['name'] for v in json_doc])
+    scrap_properties_set = set([v['option_name'] for v in json_doc])
     sdk_properties_set = set(sdk_property_list)
 
     not_in_sdk = list(scrap_properties_set - sdk_properties_set)
@@ -261,11 +248,19 @@ def main():
         transforms=transforms,
     )
     output_file = 'netscaler_%s_%s.py' % (args.nitro_section, args.nitro_object)
+    if args.output_dir is not None:
+        output_dir = args.output_dir
+        if not os.path.exists(output_dir):
+            os.makedirs(output_dir)
+        output_path = os.path.join(output_dir, output_file)
+    else:
+        output_path = output_file
+
     stream.dump(
-        output_file,
+        output_path,
         encoding='utf-8'
     )
-    print('Wrote to file %s' % output_file)
+    print('Wrote to file %s' % output_path)
 
 
 if __name__ == '__main__':

@@ -55,6 +55,8 @@
         servicegroupname: service-group-1
         servicetype: HTTP
         servicemembers:
+          mode: exact
+          attributes:
             - ip: 10.78.78.78
               port: 80
               weight: 50

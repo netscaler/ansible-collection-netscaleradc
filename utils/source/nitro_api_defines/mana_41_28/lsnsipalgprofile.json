@@ -1,0 +1,178 @@
+[
+    {
+        "option_name": "sipalgprofilename",
+        "type": "str",
+        "description": [
+            "The name of the SIPALG Profile.",
+            "Minimum length =  1",
+            "Maximum length =  127"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "datasessionidletimeout",
+        "type": "float",
+        "description": [
+            "Idle timeout for the data channel sessions in seconds.",
+            "Default value: 120"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sipsessiontimeout",
+        "type": "float",
+        "description": [
+            "SIP control channel session timeout in seconds.",
+            "Default value: 600"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "registrationtimeout",
+        "type": "float",
+        "description": [
+            "SIP registration timeout in seconds.",
+            "Default value: 60"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sipsrcportrange",
+        "type": "str",
+        "description": [
+            "Source port range for SIP_UDP and SIP_TCP."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "sipdstportrange",
+        "type": "str",
+        "description": [
+            "Destination port range for SIP_UDP and SIP_TCP."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "openregisterpinhole",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE RegisterPinhole creation.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "opencontactpinhole",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE ContactPinhole creation.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "openviapinhole",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE ViaPinhole creation.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "openrecordroutepinhole",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE RecordRoutePinhole creation.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "siptransportprotocol",
+        "type": "str",
+        "choices": [
+            "TCP",
+            "UDP"
+        ],
+        "description": [
+            "SIP ALG Profile transport protocol type.",
+            "Possible values = TCP, UDP"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "openroutepinhole",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE RoutePinhole creation.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rport",
+        "type": "str",
+        "choices": [
+            "ENABLED",
+            "DISABLED"
+        ],
+        "description": [
+            "ENABLE/DISABLE rport.",
+            "Default value: ENABLED",
+            "Possible values = ENABLED, DISABLED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

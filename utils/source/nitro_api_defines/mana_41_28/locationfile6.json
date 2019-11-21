@@ -1,0 +1,42 @@
+[
+    {
+        "option_name": "Locationfile",
+        "type": "str",
+        "description": [
+            "Name of the IPv6 location file, with or without absolute path. If the path is not included, the default path (/var/netscaler/locdb) is assumed. In a high availability setup, the static database must be stored in the same location on both Citrix ADCs.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "format",
+        "type": "str",
+        "choices": [
+            "netscaler6",
+            "geoip-country6"
+        ],
+        "description": [
+            "Format of the IPv6 location file. Required for the Citrix ADC to identify how to read the location file.",
+            "Default value: netscaler6",
+            "Possible values = netscaler6, geoip-country6"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "src",
+        "type": "str",
+        "description": [
+            "URL \\(protocol, host, path, and file name\\) from where the location file will be imported.",
+            "NOTE: The import fails if the object to be imported is on an HTTPS server that requires client certificate authentication for access.",
+            "Minimum length =  1",
+            "Maximum length =  2047"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

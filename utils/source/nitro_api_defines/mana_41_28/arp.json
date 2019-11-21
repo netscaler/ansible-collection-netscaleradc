@@ -1,0 +1,112 @@
+[
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "IP address of the network device that you want to add to the ARP table.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "td",
+        "type": "float",
+        "description": [
+            "Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.",
+            "Minimum value =  0",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "mac",
+        "type": "str",
+        "description": [
+            "MAC address of the network device."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ifnum",
+        "type": "str",
+        "description": [
+            "Interface through which the network device is accessible. Specify the interface in (slot/port) notation. For example, 1/3."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vxlan",
+        "type": "float",
+        "description": [
+            "ID of the VXLAN on which the IP address of this ARP entry is reachable.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vtep",
+        "type": "str",
+        "description": [
+            "IP address of the VXLAN tunnel endpoint (VTEP) through which the IP address of this ARP entry is reachable.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vlan",
+        "type": "float",
+        "description": [
+            "The VLAN ID through which packets are to be sent after matching the ARP entry. This is a numeric value."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ownernode",
+        "type": "float",
+        "description": [
+            "The owner node for the Arp entry.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "all",
+        "type": "bool",
+        "description": [
+            "Remove all ARP entries from the ARP table of the Citrix ADC."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

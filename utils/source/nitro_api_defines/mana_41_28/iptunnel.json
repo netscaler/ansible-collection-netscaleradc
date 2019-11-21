@@ -1,0 +1,114 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the IP tunnel. Leading character must be a number or letter. Other characters allowed, after the first character, are @ _ - . (period) : (colon) # and space ( ).",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "remote",
+        "type": "str",
+        "description": [
+            "Public IPv4 address, of the remote device, used to set up the tunnel. For this parameter, you can alternatively specify a network address.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "remotesubnetmask",
+        "type": "str",
+        "description": [
+            "Subnet mask of the remote IP address of the tunnel."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "local",
+        "type": "str",
+        "description": [
+            "Type of Citrix ADC owned public IPv4 address, configured on the local Citrix ADC and used to set up the tunnel."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "protocol",
+        "type": "str",
+        "choices": [
+            "IPIP",
+            "GRE",
+            "IPSEC",
+            "UDP"
+        ],
+        "description": [
+            "Name of the protocol to be used on this tunnel.",
+            "Default value: IPIP",
+            "Possible values = IPIP, GRE, IPSEC, UDP"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "grepayload",
+        "type": "str",
+        "choices": [
+            "ETHERNETwithDOT1Q",
+            "ETHERNET",
+            "IP"
+        ],
+        "description": [
+            "The payload GRE will carry.",
+            "Default value: ETHERNETwithDOT1Q",
+            "Possible values = ETHERNETwithDOT1Q, ETHERNET, IP"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ipsecprofilename",
+        "type": "str",
+        "description": [
+            "Name of IPSec profile to be associated.",
+            "Default value: \"ns_ipsec_default_profile\""
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vlan",
+        "type": "float",
+        "description": [
+            "The vlan for mulicast packets.",
+            "Minimum value =  1",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ownergroup",
+        "type": "str",
+        "description": [
+            "The owner node group in a Cluster for the iptunnel.",
+            "Default value: DEFAULT_NG",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

@@ -1,0 +1,23 @@
+[
+    {
+        "option_name": "identifiername",
+        "type": "str",
+        "description": [
+            "stream identifier  and rate limit identifier that need to be bound to this nodegroup."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the nodegroup to which you want to bind a cluster node or an entity.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

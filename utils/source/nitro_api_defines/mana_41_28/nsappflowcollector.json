@@ -1,0 +1,35 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the AppFlow collector.",
+            "Minimum length =  1",
+            "Maximum length =  127"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "The IPv4 address of the AppFlow collector."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "port",
+        "type": "int",
+        "description": [
+            "The UDP port on which the AppFlow collector is listening.",
+            "Default value: 4739"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

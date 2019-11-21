@@ -1,0 +1,69 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Unique name for the expression. Not case sensitive. Must begin with an ASCII letter or underscore (_) character, and must consist only of ASCII alphanumeric or underscore characters. Must not begin with 're' or 'xp' or be a word reserved for use as an expression qualifier prefix (such as HTTP) or enumeration value (such as ASCII). Must not be the name of an existing named expression, pattern set, dataset, stringmap, or HTTP callout.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "value",
+        "type": "str",
+        "description": [
+            "Expression string. For example: http.req.body(100).contains(\"this\")."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "description",
+        "type": "str",
+        "description": [
+            "Description for the expression."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "comment",
+        "type": "str",
+        "description": [
+            "Any comments associated with the expression. Displayed upon viewing the policy expression."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clientsecuritymessage",
+        "type": "str",
+        "description": [
+            "Message to display if the expression fails. Allowed for classic end-point check expressions only.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "type",
+        "type": "str",
+        "choices": [
+            "CLASSIC",
+            "ADVANCED"
+        ],
+        "description": [
+            "Type of expression. Can be a classic or default syntax (advanced) expression.",
+            "Possible values = CLASSIC, ADVANCED"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

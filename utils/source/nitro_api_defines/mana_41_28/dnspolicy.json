@@ -1,0 +1,111 @@
+[
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name for the DNS policy."
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "rule",
+        "type": "str",
+        "description": [
+            "Expression against which DNS traffic is evaluated.",
+            "Note:",
+            "* On the command line interface, if the expression includes blank spaces, the entire expression must be enclosed in double quotation marks.",
+            "* If the expression itself includes double quotation marks, you must escape the quotations by using the  character.",
+            "* Alternatively, you can use single quotation marks to enclose the rule, in which case you do not have to escape the double quotation marks.",
+            "Example: CLIENT.UDP.DNS.DOMAIN.EQ(\"domainname\")."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "viewname",
+        "type": "str",
+        "description": [
+            "The view name that must be used for the given policy."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "preferredlocation",
+        "type": "str",
+        "description": [
+            "The location used for the given policy. This is deprecated attribute. Please use -prefLocList."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "preferredloclist",
+        "type": "list",
+        "description": [
+            "The location list in priority order used for the given policy.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "drop",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "The dns packet must be dropped.",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "cachebypass",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "By pass dns cache for this.",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "actionname",
+        "type": "str",
+        "description": [
+            "Name of the DNS action to perform when the rule evaluates to TRUE. The built in actions function as follows:",
+            "* dns_default_act_Drop. Drop the DNS request.",
+            "* dns_default_act_Cachebypass. Bypass the DNS cache and forward the request to the name server.",
+            "You can create custom actions by using the add dns action command in the CLI or the DNS > Actions > Create DNS Action dialog box in the Citrix ADC configuration utility."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "logaction",
+        "type": "str",
+        "description": [
+            "Name of the messagelog action to use for requests that match this policy."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -20,6 +20,8 @@
         servicegroupname: service-group-1
         servicetype: HTTP
         servicemembers:
+          mode: exact
+          attributes:
             - ip: 192.168.10.1
               port: 80
               weight: 60

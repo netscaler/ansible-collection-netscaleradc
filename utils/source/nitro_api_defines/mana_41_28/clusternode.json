@@ -1,0 +1,129 @@
+[
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "Citrix ADC IP (NSIP) address of the appliance to add to the cluster. Must be an IPv4 address.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "state",
+        "type": "str",
+        "choices": [
+            "ACTIVE",
+            "SPARE",
+            "PASSIVE"
+        ],
+        "description": [
+            "Admin state of the cluster node. The available settings function as follows:",
+            "ACTIVE - The node serves traffic.",
+            "SPARE - The node does not serve traffic unless an ACTIVE node goes down.",
+            "PASSIVE - The node does not serve traffic, unless you change its state. PASSIVE state is useful during temporary maintenance activities in which you want the node to take part in the consensus protocol but not to serve traffic.",
+            "Default value: PASSIVE",
+            "Possible values = ACTIVE, SPARE, PASSIVE"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "backplane",
+        "type": "str",
+        "description": [
+            "Interface through which the node communicates with the other nodes in the cluster. Must be specified in the three-tuple form n/c/u, where n represents the node ID and c/u refers to the interface on the appliance.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "priority",
+        "type": "float",
+        "description": [
+            "Preference for selecting a node as the configuration coordinator. The node with the lowest priority value is selected as the configuration coordinator.",
+            "When the current configuration coordinator goes down, the node with the next lowest priority is made the new configuration coordinator. When the original node comes back up, it will preempt the new configuration coordinator and take over as the configuration coordinator.",
+            "Note: When priority is not configured for any of the nodes or if multiple nodes have the same priority, the cluster elects one of the nodes as the configuration coordinator.",
+            "Default value: 31",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nodegroup",
+        "type": "str",
+        "description": [
+            "The default node group in a Cluster system.",
+            "Default value: DEFAULT_NG",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "delay",
+        "type": "float",
+        "description": [
+            "Applicable for Passive node and node becomes passive after this timeout (in minutes).",
+            "Default value: 0",
+            "Minimum value =  0",
+            "Maximum value =  1440"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "tunnelmode",
+        "type": "str",
+        "choices": [
+            "NONE",
+            "GRE",
+            "UDP"
+        ],
+        "description": [
+            "To set the tunnel mode.",
+            "Default value: NONE",
+            "Possible values = NONE, GRE, UDP"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "clearnodegroupconfig",
+        "type": "str",
+        "choices": [
+            "YES",
+            "NO"
+        ],
+        "description": [
+            "Option to remove nodegroup config.",
+            "Default value: YES",
+            "Possible values = YES, NO"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

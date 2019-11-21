@@ -1,0 +1,33 @@
+[
+    {
+        "option_name": "serverip",
+        "type": "str",
+        "description": [
+            "IP address of the License proxy server.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "servername",
+        "type": "str",
+        "description": [
+            "Fully qualified domain name of the License proxy server."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": true
+    },
+    {
+        "option_name": "port",
+        "type": "float",
+        "description": [
+            "License proxy server port."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

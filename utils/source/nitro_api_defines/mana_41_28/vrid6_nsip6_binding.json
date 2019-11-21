@@ -1,0 +1,24 @@
+[
+    {
+        "option_name": "ipaddress",
+        "type": "str",
+        "description": [
+            "The IP address bound to the VRID6."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "id",
+        "type": "float",
+        "description": [
+            "Integer value that uniquely identifies a VMAC6 address.",
+            "Minimum value =  1",
+            "Maximum value =  255"
+        ],
+        "is_get_id": true,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

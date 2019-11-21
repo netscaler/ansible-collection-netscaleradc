@@ -1,0 +1,37 @@
+[
+    {
+        "option_name": "vxlan",
+        "type": "float",
+        "description": [
+            "The VXLAN assigned to the vlan inside the cloud.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vlan",
+        "type": "list",
+        "description": [
+            "The vlan id or the range of vlan ids in the on-premise network.",
+            "Minimum length =  1",
+            "Maximum length =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the mapping table.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

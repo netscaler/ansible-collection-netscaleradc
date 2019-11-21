@@ -50,15 +50,19 @@
         servicegroupname: service_group_catalog
         servicetype: HTTP
         servicemembers:
-          - ip: 10.78.78.78
-            port: 80
-            weight: 50
-          - ip: 10.79.79.79
-            port: 80
-            weight: 50
-        monitorbindings:
-          - monitorname: monitor_catalog
-            weight: 100
+          mode: exact
+          attributes:
+            - ip: 10.78.78.78
+              port: 80
+              weight: 50
+            - ip: 10.79.79.79
+              port: 80
+              weight: 50
+        monitor_bindings:
+          mode: exact
+          attributes:
+            - monitorname: monitor_catalog
+              weight: 100
 
     - name: Configure service group cart
       delegate_to: localhost
@@ -73,15 +77,19 @@
         servicegroupname: service_group_cart
         servicetype: HTTP
         servicemembers:
-          - ip: 11.78.78.78
-            port: 80
-            weight: 50
-          - ip: 11.79.79.79
-            port: 80
-            weight: 50
-        monitorbindings:
-          - monitorname: monitor_cart
-            weight: 100
+          mode: exact
+          attributes:
+            - ip: 11.78.78.78
+              port: 80
+              weight: 50
+            - ip: 11.79.79.79
+              port: 80
+              weight: 50
+        monitor_bindings:
+          mode: exact
+          attributes:
+            - monitorname: monitor_cart
+              weight: 100
 
     - name: Configure lb vserver cart
       delegate_to: localhost

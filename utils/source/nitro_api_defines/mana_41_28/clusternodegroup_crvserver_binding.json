@@ -1,0 +1,23 @@
+[
+    {
+        "option_name": "vserver",
+        "type": "str",
+        "description": [
+            "vserver that need to be bound to this nodegroup."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "name",
+        "type": "str",
+        "description": [
+            "Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    }
+]

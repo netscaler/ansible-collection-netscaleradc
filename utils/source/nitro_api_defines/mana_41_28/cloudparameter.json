@@ -1,0 +1,104 @@
+[
+    {
+        "option_name": "controllerfqdn",
+        "type": "str",
+        "description": [
+            "FQDN of the controller to which the Citrix ADC SDProxy Connects.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "controllerport",
+        "type": "int",
+        "description": [
+            "Port number of the controller to which the Citrix ADC SDProxy connects.",
+            "Minimum value =  1",
+            "Range 1 - 65535",
+            "* in CLI is represented as 65535 in NITRO API"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "instanceid",
+        "type": "str",
+        "description": [
+            "Instance ID of the customer provided by Trust.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "customerid",
+        "type": "str",
+        "description": [
+            "Customer ID of the citrix cloud customer.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "resourcelocation",
+        "type": "str",
+        "description": [
+            "Resource Location of the customer provided by Trust.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "activationcode",
+        "type": "str",
+        "description": [
+            "Activation code for the NGS Connector instance."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "deployment",
+        "type": "str",
+        "choices": [
+            null,
+            "Production",
+            "Staging",
+            "Dev"
+        ],
+        "description": [
+            "Describes if the customer is a Staging/Production or Dev Citrix Cloud customer.",
+            "Possible values = , Production, Staging, Dev"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "connectorresidence",
+        "type": "str",
+        "choices": [
+            "None",
+            "Onprem",
+            "Aws",
+            "Azure",
+            "Cpx"
+        ],
+        "description": [
+            "Identifies whether the connector is located Onprem, Aws or Azure.",
+            "Possible values = None, Onprem, Aws, Azure, Cpx"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    }
+]

@@ -17,7 +17,7 @@
 
         state: present
         name: server-1
-        ipaddress: 192.168.1.1
+        ipaddress: 10.11.11.12
 
     - name: Set server 2
       delegate_to: localhost
@@ -28,7 +28,7 @@
 
         state: present
         name: server-2
-        ipaddress: 192.168.1.2
+        ipaddress: 10.11.11.13
 
     - name: Set service group
       delegate_to: localhost
@@ -41,10 +41,19 @@
 
         servicegroupname: service-group-1
         servicetype: HTTP
+        clttimeout: 300
+        autoscale: API
         servicemembers:
+          mode: exact
+          attributes:
             - servername: server-1
-              port: 80
+              port: 8080
               weight: 60
-            - servername: server-2
-              port: 80
-              weight: 40
+
+        monitor_bindings:
+          mode: exact
+          attributes:
+            - monitor_name: myhttp3
+              weight: 50
+            - monitor_name: myhttp2
+              weight: 50

@@ -1,0 +1,149 @@
+[
+    {
+        "option_name": "intranetapplication",
+        "type": "str",
+        "description": [
+            "Name of the intranet application.",
+            "Minimum length =  1",
+            "Maximum length =  31"
+        ],
+        "is_get_id": true,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "protocol",
+        "type": "str",
+        "choices": [
+            "TCP",
+            "UDP",
+            "ANY"
+        ],
+        "description": [
+            "Protocol used by the intranet application. If protocol is set to BOTH, TCP and UDP traffic is allowed.",
+            "Possible values = TCP, UDP, ANY"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "destip",
+        "type": "str",
+        "description": [
+            "Destination IP address, IP range, or host name of the intranet application. This address is the server IP address.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "netmask",
+        "type": "str",
+        "description": [
+            "Destination subnet mask for the intranet application."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "iprange",
+        "type": "str",
+        "description": [
+            "If you have multiple servers in your network, such as web, email, and file shares, configure an intranet application that includes the IP range for all the network applications. This allows users to access all the intranet applications contained in the IP address range.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "hostname",
+        "type": "str",
+        "description": [
+            "Name of the host for which to configure interception. The names are resolved during interception when users log on with the Citrix Gateway Plug-in.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "clientapplication",
+        "type": "list",
+        "description": [
+            "Names of the client applications, such as PuTTY and Xshell.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "spoofiip",
+        "type": "str",
+        "choices": [
+            "on",
+            "off"
+        ],
+        "description": [
+            "IP address that the intranet application will use to route the connection through the virtual adapter.",
+            "Default value: ON",
+            "Possible values = ON, OFF"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false,
+        "transform": "lambda v: 'ON' if v else 'OFF'"
+    },
+    {
+        "option_name": "destport",
+        "type": "str",
+        "description": [
+            "Destination TCP or UDP port number for the intranet application. Use a hyphen to specify a range of port numbers, for example 90-95.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "interception",
+        "type": "str",
+        "choices": [
+            "PROXY",
+            "TRANSPARENT"
+        ],
+        "description": [
+            "Interception mode for the intranet application or resource. Correct value depends on the type of client software used to make connections. If the interception mode is set to TRANSPARENT, users connect with the Citrix Gateway Plug-in for Windows. With the PROXY setting, users connect with the Citrix Gateway Plug-in for Java.",
+            "Possible values = PROXY, TRANSPARENT"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "srcip",
+        "type": "str",
+        "description": [
+            "Source IP address. Required if interception mode is set to PROXY. Default is the loopback address, 127.0.0.1.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "srcport",
+        "type": "int",
+        "description": [
+            "Source port for the application for which the Citrix Gateway virtual server proxies the traffic. If users are connecting from a device that uses the Citrix Gateway Plug-in for Java, applications must be configured manually by using the source IP address and TCP port values specified in the intranet application profile. If a port value is not set, the destination port value is used.",
+            "Minimum value =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]

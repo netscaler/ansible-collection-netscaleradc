@@ -1,0 +1,106 @@
+[
+    {
+        "option_name": "mac",
+        "type": "str",
+        "description": [
+            "The MAC address of the target."
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vxlan",
+        "type": "float",
+        "description": [
+            "The VXLAN to which this address is associated.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vtep",
+        "type": "str",
+        "description": [
+            "The IP address of the destination VXLAN tunnel endpoint where the Ethernet MAC ADDRESS resides.",
+            "Minimum length =  1"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vni",
+        "type": "float",
+        "description": [
+            "The VXLAN VNI Network Identifier (or VXLAN Segment ID) to use to connect to the remote VXLAN tunnel endpoint.  If omitted the value specified as vxlan will be used.",
+            "Minimum value =  1",
+            "Maximum value =  16777215"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "devicevlan",
+        "type": "float",
+        "description": [
+            "The vlan on which to send multicast packets when the VXLAN tunnel endpoint is a muticast group address.",
+            "Minimum value =  1",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": true,
+        "is_updateable": false
+    },
+    {
+        "option_name": "bridgeage",
+        "type": "float",
+        "description": [
+            "Time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value.",
+            "Default value: 300",
+            "Minimum value =  60",
+            "Maximum value =  300"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": true
+    },
+    {
+        "option_name": "nodeid",
+        "type": "float",
+        "description": [
+            "Unique number that identifies the cluster node.",
+            "Minimum value =  0",
+            "Maximum value =  31"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "vlan",
+        "type": "float",
+        "description": [
+            "VLAN  whose entries are to be removed.",
+            "Minimum value =  1",
+            "Maximum value =  4094"
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    },
+    {
+        "option_name": "ifnum",
+        "type": "str",
+        "description": [
+            "INTERFACE  whose entries are to be removed."
+        ],
+        "is_get_id": false,
+        "is_delete_id": false,
+        "is_updateable": false
+    }
+]
