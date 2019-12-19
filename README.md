@@ -4,6 +4,31 @@ This repository provides [Ansible](https://www.ansible.com)  modules for configu
 
 The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be availble with Ansible automatically.
 
+## Table of contents
+
+* [Module renaming](#module-renaming)
+* [Documentation](#documentation)
+* [List of implemented modules](#list-of-implemented-modules)
+  - [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
+* [Pre-requisites](#pre-requisites)
+* [Installation](#installation)
+  - [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
+  - [Global install](#global-install)
+* [Usage](#usage)
+  - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
+* [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
+  - [Installation](#installation)
+  - [Usage](#usage-1)
+  - [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
+* [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
+  - [Use the citrix\_adc\_nitro\_request module](#use-the-citrix_adc_nitro_request-module)
+  - [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
+  - [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
+* [Directory structure](#directory-structure)
+* [LICENSE](#license)
+* [COPYRIGHT](#copyright)
+
+
 ## Module renaming
 
 Note that as of this [commit](https://github.com/citrix/netscaler-ansible-modules/commit/b53935432646741d9af27d9617480517a28aa86d)
@@ -21,7 +46,9 @@ module names will differ depending on where they were installed from.
 
 ## Documentation
 
-Documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
+Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
+
+## List of implemented modules
 
 Currently the following modules are implemented
 
@@ -49,6 +76,7 @@ Currently the following modules are implemented
 * citrix\_adc\_lb\_monitor - Manage load balancing monitors
 * citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
 * citrix\_adc\_nitro\_request - Issue Nitro API requests to a Netscaler instance
+* citrix\_adc\_nitro\_resource - Create, update, delete resources on Citrix ADC
 * citrix\_adc\_save\_config - Save Netscaler configuration
 * citrix\_adc\_server - Manage server configuration
 * citrix\_adc\_service - Manage service configuration in Netscaler
@@ -66,6 +94,14 @@ Currently the following modules are implemented
 * citrix\_adm\_stylebook - Create or delete Citrix ADM stylebooks
 * citrix\_adm\_tenant\_facts - Retrieve facts about Citrix ADM tenants
 
+### `citrix_adc_nitro_resource` workflows list
+
+The following NITRO API endpoints have their workflow dictionaries available
+for use with the `citrix_adc_nitro_resource` module.
+
+The workflows yaml file can be found [here](utils/source/nitro_resource_utils/workflows.yaml).
+
+lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvserver\_binding, lbvserver\_auditnslogpolicy\_binding, lbroute6, lbvserver\_filterpolicy\_binding, lbvserver\_dnspolicy64\_binding, lbvserver\_responderpolicy\_binding, lbmetrictable, lbvserver\_cmppolicy\_binding, lbvserver\_cachepolicy\_binding, lbvserver\_servicegroup\_binding, spilloverpolicy, servicegroup, lbvserver\_videooptimizationdetectionpolicy\_binding, lbmetrictable\_metric\_binding, lbvserver\_servicegroupmember\_binding, service, lbvserver\_transformpolicy\_binding, lbvserver\_auditsyslogpolicy\_binding, lbmonitor\_sslcertkey\_binding, lbvserver\_appqoepolicy\_binding, lbvserver\_authorizationpolicy\_binding, server, lbvserver\_service\_binding, lbgroup, lbvserver\_contentinspectionpolicy\_binding, lbvserver\_appflowpolicy\_binding, lbroute, lbvserver\_feopolicy\_binding, lbvserver\_rewritepolicy\_binding, lbvserver\_csvserver\_binding, lbmonitor, lbvserver\_appfwpolicy\_binding, service\_lbmonitor\_binding, lbvserver\_scpolicy\_binding, servicegroup\_lbmonitor\_binding, lbvserver, lbmonitor\_metric\_binding, lbvserver\_videooptimizationpacingpolicy\_binding, lbvserver\_capolicy\_binding, lbprofile, lbvserver\_analyticsprofile\_binding
 
 
 ## Pre-requisites
@@ -92,18 +128,6 @@ If the ansible installation is on a dirctory that requires root access, the inst
 If the isntallation script fails and you know where ansible is located on your system you can do a manual installation.
 Just copy the contents of the ansible-modules directory to the extras module directory and the netscaler.py file to the module_utils directory of ansible.
 
-### Backport for Ansible 2.4.x
-
-The modules are developed against the latest development version of ansible.
-
-Some changes made by the core ansible developers caused the modules to lose backwards portability to ansible 2.4.
-
-If you need the latest version of the modules present in this repository and are restricted to using ansible 2.4 you can use
-the backport branch [backport_2.4](https://github.com/citrix/netscaler-ansible-modules/tree/backport_2.4) which
-contains the fixes needed for the modules to run under ansible 2.4 while also containing the latest changes.
-
-This branch will be kept up to date with the master branch.
-
 ## Usage
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix NetScaler appliance.
@@ -115,9 +139,9 @@ Detailed documentation for each module can be found in the htmldoc directory.
 
 Documentation regarding the Citrix NetScaler appliance configuration in general can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
 
-### MAS proxied calls
+### Citrix ADM proxied calls
 
-There is also the ability to proxy module NITRO calls through a MAS to a target Netscaler.
+There is also the ability to proxy module NITRO calls through a Citrix ADM to a target ADC.
 
 In order to do that you need a NITRO Python SDK that has the MAS proxy calls capability and also follow these 2 steps.
 
@@ -178,33 +202,26 @@ and provides the resulting NITRO API response in a well defined return value.
 
 You can find examples of using the module in this [folder](samples/nitro_request)
 
-### Use the roles leveraging citrix\_adc\_nitro\_request module
+### Use the citrix\_adc\_nitro\_resource module.
 
-Using the citrix\_adc\_nitro\_request module is quite barebones as all workflow
-must be handled by the user.
+The `citrix_adc_nitro_resource` module can be used to create, update and delete
+NITRO objects.
 
-A step up in functionality are the roles that leverage this module to provide
-a more complex workflow that resembles that of a fully fledged module.
+It has the same base parameters as the other modules for connecting to the ADC.
 
-Roles invoke the citrix\_adc\_nitro\_request module multiple times and
-also have logic programmed into them to apply the correct operation
-under the current configuration state.
+Its most important attributes are the `workflow` parameter which determines
+the execution of the module with respect to how the NITRO object will be created, updated
+or deleted and the `resource` parameter which contains the actual attributes
+for the NITRO resource.
 
-Using a role to create a configuration entity is different from calling
-the generic citrix\_adc\_nitro\_request module, since the role will
-search for the configuration item and if it exists it will compare it
-to the configuration input.
+The workflows dictionaries published so far can be found [here](utils/source/nitro_resource_utils/workflows.yaml).
 
-Depending on the processing result it will either create, update, recreate, delete or simply
-do a noop for the configuration passed. It will also populate an output variable
-that will contain information for the processing that took place and the user
-can test these values to see what actually happened.
+Examples can be found in this [folder](samples/nitro_resource).
 
-Additionally roles provide a `dry_run` option during which no actual change is made
-but the output variables are populated just as in a normal run. This is useful to verify
-that given a configuration the operations performed will be what the user expects.
+Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
 
-Examples can be found in this [folder](samples/recipes)
+If an endpoint cannot be found in the existing workflows file please open an issue
+so that we can investigate if this endpoint is covered by the existing workflows and publish its dictionary.
 
 
 ### Use the connection plugin with the `shell` Ansible module
