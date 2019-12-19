@@ -1,6 +1,6 @@
-.. _all_modules:
+.. _network_modules:
 
-All modules
+Network modules
 ```````````
 
 
