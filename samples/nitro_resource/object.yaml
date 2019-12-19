@@ -1,0 +1,20 @@
+- hosts: citrix_adc
+
+  gather_facts: False
+  vars_files:
+    - workflows.yaml
+
+  tasks:
+    - name: Setup nitro resource lb group
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: present
+
+        workflow: "{{ workflow.lbgroup }}"
+
+        resource:
+          name: mylbgroup
+          timeout: 150
