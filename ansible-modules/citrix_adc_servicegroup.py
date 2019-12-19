@@ -37,6 +37,7 @@ options:
                 (-) characters. Can be changed after the name is created.
             - "Minimum length =  1"
         type: str
+
     servicetype:
         choices:
             - 'HTTP'
@@ -84,6 +85,7 @@ options:
         description:
             - "Protocol used to exchange data with the service."
         type: str
+
     cachetype:
         choices:
             - 'TRANSPARENT'
@@ -92,6 +94,7 @@ options:
         description:
             - "Cache type supported by the cache server."
         type: str
+
     td:
         description:
             - >-
@@ -100,12 +103,14 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(4094)"
         type: str
+
     maxclient:
         description:
             - "Maximum number of simultaneous open connections for the service group."
             - "Minimum value = C(0)"
             - "Maximum value = C(4294967294)"
         type: str
+
     maxreq:
         description:
             - "Maximum number of requests that can be sent on a persistent connection to the service group."
@@ -113,11 +118,13 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(65535)"
         type: str
+
     cacheable:
         description:
             - "Use the transparent cache redirection virtual server to forward the request to the cache server."
             - "Note: Do not set this parameter if you set the Cache Type."
         type: bool
+
     cip:
         choices:
             - 'enabled'
@@ -125,6 +132,7 @@ options:
         description:
             - "Insert the Client IP header in requests forwarded to the service."
         type: str
+
     cipheader:
         description:
             - >-
@@ -133,6 +141,7 @@ options:
                 IP Header parameter or the value set by the set ns config command is used as client's IP header name.
             - "Minimum length =  1"
         type: str
+
     usip:
         description:
             - >-
@@ -140,14 +149,17 @@ options:
                 setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the
                 IP address to initiate server side connections.
         type: bool
+
     pathmonitor:
         description:
             - "Path monitoring for clustering."
         type: bool
+
     pathmonitorindv:
         description:
             - "Individual Path monitoring decisions."
         type: bool
+
     useproxyport:
         description:
             - >-
@@ -155,6 +167,7 @@ options:
                 the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
         type: bool
+
     healthmonitor:
         description:
             - "Monitor the health of this service.  Available settings function as follows:"
@@ -163,48 +176,58 @@ options:
                 NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
                 service as UP at all times.
         type: bool
+
     sc:
         description:
             - "State of the SureConnect feature for the service group."
         type: bool
+
     sp:
         description:
             - "Enable surge protection for the service group."
         type: bool
+
     rtspsessionidremap:
         description:
             - "Enable RTSP session ID mapping for the service group."
         type: bool
+
     clttimeout:
         description:
             - "Time, in seconds, after which to terminate an idle client connection."
             - "Minimum value = C(0)"
             - "Maximum value = C(31536000)"
         type: int
+
     svrtimeout:
         description:
             - "Time, in seconds, after which to terminate an idle server connection."
             - "Minimum value = C(0)"
             - "Maximum value = C(31536000)"
         type: int
+
     cka:
         description:
             - "Enable client keep-alive for the service group."
         type: bool
+
     tcpb:
         description:
             - "Enable TCP buffering for the service group."
         type: bool
+
     cmp:
         description:
             - "Enable compression for the specified service."
         type: bool
+
     maxbandwidth:
         description:
             - "Maximum bandwidth, in Kbps, allocated for all the services in the service group."
             - "Minimum value = C(0)"
             - "Maximum value = C(4294967287)"
         type: str
+
     monthreshold:
         description:
             - >-
@@ -213,6 +236,7 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(65535)"
         type: str
+
     downstateflush:
         choices:
             - 'enabled'
@@ -222,22 +246,26 @@ options:
                 Flush all active transactions associated with all the services in the service group whose state
                 from UP to DOWN. Do not enable this option for applications that must complete their transactions.
         type: str
+
     tcpprofilename:
         description:
             - "Name of the TCP profile that contains TCP configuration settings for the service group."
             - "Minimum length =  1"
             - "Maximum length =  127"
         type: str
+
     httpprofilename:
         description:
             - "Name of the HTTP profile that contains HTTP configuration settings for the service group."
             - "Minimum length =  1"
             - "Maximum length =  127"
         type: str
+
     comment:
         description:
             - "Any information about the service group."
         type: str
+
     appflowlog:
         choices:
             - 'enabled'
@@ -245,12 +273,14 @@ options:
         description:
             - "Enable logging of AppFlow information for the specified service group."
         type: str
+
     netprofile:
         description:
             - "Network profile for the service group."
             - "Minimum length =  1"
             - "Maximum length =  127"
         type: str
+
     autoscale:
         choices:
             - 'DISABLED'
@@ -261,16 +291,19 @@ options:
         description:
             - "Auto scale option for a servicegroup."
         type: str
+
     memberport:
         description:
             - "member port."
         type: int
+
     autodisablegraceful:
         description:
             - >-
                 Indicates graceful shutdown of the service. System will wait for all outstanding connections to this
                 to be closed before disabling the service.
         type: bool
+
     autodisabledelay:
         description:
             - >-
@@ -280,6 +313,7 @@ options:
                 will not be sent to the service. Instead, they will be load balanced among other available services.
                 the delay time expires, no new requests or connections will be sent to the service.
         type: str
+
     monconnectionclose:
         choices:
             - 'RESET'
@@ -289,17 +323,20 @@ options:
                 Close monitoring connections by sending the service a connection termination message with the
                 bit set.
         type: str
+
     servername:
         description:
             - "Name of the server to which to bind the service group."
             - "Minimum length =  1"
         type: str
+
     port:
         description:
             - "Server port number."
             - "Range 1 - 65535"
             - "* in CLI is represented as 65535 in NITRO API"
         type: int
+
     weight:
         description:
             - >-
@@ -309,14 +346,17 @@ options:
             - "Minimum value = C(1)"
             - "Maximum value = C(100)"
         type: str
+
     customserverid:
         description:
             - "The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID."
         type: str
+
     serverid:
         description:
             - "The  identifier for the service. This is used when the persistency type is set to Custom Server ID."
         type: str
+
     hashid:
         description:
             - >-
@@ -324,32 +364,38 @@ options:
                 based load balancing methods.
             - "Minimum value = C(1)"
         type: str
+
     nameserver:
         description:
             - >-
                 Specify the nameserver to which the query for bound domain needs to be sent. If not specified, use
                 global nameserver.
         type: str
+
     dbsttl:
         description:
             - >-
                 Specify the TTL for DNS record for domain based service.The default value of ttl is 0 which indicates
                 use the TTL received in DNS response for monitors.
         type: str
+
     monitor_name_svc:
         description:
             - "Name of the monitor bound to the service group. Used to assign a weight to the monitor."
             - "Minimum length =  1"
         type: str
+
     dup_weight:
         description:
             - "weight of the monitor that is bound to servicegroup."
             - "Minimum value = C(1)"
         type: str
+
     riseapbrstatsmsgcode:
         description:
             - "The code indicating the rise apbr status."
         type: int
+
     delay:
         description:
             - >-
@@ -358,10 +404,12 @@ options:
                 Requests from new clients are load balanced among other available services. After the delay time
                 no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
         type: str
+
     graceful:
         description:
             - "Wait for all existing connections to the service to terminate before shutting down the service."
         type: bool
+
     includemembers:
         description:
             - >-
@@ -369,7 +417,10 @@ options:
                 service group name is provided in the command. In that case, the details displayed for each service
                 are identical to the details displayed when a service group name is provided, except that bound
                 are not displayed.
-        type: booldisabled:
+        type: bool
+
+
+    disabled:
         description:
             - When set to C(true) the server state will be set to C(disabled).
             - When set to C(false) the server state will be set to C(enabled).
@@ -392,7 +443,7 @@ options:
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(dsapi):
-                    - The desired state api will be used to bind/unbind members.
+                    - The desired state API will be used to bind/unbind members.
                     - As far as selection is concerned it is identical to the C(exact) method.
                     - In this mode a result of C(changed=true) will always be reported.
                     - The reason is in order to capitalize on the speed of the desired state API we do not read the existing members from the servicegroup.
@@ -410,12 +461,14 @@ options:
                     ip:
                         description:
                             - "IP Address."
-                        type: strport:
+                        type: str
+                    port:
                         description:
                             - "Server port number."
                             - "Range 1 - 65535"
                             - "* in CLI is represented as 65535 in NITRO API"
-                        type: intweight:
+                        type: int
+                    weight:
                         description:
                             - >-
                                 Weight to assign to the servers in the service group. Specifies the capacity of the servers relative
@@ -423,34 +476,41 @@ options:
                                 of requests sent to the service.
                             - "Minimum value = C(1)"
                             - "Maximum value = C(100)"
-                        type: strservername:
+                        type: str
+                    servername:
                         description:
                             - "Name of the server to which to bind the service group."
                             - "Minimum length =  1"
-                        type: strcustomserverid:
+                        type: str
+                    customserverid:
                         description:
                             - "The identifier for this IP:Port pair. Used when the persistency type is set to Custom Server ID."
-                        type: strserverid:
+                        type: str
+                    serverid:
                         description:
                             - "The  identifier for the service. This is used when the persistency type is set to Custom Server ID."
-                        type: strstate:
+                        type: str
+                    state:
                         choices:
                             - 'enabled'
                             - 'disabled'
                         description:
                             - "Initial state of the service group."
-                        type: strhashid:
+                        type: str
+                    hashid:
                         description:
                             - >-
                                 The hash identifier for the service. This must be unique for each service. This parameter is used by
                                 based load balancing methods.
                             - "Minimum value = C(1)"
-                        type: strnameserver:
+                        type: str
+                    nameserver:
                         description:
                             - >-
                                 Specify the nameserver to which the query for bound domain needs to be sent. If not specified, use
                                 global nameserver.
-                        type: strdbsttl:
+                        type: str
+                    dbsttl:
                         description:
                             - >-
                                 Specify the TTL for DNS record for domain based service.The default value of ttl is 0 which indicates
@@ -484,13 +544,15 @@ options:
                     monitor_name:
                         description:
                             - "Monitor name."
-                        type: strmonstate:
+                        type: str
+                    monstate:
                         choices:
                             - 'enabled'
                             - 'disabled'
                         description:
                             - "Monitor state."
-                        type: strweight:
+                        type: str
+                    weight:
                         description:
                             - >-
                                 Weight to assign to the servers in the service group. Specifies the capacity of the servers relative
@@ -498,40 +560,48 @@ options:
                                 of requests sent to the service.
                             - "Minimum value = C(1)"
                             - "Maximum value = C(100)"
-                        type: strpassive:
+                        type: str
+                    passive:
                         description:
                             - >-
                                 Indicates if load monitor is passive. A passive load monitor does not remove service from LB decision
                                 threshold is breached.
-                        type: boolport:
+                        type: bool
+                    port:
                         description:
                             - "Port number of the service. Each service must have a unique port number."
                             - "Range 1 - 65535"
                             - "* in CLI is represented as 65535 in NITRO API"
-                        type: intcustomserverid:
+                        type: int
+                    customserverid:
                         description:
                             - >-
                                 Unique service identifier. Used when the persistency type for the virtual server is set to Custom
                                 ID.
-                        type: strserverid:
+                        type: str
+                    serverid:
                         description:
                             - "The  identifier for the service. This is used when the persistency type is set to Custom Server ID."
-                        type: strstate:
+                        type: str
+                    state:
                         choices:
                             - 'enabled'
                             - 'disabled'
                         description:
                             - "Initial state of the service after binding."
-                        type: strhashid:
+                        type: str
+                    hashid:
                         description:
                             - "Unique numerical identifier used by hash based load balancing methods to identify a service."
                             - "Minimum value = C(1)"
-                        type: strnameserver:
+                        type: str
+                    nameserver:
                         description:
                             - >-
                                 Specify the nameserver to which the query for bound domain needs to be sent. If not specified, use
                                 global nameserver.
-                        type: strdbsttl:
+                        type: str
+                    dbsttl:
                         description:
                             - >-
                                 Specify the TTL for DNS record for domain based service.The default value of ttl is 0 which indicates
