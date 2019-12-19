@@ -1,9 +1,6 @@
-:source: citrix_adc_lb_vserver.py
-
 :orphan:
 
 .. _citrix_adc_lb_vserver_module:
-
 
 citrix_adc_lb_vserver - Manage load balancing vserver configuration
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -13,7 +10,6 @@ citrix_adc_lb_vserver - Manage load balancing vserver configuration
 .. contents::
    :local:
    :depth: 2
-
 
 Synopsis
 --------
@@ -32,1435 +28,834 @@ The below requirements are needed on the host that executes this module.
 Parameters
 ----------
 
-.. raw:: html
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
 
-    <table  border=0 cellpadding=0 class="documentation-table">
-        <tr>
-            <th colspan="2">Parameter</th>
-            <th>Choices/<font color="blue">Defaults</font></th>
-                        <th width="100%">Comments</th>
-        </tr>
-                    <tr>
-                                                                <td colspan="2">
-                    <b>appflowlog</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Apply AppFlow logging to the virtual server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>authentication</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Enable or disable user authentication.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>authenticationhost</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication. Make sure that the Authentication parameter is set to <code>yes</code>.</div>
-                                                    <div>Minimum length = 3</div>
-                                                    <div>Maximum length = 252</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>authn401</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Enable or disable user authentication with HTTP 401 responses.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>authnprofile</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the authentication profile to be used when authentication is turned on.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>authnvsname</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of an authentication virtual server with which to authenticate users.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 252</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>backuplbmethod</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>ROUNDROBIN</li>
-                                                                                                                                                                                                <li>LEASTCONNECTION</li>
-                                                                                                                                                                                                <li>LEASTRESPONSETIME</li>
-                                                                                                                                                                                                <li>SOURCEIPHASH</li>
-                                                                                                                                                                                                <li>LEASTBANDWIDTH</li>
-                                                                                                                                                                                                <li>LEASTPACKETS</li>
-                                                                                                                                                                                                <li>CUSTOMLOAD</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Backup load balancing method. Becomes operational if the primary load balancing me</div>
-                                                    <div>thod fails or cannot be used.</div>
-                                                    <div>Valid only if the primary method is based on static proximity.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>backuppersistencetimeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Time period for which backup persistence is in effect.</div>
-                                                    <div>Minimum value = <code>2</code></div>
-                                                    <div>Maximum value = <code>1440</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>bypassaaaa</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>cacheable</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can forward requests only to a transparent cache redirection virtual server that has an IP address and port combination of *:80, so such a cache redirection virtual server must be configured on the appliance.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>clttimeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Idle time, in seconds, after which a client connection is terminated.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>31536000</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>comment</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Any comments that you might want to associate with the virtual server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>connfailover</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>DISABLED</li>
-                                                                                                                                                                                                <li>STATEFUL</li>
-                                                                                                                                                                                                <li>STATELESS</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Mode in which the connection failover feature must operate for the virtual server. After a failover, established TCP connections and UDP packet flows are kept active and resumed on the secondary appliance. Clients remain connected to the same servers. Available settings function as follows:</div>
-                                                    <div>* <code>STATEFUL</code> - The primary appliance shares state information with the secondary appliance, in real time, resulting in some runtime processing overhead.</div>
-                                                    <div>* <code>STATELESS</code> - State information is not shared, and the new primary appliance tries to re-create the packet flow on the basis of the information contained in the packets it receives.</div>
-                                                    <div>* <code>DISABLED</code> - Connection failover does not occur.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>cookiename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Use this parameter to specify the cookie name for <code>COOKIE</code> peristence type. It specifies the name of cookie with a maximum of 32 characters. If not specified, cookie name is internally generated.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>datalength</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Length of the token to be extracted from the data segment of an incoming packet, for use in the token method of load balancing. The length of the token, specified in bytes, must not be greater than 24 KB. Applicable to virtual servers of type TCP.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>100</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>dataoffset</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Offset to be considered when extracting a token from the TCP payload. Applicable to virtual servers, of type TCP, using the token method of load balancing. Must be within the first 24 KB of the TCP payload.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>25400</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>dbprofilename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the DB profile whose settings are to be applied to the virtual server.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 127</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>dbslb</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Enable database specific load balancing for MySQL and MSSQL service types.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>disabled</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>no</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>When set to <code>yes</code> the lb vserver will be disabled.</div>
-                                                    <div>When set to <code>no</code> the lb vserver will be enabled.</div>
-                                                    <div>Note that due to limitations of the underlying NITRO API a <code>disabled</code> state change alone does not cause the module result to report a changed status.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>disableprimaryondown</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If the primary virtual server goes down, do not allow it to return to primary status until manually enabled.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>dns64</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>This argument is for enabling/disabling the <code>dns64</code> on lbvserver.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>dnsprofilename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the DNS profile to be associated with the VServer. DNS profile properties will be applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 127</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>downstateflush</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>hashlength</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH load balancing methods.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>4096</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>healththreshold</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Threshold in percent of active services below which vserver state is made down. If this threshold is 0, vserver state will be up even if one bound service is up.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>100</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>httpprofilename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the HTTP profile whose settings are to be applied to the virtual server.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 127</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>icmpvsrresponse</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>PASSIVE</li>
-                                                                                                                                                                                                <li>ACTIVE</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:</div>
-                                                    <div>* If set to <code>PASSIVE</code> on all the virtual servers that share the IP address, the appliance always responds to the ping requests.</div>
-                                                    <div>* If set to <code>ACTIVE</code> on all the virtual servers that share the IP address, the appliance responds to the ping requests if at least one of the virtual servers is UP. Otherwise, the appliance does not respond.</div>
-                                                    <div>* If set to <code>ACTIVE</code> on some virtual servers and PASSIVE on the others, the appliance responds if at least one virtual server with the ACTIVE setting is UP. Otherwise, the appliance does not respond.</div>
-                                                    <div>Note: This parameter is available at the virtual server level. A similar parameter, ICMP Response, is available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add ip command in the CLI or the Create IP dialog box in the GUI.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>insertvserveripport</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>OFF</li>
-                                                                                                                                                                                                <li>VIPADDR</li>
-                                                                                                                                                                                                <li>V6TOV4MAPPING</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is &lt;vipHeader&gt;: &lt;virtual server IP address&gt;_&lt;port number &gt;, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server&#x27;s IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows:</div>
-                                                    <div>* <code>VIPADDR</code> - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.</div>
-                                                    <div>* <code>V6TOV4MAPPING</code> - Insert the IPv4 address that is mapped to the virtual server&#x27;s IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.</div>
-                                                    <div>* <code>OFF</code> - Disable header insertion.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>instance_ip</b>
-                                                            <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.</div>
-                                                    <div>It is meaningful only when having set <code>mas_proxy_call</code> to <code>true</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>ipmask</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, <code>255.255.240.0</code> or <code>0.0.255.255</code>). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>ippattern</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.</div>
-                                                    <div>For example, if the IP pattern assigned to the virtual server is <code>198.51.100.0</code> and the IP mask is <code>255.255.240.0</code> (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from <code>198.51.96.1</code> to <code>198.51.111.254</code>. You can also use a pattern such as <code>0.0.2.2</code> and a mask such as <code>0.0.255.255</code> (a reverse mask).</div>
-                                                    <div>If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if virtual servers <code>vs1</code> and <code>vs2</code> have the same IP pattern, <code>0.0.100.128</code>, but different IP masks of <code>0.0.255.255</code> and <code>0.0.224.255</code>, a destination IP address of <code>198.51.100.128</code> has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>ipv46</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>IPv4 or IPv6 address to assign to the virtual server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>l2conn</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (&lt;source IP&gt;:&lt;source port&gt;::&lt;destination IP&gt;:&lt;destination port&gt;) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>lbmethod</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>ROUNDROBIN</li>
-                                                                                                                                                                                                <li>LEASTCONNECTION</li>
-                                                                                                                                                                                                <li>LEASTRESPONSETIME</li>
-                                                                                                                                                                                                <li>URLHASH</li>
-                                                                                                                                                                                                <li>DOMAINHASH</li>
-                                                                                                                                                                                                <li>DESTINATIONIPHASH</li>
-                                                                                                                                                                                                <li>SOURCEIPHASH</li>
-                                                                                                                                                                                                <li>SRCIPDESTIPHASH</li>
-                                                                                                                                                                                                <li>LEASTBANDWIDTH</li>
-                                                                                                                                                                                                <li>LEASTPACKETS</li>
-                                                                                                                                                                                                <li>TOKEN</li>
-                                                                                                                                                                                                <li>SRCIPSRCPORTHASH</li>
-                                                                                                                                                                                                <li>LRTM</li>
-                                                                                                                                                                                                <li>CALLIDHASH</li>
-                                                                                                                                                                                                <li>CUSTOMLOAD</li>
-                                                                                                                                                                                                <li>LEASTREQUEST</li>
-                                                                                                                                                                                                <li>AUDITLOGHASH</li>
-                                                                                                                                                                                                <li>STATICPROXIMITY</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Load balancing method. The available settings function as follows:</div>
-                                                    <div>* <code>ROUNDROBIN</code> - Distribute requests in rotation, regardless of the load. Weights can be assigned to services to enforce weighted round robin distribution.</div>
-                                                    <div>* <code>LEASTCONNECTION</code> (default) - Select the service with the fewest connections.</div>
-                                                    <div>* <code>LEASTRESPONSETIME</code> - Select the service with the lowest average response time.</div>
-                                                    <div>* <code>LEASTBANDWIDTH</code> - Select the service currently handling the least traffic.</div>
-                                                    <div>* <code>LEASTPACKETS</code> - Select the service currently serving the lowest number of packets per second.</div>
-                                                    <div>* <code>CUSTOMLOAD</code> - Base service selection on the SNMP metrics obtained by custom load monitors.</div>
-                                                    <div>* <code>LRTM</code> - Select the service with the lowest response time. Response times are learned through monitoring probes. This method also takes the number of active connections into account.</div>
-                                                    <div>Also available are a number of hashing methods, in which the appliance extracts a predetermined portion of the request, creates a hash of the portion, and then checks whether any previous requests had the same hash value. If it finds a match, it forwards the request to the service that served those previous requests. Following are the hashing methods:</div>
-                                                    <div>* <code>URLHASH</code> - Create a hash of the request URL (or part of the URL).</div>
-                                                    <div>* <code>DOMAINHASH</code> - Create a hash of the domain name in the request (or part of the domain name). The domain name is taken from either the URL or the Host header. If the domain name appears in both locations, the URL is preferred. If the request does not contain a domain name, the load balancing method defaults to <code>LEASTCONNECTION</code>.</div>
-                                                    <div>* <code>DESTINATIONIPHASH</code> - Create a hash of the destination IP address in the IP header.</div>
-                                                    <div>* <code>SOURCEIPHASH</code> - Create a hash of the source IP address in the IP header.</div>
-                                                    <div>* <code>TOKEN</code> - Extract a token from the request, create a hash of the token, and then select the service to which any previous requests with the same token hash value were sent.</div>
-                                                    <div>* <code>SRCIPDESTIPHASH</code> - Create a hash of the string obtained by concatenating the source IP address and destination IP address in the IP header.</div>
-                                                    <div>* <code>SRCIPSRCPORTHASH</code> - Create a hash of the source IP address and source port in the IP header.</div>
-                                                    <div>* <code>CALLIDHASH</code> - Create a hash of the SIP Call-ID header.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>listenpolicy</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Default syntax expression identifying traffic accepted by the virtual server. Can be either an expression (for example, <code>CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24</code>) or the name of a named expression. In the above example, the virtual server accepts all requests whose destination IP address is in the 192.0.2.0/24 subnet.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>listenpriority</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>101</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>m</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>IP</li>
-                                                                                                                                                                                                <li>MAC</li>
-                                                                                                                                                                                                <li>IPTUNNEL</li>
-                                                                                                                                                                                                <li>TOS</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Redirection mode for load balancing. Available settings function as follows:</div>
-                                                    <div>* <code>IP</code> - Before forwarding a request to a server, change the destination IP address to the server&#x27;s IP address.</div>
-                                                    <div>* <code>MAC</code> - Before forwarding a request to a server, change the destination MAC address to the server&#x27;s MAC address. The destination IP address is not changed. MAC-based redirection mode is used mostly in firewall load balancing deployments.</div>
-                                                    <div>* <code>IPTUNNEL</code> - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the destination IP address to the IP address of the server and the source IP address to the subnet IP (SNIP). The client IP packets are not modified. Applicable to both IPv4 and IPv6 packets.</div>
-                                                    <div>* <code>TOS</code> - Encode the virtual server&#x27;s TOS ID in the TOS field of the IP header.</div>
-                                                    <div>You can use either the <code>IPTUNNEL</code> or the <code>TOS</code> option to implement Direct Server Return (DSR).</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>macmoderetainvlan</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>This option is used to retain vlan information of incoming packet when macmode is enabled.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mas_proxy_call</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                        <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>no</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.</div>
-                                                    <div>{&#x27;When true you must also define the following options&#x27;: &#x27;<em>nitro_auth_token</em>, <em>instance_ip</em>.&#x27;}</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>maxautoscalemembers</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Maximum number of members expected to be present when vserver is used in Autoscale.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>5000</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>minautoscalemembers</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Minimum number of members expected to be present when vserver is used in Autoscale.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>5000</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mssqlserverversion</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>70</li>
-                                                                                                                                                                                                <li>2000</li>
-                                                                                                                                                                                                <li>2000SP1</li>
-                                                                                                                                                                                                <li>2005</li>
-                                                                                                                                                                                                <li>2008</li>
-                                                                                                                                                                                                <li>2008R2</li>
-                                                                                                                                                                                                <li>2012</li>
-                                                                                                                                                                                                <li>2014</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>For a load balancing virtual server of type <code>MSSQL</code>, the Microsoft SQL Server version. Set this parameter if you expect some clients to run a version different from the version of the database. This setting provides compatibility between the client-side and server-side connections by ensuring that all communication conforms to the server&#x27;s version.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mysqlcharacterset</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Character set that the virtual server advertises to clients.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mysqlprotocolversion</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>MySQL protocol version that the virtual server advertises to clients.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mysqlservercapabilities</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Server capabilities that the virtual server advertises to clients.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>mysqlserverversion</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>MySQL server version string that the virtual server advertises to clients.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 31</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>name</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name for the virtual server. Must begin with an ASCII alphanumeric or underscore <code>_</code> character, and must contain only ASCII alphanumeric, underscore, hash <code>#</code>, period <code>.</code>, space <code> </code>, colon <code>:</code>, at sign <code>@</code>, equal sign <code>=</code>, and hyphen <code>-</code> characters. Can be changed after the virtual server is created.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>netmask</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>IPv4 subnet mask to apply to the destination IP address or source IP address when the load balancing method is <code>DESTINATIONIPHASH</code> or <code>SOURCEIPHASH</code>.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>netprofile</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the network profile to associate with the virtual server. If you set this parameter, the virtual server uses only the IP addresses in the network profile as source IP addresses when initiating connections with servers.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 127</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>newservicerequest</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Number of requests, or percentage of the load on existing services, by which to increase the load on a new service at each interval in slow-start mode. A non-zero value indicates that slow-start is applicable. A zero value indicates that the global RR startup parameter is applied. Changing the value to zero will cause services currently in slow start to take the full traffic as determined by the LB method. Subsequently, any new services added will use the global RR factor.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>newservicerequestincrementinterval</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Interval, in seconds, between successive increments in the load on a new service or a service whose state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>3600</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>newservicerequestunit</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>PER_SECOND</li>
-                                                                                                                                                                                                <li>PERCENT</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Units in which to increment load at each interval in slow-start mode.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nitro_auth_token</b>
-                                                            <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The authentication token provided by a login operation.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, a, u, t, h, _, t, o, k, e, n</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nitro_pass</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The password with which to authenticate to the netscaler node.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, p, a, s, s</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nitro_protocol</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>http</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>https</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Which protocol to use when accessing the nitro API objects.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nitro_timeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                                    <b>Default:</b><br/><div style="color: blue">310</div>
-                                    </td>
-                                                                <td>
-                                                                        <div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nitro_user</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The username with which to authenticate to the netscaler node.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, u, s, e, r</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>nsip</b>
-                                        <br/><div style="font-size: small; color: red">required</div>                                    </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The ip address of the netscaler appliance where the nitro API calls will be made.</div>
-                                                    <div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, i, p</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>oracleserverversion</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>10G</li>
-                                                                                                                                                                                                <li>11G</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Oracle server version.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>persistavpno</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Persist AVP number for Diameter Persistency.</div>
-                                                    <div>In case this AVP is not defined in Base RFC 3588 and it is nested inside a Grouped AVP,</div>
-                                                    <div>define a sequence of AVP numbers (max 3) in order of parent to child. So say persist AVP number X</div>
-                                                    <div>is nested inside AVP Y which is nested in Z, then define the list as Z Y X.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>persistencebackup</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>SOURCEIP</li>
-                                                                                                                                                                                                <li>NONE</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Backup persistence type for the virtual server. Becomes operational if the primary persistence mechanism fails.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>persistencetype</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>SOURCEIP</li>
-                                                                                                                                                                                                <li>COOKIEINSERT</li>
-                                                                                                                                                                                                <li>SSLSESSION</li>
-                                                                                                                                                                                                <li>RULE</li>
-                                                                                                                                                                                                <li>URLPASSIVE</li>
-                                                                                                                                                                                                <li>CUSTOMSERVERID</li>
-                                                                                                                                                                                                <li>DESTIP</li>
-                                                                                                                                                                                                <li>SRCIPDESTIP</li>
-                                                                                                                                                                                                <li>CALLID</li>
-                                                                                                                                                                                                <li>RTSPSID</li>
-                                                                                                                                                                                                <li>DIAMETER</li>
-                                                                                                                                                                                                <li>FIXSESSION</li>
-                                                                                                                                                                                                <li>NONE</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Type of persistence for the virtual server. Available settings function as follows:</div>
-                                                    <div>* <code>SOURCEIP</code> - Connections from the same client IP address belong to the same persistence session.</div>
-                                                    <div>* <code>COOKIEINSERT</code> - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from a server, belong to the same persistence session.</div>
-                                                    <div>* <code>SSLSESSION</code> - Connections that have the same SSL Session ID belong to the same persistence session.</div>
-                                                    <div>* <code>CUSTOMSERVERID</code> - Connections with the same server ID form part of the same session. For this persistence type, set the Server ID (CustomServerID) parameter for each service and configure the Rule parameter to identify the server ID in a request.</div>
-                                                    <div>* <code>RULE</code> - All connections that match a user defined rule belong to the same persistence session.</div>
-                                                    <div>* <code>URLPASSIVE</code> - Requests that have the same server ID in the URL query belong to the same persistence session. The server ID is the hexadecimal representation of the IP address and port of the service to which the request must be forwarded. This persistence type requires a rule to identify the server ID in the request.</div>
-                                                    <div>* <code>DESTIP</code> - Connections to the same destination IP address belong to the same persistence session.</div>
-                                                    <div>* <code>SRCIPDESTIP</code> - Connections that have the same source IP address and destination IP address belong to the same persistence session.</div>
-                                                    <div>* <code>CALLID</code> - Connections that have the same CALL-ID SIP header belong to the same persistence session.</div>
-                                                    <div>* <code>RTSPSID</code> - Connections that have the same RTSP Session ID belong to the same persistence session.</div>
-                                                    <div>* FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same persistence session.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>persistmask</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Persistence mask for IP based persistence types, for IPv4 virtual servers.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>port</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Port number for the virtual server.</div>
-                                                    <div>Range <code>1</code> - <code>65535</code></div>
-                                                    <div>* in CLI is represented as <code>65535</code> in NITRO API</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>processlocal</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>push</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Process traffic with the push virtual server that is bound to this load balancing virtual server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>pushlabel</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Expression for extracting a label from the server&#x27;s response. Can be either an expression or the name of a named expression.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>pushmulticlients</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>pushvserver</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the load balancing virtual server that you are configuring.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>range</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows:</div>
-                                                    <div>* For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.</div>
-                                                    <div>* If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.</div>
-                                                    <div>Note: The Range parameter assigns multiple IP addresses to one virtual server. To generate an array of virtual servers, each of which owns only one IP address, use brackets in the IP Address and Name parameters to specify the range. For example:</div>
-                                                    <div>add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>254</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>recursionavailable</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>redirectportrewrite</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Rewrite the port and change the protocol to ensure successful HTTP redirects from services.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>redirurl</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>URL to which to redirect traffic if the virtual server becomes unavailable.</div>
-                                                    <div>WARNING! Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>resrule</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Default syntax expression specifying which part of a server&#x27;s response to use for creating rule based persistence sessions (persistence type RULE). Can be either an expression or the name of a named expression.</div>
-                                                    <div>Example:</div>
-                                                    <div><code>HTTP.RES.HEADER(&quot;setcookie&quot;</code>.VALUE(0).TYPECAST_NVLIST_T(&#x27;=&#x27;,&#x27;;&#x27;).VALUE(&quot;server1&quot;)).</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>rhistate</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>PASSIVE</li>
-                                                                                                                                                                                                <li>ACTIVE</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:</div>
-                                                    <div>* If you set <code>rhistate</code> to <code>PASSIVE</code> on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.</div>
-                                                    <div>* If you set <code>rhistate</code> to <code>ACTIVE</code> on all virtual servers, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.</div>
-                                                    <div>* If you set <code>rhistate</code> to <code>ACTIVE</code> on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose <code>rhistate</code> set to <code>ACTIVE</code>, is in UP state.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>rtspnat</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Use network address translation (NAT) for RTSP data connections.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>save_config</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li><div style="color: blue"><b>yes</b>&nbsp;&larr;</div></li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If true the module will save the configuration on the netscaler node if it makes any changes.</div>
-                                                    <div>The module will not save the configuration on the netscaler node if it made no changes.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>servicebindings</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>List of services along with the weights that are load balanced.</div>
-                                                    <div>The following suboptions are available.</div>
-                                                                                </td>
-            </tr>
-                                                            <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>servicename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Service to bind to the virtual server.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>weight</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Weight to assign to the specified service.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>100</code></div>
-                                                                                </td>
-            </tr>
-                    
-                                                <tr>
-                                                                <td colspan="2">
-                    <b>servicegroupbindings</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>List of service groups along with the weights that are load balanced.</div>
-                                                    <div>The following suboptions are available.</div>
-                                                                                </td>
-            </tr>
-                                                            <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>servicegroupname</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The service group name bound to the selected load balancing virtual server.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                    <td class="elbow-placeholder"></td>
-                                                <td colspan="1">
-                    <b>weight</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the capacity of the service relative to the other services in the load balancing configuration. Determines the priority given to the service in load balancing decisions.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>100</code></div>
-                                                                                </td>
-            </tr>
-                    
-                                                <tr>
-                                                                <td colspan="2">
-                    <b>servicetype</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>HTTP</li>
-                                                                                                                                                                                                <li>FTP</li>
-                                                                                                                                                                                                <li>TCP</li>
-                                                                                                                                                                                                <li>UDP</li>
-                                                                                                                                                                                                <li>SSL</li>
-                                                                                                                                                                                                <li>SSL_BRIDGE</li>
-                                                                                                                                                                                                <li>SSL_TCP</li>
-                                                                                                                                                                                                <li>DTLS</li>
-                                                                                                                                                                                                <li>NNTP</li>
-                                                                                                                                                                                                <li>DNS</li>
-                                                                                                                                                                                                <li>DHCPRA</li>
-                                                                                                                                                                                                <li>ANY</li>
-                                                                                                                                                                                                <li>SIP_UDP</li>
-                                                                                                                                                                                                <li>SIP_TCP</li>
-                                                                                                                                                                                                <li>SIP_SSL</li>
-                                                                                                                                                                                                <li>DNS_TCP</li>
-                                                                                                                                                                                                <li>RTSP</li>
-                                                                                                                                                                                                <li>PUSH</li>
-                                                                                                                                                                                                <li>SSL_PUSH</li>
-                                                                                                                                                                                                <li>RADIUS</li>
-                                                                                                                                                                                                <li>RDP</li>
-                                                                                                                                                                                                <li>MYSQL</li>
-                                                                                                                                                                                                <li>MSSQL</li>
-                                                                                                                                                                                                <li>DIAMETER</li>
-                                                                                                                                                                                                <li>SSL_DIAMETER</li>
-                                                                                                                                                                                                <li>TFTP</li>
-                                                                                                                                                                                                <li>ORACLE</li>
-                                                                                                                                                                                                <li>SMPP</li>
-                                                                                                                                                                                                <li>SYSLOGTCP</li>
-                                                                                                                                                                                                <li>SYSLOGUDP</li>
-                                                                                                                                                                                                <li>FIX</li>
-                                                                                                                                                                                                <li>SSL_FIX</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Protocol used by the service (also called the service type).</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>sessionless</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load balancing of intrusion detection system (IDS) servers and scenarios involving direct server return (DSR), where session information is unnecessary.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>skippersistency</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>Bypass</li>
-                                                                                                                                                                                                <li>ReLb</li>
-                                                                                                                                                                                                <li>None</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>This argument decides the behavior incase the service which is selected from an existing persistence session has reached threshold.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>sobackupaction</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>DROP</li>
-                                                                                                                                                                                                <li>ACCEPT</li>
-                                                                                                                                                                                                <li>REDIRECT</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>somethod</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>CONNECTION</li>
-                                                                                                                                                                                                <li>DYNAMICCONNECTION</li>
-                                                                                                                                                                                                <li>BANDWIDTH</li>
-                                                                                                                                                                                                <li>HEALTH</li>
-                                                                                                                                                                                                <li>NONE</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:</div>
-                                                    <div>* <code>CONNECTION</code> - Spillover occurs when the number of client connections exceeds the threshold.</div>
-                                                    <div>* DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server exceeds the sum of the maximum client (Max Clients) settings for bound services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of bound services.</div>
-                                                    <div>* <code>BANDWIDTH</code> - Spillover occurs when the bandwidth consumed by the virtual server&#x27;s incoming and outgoing traffic exceeds the threshold.</div>
-                                                    <div>* <code>HEALTH</code> - Spillover occurs when the percentage of weights of the services that are UP drops below the threshold. For example, if services svc1, svc2, and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and svc3 transition to DOWN.</div>
-                                                    <div>* <code>NONE</code> - Spillover does not occur.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>sopersistence</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li>enabled</li>
-                                                                                                                                                                                                <li>disabled</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If spillover occurs, maintain source IP address based persistence for both primary and backup virtual servers.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>sopersistencetimeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Timeout for spillover persistence, in minutes.</div>
-                                                    <div>Minimum value = <code>2</code></div>
-                                                    <div>Maximum value = <code>1440</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>sothreshold</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Threshold at which spillover occurs. Specify an integer for the <code>CONNECTION</code> spillover method, a bandwidth value in kilobits per second for the <code>BANDWIDTH</code> method (do not enter the units), or a percentage for the <code>HEALTH</code> method (do not enter the percentage symbol).</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>4294967287</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>ssl_certkey</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The name of the ssl certificate that is bound to this service.</div>
-                                                    <div>The ssl certificate must already exist.</div>
-                                                    <div>Creating the certificate can be done with the <span class='module'>citrix_adc_ssl_certkey</span> module.</div>
-                                                    <div>This option is only applicable only when <code>servicetype</code> is <code>SSL</code>.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>state</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>present</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>absent</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>The state of the resource being configured by the module on the netscaler node.</div>
-                                                    <div>When present the resource will be created if needed and configured according to the module&#x27;s parameters.</div>
-                                                    <div>When absent the resource will be deleted from the netscaler node.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>tcpprofilename</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name of the TCP profile whose settings are to be applied to the virtual server.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 127</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>td</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>4094</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>timeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Time period for which a persistence session is in effect.</div>
-                                                    <div>Minimum value = <code>0</code></div>
-                                                    <div>Maximum value = <code>1440</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>tosid</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>TOS ID of the virtual server. Applicable only when the load balancing redirection mode is set to TOS.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>63</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>v6netmasklen</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Number of bits to consider in an IPv6 destination or source IP address, for creating the hash that is required by the <code>DESTINATIONIPHASH</code> and <code>SOURCEIPHASH</code> load balancing methods.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>128</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>v6persistmasklen</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Persistence mask for IP based persistence types, for IPv6 virtual servers.</div>
-                                                    <div>Minimum value = <code>1</code></div>
-                                                    <div>Maximum value = <code>128</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>validate_certs</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                                    <b>Default:</b><br/><div style="color: blue">yes</div>
-                                    </td>
-                                                                <td>
-                                                                        <div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="2">
-                    <b>vipheader</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Name for the inserted header. The default name is vip-header.</div>
-                                                    <div>Minimum length = 1</div>
-                                                                                </td>
-            </tr>
-                        </table>
-    <br/>
+    * - Parameter
+      - Choices/Defaults
+      - Comment
+    * - appflowlog
+      - Choices:
 
+          - enabled
+          - disabled
+      - Apply AppFlow logging to the virtual server.
+    * - authentication
 
-Notes
------
+        *(bool)*
+      -
+      - Enable or disable user authentication.
+    * - authenticationhost
+      -
+      - Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication. Make sure that the Authentication parameter is set to ``yes``.
 
-.. note::
-    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
+        Minimum length = 3
+
+        Maximum length = 252
+    * - authn401
+
+        *(bool)*
+      -
+      - Enable or disable user authentication with HTTP 401 responses.
+    * - authnprofile
+      -
+      - Name of the authentication profile to be used when authentication is turned on.
+    * - authnvsname
+      -
+      - Name of an authentication virtual server with which to authenticate users.
+
+        Minimum length = 1
+
+        Maximum length = 252
+    * - backuplbmethod
+      - Choices:
+
+          - ROUNDROBIN
+          - LEASTCONNECTION
+          - LEASTRESPONSETIME
+          - SOURCEIPHASH
+          - LEASTBANDWIDTH
+          - LEASTPACKETS
+          - CUSTOMLOAD
+      - Backup load balancing method. Becomes operational if the primary load balancing me
+
+        thod fails or cannot be used.
+
+        Valid only if the primary method is based on static proximity.
+    * - backuppersistencetimeout
+      -
+      - Time period for which backup persistence is in effect.
+
+        Minimum value = ``2``
+
+        Maximum value = ``1440``
+    * - bypassaaaa
+
+        *(bool)*
+      -
+      - If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns server.
+    * - cacheable
+
+        *(bool)*
+      -
+      - Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can forward requests only to a transparent cache redirection virtual server that has an IP address and port combination of *:80, so such a cache redirection virtual server must be configured on the appliance.
+    * - clttimeout
+      -
+      - Idle time, in seconds, after which a client connection is terminated.
+
+        Minimum value = ``0``
+
+        Maximum value = ``31536000``
+    * - comment
+      -
+      - Any comments that you might want to associate with the virtual server.
+    * - connfailover
+      - Choices:
+
+          - DISABLED
+          - STATEFUL
+          - STATELESS
+      - Mode in which the connection failover feature must operate for the virtual server. After a failover, established TCP connections and UDP packet flows are kept active and resumed on the secondary appliance. Clients remain connected to the same servers. Available settings function as follows:
+
+        * ``STATEFUL`` - The primary appliance shares state information with the secondary appliance, in real time, resulting in some runtime processing overhead.
+
+        * ``STATELESS`` - State information is not shared, and the new primary appliance tries to re-create the packet flow on the basis of the information contained in the packets it receives.
+
+        * ``DISABLED`` - Connection failover does not occur.
+    * - cookiename
+      -
+      - Use this parameter to specify the cookie name for ``COOKIE`` peristence type. It specifies the name of cookie with a maximum of 32 characters. If not specified, cookie name is internally generated.
+    * - datalength
+      -
+      - Length of the token to be extracted from the data segment of an incoming packet, for use in the token method of load balancing. The length of the token, specified in bytes, must not be greater than 24 KB. Applicable to virtual servers of type TCP.
+
+        Minimum value = ``1``
+
+        Maximum value = ``100``
+    * - dataoffset
+      -
+      - Offset to be considered when extracting a token from the TCP payload. Applicable to virtual servers, of type TCP, using the token method of load balancing. Must be within the first 24 KB of the TCP payload.
+
+        Minimum value = ``0``
+
+        Maximum value = ``25400``
+    * - dbprofilename
+      -
+      - Name of the DB profile whose settings are to be applied to the virtual server.
+
+        Minimum length = 1
+
+        Maximum length = 127
+    * - dbslb
+      - Choices:
+
+          - enabled
+          - disabled
+      - Enable database specific load balancing for MySQL and MSSQL service types.
+    * - disabled
+
+        *(bool)*
+      - Default:
+
+        *no*
+      - When set to ``yes`` the lb vserver will be disabled.
+
+        When set to ``no`` the lb vserver will be enabled.
+
+        Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
+    * - disableprimaryondown
+      - Choices:
+
+          - enabled
+          - disabled
+      - If the primary virtual server goes down, do not allow it to return to primary status until manually enabled.
+    * - dns64
+      - Choices:
+
+          - enabled
+          - disabled
+      - This argument is for enabling/disabling the ``dns64`` on lbvserver.
+    * - dnsprofilename
+      -
+      - Name of the DNS profile to be associated with the VServer. DNS profile properties will be applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
+
+        Minimum length = 1
+
+        Maximum length = 127
+    * - downstateflush
+      - Choices:
+
+          - enabled
+          - disabled
+      - Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
+    * - hashlength
+      -
+      - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH load balancing methods.
+
+        Minimum value = ``1``
+
+        Maximum value = ``4096``
+    * - healththreshold
+      -
+      - Threshold in percent of active services below which vserver state is made down. If this threshold is 0, vserver state will be up even if one bound service is up.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
+    * - httpprofilename
+      -
+      - Name of the HTTP profile whose settings are to be applied to the virtual server.
+
+        Minimum length = 1
+
+        Maximum length = 127
+    * - icmpvsrresponse
+      - Choices:
+
+          - PASSIVE
+          - ACTIVE
+      - How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:
+
+        * If set to ``PASSIVE`` on all the virtual servers that share the IP address, the appliance always responds to the ping requests.
+
+        * If set to ``ACTIVE`` on all the virtual servers that share the IP address, the appliance responds to the ping requests if at least one of the virtual servers is UP. Otherwise, the appliance does not respond.
+
+        * If set to ``ACTIVE`` on some virtual servers and PASSIVE on the others, the appliance responds if at least one virtual server with the ACTIVE setting is UP. Otherwise, the appliance does not respond.
+
+        Note: This parameter is available at the virtual server level. A similar parameter, ICMP Response, is available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add ip command in the CLI or the Create IP dialog box in the GUI.
+    * - insertvserveripport
+      - Choices:
+
+          - OFF
+          - VIPADDR
+          - V6TOV4MAPPING
+      - Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is <vipHeader>: <virtual server IP address>_<port number >, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server's IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows:
+
+        * ``VIPADDR`` - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.
+
+        * ``V6TOV4MAPPING`` - Insert the IPv4 address that is mapped to the virtual server's IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.
+
+        * ``OFF`` - Disable header insertion.
+    * - instance_ip
+
+        *(added in 2.6.0)*
+      -
+      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+
+        It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - ipmask
+      -
+      - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, ``255.255.240.0`` or ``0.0.255.255``). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
+    * - ippattern
+      -
+      - IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.
+
+        For example, if the IP pattern assigned to the virtual server is ``198.51.100.0`` and the IP mask is ``255.255.240.0`` (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from ``198.51.96.1`` to ``198.51.111.254``. You can also use a pattern such as ``0.0.2.2`` and a mask such as ``0.0.255.255`` (a reverse mask).
+
+        If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if virtual servers ``vs1`` and ``vs2`` have the same IP pattern, ``0.0.100.128``, but different IP masks of ``0.0.255.255`` and ``0.0.224.255``, a destination IP address of ``198.51.100.128`` has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
+    * - ipv46
+      -
+      - IPv4 or IPv6 address to assign to the virtual server.
+    * - l2conn
+
+        *(bool)*
+      -
+      - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
+    * - lbmethod
+      - Choices:
+
+          - ROUNDROBIN
+          - LEASTCONNECTION
+          - LEASTRESPONSETIME
+          - URLHASH
+          - DOMAINHASH
+          - DESTINATIONIPHASH
+          - SOURCEIPHASH
+          - SRCIPDESTIPHASH
+          - LEASTBANDWIDTH
+          - LEASTPACKETS
+          - TOKEN
+          - SRCIPSRCPORTHASH
+          - LRTM
+          - CALLIDHASH
+          - CUSTOMLOAD
+          - LEASTREQUEST
+          - AUDITLOGHASH
+          - STATICPROXIMITY
+      - Load balancing method. The available settings function as follows:
+
+        * ``ROUNDROBIN`` - Distribute requests in rotation, regardless of the load. Weights can be assigned to services to enforce weighted round robin distribution.
+
+        * ``LEASTCONNECTION`` (default) - Select the service with the fewest connections.
+
+        * ``LEASTRESPONSETIME`` - Select the service with the lowest average response time.
+
+        * ``LEASTBANDWIDTH`` - Select the service currently handling the least traffic.
+
+        * ``LEASTPACKETS`` - Select the service currently serving the lowest number of packets per second.
+
+        * ``CUSTOMLOAD`` - Base service selection on the SNMP metrics obtained by custom load monitors.
+
+        * ``LRTM`` - Select the service with the lowest response time. Response times are learned through monitoring probes. This method also takes the number of active connections into account.
+
+        Also available are a number of hashing methods, in which the appliance extracts a predetermined portion of the request, creates a hash of the portion, and then checks whether any previous requests had the same hash value. If it finds a match, it forwards the request to the service that served those previous requests. Following are the hashing methods:
+
+        * ``URLHASH`` - Create a hash of the request URL (or part of the URL).
+
+        * ``DOMAINHASH`` - Create a hash of the domain name in the request (or part of the domain name). The domain name is taken from either the URL or the Host header. If the domain name appears in both locations, the URL is preferred. If the request does not contain a domain name, the load balancing method defaults to ``LEASTCONNECTION``.
+
+        * ``DESTINATIONIPHASH`` - Create a hash of the destination IP address in the IP header.
+
+        * ``SOURCEIPHASH`` - Create a hash of the source IP address in the IP header.
+
+        * ``TOKEN`` - Extract a token from the request, create a hash of the token, and then select the service to which any previous requests with the same token hash value were sent.
+
+        * ``SRCIPDESTIPHASH`` - Create a hash of the string obtained by concatenating the source IP address and destination IP address in the IP header.
+
+        * ``SRCIPSRCPORTHASH`` - Create a hash of the source IP address and source port in the IP header.
+
+        * ``CALLIDHASH`` - Create a hash of the SIP Call-ID header.
+    * - listenpolicy
+      -
+      - Default syntax expression identifying traffic accepted by the virtual server. Can be either an expression (for example, ``CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24``) or the name of a named expression. In the above example, the virtual server accepts all requests whose destination IP address is in the 192.0.2.0/24 subnet.
+    * - listenpriority
+      -
+      - Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.
+
+        Minimum value = ``0``
+
+        Maximum value = ``101``
+    * - m
+      - Choices:
+
+          - IP
+          - MAC
+          - IPTUNNEL
+          - TOS
+      - Redirection mode for load balancing. Available settings function as follows:
+
+        * ``IP`` - Before forwarding a request to a server, change the destination IP address to the server's IP address.
+
+        * ``MAC`` - Before forwarding a request to a server, change the destination MAC address to the server's MAC address. The destination IP address is not changed. MAC-based redirection mode is used mostly in firewall load balancing deployments.
+
+        * ``IPTUNNEL`` - Perform IP-in-IP encapsulation for client IP packets. In the outer IP headers, set the destination IP address to the IP address of the server and the source IP address to the subnet IP (SNIP). The client IP packets are not modified. Applicable to both IPv4 and IPv6 packets.
+
+        * ``TOS`` - Encode the virtual server's TOS ID in the TOS field of the IP header.
+
+        You can use either the ``IPTUNNEL`` or the ``TOS`` option to implement Direct Server Return (DSR).
+    * - macmoderetainvlan
+      - Choices:
+
+          - enabled
+          - disabled
+      - This option is used to retain vlan information of incoming packet when macmode is enabled.
+    * - mas_proxy_call
+
+        *(bool)*
+
+        *(added in 2.6.0)*
+      - Default:
+
+        *False*
+      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+
+        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+    * - maxautoscalemembers
+      -
+      - Maximum number of members expected to be present when vserver is used in Autoscale.
+
+        Minimum value = ``0``
+
+        Maximum value = ``5000``
+    * - minautoscalemembers
+      -
+      - Minimum number of members expected to be present when vserver is used in Autoscale.
+
+        Minimum value = ``0``
+
+        Maximum value = ``5000``
+    * - mssqlserverversion
+      - Choices:
+
+          - 70
+          - 2000
+          - 2000SP1
+          - 2005
+          - 2008
+          - 2008R2
+          - 2012
+          - 2014
+      - For a load balancing virtual server of type ``MSSQL``, the Microsoft SQL Server version. Set this parameter if you expect some clients to run a version different from the version of the database. This setting provides compatibility between the client-side and server-side connections by ensuring that all communication conforms to the server's version.
+    * - mysqlcharacterset
+      -
+      - Character set that the virtual server advertises to clients.
+    * - mysqlprotocolversion
+      -
+      - MySQL protocol version that the virtual server advertises to clients.
+    * - mysqlservercapabilities
+      -
+      - Server capabilities that the virtual server advertises to clients.
+    * - mysqlserverversion
+      -
+      - MySQL server version string that the virtual server advertises to clients.
+
+        Minimum length = 1
+
+        Maximum length = 31
+    * - name
+      -
+      - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore, hash ``#``, period ``.``, space `` ``, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters. Can be changed after the virtual server is created.
+
+        Minimum length = 1
+    * - netmask
+      -
+      - IPv4 subnet mask to apply to the destination IP address or source IP address when the load balancing method is ``DESTINATIONIPHASH`` or ``SOURCEIPHASH``.
+
+        Minimum length = 1
+    * - netprofile
+      -
+      - Name of the network profile to associate with the virtual server. If you set this parameter, the virtual server uses only the IP addresses in the network profile as source IP addresses when initiating connections with servers.
+
+        Minimum length = 1
+
+        Maximum length = 127
+    * - newservicerequest
+      -
+      - Number of requests, or percentage of the load on existing services, by which to increase the load on a new service at each interval in slow-start mode. A non-zero value indicates that slow-start is applicable. A zero value indicates that the global RR startup parameter is applied. Changing the value to zero will cause services currently in slow start to take the full traffic as determined by the LB method. Subsequently, any new services added will use the global RR factor.
+    * - newservicerequestincrementinterval
+      -
+      - Interval, in seconds, between successive increments in the load on a new service or a service whose state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.
+
+        Minimum value = ``0``
+
+        Maximum value = ``3600``
+    * - newservicerequestunit
+      - Choices:
+
+          - PER_SECOND
+          - PERCENT
+      - Units in which to increment load at each interval in slow-start mode.
+    * - nitro_auth_token
+
+        *(added in 2.6.0)*
+      -
+      - The authentication token provided by a login operation.
+    * - nitro_pass
+      -
+      - The password with which to authenticate to the netscaler node.
+    * - nitro_protocol
+      - Choices:
+
+          - http (*default*)
+          - https
+      - Which protocol to use when accessing the nitro API objects.
+    * - nitro_timeout
+      - Default:
+
+        *310*
+      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+    * - nitro_user
+      -
+      - The username with which to authenticate to the netscaler node.
+    * - nsip
+      -
+      - The ip address of the netscaler appliance where the nitro API calls will be made.
+
+        The port can be specified with the colon (:). E.g. 192.168.1.1:555.
+    * - oracleserverversion
+      - Choices:
+
+          - 10G
+          - 11G
+      - Oracle server version.
+    * - persistavpno
+      -
+      - Persist AVP number for Diameter Persistency.
+
+        In case this AVP is not defined in Base RFC 3588 and it is nested inside a Grouped AVP,
+
+        define a sequence of AVP numbers (max 3) in order of parent to child. So say persist AVP number X
+
+        is nested inside AVP Y which is nested in Z, then define the list as Z Y X.
+
+        Minimum value = ``1``
+    * - persistencebackup
+      - Choices:
+
+          - SOURCEIP
+          - NONE
+      - Backup persistence type for the virtual server. Becomes operational if the primary persistence mechanism fails.
+    * - persistencetype
+      - Choices:
+
+          - SOURCEIP
+          - COOKIEINSERT
+          - SSLSESSION
+          - RULE
+          - URLPASSIVE
+          - CUSTOMSERVERID
+          - DESTIP
+          - SRCIPDESTIP
+          - CALLID
+          - RTSPSID
+          - DIAMETER
+          - FIXSESSION
+          - NONE
+      - Type of persistence for the virtual server. Available settings function as follows:
+
+        * ``SOURCEIP`` - Connections from the same client IP address belong to the same persistence session.
+
+        * ``COOKIEINSERT`` - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from a server, belong to the same persistence session.
+
+        * ``SSLSESSION`` - Connections that have the same SSL Session ID belong to the same persistence session.
+
+        * ``CUSTOMSERVERID`` - Connections with the same server ID form part of the same session. For this persistence type, set the Server ID (CustomServerID) parameter for each service and configure the Rule parameter to identify the server ID in a request.
+
+        * ``RULE`` - All connections that match a user defined rule belong to the same persistence session.
+
+        * ``URLPASSIVE`` - Requests that have the same server ID in the URL query belong to the same persistence session. The server ID is the hexadecimal representation of the IP address and port of the service to which the request must be forwarded. This persistence type requires a rule to identify the server ID in the request.
+
+        * ``DESTIP`` - Connections to the same destination IP address belong to the same persistence session.
+
+        * ``SRCIPDESTIP`` - Connections that have the same source IP address and destination IP address belong to the same persistence session.
+
+        * ``CALLID`` - Connections that have the same CALL-ID SIP header belong to the same persistence session.
+
+        * ``RTSPSID`` - Connections that have the same RTSP Session ID belong to the same persistence session.
+
+        * FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same persistence session.
+    * - persistmask
+      -
+      - Persistence mask for IP based persistence types, for IPv4 virtual servers.
+
+        Minimum length = 1
+    * - port
+      -
+      - Port number for the virtual server.
+
+        Range ``1`` - ``65535``
+
+        * in CLI is represented as ``65535`` in NITRO API
+    * - processlocal
+      - Choices:
+
+          - enabled
+          - disabled
+      - By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.
+    * - push
+      - Choices:
+
+          - enabled
+          - disabled
+      - Process traffic with the push virtual server that is bound to this load balancing virtual server.
+    * - pushlabel
+      -
+      - Expression for extracting a label from the server's response. Can be either an expression or the name of a named expression.
+    * - pushmulticlients
+
+        *(bool)*
+      -
+      - Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.
+    * - pushvserver
+      -
+      - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the load balancing virtual server that you are configuring.
+
+        Minimum length = 1
+    * - range
+      -
+      - Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows:
+
+        * For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.
+
+        * If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.
+
+        Note: The Range parameter assigns multiple IP addresses to one virtual server. To generate an array of virtual servers, each of which owns only one IP address, use brackets in the IP Address and Name parameters to specify the range. For example:
+
+        add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80.
+
+        Minimum value = ``1``
+
+        Maximum value = ``254``
+    * - recursionavailable
+
+        *(bool)*
+      -
+      - When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.
+    * - redirectportrewrite
+      - Choices:
+
+          - enabled
+          - disabled
+      - Rewrite the port and change the protocol to ensure successful HTTP redirects from services.
+    * - redirurl
+      -
+      - URL to which to redirect traffic if the virtual server becomes unavailable.
+
+        WARNING! Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.
+
+        Minimum length = 1
+    * - resrule
+      -
+      - Default syntax expression specifying which part of a server's response to use for creating rule based persistence sessions (persistence type RULE). Can be either an expression or the name of a named expression.
+
+        Example:
+
+        C(HTTP.RES.HEADER("setcookie").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE("server1")).
+    * - rhistate
+      - Choices:
+
+          - PASSIVE
+          - ACTIVE
+      - Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
+
+        * If you set ``rhistate`` to ``PASSIVE`` on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.
+
+        * If you set ``rhistate`` to ``ACTIVE`` on all virtual servers, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.
+
+        * If you set ``rhistate`` to ``ACTIVE`` on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose ``rhistate`` set to ``ACTIVE``, is in UP state.
+    * - rtspnat
+
+        *(bool)*
+      -
+      - Use network address translation (NAT) for RTSP data connections.
+    * - save_config
+
+        *(bool)*
+      - Default:
+
+        *True*
+      - If true the module will save the configuration on the netscaler node if it makes any changes.
+
+        The module will not save the configuration on the netscaler node if it made no changes.
+    * - servicebindings
+      -
+      - List of services along with the weights that are load balanced.
+
+        The following suboptions are available.
+
+        .. list-table::
+            :widths: 10 10 60
+            :header-rows: 1
+
+            * - Suboption
+              - Choices/Defaults
+              - Comment
+
+            * - servicename
+              -
+              - Service to bind to the virtual server.
+
+                Minimum length = 1
+            * - weight
+              -
+              - Weight to assign to the specified service.
+
+                Minimum value = ``1``
+
+                Maximum value = ``100``
+
+    * - servicegroupbindings
+      -
+      - List of service groups along with the weights that are load balanced.
+
+        The following suboptions are available.
+
+        .. list-table::
+            :widths: 10 10 60
+            :header-rows: 1
+
+            * - Suboption
+              - Choices/Defaults
+              - Comment
+
+            * - servicegroupname
+              -
+              - The service group name bound to the selected load balancing virtual server.
+            * - weight
+              -
+              - Integer specifying the weight of the service. A larger number specifies a greater weight. Defines the capacity of the service relative to the other services in the load balancing configuration. Determines the priority given to the service in load balancing decisions.
+
+                Minimum value = ``1``
+
+                Maximum value = ``100``
+
+    * - servicetype
+      - Choices:
+
+          - HTTP
+          - FTP
+          - TCP
+          - UDP
+          - SSL
+          - SSL_BRIDGE
+          - SSL_TCP
+          - DTLS
+          - NNTP
+          - DNS
+          - DHCPRA
+          - ANY
+          - SIP_UDP
+          - SIP_TCP
+          - SIP_SSL
+          - DNS_TCP
+          - RTSP
+          - PUSH
+          - SSL_PUSH
+          - RADIUS
+          - RDP
+          - MYSQL
+          - MSSQL
+          - DIAMETER
+          - SSL_DIAMETER
+          - TFTP
+          - ORACLE
+          - SMPP
+          - SYSLOGTCP
+          - SYSLOGUDP
+          - FIX
+          - SSL_FIX
+      - Protocol used by the service (also called the service type).
+    * - sessionless
+      - Choices:
+
+          - enabled
+          - disabled
+      - Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load balancing of intrusion detection system (IDS) servers and scenarios involving direct server return (DSR), where session information is unnecessary.
+    * - skippersistency
+      - Choices:
+
+          - Bypass
+          - ReLb
+          - None
+      - This argument decides the behavior incase the service which is selected from an existing persistence session has reached threshold.
+    * - sobackupaction
+      - Choices:
+
+          - DROP
+          - ACCEPT
+          - REDIRECT
+      - Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.
+    * - somethod
+      - Choices:
+
+          - CONNECTION
+          - DYNAMICCONNECTION
+          - BANDWIDTH
+          - HEALTH
+          - NONE
+      - Type of threshold that, when exceeded, triggers spillover. Available settings function as follows:
+
+        * ``CONNECTION`` - Spillover occurs when the number of client connections exceeds the threshold.
+
+        * DYNAMICCONNECTION - Spillover occurs when the number of client connections at the virtual server exceeds the sum of the maximum client (Max Clients) settings for bound services. Do not specify a spillover threshold for this setting, because the threshold is implied by the Max Clients settings of bound services.
+
+        * ``BANDWIDTH`` - Spillover occurs when the bandwidth consumed by the virtual server's incoming and outgoing traffic exceeds the threshold.
+
+        * ``HEALTH`` - Spillover occurs when the percentage of weights of the services that are UP drops below the threshold. For example, if services svc1, svc2, and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and svc3 transition to DOWN.
+
+        * ``NONE`` - Spillover does not occur.
+    * - sopersistence
+      - Choices:
+
+          - enabled
+          - disabled
+      - If spillover occurs, maintain source IP address based persistence for both primary and backup virtual servers.
+    * - sopersistencetimeout
+      -
+      - Timeout for spillover persistence, in minutes.
+
+        Minimum value = ``2``
+
+        Maximum value = ``1440``
+    * - sothreshold
+      -
+      - Threshold at which spillover occurs. Specify an integer for the ``CONNECTION`` spillover method, a bandwidth value in kilobits per second for the ``BANDWIDTH`` method (do not enter the units), or a percentage for the ``HEALTH`` method (do not enter the percentage symbol).
+
+        Minimum value = ``1``
+
+        Maximum value = ``4294967287``
+    * - ssl_certkey
+      -
+      - The name of the ssl certificate that is bound to this service.
+
+        The ssl certificate must already exist.
+
+        Creating the certificate can be done with the citrix_adc_ssl_certkey module.
+
+        This option is only applicable only when ``servicetype`` is ``SSL``.
+    * - state
+      - Choices:
+
+          - present (*default*)
+          - absent
+      - The state of the resource being configured by the module on the netscaler node.
+
+        When present the resource will be created if needed and configured according to the module's parameters.
+
+        When absent the resource will be deleted from the netscaler node.
+    * - tcpprofilename
+      -
+      - Name of the TCP profile whose settings are to be applied to the virtual server.
+
+        Minimum length = 1
+
+        Maximum length = 127
+    * - td
+      -
+      - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
+
+        Minimum value = ``0``
+
+        Maximum value = ``4094``
+    * - timeout
+      -
+      - Time period for which a persistence session is in effect.
+
+        Minimum value = ``0``
+
+        Maximum value = ``1440``
+    * - tosid
+      -
+      - TOS ID of the virtual server. Applicable only when the load balancing redirection mode is set to TOS.
+
+        Minimum value = ``1``
+
+        Maximum value = ``63``
+    * - v6netmasklen
+      -
+      - Number of bits to consider in an IPv6 destination or source IP address, for creating the hash that is required by the ``DESTINATIONIPHASH`` and ``SOURCEIPHASH`` load balancing methods.
+
+        Minimum value = ``1``
+
+        Maximum value = ``128``
+    * - v6persistmasklen
+      -
+      - Persistence mask for IP based persistence types, for IPv6 virtual servers.
+
+        Minimum value = ``1``
+
+        Maximum value = ``128``
+    * - validate_certs
+      - Default:
+
+        *yes*
+      - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+    * - vipheader
+      -
+      - Name for the inserted header. The default name is vip-header.
+
+        Minimum length = 1
+
 
 
 Examples
 --------
 
 .. code-block:: yaml+jinja
-
     
     # Netscaler services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
-
+    
     - name: Create a load balancing vserver bound to services
       delegate_to: localhost
       citrix_adc_lb_vserver:
@@ -1468,9 +863,9 @@ Examples
         nitro_user: nsroot
         nitro_pass: nsroot
         validate_certs: no
-
+    
         state: present
-
+    
         name: lb_vserver_1
         servicetype: HTTP
         timeout: 12
@@ -1481,9 +876,9 @@ Examples
               weight: 80
             - servicename: service-http-2
               weight: 20
-
+    
     # Service group service-group-1 must have been already created with the citrix_adc_servicegroup module
-
+    
     - name: Create load balancing vserver bound to servicegroup
       delegate_to: localhost
       citrix_adc_lb_vserver:
@@ -1492,7 +887,7 @@ Examples
         nitro_pass: nsroot
         validate_certs: no
         state: present
-
+    
         name: lb_vserver_2
         servicetype: HTTP
         ipv46: 6.92.2.2
@@ -1502,88 +897,39 @@ Examples
             - servicegroupname: service-group-1
 
 
-
-
 Return Values
 -------------
-Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
 
-.. raw:: html
+    * - Key
+      - Returned
+      - Description
+    * - diff
 
-    <table border=0 cellpadding=0 class="documentation-table">
-        <tr>
-            <th colspan="1">Key</th>
-            <th>Returned</th>
-            <th width="100%">Description</th>
-        </tr>
-                    <tr>
-                                <td colspan="1">
-                    <b>diff</b>
-                    <br/><div style="font-size: small; color: red">dict</div>
-                                    </td>
-                <td>failure</td>
-                <td>
-                                            <div>List of differences between the actual configured object and the configuration specified in the module</div>
-                                        <br/>
-                                            <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">{&#x27;clttimeout&#x27;: &#x27;difference. ours: (float) 10.0 other: (float) 20.0&#x27;}</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                <td colspan="1">
-                    <b>loglines</b>
-                    <br/><div style="font-size: small; color: red">list</div>
-                                    </td>
-                <td>always</td>
-                <td>
-                                            <div>list of logged messages by the module</div>
-                                        <br/>
-                                            <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">[&#x27;message 1&#x27;, &#x27;message 2&#x27;]</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                <td colspan="1">
-                    <b>msg</b>
-                    <br/><div style="font-size: small; color: red">str</div>
-                                    </td>
-                <td>failure</td>
-                <td>
-                                            <div>Message detailing the failure reason</div>
-                                        <br/>
-                                            <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">Action does not exist</div>
-                                    </td>
-            </tr>
-                        </table>
-    <br/><br/>
+        *(dict)*
+      - failure
+      - List of differences between the actual configured object and the configuration specified in the module
 
+        **Sample:**
 
-Status
-------
+        {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'}
+    * - loglines
 
+        *(list)*
+      - always
+      - list of logged messages by the module
 
+        **Sample:**
 
-This module is flagged as **preview** which means that it is not guaranteed to have a backwards compatible interface.
+        ['message 1', 'message 2']
+    * - msg
 
+        *(str)*
+      - failure
+      - Message detailing the failure reason
 
+        **Sample:**
 
-Maintenance
------------
-
-This module is flagged as **community** which means that it is maintained by the Ansible Community. See :ref:`Module Maintenance & Support <modules_support>` for more info.
-
-For a list of other modules that are also maintained by the Ansible Community, see :ref:`here <community_supported>`.
-
-
-
-
-
-Author
-~~~~~~
-
-- George Nikolopoulos (@giorgos-nikolopoulos)
-
-
-.. hint::
-    If you notice any issues in this documentation you can `edit this document <https://github.com/ansible/ansible/edit/devel/lib/ansible/modules/citrix_adc_lb_vserver.py?description=%3C!---%20Your%20description%20here%20--%3E%0A%0A%2Blabel:%20docsite_pr>`_ to improve it.
+        Action does not exist

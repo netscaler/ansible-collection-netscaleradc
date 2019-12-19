@@ -27,7 +27,7 @@ clean:
 
 .PHONY: html
 html:
-	python ../utils/docs/plugin_formatter.py --module-dir ../ansible-modules/ --template-dir ../utils/docs/templates --output-dir ../docs/modules
+	python ../utils/docs/formatter.py --output-dir ./modules
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."

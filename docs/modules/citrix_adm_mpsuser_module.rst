@@ -1,19 +1,15 @@
-:source: citrix_adm_mpsuser.py
-
 :orphan:
 
 .. _citrix_adm_mpsuser_module:
 
-
-citrix_adm_mpsuser - Manage Citrix ADM users
-++++++++++++++++++++++++++++++++++++++++++++
+citrix_adm_mpsuser - Manage Citrix ADM users.
++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 2.8.0
 
 .. contents::
    :local:
    :depth: 2
-
 
 Synopsis
 --------
@@ -25,272 +21,146 @@ Synopsis
 Parameters
 ----------
 
-.. raw:: html
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
 
-    <table  border=0 cellpadding=0 class="documentation-table">
-        <tr>
-            <th colspan="1">Parameter</th>
-            <th>Choices/<font color="blue">Defaults</font></th>
-                        <th width="100%">Comments</th>
-        </tr>
-                    <tr>
-                                                                <td colspan="1">
-                    <b>enable_session_timeout</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Enables session timeout for user.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>external_authentication</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Enable external authentication.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>groups</b>
-                    <br/><div style="font-size: small; color: red">list</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Groups to which user belongs.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>id</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Id is system generated key for all the system users.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>instance_ip</b>
-                                                            <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.</div>
-                                                    <div>It is meaningful only when having set <code>mas_proxy_call</code> to <code>true</code></div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>mas_proxy_call</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                        <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>no</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>yes</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.</div>
-                                                    <div>{&#x27;When true you must also define the following options&#x27;: &#x27;<em>nitro_auth_token</em>, <em>instance_ip</em>.&#x27;}</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>name</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>User Name.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 128</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nitro_auth_token</b>
-                                                            <br/><div style="font-size: small; color: darkgreen">(added in 2.6.0)</div>                </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The authentication token provided by a login operation.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, a, u, t, h, _, t, o, k, e, n</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nitro_pass</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The password with which to authenticate to the netscaler node.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, p, a, s, s</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nitro_protocol</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>http</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>https</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>Which protocol to use when accessing the nitro API objects.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nitro_timeout</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                                    <b>Default:</b><br/><div style="color: blue">310</div>
-                                    </td>
-                                                                <td>
-                                                                        <div>Time in seconds until a timeout error is thrown when establishing a new session with Netscaler</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nitro_user</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The username with which to authenticate to the netscaler node.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, u, s, e, r</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>nsip</b>
-                                        <br/><div style="font-size: small; color: red">required</div>                                    </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>The ip address of the netscaler appliance where the nitro API calls will be made.</div>
-                                                    <div>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</div>
-                                                                                        <div style="font-size: small; color: darkgreen"><br/>aliases: m, a, s, _, i, p</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>password</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Password.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 128</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>save_config</b>
-                    <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                                <td>
-                                                                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                                <li>no</li>
-                                                                                                                                                                                                <li><div style="color: blue"><b>yes</b>&nbsp;&larr;</div></li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>If true the module will save the configuration on the netscaler node if it makes any changes.</div>
-                                                    <div>The module will not save the configuration on the netscaler node if it made no changes.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>session_timeout</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Session timeout for the user.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>session_timeout_unit</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Session timeout unit for the user.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>state</b>
-                                                                            </td>
-                                <td>
-                                                                                                                            <ul><b>Choices:</b>
-                                                                                                                                                                <li><div style="color: blue"><b>present</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                                <li>absent</li>
-                                                                                    </ul>
-                                                                            </td>
-                                                                <td>
-                                                                        <div>The state of the resource being configured by the module on the netscaler node.</div>
-                                                    <div>When present the resource will be created if needed and configured according to the module&#x27;s parameters.</div>
-                                                    <div>When absent the resource will be deleted from the netscaler node.</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>tenant_id</b>
-                    <br/><div style="font-size: small; color: red">str</div>                                                        </td>
-                                <td>
-                                                                                                                                                            </td>
-                                                                <td>
-                                                                        <div>Tenant Id of the system users.</div>
-                                                    <div>Minimum length = 1</div>
-                                                    <div>Maximum length = 128</div>
-                                                                                </td>
-            </tr>
-                                <tr>
-                                                                <td colspan="1">
-                    <b>validate_certs</b>
-                                                                            </td>
-                                <td>
-                                                                                                                                                                    <b>Default:</b><br/><div style="color: blue">yes</div>
-                                    </td>
-                                                                <td>
-                                                                        <div>If <code>no</code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</div>
-                                                                                </td>
-            </tr>
-                        </table>
-    <br/>
+    * - Parameter
+      - Choices/Defaults
+      - Comment
+    * - enable_session_timeout
 
+        *(bool)*
+      -
+      - Enables session timeout for user.
+    * - external_authentication
 
-Notes
------
+        *(bool)*
+      -
+      - Enable external authentication.
+    * - groups
 
-.. note::
-    - For more information on using Ansible to manage Citrix NetScaler Network devices see https://www.ansible.com/ansible-netscaler.
+        *(list)*
+      -
+      - Groups to which user belongs.
+    * - id
+
+        *(str)*
+      -
+      - Id is system generated key for all the system users.
+    * - instance_ip
+
+        *(added in 2.6.0)*
+      -
+      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+
+        It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - mas_proxy_call
+
+        *(bool)*
+
+        *(added in 2.6.0)*
+      - Default:
+
+        *False*
+      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+
+        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+    * - name
+
+        *(str)*
+      -
+      - User Name.
+
+        Minimum length = 1
+
+        Maximum length = 128
+    * - nitro_auth_token
+
+        *(added in 2.6.0)*
+      -
+      - The authentication token provided by a login operation.
+    * - nitro_pass
+      -
+      - The password with which to authenticate to the netscaler node.
+    * - nitro_protocol
+      - Choices:
+
+          - http (*default*)
+          - https
+      - Which protocol to use when accessing the nitro API objects.
+    * - nitro_timeout
+      - Default:
+
+        *310*
+      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+    * - nitro_user
+      -
+      - The username with which to authenticate to the netscaler node.
+    * - nsip
+      -
+      - The ip address of the netscaler appliance where the nitro API calls will be made.
+
+        The port can be specified with the colon (:). E.g. 192.168.1.1:555.
+    * - password
+
+        *(str)*
+      -
+      - Password.
+
+        Minimum length = 1
+
+        Maximum length = 128
+    * - save_config
+
+        *(bool)*
+      - Default:
+
+        *True*
+      - If true the module will save the configuration on the netscaler node if it makes any changes.
+
+        The module will not save the configuration on the netscaler node if it made no changes.
+    * - session_timeout
+
+        *(str)*
+      -
+      - Session timeout for the user.
+    * - session_timeout_unit
+
+        *(str)*
+      -
+      - Session timeout unit for the user.
+    * - state
+      - Choices:
+
+          - present (*default*)
+          - absent
+      - The state of the resource being configured by the module on the netscaler node.
+
+        When present the resource will be created if needed and configured according to the module's parameters.
+
+        When absent the resource will be deleted from the netscaler node.
+    * - tenant_id
+
+        *(str)*
+      -
+      - Tenant Id of the system users.
+
+        Minimum length = 1
+
+        Maximum length = 128
+    * - validate_certs
+      - Default:
+
+        *yes*
+      - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+
 
 
 Examples
 --------
 
 .. code-block:: yaml+jinja
-
     
     - name: Setup mpsuser
       delegate_to: localhost
@@ -298,12 +168,12 @@ Examples
         mas_ip: 192.168.1.1
         mas_user: nsroot
         mas_pass: nsroot
-
+    
         state: present
-
+    
         name: test_mpsuser
         password: 123456
-
+    
         session_timeout: 10
         session_timeout_unit: Minutes
         external_authentication: false
@@ -312,86 +182,35 @@ Examples
           - test_mpsgroup
 
 
-
-
 Return Values
 -------------
-Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
 
-.. raw:: html
+    * - Key
+      - Returned
+      - Description
+    * - loglines
 
-    <table border=0 cellpadding=0 class="documentation-table">
-        <tr>
-            <th colspan="1">Key</th>
-            <th>Returned</th>
-            <th width="100%">Description</th>
-        </tr>
-                    <tr>
-                                <td colspan="1">
-                    <b>loglines</b>
-                    <br/><div style="font-size: small; color: red">list</div>
-                                    </td>
-                <td>always</td>
-                <td>
-                                            <div>list of logged messages by the module</div>
-                                        <br/>
-                                            <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">[&#x27;message 1&#x27;, &#x27;message 2&#x27;]</div>
-                                    </td>
-            </tr>
-                                <tr>
-                                <td colspan="1">
-                    <b>mpsuser</b>
-                    <br/><div style="font-size: small; color: red">dict</div>
-                                    </td>
-                <td>success</td>
-                <td>
-                                            <div>Dictionary containing the attributes of the created mpsuser</div>
-                                        <br/>
-                                    </td>
-            </tr>
-                                <tr>
-                                <td colspan="1">
-                    <b>msg</b>
-                    <br/><div style="font-size: small; color: red">str</div>
-                                    </td>
-                <td>failure</td>
-                <td>
-                                            <div>Message detailing the failure reason</div>
-                                        <br/>
-                                            <div style="font-size: smaller"><b>Sample:</b></div>
-                                                <div style="font-size: smaller; color: blue; word-wrap: break-word; word-break: break-all;">Action does not exist</div>
-                                    </td>
-            </tr>
-                        </table>
-    <br/><br/>
+        *(list)*
+      - always
+      - list of logged messages by the module
 
+        **Sample:**
 
-Status
-------
+        ['message 1', 'message 2']
+    * - mpsuser
 
+        *(dict)*
+      - success
+      - Dictionary containing the attributes of the created mpsuser
+    * - msg
 
+        *(str)*
+      - failure
+      - Message detailing the failure reason
 
-This module is flagged as **preview** which means that it is not guaranteed to have a backwards compatible interface.
+        **Sample:**
 
-
-
-Maintenance
------------
-
-This module is flagged as **community** which means that it is maintained by the Ansible Community. See :ref:`Module Maintenance & Support <modules_support>` for more info.
-
-For a list of other modules that are also maintained by the Ansible Community, see :ref:`here <community_supported>`.
-
-
-
-
-
-Author
-~~~~~~
-
-- George Nikolopoulos (@giorgos-nikolopoulos)
-
-
-.. hint::
-    If you notice any issues in this documentation you can `edit this document <https://github.com/ansible/ansible/edit/devel/lib/ansible/modules/citrix_adm_mpsuser.py?description=%3C!---%20Your%20description%20here%20--%3E%0A%0A%2Blabel:%20docsite_pr>`_ to improve it.
+        Action does not exist

@@ -71,9 +71,14 @@ module=${file%.py}
     
 done
 
+python generate_citrix_adc_nitro_resource_test.py \
+--ns-version $NS_VERSION \
+--dir-path $target_dir/citrix_adc_direct_calls/roles
+
 # Add skeleton modules
 skeleton_modules=(
 "citrix_adc_nitro_request"
+"citrix_adc_nitro_resource"
 "citrix_adc_save_config"
 "citrix_adc_ssl_certkey"
 

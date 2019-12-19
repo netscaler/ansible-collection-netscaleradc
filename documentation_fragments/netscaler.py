@@ -56,7 +56,7 @@ options:
     mas_proxy_call:
         description:
             - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
-            - When true you must also define the following options: I(nitro_auth_token), I(instance_ip).
+            - "When true you must also define the following options: I(nitro_auth_token), I(instance_ip)."
         type: bool
         default: false
         version_added: "2.6.0"

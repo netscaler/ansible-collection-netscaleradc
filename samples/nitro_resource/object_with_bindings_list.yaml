@@ -1,0 +1,75 @@
+- hosts: citrix_adc
+
+  gather_facts: False
+  vars_files:
+    - workflows.yaml
+
+  vars:
+    state: present
+
+  tasks:
+
+    - name: Setup lb group
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbgroup }}"
+
+        resource:
+          name: mylbgroup
+          timeout: 150
+
+    - name: Setup lb vserver
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbvserver }}"
+
+        resource:
+          name: resource-lb-vserver-1
+          servicetype: HTTP
+          ipv46: 10.60.44.23
+          port: 8080
+
+    - name: Setup additional lb vserver
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: "{{ state }}"
+
+        workflow: "{{ workflow.lbvserver }}"
+
+        resource:
+          name: resource-lb-vserver-2
+          servicetype: HTTP
+          ipv46: 10.60.44.24
+          port: 8080
+
+    - name: Setup lbgroup lbvserver binding
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        state: "{{ state }}"
+
+        workflow: 
+          lifecycle: bindings_list
+          binding_workflow: "{{ workflow.lbgroup_lbvserver_binding }}"
+
+        resource:
+          bindings_list:
+            - name: mylbgroup
+              vservername: resource-lb-vserver-1
+            - name: mylbgroup
+              vservername: resource-lb-vserver-2
