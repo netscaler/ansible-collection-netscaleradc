@@ -369,8 +369,9 @@ def monkey_patch_nitro_api():
     nitro_util.object_to_string = object_to_string_new
     nitro_util.object_to_string_withoutquotes = object_to_string_withoutquotes_new
 
+
 class NitroAPIFetcher(object):
-    
+
     def __init__(self, module, api_path='nitro/v1/config'):
 
         self._module = module
@@ -378,7 +379,6 @@ class NitroAPIFetcher(object):
         self.r = None
         self.info = None
         self.api_path = api_path
-
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -480,7 +480,6 @@ class NitroAPIFetcher(object):
         if count:
             count_val = 'count=yes'
 
-
         # Construct the query string
         # Filter out empty string parameters
         val_list = [args_val, attrs_val, filter_val, action_val, count_val]
@@ -538,7 +537,6 @@ class NitroAPIFetcher(object):
 
         # Append query params
         url = '%s%s' % (url, query_params)
-
 
         r, info = fetch_url(
             self._module,
@@ -613,9 +611,10 @@ class NitroAPIFetcher(object):
 
         return result
 
+
 class NitroResourceConfig(object):
 
-    def __init__(self, module, resource,  attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}):
+    def __init__(self, module, resource, attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}):
         self.resource = resource
         self.module = module
         self.fetcher = NitroAPIFetcher(module)
@@ -682,8 +681,8 @@ class NitroResourceConfig(object):
         if len(defined_ids) == 0:
             raise Exception('Cannot get resource without some get_id attribute defined')
         else:
-            args = { id: self.values_dict[id] for id in defined_ids }
-            result = self.fetcher.get(self.resource,args=args)
+            args = {id: self.values_dict[id] for id in defined_ids}
+            result = self.fetcher.get(self.resource, args=args)
 
         log('result retrieved %s' % result)
 
@@ -738,7 +737,6 @@ class NitroResourceConfig(object):
         else:
             raise Exception('Cannot handle retval from _get_actual_instance')
 
-
     def exists(self, get_id_attributes):
         self.get_actual(get_id_attributes)
         return self.actual_dict != {}
@@ -787,7 +785,7 @@ class NitroResourceConfig(object):
 
     def values_by_key_identical_to_dict(self, values_dict, key_list):
         id_values_dict = {}
-        for key in key_list: 
+        for key in key_list:
             if key in self.values_dict:
                 id_values_dict[key] = self.values_dict[key]
 
@@ -802,7 +800,6 @@ class NitroResourceConfig(object):
 
         # Fallthrough to success
         return True
-
 
     def values_subgroup_of_actual(self):
         log('values_subgroup_of_actual')
@@ -858,7 +855,7 @@ class NitroResourceConfig(object):
 
         update_object_resource_dict = {'name': self.values_dict['name']}
         post_data = {
-            self.resource: update_object_resource_dict 
+            self.resource: update_object_resource_dict
         }
 
         update_object_resource = "{}{}".format(self.resource, "?action=update")
@@ -881,9 +878,6 @@ class NitroResourceConfig(object):
             )
         else:
             raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
-
-
-
 
     def create(self):
         if self.values_dict == {}:
@@ -913,7 +907,6 @@ class NitroResourceConfig(object):
         else:
             raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
 
-
     def update(self, id_attribute=None):
         if self.values_dict == {}:
             raise Exception('Cannot update NITRO object without any attribute values')
@@ -927,7 +920,7 @@ class NitroResourceConfig(object):
             id = self.values_dict.get(id_attribute)
             if id is None:
                 raise Exception('id attribute does not have a value for update')
-    
+
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource=self.resource, id=id)
 
@@ -949,8 +942,6 @@ class NitroResourceConfig(object):
         args = id_values_dict
         id = None
 
-
-
         result = self.fetcher.delete(resource=self.resource, id=id, args=args)
         log('delete result %s' % result)
 
@@ -961,9 +952,10 @@ class NitroResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
+
 class MASResourceConfig(object):
 
-    def __init__(self, module, resource,  attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}, api_path='nitro/v1/config'):
+    def __init__(self, module, resource, attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}, api_path='nitro/v1/config'):
         self.resource = resource
         self.module = module
         self.fetcher = NitroAPIFetcher(module, api_path=api_path)
@@ -1016,8 +1008,8 @@ class MASResourceConfig(object):
         elif use_filter:
             result = self.fetcher.get(self.resource, filter=defined_id_attributes_dict)
         else:
-            args = { id: self.values_dict[id] for id in defined_ids }
-            result = self.fetcher.get(self.resource,args=defined_id_attributes_dict)
+            args = {id: self.values_dict[id] for id in defined_ids}
+            result = self.fetcher.get(self.resource, args=defined_id_attributes_dict)
 
         log('result retrieved %s' % result)
 
@@ -1044,7 +1036,7 @@ class MASResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
-    def exists(self, get_id_attributes, success_codes = [None, 0], use_filter=True):
+    def exists(self, get_id_attributes, success_codes=[None, 0], use_filter=True):
         self.get_actual_instance(get_id_attributes, success_codes, use_filter)
         return self.actual_dict != {}
 
@@ -1118,7 +1110,7 @@ class MASResourceConfig(object):
             # Not having the declared id attribute in the input variables on the other hand is in fact an error
             if id is None:
                 raise Exception('id attribute does not have a value for update')
-    
+
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource=self.resource, id=id)
 
@@ -1150,7 +1142,6 @@ class MASResourceConfig(object):
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
-
 
 
 class NitroException(Exception):
