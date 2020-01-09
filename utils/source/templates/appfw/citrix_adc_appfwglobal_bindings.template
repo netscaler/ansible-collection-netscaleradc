@@ -12,13 +12,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_global_bindings
 short_description: Define global bindings for AppFW
-description: 
+description:
     - Define global bindings for AppFW
     - Note that due to limitations in the NITRO API this module will always report a changed status.
 
@@ -49,11 +47,12 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
                     - Valid attribute keys:
-                    #{% for item in binding.doc_list %}- {{ item }}
-                    #{% endfor %}
+                    #{%- for item in binding.doc_list %}
+                    - {{ item }}
+                    #{%- endfor %}
 #{% endfor %}
 
 extends_documentation_fragment: netscaler
@@ -83,7 +82,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = '{{ main_nitro_class }}'
@@ -91,9 +90,9 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
+            #{%- for item in attributes_config_list %}
             #{% include 'nitro_config_object.template' %}
-            #{% endfor %}
+            #{%- endfor %}
 
         }
 
@@ -102,7 +101,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def sync_binding_with_data(self, data):
 
@@ -130,7 +128,6 @@ class ModuleExecutor(object):
 
             configured_bindings.append(configured_binding)
 
-
         if mode == 'bind':
             for configured_binding in configured_bindings:
                 self.module_result['changed'] = True
@@ -156,13 +153,19 @@ class ModuleExecutor(object):
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
-        #{% for item in bindings %}
+        #{%- for item in bindings %}
         self.sync_{{ item.binding_key }}()
-        #{% endfor %}
+        #{%- endfor %}
+        #{%- for item in bindings %}
 
-
-        #{% for item in bindings %}#{% include 'appfwglobal_binding_methods.template' %}
-        #{% endfor %}
+        def sync_{{ item.binding_key }}(self):
+            self.sync_binding_with_data(
+                {
+                    'binding_key': '{{ item.binding_key }}',
+                    'binding_object': '{{ item.binding_object }}',
+                }
+            )
+            #{%- endfor %}
 
     def main(self):
         try:
@@ -182,25 +185,21 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' -%}
         #{% endfor %}
-        #{% for item in bindings %}
+        #{%- for item in bindings %}
         {{ item.binding_key }}=dict(type='dict'),#{% endfor %}
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -213,3 +212,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

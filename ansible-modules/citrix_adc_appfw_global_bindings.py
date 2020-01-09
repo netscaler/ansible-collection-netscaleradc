@@ -12,13 +12,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_global_bindings
 short_description: Define global bindings for AppFW
-description: 
+description:
     - Define global bindings for AppFW
     - Note that due to limitations in the NITRO API this module will always report a changed status.
 
@@ -47,7 +45,7 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
                     - Valid attribute keys:
                     - policyname
@@ -59,7 +57,6 @@ options:
                     - labelname
                     - type
                     - globalbindtype
-                    
 
     auditnslogpolicy_bindings:
         description: auditnslogpolicy bindings
@@ -76,7 +73,7 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
                     - Valid attribute keys:
                     - policyname
@@ -87,7 +84,6 @@ options:
                     - invoke
                     - labeltype
                     - labelname
-                    
 
     auditsyslogpolicy_bindings:
         description: auditsyslogpolicy bindings
@@ -104,7 +100,7 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
                     - Valid attribute keys:
                     - policyname
@@ -115,7 +111,6 @@ options:
                     - invoke
                     - labeltype
                     - labelname
-                    
 
 
 extends_documentation_fragment: netscaler
@@ -145,7 +140,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = ''
@@ -153,10 +148,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'appfwpolicy_bindings': {
                 'attributes_list': [
-                    
                     'policyname',
                     'priority',
                     'gotopriorityexpression',
@@ -168,24 +161,18 @@ class ModuleExecutor(object):
                     'globalbindtype',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
-                    'type',
                 ],
                 'delete_id_attributes': [
-                    
                     'policyname',
                     'priority',
                     'type',
                 ],
             },
-            
             'auditnslogpolicy_bindings': {
                 'attributes_list': [
-                    
                     'policyname',
                     'priority',
                     'state',
@@ -196,24 +183,18 @@ class ModuleExecutor(object):
                     'labelname',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
-                    'type',
                 ],
                 'delete_id_attributes': [
-                    
                     'policyname',
                     'priority',
                     'type',
                 ],
             },
-            
             'auditsyslogpolicy_bindings': {
                 'attributes_list': [
-                    
                     'policyname',
                     'priority',
                     'state',
@@ -224,21 +205,16 @@ class ModuleExecutor(object):
                     'labelname',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
-                    'type',
                 ],
                 'delete_id_attributes': [
-                    
                     'policyname',
                     'priority',
                     'type',
                 ],
             },
-            
 
         }
 
@@ -247,7 +223,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def sync_binding_with_data(self, data):
 
@@ -275,7 +250,6 @@ class ModuleExecutor(object):
 
             configured_bindings.append(configured_binding)
 
-
         if mode == 'bind':
             for configured_binding in configured_bindings:
                 self.module_result['changed'] = True
@@ -301,40 +275,33 @@ class ModuleExecutor(object):
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
-        
         self.sync_appfwpolicy_bindings()
-        
         self.sync_auditnslogpolicy_bindings()
-        
         self.sync_auditsyslogpolicy_bindings()
-        
 
+        def sync_appfwpolicy_bindings(self):
+            self.sync_binding_with_data(
+                {
+                    'binding_key': 'appfwpolicy_bindings',
+                    'binding_object': 'appfwglobal_appfwpolicy_binding',
+                }
+            )
 
-        
-    def sync_appfwpolicy_bindings(self):
-        self.sync_binding_with_data(
-            {
-                'binding_key': 'appfwpolicy_bindings',
-                'binding_object': 'appfwglobal_appfwpolicy_binding',
-            }
-        )
-        
-    def sync_auditnslogpolicy_bindings(self):
-        self.sync_binding_with_data(
-            {
-                'binding_key': 'auditnslogpolicy_bindings',
-                'binding_object': 'appfwglobal_auditnslogpolicy_binding',
-            }
-        )
-        
-    def sync_auditsyslogpolicy_bindings(self):
-        self.sync_binding_with_data(
-            {
-                'binding_key': 'auditsyslogpolicy_bindings',
-                'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
-            }
-        )
-        
+        def sync_auditnslogpolicy_bindings(self):
+            self.sync_binding_with_data(
+                {
+                    'binding_key': 'auditnslogpolicy_bindings',
+                    'binding_object': 'appfwglobal_auditnslogpolicy_binding',
+                }
+            )
+
+        def sync_auditsyslogpolicy_bindings(self):
+            self.sync_binding_with_data(
+                {
+                    'binding_key': 'auditsyslogpolicy_bindings',
+                    'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
+                }
+            )
 
     def main(self):
         try:
@@ -354,25 +321,19 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        
         appfwpolicy_bindings=dict(type='dict'),
         auditnslogpolicy_bindings=dict(type='dict'),
         auditsyslogpolicy_bindings=dict(type='dict'),
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

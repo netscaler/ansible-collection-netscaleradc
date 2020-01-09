@@ -1,8 +1,0 @@
-
-    def sync_{{ item.binding_key }}(self):
-        self.sync_binding_with_data(
-            {
-                'binding_key': '{{ item.binding_key }}',
-                'binding_object': '{{ item.binding_object }}',
-            }
-        )
