@@ -193,40 +193,41 @@ extends_documentation_fragment: netscaler
 
 EXAMPLES = '''
 vars:
-stylebook_params:
-  name: "basic-lb-config"
-  namespace: "com.example.stylebooks"
-  version: "0.1"
-  configpack_payload:
-    parameters:
-      name: "playbook5_test_application_name"
-      ip: "192.168.5.2"
-      lb-alg: "ROUNDROBIN"
-      svc-servers:
-        - "192.168.5.3"
-      svc-port: "80"
-    targets:
-      - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
+  stylebook_params:
+    name: "basic-lb-config"
+    namespace: "com.example.stylebooks"
+    version: "0.1"
+    configpack_payload:
+      parameters:
+        name: "playbook5_test_application_name"
+        ip: "192.168.5.2"
+        lb-alg: "ROUNDROBIN"
+        svc-servers:
+          - "192.168.5.3"
+        svc-port: "80"
+      targets:
+        - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
 
-- name: Login to citrix_adm
-  delegate_to: localhost
-  register: login_result
-  citrix_adm_login:
-    mas_ip: 192.168.1.1
-    mas_user: nsroot
-    mas_pass: nsroot
+tasks:
+  - name: Login to citrix_adm
+    delegate_to: localhost
+    register: login_result
+    citrix_adm_login:
+      mas_ip: 192.168.1.1
+      mas_user: nsroot
+      mas_pass: nsroot
 
-- name: Setup application
-  delegate_to: localhost
-  citrix_adm_application:
-    mas_ip: 192.168.1.1
-    nitro_auth_token: "{{ login_result.session_id }}"
+  - name: Setup application
+    delegate_to: localhost
+    citrix_adm_application:
+      mas_ip: 192.168.1.1
+      nitro_auth_token: "{{ login_result.session_id }}"
 
-    state: present
+      state: present
 
-    app_category: test_category
-    name: playbook5_test_application_name-lb_10.78.60.209_lb
-    stylebook_params: "{{ stylebook_params | to_json }}"
+      app_category: test_category
+      name: playbook5_test_application_name-lb_10.78.60.209_lb
+      stylebook_params: "{{ stylebook_params | to_json }}"
 '''
 
 RETURN = '''
