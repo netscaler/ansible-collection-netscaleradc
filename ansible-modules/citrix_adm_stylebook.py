@@ -68,8 +68,6 @@ extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
-vars:
-stylebook_contents: "{{ lookup('file', 'stylebook_sample.yaml') }}"
 
 - name: Setup stylebook
   delegate_to: localhost
@@ -83,7 +81,8 @@ stylebook_contents: "{{ lookup('file', 'stylebook_sample.yaml') }}"
     namespace: com.example.stylebooks
     version: "0.1"
 
-    source: "{{ stylebook_contents }}"
+    source: "{{ lookup('file', 'stylebook_sample.yaml') }}"
+        
 '''
 
 RETURN = '''
