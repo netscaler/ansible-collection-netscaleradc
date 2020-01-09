@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_fieldtype
@@ -35,16 +33,17 @@ options:
                 Must begin with a letter, number, or the underscore character (_), and must contain only letters,
                 and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
                 Cannot be changed after the field type is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
                 If the name includes one or more spaces, enclose the name in double or single quotation marks (for
                 "my field type" or 'my field type').
+            - "Minimum length =  1"
         type: str
 
     regex:
         description:
             - "PCRE - format regular expression defining the characters and length allowed for this field type."
+            - "Minimum length =  1"
         type: str
 
     priority:
@@ -52,6 +51,8 @@ options:
             - >-
                 Positive integer specifying the priority of the field type. A lower number specifies a higher
                 Field types are checked in the order of their priority numbers.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(64000)"
         type: str
 
     comment:
@@ -61,7 +62,7 @@ options:
 
     nocharmaps:
         description:
-            - "will not show internal field types added as part of FieldFormat learn rules deployment"
+            - "will not show internal field types added as part of FieldFormat learn rules deployment."
         type: bool
 
 
@@ -107,7 +108,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwfieldtype'
@@ -115,10 +116,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwfieldtype': {
                 'attributes_list': [
-                    
                     'name',
                     'regex',
                     'priority',
@@ -126,20 +125,14 @@ class ModuleExecutor(object):
                     'nocharmaps',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
-                    'nocharmaps',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
-
         }
 
         self.module_result = dict(
@@ -184,7 +177,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -198,9 +190,6 @@ class ModuleExecutor(object):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='name')
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -229,24 +218,16 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         regex=dict(type='str'),
-        
         priority=dict(type='str'),
-        
         comment=dict(type='str'),
-        
         nocharmaps=dict(type='bool'),
-        
         disabled=dict(
             type='bool',
             default=False,
@@ -254,10 +235,8 @@ def main():
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
