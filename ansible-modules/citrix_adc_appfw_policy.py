@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_policy
@@ -114,7 +112,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwpolicy'
@@ -122,10 +120,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwpolicy': {
                 'attributes_list': [
-                    
                     'name',
                     'rule',
                     'profilename',
@@ -133,18 +129,14 @@ class ModuleExecutor(object):
                     'logaction',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
 
         }
 
@@ -153,7 +145,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update_or_create(self):
         # Check if main object exists
@@ -184,9 +175,6 @@ class ModuleExecutor(object):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='name')
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -229,32 +217,22 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         rule=dict(type='str'),
-        
         profilename=dict(type='str'),
-        
         comment=dict(type='str'),
-        
         logaction=dict(type='str'),
-        
         appfwpolicy_csvserver_bindings=dict(type='dict'),
         denyurl_bindings=dict(type='dict'),
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
