@@ -717,14 +717,14 @@ options:
                 Name to assign to the XML Error Object, which the application firewall displays when a user request
                 blocked.
             - >-
-                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
-                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
-                characters. Cannot be changed after the XML error object is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Cannot be changed after the XML error object is added.
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
-                "my XML error object" or 'my XML error object'\).
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my XML error object" or 'my XML error object').
+            - "Minimum length =  1"
         type: str
 
     customsettings:
@@ -773,16 +773,16 @@ options:
 
     htmlerrorobject:
         description:
-            - "Name to assign to the HTML Error Object. "
+            - "Name to assign to the HTML Error Object."
             - >-
-                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
-                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
-                characters. Cannot be changed after the HTML error object is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Cannot be changed after the HTML error object is added.
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
-                "my HTML error object" or 'my HTML error object'\).
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my HTML error object" or 'my HTML error object').
+            - "Minimum length =  1"
         type: str
 
     logeverypolicyhit:
