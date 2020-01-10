@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_mpsuser
@@ -99,7 +97,7 @@ EXAMPLES = '''
     session_timeout_unit: Minutes
     external_authentication: false
     enable_session_timeout: true
-    groups: 
+    groups:
       - test_mpsgroup
 '''
 
@@ -129,7 +127,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'mpsuser'
@@ -137,10 +135,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'mpsuser': {
                 'attributes_list': [
-                    
                     'session_timeout',
                     'name',
                     'session_timeout_unit',
@@ -152,22 +148,18 @@ class ModuleExecutor(object):
                     'groups',
                 ],
                 'transforms': {
-                    
                     'enable_session_timeout': lambda v: "true" if v else "false",
                     'external_authentication': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
             },
-            
 
         }
 
@@ -200,7 +192,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -222,7 +213,6 @@ class ModuleExecutor(object):
             use_filter=True
         )
         self.module_result.update(dict(mpsuser=config.actual_dict))
-
 
     def delete(self):
         # Check if main object exists
@@ -251,50 +241,45 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        session_timeout=dict(type='str',),
-
-        
-        name=dict(type='str',),
-
-        
-        session_timeout_unit=dict(type='str',),
-
-        
-        external_authentication=dict(type='bool',),
-
-        
-        enable_session_timeout=dict(type='bool',),
-
-        
-        tenant_id=dict(type='str',),
-
-        
-        password=dict(type='str',),
-
-        
-        id=dict(type='str',),
-
-        
-        groups=dict(type='list',),
-
-        
+        session_timeout=dict(
+            type='str'
+        ),
+        name=dict(
+            type='str'
+        ),
+        session_timeout_unit=dict(
+            type='str'
+        ),
+        external_authentication=dict(
+            type='bool'
+        ),
+        enable_session_timeout=dict(
+            type='bool'
+        ),
+        tenant_id=dict(
+            type='str'
+        ),
+        password=dict(
+            type='str'
+        ),
+        id=dict(
+            type='str'
+        ),
+        groups=dict(
+            type='list'
+        ),
     )
 
     # Add the no_log option for password
     module_specific_arguments['password'].update(dict(no_log=True))
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
