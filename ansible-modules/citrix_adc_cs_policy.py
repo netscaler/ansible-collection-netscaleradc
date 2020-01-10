@@ -125,7 +125,7 @@ def policy_exists(client, module):
     try:
         cspolicy.get(client, module.params['policyname'])
         return True
-    except:
+    except Exception:
         return False
 
 
@@ -133,7 +133,7 @@ def policy_identical(client, module, cspolicy_proxy):
     log('Checking if defined policy is identical to configured')
     try:
         policy_list = cspolicy.get(client, module.params['policyname'])
-    except:
+    except Exception:
         return False
 
     diff_dict = cspolicy_proxy.diff_object(policy_list)
