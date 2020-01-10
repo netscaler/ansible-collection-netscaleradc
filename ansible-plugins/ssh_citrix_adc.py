@@ -290,7 +290,7 @@ from ansible.module_utils._text import to_bytes, to_native, to_text
 from ansible.module_utils.parsing.convert_bool import BOOLEANS, boolean
 from ansible.plugins.connection import ConnectionBase, BUFSIZE
 from ansible.utils.path import unfrackpath, makedirs_safe
-from ansible.plugins.connection.ssh import Connection as ConnectionSsh#, BUFSIZE
+from ansible.plugins.connection.ssh import Connection as ConnectionSsh
 
 try:
     from __main__ import display
@@ -305,6 +305,8 @@ SSHPASS_AVAILABLE = None
 class AnsibleControlPersistBrokenPipeError(AnsibleError):
     ''' ControlPersist broken pipe '''
     pass
+
+
 def _ssh_retry(func):
     """
     Decorator to retry ssh/scp/sftp in the case of a connection failure
@@ -335,22 +337,22 @@ def _ssh_retry(func):
 
             try:
                 try:
-          ##################################
+                    ##################################
                     # override to remove/intersept 'Done' of citrix adc
                     return_tuple = func(self, *args, **kwargs)
                     return_tuple = list(return_tuple)
                     subst = ""
                     regex = r"(\r\n|\r|\n|)( Done)(\r\n|\r|\n)+"
-                    return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE )
-                    return_tuple =tuple(return_tuple)
+                    return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE)
+                    return_tuple = tuple(return_tuple)
                     # end
-          ###############################
+                    ###############################
                     display.vvv(return_tuple, host=self.host)
-                    
+
                     # 0 = success
                     # 1-254 = remote command return code
                     # 255 = failure from the ssh command itself
-                    # 
+                    #
                 except (AnsibleControlPersistBrokenPipeError) as e:
                     # Retry one more time because of the ControlPersist broken pipe (see #16731)
                     display.vvv(u"RETRYING BECAUSE OF CONTROLPERSIST BROKEN PIPE")
@@ -381,14 +383,14 @@ def _ssh_retry(func):
         return return_tuple
     return wrapped
 
+
 class Connection(ConnectionSsh):
     ''' ssh based connections '''
 
     transport = 'ssh_citrix_adc'
     has_pipelining = True
     become_methods = frozenset(C.BECOME_METHODS).difference(['runas'])
-    name= 'ssh_citrix_adc'
-
+    name = 'ssh_citrix_adc'
 
     def __init__(self, *args, **kwargs):
         super(Connection, self).__init__(*args, **kwargs)
@@ -398,15 +400,15 @@ class Connection(ConnectionSsh):
         """Wrapper around _bare_run that retries the connection
         """
         return self._bare_run(cmd, in_data, sudoable, checkrc)
-        
+
     def exec_command(self, cmd, in_data=None, sudoable=True):
         ''' run a command on the remote host '''
 
         # Adding the 'shell' command for the citrix adc cli
-        if  cmd.startswith('ssh_citrix_adc'):
-          cmd = cmd.replace('ssh_citrix_adc','')
+        if cmd.startswith('ssh_citrix_adc'):
+            cmd = cmd.replace('ssh_citrix_adc', '')
         else:
-          cmd = type(cmd)("shell ")+cmd
+            cmd = type(cmd)("shell ") + cmd
 
         # we can only use tty when we are not pipelining the modules. piping
         # data into /usr/bin/python inside a tty automatically invokes the
@@ -414,8 +416,8 @@ class Connection(ConnectionSsh):
         # interactive-mode ("unexpected indent" mainly because of empty lines)
 
         ssh_executable = self._play_context.ssh_executable
-        display.vvv(u"ESTABLISH SSH CONNECTION WITH ssh_citrix_adc FOR USER: {0}, cmd: {1}".format(self._play_context.remote_user, cmd), host=self._play_context.remote_addr)
-
+        msg = u"ESTABLISH SSH CONNECTION WITH ssh_citrix_adc FOR USER: {0}, cmd: {1}".format(self._play_context.remote_user, cmd)
+        display.vvv(msg, host=self._play_context.remote_addr)
 
         # -tt can cause various issues in some environments so allow the user
         # to disable it as a troubleshooting method.
@@ -431,10 +433,9 @@ class Connection(ConnectionSsh):
 
     ##################################
         # Removing the stdout 'Done' from citrix adc cli
-        # that can cause errors in calling scp with Done/ as 
+        # that can cause errors in calling scp with Done/ as
         # first folder.
 
-        stdout = stdout.replace(" Done\n",'')
+        stdout = stdout.replace(" Done\n", '')
     #################################
         return (returncode, stdout, stderr)
-
