@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_rba_policy
@@ -126,7 +124,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'rba_policy'
@@ -134,10 +132,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'rba_policy': {
                 'attributes_list': [
-                    
                     'tenant_id',
                     'statement',
                     'ui',
@@ -147,20 +143,16 @@ class ModuleExecutor(object):
                     'roles',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
             },
-            
 
         }
 
@@ -219,7 +211,6 @@ class ModuleExecutor(object):
         )
         self.module_result.update(dict(rba_policy=config.actual_dict))
 
-
     def delete(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -248,41 +239,36 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        tenant_id=dict(type='str',),
-
-        
-        statement=dict(type='list',),
-
-        
-        ui=dict(type='list',),
-
-        
-        name=dict(type='str',),
-
-        
-        id=dict(type='str',),
-
-        
-        description=dict(type='str',),
-
-        
-        roles=dict(type='list',),
-
-        
+        tenant_id=dict(
+            type='str'
+        ),
+        statement=dict(
+            type='list'
+        ),
+        ui=dict(
+            type='list'
+        ),
+        name=dict(
+            type='str'
+        ),
+        id=dict(
+            type='str'
+        ),
+        description=dict(
+            type='str'
+        ),
+        roles=dict(
+            type='list'
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
