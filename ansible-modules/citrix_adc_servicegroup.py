@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_servicegroup
@@ -435,7 +433,9 @@ options:
                     - If mode is C(exact):
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
@@ -446,7 +446,9 @@ options:
                     - The desired state API will be used to bind/unbind members.
                     - As far as selection is concerned it is identical to the C(exact) method.
                     - In this mode a result of C(changed=true) will always be reported.
-                    - The reason is in order to capitalize on the speed of the desired state API we do not read the existing members from the servicegroup.
+                    - >-
+                        The reason is in order to capitalize on the speed of the desired state API we do not read
+                        the existing members from the servicegroup.
                     - As a result of this we are unable to assert if the declared configuration will actually change the target ADC configuration.
                     - Note that in order to use this mode the servicegroup must have set the following option value I(autoscale=API).
                     - Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)
@@ -526,10 +528,14 @@ options:
                     - If mode is C(exact):
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
                     - If mode is C(bind):
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC but have
+                        different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
                     - If mode is C(unbind):
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
@@ -756,72 +762,72 @@ class ModuleExecutor(object):
                     'servicegroupname',
                 ],
                 'non_updateable_attributes': [
-                        'servicetype',
-                        'cachetype',
-                        'td',
-                        'state',
-                        'autoscale',
-                        'memberport',
-                        'riseapbrstatsmsgcode',
-                        'delay',
-                        'graceful',
-                        'includemembers',
-                        'newname',
+                    'servicetype',
+                    'cachetype',
+                    'td',
+                    'state',
+                    'autoscale',
+                    'memberport',
+                    'riseapbrstatsmsgcode',
+                    'delay',
+                    'graceful',
+                    'includemembers',
+                    'newname',
                 ],
             },
             'servicemembers': {
                 'attributes_list': [
-                        'ip',
-                        'port',
-                        'weight',
-                        'servername',
-                        'customserverid',
-                        'serverid',
-                        'state',
-                        'hashid',
-                        'nameserver',
-                        'dbsttl',
+                    'ip',
+                    'port',
+                    'weight',
+                    'servername',
+                    'customserverid',
+                    'serverid',
+                    'state',
+                    'hashid',
+                    'nameserver',
+                    'dbsttl',
                 ],
                 'transforms': {
-                        'state': lambda v: v.upper(),
-                        'weight': lambda v: str(v),
+                    'state': lambda v: v.upper(),
+                    'weight': lambda v: str(v),
                 },
                 'get_id_attributes': [
-                        'servicegroupname',
+                    'servicegroupname',
                 ],
                 'delete_id_attributes': [
-                        'ip',
-                        'port',
-                        'servername',
-                        'servicegroupname',
+                    'ip',
+                    'port',
+                    'servername',
+                    'servicegroupname',
                 ]
             },
             'monitor_bindings': {
                 'attributes_list': [
-                        'monitor_name',
-                        'monstate',
-                        'weight',
-                        'passive',
-                        'port',
-                        'customserverid',
-                        'serverid',
-                        'state',
-                        'hashid',
-                        'nameserver',
-                        'dbsttl',
+                    'monitor_name',
+                    'monstate',
+                    'weight',
+                    'passive',
+                    'port',
+                    'customserverid',
+                    'serverid',
+                    'state',
+                    'hashid',
+                    'nameserver',
+                    'dbsttl',
                 ],
                 'transforms': {
-                        'monstate': lambda v: v.upper(),
-                        'state': lambda v: v.upper(),
-                        'weight': lambda v: str(v),
+                    'monstate': lambda v: v.upper(),
+                    'state': lambda v: v.upper(),
+                    'weight': lambda v: str(v),
                 },
                 'get_id_attributes': [
-                        'servicegroupname',
+                    'servicegroupname',
                 ],
                 'delete_id_attributes': [
-                        'monitor_name',
-                        'servicegroupname',
-                        'port',
+                    'monitor_name',
+                    'servicegroupname',
+                    'port',
                 ]
             }
         }
@@ -890,7 +896,6 @@ class ModuleExecutor(object):
                 member[attribute] = value
             self.configured_monitor_bindings.append(member)
         log('calculated configured monitor bindings %s' % self.configured_monitor_bindings)
-
 
     def servicegroup_exists(self):
         log('ModuleExecutor.servicegroup_exists()')
@@ -1066,8 +1071,6 @@ class ModuleExecutor(object):
             if not self.module.check_mode:
                 self.delete_servicegroup()
 
-
-
     def get_existing_servicemembers(self):
         log('ModuleExecutor.get_existing_servicemembers()')
         result = self.fetcher.get('servicegroup_servicegroupmember_binding', self.module.params['servicegroupname'])
@@ -1117,10 +1120,10 @@ class ModuleExecutor(object):
         put_values = copy.deepcopy(configured_dict)
         put_values['servicegroupname'] = self.module.params['servicegroupname']
         put_values = self._get_transformed_dict(
-            transforms = self.attribute_config['servicemembers']['transforms'],
-            values_dict = put_values
+            transforms=self.attribute_config['servicemembers']['transforms'],
+            values_dict=put_values
         )
-        put_data = { 'servicegroup_servicegroupmember_binding': put_values }
+        put_data = {'servicegroup_servicegroupmember_binding': put_values}
         log('put data %s' % put_data)
         result = self.fetcher.put(
             put_data=put_data,
@@ -1261,7 +1264,7 @@ class ModuleExecutor(object):
                 if create_servicemember:
                     self.module_result['changed'] = True
                     if not self.module.check_mode:
-                       self.add_servicemember(configured_servicemember)
+                        self.add_servicemember(configured_servicemember)
 
         elif mode == 'unbind':
             for configured_servicemember in self.configured_servicemembers:
@@ -1301,10 +1304,10 @@ class ModuleExecutor(object):
         put_values = copy.deepcopy(configured_dict)
         put_values['servicegroupname'] = self.module.params['servicegroupname']
         put_values = self._get_transformed_dict(
-            transforms = self.attribute_config['monitor_bindings']['transforms'],
-            values_dict = put_values
+            transforms=self.attribute_config['monitor_bindings']['transforms'],
+            values_dict=put_values
         )
-        put_data = { 'servicegroup_lbmonitor_binding': put_values }
+        put_data = {'servicegroup_lbmonitor_binding': put_values}
         log('put data %s' % put_data)
         result = self.fetcher.put(
             put_data=put_data,
@@ -1423,7 +1426,7 @@ class ModuleExecutor(object):
                 if create_servicemember:
                     self.module_result['changed'] = True
                     if not self.module.check_mode:
-                       self.add_monitor_binding(configured_monitor_binding)
+                        self.add_monitor_binding(configured_monitor_binding)
 
         elif mode == 'unbind':
             for configured_monitor_binding in self.configured_monitor_bindings:
@@ -1436,7 +1439,6 @@ class ModuleExecutor(object):
                     self.module_result['changed'] = True
                     if not self.module.check_mode:
                         self.delete_servicemember(configured_monitor_binding)
-
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
@@ -1454,7 +1456,7 @@ class ModuleExecutor(object):
             'delay',
         ]
         post_data = {
-            'servicegroup':{
+            'servicegroup': {
                 'servicegroupname': self.configured_servicegroup['servicegroupname'],
             }
         }
@@ -1478,8 +1480,6 @@ class ModuleExecutor(object):
             msg = 'Disable/Enable operation failed'
             self.module.fail_json(msg=msg, **self.module_result)
 
-
-
     def main(self):
         try:
 
@@ -1499,80 +1499,78 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
         servicegroupname=dict(type='str'),
         servicetype=dict(
-                    type='str',
-                    choices=[
-                        'HTTP',
-                        'FTP',
-                        'TCP',
-                        'UDP',
-                        'SSL',
-                        'SSL_BRIDGE',
-                        'SSL_TCP',
-                        'DTLS',
-                        'NNTP',
-                        'RPCSVR',
-                        'DNS',
-                        'ADNS',
-                        'SNMP',
-                        'RTSP',
-                        'DHCPRA',
-                        'ANY',
-                        'SIP_UDP',
-                        'SIP_TCP',
-                        'SIP_SSL',
-                        'DNS_TCP',
-                        'ADNS_TCP',
-                        'MYSQL',
-                        'MSSQL',
-                        'ORACLE',
-                        'RADIUS',
-                        'RADIUSListener',
-                        'RDP',
-                        'DIAMETER',
-                        'SSL_DIAMETER',
-                        'TFTP',
-                        'SMPP',
-                        'PPTP',
-                        'GRE',
-                        'SYSLOGTCP',
-                        'SYSLOGUDP',
-                        'FIX',
-                        'SSL_FIX',
-                        'USER_TCP',
-                        'USER_SSL_TCP',
-                        'QUIC',
-                        'IPFIX',
-                        'LOGSTREAM',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'HTTP',
+                'FTP',
+                'TCP',
+                'UDP',
+                'SSL',
+                'SSL_BRIDGE',
+                'SSL_TCP',
+                'DTLS',
+                'NNTP',
+                'RPCSVR',
+                'DNS',
+                'ADNS',
+                'SNMP',
+                'RTSP',
+                'DHCPRA',
+                'ANY',
+                'SIP_UDP',
+                'SIP_TCP',
+                'SIP_SSL',
+                'DNS_TCP',
+                'ADNS_TCP',
+                'MYSQL',
+                'MSSQL',
+                'ORACLE',
+                'RADIUS',
+                'RADIUSListener',
+                'RDP',
+                'DIAMETER',
+                'SSL_DIAMETER',
+                'TFTP',
+                'SMPP',
+                'PPTP',
+                'GRE',
+                'SYSLOGTCP',
+                'SYSLOGUDP',
+                'FIX',
+                'SSL_FIX',
+                'USER_TCP',
+                'USER_SSL_TCP',
+                'QUIC',
+                'IPFIX',
+                'LOGSTREAM',
+            ]
+        ),
         cachetype=dict(
-                    type='str',
-                    choices=[
-                        'TRANSPARENT',
-                        'REVERSE',
-                        'FORWARD',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'TRANSPARENT',
+                'REVERSE',
+                'FORWARD',
+            ]
+        ),
         td=dict(type='str'),
         maxclient=dict(type='str'),
         maxreq=dict(type='str'),
         cacheable=dict(type='bool'),
         cip=dict(
-                    type='str',
-                    choices=[
-                        'enabled',
-                        'disabled',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'enabled',
+                'disabled',
+            ]
+        ),
         cipheader=dict(type='str'),
         usip=dict(type='bool'),
         pathmonitor=dict(type='bool'),
@@ -1590,43 +1588,43 @@ def main():
         maxbandwidth=dict(type='str'),
         monthreshold=dict(type='str'),
         downstateflush=dict(
-                    type='str',
-                    choices=[
-                        'enabled',
-                        'disabled',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'enabled',
+                'disabled',
+            ]
+        ),
         tcpprofilename=dict(type='str'),
         httpprofilename=dict(type='str'),
         comment=dict(type='str'),
         appflowlog=dict(
-                    type='str',
-                    choices=[
-                        'enabled',
-                        'disabled',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'enabled',
+                'disabled',
+            ]
+        ),
         netprofile=dict(type='str'),
         autoscale=dict(
-                    type='str',
-                    choices=[
-                        'DISABLED',
-                        'DNS',
-                        'POLICY',
-                        'CLOUD',
-                        'API',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'DISABLED',
+                'DNS',
+                'POLICY',
+                'CLOUD',
+                'API',
+            ]
+        ),
         memberport=dict(type='int'),
         autodisablegraceful=dict(type='bool'),
         autodisabledelay=dict(type='str'),
         monconnectionclose=dict(
-                    type='str',
-                    choices=[
-                        'RESET',
-                        'FIN',
-                    ]
-                ),
+            type='str',
+            choices=[
+                'RESET',
+                'FIN',
+            ]
+        ),
         servername=dict(type='str'),
         port=dict(type='int'),
         weight=dict(type='str'),
@@ -1647,7 +1645,8 @@ def main():
             default=False,
         ),
 
-        servicemembers=dict(type='dict',
+        servicemembers=dict(
+            type='dict',
             options=dict(
                 mode=dict(type='str', choices=['exact', 'bind', 'unbind', 'dsapi']),
                 attributes=dict(
@@ -1659,7 +1658,8 @@ def main():
                         servername=dict(type='str'),
                         customserverid=dict(type='str'),
                         serverid=dict(type='str'),
-                        state=dict(type='str',
+                        state=dict(
+                            type='str',
                             choices=[
                                 'enabled',
                                 'disabled',
@@ -1673,14 +1673,16 @@ def main():
             )
         ),
 
-        monitor_bindings=dict(type='dict',
+        monitor_bindings=dict(
+            type='dict',
             options=dict(
                 mode=dict(type='str', choices=['exact', 'bind', 'unbind']),
                 attributes=dict(
                     type='list',
                     options=dict(
                         monitor_name=dict(type='str'),
-                        monstate=dict(type='str',
+                        monstate=dict(
+                            type='str',
                             choices=[
                                 'enabled',
                                 'disabled',
@@ -1691,7 +1693,8 @@ def main():
                         port=dict(type='int'),
                         customserverid=dict(type='str'),
                         serverid=dict(type='str'),
-                        state=dict(type='str',
+                        state=dict(
+                            type='str',
                             choices=[
                                 'enabled',
                                 'disabled',
@@ -1706,10 +1709,8 @@ def main():
         ),
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
