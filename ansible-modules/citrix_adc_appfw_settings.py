@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_settings
@@ -36,15 +34,17 @@ options:
         description:
             - >-
                 Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which
-                unmatched connections back to the NetScaler appliance without attempting to filter them further.
+                unmatched connections back to the Citrix ADC without attempting to filter them further.
+            - "Minimum length =  1"
         type: str
 
     undefaction:
         description:
-            - "Profile to use when an application firewall policy evaluates to undefined (UNDEF). "
+            - "Profile to use when an application firewall policy evaluates to undefined (UNDEF)."
             - >-
                 An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default
                 You can specify a different built-in or user-created profile as the UNDEF profile.
+            - "Minimum length =  1"
         type: str
 
     sessiontimeout:
@@ -52,6 +52,8 @@ options:
             - >-
                 Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected
                 site, the user must establish a new session by opening a designated start URL.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(65535)"
         type: str
 
     learnratelimit:
@@ -60,6 +62,8 @@ options:
                 Maximum number of connections per second that the application firewall learning engine examines to
                 new relaxations for learning-enabled security checks. The application firewall drops any connections
                 this limit from the list of connections used by the learning engine.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(1000)"
         type: str
 
     sessionlifetime:
@@ -68,19 +72,21 @@ options:
                 Maximum amount of time (in seconds) that the application firewall allows a user session to remain
                 regardless of user activity. After this time, the user session is terminated. Before continuing to
                 the protected web site, the user must establish a new session by opening a designated start URL.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(2147483647)"
         type: str
 
     sessioncookiename:
         description:
-            - "Name of the session cookie that the application firewall uses to track user sessions. "
+            - "Name of the session cookie that the application firewall uses to track user sessions."
             - >-
                 Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen
                 and underscore (_) symbols.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
                 If the name includes one or more spaces, enclose the name in double or single quotation marks (for
                 "my cookie name" or 'my cookie name').
+            - "Minimum length =  1"
         type: str
 
     clientiploggingheader:
@@ -96,21 +102,24 @@ options:
                 Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user
                 to upload files with a total byte count higher than the specified limit, the application firewall
                 the request.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(268435456)"
         type: str
 
     signatureautoupdate:
         description:
-            - "Flag used to enable/disable auto update signatures"
+            - "Flag used to enable/disable auto update signatures."
         type: bool
 
     signatureurl:
         description:
-            - "URL to download the mapping file from server"
+            - "URL to download the mapping file from server."
         type: str
 
     cookiepostencryptprefix:
         description:
             - "String that is prepended to all encrypted cookie values."
+            - "Minimum length =  1"
         type: str
 
     logmalformedreq:
@@ -143,7 +152,19 @@ options:
             - >-
                 Maximum number of sessions that the application firewall allows to be active, regardless of user
                 After the max_limit reaches, No more user session will be created .
+            - "Minimum value = C(0)"
+            - "Maximum value = C(500000)"
         type: str
+
+    malformedreqaction:
+        choices:
+            - 'none'
+            - 'block'
+            - 'log'
+            - 'stats'
+        description:
+            - "flag to define action on malformed requests that application firewall cannot parse."
+        type: list
 
 
 
@@ -197,7 +218,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwsettings'
@@ -205,10 +226,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'appfwsettings': {
                 'attributes_list': [
-                    
                     'defaultprofile',
                     'undefaction',
                     'sessiontimeout',
@@ -226,9 +245,9 @@ class ModuleExecutor(object):
                     'entitydecoding',
                     'useconfigurablesecretkey',
                     'sessionlimit',
+                    'malformedreqaction',
                 ],
                 'transforms': {
-                    
                     'signatureautoupdate': lambda v: 'ON' if v else 'OFF',
                     'logmalformedreq': lambda v: 'ON' if v else 'OFF',
                     'geolocationlogging': lambda v: 'ON' if v else 'OFF',
@@ -237,13 +256,10 @@ class ModuleExecutor(object):
                     'useconfigurablesecretkey': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
-                    
                 ],
                 'delete_id_attributes': [
-                    
                 ],
             },
-            
 
         }
 
@@ -252,7 +268,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update(self):
         log('ModuleExecutor.update()')
@@ -268,7 +283,6 @@ class ModuleExecutor(object):
         self.module_result['changed'] = True
         if not self.module.check_mode:
             config.update()
-
 
     def main(self):
         try:
@@ -288,55 +302,41 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         defaultprofile=dict(type='str'),
-        
         undefaction=dict(type='str'),
-        
         sessiontimeout=dict(type='str'),
-        
         learnratelimit=dict(type='str'),
-        
         sessionlifetime=dict(type='str'),
-        
         sessioncookiename=dict(type='str'),
-        
         clientiploggingheader=dict(type='str'),
-        
         importsizelimit=dict(type='str'),
-        
         signatureautoupdate=dict(type='bool'),
-        
         signatureurl=dict(type='str'),
-        
         cookiepostencryptprefix=dict(type='str'),
-        
         logmalformedreq=dict(type='bool'),
-        
         geolocationlogging=dict(type='bool'),
-        
         ceflogging=dict(type='bool'),
-        
         entitydecoding=dict(type='bool'),
-        
         useconfigurablesecretkey=dict(type='bool'),
-        
         sessionlimit=dict(type='str'),
-        
-
+        malformedreqaction=dict(
+            type='list',
+            choices=[
+                'none',
+                'block',
+                'log',
+                'stats',
+            ]
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
