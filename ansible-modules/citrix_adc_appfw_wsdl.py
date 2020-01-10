@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_wsdl
@@ -106,7 +104,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwwsdl'
@@ -114,28 +112,22 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwwsdl': {
                 'attributes_list': [
-                    
                     'name',
                     'src',
                     'comment',
                     'overwrite',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
 
         }
 
@@ -149,7 +141,7 @@ class ModuleExecutor(object):
         try:
             main_object_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
         except NitroException as e:
-            if e.errorcode == 3377 or e.errorcode == 3187: 
+            if e.errorcode == 3377 or e.errorcode == 3187:
                 # errorcode 3377: "WSDL does not exist" in 12.1
                 # errorcode 3187: "Imported file does not exist" in NS11.1 and NS12.0
                 return False
@@ -183,7 +175,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def import_and_update(self):
         # check if main object exists
         config = self.get_main_config()
@@ -193,7 +184,6 @@ class ModuleExecutor(object):
             if not self.module.check_mode:
                 config.import_object()
                 # config.update_object() # There's no UPDATE operation in XMLSCHEMA unlike HTMLERRORCODE and XMLERRORCODE
-   
 
     def delete(self):
         # Check if main object exists
@@ -222,29 +212,20 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         src=dict(type='str'),
-        
         comment=dict(type='str'),
-        
         overwrite=dict(type='bool'),
-        
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
