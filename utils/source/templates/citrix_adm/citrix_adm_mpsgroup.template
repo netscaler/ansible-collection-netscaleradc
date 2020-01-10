@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_mpsgroup
@@ -53,7 +51,7 @@ EXAMPLES = '''
     enable_session_timeout: true
     assign_all_devices: false
     role: admin
-    roles: 
+    roles:
       - admin
     application_names_without_regex: []
     application_names: []
@@ -87,7 +85,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = '{{ main_nitro_class }}'
@@ -95,8 +93,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
-            #{% include 'nitro_config_object.template' %}
+            #{%- for item in attributes_config_list %}
+            #{% include 'nitro_config_object.template' -%}
             #{% endfor %}
 
         }
@@ -130,7 +128,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -152,7 +149,6 @@ class ModuleExecutor(object):
             use_filter=True
         )
         self.module_result.update(dict(mpsgroup=config.actual_dict))
-
 
     def delete(self):
         # Check if main object exists
@@ -181,22 +177,18 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' -%}
         #{% endfor %}
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -209,3 +201,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
