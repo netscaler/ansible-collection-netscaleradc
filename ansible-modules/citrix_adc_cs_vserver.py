@@ -780,6 +780,7 @@ def sync_cs_policybindings(client, module):
             csvserver_cspolicy_binding.delete(client, actual_bindings[key])
             configured_bindings[key].add()
 
+
 def get_actual_appfwpolicybindings(client, module):
     log('Getting actual appfw policy bindings')
     bindings = {}
@@ -799,6 +800,7 @@ def get_actual_appfwpolicybindings(client, module):
         bindings[key] = binding
 
     return bindings
+
 
 def get_configured_appfwpolicybindings(client, module):
     log('Getting configured appfw policy bindings')
@@ -832,7 +834,7 @@ def get_configured_appfwpolicybindings(client, module):
         )
         bindings[key] = binding_proxy
     return bindings
-    pass
+
 
 def sync_appfw_policybindings(client, module):
     log('Syncing cs appfw policybindings')
@@ -858,6 +860,7 @@ def sync_appfw_policybindings(client, module):
             log('Updating binding for appfw policy %s' % key)
             csvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
             configured_bindings[key].add()
+
 
 def appfw_policybindings_identical(client, module):
     log('Checking policy bindings identical')
