@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_stylebook
@@ -82,7 +80,7 @@ EXAMPLES = '''
     version: "0.1"
 
     source: "{{ lookup('file', 'stylebook_sample.yaml') }}"
-        
+
 '''
 
 RETURN = '''
@@ -120,10 +118,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'stylebook': {
                 'attributes_list': [
-                    
                     'source',
                     'namespace',
                     'version',
@@ -131,22 +127,18 @@ class ModuleExecutor(object):
                     'display_name',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'namespace',
                     'version',
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'namespace',
                     'version',
                     'name',
                 ],
             },
-            
 
         }
 
@@ -225,7 +217,8 @@ class ModuleExecutor(object):
                 result['nitro_message'],
                 result['nitro_severity'],
             )
-            self.module.fail_json(msg='GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
+            msg = 'GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
 
         log('result of get  stylebooks %s' % result)
         stylebooks = result['data']['stylebooks']
@@ -239,9 +232,6 @@ class ModuleExecutor(object):
             self.module.fail_json(msg='Multiple stylebooks were returned', **self.module_result)
         else:
             return stylebooks[0]
-
-
-
 
     def create(self):
 
@@ -274,8 +264,8 @@ class ModuleExecutor(object):
                 result['nitro_message'],
                 result['nitro_severity'],
             )
-            self.module.fail_json(msg='DELETE http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
-
+            msg = 'DELETE http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
 
     def delete(self):
 
@@ -302,38 +292,33 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        source=dict(type='str',),
-
-        
-        namespace=dict(type='str',
-        required=True,),
-
-        
-        version=dict(type='str',
-        required=True,),
-
-        
-        name=dict(type='str',
-        required=True,),
-
-        
-        display_name=dict(type='str',),
-
-        
+        source=dict(
+            type='str'
+        ),
+        namespace=dict(
+            type='str',
+            required=True,
+        ),
+        version=dict(
+            type='str',
+            required=True,
+        ),
+        name=dict(
+            type='str',
+            required=True,
+        ),
+        display_name=dict(
+            type='str'
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

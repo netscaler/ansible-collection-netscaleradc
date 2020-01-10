@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_stylebook
@@ -51,7 +49,7 @@ EXAMPLES = '''
     version: "0.1"
 
     source: "{{ "{{" }} lookup('file', 'stylebook_sample.yaml') }}"
-        
+
 '''
 
 RETURN = '''
@@ -89,8 +87,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
-            #{% include 'nitro_config_object.template' %}
+            #{%- for item in attributes_config_list %}
+            #{% include 'nitro_config_object.template' -%}
             #{% endfor %}
 
         }
@@ -170,7 +168,8 @@ class ModuleExecutor(object):
                 result['nitro_message'],
                 result['nitro_severity'],
             )
-            self.module.fail_json(msg='GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
+            msg = 'GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
 
         log('result of get  stylebooks %s' % result)
         stylebooks = result['data']['stylebooks']
@@ -184,9 +183,6 @@ class ModuleExecutor(object):
             self.module.fail_json(msg='Multiple stylebooks were returned', **self.module_result)
         else:
             return stylebooks[0]
-
-
-
 
     def create(self):
 
@@ -219,8 +215,8 @@ class ModuleExecutor(object):
                 result['nitro_message'],
                 result['nitro_severity'],
             )
-            self.module.fail_json(msg='DELETE http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
-
+            msg = 'DELETE http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
 
     def delete(self):
 
@@ -247,22 +243,18 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' -%}
         #{% endfor %}
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -275,3 +267,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

@@ -5,5 +5,5 @@
             ],
         #{%- else %}
             type='{{item.type}}'#{% endif %}#{% if item.required %},
-        required=True,#{% endif %}
+            required=True,#{% endif %}
         ),
