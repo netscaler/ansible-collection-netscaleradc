@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_nitro_resource
@@ -99,6 +97,7 @@ msg:
 import copy
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
+
 
 class ModuleExecutor(object):
 
@@ -214,7 +213,6 @@ class ModuleExecutor(object):
 
         return retval
 
-
     def binding_exists(self):
         log('ModuleExecutor.binding_exists()')
 
@@ -316,7 +314,6 @@ class ModuleExecutor(object):
         if len(configured_bindings) == 0:
             msg = 'Bindings list must have at least one item.'
             self.module.fail_json(msg=msg, **self.module_result)
-
         # Fallthrough
 
         # Sanity check that all bindings have uniform resource attribute keys
@@ -337,11 +334,11 @@ class ModuleExecutor(object):
 
         # Sanity check that all primary ids are one and the same
         primary_id_key = self.module.params['workflow']['binding_workflow']['primary_id_attribute']
-        primary_ids_list = [ item[primary_id_key] for item in configured_bindings ]
+        primary_ids_list = [item[primary_id_key] for item in configured_bindings]
         primary_ids_set = frozenset(primary_ids_list)
         log('primary_ids_set %s' % primary_ids_set)
         if len(primary_ids_set) > 1:
-            keys = [ item for item in primary_ids_set ]
+            keys = [item for item in primary_ids_set]
             msg = 'Need to have only one primary id value. Found: %s' % keys
             self.module.fail_json(msg=msg, **self.module_result)
 
@@ -426,13 +423,11 @@ class ModuleExecutor(object):
                 self.to_create_keys.append(configured_key)
 
         # Calculate all changes
-        all_change_keys =  self.to_create_keys + self.to_update_keys + self.to_delete_keys
+        all_change_keys = self.to_create_keys + self.to_update_keys + self.to_delete_keys
         if len(all_change_keys) == 0:
             return True
         else:
             return False
-
-
 
     def _get_binding_key_tuple(self, binding_dict):
         log('ModuleExecutor._get_binding_key_tuple()')
@@ -528,14 +523,12 @@ class ModuleExecutor(object):
         for key in self.to_create_keys:
             self._binding_list_item_create(self.configured_bindings_dict[key])
 
-
     def bindings_list_delete(self):
         log('ModuleExecutor.bindings_list_delete()')
 
         for key in self.configured_bindings_dict:
             binding = self.configured_bindings_dict[key]
             self._binding_list_item_delete(binding)
-
 
     def object_exists(self):
         log('ModuleExecutor.object_exists()')
@@ -590,7 +583,7 @@ class ModuleExecutor(object):
         log('ModuleExecutor.object_create()')
         attributes = self.module.params['resource']
         post_data = {
-            self.endpoint : attributes
+            self.endpoint: attributes
         }
 
         log('post data %s' % post_data)
@@ -636,7 +629,7 @@ class ModuleExecutor(object):
                     del attributes[attribute]
 
             put_data = {
-                self.endpoint : attributes
+                self.endpoint: attributes
             }
 
             log('request put data: %s' % put_data)
@@ -663,13 +656,13 @@ class ModuleExecutor(object):
         result = self.fetcher.delete(resource=self.endpoint, id=self.id, args=args)
         log('delete result %s' % result)
 
-
         if result['nitro_errorcode'] != 0:
             raise NitroException(
                 errorcode=result['nitro_errorcode'],
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
+
     def non_updateable_object_exists(self):
         log('ModuleExecutor.non_updateable_object_exists()')
 
@@ -737,7 +730,7 @@ class ModuleExecutor(object):
 
         attributes = self.module.params['resource']
         post_data = {
-            self.endpoint : attributes
+            self.endpoint: attributes
         }
 
         log('post data %s' % post_data)
@@ -827,12 +820,9 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
 
-
     argument_spec = dict()
-
 
     argument_spec.update(netscaler_common_arguments)
 
