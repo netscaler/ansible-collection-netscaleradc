@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_application
@@ -138,8 +136,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
-            #{% include 'nitro_config_object.template' %}
+            #{%- for item in attributes_config_list %}
+            #{% include 'nitro_config_object.template' -%}
             #{% endfor %}
 
         }
@@ -160,7 +158,6 @@ class ModuleExecutor(object):
         if nitro_pass is not None:
             self.http_headers['X-NITRO-PASS'] = nitro_pass
 
-
         # Prepare module result
         self.module_result = dict(
             changed=False,
@@ -179,7 +176,6 @@ class ModuleExecutor(object):
                 data = {}
                 log('Cannot parse response data')
         return data
-
 
     def get_application(self):
         url = '%s://%s/nitro/v2/config/application' % (
@@ -243,7 +239,7 @@ class ModuleExecutor(object):
             if attr_val is not None:
                 data_dict[attribute] = attr_val
 
-        ret_val = { 'application': data_dict }
+        ret_val = {'application': data_dict}
         return ret_val
 
     def post_application(self):
@@ -295,11 +291,10 @@ class ModuleExecutor(object):
             msg = 'nitro_errorcode fail HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
-
     def put_application(self, application):
         log('put_application')
         request_data = self.construct_request_data()
-        payload='%s' % self.module.jsonify(request_data)
+        payload = '%s' % self.module.jsonify(request_data)
 
         log('request data %s' % request_data)
         log('payload %s' % payload)
@@ -408,10 +403,10 @@ class ModuleExecutor(object):
         )
 
         poll_payload = {
-            "params":{
-                "action":"do_poll"
+            'params': {
+                'action': 'do_poll'
             },
-            "ns_emon_poll_policy":{},
+            'ns_emon_poll_policy': {},
         }
 
         r, info = fetch_url(
@@ -468,15 +463,13 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' -%}
         #{% endfor %}
         poll_after_delete=dict(
             type='bool',
@@ -496,10 +489,8 @@ def main():
         )
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -512,3 +503,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
