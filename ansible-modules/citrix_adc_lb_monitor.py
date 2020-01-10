@@ -853,6 +853,7 @@ def lbmonitor_get(client, module):
     except nitro_exception:
         return False, None
 
+
 def lbmonitor_identical(lbmonitor_inst, lbmonitor_proxy):
     log('Checking if monitor is identical')
 
