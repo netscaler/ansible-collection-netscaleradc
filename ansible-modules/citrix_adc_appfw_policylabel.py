@@ -99,7 +99,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwpolicylabel'
