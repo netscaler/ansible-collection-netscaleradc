@@ -215,7 +215,8 @@ def main():
         mas_proxy_call=dict(
             default=False,
             type='bool'
-        ),        ipaddress=dict(type='str'),
+        ),
+        ipaddress=dict(type='str'),
         domain=dict(type='str'),
         translationip=dict(type='str'),
         translationmask=dict(type='str'),
