@@ -136,7 +136,7 @@ class ModuleExecutor(object):
                 use_filter=True,
             )
         except NitroException as e:
-                raise
+            raise
 
         return main_object_exists
 
