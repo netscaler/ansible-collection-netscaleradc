@@ -20,7 +20,7 @@ description:
     - Define global bindings for AppFW
     - Note that due to limitations in the NITRO API this module will always report a changed status.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -35,10 +35,10 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -47,7 +47,7 @@ options:
             attributes:
                 description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - policyname
                     - priority
                     - gotopriorityexpression
@@ -63,10 +63,10 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -75,7 +75,7 @@ options:
             attributes:
                 description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - policyname
                     - priority
                     - state
@@ -90,10 +90,10 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -102,7 +102,7 @@ options:
             attributes:
                 description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - policyname
                     - priority
                     - state
