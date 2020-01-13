@@ -18,7 +18,7 @@ module: citrix_adc_appfw_confidfield
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
