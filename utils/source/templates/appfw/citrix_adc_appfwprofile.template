@@ -63,7 +63,7 @@ options:
             attributes:
                 description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     #{%- for item in binding.doc_list %}
                     - {{ item }}#{% endfor %}
 #{% endfor %}
