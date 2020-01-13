@@ -18,7 +18,7 @@ module: citrix_adc_appfw_fieldtype
 short_description: Configuration for application firewall form field type resource.
 description: Configuration for application firewall form field type resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -28,6 +28,13 @@ options:
 #{% for item in main_object_doc_list %}
 #{% include 'single_option.template' %}
 #{% endfor %}
+
+    disabled:
+        description:
+            - When set to C(true) the server state will be set to C(disabled).
+            - When set to C(false) the server state will be set to C(enabled).
+        type: bool
+        default: false
 
 extends_documentation_fragment: netscaler
 '''

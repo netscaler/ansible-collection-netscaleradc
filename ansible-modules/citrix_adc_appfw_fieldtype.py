@@ -18,7 +18,7 @@ module: citrix_adc_appfw_fieldtype
 short_description: Configuration for application firewall form field type resource.
 description: Configuration for application firewall form field type resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -65,6 +65,13 @@ options:
             - "will not show internal field types added as part of FieldFormat learn rules deployment."
         type: bool
 
+
+    disabled:
+        description:
+            - When set to C(true) the server state will be set to C(disabled).
+            - When set to C(false) the server state will be set to C(enabled).
+        type: bool
+        default: false
 
 extends_documentation_fragment: netscaler
 '''
