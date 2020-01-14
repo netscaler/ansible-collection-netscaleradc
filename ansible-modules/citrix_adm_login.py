@@ -23,7 +23,7 @@ description:
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 extends_documentation_fragment: netscaler
 '''
