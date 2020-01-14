@@ -123,6 +123,8 @@ class ModuleExecutor(object):
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
+                    'fieldname',
+                    'url',
                 ],
                 'delete_id_attributes': [
                     'fieldname',

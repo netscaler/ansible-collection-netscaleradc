@@ -279,29 +279,29 @@ class ModuleExecutor(object):
         self.sync_auditnslogpolicy_bindings()
         self.sync_auditsyslogpolicy_bindings()
 
-        def sync_appfwpolicy_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'appfwpolicy_bindings',
-                    'binding_object': 'appfwglobal_appfwpolicy_binding',
-                }
-            )
+    def sync_appfwpolicy_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'appfwpolicy_bindings',
+                'binding_object': 'appfwglobal_appfwpolicy_binding',
+            }
+        )
 
-        def sync_auditnslogpolicy_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'auditnslogpolicy_bindings',
-                    'binding_object': 'appfwglobal_auditnslogpolicy_binding',
-                }
-            )
+    def sync_auditnslogpolicy_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditnslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditnslogpolicy_binding',
+            }
+        )
 
-        def sync_auditsyslogpolicy_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'auditsyslogpolicy_bindings',
-                    'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
-                }
-            )
+    def sync_auditsyslogpolicy_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'auditsyslogpolicy_bindings',
+                'binding_object': 'appfwglobal_auditsyslogpolicy_binding',
+            }
+        )
 
     def main(self):
         try:
