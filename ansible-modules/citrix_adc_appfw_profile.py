@@ -2734,252 +2734,252 @@ class ModuleExecutor(object):
         self.sync_xmlwsiurl_bindings()
         self.sync_xmlxss_bindings()
 
-        def sync_contenttype_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'contenttype_bindings',
-                    'binding_object': 'appfwprofile_contenttype_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_contenttype_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'contenttype_bindings',
+                'binding_object': 'appfwprofile_contenttype_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_cookieconsistency_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'cookieconsistency_bindings',
-                    'binding_object': 'appfwprofile_cookieconsistency_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_cookieconsistency_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'cookieconsistency_bindings',
+                'binding_object': 'appfwprofile_cookieconsistency_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_creditcardnumber_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'creditcardnumber_bindings',
-                    'binding_object': 'appfwprofile_creditcardnumber_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_creditcardnumber_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'creditcardnumber_bindings',
+                'binding_object': 'appfwprofile_creditcardnumber_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_crosssitescripting_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'crosssitescripting_bindings',
-                    'binding_object': 'appfwprofile_crosssitescripting_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_crosssitescripting_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'crosssitescripting_bindings',
+                'binding_object': 'appfwprofile_crosssitescripting_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_csrftag_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'csrftag_bindings',
-                    'binding_object': 'appfwprofile_csrftag_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_csrftag_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'csrftag_bindings',
+                'binding_object': 'appfwprofile_csrftag_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_denyurl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'denyurl_bindings',
-                    'binding_object': 'appfwprofile_denyurl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_denyurl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'denyurl_bindings',
+                'binding_object': 'appfwprofile_denyurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_excluderescontenttype_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'excluderescontenttype_bindings',
-                    'binding_object': 'appfwprofile_excluderescontenttype_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_excluderescontenttype_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'excluderescontenttype_bindings',
+                'binding_object': 'appfwprofile_excluderescontenttype_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_fieldconsistency_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'fieldconsistency_bindings',
-                    'binding_object': 'appfwprofile_fieldconsistency_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_fieldconsistency_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'fieldconsistency_bindings',
+                'binding_object': 'appfwprofile_fieldconsistency_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_fieldformat_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'fieldformat_bindings',
-                    'binding_object': 'appfwprofile_fieldformat_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_fieldformat_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'fieldformat_bindings',
+                'binding_object': 'appfwprofile_fieldformat_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_safeobject_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'safeobject_bindings',
-                    'binding_object': 'appfwprofile_safeobject_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_safeobject_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'safeobject_bindings',
+                'binding_object': 'appfwprofile_safeobject_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_sqlinjection_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'sqlinjection_bindings',
-                    'binding_object': 'appfwprofile_sqlinjection_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_sqlinjection_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'sqlinjection_bindings',
+                'binding_object': 'appfwprofile_sqlinjection_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_starturl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'starturl_bindings',
-                    'binding_object': 'appfwprofile_starturl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_starturl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'starturl_bindings',
+                'binding_object': 'appfwprofile_starturl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_trustedlearningclients_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'trustedlearningclients_bindings',
-                    'binding_object': 'appfwprofile_trustedlearningclients_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_trustedlearningclients_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'trustedlearningclients_bindings',
+                'binding_object': 'appfwprofile_trustedlearningclients_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmlattachmenturl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmlattachmenturl_bindings',
-                    'binding_object': 'appfwprofile_xmlattachmenturl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmlattachmenturl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlattachmenturl_bindings',
+                'binding_object': 'appfwprofile_xmlattachmenturl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmldosurl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmldosurl_bindings',
-                    'binding_object': 'appfwprofile_xmldosurl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmldosurl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmldosurl_bindings',
+                'binding_object': 'appfwprofile_xmldosurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmlsqlinjection_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmlsqlinjection_bindings',
-                    'binding_object': 'appfwprofile_xmlsqlinjection_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmlsqlinjection_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlsqlinjection_bindings',
+                'binding_object': 'appfwprofile_xmlsqlinjection_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmlvalidationurl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmlvalidationurl_bindings',
-                    'binding_object': 'appfwprofile_xmlvalidationurl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmlvalidationurl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlvalidationurl_bindings',
+                'binding_object': 'appfwprofile_xmlvalidationurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmlwsiurl_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmlwsiurl_bindings',
-                    'binding_object': 'appfwprofile_xmlwsiurl_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmlwsiurl_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlwsiurl_bindings',
+                'binding_object': 'appfwprofile_xmlwsiurl_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
-        def sync_xmlxss_bindings(self):
-            self.sync_binding_with_data(
-                {
-                    'binding_key': 'xmlxss_bindings',
-                    'binding_object': 'appfwprofile_xmlxss_binding',
-                    'get_all_id': 'name',
-                    'link_to_main': {
-                        'main_key': 'name',
-                        'bind_key': 'name',
-                    }
+    def sync_xmlxss_bindings(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': 'xmlxss_bindings',
+                'binding_object': 'appfwprofile_xmlxss_binding',
+                'get_all_id': 'name',
+                'link_to_main': {
+                    'main_key': 'name',
+                    'bind_key': 'name',
                 }
-            )
+            }
+        )
 
     def main(self):
         try:
