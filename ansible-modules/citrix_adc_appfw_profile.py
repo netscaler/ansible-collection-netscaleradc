@@ -22,7 +22,7 @@ description:
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations the module may incorrectly report a changed status when no configuration change has taken place.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -1125,20 +1125,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1159,20 +1159,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1194,20 +1194,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1229,20 +1229,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1270,20 +1270,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1305,20 +1305,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1339,20 +1339,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1373,20 +1373,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1409,20 +1409,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1449,20 +1449,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1486,20 +1486,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1527,20 +1527,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1561,20 +1561,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1595,20 +1595,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1633,20 +1633,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1703,20 +1703,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1739,20 +1739,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1780,20 +1780,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1815,20 +1815,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC
                         but have different attribute values will first be deleted and then recreated with
                         the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:

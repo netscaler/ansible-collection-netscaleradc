@@ -21,7 +21,7 @@ description:
     - The module uses the NITRO API to make configuration changes to WAF policies on a target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -227,8 +227,6 @@ def main():
         profilename=dict(type='str'),
         comment=dict(type='str'),
         logaction=dict(type='str'),
-        appfwpolicy_csvserver_bindings=dict(type='dict'),
-        denyurl_bindings=dict(type='dict'),
     )
 
     argument_spec.update(netscaler_common_arguments)

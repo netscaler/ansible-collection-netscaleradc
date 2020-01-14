@@ -20,7 +20,7 @@ description:
     - Manage NITRO resources
     - Implements full lifecycle of nitro resource.
 
-version_added: "2.9.1"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -33,10 +33,12 @@ options:
         choices:
             - present
             - absent
+        default: present
+
     workflow:
         description:
             - Workflow options
-        type: str
+        type: dict
         suboptions:
             lifecycle:
                 description:
@@ -75,6 +77,8 @@ options:
         description:
             - Dictionary containing the resource attributes
             - Contents of the dictionary differ depending on which specific NITRO object is configured.
+
+extends_documentation_fragment: netscaler
 '''
 
 EXAMPLES = '''
@@ -827,7 +831,11 @@ def main():
     argument_spec.update(netscaler_common_arguments)
 
     module_specific_arguments = dict(
-        state=dict(type='str'),
+        state=dict(
+            type='str',
+            choices=['present', 'absent'],
+            default='present',
+        ),
         workflow=dict(type='dict'),
         resource=dict(type='dict'),
     )

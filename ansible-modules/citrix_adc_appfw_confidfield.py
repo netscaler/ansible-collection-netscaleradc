@@ -56,8 +56,8 @@ options:
 
     disabled:
         description:
-            - When set to C(true) the server state will be set to C(disabled).
-            - When set to C(false) the server state will be set to C(enabled).
+            - When set to C(true) the state will be set to C(disabled).
+            - When set to C(false) the state will be set to C(enabled).
         type: bool
         default: false
 

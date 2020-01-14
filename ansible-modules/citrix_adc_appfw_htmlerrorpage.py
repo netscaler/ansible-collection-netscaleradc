@@ -18,7 +18,7 @@ module: citrix_adc_appfw_htmlerrorpage
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -58,8 +58,8 @@ options:
 
     disabled:
         description:
-            - When set to C(true) the server state will be set to C(disabled).
-            - When set to C(false) the server state will be set to C(enabled).
+            - When set to C(true) the state will be set to C(disabled).
+            - When set to C(false) the state will be set to C(enabled).
         type: bool
         default: false
 
@@ -221,6 +221,10 @@ def main():
         src=dict(type='str'),
         comment=dict(type='str'),
         overwrite=dict(type='bool'),
+        disabled=dict(
+            type='bool',
+            default=False,
+        ),
 
     )
 

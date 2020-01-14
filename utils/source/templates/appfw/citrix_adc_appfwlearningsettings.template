@@ -18,7 +18,7 @@ module: citrix_adc_appfw_learningsettings
 short_description: Configuration for learning settings resource.
 description: Configuration for learning settings resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

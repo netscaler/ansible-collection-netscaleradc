@@ -430,19 +430,19 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(dsapi):
+                    - "If mode is C(dsapi):"
                     - The desired state API will be used to bind/unbind members.
                     - As far as selection is concerned it is identical to the C(exact) method.
                     - In this mode a result of C(changed=true) will always be reported.
@@ -451,13 +451,14 @@ options:
                         the existing members from the servicegroup.
                     - As a result of this we are unable to assert if the declared configuration will actually change the target ADC configuration.
                     - Note that in order to use this mode the servicegroup must have set the following option value I(autoscale=API).
-                    - Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)
+                    - "Also for this mode only the following suboptions can be used: I(ip), I(port), I(weight), I(state)"
                 choices:
                     - exact
                     - bind
                     - unbind
                     - dsapi
             attributes:
+                description: List of service members attributes.
                 type: list
                 suboptions:
                     ip:
@@ -525,19 +526,19 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact):
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
                     - >-
                         Any existing bindings that are defined in the attributes list but have differing attribute values
                         will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
                     - >-
                         Any bindings defined in the attributes list that exist on the target Citrix ADC but have
                         different attribute values will first be deleted and then recreated with the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -545,6 +546,7 @@ options:
                     - bind
                     - unbind
             attributes:
+                description: List of monitor bindings attributes.
                 type: list
                 suboptions:
                     monitor_name:

@@ -18,7 +18,7 @@ module: citrix_adc_appfw_xmlcontenttype
 short_description: Configuration for XML Content type resource.
 description: Configuration for XML Content type resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

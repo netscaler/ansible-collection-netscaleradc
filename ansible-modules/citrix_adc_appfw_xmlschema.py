@@ -18,7 +18,7 @@ module: citrix_adc_appfw_xmlschema
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -55,13 +55,6 @@ options:
             - "Overwrite any existing XML Schema object of the same name."
         type: bool
 
-
-    disabled:
-        description:
-            - When set to C(true) the server state will be set to C(disabled).
-            - When set to C(false) the server state will be set to C(enabled).
-        type: bool
-        default: false
 
 extends_documentation_fragment: netscaler
 '''
@@ -153,18 +146,6 @@ class ModuleExecutor(object):
 
     def get_main_config(self):
         manipulated_values_dict = copy.deepcopy(self.module.params)
-
-        # We do not want the state module param to be interpreted as the appfwxmlschema parameter value
-        if 'state' in manipulated_values_dict:
-            del manipulated_values_dict['state']
-
-        # Instead the disabled argument defines what the actual 'state' attribute should be
-        disabled_value = manipulated_values_dict.get('disabled')
-        if disabled_value is not None:
-            if disabled_value:
-                manipulated_values_dict['state'] = 'DISABLED'
-            else:
-                manipulated_values_dict['state'] = 'ENABLED'
 
         config = NitroResourceConfig(
             module=self.module,

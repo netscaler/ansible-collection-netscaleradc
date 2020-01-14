@@ -64,7 +64,6 @@ options:
                 sending the next DNS query to resolve the domain name.
             - "Minimum value = C(5)"
             - "Maximum value = C(20939)"
-        default: 5
 
     ipv6address:
         description:

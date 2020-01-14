@@ -22,7 +22,7 @@ description:
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations this module will always report a changed status even when configuration changes have not taken place.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

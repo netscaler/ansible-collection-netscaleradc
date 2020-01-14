@@ -165,14 +165,6 @@ options:
                 Settings > Configure modes > Configure Modes dialog box). However, you can override this setting
                 after you create the service.
 
-    pathmonitor:
-        description:
-            - "Path monitoring for clustering."
-
-    pathmonitorindv:
-        description:
-            - "Individual Path monitoring decisions."
-
     useproxyport:
         description:
             - >-
@@ -207,10 +199,6 @@ options:
                 Unique identifier for the service. Used when the persistency type for the virtual server is set to
                 Custom Server ID.
         default: 'None'
-
-    serverid:
-        description:
-            - "The identifier for the service. This is used when the persistency type is set to Custom Server ID."
 
     cka:
         description:
@@ -289,15 +277,6 @@ options:
             - "Network profile to use for the service."
             - "Minimum length = 1"
             - "Maximum length = 127"
-
-    td:
-        description:
-            - >-
-                Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
-                If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
-                of 0.
-            - "Minimum value = 0"
-            - "Maximum value = 4094"
 
     processlocal:
         choices:
@@ -814,9 +793,7 @@ def main():
         'cleartextport',
         'cachetype',
         'cipheader',
-        'serverid',
         'state',
-        'td',
         'monitor_name_svc',
         'riseapbrstatsmsgcode',
         'graceful',
@@ -826,10 +803,8 @@ def main():
     ]
 
     transforms = {
-        'pathmonitorindv': ['bool_yes_no'],
         'cacheable': ['bool_yes_no'],
         'cka': ['bool_yes_no'],
-        'pathmonitor': ['bool_yes_no'],
         'tcpb': ['bool_yes_no'],
         'sp': ['bool_on_off'],
         'graceful': ['bool_yes_no'],
