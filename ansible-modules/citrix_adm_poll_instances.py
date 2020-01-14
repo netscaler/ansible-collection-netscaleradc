@@ -19,7 +19,7 @@ short_description: Force the poll instances network function on the target Citri
 description:
     - Force the poll instances network function on the target Citrix ADM.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
