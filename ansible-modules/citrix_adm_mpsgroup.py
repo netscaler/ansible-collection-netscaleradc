@@ -18,7 +18,7 @@ module: citrix_adm_mpsgroup
 short_description: Manage Citrix ADM user groups.
 description: Manage Citrix ADM user groups.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

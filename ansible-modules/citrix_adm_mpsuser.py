@@ -18,7 +18,7 @@ module: citrix_adm_mpsuser
 short_description: Manage Citrix ADM users.
 description: Manage Citrix ADM users.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

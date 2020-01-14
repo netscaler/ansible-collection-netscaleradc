@@ -18,7 +18,7 @@ module: citrix_adm_tenant_facts
 short_description: Retrieve facts about Citrix ADM tenants.
 description: Retrieve facts about Citrix ADM tenants.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

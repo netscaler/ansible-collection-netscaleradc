@@ -18,7 +18,7 @@ module: citrix_adm_dns_domain_entry
 short_description: Manage Citrix ADM domain names.
 description: Manage Citrix ADM domain names.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

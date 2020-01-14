@@ -21,7 +21,7 @@ description:
     - Note that due to limitations on the underlying NITRO API an update is always forced when I(state=present).
     - Instead delete and recreate the rba_policy.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

@@ -21,7 +21,7 @@ description:
     - Note that due to API limitations this module does not work with basic authentication.
     - Instead use the I(nitro_auth_token) option.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

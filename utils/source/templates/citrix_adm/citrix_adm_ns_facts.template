@@ -18,7 +18,7 @@ module: citrix_adm_ns_facts
 short_description: Retrieve facts about Citrix ADM managed instances.
 description: Retrieve facts about Citrix ADM managed instances.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

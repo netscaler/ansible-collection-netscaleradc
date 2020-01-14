@@ -20,7 +20,7 @@ description:
     - Manage applications on Citrix ADM.
     - Note that due to limitations on the underlying NITRO API an update is always forced when I(state=present).
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)

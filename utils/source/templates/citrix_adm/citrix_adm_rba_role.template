@@ -18,7 +18,7 @@ module: citrix_adm_rba_role
 short_description: Manage Citrix ADM rba roles.
 description: Manage Citrix ADM rba roles.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
