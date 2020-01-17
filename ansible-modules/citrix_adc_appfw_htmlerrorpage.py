@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_htmlerrorpage
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -60,8 +58,8 @@ options:
 
     disabled:
         description:
-            - When set to C(true) the server state will be set to C(disabled).
-            - When set to C(false) the server state will be set to C(enabled).
+            - When set to C(true) the state will be set to C(disabled).
+            - When set to C(false) the state will be set to C(enabled).
         type: bool
         default: false
 
@@ -107,7 +105,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwhtmlerrorpage'
@@ -115,29 +113,22 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwhtmlerrorpage': {
                 'attributes_list': [
-                    
                     'name',
                     'src',
                     'comment',
                     'overwrite',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
-
         }
 
         self.module_result = dict(
@@ -184,7 +175,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def import_and_update(self):
         # check if main object exists
         config = self.get_main_config()
@@ -222,29 +212,24 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         src=dict(type='str'),
-        
         comment=dict(type='str'),
-        
         overwrite=dict(type='bool'),
-        
+        disabled=dict(
+            type='bool',
+            default=False,
+        ),
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

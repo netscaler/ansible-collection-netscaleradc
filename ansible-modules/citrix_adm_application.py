@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_application
@@ -22,7 +20,7 @@ description:
     - Manage applications on Citrix ADM.
     - Note that due to limitations on the underlying NITRO API an update is always forced when I(state=present).
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -193,40 +191,41 @@ extends_documentation_fragment: netscaler
 
 EXAMPLES = '''
 vars:
-stylebook_params:
-  name: "basic-lb-config"
-  namespace: "com.example.stylebooks"
-  version: "0.1"
-  configpack_payload:
-    parameters:
-      name: "playbook5_test_application_name"
-      ip: "192.168.5.2"
-      lb-alg: "ROUNDROBIN"
-      svc-servers:
-        - "192.168.5.3"
-      svc-port: "80"
-    targets:
-      - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
+  stylebook_params:
+    name: "basic-lb-config"
+    namespace: "com.example.stylebooks"
+    version: "0.1"
+    configpack_payload:
+      parameters:
+        name: "playbook5_test_application_name"
+        ip: "192.168.5.2"
+        lb-alg: "ROUNDROBIN"
+        svc-servers:
+          - "192.168.5.3"
+        svc-port: "80"
+      targets:
+        - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
 
-- name: Login to citrix_adm
-  delegate_to: localhost
-  register: login_result
-  citrix_adm_login:
-    mas_ip: 192.168.1.1
-    mas_user: nsroot
-    mas_pass: nsroot
+tasks:
+  - name: Login to citrix_adm
+    delegate_to: localhost
+    register: login_result
+    citrix_adm_login:
+      mas_ip: 192.168.1.1
+      mas_user: nsroot
+      mas_pass: nsroot
 
-- name: Setup application
-  delegate_to: localhost
-  citrix_adm_application:
-    mas_ip: 192.168.1.1
-    nitro_auth_token: "{{ login_result.session_id }}"
+  - name: Setup application
+    delegate_to: localhost
+    citrix_adm_application:
+      mas_ip: 192.168.1.1
+      nitro_auth_token: "{{ login_result.session_id }}"
 
-    state: present
+      state: present
 
-    app_category: test_category
-    name: playbook5_test_application_name-lb_10.78.60.209_lb
-    stylebook_params: "{{ stylebook_params | to_json }}"
+      app_category: test_category
+      name: playbook5_test_application_name-lb_10.78.60.209_lb
+      stylebook_params: "{{ stylebook_params | to_json }}"
 '''
 
 RETURN = '''
@@ -265,10 +264,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'application': {
                 'attributes_list': [
-                    
                     'throughput_avg',
                     'app_category',
                     'curclntconnections',
@@ -296,19 +293,15 @@ class ModuleExecutor(object):
                     'application_ids',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
                 'delete_id_attributes': [
-                    
                     'id',
                 ],
             },
-            
 
         }
 
@@ -328,7 +321,6 @@ class ModuleExecutor(object):
         if nitro_pass is not None:
             self.http_headers['X-NITRO-PASS'] = nitro_pass
 
-
         # Prepare module result
         self.module_result = dict(
             changed=False,
@@ -347,7 +339,6 @@ class ModuleExecutor(object):
                 data = {}
                 log('Cannot parse response data')
         return data
-
 
     def get_application(self):
         url = '%s://%s/nitro/v2/config/application' % (
@@ -411,7 +402,7 @@ class ModuleExecutor(object):
             if attr_val is not None:
                 data_dict[attribute] = attr_val
 
-        ret_val = { 'application': data_dict }
+        ret_val = {'application': data_dict}
         return ret_val
 
     def post_application(self):
@@ -463,11 +454,10 @@ class ModuleExecutor(object):
             msg = 'nitro_errorcode fail HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
-
     def put_application(self, application):
         log('put_application')
         request_data = self.construct_request_data()
-        payload='%s' % self.module.jsonify(request_data)
+        payload = '%s' % self.module.jsonify(request_data)
 
         log('request data %s' % request_data)
         log('payload %s' % payload)
@@ -576,10 +566,10 @@ class ModuleExecutor(object):
         )
 
         poll_payload = {
-            "params":{
-                "action":"do_poll"
+            'params': {
+                'action': 'do_poll'
             },
-            "ns_emon_poll_policy":{},
+            'ns_emon_poll_policy': {},
         }
 
         r, info = fetch_url(
@@ -636,89 +626,86 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        throughput_avg=dict(type='str',),
-
-        
-        app_category=dict(type='str',),
-
-        
-        curclntconnections=dict(type='str',),
-
-        
-        name=dict(type='str',),
-
-        
-        cursrvrconnections=dict(type='str',),
-
-        
-        application_managed=dict(type='bool',),
-
-        
-        id=dict(type='str',),
-
-        
-        family=dict(type='str',),
-
-        
-        app_criteria=dict(type='list',),
-
-        
-        app_components=dict(type='list',),
-
-        
-        no_of_auth=dict(type='str',),
-
-        
-        no_of_gslb=dict(type='str',),
-
-        
-        no_of_gslbsvc=dict(type='str',),
-
-        
-        no_of_cr=dict(type='str',),
-
-        
-        no_of_cs=dict(type='str',),
-
-        
-        no_of_svc=dict(type='str',),
-
-        
-        no_of_svcgrp=dict(type='str',),
-
-        
-        no_of_haproxy_be=dict(type='str',),
-
-        
-        force_delete=dict(type='bool',),
-
-        
-        no_of_svr=dict(type='str',),
-
-        
-        stylebook_params=dict(type='str',),
-
-        
-        no_of_lb=dict(type='str',),
-
-        
-        no_of_vpn=dict(type='str',),
-
-        
-        no_of_haproxy_fe=dict(type='str',),
-
-        
-        application_ids=dict(type='list',),
-
-        
+        throughput_avg=dict(
+            type='str'
+        ),
+        app_category=dict(
+            type='str'
+        ),
+        curclntconnections=dict(
+            type='str'
+        ),
+        name=dict(
+            type='str'
+        ),
+        cursrvrconnections=dict(
+            type='str'
+        ),
+        application_managed=dict(
+            type='bool'
+        ),
+        id=dict(
+            type='str'
+        ),
+        family=dict(
+            type='str'
+        ),
+        app_criteria=dict(
+            type='list'
+        ),
+        app_components=dict(
+            type='list'
+        ),
+        no_of_auth=dict(
+            type='str'
+        ),
+        no_of_gslb=dict(
+            type='str'
+        ),
+        no_of_gslbsvc=dict(
+            type='str'
+        ),
+        no_of_cr=dict(
+            type='str'
+        ),
+        no_of_cs=dict(
+            type='str'
+        ),
+        no_of_svc=dict(
+            type='str'
+        ),
+        no_of_svcgrp=dict(
+            type='str'
+        ),
+        no_of_haproxy_be=dict(
+            type='str'
+        ),
+        force_delete=dict(
+            type='bool'
+        ),
+        no_of_svr=dict(
+            type='str'
+        ),
+        stylebook_params=dict(
+            type='str'
+        ),
+        no_of_lb=dict(
+            type='str'
+        ),
+        no_of_vpn=dict(
+            type='str'
+        ),
+        no_of_haproxy_fe=dict(
+            type='str'
+        ),
+        application_ids=dict(
+            type='list'
+        ),
         poll_after_delete=dict(
             type='bool',
             default=False,
@@ -737,10 +724,8 @@ def main():
         )
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

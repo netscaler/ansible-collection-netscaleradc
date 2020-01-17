@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_tenant_facts
 short_description: Retrieve facts about Citrix ADM tenants.
 description: Retrieve facts about Citrix ADM tenants.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -69,7 +67,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'tenant'
@@ -77,26 +75,20 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'tenant': {
                 'attributes_list': [
-                    
                     'name',
                 ],
                 'transforms': {
-                    
                     'enable_session_timeout': lambda v: "true" if v else "false",
                     'external_authentication': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                 ],
             },
-            
 
         }
 
@@ -162,7 +154,6 @@ class ModuleExecutor(object):
         data = self._parse_response_body(r)
         nitro_errorcode = data.get('errorcode')
 
-
         status = info.get('status')
         http_msg = info.get('msg')
 
@@ -185,7 +176,6 @@ class ModuleExecutor(object):
 
         return data.get('tenant', [])
 
-
     def main(self):
         try:
             tenant = self.get_tenant_facts()
@@ -197,23 +187,18 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        name=dict(type='str',),
-
-        
+        name=dict(
+            type='str'
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

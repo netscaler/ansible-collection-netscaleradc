@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_profile
@@ -24,7 +22,7 @@ description:
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations the module may incorrectly report a changed status when no configuration change has taken place.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -38,11 +36,11 @@ options:
                 Name for the profile. Must begin with a letter, number, or the underscore character (_), and must
                 only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=),
                 (:), and underscore (_) characters. Cannot be changed after the profile is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
                 If the name includes one or more spaces, enclose the name in double or single quotation marks (for
                 "my profile" or 'my profile').
+            - "Minimum length =  1"
         type: str
 
     defaults:
@@ -54,7 +52,6 @@ options:
                 Default configuration to apply to the profile. Basic defaults are intended for standard content that
                 little further configuration, such as static web site content. Advanced defaults are intended for
                 content that requires significant specialized configuration, such as heavily scripted or dynamic
-            - ""
             - >-
                 CLI users: When adding an application firewall profile, you can set either the defaults or the type,
                 not both. To set both options, create the profile by using the add appfw profile command, and then
@@ -75,7 +72,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".
@@ -95,7 +91,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -contentTypeaction none".
@@ -108,11 +103,10 @@ options:
             - 'multipart/form-data'
             - 'text/x-gwt-rpc'
         description:
-            - "One or more InspectContentType lists. "
+            - "One or more InspectContentType lists."
             - "* application/x-www-form-urlencoded"
             - "* multipart/form-data"
             - "* text/x-gwt-rpc"
-            - ""
             - >-
                 CLI users: To enable, type "set appfw profile -InspectContentTypes" followed by the content types to
                 inspected.
@@ -127,7 +121,6 @@ options:
         choices:
             - 'none'
             - 'block'
-            - 'learn'
             - 'log'
             - 'stats'
         description:
@@ -136,12 +129,10 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the
                 URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if
                 same URL would otherwise be allowed by the Start URL check.
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".
@@ -154,7 +145,7 @@ options:
             - 'AlwaysExceptStartURLs'
             - 'AlwaysExceptFirstRequest'
         description:
-            - "Enable validation of Referer headers. "
+            - "Enable validation of Referer headers."
             - >-
                 Referer validation ensures that a web form that a user sends to your web site originally came from
                 web site, not an outside attacker.
@@ -177,7 +168,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed
                 the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction
@@ -185,8 +175,8 @@ options:
 
     cookietransforms:
         description:
-            - "Perform the specified type of cookie transformation. "
-            - "Available settings function as follows: "
+            - "Perform the specified type of cookie transformation."
+            - "Available settings function as follows:"
             - "* Encryption - Encrypt cookies."
             - "* Proxying - Mask contents of server cookies by sending proxy cookie to users."
             - >-
@@ -219,7 +209,7 @@ options:
             - "Cookie proxy setting. Available settings function as follows:"
             - "* None - Do not proxy cookies."
             - >-
-                * Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent
+                * Session Only - Proxy session cookies by using the Citrix ADC session ID, but do not proxy permanent
         type: str
 
     addcookieflags:
@@ -250,7 +240,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed
                 the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction
@@ -271,7 +260,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".
@@ -291,7 +279,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed
                 the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction
@@ -326,7 +313,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".
@@ -358,11 +344,11 @@ options:
             - 'SQLSplCharORKeyword'
             - 'SQLSplCharANDKeyword'
         description:
-            - "Available SQL injection types. "
+            - "Available SQL injection types."
             - "-SQLSplChar              : Checks for SQL Special Chars"
             - "-SQLKeyword		 : Checks for SQL Keywords"
             - "-SQLSplCharANDKeyword    : Checks for both and blocks if both are found"
-            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found"
+            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found."
         type: str
 
     sqlinjectionchecksqlwildchars:
@@ -385,7 +371,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".
@@ -396,6 +381,7 @@ options:
             - >-
                 Designate a default field type to be applied to web form fields that do not have a field type
                 assigned to them.
+            - "Minimum length =  1"
         type: str
 
     defaultfieldformatminlength:
@@ -405,19 +391,22 @@ options:
             - >-
                 To disable the minimum and maximum length settings and allow data of any length to be entered into
                 field, set this parameter to zero (0).
+            - "Minimum value = C(0)"
+            - "Maximum value = C(2147483647)"
         type: str
 
     defaultfieldformatmaxlength:
         description:
             - >-
                 Maximum length, in characters, for data entered into a field that is assigned the default field type.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(2147483647)"
         type: str
 
     bufferoverflowaction:
         choices:
             - 'none'
             - 'block'
-            - 'learn'
             - 'log'
             - 'stats'
         description:
@@ -426,7 +415,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".
@@ -436,6 +424,8 @@ options:
         description:
             - >-
                 Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
         type: str
 
     bufferoverflowmaxheaderlength:
@@ -443,6 +433,8 @@ options:
             - >-
                 Maximum length, in characters, for HTTP headers in requests sent to your protected web sites.
                 with longer headers are blocked.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
         type: str
 
     bufferoverflowmaxcookielength:
@@ -450,6 +442,8 @@ options:
             - >-
                 Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer
                 are blocked.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
         type: str
 
     creditcardaction:
@@ -465,7 +459,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".
@@ -490,13 +483,15 @@ options:
                 This parameter value is used by the block action. It represents the maximum number of credit card
                 that can appear on a web page served by your protected web sites. Pages that contain more credit card
                 are blocked.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(255)"
         type: str
 
     creditcardxout:
         description:
             - >-
                 Mask any credit card number detected in a response by replacing each digit, except the digits in the
-                group, with the letter "X."
+                group, with the letter "X.".
         type: bool
 
     dosecurecreditcardlogging:
@@ -515,22 +510,101 @@ options:
 
     trace:
         description:
-            - "Toggle  the state of trace"
+            - "Toggle  the state of trace."
         type: bool
 
     requestcontenttype:
         description:
-            - "Default Content-Type header for requests. "
+            - "Default Content-Type header for requests."
             - >-
                 A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
+            - "Minimum length =  1"
+            - "Maximum length =  255"
         type: str
 
     responsecontenttype:
         description:
-            - "Default Content-Type header for responses. "
+            - "Default Content-Type header for responses."
             - >-
                 A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
+            - "Minimum length =  1"
+            - "Maximum length =  255"
         type: str
+
+    jsonerrorobject:
+        description:
+            - "Name to the imported JSON Error Object to be set on application firewall profile."
+            - "The following requirement applies only to the Citrix ADC CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my JSON error object" or 'my JSON error object').
+            - "Minimum length =  1"
+        type: str
+
+    jsondosaction:
+        choices:
+            - 'none'
+            - 'block'
+            - 'log'
+            - 'stats'
+        description:
+            - "One or more JSON Denial-of-Service (JsonDoS) actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -JSONDoSAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -JSONDoSAction none".
+        type: list
+
+    jsonsqlinjectionaction:
+        choices:
+            - 'none'
+            - 'block'
+            - 'log'
+            - 'stats'
+        description:
+            - "One or more JSON SQL Injection actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -JSONSQLInjectionAction" followed
+                the actions to be enabled. To turn off all actions, type "set appfw profile -JSONSQLInjectionAction
+        type: list
+
+    jsonsqlinjectiontype:
+        choices:
+            - 'SQLSplChar'
+            - 'SQLKeyword'
+            - 'SQLSplCharORKeyword'
+            - 'SQLSplCharANDKeyword'
+        description:
+            - "Available SQL injection types."
+            - "-SQLSplChar              : Checks for SQL Special Chars"
+            - "-SQLKeyword              : Checks for SQL Keywords"
+            - "-SQLSplCharANDKeyword    : Checks for both and blocks if both are found"
+            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found."
+        type: str
+
+    jsonxssaction:
+        choices:
+            - 'none'
+            - 'block'
+            - 'log'
+            - 'stats'
+        description:
+            - "One or more JSON Cross-Site Scripting actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -JSONXssAction" followed by the
+                to be enabled. To turn off all actions, type "set appfw profile -JSONXssAction none".
+        type: list
 
     xmldosaction:
         choices:
@@ -546,7 +620,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".
@@ -556,7 +629,6 @@ options:
         choices:
             - 'none'
             - 'block'
-            - 'learn'
             - 'log'
             - 'stats'
         description:
@@ -565,7 +637,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".
@@ -575,7 +646,6 @@ options:
         choices:
             - 'none'
             - 'block'
-            - 'learn'
             - 'log'
             - 'stats'
         description:
@@ -584,7 +654,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".
@@ -608,7 +677,7 @@ options:
             - "-SQLSplChar              : Checks for SQL Special Chars"
             - "-SQLKeyword              : Checks for SQL Keywords"
             - "-SQLSplCharANDKeyword    : Checks for both and blocks if both are found"
-            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found"
+            - "-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found."
         type: str
 
     xmlsqlinjectionchecksqlwildchars:
@@ -628,7 +697,7 @@ options:
                 check. You must configure the type of comments that the application firewall is to detect and exempt
                 this security check. Available settings function as follows:
             - "* Check all - Check all content."
-            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. "
+            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment."
             - "* Nested - Exempt content that is part of a nested (Microsoft-style) comment."
             - "* ANSI Nested - Exempt content that is part of any type of comment."
         type: str
@@ -646,7 +715,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".
@@ -666,7 +734,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the
                 to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".
@@ -686,7 +753,6 @@ options:
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".
@@ -696,7 +762,6 @@ options:
         choices:
             - 'none'
             - 'block'
-            - 'learn'
             - 'log'
             - 'stats'
         description:
@@ -704,8 +769,7 @@ options:
             - "* Block - Block connections that violate this security check."
             - "* Log - Log violations of this security check."
             - "* Stats - Generate statistics for this security check."
-            - "* None - Disable all actions for this security check. "
-            - ""
+            - "* None - Disable all actions for this security check."
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".
@@ -717,26 +781,28 @@ options:
                 Name to assign to the XML Error Object, which the application firewall displays when a user request
                 blocked.
             - >-
-                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
-                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
-                characters. Cannot be changed after the XML error object is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Cannot be changed after the XML error object is added.
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
-                "my XML error object" or 'my XML error object'\).
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my XML error object" or 'my XML error object').
+            - "Minimum length =  1"
         type: str
 
     customsettings:
         description:
             - "Object name for custom settings."
-            - "This check is applicable to Profile Type: HTML, XML. "
+            - "This check is applicable to Profile Type: HTML, XML. ."
+            - "Minimum length =  1"
         type: str
 
     signatures:
         description:
             - "Object name for signatures."
-            - "This check is applicable to Profile Type: HTML, XML. "
+            - "This check is applicable to Profile Type: HTML, XML. ."
+            - "Minimum length =  1"
         type: str
 
     xmlsoapfaultaction:
@@ -753,7 +819,6 @@ options:
             - "* Stats - Generate statistics for this security check."
             - "* None - Disable all actions for this security check."
             - "* Remove - Remove all violations for this security check."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by
                 actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".
@@ -769,20 +834,21 @@ options:
     errorurl:
         description:
             - "URL that application firewall uses as the Error URL."
+            - "Minimum length =  1"
         type: str
 
     htmlerrorobject:
         description:
-            - "Name to assign to the HTML Error Object. "
+            - "Name to assign to the HTML Error Object."
             - >-
-                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
-                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
-                characters. Cannot be changed after the HTML error object is added.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Cannot be changed after the HTML error object is added.
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
-                "my HTML error object" or 'my HTML error object'\).
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my HTML error object" or 'my HTML error object').
+            - "Minimum length =  1"
         type: str
 
     logeverypolicyhit:
@@ -793,7 +859,7 @@ options:
     stripcomments:
         description:
             - "Strip HTML comments."
-            - "This check is applicable to Profile Type: HTML. "
+            - "This check is applicable to Profile Type: HTML. ."
         type: bool
 
     striphtmlcomments:
@@ -835,12 +901,39 @@ options:
             - "* euc-jp (Japanese EUC-JP)"
             - "* iso-8859-9 (Turkish)"
             - "* utf-8 (Unicode)"
-            - "* euc-kr (Korean)"
+            - "* euc-kr (Korean)."
+            - "Minimum length =  1"
+            - "Maximum length =  31"
         type: str
+
+    dynamiclearning:
+        choices:
+            - 'none'
+            - 'SQLInjection'
+            - 'CrossSiteScripting'
+            - 'fieldFormat'
+        description:
+            - "One or more security checks. Available options are as follows:"
+            - "* SQLInjection - Enable dynamic learning for SQLInjection security check."
+            - "* CrossSiteScripting - Enable dynamic learning for CrossSiteScripting security check."
+            - "* fieldFormat - Enable dynamic learning for  fieldFormat security check."
+            - "* None - Disable security checks for all security checks."
+            - >-
+                CLI users: To enable dynamic learning on one or more security checks, type "set appfw profile
+                followed by the security checks to be enabled. To turn off dynamic learning on all security checks,
+                "set appfw profile -dynamicLearning none".
+        type: list
 
     postbodylimit:
         description:
             - "Maximum allowed HTTP post body size, in bytes."
+        type: str
+
+    postbodylimitsignature:
+        description:
+            - >-
+                Maximum allowed HTTP post body size for signature inspection for location HTTP_POST_BODY in the
+                in bytes.
         type: str
 
     fileuploadmaxnum:
@@ -848,6 +941,8 @@ options:
             - >-
                 Maximum allowed number of file uploads per form-submission request. The maximum setting (65535)
                 an unlimited number of uploads.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
         type: str
 
     canonicalizehtmlresponse:
@@ -874,12 +969,12 @@ options:
     sessionlessurlclosure:
         description:
             - "Enable session less URL Closure Checks."
-            - "This check is applicable to Profile Type: HTML. "
+            - "This check is applicable to Profile Type: HTML. ."
         type: bool
 
     semicolonfieldseparator:
         description:
-            - "Allow ';' as a form field separator in URL queries and POST form bodies. "
+            - "Allow ';' as a form field separator in URL queries and POST form bodies. ."
         type: bool
 
     excludefileuploadfromchecks:
@@ -899,7 +994,7 @@ options:
                 that the application firewall is to detect and exempt from this security check. Available settings
                 as follows:
             - "* Check all - Check all content."
-            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. "
+            - "* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment."
             - "* Nested - Exempt content that is part of a nested (Microsoft-style) comment."
             - "* ANSI Nested - Exempt content that is part of any type of comment."
         type: str
@@ -922,15 +1017,20 @@ options:
         choices:
             - 'HTML'
             - 'XML'
+            - 'JSON'
         description:
             - >-
                 Application firewall profile type, which controls which security checks and settings are applied to
                 that is filtered with the profile. Available settings function as follows:
             - "* HTML - HTML-based web sites."
-            - "* XML - XML-based web sites and services."
+            - "* XML -  XML-based web sites and services."
+            - "* JSON - JSON-based web sites and services."
             - >-
                 * HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and
                 feeds.
+            - "* HTML JSON  - Sites that contain both HTML and JSON content."
+            - "* XML JSON   - Sites that contain both XML and JSON content."
+            - "* HTML XML JSON   - Sites that contain HTML, XML and JSON content."
         type: list
 
     checkrequestheaders:
@@ -941,10 +1041,10 @@ options:
     optimizepartialreqs:
         description:
             - "Optimize handle of HTTP partial requests i.e. those with range headers."
-            - "Available settings are as follows: "
+            - "Available settings are as follows:"
             - >-
                 * ON - Partial requests by the client result in partial requests to the backend server in most cases.
-            - "* OFF - Partial requests by the client are changed to full requests to the backend server"
+            - "* OFF - Partial requests by the client are changed to full requests to the backend server."
         type: bool
 
     urldecoderequestcookies:
@@ -959,7 +1059,7 @@ options:
 
     percentdecoderecursively:
         description:
-            - "Configure whether the application firewall should use percentage recursive decoding"
+            - "Configure whether the application firewall should use percentage recursive decoding."
         type: bool
 
     multipleheaderaction:
@@ -973,15 +1073,48 @@ options:
             - "* Block - Block connections that have multiple headers."
             - "* Log - Log connections that have multiple headers."
             - "* KeepLast - Keep only last header when multiple headers are present."
-            - ""
             - >-
                 CLI users: To enable one or more actions, type "set appfw profile -multipleHeaderAction" followed by
                 actions to be enabled.
         type: list
 
+    rfcprofile:
+        description:
+            - "Object name of the rfc profile."
+            - "Minimum length =  1"
+        type: str
+
+    fileuploadtypesaction:
+        choices:
+            - 'none'
+            - 'block'
+            - 'log'
+            - 'stats'
+        description:
+            - "One or more file upload types actions. Available settings function as follows:"
+            - "* Block - Block connections that violate this security check."
+            - "* Log - Log violations of this security check."
+            - "* Stats - Generate statistics for this security check."
+            - "* None - Disable all actions for this security check."
+            - >-
+                CLI users: To enable one or more actions, type "set appfw profile -fileUploadTypeAction" followed by
+                actions to be enabled. To turn off all actions, type "set appfw profile -fileUploadTypeAction none".
+        type: list
+
+    verboseloglevel:
+        choices:
+            - 'pattern'
+            - 'patternPayload'
+            - 'patternPayloadHeader'
+        description:
+            - "Detailed Logging Verbose Log Level."
+        type: str
+
     archivename:
         description:
             - "Source for tar archive."
+            - "Minimum length =  1"
+            - "Maximum length =  31"
         type: str
 
 
@@ -992,15 +1125,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1008,28 +1146,33 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - contenttype
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     cookieconsistency_bindings:
         description: cookieconsistency bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1037,29 +1180,34 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - cookieconsistency
                     - isregex
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     creditcardnumber_bindings:
         description: creditcardnumber bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1067,29 +1215,34 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - creditcardnumber
                     - creditcardnumberurl
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     crosssitescripting_bindings:
         description: crosssitescripting bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1097,9 +1250,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - crosssitescripting
                     - isregex_xss
                     - formactionurl_xss
@@ -1109,22 +1262,28 @@ options:
                     - isvalueregex_xss
                     - state
                     - comment
-                    
+                    - isautodeployed
+                    - alertonly
 
     csrftag_bindings:
         description: csrftag bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1132,29 +1291,34 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - csrftag
                     - csrfformactionurl
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     denyurl_bindings:
         description: denyurl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1162,28 +1326,33 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - denyurl
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     excluderescontenttype_bindings:
         description: excluderescontenttype bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1191,28 +1360,33 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - excluderescontenttype
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     fieldconsistency_bindings:
         description: fieldconsistency bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1220,30 +1394,35 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - fieldconsistency
                     - isregex_ffc
                     - formactionurl_ffc
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     fieldformat_bindings:
         description: fieldformat bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1251,9 +1430,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - fieldformat
                     - isregex_ff
                     - formactionurl_ff
@@ -1262,22 +1441,28 @@ options:
                     - fieldformatmaxlength
                     - state
                     - comment
-                    
+                    - isautodeployed
+                    - alertonly
 
     safeobject_bindings:
         description: safeobject bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1285,31 +1470,36 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - safeobject
                     - as_expression
                     - maxmatchlength
                     - action
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     sqlinjection_bindings:
         description: sqlinjection bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1317,9 +1507,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - sqlinjection
                     - isregex_sql
                     - formactionurl_sql
@@ -1329,22 +1519,28 @@ options:
                     - isvalueregex_sql
                     - state
                     - comment
-                    
+                    - isautodeployed
+                    - alertonly
 
     starturl_bindings:
         description: starturl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1352,28 +1548,33 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - starturl
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     trustedlearningclients_bindings:
         description: trustedlearningclients bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1381,28 +1582,33 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - trustedlearningclients
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmlattachmenturl_bindings:
         description: xmlattachmenturl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1410,9 +1616,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmlattachmenturl
                     - xmlmaxattachmentsizecheck
                     - xmlmaxattachmentsize
@@ -1420,22 +1626,27 @@ options:
                     - xmlattachmentcontenttype
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmldosurl_bindings:
         description: xmldosurl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1443,9 +1654,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmldosurl
                     - xmlmaxelementdepthcheck
                     - xmlmaxelementdepth
@@ -1485,22 +1696,27 @@ options:
                     - xmlmaxsoaparrayrank
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmlsqlinjection_bindings:
         description: xmlsqlinjection bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1508,30 +1724,35 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmlsqlinjection
                     - isregex_xmlsql
                     - as_scan_location_xmlsql
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmlvalidationurl_bindings:
         description: xmlvalidationurl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1539,9 +1760,9 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmlvalidationurl
                     - xmlvalidateresponse
                     - xmlwsdl
@@ -1552,22 +1773,27 @@ options:
                     - xmlvalidatesoapenvelope
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmlwsiurl_bindings:
         description: xmlwsiurl bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1575,29 +1801,34 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmlwsiurl
                     - xmlwsichecks
                     - state
                     - comment
-                    
+                    - isautodeployed
 
     xmlxss_bindings:
         description: xmlxss bindings
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -1605,15 +1836,15 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
+                    - "Valid attribute keys:"
                     - xmlxss
                     - isregex_xmlxss
                     - as_scan_location_xmlxss
                     - state
                     - comment
-                    
+                    - isautodeployed
 
 
 extends_documentation_fragment: netscaler
@@ -1676,7 +1907,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwprofile'
@@ -1684,10 +1915,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'appfwprofile': {
                 'attributes_list': [
-                    
                     'name',
                     'defaults',
                     'starturlaction',
@@ -1728,6 +1957,11 @@ class ModuleExecutor(object):
                     'trace',
                     'requestcontenttype',
                     'responsecontenttype',
+                    'jsonerrorobject',
+                    'jsondosaction',
+                    'jsonsqlinjectionaction',
+                    'jsonsqlinjectiontype',
+                    'jsonxssaction',
                     'xmldosaction',
                     'xmlformataction',
                     'xmlsqlinjectionaction',
@@ -1752,7 +1986,9 @@ class ModuleExecutor(object):
                     'stripxmlcomments',
                     'exemptclosureurlsfromsecuritychecks',
                     'defaultcharset',
+                    'dynamiclearning',
                     'postbodylimit',
+                    'postbodylimitsignature',
                     'fileuploadmaxnum',
                     'canonicalizehtmlresponse',
                     'enableformtagging',
@@ -1769,10 +2005,12 @@ class ModuleExecutor(object):
                     'comment',
                     'percentdecoderecursively',
                     'multipleheaderaction',
+                    'rfcprofile',
+                    'fileuploadtypesaction',
+                    'verboseloglevel',
                     'archivename',
                 ],
                 'transforms': {
-                    
                     'starturlclosure': lambda v: 'ON' if v else 'OFF',
                     'cookietransforms': lambda v: 'ON' if v else 'OFF',
                     'crosssitescriptingtransformunsafehtml': lambda v: 'ON' if v else 'OFF',
@@ -1801,90 +2039,74 @@ class ModuleExecutor(object):
                     'percentdecoderecursively': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
             'contenttype_bindings': {
                 'attributes_list': [
-                    
                     'contenttype',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'contenttype',
                     'name',
                 ],
             },
-            
             'cookieconsistency_bindings': {
                 'attributes_list': [
-                    
                     'cookieconsistency',
                     'isregex',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'cookieconsistency',
                     'name',
                 ],
             },
-            
             'creditcardnumber_bindings': {
                 'attributes_list': [
-                    
                     'creditcardnumber',
                     'creditcardnumberurl',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'creditcardnumber',
                     'creditcardnumberurl',
                     'name',
                 ],
             },
-            
             'crosssitescripting_bindings': {
                 'attributes_list': [
-                    
                     'crosssitescripting',
                     'isregex_xss',
                     'formactionurl_xss',
@@ -1894,18 +2116,18 @@ class ModuleExecutor(object):
                     'isvalueregex_xss',
                     'state',
                     'comment',
+                    'isautodeployed',
+                    'alertonly',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
+                    'alertonly': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'crosssitescripting',
                     'formactionurl_xss',
                     'as_scan_location_xss',
@@ -1914,107 +2136,89 @@ class ModuleExecutor(object):
                     'name',
                 ],
             },
-            
             'csrftag_bindings': {
                 'attributes_list': [
-                    
                     'csrftag',
                     'csrfformactionurl',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'csrftag',
                     'csrfformactionurl',
                     'name',
                 ],
             },
-            
             'denyurl_bindings': {
                 'attributes_list': [
-                    
                     'denyurl',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'denyurl',
                     'name',
                 ],
             },
-            
             'excluderescontenttype_bindings': {
                 'attributes_list': [
-                    
                     'excluderescontenttype',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'excluderescontenttype',
                     'name',
                 ],
             },
-            
             'fieldconsistency_bindings': {
                 'attributes_list': [
-                    
                     'fieldconsistency',
                     'isregex_ffc',
                     'formactionurl_ffc',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'fieldconsistency',
                     'formactionurl_ffc',
                     'name',
                 ],
             },
-            
             'fieldformat_bindings': {
                 'attributes_list': [
-                    
                     'fieldformat',
                     'isregex_ff',
                     'formactionurl_ff',
@@ -2023,53 +2227,47 @@ class ModuleExecutor(object):
                     'fieldformatmaxlength',
                     'state',
                     'comment',
+                    'isautodeployed',
+                    'alertonly',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
+                    'alertonly': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'fieldformat',
                     'formactionurl_ff',
                     'name',
                 ],
             },
-            
             'safeobject_bindings': {
                 'attributes_list': [
-                    
                     'safeobject',
                     'as_expression',
                     'maxmatchlength',
                     'action',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'safeobject',
                     'name',
                 ],
             },
-            
             'sqlinjection_bindings': {
                 'attributes_list': [
-                    
                     'sqlinjection',
                     'isregex_sql',
                     'formactionurl_sql',
@@ -2079,18 +2277,18 @@ class ModuleExecutor(object):
                     'isvalueregex_sql',
                     'state',
                     'comment',
+                    'isautodeployed',
+                    'alertonly',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
+                    'alertonly': lambda v: 'ON' if v else 'OFF',
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'sqlinjection',
                     'formactionurl_sql',
                     'as_scan_location_sql',
@@ -2099,56 +2297,46 @@ class ModuleExecutor(object):
                     'name',
                 ],
             },
-            
             'starturl_bindings': {
                 'attributes_list': [
-                    
                     'starturl',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'starturl',
                     'name',
                 ],
             },
-            
             'trustedlearningclients_bindings': {
                 'attributes_list': [
-                    
                     'trustedlearningclients',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'trustedlearningclients',
                     'name',
                 ],
             },
-            
             'xmlattachmenturl_bindings': {
                 'attributes_list': [
-                    
                     'xmlattachmenturl',
                     'xmlmaxattachmentsizecheck',
                     'xmlmaxattachmentsize',
@@ -2156,28 +2344,24 @@ class ModuleExecutor(object):
                     'xmlattachmentcontenttype',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'xmlmaxattachmentsizecheck': lambda v: 'ON' if v else 'OFF',
                     'xmlattachmentcontenttypecheck': lambda v: 'ON' if v else 'OFF',
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlattachmenturl',
                     'name',
                 ],
             },
-            
             'xmldosurl_bindings': {
                 'attributes_list': [
-                    
                     'xmldosurl',
                     'xmlmaxelementdepthcheck',
                     'xmlmaxelementdepth',
@@ -2217,10 +2401,10 @@ class ModuleExecutor(object):
                     'xmlmaxsoaparrayrank',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'xmlmaxelementdepthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementnamelengthcheck': lambda v: 'ON' if v else 'OFF',
                     'xmlmaxelementscheck': lambda v: 'ON' if v else 'OFF',
@@ -2243,45 +2427,37 @@ class ModuleExecutor(object):
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmldosurl',
                     'name',
                 ],
             },
-            
             'xmlsqlinjection_bindings': {
                 'attributes_list': [
-                    
                     'xmlsqlinjection',
                     'isregex_xmlsql',
                     'as_scan_location_xmlsql',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlsqlinjection',
                     'as_scan_location_xmlsql',
                     'name',
                 ],
             },
-            
             'xmlvalidationurl_bindings': {
                 'attributes_list': [
-                    
                     'xmlvalidationurl',
                     'xmlvalidateresponse',
                     'xmlwsdl',
@@ -2292,76 +2468,65 @@ class ModuleExecutor(object):
                     'xmlvalidatesoapenvelope',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'xmlvalidateresponse': lambda v: 'ON' if v else 'OFF',
                     'xmladditionalsoapheaders': lambda v: 'ON' if v else 'OFF',
                     'xmlvalidatesoapenvelope': lambda v: 'ON' if v else 'OFF',
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlvalidationurl',
                     'name',
                 ],
             },
-            
             'xmlwsiurl_bindings': {
                 'attributes_list': [
-                    
                     'xmlwsiurl',
                     'xmlwsichecks',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlwsiurl',
                     'name',
                 ],
             },
-            
             'xmlxss_bindings': {
                 'attributes_list': [
-                    
                     'xmlxss',
                     'isregex_xmlxss',
                     'as_scan_location_xmlxss',
                     'state',
                     'comment',
+                    'isautodeployed',
                     'name',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlxss',
                     'as_scan_location_xmlxss',
                     'name',
                 ],
             },
-            
 
         }
 
@@ -2370,7 +2535,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update_or_create(self):
         log('ModuleExecutor.update_or_create()')
@@ -2430,7 +2594,6 @@ class ModuleExecutor(object):
             if not self.module.check_mode:
                 config.delete(delete_id_attributes=self.attribute_config[self.main_nitro_class]['delete_id_attributes'])
 
-
     def sync_binding_with_data(self, data):
 
         binding_key = data['binding_key']
@@ -2462,7 +2625,7 @@ class ModuleExecutor(object):
         for bind_values in self.module.params[binding_key]['attributes']:
             all_bind_values = copy.deepcopy(bind_values)
             main_value = self.module.params[data['link_to_main']['main_key']]
-            all_bind_values.update({ data['link_to_main']['bind_key']: main_value })
+            all_bind_values.update({data['link_to_main']['bind_key']: main_value})
             configured_binding = NitroResourceConfig(
                 module=self.module,
                 resource=binding_object,
@@ -2472,7 +2635,6 @@ class ModuleExecutor(object):
             )
 
             configured_bindings.append(configured_binding)
-
 
         # First get the existing bindings
         configured_already_present = []
@@ -2498,7 +2660,7 @@ class ModuleExecutor(object):
 
             # Create the bindings objects that we marked in previous loop
             for configured_binding in configured_bindings:
-                dict_values = [ item.values_dict for item in configured_already_present ]
+                dict_values = [item.values_dict for item in configured_already_present]
                 log('dict values %s' % dict_values)
                 log('configured dict values %s' % configured_binding.values_dict)
                 if configured_binding.values_dict in dict_values:
@@ -2514,14 +2676,14 @@ class ModuleExecutor(object):
             for configured_binding in configured_bindings:
                 create_configured_binding = True
                 for existing_binding_values_dict in existing_binding_values_dicts:
-                    if  configured_binding.values_by_key_identical_to_dict(
+                    if configured_binding.values_by_key_identical_to_dict(
                             values_dict=existing_binding_values_dict,
                             key_list=self.attribute_config[binding_key]['delete_id_attributes']
-                        ):
+                    ):
                         # Delete if not identical to all defined attributes
                         if not configured_binding.values_identical_to_dict(
                             values_dict=existing_binding_values_dict,
-                            ):
+                        ):
                             self.module_result['changed'] = True
                             if not self.module.check_mode:
                                 config = NitroResourceConfig(
@@ -2542,58 +2704,36 @@ class ModuleExecutor(object):
         elif mode == 'unbind':
             for configured_binding in configured_bindings:
                 for existing_binding_values_dict in existing_binding_values_dicts:
-                    if  configured_binding.values_by_key_identical_to_dict(
+                    if configured_binding.values_by_key_identical_to_dict(
                             values_dict=existing_binding_values_dict,
                             key_list=self.attribute_config[binding_key]['delete_id_attributes']
-                        ):
+                    ):
                         self.module_result['changed'] = True
                         if not self.module.check_mode:
                             configured_binding.delete(delete_id_attributes=self.attribute_config[binding_key]['delete_id_attributes'])
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
-        
         self.sync_contenttype_bindings()
-        
         self.sync_cookieconsistency_bindings()
-        
         self.sync_creditcardnumber_bindings()
-        
         self.sync_crosssitescripting_bindings()
-        
         self.sync_csrftag_bindings()
-        
         self.sync_denyurl_bindings()
-        
         self.sync_excluderescontenttype_bindings()
-        
         self.sync_fieldconsistency_bindings()
-        
         self.sync_fieldformat_bindings()
-        
         self.sync_safeobject_bindings()
-        
         self.sync_sqlinjection_bindings()
-        
         self.sync_starturl_bindings()
-        
         self.sync_trustedlearningclients_bindings()
-        
         self.sync_xmlattachmenturl_bindings()
-        
         self.sync_xmldosurl_bindings()
-        
         self.sync_xmlsqlinjection_bindings()
-        
         self.sync_xmlvalidationurl_bindings()
-        
         self.sync_xmlwsiurl_bindings()
-        
         self.sync_xmlxss_bindings()
-        
 
-
-        
     def sync_contenttype_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2606,7 +2746,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_cookieconsistency_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2619,7 +2759,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_creditcardnumber_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2632,7 +2772,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_crosssitescripting_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2645,7 +2785,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_csrftag_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2658,7 +2798,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_denyurl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2671,7 +2811,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_excluderescontenttype_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2684,7 +2824,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_fieldconsistency_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2697,7 +2837,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_fieldformat_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2710,7 +2850,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_safeobject_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2723,7 +2863,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_sqlinjection_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2736,7 +2876,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_starturl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2749,7 +2889,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_trustedlearningclients_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2762,7 +2902,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmlattachmenturl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2775,7 +2915,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmldosurl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2788,7 +2928,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmlsqlinjection_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2801,7 +2941,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmlvalidationurl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2814,7 +2954,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmlwsiurl_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2827,7 +2967,7 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
+
     def sync_xmlxss_bindings(self):
         self.sync_binding_with_data(
             {
@@ -2840,8 +2980,6 @@ class ModuleExecutor(object):
                 }
             }
         )
-        
-
 
     def main(self):
         try:
@@ -2861,16 +2999,12 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         defaults=dict(
             type='str',
             choices=[
@@ -2878,7 +3012,6 @@ def main():
                 'advanced',
             ]
         ),
-        
         starturlaction=dict(
             type='list',
             choices=[
@@ -2889,7 +3022,6 @@ def main():
                 'stats',
             ]
         ),
-        
         contenttypeaction=dict(
             type='list',
             choices=[
@@ -2900,7 +3032,6 @@ def main():
                 'stats',
             ]
         ),
-        
         inspectcontenttypes=dict(
             type='list',
             choices=[
@@ -2910,20 +3041,16 @@ def main():
                 'text/x-gwt-rpc',
             ]
         ),
-        
         starturlclosure=dict(type='bool'),
-        
         denyurlaction=dict(
             type='list',
             choices=[
                 'none',
                 'block',
-                'learn',
                 'log',
                 'stats',
             ]
         ),
-        
         refererheadercheck=dict(
             type='str',
             choices=[
@@ -2933,7 +3060,6 @@ def main():
                 'AlwaysExceptFirstRequest',
             ]
         ),
-        
         cookieconsistencyaction=dict(
             type='list',
             choices=[
@@ -2944,9 +3070,7 @@ def main():
                 'stats',
             ]
         ),
-        
         cookietransforms=dict(type='bool'),
-        
         cookieencryption=dict(
             type='str',
             choices=[
@@ -2956,7 +3080,6 @@ def main():
                 'encryptAll',
             ]
         ),
-        
         cookieproxying=dict(
             type='str',
             choices=[
@@ -2964,7 +3087,6 @@ def main():
                 'sessionOnly',
             ]
         ),
-        
         addcookieflags=dict(
             type='str',
             choices=[
@@ -2974,7 +3096,6 @@ def main():
                 'all',
             ]
         ),
-        
         fieldconsistencyaction=dict(
             type='list',
             choices=[
@@ -2985,7 +3106,6 @@ def main():
                 'stats',
             ]
         ),
-        
         csrftagaction=dict(
             type='list',
             choices=[
@@ -2996,7 +3116,6 @@ def main():
                 'stats',
             ]
         ),
-        
         crosssitescriptingaction=dict(
             type='list',
             choices=[
@@ -3007,11 +3126,8 @@ def main():
                 'stats',
             ]
         ),
-        
         crosssitescriptingtransformunsafehtml=dict(type='bool'),
-        
         crosssitescriptingcheckcompleteurls=dict(type='bool'),
-        
         sqlinjectionaction=dict(
             type='list',
             choices=[
@@ -3022,11 +3138,8 @@ def main():
                 'stats',
             ]
         ),
-        
         sqlinjectiontransformspecialchars=dict(type='bool'),
-        
         sqlinjectiononlycheckfieldswithsqlchars=dict(type='bool'),
-        
         sqlinjectiontype=dict(
             type='str',
             choices=[
@@ -3036,9 +3149,7 @@ def main():
                 'SQLSplCharANDKeyword',
             ]
         ),
-        
         sqlinjectionchecksqlwildchars=dict(type='bool'),
-        
         fieldformataction=dict(
             type='list',
             choices=[
@@ -3049,30 +3160,21 @@ def main():
                 'stats',
             ]
         ),
-        
         defaultfieldformattype=dict(type='str'),
-        
         defaultfieldformatminlength=dict(type='str'),
-        
         defaultfieldformatmaxlength=dict(type='str'),
-        
         bufferoverflowaction=dict(
             type='list',
             choices=[
                 'none',
                 'block',
-                'learn',
                 'log',
                 'stats',
             ]
         ),
-        
         bufferoverflowmaxurllength=dict(type='str'),
-        
         bufferoverflowmaxheaderlength=dict(type='str'),
-        
         bufferoverflowmaxcookielength=dict(type='str'),
-        
         creditcardaction=dict(
             type='list',
             choices=[
@@ -3083,7 +3185,6 @@ def main():
                 'stats',
             ]
         ),
-        
         creditcard=dict(
             type='list',
             choices=[
@@ -3096,21 +3197,50 @@ def main():
                 'dinersclub',
             ]
         ),
-        
         creditcardmaxallowed=dict(type='str'),
-        
         creditcardxout=dict(type='bool'),
-        
         dosecurecreditcardlogging=dict(type='bool'),
-        
         streaming=dict(type='bool'),
-        
         trace=dict(type='bool'),
-        
         requestcontenttype=dict(type='str'),
-        
         responsecontenttype=dict(type='str'),
-        
+        jsonerrorobject=dict(type='str'),
+        jsondosaction=dict(
+            type='list',
+            choices=[
+                'none',
+                'block',
+                'log',
+                'stats',
+            ]
+        ),
+        jsonsqlinjectionaction=dict(
+            type='list',
+            choices=[
+                'none',
+                'block',
+                'log',
+                'stats',
+            ]
+        ),
+        jsonsqlinjectiontype=dict(
+            type='str',
+            choices=[
+                'SQLSplChar',
+                'SQLKeyword',
+                'SQLSplCharORKeyword',
+                'SQLSplCharANDKeyword',
+            ]
+        ),
+        jsonxssaction=dict(
+            type='list',
+            choices=[
+                'none',
+                'block',
+                'log',
+                'stats',
+            ]
+        ),
         xmldosaction=dict(
             type='list',
             choices=[
@@ -3121,31 +3251,25 @@ def main():
                 'stats',
             ]
         ),
-        
         xmlformataction=dict(
             type='list',
             choices=[
                 'none',
                 'block',
-                'learn',
                 'log',
                 'stats',
             ]
         ),
-        
         xmlsqlinjectionaction=dict(
             type='list',
             choices=[
                 'none',
                 'block',
-                'learn',
                 'log',
                 'stats',
             ]
         ),
-        
         xmlsqlinjectiononlycheckfieldswithsqlchars=dict(type='bool'),
-        
         xmlsqlinjectiontype=dict(
             type='str',
             choices=[
@@ -3155,9 +3279,7 @@ def main():
                 'SQLSplCharANDKeyword',
             ]
         ),
-        
         xmlsqlinjectionchecksqlwildchars=dict(type='bool'),
-        
         xmlsqlinjectionparsecomments=dict(
             type='str',
             choices=[
@@ -3167,7 +3289,6 @@ def main():
                 'ansinested',
             ]
         ),
-        
         xmlxssaction=dict(
             type='list',
             choices=[
@@ -3178,7 +3299,6 @@ def main():
                 'stats',
             ]
         ),
-        
         xmlwsiaction=dict(
             type='list',
             choices=[
@@ -3189,7 +3309,6 @@ def main():
                 'stats',
             ]
         ),
-        
         xmlattachmentaction=dict(
             type='list',
             choices=[
@@ -3200,24 +3319,18 @@ def main():
                 'stats',
             ]
         ),
-        
         xmlvalidationaction=dict(
             type='list',
             choices=[
                 'none',
                 'block',
-                'learn',
                 'log',
                 'stats',
             ]
         ),
-        
         xmlerrorobject=dict(type='str'),
-        
         customsettings=dict(type='str'),
-        
         signatures=dict(type='str'),
-        
         xmlsoapfaultaction=dict(
             type='list',
             choices=[
@@ -3228,17 +3341,11 @@ def main():
                 'stats',
             ]
         ),
-        
         usehtmlerrorobject=dict(type='bool'),
-        
         errorurl=dict(type='str'),
-        
         htmlerrorobject=dict(type='str'),
-        
         logeverypolicyhit=dict(type='bool'),
-        
         stripcomments=dict(type='bool'),
-        
         striphtmlcomments=dict(
             type='str',
             choices=[
@@ -3247,7 +3354,6 @@ def main():
                 'exclude_script_tag',
             ]
         ),
-        
         stripxmlcomments=dict(
             type='str',
             choices=[
@@ -3255,19 +3361,22 @@ def main():
                 'all',
             ]
         ),
-        
         exemptclosureurlsfromsecuritychecks=dict(type='bool'),
-        
         defaultcharset=dict(type='str'),
-        
+        dynamiclearning=dict(
+            type='list',
+            choices=[
+                'none',
+                'SQLInjection',
+                'CrossSiteScripting',
+                'fieldFormat',
+            ]
+        ),
         postbodylimit=dict(type='str'),
-        
+        postbodylimitsignature=dict(type='str'),
         fileuploadmaxnum=dict(type='str'),
-        
         canonicalizehtmlresponse=dict(type='bool'),
-        
         enableformtagging=dict(type='bool'),
-        
         sessionlessfieldconsistency=dict(
             type='str',
             choices=[
@@ -3276,13 +3385,9 @@ def main():
                 'postOnly',
             ]
         ),
-        
         sessionlessurlclosure=dict(type='bool'),
-        
         semicolonfieldseparator=dict(type='bool'),
-        
         excludefileuploadfromchecks=dict(type='bool'),
-        
         sqlinjectionparsecomments=dict(
             type='str',
             choices=[
@@ -3292,7 +3397,6 @@ def main():
                 'ansinested',
             ]
         ),
-        
         invalidpercenthandling=dict(
             type='str',
             choices=[
@@ -3301,25 +3405,19 @@ def main():
                 'secure_mode',
             ]
         ),
-        
         type=dict(
             type='list',
             choices=[
                 'HTML',
                 'XML',
+                'JSON',
             ]
         ),
-        
         checkrequestheaders=dict(type='bool'),
-        
         optimizepartialreqs=dict(type='bool'),
-        
         urldecoderequestcookies=dict(type='bool'),
-        
         comment=dict(type='str'),
-        
         percentdecoderecursively=dict(type='bool'),
-        
         multipleheaderaction=dict(
             type='list',
             choices=[
@@ -3329,11 +3427,25 @@ def main():
                 'none',
             ]
         ),
-        
+        rfcprofile=dict(type='str'),
+        fileuploadtypesaction=dict(
+            type='list',
+            choices=[
+                'none',
+                'block',
+                'log',
+                'stats',
+            ]
+        ),
+        verboseloglevel=dict(
+            type='str',
+            choices=[
+                'pattern',
+                'patternPayload',
+                'patternPayloadHeader',
+            ]
+        ),
         archivename=dict(type='str'),
-        
-
-        
         contenttype_bindings=dict(type='dict'),
         cookieconsistency_bindings=dict(type='dict'),
         creditcardnumber_bindings=dict(type='dict'),
@@ -3355,10 +3467,8 @@ def main():
         xmlxss_bindings=dict(type='dict'),
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

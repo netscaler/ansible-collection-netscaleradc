@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_learningsettings
 short_description: Configuration for learning settings resource.
 description: Configuration for learning settings resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -31,12 +29,14 @@ options:
     profilename:
         description:
             - "Name of the profile."
+            - "Minimum length =  1"
         type: str
 
     starturlminthreshold:
         description:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn start
+            - "Minimum value = C(1)"
         type: str
 
     starturlpercentthreshold:
@@ -44,12 +44,15 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular start URL pattern
                 the learning engine to learn that start URL.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     cookieconsistencyminthreshold:
         description:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn
+            - "Minimum value = C(1)"
         type: str
 
     cookieconsistencypercentthreshold:
@@ -57,6 +60,8 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular cookie pattern for
                 learning engine to learn that cookie.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     csrftagminthreshold:
@@ -64,6 +69,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn
                 request forgery (CSRF) tags.
+            - "Minimum value = C(1)"
         type: str
 
     csrftagpercentthreshold:
@@ -71,6 +77,8 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the
                 engine to learn that CSRF tag.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     fieldconsistencyminthreshold:
@@ -78,6 +86,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn field
                 information.
+            - "Minimum value = C(1)"
         type: str
 
     fieldconsistencypercentthreshold:
@@ -85,6 +94,8 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular field consistency
                 for the learning engine to learn that field consistency pattern.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     crosssitescriptingminthreshold:
@@ -92,6 +103,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn HTML
                 scripting patterns.
+            - "Minimum value = C(1)"
         type: str
 
     crosssitescriptingpercentthreshold:
@@ -99,6 +111,8 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular cross-site
                 pattern for the learning engine to learn that cross-site scripting pattern.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     sqlinjectionminthreshold:
@@ -106,6 +120,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn HTML
                 injection patterns.
+            - "Minimum value = C(1)"
         type: str
 
     sqlinjectionpercentthreshold:
@@ -113,12 +128,15 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection
                 for the learning engine to learn that HTML SQL injection pattern.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     fieldformatminthreshold:
         description:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn field
+            - "Minimum value = C(1)"
         type: str
 
     fieldformatpercentthreshold:
@@ -126,26 +144,34 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular web form field
                 for the learning engine to recommend a field format for that form field.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     creditcardnumberminthreshold:
         description:
             - "Minimum threshold to learn Credit Card information."
+            - "Minimum value = C(1)"
         type: str
 
     creditcardnumberpercentthreshold:
         description:
             - "Minimum threshold in percent to learn Credit Card information."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     contenttypeminthreshold:
         description:
             - "Minimum threshold to learn Content Type information."
+            - "Minimum value = C(1)"
         type: str
 
     contenttypepercentthreshold:
         description:
             - "Minimum threshold in percent to learn Content Type information."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     xmlwsiminthreshold:
@@ -153,6 +179,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn web
                 interoperability (WSI) information.
+            - "Minimum value = C(1)"
         type: str
 
     xmlwsipercentthreshold:
@@ -160,6 +187,8 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular pattern for the
                 engine to learn a web services interoperability (WSI) pattern.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
         type: str
 
     xmlattachmentminthreshold:
@@ -167,6 +196,7 @@ options:
             - >-
                 Minimum number of application firewall sessions that the learning engine must observe to learn XML
                 patterns.
+            - "Minimum value = C(1)"
         type: str
 
     xmlattachmentpercentthreshold:
@@ -174,6 +204,29 @@ options:
             - >-
                 Minimum percentage of application firewall sessions that must contain a particular XML attachment
                 for the learning engine to learn that XML attachment pattern.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
+        type: str
+
+    fieldformatautodeploygraceperiod:
+        description:
+            - "The number of minutes after the threshold hit alert the learned rule will be deployed."
+            - "Minimum value = C(5)"
+            - "Maximum value = C(43200)"
+        type: str
+
+    sqlinjectionautodeploygraceperiod:
+        description:
+            - "The number of minutes after the threshold hit alert the learned rule will be deployed."
+            - "Minimum value = C(5)"
+            - "Maximum value = C(43200)"
+        type: str
+
+    crosssitescriptingautodeploygraceperiod:
+        description:
+            - "The number of minutes after the threshold hit alert the learned rule will be deployed."
+            - "Minimum value = C(5)"
+            - "Maximum value = C(43200)"
         type: str
 
 
@@ -239,7 +292,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwlearningsettings'
@@ -247,10 +300,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'appfwlearningsettings': {
                 'attributes_list': [
-                    
                     'profilename',
                     'starturlminthreshold',
                     'starturlpercentthreshold',
@@ -274,19 +325,18 @@ class ModuleExecutor(object):
                     'xmlwsipercentthreshold',
                     'xmlattachmentminthreshold',
                     'xmlattachmentpercentthreshold',
+                    'fieldformatautodeploygraceperiod',
+                    'sqlinjectionautodeploygraceperiod',
+                    'crosssitescriptingautodeploygraceperiod',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'profilename',
                 ],
                 'delete_id_attributes': [
-                    
                 ],
             },
-            
 
         }
 
@@ -295,7 +345,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update(self):
         log('ModuleExecutor.update()')
@@ -313,7 +362,6 @@ class ModuleExecutor(object):
             self.module_result['changed'] = True
             if not self.module.check_mode:
                 config.update()
-
 
     def main(self):
         try:
@@ -333,67 +381,42 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         profilename=dict(type='str'),
-        
         starturlminthreshold=dict(type='str'),
-        
         starturlpercentthreshold=dict(type='str'),
-        
         cookieconsistencyminthreshold=dict(type='str'),
-        
         cookieconsistencypercentthreshold=dict(type='str'),
-        
         csrftagminthreshold=dict(type='str'),
-        
         csrftagpercentthreshold=dict(type='str'),
-        
         fieldconsistencyminthreshold=dict(type='str'),
-        
         fieldconsistencypercentthreshold=dict(type='str'),
-        
         crosssitescriptingminthreshold=dict(type='str'),
-        
         crosssitescriptingpercentthreshold=dict(type='str'),
-        
         sqlinjectionminthreshold=dict(type='str'),
-        
         sqlinjectionpercentthreshold=dict(type='str'),
-        
         fieldformatminthreshold=dict(type='str'),
-        
         fieldformatpercentthreshold=dict(type='str'),
-        
         creditcardnumberminthreshold=dict(type='str'),
-        
         creditcardnumberpercentthreshold=dict(type='str'),
-        
         contenttypeminthreshold=dict(type='str'),
-        
         contenttypepercentthreshold=dict(type='str'),
-        
         xmlwsiminthreshold=dict(type='str'),
-        
         xmlwsipercentthreshold=dict(type='str'),
-        
         xmlattachmentminthreshold=dict(type='str'),
-        
         xmlattachmentpercentthreshold=dict(type='str'),
-        
+        fieldformatautodeploygraceperiod=dict(type='str'),
+        sqlinjectionautodeploygraceperiod=dict(type='str'),
+        crosssitescriptingautodeploygraceperiod=dict(type='str'),
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_profile
@@ -24,7 +22,7 @@ description:
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
     - Note that due to NITRO API limitations the module may incorrectly report a changed status when no configuration change has taken place.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -42,15 +40,20 @@ options:
         suboptions:
             mode:
                 description:
-                    - If mode is C(exact): 
+                    - "If mode is C(exact):"
                     - Any bindings existing in the target Citrix ADC that are not defined in the attributes list will be removed.
                     - Any bindings not existing in the target Citrix ADC that are defined in the attributes list will be created.
-                    - Any existing bindings that are defined in the attributes list but have differing attribute values will first be deleted and then recreated with the defined attribute values.
-                    - If mode is C(bind):
+                    - >-
+                        Any existing bindings that are defined in the attributes list but have differing attribute values
+                        will first be deleted and then recreated with the defined attribute values.
+                    - "If mode is C(bind):"
                     - Any bindings in the attributes list that do not exist will be created on the target Citrix ADC.
-                    - Any bindings defined in the attributes list that exist on the target Citrix ADC but have different attribute values will first be deleted and then recreated with the defined attribute values.
+                    - >-
+                        Any bindings defined in the attributes list that exist on the target Citrix ADC
+                        but have different attribute values will first be deleted and then recreated with
+                        the defined attribute values.
                     - Existing bindings that are not on the attributes list remain unaffected.
-                    - If mode is C(unbind):
+                    - "If mode is C(unbind):"
                     - Any bindings defined in the attributes list that also exist on the target Citrix ADC will be removed.
                     - Existing bindings that are not on the attributes list remain unaffected.
                 choices:
@@ -58,11 +61,11 @@ options:
                     - bind
                     - unbind
             attributes:
-                description: 
+                description:
                     - List of the attributes dictionaries for the bindings.
-                    - Valid attribute keys:
-                    #{% for item in binding.doc_list %}- {{ item }}
-                    #{% endfor %}
+                    - "Valid attribute keys:"
+                    #{%- for item in binding.doc_list %}
+                    - {{ item }}#{% endfor %}
 #{% endfor %}
 
 extends_documentation_fragment: netscaler
@@ -125,7 +128,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = '{{ main_nitro_class }}'
@@ -133,8 +136,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            #{% for item in attributes_config_list %}
-            #{% include 'nitro_config_object.template' %}
+            #{%- for item in attributes_config_list %}
+            #{% include 'nitro_config_object.template' -%}
             #{% endfor %}
 
         }
@@ -144,7 +147,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update_or_create(self):
         log('ModuleExecutor.update_or_create()')
@@ -204,7 +206,6 @@ class ModuleExecutor(object):
             if not self.module.check_mode:
                 config.delete(delete_id_attributes=self.attribute_config[self.main_nitro_class]['delete_id_attributes'])
 
-
     def sync_binding_with_data(self, data):
 
         binding_key = data['binding_key']
@@ -236,7 +237,7 @@ class ModuleExecutor(object):
         for bind_values in self.module.params[binding_key]['attributes']:
             all_bind_values = copy.deepcopy(bind_values)
             main_value = self.module.params[data['link_to_main']['main_key']]
-            all_bind_values.update({ data['link_to_main']['bind_key']: main_value })
+            all_bind_values.update({data['link_to_main']['bind_key']: main_value})
             configured_binding = NitroResourceConfig(
                 module=self.module,
                 resource=binding_object,
@@ -246,7 +247,6 @@ class ModuleExecutor(object):
             )
 
             configured_bindings.append(configured_binding)
-
 
         # First get the existing bindings
         configured_already_present = []
@@ -272,7 +272,7 @@ class ModuleExecutor(object):
 
             # Create the bindings objects that we marked in previous loop
             for configured_binding in configured_bindings:
-                dict_values = [ item.values_dict for item in configured_already_present ]
+                dict_values = [item.values_dict for item in configured_already_present]
                 log('dict values %s' % dict_values)
                 log('configured dict values %s' % configured_binding.values_dict)
                 if configured_binding.values_dict in dict_values:
@@ -288,14 +288,14 @@ class ModuleExecutor(object):
             for configured_binding in configured_bindings:
                 create_configured_binding = True
                 for existing_binding_values_dict in existing_binding_values_dicts:
-                    if  configured_binding.values_by_key_identical_to_dict(
+                    if configured_binding.values_by_key_identical_to_dict(
                             values_dict=existing_binding_values_dict,
                             key_list=self.attribute_config[binding_key]['delete_id_attributes']
-                        ):
+                    ):
                         # Delete if not identical to all defined attributes
                         if not configured_binding.values_identical_to_dict(
                             values_dict=existing_binding_values_dict,
-                            ):
+                        ):
                             self.module_result['changed'] = True
                             if not self.module.check_mode:
                                 config = NitroResourceConfig(
@@ -316,24 +316,34 @@ class ModuleExecutor(object):
         elif mode == 'unbind':
             for configured_binding in configured_bindings:
                 for existing_binding_values_dict in existing_binding_values_dicts:
-                    if  configured_binding.values_by_key_identical_to_dict(
+                    if configured_binding.values_by_key_identical_to_dict(
                             values_dict=existing_binding_values_dict,
                             key_list=self.attribute_config[binding_key]['delete_id_attributes']
-                        ):
+                    ):
                         self.module_result['changed'] = True
                         if not self.module.check_mode:
                             configured_binding.delete(delete_id_attributes=self.attribute_config[binding_key]['delete_id_attributes'])
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
+        #{%- for item in bindings %}
+        self.sync_{{ item.binding_key }}()#{% endfor -%}
+
         #{% for item in bindings %}
-        self.sync_{{ item.binding_key }}()
-        #{% endfor %}
 
-
-        #{% for item in bindings %}#{% include 'appfwprofile_binding_methods.template' %}
-        #{% endfor %}
-
+    def sync_{{ item.binding_key }}(self):
+        self.sync_binding_with_data(
+            {
+                'binding_key': '{{ item.binding_key }}',
+                'binding_object': '{{ item.binding_object }}',
+                'get_all_id': '{{ item.get_all_id }}',
+                'link_to_main': {
+                    'main_key': '{{ item.link_to_main.main_key }}',
+                    'bind_key': '{{ item.link_to_main.bind_key }}',
+                }
+            }
+        )
+        #{%- endfor %}
 
     def main(self):
         try:
@@ -353,25 +363,21 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        #{% for item in main_object_doc_list %}
-        #{% include 'single_argument_spec.template' %}
+        #{%- for item in main_object_doc_list %}
+        #{% include 'single_argument_spec.template' -%}
         #{% endfor %}
 
-        #{% for item in bindings %}
+        #{%- for item in bindings %}
         {{ item.binding_key }}=dict(type='dict'),#{% endfor %}
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,
@@ -384,3 +390,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+

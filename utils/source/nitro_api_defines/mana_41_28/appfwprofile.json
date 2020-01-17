@@ -754,7 +754,7 @@
         "description": [
             "Name to the imported JSON Error Object to be set on application firewall profile.",
             "The following requirement applies only to the Citrix ADC CLI:",
-            "If the name includes one or more spaces, enclose the name in double or single quotation marks \\(for example, \"my JSON error object\" or 'my JSON error object'\\).",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my JSON error object\" or 'my JSON error object').",
             "Minimum length =  1"
         ],
         "is_get_id": false,
@@ -1093,9 +1093,9 @@
         "type": "str",
         "description": [
             "Name to assign to the XML Error Object, which the application firewall displays when a user request is blocked.",
-            "Must begin with a letter, number, or the underscore character \\(_\\), and must contain only letters, numbers, and the hyphen \\(-\\), period \\(.\\) pound \\(\\#\\), space \\( \\), at (@), equals \\(=\\), colon \\(:\\), and underscore characters. Cannot be changed after the XML error object is added.",
+            "Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the XML error object is added.",
             "The following requirement applies only to the Citrix ADC CLI:",
-            "If the name includes one or more spaces, enclose the name in double or single quotation marks \\(for example, \"my XML error object\" or 'my XML error object'\\).",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my XML error object\" or 'my XML error object').",
             "Minimum length =  1"
         ],
         "is_get_id": false,
@@ -1183,9 +1183,9 @@
         "type": "str",
         "description": [
             "Name to assign to the HTML Error Object.",
-            "Must begin with a letter, number, or the underscore character \\(_\\), and must contain only letters, numbers, and the hyphen \\(-\\), period \\(.\\) pound \\(\\#\\), space \\( \\), at (@), equals \\(=\\), colon \\(:\\), and underscore characters. Cannot be changed after the HTML error object is added.",
+            "Must begin with a letter, number, or the underscore character (_), and must contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed after the HTML error object is added.",
             "The following requirement applies only to the Citrix ADC CLI:",
-            "If the name includes one or more spaces, enclose the name in double or single quotation marks \\(for example, \"my HTML error object\" or 'my HTML error object'\\).",
+            "If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, \"my HTML error object\" or 'my HTML error object').",
             "Minimum length =  1"
         ],
         "is_get_id": false,

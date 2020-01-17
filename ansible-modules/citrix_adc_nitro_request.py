@@ -21,7 +21,9 @@ description:
     - This is intended to be a short hand for using the uri Ansible module to issue the raw HTTP requests directly.
     - It provides consistent return values and has no other dependencies apart from the base Ansible runtime environment.
     - This module is intended to run either on the Ansible control node or a bastion (jumpserver) with access to the actual Netscaler instance
-    - Note. This module does not check the target Citrix ADC if a configuration change has actually taken place. It will instead always report a I(changed=yes) status.
+    - >-
+        Note. This module does not check the target Citrix ADC if a configuration change has actually taken place.
+        It will instead always report a I(changed=yes) status.
 
 
 version_added: "2.5.0"
@@ -34,16 +36,22 @@ options:
         description:
             - The IP address of the Netscaler or MAS instance where the Nitro API calls will be made.
             - "The port can be specified with the colon C(:). E.g. C(192.168.1.1:555)."
+        aliases:
+            - mas_ip
 
     nitro_user:
         description:
             - The username with which to authenticate to the Netscaler node.
         required: true
+        aliases:
+            - mas_user
 
     nitro_pass:
         description:
             - The password with which to authenticate to the Netscaler node.
         required: true
+        aliases:
+            - mas_pass
 
     nitro_protocol:
         choices: [ 'http', 'https' ]
@@ -59,6 +67,8 @@ options:
     nitro_auth_token:
         description:
             - The authentication token provided by the C(mas_login) operation. It is required when issuing Nitro API calls through a MAS proxy.
+        aliases:
+            - mas_auth_token
 
     resource:
         description:
@@ -123,6 +133,10 @@ options:
     instance_id:
         description:
             - The id of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+    timeout:
+        description:
+            - Timeout for the NITRO HTTP request.
+        default: 45
 '''
 
 EXAMPLES = '''
@@ -249,13 +263,13 @@ nitro_errorcode:
 nitro_message:
     description: A string containing a human readable explanation for the NITRO operation result.
     returned: always
-    type: string
+    type: str
     sample: Success
 
 nitro_severity:
     description: A string describing the severity of the NITRO operation error or NONE.
     returned: always
-    type: string
+    type: str
     sample: NONE
 
 http_response_data:
@@ -267,7 +281,7 @@ http_response_data:
 http_response_body:
     description: A string with the actual HTTP response body content if existent. If there is no HTTP response body it is an empty string.
     returned: always
-    type: string
+    type: str
     sample: "{ errorcode: 0, message: Done, severity: NONE }"
 
 nitro_object:
@@ -287,7 +301,7 @@ nitro_object:
 nitro_auth_token:
     description: The token returned by the C(mas_login) operation when succesful.
     returned: when applicable
-    type: string
+    type: str
     sample: "##E8D7D74DDBD907EE579E8BB8FF4529655F22227C1C82A34BFC93C9539D66"
 '''
 

@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_dns_domain_entry
 short_description: Manage Citrix ADM domain names.
 description: Manage Citrix ADM domain names.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -96,7 +94,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'dns_domain_entry'
@@ -104,30 +102,24 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'dns_domain_entry': {
                 'attributes_list': [
-                    
                     'tenant_id',
                     'name',
                     'id',
                     'description',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
             },
-            
 
         }
 
@@ -144,7 +136,7 @@ class ModuleExecutor(object):
                 use_filter=True,
             )
         except NitroException as e:
-                raise
+            raise
 
         return main_object_exists
 
@@ -159,7 +151,6 @@ class ModuleExecutor(object):
         )
 
         return config
-
 
     def update_or_create(self):
         # Check if main object exists
@@ -182,7 +173,6 @@ class ModuleExecutor(object):
             use_filter=True
         )
         self.module_result.update(dict(dns_domain_entry=config.actual_dict))
-
 
     def delete(self):
         # Check if main object exists
@@ -211,32 +201,27 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        tenant_id=dict(type='str',),
-
-        
-        name=dict(type='str',),
-
-        
-        id=dict(type='str',),
-
-        
-        description=dict(type='str',),
-
-        
+        tenant_id=dict(
+            type='str'
+        ),
+        name=dict(
+            type='str'
+        ),
+        id=dict(
+            type='str'
+        ),
+        description=dict(
+            type='str'
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

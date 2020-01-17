@@ -286,6 +286,11 @@ options:
         description:
             - "Enable logging appflow flow information."
 
+    domainname:
+        type: str
+        description:
+            - Domain name for which to change the time to live (TTL) and/or backup service IP address.
+
     domain_bindings:
         description:
             - >-
@@ -320,6 +325,10 @@ options:
             weight:
                 description:
                     - Weight to assign to the GSLB service.
+    cookie_domain:
+        type: str
+        description:
+            - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.
 
     disabled:
         description:

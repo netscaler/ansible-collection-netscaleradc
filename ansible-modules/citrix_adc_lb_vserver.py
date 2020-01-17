@@ -308,15 +308,6 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(101)"
 
-    resrule:
-        description:
-            - >-
-                Default syntax expression specifying which part of a server's response to use for creating rule based
-                persistence sessions (persistence type RULE). Can be either an expression or the name of a named
-                expression.
-            - "Example:"
-            - "C(HTTP.RES.HEADER(\\"setcookie\\").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE(\\"server1\\"))."
-
     persistmask:
         description:
             - "Persistence mask for IP based persistence types, for IPv4 virtual servers."
@@ -769,14 +760,6 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(5000)"
 
-    persistavpno:
-        description:
-            - "Persist AVP number for Diameter Persistency."
-            - "In case this AVP is not defined in Base RFC 3588 and it is nested inside a Grouped AVP,"
-            - "define a sequence of AVP numbers (max 3) in order of parent to child. So say persist AVP number X"
-            - "is nested inside AVP Y which is nested in Z, then define the list as Z Y X."
-            - "Minimum value = C(1)"
-
     skippersistency:
         choices:
             - 'Bypass'
@@ -786,15 +769,6 @@ options:
             - >-
                 This argument decides the behavior incase the service which is selected from an existing persistence
                 session has reached threshold.
-
-    td:
-        description:
-            - >-
-                Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
-                If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
-                of 0.
-            - "Minimum value = C(0)"
-            - "Maximum value = C(4094)"
 
     authnprofile:
         description:
@@ -902,6 +876,48 @@ options:
                 does not cause the module result to report a changed status.
         type: bool
         default: 'no'
+
+    appfw_policybindings:
+        description: List of appfw policy bindings
+        type: list
+        suboptions:
+            policyname:
+                description:
+                    - "Name of the policy bound to the LB vserver."
+                type: str
+            priority:
+                type: float
+                description:
+                    - "Priority."
+            gotopriorityexpression:
+                type: str
+                description:
+                    - >-
+                        Expression specifying the priority of the next policy which will get evaluated if
+                        the current policy rule evaluates to TRUE.
+            bindpoint:
+                type: str
+                choices:
+                    - REQUEST
+                    - RESPONSE
+                description:
+                    - "The bindpoint to which the policy is bound."
+            invoke:
+                type: bool
+                description:
+                     - "Invoke policies bound to a virtual server or policy label."
+            labeltype:
+                type: str
+                choices:
+                    - reqvserver
+                    - resvserver
+                    - policylabel
+                description:
+                    - "The invocation type."
+            labelname:
+                type: str
+                description:
+                    - "Name of the label invoked."
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -1237,6 +1253,7 @@ def sync_servicegroup_bindings(client, module):
             actual_bindings[key].delete(client, actual_bindings[key])
             configured_bindigns[key].add()
 
+
 def get_actual_appfwpolicybindings(client, module):
     log('Getting actual appfw policy bindings')
     bindings = {}
@@ -1256,6 +1273,7 @@ def get_actual_appfwpolicybindings(client, module):
         bindings[key] = binding
 
     return bindings
+
 
 def get_configured_appfwpolicybindings(client, module):
     log('Getting configured appfw policy bindings')
@@ -1285,7 +1303,7 @@ def get_configured_appfwpolicybindings(client, module):
         )
         bindings[key] = binding_proxy
     return bindings
-    pass
+
 
 def sync_appfw_policybindings(client, module):
     log('Syncing cs appfw policybindings')
@@ -1311,6 +1329,7 @@ def sync_appfw_policybindings(client, module):
             log('Updating binding for appfw policy %s' % key)
             lbvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
             configured_bindings[key].add()
+
 
 def appfw_policybindings_identical(client, module):
     log('Checking policy bindings identical')

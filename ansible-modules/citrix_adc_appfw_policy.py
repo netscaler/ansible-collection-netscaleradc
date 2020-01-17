@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_policy
@@ -23,7 +21,7 @@ description:
     - The module uses the NITRO API to make configuration changes to WAF policies on a target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -33,28 +31,29 @@ options:
 
     name:
         description:
-            - "Name for the policy. "
+            - "Name for the policy."
             - >-
-                Must begin with a letter, number, or the underscore character \(_\), and must contain only letters,
-                and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and
-                characters. Can be changed after the policy is created.
-            - ""
-            - "The following requirement applies only to the NetScaler CLI:"
+                Must begin with a letter, number, or the underscore character (_), and must contain only letters,
+                and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore
+                Can be changed after the policy is created.
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
-                If the name includes one or more spaces, enclose the name in double or single quotation marks \(for
-                "my policy" or 'my policy'\).
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my policy" or 'my policy').
+            - "Minimum length =  1"
         type: str
 
     rule:
         description:
             - >-
-                Name of the NetScaler named rule, or a NetScaler default syntax expression, that the policy uses to
-                whether to filter the connection through the application firewall with the designated profile.
+                Name of the Citrix ADC named rule, or a Citrix ADC expression, that the policy uses to determine
+                to filter the connection through the application firewall with the designated profile.
         type: str
 
     profilename:
         description:
             - "Name of the application firewall profile to use if the policy matches."
+            - "Minimum length =  1"
         type: str
 
     comment:
@@ -113,7 +112,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwpolicy'
@@ -121,30 +120,23 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwpolicy': {
                 'attributes_list': [
-                    
                     'name',
                     'rule',
                     'profilename',
                     'comment',
                     'logaction',
-                    'newname',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'name',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                 ],
             },
-            
 
         }
 
@@ -153,7 +145,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update_or_create(self):
         # Check if main object exists
@@ -184,9 +175,6 @@ class ModuleExecutor(object):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='name')
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -229,32 +217,20 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         name=dict(type='str'),
-        
         rule=dict(type='str'),
-        
         profilename=dict(type='str'),
-        
         comment=dict(type='str'),
-        
         logaction=dict(type='str'),
-        
-        appfwpolicy_csvserver_bindings=dict(type='dict'),
-        denyurl_bindings=dict(type='dict'),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

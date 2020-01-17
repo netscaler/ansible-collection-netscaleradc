@@ -64,7 +64,6 @@ options:
                 sending the next DNS query to resolve the domain name.
             - "Minimum value = C(5)"
             - "Maximum value = C(20939)"
-        default: 5
 
     ipv6address:
         description:
@@ -215,7 +214,8 @@ def main():
         mas_proxy_call=dict(
             default=False,
             type='bool'
-        ),        ipaddress=dict(type='str'),
+        ),
+        ipaddress=dict(type='str'),
         domain=dict(type='str'),
         translationip=dict(type='str'),
         translationmask=dict(type='str'),

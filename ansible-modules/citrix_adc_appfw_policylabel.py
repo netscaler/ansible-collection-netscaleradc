@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_policylabel
@@ -23,7 +21,7 @@ description:
     - The module uses the NITRO API to make configuration changes to WAF policy labels on the target Citrix ADC.
     - The NITRO API reference can be found at https://developer-docs.citrix.com/projects/netscaler-nitro-api/en/latest
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -34,8 +32,13 @@ options:
     labelname:
         description:
             - >-
-                Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is
-                and Label Type is set to Policy Label.
+                Name for the policy label. Must begin with a letter, number, or the underscore character (_), and
+                contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals
+                colon (:), and underscore characters. Can be changed after the policy label is created.
+            - "The following requirement applies only to the Citrix ADC CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                "my policy label" or 'my policy label').
         type: str
 
     policylabeltype:
@@ -96,7 +99,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwpolicylabel'
@@ -104,27 +107,20 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwpolicylabel': {
                 'attributes_list': [
-                    
                     'labelname',
                     'policylabeltype',
-                    'newname',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'labelname',
                 ],
                 'delete_id_attributes': [
-                    
                     'labelname',
                 ],
             },
-            
 
         }
 
@@ -133,7 +129,6 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
-
 
     def update_or_create(self):
         # Check if main object exists
@@ -164,9 +159,6 @@ class ModuleExecutor(object):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='name')
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -209,31 +201,22 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         labelname=dict(type='str'),
-        
         policylabeltype=dict(
             type='str',
             choices=[
                 'http_req',
             ]
         ),
-        
-        appfwpolicy_csvserver_bindings=dict(type='dict'),
-        denyurl_bindings=dict(type='dict'),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_jsoncontenttype
 short_description: Configuration for JSON content type resource.
 description: Configuration for JSON content type resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -30,7 +28,8 @@ options:
 
     jsoncontenttypevalue:
         description:
-            - "Content type to be classified as JSON"
+            - "Content type to be classified as JSON."
+            - "Minimum length =  1"
         type: str
 
     isregex:
@@ -38,7 +37,7 @@ options:
             - 'REGEX'
             - 'NOTREGEX'
         description:
-            - "Is json content type a regular expression?"
+            - "Is json content type a regular expression?."
         type: str
 
 
@@ -82,7 +81,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwjsoncontenttype'
@@ -90,27 +89,20 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwjsoncontenttype': {
                 'attributes_list': [
-                    
                     'jsoncontenttypevalue',
                     'isregex',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'jsoncontenttypevalue',
                 ],
                 'delete_id_attributes': [
-                    
                     'jsoncontenttypevalue',
                 ],
             },
-            
-
         }
 
         self.module_result = dict(
@@ -137,7 +129,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -153,9 +144,6 @@ class ModuleExecutor(object):
                     # PUT operation is not available in NITRO for appfwjsoncontenttype
                     config.delete(delete_id_attributes=self.attibute_config[self.main_nitro_class]['delete_id_attributes'])
                     config.create()
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -184,16 +172,12 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         jsoncontenttypevalue=dict(type='str'),
-        
         isregex=dict(
             type='str',
             choices=[
@@ -201,13 +185,10 @@ def main():
                 'NOTREGEX',
             ]
         ),
-        
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

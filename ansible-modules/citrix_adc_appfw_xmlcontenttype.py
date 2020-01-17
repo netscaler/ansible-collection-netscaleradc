@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_xmlcontenttype
 short_description: Configuration for XML Content type resource.
 description: Configuration for XML Content type resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -30,7 +28,8 @@ options:
 
     xmlcontenttypevalue:
         description:
-            - "Content type to be classified as XML"
+            - "Content type to be classified as XML."
+            - "Minimum length =  1"
         type: str
 
     isregex:
@@ -38,7 +37,7 @@ options:
             - 'REGEX'
             - 'NOTREGEX'
         description:
-            - "Is field name a regular expression?"
+            - "Is field name a regular expression?."
         type: str
 
 
@@ -82,7 +81,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwxmlcontenttype'
@@ -90,26 +89,20 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwxmlcontenttype': {
                 'attributes_list': [
-                    
                     'xmlcontenttypevalue',
                     'isregex',
                 ],
                 'transforms': {
-                    
                 },
                 'get_id_attributes': [
-                    
                     'xmlcontenttypevalue',
                 ],
                 'delete_id_attributes': [
-                    
                     'xmlcontenttypevalue',
                 ],
             },
-            
 
         }
 
@@ -137,7 +130,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -153,9 +145,6 @@ class ModuleExecutor(object):
                     # PUT operation is not available in NITRO for appfwjsoncontenttype
                     config.delete(delete_id_attributes=self.attibute_config[self.main_nitro_class]['delete_id_attributes'])
                     config.create()
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -184,16 +173,12 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         xmlcontenttypevalue=dict(type='str'),
-        
         isregex=dict(
             type='str',
             choices=[
@@ -201,13 +186,10 @@ def main():
                 'NOTREGEX',
             ]
         ),
-        
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

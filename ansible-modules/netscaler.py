@@ -369,8 +369,9 @@ def monkey_patch_nitro_api():
     nitro_util.object_to_string = object_to_string_new
     nitro_util.object_to_string_withoutquotes = object_to_string_withoutquotes_new
 
+
 class NitroAPIFetcher(object):
-    
+
     def __init__(self, module, api_path='nitro/v1/config'):
 
         self._module = module
@@ -378,7 +379,6 @@ class NitroAPIFetcher(object):
         self.r = None
         self.info = None
         self.api_path = api_path
-
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -450,9 +450,18 @@ class NitroAPIFetcher(object):
             result['nitro_message'] = data.get('message')
             result['nitro_severity'] = data.get('severity')
 
-    def _construct_query_string(self, args={}, attrs=[], filter={}, action=None, count=False):
+    def _construct_query_string(self, args=None, attrs=None, filter=None, action=None, count=False):
 
         query_dict = {}
+
+        if args is None:
+            args = {}
+
+        if attrs is None:
+            attrs = []
+
+        if filter is None:
+            filter = {}
 
         # Construct args
         args_val = ','.join(['%s:%s' % (k, quote(codecs.encode(str(args[k])), safe='')) for k in args])
@@ -479,7 +488,6 @@ class NitroAPIFetcher(object):
         count_val = ''
         if count:
             count_val = 'count=yes'
-
 
         # Construct the query string
         # Filter out empty string parameters
@@ -520,7 +528,16 @@ class NitroAPIFetcher(object):
 
         return result
 
-    def get(self, resource, id=None, args={}, attrs=[], filter={}):
+    def get(self, resource, id=None, args=None, attrs=None, filter=None):
+
+        if args is None:
+            args = {}
+
+        if attrs is None:
+            attrs = []
+
+        if filter is None:
+            filter = {}
 
         # Construct basic get url
         url = '%s://%s/%s/%s' % (
@@ -539,7 +556,6 @@ class NitroAPIFetcher(object):
         # Append query params
         url = '%s%s' % (url, query_params)
 
-
         r, info = fetch_url(
             self._module,
             url=url,
@@ -552,8 +568,10 @@ class NitroAPIFetcher(object):
 
         return result
 
-    def delete(self, resource, id=None, args={}):
+    def delete(self, resource, id=None, args=None):
 
+        if args is None:
+            args = {}
         # Deletion by name takes precedence over deletion by attributes
 
         url = '%s://%s/%s/%s' % (
@@ -613,9 +631,17 @@ class NitroAPIFetcher(object):
 
         return result
 
+
 class NitroResourceConfig(object):
 
-    def __init__(self, module, resource,  attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}):
+    def __init__(self, module, resource, attributes_list, attribute_values_dict=None, transforms=None, actual_dict=None):
+        if attribute_values_dict is None:
+            attribute_values_dict = {}
+        if transforms is None:
+            transforms = {}
+        if actual_dict is None:
+            actual_dict = {}
+
         self.resource = resource
         self.module = module
         self.fetcher = NitroAPIFetcher(module)
@@ -651,24 +677,9 @@ class NitroResourceConfig(object):
         # Populate the id values dictionary
         self.id_values_dict = {}
 
-    def __eq__(self, other):
-        raise NotImplementedError
-        log('Running eq')
-        if not isinstance(other, NitroResourceConfig):
-            return False
-
-        return self.values_dict == other.values_dict
-
-    def __ne__(self, other):
-        raise NotImplementedError
-        log('Running ne')
-        return not self.__eq__(other)
-
-    def __contains__(self, item):
-        raise NotImplementedError
-        log('Running contains')
-
-    def _get_actual_instance(self, get_id_attributes=[]):
+    def _get_actual_instance(self, get_id_attributes=None):
+        if get_id_attributes is None:
+            get_id_attributes = []
         # Try to get the item using the get_id_attributes
         if get_id_attributes == []:
             raise Exception('Cannot get NITRO object without get_id_attributes')
@@ -682,8 +693,10 @@ class NitroResourceConfig(object):
         if len(defined_ids) == 0:
             raise Exception('Cannot get resource without some get_id attribute defined')
         else:
-            args = { id: self.values_dict[id] for id in defined_ids }
-            result = self.fetcher.get(self.resource,args=args)
+            args = {}
+            for id in defined_ids:
+                args[id] = self.values_dict[id]
+            result = self.fetcher.get(self.resource, args=args)
 
         log('result retrieved %s' % result)
 
@@ -738,13 +751,9 @@ class NitroResourceConfig(object):
         else:
             raise Exception('Cannot handle retval from _get_actual_instance')
 
-
     def exists(self, get_id_attributes):
         self.get_actual(get_id_attributes)
         return self.actual_dict != {}
-
-    def binding_exists():
-        pass
 
     def diff_list(self):
         log('diff_list')
@@ -787,7 +796,7 @@ class NitroResourceConfig(object):
 
     def values_by_key_identical_to_dict(self, values_dict, key_list):
         id_values_dict = {}
-        for key in key_list: 
+        for key in key_list:
             if key in self.values_dict:
                 id_values_dict[key] = self.values_dict[key]
 
@@ -802,7 +811,6 @@ class NitroResourceConfig(object):
 
         # Fallthrough to success
         return True
-
 
     def values_subgroup_of_actual(self):
         log('values_subgroup_of_actual')
@@ -832,7 +840,7 @@ class NitroResourceConfig(object):
             self.resource: self.values_dict
         }
 
-        import_object_resource = "{}{}".format(self.resource, "?action=Import")
+        import_object_resource = "{0}{1}".format(self.resource, "?action=Import")
         result = self.fetcher.post(post_data=post_data, resource=import_object_resource)
         log('result of post: %s' % result)
         if result['http_response_data']['status'] == 200:
@@ -858,10 +866,10 @@ class NitroResourceConfig(object):
 
         update_object_resource_dict = {'name': self.values_dict['name']}
         post_data = {
-            self.resource: update_object_resource_dict 
+            self.resource: update_object_resource_dict
         }
 
-        update_object_resource = "{}{}".format(self.resource, "?action=update")
+        update_object_resource = "{0}{1}".format(self.resource, "?action=update")
         result = self.fetcher.post(post_data=post_data, resource=update_object_resource)
         log('post data: %s' % post_data)
         log('result of post: %s' % result)
@@ -881,9 +889,6 @@ class NitroResourceConfig(object):
             )
         else:
             raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
-
-
-
 
     def create(self):
         if self.values_dict == {}:
@@ -913,7 +918,6 @@ class NitroResourceConfig(object):
         else:
             raise Exception('Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status'])
 
-
     def update(self, id_attribute=None):
         if self.values_dict == {}:
             raise Exception('Cannot update NITRO object without any attribute values')
@@ -927,7 +931,7 @@ class NitroResourceConfig(object):
             id = self.values_dict.get(id_attribute)
             if id is None:
                 raise Exception('id attribute does not have a value for update')
-    
+
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource=self.resource, id=id)
 
@@ -949,8 +953,6 @@ class NitroResourceConfig(object):
         args = id_values_dict
         id = None
 
-
-
         result = self.fetcher.delete(resource=self.resource, id=id, args=args)
         log('delete result %s' % result)
 
@@ -961,9 +963,16 @@ class NitroResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
+
 class MASResourceConfig(object):
 
-    def __init__(self, module, resource,  attributes_list, attribute_values_dict={}, transforms={}, actual_dict={}, api_path='nitro/v1/config'):
+    def __init__(self, module, resource, attributes_list, attribute_values_dict=None, transforms=None, actual_dict=None, api_path='nitro/v1/config'):
+        if attribute_values_dict is None:
+            attribute_values_dict = {}
+        if transforms is None:
+            transforms = {}
+        if actual_dict is None:
+            actual_dict = {}
         self.resource = resource
         self.module = module
         self.fetcher = NitroAPIFetcher(module, api_path=api_path)
@@ -1016,8 +1025,10 @@ class MASResourceConfig(object):
         elif use_filter:
             result = self.fetcher.get(self.resource, filter=defined_id_attributes_dict)
         else:
-            args = { id: self.values_dict[id] for id in defined_ids }
-            result = self.fetcher.get(self.resource,args=defined_id_attributes_dict)
+            args = {}
+            for id in defined_ids:
+                args[id] = self.values_dict[id]
+            result = self.fetcher.get(self.resource, args=defined_id_attributes_dict)
 
         log('result retrieved %s' % result)
 
@@ -1044,20 +1055,28 @@ class MASResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
-    def exists(self, get_id_attributes, success_codes = [None, 0], use_filter=True):
+    def exists(self, get_id_attributes, success_codes=None, use_filter=True):
+        if success_codes is None:
+            success_codes = [None, 0]
         self.get_actual_instance(get_id_attributes, success_codes, use_filter)
         return self.actual_dict != {}
 
-    def values_subset_of_actual(self, skip_attributes=[]):
+    def values_subset_of_actual(self, skip_attributes=None):
+        if skip_attributes is None:
+            skip_attributes = []
         log('values_subset_of_actual')
         return self.values_subset_of(self.actual_dict, skip_attributes)
 
-    def values_subset_of(self, other, skip_attributes=[]):
+    def values_subset_of(self, other, skip_attributes=None):
+        if skip_attributes is None:
+            skip_attributes = []
         log('values_subset_of')
         diff_list = self.diff_list(other, skip_attributes)
         return diff_list == []
 
-    def diff_list(self, other, skip_attributes=[]):
+    def diff_list(self, other, skip_attributes=None):
+        if skip_attributes is None:
+            skip_attributes = []
         log('diff_list start')
         diff_list = []
         # We compare only the attributes defined in the values_dict
@@ -1085,7 +1104,11 @@ class MASResourceConfig(object):
         log('diff_list %s' % diff_list)
         return diff_list
 
-    def create(self, success_codes=[None, 0]):
+    def create(self, success_codes=None):
+
+        if success_codes is None:
+            success_codes = [None, 0]
+
         if self.values_dict == {}:
             raise Exception('Cannot create NITRO object without any attribute values')
 
@@ -1102,7 +1125,11 @@ class MASResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
-    def update(self, success_codes=[None, 0], id_attribute=None):
+    def update(self, success_codes=None, id_attribute=None):
+
+        if success_codes is None:
+            success_codes = [None, 0]
+
         if self.values_dict == {}:
             raise Exception('Cannot update NITRO object without any attribute values')
 
@@ -1118,7 +1145,7 @@ class MASResourceConfig(object):
             # Not having the declared id attribute in the input variables on the other hand is in fact an error
             if id is None:
                 raise Exception('id attribute does not have a value for update')
-    
+
         log('request put data: %s' % put_data)
         result = self.fetcher.put(put_data=put_data, resource=self.resource, id=id)
 
@@ -1132,7 +1159,11 @@ class MASResourceConfig(object):
                 severity=result.get('nitro_severity'),
             )
 
-    def delete(self, delete_id_attributes, success_codes=[None, 0]):
+    def delete(self, delete_id_attributes, success_codes=None):
+
+        if success_codes is None:
+            success_codes = [None, 0]
+
         id_values_dict = {}
         for id in delete_id_attributes:
             if id in self.actual_dict:
@@ -1150,7 +1181,6 @@ class MASResourceConfig(object):
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
-
 
 
 class NitroException(Exception):

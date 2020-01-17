@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_mpsgroup
 short_description: Manage Citrix ADM user groups.
 description: Manage Citrix ADM user groups.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -161,7 +159,7 @@ EXAMPLES = '''
     enable_session_timeout: true
     assign_all_devices: false
     role: admin
-    roles: 
+    roles:
       - admin
     application_names_without_regex: []
     application_names: []
@@ -195,7 +193,7 @@ from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, 
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'mpsgroup'
@@ -203,10 +201,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            
             'mpsgroup': {
                 'attributes_list': [
-                    
                     'authscope_props',
                     'allow_application_only',
                     'session_timeout',
@@ -228,24 +224,20 @@ class ModuleExecutor(object):
                     'application_names_with_regex',
                 ],
                 'transforms': {
-                    
                     'enable_session_timeout': lambda v: "true" if v else "false",
                     'allow_application_only': lambda v: "true" if v else "false",
                     'assign_all_apps': lambda v: "true" if v else "false",
                     'assign_all_devices': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
                 'delete_id_attributes': [
-                    
                     'name',
                     'id',
                 ],
             },
-            
 
         }
 
@@ -262,7 +254,7 @@ class ModuleExecutor(object):
                 use_filter=True,
             )
         except NitroException as e:
-                raise
+            raise
 
         return main_object_exists
 
@@ -277,7 +269,6 @@ class ModuleExecutor(object):
         )
 
         return config
-
 
     def update_or_create(self):
         # Check if main object exists
@@ -300,7 +291,6 @@ class ModuleExecutor(object):
             use_filter=True
         )
         self.module_result.update(dict(mpsgroup=config.actual_dict))
-
 
     def delete(self):
         # Check if main object exists
@@ -329,23 +319,20 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
-        authscope_props=dict(type='list',),
-
-        
-        allow_application_only=dict(type='bool',),
-
-        
-        session_timeout=dict(type='str',),
-
-        
+        authscope_props=dict(
+            type='list'
+        ),
+        allow_application_only=dict(
+            type='bool'
+        ),
+        session_timeout=dict(
+            type='str'
+        ),
         permission=dict(
             type='str',
             choices=[
@@ -353,32 +340,30 @@ def main():
                 'read-only',
             ],
         ),
-
-        
-        name=dict(type='str',),
-
-        
-        session_timeout_unit=dict(type='str',),
-
-        
-        description=dict(type='str',),
-
-        
-        assign_all_apps=dict(type='bool',),
-
-        
-        enable_session_timeout=dict(type='bool',),
-
-        
-        tenant_id=dict(type='str',),
-
-        
-        assign_all_devices=dict(type='bool',),
-
-        
-        id=dict(type='str',),
-
-        
+        name=dict(
+            type='str'
+        ),
+        session_timeout_unit=dict(
+            type='str'
+        ),
+        description=dict(
+            type='str'
+        ),
+        assign_all_apps=dict(
+            type='bool'
+        ),
+        enable_session_timeout=dict(
+            type='bool'
+        ),
+        tenant_id=dict(
+            type='str'
+        ),
+        assign_all_devices=dict(
+            type='bool'
+        ),
+        id=dict(
+            type='str'
+        ),
         role=dict(
             type='str',
             choices=[
@@ -386,32 +371,28 @@ def main():
                 'nonadmin',
             ],
         ),
-
-        
-        roles=dict(type='list',),
-
-        
-        application_names_without_regex=dict(type='list',),
-
-        
-        standalone_instances_id=dict(type='list',),
-
-        
-        users=dict(type='list',),
-
-        
-        application_names=dict(type='list',),
-
-        
-        application_names_with_regex=dict(type='list',),
-
-        
+        roles=dict(
+            type='list'
+        ),
+        application_names_without_regex=dict(
+            type='list'
+        ),
+        standalone_instances_id=dict(
+            type='list'
+        ),
+        users=dict(
+            type='list'
+        ),
+        application_names=dict(
+            type='list'
+        ),
+        application_names_with_regex=dict(
+            type='list'
+        ),
     )
-
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

@@ -7,7 +7,6 @@
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
-
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
@@ -76,11 +75,15 @@ options:
             - "IP address of the content switching virtual server."
             - "Minimum length = 1"
 
-    targettype:
+    dnsrecordtype:
         choices:
-            - 'GSLB'
+            - 'A'
+            - 'AAAA'
+            - 'CNAME'
+            - 'NAPTR'
         description:
-            - "Virtual server target type."
+            - "."
+            - "Default value: NSGSLB_IPV4"
 
     ippattern:
         description:
@@ -246,16 +249,6 @@ options:
             - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
                 DOWN. Do not enable this option for applications that must complete their transactions.
-
-    backupvserver:
-        description:
-            - >-
-                Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or
-                underscore C(_) character, and must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.),
-                space C( ), colon C(:), at sign C(@), equal sign C(=), and hyphen C(-) characters. Can be changed after the
-                backup virtual server is created. You can assign a different backup virtual server or rename the
-                existing virtual server.
-            - "Minimum length = 1"
 
     disableprimaryondown:
         choices:
@@ -469,37 +462,6 @@ options:
             - "Minimum length = 1"
             - "Maximum length = 127"
 
-    domainname:
-        description:
-            - "Domain name for which to change the time to live (TTL) and/or backup service IP address."
-            - "Minimum length = 1"
-
-    ttl:
-        description:
-            - "."
-            - "Minimum value = C(1)"
-
-    backupip:
-        description:
-            - "."
-            - "Minimum length = 1"
-
-    cookiedomain:
-        description:
-            - "."
-            - "Minimum length = 1"
-
-    cookietimeout:
-        description:
-            - "."
-            - "Minimum value = C(0)"
-            - "Maximum value = C(1440)"
-
-    sitedomainttl:
-        description:
-            - "."
-            - "Minimum value = C(1)"
-
     lbvserver:
         description:
             - The default Load Balancing virtual server.
@@ -522,6 +484,107 @@ options:
                 does not cause the module result to report a changed status.
         type: bool
         default: 'no'
+
+    appfw_policybindings:
+        type: list
+        description:
+            - List of appfw policy bindings
+        suboptions:
+            policyname:
+                type: str
+                description:
+                    - Policies bound to this vserver.
+            priority:
+                type: float
+                description:
+                    - Priority for the policy.
+            gotopriorityexpression:
+                type: str
+                description:
+                    - >-
+                        Expression specifying the priority of the next policy which will get evaluated
+                        if the current policy rule evaluates to TRUE.
+            invoke:
+                type: bool
+                description:
+                    - Invoke flag.
+            labeltype:
+                type: str
+                description:
+                    - The invocation type.
+            labelname:
+                type: str
+                description:
+                    - Name of the label invoked.
+            targetlbvserver:
+                type: str
+                description:
+                    - >-
+                        Name of the Load Balancing virtual server to which the content is switched,
+                        if policy rule is evaluated to be TRUE. 
+                    - Use this parameter only in case of Content Switching policy bind operations to a CS vserver.
+            bindpoint:
+                type: str
+                choices:
+                    - REQUEST
+                    - RESPONSE
+                    - ICA_REQUEST
+                    - OTHERTCP_REQUEST
+                description:
+                    - For a rewrite policy, the bind point to which to bind the policy.
+                    - >-
+                        Note: This parameter applies only to rewrite policies,
+                        because content switching policies are evaluated only at request time.
+    policybindings:
+        type: list
+        description:
+            - List of cspolicy bindings.
+        suboptions:
+            policyname:
+                type: str
+                description: Policies bound to this vserver.
+            targetlbvserver:
+                type: str
+                description:
+                    - Target vserver name.
+            priority:
+                type: float
+                description:
+                    - Priority for the policy.
+            gotopriorityexpression:
+                type: str
+                description:
+                    - >-
+                        Expression specifying the priority of the next policy which will get evaluated
+                        if the current policy rule evaluates to TRUE.
+            bindpoint:
+                type: str
+                choices:
+                    - REQUEST
+                    - RESPONSE
+                    - ICA_REQUEST
+                    - OTHERTCP_REQUEST
+                description:
+                    - The bindpoint to which the policy is bound.
+            invoke:
+                type: bool
+                description:
+                    - Invoke flag.
+            labeltype:
+                type: str
+                choices:
+                    - reqvserver
+                    - resvserver
+                    - policylabel
+                description:
+                    - The invocation type.
+            labelname:
+                type: str
+                description:
+                    - Name of the label invoked.
+
+
+
 
 extends_documentation_fragment: netscaler
 requirements:
@@ -780,6 +843,7 @@ def sync_cs_policybindings(client, module):
             csvserver_cspolicy_binding.delete(client, actual_bindings[key])
             configured_bindings[key].add()
 
+
 def get_actual_appfwpolicybindings(client, module):
     log('Getting actual appfw policy bindings')
     bindings = {}
@@ -799,6 +863,7 @@ def get_actual_appfwpolicybindings(client, module):
         bindings[key] = binding
 
     return bindings
+
 
 def get_configured_appfwpolicybindings(client, module):
     log('Getting configured appfw policy bindings')
@@ -832,7 +897,7 @@ def get_configured_appfwpolicybindings(client, module):
         )
         bindings[key] = binding_proxy
     return bindings
-    pass
+
 
 def sync_appfw_policybindings(client, module):
     log('Syncing cs appfw policybindings')
@@ -858,6 +923,7 @@ def sync_appfw_policybindings(client, module):
             log('Updating binding for appfw policy %s' % key)
             csvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
             configured_bindings[key].add()
+
 
 def appfw_policybindings_identical(client, module):
     log('Checking policy bindings identical')

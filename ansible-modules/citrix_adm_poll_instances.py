@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_poll_instances
@@ -21,7 +19,7 @@ short_description: Force the poll instances network function on the target Citri
 description:
     - Force the poll instances network function on the target Citrix ADM.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -68,9 +66,7 @@ from ansible.module_utils.urls import fetch_url
 from ansible.module_utils.network.netscaler.netscaler import MASResourceConfig, NitroException, netscaler_common_arguments, log, loglines
 
 
-
 def poll_instances(module, module_result):
-
 
     log('poll_instances')
 
@@ -96,10 +92,10 @@ def poll_instances(module, module_result):
     )
 
     poll_payload = {
-        "params":{
-            "action":"do_poll"
+        'params': {
+            'action': 'do_poll'
         },
-        "ns_emon_poll_policy":{},
+        'ns_emon_poll_policy': {},
     }
 
     r, info = fetch_url(
@@ -110,7 +106,6 @@ def poll_instances(module, module_result):
         method='POST',
     )
 
-    #log('r: %s' % r.read())
     log('info: %s' % info)
 
     # Anything but a 200 is an error
@@ -120,13 +115,12 @@ def poll_instances(module, module_result):
         msg = 'Poll instances failure. HTTP status %s, msg: %s' % (status, http_msg)
         module.fail_json(msg=msg, **module_result)
 
-def main():
 
+def main():
 
     argument_spec = dict()
 
     argument_spec.update(netscaler_common_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

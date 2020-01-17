@@ -20,7 +20,7 @@ module: FIXME
 short_description: FIXME
 description: FIXME
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 options:
 #{% for item in main_object_doc_list %}

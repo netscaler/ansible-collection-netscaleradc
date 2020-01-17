@@ -6,20 +6,23 @@ options:
         description:
             - The ip address of the netscaler appliance where the nitro API calls will be made.
             - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
-        aliases: mas_ip
+        aliases:
+            - mas_ip
         required: True
 
     nitro_user:
         description:
             - The username with which to authenticate to the netscaler node.
         required: False
-        aliases: mas_user
+        aliases:
+            - mas_user
 
     nitro_pass:
         description:
             - The password with which to authenticate to the netscaler node.
         required: False
-        aliases: mas_pass
+        aliases:
+            - mas_pass
 
     nitro_protocol:
         choices: [ 'http', 'https' ]
@@ -64,7 +67,8 @@ options:
     nitro_auth_token:
         description:
             - The authentication token provided by a login operation.
-        aliases: mas_auth_token
+        aliases:
+            - mas_auth_token
         version_added: "2.6.0"
 
     instance_ip:

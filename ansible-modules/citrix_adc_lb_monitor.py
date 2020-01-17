@@ -417,17 +417,6 @@ options:
                 however, the destination port is the port number that is included in the HTTP request sent to the
                 dispatcher. Does not apply to monitors of type C(PING).
 
-    state:
-        choices:
-            - 'enabled'
-            - 'disabled'
-        description:
-            - >-
-                State of the monitor. The C(disabled) setting disables not only the monitor being configured, but all
-                monitors of the same type, until the parameter is set to C(enabled). If the monitor is bound to a
-                service, the state of the monitor is not taken into account when the state of the service is
-                determined.
-
     reverse:
         description:
             - >-
@@ -595,12 +584,6 @@ options:
         description:
             - "SNMP version to be used for C(SNMP) monitors."
 
-    metrictable:
-        description:
-            - "Metric table to which to bind metrics."
-            - "Minimum length = 1"
-            - "Maximum length = 99"
-
     application:
         description:
             - >-
@@ -749,12 +732,6 @@ options:
             - "Minimum value = C(0)"
             - "Maximum value = C(4294967295)"
 
-    kcdaccount:
-        description:
-            - "KCD Account used by C(MSSQL) monitor."
-            - "Minimum length = 1"
-            - "Maximum length = 32"
-
     storedb:
         choices:
             - 'enabled'
@@ -852,6 +829,7 @@ def lbmonitor_get(client, module):
         return True, lbmonitor_inst
     except nitro_exception:
         return False, None
+
 
 def lbmonitor_identical(lbmonitor_inst, lbmonitor_proxy):
     log('Checking if monitor is identical')

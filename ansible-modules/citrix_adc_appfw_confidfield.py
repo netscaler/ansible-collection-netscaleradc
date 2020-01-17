@@ -12,15 +12,13 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_appfw_confidfield
 short_description: Configuration for configured confidential form fields resource.
 description: Configuration for configured confidential form fields resource.
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -31,11 +29,13 @@ options:
     fieldname:
         description:
             - "Name of the form field to designate as confidential."
+            - "Minimum length =  1"
         type: str
 
     url:
         description:
             - "URL of the web page that contains the web form."
+            - "Minimum length =  1"
         type: str
 
     isregex:
@@ -56,8 +56,8 @@ options:
 
     disabled:
         description:
-            - When set to C(true) the server state will be set to C(disabled).
-            - When set to C(false) the server state will be set to C(enabled).
+            - When set to C(true) the state will be set to C(disabled).
+            - When set to C(false) the state will be set to C(enabled).
         type: bool
         default: false
 
@@ -103,7 +103,7 @@ from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig
 
 
 class ModuleExecutor(object):
-    
+
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'appfwconfidfield'
@@ -111,10 +111,8 @@ class ModuleExecutor(object):
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attibute_config = {
-            
             'appfwconfidfield': {
                 'attributes_list': [
-                    
                     'fieldname',
                     'url',
                     'isregex',
@@ -122,22 +120,17 @@ class ModuleExecutor(object):
                     'state',
                 ],
                 'transforms': {
-                    
                     'state': lambda v: v.upper(),
                 },
                 'get_id_attributes': [
-                    
                     'fieldname',
                     'url',
                 ],
                 'delete_id_attributes': [
-                    
                     'fieldname',
                     'url',
                 ],
             },
-            
-
         }
 
         self.module_result = dict(
@@ -182,7 +175,6 @@ class ModuleExecutor(object):
 
         return config
 
-
     def update_or_create(self):
         # Check if main object exists
         config = self.get_main_config()
@@ -196,9 +188,6 @@ class ModuleExecutor(object):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='fieldname')
-
-
-    
 
     def delete(self):
         # Check if main object exists
@@ -227,18 +216,13 @@ class ModuleExecutor(object):
             self.module.fail_json(msg=msg, **self.module_result)
 
 
-
 def main():
-
 
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        
         fieldname=dict(type='str'),
-        
         url=dict(type='str'),
-        
         isregex=dict(
             type='str',
             choices=[
@@ -246,9 +230,7 @@ def main():
                 'NOTREGEX',
             ]
         ),
-        
         comment=dict(type='str'),
-        
         disabled=dict(
             type='bool',
             default=False,
@@ -256,10 +238,8 @@ def main():
 
     )
 
-
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-
 
     module = AnsibleModule(
         argument_spec=argument_spec,

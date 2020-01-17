@@ -12,8 +12,6 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
-
 DOCUMENTATION = '''
 ---
 module: citrix_adm_login
@@ -25,7 +23,7 @@ description:
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
 
-version_added: "2.8.0"
+version_added: "2.9"
 
 extends_documentation_fragment: netscaler
 '''
