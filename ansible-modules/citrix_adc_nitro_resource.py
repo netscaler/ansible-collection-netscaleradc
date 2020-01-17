@@ -100,7 +100,7 @@ msg:
 
 import copy
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
+from ansible.module_utils.network.citrix_adc.citrix_adc import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
 
 
 class ModuleExecutor(object):
