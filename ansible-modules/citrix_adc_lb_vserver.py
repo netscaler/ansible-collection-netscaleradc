@@ -1303,7 +1303,6 @@ def get_configured_appfwpolicybindings(client, module):
         )
         bindings[key] = binding_proxy
     return bindings
-    pass
 
 
 def sync_appfw_policybindings(client, module):
