@@ -28,6 +28,9 @@
 # USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
+
 import json
 import re
 import sys
@@ -310,6 +313,7 @@ def complete_missing_attributes(actual, attrs_list, fill_value=None):
 
 def log(msg):
     loglines.append(msg)
+
 
 def get_ns_hardware(client):
     from nssrc.com.citrix.netscaler.nitro.resource.config.ns.nshardware import nshardware
