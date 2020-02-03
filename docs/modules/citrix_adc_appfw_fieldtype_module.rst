@@ -5,7 +5,7 @@
 citrix_adc_appfw_fieldtype - Configuration for application firewall form field type resource.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -33,6 +33,15 @@ Parameters
         *(str)*
       -
       - Comment describing the type of field that this field type is intended to match.
+    * - disabled
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - When set to ``true`` the server state will be set to ``disabled``.
+
+        When set to ``false`` the server state will be set to ``enabled``.
     * - instance_ip
 
         *(added in 2.6.0)*
@@ -59,11 +68,11 @@ Parameters
 
         Must begin with a letter, number, or the underscore character (_), and must contain only letters, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore Cannot be changed after the field type is added.
 
-        
-
-        The following requirement applies only to the NetScaler CLI:
+        The following requirement applies only to the Citrix ADC CLI:
 
         If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my field type" or 'my field type').
+
+        Minimum length =  1
     * - nitro_auth_token
 
         *(added in 2.6.0)*
@@ -90,7 +99,7 @@ Parameters
 
         *(bool)*
       -
-      - will not show internal field types added as part of FieldFormat learn rules deployment
+      - will not show internal field types added as part of FieldFormat learn rules deployment.
     * - nsip
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
@@ -101,11 +110,17 @@ Parameters
         *(str)*
       -
       - Positive integer specifying the priority of the field type. A lower number specifies a higher Field types are checked in the order of their priority numbers.
+
+        Minimum value = ``0``
+
+        Maximum value = ``64000``
     * - regex
 
         *(str)*
       -
       - PCRE - format regular expression defining the characters and length allowed for this field type.
+
+        Minimum length =  1
     * - save_config
 
         *(bool)*

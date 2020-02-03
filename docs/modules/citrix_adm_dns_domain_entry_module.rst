@@ -5,7 +5,7 @@
 citrix_adm_dns_domain_entry - Manage Citrix ADM domain names.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

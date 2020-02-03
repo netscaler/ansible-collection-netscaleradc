@@ -41,6 +41,11 @@ Parameters
           - enabled
           - disabled
       - Apply AppFlow logging to the virtual server.
+    * - appfw_policybindings
+
+        *(list)*
+      -
+      - List of appfw policy bindings
     * - authentication
 
         *(bool)*
@@ -469,17 +474,6 @@ Parameters
           - 10G
           - 11G
       - Oracle server version.
-    * - persistavpno
-      -
-      - Persist AVP number for Diameter Persistency.
-
-        In case this AVP is not defined in Base RFC 3588 and it is nested inside a Grouped AVP,
-
-        define a sequence of AVP numbers (max 3) in order of parent to child. So say persist AVP number X
-
-        is nested inside AVP Y which is nested in Z, then define the list as Z Y X.
-
-        Minimum value = ``1``
     * - persistencebackup
       - Choices:
 
@@ -595,13 +589,6 @@ Parameters
         WARNING! Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.
 
         Minimum length = 1
-    * - resrule
-      -
-      - Default syntax expression specifying which part of a server's response to use for creating rule based persistence sessions (persistence type RULE). Can be either an expression or the name of a named expression.
-
-        Example:
-
-        C(HTTP.RES.HEADER("setcookie").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE("server1")).
     * - rhistate
       - Choices:
 
@@ -801,13 +788,6 @@ Parameters
         Minimum length = 1
 
         Maximum length = 127
-    * - td
-      -
-      - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
-
-        Minimum value = ``0``
-
-        Maximum value = ``4094``
     * - timeout
       -
       - Time period for which a persistence session is in effect.

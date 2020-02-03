@@ -5,7 +5,7 @@
 citrix_adc_cs_action - Manage content switching actions
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 2.10
 
 .. contents::
    :local:
@@ -36,6 +36,8 @@ Parameters
       - Choices/Defaults
       - Comment
     * - comment
+
+        *(str)*
       -
       - Comments associated with this cs action.
     * - instance_ip
@@ -57,6 +59,8 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - name
+
+        *(str)*
       -
       - Name for the content switching action. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space `` ``, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters. Can be changed after the content switching action is created.
     * - nitro_auth_token
@@ -106,12 +110,13 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - targetlbvserver
+
+        *(str)*
       -
       - Name of the load balancing virtual server to which the content is switched.
-    * - targetvserver
-      -
-      - Name of the VPN virtual server to which the content is switched.
     * - targetvserverexpr
+
+        *(str)*
       -
       - Information about this content switching action.
     * - validate_certs
@@ -154,7 +159,7 @@ Return Values
       - Description
     * - diff
 
-        *(dictionary)*
+        *(dict)*
       - failure
       - List of differences between the actual configured object and the configuration specified in the module
 
@@ -172,7 +177,7 @@ Return Values
         ['message 1', 'message 2']
     * - msg
 
-        *(string)*
+        *(str)*
       - failure
       - Message detailing the failure reason
 

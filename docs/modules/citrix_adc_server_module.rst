@@ -62,9 +62,7 @@ Parameters
 
         Minimum length = 1
     * - domainresolveretry
-      - Default:
-
-        *5*
+      -
       - Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.
 
         Minimum value = ``5``

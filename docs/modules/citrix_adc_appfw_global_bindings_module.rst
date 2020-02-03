@@ -5,7 +5,7 @@
 citrix_adc_appfw_global_bindings - Define global bindings for AppFW
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

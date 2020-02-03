@@ -278,12 +278,6 @@ Parameters
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
-    * - pathmonitor
-      -
-      - Path monitoring for clustering.
-    * - pathmonitorindv
-      -
-      - Individual Path monitoring decisions.
     * - port
       -
       - Port number of the service.
@@ -311,9 +305,6 @@ Parameters
       - If true the module will save the configuration on the netscaler node if it makes any changes.
 
         The module will not save the configuration on the netscaler node if it made no changes.
-    * - serverid
-      -
-      - The identifier for the service. This is used when the persistency type is set to Custom Server ID.
     * - servername
       -
       - Name of the server that hosts the service.
@@ -390,13 +381,6 @@ Parameters
         Minimum length = 1
 
         Maximum length = 127
-    * - td
-      -
-      - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
-
-        Minimum value = 0
-
-        Maximum value = 4094
     * - useproxyport
       -
       - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.

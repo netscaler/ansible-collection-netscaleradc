@@ -5,7 +5,7 @@
 citrix_adc_appfw_confidfield - Configuration for configured confidential form fields resource.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -39,14 +39,16 @@ Parameters
       - Default:
 
         *False*
-      - When set to ``true`` the server state will be set to ``disabled``.
+      - When set to ``true`` the state will be set to ``disabled``.
 
-        When set to ``false`` the server state will be set to ``enabled``.
+        When set to ``false`` the state will be set to ``enabled``.
     * - fieldname
 
         *(str)*
       -
       - Name of the form field to designate as confidential.
+
+        Minimum length =  1
     * - instance_ip
 
         *(added in 2.6.0)*
@@ -128,6 +130,8 @@ Parameters
         *(str)*
       -
       - URL of the web page that contains the web form.
+
+        Minimum length =  1
     * - validate_certs
       - Default:
 

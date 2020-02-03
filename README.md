@@ -1,6 +1,6 @@
 # Citrix ADC & Citrix ADM Ansible modules
 
-This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix NetScaler](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix NetScaler are supported.
+This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix ADC](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix ADC are supported.
 
 The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be availble with Ansible automatically.
 
@@ -58,10 +58,10 @@ Currently the following modules are implemented
 * citrix\_adc\_appfw\_htmlerrorpage - Configuration for configured confidential form fields resource
 * citrix\_adc\_appfw\_jsoncontenttype - Configuration for JSON content type resource
 * citrix\_adc\_appfw\_learningsettings - Configuration for learning settings resource
-* citrix\_adc\_appfw\_policy - Manage Netscaler Web Application Firewall policies
-* citrix\_adc\_appfw\_policylabel - Manage Netscaler Web Application Firewall policy labels
-* citrix\_adc\_appfw\_profile - Manage Netscaler Web Application Firewall profiles
-* citrix\_adc\_appfw\_settings - Manage Netscaler Web Application Firewall settings
+* citrix\_adc\_appfw\_policy - Manage Citrix ADC Web Application Firewall policies
+* citrix\_adc\_appfw\_policylabel - Manage Citrix ADC Web Application Firewall policy labels
+* citrix\_adc\_appfw\_profile - Manage Citrix ADC Web Application Firewall profiles
+* citrix\_adc\_appfw\_settings - Manage Citrix ADC Web Application Firewall settings
 * citrix\_adc\_appfw\_signatures - Configuration for configured confidential form fields resource
 * citrix\_adc\_appfw\_wsdl - Configuration for configured confidential form fields resource
 * citrix\_adc\_appfw\_xmlcontenttype - Configuration for XML Content type resource
@@ -70,17 +70,17 @@ Currently the following modules are implemented
 * citrix\_adc\_cs\_action - Manage content switching actions
 * citrix\_adc\_cs\_policy - Manage content switching policy
 * citrix\_adc\_cs\_vserver - Manage content switching vserver
-* citrix\_adc\_gslb\_service - Manage gslb service entities in Netscaler
-* citrix\_adc\_gslb\_site - Manage gslb site entities in Netscaler
-* citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Netscaler
+* citrix\_adc\_gslb\_service - Manage gslb service entities in Citrix ADC
+* citrix\_adc\_gslb\_site - Manage gslb site entities in Citrix ADC
+* citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Citrix ADC
 * citrix\_adc\_lb\_monitor - Manage load balancing monitors
 * citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
-* citrix\_adc\_nitro\_request - Issue Nitro API requests to a Netscaler instance
+* citrix\_adc\_nitro\_request - Issue Nitro API requests to a Citrix ADC instance
 * citrix\_adc\_nitro\_resource - Create, update, delete resources on Citrix ADC
-* citrix\_adc\_save\_config - Save Netscaler configuration
+* citrix\_adc\_save\_config - Save Citrix ADC configuration
 * citrix\_adc\_server - Manage server configuration
-* citrix\_adc\_service - Manage service configuration in Netscaler
-* citrix\_adc\_servicegroup - Manage service group configuration in Netscaler
+* citrix\_adc\_service - Manage service configuration in Citrix ADC
+* citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
 * citrix\_adc\_ssl\_certkey - Manage ssl cerificate keys
 * citrix\_adm\_application - Manage applications on Citrix ADM
 * citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
@@ -106,7 +106,7 @@ lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvs
 
 ## Pre-requisites
 
-* NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc or from the "Downloads" tab of the Netscaler GUI)
+* NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc or from the "Downloads" tab of the Citrix ADC GUI)
 * Ansible       
 * Python 2.7 or 3.x
 
@@ -117,12 +117,12 @@ Use of a python virtualenv during installation is recommended.
 
 * Activate the virtualenv (`source bin/activate`)
 * Install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
-* Install the netscaler modules using ```python install.py```
+* Install the citrix ADC modules using ```python install.py```
 
 ### Global install
 * Install Ansible (`sudo pip install ansible`)
 * Install NetScaler SDK (`pip install deps/nitro-python-1.0_kamet.tar.gz`)
-* Install NetScaler modules (`sudo python install.py`). It tries to find the ansible installation directory and then copies the module files to the appropriate places.
+* Install Citrix ADC modules (`sudo python install.py`). It tries to find the ansible installation directory and then copies the module files to the appropriate places.
 
 If the ansible installation is on a dirctory that requires root access, the install script should be run with root privileges.
 If the isntallation script fails and you know where ansible is located on your system you can do a manual installation.
@@ -130,14 +130,14 @@ Just copy the contents of the ansible-modules directory to the extras module dir
 
 ## Usage
 
-All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix NetScaler appliance.
+All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix ADC appliance.
 To do this you need to use the `local_action` or the `delegate_to` options in your playbooks.
 
 There are sample playbooks in the `samples` directory.
 
 Detailed documentation for each module can be found in the htmldoc directory.
 
-Documentation regarding the Citrix NetScaler appliance configuration in general can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
+Documentation regarding the Citrix ADC appliance configuration in general can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
 
 ### Citrix ADM proxied calls
 
@@ -146,9 +146,9 @@ There is also the ability to proxy module NITRO calls through a Citrix ADM to a 
 In order to do that you need a NITRO Python SDK that has the MAS proxy calls capability and also follow these 2 steps.
 
 1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
-2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which netscaler to proxy the calls.
+2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
 
-A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/netscaler-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
+A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
 
 ## Citrix ADC connection plugin
 
@@ -252,7 +252,7 @@ Examples of the modules' usage are also contained in the EXAMPLES section of the
 
 * `utils.` Contains utilities mainly used for the authoring of the modules and are not relevant to the end user.
 
-* `documentation_fragments.` Contains the Citrix NetScaler specific documentation files for ansible.
+* `documentation_fragments.` Contains the Citrix ADC specific documentation files for ansible.
 
 * `run_tests.py`. Top level script to run all the tests.
 

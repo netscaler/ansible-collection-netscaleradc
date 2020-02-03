@@ -206,13 +206,6 @@ Parameters
         *(bool)*
       -
       - Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.
-    * - kcdaccount
-      -
-      - KCD Account used by ``MSSQL`` monitor.
-
-        Minimum length = 1
-
-        Maximum length = 32
     * - lasversion
       -
       - Version number of the Citrix Advanced Access Control Logon Agent. Required by the ``CITRIX-AAC-LAS`` monitor.
@@ -243,13 +236,6 @@ Parameters
         Minimum value = ``0``
 
         Maximum value = ``255``
-    * - metrictable
-      -
-      - Metric table to which to bind metrics.
-
-        Minimum length = 1
-
-        Maximum length = 99
     * - monitorname
       -
       - Name for the monitor. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore, hash ``#``, period ``.``, space `` ``, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters.

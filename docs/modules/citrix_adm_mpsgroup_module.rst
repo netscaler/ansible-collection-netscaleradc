@@ -5,7 +5,7 @@
 citrix_adm_mpsgroup - Manage Citrix ADM user groups.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -243,7 +243,7 @@ Examples
         enable_session_timeout: true
         assign_all_devices: false
         role: admin
-        roles: 
+        roles:
           - admin
         application_names_without_regex: []
         application_names: []

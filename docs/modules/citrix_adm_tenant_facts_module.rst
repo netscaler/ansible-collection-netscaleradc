@@ -5,7 +5,7 @@
 citrix_adm_tenant_facts - Retrieve facts about Citrix ADM tenants.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

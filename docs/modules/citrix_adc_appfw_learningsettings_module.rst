@@ -5,7 +5,7 @@
 citrix_adc_appfw_learningsettings - Configuration for learning settings resource.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -33,71 +33,131 @@ Parameters
         *(str)*
       -
       - Minimum threshold to learn Content Type information.
+
+        Minimum value = ``1``
     * - contenttypepercentthreshold
 
         *(str)*
       -
       - Minimum threshold in percent to learn Content Type information.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - cookieconsistencyminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn
+
+        Minimum value = ``1``
     * - cookieconsistencypercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular cookie pattern for learning engine to learn that cookie.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - creditcardnumberminthreshold
 
         *(str)*
       -
       - Minimum threshold to learn Credit Card information.
+
+        Minimum value = ``1``
     * - creditcardnumberpercentthreshold
 
         *(str)*
       -
       - Minimum threshold in percent to learn Credit Card information.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
+    * - crosssitescriptingautodeploygraceperiod
+
+        *(str)*
+      -
+      - The number of minutes after the threshold hit alert the learned rule will be deployed.
+
+        Minimum value = ``5``
+
+        Maximum value = ``43200``
     * - crosssitescriptingminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn HTML scripting patterns.
+
+        Minimum value = ``1``
     * - crosssitescriptingpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular cross-site pattern for the learning engine to learn that cross-site scripting pattern.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - csrftagminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn request forgery (CSRF) tags.
+
+        Minimum value = ``1``
     * - csrftagpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular CSRF tag for the engine to learn that CSRF tag.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - fieldconsistencyminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn field information.
+
+        Minimum value = ``1``
     * - fieldconsistencypercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular field consistency for the learning engine to learn that field consistency pattern.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
+    * - fieldformatautodeploygraceperiod
+
+        *(str)*
+      -
+      - The number of minutes after the threshold hit alert the learned rule will be deployed.
+
+        Minimum value = ``5``
+
+        Maximum value = ``43200``
     * - fieldformatminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn field
+
+        Minimum value = ``1``
     * - fieldformatpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular web form field for the learning engine to recommend a field format for that form field.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - instance_ip
 
         *(added in 2.6.0)*
@@ -148,6 +208,8 @@ Parameters
         *(str)*
       -
       - Name of the profile.
+
+        Minimum length =  1
     * - save_config
 
         *(bool)*
@@ -157,26 +219,47 @@ Parameters
       - If true the module will save the configuration on the netscaler node if it makes any changes.
 
         The module will not save the configuration on the netscaler node if it made no changes.
+    * - sqlinjectionautodeploygraceperiod
+
+        *(str)*
+      -
+      - The number of minutes after the threshold hit alert the learned rule will be deployed.
+
+        Minimum value = ``5``
+
+        Maximum value = ``43200``
     * - sqlinjectionminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn HTML injection patterns.
+
+        Minimum value = ``1``
     * - sqlinjectionpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular HTML SQL injection for the learning engine to learn that HTML SQL injection pattern.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - starturlminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn start
+
+        Minimum value = ``1``
     * - starturlpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular start URL pattern the learning engine to learn that start URL.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - state
       - Choices:
 
@@ -197,21 +280,33 @@ Parameters
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn XML patterns.
+
+        Minimum value = ``1``
     * - xmlattachmentpercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular XML attachment for the learning engine to learn that XML attachment pattern.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
     * - xmlwsiminthreshold
 
         *(str)*
       -
       - Minimum number of application firewall sessions that the learning engine must observe to learn web interoperability (WSI) information.
+
+        Minimum value = ``1``
     * - xmlwsipercentthreshold
 
         *(str)*
       -
       - Minimum percentage of application firewall sessions that must contain a particular pattern for the engine to learn a web services interoperability (WSI) pattern.
+
+        Minimum value = ``0``
+
+        Maximum value = ``100``
 
 
 

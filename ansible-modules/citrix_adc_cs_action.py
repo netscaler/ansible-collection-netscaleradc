@@ -20,13 +20,14 @@ description:
     - Manage content switching actions
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
 
-version_added: "2.4.0"
+version_added: "2.10"
 
 author: George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
     name:
+        type: str
         description:
             - >-
                 Name for the content switching action. Must begin with an ASCII alphanumeric or underscore C(_)
@@ -35,18 +36,21 @@ options:
                 switching action is created.
 
     targetlbvserver:
+        type: str
         description:
             - "Name of the load balancing virtual server to which the content is switched."
 
     targetvserverexpr:
+        type: str
         description:
             - "Information about this content switching action."
 
     comment:
+        type: str
         description:
             - "Comments associated with this cs action."
 
-extends_documentation_fragment: netscaler
+extends_documentation_fragment: citrix_adc
 requirements:
     - nitro python sdk
 '''
@@ -98,7 +102,7 @@ except ImportError as e:
     PYTHON_SDK_IMPORTED = False
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.netscaler.netscaler import (
+from ansible.module_utils.network.citrix_adc.citrix_adc import (
     ConfigProxy,
     get_nitro_client,
     netscaler_common_arguments,

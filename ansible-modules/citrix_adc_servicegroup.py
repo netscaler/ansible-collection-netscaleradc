@@ -651,9 +651,9 @@ EXAMPLES = '''
     monitor_bindings:
         mode: exact
         attributes:
-          - monitorname: monitor-1
+          - monitor_name: monitor-1
             weight: 50
-          - monitorname: monitor-2
+          - monitor_name: monitor-2
             weight: 50
 '''
 
@@ -673,7 +673,7 @@ msg:
 
 import copy
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.netscaler.netscaler import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
+from ansible.module_utils.network.citrix_adc.citrix_adc import NitroResourceConfig, NitroException, netscaler_common_arguments, log, loglines, NitroAPIFetcher
 
 
 class ModuleExecutor(object):

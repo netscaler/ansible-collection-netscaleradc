@@ -5,7 +5,7 @@
 citrix_adm_rba_role - Manage Citrix ADM rba roles.
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -164,7 +164,7 @@ Examples
         name: test_role
         description: some description
         tenant_id: 0ea1d85a-06b8-4225-9fc8-5a7065fdd590
-        policies: 
+        policies:
           - test_policy
 
 

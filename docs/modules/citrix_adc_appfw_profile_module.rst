@@ -5,7 +5,7 @@
 citrix_adc_appfw_profile - Manage Citrix ADC Web Application Firewall profiles.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -54,6 +54,10 @@ Parameters
         *(str)*
       -
       - Source for tar archive.
+
+        Minimum length =  1
+
+        Maximum length =  31
     * - bufferoverflowaction
 
         *(list)*
@@ -61,7 +65,6 @@ Parameters
 
           - none
           - block
-          - learn
           - log
           - stats
       - One or more Buffer Overflow actions. Available settings function as follows:
@@ -74,24 +77,34 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -bufferOverflowAction none".
     * - bufferoverflowmaxcookielength
 
         *(str)*
       -
       - Maximum length, in characters, for cookies sent to your protected web sites. Requests with longer are blocked.
+
+        Minimum value = ``0``
+
+        Maximum value = ``65535``
     * - bufferoverflowmaxheaderlength
 
         *(str)*
       -
       - Maximum length, in characters, for HTTP headers in requests sent to your protected web sites. with longer headers are blocked.
+
+        Minimum value = ``0``
+
+        Maximum value = ``65535``
     * - bufferoverflowmaxurllength
 
         *(str)*
       -
       - Maximum length, in characters, for URLs on your protected web sites. Requests with longer URLs are
+
+        Minimum value = ``0``
+
+        Maximum value = ``65535``
     * - canonicalizehtmlresponse
 
         *(bool)*
@@ -132,8 +145,6 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction" followed by the to be enabled. To turn off all actions, type "set appfw profile -contentTypeaction none".
     * - cookieconsistency_bindings
       -
@@ -159,8 +170,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction" followed the actions to be enabled. To turn off all actions, type "set appfw profile -cookieConsistencyAction
     * - cookieencryption
@@ -192,14 +201,14 @@ Parameters
 
         * None - Do not proxy cookies.
 
-        * Session Only - Proxy session cookies by using the NetScaler session ID, but do not proxy permanent
+        * Session Only - Proxy session cookies by using the Citrix ADC session ID, but do not proxy permanent
     * - cookietransforms
 
         *(bool)*
       -
-      - Perform the specified type of cookie transformation. 
+      - Perform the specified type of cookie transformation.
 
-        Available settings function as follows: 
+        Available settings function as follows:
 
         * Encryption - Encrypt cookies.
 
@@ -241,14 +250,16 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -creditCardAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -creditCardAction none".
     * - creditcardmaxallowed
 
         *(str)*
       -
       - This parameter value is used by the block action. It represents the maximum number of credit card that can appear on a web page served by your protected web sites. Pages that contain more credit card are blocked.
+
+        Minimum value = ``0``
+
+        Maximum value = ``255``
     * - creditcardnumber_bindings
       -
       - creditcardnumber bindings
@@ -256,7 +267,7 @@ Parameters
 
         *(bool)*
       -
-      - Mask any credit card number detected in a response by replacing each digit, except the digits in the group, with the letter "X."
+      - Mask any credit card number detected in a response by replacing each digit, except the digits in the group, with the letter "X.".
     * - crosssitescripting_bindings
       -
       - crosssitescripting bindings
@@ -281,8 +292,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction" followed the actions to be enabled. To turn off all actions, type "set appfw profile -crossSiteScriptingAction
     * - crosssitescriptingcheckcompleteurls
@@ -322,8 +331,6 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -CSRFTagAction none".
     * - customsettings
 
@@ -331,7 +338,9 @@ Parameters
       -
       - Object name for custom settings.
 
-        This check is applicable to Profile Type: HTML, XML. 
+        This check is applicable to Profile Type: HTML, XML. .
+
+        Minimum length =  1
     * - defaultcharset
 
         *(str)*
@@ -352,12 +361,20 @@ Parameters
 
         * utf-8 (Unicode)
 
-        * euc-kr (Korean)
+        * euc-kr (Korean).
+
+        Minimum length =  1
+
+        Maximum length =  31
     * - defaultfieldformatmaxlength
 
         *(str)*
       -
       - Maximum length, in characters, for data entered into a field that is assigned the default field type.
+
+        Minimum value = ``1``
+
+        Maximum value = ``2147483647``
     * - defaultfieldformatminlength
 
         *(str)*
@@ -365,11 +382,17 @@ Parameters
       - Minimum length, in characters, for data entered into a field that is assigned the default field type.
 
         To disable the minimum and maximum length settings and allow data of any length to be entered into field, set this parameter to zero (0).
+
+        Minimum value = ``0``
+
+        Maximum value = ``2147483647``
     * - defaultfieldformattype
 
         *(str)*
       -
       - Designate a default field type to be applied to web form fields that do not have a field type assigned to them.
+
+        Minimum length =  1
     * - defaults
 
         *(str)*
@@ -378,8 +401,6 @@ Parameters
           - basic
           - advanced
       - Default configuration to apply to the profile. Basic defaults are intended for standard content that little further configuration, such as static web site content. Advanced defaults are intended for content that requires significant specialized configuration, such as heavily scripted or dynamic
-
-        
 
         CLI users: When adding an application firewall profile, you can set either the defaults or the type, not both. To set both options, create the profile by using the add appfw profile command, and then the set appfw profile command to configure the other option.
     * - denyurl_bindings
@@ -392,7 +413,6 @@ Parameters
 
           - none
           - block
-          - learn
           - log
           - stats
       - One or more Deny URL actions. Available settings function as follows:
@@ -405,11 +425,7 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         NOTE: The Deny URL check takes precedence over the Start URL check. If you enable blocking for the URL check, the application firewall blocks any URL that is explicitly blocked by a Deny URL, even if same URL would otherwise be allowed by the Start URL check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -denyURLaction" followed by the to be enabled. To turn off all actions, type "set appfw profile -denyURLaction none".
     * - dosecurecreditcardlogging
@@ -417,6 +433,26 @@ Parameters
         *(bool)*
       -
       - Setting this option logs credit card numbers in the response when the match is found.
+    * - dynamiclearning
+
+        *(list)*
+      - Choices:
+
+          - none
+          - SQLInjection
+          - CrossSiteScripting
+          - fieldFormat
+      - One or more security checks. Available options are as follows:
+
+        * SQLInjection - Enable dynamic learning for SQLInjection security check.
+
+        * CrossSiteScripting - Enable dynamic learning for CrossSiteScripting security check.
+
+        * fieldFormat - Enable dynamic learning for  fieldFormat security check.
+
+        * None - Disable security checks for all security checks.
+
+        CLI users: To enable dynamic learning on one or more security checks, type "set appfw profile followed by the security checks to be enabled. To turn off dynamic learning on all security checks, "set appfw profile -dynamicLearning none".
     * - enableformtagging
 
         *(bool)*
@@ -427,6 +463,8 @@ Parameters
         *(str)*
       -
       - URL that application firewall uses as the Error URL.
+
+        Minimum length =  1
     * - excludefileuploadfromchecks
 
         *(bool)*
@@ -465,8 +503,6 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction
     * - fieldformat_bindings
       -
@@ -493,27 +529,49 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -fieldFormatAction none".
     * - fileuploadmaxnum
 
         *(str)*
       -
       - Maximum allowed number of file uploads per form-submission request. The maximum setting (65535) an unlimited number of uploads.
+
+        Minimum value = ``0``
+
+        Maximum value = ``65535``
+    * - fileuploadtypesaction
+
+        *(list)*
+      - Choices:
+
+          - none
+          - block
+          - log
+          - stats
+      - One or more file upload types actions. Available settings function as follows:
+
+        * Block - Block connections that violate this security check.
+
+        * Log - Log violations of this security check.
+
+        * Stats - Generate statistics for this security check.
+
+        * None - Disable all actions for this security check.
+
+        CLI users: To enable one or more actions, type "set appfw profile -fileUploadTypeAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -fileUploadTypeAction none".
     * - htmlerrorobject
 
         *(str)*
       -
-      - Name to assign to the HTML Error Object. 
+      - Name to assign to the HTML Error Object.
 
-        Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and characters. Cannot be changed after the HTML error object is added.
+        Must begin with a letter, number, or the underscore character (_), and must contain only letters, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore Cannot be changed after the HTML error object is added.
 
-        
+        The following requirement applies only to the Citrix ADC CLI:
 
-        The following requirement applies only to the NetScaler CLI:
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my HTML error object" or 'my HTML error object').
 
-        If the name includes one or more spaces, enclose the name in double or single quotation marks \(for "my HTML error object" or 'my HTML error object'\).
+        Minimum length =  1
     * - inspectcontenttypes
 
         *(list)*
@@ -523,15 +581,13 @@ Parameters
           - application/x-www-form-urlencoded
           - multipart/form-data
           - text/x-gwt-rpc
-      - One or more InspectContentType lists. 
+      - One or more InspectContentType lists.
 
         * application/x-www-form-urlencoded
 
         * multipart/form-data
 
         * text/x-gwt-rpc
-
-        
 
         CLI users: To enable, type "set appfw profile -InspectContentTypes" followed by the content types to inspected.
     * - instance_ip
@@ -556,6 +612,95 @@ Parameters
         * asp_mode - Microsoft ASP format.
 
         * secure_mode - Secure format.
+    * - jsondosaction
+
+        *(list)*
+      - Choices:
+
+          - none
+          - block
+          - log
+          - stats
+      - One or more JSON Denial-of-Service (JsonDoS) actions. Available settings function as follows:
+
+        * Block - Block connections that violate this security check.
+
+        * Log - Log violations of this security check.
+
+        * Stats - Generate statistics for this security check.
+
+        * None - Disable all actions for this security check.
+
+        CLI users: To enable one or more actions, type "set appfw profile -JSONDoSAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -JSONDoSAction none".
+    * - jsonerrorobject
+
+        *(str)*
+      -
+      - Name to the imported JSON Error Object to be set on application firewall profile.
+
+        The following requirement applies only to the Citrix ADC CLI:
+
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my JSON error object" or 'my JSON error object').
+
+        Minimum length =  1
+    * - jsonsqlinjectionaction
+
+        *(list)*
+      - Choices:
+
+          - none
+          - block
+          - log
+          - stats
+      - One or more JSON SQL Injection actions. Available settings function as follows:
+
+        * Block - Block connections that violate this security check.
+
+        * Log - Log violations of this security check.
+
+        * Stats - Generate statistics for this security check.
+
+        * None - Disable all actions for this security check.
+
+        CLI users: To enable one or more actions, type "set appfw profile -JSONSQLInjectionAction" followed the actions to be enabled. To turn off all actions, type "set appfw profile -JSONSQLInjectionAction
+    * - jsonsqlinjectiontype
+
+        *(str)*
+      - Choices:
+
+          - SQLSplChar
+          - SQLKeyword
+          - SQLSplCharORKeyword
+          - SQLSplCharANDKeyword
+      - Available SQL injection types.
+
+        -SQLSplChar              : Checks for SQL Special Chars
+
+        -SQLKeyword              : Checks for SQL Keywords
+
+        -SQLSplCharANDKeyword    : Checks for both and blocks if both are found
+
+        -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found.
+    * - jsonxssaction
+
+        *(list)*
+      - Choices:
+
+          - none
+          - block
+          - log
+          - stats
+      - One or more JSON Cross-Site Scripting actions. Available settings function as follows:
+
+        * Block - Block connections that violate this security check.
+
+        * Log - Log violations of this security check.
+
+        * Stats - Generate statistics for this security check.
+
+        * None - Disable all actions for this security check.
+
+        CLI users: To enable one or more actions, type "set appfw profile -JSONXssAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -JSONXssAction none".
     * - logeverypolicyhit
 
         *(bool)*
@@ -589,8 +734,6 @@ Parameters
 
         * KeepLast - Keep only last header when multiple headers are present.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -multipleHeaderAction" followed by actions to be enabled.
     * - name
 
@@ -598,11 +741,11 @@ Parameters
       -
       - Name for the profile. Must begin with a letter, number, or the underscore character (_), and must only letters, numbers, and the hyphen (-), period (.), pound (#), space ( ), at (@), equals (=), (:), and underscore (_) characters. Cannot be changed after the profile is added.
 
-        
-
-        The following requirement applies only to the NetScaler CLI:
+        The following requirement applies only to the Citrix ADC CLI:
 
         If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my profile" or 'my profile').
+
+        Minimum length =  1
     * - nitro_auth_token
 
         *(added in 2.6.0)*
@@ -636,21 +779,26 @@ Parameters
       -
       - Optimize handle of HTTP partial requests i.e. those with range headers.
 
-        Available settings are as follows: 
+        Available settings are as follows:
 
         * ON - Partial requests by the client result in partial requests to the backend server in most cases.
 
-        * OFF - Partial requests by the client are changed to full requests to the backend server
+        * OFF - Partial requests by the client are changed to full requests to the backend server.
     * - percentdecoderecursively
 
         *(bool)*
       -
-      - Configure whether the application firewall should use percentage recursive decoding
+      - Configure whether the application firewall should use percentage recursive decoding.
     * - postbodylimit
 
         *(str)*
       -
       - Maximum allowed HTTP post body size, in bytes.
+    * - postbodylimitsignature
+
+        *(str)*
+      -
+      - Maximum allowed HTTP post body size for signature inspection for location HTTP_POST_BODY in the in bytes.
     * - refererheadercheck
 
         *(str)*
@@ -660,7 +808,7 @@ Parameters
           - if_present
           - AlwaysExceptStartURLs
           - AlwaysExceptFirstRequest
-      - Enable validation of Referer headers. 
+      - Enable validation of Referer headers.
 
         Referer validation ensures that a web form that a user sends to your web site originally came from web site, not an outside attacker.
 
@@ -669,16 +817,31 @@ Parameters
 
         *(str)*
       -
-      - Default Content-Type header for requests. 
+      - Default Content-Type header for requests.
 
         A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
+
+        Minimum length =  1
+
+        Maximum length =  255
     * - responsecontenttype
 
         *(str)*
       -
-      - Default Content-Type header for responses. 
+      - Default Content-Type header for responses.
 
         A Content-Type header can contain 0-255 letters, numbers, and the hyphen (-) and underscore (_)
+
+        Minimum length =  1
+
+        Maximum length =  255
+    * - rfcprofile
+
+        *(str)*
+      -
+      - Object name of the rfc profile.
+
+        Minimum length =  1
     * - safeobject_bindings
       -
       - safeobject bindings
@@ -695,7 +858,7 @@ Parameters
 
         *(bool)*
       -
-      - Allow ';' as a form field separator in URL queries and POST form bodies. 
+      - Allow ';' as a form field separator in URL queries and POST form bodies. .
     * - sessionlessfieldconsistency
 
         *(str)*
@@ -711,14 +874,16 @@ Parameters
       -
       - Enable session less URL Closure Checks.
 
-        This check is applicable to Profile Type: HTML. 
+        This check is applicable to Profile Type: HTML. .
     * - signatures
 
         *(str)*
       -
       - Object name for signatures.
 
-        This check is applicable to Profile Type: HTML, XML. 
+        This check is applicable to Profile Type: HTML, XML. .
+
+        Minimum length =  1
     * - sqlinjection_bindings
       -
       - sqlinjection bindings
@@ -743,8 +908,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -SQLInjectionAction none".
     * - sqlinjectionchecksqlwildchars
@@ -772,7 +935,7 @@ Parameters
 
         * Check all - Check all content.
 
-        * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+        * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment.
 
         * Nested - Exempt content that is part of a nested (Microsoft-style) comment.
 
@@ -793,7 +956,7 @@ Parameters
           - SQLKeyword
           - SQLSplCharORKeyword
           - SQLSplCharANDKeyword
-      - Available SQL injection types. 
+      - Available SQL injection types.
 
         -SQLSplChar              : Checks for SQL Special Chars
 
@@ -801,7 +964,7 @@ Parameters
 
         -SQLSplCharANDKeyword    : Checks for both and blocks if both are found
 
-        -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found
+        -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found.
     * - starturl_bindings
       -
       - starturl bindings
@@ -826,8 +989,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -startURLaction" followed by the to be enabled. To turn off all actions, type "set appfw profile -startURLaction none".
     * - starturlclosure
@@ -856,7 +1017,7 @@ Parameters
       -
       - Strip HTML comments.
 
-        This check is applicable to Profile Type: HTML. 
+        This check is applicable to Profile Type: HTML. .
     * - striphtmlcomments
 
         *(str)*
@@ -878,7 +1039,7 @@ Parameters
 
         *(bool)*
       -
-      - Toggle  the state of trace
+      - Toggle  the state of trace.
     * - trustedlearningclients_bindings
       -
       - trustedlearningclients bindings
@@ -889,13 +1050,22 @@ Parameters
 
           - HTML
           - XML
+          - JSON
       - Application firewall profile type, which controls which security checks and settings are applied to that is filtered with the profile. Available settings function as follows:
 
         * HTML - HTML-based web sites.
 
-        * XML - XML-based web sites and services.
+        * XML -  XML-based web sites and services.
+
+        * JSON - JSON-based web sites and services.
 
         * HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such as ATOM feeds, blogs, and feeds.
+
+        * HTML JSON  - Sites that contain both HTML and JSON content.
+
+        * XML JSON   - Sites that contain both XML and JSON content.
+
+        * HTML XML JSON   - Sites that contain HTML, XML and JSON content.
     * - urldecoderequestcookies
 
         *(bool)*
@@ -911,6 +1081,15 @@ Parameters
 
         *yes*
       - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+    * - verboseloglevel
+
+        *(str)*
+      - Choices:
+
+          - pattern
+          - patternPayload
+          - patternPayloadHeader
+      - Detailed Logging Verbose Log Level.
     * - xmlattachmentaction
 
         *(list)*
@@ -932,8 +1111,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".
     * - xmlattachmenturl_bindings
@@ -961,8 +1138,6 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".
     * - xmldosurl_bindings
       -
@@ -973,13 +1148,13 @@ Parameters
       -
       - Name to assign to the XML Error Object, which the application firewall displays when a user request blocked.
 
-        Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and characters. Cannot be changed after the XML error object is added.
+        Must begin with a letter, number, or the underscore character (_), and must contain only letters, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore Cannot be changed after the XML error object is added.
 
-        
+        The following requirement applies only to the Citrix ADC CLI:
 
-        The following requirement applies only to the NetScaler CLI:
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my XML error object" or 'my XML error object').
 
-        If the name includes one or more spaces, enclose the name in double or single quotation marks \(for "my XML error object" or 'my XML error object'\).
+        Minimum length =  1
     * - xmlformataction
 
         *(list)*
@@ -987,7 +1162,6 @@ Parameters
 
           - none
           - block
-          - learn
           - log
           - stats
       - One or more XML Format actions. Available settings function as follows:
@@ -999,8 +1173,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLFormatAction none".
     * - xmlsoapfaultaction
@@ -1025,8 +1197,6 @@ Parameters
 
         * Remove - Remove all violations for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".
     * - xmlsqlinjection_bindings
       -
@@ -1038,7 +1208,6 @@ Parameters
 
           - none
           - block
-          - learn
           - log
           - stats
       - One or more XML SQL Injection actions. Available settings function as follows:
@@ -1050,8 +1219,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLSQLInjectionAction none".
     * - xmlsqlinjectionchecksqlwildchars
@@ -1077,7 +1244,7 @@ Parameters
 
         * Check all - Check all content.
 
-        * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. 
+        * ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment.
 
         * Nested - Exempt content that is part of a nested (Microsoft-style) comment.
 
@@ -1099,7 +1266,7 @@ Parameters
 
         -SQLSplCharANDKeyword    : Checks for both and blocks if both are found
 
-        -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found
+        -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found.
     * - xmlvalidationaction
 
         *(list)*
@@ -1107,7 +1274,6 @@ Parameters
 
           - none
           - block
-          - learn
           - log
           - stats
       - One or more XML Validation actions. Available settings function as follows:
@@ -1118,9 +1284,7 @@ Parameters
 
         * Stats - Generate statistics for this security check.
 
-        * None - Disable all actions for this security check. 
-
-        
+        * None - Disable all actions for this security check.
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".
     * - xmlvalidationurl_bindings
@@ -1148,8 +1312,6 @@ Parameters
 
         * None - Disable all actions for this security check.
 
-        
-
         CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".
     * - xmlwsiurl_bindings
       -
@@ -1176,8 +1338,6 @@ Parameters
         * Stats - Generate statistics for this security check.
 
         * None - Disable all actions for this security check.
-
-        
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLXSSAction none".
 
