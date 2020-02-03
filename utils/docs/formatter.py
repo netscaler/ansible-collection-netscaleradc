@@ -361,7 +361,7 @@ def extract_documentation(module):
 
 
 def process_module(module_file):
-    if module_file.startswith('__') or module_file == 'netscaler.py':
+    if module_file.startswith('__') or module_file == 'netscaler.py' or module_file == 'citrix_adc.py':
         print('Skipping processing of file %s' % module_file)
         return
     print('processing module file %s' % module_file)
