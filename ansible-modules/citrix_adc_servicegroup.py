@@ -651,9 +651,9 @@ EXAMPLES = '''
     monitor_bindings:
         mode: exact
         attributes:
-          - monitorname: monitor-1
+          - monitor_name: monitor-1
             weight: 50
-          - monitorname: monitor-2
+          - monitor_name: monitor-2
             weight: 50
 '''
 
