@@ -212,7 +212,7 @@ Return Values
       - Description
     * - diff
 
-        *(dictionary)*
+        *(dict)*
       - failure
       - List of differences between the actual configured object and the configuration specified in the module
 
@@ -230,7 +230,7 @@ Return Values
         ['message 1', 'message 2']
     * - msg
 
-        *(string)*
+        *(str)*
       - failure
       - Message detailing the failure reason
 

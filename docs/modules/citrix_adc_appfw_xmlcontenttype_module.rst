@@ -5,7 +5,7 @@
 citrix_adc_appfw_xmlcontenttype - Configuration for XML Content type resource.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -42,7 +42,7 @@ Parameters
 
           - REGEX
           - NOTREGEX
-      - Is field name a regular expression?
+      - Is field name a regular expression?.
     * - mas_proxy_call
 
         *(bool)*
@@ -109,7 +109,9 @@ Parameters
 
         *(str)*
       -
-      - Content type to be classified as XML
+      - Content type to be classified as XML.
+
+        Minimum length =  1
 
 
 

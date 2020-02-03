@@ -41,6 +41,70 @@ Parameters
           - enabled
           - disabled
       - Enable logging appflow flow information.
+    * - appfw_policybindings
+
+        *(list)*
+      -
+      - List of appfw policy bindings
+
+        .. list-table::
+            :widths: 10 10 60
+            :header-rows: 1
+
+            * - Suboption
+              - Choices/Defaults
+              - Comment
+
+            * - bindpoint
+
+                *(str)*
+              - Choices:
+
+                  - REQUEST
+                  - RESPONSE
+                  - ICA_REQUEST
+                  - OTHERTCP_REQUEST
+              - For a rewrite policy, the bind point to which to bind the policy.
+
+                Note: This parameter applies only to rewrite policies, because content switching policies are evaluated only at request time.
+            * - gotopriorityexpression
+
+                *(str)*
+              -
+              - Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
+            * - invoke
+
+                *(bool)*
+              -
+              - Invoke flag.
+            * - labelname
+
+                *(str)*
+              -
+              - Name of the label invoked.
+            * - labeltype
+
+                *(str)*
+              -
+              - The invocation type.
+            * - policyname
+
+                *(str)*
+              -
+              - Policies bound to this vserver.
+            * - priority
+
+                *(float)*
+              -
+              - Priority for the policy.
+            * - targetlbvserver
+
+                *(str)*
+              -
+              - Name of the Load Balancing virtual server to which the content is switched, if policy rule is evaluated to be TRUE. 
+
+                Use this parameter only in case of Content Switching policy bind operations to a CS vserver.
+
     * - authentication
 
         *(bool)*
@@ -68,16 +132,6 @@ Parameters
         Minimum length = 1
 
         Maximum length = 252
-    * - backupip
-      -
-      - .
-
-        Minimum length = 1
-    * - backupvserver
-      -
-      - Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space `` ``, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters. Can be changed after the backup virtual server is created. You can assign a different backup virtual server or rename the existing virtual server.
-
-        Minimum length = 1
     * - cacheable
 
         *(bool)*
@@ -98,18 +152,6 @@ Parameters
     * - comment
       -
       - Information about this virtual server.
-    * - cookiedomain
-      -
-      - .
-
-        Minimum length = 1
-    * - cookietimeout
-      -
-      - .
-
-        Minimum value = ``0``
-
-        Maximum value = ``1440``
     * - dbprofilename
       -
       - Name of the DB profile.
@@ -141,11 +183,16 @@ Parameters
         Minimum length = 1
 
         Maximum length = 127
-    * - domainname
-      -
-      - Domain name for which to change the time to live (TTL) and/or backup service IP address.
+    * - dnsrecordtype
+      - Choices:
 
-        Minimum length = 1
+          - A
+          - AAAA
+          - CNAME
+          - NAPTR
+      - .
+
+        Default value: NSGSLB_IPV4
     * - downstateflush
       - Choices:
 
@@ -297,6 +344,70 @@ Parameters
           - 10G
           - 11G
       - Oracle server version.
+    * - policybindings
+
+        *(list)*
+      -
+      - List of cspolicy bindings.
+
+        .. list-table::
+            :widths: 10 10 60
+            :header-rows: 1
+
+            * - Suboption
+              - Choices/Defaults
+              - Comment
+
+            * - bindpoint
+
+                *(str)*
+              - Choices:
+
+                  - REQUEST
+                  - RESPONSE
+                  - ICA_REQUEST
+                  - OTHERTCP_REQUEST
+              - The bindpoint to which the policy is bound.
+            * - gotopriorityexpression
+
+                *(str)*
+              -
+              - Expression specifying the priority of the next policy which will get evaluated if the current policy rule evaluates to TRUE.
+            * - invoke
+
+                *(bool)*
+              -
+              - Invoke flag.
+            * - labelname
+
+                *(str)*
+              -
+              - Name of the label invoked.
+            * - labeltype
+
+                *(str)*
+              - Choices:
+
+                  - reqvserver
+                  - resvserver
+                  - policylabel
+              - The invocation type.
+            * - policyname
+
+                *(str)*
+              -
+              - Policies bound to this vserver.
+            * - priority
+
+                *(float)*
+              -
+              - Priority for the policy.
+            * - targetlbvserver
+
+                *(str)*
+              -
+              - Target vserver name.
+
     * - port
       -
       - Port number for content switching virtual server.
@@ -402,11 +513,6 @@ Parameters
           - ORACLE
           - SMPP
       - Protocol used by the virtual server.
-    * - sitedomainttl
-      -
-      - .
-
-        Minimum value = ``1``
     * - sobackupaction
       - Choices:
 
@@ -482,11 +588,6 @@ Parameters
         disabled disabled disabled
 
         If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.
-    * - targettype
-      - Choices:
-
-          - GSLB
-      - Virtual server target type.
     * - tcpprofilename
       -
       - Name of the TCP profile containing TCP configuration settings for the virtual server.
@@ -501,11 +602,6 @@ Parameters
         Minimum value = 0
 
         Maximum value = 4094
-    * - ttl
-      -
-      - .
-
-        Minimum value = ``1``
     * - validate_certs
       - Default:
 

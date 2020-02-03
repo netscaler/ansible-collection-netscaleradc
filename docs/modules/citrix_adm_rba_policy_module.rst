@@ -5,7 +5,7 @@
 citrix_adm_rba_policy - Manage Citrix ADM rba policies.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

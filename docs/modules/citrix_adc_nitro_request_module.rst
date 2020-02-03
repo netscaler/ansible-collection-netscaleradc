@@ -110,6 +110,11 @@ Parameters
       - The type of resource we are operating on.
 
         It is required for all ``operation`` values except ``mas_login`` and ``save_config``.
+    * - timeout
+      - Default:
+
+        *45*
+      - Timeout for the NITRO HTTP request.
     * - validate_certs
       - Default:
 
@@ -247,7 +252,7 @@ Return Values
       - Description
     * - http_response_body
 
-        *(string)*
+        *(str)*
       - always
       - A string with the actual HTTP response body content if existent. If there is no HTTP response body it is an empty string.
 
@@ -265,7 +270,7 @@ Return Values
         status: 200
     * - nitro_auth_token
 
-        *(string)*
+        *(str)*
       - when applicable
       - The token returned by the C(mas_login) operation when succesful.
 
@@ -283,7 +288,7 @@ Return Values
         0
     * - nitro_message
 
-        *(string)*
+        *(str)*
       - always
       - A string containing a human readable explanation for the NITRO operation result.
 
@@ -298,10 +303,10 @@ Return Values
 
         **Sample:**
 
-        [{'sp': 'OFF', 'ipaddress': '192.168.1.8', 'ipv6address': 'NO', 'port': 0, 'state': 'ENABLED', 'name': 'test-server-1', 'maxbandwidth': '0'}]
+        [{'ipv6address': 'NO', 'port': 0, 'name': 'test-server-1', 'ipaddress': '192.168.1.8', 'sp': 'OFF', 'state': 'ENABLED', 'maxbandwidth': '0'}]
     * - nitro_severity
 
-        *(string)*
+        *(str)*
       - always
       - A string describing the severity of the NITRO operation error or NONE.
 

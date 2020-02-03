@@ -36,6 +36,21 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - instance_ip
+      -
+      - The IP address of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+    * - mas_proxy_call
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+
+        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+    * - nitro_auth_token
+      -
+      - The authentication token provided by the ``mas_login`` operation. It is required when issuing Nitro API calls through a MAS proxy.
     * - nitro_pass
       -
       - The password with which to authenticate to the netscaler node.

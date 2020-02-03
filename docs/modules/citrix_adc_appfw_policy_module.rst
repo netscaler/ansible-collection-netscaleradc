@@ -5,7 +5,7 @@
 citrix_adc_appfw_policy - Manage Citrix ADC Web Application Firewall policies.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -62,15 +62,15 @@ Parameters
 
         *(str)*
       -
-      - Name for the policy. 
+      - Name for the policy.
 
-        Must begin with a letter, number, or the underscore character \(_\), and must contain only letters, and the hyphen \(-\), period \(.\) pound \(\#\), space \( \), at (@), equals \(=\), colon \(:\), and characters. Can be changed after the policy is created.
+        Must begin with a letter, number, or the underscore character (_), and must contain only letters, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon (:), and underscore Can be changed after the policy is created.
 
-        
+        The following requirement applies only to the Citrix ADC CLI:
 
-        The following requirement applies only to the NetScaler CLI:
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my policy" or 'my policy').
 
-        If the name includes one or more spaces, enclose the name in double or single quotation marks \(for "my policy" or 'my policy'\).
+        Minimum length =  1
     * - nitro_auth_token
 
         *(added in 2.6.0)*
@@ -103,11 +103,13 @@ Parameters
         *(str)*
       -
       - Name of the application firewall profile to use if the policy matches.
+
+        Minimum length =  1
     * - rule
 
         *(str)*
       -
-      - Name of the NetScaler named rule, or a NetScaler default syntax expression, that the policy uses to whether to filter the connection through the application firewall with the designated profile.
+      - Name of the Citrix ADC named rule, or a Citrix ADC expression, that the policy uses to determine to filter the connection through the application firewall with the designated profile.
     * - save_config
 
         *(bool)*

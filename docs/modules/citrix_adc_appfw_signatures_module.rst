@@ -5,7 +5,7 @@
 citrix_adc_appfw_signatures - Configuration for configured confidential form fields resource.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -35,15 +35,6 @@ Parameters
       - Any comments to preserve information about the signatures object.
 
         Maximum length =  128
-    * - disabled
-
-        *(bool)*
-      - Default:
-
-        *False*
-      - When set to ``true`` the server state will be set to ``disabled``.
-
-        When set to ``false`` the server state will be set to ``enabled``.
     * - instance_ip
 
         *(added in 2.6.0)*
@@ -113,6 +104,11 @@ Parameters
         *(bool)*
       -
       - Overwrite any existing signatures object of the same name.
+    * - preservedefactions
+
+        *(bool)*
+      -
+      - preserves def actions of signature rules.
     * - save_config
 
         *(bool)*

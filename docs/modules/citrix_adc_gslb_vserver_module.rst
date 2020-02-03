@@ -64,6 +64,11 @@ Parameters
       - If the primary state of all bound GSLB services is DOWN, consider the effective states of all the GSLB services, obtained through the Metrics Exchange Protocol (MEP), when determining the state of the GSLB virtual server. To consider the effective state, set the parameter to STATE_ONLY. To disregard the effective state, set the parameter to NONE.
 
         The effective state of a GSLB service is the ability of the corresponding virtual server to serve traffic. The effective state of the load balancing virtual server, which is transferred to the GSLB service, is UP even if only one virtual server in the backup chain of virtual servers is in the UP state.
+    * - cookie_domain
+
+        *(str)*
+      -
+      - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie in the HTTP response.
     * - disabled
 
         *(bool)*
@@ -120,6 +125,11 @@ Parameters
               -
               - Time to live (TTL) for the domain.
 
+    * - domainname
+
+        *(str)*
+      -
+      - Domain name for which to change the time to live (TTL) and/or backup service IP address.
     * - dynamicweight
       - Choices:
 

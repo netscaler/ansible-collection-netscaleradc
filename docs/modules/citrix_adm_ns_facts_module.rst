@@ -5,7 +5,7 @@
 citrix_adm_ns_facts - Retrieve facts about Citrix ADM managed instances.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

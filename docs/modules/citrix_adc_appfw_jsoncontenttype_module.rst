@@ -5,7 +5,7 @@
 citrix_adc_appfw_jsoncontenttype - Configuration for JSON content type resource.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -42,12 +42,14 @@ Parameters
 
           - REGEX
           - NOTREGEX
-      - Is json content type a regular expression?
+      - Is json content type a regular expression?.
     * - jsoncontenttypevalue
 
         *(str)*
       -
-      - Content type to be classified as JSON
+      - Content type to be classified as JSON.
+
+        Minimum length =  1
     * - mas_proxy_call
 
         *(bool)*

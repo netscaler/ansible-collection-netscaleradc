@@ -5,7 +5,7 @@
 citrix_adc_appfw_policylabel - Manage Citrix ADC Web Application Firewall policy labels.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -41,7 +41,11 @@ Parameters
 
         *(str)*
       -
-      - Name of the policy label to invoke if the current policy evaluates to TRUE, the invoke parameter is and Label Type is set to Policy Label.
+      - Name for the policy label. Must begin with a letter, number, or the underscore character (_), and contain only letters, numbers, and the hyphen (-), period (.) pound (#), space ( ), at (@), equals colon (:), and underscore characters. Can be changed after the policy label is created.
+
+        The following requirement applies only to the Citrix ADC CLI:
+
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my policy label" or 'my policy label').
     * - mas_proxy_call
 
         *(bool)*

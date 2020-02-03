@@ -5,7 +5,7 @@
 citrix_adc_appfw_htmlerrorpage - Configuration for configured confidential form fields resource.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -41,9 +41,9 @@ Parameters
       - Default:
 
         *False*
-      - When set to ``true`` the server state will be set to ``disabled``.
+      - When set to ``true`` the state will be set to ``disabled``.
 
-        When set to ``false`` the server state will be set to ``enabled``.
+        When set to ``false`` the state will be set to ``enabled``.
     * - instance_ip
 
         *(added in 2.6.0)*

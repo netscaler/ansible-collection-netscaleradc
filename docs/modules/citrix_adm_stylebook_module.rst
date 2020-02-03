@@ -5,7 +5,7 @@
 citrix_adm_stylebook - Create or delete Citrix ADM stylebooks.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -148,8 +148,6 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    vars:
-    stylebook_contents: "{{ lookup('file', 'stylebook_sample.yaml') }}"
     
     - name: Setup stylebook
       delegate_to: localhost
@@ -163,7 +161,8 @@ Examples
         namespace: com.example.stylebooks
         version: "0.1"
     
-        source: "{{ stylebook_contents }}"
+        source: "{{ lookup('file', 'stylebook_sample.yaml') }}"
+    
 
 
 Return Values

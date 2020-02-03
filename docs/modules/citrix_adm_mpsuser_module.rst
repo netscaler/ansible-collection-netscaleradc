@@ -5,7 +5,7 @@
 citrix_adm_mpsuser - Manage Citrix ADM users.
 +++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -178,7 +178,7 @@ Examples
         session_timeout_unit: Minutes
         external_authentication: false
         enable_session_timeout: true
-        groups: 
+        groups:
           - test_mpsgroup
 
 

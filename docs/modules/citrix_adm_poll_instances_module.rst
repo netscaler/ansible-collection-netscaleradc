@@ -5,7 +5,7 @@
 citrix_adm_poll_instances - Force the poll instances network function on the target Citrix ADM.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

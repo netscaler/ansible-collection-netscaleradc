@@ -5,7 +5,7 @@
 citrix_adm_login - Login to a Citrix ADM instance.
 ++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:

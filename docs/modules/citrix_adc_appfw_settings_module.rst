@@ -5,7 +5,7 @@
 citrix_adc_appfw_settings - Manage Citrix ADC Web Application Firewall settings.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.8.0
+.. versionadded:: 2.9
 
 .. contents::
    :local:
@@ -46,11 +46,15 @@ Parameters
         *(str)*
       -
       - String that is prepended to all encrypted cookie values.
+
+        Minimum length =  1
     * - defaultprofile
 
         *(str)*
       -
-      - Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which unmatched connections back to the NetScaler appliance without attempting to filter them further.
+      - Profile to use when a connection does not match any policy. Default setting is APPFW_BYPASS, which unmatched connections back to the Citrix ADC without attempting to filter them further.
+
+        Minimum length =  1
     * - entitydecoding
 
         *(bool)*
@@ -66,6 +70,10 @@ Parameters
         *(str)*
       -
       - Cumulative total maximum number of bytes in web forms imported to a protected web site. If a user to upload files with a total byte count higher than the specified limit, the application firewall the request.
+
+        Minimum value = ``1``
+
+        Maximum value = ``268435456``
     * - instance_ip
 
         *(added in 2.6.0)*
@@ -78,11 +86,25 @@ Parameters
         *(str)*
       -
       - Maximum number of connections per second that the application firewall learning engine examines to new relaxations for learning-enabled security checks. The application firewall drops any connections this limit from the list of connections used by the learning engine.
+
+        Minimum value = ``1``
+
+        Maximum value = ``1000``
     * - logmalformedreq
 
         *(bool)*
       -
       - Log requests that are so malformed that application firewall parsing doesn't occur.
+    * - malformedreqaction
+
+        *(list)*
+      - Choices:
+
+          - none
+          - block
+          - log
+          - stats
+      - flag to define action on malformed requests that application firewall cannot parse.
     * - mas_proxy_call
 
         *(bool)*
@@ -134,40 +156,52 @@ Parameters
 
         *(str)*
       -
-      - Name of the session cookie that the application firewall uses to track user sessions. 
+      - Name of the session cookie that the application firewall uses to track user sessions.
 
         Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen and underscore (_) symbols.
 
-        
-
-        The following requirement applies only to the NetScaler CLI:
+        The following requirement applies only to the Citrix ADC CLI:
 
         If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my cookie name" or 'my cookie name').
+
+        Minimum length =  1
     * - sessionlifetime
 
         *(str)*
       -
       - Maximum amount of time (in seconds) that the application firewall allows a user session to remain regardless of user activity. After this time, the user session is terminated. Before continuing to the protected web site, the user must establish a new session by opening a designated start URL.
+
+        Minimum value = ``0``
+
+        Maximum value = ``2147483647``
     * - sessionlimit
 
         *(str)*
       -
       - Maximum number of sessions that the application firewall allows to be active, regardless of user After the max_limit reaches, No more user session will be created .
+
+        Minimum value = ``0``
+
+        Maximum value = ``500000``
     * - sessiontimeout
 
         *(str)*
       -
       - Timeout, in seconds, after which a user session is terminated. Before continuing to use the protected site, the user must establish a new session by opening a designated start URL.
+
+        Minimum value = ``1``
+
+        Maximum value = ``65535``
     * - signatureautoupdate
 
         *(bool)*
       -
-      - Flag used to enable/disable auto update signatures
+      - Flag used to enable/disable auto update signatures.
     * - signatureurl
 
         *(str)*
       -
-      - URL to download the mapping file from server
+      - URL to download the mapping file from server.
     * - state
       - Choices:
 
@@ -182,9 +216,11 @@ Parameters
 
         *(str)*
       -
-      - Profile to use when an application firewall policy evaluates to undefined (UNDEF). 
+      - Profile to use when an application firewall policy evaluates to undefined (UNDEF).
 
         An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in profile is the default You can specify a different built-in or user-created profile as the UNDEF profile.
+
+        Minimum length =  1
     * - useconfigurablesecretkey
 
         *(bool)*
