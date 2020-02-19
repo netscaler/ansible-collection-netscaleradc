@@ -22,7 +22,7 @@ def main():
 
     args = parser.parse_args()
 
-    integration_test_type = args.test_type.lower()
+    integration_test_type = args.test_type
     module_list = list(args.module)
     ns_version = args.ns_version
 
@@ -30,7 +30,7 @@ def main():
     if args.dir_path is None:
         integration_dir_path = DEFAULT_DIR_PATH
     else:
-        integration_dir_path = args.dir_path.lower()
+        integration_dir_path = args.dir_path
 
     fileop.create_directory(integration_dir_path, nested=True)
 
