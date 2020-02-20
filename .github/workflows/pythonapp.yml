@@ -15,8 +15,6 @@ jobs:
         python-version: 3.8
     - name: Install dependencies
       run: |
-        virtualenv -p /usr/bin/python3 virtualenvironment
-        source virtualenvironment/bin/activate
         python -m pip install --upgrade pip
         pip install -r requirements.test.txt
         python install.py
