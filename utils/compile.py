@@ -25,10 +25,10 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
     for property in json_doc:
 
         # Skip attributes in skip_attrs
-        if property['option_name'] in skip_attrs:
+        if property['name'] in skip_attrs:
             continue
 
-        key = property['option_name']
+        key = property['name']
         entry = {}
         entry['key'] = key
         entry['transforms'] = []
@@ -62,7 +62,7 @@ def produce_module_arguments_from_json_schema(json_doc, skip_attrs):
 def produce_readwrite_attrs_list(json_doc):
     readwrite_attrs  = list()
     for property in json_doc:
-        readwrite_attrs .append(property['option_name'])
+        readwrite_attrs .append(property['name'])
     return readwrite_attrs
 
 
@@ -75,8 +75,8 @@ def produce_immutables_list(json_doc):
     immutables_list = []
     for property in json_doc:
         # Add only readonly attributes
-        if not property['is_updateable']:
-            immutables_list.append(property['option_name'])
+        if not property['readonly']:
+            immutables_list.append(property['name'])
     return immutables_list
 
 
@@ -110,11 +110,11 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
     for property in json_doc:
 
         # Skip attributes in skip list
-        if property['option_name'] in skip_attrs:
+        if property['name'] in skip_attrs:
             continue
 
         entry = {}
-        entry['option_name'] = property['option_name']
+        entry['option_name'] = property['name']
 
         # Fallthrough
         # entry['description'] = [ split_description_line(line) for line in property['description_lines']]
@@ -140,7 +140,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
                 entry['type'] = 'bool'
 
             # Append lines rejecting possible values lines
-            for line in property['description']:
+            for line in property['description_lines']:
                 if line.startswith('Possible values'):
                     continue
                 if choice_set in enabled_disabled_set:
@@ -156,7 +156,7 @@ def produce_module_argument_documentation(json_doc, config_class, skip_attrs):
                     entry['description'].append(split_description_line(line))
         else:
             # pass all lines to description
-            entry['description'] = [split_description_line(line) for line in property['description']]
+            entry['description'] = [split_description_line(line) for line in property['description_lines']]
 
         options_list.append(entry)
 
@@ -206,7 +206,7 @@ def main():
             sdk_property_list.append(member[0])
 
     # Show diffs
-    scrap_properties_set = set([v['option_name'] for v in json_doc])
+    scrap_properties_set = set([v['name'] for v in json_doc])
     sdk_properties_set = set(sdk_property_list)
 
     not_in_sdk = list(scrap_properties_set - sdk_properties_set)

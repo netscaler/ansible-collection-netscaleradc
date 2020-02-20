@@ -1,0 +1,99 @@
+---
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/setup.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: result is defined
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/setup.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: result is defined
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/setup.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/setup.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/update.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/update.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/update.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/update.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/disable.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/disable.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/remove.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/remove.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/remove.yaml"
+  vars:
+    check_mode: yes
+
+- assert:
+    that: not result|changed
+
+- include: "{{ role_path }}/tests/nitro/rewriteaction/remove.yaml"
+  vars:
+    check_mode: no
+
+- assert:
+    that: not result|changed

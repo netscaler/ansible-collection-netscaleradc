@@ -18,7 +18,7 @@ def scrape_page(page):
     htmltree = html.fromstring(r.content)
     with open('out.html', 'w') as fh:
         fh.write(html.tostring(htmltree))
-    tables = htmltree.xpath('''//div[@class='rst-content']//table''')
+    tables = htmltree.xpath('''//div//div//table''')
 
     if len(tables) == 0:
         raise Exception('Cannot find documentation table')
@@ -26,7 +26,7 @@ def scrape_page(page):
     if len(tables) > 1:
         raise Exception('Found too many documentation tables')
 
-    rows = htmltree.xpath('''//div[@class='rst-content']//table/tbody//tr''')
+    rows = htmltree.xpath('''//div//div//table/tbody//tr''')
     if len(rows) == 0:
         raise Exception('Could not find documentation table for %s' % page)
 

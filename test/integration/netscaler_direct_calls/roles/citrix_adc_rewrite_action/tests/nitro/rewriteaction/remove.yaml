@@ -1,0 +1,14 @@
+---
+
+- name: Remove basic rewrite action
+  delegate_to: localhost
+  register: result
+  check_mode: "{{ check_mode }}"
+  citrix_adc_rewrite_action:
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
+    state: absent
+
+    name: test-rewriteaction-1

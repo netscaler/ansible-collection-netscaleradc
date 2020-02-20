@@ -1,7 +1,5 @@
 ---
 
-- { include: testbed.yaml, state: present }
+- { include: testbed.yaml }
 
 - { include: nitro.yaml, tags: ['nitro'] }
-
-- { include: testbed.yaml, state: absent }

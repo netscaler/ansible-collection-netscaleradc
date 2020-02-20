@@ -10,10 +10,6 @@
     debug: false
 
   roles:
-    - { role: netscaler_appfw_policy, when: "limit_to in ['*', 'netscaler_appfw_policy']" }
-    - { role: netscaler_appfw_policylabel, when: "limit_to in ['*', 'netscaler_appfw_policylabel']" }
-    - { role: netscaler_appfw_profile, when: "limit_to in ['*', 'netscaler_appfw_profile']" }
-    - { role: netscaler_appfw_settings, when: "limit_to in ['*', 'netscaler_appfw_settings']" }
     - { role: netscaler_cs_action, when: "limit_to in ['*', 'netscaler_cs_action']" }
     - { role: netscaler_cs_policy, when: "limit_to in ['*', 'netscaler_cs_policy']" }
     - { role: netscaler_cs_vserver, when: "limit_to in ['*', 'netscaler_cs_vserver']" }
@@ -24,6 +20,7 @@
     - { role: netscaler_service, when: "limit_to in ['*', 'netscaler_service']" }
     - { role: netscaler_servicegroup, when: "limit_to in ['*', 'netscaler_servicegroup']" }
     - { role: netscaler_gslb_service, when: "limit_to in ['*', 'netscaler_gslb_service']" }
+    - { role: citrix_adc_rewrite_action, when: "limit_to in ['*', 'citrix_adc_rewrite_action']" }
     - { role: netscaler_gslb_site, when: "limit_to in ['*', 'netscaler_gslb_site']" }
     - { role: netscaler_gslb_vserver, when: "limit_to in ['*', 'netscaler_gslb_vserver']" }
     - { role: netscaler_nitro_request, when: "limit_to in ['*', 'netscaler_nitro_request']" }
