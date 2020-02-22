@@ -48,6 +48,31 @@ options:
                 policy is added.
 
     type:
+        choices:
+            - 'noop'
+            - 'delete'
+            - 'insert_http_header'
+            - 'delete_http_header'
+            - 'corrupt_http_header'
+            - 'insert_before'
+            - 'insert_after'
+            - 'replace'
+            - 'replace_http_res'
+            - 'delete_all'
+            - 'replace_all'
+            - 'insert_before_all'
+            - 'insert_after_all'
+            - 'clientless_vpn_encode'
+            - 'clientless_vpn_encode_all'
+            - 'clientless_vpn_decode'
+            - 'clientless_vpn_decode_all'
+            - 'insert_sip_header'
+            - 'delete_sip_header'
+            - 'corrupt_sip_header'
+            - 'replace_sip_res'
+            - 'replace_diameter_header_field'
+            - 'replace_dns_header_field'
+            - 'replace_dns_answer_section
         description:
             - >-
                 Type of user-defined rewrite action. The information that you provide for, and the effect of, each
@@ -79,7 +104,7 @@ options:
             - >-
                 Search facility that is used to match multiple strings in the request or response. Used in the
                 INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types. The following search
-                types are supported:
+                types are supported: text(), regex(), xpath(), xpath_json(), xpath_html(), patset(), dataset(), avp()
 
     bypasssafetycheck:
         description:
@@ -131,9 +156,59 @@ requirements:
 '''
 
 EXAMPLES = '''
+# Create or update a rewrite action with citrix_adc_rewrite_action ansible module
+
+- name: Setup basic rewrite action
+  delegate_to: localhost
+  register: result
+  check_mode: "{{ check_mode }}"
+  citrix_adc_rewrite_action:
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
+    state: present
+
+    name: test-rewriteaction-1
+    type: insert_http_header
+    target: "client-IP"
+    stringbuilderexpr: CLIENT.IP.SRC
+
+# Delete an existing rewrite action
+
+- name: Remove basic rewrite action
+  delegate_to: localhost
+  register: result
+  check_mode: "{{ check_mode }}"
+  citrix_adc_rewrite_action:
+    nitro_user: "{{nitro_user}}"
+    nitro_pass: "{{nitro_pass}}"
+    nsip: "{{nsip}}"
+
+    state: absent
+
+    name: test-rewriteaction-1
+
 '''
 
 RETURN = '''
+loglines:
+    description: list of logged messages by the module
+    returned: always
+    type: list
+    sample: ['message 1', 'message 2']
+
+msg:
+    description: Message detailing the failure reason
+    returned: failure
+    type: str
+    sample: "Action does not exist"
+
+diff:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: failure
+    type: dict
+    sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
 
 import json
@@ -179,7 +254,35 @@ def main():
 
     module_specific_arguments = dict(
         name=dict(type='str'),
-        type=dict(type='str'),
+        type=dict(
+            type='str',
+            choices=[
+                'noop',
+                'delete',
+                'insert_http_header',
+                'delete_http_header',
+                'corrupt_http_header',
+                'insert_before',
+                'insert_after',
+                'replace',
+                'replace_http_res',
+                'delete_all',
+                'replace_all',
+                'insert_before_all',
+                'insert_after_all',
+                'clientless_vpn_encode',
+                'clientless_vpn_encode_all',
+                'clientless_vpn_decode',
+                'clientless_vpn_decode_all',
+                'insert_sip_header',
+                'delete_sip_header',
+                'corrupt_sip_header',
+                'replace_sip_res',
+                'replace_diameter_header_field',
+                'replace_dns_header_field',
+                'replace_dns_answer_section'
+            ]
+        ),
         target=dict(type='str'),
         stringbuilderexpr=dict(type='str'),
         pattern=dict(type='str'),
