@@ -21,4 +21,4 @@ jobs:
     - name: Test with pylint
       run: |
         pip install pylint
-        pylint ansible-modules/citrix_adc_rewrite_action.py
+        pylint -E ansible-modules/*.py
