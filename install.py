@@ -24,6 +24,29 @@ import shutil
 import re
 
 
+def install_citrix_adc_module_utils(ansible_path, major, minor, ansible_modules_sourcedir):
+    # Check to see if appropriate directories exist
+    if (major, minor) == (2, 4):
+        module_utils_path = os.path.join(ansible_path, 'module_utils')
+    else:
+        module_utils_path = os.path.join(ansible_path, 'module_utils', 'network', 'citrix_adc')
+
+    if not os.path.exists(module_utils_path):
+        print('Creating module utils path %s' % module_utils_path)
+        os.makedirs(module_utils_path)
+    if not os.path.isdir(module_utils_path):
+        print('Module utils path (%s) is not a directory' % module_utils_path)
+
+    # Touch __init__.py
+    init_path = os.path.join(module_utils_path, '__init__.py')
+    with open(init_path, 'a') as fh:
+        os.utime(init_path, None)
+
+    print('Copying citrix_adc.py to %s' % module_utils_path)
+    shutil.copy(os.path.join(ansible_modules_sourcedir, 'citrix_adc.py'), os.path.join(module_utils_path, 'citrix_adc.py'))
+
+
+
 def main():
     try:
         import ansible
@@ -76,14 +99,6 @@ def main():
     ansible_modules_sourcedir = os.path.join(here, 'ansible-modules')
 
 
-    if not os.path.exists(module_utils_path):
-        print('Documentation fragments directory (%s) does not exist' % document_fragments_path)
-        sys.exit(1)
-    if not os.path.isdir(module_utils_path):
-        print('Documentation fragments directory (%s) is not a directory' % document_fragments_path)
-        sys.exit(1)
-
-
     # Copy documentation fragments
     document_fragments_paths = [
         os.path.join(ansible_path, 'utils', 'module_docs_fragments'),
@@ -112,7 +127,18 @@ def main():
     print('Copying netscaler.py to %s' % module_utils_path)
     shutil.copy(os.path.join(ansible_modules_sourcedir, 'netscaler.py'), os.path.join(module_utils_path, 'netscaler.py'))
 
+    # Touch __init__.py
+    init_path = os.path.join(module_utils_path, '__init__.py')
+    with open(init_path, 'a') as fh:
+        os.utime(init_path, None)
+
+
     ansible_module_files.remove('netscaler.py')
+
+
+    install_citrix_adc_module_utils(ansible_path, major, minor, ansible_modules_sourcedir)
+    ansible_module_files.remove('citrix_adc.py')
+
 
     # Make netscaler module directory
     netscaler_module_dir = os.path.join(extra_modules_path, 'netscaler')
