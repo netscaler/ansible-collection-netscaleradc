@@ -821,7 +821,7 @@ class NitroAPICaller(object):
         )
 
         result = {}
-        self.edit_response_data(r, info, result)
+        self.edit_response_data(r, info, result, success_status=200)
 
         if result['http_response_body'] != '':
             data = self._module.from_json(result['http_response_body'])
