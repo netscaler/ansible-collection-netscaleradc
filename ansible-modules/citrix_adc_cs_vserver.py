@@ -475,6 +475,15 @@ options:
             - This option is only applicable only when C(servicetype) is C(SSL).
         version_added: "2.5"
 
+    ssl_certkeys:
+        description:
+            - The names of the ssl certificates that are bound to this service in list format.
+            - The ssl certificates must already exist.
+            - Creating the certificates can be done with the M(citrix_adc_ssl_certkey) module.
+            - This option replaces the deprecated ssl_certkey option.
+            - This option is only applicable only when C(servicetype) is C(SSL).
+        version_added: "2.10"
+
     disabled:
         description:
             - When set to C(yes) the cs vserver will be disabled.
@@ -954,17 +963,23 @@ def ssl_certkey_bindings_identical(client, module):
     else:
         bindings = sslvserver_sslcertkey_binding.get(client, vservername)
 
-    if module.params['ssl_certkey'] is None:
+    if module.params['ssl_certkey'] is None and module.params['ssl_certkeys'] is None:
         if len(bindings) == 0:
             return True
         else:
             return False
     else:
         certificate_list = [item.certkeyname for item in bindings]
-        if certificate_list == [module.params['ssl_certkey']]:
-            return True
+        if module.params['ssl_certkey'] is None:
+          if set(certificate_list) == set(module.params['ssl_certkeys']):
+              return True
+          else:
+              return False
         else:
-            return False
+          if certificate_list == [module.params['ssl_certkey']]:
+              return True
+          else:
+              return False
 
 
 def ssl_certkey_bindings_sync(client, module):
@@ -987,6 +1002,15 @@ def ssl_certkey_bindings_sync(client, module):
         binding.vservername = module.params['name']
         binding.certkeyname = module.params['ssl_certkey']
         sslvserver_sslcertkey_binding.add(client, binding)
+
+    if module.params['ssl_certkeys'] is not None:
+        log('Adding binding for certkeys %s' % module.params['ssl_certkeys'])
+        for k in module.params['ssl_certkeys']:
+            binding = sslvserver_sslcertkey_binding()
+            binding.vservername = module.params['name']
+            binding.certkeyname = k
+            binding.snicert = (len(module.params['ssl_certkeys']) > 1)
+            sslvserver_sslcertkey_binding.add(client, binding)
 
 
 def diff_list(client, module, csvserver_proxy):
@@ -1201,6 +1225,7 @@ def main():
         policybindings=dict(type='list'),
         appfw_policybindings=dict(type='list'),
         ssl_certkey=dict(type='str'),
+        ssl_certkeys=dict(type='list'),
         disabled=dict(
             type='bool',
             default=False
@@ -1425,6 +1450,9 @@ def main():
 
             if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
                 module.fail_json(msg='ssl_certkey is applicable only to SSL vservers', **module_result)
+
+            if module.params['ssl_certkey'] is not None and module.params['ssl_certkeys'] is not None:
+                module.fail_json(msg='ssl_certkeys replaces ssl_certkey and is thus mutually exclusive', **module_result)
 
             # Check ssl certkey bindings
             if module.params['servicetype'] == 'SSL':
