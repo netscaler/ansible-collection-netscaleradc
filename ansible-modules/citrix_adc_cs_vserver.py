@@ -992,6 +992,7 @@ def ssl_certkey_bindings_sync(client, module):
 
     # Delete existing bindings
     for binding in bindings:
+        binding.snicert = str(binding.snicert).lower()
         log('Deleting existing binding for certkey %s' % binding.certkeyname)
         sslvserver_sslcertkey_binding.delete(client, binding)
 
@@ -1009,7 +1010,7 @@ def ssl_certkey_bindings_sync(client, module):
             binding = sslvserver_sslcertkey_binding()
             binding.vservername = module.params['name']
             binding.certkeyname = k
-            binding.snicert = (len(module.params['ssl_certkeys']) > 1)
+            binding.snicert = str(len(module.params['ssl_certkeys']) > 1).lower()
             sslvserver_sslcertkey_binding.add(client, binding)
 
 
