@@ -993,7 +993,7 @@ diff:
     sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.netscaler.netscaler import (
+from ansible.module_utils.network.citrix_adc.citrix_adc import (
     ConfigProxy,
     get_nitro_client,
     netscaler_common_arguments,
