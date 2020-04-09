@@ -1401,13 +1401,13 @@ def ssl_certkey_bindings_sync(client, module):
         bindings = sslvserver_sslcertkey_binding.get(client, vservername)
     log('bindings len is %s' % len(bindings))
 
-    # # Delete existing bindings
+    # Delete existing bindings
     for binding in bindings:
         if not binding.snicert:
             log('ssl_certkey_bindings_sync delete certificate %s' % binding.certkeyname)
             sslvserver_sslcertkey_binding.delete(client, binding)
 
-    # # Add binding if appropriate
+    # Add binding if appropriate
     if module.params['ssl_certkey'] is not None:
         binding = sslvserver_sslcertkey_binding()
         binding.vservername = module.params['name']
