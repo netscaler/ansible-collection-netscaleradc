@@ -867,6 +867,11 @@ options:
             - Creating the certificate can be done with the M(citrix_adc_ssl_certkey) module.
             - This option is only applicable only when C(servicetype) is C(SSL).
 
+    ssl_sni_certkeys:
+        type: list
+        description:
+            - SSL SNI certificates that will be bind to the vserver
+
     disabled:
         description:
             - When set to C(yes) the lb vserver will be disabled.
@@ -988,14 +993,15 @@ diff:
     sample: { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
 '''
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.network.citrix_adc.citrix_adc import (
+from ansible.module_utils.network.netscaler.netscaler import (
     ConfigProxy,
     get_nitro_client,
     netscaler_common_arguments,
     log,
     loglines,
     get_immutables_intersection,
-    ensure_feature_is_enabled
+    ensure_feature_is_enabled,
+    NitroAPIFetcher
 )
 import copy
 
@@ -1006,6 +1012,7 @@ try:
     from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
     from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbvserver_appfwpolicy_binding import lbvserver_appfwpolicy_binding
     from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
+    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver import sslvserver
 
     PYTHON_SDK_IMPORTED = True
 except ImportError as e:
@@ -1356,6 +1363,11 @@ def ssl_certkey_bindings_identical(client, module):
     log('Entering ssl_certkey_bindings_identical')
     vservername = module.params['name']
 
+    # return changed if vserver does not exist and the check_mode is used
+    if not lb_vserver_exists(client, module) and module.check_mode:
+        return False
+
+
     if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
         bindings = []
     else:
@@ -1363,17 +1375,20 @@ def ssl_certkey_bindings_identical(client, module):
 
     log('Existing certs %s' % bindings)
 
+    certificate_list = [item.certkeyname for item in bindings if not item.snicert]
+    log('certificate_list without snicerts %s' % certificate_list)
+
     if module.params['ssl_certkey'] is None:
-        if len(bindings) == 0:
+        if len(certificate_list) == 0:
             return True
         else:
+            log('ssl_certkey differ: existing certificate: %s will be removed' % certificate_list)
             return False
     else:
-        certificate_list = [item.certkeyname for item in bindings]
-        log('certificate_list %s' % certificate_list)
         if certificate_list == [module.params['ssl_certkey']]:
             return True
         else:
+            log('ssl_certkey differ: existing certs: %s, new certs %s' % (certificate_list, module.params['ssl_certkey']))
             return False
 
 
@@ -1386,16 +1401,100 @@ def ssl_certkey_bindings_sync(client, module):
         bindings = sslvserver_sslcertkey_binding.get(client, vservername)
     log('bindings len is %s' % len(bindings))
 
-    # Delete existing bindings
+    # # Delete existing bindings
     for binding in bindings:
-        sslvserver_sslcertkey_binding.delete(client, binding)
+        if not binding.snicert:
+            log('ssl_certkey_bindings_sync delete certificate %s' % binding.certkeyname)
+            sslvserver_sslcertkey_binding.delete(client, binding)
 
-    # Add binding if appropriate
+    # # Add binding if appropriate
     if module.params['ssl_certkey'] is not None:
         binding = sslvserver_sslcertkey_binding()
         binding.vservername = module.params['name']
         binding.certkeyname = module.params['ssl_certkey']
         sslvserver_sslcertkey_binding.add(client, binding)
+
+def ssl_sni_certkeys_bindings_identical(client, module):
+    log('Entering ssl_sni_certkeys_bindings_identical')
+    vservername = module.params['name']
+
+    # return changed if vserver does not exist and the check_mode is used
+    if not lb_vserver_exists(client, module) and module.check_mode:
+        return False
+
+    if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
+        bindings = []
+    else:
+        bindings = sslvserver_sslcertkey_binding.get(client, vservername)
+
+
+    certificate_list = [
+        item.certkeyname for item in bindings if item.snicert]
+    log('certificate_list with snicerts %s' % certificate_list)
+
+    if module.params['ssl_sni_certkeys'] is None:
+        if len(certificate_list) == 0:
+            return True
+        else:
+            log('ssl_sni_certkey differ: existing certificates: %s will be removed' %
+                certificate_list)
+            return False
+    else:
+        ssl_sni_certkeys = module.params['ssl_sni_certkeys'].copy()
+        ssl_sni_certkeys.sort()
+        certificate_list.sort()
+        if certificate_list == ssl_sni_certkeys:
+            return True
+        else:
+            log('ssl_certkey differ: existing certs: %s, new cert %s' %
+                (certificate_list, ssl_sni_certkeys))
+            return False
+
+def ssl_sni_certkeys_bindings_sync(client, module):
+    log('Syncing SNI ssl certificates')
+    vservername = module.params['name']
+
+    ssl_sni_certkeys = []
+
+    if module.params['ssl_sni_certkeys'] is not None:
+        if module.params['ssl_sni_certkeys'][0]:
+            ssl_sni_certkeys = module.params['ssl_sni_certkeys']
+        else:
+            ssl_sni_certkeys = []
+
+    if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
+        bindings = []
+    else:
+        bindings = sslvserver_sslcertkey_binding.get(client, vservername)
+
+    configured_sni_certkeys = [
+        item.certkeyname for item in bindings if item.snicert]
+
+    log('ssl_sni_certkeys_bindings_sync sni certs count %s' % len(configured_sni_certkeys))
+
+    # Delete unwanted SNI bindings
+    for certkey in configured_sni_certkeys:
+        if certkey not in ssl_sni_certkeys:
+            log('ssl_certkey_bindings_sync delete SNI certificate %s' % certkey)
+            fetcher = NitroAPIFetcher(module)
+            del_args = {'certkeyname': certkey,
+                        'snicert': 'true'}
+            result = fetcher.delete(
+                'sslvserver_sslcertkey_binding', id=vservername, args=del_args)
+            if result['nitro_errorcode'] != 0:
+                log("ERROR ssl_certkey_bindings_sync nitro_errorcode %s nitro_message: %s" % (
+                    result['nitro_errorcode'], result.get('nitro_message')))
+
+    # Add missing SNI bindings
+    for sni_certkey in ssl_sni_certkeys:
+        if sni_certkey not in configured_sni_certkeys:
+            log('ssl_certkey_bindings_sync add new SNI certificate %s' %
+                    sni_certkey)
+            binding = sslvserver_sslcertkey_binding()
+            binding.vservername = module.params['name']
+            binding.certkeyname = sni_certkey
+            binding.snicert = True
+            sslvserver_sslcertkey_binding.add(client, binding)
 
 
 def do_state_change(client, module, lbvserver_proxy):
@@ -1744,6 +1843,7 @@ def main():
             type='bool',
             default=False
         ),
+        ssl_sni_certkeys=dict(type='list')
     )
 
     argument_spec = dict()
@@ -2015,6 +2115,12 @@ def main():
 
                     module_result['changed'] = True
 
+                if not ssl_sni_certkeys_bindings_identical(client, module):
+                    if not module.check_mode:
+                        ssl_sni_certkeys_bindings_sync(client, module)
+
+                    module_result['changed'] = True
+
             if not module.check_mode:
                 res = do_state_change(client, module, lbvserver_proxy)
                 if res.errorcode != 0:
@@ -2039,7 +2145,10 @@ def main():
 
                 if module.params['servicetype'] == 'SSL':
                     if not ssl_certkey_bindings_identical(client, module):
-                        module.fail_json(msg='sll certkey bindings not identical', **module_result)
+                        module.fail_json(msg='ssl certkey bindings not identical', **module_result)
+  
+                    if not ssl_sni_certkeys_bindings_identical(client, module):
+                        module.fail_json(msg='ssl sni certkeys bindings not identical', **module_result)
 
         elif module.params['state'] == 'absent':
             log('Applying actions for state absent')
