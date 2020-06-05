@@ -399,16 +399,26 @@ from ansible.module_utils.network.citrix_adc.citrix_adc import (ConfigProxy, get
                                                               get_immutables_intersection)
 
 
+NSERR_NOSERVICE = 344
+
+
+def get_service(client, name):
+    try:
+        return service.get(client, name=name)
+    except nitro_exception as e:
+        if e.errorcode == NSERR_NOSERVICE:
+            return None
+        else:
+            raise
+
+
 def service_exists(client, module):
-    if service.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-        return True
-    else:
-        return False
+    return get_service(client, name=module.params['name']) is not None
 
 
 def service_identical(client, module, service_proxy):
-    service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-    diff_dict = service_proxy.diff_object(service_list[0])
+    service_object = get_service(client, module.params['name'])
+    diff_dict = service_proxy.diff_object(service_object)
     # the actual ip address is stored in the ipaddress attribute
     # of the retrieved object
     if 'ip' in diff_dict:
@@ -447,10 +457,9 @@ def get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs):
 
 def get_actual_monitor_bindings(client, module):
     bindings = {}
-    if service_lbmonitor_binding.count(client, module.params['name']) == 0:
-        return bindings
-
-    # Fallthrough to rest of execution
+    # Every service should have at least the default monitor
+    # configured. Even if no monitors are attached to service,
+    # API service_lbmonitor_binding.get will return empty list.
     for binding in service_lbmonitor_binding.get(client, module.params['name']):
         # Excluding default monitors since we cannot operate on them
         if binding.monitor_name in ('tcp-default', 'ping-default'):
