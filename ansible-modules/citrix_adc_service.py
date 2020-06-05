@@ -453,7 +453,7 @@ def get_actual_monitor_bindings(client, module):
     # Fallthrough to rest of execution
     for binding in service_lbmonitor_binding.get(client, module.params['name']):
         # Excluding default monitors since we cannot operate on them
-        if binding.monitor_name in ('tcp-default', 'ping-default'):
+        if binding.monitor_name in ('tcp-default', 'ping-default', 'default-path-monitor'):
             continue
         key = binding.monitor_name
         actual = lbmonitor_service_binding()
