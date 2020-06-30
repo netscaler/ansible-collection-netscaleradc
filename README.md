@@ -113,9 +113,10 @@ lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvs
 ## Installation
 
 ### Using `virtualenv` (recommended)
-Use of a python virtualenv during installation is recommended.
+Use of a python [virtualenv](https://docs.python-guide.org/dev/virtualenvs/) during installation is recommended.
 
-* Activate the virtualenv (`source bin/activate`)
+* Create the virtualenv (`virtualenv venv`)
+* Activate the virtualenv (`source venv/bin/activate`)
 * Install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
 * Install the citrix ADC modules using ```python install.py```
 

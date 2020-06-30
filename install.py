@@ -67,7 +67,7 @@ def main():
     print('Ansible path is %s' % ansible_path)
 
     # Check to see if appropriate directories exist
-    if (major, minor) == (2, 4):
+    if (major, minor) == (2, 4) or major >= 3 or major == 2 and minor >= 8:
         module_utils_path = os.path.join(ansible_path, 'module_utils')
     else:
         module_utils_path = os.path.join(ansible_path, 'module_utils', 'network', 'netscaler')
@@ -81,6 +81,8 @@ def main():
     # Set modules path according to ansible version
     if major < 2 or major == 2 and minor <= 2:
         extra_modules_path = os.path.join(ansible_path, 'modules', 'extras', 'network')
+    elif major >= 3 or major == 2 and minor >= 8:
+        extra_modules_path = os.path.join(ansible_path, 'modules')
     else:
         extra_modules_path = os.path.join(ansible_path, 'modules', 'network')
 
