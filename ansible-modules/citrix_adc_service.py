@@ -121,6 +121,20 @@ options:
             - "Monitor the health of this service"
         default: yes
 
+    pathmonitor:
+        choices:
+            - 'yes'
+            - 'no'
+        description:
+            - "Path monitoring for clustering"
+
+    pathmonitorindv:
+        choices:
+            - 'yes'
+            - 'no'
+        description:
+            - "Individual Path monitoring decisions"
+
     maxreq:
         description:
             - "Maximum number of requests that can be sent on a persistent connection to the service."
@@ -597,6 +611,8 @@ def main():
             type='bool',
             default=True,
         ),
+        pathmonitor=dict(type='bool'),
+        pathmonitorindv=dict(type='bool'),
         maxreq=dict(type='float'),
         cacheable=dict(
             type='bool',
@@ -725,6 +741,8 @@ def main():
         'cachetype',
         'maxclient',
         'healthmonitor',
+        'pathmonitor',
+        'pathmonitorindv',
         'maxreq',
         'cacheable',
         'cip',
@@ -810,6 +828,8 @@ def main():
         'graceful': ['bool_yes_no'],
         'usip': ['bool_yes_no'],
         'healthmonitor': ['bool_yes_no'],
+        'pathmonitor': ['bool_yes_no'],
+        'pathmonitorindv': ['bool_yes_no'],
         'useproxyport': ['bool_yes_no'],
         'rtspsessionidremap': ['bool_on_off'],
         'accessdown': ['bool_yes_no'],
