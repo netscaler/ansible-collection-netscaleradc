@@ -85,6 +85,14 @@ options:
             - The attributes of the Nitro object we are operating on.
             - "It is required for the following I(operation) values: C(add), C(update), C(action)."
 
+    idempotent:
+        description:
+            - Whether POST requests should be idempotent
+        default: no
+        choices:
+            - no
+            - yes
+
     args:
         description:
             - A dictionary which defines the key arguments by which we will select the Nitro object to operate on.
@@ -345,6 +353,11 @@ class NitroAPICaller(object):
         resource=dict(type='str'),
         name=dict(type='str'),
         attributes=dict(type='dict'),
+        idempotent=dict(
+            choices=['no', 'yes'],
+            default='no',
+            type='str',
+        ),
 
         args=dict(type='dict'),
         filter=dict(type='dict'),
@@ -534,10 +547,11 @@ class NitroAPICaller(object):
         if self._module.params['attributes'] is None:
             self.fail_module(msg='NITRO resource attributes are undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s' % (
+        url = '%s://%s/nitro/v1/config/%s?idempotent=%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
             self._module.params['resource'],
+            self._module.params['idempotent'],
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
@@ -845,11 +859,12 @@ class NitroAPICaller(object):
         if self._module.params['action'] is None:
             self.fail_module(msg='NITRO action is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s?action=%s' % (
+        url = '%s://%s/nitro/v1/config/%s?action=%s&idempotent=%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
             self._module.params['resource'],
             self._module.params['action'],
+            self._module.params['idempotent'],
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
