@@ -295,7 +295,7 @@ netscaler_common_arguments = dict(
     nitro_auth_token=dict(
         type='str',
         aliases=['mas_auth_token'],
-        nolog=True,
+        no_log=True,
     ),
     instance_ip=dict(
         type='str'
