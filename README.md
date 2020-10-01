@@ -19,6 +19,7 @@ The code here should be considered alpha quality and may be broken at times due 
 * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
   - [Installation](#installation)
   - [Usage](#usage-1)
+  - [Security notice](#security-notice)
   - [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
 * [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
   - [Use the citrix\_adc\_nitro\_request module](#use-the-citrix_adc_nitro_request-module)
@@ -177,6 +178,28 @@ scp_if_ssh = True
 ```
 
 You can find usage samples in this [folder](samples/citrix_adc_connection_plugin).
+
+### Security notice
+
+With the connection plugin and the `shell` ansible module it is posssible to run nscli commands
+as show in the example below.
+
+```yaml
+tasks:
+  - name: Run nscli command
+    shell: "nscli -s -U :nsroot:{{nitro_pass}} show ns ip"
+    no_log: True
+```
+
+In order to not expose the actual nsroot password the following rules must be observed
+
+* Do not hardcode the password in the command string.
+
+  Use a variable which is retrieved from a secure storage.
+
+* For the task that contains the password set the task option `no_log: True`
+
+  This will hide log output from the specified task including the password.
 
 ### Citrix ADC and standard Ansible modules in a single playbook
 
