@@ -2,7 +2,7 @@
 
 This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix ADC](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix ADC are supported.
 
-The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be availble with Ansible automatically.
+The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be available with Ansible automatically.
 
 ## Table of contents
 
@@ -15,6 +15,7 @@ The code here should be considered alpha quality and may be broken at times due 
   - [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
   - [Global install](#global-install)
 * [Usage](#usage)
+  - [NITRO API TLS](#nitro-api-tls)
   - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
 * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
   - [Installation](#installation)
@@ -82,7 +83,7 @@ Currently the following modules are implemented
 * citrix\_adc\_server - Manage server configuration
 * citrix\_adc\_service - Manage service configuration in Citrix ADC
 * citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
-* citrix\_adc\_ssl\_certkey - Manage ssl cerificate keys
+* citrix\_adc\_ssl\_certkey - Manage ssl certificate keys
 * citrix\_adm\_application - Manage applications on Citrix ADM
 * citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
 * citrix\_adm\_login - Login to a Citrix ADM instance
@@ -108,7 +109,7 @@ lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvs
 ## Pre-requisites
 
 * NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc or from the "Downloads" tab of the Citrix ADC GUI)
-* Ansible       
+* Ansible
 * Python 2.7 or 3.x
 
 ## Installation
@@ -139,6 +140,23 @@ There are sample playbooks in the `samples` directory.
 Detailed documentation for each module can be found in the htmldoc directory.
 
 Documentation regarding the Citrix ADC appliance configuration in general can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
+
+### NITRO API TLS
+
+By default the `nitro_protocol` parameter is set to `http`.
+This leaves all NITRO API request and response data unencrypted and it is not recommended for production environments.
+
+Set the `nitro_protocol` to `https` in order to have all NITRO API communication encrypted.
+
+By default the Citrix ADC comes with a self signed TLS certificate.
+If you intend to use https with this certificate you need to set the `validate_certs` parameter to `false`.
+
+For production environments it is recommended to use trusted TLS certificate so that `validate_certs`
+is set to `true`.
+
+Please consult the [Citrix ADC secure deployment guide](https://docs.citrix.com/en-us/citrix-adc/citrix-adc-secure-deployment/secure-deployment-guide.html) where among other things the usage of trusted TLS certificates is documented.
+
+
 
 ### Citrix ADM proxied calls
 
@@ -288,4 +306,4 @@ See [LICENSE](./LICENSE)
 **COPYRIGHT 2017 CITRIX Systems Inc**
 
 ## Contributions
-Pull requests and issues are welcome. 
+Pull requests and issues are welcome.
