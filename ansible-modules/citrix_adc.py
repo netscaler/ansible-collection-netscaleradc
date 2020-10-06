@@ -378,8 +378,8 @@ class NitroAPIFetcher(object):
         self._headers['Content-Type'] = 'application/json'
 
         # Check for conflicting authentication methods
-        have_token = self._module.params['nitro_auth_token'] is not None
-        have_userpass = None not in (self._module.params['nitro_user'], self._module.params['nitro_pass'])
+        have_token = self._module.params.get('nitro_auth_token') is not None
+        have_userpass = None not in (self._module.params.get('nitro_user'), self._module.params.get('nitro_pass'))
 
         if have_token and have_userpass:
             self.fail_module(msg='Cannot define both authentication token and username/password')
@@ -392,7 +392,7 @@ class NitroAPIFetcher(object):
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
 
         # Do header manipulation when doing a MAS proxy call
-        if self._module.params['mas_proxy_call']:
+        if self._module.params.get('mas_proxy_call') is not None:
             if self._module.params.get('instance_ip') is not None:
                 self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_IP'] = self._module.params['instance_ip']
             elif self._module.params.get('instance_name') is not None:
