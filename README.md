@@ -15,6 +15,7 @@ The code here should be considered alpha quality and may be broken at times due 
   - [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
   - [Global install](#global-install)
 * [Usage](#usage)
+  - [Secure variable storage](#secure-variable-storage)
   - [NITRO API TLS](#nitro-api-tls)
   - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
 * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
@@ -140,6 +141,25 @@ There are sample playbooks in the `samples` directory.
 Detailed documentation for each module can be found in the htmldoc directory.
 
 Documentation regarding the Citrix ADC appliance configuration in general can be found at the following link, http://docs.citrix.com/en-us/netscaler/11-1.html
+
+### Secure variable storage
+
+Some input variables used by the Citrix ADC ansible modules contain sensitive data.
+
+Most notably `nitro_pass`.
+
+Other variables may also be considered security sensitive
+depending on the use case. For example a user may not want to expose backend service
+IPs since it gives an attacker insight into the network topology used.
+
+In production environments it is recommended to keep the values of these variables encrypted until they are needed by the
+playbook. Ansible offers the [ansible-vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html) utility which
+can be used to encrypt individual variables or entire files.
+
+When the contents are needed the `ansible-playbook` command can take arguments which will point to the encrypted content
+and decrypt it as needed.
+
+For more information see the full [documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
 
 ### NITRO API TLS
 
