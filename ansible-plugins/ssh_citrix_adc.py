@@ -270,12 +270,7 @@ DOCUMENTATION = '''
             version_added: '2.7'
 '''
 
-import errno
-import fcntl
-import hashlib
 import os
-import pty
-import subprocess
 import time
 import codecs
 

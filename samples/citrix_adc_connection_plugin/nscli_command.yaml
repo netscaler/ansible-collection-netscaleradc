@@ -11,9 +11,12 @@
 
   tasks:
     - name: Run nscli command
-      shell: nscli -s -U :nsroot:nsroot "{{ nscli_command }}"
+      shell: "nscli -s -U :nsroot:{{nitro_pass}} {{ nscli_command }}"
+      no_log: True
       register: nscli_output
 
+    # Actually insecure for production environments since it will show the nitro_pass variable value.
+    # Used here for demosntration purposes only.
     - name: Show nscli output
       debug:
-          msg: "{{ nscli_output }}"
+        msg: "{{ nscli_output }}"

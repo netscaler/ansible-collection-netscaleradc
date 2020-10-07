@@ -11,8 +11,9 @@
 
   tasks:
     - name: Generate technical support bundle
-      shell: nscli -s -U :nsroot:nsroot "show techsupport"
+      shell: "nscli -s -U :nsroot:{{nitro_pass}} show techsupport"
       register: sts_output
+      no_log: True
 
     - name: Parse output to find tarball path
       set_fact:
