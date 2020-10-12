@@ -2,6 +2,8 @@
 
 This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix ADC](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix ADC are supported.
 
+To learn more about Automation of Citrix ADC, check out the blog [here](https://www.citrix.com/blogs/2020/10/06/terraform-and-ansible-automation-for-app-delivery-and-security/).
+
 The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be available with Ansible automatically.
 
 ## Table of contents
