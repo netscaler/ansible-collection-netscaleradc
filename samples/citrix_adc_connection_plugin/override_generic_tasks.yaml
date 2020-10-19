@@ -1,11 +1,14 @@
 ---
 - hosts: citrix_adc
   gather_facts: false
+  
+  collections:
+    - citrix.citrixadc_modules
 
 
   tasks:
     - name: Calling shell module
-      connection: ssh_citrix_adc
+      connection: citrix.citrixadc_modules.ssh_citrix_adc
       remote_user: nsroot
       vars:
         ansible_python_interpreter: /var/python/bin/python
@@ -22,6 +25,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         name: test-server-1
         ipaddress: 192.168.2.2

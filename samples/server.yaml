@@ -3,14 +3,35 @@
   vars:
     max_clients: 5
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
+    - name: Do mas login
+      delegate_to: localhost
+      register: result
+      citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
+
+        operation: mas_login
+
+      register: result
+
+    - name: Print result
+
+      debug:
+        msg: "result {{ result }}"
+
     - name: Setup server
       delegate_to: localhost
       citrix_adc_server:
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         state: present
 
 

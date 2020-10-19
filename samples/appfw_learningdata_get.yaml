@@ -2,6 +2,8 @@
   gather_facts: no
   vars:
     resource: appfwlearningdata 
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Get the unreviewed appfw learningdata for the specified profile and security check 
@@ -11,6 +13,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: get_by_args
 

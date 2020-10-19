@@ -1,6 +1,8 @@
 - hosts: citrix_adc
 
   gather_facts: no
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
 
@@ -10,6 +12,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         sitename: gslb-site-http
         siteipaddress: 192.168.1.4
@@ -20,6 +23,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         sitetype: REMOTE
         sitename: gslb-site-http-remote
@@ -31,6 +35,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
 
@@ -46,6 +51,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
 
@@ -61,6 +67,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
 

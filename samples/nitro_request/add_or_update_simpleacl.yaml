@@ -19,6 +19,8 @@
       aclaction: DENY
       srcip: 10.102.29.5
       ttl: 600
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Get resource
@@ -29,6 +31,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: get
 
@@ -42,6 +45,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: add
 
@@ -56,6 +60,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: update
 

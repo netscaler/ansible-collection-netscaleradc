@@ -3,6 +3,9 @@
 
   vars:
     max_clients: 5
+  collections:
+    - citrix.citrixadc_modules
+
 
   remote_user: root
   gather_facts: False
@@ -14,6 +17,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
         name: server-1
@@ -25,6 +29,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
         name: server-2
@@ -36,24 +41,16 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP
         clttimeout: 300
-        autoscale: API
         servicemembers:
           mode: exact
           attributes:
             - servername: server-1
               port: 8080
-              weight: 60
-
-        monitor_bindings:
-          mode: exact
-          attributes:
-            - monitor_name: myhttp3
-              weight: 50
-            - monitor_name: myhttp2
               weight: 50

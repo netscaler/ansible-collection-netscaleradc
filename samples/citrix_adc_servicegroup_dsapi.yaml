@@ -7,6 +7,8 @@
 
   remote_user: root
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
 
@@ -16,12 +18,13 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         state: present
 
         servicegroupname: service-group-1
         servicetype: HTTP
-        maxclient: 4000
+        maxclient: "4000"
         autoscale: API
         servicemembers:
           mode: dsapi

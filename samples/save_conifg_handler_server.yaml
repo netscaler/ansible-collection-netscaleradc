@@ -6,6 +6,8 @@
     state: present
 
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Set server 1
@@ -15,6 +17,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         save_config: "{{ save_config }}"
 
         state: "{{ state }}"
@@ -28,6 +31,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         save_config: "{{ save_config }}"
 
         state: "{{ state }}"

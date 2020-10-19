@@ -3,7 +3,7 @@
 #
 - hosts: citrix_adc
   remote_user: nsroot
-  connection: ssh_citrix_adc
+  connection: citrix.citrixadc_modules.ssh_citrix_adc
   gather_facts: False
   vars:
     ansible_python_interpreter: /var/python/bin/python

@@ -4,6 +4,8 @@
     max_clients: 5
 
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
 
   tasks:
@@ -15,6 +17,7 @@
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'
         state: present
+        validate_certs: no
 
         name: field_type_name
         regex: "reman"

@@ -3,6 +3,8 @@
   vars:
     max_clients: 5
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
 
@@ -12,6 +14,7 @@
         mas_ip: "{{ nsip }}"
         mas_user: "{{ nitro_user }}"
         mas_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: mas_login
 
@@ -24,6 +27,7 @@
         mas_ip: "{{ nsip }}"
         mas_auth_token: "{{ mas_login_result.nitro_auth_token }}"
         mas_proxy_call: true
+        validate_certs: no
         instance_ip: "{{ instance_ip }}"
 
         state: present
