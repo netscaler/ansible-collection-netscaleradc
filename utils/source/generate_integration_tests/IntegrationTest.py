@@ -74,6 +74,16 @@ class IntegrationTest(object):
             data = template_yaml.tasks_main_data
         fileop.yamlstr_to_yaml(self.tasks_main_file, data) 
 
+    def create_tasks_meta_file(self):
+        target_dir = os.path.join(self.entity_dir_path, 'meta')
+        fileop.create_directory(target_dir)
+        yaml_data = '\n'.join([
+            'collections:',
+            '  - citrix.citrixadc_modules',
+        ])
+        main_file = os.path.join(target_dir, 'main.yaml')
+        fileop.yamlstr_to_yaml(main_file, yaml_data)
+
     def create_tasks_nitro_file(self):
         fileop.yamlstr_to_yaml(self.tasks_nitro_file, template_yaml.tasks_nitro_data)
 

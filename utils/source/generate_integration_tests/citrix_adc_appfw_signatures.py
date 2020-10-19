@@ -56,6 +56,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'add'),
 
@@ -95,6 +96,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'delete_by_args'),
 

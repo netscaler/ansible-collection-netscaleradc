@@ -53,6 +53,7 @@ def main():
         entity_obj.create_defaults_main_file()
     
         entity_obj.create_tasks_main_file()
+        entity_obj.create_tasks_meta_file()
         entity_obj.create_tasks_nitro_file()
 
         #check if any prerequisite/testbed is required

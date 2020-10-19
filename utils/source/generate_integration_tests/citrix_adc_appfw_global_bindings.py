@@ -12,7 +12,7 @@ ENTITY_NAME = 'citrix_adc_appfw_global_bindings'
 def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data = []
 
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_appfw_policy')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_appfw_policy', collection='citrix.citrixadc_modules')
     appfw_policy = OrderedDict(
         [
             ('name', 'integration_test_policy'),
@@ -74,6 +74,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'add'),
 
@@ -134,6 +135,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'add'),
 
@@ -155,6 +157,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'add'),
 
@@ -211,6 +214,7 @@ def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
             ('nitro_user', '{{ nitro_user }}'),
             ('nitro_pass', '{{ nitro_pass }}'),
             ('nsip', '{{ nsip }}'),
+            ('validate_certs', 'no'),
 
             ('operation', 'delete'),
 

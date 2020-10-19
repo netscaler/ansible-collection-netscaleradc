@@ -6,3 +6,4 @@
     nitro_user: "{{nitro_user}}"
     nitro_pass: "{{nitro_pass}}"
     nsip: "{{nsip}}"
+    validate_certs: no

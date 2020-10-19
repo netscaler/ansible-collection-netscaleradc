@@ -17,7 +17,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
 
 def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     input_data = OrderedDict()
-    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'basic')
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'basic', collection='citrix.citrixadc_modules')
 
     attributes = OrderedDict(
         [
