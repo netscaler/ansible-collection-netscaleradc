@@ -1,5 +1,7 @@
 - hosts: citrix_adc
   gather_facts: no
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Get resource
@@ -9,6 +11,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: action
         action: rename

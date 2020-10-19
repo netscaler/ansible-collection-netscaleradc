@@ -5,6 +5,8 @@
     - workflows.yaml
   vars:
     state: present
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
 
@@ -14,6 +16,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         state: "{{ state }}"
 
         workflow: "{{ workflow.lbgroup }}"
@@ -28,6 +31,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         state: "{{ state }}"
 
         workflow: "{{ workflow.lbvserver }}"
@@ -44,6 +48,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
         state: "{{ state }}"
 
         workflow: "{{ workflow.lbgroup_lbvserver_binding }}"

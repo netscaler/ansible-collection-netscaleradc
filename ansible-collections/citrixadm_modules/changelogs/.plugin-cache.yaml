@@ -1,0 +1,71 @@
+plugins:
+  become: {}
+  cache: {}
+  callback: {}
+  cliconf: {}
+  connection: {}
+  httpapi: {}
+  inventory: {}
+  lookup: {}
+  module:
+    citrix_adm_application:
+      description: Manage applications on Citrix ADM.
+      name: citrix_adm_application
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_dns_domain_entry:
+      description: Manage Citrix ADM domain names.
+      name: citrix_adm_dns_domain_entry
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_login:
+      description: Login to a Citrix ADM instance.
+      name: citrix_adm_login
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_mpsgroup:
+      description: Manage Citrix ADM user groups.
+      name: citrix_adm_mpsgroup
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_mpsuser:
+      description: Manage Citrix ADM users.
+      name: citrix_adm_mpsuser
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_ns_facts:
+      description: Retrieve facts about Citrix ADM managed instances.
+      name: citrix_adm_ns_facts
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_poll_instances:
+      description: Force the poll instances network function on the target Citrix
+        ADM.
+      name: citrix_adm_poll_instances
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_rba_policy:
+      description: Manage Citrix ADM rba policies.
+      name: citrix_adm_rba_policy
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_rba_role:
+      description: Manage Citrix ADM rba roles.
+      name: citrix_adm_rba_role
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_stylebook:
+      description: Create or delete Citrix ADM stylebooks.
+      name: citrix_adm_stylebook
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adm_tenant_facts:
+      description: Retrieve facts about Citrix ADM tenants.
+      name: citrix_adm_tenant_facts
+      namespace: ''
+      version_added: 1.0.0
+  netconf: {}
+  shell: {}
+  strategy: {}
+  vars: {}
+version: 1.0.0

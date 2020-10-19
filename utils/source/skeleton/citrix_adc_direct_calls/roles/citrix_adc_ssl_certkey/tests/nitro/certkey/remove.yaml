@@ -1,6 +1,6 @@
 ---
 
-- name: Setup cs action
+- name: Remove ssl certkey
   delegate_to: localhost
   register: result
   check_mode: "{{ check_mode }}"
@@ -8,6 +8,7 @@
     nitro_user: "{{nitro_user}}"
     nitro_pass: "{{nitro_pass}}"
     nsip: "{{nsip}}"
+    validate_certs: no
 
     state: absent
-    certkey: certirificate_1
+    certkey: certificate_1

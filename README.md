@@ -11,11 +11,13 @@ The code here should be considered alpha quality and may be broken at times due 
 * [Module renaming](#module-renaming)
 * [Documentation](#documentation)
 * [List of implemented modules](#list-of-implemented-modules)
+  - [ADC modules](#adc-modules)
+  - [ADM modules](#adm-modules)
   - [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
 * [Pre-requisites](#pre-requisites)
 * [Installation](#installation)
-  - [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
-  - [Global install](#global-install)
+  - [Setting up prerequisites](#setting-up-prerequisites)
+  - [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
 * [Usage](#usage)
   - [Secure variable storage](#secure-variable-storage)
   - [NITRO API TLS](#nitro-api-tls)
@@ -57,6 +59,10 @@ Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readt
 
 Currently the following modules are implemented
 
+### ADC modules
+
+Included in the `citrix.citrixadc_modules` collection
+
 * citrix\_adc\_appfw\_confidfield - Configuration for configured confidential form fields resource
 * citrix\_adc\_appfw\_fieldtype - Configuration for application firewall form field type resource
 * citrix\_adc\_appfw\_global\_bindings - Define global bindings for AppFW
@@ -87,6 +93,12 @@ Currently the following modules are implemented
 * citrix\_adc\_service - Manage service configuration in Citrix ADC
 * citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
 * citrix\_adc\_ssl\_certkey - Manage ssl certificate keys
+
+
+### ADM modules
+
+Included in the `citrix.citrixadm_modules` collection
+
 * citrix\_adm\_application - Manage applications on Citrix ADM
 * citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
 * citrix\_adm\_login - Login to a Citrix ADM instance
@@ -99,7 +111,7 @@ Currently the following modules are implemented
 * citrix\_adm\_stylebook - Create or delete Citrix ADM stylebooks
 * citrix\_adm\_tenant\_facts - Retrieve facts about Citrix ADM tenants
 
-### `citrix_adc_nitro_resource` workflows list
+## `citrix_adc_nitro_resource` workflows list
 
 The following NITRO API endpoints have their workflow dictionaries available
 for use with the `citrix_adc_nitro_resource` module.
@@ -117,21 +129,44 @@ lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvs
 
 ## Installation
 
-### Using `virtualenv` (recommended)
+### Setting up prerequisites
+
+#### Using `virtualenv` (recommended)
 Use of a python virtualenv during installation is recommended.
 
 * Activate the virtualenv (`source bin/activate`)
 * Install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
-* Install the citrix ADC modules using ```python install.py```
 
-### Global install
+#### Global environment
 * Install Ansible (`sudo pip install ansible`)
 * Install NetScaler SDK (`pip install deps/nitro-python-1.0_kamet.tar.gz`)
-* Install Citrix ADC modules (`sudo python install.py`). It tries to find the ansible installation directory and then copies the module files to the appropriate places.
 
-If the ansible installation is on a dirctory that requires root access, the install script should be run with root privileges.
-If the isntallation script fails and you know where ansible is located on your system you can do a manual installation.
-Just copy the contents of the ansible-modules directory to the extras module directory and the netscaler.py file to the module_utils directory of ansible.
+### Installing ADC and ADM modules and plugins
+
+To install the available collections from the repository directly:
+
+```bash
+# ADC modules and connection plugin
+ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/citrixadc_modules
+
+# ADM modules
+ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/citrixadm_modules
+```
+
+To install the available collections from a local checkout of the repository:
+
+```bash
+# ADC modules and connection plugin
+cd ansible-collections/citrixadc_modules
+ansible-galaxy collection build 
+ansible-galaxy collection install citrix-citrixadc_modules-<semver>.tar.gz
+
+# ADM modules
+cd ansible-collections/citrixadm_modules
+ansible-galaxy collection build 
+ansible-galaxy collection install citrix-citrixadm_modules-<semver>.tar.gz
+```
+
 
 ## Usage
 
@@ -197,9 +232,7 @@ The Citrix ADC connection plugin allows the use of standard Ansible modules, suc
 
 ### Installation
 
-The installation script provided here `install.py` will install the plugin to the ansible path inside the standard Ansible connection plugin directory.
-
-You can also manually copy the connection plugin source file located in `ansible-plugin/ssh\_citrix\_adc.py` to a custom location that Ansible will search for it. Refer to the Ansible documentation for details.
+The connection plugin is included in the citrix.citrixadc_modules collection.
 
 ### Usage
 

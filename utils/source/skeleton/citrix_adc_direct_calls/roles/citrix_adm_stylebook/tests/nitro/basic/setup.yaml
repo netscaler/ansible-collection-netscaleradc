@@ -3,6 +3,7 @@
   check_mode: '{{ check_mode }}'
   register: result
   citrix_adc_mas_stylebook:
+    validate_certs: no
     mas_ip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.session_id }}"
 

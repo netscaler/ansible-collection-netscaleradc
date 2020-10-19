@@ -6,6 +6,7 @@
     nsip: "{{ mas_ip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
+    validate_certs: no
 
     operation: mas_login
 
@@ -17,6 +18,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: get
 
@@ -31,6 +33,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: add
 
@@ -47,6 +50,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: get
 
@@ -69,6 +73,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: update
 
@@ -85,6 +90,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: get_by_args
 
@@ -106,6 +112,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: get_filtered
 
@@ -127,6 +134,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: delete
 
@@ -139,6 +147,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: add
 
@@ -155,6 +164,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: delete_by_args
 

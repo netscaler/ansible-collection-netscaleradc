@@ -1,6 +1,6 @@
 ---
 - hosts: citrix_adc
-  connection: ssh_citrix_adc
+  connection: citrix.citrixadc_modules.ssh_citrix_adc
   remote_user: nsroot
   gather_facts: false
 
@@ -18,6 +18,8 @@
 
 - hosts: citrix_adc
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Setup server
@@ -26,6 +28,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         name: test-server-1
         ipaddress: 192.168.2.2

@@ -4,6 +4,8 @@
     max_clients: 5
 
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
 
   tasks:
@@ -14,6 +16,7 @@
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
         state: present
+        validate_certs: no
 
         name: policy_test_2
         rule: 'HTTP.REQ.HOSTNAME.DOMAIN.EQ("blog.example.com")'
@@ -28,6 +31,7 @@
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'
         state: present
+        validate_certs: no
 
         appfwpolicy_bindings:
           mode: bind

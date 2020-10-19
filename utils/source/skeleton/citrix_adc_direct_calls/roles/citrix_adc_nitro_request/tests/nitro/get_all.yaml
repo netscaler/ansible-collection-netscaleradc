@@ -2,6 +2,7 @@
   delegate_to: localhost
   register: result
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -18,6 +19,7 @@
 - name: Add resource
   delegate_to: localhost
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -34,6 +36,7 @@
   delegate_to: localhost
   register: result
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -54,6 +57,7 @@
 - name: Delete resource
   delegate_to: localhost
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"

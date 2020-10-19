@@ -6,6 +6,8 @@
     attributes:
       name: test-server-1
       ipaddress: 192.168.1.6
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: Do mas login
@@ -15,6 +17,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: mas_login
 
@@ -32,6 +35,7 @@
         nitro_auth_token: "{{ result.nitro_auth_token }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: get
 

@@ -8,6 +8,8 @@
 
   remote_user: root
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
   tasks:
     - name: 'SETUP lb_vserver_appfwpolicy_binding'
@@ -16,7 +18,10 @@
         nitro_user: '{{ nitro_user }}'
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'
+        validate_certs: no
+
         state: present
+
         name: lb-vserver-appfw-policy
         port: 80
         ipv46: 10.79.1.3

@@ -7,7 +7,7 @@ ENTITY_NAME = 'citrix_adc_lb_vserver'
 # PREREQUISITES/Testbed
 def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data = []
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_server')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_server')
     testbed = OrderedDict(
         [
             ('name', 'server-{{ item }}'),
@@ -21,7 +21,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     )
     testbed_data.append(testbedObj.add_testbed('setup', [testbed, testbed_extra_vars]))
     
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_service')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_service')
     testbed = OrderedDict(
         [
             ('name', 'service-http-{{ item }}'),
@@ -37,7 +37,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     )
     testbed_data.append(testbedObj.add_testbed('setup', [testbed, testbed_extra_vars]))
     
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_servicegroup')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_servicegroup')
     testbed = OrderedDict(
         [
             ('servicegroupname', 'service-group-1'),
@@ -62,7 +62,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     )
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
     
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_servicegroup')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_servicegroup')
     testbed = OrderedDict(
         [
             ('servicegroupname', 'service-group-2'),
@@ -88,7 +88,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
     
     
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_lb_vserver')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_lb_vserver')
     testbed = OrderedDict(
         [
             ('name', 'lb-vserver-push'),
@@ -100,7 +100,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     testbed_data.append(testbedObj.add_testbed('setup', testbed))
 
     # Appfw policy prerequisite
-    testbedObj = BaseIntegrationModule(test_type, 'citrix_adc_appfw_policy')
+    testbedObj = BaseIntegrationModule(test_type, 'citrix.citrixadc_modules.citrix_adc_appfw_policy')
     
     testbed = OrderedDict([
             ('name',  'policy_lb_vserver_integration_helper'),
@@ -116,7 +116,7 @@ def get_testbed_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
 def get_input_data(test_type='citrix_adc_direct_calls', ns_version='12.1'):
     input_data = OrderedDict()
     # For Submodule 'lb_vserver_any'
-    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'lb_vserver_any')
+    submodObj = BaseIntegrationModule(test_type, ENTITY_NAME, 'lb_vserver_any', collection='citrix.citrixadc_modules')
     setup_data = OrderedDict(
         [
             ('state', 'present'),

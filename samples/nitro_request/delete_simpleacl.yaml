@@ -13,6 +13,9 @@
       srcip: 10.102.29.5
       ttl: 600
 
+  collections:
+    - citrix.citrixadc_modules
+
   tasks:
     - name: delete resource
       delegate_to: localhost
@@ -21,6 +24,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: delete
 

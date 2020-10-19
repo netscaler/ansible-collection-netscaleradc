@@ -1,0 +1,170 @@
+plugins:
+  become: {}
+  cache: {}
+  callback: {}
+  cliconf: {}
+  connection: {}
+  httpapi: {}
+  inventory: {}
+  lookup: {}
+  module:
+    citrix_adc_appfw_confidfield:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_confidfield
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_fieldtype:
+      description: Configuration for application firewall form field type resource.
+      name: citrix_adc_appfw_fieldtype
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_global_bindings:
+      description: Define global bindings for AppFW
+      name: citrix_adc_appfw_global_bindings
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_htmlerrorpage:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_htmlerrorpage
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_jsoncontenttype:
+      description: Configuration for JSON content type resource.
+      name: citrix_adc_appfw_jsoncontenttype
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_learningsettings:
+      description: Configuration for learning settings resource.
+      name: citrix_adc_appfw_learningsettings
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_policy:
+      description: Manage Citrix ADC Web Application Firewall policies.
+      name: citrix_adc_appfw_policy
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_policylabel:
+      description: Manage Citrix ADC Web Application Firewall policy labels.
+      name: citrix_adc_appfw_policylabel
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_profile:
+      description: Manage Citrix ADC Web Application Firewall profiles.
+      name: citrix_adc_appfw_profile
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_settings:
+      description: Manage Citrix ADC Web Application Firewall settings.
+      name: citrix_adc_appfw_settings
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_signatures:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_signatures
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_wsdl:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_wsdl
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_xmlcontenttype:
+      description: Configuration for XML Content type resource.
+      name: citrix_adc_appfw_xmlcontenttype
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_xmlerrorpage:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_xmlerrorpage
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_appfw_xmlschema:
+      description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_xmlschema
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_cs_action:
+      description: Manage content switching actions
+      name: citrix_adc_cs_action
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_cs_policy:
+      description: Manage content switching policy
+      name: citrix_adc_cs_policy
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_cs_vserver:
+      description: Manage content switching vserver
+      name: citrix_adc_cs_vserver
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_gslb_service:
+      description: Manage gslb service entities in Netscaler.
+      name: citrix_adc_gslb_service
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_gslb_site:
+      description: Manage gslb site entities in Netscaler.
+      name: citrix_adc_gslb_site
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_gslb_vserver:
+      description: Configure gslb vserver entities in Netscaler.
+      name: citrix_adc_gslb_vserver
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_lb_monitor:
+      description: Manage load balancing monitors
+      name: citrix_adc_lb_monitor
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_lb_vserver:
+      description: Manage load balancing vserver configuration
+      name: citrix_adc_lb_vserver
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_nitro_request:
+      description: Issue Nitro API requests to a Netscaler instance.
+      name: citrix_adc_nitro_request
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_nitro_resource:
+      description: Manage NITRO resources
+      name: citrix_adc_nitro_resource
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_password_reset:
+      description: Perform default password reset.
+      name: citrix_adc_password_reset
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_save_config:
+      description: Save Netscaler configuration.
+      name: citrix_adc_save_config
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_server:
+      description: Manage server configuration
+      name: citrix_adc_server
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_service:
+      description: Manage service configuration in Netscaler
+      name: citrix_adc_service
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_servicegroup:
+      description: Manage service group configuration in Netscaler
+      name: citrix_adc_servicegroup
+      namespace: ''
+      version_added: 1.0.0
+    citrix_adc_ssl_certkey:
+      description: Manage ssl cerificate keys.
+      name: citrix_adc_ssl_certkey
+      namespace: ''
+      version_added: 1.0.0
+  netconf: {}
+  shell: {}
+  strategy: {}
+  vars: {}
+version: 1.0.0

@@ -1,6 +1,6 @@
 - hosts: citrix_adc
   remote_user: nsroot
-  connection: ssh_citrix_adc
+  connection: citrix.citrixadc_modules.ssh_citrix_adc
   gather_facts: False
   vars:
     ansible_python_interpreter: /var/python/bin/python
@@ -16,7 +16,7 @@
       register: nscli_output
 
     # Actually insecure for production environments since it will show the nitro_pass variable value.
-    # Used here for demosntration purposes only.
+    # Used here for demonstration purposes only.
     - name: Show nscli output
       debug:
         msg: "{{ nscli_output }}"

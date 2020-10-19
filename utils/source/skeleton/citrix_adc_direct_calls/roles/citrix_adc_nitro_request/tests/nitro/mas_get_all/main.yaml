@@ -5,6 +5,7 @@
     nsip: "{{ mas_ip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
+    validate_certs: no
 
     operation: mas_login
 - name: Get all servers
@@ -14,6 +15,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: get_all
 
@@ -30,6 +32,7 @@
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
+    validate_certs: no
 
     operation: add
 
@@ -43,6 +46,7 @@
   delegate_to: localhost
   register: result
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"
@@ -63,6 +67,7 @@
 - name: Delete resource
   delegate_to: localhost
   citrix_adc_nitro_request:
+    validate_certs: no
     nsip: "{{ mas_ip }}"
     nitro_auth_token: "{{ login_result.nitro_auth_token }}"
     instance_ip: "{{ nsip }}"

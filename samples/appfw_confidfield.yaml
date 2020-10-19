@@ -4,6 +4,8 @@
     max_clients: 5
 
   gather_facts: False
+  collections:
+    - citrix.citrixadc_modules
 
 
   tasks:
@@ -14,6 +16,7 @@
         nitro_user: '{{ nitro_user }}'
         nitro_pass: '{{ nitro_pass }}'
         nsip: '{{ nsip }}'
+        validate_certs: no
         state: present
 
         fieldname: "field_name"

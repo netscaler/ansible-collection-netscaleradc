@@ -13,11 +13,12 @@ NITRO_RESOURCE_TASK_FILE='''\
   register: result
   ignore_errors: "{{ ignore_errors | default('no') }}"
   check_mode: "{{ check_mode }}"
-  citrix_adc_nitro_resource:
+  citrix.citrixadc_modules.citrix_adc_nitro_resource:
     nitro_user: '{{ nitro_user }}'
     nitro_pass: '{{ nitro_pass }}'
     nsip: '{{ nsip }}'
     state: '{{ state }}'
+    validate_certs: no
 
     workflow: "{{ workflow_dict }}"
     resource: "{{ resource_attributes }}"

@@ -1,0 +1,42 @@
+- hosts: citrix_adc
+  gather_facts: no
+
+  vars_files:
+    - workflows.yaml
+  collections:
+    - citrix.citrixadc_modules
+
+  tasks:
+    - name: ADC login operation
+      delegate_to: localhost
+      register: result
+      citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        validate_certs: no
+
+        operation: add
+
+        resource: "login"
+        attributes: 
+          username: "{{ nitro_user }}"
+          password: "{{ nitro_pass }}"
+
+    - name: Extract login data from http response
+      set_fact:
+        login_data: "{{ result.http_response_body | from_json }}"
+
+
+    - name: Do server operation with token
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_auth_token: "{{ login_data.sessionid }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        workflow: "{{ workflow.server }}"
+
+        resource:
+          name: server_2
+          ipaddress: 10.80.0.1
