@@ -1,0 +1,98 @@
+ancestor: null
+releases:
+  1.0.0:
+    modules:
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_confidfield
+      namespace: ''
+    - description: Configuration for application firewall form field type resource.
+      name: citrix_adc_appfw_fieldtype
+      namespace: ''
+    - description: Define global bindings for AppFW
+      name: citrix_adc_appfw_global_bindings
+      namespace: ''
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_htmlerrorpage
+      namespace: ''
+    - description: Configuration for JSON content type resource.
+      name: citrix_adc_appfw_jsoncontenttype
+      namespace: ''
+    - description: Configuration for learning settings resource.
+      name: citrix_adc_appfw_learningsettings
+      namespace: ''
+    - description: Manage Citrix ADC Web Application Firewall policies.
+      name: citrix_adc_appfw_policy
+      namespace: ''
+    - description: Manage Citrix ADC Web Application Firewall policy labels.
+      name: citrix_adc_appfw_policylabel
+      namespace: ''
+    - description: Manage Citrix ADC Web Application Firewall profiles.
+      name: citrix_adc_appfw_profile
+      namespace: ''
+    - description: Manage Citrix ADC Web Application Firewall settings.
+      name: citrix_adc_appfw_settings
+      namespace: ''
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_signatures
+      namespace: ''
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_wsdl
+      namespace: ''
+    - description: Configuration for XML Content type resource.
+      name: citrix_adc_appfw_xmlcontenttype
+      namespace: ''
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_xmlerrorpage
+      namespace: ''
+    - description: Configuration for configured confidential form fields resource.
+      name: citrix_adc_appfw_xmlschema
+      namespace: ''
+    - description: Manage content switching actions
+      name: citrix_adc_cs_action
+      namespace: ''
+    - description: Manage content switching policy
+      name: citrix_adc_cs_policy
+      namespace: ''
+    - description: Manage content switching vserver
+      name: citrix_adc_cs_vserver
+      namespace: ''
+    - description: Manage gslb service entities in Netscaler.
+      name: citrix_adc_gslb_service
+      namespace: ''
+    - description: Manage gslb site entities in Netscaler.
+      name: citrix_adc_gslb_site
+      namespace: ''
+    - description: Configure gslb vserver entities in Netscaler.
+      name: citrix_adc_gslb_vserver
+      namespace: ''
+    - description: Manage load balancing monitors
+      name: citrix_adc_lb_monitor
+      namespace: ''
+    - description: Manage load balancing vserver configuration
+      name: citrix_adc_lb_vserver
+      namespace: ''
+    - description: Issue Nitro API requests to a Netscaler instance.
+      name: citrix_adc_nitro_request
+      namespace: ''
+    - description: Manage NITRO resources
+      name: citrix_adc_nitro_resource
+      namespace: ''
+    - description: Perform default password reset.
+      name: citrix_adc_password_reset
+      namespace: ''
+    - description: Save Netscaler configuration.
+      name: citrix_adc_save_config
+      namespace: ''
+    - description: Manage server configuration
+      name: citrix_adc_server
+      namespace: ''
+    - description: Manage service configuration in Netscaler
+      name: citrix_adc_service
+      namespace: ''
+    - description: Manage service group configuration in Netscaler
+      name: citrix_adc_servicegroup
+      namespace: ''
+    - description: Manage ssl cerificate keys.
+      name: citrix_adc_ssl_certkey
+      namespace: ''
+    release_date: '2020-10-09'
