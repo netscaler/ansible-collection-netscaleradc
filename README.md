@@ -4,7 +4,6 @@ This repository provides [Ansible](https://www.ansible.com)  modules for configu
 
 To learn more about Automation of Citrix ADC, check out the blog [here](https://www.citrix.com/blogs/2020/10/06/terraform-and-ansible-automation-for-app-delivery-and-security/).
 
-The code here should be considered alpha quality and may be broken at times due to experiments and refactoring. Tagged releases should be stable. The most stable version will be available with Ansible automatically.
 
 ## Table of contents
 
