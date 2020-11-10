@@ -1,6 +1,0 @@
-{{argument.key}}=dict(#{% if argument.choices %}
-            type='{{argument.type}}',
-            choices=[#{% for choice in argument.choices %}
-                '{{ choice }}',#{% endfor %}
-            ]
-        ),#{% else %}type='{{argument.type}}'),#{% endif %}

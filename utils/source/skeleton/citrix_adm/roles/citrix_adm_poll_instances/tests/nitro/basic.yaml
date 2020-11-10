@@ -1,3 +1,0 @@
-- include: '{{ role_path }}/tests/nitro/basic/setup.yaml'
-  vars:
-    check_mode: false

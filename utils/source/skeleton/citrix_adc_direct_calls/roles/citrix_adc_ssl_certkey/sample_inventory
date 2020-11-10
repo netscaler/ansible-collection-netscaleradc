@@ -1,5 +1,0 @@
-
-
-[citrix_adc]
-
-citrix_adc_121 nsip=172.18.0.2 nitro_user=nsroot nitro_pass=nsroot
