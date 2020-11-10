@@ -1,3 +1,0 @@
-- name: Assert that result did not change
-  assert:
-    that: not result|changed
