@@ -1,3 +1,0 @@
-- name: Assert that first run set changed status correctly
-  assert:
-    that: result|changed

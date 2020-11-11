@@ -1,9 +1,0 @@
----
-
-- name: Save configuration
-  delegate_to: localhost
-  netscaler_save_config:
-    instance_ip: '{{ instance_ip }}'
-    mas_auth_token: '{{ mas_login_result.nitro_auth_token }}'
-    mas_ip: '{{ nsip }}'
-    mas_proxy_call: true

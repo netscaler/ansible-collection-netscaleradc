@@ -1,6 +1,0 @@
-nitro_user: "nsroot"
-nitro_pass: "nsroot"
-
-nitro_protocol: "http"
-validate_certs: false
-role_input: {}

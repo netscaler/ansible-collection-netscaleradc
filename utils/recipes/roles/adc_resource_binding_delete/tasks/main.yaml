@@ -1,6 +1,0 @@
-- include_tasks: get_and_compare.yaml
-
-- include_tasks: delete_resource.yaml
-  when:
-    - role_operation == 'delete'
-    - not processed_role_input.dry_run

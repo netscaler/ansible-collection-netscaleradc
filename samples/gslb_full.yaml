@@ -2,7 +2,7 @@
 
   gather_facts: no
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
 

@@ -1,3 +1,0 @@
-[citrix_adc]
-
-citrix_adc_vpx121 nsip=10.78.60.205 nitro_user=nsroot nitro_pass=nsroot validate_certs=no

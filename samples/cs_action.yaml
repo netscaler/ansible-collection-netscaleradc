@@ -3,7 +3,7 @@
 - hosts: citrix_adc
   gather_facts: false
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: lb vserver

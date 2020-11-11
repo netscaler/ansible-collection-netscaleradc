@@ -20,6 +20,8 @@
 
   remote_user: root
   gather_facts: False
+  collections:
+    - citrix.adc
 
   tasks:
     - name: Check if servicegroup exists
@@ -32,6 +34,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: get
 
@@ -45,6 +48,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: add
 
@@ -72,6 +76,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: delete_by_args
 
@@ -90,6 +95,7 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: add
 
@@ -108,5 +114,6 @@
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
+        validate_certs: no
 
         operation: save_config

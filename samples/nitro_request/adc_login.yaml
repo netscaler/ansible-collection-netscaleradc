@@ -4,7 +4,7 @@
   vars_files:
     - workflows.yaml
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: ADC login operation

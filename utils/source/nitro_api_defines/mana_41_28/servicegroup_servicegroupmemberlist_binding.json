@@ -1,3 +1,0 @@
-{
-    "CalledProcessError": "Command '['python', 'generate_data.py', '--main-nitro-class', 'servicegroup_servicegroupmemberlist_binding', '--nitro-xml-file', 'source/mana_41_28/Nitro.xml.eo', '--html-doc', 'source/mana_41_28/html/config/basic/servicegroup_servicegroupmemberlist_binding.html', '--output-json', 'output/mana_41_28/servicegroup_servicegroupmemberlist_binding.json']' returned non-zero exit status 1"
-}

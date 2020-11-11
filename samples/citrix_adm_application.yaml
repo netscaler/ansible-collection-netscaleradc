@@ -20,6 +20,9 @@
 
   gather_facts: False
 
+  collections:
+    - citrix.adm
+
   tasks:
     - name: Login to citrix_adm
       delegate_to: localhost

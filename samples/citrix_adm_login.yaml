@@ -5,13 +5,14 @@
 
   gather_facts: False
   collections:
-    - citrix.citrixadm_modules
+    - citrix.adm
 
   tasks:
     - name: Login to mas
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
+        validate_certs: no
         mas_ip: "{{ mas_ip }}"
         mas_user: "{{ mas_user }}"
         mas_pass: "{{ mas_pass }}"
@@ -21,6 +22,7 @@
       citrix_adm_mpsuser:
         mas_ip: "{{ mas_ip }}"
         mas_auth_token: "{{ login_result.session_id }}"
+        validate_certs: no
 
         state: absent
 

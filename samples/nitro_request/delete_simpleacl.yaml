@@ -14,7 +14,7 @@
       ttl: 600
 
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: delete resource

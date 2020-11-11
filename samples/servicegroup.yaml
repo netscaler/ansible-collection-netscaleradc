@@ -4,7 +4,7 @@
   vars:
     max_clients: 5
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
 
   remote_user: root

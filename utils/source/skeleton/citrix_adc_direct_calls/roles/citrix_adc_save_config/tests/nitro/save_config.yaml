@@ -1,9 +1,0 @@
----
-
-- name: Save configuration
-  delegate_to: localhost
-  citrix_adc_save_config:
-    nitro_user: "{{nitro_user}}"
-    nitro_pass: "{{nitro_pass}}"
-    nsip: "{{nsip}}"
-    validate_certs: no

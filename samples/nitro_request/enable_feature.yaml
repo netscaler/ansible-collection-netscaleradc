@@ -2,7 +2,7 @@
 - hosts: citrix_adc
   gather_facts: no
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: Enable feature

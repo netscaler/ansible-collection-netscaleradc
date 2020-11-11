@@ -6,7 +6,7 @@
       name: test-server-1
       ipaddress: 192.168.1.6
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
 
   tasks:

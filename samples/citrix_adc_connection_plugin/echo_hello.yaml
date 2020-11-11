@@ -1,6 +1,6 @@
 ---
 - hosts: citrix_adc
-  connection: citrix.citrixadc_modules.ssh_citrix_adc
+  connection: citrix.adc.ssh_citrix_adc
   remote_user: nsroot
   gather_facts: false
 
