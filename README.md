@@ -60,7 +60,7 @@ Currently the following modules are implemented
 
 ### ADC modules
 
-Included in the `citrix.citrixadc_modules` collection
+Included in the `citrix.adc` collection
 
 * citrix\_adc\_appfw\_confidfield - Configuration for configured confidential form fields resource
 * citrix\_adc\_appfw\_fieldtype - Configuration for application firewall form field type resource
@@ -96,7 +96,7 @@ Included in the `citrix.citrixadc_modules` collection
 
 ### ADM modules
 
-Included in the `citrix.citrixadm_modules` collection
+Included in the `citrix.adm` collection
 
 * citrix\_adm\_application - Manage applications on Citrix ADM
 * citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
@@ -146,24 +146,24 @@ To install the available collections from the repository directly:
 
 ```bash
 # ADC modules and connection plugin
-ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/citrixadc_modules
+ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adc
 
 # ADM modules
-ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/citrixadm_modules
+ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adm
 ```
 
 To install the available collections from a local checkout of the repository:
 
 ```bash
 # ADC modules and connection plugin
-cd ansible-collections/citrixadc_modules
+cd ansible-collections/adc
 ansible-galaxy collection build 
-ansible-galaxy collection install citrix-citrixadc_modules-<semver>.tar.gz
+ansible-galaxy collection install citrix-adc-<semver>.tar.gz
 
 # ADM modules
-cd ansible-collections/citrixadm_modules
+cd ansible-collections/adm
 ansible-galaxy collection build 
-ansible-galaxy collection install citrix-citrixadm_modules-<semver>.tar.gz
+ansible-galaxy collection install citrix-adm-<semver>.tar.gz
 ```
 
 
@@ -231,7 +231,7 @@ The Citrix ADC connection plugin allows the use of standard Ansible modules, suc
 
 ### Installation
 
-The connection plugin is included in the citrix.citrixadc_modules collection.
+The connection plugin is included in the citrix.adc collection.
 
 ### Usage
 
