@@ -1,0 +1,18 @@
+namespace: citrix
+name: adc
+
+version: 1.0.0
+readme: README.md
+authors:
+  - George Nikolopoulos <giorgos.nikolopoulos@citrix.com>
+  - Sumanth Lingappa <sumanth.lingappa@citrix.com>
+
+repository: https://github.com/citrix/citrix-adc-ansible-modules
+issues: https://github.com/citrix/citrix-adc-ansible-modules/issues
+
+description: Citrix ADC modules
+license: GPL-3.0-only
+tags:
+  - networking
+  - citrix
+  - adc
