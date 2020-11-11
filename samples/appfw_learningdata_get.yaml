@@ -3,7 +3,7 @@
   vars:
     resource: appfwlearningdata 
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: Get the unreviewed appfw learningdata for the specified profile and security check 

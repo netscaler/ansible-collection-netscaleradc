@@ -20,7 +20,7 @@
       srcip: 10.102.29.5
       ttl: 600
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
     - name: Get resource

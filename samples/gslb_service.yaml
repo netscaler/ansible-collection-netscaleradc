@@ -6,7 +6,7 @@
   remote_user: root
   gather_facts: False
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
   tasks:
 

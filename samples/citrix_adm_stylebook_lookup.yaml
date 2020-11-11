@@ -6,6 +6,8 @@
   gather_facts: False
   vars:
     stylebook_contents: "{{ lookup('file', 'stylebook_sample.yaml') }}"
+  collections:
+    - citrix.adm
 
   tasks:
     - name: login

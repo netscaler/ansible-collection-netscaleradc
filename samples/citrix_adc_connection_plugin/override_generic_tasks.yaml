@@ -3,12 +3,12 @@
   gather_facts: false
   
   collections:
-    - citrix.citrixadc_modules
+    - citrix.adc
 
 
   tasks:
     - name: Calling shell module
-      connection: citrix.citrixadc_modules.ssh_citrix_adc
+      connection: citrix.adc.ssh_citrix_adc
       remote_user: nsroot
       vars:
         ansible_python_interpreter: /var/python/bin/python

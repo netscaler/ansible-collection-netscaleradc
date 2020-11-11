@@ -4,6 +4,8 @@
     max_clients: 5
 
   gather_facts: False
+  collections:
+    - citrix.adm
 
   tasks:
     - name: Get all tenants
