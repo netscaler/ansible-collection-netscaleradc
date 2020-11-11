@@ -1,5 +1,5 @@
 namespace: citrix
-name: citrixadm_modules
+name: adm
 
 version: 1.0.0
 

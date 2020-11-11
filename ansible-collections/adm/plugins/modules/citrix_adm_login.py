@@ -25,7 +25,7 @@ author:
 
 version_added: "1.0.0"
 
-extends_documentation_fragment: citrix.citrixadm_modules.citrixadm
+extends_documentation_fragment: citrix.adm.citrixadm
 '''
 
 EXAMPLES = '''
@@ -82,7 +82,7 @@ session_id:
 import copy
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.citrix.citrixadm_modules.plugins.module_utils.citrix_adm import (
+from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import (
     NitroAPIFetcher,
     NitroException,
     netscaler_common_arguments,

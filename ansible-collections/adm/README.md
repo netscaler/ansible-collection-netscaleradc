@@ -1,4 +1,4 @@
-# citrix.citrixadm_modules
+# citrix.adm
 
 This collection contains the Citrx ADM modules for ansible. It also contains playbooks.
 
@@ -10,7 +10,7 @@ This collection contains the Citrx ADM modules for ansible. It also contains pla
 
 To install in ansible default or defined paths use:
 ```bash
-ansible-galaxy collection install citrix.citrixadm_modules
+ansible-galaxy collection install citrix.adm
 ```
 
 ## Example Usage
@@ -26,7 +26,7 @@ To use a module from a collection, reference the full collection namespace.
   tasks:
     - name: Login to adm
       delegate_to: localhost
-      citrix.citrixadm_modules.citrix_adm_login:
+      citrix.adm.citrix_adm_login:
         mas_ip: "{{ mas_ip }}"
         mas_user: "{{ mas_user }}"
         mas_pass: "{{ mas_pass }}"
@@ -40,7 +40,7 @@ Or use the collections playbook parameter to search for unquallified module name
 - name: Configure ADC
   hosts: citrix_adc
   collections:
-    - citrix.citrixadm_modules
+    - citrix.adm
 
   tasks:
     - name: Login to adm

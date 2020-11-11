@@ -3,7 +3,7 @@ changelog_filename_version_depth: 0
 changes_file: changelog.yaml
 changes_format: combined
 ignore_other_fragment_extensions: true
-keep_fragments: false
+keep_fragments: true
 mention_ancestor: true
 new_plugins_after_name: removed_features
 notesdir: fragments
@@ -27,6 +27,7 @@ sections:
   - Bugfixes
 - - known_issues
   - Known Issues
-title: Citrix.Citrixadm_Modules
+title: Citrix.Adm
 trivial_section_name: trivial
 use_fqcn: true
+always_refresh: true

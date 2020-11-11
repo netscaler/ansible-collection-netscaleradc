@@ -14,9 +14,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: citrix_adm_dns_domain_entry
-short_description: Manage Citrix ADM domain names.
-description: Manage Citrix ADM domain names.
+module: citrix_adm_mpsuser
+short_description: Manage Citrix ADM users.
+description: Manage Citrix ADM users.
 
 version_added: "1.0.0"
 
@@ -25,48 +25,81 @@ author:
 
 options:
 
-    tenant_id:
+    session_timeout:
         description:
-            - "Tenant Id of the DNS Domain Entries."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - "Session timeout for the user."
         type: str
 
     name:
         description:
-            - "DNS Domain Name."
+            - "User Name."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
+        type: str
+
+    session_timeout_unit:
+        description:
+            - "Session timeout unit for the user."
+        type: str
+
+    external_authentication:
+        description:
+            - "Enable external authentication."
+        type: bool
+
+    enable_session_timeout:
+        description:
+            - "Enables session timeout for user."
+        type: bool
+
+    tenant_id:
+        description:
+            - "Tenant Id of the system users."
+            - "Minimum length = 1"
+            - "Maximum length = 128"
+        type: str
+
+    password:
+        description:
+            - "Password."
             - "Minimum length = 1"
             - "Maximum length = 128"
         type: str
 
     id:
         description:
-            - "Id is system generated key for all the DNS Domain Entries."
+            - "Id is system generated key for all the system users."
         type: str
 
-    description:
+    groups:
         description:
-            - "Description of DNS Domain Entry."
-            - "Minimum length = 1"
-            - "Maximum length = 1024"
-        type: str
+            - "Groups to which user belongs."
+        type: list
+        elements: str
 
 
-extends_documentation_fragment: citrix.citrixadm_modules.citrixadm
+extends_documentation_fragment: citrix.adm.citrixadm
 '''
 
 EXAMPLES = '''
-- name: Setup dns domain entry
+- name: Setup mpsuser
   delegate_to: localhost
-  citrix_adm_dns_domain_entry:
+  citrix_adm_mpsuser:
     mas_ip: 192.168.1.1
     mas_user: nsroot
     mas_pass: nsroot
 
     state: present
 
-    name: test.com
-    description: test.com domain description
+    name: test_mpsuser
+    password: 123456
+
+    session_timeout: 10
+    session_timeout_unit: Minutes
+    external_authentication: false
+    enable_session_timeout: true
+    groups:
+      - test_mpsgroup
 '''
 
 RETURN = '''
@@ -81,8 +114,9 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
-dns_domain_entry:
-    description: The created dns domain entry object.
+
+mpsuser:
+    description: Dictionary containing the attributes of the created mpsuser
     returned: success
     type: dict
 '''
@@ -90,7 +124,7 @@ dns_domain_entry:
 import copy
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.citrix.citrixadm_modules.plugins.module_utils.citrix_adm import (
+from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import (
     MASResourceConfig,
     NitroException,
     netscaler_common_arguments,
@@ -103,19 +137,26 @@ class ModuleExecutor(object):
 
     def __init__(self, module):
         self.module = module
-        self.main_nitro_class = 'dns_domain_entry'
+        self.main_nitro_class = 'mpsuser'
 
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
         self.attribute_config = {
-            'dns_domain_entry': {
+            'mpsuser': {
                 'attributes_list': [
-                    'tenant_id',
+                    'session_timeout',
                     'name',
+                    'session_timeout_unit',
+                    'external_authentication',
+                    'enable_session_timeout',
+                    'tenant_id',
+                    'password',
                     'id',
-                    'description',
+                    'groups',
                 ],
                 'transforms': {
+                    'enable_session_timeout': lambda v: "true" if v else "false",
+                    'external_authentication': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
                     'name',
@@ -167,7 +208,7 @@ class ModuleExecutor(object):
             if not self.module.check_mode:
                 config.create()
         else:
-            if not config.values_subset_of_actual():
+            if not config.values_subset_of_actual(skip_attributes=['password']):
                 self.module_result['changed'] = True
                 if not self.module.check_mode:
                     config.update(id_attribute='id')
@@ -178,7 +219,7 @@ class ModuleExecutor(object):
             success_codes=[None, 0],
             use_filter=True
         )
-        self.module_result.update(dict(dns_domain_entry=config.actual_dict))
+        self.module_result.update(dict(mpsuser=config.actual_dict))
 
     def delete(self):
         # Check if main object exists
@@ -212,19 +253,38 @@ def main():
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        tenant_id=dict(
+        session_timeout=dict(
             type='str'
         ),
         name=dict(
             type='str'
         ),
+        session_timeout_unit=dict(
+            type='str'
+        ),
+        external_authentication=dict(
+            type='bool'
+        ),
+        enable_session_timeout=dict(
+            type='bool'
+        ),
+        tenant_id=dict(
+            type='str'
+        ),
+        password=dict(
+            type='str'
+        ),
         id=dict(
             type='str'
         ),
-        description=dict(
-            type='str'
+        groups=dict(
+            type='list',
+            elements='str',
         ),
     )
+
+    # Add the no_log option for password
+    module_specific_arguments['password'].update(dict(no_log=True))
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)

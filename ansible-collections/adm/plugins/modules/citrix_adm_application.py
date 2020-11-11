@@ -189,7 +189,7 @@ options:
         type: int
         default: 10
 
-extends_documentation_fragment: citrix.citrixadm_modules.citrixadm
+extends_documentation_fragment: citrix.adm.citrixadm
 '''
 
 EXAMPLES = '''
@@ -255,7 +255,7 @@ import time
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible.module_utils.urls import fetch_url
-from ansible_collections.citrix.citrixadm_modules.plugins.module_utils.citrix_adm import netscaler_common_arguments, log, loglines
+from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import netscaler_common_arguments, log, loglines
 
 
 class ModuleExecutor(object):

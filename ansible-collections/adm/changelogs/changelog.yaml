@@ -36,4 +36,4 @@ releases:
     - description: Retrieve facts about Citrix ADM tenants.
       name: citrix_adm_tenant_facts
       namespace: ''
-    release_date: '2020-10-16'
+    release_date: '2020-11-11'
