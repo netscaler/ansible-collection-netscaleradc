@@ -155,6 +155,11 @@ options:
         description:
             - Timeout for the NITRO HTTP request.
         default: 45
+
+    idempotent:
+        type: bool
+        description: Add the idempotent flag for I(operation=add) and I(operation=update) requests.
+        default: false
 '''
 
 EXAMPLES = '''
@@ -400,6 +405,7 @@ class NitroAPICaller(object):
         instance_name=dict(type='str'),
         instance_id=dict(type='str'),
         timeout=dict(type='int', default=45),
+        idempotent=dict(type='bool', default=False),
     )
 
     def __init__(self):
@@ -553,10 +559,17 @@ class NitroAPICaller(object):
         if self._module.params['attributes'] is None:
             self.fail_module(msg='NITRO resource attributes are undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s' % (
+        # Handle idempotent flag
+        idempotent_querystring = ''
+        idempotent_flag = self._module.params.get('idempotent')
+        if idempotent_flag is not None and idempotent_flag:
+            idempotent_querystring = '?idempotent=yes'
+
+        url = '%s://%s/nitro/v1/config/%s%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
             self._module.params['resource'],
+            idempotent_querystring,
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
@@ -591,11 +604,18 @@ class NitroAPICaller(object):
         if self._module.params['attributes'] is None:
             self.fail_module(msg='NITRO resource attributes are undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s/%s' % (
+        # Handle idempotent flag
+        idempotent_querystring = ''
+        idempotent_flag = self._module.params.get('idempotent')
+        if idempotent_flag is not None and idempotent_flag:
+            idempotent_querystring = '?idempotent=yes'
+
+        url = '%s://%s/nitro/v1/config/%s/%s%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
             self._module.params['resource'],
             self._module.params['name'],
+            idempotent_querystring,
         )
 
         data = self._module.jsonify({self._module.params['resource']: self._module.params['attributes']})
