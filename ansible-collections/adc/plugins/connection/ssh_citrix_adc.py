@@ -288,6 +288,8 @@ from ansible.utils.path import unfrackpath, makedirs_safe
 from ansible.plugins.connection.ssh import Connection as ConnectionSsh
 
 from ansible.utils.display import Display
+from ansible.plugins.loader import become_loader
+
 display = Display()
 
 
@@ -376,12 +378,23 @@ def _ssh_retry(func):
     return wrapped
 
 
+def calculate_become_methods():
+    all_methods = []
+    for item in become_loader.all():
+        # Skip runas
+        if item.name == 'runas':
+            continue
+        all_methods.append(item.name)
+
+    return frozenset(all_methods)
+
+
 class Connection(ConnectionSsh):
     ''' ssh based connections '''
 
     transport = 'ssh_citrix_adc'
     has_pipelining = True
-    become_methods = frozenset(C.BECOME_METHODS).difference(['runas'])
+    become_methods = calculate_become_methods()
     name = 'ssh_citrix_adc'
 
     def __init__(self, *args, **kwargs):
