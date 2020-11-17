@@ -1195,9 +1195,9 @@ def get_actual_service_bindings(client, module):
         else:
             raise
 
-    bindings_list = lbvserver_service_binding.get(client, module.params['name'])
+    bindigs_list = lbvserver_service_binding.get(client, module.params['name'])
 
-    for item in bindings_list:
+    for item in bindigs_list:
         key = item.servicename
         bindings[key] = item
 
@@ -1217,9 +1217,9 @@ def get_actual_servicegroup_bindings(client, module):
         else:
             raise
 
-    bindings_list = lbvserver_servicegroup_binding.get(client, module.params['name'])
+    bindigs_list = lbvserver_servicegroup_binding.get(client, module.params['name'])
 
-    for item in bindings_list:
+    for item in bindigs_list:
         key = item.servicegroupname
         bindings[key] = item
 
