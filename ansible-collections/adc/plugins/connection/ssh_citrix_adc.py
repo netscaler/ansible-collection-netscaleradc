@@ -286,7 +286,6 @@ from ansible.module_utils.parsing.convert_bool import BOOLEANS, boolean
 from ansible.plugins.connection import ConnectionBase, BUFSIZE
 from ansible.utils.path import unfrackpath, makedirs_safe
 from ansible.plugins.connection.ssh import Connection as ConnectionSsh
-from ansible.plugins.loader import become_loader
 
 from ansible.utils.display import Display
 display = Display()
@@ -382,7 +381,7 @@ class Connection(ConnectionSsh):
 
     transport = 'ssh_citrix_adc'
     has_pipelining = True
-    become_methods = frozenset([method.name for method in become_loader.all()]).difference(['runas'])
+    become_methods = frozenset(C.BECOME_METHODS).difference(['runas'])
     name = 'ssh_citrix_adc'
 
     def __init__(self, *args, **kwargs):
