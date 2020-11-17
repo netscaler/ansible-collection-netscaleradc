@@ -26,7 +26,7 @@
         key: server.key
         password: yes
         passplain: nosecret
-        expirymonitor: enabled
+        expirymonitor: ENABLED
         notificationperiod: 50
         inform: PEM
 
