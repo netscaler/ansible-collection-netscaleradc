@@ -115,7 +115,7 @@ Included in the `citrix.adm` collection
 The following NITRO API endpoints have their workflow dictionaries available
 for use with the `citrix_adc_nitro_resource` module.
 
-The workflows yaml file can be found [here](utils/source/nitro_resource_utils/workflows.yaml).
+The workflows yaml file can be found [here](deps/workflows.yaml).
 
 lbvserver\_spilloverpolicy\_binding, lbvserver\_pqpolicy\_binding, lbgroup\_lbvserver\_binding, lbvserver\_auditnslogpolicy\_binding, lbroute6, lbvserver\_filterpolicy\_binding, lbvserver\_dnspolicy64\_binding, lbvserver\_responderpolicy\_binding, lbmetrictable, lbvserver\_cmppolicy\_binding, lbvserver\_cachepolicy\_binding, lbvserver\_servicegroup\_binding, spilloverpolicy, servicegroup, lbvserver\_videooptimizationdetectionpolicy\_binding, lbmetrictable\_metric\_binding, lbvserver\_servicegroupmember\_binding, service, lbvserver\_transformpolicy\_binding, lbvserver\_auditsyslogpolicy\_binding, lbmonitor\_sslcertkey\_binding, lbvserver\_appqoepolicy\_binding, lbvserver\_authorizationpolicy\_binding, server, lbvserver\_service\_binding, lbgroup, lbvserver\_contentinspectionpolicy\_binding, lbvserver\_appflowpolicy\_binding, lbroute, lbvserver\_feopolicy\_binding, lbvserver\_rewritepolicy\_binding, lbvserver\_csvserver\_binding, lbmonitor, lbvserver\_appfwpolicy\_binding, service\_lbmonitor\_binding, lbvserver\_scpolicy\_binding, servicegroup\_lbmonitor\_binding, lbvserver, lbmonitor\_metric\_binding, lbvserver\_videooptimizationpacingpolicy\_binding, lbvserver\_capolicy\_binding, lbprofile, lbvserver\_analyticsprofile\_binding
 
@@ -309,7 +309,7 @@ the execution of the module with respect to how the NITRO object will be created
 or deleted and the `resource` parameter which contains the actual attributes
 for the NITRO resource.
 
-The workflows dictionaries published so far can be found [here](utils/source/nitro_resource_utils/workflows.yaml).
+The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
 
 Examples can be found in this [folder](samples/nitro_resource).
 
