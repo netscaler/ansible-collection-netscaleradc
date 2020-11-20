@@ -14,7 +14,7 @@ citrix_adc_lb_vserver - Manage load balancing vserver configuration
 Synopsis
 --------
 - Manage load balancing vserver configuration
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 
 
@@ -264,7 +264,7 @@ Parameters
 
           - PASSIVE
           - ACTIVE
-      - How the NetScaler appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:
+      - How the Citrix ADC appliance responds to ping requests received for an IP address that is common to one or more virtual servers. Available settings function as follows:
 
         * If set to ``PASSIVE`` on all the virtual servers that share the IP address, the appliance always responds to the ping requests.
 
@@ -294,7 +294,7 @@ Parameters
 
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipmask
@@ -320,7 +320,7 @@ Parameters
 
         *(bool)*
       -
-      - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
+      - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the Citrix ADC appliance.
     * - lbmethod
 
         *(str)*
@@ -427,7 +427,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxautoscalemembers
@@ -542,7 +542,7 @@ Parameters
 
         *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
 
         *(str)*
@@ -557,17 +557,17 @@ Parameters
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
 
         *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
 
         *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - oracleserverversion
@@ -724,11 +724,11 @@ Parameters
           - ACTIVE
       - Route Health Injection (RHI) functionality of the NetSaler appliance for advertising the route of the VIP address associated with the virtual server. When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
 
-        * If you set ``rhistate`` to ``PASSIVE`` on all virtual servers, the NetScaler ADC always advertises the route for the VIP address.
+        * If you set ``rhistate`` to ``PASSIVE`` on all virtual servers, the Citrix ADC always advertises the route for the VIP address.
 
-        * If you set ``rhistate`` to ``ACTIVE`` on all virtual servers, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.
+        * If you set ``rhistate`` to ``ACTIVE`` on all virtual servers, the Citrix ADC advertises the route for the VIP address if at least one of the associated virtual servers is in UP state.
 
-        * If you set ``rhistate`` to ``ACTIVE`` on some and PASSIVE on others, the NetScaler ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose ``rhistate`` set to ``ACTIVE``, is in UP state.
+        * If you set ``rhistate`` to ``ACTIVE`` on some and PASSIVE on others, the Citrix ADC advertises the route for the VIP address if at least one of the associated virtual servers, whose ``rhistate`` set to ``ACTIVE``, is in UP state.
     * - rtspnat
 
         *(bool)*
@@ -740,9 +740,9 @@ Parameters
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - servicebindings
 
         *(list)*
@@ -928,11 +928,11 @@ Parameters
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - tcpprofilename
 
         *(str)*
@@ -1000,7 +1000,7 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    # Netscaler services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
+    # Citrix ADC services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
     
     - name: Create a load balancing vserver bound to services
       delegate_to: localhost

@@ -2,8 +2,8 @@
 
 .. _citrix_adc_gslb_vserver_module:
 
-citrix_adc_gslb_vserver - Configure gslb vserver entities in Netscaler.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_gslb_vserver - Configure gslb vserver entities in Citrix ADC.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 1.0.0
 
@@ -13,7 +13,7 @@ citrix_adc_gslb_vserver - Configure gslb vserver entities in Netscaler.
 
 Synopsis
 --------
-- Configure gslb vserver entities in Netscaler.
+- Configure gslb vserver entities in Citrix ADC.
 
 
 
@@ -159,7 +159,7 @@ Parameters
 
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - lbmethod
@@ -189,7 +189,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - mir
@@ -225,7 +225,7 @@ Parameters
 
         *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
 
         *(str)*
@@ -240,17 +240,17 @@ Parameters
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
 
         *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
 
         *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - persistenceid
@@ -285,9 +285,9 @@ Parameters
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - service_bindings
 
         *(list)*
@@ -400,11 +400,11 @@ Parameters
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - timeout
 
         *(float)*
@@ -420,7 +420,7 @@ Parameters
 
         *(float)*
       -
-      - Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not considered when the NetScaler appliance makes a GSLB decision. The appliance implements the round robin method of global server load balancing between sites whose RTT values are within the specified tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the site with the lowest RTT.
+      - Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not considered when the Citrix ADC appliance makes a GSLB decision. The appliance implements the round robin method of global server load balancing between sites whose RTT values are within the specified tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the site with the lowest RTT.
 
         Minimum value = ``0``
 

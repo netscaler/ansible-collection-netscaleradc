@@ -14,7 +14,7 @@ citrix_adc_lb_monitor - Manage load balancing monitors
 Synopsis
 --------
 - Manage load balancing monitors.
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 
 
@@ -244,7 +244,7 @@ Parameters
 
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - interval
@@ -294,7 +294,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxforwards
@@ -347,7 +347,7 @@ Parameters
 
         *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
 
         *(str)*
@@ -362,17 +362,17 @@ Parameters
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
 
         *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
 
         *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - oraclesid
@@ -526,16 +526,16 @@ Parameters
 
         *(str)*
       -
-      - RTSP request to send to the server (for example, ``"OPTIONS *"``).
+      - RTSP request to send to the server (for example, ``OPTIONS *``).
     * - save_config
 
         *(bool)*
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - scriptargs
 
         *(str)*
@@ -545,7 +545,7 @@ Parameters
 
         *(str)*
       -
-      - Path and name of the script to execute. The script must be available on the NetScaler appliance, in the /nsconfig/monitors/ directory.
+      - Path and name of the script to execute. The script must be available on the Citrix ADC appliance, in the /nsconfig/monitors/ directory.
 
         Minimum length = 1
     * - secondarypassword
@@ -629,11 +629,11 @@ Parameters
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - storedb
 
         *(str)*

@@ -2,8 +2,8 @@
 
 .. _citrix_adc_gslb_service_module:
 
-citrix_adc_gslb_service - Manage gslb service entities in Netscaler.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_gslb_service - Manage gslb service entities in Citrix ADC.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 1.0.0
 
@@ -13,7 +13,7 @@ citrix_adc_gslb_service - Manage gslb service entities in Netscaler.
 
 Synopsis
 --------
-- Manage gslb service entities in Netscaler.
+- Manage gslb service entities in Citrix ADC.
 
 
 
@@ -54,7 +54,7 @@ Parameters
 
         *(str)*
       -
-      - Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the NetScaler appliance uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
+      - Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the Citrix ADC appliance uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
 
         Minimum length = 1
     * - clttimeout
@@ -104,14 +104,14 @@ Parameters
 
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipaddress
 
         *(str)*
       -
-      - IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the NetScaler appliance, or the IP address of another load balancing device.
+      - IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the Citrix ADC appliance, or the IP address of another load balancing device.
     * - mas_proxy_call
 
         *(bool)*
@@ -120,7 +120,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxaaausers
@@ -195,7 +195,7 @@ Parameters
 
         *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
 
         *(str)*
@@ -210,17 +210,17 @@ Parameters
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
 
         *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
 
         *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - port
@@ -250,9 +250,9 @@ Parameters
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - servername
 
         *(str)*
@@ -313,7 +313,7 @@ Parameters
 
         *(str)*
       -
-      - The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB requests to GSLB services by using their site domains.
+      - The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the Citrix ADC appliance redirects GSLB requests to GSLB services by using their site domains.
     * - state
 
         *(str)*
@@ -321,11 +321,11 @@ Parameters
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - validate_certs
 
         *(bool)*
