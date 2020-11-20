@@ -1,8 +1,8 @@
 Templating the configuration file
 #################################
 
-One method of configuring Netscaler consists of editing
-the ns.conf file directly and then rebooting Netscaler for
+One method of configuring Citrix ADC consists of editing
+the ns.conf file directly and then rebooting Citrix ADC for
 the configuration changes to take effect.
 
 After the reboot the saved configuration becomes the running
@@ -18,11 +18,11 @@ The Jinja2 template is populated from configuration variables which can
 be defined with various methods, inside the playbook, in an inventory file
 or loaded from inventory files.
 
-We then upload the resulting ns.conf to the Netscaler node which alters the
+We then upload the resulting ns.conf to the Citrix ADC node which alters the
 saved configuration.
 
 For the saved configuration to become running configuration we need to reboot
-Netscaler. Doing a warm reboot is recommended since it is sufficient to reload
+Citrix ADC. Doing a warm reboot is recommended since it is sufficient to reload
 the configuration and also avoid the greater downtime a cold reboot would induce.
 
 After the reboot the user can check the running configuration either through the GUI or the
@@ -31,7 +31,7 @@ command line interface and make sure the changes have been succesfully applied.
 There is an assortment of playbooks on this `github repository`_ which contains
 sample playbooks that perform fundamental NITRO operations. The tasks within
 each playbook can be combined into a larger playbook which accomplishes a full
-Netscaler configuration.
+Citrix ADC configuration.
 
 In fact this is how the following example was constructed.
 
@@ -39,14 +39,13 @@ Playbook
 ~~~~~~~~
 
 In the following example we showcase how we can setup a load balancer which
-balances two backend services. The full content of the referenced files can
-be found `here`_.
+balances two backend services.
 
 Processing the template
 =======================
 
 First we have a Jinja template file to produce the desired ns.conf.
-It is recommended to use an actual ns.conf file from the target Netscaler node
+It is recommended to use an actual ns.conf file from the target Citrix ADC node
 as a starting point for the template.
 
 The full file is quite long but the interesting parts are shown below.
@@ -152,7 +151,7 @@ defined.
 Upload the new ns.conf
 ======================
 
-Having produced the ns.conf file we need to upload it to Netscaler.
+Having produced the ns.conf file we need to upload it to Citrix ADC.
 
 Following are the tasks that accomplish this.
 
@@ -189,12 +188,12 @@ Following are the tasks that accomplish this.
 Notice that we need to delete the existing file before copying the new one.
 Trying to upload a file to an existing file path will result in a NITRO error.
 
-Rebooting Netscaler
-===================
+Rebooting Citrix ADC
+====================
 
-The last step is to warm reboot the Netscaler node. Replacing the ns.conf file
-overwrites the saved configuration. The running configuration of Netscaler remains
-unaffected. To force Netscaler to apply the saved configuration we need to reboot
+The last step is to warm reboot the Citrix ADC node. Replacing the ns.conf file
+overwrites the saved configuration. The running configuration of Citrix ADC remains
+unaffected. To force Citrix ADC to apply the saved configuration we need to reboot
 it. We have the option do a warm reboot which results in less downtime than a full
 reboot.
 
@@ -202,7 +201,7 @@ The task that accomplishes this is shown below.
 
 .. code-block:: yaml
 
-    - name: Reboot Netscaler
+    - name: Reboot Citrix ADC
       delegate_to: localhost
       uri:
         url: "http://{{ nsip }}/nitro/v1/config/reboot"
@@ -220,16 +219,16 @@ Final points
 ============
 
 The user needs for this example to set
-the variables needed for authentication and communication with Netscaler. Namely
+the variables needed for authentication and communication with Citrix ADC. Namely
 ``nsip``, ``nitro_user``, ``nitro_pass``. These variables retain the meaning they
-have in the Netscaler specific Ansible modules.
+have in the Citrix ADC specific Ansible modules.
 
 All tasks are run with the ``delegate_to: localhost`` option set.
-This is needed since we are making NITRO API calls to the Netscaler node. We do not
+This is needed since we are making NITRO API calls to the Citrix ADC node. We do not
 want to connect directly with SSH to it.
 
 In some deployments the delegated host may need to be the bastion node that has
-actual NITRO access to the Netscaler node.
+actual NITRO access to the Citrix ADC node.
 
 References
 ~~~~~~~~~~
@@ -248,4 +247,3 @@ http://docs.ansible.com/ansible/latest/template_module.html
 
 .. _template module: http://docs.ansible.com/ansible/latest/template_module.html
 .. _github repository: https://github.com/citrix/ansible-nitro-api-calls
-.. _here: https://github.com/citrix/netscaler-rolling-updates-example
