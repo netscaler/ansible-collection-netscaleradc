@@ -19,7 +19,6 @@ listed below.
    :caption: User Documentation
 
    usage/speeding_up_execution
-   usage/rolling_upgrades
    usage/rolling_upgrades_vpx
    usage/citrix_adm_application_delays_explained
 
