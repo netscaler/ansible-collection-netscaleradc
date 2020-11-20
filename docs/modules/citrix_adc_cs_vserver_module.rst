@@ -5,7 +5,7 @@
 citrix_adc_cs_vserver - Manage content switching vserver
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -36,6 +36,8 @@ Parameters
       - Choices/Defaults
       - Comment
     * - appflowlog
+
+        *(str)*
       - Choices:
 
           - enabled
@@ -101,7 +103,7 @@ Parameters
 
                 *(str)*
               -
-              - Name of the Load Balancing virtual server to which the content is switched, if policy rule is evaluated to be TRUE. 
+              - Name of the Load Balancing virtual server to which the content is switched, if policy rule is evaluated to be TRUE.
 
                 Use this parameter only in case of Content Switching policy bind operations to a CS vserver.
 
@@ -111,6 +113,8 @@ Parameters
       -
       - Authenticate users who request a connection to the content switching virtual server.
     * - authenticationhost
+
+        *(str)*
       -
       - FQDN of the authentication virtual server. The service type of the virtual server should be either ``HTTP`` or ``SSL``.
 
@@ -123,9 +127,13 @@ Parameters
       -
       - Enable HTTP 401-response based authentication.
     * - authnprofile
+
+        *(str)*
       -
       - Name of the authentication profile to be used when authentication is turned on.
     * - authnvsname
+
+        *(str)*
       -
       - Name of authentication virtual server that authenticates the incoming user requests to this content switching virtual server. .
 
@@ -143,6 +151,8 @@ Parameters
       -
       - Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ``on`` setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by content switching policies). With the ``off`` setting, /a/1.html and /A/1.HTML are switched to the same target.
     * - clttimeout
+
+        *(float)*
       -
       - Idle time, in seconds, after which the client connection is terminated. The default values are:
 
@@ -150,9 +160,13 @@ Parameters
 
         Maximum value = ``31536000``
     * - comment
+
+        *(str)*
       -
       - Information about this virtual server.
     * - dbprofilename
+
+        *(str)*
       -
       - Name of the DB profile.
 
@@ -171,12 +185,16 @@ Parameters
 
         Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
     * - disableprimaryondown
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.
     * - dnsprofilename
+
+        *(str)*
       -
       - Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
 
@@ -184,6 +202,8 @@ Parameters
 
         Maximum length = 127
     * - dnsrecordtype
+
+        *(str)*
       - Choices:
 
           - A
@@ -194,12 +214,16 @@ Parameters
 
         Default value: NSGSLB_IPV4
     * - downstateflush
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
     * - httpprofilename
+
+        *(str)*
       -
       - Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service type of the virtual server should be either ``HTTP`` or ``SSL``.
 
@@ -207,12 +231,16 @@ Parameters
 
         Maximum length = 127
     * - icmpvsrresponse
+
+        *(str)*
       - Choices:
 
           - PASSIVE
           - ACTIVE
       - Can be active or passive.
     * - insertvserveripport
+
+        *(str)*
       - Choices:
 
           - OFF
@@ -227,15 +255,21 @@ Parameters
         C(V6TOV4MAPPING) - Header contains the mapped IPv4 address corresponding to the IPv6 address of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipmask
+
+        *(str)*
       -
       - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, ``255.255.240.0`` or ``0.0.255.255``). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
     * - ippattern
+
+        *(str)*
       -
       - IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.
 
@@ -243,19 +277,25 @@ Parameters
 
         If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if the virtual servers, ``vs1`` and ``vs2``, have the same IP pattern, ``0.0.100.128``, but different IP masks of ``0.0.255.255`` and ``0.0.224.255``, a destination IP address of 198.51.100.128 has the longest match with the IP pattern of ``vs1``. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
     * - ipv46
+
+        *(str)*
       -
       - IP address of the content switching virtual server.
 
         Minimum length = 1
     * - l2conn
+
+        *(bool)*
       -
       - Use L2 Parameters to identify a connection.
     * - lbvserver
 
-        *(added in 2.5)*
+        *(str)*
       -
       - The default Load Balancing virtual server.
     * - listenpolicy
+
+        *(str)*
       -
       - String specifying the listen policy for the content switching virtual server. Can be either the name of an existing expression or an in-line expression.
     * - mas_proxy_call
@@ -270,6 +310,8 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - mssqlserverversion
+
+        *(str)*
       - Choices:
 
           - 70
@@ -282,15 +324,23 @@ Parameters
           - 2014
       - The version of the MSSQL server.
     * - mysqlcharacterset
+
+        *(float)*
       -
       - The character set returned by the mysql vserver.
     * - mysqlprotocolversion
+
+        *(float)*
       -
       - The protocol version returned by the mysql vserver.
     * - mysqlservercapabilities
+
+        *(float)*
       -
       - The server capabilities returned by the mysql vserver.
     * - mysqlserverversion
+
+        *(str)*
       -
       - The server version string returned by the mysql vserver.
 
@@ -298,6 +348,8 @@ Parameters
 
         Maximum length = 31
     * - name
+
+        *(str)*
       -
       - Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters.
 
@@ -305,6 +357,8 @@ Parameters
 
         Minimum length = 1
     * - netprofile
+
+        *(str)*
       -
       - The name of the network profile.
 
@@ -313,32 +367,46 @@ Parameters
         Maximum length = 127
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - oracleserverversion
+
+        *(str)*
       - Choices:
 
           - 10G
@@ -409,6 +477,8 @@ Parameters
               - Target vserver name.
 
     * - port
+
+        *(int)*
       -
       - Port number for content switching virtual server.
 
@@ -418,18 +488,24 @@ Parameters
 
         * in CLI is represented as 65535 in NITRO API
     * - precedence
+
+        *(str)*
       - Choices:
 
           - RULE
           - URL
       - Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual server. With the default ``RULE`` setting, incoming requests are evaluated against the rule-based content switching policies. If none of the rules match, the URL in the request is evaluated against the URL-based content switching policies.
     * - push
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either ``HTTP`` or ``SSL``.
     * - pushlabel
+
+        *(str)*
       -
       - Expression for extracting the label from the response received from server. This string can be either an existing rule name or an inline expression. The service type of the virtual server should be either ``HTTP`` or ``SSL``.
     * - pushmulticlients
@@ -438,11 +514,15 @@ Parameters
       -
       - Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.
     * - pushvserver
+
+        *(str)*
       -
       - Name of the load balancing virtual server, of type ``PUSH`` or ``SSL_PUSH``, to which the server pushes updates received on the client-facing load balancing virtual server.
 
         Minimum length = 1
     * - range
+
+        *(float)*
       -
       - Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.
 
@@ -450,12 +530,16 @@ Parameters
 
         Maximum value = ``254``
     * - redirectportrewrite
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - State of port rewrite while performing HTTP redirect.
     * - redirecturl
+
+        *(str)*
       -
       - URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either ``HTTP`` or ``SSL``.
 
@@ -463,6 +547,8 @@ Parameters
 
         Minimum length = 1
     * - rhistate
+
+        *(str)*
       - Choices:
 
           - PASSIVE
@@ -489,6 +575,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - servicetype
+
+        *(str)*
       - Choices:
 
           - HTTP
@@ -514,6 +602,8 @@ Parameters
           - SMPP
       - Protocol used by the virtual server.
     * - sobackupaction
+
+        *(str)*
       - Choices:
 
           - DROP
@@ -521,6 +611,8 @@ Parameters
           - REDIRECT
       - Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.
     * - somethod
+
+        *(str)*
       - Choices:
 
           - CONNECTION
@@ -530,12 +622,16 @@ Parameters
           - NONE
       - Type of spillover used to divert traffic to the backup virtual server when the primary virtual server reaches the spillover threshold. Connection spillover is based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.
     * - sopersistence
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Maintain source-IP based persistence on primary and backup virtual servers.
     * - sopersistencetimeout
+
+        *(float)*
       -
       - Time-out value, in minutes, for spillover persistence.
 
@@ -543,6 +639,8 @@ Parameters
 
         Maximum value = ``1440``
     * - sothreshold
+
+        *(float)*
       -
       - Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.
 
@@ -551,7 +649,7 @@ Parameters
         Maximum value = ``4294967287``
     * - ssl_certkey
 
-        *(added in 2.5)*
+        *(str)*
       -
       - The name of the ssl certificate that is bound to this service.
 
@@ -561,6 +659,8 @@ Parameters
 
         This option is only applicable only when ``servicetype`` is ``SSL``.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -571,6 +671,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - stateupdate
+
+        *(str)*
       - Choices:
 
           - enabled
@@ -589,6 +691,8 @@ Parameters
 
         If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.
     * - tcpprofilename
+
+        *(str)*
       -
       - Name of the TCP profile containing TCP configuration settings for the virtual server.
 
@@ -596,6 +700,8 @@ Parameters
 
         Maximum length = 127
     * - td
+
+        *(float)*
       -
       - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
 
@@ -603,11 +709,15 @@ Parameters
 
         Maximum value = 4094
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
       - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
     * - vipheader
+
+        *(str)*
       -
       - Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter.
 

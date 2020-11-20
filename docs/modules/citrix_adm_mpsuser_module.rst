@@ -5,7 +5,7 @@
 citrix_adm_mpsuser - Manage Citrix ADM users.
 +++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.9
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -50,6 +50,8 @@ Parameters
       - Id is system generated key for all the system users.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
@@ -77,27 +79,39 @@ Parameters
         Maximum length = 128
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -131,6 +145,8 @@ Parameters
       -
       - Session timeout unit for the user.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -150,6 +166,8 @@ Parameters
 
         Maximum length = 128
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

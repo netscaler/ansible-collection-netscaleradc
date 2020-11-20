@@ -5,7 +5,7 @@
 citrix_adc_lb_vserver - Manage load balancing vserver configuration
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -36,6 +36,8 @@ Parameters
       - Choices/Defaults
       - Comment
     * - appflowlog
+
+        *(str)*
       - Choices:
 
           - enabled
@@ -52,6 +54,8 @@ Parameters
       -
       - Enable or disable user authentication.
     * - authenticationhost
+
+        *(str)*
       -
       - Fully qualified domain name (FQDN) of the authentication virtual server to which the user must be redirected for authentication. Make sure that the Authentication parameter is set to ``yes``.
 
@@ -64,9 +68,13 @@ Parameters
       -
       - Enable or disable user authentication with HTTP 401 responses.
     * - authnprofile
+
+        *(str)*
       -
       - Name of the authentication profile to be used when authentication is turned on.
     * - authnvsname
+
+        *(str)*
       -
       - Name of an authentication virtual server with which to authenticate users.
 
@@ -74,6 +82,8 @@ Parameters
 
         Maximum length = 252
     * - backuplbmethod
+
+        *(str)*
       - Choices:
 
           - ROUNDROBIN
@@ -89,6 +99,8 @@ Parameters
 
         Valid only if the primary method is based on static proximity.
     * - backuppersistencetimeout
+
+        *(float)*
       -
       - Time period for which backup persistence is in effect.
 
@@ -106,6 +118,8 @@ Parameters
       -
       - Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can forward requests only to a transparent cache redirection virtual server that has an IP address and port combination of *:80, so such a cache redirection virtual server must be configured on the appliance.
     * - clttimeout
+
+        *(float)*
       -
       - Idle time, in seconds, after which a client connection is terminated.
 
@@ -113,9 +127,13 @@ Parameters
 
         Maximum value = ``31536000``
     * - comment
+
+        *(str)*
       -
       - Any comments that you might want to associate with the virtual server.
     * - connfailover
+
+        *(str)*
       - Choices:
 
           - DISABLED
@@ -129,9 +147,13 @@ Parameters
 
         * ``DISABLED`` - Connection failover does not occur.
     * - cookiename
+
+        *(str)*
       -
       - Use this parameter to specify the cookie name for ``COOKIE`` peristence type. It specifies the name of cookie with a maximum of 32 characters. If not specified, cookie name is internally generated.
     * - datalength
+
+        *(float)*
       -
       - Length of the token to be extracted from the data segment of an incoming packet, for use in the token method of load balancing. The length of the token, specified in bytes, must not be greater than 24 KB. Applicable to virtual servers of type TCP.
 
@@ -139,6 +161,8 @@ Parameters
 
         Maximum value = ``100``
     * - dataoffset
+
+        *(float)*
       -
       - Offset to be considered when extracting a token from the TCP payload. Applicable to virtual servers, of type TCP, using the token method of load balancing. Must be within the first 24 KB of the TCP payload.
 
@@ -146,6 +170,8 @@ Parameters
 
         Maximum value = ``25400``
     * - dbprofilename
+
+        *(str)*
       -
       - Name of the DB profile whose settings are to be applied to the virtual server.
 
@@ -153,6 +179,8 @@ Parameters
 
         Maximum length = 127
     * - dbslb
+
+        *(str)*
       - Choices:
 
           - enabled
@@ -170,18 +198,24 @@ Parameters
 
         Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
     * - disableprimaryondown
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - If the primary virtual server goes down, do not allow it to return to primary status until manually enabled.
     * - dns64
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - This argument is for enabling/disabling the ``dns64`` on lbvserver.
     * - dnsprofilename
+
+        *(str)*
       -
       - Name of the DNS profile to be associated with the VServer. DNS profile properties will be applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
 
@@ -189,12 +223,16 @@ Parameters
 
         Maximum length = 127
     * - downstateflush
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
     * - hashlength
+
+        *(float)*
       -
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH load balancing methods.
 
@@ -202,6 +240,8 @@ Parameters
 
         Maximum value = ``4096``
     * - healththreshold
+
+        *(float)*
       -
       - Threshold in percent of active services below which vserver state is made down. If this threshold is 0, vserver state will be up even if one bound service is up.
 
@@ -209,6 +249,8 @@ Parameters
 
         Maximum value = ``100``
     * - httpprofilename
+
+        *(str)*
       -
       - Name of the HTTP profile whose settings are to be applied to the virtual server.
 
@@ -216,6 +258,8 @@ Parameters
 
         Maximum length = 127
     * - icmpvsrresponse
+
+        *(str)*
       - Choices:
 
           - PASSIVE
@@ -230,6 +274,8 @@ Parameters
 
         Note: This parameter is available at the virtual server level. A similar parameter, ICMP Response, is available at the IP address level, for IPv4 addresses of type VIP. To set that parameter, use the add ip command in the CLI or the Create IP dialog box in the GUI.
     * - insertvserveripport
+
+        *(str)*
       - Choices:
 
           - OFF
@@ -244,15 +290,21 @@ Parameters
         * ``OFF`` - Disable header insertion.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipmask
+
+        *(str)*
       -
       - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, ``255.255.240.0`` or ``0.0.255.255``). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
     * - ippattern
+
+        *(str)*
       -
       - IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.
 
@@ -260,6 +312,8 @@ Parameters
 
         If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if virtual servers ``vs1`` and ``vs2`` have the same IP pattern, ``0.0.100.128``, but different IP masks of ``0.0.255.255`` and ``0.0.224.255``, a destination IP address of ``198.51.100.128`` has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.
     * - ipv46
+
+        *(str)*
       -
       - IPv4 or IPv6 address to assign to the virtual server.
     * - l2conn
@@ -268,6 +322,8 @@ Parameters
       -
       - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
     * - lbmethod
+
+        *(str)*
       - Choices:
 
           - ROUNDROBIN
@@ -322,9 +378,13 @@ Parameters
 
         * ``CALLIDHASH`` - Create a hash of the SIP Call-ID header.
     * - listenpolicy
+
+        *(str)*
       -
       - Default syntax expression identifying traffic accepted by the virtual server. Can be either an expression (for example, ``CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24``) or the name of a named expression. In the above example, the virtual server accepts all requests whose destination IP address is in the 192.0.2.0/24 subnet.
     * - listenpriority
+
+        *(float)*
       -
       - Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.
 
@@ -332,6 +392,8 @@ Parameters
 
         Maximum value = ``101``
     * - m
+
+        *(str)*
       - Choices:
 
           - IP
@@ -350,6 +412,8 @@ Parameters
 
         You can use either the ``IPTUNNEL`` or the ``TOS`` option to implement Direct Server Return (DSR).
     * - macmoderetainvlan
+
+        *(str)*
       - Choices:
 
           - enabled
@@ -367,6 +431,8 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxautoscalemembers
+
+        *(float)*
       -
       - Maximum number of members expected to be present when vserver is used in Autoscale.
 
@@ -374,6 +440,8 @@ Parameters
 
         Maximum value = ``5000``
     * - minautoscalemembers
+
+        *(float)*
       -
       - Minimum number of members expected to be present when vserver is used in Autoscale.
 
@@ -381,6 +449,8 @@ Parameters
 
         Maximum value = ``5000``
     * - mssqlserverversion
+
+        *(str)*
       - Choices:
 
           - 70
@@ -393,15 +463,23 @@ Parameters
           - 2014
       - For a load balancing virtual server of type ``MSSQL``, the Microsoft SQL Server version. Set this parameter if you expect some clients to run a version different from the version of the database. This setting provides compatibility between the client-side and server-side connections by ensuring that all communication conforms to the server's version.
     * - mysqlcharacterset
+
+        *(float)*
       -
       - Character set that the virtual server advertises to clients.
     * - mysqlprotocolversion
+
+        *(float)*
       -
       - MySQL protocol version that the virtual server advertises to clients.
     * - mysqlservercapabilities
+
+        *(float)*
       -
       - Server capabilities that the virtual server advertises to clients.
     * - mysqlserverversion
+
+        *(str)*
       -
       - MySQL server version string that the virtual server advertises to clients.
 
@@ -409,16 +487,22 @@ Parameters
 
         Maximum length = 31
     * - name
+
+        *(str)*
       -
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore, hash ``#``, period ``.``, space `` ``, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters. Can be changed after the virtual server is created.
 
         Minimum length = 1
     * - netmask
+
+        *(str)*
       -
       - IPv4 subnet mask to apply to the destination IP address or source IP address when the load balancing method is ``DESTINATIONIPHASH`` or ``SOURCEIPHASH``.
 
         Minimum length = 1
     * - netprofile
+
+        *(str)*
       -
       - Name of the network profile to associate with the virtual server. If you set this parameter, the virtual server uses only the IP addresses in the network profile as source IP addresses when initiating connections with servers.
 
@@ -426,9 +510,13 @@ Parameters
 
         Maximum length = 127
     * - newservicerequest
+
+        *(float)*
       -
       - Number of requests, or percentage of the load on existing services, by which to increase the load on a new service at each interval in slow-start mode. A non-zero value indicates that slow-start is applicable. A zero value indicates that the global RR startup parameter is applied. Changing the value to zero will cause services currently in slow start to take the full traffic as determined by the LB method. Subsequently, any new services added will use the global RR factor.
     * - newservicerequestincrementinterval
+
+        *(float)*
       -
       - Interval, in seconds, between successive increments in the load on a new service or a service whose state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.
 
@@ -436,6 +524,8 @@ Parameters
 
         Maximum value = ``3600``
     * - newservicerequestunit
+
+        *(str)*
       - Choices:
 
           - PER_SECOND
@@ -443,44 +533,62 @@ Parameters
       - Units in which to increment load at each interval in slow-start mode.
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - oracleserverversion
+
+        *(str)*
       - Choices:
 
           - 10G
           - 11G
       - Oracle server version.
     * - persistencebackup
+
+        *(str)*
       - Choices:
 
           - SOURCEIP
           - NONE
       - Backup persistence type for the virtual server. Becomes operational if the primary persistence mechanism fails.
     * - persistencetype
+
+        *(str)*
       - Choices:
 
           - SOURCEIP
@@ -520,11 +628,15 @@ Parameters
 
         * FIXSESSION - Connections that have the same SenderCompID and TargetCompID values belong to the same persistence session.
     * - persistmask
+
+        *(str)*
       -
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
 
         Minimum length = 1
     * - port
+
+        *(int)*
       -
       - Port number for the virtual server.
 
@@ -532,18 +644,24 @@ Parameters
 
         * in CLI is represented as ``65535`` in NITRO API
     * - processlocal
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.
     * - push
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Process traffic with the push virtual server that is bound to this load balancing virtual server.
     * - pushlabel
+
+        *(str)*
       -
       - Expression for extracting a label from the server's response. Can be either an expression or the name of a named expression.
     * - pushmulticlients
@@ -552,11 +670,15 @@ Parameters
       -
       - Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.
     * - pushvserver
+
+        *(str)*
       -
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the load balancing virtual server that you are configuring.
 
         Minimum length = 1
     * - range
+
+        *(float)*
       -
       - Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows:
 
@@ -577,12 +699,16 @@ Parameters
       -
       - When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.
     * - redirectportrewrite
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Rewrite the port and change the protocol to ensure successful HTTP redirects from services.
     * - redirurl
+
+        *(str)*
       -
       - URL to which to redirect traffic if the virtual server becomes unavailable.
 
@@ -590,6 +716,8 @@ Parameters
 
         Minimum length = 1
     * - rhistate
+
+        *(str)*
       - Choices:
 
           - PASSIVE
@@ -616,6 +744,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - servicebindings
+
+        *(list)*
       -
       - List of services along with the weights that are load balanced.
 
@@ -643,6 +773,8 @@ Parameters
                 Maximum value = ``100``
 
     * - servicegroupbindings
+
+        *(list)*
       -
       - List of service groups along with the weights that are load balanced.
 
@@ -668,6 +800,8 @@ Parameters
                 Maximum value = ``100``
 
     * - servicetype
+
+        *(str)*
       - Choices:
 
           - HTTP
@@ -704,12 +838,16 @@ Parameters
           - SSL_FIX
       - Protocol used by the service (also called the service type).
     * - sessionless
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Perform load balancing on a per-packet basis, without establishing sessions. Recommended for load balancing of intrusion detection system (IDS) servers and scenarios involving direct server return (DSR), where session information is unnecessary.
     * - skippersistency
+
+        *(str)*
       - Choices:
 
           - Bypass
@@ -717,6 +855,8 @@ Parameters
           - None
       - This argument decides the behavior incase the service which is selected from an existing persistence session has reached threshold.
     * - sobackupaction
+
+        *(str)*
       - Choices:
 
           - DROP
@@ -724,6 +864,8 @@ Parameters
           - REDIRECT
       - Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists.
     * - somethod
+
+        *(str)*
       - Choices:
 
           - CONNECTION
@@ -743,12 +885,16 @@ Parameters
 
         * ``NONE`` - Spillover does not occur.
     * - sopersistence
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - If spillover occurs, maintain source IP address based persistence for both primary and backup virtual servers.
     * - sopersistencetimeout
+
+        *(float)*
       -
       - Timeout for spillover persistence, in minutes.
 
@@ -756,6 +902,8 @@ Parameters
 
         Maximum value = ``1440``
     * - sothreshold
+
+        *(float)*
       -
       - Threshold at which spillover occurs. Specify an integer for the ``CONNECTION`` spillover method, a bandwidth value in kilobits per second for the ``BANDWIDTH`` method (do not enter the units), or a percentage for the ``HEALTH`` method (do not enter the percentage symbol).
 
@@ -763,6 +911,8 @@ Parameters
 
         Maximum value = ``4294967287``
     * - ssl_certkey
+
+        *(str)*
       -
       - The name of the ssl certificate that is bound to this service.
 
@@ -772,6 +922,8 @@ Parameters
 
         This option is only applicable only when ``servicetype`` is ``SSL``.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -782,6 +934,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - tcpprofilename
+
+        *(str)*
       -
       - Name of the TCP profile whose settings are to be applied to the virtual server.
 
@@ -789,6 +943,8 @@ Parameters
 
         Maximum length = 127
     * - timeout
+
+        *(float)*
       -
       - Time period for which a persistence session is in effect.
 
@@ -796,6 +952,8 @@ Parameters
 
         Maximum value = ``1440``
     * - tosid
+
+        *(float)*
       -
       - TOS ID of the virtual server. Applicable only when the load balancing redirection mode is set to TOS.
 
@@ -803,6 +961,8 @@ Parameters
 
         Maximum value = ``63``
     * - v6netmasklen
+
+        *(float)*
       -
       - Number of bits to consider in an IPv6 destination or source IP address, for creating the hash that is required by the ``DESTINATIONIPHASH`` and ``SOURCEIPHASH`` load balancing methods.
 
@@ -810,6 +970,8 @@ Parameters
 
         Maximum value = ``128``
     * - v6persistmasklen
+
+        *(float)*
       -
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
 
@@ -817,11 +979,15 @@ Parameters
 
         Maximum value = ``128``
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
       - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
     * - vipheader
+
+        *(str)*
       -
       - Name for the inserted header. The default name is vip-header.
 

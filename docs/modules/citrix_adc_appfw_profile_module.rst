@@ -5,7 +5,7 @@
 citrix_adc_appfw_profile - Manage Citrix ADC Web Application Firewall profiles.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.9
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -121,6 +121,8 @@ Parameters
       -
       - Any comments about the purpose of profile, or other useful information about the profile.
     * - contenttype_bindings
+
+        *(dict)*
       -
       - contenttype bindings
     * - contenttypeaction
@@ -147,6 +149,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction" followed by the to be enabled. To turn off all actions, type "set appfw profile -contentTypeaction none".
     * - cookieconsistency_bindings
+
+        *(dict)*
       -
       - cookieconsistency bindings
     * - cookieconsistencyaction
@@ -261,6 +265,8 @@ Parameters
 
         Maximum value = ``255``
     * - creditcardnumber_bindings
+
+        *(dict)*
       -
       - creditcardnumber bindings
     * - creditcardxout
@@ -269,6 +275,8 @@ Parameters
       -
       - Mask any credit card number detected in a response by replacing each digit, except the digits in the group, with the letter "X.".
     * - crosssitescripting_bindings
+
+        *(dict)*
       -
       - crosssitescripting bindings
     * - crosssitescriptingaction
@@ -307,6 +315,8 @@ Parameters
 
         CAUTION: Make sure that this parameter is set to ON if you are configuring any cross-site scripting If it is set to OFF, no cross-site scripting transformations are performed regardless of any other
     * - csrftag_bindings
+
+        *(dict)*
       -
       - csrftag bindings
     * - csrftagaction
@@ -404,6 +414,8 @@ Parameters
 
         CLI users: When adding an application firewall profile, you can set either the defaults or the type, not both. To set both options, create the profile by using the add appfw profile command, and then the set appfw profile command to configure the other option.
     * - denyurl_bindings
+
+        *(dict)*
       -
       - denyurl bindings
     * - denyurlaction
@@ -471,6 +483,8 @@ Parameters
       -
       - Exclude uploaded files from Form checks.
     * - excluderescontenttype_bindings
+
+        *(dict)*
       -
       - excluderescontenttype bindings
     * - exemptclosureurlsfromsecuritychecks
@@ -479,6 +493,8 @@ Parameters
       -
       - Exempt URLs that pass the Start URL closure check from SQL injection, cross-site script, field format field consistency security checks at locations other than headers.
     * - fieldconsistency_bindings
+
+        *(dict)*
       -
       - fieldconsistency bindings
     * - fieldconsistencyaction
@@ -505,6 +521,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction" followed the actions to be enabled. To turn off all actions, type "set appfw profile -fieldConsistencyAction
     * - fieldformat_bindings
+
+        *(dict)*
       -
       - fieldformat bindings
     * - fieldformataction
@@ -591,6 +609,8 @@ Parameters
 
         CLI users: To enable, type "set appfw profile -InspectContentTypes" followed by the content types to inspected.
     * - instance_ip
+
+        *(str)*
 
         *(added in 2.6.0)*
       -
@@ -748,27 +768,39 @@ Parameters
         Minimum length =  1
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -843,6 +875,8 @@ Parameters
 
         Minimum length =  1
     * - safeobject_bindings
+
+        *(dict)*
       -
       - safeobject bindings
     * - save_config
@@ -885,6 +919,8 @@ Parameters
 
         Minimum length =  1
     * - sqlinjection_bindings
+
+        *(dict)*
       -
       - sqlinjection bindings
     * - sqlinjectionaction
@@ -966,6 +1002,8 @@ Parameters
 
         -SQLSplCharORKeyword     : Checks for both and blocks if anyone is found.
     * - starturl_bindings
+
+        *(dict)*
       -
       - starturl bindings
     * - starturlaction
@@ -997,6 +1035,8 @@ Parameters
       -
       - Toggle  the state of Start URL Closure.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -1041,6 +1081,8 @@ Parameters
       -
       - Toggle  the state of trace.
     * - trustedlearningclients_bindings
+
+        *(dict)*
       -
       - trustedlearningclients bindings
     * - type
@@ -1077,6 +1119,8 @@ Parameters
       -
       - Send an imported HTML Error object to a user when a request is blocked, instead of redirecting the to the designated Error URL.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
@@ -1114,6 +1158,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLAttachmentAction none".
     * - xmlattachmenturl_bindings
+
+        *(dict)*
       -
       - xmlattachmenturl bindings
     * - xmldosaction
@@ -1140,6 +1186,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLDoSAction none".
     * - xmldosurl_bindings
+
+        *(dict)*
       -
       - xmldosurl bindings
     * - xmlerrorobject
@@ -1199,6 +1247,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLSOAPFaultAction none".
     * - xmlsqlinjection_bindings
+
+        *(dict)*
       -
       - xmlsqlinjection bindings
     * - xmlsqlinjectionaction
@@ -1288,6 +1338,8 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction" followed by actions to be enabled. To turn off all actions, type "set appfw profile -XMLValidationAction none".
     * - xmlvalidationurl_bindings
+
+        *(dict)*
       -
       - xmlvalidationurl bindings
     * - xmlwsiaction
@@ -1314,9 +1366,13 @@ Parameters
 
         CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction" followed by the to be enabled. To turn off all actions, type "set appfw profile -XMLWSIAction none".
     * - xmlwsiurl_bindings
+
+        *(dict)*
       -
       - xmlwsiurl bindings
     * - xmlxss_bindings
+
+        *(dict)*
       -
       - xmlxss bindings
     * - xmlxssaction

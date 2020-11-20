@@ -5,7 +5,7 @@
 citrix_adc_appfw_settings - Manage Citrix ADC Web Application Firewall settings.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.9
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -76,6 +76,8 @@ Parameters
         Maximum value = ``268435456``
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
@@ -118,27 +120,39 @@ Parameters
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -203,6 +217,8 @@ Parameters
       -
       - URL to download the mapping file from server.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -227,6 +243,8 @@ Parameters
       -
       - Use configurable secret key in AppFw operations.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

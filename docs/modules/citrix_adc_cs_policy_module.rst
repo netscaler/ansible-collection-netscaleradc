@@ -5,7 +5,7 @@
 citrix_adc_cs_policy - Manage content switching policy
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -36,14 +36,20 @@ Parameters
       - Choices/Defaults
       - Comment
     * - action
+
+        *(str)*
       -
       - Content switching action that names the target load balancing virtual server to which the traffic is switched.
     * - domain
+
+        *(str)*
       -
       - The domain name. The string value can range to 63 characters.
 
         Minimum length = 1
     * - instance_ip
+
+        *(str)*
 
         *(added in 2.6.0)*
       -
@@ -63,32 +69,46 @@ Parameters
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - policyname
+
+        *(str)*
       -
       - Name for the content switching policy. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore, hash ``#``, period ``.``, space `` ``, colon ``:``, at sign ``@``, equal sign ``=``, and hyphen ``-`` characters. Cannot be changed after a policy is created.
 
@@ -98,6 +118,8 @@ Parameters
 
         Minimum length = 1
     * - rule
+
+        *(str)*
       -
       - Expression, or name of a named expression, against which traffic is evaluated. Written in the classic or default syntax.
 
@@ -114,6 +136,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -124,6 +148,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - url
+
+        *(str)*
       -
       - URL string that is matched with the URL of a request. Can contain a wildcard character. Specify the string value in the following format: ``[[prefix] [*]] [.suffix]``.
 
@@ -131,6 +157,8 @@ Parameters
 
         Maximum length = 208
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

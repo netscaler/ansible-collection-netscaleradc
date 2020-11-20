@@ -5,7 +5,7 @@
 citrix_adc_ssl_certkey - Manage ssl cerificate keys.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -35,11 +35,15 @@ Parameters
       - Choices/Defaults
       - Comment
     * - cert
+
+        *(str)*
       -
       - Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
 
         Minimum length = 1
     * - certkey
+
+        *(str)*
       -
       - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space `` ``, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters. Cannot be changed after the certificate-key pair is created.
 
@@ -49,12 +53,16 @@ Parameters
 
         Minimum length = 1
     * - expirymonitor
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Issue an alert when the certificate is about to expire.
     * - inform
+
+        *(str)*
       - Choices:
 
           - DER
@@ -69,12 +77,16 @@ Parameters
         PFX - Personal Information Exchange.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - key
+
+        *(str)*
       -
       - Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
 
@@ -92,27 +104,39 @@ Parameters
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - notificationperiod
+
+        *(float)*
       -
       - Time, in number of days, before certificate expiration, at which to generate an alert that the certificate is about to expire.
 
@@ -120,16 +144,22 @@ Parameters
 
         Maximum value = ``100``
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - passplain
+
+        *(str)*
       -
       - Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM format.
 
         Minimum length = 1
     * - password
+
+        *(bool)*
       -
       - Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys in PEM format.
     * - save_config
@@ -142,6 +172,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -152,6 +184,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

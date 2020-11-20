@@ -5,7 +5,7 @@
 citrix_adc_servicegroup - Manage service group configuration in Netscaler
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -189,6 +189,8 @@ Parameters
       - Display the members of the listed service groups in addition to their settings. Can be specified when service group name is provided in the command. In that case, the details displayed for each service are identical to the details displayed when a service group name is provided, except that bound are not displayed.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
@@ -248,6 +250,8 @@ Parameters
           - FIN
       - Close monitoring connections by sending the service a connection termination message with the bit set.
     * - monitor_bindings
+
+        *(dict)*
       -
       - A list of monitor to bind to the servicegroup
     * - monitor_name_svc
@@ -282,27 +286,39 @@ Parameters
         Maximum length =  127
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -370,6 +386,8 @@ Parameters
 
         Minimum length =  1
     * - servicemembers
+
+        *(dict)*
       -
       - A list of dictionaries describing each service member of the service group.
     * - servicetype
@@ -426,6 +444,8 @@ Parameters
       -
       - Enable surge protection for the service group.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -480,6 +500,8 @@ Parameters
       -
       - Use client's IP address as the source IP address when initiating connection to the server. With the setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the IP address to initiate server side connections.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

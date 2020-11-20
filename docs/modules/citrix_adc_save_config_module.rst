@@ -5,7 +5,7 @@
 citrix_adc_save_config - Save Netscaler configuration.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -37,6 +37,8 @@ Parameters
       - Choices/Defaults
       - Comment
     * - instance_ip
+
+        *(str)*
       -
       - The IP address of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
     * - mas_proxy_call
@@ -49,31 +51,45 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
+
+        *(str)*
       -
       - The authentication token provided by the ``mas_login`` operation. It is required when issuing Nitro API calls through a MAS proxy.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler.
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. ``192.168.1.1:555``.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

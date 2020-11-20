@@ -5,7 +5,7 @@
 citrix_adc_gslb_service - Manage gslb service entities in Netscaler.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -35,23 +35,31 @@ Parameters
       - Choices/Defaults
       - Comment
     * - appflowlog
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Enable logging appflow flow information.
     * - cip
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.
     * - cipheader
+
+        *(str)*
       -
       - Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the NetScaler appliance uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
 
         Minimum length = 1
     * - clttimeout
+
+        *(float)*
       -
       - Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy based site persistence is used.
 
@@ -59,20 +67,28 @@ Parameters
 
         Maximum value = 31536000
     * - cnameentry
+
+        *(str)*
       -
       - Canonical name of the GSLB service. Used in CNAME-based GSLB.
 
         Minimum length = 1
     * - comment
+
+        *(str)*
       -
       - Any comments that you might want to associate with the GSLB service.
     * - downstateflush
+
+        *(str)*
       - Choices:
 
           - enabled
           - disabled
       - Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.
     * - hashid
+
+        *(float)*
       -
       - Unique hash identifier for the GSLB service, used by hash based load balancing methods.
 
@@ -84,12 +100,16 @@ Parameters
       - Monitor the health of the GSLB service.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipaddress
+
+        *(str)*
       -
       - IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the NetScaler appliance, or the IP address of another load balancing device.
     * - mas_proxy_call
@@ -104,6 +124,8 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxaaausers
+
+        *(float)*
       -
       - Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.
 
@@ -111,9 +133,13 @@ Parameters
 
         Maximum value = ``65535``
     * - maxbandwidth
+
+        *(float)*
       -
       - Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops below the maximum.
     * - maxclient
+
+        *(float)*
       -
       - The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.
 
@@ -121,6 +147,8 @@ Parameters
 
         Maximum value = ``4294967294``
     * - monitor_bindings
+
+        *(list)*
       -
       - Bind monitors to this gslb service
 
@@ -148,6 +176,8 @@ Parameters
                 Maximum value = ``100``
 
     * - monthreshold
+
+        *(float)*
       -
       - Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.
 
@@ -156,32 +186,46 @@ Parameters
         Maximum value = ``65535``
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - port
+
+        *(int)*
       -
       - Port on which the load balancing entity represented by this GSLB service listens.
 
@@ -191,9 +235,13 @@ Parameters
 
         * in CLI is represented as 65535 in NITRO API
     * - publicip
+
+        *(str)*
       -
       - The public IP address that a NAT device translates to the GSLB service's private IP address. Optional.
     * - publicport
+
+        *(int)*
       -
       - The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional.
     * - save_config
@@ -206,11 +254,15 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - servername
+
+        *(str)*
       -
       - Name of the server hosting the GSLB service.
 
         Minimum length = 1
     * - servicename
+
+        *(str)*
       -
       - Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters. Can be changed after the GSLB service is created.
 
@@ -218,6 +270,8 @@ Parameters
 
         Minimum length = 1
     * - servicetype
+
+        *(str)*
       - Choices:
 
           - HTTP
@@ -240,11 +294,15 @@ Parameters
           - ORACLE
       - Type of service to create.
     * - sitename
+
+        *(str)*
       -
       - Name of the GSLB site to which the service belongs.
 
         Minimum length = 1
     * - sitepersistence
+
+        *(str)*
       - Choices:
 
           - ConnectionProxy
@@ -252,9 +310,13 @@ Parameters
           - NONE
       - Use cookie-based site persistence. Applicable only to ``HTTP`` and ``SSL`` GSLB services.
     * - siteprefix
+
+        *(str)*
       -
       - The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB requests to GSLB services by using their site domains.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -265,6 +327,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

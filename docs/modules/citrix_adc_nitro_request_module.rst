@@ -5,7 +5,7 @@
 citrix_adc_nitro_request - Issue Nitro API requests to a Netscaler instance.
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.5.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -33,63 +33,100 @@ Parameters
       - Choices/Defaults
       - Comment
     * - action
+
+        *(str)*
       -
       - The action to perform when the ``operation`` value is set to ``action``.
 
         Some common values for this parameter are ``enable``, ``disable``, ``rename``.
     * - args
+
+        *(dict)*
       -
       - A dictionary which defines the key arguments by which we will select the Nitro object to operate on.
 
         It is required for the following ``operation`` values: ``get_by_args``, ``'delete_by_args'``.
     * - attributes
+
+        *(dict)*
       -
       - The attributes of the Nitro object we are operating on.
 
         It is required for the following ``operation`` values: ``add``, ``update``, ``action``.
     * - expected_nitro_errorcode
+
+        *(list)*
       - Default:
 
         *[0]*
       - A list of numeric values that signify that the operation was successful.
     * - filter
+
+        *(dict)*
       -
       - A dictionary which defines the filter with which to refine the Nitro objects returned by the ``get_filtered`` ``operation``.
+    * - idempotent
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Add the idempotent flag for ``operation=add`` and ``operation=update`` requests.
     * - instance_id
+
+        *(str)*
       -
       - The id of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
     * - instance_ip
+
+        *(str)*
       -
       - The IP address of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
     * - instance_name
+
+        *(str)*
       -
       - The name of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
     * - name
+
+        *(str)*
       -
       - The name of the resource we are operating on.
 
         It is required for the following ``operation`` values: ``update``, ``get``, ``delete``.
     * - nitro_auth_token
+
+        *(str)*
       -
       - The authentication token provided by the ``mas_login`` operation. It is required when issuing Nitro API calls through a MAS proxy.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the Netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the Nitro API objects.
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the Netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The IP address of the Netscaler or MAS instance where the Nitro API calls will be made.
 
         The port can be specified with the colon ``:``. E.g. ``192.168.1.1:555``.
     * - operation
+
+        *(str)*
       - Choices:
 
           - add
@@ -106,16 +143,22 @@ Parameters
           - action
       - Define the Nitro operation that we want to perform.
     * - resource
+
+        *(str)*
       -
       - The type of resource we are operating on.
 
         It is required for all ``operation`` values except ``mas_login`` and ``save_config``.
     * - timeout
+
+        *(int)*
       - Default:
 
         *45*
       - Timeout for the NITRO HTTP request.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
@@ -303,7 +346,7 @@ Return Values
 
         **Sample:**
 
-        [{'ipv6address': 'NO', 'port': 0, 'name': 'test-server-1', 'ipaddress': '192.168.1.8', 'sp': 'OFF', 'state': 'ENABLED', 'maxbandwidth': '0'}]
+        [{'ipaddress': '192.168.1.8', 'ipv6address': 'NO', 'maxbandwidth': '0', 'name': 'test-server-1', 'port': 0, 'sp': 'OFF', 'state': 'ENABLED'}]
     * - nitro_severity
 
         *(str)*

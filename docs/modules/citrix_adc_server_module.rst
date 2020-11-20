@@ -5,7 +5,7 @@
 citrix_adc_server - Manage server configuration
 +++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -36,11 +36,13 @@ Parameters
       - Choices/Defaults
       - Comment
     * - comment
+
+        *(str)*
       -
       - Any information about the server.
     * - delay
 
-        *(added in 2.5)*
+        *(float)*
       -
       - Time, in seconds, after which all the services configured on the server are disabled.
 
@@ -57,11 +59,15 @@ Parameters
 
         Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
     * - domain
+
+        *(str)*
       -
       - Domain name of the server. For a domain based configuration, you must create the server first.
 
         Minimum length = 1
     * - domainresolveretry
+
+        *(int)*
       -
       - Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.
 
@@ -71,13 +77,13 @@ Parameters
     * - graceful
 
         *(bool)*
-
-        *(added in 2.5)*
       -
       - Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.
 
         This option is meaningful only when setting the ``disabled`` option to ``true``
     * - instance_ip
+
+        *(str)*
 
         *(added in 2.6.0)*
       -
@@ -85,6 +91,8 @@ Parameters
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipaddress
+
+        *(str)*
       -
       - IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
     * - ipv6address
@@ -106,6 +114,8 @@ Parameters
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - name
+
+        *(str)*
       -
       - Name for the server.
 
@@ -116,27 +126,39 @@ Parameters
         Minimum length = 1
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -151,6 +173,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -161,6 +185,8 @@ Parameters
 
         When absent the resource will be deleted from the netscaler node.
     * - td
+
+        *(float)*
       -
       - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
 
@@ -168,12 +194,18 @@ Parameters
 
         Maximum value = ``4094``
     * - translationip
+
+        *(str)*
       -
       - IP address used to transform the server's DNS-resolved IP address.
     * - translationmask
+
+        *(str)*
       -
       - The netmask of the translation ip.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
