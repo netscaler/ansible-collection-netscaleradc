@@ -122,12 +122,13 @@ options:
     httprequest:
         type: str
         description:
-            - "HTTP request to send to the server (for example, C(\\"HEAD /file.html\\"))."
+            - >-
+                HTTP request to send to the server (for example, C(HEAD /file.html)).
 
     rtsprequest:
         type: str
         description:
-            - "RTSP request to send to the server (for example, C(\\"OPTIONS *\\"))."
+            - "RTSP request to send to the server (for example, C(OPTIONS *))."
 
     customheaders:
         type: str
