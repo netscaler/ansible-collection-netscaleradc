@@ -46,7 +46,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Netscaler instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
@@ -129,7 +129,7 @@ Examples
       gather_facts: False
     
       tasks:
-        - name: Login to mas
+        - name: Login to Citrix ADM
           delegate_to: localhost
           register: login_result
           citrix_adm_login:
