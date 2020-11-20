@@ -19,7 +19,7 @@ module: citrix_adc_server
 short_description: Manage server configuration
 description:
     - Manage server entities configuration.
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 version_added: "1.0.0"
 
@@ -66,7 +66,7 @@ options:
         type: int
         description:
             - >-
-                Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before
+                Time, in seconds, for which the Citrix ADC appliance must wait, after DNS resolution fails, before
                 sending the next DNS query to resolve the domain name.
             - "Minimum value = C(5)"
             - "Maximum value = C(20939)"

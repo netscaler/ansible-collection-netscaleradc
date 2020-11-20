@@ -18,7 +18,7 @@ module: citrix_adc_cs_policy
 short_description: Manage content switching policy
 description:
     - Manage content switching policy.
-    - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance."
+    - "This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance."
 
 version_added: "1.0.0"
 
@@ -34,7 +34,7 @@ options:
                 character, and must contain only ASCII alphanumeric, underscore, hash C(#), period C(.), space C( ), colon
                 C(:), at sign C(@), equal sign C(=), and hyphen C(-) characters. Cannot be changed after a policy is
                 created.
-            - "The following requirement applies only to the NetScaler CLI:"
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
                 If the name includes one or more spaces, enclose the name in double or single quotation marks (for
                 example, my policy or my policy).

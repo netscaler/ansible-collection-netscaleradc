@@ -16,9 +16,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_gslb_site
-short_description: Manage gslb site entities in Netscaler.
+short_description: Manage gslb site entities in Citrix ADC.
 description:
-    - Manage gslb site entities in Netscaler.
+    - Manage gslb site entities in Citrix ADC.
 
 version_added: "1.0.0"
 

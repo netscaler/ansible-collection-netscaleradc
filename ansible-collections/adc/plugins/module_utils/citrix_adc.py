@@ -193,12 +193,12 @@ def get_nitro_client(module):
         try:
             from nssrc.com.citrix.netscaler.nitro.service.MasContext import MasContext
         except ImportError as e:
-            module.fail_json(msg='The currently installed nitro python SDK does not support MAS proxied calls')
+            module.fail_json(msg='The currently installed nitro python SDK does not support Citrix ADM proxied calls')
 
         if module.params['mas_auth_token'] is None:
-            module.fail_json(msg='You must provide a mas authentication token to proxy a call trough MAS')
+            module.fail_json(msg='You must provide a mas authentication token to proxy a call trough Citrix ADM')
         if module.params['instance_ip'] is None:
-            module.fail_json(msg='You must provide  the target NS instance ip to proxy a call trough MAS')
+            module.fail_json(msg='You must provide  the target NS instance ip to proxy a call trough Citrix ADM')
 
         masCtx = MasContext(
             module.params['mas_ip'],
@@ -375,7 +375,7 @@ class NitroAPIFetcher(object):
             elif self._module.params.get('instance_id') is not None:
                 self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_ID'] = self._module.params['instance_id']
             else:
-                self._module.fail_json(msg='Target netscaler is undefined for MAS proxied NITRO call')
+                self._module.fail_json(msg='Target Citrix ADC is undefined for Citrix ADM proxied NITRO call')
 
     def edit_response_data(self, r, info, result):
         '''

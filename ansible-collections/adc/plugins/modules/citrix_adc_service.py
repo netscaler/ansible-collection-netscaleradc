@@ -16,11 +16,11 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_service
-short_description: Manage service configuration in Netscaler
+short_description: Manage service configuration in Citrix ADC
 description:
-    - Manage service configuration in Netscaler.
-    - This module allows the creation, deletion and modification of Netscaler services.
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+    - Manage service configuration in Citrix ADC.
+    - This module allows the creation, deletion and modification of Citrix ADC services.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
     - This module supports check mode.
 
 version_added: "1.0.0"

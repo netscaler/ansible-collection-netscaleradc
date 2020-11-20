@@ -16,9 +16,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_gslb_service
-short_description: Manage gslb service entities in Netscaler.
+short_description: Manage gslb service entities in Citrix ADC.
 description:
-    - Manage gslb service entities in Netscaler.
+    - Manage gslb service entities in Citrix ADC.
 
 version_added: "1.0.0"
 
@@ -132,7 +132,7 @@ options:
             - >-
                 Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If
                 client IP header insertion is enabled on the service and a name is not specified for the header, the
-                NetScaler appliance uses the name specified by the cipHeader parameter in the set ns param command
+                Citrix ADC appliance uses the name specified by the cipHeader parameter in the set ns param command
                 or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
             - "Minimum length = 1"
 
@@ -152,7 +152,7 @@ options:
                 The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is
                 generated internally for each bound service-domain pair by concatenating the site prefix of the
                 service and the name of the domain. If the special string NONE is specified, the site-prefix string
-                is unset. When implementing HTTP redirect site persistence, the NetScaler appliance redirects GSLB
+                is unset. When implementing HTTP redirect site persistence, the Citrix ADC appliance redirects GSLB
                 requests to GSLB services by using their site domains.
 
     clttimeout:
@@ -227,7 +227,7 @@ options:
         description:
             - >-
                 IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual
-                server on the NetScaler appliance, or the IP address of another load balancing device.
+                server on the Citrix ADC appliance, or the IP address of another load balancing device.
 
     monitor_bindings:
         type: list
