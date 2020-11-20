@@ -2,7 +2,7 @@ Speeding up execution
 =====================
 
 This document details how to speed up the execution time of a playbook
-containing invocations of Netscaler ansible modules.
+containing invocations of Citrix ADC ansible modules.
 
 Ansible has some options to help with speeding up execution by making
 forks of itself to execute playbooks in multiple target hosts.
@@ -12,28 +12,28 @@ may help with parallelizing the execution of the tasks therein but at
 the cost of increased complexity.
 
 Both of the above methods can be used to speed up the execution of
-playbooks containing invocations of Netscaler modules.
+playbooks containing invocations of Citrix ADC modules.
 
-Here we will detail a third option which is specific to the Netscaler
+Here we will detail a third option which is specific to the Citrix ADC
 modules and the way the underlying API is used.
 
 Saving configuration
 --------------------
 
-By default every Netscaler module after it performs any changes to the configuration
-of the Netscaler node will also save the configuration.
+By default every Citrix ADC module after it performs any changes to the configuration
+of the Citrix ADC node will also save the configuration.
 
 While this is the safest option as far as robustness is concerned, it turns out that the save configuration operation
 is quite costly time wise, taking up to 5 seconds.
 
-When multiple tasks within a playbook make changes to Netscaler entities these
+When multiple tasks within a playbook make changes to Citrix ADC entities these
 delays accumulate to a substantial amount.
 
-The solution is to instruct the Netscaler modules not to save the configuration
+The solution is to instruct the Citrix ADC modules not to save the configuration
 individually but instead notify a handler which will save the configuration once
 at the end of the playbook execution.
 
-To do this we need to use the ``save_config`` option along with the ``netscaler_save_config``
+To do this we need to use the ``save_config`` option along with the ``citrix_adc_save_config``
 module which will be invoked by the handler.
 
 Sample playbook
@@ -44,7 +44,7 @@ The following playbook demonstrates this technique.
 
 .. code-block:: yaml
 
-        - hosts: netscaler
+        - hosts: citrix_adc
 
           vars:
             save_config: no
@@ -54,9 +54,9 @@ The following playbook demonstrates this technique.
             - name: Setup server 1
 
               delegate_to: localhost
-              notify: Save netscaler configuration
+              notify: Save Citrix ADC configuration
 
-              netscaler_server:
+              citrix_adc_server:
                 nsip: 172.18.0.2
                 nitro_user: nsroot
                 nitro_pass: nsroot
@@ -71,9 +71,9 @@ The following playbook demonstrates this technique.
             - name: Set server 2
 
               delegate_to: localhost
-              notify: Save netscaler configuration
+              notify: Save Citrix ADC configuration
 
-              netscaler_server:
+              citrix_adc_server:
                 nsip: 172.18.0.2
                 nitro_user: nsroot
                 nitro_pass: nsroot
@@ -86,9 +86,9 @@ The following playbook demonstrates this technique.
                 comment: Our second server
 
           handlers:
-            - name: Save netscaler configuration
+            - name: Save Citrix ADC configuration
               delegate_to: localhost
-              netscaler_save_config:
+              citrix_adc_save_config:
                 nsip: 172.18.0.2
                 nitro_user: nsroot
                 nitro_pass: nsroot
@@ -100,11 +100,11 @@ Closing remarks
 As you see in the example we need to explicitly set the ``save_config`` option
 since by default it is set to ``yes``.
 
-Also we call the ``netscaler_save_config`` module only once in the handlers section.
+Also we call the ``citrix_adc_save_config`` module only once in the handlers section.
 
-The number of times the configuration will be saved on the Netscaler module is
+The number of times the configuration will be saved on the Citrix ADC module is
 only one regardless of the number of changes, or none if there is no change recorded
-in the result of any of the netscaler modules.
+in the result of any of the Citrix ADC modules.
 
 This is much better than the worst case with the default ``save_config`` option which would
 save the configuration twice if both server modules made changes.
@@ -112,7 +112,7 @@ save the configuration twice if both server modules made changes.
 It is also just as fast as the best case with the default ``save_config`` option which would be
 to save the configuration once in case only one of the tasks made any change.
 
-Also note that the potential benefit increases, for each Netscaler module which utilizes the
-save configuration handler. For example if we had ten Netscaler modules making changes we would
-be saving the configuration ten times. Instead if these modules use the ``netscaler_save_config``
+Also note that the potential benefit increases, for each Citrix ADC module which utilizes the
+save configuration handler. For example if we had ten Citrix ADC modules making changes we would
+be saving the configuration ten times. Instead if these modules use the ``citrix_adc_save_config``
 as a handler we will have only one call to the save operation.
