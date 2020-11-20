@@ -18,7 +18,6 @@ listed below.
    :maxdepth: 2
    :caption: User Documentation
 
-   usage/getting_started
    usage/speeding_up_execution
    usage/rolling_upgrades
    usage/rolling_upgrades_vpx
