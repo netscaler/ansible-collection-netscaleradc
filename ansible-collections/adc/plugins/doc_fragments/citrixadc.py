@@ -8,7 +8,7 @@ class ModuleDocFragment(object):
 options:
     nsip:
         description:
-            - The ip address of the netscaler appliance where the nitro API calls will be made.
+            - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
             - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
         aliases:
             - mas_ip
@@ -17,7 +17,7 @@ options:
 
     nitro_user:
         description:
-            - The username with which to authenticate to the netscaler node.
+            - The username with which to authenticate to the Citrix ADC node.
         required: False
         aliases:
             - mas_user
@@ -25,7 +25,7 @@ options:
 
     nitro_pass:
         description:
-            - The password with which to authenticate to the netscaler node.
+            - The password with which to authenticate to the Citrix ADC node.
         required: False
         aliases:
             - mas_pass
@@ -47,7 +47,7 @@ options:
 
     nitro_timeout:
         description:
-            - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+            - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
         default: 310
         type: float
 
@@ -55,21 +55,21 @@ options:
         choices: ['present', 'absent']
         default: 'present'
         description:
-            - The state of the resource being configured by the module on the netscaler node.
+            - The state of the resource being configured by the module on the Citrix ADC node.
             - When present the resource will be created if needed and configured according to the module's parameters.
-            - When absent the resource will be deleted from the netscaler node.
+            - When absent the resource will be deleted from the Citrix ADC node.
         type: str
 
     save_config:
         description:
-            - If true the module will save the configuration on the netscaler node if it makes any changes.
-            - The module will not save the configuration on the netscaler node if it made no changes.
+            - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
+            - The module will not save the configuration on the Citrix ADC node if it made no changes.
         type: bool
         default: true
 
     mas_proxy_call:
         description:
-            - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+            - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
             - "When true you must also define the following options: I(nitro_auth_token), I(instance_ip)."
         type: bool
         default: false
@@ -85,10 +85,10 @@ options:
 
     instance_ip:
         description:
-            - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+            - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
             - It is meaningful only when having set C(mas_proxy_call) to C(true)
         version_added: "2.6.0"
         type: str
 notes:
-  - For more information on using Ansible to manage Citrix NetScaler Network devices see U(https://www.ansible.com/ansible-netscaler).
+  - For more information on using Ansible to manage Citrix ADC Network devices see U(https://www.ansible.com/ansible-netscaler).
 '''

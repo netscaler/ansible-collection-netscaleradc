@@ -5,7 +5,7 @@
 citrix_adm_application - Manage applications on Citrix ADM.
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.9
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -107,6 +107,8 @@ Parameters
       - Id is system generated key..
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
@@ -120,7 +122,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Netscaler instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - name
@@ -132,24 +134,34 @@ Parameters
         Maximum length = 1024
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
       - The password with which to authenticate to the netscaler node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
       - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
     * - nitro_user
+
+        *(str)*
       -
       - The username with which to authenticate to the netscaler node.
     * - no_of_auth
@@ -213,6 +225,8 @@ Parameters
       -
       - Number of VPN VIPs.
     * - nsip
+
+        *(str)*
       -
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
@@ -245,6 +259,8 @@ Parameters
 
         The module will not save the configuration on the netscaler node if it made no changes.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
@@ -265,6 +281,8 @@ Parameters
       -
       - Sum of throughput across all vips of the app.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

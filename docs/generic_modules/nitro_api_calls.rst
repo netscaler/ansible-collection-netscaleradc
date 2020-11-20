@@ -1,7 +1,7 @@
 Direct NITRO API calls
 ######################
 
-One method of configuring Netscaler consists of making
+One method of configuring Citrix ADC consists of making
 direct NITRO API calls using Ansbile's `uri module`_.
 
 This method tends to be quite verbose since setting up even
@@ -17,7 +17,7 @@ was indeed a failure or expected.
 
 An example of that would be trying to add a resource while it exists.
 This is will result in failure since the HTTP POST request will not
-create the resource but this does not mean the configuration of Netscaler
+create the resource but this does not mean the configuration of Citrix ADC
 is necessarily invalid.
 
 Using Ansible's conditional constructs we can work around this problem
@@ -42,7 +42,7 @@ that the error was due to the resource missing we proceed to create it.
 On any other outcome, an error that was not what was expected, the play fails.
 
 The final task is to save the running configuration to ensure that a reboot
-of Netscaler will not undo the changes we have made.
+of Citrix ADC will not undo the changes we have made.
 
 
 Playbook
@@ -50,7 +50,7 @@ Playbook
 
 .. code-block:: yaml
 
-        - hosts: netscaler
+        - hosts: citrix_adc
           gather_facts: no
           vars:
             resource: server

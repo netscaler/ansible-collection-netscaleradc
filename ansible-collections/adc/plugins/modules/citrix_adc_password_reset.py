@@ -29,7 +29,7 @@ options:
     nsip:
         type: str
         description:
-            - The ip address of the netscaler appliance where the nitro API calls will be made.
+            - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
             - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
         required: True
 

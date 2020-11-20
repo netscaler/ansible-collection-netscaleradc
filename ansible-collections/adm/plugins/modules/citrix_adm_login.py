@@ -34,7 +34,7 @@ EXAMPLES = '''
   gather_facts: False
 
   tasks:
-    - name: Login to mas
+    - name: Login to Citrix ADM
       delegate_to: localhost
       register: login_result
       citrix_adm_login:

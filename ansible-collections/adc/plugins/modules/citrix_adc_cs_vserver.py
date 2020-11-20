@@ -18,7 +18,7 @@ module: citrix_adc_cs_vserver
 short_description: Manage content switching vserver
 description:
     - Manage content switching vserver
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 version_added: "1.0.0"
 

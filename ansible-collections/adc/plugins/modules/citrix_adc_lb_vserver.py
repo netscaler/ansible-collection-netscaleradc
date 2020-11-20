@@ -19,7 +19,7 @@ module: citrix_adc_lb_vserver
 short_description: Manage load balancing vserver configuration
 description:
     - Manage load balancing vserver configuration
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 version_added: "1.0.0"
 
@@ -668,7 +668,7 @@ options:
             - >-
                 Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (<source
                 IP>:<source port>::<destination IP>:<destination port>) that is used to identify a connection. Allows
-                multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the NetScaler appliance.
+                multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the Citrix ADC appliance.
         type: bool
 
     oracleserverversion:
@@ -744,7 +744,7 @@ options:
             - 'ACTIVE'
         description:
             - >-
-                How the NetScaler appliance responds to ping requests received for an IP address that is common to
+                How the Citrix ADC appliance responds to ping requests received for an IP address that is common to
                 one or more virtual servers. Available settings function as follows:
             - >-
                 * If set to C(PASSIVE) on all the virtual servers that share the IP address, the appliance always
@@ -773,13 +773,13 @@ options:
                 VSVR_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate
                 (RHI STATE) settings on the virtual servers associated with the VIP address:
             - >-
-                * If you set C(rhistate) to C(PASSIVE) on all virtual servers, the NetScaler ADC always advertises the
+                * If you set C(rhistate) to C(PASSIVE) on all virtual servers, the Citrix ADC always advertises the
                 route for the VIP address.
             - >-
-                * If you set C(rhistate) to C(ACTIVE) on all virtual servers, the NetScaler ADC advertises the route for
+                * If you set C(rhistate) to C(ACTIVE) on all virtual servers, the Citrix ADC advertises the route for
                 the VIP address if at least one of the associated virtual servers is in UP state.
             - >-
-                * If you set C(rhistate) to C(ACTIVE) on some and PASSIVE on others, the NetScaler ADC advertises the
+                * If you set C(rhistate) to C(ACTIVE) on some and PASSIVE on others, the Citrix ADC advertises the
                 route for the VIP address if at least one of the associated virtual servers, whose C(rhistate) set to
                 C(ACTIVE), is in UP state.
 
@@ -1002,7 +1002,7 @@ requirements:
 '''
 
 EXAMPLES = '''
-# Netscaler services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
+# Citrix ADC services service-http-1, service-http-2 must have been already created with the citrix_adc_service module
 
 - name: Create a load balancing vserver bound to services
   delegate_to: localhost

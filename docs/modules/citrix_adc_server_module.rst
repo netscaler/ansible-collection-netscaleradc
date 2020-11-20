@@ -5,7 +5,7 @@
 citrix_adc_server - Manage server configuration
 +++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -14,7 +14,7 @@ citrix_adc_server - Manage server configuration
 Synopsis
 --------
 - Manage server entities configuration.
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 
 
@@ -36,11 +36,13 @@ Parameters
       - Choices/Defaults
       - Comment
     * - comment
+
+        *(str)*
       -
       - Any information about the server.
     * - delay
 
-        *(added in 2.5)*
+        *(float)*
       -
       - Time, in seconds, after which all the services configured on the server are disabled.
 
@@ -57,13 +59,17 @@ Parameters
 
         Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
     * - domain
+
+        *(str)*
       -
       - Domain name of the server. For a domain based configuration, you must create the server first.
 
         Minimum length = 1
     * - domainresolveretry
+
+        *(int)*
       -
-      - Time, in seconds, for which the NetScaler appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.
+      - Time, in seconds, for which the Citrix ADC appliance must wait, after DNS resolution fails, before sending the next DNS query to resolve the domain name.
 
         Minimum value = ``5``
 
@@ -71,20 +77,22 @@ Parameters
     * - graceful
 
         *(bool)*
-
-        *(added in 2.5)*
       -
       - Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.
 
         This option is meaningful only when setting the ``disabled`` option to ``true``
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - ipaddress
+
+        *(str)*
       -
       - IPv4 or IPv6 address of the server. If you create an IP address based server, you can specify the name of the server, instead of its IP address, when creating a service. Note: If you do not create a server entry, the server IP address that you enter when you create a service becomes the name of the server.
     * - ipv6address
@@ -102,10 +110,12 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - name
+
+        *(str)*
       -
       - Name for the server.
 
@@ -116,29 +126,41 @@ Parameters
         Minimum length = 1
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
+
+        *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
+
+        *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - save_config
@@ -147,20 +169,24 @@ Parameters
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - td
+
+        *(float)*
       -
       - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.
 
@@ -168,12 +194,18 @@ Parameters
 
         Maximum value = ``4094``
     * - translationip
+
+        *(str)*
       -
       - IP address used to transform the server's DNS-resolved IP address.
     * - translationmask
+
+        *(str)*
       -
       - The netmask of the translation ip.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*

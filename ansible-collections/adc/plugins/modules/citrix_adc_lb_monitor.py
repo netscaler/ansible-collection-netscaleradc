@@ -18,7 +18,7 @@ module: citrix_adc_lb_monitor
 short_description: Manage load balancing monitors
 description:
     - Manage load balancing monitors.
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 version_added: "1.0.0"
 
@@ -122,12 +122,13 @@ options:
     httprequest:
         type: str
         description:
-            - "HTTP request to send to the server (for example, C(\\"HEAD /file.html\\"))."
+            - >-
+                HTTP request to send to the server (for example, C(HEAD /file.html)).
 
     rtsprequest:
         type: str
         description:
-            - "RTSP request to send to the server (for example, C(\\"OPTIONS *\\"))."
+            - "RTSP request to send to the server (for example, C(OPTIONS *))."
 
     customheaders:
         type: str
@@ -200,7 +201,7 @@ options:
         type: str
         description:
             - >-
-                Path and name of the script to execute. The script must be available on the NetScaler appliance, in
+                Path and name of the script to execute. The script must be available on the Citrix ADC appliance, in
                 the /nsconfig/monitors/ directory.
             - "Minimum length = 1"
 

@@ -18,7 +18,7 @@ module: citrix_adc_cs_action
 short_description: Manage content switching actions
 description:
     - Manage content switching actions
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 version_added: "1.0.0"
 
@@ -58,7 +58,7 @@ requirements:
 EXAMPLES = '''
 # lb_vserver_1 must have been already created with the citrix_adc_lb_vserver module
 
-- name: Configure netscaler content switching action
+- name: Configure Citrix ADC content switching action
   delegate_to: localhost
   citrix_adc_cs_action:
       nsip: 172.18.0.2

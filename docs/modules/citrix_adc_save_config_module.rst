@@ -2,10 +2,10 @@
 
 .. _citrix_adc_save_config_module:
 
-citrix_adc_save_config - Save Netscaler configuration.
-++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_save_config - Save Citrix ADC configuration.
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -13,9 +13,9 @@ citrix_adc_save_config - Save Netscaler configuration.
 
 Synopsis
 --------
-- This module uncoditionally saves the configuration on the target netscaler node.
+- This module uncoditionally saves the configuration on the target Citrix ADC node.
 - This module does not support check mode.
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 
 
@@ -37,43 +37,59 @@ Parameters
       - Choices/Defaults
       - Comment
     * - instance_ip
+
+        *(str)*
       -
-      - The IP address of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+      - The IP address of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     * - mas_proxy_call
 
         *(bool)*
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - nitro_auth_token
+
+        *(str)*
       -
-      - The authentication token provided by the ``mas_login`` operation. It is required when issuing Nitro API calls through a MAS proxy.
+      - The authentication token provided by the ``mas_login`` operation. It is required when issuing Nitro API calls through a Citrix ADM proxy.
     * - nitro_pass
+
+        *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler.
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC.
     * - nitro_user
+
+        *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
+
+        *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. ``192.168.1.1:555``.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
@@ -87,7 +103,7 @@ Examples
 .. code-block:: yaml+jinja
     
     ---
-    - name: Save netscaler configuration
+    - name: Save Citrix ADC configuration
       delegate_to: localhost
       citrix_adc_save_config:
         nsip: 172.18.0.2

@@ -34,7 +34,7 @@ options:
                 C(_) character, and must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ),
                 colon C(:), at C(@), equals C(=), and hyphen C(-) characters. Cannot be changed after the certificate-key
                 pair is created.
-            - "The following requirement applies only to the NetScaler CLI:"
+            - "The following requirement applies only to the Citrix ADC CLI:"
             - >-
                 If the name includes one or more spaces, enclose the name in double or single quotation marks (for
                 example, "my cert" or 'my cert').

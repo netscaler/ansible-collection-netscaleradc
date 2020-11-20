@@ -15,12 +15,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_nitro_request
-short_description: Issue Nitro API requests to a Netscaler instance.
+short_description: Issue Nitro API requests to a Citrix ADC instance.
 description:
-    - Issue Nitro API requests to a Netscaler instance.
+    - Issue Nitro API requests to a Citrix ADC instance.
     - This is intended to be a short hand for using the uri Ansible module to issue the raw HTTP requests directly.
     - It provides consistent return values and has no other dependencies apart from the base Ansible runtime environment.
-    - This module is intended to run either on the Ansible control node or a bastion (jumpserver) with access to the actual Netscaler instance
+    - This module is intended to run either on the Ansible control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
     - >-
         Note. This module does not check the target Citrix ADC if a configuration change has actually taken place.
         It will instead always report a I(changed=yes) status.
@@ -35,7 +35,7 @@ options:
     nsip:
         type: str
         description:
-            - The IP address of the Netscaler or MAS instance where the Nitro API calls will be made.
+            - The IP address of the Citrix ADC or Citrix ADM instance where the Nitro API calls will be made.
             - "The port can be specified with the colon C(:). E.g. C(192.168.1.1:555)."
         aliases:
             - mas_ip
@@ -43,14 +43,14 @@ options:
     nitro_user:
         type: str
         description:
-            - The username with which to authenticate to the Netscaler node.
+            - The username with which to authenticate to the Citrix ADC node.
         aliases:
             - mas_user
 
     nitro_pass:
         type: str
         description:
-            - The password with which to authenticate to the Netscaler node.
+            - The password with which to authenticate to the Citrix ADC node.
         aliases:
             - mas_pass
 
@@ -72,7 +72,7 @@ options:
     nitro_auth_token:
         type: str
         description:
-            - The authentication token provided by the C(mas_login) operation. It is required when issuing Nitro API calls through a MAS proxy.
+            - The authentication token provided by the C(mas_login) operation. It is required when issuing Nitro API calls through a Citrix ADM proxy.
         aliases:
             - mas_auth_token
 
@@ -139,17 +139,17 @@ options:
     instance_ip:
         type: str
         description:
-            - The IP address of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+            - The IP address of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
 
     instance_name:
         type: str
         description:
-            - The name of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+            - The name of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
 
     instance_id:
         type: str
         description:
-            - The id of the target Netscaler instance when issuing a Nitro request through a MAS proxy.
+            - The id of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     timeout:
         type: int
         description:
@@ -248,12 +248,12 @@ EXAMPLES = '''
     filter:
       ipaddress: 192.168.1.2
 
-# Doing a NITRO request through MAS.
+# Doing a NITRO request through Citrix ADM.
 # Requires to have an authentication token from the mas_login and used as the nitro_auth_token parameter
-# Also nsip is the MAS address and the target Netscaler IP must be defined with instance_ip
-# The rest of the task arguments remain the same as when issuing the NITRO request directly to a Netscaler instance.
+# Also nsip is the Citrix ADM address and the target Citrix ADC IP must be defined with instance_ip
+# The rest of the task arguments remain the same as when issuing the NITRO request directly to a Citrix ADC instance.
 
-- name: Do mas login
+- name: Do Citrix ADM login
   delegate_to: localhost
   register: login_result
   citrix_adc_nitro_request:
@@ -262,7 +262,7 @@ EXAMPLES = '''
     nitro_pass: "{{ nitro_pass }}"
     operation: mas_login
 
-- name: Add resource through MAS proxy
+- name: Add resource through Citrix ADM proxy
   delegate_to: localhost
   citrix_adc_nitro_request:
     nsip: "{{ mas_ip }}"

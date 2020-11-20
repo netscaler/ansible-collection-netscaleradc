@@ -16,9 +16,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_gslb_vserver
-short_description: Configure gslb vserver entities in Netscaler.
+short_description: Configure gslb vserver entities in Citrix ADC.
 description:
-    - Configure gslb vserver entities in Netscaler.
+    - Configure gslb vserver entities in Citrix ADC.
 
 version_added: "1.0.0"
 
@@ -131,7 +131,7 @@ options:
             - >-
                 Site selection tolerance, in milliseconds, for implementing the RTT load balancing method. If a
                 site's RTT deviates from the lowest RTT by more than the specified tolerance, the site is not
-                considered when the NetScaler appliance makes a GSLB decision. The appliance implements the round
+                considered when the Citrix ADC appliance makes a GSLB decision. The appliance implements the round
                 robin method of global server load balancing between sites whose RTT values are within the specified
                 tolerance. If the tolerance is 0 (zero), the appliance always sends clients the IP address of the
                 site with the lowest RTT.

@@ -59,7 +59,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Netscaler Ansible'
+project = u'Citrix ADC Ansible'
 copyright = u'2017, Citrix Systems'
 author = u'Citrix Systems'
 

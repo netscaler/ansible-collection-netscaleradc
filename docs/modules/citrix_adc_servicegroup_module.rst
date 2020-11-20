@@ -2,10 +2,10 @@
 
 .. _citrix_adc_servicegroup_module:
 
-citrix_adc_servicegroup - Manage service group configuration in Netscaler
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_servicegroup - Manage service group configuration in Citrix ADC
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 2.4.0
+.. versionadded:: 1.0.0
 
 .. contents::
    :local:
@@ -13,8 +13,8 @@ citrix_adc_servicegroup - Manage service group configuration in Netscaler
 
 Synopsis
 --------
-- Manage service group configuration in Netscaler.
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
+- Manage service group configuration in Citrix ADC.
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
 
 
 
@@ -189,9 +189,11 @@ Parameters
       - Display the members of the listed service groups in addition to their settings. Can be specified when service group name is provided in the command. In that case, the details displayed for each service are identical to the details displayed when a service group name is provided, except that bound are not displayed.
     * - instance_ip
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
-      - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
     * - mas_proxy_call
@@ -202,7 +204,7 @@ Parameters
       - Default:
 
         *False*
-      - If true the underlying NITRO API calls made by the module will be proxied through a MAS node to the target Netscaler instance.
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxbandwidth
@@ -248,6 +250,8 @@ Parameters
           - FIN
       - Close monitoring connections by sending the service a connection termination message with the bit set.
     * - monitor_bindings
+
+        *(dict)*
       -
       - A list of monitor to bind to the servicegroup
     * - monitor_name_svc
@@ -282,29 +286,41 @@ Parameters
         Maximum length =  127
     * - nitro_auth_token
 
+        *(str)*
+
         *(added in 2.6.0)*
       -
       - The authentication token provided by a login operation.
     * - nitro_pass
+
+        *(str)*
       -
-      - The password with which to authenticate to the netscaler node.
+      - The password with which to authenticate to the Citrix ADC node.
     * - nitro_protocol
+
+        *(str)*
       - Choices:
 
-          - http (*default*)
-          - https
+          - http
+          - https (*default*)
       - Which protocol to use when accessing the nitro API objects.
     * - nitro_timeout
+
+        *(float)*
       - Default:
 
         *310*
-      - Time in seconds until a timeout error is thrown when establishing a new session with Netscaler
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
     * - nitro_user
+
+        *(str)*
       -
-      - The username with which to authenticate to the netscaler node.
+      - The username with which to authenticate to the Citrix ADC node.
     * - nsip
+
+        *(str)*
       -
-      - The ip address of the netscaler appliance where the nitro API calls will be made.
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
     * - pathmonitor
@@ -342,9 +358,9 @@ Parameters
       - Default:
 
         *True*
-      - If true the module will save the configuration on the netscaler node if it makes any changes.
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
-        The module will not save the configuration on the netscaler node if it made no changes.
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
     * - sc
 
         *(bool)*
@@ -370,6 +386,8 @@ Parameters
 
         Minimum length =  1
     * - servicemembers
+
+        *(dict)*
       -
       - A list of dictionaries describing each service member of the service group.
     * - servicetype
@@ -426,15 +444,17 @@ Parameters
       -
       - Enable surge protection for the service group.
     * - state
+
+        *(str)*
       - Choices:
 
           - present (*default*)
           - absent
-      - The state of the resource being configured by the module on the netscaler node.
+      - The state of the resource being configured by the module on the Citrix ADC node.
 
         When present the resource will be created if needed and configured according to the module's parameters.
 
-        When absent the resource will be deleted from the netscaler node.
+        When absent the resource will be deleted from the Citrix ADC node.
     * - svrtimeout
 
         *(int)*
@@ -480,6 +500,8 @@ Parameters
       -
       - Use client's IP address as the source IP address when initiating connection to the server. With the setting, which is the default, a mapped IP (MIP) address or subnet IP (SNIP) address is used as the IP address to initiate server side connections.
     * - validate_certs
+
+        *(bool)*
       - Default:
 
         *yes*
