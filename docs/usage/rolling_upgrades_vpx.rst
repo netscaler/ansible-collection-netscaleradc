@@ -11,7 +11,7 @@ networking setups.
 Setup
 ~~~~~
 
-The example utilizes Netscaler VPX and some virtualized
+The example utilizes Citrix ADC VPX and some virtualized
 hosts to provide the back end web services.
 
 The ansible playbooks along with other files needed to run
@@ -23,7 +23,7 @@ The testbed required to run the examples is the following.
 
 
         +--------------------+
-        | Netscaler VPX      |
+        | Citrix ADC VPX     |
         |                    | 192.168.10.2                  +----------+
         |               SNIP |<----------------------------->| server 1 |
         |                    |              |  192.168.10.10 +----------+
@@ -45,25 +45,25 @@ The testbed required to run the examples is the following.
                                +-----------+
 
 
-We need a virtual host to run Netscaler VPX and we also need two hosts to
+We need a virtual host to run Citrix ADC VPX and we also need two hosts to
 run the back end web services. These can be any kind of hosts, as long as
-it is possible for the Netscaler node and the web server nodes to communicate
+it is possible for the Citrix ADC node and the web server nodes to communicate
 via a specified subnet. Having the backend servers as virtual hosts on the same Xen Server
-as the Netscaler VPX is recommended since it simplifies the networking setup needed.
+as the Citrix ADC VPX is recommended since it simplifies the networking setup needed.
 
-In our example the back end servers and the Netscaler host communicate via the
+In our example the back end servers and the Citrix ADC host communicate via the
 ``192.168.10.0/24`` subnet.
 
 Also there is a user host which is the machine that will run the playbooks for this example.
 This host needs to be able to communicate via SSH with the back end servers to be
 able to setup and update the web services and also needs to be able to make
-NITRO API calls to the Netscaler node on the configured NSIP.
+NITRO API calls to the Citrix ADC node on the configured NSIP.
 
-Finally Netscaler needs to have a Virtual IP configured which will be the client facing
+Finally Citrix ADC needs to have a Virtual IP configured which will be the client facing
 address of our load balanced service.
 
         *Note* that the playbooks and scripts do not configure any of these ip addresses
-        on the Netscaler node or the server nodes.
+        on the Citrix ADC node or the server nodes.
         You need to set them up prior to running the playbooks in this example
         and modify the ``inventory.txt`` file to match your particular configuration.
 
@@ -79,7 +79,7 @@ Initializing the testbed
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 Having setup the testbed and modified the inventory.txt file to match
-the configured ip addresses we need to initialize the Netscaler and the
+the configured ip addresses we need to initialize the Citrix ADC and the
 back end server nodes.
 
 This is done by running on the user host from a fresh checkout of the files
@@ -90,10 +90,10 @@ from the `github repository`_ by running the following command
         ansible-playbook -i inventory.txt rolling_init.yaml
 
 Running this playbook will initialize the back end services and also
-configure the Netscaler in order to serve them over the VIP of the
+configure the Citrix ADC in order to serve them over the VIP of the
 load balancer.
 
-The logical configuration of the Netscaler node can be seen in the following
+The logical configuration of the Citrix ADC node can be seen in the following
 diagram.
 
 ::
@@ -159,7 +159,7 @@ The upgrade playbook is the following:
           pre_tasks:
             - name: "Disable {{ servername }}"
               delegate_to: localhost
-              netscaler_server:
+              citrix_adc_server:
                 nsip: "{{ nsip }}"
                 nitro_user: "{{ nitro_user }}"
                 nitro_pass: "{{ nitro_pass }}"
@@ -172,7 +172,7 @@ The upgrade playbook is the following:
 
             - name: "Re enable {{ servername }}"
               delegate_to: localhost
-              netscaler_server:
+              citrix_adc_server:
                 nsip: "{{ nsip }}"
                 nitro_user: "{{ nitro_user }}"
                 nitro_pass: "{{ nitro_pass }}"
@@ -189,7 +189,7 @@ The function of the pre_tasks and post_tasks hooks is documented by
 `ansible <https://docs.ansible.com/ansible/playbooks_roles.html>`_.
 
 
-Essentially what we do is that we disable the server entity in Netscaler
+Essentially what we do is that we disable the server entity in Citrix ADC
 for each web service before the update process and after the update
 has taken place we re enable the server entity.
 
@@ -239,22 +239,22 @@ Had we not disabled the corresponding server, in this case, would
 mean that a number of requests would be directed to the offline
 server resulting in clients getting error responses.
 
-Eventually the monitors attached to the Netscaler services would
+Eventually the monitors attached to the Citrix ADC services would
 take the disrupted service out of the load balancing pool
 but depending on the traffic volume several requests would have
 been affected by the non functioning service by that time.
 
 Disabling the server before the update process guarantees that
-Netscaler will not direct any traffic to it during that time,
+Citrix ADC will not direct any traffic to it during that time,
 ensuring continuous delivery of the content.
 
 References
 ~~~~~~~~~~
 
-Netscaler ansible modules repository
+Citrix ADC ansible modules repository
 ++++++++++++++++++++++++++++++++++++
 
-https://github.com/citrix/netscaler-ansible-modules
+https://github.com/citrix/citrix-adc-ansible-modules
 
 Ansible documentation
 +++++++++++++++++++++
