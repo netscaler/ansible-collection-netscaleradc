@@ -38,9 +38,3 @@ listed below.
    general
    modules/list_of_all_modules
    modules/list_of_network_modules
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Developer Documentation
-
-   development/development-utilities
