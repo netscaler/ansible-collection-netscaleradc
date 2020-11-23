@@ -546,7 +546,7 @@ class ModuleExecutor(object):
         log('ModuleExecutor.object_exists()')
 
         resource_missing_errorcode = self.module.params['workflow'].get('resource_missing_errorcode')
-        log('resource missing errorcode %a' % resource_missing_errorcode)
+        log('resource missing errorcode %s' % resource_missing_errorcode)
 
         if resource_missing_errorcode is None:
             msg = 'object lifecycle requires resource_missing_errorcode workflow parameter'
@@ -679,7 +679,7 @@ class ModuleExecutor(object):
         log('ModuleExecutor.non_updateable_object_exists()')
 
         resource_missing_errorcode = self.module.params['workflow'].get('resource_missing_errorcode')
-        log('resource missing errorcode %a' % resource_missing_errorcode)
+        log('resource missing errorcode %s' % resource_missing_errorcode)
 
         if resource_missing_errorcode is None:
             msg = 'object lifecycle requires resource_missing_errorcode workflow parameter'
