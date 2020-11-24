@@ -428,6 +428,16 @@ workflow:
     delete_id_attributes:
       - td
 
+  csvserver_rewritepolicy_binding:
+    lifecycle: binding
+    endpoint: csvserver_rewritepolicy_binding
+    bound_resource_missing_errorcode: 258
+    primary_id_attribute: name
+    delete_id_attributes:
+      - policyname
+      - priority
+      - bindpoint
+
   spilloverpolicy:
     lifecycle: object
     endpoint: spilloverpolicy
@@ -436,3 +446,33 @@ workflow:
     allow_recreate: true
     non_updateable_attributes:
       - newname
+
+  rewriteaction:
+    lifecycle: object
+    endpoint: rewriteaction
+    primary_id_attribute: name
+    resource_missing_errorcode: 538
+    allow_recreate: true
+    non_updateable_attributes:
+      - type
+      - newname
+
+  rewritepolicy:
+    lifecycle: object
+    endpoint: rewritepolicy
+    primary_id_attribute: name
+    resource_missing_errorcode: 2054
+    allow_recreate: true
+    non_updateable_attributes:
+      - newname
+
+  sslvserver_sslcertkey_binding:
+    lifecycle: binding
+    endpoint: sslvserver_sslcertkey_binding
+    bound_resource_missing_errorcode: 461
+    primary_id_attribute: vservername
+    delete_id_attributes:
+      - certkeyname
+      - crlcheck
+      - ocspcheck
+      - ca
