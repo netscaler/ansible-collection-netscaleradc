@@ -476,3 +476,4 @@ workflow:
       - crlcheck
       - ocspcheck
       - ca
+      - snicert
