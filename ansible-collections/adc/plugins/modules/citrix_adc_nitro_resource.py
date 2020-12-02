@@ -298,7 +298,15 @@ class ModuleExecutor(object):
         args = {}
         for key in self.module.params['workflow']['delete_id_attributes']:
             if key in self.configured_object:
-                args[key] = self.configured_object[key]
+                # Bool args values need to be lower case otherwise NITRO errors
+                if isinstance(self.configured_object[key], bool):
+                    if self.configured_object[key]:
+                        args_value = 'true'
+                    else:
+                        args_value = 'false'
+                else:
+                    args_value = self.configured_object[key]
+                args[key] = args_value
 
         result = self.fetcher.delete(resource=self.endpoint, id=self.id, args=args)
         log('delete result %s' % result)
@@ -484,7 +492,16 @@ class ModuleExecutor(object):
         args = {}
         for key in self.key_attributes_present[1:]:
             if key in binding:
-                args[key] = binding[key]
+                # Bool args values need to be lower case otherwise NITRO errors
+                if isinstance(binding[key], bool):
+                    if binding[key]:
+                        args_value = 'true'
+                    else:
+                        args_value = 'false'
+                # Default is to pass the value unmodified
+                else:
+                    args_value = binding[key]
+                args[key] = args_value
 
         result = self.fetcher.delete(resource=self.endpoint, id=id, args=args)
         log('delete result %s' % result)
