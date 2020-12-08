@@ -590,8 +590,11 @@ class ModuleExecutor(object):
 
         log('get result %s' % result)
         if result['nitro_errorcode'] == 0:
-            self.retrieved_object = result['data'][self.endpoint][0]
-            return True
+            if self.endpoint not in result['data']:
+                return False
+            else:
+                self.retrieved_object = result['data'][self.endpoint][0]
+                return True
         elif result['nitro_errorcode'] == resource_missing_errorcode:
             return False
         else:
