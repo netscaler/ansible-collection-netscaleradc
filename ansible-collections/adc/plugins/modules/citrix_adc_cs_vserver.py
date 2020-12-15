@@ -24,10 +24,10 @@
 from __future__ import absolute_import, division, print_function
 __metaclass__ = type
 
+
 ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
-
 
 DOCUMENTATION = '''
 ---
@@ -39,32 +39,35 @@ description:
 
 version_added: "1.0.0"
 
-author: George Nikolopoulos (@giorgos-nikolopoulos)
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
     name:
-        type: str
         description:
             - >-
                 Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore
-                C(_) character, and must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space,
-                colon C(:), at sign C(@), equal sign C(=), and hyphen C(-) characters.
+                character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon
+                at sign (@), equal sign (=), and hyphen (-) characters.
             - "Cannot be changed after the CS virtual server is created."
-            - "Minimum length = 1"
+            - "The following requirement applies only to the Citrix ADC CLI:"
+            - >-
+                If the name includes one or more spaces, enclose the name in double or single quotation marks (for
+                my server or my server).
+            - "Minimum length =  1"
+        type: str
 
     td:
-        type: float
         description:
             - >-
                 Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
-                If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID
-                of 0.
-            - "Minimum value = 0"
-            - "Maximum value = 4094"
+                you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4094)"
+        type: str
 
     servicetype:
-        type: str
         choices:
             - 'HTTP'
             - 'SSL'
@@ -87,17 +90,25 @@ options:
             - 'DNS_TCP'
             - 'ORACLE'
             - 'SMPP'
+            - 'PROXY'
         description:
             - "Protocol used by the virtual server."
+        type: str
 
     ipv46:
-        type: str
         description:
             - "IP address of the content switching virtual server."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
+
+    targettype:
+        choices:
+            - 'GSLB'
+        description:
+            - "Virtual server target type."
+        type: str
 
     dnsrecordtype:
-        type: str
         choices:
             - 'A'
             - 'AAAA'
@@ -105,123 +116,139 @@ options:
             - 'NAPTR'
         description:
             - "."
-            - "Default value: NSGSLB_IPV4"
+        type: str
+
+    persistenceid:
+        description:
+            - "."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
+        type: str
 
     ippattern:
-        type: str
         description:
             - >-
                 IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual
-                server. The IP Mask parameter specifies which part of the destination IP address is matched against
-                the pattern. Mutually exclusive with the IP Address parameter.
+                The IP Mask parameter specifies which part of the destination IP address is matched against the
+                Mutually exclusive with the IP Address parameter.
             - >-
-                For example, if the IP pattern assigned to the virtual server is C(198.51.100.0) and the IP mask is
-                C(255.255.240.0) (a forward mask), the first 20 bits in the destination IP addresses are matched with
-                the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range
-                from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as C(0.0.2.2) and a mask such as
-                C(0.0.255.255) (a reverse mask).
+                For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is
+                (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20
+                in the pattern. The virtual server accepts requests with IP addresses that range from 198.51.96.1 to
+                You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).
             - >-
                 If a destination IP address matches more than one IP pattern, the pattern with the longest match is
-                selected, and the associated virtual server processes the request. For example, if the virtual
-                servers, C(vs1) and C(vs2), have the same IP pattern, C(0.0.100.128), but different IP masks of C(0.0.255.255)
-                and C(0.0.224.255), a destination IP address of 198.51.100.128 has the longest match with the IP pattern
-                of C(vs1). If a destination IP address matches two or more virtual servers to the same extent, the
-                request is processed by the virtual server whose port number matches the port number in the request.
+                and the associated virtual server processes the request. For example, if the virtual servers, vs1 and
+                have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255, a
+                IP address of 198.51.100.128 has the longest match with the IP pattern of vs1. If a destination IP
+                matches two or more virtual servers to the same extent, the request is processed by the virtual
+                whose port number matches the port number in the request.
+        type: str
 
     ipmask:
-        type: str
         description:
             - >-
                 IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing
-                non-zero octets (for example, C(255.255.240.0) or C(0.0.255.255)). Accordingly, the mask specifies whether
-                the first n bits or the last n bits of the destination IP address in a client request are to be
-                matched with the corresponding bits in the IP pattern. The former is called a forward mask. The
-                latter is called a reverse mask.
+                octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether the first
+                bits or the last n bits of the destination IP address in a client request are to be matched with the
+                bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.
+        type: str
 
     range:
-        type: float
         description:
             - >-
                 Number of consecutive IP addresses, starting with the address specified by the IP Address parameter,
-                to include in a range of addresses assigned to this virtual server.
+                include in a range of addresses assigned to this virtual server.
             - "Minimum value = C(1)"
             - "Maximum value = C(254)"
+        type: str
 
     port:
-        type: int
         description:
             - "Port number for content switching virtual server."
-            - "Minimum value = 1"
-            - "Range C(1) - C(65535)"
+            - "Minimum value = C(1)"
+            - "Range 1 - 65535"
             - "* in CLI is represented as 65535 in NITRO API"
+        type: int
+
+    ipset:
+        description:
+            - >-
+                The list of IPv4/IPv6 addresses bound to ipset would form a part of listening service on the current
+                vserver.
+            - "Minimum length =  1"
+        type: str
 
     stateupdate:
-        type: str
         choices:
-            - 'enabled'
-            - 'disabled'
+            - 'ENABLED'
+            - 'DISABLED'
+            - 'UPDATEONBACKENDUPDATE'
         description:
             - >-
                 Enable state updates for a specific content switching virtual server. By default, the Content
-                Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers
-                bound to it. This parameter interacts with the global setting as follows:
+                virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to
+                This parameter interacts with the global setting as follows:
             - "Global Level | Vserver Level | Result"
-            - "enabled enabled enabled"
-            - "enabled disabled enabled"
-            - "disabled enabled enabled"
-            - "disabled disabled disabled"
+            - "ENABLED      ENABLED        ENABLED"
+            - "ENABLED      DISABLED       ENABLED"
+            - "DISABLED     ENABLED        ENABLED"
+            - "DISABLED     DISABLED       DISABLED"
             - >-
                 If you want to enable state updates for only some content switching virtual servers, be sure to
-                disable the state update parameter.
+                the state update parameter.
+        type: str
 
     cacheable:
         description:
             - >-
                 Use this option to specify whether a virtual server, used for load balancing or content switching,
-                routes requests to the cache redirection virtual server before sending it to the configured servers.
+                requests to the cache redirection virtual server before sending it to the configured servers.
         type: bool
 
     redirecturl:
-        type: str
         description:
             - >-
                 URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the
-                virtual server should be either C(HTTP) or C(SSL).
+                server should be either HTTP or SSL.
             - >-
                 Caution: Make sure that the domain in the URL does not match the domain specified for a content
-                switching policy. If it does, requests are continuously redirected to the unavailable virtual server.
-            - "Minimum length = 1"
+                policy. If it does, requests are continuously redirected to the unavailable virtual server.
+            - "Minimum length =  1"
+        type: str
 
     clttimeout:
-        type: float
         description:
             - "Idle time, in seconds, after which the client connection is terminated. The default values are:"
+            - "180 seconds for HTTP/SSL-based services."
+            - "9000 seconds for other TCP-based services."
+            - "120 seconds for DNS-based services."
+            - "120 seconds for other UDP-based services."
             - "Minimum value = C(0)"
             - "Maximum value = C(31536000)"
+        type: int
 
     precedence:
-        type: str
         choices:
             - 'RULE'
             - 'URL'
         description:
             - >-
                 Type of precedence to use for both RULE-based and URL-based policies on the content switching virtual
-                server. With the default C(RULE) setting, incoming requests are evaluated against the rule-based
-                content switching policies. If none of the rules match, the URL in the request is evaluated against
-                the URL-based content switching policies.
+                With the default (RULE) setting, incoming requests are evaluated against the rule-based content
+                policies. If none of the rules match, the URL in the request is evaluated against the URL-based
+                switching policies.
+        type: str
 
     casesensitive:
         description:
             - >-
-                Consider case in URLs (for policies that use URLs instead of RULES). For example, with the C(on)
-                setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set
-                by content switching policies). With the C(off) setting, /a/1.html and /A/1.HTML are switched to the
-                same target.
+                Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON
+                the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by
+                switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the same target.
         type: bool
 
     somethod:
-        type: str
         choices:
             - 'CONNECTION'
             - 'DYNAMICCONNECTION'
@@ -231,35 +258,35 @@ options:
         description:
             - >-
                 Type of spillover used to divert traffic to the backup virtual server when the primary virtual server
-                reaches the spillover threshold. Connection spillover is based on the number of connections.
-                Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.
+                the spillover threshold. Connection spillover is based on the number of connections. Bandwidth
+                is based on the total Kbps of incoming and outgoing traffic.
+        type: str
 
     sopersistence:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - "Maintain source-IP based persistence on primary and backup virtual servers."
+        type: str
 
     sopersistencetimeout:
-        type: float
         description:
             - "Time-out value, in minutes, for spillover persistence."
             - "Minimum value = C(2)"
             - "Maximum value = C(1440)"
+        type: str
 
     sothreshold:
-        type: float
         description:
             - >-
                 Depending on the spillover method, the maximum number of connections or the maximum total bandwidth
-                (Kbps) that a virtual server can handle before spillover occurs.
+                that a virtual server can handle before spillover occurs.
             - "Minimum value = C(1)"
             - "Maximum value = C(4294967287)"
+        type: str
 
     sobackupaction:
-        type: str
         choices:
             - 'DROP'
             - 'ACCEPT'
@@ -267,38 +294,49 @@ options:
         description:
             - >-
                 Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or
-                exists.
+        type: str
 
     redirectportrewrite:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - "State of port rewrite while performing HTTP redirect."
+        type: str
 
     downstateflush:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Flush all active transactions associated with a virtual server whose state transitions from UP to
-                DOWN. Do not enable this option for applications that must complete their transactions.
+                Do not enable this option for applications that must complete their transactions.
+        type: str
+
+    backupvserver:
+        description:
+            - >-
+                Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or
+                (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
+                (:), at sign (@), equal sign (=), and hyphen (-) characters. Can be changed after the backup virtual
+                is created. You can assign a different backup virtual server or rename the existing virtual server.
+            - "The following requirement applies only to the Citrix ADC CLI:"
+            - "If the name includes one or more spaces, enclose the name in double or single quotation marks."
+            - "Minimum length =  1"
+        type: str
 
     disableprimaryondown:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Continue forwarding the traffic to backup virtual server even after the primary server comes UP from
-                the DOWN state.
+                DOWN state.
+        type: str
 
     insertvserveripport:
-        type: str
         choices:
             - 'OFF'
             - 'VIPADDR'
@@ -306,19 +344,20 @@ options:
         description:
             - >-
                 Insert the virtual server's VIP address and port number in the request header. Available values
-                function as follows:
-            - "C(VIPADDR) - Header contains the vserver's IP address and port number without any translation."
-            - "C(OFF) - The virtual IP and port header insertion option is disabled."
+                as follows:
+            - "VIPADDR - Header contains the vserver's IP address and port number without any translation."
+            - "OFF     - The virtual IP and port header insertion option is disabled."
             - >-
-                C(V6TOV4MAPPING) - Header contains the mapped IPv4 address corresponding to the IPv6 address of the
-                vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the
-                set ns ip6 command.
+                V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the
+                and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns
+                command.
+        type: str
 
     vipheader:
-        type: str
         description:
             - "Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
 
     rtspnat:
         description:
@@ -326,13 +365,13 @@ options:
         type: bool
 
     authenticationhost:
-        type: str
         description:
             - >-
                 FQDN of the authentication virtual server. The service type of the virtual server should be either
-                C(HTTP) or C(SSL).
-            - "Minimum length = 3"
-            - "Maximum length = 252"
+                or SSL.
+            - "Minimum length =  3"
+            - "Maximum length =  252"
+        type: str
 
     authentication:
         description:
@@ -340,11 +379,21 @@ options:
         type: bool
 
     listenpolicy:
-        type: str
         description:
             - >-
                 String specifying the listen policy for the content switching virtual server. Can be either the name
-                of an existing expression or an in-line expression.
+                an existing expression or an in-line expression.
+        type: str
+
+    listenpriority:
+        description:
+            - >-
+                Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If
+                request matches the listen policies of more than one virtual server the virtual server whose listen
+                has the highest priority (the lowest priority number) accepts the request.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(100)"
+        type: str
 
     authn401:
         description:
@@ -352,86 +401,83 @@ options:
         type: bool
 
     authnvsname:
-        type: str
         description:
             - >-
                 Name of authentication virtual server that authenticates the incoming user requests to this content
-                switching virtual server. .
-            - "Minimum length = 1"
-            - "Maximum length = 252"
+                virtual server. .
+            - "Minimum length =  1"
+            - "Maximum length =  252"
+        type: str
 
     push:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Process traffic with the push virtual server that is bound to this content switching virtual server
-                (specified by the Push VServer parameter). The service type of the push virtual server should be
-                either C(HTTP) or C(SSL).
+                by the Push VServer parameter). The service type of the push virtual server should be either HTTP or
+        type: str
 
     pushvserver:
-        type: str
         description:
             - >-
-                Name of the load balancing virtual server, of type C(PUSH) or C(SSL_PUSH), to which the server pushes
-                updates received on the client-facing load balancing virtual server.
-            - "Minimum length = 1"
+                Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes
+                received on the client-facing load balancing virtual server.
+            - "Minimum length =  1"
+        type: str
 
     pushlabel:
-        type: str
         description:
             - >-
                 Expression for extracting the label from the response received from server. This string can be either
-                an existing rule name or an inline expression. The service type of the virtual server should be
-                either C(HTTP) or C(SSL).
+                existing rule name or an inline expression. The service type of the virtual server should be either
+                or SSL.
+        type: str
 
     pushmulticlients:
         description:
             - >-
                 Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect
-                updates.
         type: bool
 
     tcpprofilename:
-        type: str
         description:
             - "Name of the TCP profile containing TCP configuration settings for the virtual server."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     httpprofilename:
-        type: str
         description:
             - >-
                 Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service
-                type of the virtual server should be either C(HTTP) or C(SSL).
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+                of the virtual server should be either HTTP or SSL.
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     dbprofilename:
-        type: str
         description:
             - "Name of the DB profile."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     oracleserverversion:
-        type: str
         choices:
             - '10G'
             - '11G'
         description:
             - "Oracle server version."
+        type: str
 
     comment:
-        type: str
         description:
             - "Information about this virtual server."
+        type: str
 
     mssqlserverversion:
-        type: str
         choices:
             - '70'
             - '2000'
@@ -443,87 +489,192 @@ options:
             - '2014'
         description:
             - "The version of the MSSQL server."
+        type: str
 
     l2conn:
-        type: bool
         description:
             - "Use L2 Parameters to identify a connection."
+        type: bool
 
     mysqlprotocolversion:
-        type: float
         description:
             - "The protocol version returned by the mysql vserver."
+        type: str
 
     mysqlserverversion:
-        type: str
         description:
             - "The server version string returned by the mysql vserver."
-            - "Minimum length = 1"
-            - "Maximum length = 31"
+            - "Minimum length =  1"
+            - "Maximum length =  31"
+        type: str
 
     mysqlcharacterset:
-        type: float
         description:
             - "The character set returned by the mysql vserver."
+        type: str
 
     mysqlservercapabilities:
-        type: float
         description:
             - "The server capabilities returned by the mysql vserver."
+        type: str
 
     appflowlog:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - "Enable logging appflow flow information."
+        type: str
 
     netprofile:
-        type: str
         description:
             - "The name of the network profile."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     icmpvsrresponse:
-        type: str
         choices:
             - 'PASSIVE'
             - 'ACTIVE'
         description:
             - "Can be active or passive."
+        type: str
 
     rhistate:
-        type: str
         choices:
             - 'PASSIVE'
             - 'ACTIVE'
         description:
             - "A host route is injected according to the setting on the virtual servers"
             - >-
-                * If set to C(PASSIVE) on all the virtual servers that share the IP address, the appliance always
-                injects the hostroute.
+                * If set to PASSIVE on all the virtual servers that share the IP address, the appliance always
+                the hostroute.
             - >-
-                * If set to C(ACTIVE) on all the virtual servers that share the IP address, the appliance injects even
-                if one virtual server is UP.
+                * If set to ACTIVE on all the virtual servers that share the IP address, the appliance injects even
+                one virtual server is UP.
             - >-
-                * If set to C(ACTIVE) on some virtual servers and C(PASSIVE) on the others, the appliance, injects even if
-                one virtual server set to C(ACTIVE) is UP.
+                * If set to ACTIVE on some virtual servers and PASSIVE on the others, the appliance, injects even if
+                virtual server set to ACTIVE is UP.
+        type: str
 
     authnprofile:
-        type: str
         description:
             - "Name of the authentication profile to be used when authentication is turned on."
+        type: str
 
     dnsprofilename:
-        type: str
         description:
             - >-
                 Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the
-                transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+                processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
+
+    persistencetype:
+        choices:
+            - 'SOURCEIP'
+            - 'COOKIEINSERT'
+            - 'SSLSESSION'
+            - 'NONE'
+        description:
+            - "Type of persistence for the virtual server. Available settings function as follows:"
+            - "* SOURCEIP - Connections from the same client IP address belong to the same persistence session."
+            - >-
+                * COOKIEINSERT - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from
+                server, belong to the same persistence session.
+            - "* SSLSESSION - Connections that have the same SSL Session ID belong to the same persistence session."
+        type: str
+
+    persistmask:
+        description:
+            - "Persistence mask for IP based persistence types, for IPv4 virtual servers."
+            - "Minimum length =  1"
+        type: str
+
+    v6persistmasklen:
+        description:
+            - "Persistence mask for IP based persistence types, for IPv6 virtual servers."
+            - "Minimum value = C(1)"
+            - "Maximum value = C(128)"
+        type: str
+
+    timeout:
+        description:
+            - "Time period for which a persistence session is in effect."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(1440)"
+        type: int
+
+    cookiename:
+        description:
+            - >-
+                Use this parameter to specify the cookie name for COOKIE peristence type. It specifies the name of
+                with a maximum of 32 characters. If not specified, cookie name is internally generated.
+        type: str
+
+    persistencebackup:
+        choices:
+            - 'SOURCEIP'
+            - 'NONE'
+        description:
+            - >-
+                Backup persistence type for the virtual server. Becomes operational if the primary persistence
+                fails.
+        type: str
+
+    backuppersistencetimeout:
+        description:
+            - "Time period for which backup persistence is in effect."
+            - "Minimum value = C(2)"
+            - "Maximum value = C(1440)"
+        type: str
+
+    domainname:
+        description:
+            - "Domain name for which to change the time to live (TTL) and/or backup service IP address."
+            - "Minimum length =  1"
+        type: str
+
+    ttl:
+        description:
+            - "."
+            - "Minimum value = C(1)"
+        type: str
+
+    backupip:
+        description:
+            - "."
+            - "Minimum length =  1"
+        type: str
+
+    cookiedomain:
+        description:
+            - "."
+            - "Minimum length =  1"
+        type: str
+
+    cookietimeout:
+        description:
+            - "."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(1440)"
+        type: str
+
+    sitedomainttl:
+        description:
+            - "."
+            - "Minimum value = C(1)"
+        type: str
+
+
+    disabled:
+        description:
+            - When set to C(true) the server state will be set to C(disabled).
+            - When set to C(false) the server state will be set to C(enabled).
+        type: bool
+        default: false
 
     lbvserver:
         type: str
@@ -538,15 +689,56 @@ options:
             - Creating the certificate can be done with the M(citrix_adc_ssl_certkey) module.
             - This option is only applicable only when C(servicetype) is C(SSL).
 
-    disabled:
+    policybindings:
+        type: list
+        elements: dict
         description:
-            - When set to C(yes) the cs vserver will be disabled.
-            - When set to C(no) the cs vserver will be enabled.
-            - >-
-                Note that due to limitations of the underlying NITRO API a C(disabled) state change alone
-                does not cause the module result to report a changed status.
-        type: bool
-        default: 'no'
+            - List of cspolicy bindings.
+        suboptions:
+            policyname:
+                description:
+                    - "Policies bound to this vserver."
+                type: str
+            targetlbvserver:
+                description:
+                    - "target vserver name."
+                type: str
+            priority:
+                description:
+                    - "Priority for the policy."
+                type: str
+            gotopriorityexpression:
+                description:
+                    - >-
+                        Expression specifying the priority of the next policy which will get evaluated if the current policy
+                        evaluates to TRUE.
+                type: str
+            bindpoint:
+                choices:
+                    - 'REQUEST'
+                    - 'RESPONSE'
+                    - 'ICA_REQUEST'
+                    - 'OTHERTCP_REQUEST'
+                description:
+                    - "The bindpoint to which the policy is bound."
+                type: str
+            invoke:
+                description:
+                    - "Invoke flag."
+                type: bool
+            labeltype:
+                choices:
+                    - 'reqvserver'
+                    - 'resvserver'
+                    - 'policylabel'
+                description:
+                    - "The invocation type."
+                type: str
+            labelname:
+                description:
+                    - "Name of the label invoked."
+                type: str
+
 
     appfw_policybindings:
         elements: dict
@@ -555,105 +747,59 @@ options:
             - List of appfw policy bindings
         suboptions:
             policyname:
-                type: str
                 description:
-                    - Policies bound to this vserver.
+                    - "Policies bound to this vserver."
+                type: str
             priority:
-                type: float
                 description:
-                    - Priority for the policy.
+                    - "Priority for the policy."
+                type: str
             gotopriorityexpression:
-                type: str
                 description:
                     - >-
-                        Expression specifying the priority of the next policy which will get evaluated
-                        if the current policy rule evaluates to TRUE.
-            invoke:
-                type: bool
-                description:
-                    - Invoke flag.
-            labeltype:
+                        Expression specifying the priority of the next policy which will get evaluated if the current policy
+                        evaluates to TRUE.
                 type: str
-                description:
-                    - The invocation type.
-            labelname:
-                type: str
-                description:
-                    - Name of the label invoked.
-            targetlbvserver:
-                type: str
-                description:
-                    - >-
-                        Name of the Load Balancing virtual server to which the content is switched,
-                        if policy rule is evaluated to be TRUE.
-                    - Use this parameter only in case of Content Switching policy bind operations to a CS vserver.
             bindpoint:
-                type: str
                 choices:
-                    - REQUEST
-                    - RESPONSE
-                    - ICA_REQUEST
-                    - OTHERTCP_REQUEST
+                    - 'REQUEST'
+                    - 'RESPONSE'
+                    - 'ICA_REQUEST'
+                    - 'OTHERTCP_REQUEST'
                 description:
-                    - For a rewrite policy, the bind point to which to bind the policy.
-                    - >-
-                        Note: This parameter applies only to rewrite policies,
-                        because content switching policies are evaluated only at request time.
-    policybindings:
-        type: list
-        elements: dict
-        description:
-            - List of cspolicy bindings.
-        suboptions:
-            policyname:
+                    - "The bindpoint to which the policy is bound."
                 type: str
-                description: Policies bound to this vserver.
-            targetlbvserver:
-                type: str
-                description:
-                    - Target vserver name.
-            priority:
-                type: float
-                description:
-                    - Priority for the policy.
-            gotopriorityexpression:
-                type: str
-                description:
-                    - >-
-                        Expression specifying the priority of the next policy which will get evaluated
-                        if the current policy rule evaluates to TRUE.
-            bindpoint:
-                type: str
-                choices:
-                    - REQUEST
-                    - RESPONSE
-                    - ICA_REQUEST
-                    - OTHERTCP_REQUEST
-                description:
-                    - The bindpoint to which the policy is bound.
             invoke:
+                description:
+                    - "Invoke flag."
                 type: bool
-                description:
-                    - Invoke flag.
             labeltype:
-                type: str
                 choices:
-                    - reqvserver
-                    - resvserver
-                    - policylabel
+                    - 'reqvserver'
+                    - 'resvserver'
+                    - 'policylabel'
                 description:
-                    - The invocation type.
-            labelname:
+                    - "The invocation type."
                 type: str
+            labelname:
                 description:
-                    - Name of the label invoked.
-
-
-
+                    - "Name of the label invoked."
+                type: str
+            name:
+                description:
+                    - "Name of the content switching virtual server to which the content switching policy applies."
+                    - "Minimum length =  1"
+                type: str
+            targetlbvserver:
+                description:
+                    - >-
+                        Name of the Load Balancing virtual server to which the content is switched, if policy rule is
+                        to be TRUE. Example: bind cs vs cs1 -policyname pol1 -priority 101 -targetLBVserver lb1 Note: Use
+                        parameter only in case of Content Switching policy bind operations to a CS vserver.
+                    - "Minimum length =  1"
+                type: str
 
 extends_documentation_fragment: citrix.adc.citrixadc
-requirements:
-    - nitro python sdk
 '''
 
 EXAMPLES = '''
@@ -691,390 +837,886 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
-
-diff:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: failure
-    type: dict
-    sample: { 'clttimeout': 'difference. ours: (float) 100.0 other: (float) 60.0' }
 '''
 
+import copy
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
-    ConfigProxy,
-    get_nitro_client,
+    NitroResourceConfig,
+    NitroException,
     netscaler_common_arguments,
     log,
     loglines,
-    ensure_feature_is_enabled,
-    get_immutables_intersection
+    NitroAPIFetcher
 )
-try:
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver import csvserver
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_lbvserver_binding import csvserver_lbvserver_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_cspolicy_binding import csvserver_cspolicy_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.cs.csvserver_appfwpolicy_binding import csvserver_appfwpolicy_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.ssl.sslvserver_sslcertkey_binding import sslvserver_sslcertkey_binding
-    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-    PYTHON_SDK_IMPORTED = True
-except ImportError as e:
-    PYTHON_SDK_IMPORTED = False
 
 
-def cs_vserver_exists(client, module):
-    if csvserver.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-        return True
-    else:
-        return False
+class ModuleExecutor(object):
 
+    def __init__(self, module):
+        self.module = module
+        self.fetcher = NitroAPIFetcher(self.module)
+        self.main_nitro_class = 'csvserver'
 
-def cs_vserver_identical(client, module, csvserver_proxy):
-    csvserver_list = csvserver.get_filtered(client, 'name:%s' % module.params['name'])
-    diff_dict = csvserver_proxy.diff_object(csvserver_list[0])
-    if len(diff_dict) == 0:
-        return True
-    else:
-        return False
-
-
-def get_configured_policybindings(client, module):
-    log('Getting configured policy bindigs')
-    bindings = {}
-    if module.params['policybindings'] is None:
-        return bindings
-
-    for binding in module.params['policybindings']:
-        binding['name'] = module.params['name']
-        key = binding['policyname']
-        binding_proxy = ConfigProxy(
-            actual=csvserver_cspolicy_binding(),
-            client=client,
-            readwrite_attrs=[
-                'priority',
-                'bindpoint',
-                'policyname',
-                'labelname',
-                'gotopriorityexpression',
-                'targetlbvserver',
-                'name',
-                'invoke',
-                'labeltype',
-            ],
-            readonly_attrs=[],
-            attribute_values_dict=binding
-        )
-        bindings[key] = binding_proxy
-    return bindings
-
-
-def get_default_lb_vserver(client, module):
-    try:
-        default_lb_vserver = csvserver_lbvserver_binding.get(client, module.params['name'])
-        if default_lb_vserver[0].name is None or default_lb_vserver[0].name == '':
-            log('Got invalid default lb vserver')
-            return None
-        else:
-            log('Got default lb vserver with name %s' % default_lb_vserver[0].name)
-            return default_lb_vserver[0]
-    except nitro_exception as e:
-        if e.errorcode == 258:
-            log('Returning on nitro_exception 258')
-            return csvserver_lbvserver_binding()
-        else:
-            raise
-
-
-def default_lb_vserver_identical(client, module):
-    d = get_default_lb_vserver(client, module)
-    configured = ConfigProxy(
-        actual=csvserver_lbvserver_binding(),
-        client=client,
-        readwrite_attrs=[
-            'name',
-            'lbvserver',
-        ],
-        attribute_values_dict={
-            'name': module.params['name'],
-            'lbvserver': module.params['lbvserver'],
+        # Dictionary containing attribute information
+        # for each NITRO object utilized by this module
+        self.attribute_config = {
+            'csvserver': {
+                'attributes_list': [
+                    'name',
+                    'td',
+                    'servicetype',
+                    'ipv46',
+                    'targettype',
+                    'dnsrecordtype',
+                    'persistenceid',
+                    'ippattern',
+                    'ipmask',
+                    'range',
+                    'port',
+                    'ipset',
+                    'stateupdate',
+                    'cacheable',
+                    'redirecturl',
+                    'clttimeout',
+                    'precedence',
+                    'casesensitive',
+                    'somethod',
+                    'sopersistence',
+                    'sopersistencetimeout',
+                    'sothreshold',
+                    'sobackupaction',
+                    'redirectportrewrite',
+                    'downstateflush',
+                    'backupvserver',
+                    'disableprimaryondown',
+                    'insertvserveripport',
+                    'vipheader',
+                    'rtspnat',
+                    'authenticationhost',
+                    'authentication',
+                    'listenpolicy',
+                    'listenpriority',
+                    'authn401',
+                    'authnvsname',
+                    'push',
+                    'pushvserver',
+                    'pushlabel',
+                    'pushmulticlients',
+                    'tcpprofilename',
+                    'httpprofilename',
+                    'dbprofilename',
+                    'oracleserverversion',
+                    'comment',
+                    'mssqlserverversion',
+                    'l2conn',
+                    'mysqlprotocolversion',
+                    'mysqlserverversion',
+                    'mysqlcharacterset',
+                    'mysqlservercapabilities',
+                    'appflowlog',
+                    'netprofile',
+                    'icmpvsrresponse',
+                    'rhistate',
+                    'authnprofile',
+                    'dnsprofilename',
+                    'persistencetype',
+                    'persistmask',
+                    'v6persistmasklen',
+                    'timeout',
+                    'cookiename',
+                    'persistencebackup',
+                    'backuppersistencetimeout',
+                    'domainname',
+                    'ttl',
+                    'backupip',
+                    'cookiedomain',
+                    'cookietimeout',
+                    'sitedomainttl',
+                ],
+                'transforms': {
+                    'cacheable': lambda v: 'YES' if v else 'NO',
+                    'casesensitive': lambda v: 'ON' if v else 'OFF',
+                    'sopersistence': lambda v: v.upper(),
+                    'redirectportrewrite': lambda v: v.upper(),
+                    'downstateflush': lambda v: v.upper(),
+                    'disableprimaryondown': lambda v: v.upper(),
+                    'rtspnat': lambda v: 'ON' if v else 'OFF',
+                    'authentication': lambda v: 'ON' if v else 'OFF',
+                    'authn401': lambda v: 'ON' if v else 'OFF',
+                    'push': lambda v: v.upper(),
+                    'pushmulticlients': lambda v: 'YES' if v else 'NO',
+                    'l2conn': lambda v: 'ON' if v else 'OFF',
+                    'appflowlog': lambda v: v.upper(),
+                    'clttimeout': str,
+                },
+                'get_id_attributes': [
+                    'name',
+                ],
+                'delete_id_attributes': [
+                    'name',
+                ],
+                'non_updateable_attributes': [
+                    'td',
+                    'servicetype',
+                    'targettype',
+                    'range',
+                    'port',
+                    'state',
+                    'newname',
+                ],
+            },
+            'policybindings': {
+                'attributes_list': [
+                    'policyname',
+                    'targetlbvserver',
+                    'priority',
+                    'gotopriorityexpression',
+                    'bindpoint',
+                    'invoke',
+                    'labeltype',
+                    'labelname',
+                ],
+                'transforms': {
+                },
+                'get_id_attributes': [
+                    'name',
+                ],
+                'delete_id_attributes': [
+                    'policyname',
+                    'priority',
+                    'bindpoint',
+                ]
+            },
+            'appfwpolicy_bindings': {
+                'attributes_list': [
+                    'policyname',
+                    'priority',
+                    'gotopriorityexpression',
+                    'bindpoint',
+                    'invoke',
+                    'labeltype',
+                    'labelname',
+                    'targetlbvserver',
+                ],
+                'transforms': {
+                    'priority': str,
+                    'gotopriorityexpression': str,
+                },
+                'get_id_attributes': [
+                    'name',
+                ],
+                'delete_id_attributes': [
+                    'policyname',
+                    'priority',
+                    'bindpoint',
+                    'name',
+                ]
+            }
         }
-    )
 
-    if d is None and module.params['lbvserver'] is None:
-        log('Default lb vserver identical missing')
-        return True
-    elif d is not None and module.params['lbvserver'] is None:
-        log('Default lb vserver needs removing')
-        return False
-    elif configured.has_equal_attributes(d):
-        log('Default lb vserver identical')
-        return True
-    else:
-        log('Default lb vserver not identical')
-        return False
-
-
-def sync_default_lb_vserver(client, module):
-    d = get_default_lb_vserver(client, module)
-
-    if module.params['lbvserver'] is not None:
-        configured = ConfigProxy(
-            actual=csvserver_lbvserver_binding(),
-            client=client,
-            readwrite_attrs=[
-                'name',
-                'lbvserver',
-            ],
-            attribute_values_dict={
-                'name': module.params['name'],
-                'lbvserver': module.params['lbvserver'],
-            }
+        self.module_result = dict(
+            changed=False,
+            failed=False,
+            loglines=loglines,
         )
 
-        if d is not None and not configured.has_equal_attributes(d):
-            log('Deleting default lb vserver %s' % d.lbvserver)
-            csvserver_lbvserver_binding.delete(client, d)
+        # Calculate functions will apply transforms to values read from playbook
+        self.calculate_configured_csvserver()
+        self.calculate_configured_cspolicy_bindings()
+        self.calculate_configured_appfwpolicy_bindings()
 
-        log('Adding default lb vserver %s' % configured.lbvserver)
-        configured.add()
-    else:
-        if d is not None:
-            log('Deleting default lb vserver %s' % d.name)
-            csvserver_lbvserver_binding.delete(client, d)
+    def calculate_configured_csvserver(self):
+        log('ModuleExecutor.calculate_configured_csvserver()')
+        self.configured_csvserver = {}
+        for attribute in self.attribute_config['csvserver']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['csvserver']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_csvserver[attribute] = value
 
+        log('calculated configured csvserver %s' % self.configured_csvserver)
 
-def get_actual_policybindings(client, module):
-    log('Getting actual policy bindigs')
-    bindings = {}
-    try:
-        count = csvserver_cspolicy_binding.count(client, name=module.params['name'])
-        if count == 0:
-            return bindings
-    except nitro_exception as e:
-        if e.errorcode == 258:
-            return bindings
-        else:
-            raise
+    def calculate_configured_cspolicy_bindings(self):
+        log('ModuleExecutor.calculate_configured_cspolicy_bindings()')
+        self.configured_cspolicy_bindings = []
+        if self.module.params.get('policybindings') is None:
+            return
+        for cspolicy in self.module.params['policybindings']:
+            binding = {}
+            binding['name'] = self.module.params['name']
+            for attribute in self.attribute_config['policybindings']['attributes_list']:
+                # Disregard null values
+                value = cspolicy.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['policybindings']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                binding[attribute] = value
+            self.configured_cspolicy_bindings.append(binding)
+        log('calculated configured cspolicy bindings %s' % self.configured_cspolicy_bindings)
 
-    for binding in csvserver_cspolicy_binding.get(client, name=module.params['name']):
-        key = binding.policyname
-        bindings[key] = binding
+    def calculate_configured_appfwpolicy_bindings(self):
+        log('ModuleExecutor.calculate_configured_appfwpolicy_bindings()')
+        self.configured_appfwpolicy_bindings = []
 
-    return bindings
+        if self.module.params.get('appfw_policybindings') is None:
+            return
 
+        for appfwpolicy in self.module.params['appfw_policybindings']:
+            binding = {}
+            binding['name'] = self.module.params['name']
+            for attribute in self.attribute_config['appfwpolicy_bindings']['attributes_list']:
+                # Disregard null values
+                value = appfwpolicy.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['appfwpolicy_bindings']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                binding[attribute] = value
+            self.configured_appfwpolicy_bindings.append(binding)
+        log('calculated configured appfw policy binidings %s' % self.configured_appfwpolicy_bindings)
 
-def cs_policybindings_identical(client, module):
-    log('Checking policy bindings identical')
-    actual_bindings = get_actual_policybindings(client, module)
-    configured_bindings = get_configured_policybindings(client, module)
+    def csvserver_exists(self):
+        log('ModuleExecutor.csvserver_exists()')
+        result = self.fetcher.get('csvserver', self.module.params['name'])
 
-    actual_keyset = set(actual_bindings.keys())
-    configured_keyset = set(configured_bindings.keys())
-    if len(actual_keyset ^ configured_keyset) > 0:
-        return False
-
-    # Compare item to item
-    for key in actual_bindings.keys():
-        configured_binding_proxy = configured_bindings[key]
-        actual_binding_object = actual_bindings[key]
-        if not configured_binding_proxy.has_equal_attributes(actual_binding_object):
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+            return True
+        elif result['nitro_errorcode'] == 258:
             return False
-
-    # Fallthrough to success
-    return True
-
-
-def sync_cs_policybindings(client, module):
-    log('Syncing cs policybindings')
-    actual_bindings = get_actual_policybindings(client, module)
-    configured_bindings = get_configured_policybindings(client, module)
-
-    # Delete actual bindings not in configured
-    delete_keys = list(set(actual_bindings.keys()) - set(configured_bindings.keys()))
-    for key in delete_keys:
-        log('Deleting binding for policy %s' % key)
-        csvserver_cspolicy_binding.delete(client, actual_bindings[key])
-
-    # Add configured bindings not in actual
-    add_keys = list(set(configured_bindings.keys()) - set(actual_bindings.keys()))
-    for key in add_keys:
-        log('Adding binding for policy %s' % key)
-        configured_bindings[key].add()
-
-    # Update existing if changed
-    modify_keys = list(set(configured_bindings.keys()) & set(actual_bindings.keys()))
-    for key in modify_keys:
-        if not configured_bindings[key].has_equal_attributes(actual_bindings[key]):
-            log('Updating binding for policy %s' % key)
-            csvserver_cspolicy_binding.delete(client, actual_bindings[key])
-            configured_bindings[key].add()
-
-
-def get_actual_appfwpolicybindings(client, module):
-    log('Getting actual appfw policy bindings')
-    bindings = {}
-    try:
-        count = csvserver_appfwpolicy_binding.count(client, name=module.params['name'])
-        if count == 0:
-            return bindings
-    except nitro_exception as e:
-        if e.errorcode == 258:
-            log('errorcode 258')
-            return bindings
         else:
-            raise
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
 
-    for binding in csvserver_appfwpolicy_binding.get(client, name=module.params['name']):
-        key = binding.policyname
-        bindings[key] = binding
+    def create_csvserver(self):
+        log('ModuleExecutor.create_csvserver()')
 
-    return bindings
+        post_data = {
+            'csvserver': self.configured_csvserver
+        }
 
+        result = self.fetcher.post(post_data=post_data, resource='csvserver')
+        log('post data: %s' % post_data)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 201:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status']
+            self.module.fail_json(msg=msg, **self.module_result)
 
-def get_configured_appfwpolicybindings(client, module):
-    log('Getting configured appfw policy bindings')
-    bindings = {}
-    if module.params['appfw_policybindings'] is None:
-        return bindings
+    def update_csvserver(self):
+        log('ModuleExecutor.update_csvserver()')
 
-    for binding in module.params['appfw_policybindings']:
-        binding['name'] = module.params['name']
-        key = binding['policyname']
-        binding_proxy = ConfigProxy(
-            actual=csvserver_appfwpolicy_binding(),
-            client=client,
-            readwrite_attrs=[
-                'name',
-                'priority',
-                'bindpoint',
-                'policyname',
-                'labelname',
-                'targetlbvserver',
-                'gotopriorityexpression',
-                'invoke',
-                'labeltype',
-                'sc',
-            ],
-            readonly_attrs=[],
-            attribute_values_dict=binding,
-            transforms={
-                'sc': ['bool_on_off']
-            }
+        # Catching trying to change non updateable attributes is done in self.csvserver_identical()
+        put_payload = copy.deepcopy(self.configured_csvserver)
+        for attribute in self.configured_csvserver.keys():
+            if attribute in self.attribute_config['csvserver']['non_updateable_attributes']:
+                del put_payload[attribute]
+
+        put_data = {
+            'csvserver': put_payload
+        }
+
+        log('request put data: %s' % put_data)
+        result = self.fetcher.put(put_data=put_data, resource='csvserver')
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def csvserver_identical(self):
+        log('ModuleExecutor.csvserver_identical()')
+        result = self.fetcher.get('csvserver', self.module.params['name'])
+        retrieved_object = result['data']['csvserver'][0]
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+        diff_list = []
+        non_updateable_list = []
+        # Iterate over keys that already exist in the playbook
+        for attribute in self.configured_csvserver.keys():
+            retrieved_value = retrieved_object.get(attribute)
+            configured_value = self.configured_csvserver.get(attribute)
+            if retrieved_value != configured_value:
+                str_tuple = (
+                    attribute,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                # Also append changed values to the non updateable list
+                if attribute in self.attribute_config['csvserver']['non_updateable_attributes']:
+                    non_updateable_list.append(attribute)
+
+        self.module_result['diff_list'] = diff_list
+        if non_updateable_list != []:
+            msg = 'Cannot change value for the following non updateable attributes %s' % non_updateable_list
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if diff_list != []:
+            return False
+        else:
+            return True
+
+    def update_or_create(self):
+        log('ModuleExecutor.update_or_create()')
+
+        # Create or update main object
+        if not self.csvserver_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                log('Csvserver group does not exist. Will create.')
+                self.create_csvserver()
+        else:
+            if not self.csvserver_identical():
+                log('Existing csvserver does not have identical values to configured. Will update.')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.update_csvserver()
+            else:
+                log('Existing csvserver has identical values to configured.')
+
+        # This will also take into account check mode
+        self.sync_bindings()
+
+    def delete_csvserver(self):
+        log('ModuleExecutor.delete_csvserver()')
+
+        # First unbind any existing appfwpolicies
+        self.configured_appfwpolicy_bindings = []
+        self.sync_appfwpolicy_bindings()
+
+        result = self.fetcher.delete(resource='csvserver', id=self.module.params['name'])
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete(self):
+        log('ModuleExecutor.delete()')
+
+        if self.csvserver_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.delete_csvserver()
+
+    def _get_transformed_dict(self, transforms, values_dict):
+        actual_values_dict = {}
+        for key in values_dict:
+            value = values_dict.get(key)
+            transform = transforms.get(key)
+            if transform is not None:
+                value = transform(values_dict.get(key))
+            actual_values_dict[key] = value
+
+        return actual_values_dict
+
+    def get_existing_cspolicy_bindings(self):
+        log('ModuleExecutor.get_existing_cspolicy_bindings()')
+        result = self.fetcher.get('csvserver_cspolicy_binding', self.module.params['name'])
+
+        if result['nitro_errorcode'] == 258:
+            return []
+        elif result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'csvserver_cspolicy_binding' in result['data']:
+            return result['data']['csvserver_cspolicy_binding']
+        else:
+            return []
+
+    def add_cspolicy_binding(self, configured_dict):
+        log('ModuleExecutor.add_cspolicy_binding()')
+
+        put_values = copy.deepcopy(configured_dict)
+        put_values['name'] = self.module.params['name']
+        put_values = self._get_transformed_dict(
+            transforms=self.attribute_config['policybindings']['transforms'],
+            values_dict=put_values
         )
-        bindings[key] = binding_proxy
-    return bindings
+        put_data = {'csvserver_cspolicy_binding': put_values}
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='csvserver_cspolicy_binding',
+            id=self.module.params['name'],
+        )
 
+        log('result of put: %s' % result)
 
-def sync_appfw_policybindings(client, module):
-    log('Syncing cs appfw policybindings')
-    actual_bindings = get_actual_appfwpolicybindings(client, module)
-    configured_bindings = get_configured_appfwpolicybindings(client, module)
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
 
-    # Delete actual bindings not in configured
-    delete_keys = list(set(actual_bindings.keys()) - set(configured_bindings.keys()))
-    for key in delete_keys:
-        log('Deleting appfw binding for policy %s' % key)
-        csvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
+    def delete_cspolicy_binding(self, configured_dict):
+        log('ModuleExecutor.delete_cspolicy_binding()')
 
-    # Add configured bindings not in actual
-    add_keys = list(set(configured_bindings.keys()) - set(actual_bindings.keys()))
-    for key in add_keys:
-        log('Adding binding for appfw policy %s' % key)
-        configured_bindings[key].add()
+        cspolicy_binding = copy.deepcopy(configured_dict)
 
-    # Update existing if changed
-    modify_keys = list(set(configured_bindings.keys()) & set(actual_bindings.keys()))
-    for key in modify_keys:
-        if not configured_bindings[key].has_equal_attributes(actual_bindings[key]):
-            log('Updating binding for appfw policy %s' % key)
-            csvserver_appfwpolicy_binding.delete(client, actual_bindings[key])
-            configured_bindings[key].add()
+        args = {}
+        for attribute in self.attribute_config['policybindings']['delete_id_attributes']:
+            value = cspolicy_binding.get(attribute)
+            if value is not None and value != '':
+                log('Appending to args %s:%s' % (attribute, value))
+                args[attribute] = value
 
+        result = self.fetcher.delete(
+            resource='csvserver_cspolicy_binding',
+            id=self.module.params['name'],
+            args=args
+        )
 
-def appfw_policybindings_identical(client, module):
-    log('Checking policy bindings identical')
-    actual_bindings = get_actual_appfwpolicybindings(client, module)
-    configured_bindings = get_configured_appfwpolicybindings(client, module)
+        log('delete result %s' % result)
 
-    actual_keyset = set(actual_bindings.keys())
-    configured_keyset = set(configured_bindings.keys())
-    if len(actual_keyset ^ configured_keyset) > 0:
-        return False
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
 
-    # Compare item to item
-    for key in actual_bindings.keys():
-        configured_binding_proxy = configured_bindings[key]
-        actual_binding_object = actual_bindings[key]
-        if not configured_binding_proxy.has_equal_attributes(actual_binding_object):
-            return False
+    def cspolicy_binding_identical(self, configured, retrieved):
+        log('ModuleExecutor.cspolicy_binding_identical()')
 
-    # Fallthrough to success
-    return True
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Cspolicy binding attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
 
+    def sync_cspolicy_bindings(self):
+        log('ModuleExecutor.sync_cspolicy_bindings()')
 
-def ssl_certkey_bindings_identical(client, module):
-    log('Checking if ssl cert key bindings are identical')
-    vservername = module.params['name']
-    if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
-        bindings = []
-    else:
-        bindings = sslvserver_sslcertkey_binding.get(client, vservername)
+        # Parent csvserver should already exist
+        existing_cspolicy_bindings = self.get_existing_cspolicy_bindings()
 
-    if module.params['ssl_certkey'] is None:
-        if len(bindings) == 0:
-            return True
+        log('existing_cspolicy_bindings %s' % existing_cspolicy_bindings)
+
+        # First get the existing bindings
+        configured_already_present = []
+
+        # Delete any binding that is not exactly as the configured
+        for existing_cspolicy_binding in existing_cspolicy_bindings:
+            for configured_cspolicy_binding in self.configured_cspolicy_bindings:
+                if self.cspolicy_binding_identical(configured_cspolicy_binding, existing_cspolicy_binding):
+                    configured_already_present.append(configured_cspolicy_binding)
+                    break
+            else:
+                log('Will delete binding')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.delete_cspolicy_binding(existing_cspolicy_binding)
+
+        # Create the bindings objects that we marked in previous loop
+        log('configured_already_present %s' % configured_already_present)
+        for configured_cspolicy_binding in self.configured_cspolicy_bindings:
+            if configured_cspolicy_binding in configured_already_present:
+                log('Configured binding already exists')
+                continue
+            else:
+                log('Configured binding does not already exist')
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.add_cspolicy_binding(configured_cspolicy_binding)
+
+    def get_existing_appfwpolicy_bindings(self):
+        log('ModuleExecutor.get_existing_appfwpolicy_bindings()')
+        result = self.fetcher.get('csvserver_appfwpolicy_binding', self.module.params['name'])
+
+        if result['nitro_errorcode'] == 258:
+            return []
+        elif result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'csvserver_appfwpolicy_binding' in result['data']:
+            return result['data']['csvserver_appfwpolicy_binding']
         else:
-            return False
-    else:
-        certificate_list = [item.certkeyname for item in bindings]
-        if certificate_list == [module.params['ssl_certkey']]:
-            return True
+            return []
+
+    def appfwpolicy_binding_identical(self, configured, retrieved):
+        log('ModuleExecutor.appfwpolicy_binding_identical()')
+
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Appfwpolicy binding attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
+
+    def add_appfwpolicy_binding(self, configured_dict):
+        log('ModuleExecutor.add_appfwpolicy_binding()')
+
+        put_values = copy.deepcopy(configured_dict)
+        put_values['name'] = self.module.params['name']
+        put_values = self._get_transformed_dict(
+            transforms=self.attribute_config['appfwpolicy_bindings']['transforms'],
+            values_dict=put_values
+        )
+        put_data = {'csvserver_appfwpolicy_binding': put_values}
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='csvserver_appfwpolicy_binding',
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_appfwpolicy_binding(self, configured_dict):
+        log('ModuleExecutor.delete_appfwpolicy_binding()')
+
+        appfwpolicy_binding = copy.deepcopy(configured_dict)
+
+        args = {}
+        for attribute in self.attribute_config['appfwpolicy_bindings']['delete_id_attributes']:
+            value = appfwpolicy_binding.get(attribute)
+            if value is not None and value != '':
+                log('Appending to args %s:%s' % (attribute, value))
+                args[attribute] = value
+
+        result = self.fetcher.delete(
+            resource='csvserver_appfwpolicy_binding',
+            id=self.module.params['name'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def sync_appfwpolicy_bindings(self):
+        log('ModuleExecutor.sync_appfwpolicy_bindings()')
+
+        # Parent csvserver should already exist
+        existing_appfwpolicy_bindings = self.get_existing_appfwpolicy_bindings()
+
+        log('existing_appfwpolicy_bindings %s' % existing_appfwpolicy_bindings)
+
+        # First get the existing bindings
+        configured_already_present = []
+
+        # Delete any binding that is not exactly as the configured
+        for existing_appfwpolicy_binding in existing_appfwpolicy_bindings:
+            for configured_appfwpolicy_binding in self.configured_appfwpolicy_bindings:
+                if self.appfwpolicy_binding_identical(configured_appfwpolicy_binding, existing_appfwpolicy_binding):
+                    configured_already_present.append(configured_appfwpolicy_binding)
+                    break
+            else:
+                log('Will delete binding')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.delete_appfwpolicy_binding(existing_appfwpolicy_binding)
+
+        # Create the bindings objects that we marked in previous loop
+        log('configured_already_present %s' % configured_already_present)
+        for configured_appfwpolicy_binding in self.configured_appfwpolicy_bindings:
+            if configured_appfwpolicy_binding in configured_already_present:
+                log('Configured binding already exists')
+                continue
+            else:
+                log('Configured binding does not already exist')
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.add_appfwpolicy_binding(configured_appfwpolicy_binding)
+
+    def add_sslcertkey_binding(self, sslcertkey):
+        log('ModuleExecutor.add_sslcertkey_binding()')
+
+        put_data = {
+            'sslvserver_sslcertkey_binding': {
+                'vservername': self.module.params['name'],
+                'certkeyname': sslcertkey,
+            }
+        }
+
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='sslvserver_sslcertkey_binding',
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_sslcertkey_binding(self, sslcertkey):
+        log('ModuleExecutor.delete_sslcertkey_binding()')
+
+        args = {
+            'certkeyname': sslcertkey,
+        }
+
+        result = self.fetcher.delete(
+            resource='sslvserver_sslcertkey_binding',
+            id=self.module.params['name'],
+            args=args
+        )
+
+    def sync_sslcertkey_bindings(self):
+        log('ModuleExecutor.sync_sslcertkey_bindings()')
+
+        # Read for the existing binding
+        bound_lbvserver = None
+        result = self.fetcher.get('sslvserver_sslcertkey_binding', self.module.params['name'])
+
+        if result['nitro_errorcode'] in [461, 1544]:
+            bound_sslcertkeys = []
+        elif result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'sslvserver_sslcertkey_binding' in result['data']:
+            bound_sslcertkeys = result['data']['sslvserver_sslcertkey_binding']
         else:
-            return False
+            bound_sslcertkeys = []
 
+        configured_sslcertkey = self.module.params.get('ssl_certkey')
+        found_configured = False
 
-def ssl_certkey_bindings_sync(client, module):
-    log('Syncing certkey bindings')
-    vservername = module.params['name']
-    if sslvserver_sslcertkey_binding.count(client, vservername) == 0:
-        bindings = []
-    else:
-        bindings = sslvserver_sslcertkey_binding.get(client, vservername)
+        # Delete all keys that do not match
+        for binding in bound_sslcertkeys:
+            if binding['certkeyname'] != configured_sslcertkey:
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.delete_sslcertkey_binding(binding['certkeyname'])
+            else:
+                found_configured = True
 
-    # Delete existing bindings
-    for binding in bindings:
-        log('Deleting existing binding for certkey %s' % binding.certkeyname)
-        sslvserver_sslcertkey_binding.delete(client, binding)
+        # Add if not found
+        if configured_sslcertkey is not None and not found_configured:
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.add_sslcertkey_binding(configured_sslcertkey)
+        pass
 
-    # Add binding if appropriate
-    if module.params['ssl_certkey'] is not None:
-        log('Adding binding for certkey %s' % module.params['ssl_certkey'])
-        binding = sslvserver_sslcertkey_binding()
-        binding.vservername = module.params['name']
-        binding.certkeyname = module.params['ssl_certkey']
-        sslvserver_sslcertkey_binding.add(client, binding)
+    def add_default_lbvserver(self, lbvserver_name):
+        log('ModuleExecutor.add_appfwpolicy_binding()')
 
+        put_data = {
+            'csvserver_lbvserver_binding': {
+                'name': self.module.params['name'],
+                'lbvserver': lbvserver_name,
+            }
+        }
 
-def diff_list(client, module, csvserver_proxy):
-    csvserver_list = csvserver.get_filtered(client, 'name:%s' % module.params['name'])
-    return csvserver_proxy.diff_object(csvserver_list[0])
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='csvserver_lbvserver_binding',
+        )
 
+        log('result of put: %s' % result)
 
-def do_state_change(client, module, csvserver_proxy):
-    if module.params['disabled']:
-        log('Disabling cs vserver')
-        result = csvserver.disable(client, csvserver_proxy.actual)
-    else:
-        log('Enabling cs vserver')
-        result = csvserver.enable(client, csvserver_proxy.actual)
-    return result
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_default_lbvserver(self, lbvserver_name):
+        log('ModuleExecutor.delete_default_lbvserver()')
+
+        args = {
+            'lbvserver': lbvserver_name
+        }
+
+        result = self.fetcher.delete(
+            resource='csvserver_lbvserver_binding',
+            id=self.module.params['name'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def sync_default_lbvserver(self):
+        log('ModuleExecutor.sync_default_lbvserver()')
+
+        # Read for the existing binding
+        bound_lbvserver = None
+        result = self.fetcher.get('csvserver_lbvserver_binding', self.module.params['name'])
+
+        if result['nitro_errorcode'] == 258:
+            bound_lbvserver = None
+        elif result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'csvserver_lbvserver_binding' in result['data']:
+            bound_lbvserver = result['data']['csvserver_lbvserver_binding'][0]
+        else:
+            bound_lbvserver = None
+
+        configured_lbvserver = self.module.params.get('lbvserver')
+
+        # When to delete
+        if bound_lbvserver is not None and configured_lbvserver != bound_lbvserver['lbvserver']:
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.delete_default_lbvserver(bound_lbvserver['lbvserver'])
+
+        # When to add
+        if configured_lbvserver is not None:
+            if bound_lbvserver is None or configured_lbvserver != bound_lbvserver['lbvserver']:
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.add_default_lbvserver(configured_lbvserver)
+
+    def sync_bindings(self):
+        log('ModuleExecutor.sync_bindings()')
+        self.sync_cspolicy_bindings()
+        self.sync_appfwpolicy_bindings()
+        self.sync_sslcertkey_bindings()
+        self.sync_default_lbvserver()
+
+    def do_state_change(self):
+        log('ModuleExecutor.do_state_change()')
+        if self.module.check_mode:
+            return
+
+        # Fallthrough
+        post_data = {
+            'csvserver': {
+                'name': self.configured_csvserver['name'],
+            }
+        }
+
+        disabled = self.module.params['disabled']
+
+        if disabled:
+            action = 'disable'
+        else:
+            action = 'enable'
+
+        log('disable/enable post data %s' % post_data)
+        result = self.fetcher.post(post_data=post_data, resource='csvserver', action=action)
+        log('result of post %s' % result)
+
+        if result['http_response_data']['status'] != 200:
+            msg = 'Disable/Enable operation failed'
+            self.module.fail_json(msg=msg, **self.module_result)
+
+    def main(self):
+        try:
+
+            if self.module.params['state'] == 'present':
+                self.update_or_create()
+                self.do_state_change()
+            elif self.module.params['state'] == 'absent':
+                self.delete()
+
+            self.module.exit_json(**self.module_result)
+
+        except NitroException as e:
+            msg = "nitro exception errorcode=%s, message=%s, severity=%s" % (str(e.errorcode), e.message, e.severity)
+            self.module.fail_json(msg=msg, **self.module_result)
+        except Exception as e:
+            msg = 'Exception %s: %s' % (type(e), str(e))
+            self.module.fail_json(msg=msg, **self.module_result)
 
 
 def main():
 
-    module_specific_arguments = dict(
+    argument_spec = dict()
 
+    module_specific_arguments = dict(
         name=dict(type='str'),
-        td=dict(type='float'),
+        td=dict(type='str'),
         servicetype=dict(
             type='str',
             choices=[
@@ -1098,11 +1740,17 @@ def main():
                 'SSL_DIAMETER',
                 'DNS_TCP',
                 'ORACLE',
-                'SMPP'
+                'SMPP',
+                'PROXY',
             ]
         ),
-
         ipv46=dict(type='str'),
+        targettype=dict(
+            type='str',
+            choices=[
+                'GSLB',
+            ]
+        ),
         dnsrecordtype=dict(
             type='str',
             choices=[
@@ -1112,20 +1760,23 @@ def main():
                 'NAPTR',
             ]
         ),
+        persistenceid=dict(type='str'),
         ippattern=dict(type='str'),
         ipmask=dict(type='str'),
-        range=dict(type='float'),
+        range=dict(type='str'),
         port=dict(type='int'),
+        ipset=dict(type='str'),
         stateupdate=dict(
             type='str',
             choices=[
-                'enabled',
-                'disabled',
+                'ENABLED',
+                'DISABLED',
+                'UPDATEONBACKENDUPDATE',
             ]
         ),
         cacheable=dict(type='bool'),
         redirecturl=dict(type='str'),
-        clttimeout=dict(type='float'),
+        clttimeout=dict(type='int'),
         precedence=dict(
             type='str',
             choices=[
@@ -1151,8 +1802,8 @@ def main():
                 'disabled',
             ]
         ),
-        sopersistencetimeout=dict(type='float'),
-        sothreshold=dict(type='float'),
+        sopersistencetimeout=dict(type='str'),
+        sothreshold=dict(type='str'),
         sobackupaction=dict(
             type='str',
             choices=[
@@ -1175,6 +1826,7 @@ def main():
                 'disabled',
             ]
         ),
+        backupvserver=dict(type='str'),
         disableprimaryondown=dict(
             type='str',
             choices=[
@@ -1195,6 +1847,7 @@ def main():
         authenticationhost=dict(type='str'),
         authentication=dict(type='bool'),
         listenpolicy=dict(type='str'),
+        listenpriority=dict(type='str'),
         authn401=dict(type='bool'),
         authnvsname=dict(type='str'),
         push=dict(
@@ -1232,10 +1885,10 @@ def main():
             ]
         ),
         l2conn=dict(type='bool'),
-        mysqlprotocolversion=dict(type='float'),
+        mysqlprotocolversion=dict(type='str'),
         mysqlserverversion=dict(type='str'),
-        mysqlcharacterset=dict(type='float'),
-        mysqlservercapabilities=dict(type='float'),
+        mysqlcharacterset=dict(type='str'),
+        mysqlservercapabilities=dict(type='str'),
         appflowlog=dict(
             type='str',
             choices=[
@@ -1260,303 +1913,116 @@ def main():
         ),
         authnprofile=dict(type='str'),
         dnsprofilename=dict(type='str'),
-    )
+        persistencetype=dict(
+            type='str',
+            choices=[
+                'SOURCEIP',
+                'COOKIEINSERT',
+                'SSLSESSION',
+                'NONE',
+            ]
+        ),
+        persistmask=dict(type='str'),
+        v6persistmasklen=dict(type='str'),
+        timeout=dict(type='int'),
+        cookiename=dict(type='str'),
+        persistencebackup=dict(
+            type='str',
+            choices=[
+                'SOURCEIP',
+                'NONE',
+            ]
+        ),
+        backuppersistencetimeout=dict(type='str'),
+        domainname=dict(type='str'),
+        ttl=dict(type='str'),
+        backupip=dict(type='str'),
+        cookiedomain=dict(type='str'),
+        cookietimeout=dict(type='str'),
+        sitedomainttl=dict(type='str'),
 
-    hand_inserted_arguments = dict(
+        disabled=dict(
+            type='bool',
+            default=False,
+        ),
+        lbvserver=dict(
+            type='str',
+        ),
+        ssl_certkey=dict(type='str'),
+
         policybindings=dict(
             type='list',
             elements='dict',
+            options=dict(
+                policyname=dict(type='str'),
+                targetlbvserver=dict(type='str'),
+                priority=dict(type='str'),
+                gotopriorityexpression=dict(type='str'),
+                bindpoint=dict(
+                    type='str',
+                    choices=[
+                        'REQUEST',
+                        'RESPONSE',
+                        'ICA_REQUEST',
+                        'OTHERTCP_REQUEST',
+                    ]
+                ),
+                invoke=dict(type='bool'),
+                labeltype=dict(
+                    type='str',
+                    choices=[
+                        'reqvserver',
+                        'resvserver',
+                        'policylabel',
+                    ]
+                ),
+                labelname=dict(type='str'),
+            ),
         ),
+
         appfw_policybindings=dict(
             type='list',
             elements='dict',
+            options=dict(
+                policyname=dict(type='str'),
+                priority=dict(type='str'),
+                gotopriorityexpression=dict(type='str'),
+                bindpoint=dict(
+                    type='str',
+                    choices=[
+                        'REQUEST',
+                        'RESPONSE',
+                        'ICA_REQUEST',
+                        'OTHERTCP_REQUEST',
+                    ]
+                ),
+                invoke=dict(type='bool'),
+                labeltype=dict(
+                    type='str',
+                    choices=[
+                        'reqvserver',
+                        'resvserver',
+                        'policylabel',
+                    ]
+                ),
+                labelname=dict(type='str'),
+                name=dict(type='str'),
+                targetlbvserver=dict(type='str'),
+            ),
         ),
-        ssl_certkey=dict(type='str'),
-        disabled=dict(
-            type='bool',
-            default=False
-        ),
-        lbvserver=dict(type='str'),
     )
 
-    argument_spec = dict()
-
     argument_spec.update(netscaler_common_arguments)
-
     argument_spec.update(module_specific_arguments)
-    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
         supports_check_mode=True,
     )
-    module_result = dict(
-        changed=False,
-        failed=False,
-        loglines=loglines,
-    )
 
-    # Fail the module if imports failed
-    if not PYTHON_SDK_IMPORTED:
-        module.fail_json(msg='Could not load nitro python sdk')
-
-    # Fallthrough to rest of execution
-    client = get_nitro_client(module)
-
-    if not module.params['mas_proxy_call']:
-        try:
-            client.login()
-        except nitro_exception as e:
-            msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-            module.fail_json(msg=msg)
-        except Exception as e:
-            if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
-                module.fail_json(msg='Connection error %s' % str(e))
-            elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
-                module.fail_json(msg='SSL Error %s' % str(e))
-            else:
-                module.fail_json(msg='Unexpected error during login %s' % str(e))
-
-    readwrite_attrs = [
-        'name',
-        'td',
-        'servicetype',
-        'ipv46',
-        'dnsrecordtype',
-        'ippattern',
-        'ipmask',
-        'range',
-        'port',
-        'stateupdate',
-        'cacheable',
-        'redirecturl',
-        'clttimeout',
-        'precedence',
-        'casesensitive',
-        'somethod',
-        'sopersistence',
-        'sopersistencetimeout',
-        'sothreshold',
-        'sobackupaction',
-        'redirectportrewrite',
-        'downstateflush',
-        'disableprimaryondown',
-        'insertvserveripport',
-        'vipheader',
-        'rtspnat',
-        'authenticationhost',
-        'authentication',
-        'listenpolicy',
-        'authn401',
-        'authnvsname',
-        'push',
-        'pushvserver',
-        'pushlabel',
-        'pushmulticlients',
-        'tcpprofilename',
-        'httpprofilename',
-        'dbprofilename',
-        'oracleserverversion',
-        'comment',
-        'mssqlserverversion',
-        'l2conn',
-        'mysqlprotocolversion',
-        'mysqlserverversion',
-        'mysqlcharacterset',
-        'mysqlservercapabilities',
-        'appflowlog',
-        'netprofile',
-        'icmpvsrresponse',
-        'rhistate',
-        'authnprofile',
-        'dnsprofilename',
-    ]
-
-    readonly_attrs = [
-        'ip',
-        'value',
-        'ngname',
-        'type',
-        'curstate',
-        'sc',
-        'status',
-        'cachetype',
-        'redirect',
-        'homepage',
-        'dnsvservername',
-        'domain',
-        'policyname',
-        'servicename',
-        'weight',
-        'cachevserver',
-        'targetvserver',
-        'priority',
-        'url',
-        'gotopriorityexpression',
-        'bindpoint',
-        'invoke',
-        'labeltype',
-        'labelname',
-        'gt2gb',
-        'statechangetimesec',
-        'statechangetimemsec',
-        'tickssincelaststatechange',
-        'ruletype',
-        'lbvserver',
-        'targetlbvserver',
-    ]
-
-    immutable_attrs = [
-        'name',
-        'td',
-        'servicetype',
-        'ipv46',
-        'targettype',
-        'range',
-        'port',
-        'state',
-        'vipheader',
-        'newname',
-    ]
-
-    transforms = {
-        'cacheable': ['bool_yes_no'],
-        'rtspnat': ['bool_on_off'],
-        'authn401': ['bool_on_off'],
-        'casesensitive': ['bool_on_off'],
-        'authentication': ['bool_on_off'],
-        'l2conn': ['bool_on_off'],
-        'pushmulticlients': ['bool_yes_no'],
-        'stateupdate': [lambda v: v.upper()],
-        'sopersistence': [lambda v: v.upper()],
-        'redirectportrewrite': [lambda v: v.upper()],
-        'downstateflush': [lambda v: v.upper()],
-        'disableprimaryondown': [lambda v: v.upper()],
-        'push': [lambda v: v.upper()],
-        'appflowlog': [lambda v: v.upper()],
-    }
-
-    # Instantiate config proxy
-    csvserver_proxy = ConfigProxy(
-        actual=csvserver(),
-        client=client,
-        attribute_values_dict=module.params,
-        readwrite_attrs=readwrite_attrs,
-        readonly_attrs=readonly_attrs,
-        immutable_attrs=immutable_attrs,
-        transforms=transforms,
-    )
-
-    try:
-        ensure_feature_is_enabled(client, 'CS')
-
-        # Apply appropriate state
-        if module.params['state'] == 'present':
-            log('Applying actions for state present')
-            if not cs_vserver_exists(client, module):
-                if not module.check_mode:
-                    csvserver_proxy.add()
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            elif not cs_vserver_identical(client, module, csvserver_proxy):
-
-                # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(csvserver_proxy, diff_list(client, module, csvserver_proxy).keys())
-                if immutables_changed != []:
-                    module.fail_json(
-                        msg='Cannot update immutable attributes %s' % (immutables_changed,),
-                        diff=diff_list(client, module, csvserver_proxy),
-                        **module_result
-                    )
-
-                if not module.check_mode:
-                    csvserver_proxy.update()
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            else:
-                module_result['changed'] = False
-
-            # Check policybindings
-            if not cs_policybindings_identical(client, module):
-                if not module.check_mode:
-                    sync_cs_policybindings(client, module)
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-
-            # Check appfw policybindings
-            if not appfw_policybindings_identical(client, module):
-                if not module.check_mode:
-                    sync_appfw_policybindings(client, module)
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-
-            if module.params['servicetype'] != 'SSL' and module.params['ssl_certkey'] is not None:
-                module.fail_json(msg='ssl_certkey is applicable only to SSL vservers', **module_result)
-
-            # Check ssl certkey bindings
-            if module.params['servicetype'] == 'SSL':
-                if not ssl_certkey_bindings_identical(client, module):
-                    if not module.check_mode:
-                        ssl_certkey_bindings_sync(client, module)
-
-                    module_result['changed'] = True
-
-            # Check default lb vserver
-            if not default_lb_vserver_identical(client, module):
-                if not module.check_mode:
-                    sync_default_lb_vserver(client, module)
-                module_result['changed'] = True
-
-            if not module.check_mode:
-                res = do_state_change(client, module, csvserver_proxy)
-                if res.errorcode != 0:
-                    msg = 'Error when setting disabled state. errorcode: %s message: %s' % (res.errorcode, res.message)
-                    module.fail_json(msg=msg, **module_result)
-
-            # Sanity check for state
-            if not module.check_mode:
-                log('Sanity checks for state present')
-                if not cs_vserver_exists(client, module):
-                    module.fail_json(msg='CS vserver does not exist', **module_result)
-                if not cs_vserver_identical(client, module, csvserver_proxy):
-                    module.fail_json(msg='CS vserver differs from configured', diff=diff_list(client, module, csvserver_proxy), **module_result)
-                if not cs_policybindings_identical(client, module):
-                    module.fail_json(msg='Policy bindings differ')
-
-                if module.params['servicetype'] == 'SSL':
-                    if not ssl_certkey_bindings_identical(client, module):
-                        module.fail_json(msg='sll certkey bindings not identical', **module_result)
-
-        elif module.params['state'] == 'absent':
-            log('Applying actions for state absent')
-            if cs_vserver_exists(client, module):
-                if not module.check_mode:
-                    csvserver_proxy.delete()
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            else:
-                module_result['changed'] = False
-
-            # Sanity check for state
-            if not module.check_mode:
-                log('Sanity checks for state absent')
-                if cs_vserver_exists(client, module):
-                    module.fail_json(msg='CS vserver still exists', **module_result)
-
-    except nitro_exception as e:
-        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-        module.fail_json(msg=msg, **module_result)
-
-    if not module.params['mas_proxy_call']:
-        client.logout()
-
-    module.exit_json(**module_result)
+    executor = ModuleExecutor(module=module)
+    executor.main()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
