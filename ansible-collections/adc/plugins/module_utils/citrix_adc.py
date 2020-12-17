@@ -368,6 +368,7 @@ class NitroAPIFetcher(object):
         # Prepare the http headers according to module arguments
         self._headers = {}
         self._headers['Content-Type'] = 'application/json'
+        self._headers['User-Agent'] = 'ansible-ctxadc'
 
         # Check for conflicting authentication methods
         have_token = self._module.params.get('nitro_auth_token') is not None
