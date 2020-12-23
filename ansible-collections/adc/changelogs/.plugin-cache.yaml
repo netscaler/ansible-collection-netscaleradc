@@ -7,7 +7,7 @@ plugins:
     ssh_citrix_adc:
       description: connect via ssh client binary with Citrix ADC bypassing the cli
       name: ssh_citrix_adc
-      version_added: '2.8'
+      version_added: 1.0.0
   httpapi: {}
   inventory: {}
   lookup: {}
@@ -103,17 +103,17 @@ plugins:
       namespace: ''
       version_added: 1.0.0
     citrix_adc_gslb_service:
-      description: Manage gslb service entities in Netscaler.
+      description: Manage gslb service entities in Citrix ADC.
       name: citrix_adc_gslb_service
       namespace: ''
       version_added: 1.0.0
     citrix_adc_gslb_site:
-      description: Manage gslb site entities in Netscaler.
+      description: Manage gslb site entities in Citrix ADC.
       name: citrix_adc_gslb_site
       namespace: ''
       version_added: 1.0.0
     citrix_adc_gslb_vserver:
-      description: Configure gslb vserver entities in Netscaler.
+      description: Configure gslb vserver entities in Citrix ADC.
       name: citrix_adc_gslb_vserver
       namespace: ''
       version_added: 1.0.0
@@ -128,7 +128,7 @@ plugins:
       namespace: ''
       version_added: 1.0.0
     citrix_adc_nitro_request:
-      description: Issue Nitro API requests to a Netscaler instance.
+      description: Issue Nitro API requests to a Citrix ADC instance.
       name: citrix_adc_nitro_request
       namespace: ''
       version_added: 1.0.0
@@ -143,7 +143,7 @@ plugins:
       namespace: ''
       version_added: 1.0.0
     citrix_adc_save_config:
-      description: Save Netscaler configuration.
+      description: Save Citrix ADC configuration.
       name: citrix_adc_save_config
       namespace: ''
       version_added: 1.0.0
@@ -153,12 +153,12 @@ plugins:
       namespace: ''
       version_added: 1.0.0
     citrix_adc_service:
-      description: Manage service configuration in Netscaler
+      description: Manage service configuration in Citrix ADC
       name: citrix_adc_service
       namespace: ''
       version_added: 1.0.0
     citrix_adc_servicegroup:
-      description: Manage service group configuration in Netscaler
+      description: Manage service group configuration in Citrix ADC
       name: citrix_adc_servicegroup
       namespace: ''
       version_added: 1.0.0

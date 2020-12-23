@@ -1,8 +1,22 @@
-# Copyright (c) 2012, Michael DeHaan <michael.dehaan@gmail.com>
-# Copyright 2015 Abhijit Menon-Sen <ams@2ndQuadrant.com>
-# Copyright 2017 Toshio Kuratomi <tkuratomi@ansible.com>
-# Copyright (c) 2017 Ansible Project
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+# Copyright (c) 2020 Citrix Systems, Inc.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a
+# copy of this software and associated documentation files (the "Software"),
+# to deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+# THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
 
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -11,12 +25,13 @@ DOCUMENTATION = '''
     connection: ssh_citrix_adc
     short_description: connect via ssh client binary with Citrix ADC bypassing the cli
     description:
-        - This connection plugin allows ansible to communicate to the target machines via normal ssh command line.
-        - Ansible does not expose a channel to allow communication between the user and the ssh process to accept
-          a password manually to decrypt an ssh key when using this connection plugin (which is the default). The
-          use of ``ssh-agent`` is highly recommended.
-    author: Sergios Lenis (sergios.lenis@citrix.com)
-    version_added: "2.8"
+        - This connection plugin allows ansible to communicate to the target Citrix ADC via normal ssh command line.
+        - The only authentication method that works with this plugin is with ssh key file.
+        - The input options supported by this connection plugin are the same as the ssh connection plugin of Ansible.
+    author:
+     - Sergios Lenis (sergios.lenis@citrix.com)
+     - George Nikolopoulos (giorgos.nikolopoulos@citrix.com)
+    version_added: "1.0.0"
     options:
       host:
           description: Hostname/ip to connect to.
@@ -270,25 +285,16 @@ DOCUMENTATION = '''
             version_added: '2.7'
 '''
 
-import os
-import time
 import codecs
 
 from functools import wraps
-from ansible import constants as C
-from ansible.errors import AnsibleError, AnsibleConnectionFailure, AnsibleFileNotFound
-from ansible.errors import AnsibleOptionsError
-from ansible.compat import selectors
-from ansible.module_utils.six import PY3, text_type, binary_type
-from ansible.module_utils.six.moves import shlex_quote
-from ansible.module_utils._text import to_bytes, to_native, to_text
-from ansible.module_utils.parsing.convert_bool import BOOLEANS, boolean
-from ansible.plugins.connection import ConnectionBase, BUFSIZE
-from ansible.utils.path import unfrackpath, makedirs_safe
+from ansible.errors import AnsibleError
 from ansible.plugins.connection.ssh import Connection as ConnectionSsh
 
 from ansible.utils.display import Display
 from ansible.plugins.loader import become_loader
+
+import re
 
 display = Display()
 
@@ -301,80 +307,30 @@ class AnsibleControlPersistBrokenPipeError(AnsibleError):
     pass
 
 
-def _ssh_retry(func):
-    """
-    Decorator to retry ssh/scp/sftp in the case of a connection failure
-
-    Will retry if:
-    * an exception is caught
-    * ssh returns 255
-    Will not retry if
-    * remaining_tries is <2
-    * retries limit reached
-    ######
-    patched to remove the output of the citrix adc cli
-    ######
-
-    """
+def _return_tuple_manipulate(func):
     @wraps(func)
     def wrapped(self, *args, **kwargs):
-        import re
-
-        remaining_tries = int(C.ANSIBLE_SSH_RETRIES) + 1
-        cmd_summary = "%s..." % args[0]
-        for attempt in range(remaining_tries):
-            cmd = args[0]
-            if attempt != 0 and self._play_context.password and isinstance(cmd, list):
-                # If this is a retry, the fd/pipe for sshpass is closed, and we need a new one
-                self.sshpass_pipe = os.pipe()
-                cmd[1] = b'-d' + to_bytes(self.sshpass_pipe[0], nonstring='simplerepr', errors='surrogate_or_strict')
-
-            try:
-                try:
-                    ##################################
-                    # override to remove/intersept 'Done' of citrix adc
-                    return_tuple = func(self, *args, **kwargs)
-                    return_tuple = list(return_tuple)
-                    subst = ""
-                    regex = r"(\r\n|\r|\n|)( Done)(\r\n|\r|\n)+"
-                    return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE)
-                    return_tuple = tuple(return_tuple)
-                    # end
-                    ###############################
-                    display.vvv(return_tuple, host=self.host)
-
-                    # 0 = success
-                    # 1-254 = remote command return code
-                    # 255 = failure from the ssh command itself
-                    #
-                except (AnsibleControlPersistBrokenPipeError) as e:
-                    # Retry one more time because of the ControlPersist broken pipe (see #16731)
-                    display.vvv(u"RETRYING BECAUSE OF CONTROLPERSIST BROKEN PIPE")
-                    return_tuple = func(self, *args, **kwargs)
-
-                if return_tuple[0] != 255:
-                    break
-                else:
-                    raise AnsibleConnectionFailure("Failed to connect to the host via ssh: %s" % to_native(return_tuple[2]))
-            except (AnsibleConnectionFailure, Exception) as e:
-                if attempt == remaining_tries - 1:
-                    raise
-                else:
-                    pause = 2 ** attempt - 1
-                    if pause > 30:
-                        pause = 30
-
-                    if isinstance(e, AnsibleConnectionFailure):
-                        msg = "ssh_retry: attempt: %d, ssh return code is 255. cmd (%s), pausing for %d seconds" % (attempt, cmd_summary, pause)
-                    else:
-                        msg = "ssh_retry: attempt: %d, caught exception(%s) from cmd (%s), pausing for %d seconds" % (attempt, e, cmd_summary, pause)
-
-                    display.vv(msg, host=self.host)
-
-                    time.sleep(pause)
-                    continue
-
+        return_tuple = func(self, *args, **kwargs)
+        return_tuple = list(return_tuple)
+        subst = ""
+        regex = r"(\r\n|\r|\n|)( Done)(\r\n|\r|\n)+"
+        return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE)
+        return_tuple = tuple(return_tuple)
         return return_tuple
+    return wrapped
+
+
+def _manipulate_cmd(func):
+
+    @wraps(func)
+    def wrapped(self, cmd, *args, **kwargs):
+        # Adding the 'shell' command for the citrix adc cli
+        if cmd.startswith('ssh_citrix_adc'):
+            cmd = cmd.replace('ssh_citrix_adc', '')
+        else:
+            cmd = type(cmd)("shell ") + cmd
+        returncode, stdout, stderr = func(self, cmd, *args, **kwargs)
+        return (returncode, stdout, stderr)
     return wrapped
 
 
@@ -400,47 +356,14 @@ class Connection(ConnectionSsh):
     def __init__(self, *args, **kwargs):
         super(Connection, self).__init__(*args, **kwargs)
 
-    @_ssh_retry
+    @_return_tuple_manipulate
     def _run(self, cmd, in_data, sudoable=True, checkrc=True):
         """Wrapper around _bare_run that retries the connection
         """
-        return self._bare_run(cmd, in_data, sudoable, checkrc)
+        return super(Connection, self)._run(cmd, in_data, sudoable=sudoable, checkrc=checkrc)
 
+    @_manipulate_cmd
     def exec_command(self, cmd, in_data=None, sudoable=True):
         ''' run a command on the remote host '''
 
-        # Adding the 'shell' command for the citrix adc cli
-        if cmd.startswith('ssh_citrix_adc'):
-            cmd = cmd.replace('ssh_citrix_adc', '')
-        else:
-            cmd = type(cmd)("shell ") + cmd
-
-        # we can only use tty when we are not pipelining the modules. piping
-        # data into /usr/bin/python inside a tty automatically invokes the
-        # python interactive-mode but the modules are not compatible with the
-        # interactive-mode ("unexpected indent" mainly because of empty lines)
-
-        ssh_executable = self._play_context.ssh_executable
-        msg = u"ESTABLISH SSH CONNECTION WITH ssh_citrix_adc FOR USER: {0}, cmd: {1}".format(self._play_context.remote_user, cmd)
-        display.vvv(msg, host=self._play_context.remote_addr)
-
-        # -tt can cause various issues in some environments so allow the user
-        # to disable it as a troubleshooting method.
-        use_tty = self.get_option('use_tty')
-
-        if not in_data and sudoable and use_tty:
-            args = (ssh_executable, '-tt', self.host, cmd)
-        else:
-            args = (ssh_executable, self.host, cmd)
-
-        cmd = self._build_command(*args)
-        (returncode, stdout, stderr) = self._run(cmd, in_data, sudoable=sudoable)
-
-    ##################################
-        # Removing the stdout 'Done' from citrix adc cli
-        # that can cause errors in calling scp with Done/ as
-        # first folder.
-
-        stdout = stdout.replace(" Done\n", '')
-    #################################
-        return (returncode, stdout, stderr)
+        return super(Connection, self).exec_command(cmd, in_data=in_data, sudoable=sudoable)

@@ -8,6 +8,14 @@ Citrix.Adc Release Notes
 v1.0.0
 ======
 
+New Plugins
+-----------
+
+Connection
+~~~~~~~~~~
+
+- citrix.adc.ssh_citrix_adc - connect via ssh client binary with Citrix ADC bypassing the cli
+
 New Modules
 -----------
 
@@ -29,16 +37,16 @@ New Modules
 - citrix.adc.citrix_adc_cs_action - Manage content switching actions
 - citrix.adc.citrix_adc_cs_policy - Manage content switching policy
 - citrix.adc.citrix_adc_cs_vserver - Manage content switching vserver
-- citrix.adc.citrix_adc_gslb_service - Manage gslb service entities in Netscaler.
-- citrix.adc.citrix_adc_gslb_site - Manage gslb site entities in Netscaler.
-- citrix.adc.citrix_adc_gslb_vserver - Configure gslb vserver entities in Netscaler.
+- citrix.adc.citrix_adc_gslb_service - Manage gslb service entities in Citrix ADC.
+- citrix.adc.citrix_adc_gslb_site - Manage gslb site entities in Citrix ADC.
+- citrix.adc.citrix_adc_gslb_vserver - Configure gslb vserver entities in Citrix ADC.
 - citrix.adc.citrix_adc_lb_monitor - Manage load balancing monitors
 - citrix.adc.citrix_adc_lb_vserver - Manage load balancing vserver configuration
-- citrix.adc.citrix_adc_nitro_request - Issue Nitro API requests to a Netscaler instance.
+- citrix.adc.citrix_adc_nitro_request - Issue Nitro API requests to a Citrix ADC instance.
 - citrix.adc.citrix_adc_nitro_resource - Manage NITRO resources
 - citrix.adc.citrix_adc_password_reset - Perform default password reset.
-- citrix.adc.citrix_adc_save_config - Save Netscaler configuration.
+- citrix.adc.citrix_adc_save_config - Save Citrix ADC configuration.
 - citrix.adc.citrix_adc_server - Manage server configuration
-- citrix.adc.citrix_adc_service - Manage service configuration in Netscaler
-- citrix.adc.citrix_adc_servicegroup - Manage service group configuration in Netscaler
+- citrix.adc.citrix_adc_service - Manage service configuration in Citrix ADC
+- citrix.adc.citrix_adc_servicegroup - Manage service group configuration in Citrix ADC
 - citrix.adc.citrix_adc_ssl_certkey - Manage ssl cerificate keys.
