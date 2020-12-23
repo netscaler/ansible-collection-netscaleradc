@@ -56,13 +56,13 @@ releases:
     - description: Manage content switching vserver
       name: citrix_adc_cs_vserver
       namespace: ''
-    - description: Manage gslb service entities in Netscaler.
+    - description: Manage gslb service entities in Citrix ADC.
       name: citrix_adc_gslb_service
       namespace: ''
-    - description: Manage gslb site entities in Netscaler.
+    - description: Manage gslb site entities in Citrix ADC.
       name: citrix_adc_gslb_site
       namespace: ''
-    - description: Configure gslb vserver entities in Netscaler.
+    - description: Configure gslb vserver entities in Citrix ADC.
       name: citrix_adc_gslb_vserver
       namespace: ''
     - description: Manage load balancing monitors
@@ -71,7 +71,7 @@ releases:
     - description: Manage load balancing vserver configuration
       name: citrix_adc_lb_vserver
       namespace: ''
-    - description: Issue Nitro API requests to a Netscaler instance.
+    - description: Issue Nitro API requests to a Citrix ADC instance.
       name: citrix_adc_nitro_request
       namespace: ''
     - description: Manage NITRO resources
@@ -80,19 +80,24 @@ releases:
     - description: Perform default password reset.
       name: citrix_adc_password_reset
       namespace: ''
-    - description: Save Netscaler configuration.
+    - description: Save Citrix ADC configuration.
       name: citrix_adc_save_config
       namespace: ''
     - description: Manage server configuration
       name: citrix_adc_server
       namespace: ''
-    - description: Manage service configuration in Netscaler
+    - description: Manage service configuration in Citrix ADC
       name: citrix_adc_service
       namespace: ''
-    - description: Manage service group configuration in Netscaler
+    - description: Manage service group configuration in Citrix ADC
       name: citrix_adc_servicegroup
       namespace: ''
     - description: Manage ssl cerificate keys.
       name: citrix_adc_ssl_certkey
       namespace: ''
-    release_date: '2020-11-11'
+    plugins:
+      connection:
+      - description: connect via ssh client binary with Citrix ADC bypassing the cli
+        name: ssh_citrix_adc
+        namespace: null
+    release_date: '2020-12-23'
