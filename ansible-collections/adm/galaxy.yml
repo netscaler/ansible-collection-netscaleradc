@@ -14,7 +14,7 @@ authors:
 
 description: Citrix ADM modules
 
-license: GPL-3.0-only
+license: MIT License
 tags:
   - networking
   - citrix
