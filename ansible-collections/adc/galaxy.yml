@@ -10,8 +10,11 @@ authors:
 repository: https://github.com/citrix/citrix-adc-ansible-modules
 issues: https://github.com/citrix/citrix-adc-ansible-modules/issues
 
-description: Citrix ADC modules
-license: GPL-3.0-only
+description: Citrix ADC modules for Ansible
+documentation: |
+  https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs.
+  Sample Playbooks to get you started can be found here - https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples.
+license: MIT License
 tags:
   - networking
   - citrix
