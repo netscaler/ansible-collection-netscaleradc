@@ -68,5 +68,4 @@ Or use the collections playbook parameter to search for unqualified module names
 
 ## Author Information
 
-Citrix
 [Citrix](https://www.citrix.com)
