@@ -1,6 +1,10 @@
 # citrix.adc
 
-This collection contains the Citrx ADC modules for ansible. It also contains playbooks plugins and roles.
+This collection contains the Citrix ADC modules for ansible.
+
+It also contains the ssh connection plugin for Citrix ADC.
+
+Sample playbooks can be found in the GitHub [repository](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples).
 
 ## Requirements
 
@@ -26,7 +30,7 @@ To use a module from a collection, reference the full collection namespace.
   tasks:
     - name: Set server
       delegate_to: localhost
-      citrix.adc
+      citrix.adc.citrix_adc_server
         nsip: "{{ nsip }}"
         nitro_user: "{{ nitro_user }}"
         nitro_pass: "{{ nitro_pass }}"
@@ -38,7 +42,7 @@ To use a module from a collection, reference the full collection namespace.
 
 ```
 
-Or use the collections playbook parameter to search for unquallified module names
+Or use the collections playbook parameter to search for unqualified module names
 
 ```yaml
 ---
