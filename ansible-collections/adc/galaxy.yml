@@ -14,7 +14,7 @@ description: Citrix ADC modules for Ansible
 documentation: |
   https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs.
   Sample Playbooks to get you started can be found here - https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples.
-license: MIT License
+license: MIT
 tags:
   - networking
   - citrix
