@@ -1,0 +1,36 @@
+- hosts: citrix_adc
+
+  vars:
+    max_clients: 5
+  gather_facts: False
+  collections:
+    - citrix.adc
+
+  tasks:
+    - name: Setup binding
+      delegate_to: localhost
+      citrix_adc_sslprofile_sslcipher_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        validate_certs: no
+        state: present
+
+        name: test_ssl_profile
+        ciphername: DTLS_FIPS
+        cipherpriority: "5"
+
+    - name: Setup binding
+      delegate_to: localhost
+      citrix_adc_sslprofile_sslcipher_binding:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        validate_certs: no
+        state: present
+
+        name: test_ssl_profile
+        ciphername: TLS1.3-AES128-GCM-SHA256
+        cipherpriority: "10"

@@ -1,0 +1,29 @@
+- hosts: citrix_adc
+
+  vars:
+    max_clients: 5
+  gather_facts: False
+
+  vars_files:
+    - ../deps/workflows.yaml
+  collections:
+    - citrix.adc
+
+  tasks:
+    - name: Setup binding
+      delegate_to: localhost
+      citrix_adc_nitro_resource:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+
+        validate_certs: no
+
+        state: present
+
+        workflow: "{{ workflow.sslvserver_sslcertkey_binding }}"
+
+        resource:
+          vservername: test_ssl
+          certkeyname: cert2
+          snicert: true

@@ -477,3 +477,80 @@ workflow:
       - ocspcheck
       - ca
       - snicert
+
+  sslvserver:
+    lifecycle: object
+    endpoint: sslvserver
+    primary_id_attribute: vservername
+    resource_missing_errorcode: 461
+    allow_recreate: true
+    non_updateable_attributes: []
+
+  sslprofile:
+    lifecycle: object
+    endpoint: sslprofile
+    primary_id_attribute: name
+    resource_missing_errorcode: 3248
+    allow_recreate: true
+    non_updateable_attributes:
+      - sslprofiletype
+
+  sslprofile_sslcipher_binding:
+    lifecycle: binding
+    endpoint: sslprofile_sslcipher_binding
+    bound_resource_missing_errorcode: 3248
+    primary_id_attribute: name
+    delete_id_attributes:
+      - ciphername
+
+  policypatset:
+    lifecycle: non_updateable_object
+    endpoint: policypatset
+    primary_id_attribute: name
+    resource_missing_errorcode: 2823
+    delete_id_attributes: []
+
+  policypatset_pattern_binding:
+    lifecycle: binding
+    endpoint: policypatset_pattern_binding
+    bound_resource_missing_errorcode: 2823
+    primary_id_attribute: name
+    delete_id_attributes:
+      - String
+
+  transformprofile:
+    lifecycle: object
+    endpoint: transformprofile
+    primary_id_attribute: name
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes: []
+
+  transformaction:
+    lifecycle: object
+    endpoint: transformaction
+    primary_id_attribute: name
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes:
+      - profilename
+
+  transformpolicy:
+    lifecycle: object
+    endpoint: transformpolicy
+    primary_id_attribute: name
+    resource_missing_errorcode: 2054
+    allow_recreate: true
+    non_updateable_attributes:
+      - newname
+
+  dnssoarec:
+    lifecycle: object
+    endpoint: dnssoarec
+    primary_id_attribute: domain
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes:
+      - ecssubnet
+      - type
+      - nodeid
