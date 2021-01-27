@@ -201,7 +201,7 @@ nitro_info:
     description:
         - The result of the nitro request.
         - If no data were found an empty list will be returned.
-        - Depending on the endpoint this will either be a list of dictionaries or a standalone dictionary. 
+        - Depending on the endpoint this will either be a list of dictionaries or a standalone dictionary.
     type: list
 '''
 
