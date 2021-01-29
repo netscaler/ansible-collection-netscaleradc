@@ -956,7 +956,8 @@ class NitroAPICaller(object):
             method='POST',
             timeout=timeout,
         )
-        self._module.debug(r, info)
+        self._module.debug(r)
+        self._module.debug(info)
 
         result = {}
         self.edit_response_data(r, info, result, success_status=200)
