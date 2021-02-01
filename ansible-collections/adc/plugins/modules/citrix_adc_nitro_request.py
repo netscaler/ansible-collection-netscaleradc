@@ -153,6 +153,13 @@ options:
             - The action to perform when the I(operation) value is set to C(action).
             - Some common values for this parameter are C(enable), C(disable), C(rename).
 
+    mas_proxy_call:
+        description:
+            - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
+            - "When true you must also define the following options: I(nitro_auth_token), I(instance_ip)."
+        type: bool
+        default: false
+
     instance_ip:
         type: str
         description:
@@ -418,6 +425,11 @@ class NitroAPICaller(object):
             default=[0],
         ),
         action=dict(type='str'),
+
+        mas_proxy_call=dict(
+            default=False,
+            type='bool'
+        ),
         instance_ip=dict(type='str'),
         instance_name=dict(type='str'),
         instance_id=dict(type='str'),
@@ -456,12 +468,13 @@ class NitroAPICaller(object):
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
 
         # Do header manipulation when doing a MAS proxy call
-        if self._module.params['instance_ip'] is not None:
-            self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_IP'] = self._module.params['instance_ip']
-        elif self._module.params['instance_name'] is not None:
-            self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_NAME'] = self._module.params['instance_name']
-        elif self._module.params['instance_id'] is not None:
-            self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_ID'] = self._module.params['instance_id']
+        if self._module.params.get('mas_proxy_call') is not None and self._module.params.get('mas_proxy_call'):
+            if self._module.params['instance_ip'] is not None:
+                self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_IP'] = self._module.params['instance_ip']
+            elif self._module.params['instance_name'] is not None:
+                self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_NAME'] = self._module.params['instance_name']
+            elif self._module.params['instance_id'] is not None:
+                self._headers['_MPS_API_PROXY_MANAGED_INSTANCE_ID'] = self._module.params['instance_id']
 
     def edit_response_data(self, r, info, result, success_status):
         # Search for body in both http body and http data
