@@ -503,6 +503,10 @@ workflow:
     delete_id_attributes:
       - ciphername
 
+  sslparameter:
+    lifecycle: parameter_object
+    endpoint: sslparameter
+
   policypatset:
     lifecycle: non_updateable_object
     endpoint: policypatset
@@ -554,3 +558,55 @@ workflow:
       - ecssubnet
       - type
       - nodeid
+
+  nsacl:
+    lifecycle: object
+    endpoint: nsacl
+    primary_id_attribute: aclname
+    resource_missing_errorcode: 258
+    skip_attributes:
+      - srcip
+      - srcport
+      - destip
+      - destport
+    allow_recreate: true
+    non_updateable_attributes:
+      - td
+      - ttl
+      - state
+      - type
+      - newname
+
+  ntpserver:
+    lifecycle: object_by_args
+    endpoint: ntpserver
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes: []
+    delete_id_attributes:
+      - servername
+      - serverip
+
+  ntpparam:
+    lifecycle: parameter_object
+    endpoint: ntpparam
+
+  snmpmanager:
+    lifecycle: object_by_args
+    endpoint: snmpmanager
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes: []
+    delete_id_attributes:
+      - ipaddress
+      - netmask
+
+  systemuser:
+    lifecycle: object
+    endpoint: systemuser
+    primary_id_attribute: username
+    resource_missing_errorcode: 2626
+    allow_recreate: true
+    skip_attributes:
+      - password
+    non_updateable_attributes: []
