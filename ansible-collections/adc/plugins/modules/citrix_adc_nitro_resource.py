@@ -177,6 +177,10 @@ class ModuleExecutor(object):
             return self.bindings_list_exists()
         elif self.lifecycle == 'non_updateable_object':
             return self.non_updateable_object_exists()
+        elif self.lifecycle == 'object_by_args':
+            return self.object_by_args_exists()
+        elif self.lifecycle == 'parameter_object':
+            return self.parameter_object_exists()
         else:
             msg = 'Unrecognized lifecycle value "%s"' % self.lifecycle
             self.module.fail_json(msg=msg, **self.module_result)
@@ -191,6 +195,10 @@ class ModuleExecutor(object):
             return self.bindings_list_identical()
         elif self.lifecycle == 'non_updateable_object':
             return self.non_updateable_object_identical()
+        elif self.lifecycle == 'object_by_args':
+            return self.object_by_args_identical()
+        elif self.lifecycle == 'parameter_object':
+            return self.parameter_object_identical()
 
     def resource_create(self):
         log('ModuleExecutor.resource_create()')
@@ -202,6 +210,10 @@ class ModuleExecutor(object):
             self.bindings_list_create()
         elif self.lifecycle == 'non_updateable_object':
             return self.non_updateable_object_create()
+        elif self.lifecycle == 'object_by_args':
+            self.object_by_args_create()
+        elif self.lifecycle == 'parameter_object':
+            self.parameter_object_create()
 
     def resource_update(self):
         log('ModuleExecutor.resource_update()')
@@ -213,6 +225,10 @@ class ModuleExecutor(object):
             self.bindings_list_update()
         elif self.lifecycle == 'non_updateable_object':
             return self.non_updateable_object_update()
+        elif self.lifecycle == 'object_by_args':
+            self.object_by_args_update()
+        elif self.lifecycle == 'parameter_object':
+            self.parameter_object_update()
 
     def resource_delete(self):
         log('ModuleExecutor.resource_delete()')
@@ -224,6 +240,10 @@ class ModuleExecutor(object):
             self.bindings_list_delete()
         elif self.lifecycle == 'non_updateable_object':
             return self.non_updateable_object_delete()
+        elif self.lifecycle == 'object_by_args':
+            self.object_by_args_delete()
+        elif self.lifecycle == 'parameter_object':
+            self.parameter_object_delete()
 
     def binding_matches_id_attributes(self, binding):
         log('ModuleExecutor.binding_matches_id_attributes()')
@@ -611,7 +631,12 @@ class ModuleExecutor(object):
         if self.retrieved_object is None:
             raise Exception('Should have a retrieved object by now.')
 
+        skip_attributes = self.module.params['workflow'].get('skip_attributes', [])
         for attribute in self.module.params['resource'].keys():
+            # Skip attributes
+            if attribute in skip_attributes:
+                continue
+
             configured_value = self.module.params['resource'][attribute]
             retrieved_value = self.retrieved_object.get(attribute)
             if configured_value != retrieved_value:
@@ -711,6 +736,60 @@ class ModuleExecutor(object):
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
+
+    def object_by_args_exists(self):
+        log('ModuleExecutor.object_exists()')
+
+        resource_missing_errorcode = self.module.params['workflow'].get('resource_missing_errorcode')
+        log('resource missing errorcode %s' % resource_missing_errorcode)
+
+        if resource_missing_errorcode is None:
+            msg = 'object_by_args lifecycle requires resource_missing_errorcode workflow parameter'
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        # We need to id the object through args
+        # We use the delete ids for get as well
+        args = {}
+        for key in self.module.params['workflow'].get('delete_id_attributes', []):
+            if key in self.module.params['resource']:
+                args[key] = self.module.params['resource'][key]
+
+        result = self.fetcher.get(self.endpoint, args=args)
+
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+
+            if self.endpoint not in result['data']:
+                return False
+            elif len(result['data'][self.endpoint]) > 1:
+                raise Exception("Multiple objects retrieved. Should only be one.")
+            else:
+                self.retrieved_object = result['data'][self.endpoint][0]
+                return True
+        elif result['nitro_errorcode'] == resource_missing_errorcode:
+            return False
+        else:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def object_by_args_identical(self):
+        log('ModuleExecutor.object_by_args_identical()')
+        return self.object_identical()
+
+    def object_by_args_create(self):
+        log('ModuleExecutor.object_by_args_create()')
+        self.object_create()
+
+    def object_by_args_update(self):
+        log('ModuleExecutor.object_by_args_update()')
+        self.object_update()
+
+    def object_by_args_delete(self):
+        log('ModuleExecutor.object_by_args_delete()')
+        self.object_delete()
 
     def non_updateable_object_exists(self):
         log('ModuleExecutor.non_updateable_object_exists()')
@@ -826,6 +905,55 @@ class ModuleExecutor(object):
                 message=result.get('nitro_message'),
                 severity=result.get('nitro_severity'),
             )
+
+    def parameter_object_exists(self):
+        log('ModuleExecutor.parameter_object_exists()')
+
+        result = self.fetcher.get(self.endpoint)
+
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+            if self.endpoint not in result['data']:
+                msg = 'Parameter object does not exist'
+                self.fail_json(msg=msg, **self.module_result)
+            else:
+                self.retrieved_object = result['data'][self.endpoint]
+
+                if not isinstance(self.retrieved_object, dict):
+                    msg = 'Expected dict. Got instead %s' % type(self.retrieved_object)
+                    self.fail_json(msg=msg, **self.module_result)
+                # Fallthrough
+
+                return True
+        else:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+        # Parameter object always exists
+        # We just adjust some values through the update method
+        return True
+
+    def parameter_object_identical(self):
+        log('ModuleExecutor.parameter_object_identical()')
+        return self.object_identical()
+
+    def parameter_object_create(self):
+        log('ModuleExecutor.parameter_object_create()')
+        # Since parameter_object_exists always returns true
+        # or errors out this code path should not be reachable
+        raise Exception('Create method should not be reachable for parameter_object')
+
+    def parameter_object_update(self):
+        log('ModuleExecutor.parameter_object_update()')
+        self.object_update()
+
+    def parameter_object_delete(self):
+        log('ModuleExecutor.parameter_object_delete()')
+        # This is noop for this kind of object
+        # You cannot delete the parameter configuration
 
     def update_or_create_resource(self):
         log('ModuleExecutor.update_or_create_resource()')
