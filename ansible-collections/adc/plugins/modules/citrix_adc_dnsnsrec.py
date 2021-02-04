@@ -74,6 +74,16 @@ extends_documentation_fragment: citrix.adc.citrixadc
 '''
 
 EXAMPLES = '''
+- name: Setup dnsnsrec
+  delegate_to: localhost
+  citrix_adc_dnsnsrec:
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    nsip: 10.78.22.44
+
+    domain: test.com
+    nameserver: 10.3.3.4
+    ttl: 1111
 '''
 
 RETURN = '''
