@@ -1,0 +1,185 @@
+:orphan:
+
+.. _citrix_adc_sslcipher_module:
+
+citrix_adc_sslcipher - Manage custom SSL ciphers
+++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. versionadded:: 1.1.0
+
+.. contents::
+   :local:
+   :depth: 2
+
+Synopsis
+--------
+- Manage custom SSL ciphers
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
+
+
+
+
+Parameters
+----------
+
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
+
+    * - Parameter
+      - Choices/Defaults
+      - Comment
+    * - ciphergroupname
+
+        *(str)*
+      -
+      - Name for the user-defined cipher group. Must begin with an ASCII alphanumeric or underscore (_) and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), (=), and hyphen (-) characters. Cannot be changed after the cipher group is created.
+
+        The following requirement applies only to the Citrix ADC CLI:
+
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my ciphergroup" or 'my ciphergroup').
+
+        Minimum length =  1
+    * - instance_ip
+
+        *(str)*
+
+        *(added in 2.6.0)*
+      -
+      - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
+
+        It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - mas_proxy_call
+
+        *(bool)*
+
+        *(added in 2.6.0)*
+      - Default:
+
+        *False*
+      - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
+
+        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+    * - nitro_auth_token
+
+        *(str)*
+
+        *(added in 2.6.0)*
+      -
+      - The authentication token provided by a login operation.
+    * - nitro_pass
+
+        *(str)*
+      -
+      - The password with which to authenticate to the Citrix ADC node.
+    * - nitro_protocol
+
+        *(str)*
+      - Choices:
+
+          - http
+          - https (*default*)
+      - Which protocol to use when accessing the nitro API objects.
+    * - nitro_timeout
+
+        *(float)*
+      - Default:
+
+        *310*
+      - Time in seconds until a timeout error is thrown when establishing a new session with Citrix ADC
+    * - nitro_user
+
+        *(str)*
+      -
+      - The username with which to authenticate to the Citrix ADC node.
+    * - nsip
+
+        *(str)*
+      -
+      - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
+
+        The port can be specified with the colon (:). E.g. 192.168.1.1:555.
+    * - save_config
+
+        *(bool)*
+      - Default:
+
+        *True*
+      - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
+
+        The module will not save the configuration on the Citrix ADC node if it made no changes.
+    * - state
+
+        *(str)*
+      - Choices:
+
+          - present (*default*)
+          - absent
+      - The state of the resource being configured by the module on the Citrix ADC node.
+
+        When present the resource will be created if needed and configured according to the module's parameters.
+
+        When absent the resource will be deleted from the Citrix ADC node.
+    * - validate_certs
+
+        *(bool)*
+      - Default:
+
+        *yes*
+      - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+
+
+
+Examples
+--------
+
+.. code-block:: yaml+jinja
+    
+    - name: Setup cipher
+      delegate_to: localhost
+      citrix_adc_sslcipher:
+        nsip: 10.79.22.22
+        nitro_user: nsroot
+        nitro_pass: nsroot
+    
+        state: present
+    
+        ciphergroupname: test_cipher
+
+
+Return Values
+-------------
+.. list-table::
+    :widths: 10 10 60
+    :header-rows: 1
+
+    * - Key
+      - Returned
+      - Description
+    * - diff
+
+        *(dict)*
+      - failure
+      - List of differences between the actual configured object and the configuration specified in the module
+
+        **Sample:**
+
+        {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'}
+    * - loglines
+
+        *(list)*
+      - always
+      - list of logged messages by the module
+
+        **Sample:**
+
+        ['message 1', 'message 2']
+    * - msg
+
+        *(str)*
+      - failure
+      - Message detailing the failure reason
+
+        **Sample:**
+
+        Action does not exist
