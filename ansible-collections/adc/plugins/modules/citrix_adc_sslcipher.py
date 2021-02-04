@@ -62,6 +62,16 @@ extends_documentation_fragment: citrix.adc.citrixadc
 '''
 
 EXAMPLES = '''
+- name: Setup cipher
+  delegate_to: localhost
+  citrix_adc_sslcipher:
+    nsip: 10.79.22.22
+    nitro_user: nsroot
+    nitro_pass: nsroot
+
+    state: present
+
+    ciphergroupname: test_cipher
 '''
 
 RETURN = '''
