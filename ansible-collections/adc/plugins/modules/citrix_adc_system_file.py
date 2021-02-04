@@ -31,7 +31,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: citrix_adc_systemfile
+module: citrix_adc_system_file
 short_description: Upload systemfile to ADC
 description:
     - Upload systemfile to ADC
@@ -70,6 +70,18 @@ extends_documentation_fragment: citrix.adc.citrixadc
 '''
 
 EXAMPLES = '''
+- name: Setup file
+  delegate_to: localhost
+  citrix.adc.citrix_adc_system_file:
+    nitro_user: nsroot
+    nitro_pass: nsroot
+    nsip: 10.78.33.22
+
+    state: present
+
+    filelocation: /var/tmp
+    filename: testfile.txt
+    filecontent: "Some file content"
 '''
 
 RETURN = '''

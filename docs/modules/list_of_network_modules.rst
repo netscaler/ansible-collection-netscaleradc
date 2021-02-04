@@ -23,11 +23,13 @@ Network modules
   * :ref:`citrix_adc_cs_action_module`
   * :ref:`citrix_adc_cs_policy_module`
   * :ref:`citrix_adc_cs_vserver_module`
+  * :ref:`citrix_adc_dnsnsrec_module`
   * :ref:`citrix_adc_gslb_service_module`
   * :ref:`citrix_adc_gslb_site_module`
   * :ref:`citrix_adc_gslb_vserver_module`
   * :ref:`citrix_adc_lb_monitor_module`
   * :ref:`citrix_adc_lb_vserver_module`
+  * :ref:`citrix_adc_nitro_info_module`
   * :ref:`citrix_adc_nitro_request_module`
   * :ref:`citrix_adc_nitro_resource_module`
   * :ref:`citrix_adc_password_reset_module`
@@ -36,6 +38,10 @@ Network modules
   * :ref:`citrix_adc_service_module`
   * :ref:`citrix_adc_servicegroup_module`
   * :ref:`citrix_adc_ssl_certkey_module`
+  * :ref:`citrix_adc_sslcipher_module`
+  * :ref:`citrix_adc_sslcipher_sslciphersuite_binding_module`
+  * :ref:`citrix_adc_sslprofile_sslcipher_binding_module`
+  * :ref:`citrix_adc_system_file_module`
   * :ref:`citrix_adm_application_module`
   * :ref:`citrix_adm_dns_domain_entry_module`
   * :ref:`citrix_adm_login_module`
