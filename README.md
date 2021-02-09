@@ -80,18 +80,25 @@ Included in the `citrix.adc` collection
 * citrix\_adc\_cs\_action - Manage content switching actions
 * citrix\_adc\_cs\_policy - Manage content switching policy
 * citrix\_adc\_cs\_vserver - Manage content switching vserver
+* citrix\_adc\_dnsnsrec - Configuration for name server record resource
 * citrix\_adc\_gslb\_service - Manage gslb service entities in Citrix ADC
 * citrix\_adc\_gslb\_site - Manage gslb site entities in Citrix ADC
 * citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Citrix ADC
 * citrix\_adc\_lb\_monitor - Manage load balancing monitors
 * citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
+* citrix\_adc\_nitro\_info - Retrieve information from various NITRO API endpoints
 * citrix\_adc\_nitro\_request - Issue Nitro API requests to a Citrix ADC instance
 * citrix\_adc\_nitro\_resource - Create, update, delete resources on Citrix ADC
+* citrix\_adc\_password\_reset - Perform default password reset
 * citrix\_adc\_save\_config - Save Citrix ADC configuration
 * citrix\_adc\_server - Manage server configuration
 * citrix\_adc\_service - Manage service configuration in Citrix ADC
 * citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
 * citrix\_adc\_ssl\_certkey - Manage ssl certificate keys
+* citrix\_adc\_sslcipher - Manage custom SSL ciphers
+* citrix\_adc\_sslcipher\_sslciphersuite\_binding - Manage SSL cipher and SSL ciphersuite bindings
+* citrix\_adc\_sslprofile\_sslcipher\_binding - Manage SSL profile and SSL cipher bindings
+* citrix\_adc\_system\_file - Upload systemfile to ADC
 
 
 ### ADM modules
