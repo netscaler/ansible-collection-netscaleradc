@@ -29,46 +29,43 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_service
 short_description: Manage service configuration in Citrix ADC
 description:
     - Manage service configuration in Citrix ADC.
-    - This module allows the creation, deletion and modification of Citrix ADC services.
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
-    - This module supports check mode.
 
 version_added: "1.0.0"
 
-author: George Nikolopoulos (@giorgos-nikolopoulos)
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
     name:
-        type: str
         description:
             - >-
-                Name for the service. Must begin with an ASCII alphabetic or underscore C(_) character, and must
-                contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space C( ), colon C(:), at C(@), equals
-                C(=), and hyphen C(-) characters. Cannot be changed after the service has been created.
-            - "Minimum length = 1"
+                Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must
+                only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and
+                (-) characters. Cannot be changed after the service has been created.
+            - "Minimum length =  1"
+        type: str
 
     ip:
-        type: str
         description:
             - "IP to assign to the service."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
 
     servername:
-        type: str
         description:
             - "Name of the server that hosts the service."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
 
     servicetype:
-        type: str
         choices:
             - 'HTTP'
             - 'FTP'
@@ -107,300 +104,401 @@ options:
             - 'SYSLOGUDP'
             - 'FIX'
             - 'SSL_FIX'
+            - 'USER_TCP'
+            - 'USER_SSL_TCP'
+            - 'QUIC'
+            - 'IPFIX'
+            - 'LOGSTREAM'
         description:
             - "Protocol in which data is exchanged with the service."
+        type: str
 
     port:
-        type: int
         description:
             - "Port number of the service."
             - "Range 1 - 65535"
             - "* in CLI is represented as 65535 in NITRO API"
+        type: int
 
     cleartextport:
-        type: int
         description:
             - >-
                 Port to which clear text data must be sent after the appliance decrypts incoming SSL traffic.
-                Applicable to transparent SSL services.
-            - "Minimum value = 1"
+                to transparent SSL services.
+            - "Minimum value = C(1)"
+        type: int
 
     cachetype:
-        type: str
         choices:
             - 'TRANSPARENT'
             - 'REVERSE'
             - 'FORWARD'
         description:
             - "Cache type supported by the cache server."
+        type: str
 
     maxclient:
-        type: float
         description:
             - "Maximum number of simultaneous open connections to the service."
-            - "Minimum value = 0"
-            - "Maximum value = 4294967294"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4294967294)"
+        type: str
 
     healthmonitor:
-        type: bool
         description:
-            - "Monitor the health of this service"
-        default: yes
+            - "Monitor the health of this service. Available settings function as follows:"
+            - "YES - Send probes to check the health of the service."
+            - >-
+                NO - Do not send probes to check the health of the service. With the NO option, the appliance shows
+                service as UP at all times.
+        type: bool
 
     maxreq:
-        type: float
         description:
             - "Maximum number of requests that can be sent on a persistent connection to the service."
             - "Note: Connection requests beyond this value are rejected."
-            - "Minimum value = 0"
-            - "Maximum value = 65535"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
+        type: str
 
     cacheable:
-        type: bool
         description:
             - "Use the transparent cache redirection virtual server to forward requests to the cache server."
             - "Note: Do not specify this parameter if you set the Cache Type parameter."
-        default: no
+        type: bool
 
     cip:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6
-                address as its value. Used if the server needs the client's IP address for security, accounting, or
-                other purposes, and setting the Use Source IP parameter is not a viable option.
+                as its value. Used if the server needs the client's IP address for security, accounting, or other
+                and setting the Use Source IP parameter is not a viable option.
+        type: str
 
     cipheader:
-        type: str
         description:
             - >-
                 Name for the HTTP header whose value must be set to the IP address of the client. Used with the
-                Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the
-                header, the appliance uses the header name specified for the global Client IP Header parameter (the
-                cipHeader parameter in the set ns param CLI command or the Client IP Header parameter in the
-                Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters). If the global
-                Client IP Header parameter is not specified, the appliance inserts a header with the name
-                "client-ip.".
-            - "Minimum length = 1"
+                IP parameter. If you set the Client IP parameter, and you do not specify a name for the header, the
+                uses the header name specified for the global Client IP Header parameter (the cipHeader parameter in
+                set ns param CLI command or the Client IP Header parameter in the Configure HTTP Parameters dialog
+                at System > Settings > Change HTTP parameters). If the global Client IP Header parameter is not
+                the appliance inserts a header with the name "client-ip.".
+            - "Minimum length =  1"
+        type: str
 
     usip:
-        type: bool
         description:
             - >-
                 Use the client's IP address as the source IP address when initiating a connection to the server. When
-                creating a service, if you do not set this parameter, the service inherits the global Use Source IP
-                setting (available in the enable ns mode and disable ns mode CLI commands, or in the System >
-                Settings > Configure modes > Configure Modes dialog box). However, you can override this setting
-                after you create the service.
+                a service, if you do not set this parameter, the service inherits the global Use Source IP setting
+                in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes
+                Configure Modes dialog box). However, you can override this setting after you create the service.
+        type: bool
+
+    pathmonitor:
+        description:
+            - "Path monitoring for clustering."
+        type: bool
+
+    pathmonitorindv:
+        description:
+            - "Individual Path monitoring decisions."
+        type: bool
 
     useproxyport:
-        type: bool
         description:
             - >-
                 Use the proxy port as the source port when initiating connections with the server. With the NO
-                setting, the client-side connection port is used as the source port for the server-side connection.
+                the client-side connection port is used as the source port for the server-side connection.
             - "Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES."
+        type: bool
+
+    sc:
+        description:
+            - "State of SureConnect for the service."
+        type: bool
 
     sp:
-        type: bool
         description:
             - "Enable surge protection for the service."
+        type: bool
 
     rtspsessionidremap:
-        type: bool
         description:
             - "Enable RTSP session ID mapping for the service."
-        default: off
+        type: bool
 
     clttimeout:
-        type: float
         description:
             - "Time, in seconds, after which to terminate an idle client connection."
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
+        type: int
 
     svrtimeout:
-        type: float
         description:
             - "Time, in seconds, after which to terminate an idle server connection."
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
+        type: int
 
     customserverid:
-        type: str
         description:
             - >-
                 Unique identifier for the service. Used when the persistency type for the virtual server is set to
-                Custom Server ID.
-        default: 'None'
+                Server ID.
+        type: str
+
+    serverid:
+        description:
+            - "The  identifier for the service. This is used when the persistency type is set to Custom Server ID."
+        type: str
 
     cka:
-        type: bool
         description:
             - "Enable client keep-alive for the service."
+        type: bool
 
     tcpb:
-        type: bool
         description:
             - "Enable TCP buffering for the service."
+        type: bool
 
     cmp:
-        type: bool
         description:
             - "Enable compression for the service."
+        type: bool
 
     maxbandwidth:
-        type: float
         description:
             - "Maximum bandwidth, in Kbps, allocated to the service."
-            - "Minimum value = 0"
-            - "Maximum value = 4294967287"
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4294967287)"
+        type: str
 
     accessdown:
-        type: bool
         description:
             - >-
                 Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service
-                is DOWN, and this parameter is disabled, the packets are dropped.
-        default: no
+                DOWN, and this parameter is disabled, the packets are dropped.
+        type: bool
 
     monthreshold:
-        type: float
         description:
             - >-
                 Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to
-                mark a service as UP or DOWN.
-            - "Minimum value = 0"
-            - "Maximum value = 65535"
+                a service as UP or DOWN.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(65535)"
+        type: str
 
     downstateflush:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do
-                not enable this option for applications that must complete their transactions.
+                enable this option for applications that must complete their transactions.
+        type: str
 
     tcpprofilename:
-        type: str
         description:
             - "Name of the TCP profile that contains TCP configuration settings for the service."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     httpprofilename:
-        type: str
         description:
             - "Name of the HTTP profile that contains HTTP configuration settings for the service."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
+
+    contentinspectionprofilename:
+        description:
+            - >-
+                Name of the ContentInspection profile that contains IPS/IDS communication related setting for the
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
 
     hashid:
-        type: float
         description:
             - >-
                 A numerical identifier that can be used by hash based load balancing methods. Must be unique for each
-                service.
-            - "Minimum value = 1"
+            - "Minimum value = C(1)"
+        type: str
 
     comment:
-        type: str
         description:
             - "Any information about the service."
+        type: str
 
     appflowlog:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - "Enable logging of AppFlow information."
+        type: str
 
     netprofile:
-        type: str
         description:
             - "Network profile to use for the service."
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
+
+    td:
+        description:
+            - >-
+                Integer value that uniquely identifies the traffic domain in which you want to configure the entity.
+                you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of
+            - "Minimum value = C(0)"
+            - "Maximum value = C(4094)"
+        type: str
 
     processlocal:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 By turning on this option packets destined to a service in a cluster will not under go any steering.
-                Turn this option for single packet request response mode or when the upstream device is performing a
-                proper RSS for connection based distribution.
+                this option for single packet request response mode or when the upstream device is performing a
+                RSS for connection based distribution.
+        type: str
 
     dnsprofilename:
-        type: str
         description:
             - >-
                 Name of the DNS profile to be associated with the service. DNS profile properties will applied to the
-                transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.
-            - "Minimum length = 1"
-            - "Maximum length = 127"
+                processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.
+            - "Minimum length =  1"
+            - "Maximum length =  127"
+        type: str
+
+    monconnectionclose:
+        choices:
+            - 'RESET'
+            - 'FIN'
+        description:
+            - >-
+                Close monitoring connections by sending the service a connection termination message with the
+                bit set.
+        type: str
 
     ipaddress:
-        type: str
         description:
             - "The new IP address of the service."
+        type: str
+
+    weight:
+        description:
+            - >-
+                Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its
+                with the service determines how much the monitor contributes toward keeping the health of the service
+                the value configured for the Monitor Threshold parameter.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(100)"
+        type: str
+
+    monitor_name_svc:
+        description:
+            - "Name of the monitor bound to the specified service."
+            - "Minimum length =  1"
+        type: str
+
+    riseapbrstatsmsgcode:
+        description:
+            - "The code indicating the rise apbr status."
+        type: int
+
+    delay:
+        description:
+            - >-
+                Time, in seconds, allocated to the Citrix ADC for a graceful shutdown of the service. During this
+                new requests are sent to the service only for clients who already have persistent sessions on the
+                Requests from new clients are load balanced among other available services. After the delay time
+                no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
+        type: str
 
     graceful:
-        type: bool
         description:
             - >-
                 Shut down gracefully, not accepting any new connections, and disabling the service when all of its
-                connections are closed.
-        default: no
+                are closed.
+        type: bool
 
-    monitor_bindings:
-        type: list
-        elements: dict
+    all:
         description:
-            - A list of load balancing monitors to bind to this service.
-            - Each monitor entry is a dictionary which may contain the following options.
-            - Note that if not using the built in monitors they must first be setup.
-        suboptions:
-            monitorname:
-                description:
-                    - Name of the monitor.
-            weight:
-                description:
-                    - Weight to assign to the binding between the monitor and service.
-            dup_state:
-                choices:
-                    - 'enabled'
-                    - 'disabled'
-                description:
-                    - State of the monitor.
-                    - The state setting for a monitor of a given type affects all monitors of that type.
-                    - For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.
-                    - If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.
-            dup_weight:
-                description:
-                    - Weight to assign to the binding between the monitor and service.
+            - "Display both user-configured and dynamically learned services."
+        type: bool
+
+    Internal:
+        description:
+            - "Display only dynamically learned services."
+        type: bool
+
 
     disabled:
         description:
-            - When set to C(yes) the service state will be set to DISABLED.
-            - When set to C(no) the service state will be set to ENABLED.
-            - >-
-                Note that due to limitations of the underlying NITRO API a C(disabled) state change alone
-                does not cause the module result to report a changed status.
+            - When set to C(true) the service state will be set to C(disabled).
+            - When set to C(false) the service state will be set to C(enabled).
         type: bool
         default: false
 
+    ignore_monitors:
+        description:
+            - A list of monitor names to ignore when syncing monitors for the service
+            - Used to ignore default monitors that cannot be unbound from the service
+        type: list
+        default:
+            - tcp-default
+            - ping-default
+            - default-path-monitor
+
+    monitor_bindings:
+        description: A list of monitor to bind to the service
+        suboptions:
+            description: List of monitor bindings attributes.
+            type: list
+            elements: dict
+            suboptions:
+                monitor_name:
+                    description:
+                        - "The monitor Names."
+                    type: str
+                monstate:
+                    choices:
+                        - 'enabled'
+                        - 'disabled'
+                    description:
+                        - "The configured state (enable/disable) of the monitor on this server."
+                    type: str
+                weight:
+                    description:
+                        - >-
+                            Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its
+                            with the service determines how much the monitor contributes toward keeping the health of the service
+                            the value configured for the Monitor Threshold parameter.
+                        - "Minimum value = C(1)"
+                        - "Maximum value = C(100)"
+                    type: str
+                passive:
+                    description:
+                        - >-
+                            Indicates if load monitor is passive. A passive load monitor does not remove service from LB decision
+                            threshold is breached.
+                    type: bool
+
 extends_documentation_fragment: citrix.adc.citrixadc
-requirements:
-    - nitro python sdk
 '''
 
 EXAMPLES = '''
@@ -430,173 +528,566 @@ loglines:
     description: list of logged messages by the module
     returned: always
     type: list
-    sample: "['message 1', 'message 2']"
+    sample: ['message 1', 'message 2']
 
 diff:
     description: A dictionary with a list of differences between the actual configured object and the configuration specified in the module
+
+msg:
+    description: Message detailing the failure reason
     returned: failure
-    type: dict
-    sample: "{ 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }"
+    type: str
+    sample: "Action does not exist"
 '''
 
 import copy
-
-try:
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service import service
-    from nssrc.com.citrix.netscaler.nitro.resource.config.basic.service_lbmonitor_binding import service_lbmonitor_binding
-    from nssrc.com.citrix.netscaler.nitro.resource.config.lb.lbmonitor_service_binding import lbmonitor_service_binding
-    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-    PYTHON_SDK_IMPORTED = True
-except ImportError as e:
-    PYTHON_SDK_IMPORTED = False
-
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
-    ConfigProxy,
-    get_nitro_client,
+    NitroResourceConfig,
+    NitroException,
     netscaler_common_arguments,
     log,
     loglines,
-    get_immutables_intersection
+    NitroAPIFetcher
 )
 
+class ModuleExecutor(object):
 
-def service_exists(client, module):
-    if service.count_filtered(client, 'name:%s' % module.params['name']) > 0:
-        return True
-    else:
-        return False
+    def __init__(self, module):
+        self.module = module
+        self.fetcher = NitroAPIFetcher(self.module)
+        self.main_nitro_class = 'service'
 
+        # Dictionary containing attribute information
+        # for each NITRO object utilized by this module
+        self.attribute_config = {
+            'service': {
+                'attributes_list': [
+                    'name',
+                    'ip',
+                    'servername',
+                    'servicetype',
+                    'port',
+                    'cleartextport',
+                    'cachetype',
+                    'maxclient',
+                    'healthmonitor',
+                    'maxreq',
+                    'cacheable',
+                    'cip',
+                    'cipheader',
+                    'usip',
+                    'pathmonitor',
+                    'pathmonitorindv',
+                    'useproxyport',
+                    'sc',
+                    'sp',
+                    'rtspsessionidremap',
+                    'clttimeout',
+                    'svrtimeout',
+                    'customserverid',
+                    'serverid',
+                    'cka',
+                    'tcpb',
+                    'cmp',
+                    'maxbandwidth',
+                    'accessdown',
+                    'monthreshold',
+                    'downstateflush',
+                    'tcpprofilename',
+                    'httpprofilename',
+                    'contentinspectionprofilename',
+                    'hashid',
+                    'comment',
+                    'appflowlog',
+                    'netprofile',
+                    'td',
+                    'processlocal',
+                    'dnsprofilename',
+                    'monconnectionclose',
+                    'ipaddress',
+                    'weight',
+                    'monitor_name_svc',
+                    'riseapbrstatsmsgcode',
+                    'delay',
+                    'graceful',
+                    'all',
+                    'Internal',
+                ],
+                'transforms': {
+                    'healthmonitor': lambda v: 'YES' if v else 'NO',
+                    'cacheable': lambda v: 'YES' if v else 'NO',
+                    'cip': lambda v: v.upper(),
+                    'usip': lambda v: 'YES' if v else 'NO',
+                    'pathmonitor': lambda v: 'YES' if v else 'NO',
+                    'pathmonitorindv': lambda v: 'YES' if v else 'NO',
+                    'useproxyport': lambda v: 'YES' if v else 'NO',
+                    'sc': lambda v: 'ON' if v else 'OFF',
+                    'sp': lambda v: 'ON' if v else 'OFF',
+                    'rtspsessionidremap': lambda v: 'ON' if v else 'OFF',
+                    'cka': lambda v: 'YES' if v else 'NO',
+                    'tcpb': lambda v: 'YES' if v else 'NO',
+                    'cmp': lambda v: 'YES' if v else 'NO',
+                    'accessdown': lambda v: 'YES' if v else 'NO',
+                    'downstateflush': lambda v: v.upper(),
+                    'appflowlog': lambda v: v.upper(),
+                    'processlocal': lambda v: v.upper(),
+                    'graceful': lambda v: 'YES' if v else 'NO',
+                },
+                'get_id_attributes': [
+                    'name',
+                ],
+                'delete_id_attributes': [
+                    'name',
+                ],
+                'non_updateable_attributes': [
+                    'ip',
+                    'servername',
+                    'servicetype',
+                    'port',
+                    'cleartextport',
+                    'cachetype',
+                    'state',
+                    'td',
+                    'riseapbrstatsmsgcode',
+                    'delay',
+                    'graceful',
+                    'all',
+                    'Internal',
+                    'newname',
+                ],
+            },
+            'monitor_bindings': {
+                'attributes_list': [
+                    'monitor_name',
+                    'monstate',
+                    'weight',
+                    'passive',
+                ],
+                'transforms': {
+                    'monstate': lambda v: v.upper(),
+                    'weight': lambda v: str(v),
+                },
+                'get_id_attributes': [
+                    'name',
+                ],
+                'delete_id_attributes': [
+                    'monitor_name',
+                    'name',
+                ]
+            }
+        }
 
-def service_identical(client, module, service_proxy):
-    service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-    diff_dict = service_proxy.diff_object(service_list[0])
-    # the actual ip address is stored in the ipaddress attribute
-    # of the retrieved object
-    if 'ip' in diff_dict:
-        del diff_dict['ip']
-    if len(diff_dict) == 0:
-        return True
-    else:
-        return False
+        self.module_result = dict(
+            changed=False,
+            failed=False,
+            loglines=loglines,
+        )
 
+        self.calculate_configured_service()
+        self.calculate_configured_monitor_bindings()
 
-def diff(client, module, service_proxy):
-    service_list = service.get_filtered(client, 'name:%s' % module.params['name'])
-    diff_object = service_proxy.diff_object(service_list[0])
-    if 'ip' in diff_object:
-        del diff_object['ip']
-    return diff_object
+    def calculate_configured_service(self):
+        log('ModuleExecutor.calculate_configured_service()')
+        self.configured_service= {}
+        for attribute in self.attribute_config['service']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['service']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_service[attribute] = value
 
+        log('calculated configured service%s' % self.configured_service)
 
-def get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs):
-    bindings = {}
-    if module.params['monitor_bindings'] is not None:
-        for binding in module.params['monitor_bindings']:
-            attribute_values_dict = copy.deepcopy(binding)
-            # attribute_values_dict['servicename'] = module.params['name']
-            attribute_values_dict['servicegroupname'] = module.params['name']
-            binding_proxy = ConfigProxy(
-                actual=lbmonitor_service_binding(),
-                client=client,
-                attribute_values_dict=attribute_values_dict,
-                readwrite_attrs=monitor_bindings_rw_attrs,
-            )
-            key = binding_proxy.monitorname
-            bindings[key] = binding_proxy
-    return bindings
+    def calculate_configured_monitor_bindings(self):
+        log('ModuleExecutor.calculate_configured_monitor_bindings()')
+        self.configured_monitor_bindings = []
+        if self.module.params.get('monitor_bindings') is None:
+            return
 
+        for monitor_binding in self.module.params['monitor_bindings']:
+            member = {}
+            member['name'] = self.module.params['name']
+            for attribute in self.attribute_config['monitor_bindings']['attributes_list']:
+                # Disregard null values
+                value = monitor_binding.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['monitor_bindings']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                member[attribute] = value
+            self.configured_monitor_bindings.append(member)
+        log('calculated configured monitor bindings %s' % self.configured_monitor_bindings)
 
-def get_actual_monitor_bindings(client, module):
-    bindings = {}
-    if service_lbmonitor_binding.count(client, module.params['name']) == 0:
-        return bindings
+    def service_exists(self):
+        log('ModuleExecutor.service_exists()')
+        result = self.fetcher.get('service', self.module.params['name'])
 
-    # Fallthrough to rest of execution
-    for binding in service_lbmonitor_binding.get(client, module.params['name']):
-        # Excluding default monitors since we cannot operate on them
-        if binding.monitor_name in ('tcp-default', 'ping-default'):
-            continue
-        key = binding.monitor_name
-        actual = lbmonitor_service_binding()
-        actual.weight = binding.weight
-        actual.monitorname = binding.monitor_name
-        actual.dup_weight = binding.dup_weight
-        actual.servicename = module.params['name']
-        bindings[key] = actual
-
-    return bindings
-
-
-def monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
-    configured_proxys = get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs)
-    actual_bindings = get_actual_monitor_bindings(client, module)
-
-    configured_key_set = set(configured_proxys.keys())
-    actual_key_set = set(actual_bindings.keys())
-    symmetrical_diff = configured_key_set ^ actual_key_set
-    if len(symmetrical_diff) > 0:
-        return False
-
-    # Compare key to key
-    for monitor_name in configured_key_set:
-        proxy = configured_proxys[monitor_name]
-        actual = actual_bindings[monitor_name]
-        diff_dict = proxy.diff_object(actual)
-        if 'servicegroupname' in diff_dict:
-            if proxy.servicegroupname == actual.servicename:
-                del diff_dict['servicegroupname']
-        if len(diff_dict) > 0:
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+            return True
+        elif result['nitro_errorcode'] == 344:
             return False
+        else:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
 
-    # Fallthrought to success
-    return True
+    def create_service(self):
+        log('ModuleExecutor.create_service()')
+
+        post_data = copy.deepcopy(self.configured_service)
+
+        # Need to copy ipaddress to the ip attribute just for the create function
+        if 'ip' not in post_data and 'ipaddress' in post_data:
+            post_data['ip'] = post_data['ipaddress']
+
+        post_data = {
+            'service': post_data
+        }
+
+        result = self.fetcher.post(post_data=post_data, resource='service')
+        log('post data: %s' % post_data)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 201:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status']
+            self.module.fail_json(msg=msg, **self.module_result)
+
+    def update_service(self):
+        log('ModuleExecutor.update_service()')
+
+        # Catching trying to change non updateable attributes is done in self.service_identical()
+        put_payload = copy.deepcopy(self.configured_service)
+        for attribute in self.attribute_config['service']['non_updateable_attributes']:
+            if attribute in put_payload:
+                del put_payload[attribute]
+        # Check that non updateable values have not changed
+        put_data = {
+            'service': put_payload
+        }
+
+        log('request put data: %s' % put_data)
+        result = self.fetcher.put(put_data=put_data, resource='service')
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def service_identical(self):
+        log('ModuleExecutor.service_identical()')
+        result = self.fetcher.get('service', self.module.params['name'])
+        retrieved_object = result['data']['service'][0]
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+        diff_list = []
+        non_updateable_list = []
+        for attribute in self.configured_service.keys():
+            retrieved_value = retrieved_object.get(attribute)
+            configured_value = self.configured_service.get(attribute)
+            if retrieved_value != configured_value:
+                str_tuple = (
+                    attribute,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                # Also append changed values to the non updateable list
+                if attribute in self.attribute_config['service']['non_updateable_attributes']:
+                    non_updateable_list.append(attribute)
+
+        self.module_result['diff_list'] = diff_list
+        if non_updateable_list != []:
+            msg = 'Cannot change value for the following non updateable attributes %s' % non_updateable_list
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if diff_list != []:
+            return False
+        else:
+            return True
+
+    def update_or_create(self):
+        log('ModuleExecutor.update_or_create()')
+
+        # Create or update main object
+        if not self.service_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                log('Service does not exist. Will create.')
+                self.create_service()
+        else:
+            if not self.service_identical():
+                log('Existing service does not have identical values to configured. Will update.')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.update_service()
+            else:
+                log('Existing service has identical values to configured.')
+
+        self.sync_bindings()
+
+    def delete_service(self):
+
+        result = self.fetcher.delete(resource='service', id=self.module.params['name'])
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete(self):
+        log('ModuleExecutor.delete()')
+
+        if self.service_exists():
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.delete_service()
+
+    def _get_transformed_dict(self, transforms, values_dict):
+        actual_values_dict = {}
+        for key in values_dict:
+            value = values_dict.get(key)
+            transform = transforms.get(key)
+            if transform is not None:
+                value = transform(values_dict.get(key))
+            actual_values_dict[key] = value
+
+        return actual_values_dict
+
+    def get_existing_monitor_bindings(self):
+        log('ModuleExecutor.get_existing_monitor_bindings()')
+        result = self.fetcher.get('service_lbmonitor_binding', self.module.params['name'])
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'service_lbmonitor_binding' in result['data']:
+            return result['data']['service_lbmonitor_binding']
+        else:
+            return []
+
+    def add_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.add_monitor_binding()')
+
+        put_values = copy.deepcopy(configured_dict)
+        put_values['name'] = self.configured_service['name']
+        put_values = self._get_transformed_dict(
+            transforms=self.attribute_config['monitor_bindings']['transforms'],
+            values_dict=put_values
+        )
+        put_data = {'service_lbmonitor_binding': put_values}
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='service_lbmonitor_binding',
+            id=self.configured_service['name'],
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.delete_monitor_binding()')
+
+        monitor_binding = copy.deepcopy(configured_dict)
+
+        args = {}
+        for attribute in self.attribute_config['monitor_bindings']['delete_id_attributes']:
+            value = monitor_binding.get(attribute)
+            if value is not None:
+                args[attribute] = value
+
+        result = self.fetcher.delete(
+            resource='service_lbmonitor_binding',
+            id=self.configured_service['name'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def monitor_binding_identical(self, configured, retrieved):
+        log('ModuleExecutor.monitor_binding_identical()')
+
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Monitor binding attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
+
+    def sync_monitor_bindings(self):
+        log('ModuleExecutor.sync_monitor_bindings()')
+
+        try:
+            existing_monitor_bindings = self.get_existing_monitor_bindings()
+        except NitroException as e:
+            if e.errorcode == 344:
+                log('Parent Service does not exist. Nothing to do for binding.')
+                return
+            else:
+                raise
+
+        log('existing_monitor_bindings %s' % existing_monitor_bindings)
+
+        # Exclude the ignored monitors
+        filtered_monitor_bindings = []
+        for monitor in existing_monitor_bindings:
+            if monitor['monitor_name'] in self.module.params.get('ignore_monitors', []):
+                continue
+            filtered_monitor_bindings.append(monitor)
+
+        log('filtered_monitor_bindings %s' % filtered_monitor_bindings)
+
+        # First get the existing bindings
+        configured_already_present = []
+
+        # Delete any binding that is not exactly as the configured
+        for existing_monitor_binding in filtered_monitor_bindings:
+            for configured_monitor_binding in self.configured_monitor_bindings:
+                if self.monitor_binding_identical(configured_monitor_binding, existing_monitor_binding):
+                    configured_already_present.append(configured_monitor_binding)
+                    break
+            else:
+                log('Will delete binding')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.delete_monitor_binding(existing_monitor_binding)
+
+        # Create the bindings objects that we marked in previous loop
+        log('configured_already_present %s' % configured_already_present)
+        for configured_monitor_binding in self.configured_monitor_bindings:
+            if configured_monitor_binding in configured_already_present:
+                log('Configured binding already exists')
+                continue
+            else:
+                log('Configured binding does not already exist')
+            self.module_result['changed'] = True
+            if not self.module.check_mode:
+                self.add_monitor_binding(configured_monitor_binding)
 
 
-def sync_monitor_bindings(client, module, monitor_bindings_rw_attrs):
-    configured_proxys = get_configured_monitor_bindings(client, module, monitor_bindings_rw_attrs)
-    actual_bindings = get_actual_monitor_bindings(client, module)
-    configured_keyset = set(configured_proxys.keys())
-    actual_keyset = set(actual_bindings.keys())
+    def sync_bindings(self):
+        log('ModuleExecutor.sync_bindings()')
+        self.sync_monitor_bindings()
 
-    # Delete extra
-    delete_keys = list(actual_keyset - configured_keyset)
-    for monitor_name in delete_keys:
-        log('Deleting binding for monitor %s' % monitor_name)
-        lbmonitor_service_binding.delete(client, actual_bindings[monitor_name])
+    def do_state_change(self):
+        log('ModuleExecutor.do_state_change()')
+        if self.module.check_mode:
+            return
 
-    # Delete and re-add modified
-    common_keyset = list(configured_keyset & actual_keyset)
-    for monitor_name in common_keyset:
-        proxy = configured_proxys[monitor_name]
-        actual = actual_bindings[monitor_name]
-        if not proxy.has_equal_attributes(actual):
-            log('Deleting and re adding binding for monitor %s' % monitor_name)
-            lbmonitor_service_binding.delete(client, actual)
-            proxy.add()
+        # Fallthrough
+        operation_attributes = [
+            'graceful',
+            'delay',
+        ]
+        post_data = {
+            'service': {
+                'name': self.configured_service['name'],
+            }
+        }
+        for attribute in operation_attributes:
+            value = self.configured_service.get(attribute)
+            if value is not None:
+                post_data['service'][attribute] = value
 
-    # Add new
-    new_keys = list(configured_keyset - actual_keyset)
-    for monitor_name in new_keys:
-        log('Adding binding for monitor %s' % monitor_name)
-        configured_proxys[monitor_name].add()
+        disabled = self.module.params['disabled']
+        args = {}
+        if disabled:
+            action = 'disable'
+        else:
+            action = 'enable'
 
+        log('disable/enable post data %s' % post_data)
+        result = self.fetcher.post(post_data=post_data, resource='service', action=action)
+        log('result of post %s' % result)
 
-def all_identical(client, module, service_proxy, monitor_bindings_rw_attrs):
-    return service_identical(client, module, service_proxy) and monitor_bindings_identical(client, module, monitor_bindings_rw_attrs)
+        if result['http_response_data']['status'] != 200:
+            msg = 'Disable/Enable operation failed'
+            self.module.fail_json(msg=msg, **self.module_result)
 
+    def main(self):
+        try:
 
-def do_state_change(client, module, service_proxy):
-    if module.params['disabled']:
-        log('Disabling service')
-        result = service.disable(client, service_proxy.actual)
-    else:
-        log('Enabling service')
-        result = service.enable(client, service_proxy.actual)
-    return result
+            if self.module.params['state'] == 'present':
+                self.update_or_create()
+                self.do_state_change()
+            elif self.module.params['state'] == 'absent':
+                self.delete()
+
+            self.module.exit_json(**self.module_result)
+
+        except NitroException as e:
+            msg = "nitro exception errorcode=%s, message=%s, severity=%s" % (str(e.errorcode), e.message, e.severity)
+            self.module.fail_json(msg=msg, **self.module_result)
+        except Exception as e:
+            msg = 'Exception %s: %s' % (type(e), str(e))
+            self.module.fail_json(msg=msg, **self.module_result)
 
 
 def main():
+
+    argument_spec = dict()
 
     module_specific_arguments = dict(
         name=dict(type='str'),
@@ -641,7 +1132,12 @@ def main():
                 'SYSLOGTCP',
                 'SYSLOGUDP',
                 'FIX',
-                'SSL_FIX'
+                'SSL_FIX',
+                'USER_TCP',
+                'USER_SSL_TCP',
+                'QUIC',
+                'IPFIX',
+                'LOGSTREAM',
             ]
         ),
         port=dict(type='int'),
@@ -654,16 +1150,10 @@ def main():
                 'FORWARD',
             ]
         ),
-        maxclient=dict(type='float'),
-        healthmonitor=dict(
-            type='bool',
-            default=True,
-        ),
-        maxreq=dict(type='float'),
-        cacheable=dict(
-            type='bool',
-            default=False,
-        ),
+        maxclient=dict(type='str'),
+        healthmonitor=dict(type='bool'),
+        maxreq=dict(type='str'),
+        cacheable=dict(type='bool'),
         cip=dict(
             type='str',
             choices=[
@@ -673,323 +1163,109 @@ def main():
         ),
         cipheader=dict(type='str'),
         usip=dict(type='bool'),
+        pathmonitor=dict(type='bool'),
+        pathmonitorindv=dict(type='bool'),
         useproxyport=dict(type='bool'),
+        sc=dict(type='bool'),
         sp=dict(type='bool'),
-        rtspsessionidremap=dict(
-            type='bool',
-            default=False,
-        ),
-        clttimeout=dict(type='float'),
-        svrtimeout=dict(type='float'),
-        customserverid=dict(
-            type='str',
-            default='None',
-        ),
+        rtspsessionidremap=dict(type='bool'),
+        clttimeout=dict(type='int'),
+        svrtimeout=dict(type='int'),
+        customserverid=dict(type='str'),
+        serverid=dict(type='str'),
         cka=dict(type='bool'),
         tcpb=dict(type='bool'),
         cmp=dict(type='bool'),
-        maxbandwidth=dict(type='float'),
-        accessdown=dict(
-            type='bool',
-            default=False
-        ),
-        monthreshold=dict(type='float'),
+        maxbandwidth=dict(type='str'),
+        accessdown=dict(type='bool'),
+        monthreshold=dict(type='str'),
         downstateflush=dict(
             type='str',
             choices=[
                 'enabled',
                 'disabled',
-            ],
+            ]
         ),
         tcpprofilename=dict(type='str'),
         httpprofilename=dict(type='str'),
-        hashid=dict(type='float'),
+        contentinspectionprofilename=dict(type='str'),
+        hashid=dict(type='str'),
         comment=dict(type='str'),
         appflowlog=dict(
             type='str',
             choices=[
                 'enabled',
                 'disabled',
-            ],
+            ]
         ),
         netprofile=dict(type='str'),
+        td=dict(type='str'),
         processlocal=dict(
             type='str',
             choices=[
                 'enabled',
                 'disabled',
-            ],
+            ]
         ),
         dnsprofilename=dict(type='str'),
+        monconnectionclose=dict(
+            type='str',
+            choices=[
+                'RESET',
+                'FIN',
+            ]
+        ),
         ipaddress=dict(type='str'),
-        graceful=dict(
-            type='bool',
-            default=False,
-        ),
-    )
+        weight=dict(type='str'),
+        monitor_name_svc=dict(type='str'),
+        riseapbrstatsmsgcode=dict(type='int'),
+        delay=dict(type='str'),
+        graceful=dict(type='bool'),
+        all=dict(type='bool'),
+        Internal=dict(type='bool'),
 
-    hand_inserted_arguments = dict(
-        monitor_bindings=dict(
-            type='list',
-            elements='dict',
-        ),
         disabled=dict(
             type='bool',
             default=False,
         ),
+        ignore_monitors=dict(
+            type='list',
+            default=list([
+                'tcp-default',
+                'ping-default',
+                'default-path-monitor',
+            ]),
+        ),
+
+        monitor_bindings=dict(
+            type='list',
+            elements='dict',
+            options=dict(
+                monitor_name=dict(type='str'),
+                monstate=dict(
+                    type='str',
+                    choices=[
+                        'enabled',
+                        'disabled',
+                    ]
+                ),
+                weight=dict(type='str'),
+                passive=dict(type='bool'),
+            ),
+        ),
     )
 
-    argument_spec = dict()
-
     argument_spec.update(netscaler_common_arguments)
-
     argument_spec.update(module_specific_arguments)
-
-    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
         supports_check_mode=True,
     )
-    module_result = dict(
-        changed=False,
-        failed=False,
-        loglines=loglines,
-    )
 
-    # Fail the module if imports failed
-    if not PYTHON_SDK_IMPORTED:
-        module.fail_json(msg='Could not load nitro python sdk')
-
-    client = get_nitro_client(module)
-
-    if not module.params['mas_proxy_call']:
-        try:
-            client.login()
-        except nitro_exception as e:
-            msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-            module.fail_json(msg=msg)
-        except Exception as e:
-            if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
-                module.fail_json(msg='Connection error %s' % str(e))
-            elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
-                module.fail_json(msg='SSL Error %s' % str(e))
-            else:
-                module.fail_json(msg='Unexpected error during login %s' % str(e))
-
-    # Fallthrough to rest of execution
-
-    # Instantiate Service Config object
-    readwrite_attrs = [
-        'name',
-        'ip',
-        'servername',
-        'servicetype',
-        'port',
-        'cleartextport',
-        'cachetype',
-        'maxclient',
-        'healthmonitor',
-        'maxreq',
-        'cacheable',
-        'cip',
-        'cipheader',
-        'usip',
-        'useproxyport',
-        'sp',
-        'rtspsessionidremap',
-        'clttimeout',
-        'svrtimeout',
-        'customserverid',
-        'cka',
-        'tcpb',
-        'cmp',
-        'maxbandwidth',
-        'accessdown',
-        'monthreshold',
-        'downstateflush',
-        'tcpprofilename',
-        'httpprofilename',
-        'hashid',
-        'comment',
-        'appflowlog',
-        'netprofile',
-        'processlocal',
-        'dnsprofilename',
-        'ipaddress',
-        'graceful',
-    ]
-
-    readonly_attrs = [
-        'numofconnections',
-        'policyname',
-        'serviceconftype',
-        'serviceconftype2',
-        'value',
-        'gslb',
-        'dup_state',
-        'publicip',
-        'publicport',
-        'svrstate',
-        'monitor_state',
-        'monstatcode',
-        'lastresponse',
-        'responsetime',
-        'riseapbrstatsmsgcode2',
-        'monstatparam1',
-        'monstatparam2',
-        'monstatparam3',
-        'statechangetimesec',
-        'statechangetimemsec',
-        'tickssincelaststatechange',
-        'stateupdatereason',
-        'clmonowner',
-        'clmonview',
-        'serviceipstr',
-        'oracleserverversion',
-    ]
-
-    immutable_attrs = [
-        'name',
-        'ip',
-        'servername',
-        'servicetype',
-        'port',
-        'cleartextport',
-        'cachetype',
-        'cipheader',
-        'state',
-        'monitor_name_svc',
-        'riseapbrstatsmsgcode',
-        'graceful',
-        'all',
-        'Internal',
-        'newname',
-    ]
-
-    transforms = {
-        'cacheable': ['bool_yes_no'],
-        'cka': ['bool_yes_no'],
-        'tcpb': ['bool_yes_no'],
-        'sp': ['bool_on_off'],
-        'graceful': ['bool_yes_no'],
-        'usip': ['bool_yes_no'],
-        'healthmonitor': ['bool_yes_no'],
-        'useproxyport': ['bool_yes_no'],
-        'rtspsessionidremap': ['bool_on_off'],
-        'accessdown': ['bool_yes_no'],
-        'cmp': ['bool_yes_no'],
-        'cip': [lambda v: v.upper()],
-        'downstateflush': [lambda v: v.upper()],
-        'appflowlog': [lambda v: v.upper()],
-        'processlocal': [lambda v: v.upper()],
-    }
-
-    monitor_bindings_rw_attrs = [
-        'servicename',
-        'servicegroupname',
-        'dup_state',
-        'dup_weight',
-        'monitorname',
-        'weight',
-    ]
-
-    # Translate module arguments to correspondign config oject attributes
-    if module.params['ip'] is None:
-        module.params['ip'] = module.params['ipaddress']
-
-    service_proxy = ConfigProxy(
-        actual=service(),
-        client=client,
-        attribute_values_dict=module.params,
-        readwrite_attrs=readwrite_attrs,
-        readonly_attrs=readonly_attrs,
-        immutable_attrs=immutable_attrs,
-        transforms=transforms,
-    )
-
-    try:
-
-        # Apply appropriate state
-        if module.params['state'] == 'present':
-            log('Applying actions for state present')
-            if not service_exists(client, module):
-                if not module.check_mode:
-                    service_proxy.add()
-                    sync_monitor_bindings(client, module, monitor_bindings_rw_attrs)
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            elif not all_identical(client, module, service_proxy, monitor_bindings_rw_attrs):
-
-                # Check if we try to change value of immutable attributes
-                diff_dict = diff(client, module, service_proxy)
-                immutables_changed = get_immutables_intersection(service_proxy, diff_dict.keys())
-                if immutables_changed != []:
-                    msg = 'Cannot update immutable attributes %s. Must delete and recreate entity.' % (immutables_changed,)
-                    module.fail_json(msg=msg, diff=diff_dict, **module_result)
-
-                # Service sync
-                if not service_identical(client, module, service_proxy):
-                    if not module.check_mode:
-                        service_proxy.update()
-
-                # Monitor bindings sync
-                if not monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
-                    if not module.check_mode:
-                        sync_monitor_bindings(client, module, monitor_bindings_rw_attrs)
-
-                module_result['changed'] = True
-                if not module.check_mode:
-                    if module.params['save_config']:
-                        client.save_config()
-            else:
-                module_result['changed'] = False
-
-            if not module.check_mode:
-                res = do_state_change(client, module, service_proxy)
-                if res.errorcode != 0:
-                    msg = 'Error when setting disabled state. errorcode: %s message: %s' % (res.errorcode, res.message)
-                    module.fail_json(msg=msg, **module_result)
-
-            # Sanity check for state
-            if not module.check_mode:
-                log('Sanity checks for state present')
-                if not service_exists(client, module):
-                    module.fail_json(msg='Service does not exist', **module_result)
-
-                if not service_identical(client, module, service_proxy):
-                    module.fail_json(msg='Service differs from configured', diff=diff(client, module, service_proxy), **module_result)
-
-                if not monitor_bindings_identical(client, module, monitor_bindings_rw_attrs):
-                    module.fail_json(msg='Monitor bindings are not identical', **module_result)
-
-        elif module.params['state'] == 'absent':
-            log('Applying actions for state absent')
-            if service_exists(client, module):
-                if not module.check_mode:
-                    service_proxy.delete()
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            else:
-                module_result['changed'] = False
-
-            # Sanity check for state
-            if not module.check_mode:
-                log('Sanity checks for state absent')
-                if service_exists(client, module):
-                    module.fail_json(msg='Service still exists', **module_result)
-
-    except nitro_exception as e:
-        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-        module.fail_json(msg=msg, **module_result)
-
-    if not module.params['mas_proxy_call']:
-        client.logout()
-
-    module.exit_json(**module_result)
+    executor = ModuleExecutor(module=module)
+    executor.main()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
