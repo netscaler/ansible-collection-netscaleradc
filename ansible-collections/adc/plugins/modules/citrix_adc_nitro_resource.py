@@ -167,6 +167,8 @@ class ModuleExecutor(object):
         if self.delete_id_attributes is None:
             self.delete_id_attributes = []
 
+        self.prepared_list = []
+
     def resource_exists(self):
         log('ModuleExecutor.resource_exists()')
         if self.lifecycle == 'object':
@@ -650,6 +652,7 @@ class ModuleExecutor(object):
                 )
                 self.differing_attributes.append(attribute)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
 
         return ret_val
 
@@ -850,6 +853,7 @@ class ModuleExecutor(object):
                 )
                 self.differing_attributes.append(attribute)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
 
         return ret_val
 
@@ -961,6 +965,7 @@ class ModuleExecutor(object):
         # Create or update main object
         if not self.resource_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Create resource')
             if not self.module.check_mode:
                 self.resource_create()
         else:
@@ -976,6 +981,7 @@ class ModuleExecutor(object):
 
         if self.resource_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Delete resource')
             if not self.module.check_mode:
                 self.resource_delete()
 
@@ -986,6 +992,9 @@ class ModuleExecutor(object):
                 self.update_or_create_resource()
             elif self.module.params['state'] == 'absent':
                 self.delete_resource()
+
+            if self.module._diff :
+                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
 
             self.module.exit_json(**self.module_result)
 
