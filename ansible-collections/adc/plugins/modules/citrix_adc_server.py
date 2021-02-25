@@ -167,7 +167,7 @@ msg:
     type: str
     sample: "Action does not exist"
 
-diff:
+diff_list:
     description: List of differences between the actual configured object and the configuration specified in the module
     returned: failure
     type: dict
@@ -385,7 +385,7 @@ def main():
                 immutables_changed = get_immutables_intersection(server_proxy, diff_list(client, module, server_proxy).keys())
                 if immutables_changed != []:
                     msg = 'Cannot update immutable attributes %s' % (immutables_changed,)
-                    module.fail_json(msg=msg, diff=diff_list(client, module, server_proxy), **module_result)
+                    module.fail_json(msg=msg, diff_list=diff_list(client, module, server_proxy), **module_result)
                 if not module.check_mode:
                     server_proxy.update()
                     if module.params['save_config']:
@@ -408,7 +408,7 @@ def main():
                 if not server_identical(client, module, server_proxy):
                     module.fail_json(
                         msg='Server is not configured according to parameters given',
-                        diff=diff_list(client, module, server_proxy),
+                        diff_list=diff_list(client, module, server_proxy),
                         **module_result
                     )
 

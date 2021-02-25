@@ -32,12 +32,12 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_servicegroup
-short_description: Manage service group configuration in Citrix ADC
+short_description: Manage service group configuration in Netscaler
 description:
-    - Manage service group configuration in Citrix ADC.
-    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
+    - Manage service group configuration in Netscaler.
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
-version_added: "1.0.0"
+version_added: "2.4.0"
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -705,7 +705,6 @@ from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
     NitroAPIFetcher
 )
 
-
 class ModuleExecutor(object):
 
     def __init__(self, module):
@@ -852,7 +851,6 @@ class ModuleExecutor(object):
                     'monstate': lambda v: v.upper(),
                     'state': lambda v: v.upper(),
                     'weight': str,
-
                 },
                 'get_id_attributes': [
                     'servicegroupname',
@@ -870,6 +868,8 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
+
+        self.prepared_list = []
 
         self.calculate_configured_servicegroup()
         self.calculate_configured_servicemembers()
@@ -1050,6 +1050,7 @@ class ModuleExecutor(object):
                 )
                 diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
                 # Also append changed values to the non updateable list
                 if attribute in self.attribute_config['servicegroup']['non_updateable_attributes']:
                     non_updateable_list.append(attribute)
@@ -1070,6 +1071,7 @@ class ModuleExecutor(object):
         # Create or update main object
         if not self.servicegroup_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Create servicegroup')
             if not self.module.check_mode:
                 log('Service group does not exist. Will create.')
                 self.create_servicegroup()
@@ -1101,6 +1103,7 @@ class ModuleExecutor(object):
 
         if self.servicegroup_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Delete servicegroup')
             if not self.module.check_mode:
                 self.delete_servicegroup()
 
@@ -1253,8 +1256,7 @@ class ModuleExecutor(object):
             existing_servicemembers = self.get_existing_servicemembers()
         except NitroException as e:
             if e.errorcode == 258:
-                log('Parent Servicegroup does not exist. Nothing to do for binding.')
-                return
+                existing_servicemembers = []
             else:
                 raise
 
@@ -1272,6 +1274,11 @@ class ModuleExecutor(object):
                 else:
                     log('Will delete binding')
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        existing_servicemember,
+                        self.attribute_config['servicemembers']['attributes_list']
+                    )
+                    self.prepared_list.append('Delete servicemember %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.delete_servicemember(existing_servicemember)
 
@@ -1284,6 +1291,11 @@ class ModuleExecutor(object):
                 else:
                     log('Configured binding does not already exist')
                 self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    configured_servicemember,
+                    self.attribute_config['servicemembers']['attributes_list']
+                )
+                self.prepared_list.append('Add servicemember %s' % reduced_dict)
                 if not self.module.check_mode:
                     self.add_servicemember(configured_servicemember)
 
@@ -1296,6 +1308,11 @@ class ModuleExecutor(object):
                         break
                 if create_servicemember:
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        configured_servicemember,
+                        self.attribute_config['servicemembers']['attributes_list']
+                    )
+                    self.prepared_list.append('Add servicemember %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.add_servicemember(configured_servicemember)
 
@@ -1308,6 +1325,11 @@ class ModuleExecutor(object):
                         break
                 if delete_servicemember:
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        configured_servicemember,
+                        self.attribute_config['servicemembers']['attributes_list']
+                    )
+                    self.prepared_list.append('Delete servicemember %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.delete_servicemember(configured_servicemember)
         elif mode == 'dsapi':
@@ -1415,8 +1437,8 @@ class ModuleExecutor(object):
             existing_monitor_bindings = self.get_existing_monitor_bindings()
         except NitroException as e:
             if e.errorcode == 258:
-                log('Parent Servicegroup does not exist. Nothing to do for binding.')
-                return
+                # Setting this to empty list for correct diff when creating servicegroup
+                existing_monitor_bindings = []
             else:
                 raise
 
@@ -1434,6 +1456,11 @@ class ModuleExecutor(object):
                 else:
                     log('Will delete binding')
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        existing_monitor_binding,
+                        self.attribute_config['monitor_bindings']['attributes_list']
+                    )
+                    self.prepared_list.append('Delete monitor binding %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.delete_monitor_binding(existing_monitor_binding)
 
@@ -1446,6 +1473,11 @@ class ModuleExecutor(object):
                 else:
                     log('Configured binding does not already exist')
                 self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    configured_monitor_binding,
+                    self.attribute_config['monitor_bindings']['attributes_list']
+                )
+                self.prepared_list.append('Add monitor binding %s' % reduced_dict)
                 if not self.module.check_mode:
                     self.add_monitor_binding(configured_monitor_binding)
 
@@ -1458,6 +1490,11 @@ class ModuleExecutor(object):
                         break
                 if create_servicemember:
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        configured_monitor_binding,
+                        self.attribute_config['monitor_bindings']['attributes_list']
+                    )
+                    self.prepared_list.append('Add monitor binding %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.add_monitor_binding(configured_monitor_binding)
 
@@ -1470,8 +1507,21 @@ class ModuleExecutor(object):
                         break
                 if delete_servicemember:
                     self.module_result['changed'] = True
+                    reduced_dict = self.reduced_dict(
+                        configured_monitor_binding,
+                        self.attribute_config['monitor_bindings']['attributes_list']
+                    )
+                    self.prepared_list.append('Delete monitor binding %s' % reduced_dict)
                     if not self.module.check_mode:
                         self.delete_servicemember(configured_monitor_binding)
+
+    def reduced_dict(self, dictionary, include_keys):
+        reduced = {}
+        for key in dictionary:
+            if key in include_keys:
+                reduced[key] = dictionary[key]
+
+        return reduced
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
@@ -1521,6 +1571,9 @@ class ModuleExecutor(object):
                 self.do_state_change()
             elif self.module.params['state'] == 'absent':
                 self.delete()
+
+            if self.module._diff :
+                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
 
             self.module.exit_json(**self.module_result)
 

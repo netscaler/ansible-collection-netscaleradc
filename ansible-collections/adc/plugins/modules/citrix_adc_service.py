@@ -530,7 +530,7 @@ loglines:
     type: list
     sample: ['message 1', 'message 2']
 
-diff:
+diff_list:
     description: A dictionary with a list of differences between the actual configured object and the configuration specified in the module
 
 msg:
@@ -683,6 +683,7 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
+        self.prepared_list = []
 
         self.calculate_configured_service()
         self.calculate_configured_monitor_bindings()
@@ -825,6 +826,7 @@ class ModuleExecutor(object):
                 )
                 diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
                 # Also append changed values to the non updateable list
                 if attribute in self.attribute_config['service']['non_updateable_attributes']:
                     non_updateable_list.append(attribute)
@@ -845,6 +847,7 @@ class ModuleExecutor(object):
         # Create or update main object
         if not self.service_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Create service')
             if not self.module.check_mode:
                 log('Service does not exist. Will create.')
                 self.create_service()
@@ -876,6 +879,7 @@ class ModuleExecutor(object):
 
         if self.service_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Delete service')
             if not self.module.check_mode:
                 self.delete_service()
 
@@ -983,8 +987,8 @@ class ModuleExecutor(object):
             existing_monitor_bindings = self.get_existing_monitor_bindings()
         except NitroException as e:
             if e.errorcode == 344:
-                log('Parent Service does not exist. Nothing to do for binding.')
-                return
+                # Set this to empty for correct diff in check mode
+                existing_monitor_bindings = []
             else:
                 raise
 
@@ -1011,6 +1015,7 @@ class ModuleExecutor(object):
             else:
                 log('Will delete binding')
                 self.module_result['changed'] = True
+                self.prepared_list.append('Delete monitor_binding: %s' % self.reduced_binding_dict(existing_monitor_binding))
                 if not self.module.check_mode:
                     self.delete_monitor_binding(existing_monitor_binding)
 
@@ -1023,9 +1028,16 @@ class ModuleExecutor(object):
             else:
                 log('Configured binding does not already exist')
             self.module_result['changed'] = True
+            self.prepared_list.append('Add monitor_binding: %s' % self.reduced_binding_dict(configured_monitor_binding))
             if not self.module.check_mode:
                 self.add_monitor_binding(configured_monitor_binding)
 
+    def reduced_binding_dict(self, monitor_binding):
+        reduced_dict = {}
+        for key in monitor_binding:
+            if key in self.attribute_config['monitor_bindings']['attributes_list']:
+                reduced_dict[key] = monitor_binding[key]
+        return reduced_dict
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
@@ -1074,6 +1086,9 @@ class ModuleExecutor(object):
                 self.do_state_change()
             elif self.module.params['state'] == 'absent':
                 self.delete()
+
+            if self.module._diff :
+                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
 
             self.module.exit_json(**self.module_result)
 

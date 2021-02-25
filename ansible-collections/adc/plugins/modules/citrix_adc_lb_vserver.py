@@ -1427,6 +1427,8 @@ class ModuleExecutor(object):
             loglines=loglines,
         )
 
+        self.prepared_list = []
+
         # Calculate functions will apply transforms to values read from playbook
         self.calculate_configured_lbvserver()
         self.calculate_configured_service_bindings()
@@ -1605,6 +1607,7 @@ class ModuleExecutor(object):
                 )
                 diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
                 # Also append changed values to the non updateable list
                 if attribute in self.attribute_config['lbvserver']['non_updateable_attributes']:
                     non_updateable_list.append(attribute)
@@ -1625,6 +1628,7 @@ class ModuleExecutor(object):
         # Create or update main object
         if not self.lbvserver_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Create lb vserver')
             if not self.module.check_mode:
                 log('lbvserver does not exist. Will create.')
                 self.create_lbvserver()
@@ -1662,6 +1666,7 @@ class ModuleExecutor(object):
 
         if self.lbvserver_exists():
             self.module_result['changed'] = True
+            self.prepared_list.append('Delete lb vserver')
             if not self.module.check_mode:
                 self.delete_lbvserver()
 
@@ -1785,6 +1790,11 @@ class ModuleExecutor(object):
             else:
                 log('Will delete binding')
                 self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    existing_service_binding,
+                    self.attribute_config['servicebindings']['attributes_list']
+                )
+                self.prepared_list.append('Delete service binding %s' % reduced_dict)
                 if not self.module.check_mode:
                     self.delete_service_binding(existing_service_binding)
 
@@ -1796,7 +1806,14 @@ class ModuleExecutor(object):
                 continue
             else:
                 log('Configured binding does not already exist')
+
             self.module_result['changed'] = True
+
+            reduced_dict = self.reduced_dict(
+                configured_service_binding,
+                self.attribute_config['servicebindings']['attributes_list']
+            )
+            self.prepared_list.append('Add service binding %s' % reduced_dict)
             if not self.module.check_mode:
                 self.add_service_binding(configured_service_binding)
 
@@ -1909,6 +1926,11 @@ class ModuleExecutor(object):
             else:
                 log('Will delete binding')
                 self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    existing_servicegroup_binding,
+                    self.attribute_config['servicegroupbindings']['attributes_list']
+                )
+                self.prepared_list.append('Delete servicegroup binding %s' % reduced_dict)
                 if not self.module.check_mode:
                     self.delete_servicegroup_binding(existing_servicegroup_binding)
 
@@ -1921,6 +1943,11 @@ class ModuleExecutor(object):
             else:
                 log('Configured binding does not already exist')
             self.module_result['changed'] = True
+            reduced_dict = self.reduced_dict(
+                configured_servicegroup_binding,
+                self.attribute_config['servicegroupbindings']['attributes_list']
+            )
+            self.prepared_list.append('Add servicegroup binding %s' % reduced_dict)
             if not self.module.check_mode:
                 self.add_servicegroup_binding(configured_servicegroup_binding)
 
@@ -2033,6 +2060,11 @@ class ModuleExecutor(object):
             else:
                 log('Will delete binding')
                 self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    existing_appfwpolicy_binding,
+                    self.attribute_config['appfw_policybindings']['attributes_list']
+                )
+                self.prepared_list.append('Delete appfw policy binding %s' % reduced_dict)
                 if not self.module.check_mode:
                     self.delete_appfwpolicy_binding(existing_appfwpolicy_binding)
 
@@ -2045,6 +2077,11 @@ class ModuleExecutor(object):
             else:
                 log('Configured binding does not already exist')
             self.module_result['changed'] = True
+            reduced_dict = self.reduced_dict(
+                configured_appfwpolicy_binding,
+                self.attribute_config['appfw_policybindings']['attributes_list']
+            )
+            self.prepared_list.append('Add appfw policy binding %s' % reduced_dict)
             if not self.module.check_mode:
                 self.add_appfwpolicy_binding(configured_appfwpolicy_binding)
 
@@ -2113,6 +2150,7 @@ class ModuleExecutor(object):
         for binding in bound_sslcertkeys:
             if binding['certkeyname'] != configured_sslcertkey:
                 self.module_result['changed'] = True
+                self.prepared_list.append('Delete ssl_certkey binding %s' % binding['certkeyname'])
                 if not self.module.check_mode:
                     self.delete_sslcertkey_binding(binding['certkeyname'])
             else:
@@ -2121,8 +2159,17 @@ class ModuleExecutor(object):
         # Add if not found
         if configured_sslcertkey is not None and not found_configured:
             self.module_result['changed'] = True
+            self.prepared_list.append('Add ssl_certkey binding %s' % configured_sslcertkey)
             if not self.module.check_mode:
                 self.add_sslcertkey_binding(configured_sslcertkey)
+
+    def reduced_dict(self, dictionary, include_keys):
+        reduced = {}
+        for key in dictionary:
+            if key in include_keys:
+                reduced[key] = dictionary[key]
+
+        return reduced
 
     def sync_bindings(self):
         log('ModuleExecutor.sync_bindings()')
@@ -2166,6 +2213,9 @@ class ModuleExecutor(object):
                 self.do_state_change()
             elif self.module.params['state'] == 'absent':
                 self.delete()
+
+            if self.module._diff :
+                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
 
             self.module.exit_json(**self.module_result)
 
