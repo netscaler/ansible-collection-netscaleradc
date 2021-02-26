@@ -250,18 +250,18 @@ def get_nitro_client(module):
 netscaler_common_arguments = dict(
     nsip=dict(
         required=True,
-        aliases=['mas_ip'],
+        aliases=['mas_ip', 'adm_ip'],
         fallback=(env_fallback, ['NETSCALER_NSIP']),
     ),
     nitro_user=dict(
         required=False,
-        aliases=['mas_user'],
+        aliases=['mas_user', 'adm_user'],
         fallback=(env_fallback, ['NETSCALER_NITRO_USER']),
         no_log=True
     ),
     nitro_pass=dict(
         required=False,
-        aliases=['mas_pass'],
+        aliases=['mas_pass', 'adm_pass'],
         fallback=(env_fallback, ['NETSCALER_NITRO_PASS']),
         no_log=True
     ),
@@ -293,12 +293,16 @@ netscaler_common_arguments = dict(
     ),
     nitro_auth_token=dict(
         type='str',
-        aliases=['mas_auth_token'],
+        aliases=['mas_auth_token', 'adm_auth_token'],
         no_log=True,
     ),
     instance_ip=dict(
         type='str'
     ),
+    is_cloud=dict(
+        type='bool',
+        default=False,
+    )
 )
 
 loglines = []
@@ -385,6 +389,9 @@ class NitroAPIFetcher(object):
         # Prepare the http headers according to module arguments
         self._headers = {}
         self._headers['Content-Type'] = 'application/json'
+
+        if self._module.params['is_cloud']:
+            self._headers['isCloud'] = 'true'
 
         # Check for conflicting authentication methods
         have_token = self._module.params['nitro_auth_token'] is not None

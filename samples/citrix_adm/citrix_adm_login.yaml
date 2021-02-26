@@ -1,0 +1,43 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+  collections:
+    - citrix.adm
+
+  tasks:
+    - name: Login to ADM
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        validate_certs: no
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+
+
+    - name: Show output
+      debug:
+        msg: "{{ login_result }}"
+
+    - name: Setup dns domain entry
+      delegate_to: localhost
+      citrix_adm_dns_domain_entry:
+        adm_ip: "{{ adm_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: no
+
+        state: present
+
+        name: test.com
+        description: some description
+
+    - name: Logout from ADM
+      delegate_to: localhost
+      citrix_adm_logout:
+        validate_certs: no
+        adm_ip: "{{ adm_ip }}"
+
+        nitro_auth_token: "{{ login_result.session_id }}"
