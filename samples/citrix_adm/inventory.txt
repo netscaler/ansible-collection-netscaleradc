@@ -1,0 +1,3 @@
+citrix_adm_service id="api-client-id" secret="api-client-secret"
+
+citrix_adm adm_ip=10.222.74.142 adm_user=nsroot adm_pass=nsroot

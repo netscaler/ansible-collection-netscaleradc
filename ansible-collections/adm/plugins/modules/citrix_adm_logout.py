@@ -31,11 +31,10 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: citrix_adm_login
-short_description: Login to a Citrix ADM instance.
+module: citrix_adm_logout
+short_description: Logout from a Citrix ADM instance.
 description:
-    - Login to a Citrix ADM instance.
-    - The session token is returned in the module result.
+    - Logout from a Citrix ADM instance.
 
 author:
     - George Nikolopoulos (@giorgos-nikolopoulos)
@@ -46,34 +45,22 @@ extends_documentation_fragment: citrix.adm.citrixadm
 '''
 
 EXAMPLES = '''
-- hosts: citrix_adm
+- name: Logout from ADM service
+  delegate_to: localhost
+  citrix_adm_logout:
 
-  gather_facts: False
+    adm_ip: "adm.cloud.com"
+    is_cloud: true
 
-  tasks:
-    - name: Login to Citrix ADM
-      delegate_to: localhost
-      register: login_result
-      citrix_adm_login:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+    nitro_auth_token: "{{ login_result.session_id }}"
 
-    - name: Setup mpsuser
-      delegate_to: localhost
-      citrix_adm_mpsuser:
-        mas_ip: "{{ mas_ip }}"
-        mas_auth_token: "{{ login_result.session_id }}"
+- name: Logout from ADM
+  delegate_to: localhost
+  citrix_adm_logout:
 
-        state: absent
+    adm_ip: "{{ adm_ip }}"
 
-        name: playbook_test_mpsuser_2
-        password: 1234567
-
-        session_timeout: 10
-        session_timeout_unit: Minutes
-        external_authentication: false
-        enable_session_timeout: true
+    nitro_auth_token: "{{ login_result.session_id }}"
 '''
 
 RETURN = '''
@@ -88,11 +75,6 @@ msg:
     returned: failure
     type: str
     sample: "Action does not exist"
-session_id:
-    description: The session id to be used as authentication token on subsequent module calls.
-    returned: success
-    type: str
-    sample: "##1A44A1437AD74D6158FC51FC95A0009D93FA8C1A8E2CCCEF9F4FD4DA2039"
 
 '''
 
@@ -110,15 +92,8 @@ from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import (
 
 def main():
 
-    module_specific_arguments=dict(
-        id=dict(type='str'),
-        secret=dict(type='str'),
-    )
-    argument_spec = dict()
-    argument_spec.update(netscaler_common_arguments)
-    argument_spec.update(module_specific_arguments)
     module = AnsibleModule(
-        argument_spec=argument_spec,
+        argument_spec=netscaler_common_arguments,
         supports_check_mode=False,
     )
 
@@ -132,23 +107,8 @@ def main():
         fetcher = NitroAPIFetcher(module, api_path='nitro/v2/config')
 
 
-        if module.params['is_cloud']:
-            post_data = {
-                'login':{
-                    'ID': module.params['id'],
-                    'Secret': module.params['secret'],
-                }
-            }
-        else:
-            post_data = {
-                'login': {
-                    'username': module.params['nitro_user'],
-                    'password': module.params['nitro_pass'],
-                }
-            }
-        result = fetcher.post(post_data=post_data, resource='login')
-        log('POST result %s' % result)
-        log(result['nitro_errorcode'])
+        result = fetcher.delete(resource='login')
+        log('DELETE result %s' % result)
         if result['nitro_errorcode'] not in (None, 0):
             errorcode = result.get('nitro_errorcode')
             message = result.get('nitro_message')
@@ -156,7 +116,6 @@ def main():
             msg = "nitro exception errorcode=%s, message=%s, severity=%s" % (str(errorcode), message, severity)
             module.fail_json(msg=msg, **module_result)
         else:
-            module_result.update(dict(session_id=result['data']['login'][0]['sessionid']))
             module.exit_json(**module_result)
     except Exception as e:
         msg = 'Exception %s: %s' % (type(e), str(e))
