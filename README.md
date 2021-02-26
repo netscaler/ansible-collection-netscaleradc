@@ -21,6 +21,7 @@ To learn more about Automation of Citrix ADC, check out the blog [here](https://
   - [Secure variable storage](#secure-variable-storage)
   - [NITRO API TLS](#nitro-api-tls)
   - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
+  - [Citrix ADM service calls](#citrix-adm-service-calls)
 * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
   - [Installation](#installation)
   - [Usage](#usage-1)
@@ -108,6 +109,7 @@ Included in the `citrix.adm` collection
 * citrix\_adm\_application - Manage applications on Citrix ADM
 * citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
 * citrix\_adm\_login - Login to a Citrix ADM instance
+* citrix\_adm\_logout - Logout from a Citrix ADM instance
 * citrix\_adm\_mpsgroup - Manage Citrix ADM user groups
 * citrix\_adm\_mpsuser - Manage Citrix ADM users
 * citrix\_adm\_ns\_facts - Retrieve facts about Citrix ADM managed instances
@@ -231,6 +233,17 @@ In order to do that you need a NITRO Python SDK that has the MAS proxy calls cap
 2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
 
 A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
+
+### Citrix ADM service calls
+
+There is the option for citrix_adm modules to be executed targetting the ADM service instead of an on prem ADM.
+
+This mode of execution relies on first getting a `nitro_auth_token` by logging in the ADM service and using this
+token for all subsequent module calls.
+
+Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
+
+Examples can be found in this [folder](samples/citrix_adm).
 
 ## Citrix ADC connection plugin
 
