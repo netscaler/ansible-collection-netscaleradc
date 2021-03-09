@@ -1,0 +1,10 @@
+---
+major_changes:
+  - |-
+    Add diff mode for the following modules
+    citrix_adc_cs_vserver
+    citrix_adc_lb_vserver
+    citrix_adc_nitro_resource
+    citrix_adc_server
+    citrix_adc_service
+    citrix_adc_servicegroup

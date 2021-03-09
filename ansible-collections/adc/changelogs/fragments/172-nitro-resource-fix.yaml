@@ -1,0 +1,3 @@
+---
+bugfixes:
+  - Fix debug message failing in citrix_adc_nitro_resource
