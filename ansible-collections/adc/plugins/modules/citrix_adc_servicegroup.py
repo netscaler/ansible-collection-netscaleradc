@@ -32,9 +32,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_servicegroup
-short_description: Manage service group configuration in Netscaler
+short_description: Manage service group configuration in Citrix ADC
 description:
-    - Manage service group configuration in Netscaler.
+    - Manage service group configuration in Citrix ADC.
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 version_added: "2.4.0"
