@@ -132,7 +132,7 @@ class ModuleExecutor(object):
                 'non_updateable_attributes': [
                 ],
             },
-            }
+        }
 
         self.module_result = dict(
             changed=False,

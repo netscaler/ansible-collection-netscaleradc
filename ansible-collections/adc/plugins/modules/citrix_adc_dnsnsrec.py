@@ -146,7 +146,7 @@ class ModuleExecutor(object):
                 'non_updateable_attributes': [
                 ],
             },
-            }
+        }
 
         self.module_result = dict(
             changed=False,
@@ -185,9 +185,13 @@ class ModuleExecutor(object):
             )
         # Sort though the bound ciphers for cipheraliasname match
         for dnsnsrec in result['data'].get('dnsnsrec', []):
-            if all((dnsnsrec['domain'] == self.configured_dnsnsrec['domain'],
+            match = all(
+                (
+                    dnsnsrec['domain'] == self.configured_dnsnsrec['domain'],
                     dnsnsrec['nameserver'] == self.configured_dnsnsrec['nameserver']
-                )):
+                )
+            )
+            if match:
                 return True
 
         # Fallthrough
@@ -227,11 +231,10 @@ class ModuleExecutor(object):
         self.delete_dnsnsrec()
         self.create_dnsnsrec()
 
-
     def dnsnsrec_identical(self):
         log('ModuleExecutor.dnsnsrec_identical()')
         result = self.fetcher.get('dnsnsrec')
-        retrieved_dnsnsrecs = result['data'].get('dnsnsrec',[])
+        retrieved_dnsnsrecs = result['data'].get('dnsnsrec', [])
 
         if result['nitro_errorcode'] != 0:
             raise NitroException(
@@ -245,10 +248,13 @@ class ModuleExecutor(object):
         for retrieved_record in retrieved_dnsnsrecs:
 
             # Skip irrelevant ciphers
-            if not all((
+            match = all(
+                (
                     retrieved_record['domain'] == self.configured_dnsnsrec['domain'],
                     retrieved_record['nameserver'] == self.configured_dnsnsrec['nameserver']
-                )):
+                )
+            )
+            if not match:
                 continue
 
             for attribute in self.configured_dnsnsrec.keys():
@@ -288,7 +294,6 @@ class ModuleExecutor(object):
                     self.update_dnsnsrec()
             else:
                 log('Existing dnsnsrec has identical values to configured.')
-
 
     def delete_dnsnsrec(self):
         log('ModuleExecutor.delete_dnsnsrec()')

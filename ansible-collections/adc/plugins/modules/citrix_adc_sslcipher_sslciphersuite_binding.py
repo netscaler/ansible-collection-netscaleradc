@@ -174,7 +174,7 @@ class ModuleExecutor(object):
                 'non_updateable_attributes': [
                 ],
             },
-            }
+        }
 
         self.module_result = dict(
             changed=False,
@@ -255,7 +255,6 @@ class ModuleExecutor(object):
         self.delete_binding()
         self.create_binding()
 
-
     def binding_identical(self):
         log('ModuleExecutor.binding_identical()')
         result = self.fetcher.get('sslcipher_sslciphersuite_binding', self.module.params['ciphergroupname'])
@@ -313,7 +312,6 @@ class ModuleExecutor(object):
                     self.update_binding()
             else:
                 log('Existing binding has identical values to configured.')
-
 
     def delete_binding(self):
         log('ModuleExecutor.delete_binding()')
