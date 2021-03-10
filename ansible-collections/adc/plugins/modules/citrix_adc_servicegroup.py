@@ -32,9 +32,9 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 DOCUMENTATION = '''
 ---
 module: citrix_adc_servicegroup
-short_description: Manage service group configuration in Netscaler
+short_description: Manage service group configuration in Citrix ADC
 description:
-    - Manage service group configuration in Netscaler.
+    - Manage service group configuration in Citrix ADC.
     - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 version_added: "2.4.0"
@@ -705,6 +705,7 @@ from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
     NitroAPIFetcher
 )
 
+
 class ModuleExecutor(object):
 
     def __init__(self, module):
@@ -1050,7 +1051,8 @@ class ModuleExecutor(object):
                 )
                 diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
-                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
+                entry = 'Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value)
+                self.prepared_list.append(entry)
                 # Also append changed values to the non updateable list
                 if attribute in self.attribute_config['servicegroup']['non_updateable_attributes']:
                     non_updateable_list.append(attribute)
@@ -1572,8 +1574,8 @@ class ModuleExecutor(object):
             elif self.module.params['state'] == 'absent':
                 self.delete()
 
-            if self.module._diff :
-                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
+            if self.module._diff:
+                self.module_result['diff'] = {'prepared': '\n'.join(self.prepared_list)}
 
             self.module.exit_json(**self.module_result)
 

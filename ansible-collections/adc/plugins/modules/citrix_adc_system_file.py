@@ -145,7 +145,7 @@ class ModuleExecutor(object):
                 'non_updateable_attributes': [
                 ],
             },
-            }
+        }
 
         self.module_result = dict(
             changed=False,
@@ -232,7 +232,6 @@ class ModuleExecutor(object):
         self.delete_systemfile()
         self.create_systemfile()
 
-
     def systemfile_identical(self):
         log('ModuleExecutor.systemfile_identical()')
 
@@ -278,7 +277,6 @@ class ModuleExecutor(object):
                     self.update_systemfile()
             else:
                 log('Existing systemfile has identical values to configured.')
-
 
     def delete_systemfile(self):
         log('ModuleExecutor.delete_systemfile()')

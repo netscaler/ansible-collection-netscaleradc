@@ -1,0 +1,3 @@
+---
+major_changes:
+  - Add mas_proxy_call option in citrix_adc_nitro_request

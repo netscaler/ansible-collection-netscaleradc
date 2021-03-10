@@ -5,6 +5,42 @@ Citrix.Adc Release Notes
 .. contents:: Topics
 
 
+v1.1.0
+======
+
+Major Changes
+-------------
+
+- Add diff mode for the following modules
+  citrix_adc_cs_vserver
+  citrix_adc_lb_vserver
+  citrix_adc_nitro_resource
+  citrix_adc_server
+  citrix_adc_service
+  citrix_adc_servicegroup
+- Add mas_proxy_call option in citrix_adc_nitro_request
+- Update citrix_adc_service module to use NITRO API directly. Also update arguments to current NITRO API version.
+
+Minor Changes
+-------------
+
+- Patch citrix_adc_nitro_resource object workflow to return no exists for a resource if the endpoint is not on the returned object
+
+Bugfixes
+--------
+
+- Fix debug message failing in citrix_adc_nitro_resource
+
+New Modules
+-----------
+
+- citrix.adc.citrix_adc_dnsnsrec - Configuration for name server record resource.
+- citrix.adc.citrix_adc_nitro_info - Retrieve information from various NITRO API endpoints
+- citrix.adc.citrix_adc_sslcipher - Manage custom SSL ciphers
+- citrix.adc.citrix_adc_sslcipher_sslciphersuite_binding - Manage SSL cipher and SSL ciphersuite bindings
+- citrix.adc.citrix_adc_sslprofile_sslcipher_binding - Manage SSL profile and SSL cipher bindings
+- citrix.adc.citrix_adc_system_file - Upload systemfile to ADC
+
 v1.0.0
 ======
 

@@ -385,7 +385,7 @@ class ModuleExecutor(object):
         key_tuple_set = frozenset(key_tuples)
         log('key_tuple_set %s' % key_tuple_set)
         if len(key_tuple_set) > 1:
-            key_tuples = [item for item in key_tuple_set]
+            key_tuples = list(key_tuple_set)
             msg = 'Bindings list key attributes are not uniform. Attribute key sets found %s' % key_tuples
             self.module.fail_json(msg=msg, **self.module_result)
 
@@ -397,7 +397,7 @@ class ModuleExecutor(object):
         primary_ids_set = frozenset(primary_ids_list)
         log('primary_ids_set %s' % primary_ids_set)
         if len(primary_ids_set) > 1:
-            keys = [item for item in primary_ids_set]
+            keys = list(primary_ids_set)
             msg = 'Need to have only one primary id value. Found: %s' % keys
             self.module.fail_json(msg=msg, **self.module_result)
 
@@ -652,7 +652,8 @@ class ModuleExecutor(object):
                 )
                 self.differing_attributes.append(attribute)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
-                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
+                entry = 'Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value)
+                self.prepared_list.append(entry)
 
         return ret_val
 
@@ -853,7 +854,8 @@ class ModuleExecutor(object):
                 )
                 self.differing_attributes.append(attribute)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
-                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
+                entry = 'Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value)
+                self.prepared_list.append(entry)
 
         return ret_val
 
@@ -993,8 +995,8 @@ class ModuleExecutor(object):
             elif self.module.params['state'] == 'absent':
                 self.delete_resource()
 
-            if self.module._diff :
-                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
+            if self.module._diff:
+                self.module_result['diff'] = {'prepared': '\n'.join(self.prepared_list)}
 
             self.module.exit_json(**self.module_result)
 

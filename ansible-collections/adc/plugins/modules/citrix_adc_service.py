@@ -459,6 +459,7 @@ options:
             - A list of monitor names to ignore when syncing monitors for the service
             - Used to ignore default monitors that cannot be unbound from the service
         type: list
+        elements: str
         default:
             - tcp-default
             - ping-default
@@ -466,11 +467,9 @@ options:
 
     monitor_bindings:
         description: A list of monitor to bind to the service
+        type: list
+        elements: dict
         suboptions:
-            description: List of monitor bindings attributes.
-            type: list
-            elements: dict
-            suboptions:
                 monitor_name:
                     description:
                         - "The monitor Names."
@@ -532,6 +531,8 @@ loglines:
 
 diff_list:
     description: A dictionary with a list of differences between the actual configured object and the configuration specified in the module
+    type: list
+    returned: always
 
 msg:
     description: Message detailing the failure reason
@@ -550,6 +551,7 @@ from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
     loglines,
     NitroAPIFetcher
 )
+
 
 class ModuleExecutor(object):
 
@@ -666,7 +668,7 @@ class ModuleExecutor(object):
                 ],
                 'transforms': {
                     'monstate': lambda v: v.upper(),
-                    'weight': lambda v: str(v),
+                    'weight': str,
                 },
                 'get_id_attributes': [
                     'name',
@@ -690,7 +692,7 @@ class ModuleExecutor(object):
 
     def calculate_configured_service(self):
         log('ModuleExecutor.calculate_configured_service()')
-        self.configured_service= {}
+        self.configured_service = {}
         for attribute in self.attribute_config['service']['attributes_list']:
             value = self.module.params.get(attribute)
             # Skip null values
@@ -826,7 +828,8 @@ class ModuleExecutor(object):
                 )
                 diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
                 log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
-                self.prepared_list.append('Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value) )
+                entry = 'Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value)
+                self.prepared_list.append(entry)
                 # Also append changed values to the non updateable list
                 if attribute in self.attribute_config['service']['non_updateable_attributes']:
                     non_updateable_list.append(attribute)
@@ -1087,8 +1090,8 @@ class ModuleExecutor(object):
             elif self.module.params['state'] == 'absent':
                 self.delete()
 
-            if self.module._diff :
-                self.module_result['diff'] = { 'prepared': '\n'.join(self.prepared_list) }
+            if self.module._diff:
+                self.module_result['diff'] = {'prepared': '\n'.join(self.prepared_list)}
 
             self.module.exit_json(**self.module_result)
 
@@ -1245,6 +1248,7 @@ def main():
         ),
         ignore_monitors=dict(
             type='list',
+            elements='str',
             default=list([
                 'tcp-default',
                 'ping-default',

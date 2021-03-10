@@ -102,6 +102,11 @@ plugins:
       name: citrix_adc_cs_vserver
       namespace: ''
       version_added: 1.0.0
+    citrix_adc_dnsnsrec:
+      description: Configuration for name server record resource.
+      name: citrix_adc_dnsnsrec
+      namespace: ''
+      version_added: 1.1.0
     citrix_adc_gslb_service:
       description: Manage gslb service entities in Citrix ADC.
       name: citrix_adc_gslb_service
@@ -127,6 +132,11 @@ plugins:
       name: citrix_adc_lb_vserver
       namespace: ''
       version_added: 1.0.0
+    citrix_adc_nitro_info:
+      description: Retrieve information from various NITRO API endpoints
+      name: citrix_adc_nitro_info
+      namespace: ''
+      version_added: 1.1.0
     citrix_adc_nitro_request:
       description: Issue Nitro API requests to a Citrix ADC instance.
       name: citrix_adc_nitro_request
@@ -161,14 +171,34 @@ plugins:
       description: Manage service group configuration in Citrix ADC
       name: citrix_adc_servicegroup
       namespace: ''
-      version_added: 1.0.0
+      version_added: 2.4.0
     citrix_adc_ssl_certkey:
       description: Manage ssl cerificate keys.
       name: citrix_adc_ssl_certkey
       namespace: ''
       version_added: 1.0.0
+    citrix_adc_sslcipher:
+      description: Manage custom SSL ciphers
+      name: citrix_adc_sslcipher
+      namespace: ''
+      version_added: 1.1.0
+    citrix_adc_sslcipher_sslciphersuite_binding:
+      description: Manage SSL cipher and SSL ciphersuite bindings
+      name: citrix_adc_sslcipher_sslciphersuite_binding
+      namespace: ''
+      version_added: 1.1.0
+    citrix_adc_sslprofile_sslcipher_binding:
+      description: Manage SSL profile and SSL cipher bindings
+      name: citrix_adc_sslprofile_sslcipher_binding
+      namespace: ''
+      version_added: 1.1.0
+    citrix_adc_system_file:
+      description: Upload systemfile to ADC
+      name: citrix_adc_system_file
+      namespace: ''
+      version_added: 1.1.0
   netconf: {}
   shell: {}
   strategy: {}
   vars: {}
-version: 1.0.0
+version: 1.1.0
