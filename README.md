@@ -131,7 +131,7 @@ csvserver\_rewritepolicy\_binding, dnssoarec, lbgroup, lbgroup\_lbvserver\_bindi
 
 ## Pre-requisites
 
-* NITRO Python SDK (available from https://www.citrix.com/downloads/netscaler-adc or from the "Downloads" tab of the Citrix ADC GUI)
+* NITRO Python SDK
 * Ansible
 * Python 2.7 or 3.x
 
