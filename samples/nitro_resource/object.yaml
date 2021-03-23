@@ -21,4 +21,4 @@
 
         resource:
           name: mylbgroup
-          timeout: 150
+          timeout: 160

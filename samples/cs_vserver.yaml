@@ -54,7 +54,7 @@
         name: cs-vserver-1
         ipv46: 192.168.1.1
         port: 90
-        servicetype: HTTP
+        servicetype: SSL
 
         policybindings:
           - policyname: policy_1

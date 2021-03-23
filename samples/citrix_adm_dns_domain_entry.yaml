@@ -8,7 +8,7 @@
     - citrix.adm
 
   tasks:
-    - name: Setup appfw policy
+    - name: Setup dns domain entry
       delegate_to: localhost
       citrix_adm_dns_domain_entry:
         mas_ip: "{{ mas_ip }}"

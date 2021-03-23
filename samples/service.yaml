@@ -18,5 +18,9 @@
         state: present
         name: service-http
         servicetype: HTTP
-        ipaddress: 172.18.0.4
+        ipaddress: 172.18.0.5
         port: 5000
+        healthmonitor: NO
+        monitor_bindings:
+          - monitor_name: http
+            weight: 40

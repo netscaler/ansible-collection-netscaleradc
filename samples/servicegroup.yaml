@@ -52,5 +52,10 @@
           mode: exact
           attributes:
             - servername: server-1
-              port: 8080
-              weight: 50
+              port: 8090
+              weight: "50"
+        monitor_bindings:
+          mode: exact
+          attributes:
+            - monitor_name: http
+              weight: "50"

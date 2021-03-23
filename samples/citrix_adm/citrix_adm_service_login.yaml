@@ -33,7 +33,7 @@
         is_cloud: true
         nitro_auth_token: "{{ login_result.session_id }}"
 
-        state: present
+        state: absent
 
         name: test.com
         description: some description
