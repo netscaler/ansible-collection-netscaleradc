@@ -324,6 +324,10 @@ class ModuleExecutor(object):
         if 'nodomaincheck' in processed_data:
             del processed_data['nodomaincheck']
 
+        # Flag for the delete operation
+        if 'deletefromdevice' in processed_data:
+            del processed_data['deletefromdevice']
+
         post_data = {
             'sslcertkey': processed_data
         }
@@ -357,6 +361,7 @@ class ModuleExecutor(object):
             'passplain',  # Never returned from NITRO API
             'nodomaincheck',  # Flag for change operation
             'bundle',  # Flag for create operation
+            'deletefromdevice',  # Flag for the delete operation
         ]
         for attribute in self.configured_ssl_certkey:
             if attribute in skip_attributes:
@@ -406,6 +411,10 @@ class ModuleExecutor(object):
         # bundle is a flag for the create operation
         if 'bundle' in processed_data:
             del processed_data['bundle']
+
+        # Flag for the delete operation
+        if 'deletefromdevice' in processed_data:
+            del processed_data['deletefromdevice']
 
         # Remove attributes that are used in the update operation
         for attribute in self.update_keys:
@@ -502,9 +511,19 @@ class ModuleExecutor(object):
     def delete_ssl_certkey(self):
         log('ModuleExecutor.delete_ssl_certkey()')
 
+        args = {}
+
+        # Add delete flag if defined
+        if 'deletefromdevice' in self.configured_ssl_certkey:
+            if self.configured_ssl_certkey['deletefromdevice']:
+                args['deletefromdevice'] = 'true'
+            else:
+                args['deletefromdevice'] = 'false'
+
         result = self.fetcher.delete(
             resource='sslcertkey',
-            id=self.configured_ssl_certkey['certkey']
+            id=self.configured_ssl_certkey['certkey'],
+            args=args,
         )
         log('delete result %s' % result)
 
