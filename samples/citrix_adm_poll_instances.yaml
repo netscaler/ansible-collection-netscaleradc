@@ -9,16 +9,18 @@
     - citrix.adm
 
   tasks:
-    - name: Login to mas
+    - name: Login to adm
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
     - name: poll instances
       delegate_to: localhost
       citrix_adm_poll_instances:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
+        validate_certs: "{{ validate_certs }}"
         nitro_auth_token: "{{ login_result.session_id }}"

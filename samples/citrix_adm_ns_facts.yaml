@@ -12,12 +12,12 @@
       delegate_to: localhost
       register: ns_facts
       citrix_adm_ns_facts:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
-        id: "some_name"
-        name: "some_name"
+        ipv4_address: 10.222.74.141
 
     - name: Show return data
       debug:
