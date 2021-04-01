@@ -4,21 +4,23 @@
     max_clients: 5
 
   gather_facts: False
+  collections:
+    - citrix.adm
 
   tasks:
 
-    - name: Login to mas
+    - name: Login to adm
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: test_user
-        mas_pass: welcome
+        adm_ip: "{{ adm_ip }}"
+        adm_user: test_user
+        adm_pass: welcome
 
     - name: Setup domain name
       delegate_to: localhost
       citrix_adm_dns_domain_entry:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present
@@ -30,7 +32,7 @@
       delegate_to: localhost
       register: ns_facts
       citrix_adm_ns_facts:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         ip_address: 10.78.60.209
@@ -56,7 +58,7 @@
     - name: Setup application
       delegate_to: localhost
       citrix_adm_application:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present
