@@ -1,23 +1,5 @@
 - hosts: citrix_adm
 
-  vars:
-    max_clients: 5
-    stylebook_params:
-      name: "basic-lb-config"
-      namespace: "com.example.stylebooks"
-      version: "0.1"
-      configpack_payload:
-        parameters:
-          name: "test_application_2"
-          ip: "192.169.5.2"
-          lb-alg: "ROUNDROBIN"
-          svc-servers:
-            - "192.169.5.3"
-          svc-port: "80"
-        targets:
-          - id: "6a28b48b-e7c0-4770-b499-3ddb85b47561"
-
-
   gather_facts: False
 
   collections:
@@ -31,6 +13,7 @@
         adm_ip: "{{ adm_ip }}"
         adm_user: "{{ adm_user }}"
         adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
     - name: Get ns instance
       delegate_to: localhost
@@ -38,37 +21,41 @@
       citrix_adm_ns_facts:
         adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
 
-        ip_address: 10.78.60.209
-
-    - name: Set facts
-      set_fact:
-        stylebook_facts:
-          name: "basic-lb-config"
-          namespace: "com.example.stylebooks"
-          version: "0.1"
-          configpack_payload:
-            parameters:
-              name: "test_application_19"
-              ip: "192.180.19.2"
-              lb-alg: "ROUNDROBIN"
-              svc-servers:
-                - "192.180.19.3"
-              svc-port: "80"
-            targets:
-              - id: "{{ ns_facts.ns[0].id }}"
+        ip_address: '{{ instance_ip }}'
 
     - name: Setup application
       delegate_to: localhost
       citrix_adm_application:
         adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
+
 
         state: present
+
+        check_create: true
+        check_create_delay: 10
 
         poll_after_delete: true
         poll_delay: 10
 
         app_category: test_category
-        name: test_application_19
-        stylebook_params: "{{ stylebook_facts | to_json }}"
+        name: test_application_01
+        stylebook_params: "{{ stylebook_params_local | to_json }}"
+      vars:
+        stylebook_params_local:
+          configpack_payload:
+            parameters:
+              ip: 192.199.19.1
+              lb-alg: ROUNDROBIN
+              name: integration_test_application
+              svc-port: "80"
+              svc-servers:
+                - 192.199.19.3
+            targets:
+              - id: '{{ ns_facts.ns[0].id }}'
+          name: basic-lb-config
+          namespace: com.example.stylebooks
+          version: "0.1"
