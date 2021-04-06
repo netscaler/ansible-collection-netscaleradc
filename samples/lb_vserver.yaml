@@ -24,7 +24,6 @@
 
         name: service-http-1
         servicetype: HTTP
-        ip: 10.78.0.1
         ipaddress: 10.78.0.1
         port: 80
 
@@ -40,7 +39,6 @@
 
         name: service-http-2
         servicetype: HTTP
-        ip: 10.78.0.2
         ipaddress: 10.78.0.2
         port: 80
 
