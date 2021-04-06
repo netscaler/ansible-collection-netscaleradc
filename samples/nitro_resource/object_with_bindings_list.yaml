@@ -2,7 +2,7 @@
 
   gather_facts: False
   vars_files:
-    - workflows.yaml
+    - ../../deps/workflows.yaml
 
   vars:
     state: present
