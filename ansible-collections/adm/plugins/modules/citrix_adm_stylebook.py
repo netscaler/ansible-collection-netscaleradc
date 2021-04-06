@@ -90,7 +90,7 @@ EXAMPLES = '''
 - name: Setup stylebook
   delegate_to: localhost
   citrix_adm_stylebook:
-    mas_ip: 192.168.1.1
+    adm_ip: 192.168.1.1
     nitro_auth_token: "{{ login_result.session_id }}"
 
     state: present
@@ -123,6 +123,8 @@ stylebook:
 '''
 
 import copy
+import codecs
+import base64
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import (
@@ -173,46 +175,105 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
+        self.calculate_configured_stylebook()
+        self.fetch_stylebook()
 
-    def main_object_exists(self):
-        filter = {}
-        for attribute in self.attribute_config['stylebook']['get_id_attributes']:
-            attr_val = self.module.params.get(attribute)
-            if attr_val is not None:
-                filter[attribute] = attr_val
+    def calculate_configured_stylebook(self):
+        log('ModuleExecutor.calculate_configured_stylebook()')
+        self.configured_stylebook = {}
+        for attribute in self.attribute_config['stylebook']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['stylebook']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_stylebook[attribute] = value
 
-        if filter == {}:
-            self.module.fail_json(msg='Cannot get stylebook without any get attribute defined', **self.module_result)
+        log('calculated configured stylebook %s' % self.configured_stylebook)
 
-        else:
-            result = self.nitro_api_fetcher.get('stylebooks', filter=filter)
-            log('result of get %s' % result)
+    def fetch_stylebook(self):
+        log('ModuleExecutor.fetch_stylebook()')
+        resource_tuple = (
+            self.configured_stylebook['namespace'],
+            self.configured_stylebook['version'],
+            self.configured_stylebook['name'],
+        )
+        resource = 'stylebooks/%s/%s/%s' % resource_tuple
+        result = self.nitro_api_fetcher.get(resource=resource)
+        log('get result %s' % result)
 
-            if result['http_response_data']['status'] != 200:
-                message_tuple = (
-                    result['http_response_data']['status'],
-                    result['nitro_errorcode'],
-                    result['nitro_message'],
-                    result['nitro_severity'],
+        if result['http_response_data']['status'] == 200:
+            self.fetched_stylebook = result['data'].get('stylebook', {})
+        elif result['http_response_data']['status'] == 400:
+            unexpected_error = True
+            if 'data' in result:
+                if 'error_code' in result['data']:
+                    if result['data']['error_code'] == 555:
+                        unexpected_error = False
+                        self.fetched_stylebook = {}
+            if unexpected_error:
+                self.module.fail_json(
+                    msg='Unexpected error during fetch',
+                    **self.module_result
                 )
-                self.module.fail_json(msg='GET http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple, **self.module_result)
-            stylebook_data = result['data']['stylebooks']
-            if stylebook_data == []:
-                return False
-            elif len(stylebook_data) == 1:
-                return True
-            else:
-                self.module.fail_json(msg='Got too many stylebooks %s' % len(stylebook_data))
+        else:
+            self.module.fail_json(
+                msg='Unexpected error during fetch',
+                **self.module_result
+            )
+
+
+    def stylebook_exists(self):
+        if self.fetched_stylebook != {}:
+            return True
+        else:
+            return False
+
+    def stylebook_identical(self):
+        log('ModuleExecutor.stylebook_identical()')
+        identical = True
+        for attribute in self.configured_stylebook:
+            if attribute == 'source':
+                continue
+            configured_value = self.configured_stylebook[attribute]
+            fetched_value = self.fetched_stylebook.get(attribute)
+            if configured_value != fetched_value:
+                str_tuple = (
+                    attribute,
+                    type(configured_value),
+                    configured_value,
+                    type(fetched_value),
+                    fetched_value
+                )
+                log('Attribute %s differs. configured: (%s) %s  fetched: (%s) %s' % str_tuple)
+                identical = False
+
+        if 'source' in self.configured_stylebook:
+            configured_value = self.configured_stylebook['source']
+            fetched_value = self.fetched_stylebook.get('source')
+            if fetched_value is not None:
+                fetched_value = codecs.decode(base64.b64decode(fetched_value))
+                str_tuple = (
+                    'source',
+                    type(configured_value),
+                    configured_value,
+                    type(fetched_value),
+                    fetched_value
+                )
+            if configured_value != fetched_value:
+                log('Attribute %s differs. configured: (%s) %s  fetched: (%s) %s' % str_tuple)
+                identical = False
+
+        return identical
+
 
     def create_stylebook(self):
-        stylebook_data = {}
-        for attribute in self.attribute_config['stylebook']['attributes_list']:
-            attr_value = self.module.params.get(attribute)
-            if attr_value is not None:
-                stylebook_data[attribute] = attr_value
+        log('ModuleExecutor.create_stylebook()')
 
         post_data = {
-            'stylebook': stylebook_data
+            'stylebook': self.configured_stylebook
         }
         result = self.nitro_api_fetcher.post(post_data=post_data, resource='stylebooks')
         log('result of stylebook creation %s' % result)
@@ -229,12 +290,13 @@ class ModuleExecutor(object):
         return result
 
     def get_stylebook(self):
-        filter = {}
-        for attribute in self.attribute_config['stylebook']['get_id_attributes']:
-            attr_val = self.module.params.get(attribute)
-            if attr_val is not None:
-                filter[attribute] = attr_val
-        result = self.nitro_api_fetcher.get(resource='stylebooks', filter=filter)
+        resource_tuple = (
+            self.module.params['namespace'],
+            self.module.params['version'],
+            self.module.params['name'],
+        )
+        resource = 'stylebooks/%s/%s/%s' % resource_tuple
+        result = self.nitro_api_fetcher.get(resource=resource)
 
         if result['http_response_data']['status'] != 200:
             message_tuple = (
@@ -259,25 +321,17 @@ class ModuleExecutor(object):
         else:
             return stylebooks[0]
 
-    def create(self):
-
-        if not self.main_object_exists():
-            self.module_result['changed'] = True
-            if not self.module.check_mode:
-                self.create_stylebook()
+    def update_stylebook(self):
+        log('ModuleExecutor.update_stylebook()')
+        self.delete_stylebook()
+        self.create_stylebook()
 
     def delete_stylebook(self):
-        # Check if all attributes are present
-        for attribute in self.attribute_config['stylebook']['delete_id_attributes']:
-            attr_val = self.module.params.get(attribute)
-            if attr_val is None:
-                self.module.fail_json('Must define attribute %s for deletion' % attribute, **self.module_result)
-
         # Go on with the deletion
         resource_tuple = (
-            self.module.params['namespace'],
-            self.module.params['version'],
-            self.module.params['name'],
+            self.configured_stylebook['namespace'],
+            self.configured_stylebook['version'],
+            self.configured_stylebook['name'],
         )
         resource = 'stylebooks/%s/%s/%s' % resource_tuple
         result = self.nitro_api_fetcher.delete(resource=resource)
@@ -293,23 +347,25 @@ class ModuleExecutor(object):
             msg = 'DELETE http status %s. nitro_errorcode=%s, nitro_message=%s, nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
-    def delete(self):
-
-        if self.main_object_exists():
-            self.module_result['changed'] = True
-            if not self.module.check_mode:
-                self.delete_stylebook()
-
     def main(self):
         try:
 
             if self.module.params['state'] == 'present':
-                self.create()
-                if not self.module.check_mode:
-                    created_stylebook = self.get_stylebook()
-                    self.module_result.update(dict(stylebook=created_stylebook))
+                if not self.stylebook_exists():
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.create_stylebook()
+                else:
+                    if not self.stylebook_identical():
+                        self.module_result['changed'] = True
+                        if not self.module.check_mode:
+                            self.update_stylebook()
+
             elif self.module.params['state'] == 'absent':
-                self.delete()
+                if self.stylebook_exists():
+                    self.module_result['changed'] = True
+                    if not self.module.check_mode:
+                        self.delete_stylebook()
 
             self.module.exit_json(**self.module_result)
 
