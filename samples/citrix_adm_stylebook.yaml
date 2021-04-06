@@ -15,6 +15,7 @@
         adm_ip: "{{ adm_ip }}"
         adm_user: "{{ adm_user }}"
         adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
 
     - name: Setup stylebook
@@ -22,6 +23,7 @@
       citrix_adm_stylebook:
         adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
 
         state: present
 
