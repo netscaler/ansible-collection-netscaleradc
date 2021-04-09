@@ -170,7 +170,7 @@ Examples
     - name: Setup stylebook
       delegate_to: localhost
       citrix_adm_stylebook:
-        mas_ip: 192.168.1.1
+        adm_ip: 192.168.1.1
         nitro_auth_token: "{{ login_result.session_id }}"
     
         state: present

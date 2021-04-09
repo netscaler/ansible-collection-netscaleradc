@@ -14,17 +14,9 @@ citrix_adc_service - Manage service configuration in Citrix ADC
 Synopsis
 --------
 - Manage service configuration in Citrix ADC.
-- This module allows the creation, deletion and modification of Citrix ADC services.
 - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
-- This module supports check mode.
 
 
-
-Requirements
-~~~~~~~~~~~~
-The below requirements are needed on the host that executes this module.
-
-- nitro python sdk
 
 
 Parameters
@@ -37,13 +29,21 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - Internal
+
+        *(bool)*
+      -
+      - Display only dynamically learned services.
     * - accessdown
 
         *(bool)*
-      - Default:
+      -
+      - Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service DOWN, and this parameter is disabled, the packets are dropped.
+    * - all
 
-        *False*
-      - Use Layer 2 mode to bridge the packets sent to this service if it is marked as DOWN. If the service is DOWN, and this parameter is disabled, the packets are dropped.
+        *(bool)*
+      -
+      - Display both user-configured and dynamically learned services.
     * - appflowlog
 
         *(str)*
@@ -55,9 +55,7 @@ Parameters
     * - cacheable
 
         *(bool)*
-      - Default:
-
-        *False*
+      -
       - Use the transparent cache redirection virtual server to forward requests to the cache server.
 
         Note: Do not specify this parameter if you set the Cache Type parameter.
@@ -77,14 +75,14 @@ Parameters
 
           - enabled
           - disabled
-      - Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 address as its value. Used if the server needs the client's IP address for security, accounting, or other purposes, and setting the Use Source IP parameter is not a viable option.
+      - Before forwarding a request to the service, insert an HTTP header with the client's IPv4 or IPv6 as its value. Used if the server needs the client's IP address for security, accounting, or other and setting the Use Source IP parameter is not a viable option.
     * - cipheader
 
         *(str)*
       -
-      - Name for the HTTP header whose value must be set to the IP address of the client. Used with the Client IP parameter. If you set the Client IP parameter, and you do not specify a name for the header, the appliance uses the header name specified for the global Client IP Header parameter (the cipHeader parameter in the set ns param CLI command or the Client IP Header parameter in the Configure HTTP Parameters dialog box at System > Settings > Change HTTP parameters). If the global Client IP Header parameter is not specified, the appliance inserts a header with the name "client-ip.".
+      - Name for the HTTP header whose value must be set to the IP address of the client. Used with the IP parameter. If you set the Client IP parameter, and you do not specify a name for the header, the uses the header name specified for the global Client IP Header parameter (the cipHeader parameter in set ns param CLI command or the Client IP Header parameter in the Configure HTTP Parameters dialog at System > Settings > Change HTTP parameters). If the global Client IP Header parameter is not the appliance inserts a header with the name "client-ip.".
 
-        Minimum length = 1
+        Minimum length =  1
     * - cka
 
         *(bool)*
@@ -94,18 +92,18 @@ Parameters
 
         *(int)*
       -
-      - Port to which clear text data must be sent after the appliance decrypts incoming SSL traffic. Applicable to transparent SSL services.
+      - Port to which clear text data must be sent after the appliance decrypts incoming SSL traffic. to transparent SSL services.
 
-        Minimum value = 1
+        Minimum value = ``1``
     * - clttimeout
 
-        *(float)*
+        *(int)*
       -
       - Time, in seconds, after which to terminate an idle client connection.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 31536000
+        Maximum value = ``31536000``
     * - cmp
 
         *(bool)*
@@ -116,33 +114,43 @@ Parameters
         *(str)*
       -
       - Any information about the service.
+    * - contentinspectionprofilename
+
+        *(str)*
+      -
+      - Name of the ContentInspection profile that contains IPS/IDS communication related setting for the
+
+        Minimum length =  1
+
+        Maximum length =  127
     * - customserverid
 
         *(str)*
-      - Default:
+      -
+      - Unique identifier for the service. Used when the persistency type for the virtual server is set to Server ID.
+    * - delay
 
-        *None*
-      - Unique identifier for the service. Used when the persistency type for the virtual server is set to Custom Server ID.
+        *(str)*
+      -
+      - Time, in seconds, allocated to the Citrix ADC for a graceful shutdown of the service. During this new requests are sent to the service only for clients who already have persistent sessions on the Requests from new clients are load balanced among other available services. After the delay time no requests are sent to the service, and the service is marked as unavailable (OUT OF SERVICE).
     * - disabled
 
         *(bool)*
       - Default:
 
         *False*
-      - When set to ``yes`` the service state will be set to DISABLED.
+      - When set to ``true`` the service state will be set to ``disabled``.
 
-        When set to ``no`` the service state will be set to ENABLED.
-
-        Note that due to limitations of the underlying NITRO API a ``disabled`` state change alone does not cause the module result to report a changed status.
+        When set to ``false`` the service state will be set to ``enabled``.
     * - dnsprofilename
 
         *(str)*
       -
-      - Name of the DNS profile to be associated with the service. DNS profile properties will applied to the transactions processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.
+      - Name of the DNS profile to be associated with the service. DNS profile properties will applied to the processed by a service. This parameter is valid only for ADNS and ADNS-TCP services.
 
-        Minimum length = 1
+        Minimum length =  1
 
-        Maximum length = 127
+        Maximum length =  127
     * - downstateflush
 
         *(str)*
@@ -150,37 +158,46 @@ Parameters
 
           - enabled
           - disabled
-      - Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.
+      - Flush all active transactions associated with a service whose state transitions from UP to DOWN. Do enable this option for applications that must complete their transactions.
     * - graceful
 
         *(bool)*
-      - Default:
-
-        *False*
-      - Shut down gracefully, not accepting any new connections, and disabling the service when all of its connections are closed.
+      -
+      - Shut down gracefully, not accepting any new connections, and disabling the service when all of its are closed.
     * - hashid
 
-        *(float)*
+        *(str)*
       -
-      - A numerical identifier that can be used by hash based load balancing methods. Must be unique for each service.
+      - A numerical identifier that can be used by hash based load balancing methods. Must be unique for each
 
-        Minimum value = 1
+        Minimum value = ``1``
     * - healthmonitor
 
         *(bool)*
-      - Default:
+      -
+      - Monitor the health of this service. Available settings function as follows:
 
-        *True*
-      - Monitor the health of this service
+        YES - Send probes to check the health of the service.
+
+        NO - Do not send probes to check the health of the service. With the NO option, the appliance shows service as UP at all times.
     * - httpprofilename
 
         *(str)*
       -
       - Name of the HTTP profile that contains HTTP configuration settings for the service.
 
-        Minimum length = 1
+        Minimum length =  1
 
-        Maximum length = 127
+        Maximum length =  127
+    * - ignore_monitors
+
+        *(list)*
+      - Default:
+
+        *['tcp-default', 'ping-default', 'default-path-monitor']*
+      - A list of monitor names to ignore when syncing monitors for the service
+
+        Used to ignore default monitors that cannot be unbound from the service
     * - instance_ip
 
         *(str)*
@@ -196,7 +213,7 @@ Parameters
       -
       - IP to assign to the service.
 
-        Minimum length = 1
+        Minimum length =  1
     * - ipaddress
 
         *(str)*
@@ -215,98 +232,78 @@ Parameters
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
     * - maxbandwidth
 
-        *(float)*
+        *(str)*
       -
       - Maximum bandwidth, in Kbps, allocated to the service.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 4294967287
+        Maximum value = ``4294967287``
     * - maxclient
 
-        *(float)*
+        *(str)*
       -
       - Maximum number of simultaneous open connections to the service.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 4294967294
+        Maximum value = ``4294967294``
     * - maxreq
 
-        *(float)*
+        *(str)*
       -
       - Maximum number of requests that can be sent on a persistent connection to the service.
 
         Note: Connection requests beyond this value are rejected.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 65535
+        Maximum value = ``65535``
+    * - monconnectionclose
+
+        *(str)*
+      - Choices:
+
+          - RESET
+          - FIN
+      - Close monitoring connections by sending the service a connection termination message with the bit set.
     * - monitor_bindings
 
         *(list)*
       -
-      - A list of load balancing monitors to bind to this service.
+      - A list of monitor to bind to the service
+    * - monitor_name_svc
 
-        Each monitor entry is a dictionary which may contain the following options.
+        *(str)*
+      -
+      - Name of the monitor bound to the specified service.
 
-        Note that if not using the built in monitors they must first be setup.
-
-        .. list-table::
-            :widths: 10 10 60
-            :header-rows: 1
-
-            * - Suboption
-              - Choices/Defaults
-              - Comment
-
-            * - dup_state
-              - Choices:
-
-                  - enabled
-                  - disabled
-              - State of the monitor.
-
-                The state setting for a monitor of a given type affects all monitors of that type.
-
-                For example, if an HTTP monitor is enabled, all HTTP monitors on the appliance are (or remain) enabled.
-
-                If an HTTP monitor is disabled, all HTTP monitors on the appliance are disabled.
-            * - dup_weight
-              -
-              - Weight to assign to the binding between the monitor and service.
-            * - monitorname
-              -
-              - Name of the monitor.
-            * - weight
-              -
-              - Weight to assign to the binding between the monitor and service.
-
+        Minimum length =  1
     * - monthreshold
 
-        *(float)*
+        *(str)*
       -
-      - Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to mark a service as UP or DOWN.
+      - Minimum sum of weights of the monitors that are bound to this service. Used to determine whether to a service as UP or DOWN.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 65535
+        Maximum value = ``65535``
     * - name
 
         *(str)*
       -
-      - Name for the service. Must begin with an ASCII alphabetic or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space `` ``, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters. Cannot be changed after the service has been created.
+      - Name for the service. Must begin with an ASCII alphabetic or underscore (_) character, and must only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals (=), and (-) characters. Cannot be changed after the service has been created.
 
-        Minimum length = 1
+        Minimum length =  1
     * - netprofile
 
         *(str)*
       -
       - Network profile to use for the service.
 
-        Minimum length = 1
+        Minimum length =  1
 
-        Maximum length = 127
+        Maximum length =  127
     * - nitro_auth_token
 
         *(str)*
@@ -346,6 +343,16 @@ Parameters
       - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
+    * - pathmonitor
+
+        *(bool)*
+      -
+      - Path monitoring for clustering.
+    * - pathmonitorindv
+
+        *(bool)*
+      -
+      - Individual Path monitoring decisions.
     * - port
 
         *(int)*
@@ -362,13 +369,16 @@ Parameters
 
           - enabled
           - disabled
-      - By turning on this option packets destined to a service in a cluster will not under go any steering. Turn this option for single packet request response mode or when the upstream device is performing a proper RSS for connection based distribution.
+      - By turning on this option packets destined to a service in a cluster will not under go any steering. this option for single packet request response mode or when the upstream device is performing a RSS for connection based distribution.
+    * - riseapbrstatsmsgcode
+
+        *(int)*
+      -
+      - The code indicating the rise apbr status.
     * - rtspsessionidremap
 
         *(bool)*
-      - Default:
-
-        *False*
+      -
       - Enable RTSP session ID mapping for the service.
     * - save_config
 
@@ -379,13 +389,23 @@ Parameters
       - If true the module will save the configuration on the Citrix ADC node if it makes any changes.
 
         The module will not save the configuration on the Citrix ADC node if it made no changes.
+    * - sc
+
+        *(bool)*
+      -
+      - State of SureConnect for the service.
+    * - serverid
+
+        *(str)*
+      -
+      - The  identifier for the service. This is used when the persistency type is set to Custom Server ID.
     * - servername
 
         *(str)*
       -
       - Name of the server that hosts the service.
 
-        Minimum length = 1
+        Minimum length =  1
     * - servicetype
 
         *(str)*
@@ -428,6 +448,11 @@ Parameters
           - SYSLOGUDP
           - FIX
           - SSL_FIX
+          - USER_TCP
+          - USER_SSL_TCP
+          - QUIC
+          - IPFIX
+          - LOGSTREAM
       - Protocol in which data is exchanged with the service.
     * - sp
 
@@ -448,13 +473,13 @@ Parameters
         When absent the resource will be deleted from the Citrix ADC node.
     * - svrtimeout
 
-        *(float)*
+        *(int)*
       -
       - Time, in seconds, after which to terminate an idle server connection.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 31536000
+        Maximum value = ``31536000``
     * - tcpb
 
         *(bool)*
@@ -466,21 +491,30 @@ Parameters
       -
       - Name of the TCP profile that contains TCP configuration settings for the service.
 
-        Minimum length = 1
+        Minimum length =  1
 
-        Maximum length = 127
+        Maximum length =  127
+    * - td
+
+        *(str)*
+      -
+      - Integer value that uniquely identifies the traffic domain in which you want to configure the entity. you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of
+
+        Minimum value = ``0``
+
+        Maximum value = ``4094``
     * - useproxyport
 
         *(bool)*
       -
-      - Use the proxy port as the source port when initiating connections with the server. With the NO setting, the client-side connection port is used as the source port for the server-side connection.
+      - Use the proxy port as the source port when initiating connections with the server. With the NO the client-side connection port is used as the source port for the server-side connection.
 
         Note: This parameter is available only when the Use Source IP (USIP) parameter is set to YES.
     * - usip
 
         *(bool)*
       -
-      - Use the client's IP address as the source IP address when initiating a connection to the server. When creating a service, if you do not set this parameter, the service inherits the global Use Source IP setting (available in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes > Configure Modes dialog box). However, you can override this setting after you create the service.
+      - Use the client's IP address as the source IP address when initiating a connection to the server. When a service, if you do not set this parameter, the service inherits the global Use Source IP setting in the enable ns mode and disable ns mode CLI commands, or in the System > Settings > Configure modes Configure Modes dialog box). However, you can override this setting after you create the service.
     * - validate_certs
 
         *(bool)*
@@ -488,6 +522,15 @@ Parameters
 
         *yes*
       - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+    * - weight
+
+        *(str)*
+      -
+      - Weight to assign to the monitor-service binding. When a monitor is UP, the weight assigned to its with the service determines how much the monitor contributes toward keeping the health of the service the value configured for the Monitor Threshold parameter.
+
+        Minimum value = ``1``
+
+        Maximum value = ``100``
 
 
 
@@ -526,15 +569,11 @@ Return Values
     * - Key
       - Returned
       - Description
-    * - diff
+    * - diff_list
 
-        *(dict)*
-      - failure
+        *(list)*
+      - always
       - A dictionary with a list of differences between the actual configured object and the configuration specified in the module
-
-        **Sample:**
-
-        { 'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0' }
     * - loglines
 
         *(list)*
@@ -544,3 +583,12 @@ Return Values
         **Sample:**
 
         ['message 1', 'message 2']
+    * - msg
+
+        *(str)*
+      - failure
+      - Message detailing the failure reason
+
+        **Sample:**
+
+        Action does not exist

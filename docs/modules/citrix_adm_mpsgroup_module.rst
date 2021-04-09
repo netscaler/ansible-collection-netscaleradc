@@ -37,43 +37,56 @@ Parameters
 
         *(list)*
       -
-      - All Application names that are part of this group.
+      - All Application names that are part of this group.This includes selected appnames as well as which are result of defined regex.
+    * - apply_all_bound_entities
 
-        This includes selected appnames as well as applications which are result of defined regex.
-    * - application_names_with_regex
-
-        *(list)*
+        *(bool)*
       -
-      - Application names defined with regex that are part of this group
-    * - application_names_without_regex
-
-        *(list)*
-      -
-      - selected application names that are part of this group.
+      - Apply for all bound entities (TRUE|FALSE).
     * - assign_all_apps
 
         *(bool)*
       -
       - Assign All Applications (YES|NO).
+    * - assign_all_autoscale_groups
+
+        *(bool)*
+      -
+      - Assign All Autoscale groups (YES|NO).
     * - assign_all_devices
 
         *(bool)*
       -
       - Assign All Instances (YES|NO).
+    * - assign_all_selected_device_apps
+
+        *(bool)*
+      -
+      - Assign All Application from selected instances (YES|NO).
     * - authscope_props
 
         *(list)*
       -
-      - authscope_props
+      - Authorized Scope Properties.
+    * - autoscale_groups_id
+
+        *(list)*
+      -
+      - Autoscale groups belong to this groupp.
+    * - bound_entity_selected
+
+        *(str)*
+      -
+      - Which bound entiy is selected VSERVER(0),SERVICE(1),SERVICEGROUP(2),SERVER(3).
     * - description
 
         *(str)*
       -
       - Description of Group.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 1024
+         Maximum length =  1024
     * - enable_session_timeout
 
         *(bool)*
@@ -110,9 +123,9 @@ Parameters
       -
       - Group Name.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 64
+         Maximum length =  64
     * - nitro_auth_token
 
         *(str)*
@@ -155,22 +168,16 @@ Parameters
     * - permission
 
         *(str)*
-      - Choices:
-
-          - admin
-          - read-only
+      -
       - Permission for the group (admin/read-only).
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - role
 
         *(str)*
-      - Choices:
-
-          - admin
-          - nonadmin
+      -
       - Role (admin|nonadmin).
     * - roles
 
@@ -186,6 +193,11 @@ Parameters
       - If true the module will save the configuration on the netscaler node if it makes any changes.
 
         The module will not save the configuration on the netscaler node if it made no changes.
+    * - select_individual_entity
+
+        *(bool)*
+      -
+      - Select Individual Entity Type.
     * - session_timeout
 
         *(str)*
@@ -219,9 +231,9 @@ Parameters
       -
       - Id of the tenant.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - users
 
         *(list)*

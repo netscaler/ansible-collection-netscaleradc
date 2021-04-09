@@ -45,6 +45,7 @@ All modules
   * :ref:`citrix_adm_application_module`
   * :ref:`citrix_adm_dns_domain_entry_module`
   * :ref:`citrix_adm_login_module`
+  * :ref:`citrix_adm_logout_module`
   * :ref:`citrix_adm_mpsgroup_module`
   * :ref:`citrix_adm_mpsuser_module`
   * :ref:`citrix_adm_ns_facts_module`
