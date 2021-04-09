@@ -240,7 +240,7 @@ Return Values
     * - Key
       - Returned
       - Description
-    * - diff
+    * - diff_list
 
         *(dict)*
       - failure

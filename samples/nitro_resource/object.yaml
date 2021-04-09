@@ -2,7 +2,7 @@
 
   gather_facts: False
   vars_files:
-    - workflows.yaml
+    - ../../deps/workflows.yaml
   collections:
     - citrix.adc
 
@@ -21,4 +21,4 @@
 
         resource:
           name: mylbgroup
-          timeout: 150
+          timeout: 160

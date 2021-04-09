@@ -11,11 +11,12 @@
     - name: Setup mpsuser
       delegate_to: localhost
       citrix_adm_mpsgroup:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
-        state: absent
+        state: present
 
         name: playbook_test_mpsgroup_2
         permission: read-only

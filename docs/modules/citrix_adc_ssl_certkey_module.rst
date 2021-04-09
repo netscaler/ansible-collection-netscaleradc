@@ -17,12 +17,6 @@ Synopsis
 
 
 
-Requirements
-~~~~~~~~~~~~
-The below requirements are needed on the host that executes this module.
-
-- nitro python sdk
-
 
 Parameters
 ----------
@@ -34,24 +28,34 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - bundle
+
+        *(bool)*
+      -
+      - Parse the certificate chain as a single file after linking the server certificate to its issuer's within the file.
     * - cert
 
         *(str)*
       -
-      - Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
+      - Name of and, optionally, path to the X509 certificate file that is used to form the certificate-key The certificate file should be present on the appliance's hard-disk drive or solid-state drive. a certificate in any location other than the default might cause inconsistency in a high availability /nsconfig/ssl/ is the default path.
 
-        Minimum length = 1
+        Minimum length =  1
     * - certkey
 
         *(str)*
       -
-      - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space `` ``, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters. Cannot be changed after the certificate-key pair is created.
+      - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric or underscore character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon at (@), equals (=), and hyphen (-) characters. Cannot be changed after the certificate-key pair is
 
         The following requirement applies only to the Citrix ADC CLI:
 
-        If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, "my cert" or 'my cert').
+        If the name includes one or more spaces, enclose the name in double or single quotation marks (for "my cert" or 'my cert').
 
-        Minimum length = 1
+        Minimum length =  1
+    * - deletefromdevice
+
+        *(bool)*
+      -
+      - Delete cert/key file from file system.
     * - expirymonitor
 
         *(str)*
@@ -60,6 +64,20 @@ Parameters
           - enabled
           - disabled
       - Issue an alert when the certificate is about to expire.
+    * - fipskey
+
+        *(str)*
+      -
+      - Name of the FIPS key that was created inside the Hardware Security Module (HSM) of a FIPS appliance, a key that was imported into the HSM.
+
+        Minimum length =  1
+    * - hsmkey
+
+        *(str)*
+      -
+      - Name of the HSM key that was created in the External Hardware Security Module (HSM) of a FIPS
+
+        Minimum length =  1
     * - inform
 
         *(str)*
@@ -68,7 +86,7 @@ Parameters
           - DER
           - PEM
           - PFX
-      - Input format of the certificate and the private-key files. The three formats supported by the appliance are:
+      - Input format of the certificate and the private-key files. The three formats supported by the are:
 
         PEM - Privacy Enhanced Mail
 
@@ -88,9 +106,16 @@ Parameters
 
         *(str)*
       -
-      - Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. The certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a certificate in any location other than the default might cause inconsistency in a high availability setup. /nsconfig/ssl/ is the default path.
+      - Name of and, optionally, path to the private-key file that is used to form the certificate-key pair. certificate file should be present on the appliance's hard-disk drive or solid-state drive. Storing a in any location other than the default might cause inconsistency in a high availability setup. is the default path.
 
-        Minimum length = 1
+        Minimum length =  1
+    * - linkcertkeyname
+
+        *(str)*
+      -
+      - Name of the Certificate Authority certificate-key pair to which to link a certificate-key pair.
+
+        Minimum length =  1
     * - mas_proxy_call
 
         *(bool)*
@@ -134,11 +159,16 @@ Parameters
         *(str)*
       -
       - The username with which to authenticate to the Citrix ADC node.
+    * - nodomaincheck
+
+        *(bool)*
+      -
+      - Override the check for matching domain names during a certificate update operation.
     * - notificationperiod
 
-        *(float)*
+        *(str)*
       -
-      - Time, in number of days, before certificate expiration, at which to generate an alert that the certificate is about to expire.
+      - Time, in number of days, before certificate expiration, at which to generate an alert that the is about to expire.
 
         Minimum value = ``10``
 
@@ -150,18 +180,23 @@ Parameters
       - The ip address of the Citrix ADC appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
+    * - ocspstaplingcache
+
+        *(bool)*
+      -
+      - Clear cached ocspStapling response in certkey.
     * - passplain
 
         *(str)*
       -
-      - Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM format.
+      - Pass phrase used to encrypt the private-key. Required when adding an encrypted private-key in PEM
 
-        Minimum length = 1
+        Minimum length =  1
     * - password
 
         *(bool)*
       -
-      - Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys in PEM format.
+      - Passphrase that was used to encrypt the private-key. Use this option to load encrypted private-keys PEM format.
     * - save_config
 
         *(bool)*
@@ -198,7 +233,6 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    
     - name: Setup ssl certkey
       delegate_to: localhost
       citrix_adc_ssl_certkey:
@@ -233,7 +267,7 @@ Return Values
 
         **Sample:**
 
-        { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
+        {'clttimeout': 'difference. ours: (float) 10.0 other: (float) 20.0'}
     * - loglines
 
         *(list)*

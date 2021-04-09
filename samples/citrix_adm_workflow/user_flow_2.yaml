@@ -12,19 +12,19 @@
 
   tasks:
 
-    - name: Login to mas
+    - name: Login to adm
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ tenant_name }}\\{{ tenant_user }}"
-        mas_pass: "{{ tenant_user_password }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ tenant_name }}\\{{ tenant_user }}"
+        adm_pass: "{{ tenant_user_password }}"
 
     - name: Setup stylebook
       delegate_to: localhost
       register: stylebook_result
       citrix_adm_stylebook:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
 
@@ -136,7 +136,7 @@
       delegate_to: localhost
       register: ns_facts
       citrix_adm_ns_facts:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         ip_address: "{{ target_ns_ip }}"
@@ -162,7 +162,7 @@
     - name: Setup application
       delegate_to: localhost
       citrix_adm_application:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: absent

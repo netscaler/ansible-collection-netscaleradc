@@ -35,8 +35,6 @@ module: citrix_adm_rba_policy
 short_description: Manage Citrix ADM rba policies.
 description:
     - Manage Citrix ADM rba policies.
-    - Note that due to limitations on the underlying NITRO API an update is always forced when I(state=present).
-    - Instead delete and recreate the rba_policy.
 
 version_added: "1.0.0"
 
@@ -56,13 +54,13 @@ options:
         description:
             - "RBA statement."
         type: list
-        elements: str
+        elements: dict
 
     ui:
         description:
             - "RBA for UI components."
         type: list
-        elements: str
+        elements: dict
 
     name:
         description:
@@ -83,12 +81,6 @@ options:
             - "Maximum length = 1024"
         type: str
 
-    roles:
-        description:
-            - "Roles to which this policy attached."
-        type: list
-        elements: str
-
 
 extends_documentation_fragment: citrix.adm.citrixadm
 '''
@@ -96,8 +88,8 @@ extends_documentation_fragment: citrix.adm.citrixadm
 EXAMPLES = '''
 - name: Setup appfw policy
   delegate_to: localhost
-  citrix_adm_rba_policy:
-    mas_ip: 192.168.1.1
+  citrix.adm.citrix_adm_rba_policy:
+    adm_ip: 192.168.1.1
     nitro_auth_token: "{{ login_result.session_id }}"
 
     state: present
@@ -106,12 +98,12 @@ EXAMPLES = '''
     description: some description
     tenant_id: "0ea1d85a-06b8-4225-9fc8-5a7065fdd590"
     statement:
-      - access_type: true
+      - access_type: "true"
         operation_name: add
         parent_name: rba_policy
         resource_type: ns_gslbservice
     ui:
-      - access_type: true
+      - access_type: "true"
         display_name: ""
         name: ContentSwitching
         parent_name: rba_policy
@@ -141,7 +133,7 @@ import copy
 
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adm.plugins.module_utils.citrix_adm import (
-    MASResourceConfig,
+    NitroAPIFetcher,
     NitroException,
     netscaler_common_arguments,
     log,
@@ -154,6 +146,7 @@ class ModuleExecutor(object):
     def __init__(self, module):
         self.module = module
         self.main_nitro_class = 'rba_policy'
+        self.fetcher = NitroAPIFetcher(module)
 
         # Dictionary containing attribute information
         # for each NITRO object utilized by this module
@@ -166,7 +159,6 @@ class ModuleExecutor(object):
                     'name',
                     'id',
                     'description',
-                    'roles',
                 ],
                 'transforms': {
                 },
@@ -187,64 +179,252 @@ class ModuleExecutor(object):
             failed=False,
             loglines=loglines,
         )
+        self.calculate_configured_rba_policy()
+        self.fetch_rba_policy()
 
-    def main_object_exists(self, config):
-        try:
-            main_object_exists = config.exists(
-                get_id_attributes=self.attribute_config[self.main_nitro_class]['get_id_attributes'],
-                use_filter=True,
+    def calculate_configured_rba_policy(self):
+        log('ModuleExecutor.calculate_configured_rba_policy()')
+        self.configured_rba_policy = {}
+        for attribute in self.attribute_config['rba_policy']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['rba_policy']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_rba_policy[attribute] = value
+
+        log('calculated configured rba_policy %s' % self.configured_rba_policy)
+
+    def fetch_rba_policy(self):
+        log('ModuleExecutor.fetch_rba_policy()')
+        self.fetched_rba_policy = {}
+
+        # The following fetch will always succeed
+        # The result will be an array of all existing rba_policies
+        result = self.fetcher.get('rba_policy')
+        log('get result %s' % result)
+
+        for rba_policy in result['data']['rba_policy']:
+            match = True
+            for get_id_attribute in self.attribute_config['rba_policy']['get_id_attributes']:
+                fetched_value = rba_policy.get(get_id_attribute)
+                configured_value = self.configured_rba_policy.get(get_id_attribute)
+                # Do not compare if it is not defined
+                if configured_value is None:
+                    continue
+                # Emulate AND between get_id_attributes
+                if configured_value != fetched_value:
+                    match = False
+            if match:
+                self.fetched_rba_policy = rba_policy
+
+        log('fetched rba_policy %s' % self.fetched_rba_policy)
+
+
+    def rba_policy_exists(self):
+        log('ModuleExecutor.rba_policy_exists()')
+
+        if self.fetched_rba_policy == {}:
+            return False
+        else:
+            return True
+
+    def element_in_fetched(self, item, fetched):
+        # task configured item keys drive the comparison
+        log('ModuleExecutor.element_in_fetched()')
+        for fetched_item in fetched:
+            identical = True
+            for attribute in item:
+                item_value = item.get(attribute)
+                fetched_value = fetched_item.get(attribute)
+                if item_value != fetched_value:
+                    str_tuple = (attribute, type(item_value), item_value, type(fetched_value), fetched_value)
+                    # Message is too verbose for normal use
+                    # Leaving it commented here for debugging when needed
+                    # log('fetched item differs %s item: (%s) %s fetched: (%s) %s' % str_tuple)
+                    identical = False
+                    break
+            if identical:
+                return True
+        # Fallthrough
+
+        return False
+
+    def element_in_configured(self, item, configured):
+        # task configured list item keys drive the comparison
+        log('ModuleExecutor.element_in_configured()')
+
+        for configured_item in configured:
+            identical = True
+            for attribute in configured_item:
+                item_value = item.get(attribute)
+                configured_value = configured_item.get(attribute)
+                if item_value != configured_value:
+                    str_tuple = (attribute, type(item_value), item_value, type(configured_value), configured_value)
+                    # Message is too verbose for normal use
+                    # Leaving it commented here for debugging when needed
+                    # log('configured item differs %s item: (%s) %s configured: (%s) %s' % str_tuple)
+                    identical = False
+                    break
+            if identical:
+                return True
+        # Fallthrough
+
+        return False
+
+    def rba_policy_identical(self):
+        log('ModuleExecutor.rba_policy_identical()')
+        is_identical = True
+
+        # Compare simple attributes
+        for attribute in self.configured_rba_policy:
+            if attribute in ['ui', 'statement']:
+                continue
+            configured_value = self.configured_rba_policy.get(attribute)
+            fetched_value = self.fetched_rba_policy.get(attribute)
+            if configured_value != fetched_value:
+                is_identical = False
+                str_tuple = (attribute, type(configured_value), configured_value, type(fetched_value), fetched_value)
+                log('Attribute %s differs. configured: (%s) %s  fetched: (%s) %s' % str_tuple)
+
+        # Compare ui and statement elements
+        for item in self.configured_rba_policy['ui']:
+            if not self.element_in_fetched(item, self.fetched_rba_policy['ui']):
+                log('ui element not found in fetched %s' % item)
+                is_identical = False
+
+        for item in self.configured_rba_policy['statement']:
+            if not self.element_in_fetched(item, self.fetched_rba_policy['statement']):
+                log('statement element not found in fetched %s' % item)
+                is_identical = False
+
+        for item in self.fetched_rba_policy['ui']:
+            if not self.element_in_configured(item, self.configured_rba_policy['ui']):
+                log('ui element not found in configured %s' % item)
+                is_identical = False
+
+        for item in self.fetched_rba_policy['statement']:
+            if not self.element_in_configured(item, self.configured_rba_policy['statement']):
+                log('statement element not found in configured %s' % item)
+                is_identical = False
+
+        return is_identical
+
+    def create_rba_policy(self):
+        log('ModuleExecutor.create_rba_policy()')
+
+        post_data = {
+            'rba_policy': self.configured_rba_policy
+        }
+
+        log('post data: %s' % post_data)
+        result = self.fetcher.post(post_data=post_data, resource='rba_policy')
+
+        log('result of post: %s' % result)
+
+        if result['http_response_data']['status'] == 200:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
             )
-        except NitroException as e:
-            raise
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 200 or 4xx (%s)' % result['http_response_data']['status']
+            self.module.fail_json(msg=msg, **self.module_result)
 
-        return main_object_exists
+    def update_rba_policy(self):
+        log('ModuleExecutor.update_rba_policy()')
 
-    def get_main_config(self):
-        config = MASResourceConfig(
-            module=self.module,
-            resource=self.main_nitro_class,
-            attribute_values_dict=self.module.params,
-            attributes_list=self.attribute_config[self.main_nitro_class]['attributes_list'],
-            transforms=self.attribute_config[self.main_nitro_class]['transforms'],
-            api_path='nitro/v2/config',
-        )
+        put_payload = self.configured_rba_policy
 
-        return config
+        put_data = {
+            'rba_policy': put_payload
+        }
+
+        log('request put data: %s' % put_data)
+
+        id = self.fetched_rba_policy['id']
+        result = self.fetcher.put(put_data=put_data, resource='rba_policy', id=id)
+
+        log('result of put: %s' % result)
+
+        if result['http_response_data']['status'] == 200:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 200 or 4xx (%s)' % result['http_response_data']['status']
+
+    def delete_rba_policy(self):
+        log('ModuleExecutor.delete_rba_policy()')
+
+        id = self.fetched_rba_policy['id']
+
+        result = self.fetcher.delete(resource='rba_policy', id=id)
+        log('delete result %s' % result)
+
+        if result['http_response_data']['status'] == 200:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 200 or 4xx (%s)' % result['http_response_data']['status']
 
     def update_or_create(self):
-        # Check if main object exists
-        config = self.get_main_config()
-        config.get_actual_instance(
-            get_id_attributes=self.attribute_config[self.main_nitro_class]['get_id_attributes'],
-            success_codes=[None, 0],
-            use_filter=True
-        )
+        log('ModuleExecutor.update_or_create()')
 
-        if not self.main_object_exists(config):
+        if not self.rba_policy_exists():
             self.module_result['changed'] = True
             if not self.module.check_mode:
-                config.create()
+                self.create_rba_policy()
         else:
-            self.module_result['changed'] = True
-            if not self.module.check_mode:
-                config.update(id_attribute='id')
+            if not self.rba_policy_identical():
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.update_rba_policy()
 
-        # Return the actual object
-        config.get_actual_instance(
-            get_id_attributes=self.attribute_config[self.main_nitro_class]['get_id_attributes'],
-            success_codes=[None, 0],
-            use_filter=True
-        )
-        self.module_result.update(dict(rba_policy=config.actual_dict))
+        # Update with rba_policy key
+        self.fetch_rba_policy()
+        self.module_result['rba_policy'] = self.fetched_rba_policy
+
 
     def delete(self):
-        # Check if main object exists
-        config = self.get_main_config()
+        log('ModuleExecutor.delete()')
 
-        if self.main_object_exists(config):
+        if self.rba_policy_exists():
             self.module_result['changed'] = True
             if not self.module.check_mode:
-                config.delete(delete_id_attributes=self.attribute_config[self.main_nitro_class]['delete_id_attributes'])
+                self.delete_rba_policy()
 
     def main(self):
         try:
@@ -275,11 +455,11 @@ def main():
         ),
         statement=dict(
             type='list',
-            elements='str',
+            elements='dict'
         ),
         ui=dict(
             type='list',
-            elements='str',
+            elements='dict'
         ),
         name=dict(
             type='str'
@@ -289,10 +469,6 @@ def main():
         ),
         description=dict(
             type='str'
-        ),
-        roles=dict(
-            type='list',
-            elements='str',
         ),
     )
 

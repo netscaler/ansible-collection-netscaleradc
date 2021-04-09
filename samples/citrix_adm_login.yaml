@@ -13,15 +13,15 @@
       register: login_result
       citrix_adm_login:
         validate_certs: no
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
 
     - name: Setup mpsuser
       delegate_to: localhost
       citrix_adm_mpsuser:
-        mas_ip: "{{ mas_ip }}"
-        mas_auth_token: "{{ login_result.session_id }}"
+        adm_ip: "{{ adm_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
         validate_certs: no
 
         state: absent

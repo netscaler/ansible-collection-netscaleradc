@@ -11,9 +11,9 @@
     - name: Setup appfw policy
       delegate_to: localhost
       citrix_adm_rba_policy:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
 
         state: present
 
@@ -21,511 +21,511 @@
         description: some description
         tenant_id: "0ea1d85a-06b8-4225-9fc8-5a7065fdd590"
         statement:
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 01aa02a8-8bc5-4feb-9ef8-56b00dc27939
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_gslbservice
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 0651b303-f23c-4cc5-b37e-f7ed49e46c2a
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: DeviceAPIProxy
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 08e3cccd-d6e5-42ed-bdf2-26314e68328f
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_signature
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 0ccb1e0c-4c64-4076-b756-3fea738e6c4b
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: smtp_server
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 0da51b5e-9c6f-4a29-97b0-ce4e0267c72e
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: DeviceAPIProxy
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 14345edd-497f-41e1-aa25-35621e4d64e9
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_authenticationvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 16133745-db1b-4cbc-a349-39e968f99704
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_cs_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 1b6fd9eb-95a9-4def-97f3-61c114b941c5
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: mail_profile
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 1b9bf0c1-8eed-4475-b647-5b5800d15d3f
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_app_summary
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 256ec4fc-c0f7-4a5c-a18a-9eaca498dcbf
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_server
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 2a890b45-cb2b-4fa2-87af-ea1cd7631042
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_vpnvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 2db35f9e-13bd-4b61-996f-13adb95bc9d1
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_crvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 317f6155-17e7-4de2-b11a-c5d5f898dca4
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_authenticationvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 3591e50e-72c0-4652-80a9-0aba2d7bf448
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: export_report
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 39fb011a-a4be-4e08-926d-56e240bcbf95
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_device
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 3b47d73f-f1cf-4f58-830b-1e3d96b8f3f7
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: app_health_dashboard_details
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 3ecbc658-1893-4fdc-a6e9-cf981e3c5eb0
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_geo_location
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 415e5e51-a748-45ad-9db4-845719603a34
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_system_security
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 42b61ff1-cbd4-48bb-9077-f95ef2939bf3
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_server
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 4c7af5dc-36b5-48e6-929b-97b719ae33c7
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: application
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 4c961eb4-c14f-47c8-a944-d3968be482e7
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_servicegroupmember_binding
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 5094565a-0b66-47dd-ad4f-50097220129a
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_gslbvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 5aa43c74-7bca-4aba-a9f8-79b293827537
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: smtp_server
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 64128fe2-70d0-4978-a0ff-c44af0311ee0
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_overview
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 641e82ff-4442-4feb-a79f-4dcd1f5def91
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: security_app_dashboard_details
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 6462b6ff-97ee-42f5-9bff-e02161fad2ee
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_lbvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 6526cca6-23ff-4a2d-bad8-9b500ea2d545
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_signature
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 672c8948-9c0b-4818-83b3-32ba39267702
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_overview
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 6735e32d-d7d7-4e2d-936e-42c714b844f5
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_gslbvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 6aabaf7d-7d89-4afd-88af-5cbc7d194782
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_csvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 7513e1fa-6bb1-4efd-8fb8-6d1cbad9e87a
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: haproxy_backend
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 761555f9-bef4-4b37-9016-073108b10660
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_geo_location
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 7e14365c-a536-4ea4-b5cf-2c00b05c3419
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_crvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 852596e2-1fc2-47f0-9afa-3ded56710c36
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_service
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 855f7969-ac7c-49e4-8178-7efb514d966a
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: export_report_job
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 85b2d72e-805d-4dcf-add9-12d69052c070
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_lbvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 8af77c42-b6e0-4b11-ba44-66f6eea701d8
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_lb_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 8bf07f83-3910-42a8-b969-7ec0ac577267
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_gslbvserver_domain
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 91bc9c34-8183-4c53-8c03-b680fce636fa
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_vpnvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 924b076a-5fab-48c1-b281-e58c6acdb035
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_security_check
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 943c14f1-984a-4d98-8990-a0d47f168cf0
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_device
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 944e55c3-304e-481a-bfa4-a098a8153182
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_cs_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 94fdc455-4f29-423d-86ac-0a4724a6ecb9
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_servicegroupmember_binding
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 965d6ce3-788d-4fb4-98de-060017d9e069
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_lb_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 96c7244d-fdf3-4dba-9f4a-f52a706135ef
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: haproxy_server
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 9d3142b7-b5e9-442e-8a83-1258ace19bfd
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: export_report
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: 9e5be527-07ff-498d-a046-bf1bb88f90d3
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_system_security
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: a419c5b9-2327-43eb-99bb-19df78355762
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_emon_poll_policy
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: a55d9843-a9d9-4ece-a0ae-cd5ef30c34e8
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: perf_lb_vserver_report
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: a718bf61-a0a6-426a-a75b-1425cb6e8d55
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_app_summary
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: abe05a4e-106f-4123-9ea8-19ce98e1948a
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_gslb_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: acf41a19-cb59-4fea-8204-bf6c570ccc5e
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_security_check
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: b2f68900-89d0-4606-8a21-acef4a93dd98
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: haproxy_frontend_stats
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: baeb5bd1-34d0-499d-b6bf-727f8c0597dd
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_csvserver
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: bdb102e6-dbc4-4a5f-b1e5-748d5991c549
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_app_unit
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: bebde46e-f85e-466e-8b78-56af21eab782
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_app_firewall
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: bec798e1-456a-4fa0-bd4c-97237bd94e24
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_service
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: cb531ecd-e9b5-4487-a8fd-7ce1bab9869a
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: app_summary
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: cc4c6ef9-d454-4a56-b15c-fe6c182f1cb1
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: export_report_job
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: cc60638f-22ac-4143-8fc5-27370ca73a8c
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_gslbservice
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: cfc0fc75-4ab2-416e-ba95-63cf43250f52
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: app_category
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: dde78efe-e260-42ea-9abf-ec06b7911511
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: application
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e05a5fc4-2212-44d6-a6a7-f37a2b360a18
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: haproxy_frontend
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e0873bda-c4c5-4082-a3ab-c7f8530470fd
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_servicegroup
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e67bdd7d-14db-48d1-bcf7-664960be4cf4
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: mail_profile
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e6abcf31-7bb5-47d9-b00a-468f6f904786
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_safety_app_firewall
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e7b4850b-ad7a-443f-bd65-2b663d16654a
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_servicegroup
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e89a002b-d637-4cae-8358-ea7a793037fb
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: app_summary
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: e9fc10be-25cb-4db9-bd7f-811c6bf64aab
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: si_app_unit
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: ee7f3e01-7806-41a6-aab3-0efba2f895c3
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: ns_visualizer_gslb_bindings
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: f434c4d9-4618-43ec-af5b-882c06a4d496
             operation_name: get
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: app_category
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: fa5b2762-4c8b-4164-b36c-95aa24ea5d67
             operation_name: add
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
             resource_type: security_app_dashboard_details
-          - access_type: true
+          - access_type: "true"
             dependent_resources: ""
             id: fc1561b7-21dc-40d5-bee4-8b8cc6d39e07
             operation_name: get
@@ -533,73 +533,73 @@
             parent_name: rba_policy
             resource_type: ns_emon_poll_policy
         ui:
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 1a471641-b248-4e14-989c-e436b46888ab
             name: ContentSwitching
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 7272d789-07e3-4519-8318-6c947655714f
             name: ApplicationsDashboard
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 7297a79b-6ae9-493d-b434-adc240cd4c3c
             name: SecurityDashboard
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 7889dc13-f875-4af1-87ea-fc50f9bb180f
             name: HAProxyAppDashboard
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 81d274d7-8f95-4d6a-887e-0167dbc63810
             name: Authentication
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 87730951-60ed-45ef-b982-4a0d23a3fdae
             name: GSLB
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: 8d718d72-6c20-41ad-9338-3a077f223a43
             name: LoadBalancing
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: ba265b91-dca9-453b-9a1d-5e04fd44f0d0
             name: ApplicationAuditing
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: c4cbec32-4ef9-4ed9-8674-aa742f8673bd
             name: MonitoringSettings
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: c8a4091a-b4e0-4b54-add3-ef3da20d792b
             name: HAProxy
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: e18392f0-1c5d-45da-9e45-056fd621aecb
             name: CacheRedirection
             parent_id: f7083e16-b110-4400-a536-40b3049e86a1
             parent_name: rba_policy
-          - access_type: true
+          - access_type: "true"
             display_name: ""
             id: e363da59-8d15-45d9-b2a7-49d0fdf58a89
             name: NetScalerGateway

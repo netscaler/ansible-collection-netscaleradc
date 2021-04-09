@@ -1,9 +1,9 @@
 :orphan:
 
-.. _citrix_adm_rba_policy_module:
+.. _citrix_adm_logout_module:
 
-citrix_adm_rba_policy - Manage Citrix ADM rba policies.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adm_logout - Logout from a Citrix ADM instance.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 1.0.0
 
@@ -13,7 +13,7 @@ citrix_adm_rba_policy - Manage Citrix ADM rba policies.
 
 Synopsis
 --------
-- Manage Citrix ADM rba policies.
+- Logout from a Citrix ADM instance.
 
 
 
@@ -28,20 +28,6 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
-    * - description
-
-        *(str)*
-      -
-      - Description of Policy.
-
-        Minimum length = 1
-
-        Maximum length = 1024
-    * - id
-
-        *(str)*
-      -
-      - Id is system generated key for all the system policys.
     * - instance_ip
 
         *(str)*
@@ -62,15 +48,6 @@ Parameters
       - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Netscaler instance.
 
         When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
-    * - name
-
-        *(str)*
-      -
-      - Policy Name.
-
-        Minimum length = 1
-
-        Maximum length = 128
     * - nitro_auth_token
 
         *(str)*
@@ -131,25 +108,6 @@ Parameters
         When present the resource will be created if needed and configured according to the module's parameters.
 
         When absent the resource will be deleted from the netscaler node.
-    * - statement
-
-        *(list)*
-      -
-      - RBA statement.
-    * - tenant_id
-
-        *(str)*
-      -
-      - Tenant Id of the RBA roles.
-
-        Minimum length = 1
-
-        Maximum length = 128
-    * - ui
-
-        *(list)*
-      -
-      - RBA for UI components.
     * - validate_certs
 
         *(bool)*
@@ -165,27 +123,22 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    - name: Setup appfw policy
+    - name: Logout from ADM service
       delegate_to: localhost
-      citrix.adm.citrix_adm_rba_policy:
-        adm_ip: 192.168.1.1
+      citrix_adm_logout:
+    
+        adm_ip: "adm.cloud.com"
+        is_cloud: true
+    
         nitro_auth_token: "{{ login_result.session_id }}"
     
-        state: present
+    - name: Logout from ADM
+      delegate_to: localhost
+      citrix_adm_logout:
     
-        name: test_policy
-        description: some description
-        tenant_id: "0ea1d85a-06b8-4225-9fc8-5a7065fdd590"
-        statement:
-          - access_type: "true"
-            operation_name: add
-            parent_name: rba_policy
-            resource_type: ns_gslbservice
-        ui:
-          - access_type: "true"
-            display_name: ""
-            name: ContentSwitching
-            parent_name: rba_policy
+        adm_ip: "{{ adm_ip }}"
+    
+        nitro_auth_token: "{{ login_result.session_id }}"
 
 
 Return Values
@@ -215,8 +168,3 @@ Return Values
         **Sample:**
 
         Action does not exist
-    * - rba_policy
-
-        *(dict)*
-      - success
-      - Dictionary containing the attributes of the created rba_policy

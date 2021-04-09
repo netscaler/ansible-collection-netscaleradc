@@ -5,7 +5,7 @@
 citrix_adc_servicegroup - Manage service group configuration in Citrix ADC
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-.. versionadded:: 1.0.0
+.. versionadded:: 2.4.0
 
 .. contents::
    :local:
@@ -14,7 +14,7 @@ citrix_adc_servicegroup - Manage service group configuration in Citrix ADC
 Synopsis
 --------
 - Manage service group configuration in Citrix ADC.
-- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance.
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual netscaler instance.
 
 
 

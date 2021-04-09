@@ -3,22 +3,25 @@
   vars:
     max_clients: 5
 
+  collections:
+    - citrix.adm
+
   gather_facts: False
 
   tasks:
-    - name: Login to mas
+    - name: Login to adm
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
 
     - name: Get tenant facts
       delegate_to: localhost
       register: tenant_facts
       citrix_adm_tenant_facts:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         name: sample_tenant_1
@@ -26,7 +29,7 @@
     - name: Setup rba policy
       delegate_to: localhost
       citrix_adm_rba_policy:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present
@@ -1959,7 +1962,7 @@
     - name: Setup rba role
       delegate_to: localhost
       citrix_adm_rba_role:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present
@@ -1973,7 +1976,7 @@
       delegate_to: localhost
       register: stylebook_result
       citrix_adm_stylebook:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
 
@@ -2083,9 +2086,9 @@
       delegate_to: localhost
       register: domain_result
       citrix_adm_dns_domain_entry:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
 
         state: present
 
@@ -2095,7 +2098,7 @@
       delegate_to: localhost
       register: ns_facts
       citrix_adm_ns_facts:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         ip_address: 10.78.60.209
@@ -2104,7 +2107,7 @@
     - name: Setup mpsgroup
       delegate_to: localhost
       citrix_adm_mpsgroup:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present
@@ -2136,7 +2139,7 @@
     - name: Setup mpsuser
       delegate_to: localhost
       citrix_adm_mpsuser:
-        mas_ip: "{{ mas_ip }}"
+        adm_ip: "{{ adm_ip }}"
         nitro_auth_token: "{{ login_result.session_id }}"
 
         state: present

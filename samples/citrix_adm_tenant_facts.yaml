@@ -12,14 +12,15 @@
       delegate_to: localhost
       register: tenant_facts
       citrix_adm_tenant_facts:
-        mas_ip: "{{ mas_ip }}"
-        mas_user: "{{ mas_user }}"
-        mas_pass: "{{ mas_pass }}"
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
 
-        name: sample_tenant_2
+        name: Owner
 
 
     - name: Show return data
       debug:
-        msg: "{{ tenant_facts.tenant[0].id }}"
+        var: tenant_facts
 
