@@ -42,49 +42,14 @@ author:
 
 options:
 
-    authscope_props:
-        description:
-            - "authscope_props"
-        type: list
-        elements: str
-
-    allow_application_only:
-        description:
-            - "Checks if only application centic page is needed."
-        type: bool
-
     session_timeout:
         description:
             - "Session timeout for the Group."
         type: str
 
-    permission:
-        choices:
-            - 'admin'
-            - 'read-only'
-        description:
-            - "Permission for the group (admin/read-only)."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
-        type: str
-
-    name:
-        description:
-            - "Group Name."
-            - "Minimum length = 1"
-            - "Maximum length = 64"
-        type: str
-
     session_timeout_unit:
         description:
             - "Session timeout unit for the Group."
-        type: str
-
-    description:
-        description:
-            - "Description of Group."
-            - "Minimum length = 1"
-            - "Maximum length = 1024"
         type: str
 
     assign_all_apps:
@@ -97,16 +62,37 @@ options:
             - "Enables session timeout for group."
         type: bool
 
+    select_individual_entity:
+        description:
+            - "Select Individual Entity Type."
+        type: bool
+
+    authscope_props:
+        description:
+            - "Authorized Scope Properties."
+        type: list
+        elements: str
+
     tenant_id:
         description:
             - "Id of the tenant."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
+
+    apply_all_bound_entities:
+        description:
+            - "Apply for all bound entities (TRUE|FALSE)."
+        type: bool
 
     assign_all_devices:
         description:
             - "Assign All Instances (YES|NO)."
+        type: bool
+
+    assign_all_selected_device_apps:
+        description:
+            - "Assign All Application from selected instances (YES|NO)."
         type: bool
 
     id:
@@ -114,10 +100,43 @@ options:
             - "Id is system generated key for all the system groups."
         type: str
 
+    allow_application_only:
+        description:
+            - "Checks if only application centic page is needed."
+        type: bool
+
+    name:
+        description:
+            - "Group Name."
+            - " Minimum length =  1"
+            - " Maximum length =  64"
+        type: str
+
+    permission:
+        description:
+            - "Permission for the group (admin/read-only)."
+            - " Minimum length =  1"
+            - " Maximum length =  128"
+        type: str
+
+    description:
+        description:
+            - "Description of Group."
+            - " Minimum length =  1"
+            - " Maximum length =  1024"
+        type: str
+
+    bound_entity_selected:
+        description:
+            - "Which bound entiy is selected VSERVER(0),SERVICE(1),SERVICEGROUP(2),SERVER(3)."
+        type: str
+
+    assign_all_autoscale_groups:
+        description:
+            - "Assign All Autoscale groups (YES|NO)."
+        type: bool
+
     role:
-        choices:
-            - 'admin'
-            - 'nonadmin'
         description:
             - "Role (admin|nonadmin)."
         type: str
@@ -125,12 +144,6 @@ options:
     roles:
         description:
             - "Roles assigned to the group."
-        type: list
-        elements: str
-
-    application_names_without_regex:
-        description:
-            - "selected application names that are part of this group."
         type: list
         elements: str
 
@@ -148,14 +161,15 @@ options:
 
     application_names:
         description:
-            - "All Application names that are part of this group."
-            - "This includes selected appnames as well as applications which are result of defined regex."
+            - >-
+                All Application names that are part of this group.This includes selected appnames as well as
+                which are result of defined regex.
         type: list
         elements: str
 
-    application_names_with_regex:
+    autoscale_groups_id:
         description:
-            - "Application names defined with regex that are part of this group"
+            - "Autoscale groups belong to this groupp."
         type: list
         elements: str
 
@@ -233,39 +247,47 @@ class ModuleExecutor(object):
         self.attribute_config = {
             'mpsgroup': {
                 'attributes_list': [
-                    'authscope_props',
-                    'allow_application_only',
                     'session_timeout',
-                    'permission',
-                    'name',
                     'session_timeout_unit',
-                    'description',
                     'assign_all_apps',
                     'enable_session_timeout',
+                    'select_individual_entity',
+                    'authscope_props',
                     'tenant_id',
+                    'apply_all_bound_entities',
                     'assign_all_devices',
+                    'assign_all_selected_device_apps',
                     'id',
+                    'allow_application_only',
+                    'name',
+                    'permission',
+                    'description',
+                    'bound_entity_selected',
+                    'assign_all_autoscale_groups',
                     'role',
                     'roles',
-                    'application_names_without_regex',
                     'standalone_instances_id',
                     'users',
                     'application_names',
-                    'application_names_with_regex',
+                    'autoscale_groups_id',
                 ],
                 'transforms': {
                     'enable_session_timeout': lambda v: "true" if v else "false",
                     'allow_application_only': lambda v: "true" if v else "false",
                     'assign_all_apps': lambda v: "true" if v else "false",
                     'assign_all_devices': lambda v: "true" if v else "false",
+                    'select_individual_entity': lambda v: "true" if v else "false",
+                    'apply_all_bound_entities': lambda v: "true" if v else "false",
+                    'assign_all_selected_device_apps': lambda v: "true" if v else "false",
+                    'assign_all_autoscale_groups': lambda v: "true" if v else "false",
                 },
                 'get_id_attributes': [
-                    'name',
                     'id',
+                    'name',
                 ],
                 'delete_id_attributes': [
-                    'name',
                     'id',
+                    'name',
                 ],
             },
 
@@ -354,30 +376,10 @@ def main():
     argument_spec = dict()
 
     module_specific_arguments = dict(
-        authscope_props=dict(
-            type='list',
-            elements='str',
-        ),
-        allow_application_only=dict(
-            type='bool'
-        ),
         session_timeout=dict(
             type='str'
         ),
-        permission=dict(
-            type='str',
-            choices=[
-                'admin',
-                'read-only',
-            ],
-        ),
-        name=dict(
-            type='str'
-        ),
         session_timeout_unit=dict(
-            type='str'
-        ),
-        description=dict(
             type='str'
         ),
         assign_all_apps=dict(
@@ -386,45 +388,68 @@ def main():
         enable_session_timeout=dict(
             type='bool'
         ),
+        select_individual_entity=dict(
+            type='bool'
+        ),
+        authscope_props=dict(
+            type='list',
+            elements='str'
+        ),
         tenant_id=dict(
             type='str'
         ),
+        apply_all_bound_entities=dict(
+            type='bool'
+        ),
         assign_all_devices=dict(
+            type='bool'
+        ),
+        assign_all_selected_device_apps=dict(
             type='bool'
         ),
         id=dict(
             type='str'
         ),
+        allow_application_only=dict(
+            type='bool'
+        ),
+        name=dict(
+            type='str'
+        ),
+        permission=dict(
+            type='str'
+        ),
+        description=dict(
+            type='str'
+        ),
+        bound_entity_selected=dict(
+            type='str'
+        ),
+        assign_all_autoscale_groups=dict(
+            type='bool'
+        ),
         role=dict(
-            type='str',
-            choices=[
-                'admin',
-                'nonadmin',
-            ],
+            type='str'
         ),
         roles=dict(
             type='list',
-            elements='str',
-        ),
-        application_names_without_regex=dict(
-            type='list',
-            elements='str',
+            elements='str'
         ),
         standalone_instances_id=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
         users=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
         application_names=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
-        application_names_with_regex=dict(
+        autoscale_groups_id=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
     )
 
