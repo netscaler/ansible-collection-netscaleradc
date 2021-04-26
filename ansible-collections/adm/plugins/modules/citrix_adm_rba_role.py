@@ -44,16 +44,16 @@ options:
 
     tenant_id:
         description:
-            - "Tenant Id of the RBA roles."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - "Tenant ID."
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     name:
         description:
             - "Role Name."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     id:
@@ -64,27 +64,16 @@ options:
     description:
         description:
             - "Description of Role."
-            - "Minimum length = 1"
-            - "Maximum length = 1024"
+            - " Minimum length =  1"
+            - " Maximum length =  1024"
         type: str
-
-    resourcegroups:
-        description:
-            - "Resourcegroups attached to this role.."
-        type: list
-        elements: str
-
-    groups:
-        description:
-            - "Groups to which this role is assigned."
-        type: list
-        elements: str
 
     policies:
         description:
-            - "Policies attached to this role.."
+            - "Access policies attached to this role.."
         type: list
         elements: str
+
 
 extends_documentation_fragment: citrix.adm.citrixadm
 '''
@@ -152,8 +141,6 @@ class ModuleExecutor(object):
                     'name',
                     'id',
                     'description',
-                    'resourcegroups',
-                    'groups',
                     'policies',
                 ],
                 'transforms': {
@@ -265,17 +252,9 @@ def main():
         description=dict(
             type='str'
         ),
-        resourcegroups=dict(
-            type='list',
-            elements='str',
-        ),
-        groups=dict(
-            type='list',
-            elements='str',
-        ),
         policies=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
     )
 
