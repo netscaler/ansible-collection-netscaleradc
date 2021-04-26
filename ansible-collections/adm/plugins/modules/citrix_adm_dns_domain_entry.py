@@ -45,15 +45,15 @@ options:
     tenant_id:
         description:
             - "Tenant Id of the DNS Domain Entries."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     name:
         description:
             - "DNS Domain Name."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     id:
@@ -64,8 +64,8 @@ options:
     description:
         description:
             - "Description of DNS Domain Entry."
-            - "Minimum length = 1"
-            - "Maximum length = 1024"
+            - " Minimum length =  1"
+            - " Maximum length =  1024"
         type: str
 
 
