@@ -45,9 +45,9 @@ options:
 
     tenant_id:
         description:
-            - "Tenant Id of the RBA roles."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - "Tenant Id of the system policys."
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     statement:
@@ -65,8 +65,8 @@ options:
     name:
         description:
             - "Policy Name."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     id:
@@ -77,8 +77,8 @@ options:
     description:
         description:
             - "Description of Policy."
-            - "Minimum length = 1"
-            - "Maximum length = 1024"
+            - " Minimum length =  1"
+            - " Maximum length =  1024"
         type: str
 
 

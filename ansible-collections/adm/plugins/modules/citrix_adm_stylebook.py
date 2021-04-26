@@ -48,23 +48,23 @@ options:
     source:
         description:
             - "Source definition of the StyleBook."
-            - "Minimum length = 1"
-            - "Maximum length = 32"
+            - " Minimum length =  1"
+            - " Maximum length =  32"
         type: str
 
     namespace:
         description:
             - "Namespace of the StyleBook."
-            - "Minimum length = 1"
-            - "Maximum length = 32"
+            - " Minimum length =  1"
+            - " Maximum length =  32"
         type: str
         required: true
 
     version:
         description:
             - "Version of the StyleBook."
-            - "Minimum length = 1"
-            - "Maximum length = 32"
+            - " Minimum length =  1"
+            - " Maximum length =  32"
         type: str
         required: true
 
@@ -77,8 +77,8 @@ options:
     display_name:
         description:
             - "Display name of the StyleBook."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
 

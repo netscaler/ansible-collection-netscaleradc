@@ -50,8 +50,8 @@ options:
     name:
         description:
             - "User Name."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     session_timeout_unit:
@@ -72,15 +72,15 @@ options:
     tenant_id:
         description:
             - "Tenant Id of the system users."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     password:
         description:
             - "Password."
-            - "Minimum length = 1"
-            - "Maximum length = 128"
+            - " Minimum length =  1"
+            - " Maximum length =  128"
         type: str
 
     id:
@@ -296,7 +296,7 @@ def main():
         ),
         groups=dict(
             type='list',
-            elements='str',
+            elements='str'
         ),
     )
 
