@@ -1,0 +1,25 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+  collections:
+    - citrix.adm
+
+  tasks:
+    - name: Setup ns device profile
+      delegate_to: localhost
+      citrix_adm_ns_device_profile:
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: no
+
+        state: present
+
+        name: ansible_profile
+        username: nsroot
+        password: password1234
+        host_password: otherpassword
+        http_port: 9080

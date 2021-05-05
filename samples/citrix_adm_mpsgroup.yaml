@@ -30,7 +30,12 @@
         role: admin
         roles: 
           - admin
-        application_names_without_regex: []
         application_names: []
-        application_names_with_regex: []
         standalone_instances_id: []
+        select_individual_entity: true
+        authscope_props: []
+        apply_all_bound_entities: false
+        assign_all_selected_device_apps: false
+        bound_entity_selected: 0
+        assign_all_autoscale_groups: true
+        autoscale_groups_id: []

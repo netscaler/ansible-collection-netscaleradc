@@ -46,8 +46,10 @@ All modules
   * :ref:`citrix_adm_dns_domain_entry_module`
   * :ref:`citrix_adm_login_module`
   * :ref:`citrix_adm_logout_module`
+  * :ref:`citrix_adm_managed_device_module`
   * :ref:`citrix_adm_mpsgroup_module`
   * :ref:`citrix_adm_mpsuser_module`
+  * :ref:`citrix_adm_ns_device_profile_module`
   * :ref:`citrix_adm_ns_facts_module`
   * :ref:`citrix_adm_poll_instances_module`
   * :ref:`citrix_adm_rba_policy_module`
