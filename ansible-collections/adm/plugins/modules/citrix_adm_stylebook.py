@@ -206,11 +206,15 @@ class ModuleExecutor(object):
 
         if result['http_response_data']['status'] == 200:
             self.fetched_stylebook = result['data'].get('stylebook', {})
-        elif result['http_response_data']['status'] == 400:
+        elif result['http_response_data']['status'] in [400, 404]:
             unexpected_error = True
             if 'data' in result:
-                if 'error_code' in result['data']:
-                    if result['data']['error_code'] == 555:
+                if 'errorcode' in result['data']:
+                    if result['data']['errorcode'] in [555, 530]:
+                        unexpected_error = False
+                        self.fetched_stylebook = {}
+                elif 'error_code' in result['data']:
+                    if result['data']['error_code'] in [555, 530]:
                         unexpected_error = False
                         self.fetched_stylebook = {}
             if unexpected_error:
