@@ -250,6 +250,54 @@ DOCUMENTATION = '''
         vars:
           - name: ansible_control_path_dir
             version_added: '2.7'
+      sshpass_prompt:
+        description:
+            - Password prompt that sshpass should search for. Supported by sshpass 1.06 and up.
+            - Defaults to ``Enter PIN for`` when pkcs11_provider is set.
+        default: ''
+        ini:
+            - section: 'ssh_connection'
+              key: 'sshpass_prompt'
+        env:
+            - name: ANSIBLE_SSHPASS_PROMPT
+        vars:
+            - name: ansible_sshpass_prompt
+        version_added: '2.10'
+      timeout:
+        default: 10
+        description:
+            - This is the default ammount of time we will wait while establishing an ssh connection
+            - It also controls how long we can wait to access reading the connection once established (select on the socket)
+        env:
+            - name: ANSIBLE_TIMEOUT
+            - name: ANSIBLE_SSH_TIMEOUT
+              version_added: '2.11'
+        ini:
+            - key: timeout
+              section: defaults
+            - key: timeout
+              section: ssh_connection
+              version_added: '2.11'
+        vars:
+          - name: ansible_ssh_timeout
+            version_added: '2.11'
+        cli:
+          - name: timeout
+        type: integer
+      reconnection_retries:
+        description: Number of attempts to connect.
+        default: 0
+        type: integer
+        env:
+          - name: ANSIBLE_SSH_RETRIES
+        ini:
+          - section: connection
+            key: retries
+          - section: ssh_connection
+            key: retries
+        vars:
+          - name: ansible_ssh_retries
+            version_added: '2.7'
       sftp_batch_mode:
         default: 'yes'
         description: 'TODO: write it'
@@ -260,6 +308,19 @@ DOCUMENTATION = '''
         vars:
           - name: ansible_sftp_batch_mode
             version_added: '2.7'
+      ssh_transfer_method:
+        description:
+            - "Preferred method to use when transferring files over ssh"
+            - Setting to 'smart' (default) will try them in order, until one succeeds or they all fail
+            - Using 'piped' creates an ssh pipe with ``dd`` on either side to copy the data
+        choices: ['sftp', 'scp', 'piped', 'smart']
+        default: scp
+        env: [{name: ANSIBLE_SSH_TRANSFER_METHOD}]
+        ini:
+            - {key: transfer_method, section: ssh_connection}
+        vars:
+            - name: ansible_ssh_transfer_method
+              version_added: '2.12'
       scp_if_ssh:
         default: smart
         description:
