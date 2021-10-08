@@ -2131,7 +2131,7 @@ class ModuleExecutor(object):
         bound_lbvserver = None
         result = self.fetcher.get('sslvserver_sslcertkey_binding', self.module.params['name'])
 
-        if result['nitro_errorcode'] in [461, 1544]:
+        if result['nitro_errorcode'] in [258, 461, 1544]:
             bound_sslcertkeys = []
         elif result['nitro_errorcode'] != 0:
             raise NitroException(
