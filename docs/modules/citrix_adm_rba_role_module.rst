@@ -34,14 +34,9 @@ Parameters
       -
       - Description of Role.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 1024
-    * - groups
-
-        *(list)*
-      -
-      - Groups to which this role is assigned.
+         Maximum length =  1024
     * - id
 
         *(str)*
@@ -73,9 +68,9 @@ Parameters
       -
       - Role Name.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - nitro_auth_token
 
         *(str)*
@@ -119,12 +114,7 @@ Parameters
 
         *(list)*
       -
-      - Policies attached to this role..
-    * - resourcegroups
-
-        *(list)*
-      -
-      - Resourcegroups attached to this role..
+      - Access policies attached to this role..
     * - save_config
 
         *(bool)*
@@ -150,11 +140,11 @@ Parameters
 
         *(str)*
       -
-      - Tenant Id of the RBA roles.
+      - Tenant ID.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - validate_certs
 
         *(bool)*

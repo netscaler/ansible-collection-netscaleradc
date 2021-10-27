@@ -36,9 +36,9 @@ Parameters
       -
       - Display name of the StyleBook.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - instance_ip
 
         *(str)*
@@ -70,9 +70,9 @@ Parameters
       -
       - Namespace of the StyleBook.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 32
+         Maximum length =  32
     * - nitro_auth_token
 
         *(str)*
@@ -127,9 +127,9 @@ Parameters
       -
       - Source definition of the StyleBook.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 32
+         Maximum length =  32
     * - state
 
         *(str)*
@@ -155,9 +155,9 @@ Parameters
       -
       - Version of the StyleBook.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 32
+         Maximum length =  32
 
 
 

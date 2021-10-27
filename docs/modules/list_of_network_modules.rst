@@ -24,6 +24,7 @@ Network modules
   * :ref:`citrix_adc_cs_policy_module`
   * :ref:`citrix_adc_cs_vserver_module`
   * :ref:`citrix_adc_dnsnsrec_module`
+  * :ref:`citrix_adc_get_bearer_token_module`
   * :ref:`citrix_adc_gslb_service_module`
   * :ref:`citrix_adc_gslb_site_module`
   * :ref:`citrix_adc_gslb_vserver_module`

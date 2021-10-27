@@ -34,9 +34,9 @@ Parameters
       -
       - Description of Policy.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 1024
+         Maximum length =  1024
     * - id
 
         *(str)*
@@ -68,9 +68,9 @@ Parameters
       -
       - Policy Name.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - nitro_auth_token
 
         *(str)*
@@ -140,11 +140,11 @@ Parameters
 
         *(str)*
       -
-      - Tenant Id of the RBA roles.
+      - Tenant Id of the system policys.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - ui
 
         *(list)*
