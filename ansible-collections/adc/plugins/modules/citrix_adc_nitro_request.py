@@ -174,6 +174,25 @@ options:
         type: str
         description:
             - The id of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
+
+    is_cloud:
+        type: bool
+        default: false
+        description:
+            - When performing a Proxy API call with ADM service set this to C(true)
+
+    api_path:
+        type: str
+        description:
+            - Base NITRO API path.
+            - Define only in case of an ADM service proxy call
+
+    bearer_token:
+        type: str
+        description:
+            - Authentication bearer token.
+            - Needed when doing an ADM service proxy call.
+
     timeout:
         type: int
         description:
@@ -435,6 +454,17 @@ class NitroAPICaller(object):
         instance_id=dict(type='str'),
         timeout=dict(type='int', default=45),
         idempotent=dict(type='bool', default=False),
+        is_cloud=dict(
+            type='bool',
+            default=False,
+        ),
+        api_path=dict(
+            type='str',
+        ),
+        bearer_token=dict(
+            type='str',
+            no_log=True,
+        )
     )
 
     def __init__(self):
@@ -447,6 +477,12 @@ class NitroAPICaller(object):
         self._module_result = dict(
             failed=False,
         )
+
+        module_api_path = self._module.params.get('api_path')
+        if module_api_path is not None:
+            self.api_path = module_api_path
+        else:
+            self.api_path = 'nitro/v1/config'
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -466,6 +502,13 @@ class NitroAPICaller(object):
         if have_userpass and not login_operation:
             self._headers['X-NITRO-USER'] = self._module.params['nitro_user']
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
+
+        if self._module.params['is_cloud']:
+            self._headers['isCloud'] = 'true'
+
+        bearer_token = self._module.params.get('bearer_token')
+        if bearer_token is not None:
+            self._headers['Authorization'] = 'CwsAuth bearer=%s' % bearer_token
 
         # Do header manipulation when doing a MAS proxy call
         if self._module.params.get('mas_proxy_call') is not None and self._module.params.get('mas_proxy_call'):
@@ -595,9 +638,10 @@ class NitroAPICaller(object):
         if idempotent_flag is not None and idempotent_flag:
             idempotent_querystring = '?idempotent=yes'
 
-        url = '%s://%s/nitro/v1/config/%s%s' % (
+        url = '%s://%s/%s/%s%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             idempotent_querystring,
         )
@@ -640,9 +684,10 @@ class NitroAPICaller(object):
         if idempotent_flag is not None and idempotent_flag:
             idempotent_querystring = '?idempotent=yes'
 
-        url = '%s://%s/nitro/v1/config/%s/%s%s' % (
+        url = '%s://%s/%s/%s/%s%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             self._module.params['name'],
             idempotent_querystring,
@@ -675,9 +720,10 @@ class NitroAPICaller(object):
         if self._module.params['name'] is None:
             self.fail_module(msg='NITRO resource name is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s/%s' % (
+        url = '%s://%s/%s/%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             self._module.params['name'],
         )
@@ -706,9 +752,10 @@ class NitroAPICaller(object):
         if self._module.params['args'] is None:
             self.fail_module(msg='NITRO args is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s' % (
+        url = '%s://%s/%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
         )
 
@@ -747,9 +794,10 @@ class NitroAPICaller(object):
         filter_value = self._module.params['filter'][filter_key]
         filter_str = '%s:%s' % (filter_key, filter_value)
 
-        url = '%s://%s/nitro/v1/config/%s?filter=%s' % (
+        url = '%s://%s/%s/%s?filter=%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             filter_str,
         )
@@ -774,9 +822,10 @@ class NitroAPICaller(object):
         if self._module.params['resource'] is None:
             self.fail_module(msg='NITRO resource is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s' % (
+        url = '%s://%s/%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
         )
 
@@ -806,9 +855,10 @@ class NitroAPICaller(object):
 
         # Deletion by name takes precedence over deletion by attributes
 
-        url = '%s://%s/nitro/v1/config/%s/%s' % (
+        url = '%s://%s/%s/%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             self._module.params['name'],
         )
@@ -839,9 +889,10 @@ class NitroAPICaller(object):
         if self._module.params['args'] is None:
             self.fail_module(msg='NITRO args is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s' % (
+        url = '%s://%s/%s/%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
         )
 
@@ -874,9 +925,10 @@ class NitroAPICaller(object):
         if self._module.params['resource'] is None:
             self.fail_module(msg='NITRO resource is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s?count=yes' % (
+        url = '%s://%s/%s/%s?count=yes' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
         )
 
@@ -914,9 +966,10 @@ class NitroAPICaller(object):
         if self._module.params['action'] is None:
             self.fail_module(msg='NITRO action is undefined.')
 
-        url = '%s://%s/nitro/v1/config/%s?action=%s' % (
+        url = '%s://%s/%s/%s?action=%s' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
             self._module.params['resource'],
             self._module.params['action'],
         )
@@ -985,9 +1038,10 @@ class NitroAPICaller(object):
 
     def save_config(self):
 
-        url = '%s://%s/nitro/v1/config/nsconfig?action=save' % (
+        url = '%s://%s/%s/nsconfig?action=save' % (
             self._module.params['nitro_protocol'],
             self._module.params['nsip'],
+            self.api_path,
         )
 
         data = self._module.jsonify(
