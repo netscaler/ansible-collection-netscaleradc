@@ -35,6 +35,20 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - api_path
+
+        *(str)*
+      -
+      - Base NITRO API path.
+
+        Define only in case of an ADM service proxy call
+    * - bearer_token
+
+        *(str)*
+      -
+      - Authentication bearer token.
+
+        Needed when doing an ADM service proxy call.
     * - comment
 
         *(str)*
@@ -81,6 +95,11 @@ Parameters
       - Shut down gracefully, without accepting any new connections, and disabling each service when all of its connections are closed.
 
         This option is meaningful only when setting the ``disabled`` option to ``true``
+    * - instance_id
+
+        *(str)*
+      -
+      - The id of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     * - instance_ip
 
         *(str)*
@@ -90,6 +109,11 @@ Parameters
       - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - instance_name
+
+        *(str)*
+      -
+      - The name of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     * - ipaddress
 
         *(str)*
@@ -102,6 +126,13 @@ Parameters
 
         *False*
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing mode, you cannot use the server in the IPv4 addressing mode.
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - When performing a Proxy API call with ADM service set this to ``true``
     * - mas_proxy_call
 
         *(bool)*
@@ -112,7 +143,17 @@ Parameters
         *False*
       - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
-        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+        When true you must also define the following options: ``nitro_auth_token``
+
+        When true and adm service is the api proxy the following option must also be defined: ``bearer_token``
+
+        When true you must define a target ADC by defining any of the following parameters
+
+        I(instance_ip)
+
+        I(instance_id)
+
+        I(instance_name)
     * - name
 
         *(str)*

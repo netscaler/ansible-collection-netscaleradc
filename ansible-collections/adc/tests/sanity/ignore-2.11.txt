@@ -35,3 +35,4 @@ plugins/modules/citrix_adc_sslcipher.py validate-modules:missing-gplv3-license #
 plugins/modules/citrix_adc_sslcipher_sslciphersuite_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/citrix_adc_sslprofile_sslcipher_binding.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/citrix_adc_system_file.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/citrix_adc_get_bearer_token.py validate-modules:missing-gplv3-license # We use MIT license

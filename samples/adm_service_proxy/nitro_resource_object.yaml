@@ -1,0 +1,38 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+  vars_files:
+    - ../../deps/workflows.yaml
+
+  gather_facts: False
+
+  tasks:
+    - name: Get Citrix Cloud bearer token
+      delegate_to: localhost
+      register: login_result
+      citrix.adc.citrix_adc_get_bearer_token:
+        customer_id: "{{ customer_id }}"
+        api_client_id: "{{ api_client_id }}"
+        api_client_secret: "{{ api_client_secret }}"
+        endpoint: api-eu.cloud.com
+
+
+    - name: Setup nitro resource lb group
+      delegate_to: localhost
+      citrix.adc.citrix_adc_nitro_resource:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        api_path: "massvc/{{ customer_id }}/nitro/v1/config"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+        mas_proxy_call: true
+        instance_ip: 192.168.1.14
+
+        state: present
+
+        workflow: "{{ workflow.lbgroup }}"
+
+        resource:
+          name: mylbgroup
+          timeout: 160

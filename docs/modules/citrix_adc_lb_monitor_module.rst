@@ -77,6 +77,13 @@ Parameters
         Minimum value = ``0``
 
         Maximum value = ``32``
+    * - api_path
+
+        *(str)*
+      -
+      - Base NITRO API path.
+
+        Define only in case of an ADM service proxy call
     * - application
 
         *(str)*
@@ -107,6 +114,13 @@ Parameters
       - The base distinguished name of the LDAP service, from where the LDAP server can begin the search for the attributes in the monitoring query. Required for ``LDAP`` service monitoring.
 
         Minimum length = 1
+    * - bearer_token
+
+        *(str)*
+      -
+      - Authentication bearer token.
+
+        Needed when doing an ADM service proxy call.
     * - binddn
 
         *(str)*
@@ -238,6 +252,11 @@ Parameters
           - NO_INBAND_SECURITY
           - TLS
       - Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to use for monitoring Diameter servers.
+    * - instance_id
+
+        *(str)*
+      -
+      - The id of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     * - instance_ip
 
         *(str)*
@@ -247,6 +266,11 @@ Parameters
       - The target Citrix ADC instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - instance_name
+
+        *(str)*
+      -
+      - The name of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
     * - interval
 
         *(int)*
@@ -268,6 +292,13 @@ Parameters
         *(bool)*
       -
       - Send the monitoring probe to the service through an IP tunnel. A destination IP address must be specified.
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - When performing a Proxy API call with ADM service set this to ``true``
     * - lasversion
 
         *(str)*
@@ -296,7 +327,17 @@ Parameters
         *False*
       - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
 
-        When true you must also define the following options: ``nitro_auth_token``, ``instance_ip``.
+        When true you must also define the following options: ``nitro_auth_token``
+
+        When true and adm service is the api proxy the following option must also be defined: ``bearer_token``
+
+        When true you must define a target ADC by defining any of the following parameters
+
+        I(instance_ip)
+
+        I(instance_id)
+
+        I(instance_name)
     * - maxforwards
 
         *(float)*

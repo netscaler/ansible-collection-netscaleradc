@@ -181,6 +181,11 @@ def main():
     # Delete common arguments irrelevant to this module
     del argument_spec['state']
     del argument_spec['save_config']
+    del argument_spec['bearer_token']
+    del argument_spec['is_cloud']
+    del argument_spec['instance_id']
+    del argument_spec['instance_name']
+    del argument_spec['api_path']
 
     module = AnsibleModule(
         argument_spec=argument_spec,

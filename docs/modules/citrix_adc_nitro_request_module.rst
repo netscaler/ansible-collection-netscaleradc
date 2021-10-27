@@ -39,6 +39,13 @@ Parameters
       - The action to perform when the ``operation`` value is set to ``action``.
 
         Some common values for this parameter are ``enable``, ``disable``, ``rename``.
+    * - api_path
+
+        *(str)*
+      -
+      - Base NITRO API path.
+
+        Define only in case of an ADM service proxy call
     * - args
 
         *(dict)*
@@ -53,6 +60,13 @@ Parameters
       - The attributes of the Nitro object we are operating on.
 
         It is required for the following ``operation`` values: ``add``, ``update``, ``action``.
+    * - bearer_token
+
+        *(str)*
+      -
+      - Authentication bearer token.
+
+        Needed when doing an ADM service proxy call.
     * - expected_nitro_errorcode
 
         *(list)*
@@ -87,6 +101,13 @@ Parameters
         *(str)*
       -
       - The name of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - When performing a Proxy API call with ADM service set this to ``true``
     * - mas_proxy_call
 
         *(bool)*

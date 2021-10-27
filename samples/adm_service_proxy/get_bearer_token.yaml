@@ -1,0 +1,21 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+
+  tasks:
+    - name: Get Citrix cloud bearer token
+      delegate_to: localhost
+      register: login_result
+      citrix.adc.citrix_adc_get_bearer_token:
+        customer_id: "{{ customer_id }}"
+        api_client_id: "{{ api_client_id }}"
+        api_client_secret: "{{ api_client_secret }}"
+        endpoint: api-eu.cloud.com
+
+
+    - name: Show output
+      debug:
+        msg: "{{ login_result }}"

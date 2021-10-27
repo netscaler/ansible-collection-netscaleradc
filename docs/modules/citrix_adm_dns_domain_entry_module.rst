@@ -34,9 +34,9 @@ Parameters
       -
       - Description of DNS Domain Entry.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 1024
+         Maximum length =  1024
     * - id
 
         *(str)*
@@ -68,9 +68,9 @@ Parameters
       -
       - DNS Domain Name.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - nitro_auth_token
 
         *(str)*
@@ -137,9 +137,9 @@ Parameters
       -
       - Tenant Id of the DNS Domain Entries.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - validate_certs
 
         *(bool)*

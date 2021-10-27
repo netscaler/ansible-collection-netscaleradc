@@ -234,6 +234,27 @@ In order to do that you need a NITRO Python SDK that has the MAS proxy calls cap
 
 A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
 
+There is also the option to use the ADM service as a NITRO API proxy.
+
+To do that you first need to get a bearer token using the ```citrix_adc_get_bearer_token``` module.
+
+After that you need to include the following options with the module invocation:
+
+1. `nitro_protocol`
+2. `nsip`
+3. `api_path`
+4. `is_cloud`
+5. `bearer_token`
+6. `mas_proxy_call`
+
+And one of:
+
+1. `instance_ip`
+2. `instance_id`
+3. `instance_name`
+
+You can find examples in this [folder](samples/adm_service_proxy).
+
 ### Citrix ADM service calls
 
 There is the option for citrix_adm modules to be executed targetting the ADM service instead of an on prem ADM.

@@ -74,9 +74,9 @@ Parameters
       -
       - User Name.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - nitro_auth_token
 
         *(str)*
@@ -122,9 +122,9 @@ Parameters
       -
       - Password.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - save_config
 
         *(bool)*
@@ -162,9 +162,9 @@ Parameters
       -
       - Tenant Id of the system users.
 
-        Minimum length = 1
+         Minimum length =  1
 
-        Maximum length = 128
+         Maximum length =  128
     * - validate_certs
 
         *(bool)*

@@ -70,7 +70,12 @@ options:
     mas_proxy_call:
         description:
             - If true the underlying NITRO API calls made by the module will be proxied through a Citrix ADM node to the target Citrix ADC instance.
-            - "When true you must also define the following options: I(nitro_auth_token), I(instance_ip)."
+            - "When true you must also define the following options: I(nitro_auth_token)"
+            - "When true and adm service is the api proxy the following option must also be defined: I(bearer_token)"
+            - "When true you must define a target ADC by defining any of the following parameters"
+            - "I(instance_ip)"
+            - "I(instance_id)"
+            - "I(instance_name)"
         type: bool
         default: false
         version_added: "2.6.0"
@@ -89,6 +94,35 @@ options:
             - It is meaningful only when having set C(mas_proxy_call) to C(true)
         version_added: "2.6.0"
         type: str
+
+    instance_name:
+        type: str
+        description:
+            - The name of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
+
+    instance_id:
+        type: str
+        description:
+            - The id of the target Citrix ADC instance when issuing a Nitro request through a Citrix ADM proxy.
+
+    is_cloud:
+        type: bool
+        default: false
+        description:
+            - When performing a Proxy API call with ADM service set this to C(true)
+
+    api_path:
+        type: str
+        description:
+            - Base NITRO API path.
+            - Define only in case of an ADM service proxy call
+
+    bearer_token:
+        type: str
+        description:
+            - Authentication bearer token.
+            - Needed when doing an ADM service proxy call.
+
 notes:
   - For more information on using Ansible to manage Citrix ADC Network devices see U(https://www.ansible.com/ansible-netscaler).
 '''

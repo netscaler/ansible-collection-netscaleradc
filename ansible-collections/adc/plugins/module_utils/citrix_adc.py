@@ -292,6 +292,23 @@ netscaler_common_arguments = dict(
     instance_ip=dict(
         type='str'
     ),
+    instance_id=dict(
+        type='str'
+    ),
+    instance_name=dict(
+        type='str'
+    ),
+    is_cloud=dict(
+        type='bool',
+        default=False,
+    ),
+    api_path=dict(
+        type='str',
+    ),
+    bearer_token=dict(
+        type='str',
+        no_log=True,
+    )
 )
 
 loglines = []
@@ -363,7 +380,12 @@ class NitroAPIFetcher(object):
 
         self.r = None
         self.info = None
-        self.api_path = api_path
+
+        module_api_path = self._module.params.get('api_path')
+        if module_api_path is not None:
+            self.api_path = module_api_path
+        else:
+            self.api_path = api_path
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -383,6 +405,13 @@ class NitroAPIFetcher(object):
         if have_userpass:
             self._headers['X-NITRO-USER'] = self._module.params['nitro_user']
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
+
+        if self._module.params['is_cloud']:
+            self._headers['isCloud'] = 'true'
+
+        bearer_token = self._module.params.get('bearer_token')
+        if bearer_token is not None:
+            self._headers['Authorization'] = 'CwsAuth bearer=%s' % bearer_token
 
         # Do header manipulation when doing a MAS proxy call
         if self._module.params.get('mas_proxy_call') is not None and self._module.params.get('mas_proxy_call'):
