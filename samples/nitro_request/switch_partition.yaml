@@ -1,0 +1,56 @@
+- hosts: citrix_adc
+  gather_facts: no
+  collections:
+    - citrix.adc
+
+  tasks:
+    - name: ADC login
+      delegate_to: localhost
+      register: result
+      citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        validate_certs: "{{ validate_certs }}"
+
+        operation: add
+
+        resource: "login"
+        attributes:
+          username: "{{ nitro_user }}"
+          password: "{{ nitro_pass }}"
+
+    - name: Extract login data from http response
+      set_fact:
+        login_data: "{{ result.http_response_body | from_json }}"
+
+    - name: Switch partition
+      delegate_to: localhost
+      register: result
+      citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_auth_token: "{{ login_data.sessionid }}"
+        validate_certs: "{{ validate_certs }}"
+
+        operation: action
+        action: Switch
+
+        resource: nspartition
+        attributes:
+          partitionname: par1
+
+    # Any citrix_adc module that uses the nitro_auth_token will apply changes
+    # to targeted partition instead of the default one
+    - name: setup lb vserver
+      delegate_to: localhost
+      citrix_adc_lb_vserver:
+        nsip: "{{ nsip }}"
+        nitro_auth_token: "{{ login_data.sessionid }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        name: lb-vserver-1
+        servicetype: HTTP
+        timeout: 12
+        ipv46: 6.93.3.3
+        port: 80
+        disabled: no
