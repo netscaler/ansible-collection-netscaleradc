@@ -95,11 +95,13 @@ EXAMPLES = '''
         nitro_user: nsroot
         nitro_pass: nsroot
         nsip: 192.168.1.2
+
         state: present
-        fieldname: htmlerrorpage_integration_test
-        url: 'HTTP.REQ.HOSTNAME.DOMAIN.EQ("blog.example.com")'
-        isregex: REGEX
-        comment: 'conf id field comment'
+
+        name: "from_yaml"
+        src: "local://error.html"
+        comment: Some comment
+        overwrite: yes
 '''
 
 RETURN = '''
