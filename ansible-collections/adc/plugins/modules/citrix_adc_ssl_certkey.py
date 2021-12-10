@@ -303,7 +303,7 @@ class ModuleExecutor(object):
         result = self.fetcher.get('sslcertkey', self.module.params['certkey'])
 
         log('get result %s' % result)
-        if result['nitro_errorcode'] == 1540:
+        if result['nitro_errorcode'] in [258, 1540]:
             return False
         elif result['nitro_errorcode'] != 0:
             raise NitroException(

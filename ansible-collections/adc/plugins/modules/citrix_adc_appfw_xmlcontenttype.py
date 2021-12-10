@@ -136,7 +136,13 @@ class ModuleExecutor(object):
         )
 
     def main_object_exists(self, config):
-        main_object_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
+        try:
+            main_object_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
+        except NitroException as e:
+            if e.errorcode in [258]:
+                return False
+            else:
+                raise
 
         return main_object_exists
 
