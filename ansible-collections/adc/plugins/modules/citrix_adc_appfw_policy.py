@@ -184,7 +184,7 @@ class ModuleExecutor(object):
             appfw_policy_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
         except NitroException as e:
             # This is the no such policy exists exception
-            if e.errorcode == 2054:
+            if e.errorcode in [258, 2054]:
                 appfw_policy_exists = False
             else:
                 raise
@@ -213,7 +213,7 @@ class ModuleExecutor(object):
             appfw_policy_exists = config.exists(get_id_attributes=self.attibute_config[self.main_nitro_class]['get_id_attributes'])
         except NitroException as e:
             # This is the no such policy exists exception
-            if e.errorcode == 2054:
+            if e.errorcode in [258, 2054]:
                 appfw_policy_exists = False
             else:
                 raise
