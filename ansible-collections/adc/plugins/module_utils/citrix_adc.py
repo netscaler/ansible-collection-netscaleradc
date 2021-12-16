@@ -406,7 +406,7 @@ class NitroAPIFetcher(object):
             self._headers['X-NITRO-USER'] = self._module.params['nitro_user']
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
 
-        if self._module.params['is_cloud']:
+        if self._module.params.get('is_cloud', False):
             self._headers['isCloud'] = 'true'
 
         bearer_token = self._module.params.get('bearer_token')
