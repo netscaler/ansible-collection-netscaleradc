@@ -33,6 +33,7 @@ Network modules
   * :ref:`citrix_adc_nitro_info_module`
   * :ref:`citrix_adc_nitro_request_module`
   * :ref:`citrix_adc_nitro_resource_module`
+  * :ref:`citrix_adc_nsip_module`
   * :ref:`citrix_adc_password_reset_module`
   * :ref:`citrix_adc_save_config_module`
   * :ref:`citrix_adc_server_module`
