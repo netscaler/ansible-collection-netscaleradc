@@ -2,8 +2,8 @@
 
 .. _citrix_adc_gslb_service_module:
 
-citrix_adc_gslb_service - Manage gslb service entities in Citrix ADC.
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+citrix_adc_gslb_service - Manage GSLB services
+++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 1.0.0
 
@@ -13,15 +13,10 @@ citrix_adc_gslb_service - Manage gslb service entities in Citrix ADC.
 
 Synopsis
 --------
-- Manage gslb service entities in Citrix ADC.
+- Manage GSLB services
+- This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 
-
-Requirements
-~~~~~~~~~~~~
-The below requirements are needed on the host that executes this module.
-
-- nitro python sdk
 
 
 Parameters
@@ -63,35 +58,51 @@ Parameters
 
           - enabled
           - disabled
-      - In the request that is forwarded to the GSLB service, insert a header that stores the client's IP address. Client IP header insertion is used in connection-proxy based site persistence.
+      - In the request that is forwarded to the GSLB service, insert a header that stores the client's IP Client IP header insertion is used in connection-proxy based site persistence.
     * - cipheader
 
         *(str)*
       -
-      - Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If client IP header insertion is enabled on the service and a name is not specified for the header, the Citrix ADC appliance uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
+      - Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If IP header insertion is enabled on the service and a name is not specified for the header, the Citrix uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the IP Header parameter in the Configure HTTP Parameters dialog box.
 
-        Minimum length = 1
+        Minimum length =  1
     * - clttimeout
 
-        *(float)*
+        *(int)*
       -
-      - Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy based site persistence is used.
+      - Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy site persistence is used.
 
-        Minimum value = 0
+        Minimum value = ``0``
 
-        Maximum value = 31536000
+        Maximum value = ``31536000``
     * - cnameentry
 
         *(str)*
       -
       - Canonical name of the GSLB service. Used in CNAME-based GSLB.
 
-        Minimum length = 1
+        Minimum length =  1
     * - comment
 
         *(str)*
       -
       - Any comments that you might want to associate with the GSLB service.
+    * - cookietimeout
+
+        *(str)*
+      -
+      - Timeout value, in minutes, for the cookie, when cookie based site persistence is enabled.
+
+        Minimum value = ``0``
+
+        Maximum value = ``1440``
+    * - disabled
+
+        *(bool)*
+      -
+      - When set to ``true`` the gslb service state will be set to ``disabled``.
+
+        When set to ``false`` the gslb service state will be set to ``enabled``.
     * - downstateflush
 
         *(str)*
@@ -99,10 +110,10 @@ Parameters
 
           - enabled
           - disabled
-      - Flush all active transactions associated with the GSLB service when its state transitions from UP to DOWN. Do not enable this option for services that must complete their transactions. Applicable if connection proxy based site persistence is used.
+      - Flush all active transactions associated with the GSLB service when its state transitions from UP to Do not enable this option for services that must complete their transactions. Applicable if proxy based site persistence is used.
     * - hashid
 
-        *(float)*
+        *(str)*
       -
       - Unique hash identifier for the GSLB service, used by hash based load balancing methods.
 
@@ -135,7 +146,7 @@ Parameters
 
         *(str)*
       -
-      - IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual server on the Citrix ADC appliance, or the IP address of another load balancing device.
+      - The new IP address of the service.
     * - is_cloud
 
         *(bool)*
@@ -166,23 +177,23 @@ Parameters
         I(instance_name)
     * - maxaaausers
 
-        *(float)*
+        *(str)*
       -
-      - Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is represented by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.
+      - Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a decision is made, until the count drops below the maximum.
 
         Minimum value = ``0``
 
         Maximum value = ``65535``
     * - maxbandwidth
 
-        *(float)*
+        *(str)*
       -
-      - Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops below the maximum.
+      - Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops the maximum.
     * - maxclient
 
-        *(float)*
+        *(str)*
       -
-      - The maximum number of open connections that the service can support at any given time. A GSLB service whose connection count reaches the maximum is not considered when a GSLB decision is made, until the connection count drops below the maximum.
+      - The maximum number of open connections that the service can support at any given time. A GSLB service connection count reaches the maximum is not considered when a GSLB decision is made, until the count drops below the maximum.
 
         Minimum value = ``0``
 
@@ -191,7 +202,7 @@ Parameters
 
         *(list)*
       -
-      - Bind monitors to this gslb service
+      - List of lbmonitor bindings.
 
         .. list-table::
             :widths: 10 10 60
@@ -202,29 +213,90 @@ Parameters
               - Comment
 
             * - monitor_name
+
+                *(str)*
               -
               - Monitor name.
+            * - monstate
+
+                *(str)*
+              - Choices:
+
+                  - enabled
+                  - disabled
+              - State of the monitor bound to gslb service.
             * - weight
+
+                *(str)*
               -
-              - Weight to assign to the monitor-service binding.
-
-                A larger number specifies a greater weight.
-
-                Contributes to the monitoring threshold, which determines the state of the service.
+              - Weight to assign to the monitor-service binding. A larger number specifies a greater weight. to the monitoring threshold, which determines the state of the service.
 
                 Minimum value = ``1``
 
                 Maximum value = ``100``
 
+    * - monitor_name_svc
+
+        *(str)*
+      -
+      - Name of the monitor to bind to the service.
+
+        Minimum length =  1
     * - monthreshold
 
-        *(float)*
+        *(str)*
       -
-      - Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are bound to this GSLB service and are in the UP state is not equal to or greater than this threshold value, the service is marked as DOWN.
+      - Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are to this GSLB service and are in the UP state is not equal to or greater than this threshold value, service is marked as DOWN.
 
         Minimum value = ``0``
 
         Maximum value = ``65535``
+    * - naptrdomainttl
+
+        *(str)*
+      -
+      - Modify the TTL of the internally created naptr domain.
+
+        Minimum value = ``1``
+    * - naptrorder
+
+        *(str)*
+      -
+      - An integer specifying the order in which the NAPTR records MUST be processed in order to accurately the ordered list of Rules. The ordering is from lowest to highest.
+
+        Minimum value = ``1``
+
+        Maximum value = ``65535``
+    * - naptrpreference
+
+        *(str)*
+      -
+      - An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the higher the preference.
+
+        Minimum value = ``1``
+
+        Maximum value = ``65535``
+    * - naptrreplacement
+
+        *(str)*
+      -
+      - The replacement domain name for this NAPTR.
+
+        Maximum length =  255
+    * - naptrservices
+
+        *(str)*
+      -
+      - Service Parameters applicable to this delegation path.
+
+        Maximum length =  255
+    * - newname
+
+        *(str)*
+      -
+      - New name for the GSLB service.
+
+        Minimum length =  1
     * - nitro_auth_token
 
         *(str)*
@@ -270,7 +342,7 @@ Parameters
       -
       - Port on which the load balancing entity represented by this GSLB service listens.
 
-        Minimum value = 1
+        Minimum value = ``1``
 
         Range 1 - 65535
 
@@ -279,12 +351,12 @@ Parameters
 
         *(str)*
       -
-      - The public IP address that a NAT device translates to the GSLB service's private IP address. Optional.
+      - The public IP address that a NAT device translates to the GSLB service's private IP address.
     * - publicport
 
         *(int)*
       -
-      - The public port associated with the GSLB service's public IP address. The port is mapped to the service's private port number. Applicable to the local GSLB service. Optional.
+      - The public port associated with the GSLB service's public IP address. The port is mapped to the private port number. Applicable to the local GSLB service. Optional.
     * - save_config
 
         *(bool)*
@@ -300,16 +372,16 @@ Parameters
       -
       - Name of the server hosting the GSLB service.
 
-        Minimum length = 1
+        Minimum length =  1
     * - servicename
 
         *(str)*
       -
-      - Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore ``_`` character, and must contain only ASCII alphanumeric, underscore ``_``, hash ``#``, period ``.``, space, colon ``:``, at ``@``, equals ``=``, and hyphen ``-`` characters. Can be changed after the GSLB service is created.
+      - Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore (_) character, and contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals and hyphen (-) characters. Can be changed after the GSLB service is created.
 
-        
+        CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation (for example, "my gslbsvc" or 'my gslbsvc').
 
-        Minimum length = 1
+        Minimum length =  1
     * - servicetype
 
         *(str)*
@@ -340,7 +412,7 @@ Parameters
       -
       - Name of the GSLB site to which the service belongs.
 
-        Minimum length = 1
+        Minimum length =  1
     * - sitepersistence
 
         *(str)*
@@ -349,12 +421,12 @@ Parameters
           - ConnectionProxy
           - HTTPRedirect
           - NONE
-      - Use cookie-based site persistence. Applicable only to ``HTTP`` and ``SSL`` GSLB services.
+      - Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.
     * - siteprefix
 
         *(str)*
       -
-      - The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is generated internally for each bound service-domain pair by concatenating the site prefix of the service and the name of the domain. If the special string NONE is specified, the site-prefix string is unset. When implementing HTTP redirect site persistence, the Citrix ADC appliance redirects GSLB requests to GSLB services by using their site domains.
+      - The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is internally for each bound service-domain pair by concatenating the site prefix of the service and the of the domain. If the special string NONE is specified, the site-prefix string is unset. When HTTP redirect site persistence, the Citrix ADC redirects GSLB requests to GSLB services by using site domains.
     * - state
 
         *(str)*
@@ -367,6 +439,15 @@ Parameters
         When present the resource will be created if needed and configured according to the module's parameters.
 
         When absent the resource will be deleted from the Citrix ADC node.
+    * - svrtimeout
+
+        *(str)*
+      -
+      - Idle time, in seconds, after which a server connection is terminated. Applicable if connection proxy site persistence is used.
+
+        Minimum value = ``0``
+
+        Maximum value = ``31536000``
     * - validate_certs
 
         *(bool)*
@@ -374,6 +455,27 @@ Parameters
 
         *yes*
       - If ``no``, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
+    * - viewip
+
+        *(str)*
+      -
+      - IP address to be used for the given view.
+    * - viewname
+
+        *(str)*
+      -
+      - Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to a predetermined IP address to a specific group of clients, which are identified by using a DNS
+
+        Minimum length =  1
+    * - weight
+
+        *(str)*
+      -
+      - Weight to assign to the monitor-service binding. A larger number specifies a greater weight. to the monitoring threshold, which determines the state of the service.
+
+        Minimum value = ``1``
+
+        Maximum value = ``100``
 
 
 
@@ -382,18 +484,6 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    - name: Setup gslb service 2
-    
-      delegate_to: localhost
-      register: result
-      check_mode: "{{ check_mode }}"
-    
-      citrix_adc_gslb_service:
-        operation: present
-    
-        servicename: gslb-service-2
-        cnameentry: example.com
-        sitename: gslb-site-1
 
 
 Return Values
@@ -405,15 +495,6 @@ Return Values
     * - Key
       - Returned
       - Description
-    * - diff
-
-        *(dict)*
-      - failure
-      - List of differences between the actual configured object and the configuration specified in the module
-
-        **Sample:**
-
-        { 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }
     * - loglines
 
         *(list)*

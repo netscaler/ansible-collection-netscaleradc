@@ -29,45 +29,46 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
                     'status': ['preview'],
                     'supported_by': 'community'}
 
-
 DOCUMENTATION = '''
 ---
 module: citrix_adc_gslb_service
-short_description: Manage gslb service entities in Citrix ADC.
+short_description: Manage GSLB services
 description:
-    - Manage gslb service entities in Citrix ADC.
+    - Manage GSLB services
+    - This module is intended to run either on the ansible  control node or a bastion (jumpserver) with access to the actual Citrix ADC instance
 
 version_added: "1.0.0"
 
-author: George Nikolopoulos (@giorgos-nikolopoulos)
+author:
+    - George Nikolopoulos (@giorgos-nikolopoulos)
 
 options:
 
     servicename:
-        type: str
         description:
             - >-
-                Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore C(_) character, and
-                must contain only ASCII alphanumeric, underscore C(_), hash C(#), period C(.), space, colon C(:), at C(@),
-                equals C(=), and hyphen C(-) characters. Can be changed after the GSLB service is created.
+                Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore (_) character, and
+                contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (@), equals
+                and hyphen (-) characters. Can be changed after the GSLB service is created.
             - >-
-            - "Minimum length = 1"
+                CLI Users: If the name includes one or more spaces, enclose the name in double or single quotation
+                (for example, "my gslbsvc" or 'my gslbsvc').
+            - "Minimum length =  1"
+        type: str
 
     cnameentry:
-        type: str
         description:
             - "Canonical name of the GSLB service. Used in CNAME-based GSLB."
-            - "Minimum length = 1"
-
+            - "Minimum length =  1"
+        type: str
 
     servername:
-        type: str
         description:
             - "Name of the server hosting the GSLB service."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
 
     servicetype:
-        type: str
         choices:
             - 'HTTP'
             - 'FTP'
@@ -89,38 +90,38 @@ options:
             - 'ORACLE'
         description:
             - "Type of service to create."
+        type: str
 
     port:
-        type: int
         description:
             - "Port on which the load balancing entity represented by this GSLB service listens."
-            - "Minimum value = 1"
+            - "Minimum value = C(1)"
             - "Range 1 - 65535"
             - "* in CLI is represented as 65535 in NITRO API"
+        type: int
 
     publicip:
-        type: str
         description:
             - >-
                 The public IP address that a NAT device translates to the GSLB service's private IP address.
-                Optional.
+        type: str
 
     publicport:
-        type: int
         description:
             - >-
                 The public port associated with the GSLB service's public IP address. The port is mapped to the
-                service's private port number. Applicable to the local GSLB service. Optional.
+                private port number. Applicable to the local GSLB service. Optional.
+        type: int
 
     maxclient:
-        type: float
         description:
             - >-
                 The maximum number of open connections that the service can support at any given time. A GSLB service
-                whose connection count reaches the maximum is not considered when a GSLB decision is made, until the
-                connection count drops below the maximum.
+                connection count reaches the maximum is not considered when a GSLB decision is made, until the
+                count drops below the maximum.
             - "Minimum value = C(0)"
             - "Maximum value = C(4294967294)"
+        type: str
 
     healthmonitor:
         description:
@@ -128,161 +129,246 @@ options:
         type: bool
 
     sitename:
-        type: str
         description:
             - "Name of the GSLB site to which the service belongs."
-            - "Minimum length = 1"
+            - "Minimum length =  1"
+        type: str
 
     cip:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 In the request that is forwarded to the GSLB service, insert a header that stores the client's IP
-                address. Client IP header insertion is used in connection-proxy based site persistence.
+                Client IP header insertion is used in connection-proxy based site persistence.
+        type: str
 
     cipheader:
-        type: str
         description:
             - >-
                 Name for the HTTP header that stores the client's IP address. Used with the Client IP option. If
-                client IP header insertion is enabled on the service and a name is not specified for the header, the
-                Citrix ADC appliance uses the name specified by the cipHeader parameter in the set ns param command
-                or, in the GUI, the Client IP Header parameter in the Configure HTTP Parameters dialog box.
-            - "Minimum length = 1"
+                IP header insertion is enabled on the service and a name is not specified for the header, the Citrix
+                uses the name specified by the cipHeader parameter in the set ns param command or, in the GUI, the
+                IP Header parameter in the Configure HTTP Parameters dialog box.
+            - "Minimum length =  1"
+        type: str
 
     sitepersistence:
-        type: str
         choices:
             - 'ConnectionProxy'
             - 'HTTPRedirect'
             - 'NONE'
         description:
-            - "Use cookie-based site persistence. Applicable only to C(HTTP) and C(SSL) GSLB services."
+            - "Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services."
+        type: str
+
+    cookietimeout:
+        description:
+            - "Timeout value, in minutes, for the cookie, when cookie based site persistence is enabled."
+            - "Minimum value = C(0)"
+            - "Maximum value = C(1440)"
+        type: str
 
     siteprefix:
-        type: str
         description:
             - >-
                 The site's prefix string. When the service is bound to a GSLB virtual server, a GSLB site domain is
-                generated internally for each bound service-domain pair by concatenating the site prefix of the
-                service and the name of the domain. If the special string NONE is specified, the site-prefix string
-                is unset. When implementing HTTP redirect site persistence, the Citrix ADC appliance redirects GSLB
-                requests to GSLB services by using their site domains.
+                internally for each bound service-domain pair by concatenating the site prefix of the service and the
+                of the domain. If the special string NONE is specified, the site-prefix string is unset. When
+                HTTP redirect site persistence, the Citrix ADC redirects GSLB requests to GSLB services by using
+                site domains.
+        type: str
 
     clttimeout:
-        type: float
         description:
             - >-
                 Idle time, in seconds, after which a client connection is terminated. Applicable if connection proxy
-                based site persistence is used.
-            - "Minimum value = 0"
-            - "Maximum value = 31536000"
+                site persistence is used.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
+        type: int
+
+    svrtimeout:
+        description:
+            - >-
+                Idle time, in seconds, after which a server connection is terminated. Applicable if connection proxy
+                site persistence is used.
+            - "Minimum value = C(0)"
+            - "Maximum value = C(31536000)"
+        type: str
 
     maxbandwidth:
-        type: float
         description:
             - >-
                 Integer specifying the maximum bandwidth allowed for the service. A GSLB service whose bandwidth
-                reaches the maximum is not considered when a GSLB decision is made, until its bandwidth consumption
-                drops below the maximum.
+                the maximum is not considered when a GSLB decision is made, until its bandwidth consumption drops
+                the maximum.
+        type: str
 
     downstateflush:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - >-
                 Flush all active transactions associated with the GSLB service when its state transitions from UP to
-                DOWN. Do not enable this option for services that must complete their transactions. Applicable if
-                connection proxy based site persistence is used.
+                Do not enable this option for services that must complete their transactions. Applicable if
+                proxy based site persistence is used.
+        type: str
 
     maxaaausers:
-        type: float
         description:
             - >-
                 Maximum number of SSL VPN users that can be logged on concurrently to the VPN virtual server that is
-                represented by this GSLB service. A GSLB service whose user count reaches the maximum is not
-                considered when a GSLB decision is made, until the count drops below the maximum.
+                by this GSLB service. A GSLB service whose user count reaches the maximum is not considered when a
+                decision is made, until the count drops below the maximum.
             - "Minimum value = C(0)"
             - "Maximum value = C(65535)"
+        type: str
 
     monthreshold:
-        type: float
         description:
             - >-
                 Monitoring threshold value for the GSLB service. If the sum of the weights of the monitors that are
-                bound to this GSLB service and are in the UP state is not equal to or greater than this threshold
-                value, the service is marked as DOWN.
+                to this GSLB service and are in the UP state is not equal to or greater than this threshold value,
+                service is marked as DOWN.
             - "Minimum value = C(0)"
             - "Maximum value = C(65535)"
+        type: str
 
     hashid:
-        type: float
         description:
             - "Unique hash identifier for the GSLB service, used by hash based load balancing methods."
             - "Minimum value = C(1)"
+        type: str
 
     comment:
-        type: str
         description:
             - "Any comments that you might want to associate with the GSLB service."
+        type: str
 
     appflowlog:
-        type: str
         choices:
             - 'enabled'
             - 'disabled'
         description:
             - "Enable logging appflow flow information."
-
-    ipaddress:
         type: str
+
+    naptrreplacement:
+        description:
+            - "The replacement domain name for this NAPTR."
+            - "Maximum length =  255"
+        type: str
+
+    naptrorder:
         description:
             - >-
-                IP address for the GSLB service. Should represent a load balancing, content switching, or VPN virtual
-                server on the Citrix ADC appliance, or the IP address of another load balancing device.
+                An integer specifying the order in which the NAPTR records MUST be processed in order to accurately
+                the ordered list of Rules. The ordering is from lowest to highest.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(65535)"
+        type: str
+
+    naptrservices:
+        description:
+            - "Service Parameters applicable to this delegation path."
+            - "Maximum length =  255"
+        type: str
+
+    naptrdomainttl:
+        description:
+            - "Modify the TTL of the internally created naptr domain."
+            - "Minimum value = C(1)"
+        type: str
+
+    naptrpreference:
+        description:
+            - >-
+                An integer specifying the preference of this NAPTR among NAPTR records having same order. lower the
+                higher the preference.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(65535)"
+        type: str
+
+    ipaddress:
+        description:
+            - "The new IP address of the service."
+        type: str
+
+    viewname:
+        description:
+            - >-
+                Name of the DNS view of the service. A DNS view is used in global server load balancing (GSLB) to
+                a predetermined IP address to a specific group of clients, which are identified by using a DNS
+            - "Minimum length =  1"
+        type: str
+
+    viewip:
+        description:
+            - "IP address to be used for the given view."
+        type: str
+
+    weight:
+        description:
+            - >-
+                Weight to assign to the monitor-service binding. A larger number specifies a greater weight.
+                to the monitoring threshold, which determines the state of the service.
+            - "Minimum value = C(1)"
+            - "Maximum value = C(100)"
+        type: str
+
+    monitor_name_svc:
+        description:
+            - "Name of the monitor to bind to the service."
+            - "Minimum length =  1"
+        type: str
+
+    newname:
+        description:
+            - "New name for the GSLB service."
+            - "Minimum length =  1"
+        type: str
+
+
+    disabled:
+        description:
+            - When set to C(true) the gslb service state will be set to C(disabled).
+            - When set to C(false) the gslb service state will be set to C(enabled).
+        type: bool
 
     monitor_bindings:
         type: list
         elements: dict
         description:
-            - Bind monitors to this gslb service
+            - List of lbmonitor bindings.
         suboptions:
-
-            weight:
-                description:
-                    - Weight to assign to the monitor-service binding.
-                    - A larger number specifies a greater weight.
-                    - Contributes to the monitoring threshold, which determines the state of the service.
-                    - Minimum value = C(1)
-                    - Maximum value = C(100)
-
             monitor_name:
                 description:
-                    - Monitor name.
+                    - "Monitor name."
+                type: str
+            monstate:
+                choices:
+                    - 'enabled'
+                    - 'disabled'
+                description:
+                    - "State of the monitor bound to gslb service."
+                type: str
+            weight:
+                description:
+                    - >-
+                        Weight to assign to the monitor-service binding. A larger number specifies a greater weight.
+                        to the monitoring threshold, which determines the state of the service.
+                    - "Minimum value = C(1)"
+                    - "Maximum value = C(100)"
+                type: str
+
 
 extends_documentation_fragment: citrix.adc.citrixadc
-requirements:
-    - nitro python sdk
 '''
 
 EXAMPLES = '''
-- name: Setup gslb service 2
-
-  delegate_to: localhost
-  register: result
-  check_mode: "{{ check_mode }}"
-
-  citrix_adc_gslb_service:
-    operation: present
-
-    servicename: gslb-service-2
-    cnameentry: example.com
-    sitename: gslb-site-1
 '''
 
 RETURN = '''
@@ -290,172 +376,517 @@ loglines:
     description: list of logged messages by the module
     returned: always
     type: list
-    sample: "['message 1', 'message 2']"
+    sample: ['message 1', 'message 2']
 
 msg:
     description: Message detailing the failure reason
     returned: failure
     type: str
     sample: "Action does not exist"
-
-diff:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: failure
-    type: dict
-    sample: "{ 'targetlbvserver': 'difference. ours: (str) server1 other: (str) server2' }"
 '''
 
 import copy
-
-
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
-    ConfigProxy,
-    get_nitro_client,
+    NitroResourceConfig,
+    NitroException,
     netscaler_common_arguments,
     log,
     loglines,
-    ensure_feature_is_enabled,
-    monkey_patch_nitro_api,
-    get_immutables_intersection,
+    NitroAPIFetcher
 )
 
-try:
-    monkey_patch_nitro_api()
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice import gslbservice
-    from nssrc.com.citrix.netscaler.nitro.resource.config.gslb.gslbservice_lbmonitor_binding import gslbservice_lbmonitor_binding
-    from nssrc.com.citrix.netscaler.nitro.exception.nitro_exception import nitro_exception
-    PYTHON_SDK_IMPORTED = True
-except ImportError as e:
-    PYTHON_SDK_IMPORTED = False
 
+class ModuleExecutor(object):
 
-def gslb_service_exists(client, module):
-    if gslbservice.count_filtered(client, 'servicename:%s' % module.params['servicename']) > 0:
-        return True
-    else:
-        return False
+    def __init__(self, module):
+        self.module = module
+        self.fetcher = NitroAPIFetcher(self.module)
+        self.main_nitro_class = 'gslbservice'
 
+        # Dictionary containing attribute information
+        # for each NITRO object utilized by this module
+        self.attribute_config = {
+            'gslbservice': {
+                'attributes_list': [
+                    'servicename',
+                    'cnameentry',
+                    'servername',
+                    'servicetype',
+                    'port',
+                    'publicip',
+                    'publicport',
+                    'maxclient',
+                    'healthmonitor',
+                    'sitename',
+                    'cip',
+                    'cipheader',
+                    'sitepersistence',
+                    'cookietimeout',
+                    'siteprefix',
+                    'clttimeout',
+                    'svrtimeout',
+                    'maxbandwidth',
+                    'downstateflush',
+                    'maxaaausers',
+                    'monthreshold',
+                    'hashid',
+                    'comment',
+                    'appflowlog',
+                    'naptrreplacement',
+                    'naptrorder',
+                    'naptrservices',
+                    'naptrdomainttl',
+                    'naptrpreference',
+                    'ipaddress',
+                    'viewname',
+                    'viewip',
+                    'weight',
+                    'monitor_name_svc',
+                    'newname',
+                ],
+                'transforms': {
+                    'healthmonitor': lambda v: 'YES' if v else 'NO',
+                    'cip': lambda v: v.upper(),
+                    'downstateflush': lambda v: v.upper(),
+                    'appflowlog': lambda v: v.upper(),
+                },
+                'get_id_attributes': [
+                    'servicename',
+                ],
+                'delete_id_attributes': [
+                    'servicename',
+                ],
+                'non_updateable_attributes': [
+                    'cnameentry',
+                    'ip',
+                    'servername',
+                    'servicetype',
+                    'port',
+                    'sitename',
+                    'state',
+                    'cookietimeout',
+                    'clttimeout',
+                    'svrtimeout',
+                    'newname',
+                ],
+            },
+            'monitor_bindings': {
+                'attributes_list': [
+                    'monitor_name',
+                    'monstate',
+                    'weight',
+                ],
+                'transforms': {
+                    'monstate': lambda v: v.upper(),
+                },
+                'get_id_attributes': [
+                    'servicename',
+                ],
+                'delete_id_attributes': [
+                    'monitor_name',
+                    'servicename',
+                ]
+            },
+        }
 
-def gslb_service_identical(client, module, gslb_service_proxy):
-    gslb_service_list = gslbservice.get_filtered(client, 'servicename:%s' % module.params['servicename'])
-    diff_dict = gslb_service_proxy.diff_object(gslb_service_list[0])
-    # Ignore ip attribute missing
-    if 'ip' in diff_dict:
-        del diff_dict['ip']
-    if len(diff_dict) == 0:
-        return True
-    else:
-        return False
+        self.module_result = dict(
+            changed=False,
+            failed=False,
+            loglines=loglines,
+        )
 
+        self.prepared_list = []
 
-def get_actual_monitor_bindings(client, module):
-    log('get_actual_monitor_bindings')
-    # Get actual monitor bindings and index them by monitor_name
-    actual_monitor_bindings = {}
-    if gslbservice_lbmonitor_binding.count(client, servicename=module.params['servicename']) != 0:
-        # Get all monitor bindings associated with the named gslb vserver
-        fetched_bindings = gslbservice_lbmonitor_binding.get(client, servicename=module.params['servicename'])
-        # index by monitor name
-        for binding in fetched_bindings:
-            # complete_missing_attributes(binding, gslbservice_lbmonitor_binding_rw_attrs, fill_value=None)
-            actual_monitor_bindings[binding.monitor_name] = binding
-    return actual_monitor_bindings
+        # Calculate functions will apply transforms to values read from playbook
+        self.calculate_configured_gslbservice()
+        self.calculate_configured_monitor_bindings()
 
+    def calculate_configured_gslbservice(self):
+        log('ModuleExecutor.calculate_configured_gslbservice()')
+        self.configured_gslbservice = {}
+        for attribute in self.attribute_config['gslbservice']['attributes_list']:
+            value = self.module.params.get(attribute)
+            # Skip null values
+            if value is None:
+                continue
+            transform = self.attribute_config['gslbservice']['transforms'].get(attribute)
+            if transform is not None:
+                value = transform(value)
+            self.configured_gslbservice[attribute] = value
 
-def get_configured_monitor_bindings(client, module):
-    log('get_configured_monitor_bindings')
-    configured_monitor_proxys = {}
-    gslbservice_lbmonitor_binding_rw_attrs = [
-        'weight',
-        'servicename',
-        'monitor_name',
-    ]
-    # Get configured monitor bindings and index them by monitor_name
-    if module.params['monitor_bindings'] is not None:
-        for configured_monitor_bindings in module.params['monitor_bindings']:
-            binding_values = copy.deepcopy(configured_monitor_bindings)
-            binding_values['servicename'] = module.params['servicename']
-            proxy = ConfigProxy(
-                actual=gslbservice_lbmonitor_binding(),
-                client=client,
-                attribute_values_dict=binding_values,
-                readwrite_attrs=gslbservice_lbmonitor_binding_rw_attrs,
-                readonly_attrs=[],
-            )
-            configured_monitor_proxys[configured_monitor_bindings['monitor_name']] = proxy
-    return configured_monitor_proxys
+        # Add state
+        disabled_value = self.module.params.get('disabled')
+        if disabled_value is not None:
+            if disabled_value:
+                self.configured_gslbservice['state'] = 'DISABLED'
+            else:
+                self.configured_gslbservice['state'] = 'ENABLED'
 
+        log('calculated configured glsbservice %s' % self.configured_gslbservice)
 
-def monitor_bindings_identical(client, module):
-    log('monitor_bindings_identical')
-    actual_bindings = get_actual_monitor_bindings(client, module)
-    configured_proxys = get_configured_monitor_bindings(client, module)
+    def calculate_configured_monitor_bindings(self):
+        log('ModuleExecutor.calculate_configured_monitor_bindings()')
+        self.configured_monitor_bindings = []
+        if self.module.params.get('monitor_bindings') is None:
+            return
+        for monitor_binding in self.module.params['monitor_bindings']:
+            binding = {}
+            binding['servicename'] = self.module.params['servicename']
+            for attribute in self.attribute_config['monitor_bindings']['attributes_list']:
+                # Disregard null values
+                value = monitor_binding.get(attribute)
+                if value is None:
+                    continue
+                transform = self.attribute_config['monitor_bindings']['transforms'].get(attribute)
+                if transform is not None:
+                    value = transform(value)
+                binding[attribute] = value
+            self.configured_monitor_bindings.append(binding)
+        log('calculated configured monitor bindings %s' % self.configured_monitor_bindings)
 
-    actual_keyset = set(actual_bindings.keys())
-    configured_keyset = set(configured_proxys.keys())
+    def gslbservice_exists(self):
+        log('ModuleExecutor.gslbservice_exists()')
+        result = self.fetcher.get('gslbservice', self.module.params['servicename'])
 
-    symmetric_difference = actual_keyset ^ configured_keyset
-    if len(symmetric_difference) != 0:
-        log('Symmetric difference %s' % symmetric_difference)
-        return False
-
-    # Item for item equality test
-    for key, proxy in configured_proxys.items():
-        if not proxy.has_equal_attributes(actual_bindings[key]):
-            log('monitor binding difference %s' % proxy.diff_object(actual_bindings[key]))
+        log('get result %s' % result)
+        if result['nitro_errorcode'] == 0:
+            return True
+        elif result['nitro_errorcode'] in [258, 1835]:
             return False
+        else:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
 
-    # Fallthrough to True result
-    return True
+    def create_gslbservice(self):
+        log('ModuleExecutor.create_gslbservice()')
+
+        gslbservice_data = copy.deepcopy(self.configured_gslbservice)
+        # ip is only valid during creation
+        gslbservice_data['ip'] = self.configured_gslbservice.get('ipaddress')
+        post_data = {
+            'gslbservice': gslbservice_data
+        }
+
+        result = self.fetcher.post(post_data=post_data, resource='gslbservice')
+        log('post data: %s' % post_data)
+        log('result of post: %s' % result)
+        if result['http_response_data']['status'] == 201:
+            if result.get('nitro_errorcode') is not None:
+                if result['nitro_errorcode'] != 0:
+                    raise NitroException(
+                        errorcode=result['nitro_errorcode'],
+                        message=result.get('nitro_message'),
+                        severity=result.get('nitro_severity'),
+                    )
+        elif 400 <= result['http_response_data']['status'] <= 599:
+            raise NitroException(
+                errorcode=result.get('nitro_errorcode'),
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        else:
+            msg = 'Did not get nitro errorcode and http status was not 201 or 4xx (%s)' % result['http_response_data']['status']
+            self.module.fail_json(msg=msg, **self.module_result)
+
+    def update_gslbservice(self):
+        log('ModuleExecutor.update_gslbservice()')
+
+        # Catching trying to change non updateable attributes is done in self.gslbservice_identical()
+        put_payload = copy.deepcopy(self.configured_gslbservice)
+        for attribute in self.configured_gslbservice.keys():
+            if attribute in self.attribute_config['gslbservice']['non_updateable_attributes']:
+                del put_payload[attribute]
+
+        put_data = {
+            'gslbservice': put_payload
+        }
+
+        log('request put data: %s' % put_data)
+        result = self.fetcher.put(put_data=put_data, resource='gslbservice')
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def gslbservice_identical(self):
+        log('ModuleExecutor.gslbservice_identical()')
+        result = self.fetcher.get('gslbservice', self.module.params['servicename'])
+        retrieved_object = result['data']['gslbservice'][0]
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+        diff_list = []
+        non_updateable_list = []
+        # Iterate over keys that already exist in the playbook
+        for attribute in self.configured_gslbservice.keys():
+            retrieved_value = retrieved_object.get(attribute)
+            configured_value = self.configured_gslbservice.get(attribute)
+            if retrieved_value != configured_value:
+                str_tuple = (
+                    attribute,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                diff_list.append('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                log('Attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                entry = 'Attribute "%s" differs. Playbook parameter: "%s". Retrieved NITRO object: "%s"' % (attribute, configured_value, retrieved_value)
+                self.prepared_list.append(entry)
+                # Also append changed values to the non updateable list
+                if attribute in self.attribute_config['gslbservice']['non_updateable_attributes']:
+                    non_updateable_list.append(attribute)
+
+        self.module_result['diff_list'] = diff_list
+        if non_updateable_list != []:
+            msg = 'Cannot change value for the following non updateable attributes %s' % non_updateable_list
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if diff_list != []:
+            return False
+        else:
+            return True
+
+    def update_or_create(self):
+        log('ModuleExecutor.update_or_create()')
+
+        # Create or update main object
+        if not self.gslbservice_exists():
+            self.module_result['changed'] = True
+            self.prepared_list.append('Create gslb service')
+            if not self.module.check_mode:
+                log('gslb service does not exist. Will create.')
+                self.create_gslbservice()
+        else:
+            if not self.gslbservice_identical():
+                log('Existing gslb service does not have identical values to configured. Will update.')
+                self.module_result['changed'] = True
+                if not self.module.check_mode:
+                    self.update_gslbservice()
+            else:
+                log('Existing gslb service has identical values to configured.')
+
+        # This will also take into account check mode
+        self.sync_bindings()
+
+    def delete_gslbservice(self):
+        log('ModuleExecutor.delete_gslbservice()')
+
+        result = self.fetcher.delete(resource='gslbservice', id=self.module.params['servicename'])
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete(self):
+        log('ModuleExecutor.delete()')
+
+        if self.gslbservice_exists():
+            self.module_result['changed'] = True
+            self.prepared_list.append('Delete gslb service')
+            if not self.module.check_mode:
+                self.delete_gslbservice()
+
+    def _get_transformed_dict(self, transforms, values_dict):
+        actual_values_dict = {}
+        for key in values_dict:
+            value = values_dict.get(key)
+            transform = transforms.get(key)
+            if transform is not None:
+                value = transform(values_dict.get(key))
+            actual_values_dict[key] = value
+
+        return actual_values_dict
+
+    def get_existing_monitor_bindings(self):
+        log('ModuleExecutor.get_existing_monitor_bindings()')
+        result = self.fetcher.get('gslbservice_lbmonitor_binding', self.module.params['servicename'])
+
+        if result['nitro_errorcode'] in [258, 1835]:
+            return []
+        elif result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+        elif 'gslbservice_lbmonitor_binding' in result['data']:
+            return result['data']['gslbservice_lbmonitor_binding']
+        else:
+            return []
+
+    def add_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.add_monitor_binding()')
+
+        put_values = copy.deepcopy(configured_dict)
+        put_values['servicename'] = self.module.params['servicename']
+        put_values = self._get_transformed_dict(
+            transforms=self.attribute_config['monitor_bindings']['transforms'],
+            values_dict=put_values
+        )
+        put_data = {'gslbservice_lbmonitor_binding': put_values}
+        log('put data %s' % put_data)
+        result = self.fetcher.put(
+            put_data=put_data,
+            resource='gslbservice_lbmonitor_binding',
+            id=self.module.params['servicename'],
+        )
+
+        log('result of put: %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def delete_monitor_binding(self, configured_dict):
+        log('ModuleExecutor.delete_monitor_binding()')
+
+        monitor_binding = copy.deepcopy(configured_dict)
+
+        args = {}
+        for attribute in self.attribute_config['monitor_bindings']['delete_id_attributes']:
+            value = monitor_binding.get(attribute)
+            if value is not None and value != '':
+                log('Appending to args %s:%s' % (attribute, value))
+                args[attribute] = value
+
+        result = self.fetcher.delete(
+            resource='gslbservice_lbmonitor_binding',
+            id=self.module.params['servicename'],
+            args=args
+        )
+
+        log('delete result %s' % result)
+
+        if result['nitro_errorcode'] != 0:
+            raise NitroException(
+                errorcode=result['nitro_errorcode'],
+                message=result.get('nitro_message'),
+                severity=result.get('nitro_severity'),
+            )
+
+    def monitor_binding_identical(self, configured, retrieved):
+        log('ModuleExecutor.monitor_binding_identical()')
+
+        ret_val = True
+        for key in configured.keys():
+            configured_value = configured.get(key)
+            retrieved_value = retrieved.get(key)
+            if configured_value != retrieved_value:
+                str_tuple = (
+                    key,
+                    type(configured_value),
+                    configured_value,
+                    type(retrieved_value),
+                    retrieved_value,
+                )
+                log('Monitor binding attribute "%s" differs. Playbook parameter: (%s) %s. Retrieved NITRO object: (%s) %s' % str_tuple)
+                ret_val = False
+        return ret_val
+
+    def sync_monitor_bindings(self):
+        log('ModuleExecutor.sync_monitor_bindings()')
+
+        # Parent gslbservice should already exist
+        existing_monitor_bindings = self.get_existing_monitor_bindings()
+
+        log('existing_monitor_bindings %s' % existing_monitor_bindings)
+
+        # First get the existing bindings
+        configured_already_present = []
+
+        # Delete any binding that is not exactly as the configured
+        for existing_monitor_binding in existing_monitor_bindings:
+            for configured_monitor_binding in self.configured_monitor_bindings:
+                if self.monitor_binding_identical(configured_monitor_binding, existing_monitor_binding):
+                    configured_already_present.append(configured_monitor_binding)
+                    break
+            else:
+                log('Will delete binding')
+                self.module_result['changed'] = True
+                reduced_dict = self.reduced_dict(
+                    existing_monitor_binding,
+                    self.attribute_config['monitor_bindings']['attributes_list']
+                )
+                self.prepared_list.append('Delete monitor binding %s' % reduced_dict)
+                if not self.module.check_mode:
+                    self.delete_monitor_binding(existing_monitor_binding)
+
+        # Create the bindings objects that we marked in previous loop
+        log('configured_already_present %s' % configured_already_present)
+        for configured_monitor_binding in self.configured_monitor_bindings:
+            if configured_monitor_binding in configured_already_present:
+                log('Configured binding already exists')
+                continue
+            else:
+                log('Configured binding does not already exist')
+            self.module_result['changed'] = True
+            reduced_dict = self.reduced_dict(
+                configured_monitor_binding,
+                self.attribute_config['monitor_bindings']['attributes_list']
+            )
+            self.prepared_list.append('Add policy binding %s' % reduced_dict)
+            if not self.module.check_mode:
+                self.add_monitor_binding(configured_monitor_binding)
 
 
-def sync_monitor_bindings(client, module):
-    log('sync_monitor_bindings')
+    def reduced_dict(self, dictionary, include_keys):
+        reduced = {}
+        for key in dictionary:
+            if key in include_keys:
+                reduced[key] = dictionary[key]
 
-    actual_monitor_bindings = get_actual_monitor_bindings(client, module)
-    configured_monitor_proxys = get_configured_monitor_bindings(client, module)
+        return reduced
 
-    # Delete actual bindings not in configured bindings
-    for monitor_name, actual_binding in actual_monitor_bindings.items():
-        if monitor_name not in configured_monitor_proxys.keys():
-            log('Deleting absent binding for monitor %s' % monitor_name)
-            log('dir is %s' % dir(actual_binding))
-            gslbservice_lbmonitor_binding.delete(client, actual_binding)
+    def sync_bindings(self):
+        log('ModuleExecutor.sync_bindings()')
+        self.sync_monitor_bindings()
 
-    # Delete and re-add actual bindings that differ from configured
-    for proxy_key, binding_proxy in configured_monitor_proxys.items():
-        if proxy_key in actual_monitor_bindings:
-            actual_binding = actual_monitor_bindings[proxy_key]
-            if not binding_proxy.has_equal_attributes(actual_binding):
-                log('Deleting differing binding for monitor %s' % actual_binding.monitor_name)
-                log('dir %s' % dir(actual_binding))
-                log('attribute monitor_name %s' % getattr(actual_binding, 'monitor_name'))
-                log('attribute monitorname %s' % getattr(actual_binding, 'monitorname', None))
-                gslbservice_lbmonitor_binding.delete(client, actual_binding)
-                log('Adding anew binding for monitor %s' % binding_proxy.monitor_name)
-                binding_proxy.add()
+    def main(self):
+        try:
 
-    # Add configured monitors that are missing from actual
-    for proxy_key, binding_proxy in configured_monitor_proxys.items():
-        if proxy_key not in actual_monitor_bindings.keys():
-            log('Adding monitor binding for monitor %s' % binding_proxy.monitor_name)
-            binding_proxy.add()
+            if self.module.params['state'] == 'present':
+                self.update_or_create()
+            elif self.module.params['state'] == 'absent':
+                self.delete()
 
+            if self.module._diff:
+                self.module_result['diff'] = {'prepared': '\n'.join(self.prepared_list)}
 
-def diff_list(client, module, gslb_service_proxy):
-    gslb_service_list = gslbservice.get_filtered(client, 'servicename:%s' % module.params['servicename'])
-    diff_list = gslb_service_proxy.diff_object(gslb_service_list[0])
-    if 'ip' in diff_list:
-        del diff_list['ip']
-    return diff_list
+            self.module.exit_json(**self.module_result)
 
-
-def all_identical(client, module, gslb_service_proxy):
-    return gslb_service_identical(client, module, gslb_service_proxy) and monitor_bindings_identical(client, module)
+        except NitroException as e:
+            msg = "nitro exception errorcode=%s, message=%s, severity=%s" % (str(e.errorcode), e.message, e.severity)
+            self.module.fail_json(msg=msg, **self.module_result)
+        except Exception as e:
+            msg = 'Exception %s: %s' % (type(e), str(e))
+            self.module.fail_json(msg=msg, **self.module_result)
 
 
 def main():
+
+    argument_spec = dict()
 
     module_specific_arguments = dict(
         servicename=dict(type='str'),
@@ -487,7 +918,7 @@ def main():
         port=dict(type='int'),
         publicip=dict(type='str'),
         publicport=dict(type='int'),
-        maxclient=dict(type='float'),
+        maxclient=dict(type='str'),
         healthmonitor=dict(type='bool'),
         sitename=dict(type='str'),
         cip=dict(
@@ -506,9 +937,11 @@ def main():
                 'NONE',
             ]
         ),
+        cookietimeout=dict(type='str'),
         siteprefix=dict(type='str'),
-        clttimeout=dict(type='float'),
-        maxbandwidth=dict(type='float'),
+        clttimeout=dict(type='int'),
+        svrtimeout=dict(type='str'),
+        maxbandwidth=dict(type='str'),
         downstateflush=dict(
             type='str',
             choices=[
@@ -516,9 +949,9 @@ def main():
                 'disabled',
             ]
         ),
-        maxaaausers=dict(type='float'),
-        monthreshold=dict(type='float'),
-        hashid=dict(type='float'),
+        maxaaausers=dict(type='str'),
+        monthreshold=dict(type='str'),
+        hashid=dict(type='str'),
         comment=dict(type='str'),
         appflowlog=dict(
             type='str',
@@ -527,216 +960,51 @@ def main():
                 'disabled',
             ]
         ),
+        naptrreplacement=dict(type='str'),
+        naptrorder=dict(type='str'),
+        naptrservices=dict(type='str'),
+        naptrdomainttl=dict(type='str'),
+        naptrpreference=dict(type='str'),
         ipaddress=dict(type='str'),
-    )
+        viewname=dict(type='str'),
+        viewip=dict(type='str'),
+        weight=dict(type='str'),
+        monitor_name_svc=dict(type='str'),
+        newname=dict(type='str'),
 
-    hand_inserted_arguments = dict(
+        disabled=dict(
+            type='bool',
+        ),
+
         monitor_bindings=dict(
             type='list',
             elements='dict',
+            options=dict(
+                monitor_name=dict(type='str'),
+                monstate=dict(
+                    type='str',
+                    choices=[
+                        'enabled',
+                        'disabled',
+                    ]
+                ),
+                weight=dict(type='str'),
+            ),
         ),
-    )
 
-    argument_spec = dict()
+    )
 
     argument_spec.update(netscaler_common_arguments)
     argument_spec.update(module_specific_arguments)
-    argument_spec.update(hand_inserted_arguments)
 
     module = AnsibleModule(
         argument_spec=argument_spec,
         supports_check_mode=True,
     )
-    module_result = dict(
-        changed=False,
-        failed=False,
-        loglines=loglines,
-    )
 
-    # Fail the module if imports failed
-    if not PYTHON_SDK_IMPORTED:
-        module.fail_json(msg='Could not load nitro python sdk')
-
-    # Fallthrough to rest of execution
-    client = get_nitro_client(module)
-
-    if not module.params['mas_proxy_call']:
-        try:
-            client.login()
-        except nitro_exception as e:
-            msg = "nitro exception during login. errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-            module.fail_json(msg=msg)
-        except Exception as e:
-            if str(type(e)) == "<class 'requests.exceptions.ConnectionError'>":
-                module.fail_json(msg='Connection error %s' % str(e))
-            elif str(type(e)) == "<class 'requests.exceptions.SSLError'>":
-                module.fail_json(msg='SSL Error %s' % str(e))
-            else:
-                module.fail_json(msg='Unexpected error during login %s' % str(e))
-
-    readwrite_attrs = [
-        'servicename',
-        'cnameentry',
-        'ip',
-        'servername',
-        'servicetype',
-        'port',
-        'publicip',
-        'publicport',
-        'maxclient',
-        'healthmonitor',
-        'sitename',
-        'cip',
-        'cipheader',
-        'sitepersistence',
-        'siteprefix',
-        'clttimeout',
-        'maxbandwidth',
-        'downstateflush',
-        'maxaaausers',
-        'monthreshold',
-        'hashid',
-        'comment',
-        'appflowlog',
-        'ipaddress',
-    ]
-
-    readonly_attrs = [
-        'gslb',
-        'svrstate',
-        'svreffgslbstate',
-        'gslbthreshold',
-        'gslbsvcstats',
-        'monstate',
-        'preferredlocation',
-        'monitor_state',
-        'statechangetimesec',
-        'tickssincelaststatechange',
-        'threshold',
-        'clmonowner',
-        'clmonview',
-        '__count',
-    ]
-
-    immutable_attrs = [
-        'servicename',
-        'cnameentry',
-        'ip',
-        'servername',
-        'servicetype',
-        'port',
-        'sitename',
-        'state',
-        'cipheader',
-        'cookietimeout',
-        'clttimeout',
-        'svrtimeout',
-        'viewip',
-        'monitor_name_svc',
-        'newname',
-    ]
-
-    transforms = {
-        'healthmonitor': ['bool_yes_no'],
-        'cip': [lambda v: v.upper()],
-        'downstateflush': [lambda v: v.upper()],
-        'appflowlog': [lambda v: v.upper()],
-    }
-
-    # params = copy.deepcopy(module.params)
-    module.params['ip'] = module.params['ipaddress']
-
-    # Instantiate config proxy
-    gslb_service_proxy = ConfigProxy(
-        actual=gslbservice(),
-        client=client,
-        attribute_values_dict=module.params,
-        transforms=transforms,
-        readwrite_attrs=readwrite_attrs,
-        readonly_attrs=readonly_attrs,
-        immutable_attrs=immutable_attrs,
-    )
-
-    try:
-        ensure_feature_is_enabled(client, 'GSLB')
-        # Apply appropriate state
-        if module.params['state'] == 'present':
-            if not gslb_service_exists(client, module):
-                if not module.check_mode:
-                    gslb_service_proxy.add()
-                    sync_monitor_bindings(client, module)
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            elif not all_identical(client, module, gslb_service_proxy):
-
-                # Check if we try to change value of immutable attributes
-                immutables_changed = get_immutables_intersection(gslb_service_proxy, diff_list(client, module, gslb_service_proxy).keys())
-                if immutables_changed != []:
-                    module.fail_json(
-                        msg='Cannot update immutable attributes %s' % (immutables_changed,),
-                        diff=diff_list(client, module, gslb_service_proxy),
-                        **module_result
-                    )
-
-                # Update main configuration object
-                if not gslb_service_identical(client, module, gslb_service_proxy):
-                    if not module.check_mode:
-                        gslb_service_proxy.update()
-
-                # Update monitor bindigns
-                if not monitor_bindings_identical(client, module):
-                    if not module.check_mode:
-                        sync_monitor_bindings(client, module)
-
-                # Fallthrough to save and change status update
-                module_result['changed'] = True
-                if module.params['save_config']:
-                    client.save_config()
-            else:
-                module_result['changed'] = False
-
-            # Sanity check for state
-            if not module.check_mode:
-                if not gslb_service_exists(client, module):
-                    module.fail_json(msg='GSLB service does not exist', **module_result)
-                if not gslb_service_identical(client, module, gslb_service_proxy):
-                    module.fail_json(
-                        msg='GSLB service differs from configured',
-                        diff=diff_list(client, module, gslb_service_proxy),
-                        **module_result
-                    )
-                if not monitor_bindings_identical(client, module):
-                    module.fail_json(
-                        msg='Monitor bindings differ from configured',
-                        diff=diff_list(client, module, gslb_service_proxy),
-                        **module_result
-                    )
-
-        elif module.params['state'] == 'absent':
-            if gslb_service_exists(client, module):
-                if not module.check_mode:
-                    gslb_service_proxy.delete()
-                    if module.params['save_config']:
-                        client.save_config()
-                module_result['changed'] = True
-            else:
-                module_result['changed'] = False
-
-            # Sanity check for state
-            if not module.check_mode:
-                if gslb_service_exists(client, module):
-                    module.fail_json(msg='GSLB service still exists', **module_result)
-
-    except nitro_exception as e:
-        msg = "nitro exception errorcode=%s, message=%s" % (str(e.errorcode), e.message)
-        module.fail_json(msg=msg, **module_result)
-
-    if not module.params['mas_proxy_call']:
-        client.logout()
-
-    module.exit_json(**module_result)
+    executor = ModuleExecutor(module=module)
+    executor.main()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
