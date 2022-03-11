@@ -478,6 +478,14 @@ workflow:
       - ca
       - snicert
 
+  sslvserver_sslcipher_binding:
+    lifecycle: binding
+    endpoint: sslvserver_sslcipher_binding
+    bound_resource_missing_errorcode: 461
+    primary_id_attribute: vservername
+    delete_id_attributes:
+      - ciphername
+
   sslvserver:
     lifecycle: object
     endpoint: sslvserver
@@ -502,6 +510,16 @@ workflow:
     primary_id_attribute: name
     delete_id_attributes:
       - ciphername
+
+  sslcipher:
+    lifecycle: object
+    endpoint: sslcipher
+    primary_id_attribute: ciphergroupname
+    resource_missing_errorcode: 258
+    allow_recreate: true
+    non_updateable_attributes:
+      - ciphgrpalias
+      - sslprofile
 
   sslparameter:
     lifecycle: parameter_object
