@@ -1,0 +1,9 @@
+[citrix_adc]
+DemoADC 
+
+[citrix_adc:vars]
+state = present
+nsip=10.0.1.100 
+nitro_user=<citrix-adc-username> 
+nitro_pass=<citrix-adc-password> 
+validate_certs=no
