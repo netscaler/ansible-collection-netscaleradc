@@ -28,6 +28,16 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - bearer_token
+
+        *(str)*
+      -
+      - The Citrix Cloud bearer token.
+    * - customer_id
+
+        *(str)*
+      -
+      - The Citrix Cloud customer id.
     * - instance_ip
 
         *(str)*
@@ -37,6 +47,15 @@ Parameters
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Boolean flag.
+
+        Set to true when executing modules against the ADM service.
     * - mas_proxy_call
 
         *(bool)*

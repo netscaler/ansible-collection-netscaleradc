@@ -12,6 +12,7 @@ options:
             - "The port can be specified with the colon (:). E.g. 192.168.1.1:555."
         aliases:
             - mas_ip
+            - adm_ip
         required: True
         type: str
 
@@ -21,6 +22,7 @@ options:
         required: False
         aliases:
             - mas_user
+            - adm_user
         type: str
 
     nitro_pass:
@@ -29,6 +31,7 @@ options:
         required: False
         aliases:
             - mas_pass
+            - adm_pass
         type: str
 
     nitro_protocol:
@@ -80,6 +83,7 @@ options:
             - The authentication token provided by a login operation.
         aliases:
             - mas_auth_token
+            - adm_auth_token
         version_added: "2.6.0"
         type: str
 
@@ -89,6 +93,24 @@ options:
             - It is meaningful only when having set C(mas_proxy_call) to C(true)
         version_added: "2.6.0"
         type: str
+
+    is_cloud:
+        description:
+            - Boolean flag.
+            - Set to true when executing modules against the ADM service.
+        type: bool
+        default: false
+
+    bearer_token:
+        description:
+            - The Citrix Cloud bearer token.
+        type: str
+
+    customer_id:
+        description:
+            - The Citrix Cloud customer id.
+        type: str
+
 notes:
   - For more information on using Ansible to manage Citrix NetScaler Network devices see U(https://www.ansible.com/ansible-netscaler).
 '''

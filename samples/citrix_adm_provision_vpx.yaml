@@ -1,0 +1,121 @@
+---
+
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+    ipaddress: 10.222.74.166
+    vpx_name: vpx-1
+
+  remote_user: root
+  gather_facts: False
+
+  tasks:
+    - name: Get Citrix Cloud bearer token
+      delegate_to: localhost
+      register: login_result
+      citrix.adm.citrix_adm_get_bearer_token:
+        customer_id: "{{ customer_id }}"
+        api_client_id: "{{ api_client_id }}"
+        api_client_secret: "{{ api_client_secret }}"
+        endpoint: api-eu.cloud.com
+
+    - name: datacenter facts
+      delegate_to: localhost
+      register: datacenter_result
+      citrix.adm.citrix_adm_mps_datacenter_facts:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+
+        name: "k5gk7823ymgs_default"
+
+    - name: configuration templates facts
+      delegate_to: localhost
+      register: config_template_result
+      citrix.adm.citrix_adm_configuration_template_facts:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+
+        name: "ShowConfiguration"
+
+    - name: mps agent facts
+      delegate_to: localhost
+      register: mps_agent_result
+      citrix.adm.citrix_adm_mps_agent_facts:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+
+        name: "10.222.74.161"
+
+    - name: Provision vpx
+      delegate_to: localhost
+      citrix.adm.citrix_adm_provision_vpx:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+
+        state: present
+
+        provisioning_profile:
+            instance_type: "NetScaler"
+            name: "{{ vpx_name }}"
+            type: sdx
+            site_id: "{{ datacenter_result.mps_datacenter.id }}"
+            mas_registration_details:
+                mas_agent_id: "{{ mps_agent_result.mps_agent.id }}"
+            instance_capacity_details:
+                config_job_templates:
+                    - "{{ config_template_result.configuration_template.id }}"
+            deployment_details:
+                sdx:
+                    target: 10.222.74.135
+                    nitro:
+                        name: "{{ vpx_name }}"
+                        ip_address: "{{ ipaddress }}"
+                        config_type: 0
+                        ipv4_address: "{{ ipaddress }}"
+                        netmask: 255.255.255.192
+                        gateway: 10.222.74.129
+                        nexthop: ""
+                        image_name: NSVPX-XEN-13.1-17.42_nc_64.xva
+                        profile_name: nsroot_Notnsroot250
+                        sync_operation: "false"
+                        throughput_allocation_mode: "0"
+                        throughput: "1000"
+                        max_burst_throughput: "0"
+                        burst_priority: "0"
+                        license: Standard
+                        number_of_acu: 0
+                        number_of_scu: "0"
+                        vm_memory_total: "2048"
+                        pps: "1000000"
+                        number_of_cores: "0"
+                        l2_enabled: "false"
+                        if_0_1: "true"
+                        vlan_id_0_1: ""
+                        if_0_2: "true"
+                        vlan_id_0_2: ""
+                        network_interfaces:
+                          - port_name: LA/1
+                            mac_address: ""
+                            mac_mode: default
+                            device_channel_name: ""
+                            receiveuntagged: "true"
+                            vlan_whitelist_array:
+                              - "110"
+                        nsvlan_id: ""
+                        vlan_type: 1
+                        nsvlan_tagged: "false"
+                        nsvlan_interfaces: []
+

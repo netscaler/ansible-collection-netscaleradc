@@ -16,6 +16,7 @@ All modules
   * :ref:`citrix_adc_appfw_profile_module`
   * :ref:`citrix_adc_appfw_settings_module`
   * :ref:`citrix_adc_appfw_signatures_module`
+  * :ref:`citrix_adc_appfw_signatures_custom_import_module`
   * :ref:`citrix_adc_appfw_wsdl_module`
   * :ref:`citrix_adc_appfw_xmlcontenttype_module`
   * :ref:`citrix_adc_appfw_xmlerrorpage_module`
@@ -46,15 +47,20 @@ All modules
   * :ref:`citrix_adc_sslprofile_sslcipher_binding_module`
   * :ref:`citrix_adc_system_file_module`
   * :ref:`citrix_adm_application_module`
+  * :ref:`citrix_adm_configuration_template_facts_module`
   * :ref:`citrix_adm_dns_domain_entry_module`
+  * :ref:`citrix_adm_get_bearer_token_module`
   * :ref:`citrix_adm_login_module`
   * :ref:`citrix_adm_logout_module`
   * :ref:`citrix_adm_managed_device_module`
+  * :ref:`citrix_adm_mps_agent_facts_module`
+  * :ref:`citrix_adm_mps_datacenter_facts_module`
   * :ref:`citrix_adm_mpsgroup_module`
   * :ref:`citrix_adm_mpsuser_module`
   * :ref:`citrix_adm_ns_device_profile_module`
   * :ref:`citrix_adm_ns_facts_module`
   * :ref:`citrix_adm_poll_instances_module`
+  * :ref:`citrix_adm_provision_vpx_module`
   * :ref:`citrix_adm_rba_policy_module`
   * :ref:`citrix_adm_rba_role_module`
   * :ref:`citrix_adm_stylebook_module`
