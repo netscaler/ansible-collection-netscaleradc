@@ -302,6 +302,13 @@ netscaler_common_arguments = dict(
     is_cloud=dict(
         type='bool',
         default=False,
+    ),
+    bearer_token=dict(
+        type='str',
+        no_log=True,
+    ),
+    customer_id=dict(
+        type='str',
     )
 )
 
@@ -406,6 +413,10 @@ class NitroAPIFetcher(object):
         if have_userpass:
             self._headers['X-NITRO-USER'] = self._module.params['nitro_user']
             self._headers['X-NITRO-PASS'] = self._module.params['nitro_pass']
+
+        bearer_token = self._module.params.get('bearer_token')
+        if bearer_token is not None:
+            self._headers['Authorization'] = 'CwsAuth bearer=%s' % bearer_token
 
         # Do header manipulation when doing a MAS proxy call
         if self._module.params['mas_proxy_call']:
