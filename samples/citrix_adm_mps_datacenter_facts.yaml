@@ -1,0 +1,35 @@
+- hosts: citrix_adm
+
+  vars:
+    max_clients: 5
+
+  gather_facts: False
+  collections:
+    - citrix.adm
+
+  tasks:
+    - name: Get Citrix Cloud bearer token
+      delegate_to: localhost
+      register: login_result
+      citrix.adm.citrix_adm_get_bearer_token:
+        customer_id: "{{ customer_id }}"
+        api_client_id: "{{ api_client_id }}"
+        api_client_secret: "{{ api_client_secret }}"
+        endpoint: api-eu.cloud.com
+
+    - name: datacenter facts
+      delegate_to: localhost
+      register: datacenter_result
+      citrix.adm.citrix_adm_mps_datacenter_facts:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
+
+        name: "k5gk7823ymgs_default"
+
+    - name: Show facts
+      delegate_to: localhost
+      ansible.builtin.debug:
+        var: datacenter_result.mps_datacenter
