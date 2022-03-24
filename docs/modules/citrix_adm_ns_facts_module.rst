@@ -28,6 +28,16 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - bearer_token
+
+        *(str)*
+      -
+      - The Citrix Cloud bearer token.
+    * - customer_id
+
+        *(str)*
+      -
+      - The Citrix Cloud customer id.
     * - id
 
         *(str)*
@@ -65,6 +75,15 @@ Parameters
         *(str)*
       -
       - IPv6 Address.
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Boolean flag.
+
+        Set to true when executing modules against the ADM service.
     * - mas_proxy_call
 
         *(bool)*

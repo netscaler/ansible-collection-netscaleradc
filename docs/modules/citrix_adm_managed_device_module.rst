@@ -38,6 +38,11 @@ Parameters
         *(bool)*
       -
       - Device is auto-provisioned or not.
+    * - bearer_token
+
+        *(str)*
+      -
+      - The Citrix Cloud bearer token.
     * - config_type
 
         *(int)*
@@ -45,6 +50,11 @@ Parameters
       - Configuration Type. Values: 0: IPv4, 1: IPv6, 2: Both.
 
          Maximum value =  
+    * - customer_id
+
+        *(str)*
+      -
+      - The Citrix Cloud customer id.
     * - datacenter_id
 
         *(str)*
@@ -246,6 +256,15 @@ Parameters
         *(bool)*
       -
       - Does this device belong to an Autoscale Group..
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Boolean flag.
+
+        Set to true when executing modules against the ADM service.
     * - is_ha_configured
 
         *(bool)*

@@ -73,11 +73,21 @@ Parameters
         *(list)*
       -
       - Autoscale groups belong to this groupp.
+    * - bearer_token
+
+        *(str)*
+      -
+      - The Citrix Cloud bearer token.
     * - bound_entity_selected
 
         *(str)*
       -
       - Which bound entiy is selected VSERVER(0),SERVICE(1),SERVICEGROUP(2),SERVER(3).
+    * - customer_id
+
+        *(str)*
+      -
+      - The Citrix Cloud customer id.
     * - description
 
         *(str)*
@@ -106,6 +116,15 @@ Parameters
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Boolean flag.
+
+        Set to true when executing modules against the ADM service.
     * - mas_proxy_call
 
         *(bool)*

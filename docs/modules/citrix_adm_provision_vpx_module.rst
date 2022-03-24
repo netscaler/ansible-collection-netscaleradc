@@ -28,6 +28,16 @@ Parameters
     * - Parameter
       - Choices/Defaults
       - Comment
+    * - bearer_token
+
+        *(str)*
+      -
+      - The Citrix Cloud bearer token.
+    * - customer_id
+
+        *(str)*
+      -
+      - The Citrix Cloud customer id.
     * - fail_on_stall
 
         *(bool)*
@@ -44,6 +54,15 @@ Parameters
       - The target Netscaler instance ip address to which all underlying NITRO API calls will be proxied to.
 
         It is meaningful only when having set ``mas_proxy_call`` to ``true``
+    * - is_cloud
+
+        *(bool)*
+      - Default:
+
+        *False*
+      - Boolean flag.
+
+        Set to true when executing modules against the ADM service.
     * - mas_proxy_call
 
         *(bool)*
@@ -129,22 +148,46 @@ Parameters
               - Choices/Defaults
               - Comment
 
-            * - placeholder
+            * - nitro
               -
-              - Placeholder description
+              - Payload to create ADC instance which is to be sent to SDX.
+            * - target
+              -
+              - IP of managed SDX where Citrix ADC is going to be provisioned.
 
             * - instance_type
               -
               - Only NetScaler is supported as of now
+            * - mas_registration_details
+
+                *(dict)*
+              -
+              - MAS registration details
+
+        .. list-table::
+            :widths: 10 10 60
+            :header-rows: 1
+
+            * - Suboption
+              - Choices/Defaults
+              - Comment
+
+            * - access_profile_id
+              -
+              - Reference to Instance/Device Access Profile to be set for instance being provisioned.
+            * - mas_agent_id
+              -
+              - Reference to MAS Agent that has to be used in order to add and manage provisioned instance in MAS.
+
             * - name
               -
               - Name of the ProvisioningProfile.
-            * - platform_type
-              -
-              - Platform type
             * - site_id
               -
               - Reference to MAS site which has location info where instance has to be provisioned.
+            * - type
+              -
+              - Platform type
 
     * - save_config
 
@@ -182,7 +225,68 @@ Examples
 
 .. code-block:: yaml+jinja
     
+    - name: Provision vpx
+      delegate_to: localhost
+      citrix.adm.citrix_adm_provision_vpx:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
     
+        state: present
+    
+        provisioning_profile:
+            instance_type: "NetScaler"
+            name: "{{ vpx_name }}"
+            type: sdx
+            site_id: "cfa47930-f3f6-475f-9780-da93699f01cf"
+            mas_registration_details:
+                mas_agent_id: "12ea1595-9161-4f56-b1c7-bc953ced6e9e"
+            instance_capacity_details:
+                config_job_templates:
+                    - "c4a977d1-5633-03e6-961f-eb4e99a93f85"
+            deployment_details:
+                sdx:
+                    target: 10.222.74.135
+                    nitro:
+                        name: "{{ vpx_name }}"
+                        ip_address: "{{ ipaddress }}"
+                        config_type: 0
+                        ipv4_address: "{{ ipaddress }}"
+                        netmask: 255.255.255.192
+                        gateway: 10.222.74.129
+                        nexthop: ""
+                        image_name: NSVPX-XEN-13.1-17.42_nc_64.xva
+                        profile_name: nsroot_Notnsroot250
+                        sync_operation: "false"
+                        throughput_allocation_mode: "0"
+                        throughput: "1000"
+                        max_burst_throughput: "0"
+                        burst_priority: "0"
+                        license: Standard
+                        number_of_acu: 0
+                        number_of_scu: "0"
+                        vm_memory_total: "2048"
+                        pps: "1000000"
+                        number_of_cores: "0"
+                        l2_enabled: "false"
+                        if_0_1: "true"
+                        vlan_id_0_1: ""
+                        if_0_2: "true"
+                        vlan_id_0_2: ""
+                        network_interfaces:
+                          - port_name: LA/1
+                            mac_address: ""
+                            mac_mode: default
+                            device_channel_name: ""
+                            receiveuntagged: "true"
+                            vlan_whitelist_array:
+                              - "110"
+                        nsvlan_id: ""
+                        vlan_type: 1
+                        nsvlan_tagged: "false"
+                        nsvlan_interfaces: []
 
 
 Return Values

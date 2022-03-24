@@ -1,9 +1,9 @@
 :orphan:
 
-.. _citrix_adm_mpsuser_module:
+.. _citrix_adm_mps_agent_facts_module:
 
-citrix_adm_mpsuser - Manage Citrix ADM users.
-+++++++++++++++++++++++++++++++++++++++++++++
+citrix_adm_mps_agent_facts - Retrieve facts about Citrix ADM mps agents.
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 .. versionadded:: 1.0.0
 
@@ -13,7 +13,7 @@ citrix_adm_mpsuser - Manage Citrix ADM users.
 
 Synopsis
 --------
-- Manage Citrix ADM users.
+- Retrieve facts about Citrix ADM mps agents.
 
 
 
@@ -38,26 +38,6 @@ Parameters
         *(str)*
       -
       - The Citrix Cloud customer id.
-    * - enable_session_timeout
-
-        *(bool)*
-      -
-      - Enables session timeout for user.
-    * - external_authentication
-
-        *(bool)*
-      -
-      - Enable external authentication.
-    * - groups
-
-        *(list)*
-      -
-      - Groups to which user belongs.
-    * - id
-
-        *(str)*
-      -
-      - Id is system generated key for all the system users.
     * - instance_ip
 
         *(str)*
@@ -91,11 +71,7 @@ Parameters
 
         *(str)*
       -
-      - User Name.
-
-         Minimum length =  1
-
-         Maximum length =  128
+      - Name of the mps agent.
     * - nitro_auth_token
 
         *(str)*
@@ -135,15 +111,6 @@ Parameters
       - The ip address of the netscaler appliance where the nitro API calls will be made.
 
         The port can be specified with the colon (:). E.g. 192.168.1.1:555.
-    * - password
-
-        *(str)*
-      -
-      - Password.
-
-         Minimum length =  1
-
-         Maximum length =  128
     * - save_config
 
         *(bool)*
@@ -153,16 +120,6 @@ Parameters
       - If true the module will save the configuration on the netscaler node if it makes any changes.
 
         The module will not save the configuration on the netscaler node if it made no changes.
-    * - session_timeout
-
-        *(str)*
-      -
-      - Session timeout for the user.
-    * - session_timeout_unit
-
-        *(str)*
-      -
-      - Session timeout unit for the user.
     * - state
 
         *(str)*
@@ -175,15 +132,6 @@ Parameters
         When present the resource will be created if needed and configured according to the module's parameters.
 
         When absent the resource will be deleted from the netscaler node.
-    * - tenant_id
-
-        *(str)*
-      -
-      - Tenant Id of the system users.
-
-         Minimum length =  1
-
-         Maximum length =  128
     * - validate_certs
 
         *(bool)*
@@ -199,24 +147,18 @@ Examples
 
 .. code-block:: yaml+jinja
     
-    - name: Setup mpsuser
+    - name: mps agent facts
       delegate_to: localhost
-      citrix_adm_mpsuser:
-        mas_ip: 192.168.1.1
-        mas_user: nsroot
-        mas_pass: nsroot
+      register: mps_agent_result
+      citrix.adm.citrix_adm_mps_agent_facts:
+        nitro_protocol: https
+        nsip: railay.adm.cloud.com
+        customer_id: "{{ customer_id }}"
+        is_cloud: true
+        bearer_token: "{{ login_result.access_token }}"
     
-        state: present
+        name: "10.222.74.161"
     
-        name: test_mpsuser
-        password: 123456
-    
-        session_timeout: 10
-        session_timeout_unit: Minutes
-        external_authentication: false
-        enable_session_timeout: true
-        groups:
-          - test_mpsgroup
 
 
 Return Values
@@ -237,11 +179,11 @@ Return Values
         **Sample:**
 
         ['message 1', 'message 2']
-    * - mpsuser
+    * - mps_agent
 
         *(dict)*
       - success
-      - Dictionary containing the attributes of the created mpsuser
+      - Dictionary containing the mps agent facts.
     * - msg
 
         *(str)*
