@@ -41,3 +41,16 @@ $ cat lb_vserver.yml
 | ADC Use Case | Configuration Examples |
 | ------------ | ---------------------- |
 | Web Application Firewall (WAF) | appfw\_signatures\_custom\_import <br /> appfw\_confidfield <br /> appfw\_fieldtype <br /> appfw\_global\_bindings <br /> appfw\_htmlerrorpage <br /> appfw\_jsoncontenttype <br /> appfw\_learningdata\_delete <br /> appfw\_learningdata\_export <br /> appfw\_learningdata\_get <br /> appfw\_learningdata\_reset <br /> appfw\_learningsettings <br /> appfw\_policy <br /> appfw\_policylabel <br /> appfw\_profile <br /> appfw\_settings <br /> appfw\_signatures <br /> appfw\_wsdl <br /> appfw\_xmlcontenttype <br /> appfw\_xmlerrorpage <br /> appfw\_xmlschema <br /> |
+| Core ADC features | citrix\_adc\_servicegroup\_dsapi <br /> save\_conifg\_handler\_server <br /> server <br /> server2 <br /> service <br /> servicegroup <br /> servicegroup2 <br /> |
+| Content Switching | content\_switch\_ssl\_lb\_mon <br /> cs\_action <br /> cs\_action\_expr <br /> cs\_vserver <br /> cs\_vserver\_appfw\_policy\_setup <br /> |
+| DNS | dnsnsrec <br /> dnssoarec <br /> |
+| Global Load Server Balancing (GSLB) | gslb\_basic <br /> gslb\_full <br /> gslb\_service <br /> gslb\_service\_disable <br /> gslb\_site <br /> gslb\_vserver <br /> |
+| ADM Proxy Calls | proxied\_server |
+| Generic Module nitro\_info | nitro\_info <br /> |
+| Generic Module nitro\_request | adc\_login <br /> add\_or\_update\_server <br /> add\_or\_update\_simpleacl <br /> add\_server\_idempotent <br /> count <br /> delete <br /> delete\_all\_cs\_vsevers <br /> delete\_by\_args <br /> delete\_simpleacl <br /> do\_action <br /> enable\_feature <br /> get <br /> get\_all <br /> get\_by\_args <br /> get\_filtered <br /> log <br /> mas\_get\_all <br /> mas\_login <br /> rename <br /> save\_config <br /> switch\_partition <br /> uri-nitro-api-calls <br /> |
+| Generic Module nitro\_resource | create\_and\_disable\_server <br /> object <br /> object\_by\_args <br /> object\_with\_bindings <br /> object\_with\_bindings\_list <br /> parameter\_object <br /> |
+| NS | nsip <br /> nspartition <br /> nspartition\_switch <br /> |
+| SSL A+ certified | ssl-aplus-certified-via-citrix-adc |
+| SSL | ssl\_certkey <br /> sslcipherlist <br /> sslprofile\_sslcipher\_binding <br /> sslvserver\_sslcertkey\_binding <br /> sslvserver\_sslcipher\_binding <br /> |
+| System | system\_file |
+| Various | password\_reset |
