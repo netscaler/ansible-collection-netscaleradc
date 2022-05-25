@@ -53,4 +53,9 @@ $ cat lb_vserver.yml
 | SSL A+ certified | ssl-aplus-certified-via-citrix-adc |
 | SSL | ssl\_certkey <br /> sslcipherlist <br /> sslprofile\_sslcipher\_binding <br /> sslvserver\_sslcertkey\_binding <br /> sslvserver\_sslcipher\_binding <br /> |
 | System | system\_file |
-| Various | password\_reset |
+| Various | password\_reset <br /> citrix\_adc\_connection\_plugin <br /> |
+
+
+| ADM Use Case | Configuration Examples |
+| ------------ | ---------------------- |
+| ADM resources | citrix\_adm\_application <br /> citrix\_adm\_configuration\_template\_facts <br /> citrix\_adm\_dns\_domain\_entry <br /> citrix\_adm\_login <br /> citrix\_adm\_managed\_device <br /> citrix\_adm\_mps\_agent\_facts <br /> citrix\_adm\_mps\_datacenter\_facts <br /> citrix\_adm\_mpsgroup <br /> citrix\_adm\_mpsuser <br /> citrix\_adm\_ns\_device\_profile <br /> citrix\_adm\_ns\_facts <br /> citrix\_adm\_poll\_instances <br /> citrix\_adm\_provision\_vpx <br /> citrix\_adm\_rba\_policy <br /> citrix\_adm\_rba\_policy\_full <br /> citrix\_adm\_rba\_role <br /> citrix\_adm\_service\_login <br /> citrix\_adm\_service\_logout <br /> citrix\_adm\_stylebook <br /> citrix\_adm\_stylebook\_lookup <br /> citrix\_adm\_tenant\_facts <br /> |
