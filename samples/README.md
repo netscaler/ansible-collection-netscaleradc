@@ -36,7 +36,9 @@ $ cat lb_vserver.yml
         nitro_pass: nsroot
 ```
 
-## Samples directory contents
+## Use cases supported by ADC and ADM modules
+
+Examples can be found in the [samples](.) directory.
 
 | ADC Use Case | Configuration Examples |
 | ------------ | ---------------------- |
