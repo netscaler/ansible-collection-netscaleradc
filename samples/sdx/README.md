@@ -27,3 +27,5 @@ actual SDX instance expects.
 One way to do this is to run the operation manually one time and through the web browser developer
 utilities record the exact POST data used.
 Then the user can modify them to its liking for subsequent automatic runs.
+
+Once your VPX is up and running on SDX, you can configure the VPX for various usecases directly using our ADC Ansible modules.
