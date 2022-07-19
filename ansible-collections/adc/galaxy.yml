@@ -1,7 +1,7 @@
 namespace: citrix
 name: adc
 
-version: 1.2.0
+version: 1.3.0
 readme: README.md
 authors:
   - George Nikolopoulos <giorgos.nikolopoulos@citrix.com>
