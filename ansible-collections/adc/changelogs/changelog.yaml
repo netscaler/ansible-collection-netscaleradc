@@ -56,7 +56,7 @@ releases:
     - description: Manage content switching vserver
       name: citrix_adc_cs_vserver
       namespace: ''
-    - description: Manage gslb service entities in Citrix ADC.
+    - description: Manage GSLB services
       name: citrix_adc_gslb_service
       namespace: ''
     - description: Manage gslb site entities in Citrix ADC.
@@ -153,3 +153,5 @@ releases:
       name: citrix_adc_system_file
       namespace: ''
     release_date: '2021-03-09'
+  1.3.0:
+    release_date: '2022-07-19'

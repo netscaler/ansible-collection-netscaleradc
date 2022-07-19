@@ -5,6 +5,9 @@ Citrix.Adc Release Notes
 .. contents:: Topics
 
 
+v1.3.0
+======
+
 v1.1.0
 ======
 
@@ -73,7 +76,7 @@ New Modules
 - citrix.adc.citrix_adc_cs_action - Manage content switching actions
 - citrix.adc.citrix_adc_cs_policy - Manage content switching policy
 - citrix.adc.citrix_adc_cs_vserver - Manage content switching vserver
-- citrix.adc.citrix_adc_gslb_service - Manage gslb service entities in Citrix ADC.
+- citrix.adc.citrix_adc_gslb_service - Manage GSLB services
 - citrix.adc.citrix_adc_gslb_site - Manage gslb site entities in Citrix ADC.
 - citrix.adc.citrix_adc_gslb_vserver - Configure gslb vserver entities in Citrix ADC.
 - citrix.adc.citrix_adc_lb_monitor - Manage load balancing monitors
