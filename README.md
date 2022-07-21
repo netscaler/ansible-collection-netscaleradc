@@ -308,7 +308,7 @@ In order for a standard Ansible module to work properly with the Citrix ADC conn
 * Modify the playbook so that it uses the connection plugin (`connection: ssh_citrix_adc`).
 * Citrix ADC does not have the python interpreter path defined, so one should pass this path when defining the host group (`ansible_python_interpreter: /var/python/bin/python`).
 * The plugin works only with ssh key based authentication. The remote Citrix ADC must have the public ssh key of the controlling machine in their authorized_keys file (`/flash/nsconfig/ssh/authorized_keys`).
-* In the local ansible.cfg file make sure the following lines exist:
+* In the local [ansible.cfg](https://docs.ansible.com/ansible/latest/reference_appendices/config.html) file make sure the following lines exist:
 ```
 [defaults]
 host_key_checking = False
@@ -316,6 +316,7 @@ host_key_checking = False
 [ssh_connection]
 scp_if_ssh = True
 ```
+
 
 You can find usage samples in this [folder](samples/citrix_adc_connection_plugin).
 
