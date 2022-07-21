@@ -421,7 +421,7 @@ Examples of the modules' usage are also contained in the EXAMPLES section of the
 * `run_tests.py`. Top level script to run all the tests.
 
 ## LICENSE
-**GPL V3**
+**MIT License**
 See [LICENSE](./LICENSE)
 
 ## COPYRIGHT
