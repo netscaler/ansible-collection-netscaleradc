@@ -397,6 +397,8 @@ to the target ADC.
 This provides the least feedback but it is useful for one off
 configuration steps or when nothing else is applicable.
 
+> This requires password-less (SSH-key based) authentication. Follow [this article](https://docs.citrix.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html) to setup the ADC
+
 Examples can be found in this [folder](samples/citrix_adc_connection_plugin)
 
 
