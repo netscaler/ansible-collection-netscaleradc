@@ -1,3 +1,6 @@
 *.retry
 *.pyc
 .tox/
+
+# development related
+citrix-adc-ansible-tools/
