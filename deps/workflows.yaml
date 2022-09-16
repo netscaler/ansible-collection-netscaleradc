@@ -75,6 +75,14 @@ workflow:
       - monitor_name
       - port
 
+  authentication_epaaction:
+    lifecycle: object
+    endpoint: authenticationepaaction
+    primary_id_attribute: name
+    resource_missing_errorcode: 538
+    allow_recreate: true
+    non_updateable_attributes: []
+
   lbgroup:
     lifecycle: object
     endpoint: lbgroup
