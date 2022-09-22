@@ -210,7 +210,7 @@ class ModuleExecutor(object):
             unexpected_error = True
             if 'data' in result:
                 if 'errorcode' in result['data']:
-                    if result['data']['errorcode'] in [555, 530]:
+                    if result['data']['errorcode'] in [555, 530, 404]:
                         unexpected_error = False
                         self.fetched_stylebook = {}
                 elif 'error_code' in result['data']:
