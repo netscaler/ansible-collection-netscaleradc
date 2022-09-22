@@ -1,0 +1,83 @@
+- hosts: citrix_adm_service
+
+  vars:
+    max_clients: 5
+    adm_host: adm.cloud.com
+    customer_id: "{{ lookup('env', 'CITRIXADM_CUSTOMER_ID') }}"
+    client_id: "{{ lookup('env', 'CITRIXADM_CLIENT_ID') }}"
+    client_secret: "{{ lookup('env', 'CITRIXADM_CLIENT_SECRET') }}"
+    validate_certs: false
+    instance_ip: "{{ instance_ip }}"
+
+  gather_facts: False
+  collections:
+    - citrix.adm
+
+  tasks:
+    - name: Login to ADM Service
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        adm_ip: "{{ adm_host }}"
+        is_cloud: true
+        id: "{{ client_id }}"
+        secret: "{{ client_secret }}"
+
+    # log login_result
+    - name: Log login_result
+      delegate_to: localhost
+      debug:
+        var: login_result
+
+    - name: Get NS instance
+      delegate_to: localhost
+      register: ns_facts
+      citrix_adm_ns_facts:
+        adm_ip: "{{ adm_host }}"
+        is_cloud: true
+        nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
+
+        ip_address: "{{ instance_ip }}"
+
+    - name: Add a configpack
+      delegate_to: localhost
+      register: configpack_result
+      citrix_adm_configpack:
+        adm_ip: "{{ adm_host }}"
+        is_cloud: true
+        nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        check_create: true
+        check_create_delay: 10
+
+        parameters:
+          ip: 192.199.19.1
+          lb-alg: ROUNDROBIN
+          name: service_configpack
+          svc-port: "80"
+          svc-servers:
+            - 192.199.19.3
+        targets:
+          - id: '{{ ns_facts.ns[0].id }}'
+        stylebook:
+          name: basic-lb-config-via-ansible
+          namespace: com.example.stylebooks
+          version: "0.1"
+
+    - name: Log Configpack created
+      debug:
+        var: configpack_result
+
+    - name: Logout from ADM Service
+      delegate_to: localhost
+      citrix_adm_logout:
+        adm_ip: "{{ adm_host }}"
+        is_cloud: true
+        nitro_auth_token: "{{ login_result.session_id }}"
+
+
+
