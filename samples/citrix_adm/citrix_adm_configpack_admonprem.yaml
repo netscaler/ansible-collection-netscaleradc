@@ -1,0 +1,61 @@
+- hosts: citrix_adm
+
+  vars:
+    adm_ip: "{{ adm_ip }}"
+    adm_user: "{{ adm_user }}"
+    adm_pass: "{{ adm_pass }}"
+    validate_certs: no
+    instance_ip: "{{ instance_ip }}"
+
+  gather_facts: False
+  collections:
+    - citrix.adm
+
+  tasks:
+    - name: Login to ADM {{ adm_ip }}
+      delegate_to: localhost
+      register: login_result
+      citrix_adm_login:
+        adm_ip: "{{ adm_ip }}"
+        adm_user: "{{ adm_user }}"
+        adm_pass: "{{ adm_pass }}"
+        validate_certs: "{{ validate_certs }}"
+
+    - name: Get NS instance
+      delegate_to: localhost
+      register: ns_facts
+      citrix_adm_ns_facts:
+        nitro_protocol: http
+        adm_ip: "{{ adm_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
+
+        ip_address: "{{ instance_ip }}"
+
+    - name: Add a configpack
+      delegate_to: localhost
+      register: configpack_result
+      citrix_adm_configpack:
+        nitro_protocol: http
+        adm_ip: "{{ adm_ip }}"
+        nitro_auth_token: "{{ login_result.session_id }}"
+        validate_certs: "{{ validate_certs }}"
+
+        state: present
+
+        check_create: true
+        check_create_delay: 10
+
+        parameters:
+          ip: 192.168.10.10
+          lb-alg: ROUNDROBIN
+          name: onprem-configpack
+          svc-port: "80"
+          svc-servers:
+            - 192.168.10.11
+        targets:
+          - id: '{{ ns_facts.ns[0].id }}'
+        stylebook:
+          name: basic-lb-config
+          namespace: com.example.stylebooks
+          version: "0.1"
