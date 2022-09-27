@@ -256,6 +256,65 @@ Move the following documentation to samples directory.
 | ------------ | ---------------------- |
 | ADM resources | citrix\_adm\_application <br /> citrix\_adm\_configuration\_template\_facts <br /> citrix\_adm\_dns\_domain\_entry <br /> citrix\_adm\_login <br /> citrix\_adm\_managed\_device <br /> citrix\_adm\_mps\_agent\_facts <br /> citrix\_adm\_mps\_datacenter\_facts <br /> citrix\_adm\_mpsgroup <br /> citrix\_adm\_mpsuser <br /> citrix\_adm\_ns\_device\_profile <br /> citrix\_adm\_ns\_facts <br /> citrix\_adm\_poll\_instances <br /> citrix\_adm\_provision\_vpx <br /> citrix\_adm\_rba\_policy <br /> citrix\_adm\_rba\_policy\_full <br /> citrix\_adm\_rba\_role <br /> citrix\_adm\_service\_login <br /> citrix\_adm\_service\_logout <br /> citrix\_adm\_stylebook <br /> citrix\_adm\_stylebook\_lookup <br /> citrix\_adm\_tenant\_facts <br /> |
 
+
+### NITRO API TLS
+
+By default the `nitro_protocol` parameter is set to `http`.
+This leaves all NITRO API request and response data unencrypted and it is not recommended for production environments.
+
+Set the `nitro_protocol` to `https` in order to have all NITRO API communication encrypted.
+
+By default the Citrix ADC comes with a self signed TLS certificate.
+If you intend to use https with this certificate you need to set the `validate_certs` parameter to `false`.
+
+For production environments it is recommended to use trusted TLS certificate so that `validate_certs`
+is set to `true`.
+
+Please consult the [Citrix ADC secure deployment guide](https://docs.citrix.com/en-us/citrix-adc/citrix-adc-secure-deployment/secure-deployment-guide.html) where among other things the usage of trusted TLS certificates is documented.
+
+### Citrix ADM proxied calls
+
+There is also the ability to proxy module NITRO calls through a Citrix ADM to a target ADC.
+
+In order to do that you need a NITRO Python SDK that has the MAS proxy calls capability and also follow these 2 steps.
+
+1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
+2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
+
+A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
+
+There is also the option to use the ADM service as a NITRO API proxy.
+
+To do that you first need to get a bearer token using the ```citrix_adc_get_bearer_token``` module.
+
+After that you need to include the following options with the module invocation:
+
+1. `nitro_protocol`
+2. `nsip`
+3. `api_path`
+4. `is_cloud`
+5. `bearer_token`
+6. `mas_proxy_call`
+
+And one of:
+
+1. `instance_ip`
+2. `instance_id`
+3. `instance_name`
+
+You can find examples in this [folder](samples/adm_service_proxy).
+
+### Citrix ADM service calls
+
+There is the option for citrix_adm modules to be executed targetting the ADM service instead of an on prem ADM.
+
+This mode of execution relies on first getting a `nitro_auth_token` by logging in the ADM service and using this
+token for all subsequent module calls.
+
+Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
+
+Examples can be found in this [folder](samples/citrix_adm).
+
 ## What if there is no module for your configuration?
 
 When there is no module that covers the ADC configuration you want to apply there are
@@ -304,66 +363,6 @@ configuration steps or when nothing else is applicable.
 
 Examples can be found in this [folder](samples/citrix_adc_connection_plugin)
 
-
-### NITRO API TLS
-
-By default the `nitro_protocol` parameter is set to `http`.
-This leaves all NITRO API request and response data unencrypted and it is not recommended for production environments.
-
-Set the `nitro_protocol` to `https` in order to have all NITRO API communication encrypted.
-
-By default the Citrix ADC comes with a self signed TLS certificate.
-If you intend to use https with this certificate you need to set the `validate_certs` parameter to `false`.
-
-For production environments it is recommended to use trusted TLS certificate so that `validate_certs`
-is set to `true`.
-
-Please consult the [Citrix ADC secure deployment guide](https://docs.citrix.com/en-us/citrix-adc/citrix-adc-secure-deployment/secure-deployment-guide.html) where among other things the usage of trusted TLS certificates is documented.
-
-
-
-### Citrix ADM proxied calls
-
-There is also the ability to proxy module NITRO calls through a Citrix ADM to a target ADC.
-
-In order to do that you need a NITRO Python SDK that has the MAS proxy calls capability and also follow these 2 steps.
-
-1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
-2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
-
-A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
-
-There is also the option to use the ADM service as a NITRO API proxy.
-
-To do that you first need to get a bearer token using the ```citrix_adc_get_bearer_token``` module.
-
-After that you need to include the following options with the module invocation:
-
-1. `nitro_protocol`
-2. `nsip`
-3. `api_path`
-4. `is_cloud`
-5. `bearer_token`
-6. `mas_proxy_call`
-
-And one of:
-
-1. `instance_ip`
-2. `instance_id`
-3. `instance_name`
-
-You can find examples in this [folder](samples/adm_service_proxy).
-
-### Citrix ADM service calls
-
-There is the option for citrix_adm modules to be executed targetting the ADM service instead of an on prem ADM.
-
-This mode of execution relies on first getting a `nitro_auth_token` by logging in the ADM service and using this
-token for all subsequent module calls.
-
-Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
-
-Examples can be found in this [folder](samples/citrix_adm).
 
 ## Citrix ADC connection plugin
 
