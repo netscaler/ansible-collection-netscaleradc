@@ -12,18 +12,18 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 
 > :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
 
-
-## Table of contents
+-----------
+## Ansible Modules Documentation
 * [Directory structure](#directory-structure)
 * [Pre-requisites](#pre-requisites)
 * [Installation](#installation)
   - [Setting up prerequisites](#setting-up-prerequisites)
   - [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
-* [List of ADC Use-cases supported](#list-of-ADC-Use-cases-supported)
+* [List of ADC Use-cases supported](#list-of-adc-use-cases-supported)
   - [ADC modules](#adc-modules)
   - [ADM modules](#adm-modules)
   - [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
-* [How to use Ansible Modules ? ](#usage)
+* [How to use Ansible Modules ? ](#how-to-use-ansible-modules)
   - [Secure variable storage](#secure-variable-storage)
   - [Use cases supported by ADC and ADM modules](#use-cases-supported-by-adc-and-adm-modules)
   - [NITRO API TLS](#nitro-api-tls)
@@ -33,7 +33,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
   - [Use the citrix\_adc\_nitro\_request module](#use-the-citrix_adc_nitro_request-module)
   - [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
   - [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
-* [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
+* [Using standard Ansible modules like shell, fetch using Citrix ADC connection plugin](#citrix-adc-connection-plugin)
   - [Installation](#installation)
   - [Usage](#usage-1)
   - [Security notice](#security-notice)
@@ -43,6 +43,22 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 * [LICENSE](#license)
 * [COPYRIGHT](#copyright)
 
+## Beginners Guide to usign ADC Ansible Modules
+*  Getting Started with Ansible and ADC collection installation
+*  Make your first Configuration on ADC with Ansible
+*  General Guidelines on creating Ansible playbooks 
+*  Nitro Request - Generic Module to execute Nitro API operations via Ansible
+*  Nitro Resource - Generic module to create any ADC entity using Ansible
+*  Nitro Info - Generic module to emulate show commands
+*  Proxy your ADC Nitro API calls via ADM 
+
+## Beginners Guide to using ADM Ansible Modules
+*  Getting Started with ADM Ansible modules
+*  Creating Stylebooks with ADM Ansible modules
+*  Applying ADC config via Configpacks through ADM Ansible Modules
+*  Updating Config-Packs to new Stylebooks via ADM Ansible Modules
+
+-------------
 
 ## Directory structure
 
@@ -108,11 +124,6 @@ cd ansible-collections/adm
 ansible-galaxy collection build 
 ansible-galaxy collection install citrix-adm-<semver>.tar.gz
 ```
-
-
-## Extended Documentation
-
-Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
 
 ## List of ADC Use-cases supported
 
@@ -188,7 +199,7 @@ The workflows yaml file can be found [here](deps/workflows.yaml).
 csvserver\_rewritepolicy\_binding, dnssoarec, lbgroup, lbgroup\_lbvserver\_binding, lbmetrictable, lbmetrictable\_metric\_binding, lbmonitor, lbmonitor\_metric\_binding, lbmonitor\_sslcertkey\_binding, lbprofile, lbroute, lbroute6, lbvserver, lbvserver\_analyticsprofile\_binding, lbvserver\_appflowpolicy\_binding, lbvserver\_appfwpolicy\_binding, lbvserver\_appqoepolicy\_binding, lbvserver\_auditnslogpolicy\_binding, lbvserver\_auditsyslogpolicy\_binding, lbvserver\_authorizationpolicy\_binding, lbvserver\_cachepolicy\_binding, lbvserver\_capolicy\_binding, lbvserver\_cmppolicy\_binding, lbvserver\_contentinspectionpolicy\_binding, lbvserver\_csvserver\_binding, lbvserver\_dnspolicy64\_binding, lbvserver\_feopolicy\_binding, lbvserver\_filterpolicy\_binding, lbvserver\_pqpolicy\_binding, lbvserver\_responderpolicy\_binding, lbvserver\_rewritepolicy\_binding, lbvserver\_scpolicy\_binding, lbvserver\_service\_binding, lbvserver\_servicegroup\_binding, lbvserver\_servicegroupmember\_binding, lbvserver\_spilloverpolicy\_binding, lbvserver\_transformpolicy\_binding, lbvserver\_videooptimizationdetectionpolicy\_binding, lbvserver\_videooptimizationpacingpolicy\_binding, nsacl, ntpparam, ntpserver, policypatset, policypatset\_pattern\_binding, rewriteaction, rewritepolicy, server, service, service\_lbmonitor\_binding, servicegroup, servicegroup\_lbmonitor\_binding, snmpmanager, spilloverpolicy, sslparameter, sslprofile, sslprofile\_sslcipher\_binding, sslvserver, sslvserver\_sslcertkey\_binding, systemuser, transformaction, transformpolicy, transformprofile
 
 
-## Usage
+## How to use Ansible modules ?
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix ADC appliance.
 To do this you need to use the `local_action` or the `delegate_to` options in your playbooks.
@@ -220,7 +231,8 @@ For more information see the full [documentation](https://docs.ansible.com/ansib
 
 ### Use cases supported by ADC and ADM modules
 
-Examples can be found in the [samples](samples) directory.
+Examples can be found in the [samples](samples) directory. 
+Move the following documentation to samples directory.
 
 | ADC Use Case | Configuration Examples |
 | ------------ | ---------------------- |
@@ -412,10 +424,6 @@ To have such a playbook execute correctly the following solutions are proposed.
 * Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](samples/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
 * Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](samples/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
-
-
-
-
 ## Module renaming
 
 Note that as of this [commit](https://github.com/citrix/netscaler-ansible-modules/commit/b53935432646741d9af27d9617480517a28aa86d)
@@ -431,6 +439,10 @@ All new modules will follow this convention as well.
 Until these changes are integrated into the Ansible distribution the Citrix ADC
 module names will differ depending on where they were installed from.
 
+## Extended Documentation
+
+Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
+
 ## LICENSE
 **MIT License**
 See [LICENSE](./LICENSE)
@@ -440,4 +452,4 @@ See [LICENSE](./LICENSE)
 **COPYRIGHT 2017 CITRIX Systems Inc**
 
 ## Contributions
-Pull requests and issues are welcome.
+3rd party contributions are not accepted as of today. You can reach out to us at appmodernization@citrix.com ! for quick response or create GitHub issues.
