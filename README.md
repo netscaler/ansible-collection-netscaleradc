@@ -424,3 +424,23 @@ See [LICENSE](./LICENSE)
 
 ## Contributions
 3rd party contributions are not accepted as of today. You can reach out to us at appmodernization@citrix.com ! for quick response or create GitHub issues.
+
+#Beginners guide to ADC Automation with Ansible 
+
+## Hands-On Lab for ADC Automation with Ansible
+Try out the [lab](https://forum.developer.cloud.com/s/citrix-labs?articleId=ka08b0000005Xl8AAE) that takes you through the ADC Automation journey with Ansible 
+
+## Getting Started with Ansible and ADC collection installation
+Refer the Steps 1 and Steps 2 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+
+## Make your first Configuration on ADC with Ansible
+Refer the Steps 3 and Steps 4 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+
+## General Guidelines on creating Ansible playbooks 
+Refer the [How to use Ansible Modules section ?](#how-to-use-ansible-modules) for usage guidelines on ADC Ansible playbooks.
+To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding or endpoint, parameters etc.
+
+*  Nitro Request - Generic Module to execute Nitro API operations via Ansible
+*  Nitro Resource - Generic module to create any ADC entity using Ansible
+*  Nitro Info - Generic module to emulate show commands
+*  Proxy your ADC Nitro API calls via ADM 
