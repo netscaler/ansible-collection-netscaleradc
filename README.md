@@ -103,8 +103,10 @@ Examples of the modules' usage are also contained in the EXAMPLES section of the
 ## Pre-requisites
 
 * NITRO Python SDK
-* Ansible
+* Ansible (<=5.5.0) | ansible-core (<=2.12.9)
 * Python 2.7 or 3.x
+
+> The modules are not test for `ansible>=5.5.0` (OR `ansible-core>=2.12.9`) and may break.
 
 ## Installation
 
@@ -117,7 +119,7 @@ Use of a python virtualenv during installation is recommended.
 * Install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
 
 #### Global environment
-* Install Ansible (`sudo pip install ansible`)
+* Install Ansible (`sudo pip install ansible==5.5.0`)
 * Install NetScaler SDK (`pip install deps/nitro-python-1.0_kamet.tar.gz`)
 
 ### Installing ADC and ADM modules and plugins
