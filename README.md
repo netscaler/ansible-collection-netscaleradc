@@ -14,56 +14,41 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 
 -----------
 
+# Contents
 ## Ansible Modules Documentation
-- [Citrix ADC & Citrix ADM Ansible modules](#citrix-adc--citrix-adm-ansible-modules)
-  - [Ansible Modules Documentation](#ansible-modules-documentation)
-  - [Beginners Guide to usign ADC Ansible Modules](#beginners-guide-to-usign-adc-ansible-modules)
-  - [Beginners Guide to using ADM Ansible Modules](#beginners-guide-to-using-adm-ansible-modules)
-  - [Directory structure](#directory-structure)
-  - [Pre-requisites](#pre-requisites)
-  - [Installation](#installation)
-    - [Setting up prerequisites](#setting-up-prerequisites)
-      - [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
-      - [Global environment](#global-environment)
-    - [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
-  - [List of ADC Use-cases supported](#list-of-adc-use-cases-supported)
-    - [ADC modules](#adc-modules)
-    - [ADM modules](#adm-modules)
-  - [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
-  - [How to use Ansible modules ?](#how-to-use-ansible-modules-)
-    - [Secure variable storage](#secure-variable-storage)
-    - [NITRO API TLS](#nitro-api-tls)
-    - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
-    - [Citrix ADM service calls](#citrix-adm-service-calls)
-  - [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
-    - [Use the citrix\_adc\_nitro\_request module.](#use-the-citrix_adc_nitro_request-module)
-    - [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
-    - [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
-  - [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
-    - [Installation](#installation-1)
-    - [Usage](#usage)
-    - [Security notice](#security-notice)
-    - [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
-  - [Module renaming](#module-renaming)
-  - [Extended Documentation](#extended-documentation)
-  - [LICENSE](#license)
-  - [COPYRIGHT](#copyright)
-  - [Contributions](#contributions)
-  - [Hands-On Lab for ADC Automation with Ansible](#hands-on-lab-for-adc-automation-with-ansible)
-  - [Getting Started with Ansible and ADC collection installation](#getting-started-with-ansible-and-adc-collection-installation)
-  - [Make your first Configuration on ADC with Ansible](#make-your-first-configuration-on-adc-with-ansible)
-  - [General Guidelines on creating Ansible playbooks](#general-guidelines-on-creating-ansible-playbooks)
-  - [Nitro Request - Generic Module to execute Nitro API operations via Ansible](#nitro-request---generic-module-to-execute-nitro-api-operations-via-ansible)
-  - [Nitro Resource - Generic module to create any ADC entity using Ansible](#nitro-resource---generic-module-to-create-any-adc-entity-using-ansible)
-  - [Nitro Info - Generic module to emulate show commands](#nitro-info---generic-module-to-emulate-show-commands)
-  - [Proxy your ADC Nitro API calls via ADM](#proxy-your-adc-nitro-api-calls-via-adm)
-  - [Getting Started with ADM Ansible modules](#getting-started-with-adm-ansible-modules)
-  - [Creating Stylebooks with ADM Ansible modules](#creating-stylebooks-with-adm-ansible-modules)
-  - [Applying ADC config via Configpacks through ADM Ansible Modules](#applying-adc-config-via-configpacks-through-adm-ansible-modules)
-  - [Updating Config-Packs to new Stylebooks via ADM Ansible Modules](#updating-config-packs-to-new-stylebooks-via-adm-ansible-modules)
+ * [Directory structure](#directory-structure)
+ * [Pre-requisites](#pre-requisites)
+ * [Installation](#installation)
+    * [Setting up prerequisites](#setting-up-prerequisites)
+    * [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
+    * [Global environment](#global-environment)
+    * [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
+ * [List of ADC Use-cases supported](#list-of-adc-use-cases-supported)
+    * [ADC modules](#adc-modules)
+    * [ADM modules](#adm-modules)
+    * [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
+ * [How to use Ansible modules ?](#how-to-use-ansible-modules-)
+    * [Secure variable storage](#secure-variable-storage)
+    * [NITRO API TLS](#nitro-api-tls)
+    * [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
+    * [Citrix ADM service calls](#citrix-adm-service-calls)
+  * [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
+    * [Use the citrix\_adc\_nitro\_request module.](#use-the-citrix_adc_nitro_request-module)
+    * [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
+    * [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
+  * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
+    * [Installation](#installation-1)
+    * [Usage](#usage)
+    * [Security notice](#security-notice)
+    * [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
+  * [Module renaming](#module-renaming)
+  * [Extended Documentation](#extended-documentation)
+  * [LICENSE](#license)
+  * [COPYRIGHT](#copyright)
+  * [Contributions](#contributions)
 
 ## Beginners Guide to usign ADC Ansible Modules
-
+* [Hands-On Lab for ADC Automation with Ansible](#hands-on-lab-for-adc-automation-with-ansible)
 *  [Getting Started with Ansible and ADC collection installation](#getting-started-with-ansible-and-adc-collection-installation)
 *  [Make your first Configuration on ADC with Ansible](#make-your-first-configuration-on-adc-with-ansible)
 *  [General Guidelines on creating Ansible playbooks](#general-guidelines-on-creating-ansible-playbooks)
@@ -80,6 +65,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 *  [Updating Config-Packs to new Stylebooks via ADM Ansible Modules](#updating-config-packs-to-new-stylebooks-via-adm-ansible-modules)
 
 -------------
+# Ansible Modules Documentation
 
 ## Directory structure
 
@@ -512,8 +498,9 @@ See [LICENSE](./LICENSE)
 
 ## Contributions
 3rd party contributions are not accepted as of today. You can reach out to us at appmodernization@citrix.com ! for quick response or create GitHub issues.
+-----
 
-#Beginners guide to ADC Automation with Ansible
+# Beginners guide to ADC Automation with Ansible
 
 ## Hands-On Lab for ADC Automation with Ansible
 Try out the [lab](https://forum.developer.cloud.com/s/citrix-labs?articleId=ka08b0000005Xl8AAE) that takes you through the ADC Automation journey with Ansible
@@ -545,6 +532,9 @@ TBD
 TBD
 
 
+---------
+# Beginners guide to ADM Automation with Ansible
+
 ##  Getting Started with ADM Ansible modules
 
 TBD
@@ -561,3 +551,4 @@ TBD
 
 TBD
 
+> :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
