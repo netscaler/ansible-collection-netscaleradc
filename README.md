@@ -13,6 +13,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 > :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
 
 -----------
+
 ## Ansible Modules Documentation
 - [Citrix ADC & Citrix ADM Ansible modules](#citrix-adc--citrix-adm-ansible-modules)
   - [Ansible Modules Documentation](#ansible-modules-documentation)
@@ -88,7 +89,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 
 * `tests.` Contains the test suite for the modules. It requires some extra dependencies than the plain modules in order to run.
 
-* `samples.` Contains some sample playbooks that combine more than one modules together to achieve a desired configuration.
+* `sample_playbook.` Contains some sample playbooks that combine more than one modules together to achieve a desired configuration.
 Examples of the modules' usage are also contained in the EXAMPLES section of the modules themselves.
 
 * `htmldoc.` Contains the html documentation for each module.
@@ -153,70 +154,135 @@ Currently the following modules are implemented
 
 Included in the `citrix.adc` collection
 
-* citrix\_adc\_appfw\_confidfield - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_fieldtype - Configuration for application firewall form field type resource
-* citrix\_adc\_appfw\_global\_bindings - Define global bindings for AppFW
-* citrix\_adc\_appfw\_htmlerrorpage - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_jsoncontenttype - Configuration for JSON content type resource
-* citrix\_adc\_appfw\_learningsettings - Configuration for learning settings resource
-* citrix\_adc\_appfw\_policy - Manage Citrix ADC Web Application Firewall policies
-* citrix\_adc\_appfw\_policylabel - Manage Citrix ADC Web Application Firewall policy labels
-* citrix\_adc\_appfw\_profile - Manage Citrix ADC Web Application Firewall profiles
-* citrix\_adc\_appfw\_settings - Manage Citrix ADC Web Application Firewall settings
-* citrix\_adc\_appfw\_signatures - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_wsdl - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_xmlcontenttype - Configuration for XML Content type resource
-* citrix\_adc\_appfw\_xmlerrorpage - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_xmlschema - Configuration for configured confidential form fields resource
-* citrix\_adc\_cs\_action - Manage content switching actions
-* citrix\_adc\_cs\_policy - Manage content switching policy
-* citrix\_adc\_cs\_vserver - Manage content switching vserver
-* citrix\_adc\_dnsnsrec - Configuration for name server record resource
-* citrix\_adc\_gslb\_service - Manage gslb service entities in Citrix ADC
-* citrix\_adc\_gslb\_site - Manage gslb site entities in Citrix ADC
-* citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Citrix ADC
-* citrix\_adc\_lb\_monitor - Manage load balancing monitors
-* citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
-* citrix\_adc\_nitro\_info - Retrieve information from various NITRO API endpoints
-* citrix\_adc\_nitro\_request - Issue Nitro API requests to a Citrix ADC instance
-* citrix\_adc\_nitro\_resource - Create, update, delete resources on Citrix ADC
-* citrix\_adc\_password\_reset - Perform default password reset
-* citrix\_adc\_save\_config - Save Citrix ADC configuration
-* citrix\_adc\_server - Manage server configuration
-* citrix\_adc\_service - Manage service configuration in Citrix ADC
-* citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
-* citrix\_adc\_ssl\_certkey - Manage ssl certificate keys
-* citrix\_adc\_sslcipher - Manage custom SSL ciphers
-* citrix\_adc\_sslcipher\_sslciphersuite\_binding - Manage SSL cipher and SSL ciphersuite bindings
-* citrix\_adc\_sslprofile\_sslcipher\_binding - Manage SSL profile and SSL cipher bindings
-* citrix\_adc\_system\_file - Upload systemfile to ADC
-
+|**ADC Module**|**Description**|**Documentation**|**Example Playbook**|
+|--|--|--|--|
+| citrix_adc_appfw_confidfield                | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_confidfield_module.rst)                | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_fieldtype                  | Configuration for application firewall form field type resource | [HERE](./docs/modules/citrix_adc_appfw_fieldtype_module.rst)                  | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_global_bindings            | Define global bindings for AppFW                                | [HERE](./docs/modules/citrix_adc_appfw_global_bindings_module.rst)            | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_htmlerrorpage              | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_htmlerrorpage_module.rst)              | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_jsoncontenttype            | Configuration for JSON content type resource                    | [HERE](./docs/modules/citrix_adc_appfw_jsoncontenttype_module.rst)            | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_learningsettings           | Configuration for learning settings resource                    | [HERE](./docs/modules/citrix_adc_appfw_learningsettings_module.rst)           | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_policy                     | Manage Citrix ADC Web Application Firewall policies             | [HERE](./docs/modules/citrix_adc_appfw_policy_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_policylabel                | Manage Citrix ADC Web Application Firewall policy labels        | [HERE](./docs/modules/citrix_adc_appfw_policylabel_module.rst)                | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_profile                    | Manage Citrix ADC Web Application Firewall profiles             | [HERE](./docs/modules/citrix_adc_appfw_profile_module.rst)                    | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_settings                   | Manage Citrix ADC Web Application Firewall settings             | [HERE](./docs/modules/citrix_adc_appfw_settings_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_signatures                 | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_signatures_module.rst)                 | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_wsdl                       | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_wsdl_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlcontenttype             | Configuration for XML Content type resource                     | [HERE](./docs/modules/citrix_adc_appfw_xmlcontenttype_module.rst)             | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlerrorpage               | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_xmlerrorpage_module.rst)               | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlschema                  | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_xmlschema_module.rst)                  | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_cs_action                        | Manage content switching actions                                | [HERE](./docs/modules/citrix_adc_cs_action_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_cs_policy                        | Manage content switching policy                                 | [HERE](./docs/modules/citrix_adc_cs_policy_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_cs_vserver                       | Manage content switching vserver                                | [HERE](./docs/modules/citrix_adc_cs_vserver_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_dnsnsrec                         | Configuration for name server record resource                   | [HERE](./docs/modules/citrix_adc_dnsnsrec_module.rst)                         | [HERE](./sample_playbooks/citrix_adc/dns/) |
+| citrix_adc_gslb_service                     | Manage gslb service entities in Citrix ADC                      | [HERE](./docs/modules/citrix_adc_gslb_service_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_gslb_site                        | Manage gslb site entities in Citrix ADC                         | [HERE](./docs/modules/citrix_adc_gslb_site_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_gslb_vserver                     | Configure gslb vserver entities in Citrix ADC                   | [HERE](./docs/modules/citrix_adc_gslb_vserver_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_lb_monitor                       | Manage load balancing monitors                                  | [HERE](./docs/modules/citrix_adc_lb_monitor_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/load_balancing/) |
+| citrix_adc_lb_vserver                       | Manage load balancing vserver configuration                     | [HERE](./docs/modules/citrix_adc_lb_vserver_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/load_balancing/) |
+| citrix_adc_nitro_info                       | Retrieve information from various NITRO API endpoints           | [HERE](./docs/modules/citrix_adc_nitro_info_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_nitro_request                    | Issue Nitro API requests to a Citrix ADC instance               | [HERE](./docs/modules/citrix_adc_nitro_request_module.rst)                    | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_nitro_resource                   | Create, update, delete resources on Citrix ADC                  | [HERE](./docs/modules/citrix_adc_nitro_resource_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_password_reset                   | Perform default password reset                                  | [HERE](./docs/modules/citrix_adc_password_reset_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/password_reset/) |
+| citrix_adc_save_config                      | Save Citrix ADC configuration                                   | [HERE](./docs/modules/citrix_adc_save_config_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_server                           | Manage server configuration                                     | [HERE](./docs/modules/citrix_adc_server_module.rst)                           | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_service                          | Manage service configuration in Citrix ADC                      | [HERE](./docs/modules/citrix_adc_service_module.rst)                          | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_servicegroup                     | Manage service group configuration in Citrix ADC                | [HERE](./docs/modules/citrix_adc_servicegroup_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_ssl_certkey                      | Manage ssl certificate keys                                     | [HERE](./docs/modules/citrix_adc_ssl_certkey_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslcipher                        | Manage custom SSL ciphers                                       | [HERE](./docs/modules/citrix_adc_sslcipher_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslcipher_sslciphersuite_binding | Manage SSL cipher and SSL ciphersuite bindings                  | [HERE](./docs/modules/citrix_adc_sslcipher_sslciphersuite_binding_module.rst) | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslprofile_sslcipher_binding     | Manage SSL profile and SSL cipher bindings                      | [HERE](./docs/modules/citrix_adc_sslprofile_sslcipher_binding_module.rst)     | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_system_file                      | upload systemfile to adc                                        | [HERE](./docs/modules/citrix_adc_system_file_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/system/) |
 
 ### ADM modules
 
 Included in the `citrix.adm` collection
 
-* citrix\_adm\_application - Manage applications on Citrix ADM
-* citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
-* citrix\_adm\_login - Login to a Citrix ADM instance
-* citrix\_adm\_logout - Logout from a Citrix ADM instance
-* citrix\_adm\_mpsgroup - Manage Citrix ADM user groups
-* citrix\_adm\_mpsuser - Manage Citrix ADM users
-* citrix\_adm\_ns\_facts - Retrieve facts about Citrix ADM managed instances
-* citrix\_adm\_poll\_instances - Force the poll instances network function on the target Citrix ADM
-* citrix\_adm\_rba\_policy - Manage Citrix ADM rba policies
-* citrix\_adm\_rba\_role - Manage Citrix ADM rba roles
-* citrix\_adm\_stylebook - Create or delete Citrix ADM stylebooks
-* citrix\_adm\_tenant\_facts - Retrieve facts about Citrix ADM tenants
+|**ADM Module**|**Description**|**Documentation**|**Example Playbook**|
+|--|--|--|--|
+| citrix_adm_application      | Manage applications on Citrix ADM                                  | [HERE](./docs/modules/citrix_adm_application_module.rst)      | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_configpack       | Creates a configpack from a stylebook                              | TBD                                                           | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_dns_domain_entry | Manage Citrix ADM domain names                                     | [HERE](./docs/modules/citrix_adm_dns_domain_entry_module.rst) | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_login            | Login to a Citrix ADM instance                                     | [HERE](./docs/modules/citrix_adm_login_module.rst)            | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_logout           | Logout from a Citrix ADM instance                                  | [HERE](./docs/modules/citrix_adm_logout_module.rst)           | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_mpsgroup         | Manage Citrix ADM user groups                                      | [HERE](./docs/modules/citrix_adm_mpsgroup_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_mpsuser          | Manage Citrix ADM users                                            | [HERE](./docs/modules/citrix_adm_mpsuser_module.rst)          | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_ns_facts         | Retrieve facts about Citrix ADM managed instances                  | [HERE](./docs/modules/citrix_adm_ns_facts_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_poll_instances   | Force the poll instances network function on the target Citrix ADM | [HERE](./docs/modules/citrix_adm_poll_instances_module.rst)   | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_rba_policy       | Manage Citrix ADM rba policies                                     | [HERE](./docs/modules/citrix_adm_rba_policy_module.rst)       | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_rba_role         | Manage Citrix ADM rba roles                                        | [HERE](./docs/modules/citrix_adm_rba_role_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_stylebook        | Create or delete Citrix ADM stylebooks                             | [HERE](./docs/modules/citrix_adm_stylebook_module.rst)        | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_tenant_facts     | Retrieve facts about Citrix ADM tenants                            | [HERE](./docs/modules/citrix_adm_tenant_facts_module.rst)     | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
 
 ## `citrix_adc_nitro_resource` workflows list
 
-The following NITRO API endpoints have their workflow dictionaries available
-for use with the `citrix_adc_nitro_resource` module.
+The following NITRO API endpoints have their workflow dictionaries available for use with the `citrix_adc_nitro_resource` module.
 
-The workflows yaml file can be found [here](deps/workflows.yaml).
+> The workflows yaml file can be found [here](deps/workflows.yaml).
 
-csvserver\_rewritepolicy\_binding, dnssoarec, lbgroup, lbgroup\_lbvserver\_binding, lbmetrictable, lbmetrictable\_metric\_binding, lbmonitor, lbmonitor\_metric\_binding, lbmonitor\_sslcertkey\_binding, lbprofile, lbroute, lbroute6, lbvserver, lbvserver\_analyticsprofile\_binding, lbvserver\_appflowpolicy\_binding, lbvserver\_appfwpolicy\_binding, lbvserver\_appqoepolicy\_binding, lbvserver\_auditnslogpolicy\_binding, lbvserver\_auditsyslogpolicy\_binding, lbvserver\_authorizationpolicy\_binding, lbvserver\_cachepolicy\_binding, lbvserver\_capolicy\_binding, lbvserver\_cmppolicy\_binding, lbvserver\_contentinspectionpolicy\_binding, lbvserver\_csvserver\_binding, lbvserver\_dnspolicy64\_binding, lbvserver\_feopolicy\_binding, lbvserver\_filterpolicy\_binding, lbvserver\_pqpolicy\_binding, lbvserver\_responderpolicy\_binding, lbvserver\_rewritepolicy\_binding, lbvserver\_scpolicy\_binding, lbvserver\_service\_binding, lbvserver\_servicegroup\_binding, lbvserver\_servicegroupmember\_binding, lbvserver\_spilloverpolicy\_binding, lbvserver\_transformpolicy\_binding, lbvserver\_videooptimizationdetectionpolicy\_binding, lbvserver\_videooptimizationpacingpolicy\_binding, nsacl, ntpparam, ntpserver, policypatset, policypatset\_pattern\_binding, rewriteaction, rewritepolicy, server, service, service\_lbmonitor\_binding, servicegroup, servicegroup\_lbmonitor\_binding, snmpmanager, spilloverpolicy, sslparameter, sslprofile, sslprofile\_sslcipher\_binding, sslvserver, sslvserver\_sslcertkey\_binding, systemuser, transformaction, transformpolicy, transformprofile
+- authentication_epaaction
+- csvserver_rewritepolicy_binding
+- dnssoarec
+- lbgroup
+- lbgroup_lbvserver_binding
+- lbmetrictable
+- lbmetrictable_metric_binding
+- lbmonitor
+- lbmonitor_metric_binding
+- lbmonitor_sslcertkey_binding
+- lbprofile
+- lbroute
+- lbroute6
+- lbvserver
+- lbvserver_analyticsprofile_binding
+- lbvserver_appflowpolicy_binding
+- lbvserver_appfwpolicy_binding
+- lbvserver_appqoepolicy_binding
+- lbvserver_auditnslogpolicy_binding
+- lbvserver_auditsyslogpolicy_binding
+- lbvserver_authorizationpolicy_binding
+- lbvserver_cachepolicy_binding
+- lbvserver_capolicy_binding
+- lbvserver_cmppolicy_binding
+- lbvserver_contentinspectionpolicy_binding
+- lbvserver_csvserver_binding
+- lbvserver_dnspolicy64_binding
+- lbvserver_feopolicy_binding
+- lbvserver_filterpolicy_binding
+- lbvserver_pqpolicy_binding
+- lbvserver_responderpolicy_binding
+- lbvserver_rewritepolicy_binding
+- lbvserver_scpolicy_binding
+- lbvserver_service_binding
+- lbvserver_servicegroup_binding
+- lbvserver_servicegroupmember_binding
+- lbvserver_spilloverpolicy_binding
+- lbvserver_transformpolicy_binding
+- lbvserver_videooptimizationdetectionpolicy_binding
+- lbvserver_videooptimizationpacingpolicy_binding
+- nsacl
+- ntpparam
+- ntpserver
+- policypatset
+- policypatset_pattern_binding
+- rewriteaction
+- rewritepolicy
+- server
+- service
+- service_lbmonitor_binding
+- servicegroup
+- servicegroup_lbmonitor_binding
+- snmpmanager
+- spilloverpolicy
+- sslparameter
+- sslprofile
+- sslprofile_sslcipher_binding
+- sslvserver
+- sslvserver_sslcertkey_binding
+- systemuser
+- transformaction
+- transformpolicy
+- transformprofile
 
 
 ## How to use Ansible modules ?
@@ -224,7 +290,7 @@ csvserver\_rewritepolicy\_binding, dnssoarec, lbgroup, lbgroup\_lbvserver\_bindi
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix ADC appliance.
 To do this you need to use the `local_action` or the `delegate_to` options in your playbooks.
 
-There are sample playbooks in the `samples` directory.
+There are sample playbooks in the `sample_playbooks` directory.
 
 Detailed documentation for each module can be found in the htmldoc directory.
 
@@ -273,7 +339,7 @@ In order to do that you need a NITRO Python SDK that has the MAS proxy calls cap
 1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
 2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
 
-A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
+A  sample playbook is provided in the sample_playbooks directory. [mas_proxied_server.yaml](./sample_playbooks/citrix_adm_onprem_as_proxy/mas_proxied_server.yaml)
 
 There is also the option to use the ADM service as a NITRO API proxy.
 
@@ -294,7 +360,7 @@ And one of:
 2. `instance_id`
 3. `instance_name`
 
-You can find examples in this [folder](samples/adm_service_proxy).
+You can find examples in this [folder](sample_playbooks/citrix_adm_service_as_proxy).
 
 ### Citrix ADM service calls
 
@@ -305,7 +371,7 @@ token for all subsequent module calls.
 
 Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
 
-Examples can be found in this [folder](samples/citrix_adm).
+Examples can be found in this [folder](sample_playbooks/citrix_adm).
 
 ## What if there is no module for your configuration?
 
@@ -318,7 +384,7 @@ This a module that is a thin wrapper around the NITRO REST API.
 It provides a number of operations which it then translates into HTTP requests
 and provides the resulting NITRO API response in a well defined return value.
 
-You can find examples of using the module in this [folder](samples/nitro_request)
+You can find examples of using the module in this [folder](sample_playbooks/nitro_request)
 
 ### Use the citrix\_adc\_nitro\_resource module.
 
@@ -334,7 +400,7 @@ for the NITRO resource.
 
 The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
 
-Examples can be found in this [folder](samples/nitro_resource).
+Examples can be found in this [folder](sample_playbooks/nitro_resource).
 
 Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
 
@@ -353,7 +419,7 @@ configuration steps or when nothing else is applicable.
 
 > This requires password-less (SSH-key based) authentication. Follow [this article](https://docs.citrix.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html) to setup the ADC
 
-Examples can be found in this [folder](samples/citrix_adc_connection_plugin)
+Examples can be found in this [folder](sample_playbooks/citrix_adc_connection_plugin)
 
 
 ## Citrix ADC connection plugin
@@ -381,7 +447,7 @@ scp_if_ssh = True
 ```
 
 
-You can find usage samples in this [folder](samples/citrix_adc_connection_plugin).
+You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc_connection_plugin).
 
 ### Security notice
 
@@ -411,9 +477,9 @@ There are some conflicting configuration options when using a standard Ansible m
 
 To have such a playbook execute correctly the following solutions are proposed.
 
-* Have a single playbook with multiple plays ( [sample](samples/citrix_adc_connection_plugin/multiple_plays.yaml) ).
-* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](samples/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
-* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](samples/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
+* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc_connection_plugin/multiple_plays.yaml) ).
+* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
+* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
 ## Module renaming
 
