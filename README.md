@@ -32,6 +32,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
     * [NITRO API TLS](#nitro-api-tls)
     * [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
     * [Citrix ADM service calls](#citrix-adm-service-calls)
+    * [Configure CPX (docker)](#configure-cpx-via-ansible)
   * [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
     * [Use the citrix\_adc\_nitro\_request module.](#use-the-citrix_adc_nitro_request-module)
     * [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
@@ -361,6 +362,35 @@ Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.
 
 Examples can be found in this [folder](sample_playbooks/citrix_adm).
 
+### Configure CPX via Ansible
+
+If you are running a NetScaler CPX on the same host where you are executing the playbook:
+
+```bash
+$ docker port cpx 80
+32773
+
+$ cat inventory.txt
+[netscaler]
+127.0.0.1 nsip=127.0.0.1:32773 nitro_user=nsroot nitro_pass=nsroot validate_certs=no
+
+$ cat lb_vserver.yml
+
+      local_action:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+```
+
+## In the playbook
+
+```yaml
+      local_action:
+        nsip: 127.0.0.1:32773
+        nitro_user: nsroot
+        nitro_pass: nsroot
+```
+
 ## What if there is no module for your configuration?
 
 When there is no module that covers the ADC configuration you want to apply there are
@@ -534,8 +564,8 @@ You can find its example [here](./sample_playbooks/citrix_adc/special_citrix_adc
 
 ##  Nitro Info - Generic module to emulate show commands
 
-**citrix_adc_nitro_info** modules is to emulate show commands in Netscaler.It returns a list or dictionary for each endpoint it is invoked for. 
-You can find usage example [here](./sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_info/). 
+**citrix_adc_nitro_info** modules is to emulate show commands in Netscaler.It returns a list or dictionary for each endpoint it is invoked for.
+You can find usage example [here](./sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_info/).
 
 
 ##  Proxy your ADC Nitro API calls via ADM
@@ -556,9 +586,9 @@ Learn more about using ADM as API Proxy Server [here](https://docs.citrix.com/en
 
 Here are the playbooks to get started with ADM Ansible modules:
 1. [Login to ADM On-prem](./sample_playbooks/citrix_adm_onprem/citrix_adm_login.yaml)
-2. [Add Netscaler instance to ADM on-prem](./sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml) 
+2. [Add Netscaler instance to ADM on-prem](./sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml)
 
-For ADM Service 
+For ADM Service
 1. [Login to ADM Service](./sample_playbooks/citrix_adm_service/citrix_adm_service_login.yaml)
 
 
