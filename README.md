@@ -488,16 +488,18 @@ module names will differ depending on where they were installed from.
 
 Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
 
-## LICENSE
+## License
 **MIT License**
 See [LICENSE](./LICENSE)
 
-## COPYRIGHT
+## Copyright
 
 **COPYRIGHT 2017 CITRIX Systems Inc**
 
 ## Contributions
-3rd party contributions are not accepted as of today. You can reach out to us at appmodernization@citrix.com ! for quick response or create GitHub issues.
+
+3rd party contributions are not accepted as of today. You can reach out to us at **appmodernization@citrix.com** ! for quick response or create GitHub issues.
+
 -----
 
 # Beginners guide to ADC Automation with Ansible
@@ -513,23 +515,38 @@ Refer the Steps 3 and Steps 4 in the [Get Started with ADC Automation using Ansi
 
 ## General Guidelines on creating Ansible playbooks
 Refer the [How to use Ansible Modules section ?](#how-to-use-ansible-modules) for usage guidelines on ADC Ansible playbooks.
-To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding or endpoint, parameters etc.
+
+To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding orof endpoint, parameters etc.
 
 ##  Nitro Request - Generic Module to execute Nitro API operations via Ansible
 
-TBD
+**citrix_adc_nitro_request** which doesn’t target a particular endpoint instead can be used to perform NITRO API operations on various endpoints.
+
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Ansible-for-ADC-Nitro-API-operations).
+You can find its example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples/nitro_request).
 
 ##  Nitro Resource - Generic module to create any ADC entity using Ansible
 
-TBD
+**citrix_adc_nitro_resource** implements the CRUD operations in a generic manner applicable to multiple endpoints. You can use generic module citrix_adc_nitro_resource if you dont find a dedicated module for the usecase you are targeting.
+
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Generic-ADC-Ansible-module).
+You can find its example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples/nitro_resource).
 
 ##  Nitro Info - Generic module to emulate show commands
 
-TBD
+**citrix_adc_nitro_info** modules is to emulate show commands in Netscaler.It returns a list or dictionary for each endpoint it is invoked for. 
+You can find usage example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_info). 
+
 
 ##  Proxy your ADC Nitro API calls via ADM
 
-TBD
+ADC Ansible modules invoke Nitro API calls internally to configure your ADC. You can proxy all those Nitro API calls via ADM on-prem or ADM Service.
+
+Learn more about using ADM as API Proxy Server [here](https://docs.citrix.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html). You can find the usage example for ADM on-prem [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adm_onprem_as_proxy) and ADM Service [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adm_service_as_proxy)
+
+
+
+
 
 
 ---------
@@ -537,7 +554,13 @@ TBD
 
 ##  Getting Started with ADM Ansible modules
 
-TBD
+Here are the playbooks to get started with ADM Ansible modules:
+1. [Login to ADM On-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_login.yaml)
+2. [Add Netscaler instance to ADM on-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml) 
+
+For ADM Service 
+1. [Login to ADM Service](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_login.yaml)
+2. [Add Netscaler instance to ADM on-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml) 
 
 ##  Creating Stylebooks with ADM Ansible modules
 
