@@ -59,6 +59,18 @@ options:
             - "The targets to which the configpack is to be applied."
         type: list
 
+    change_stylebook:
+        description:
+            - 'true' if stylebook needs to be changed. Defaults to 'false'
+        type: bool
+        default: true
+
+    old_stylebook:
+        description:
+            - "The old stylebook to which configpack was associated before the upgrade"
+            - "This dictionary should be present if `change_stylebook` is true.
+        type: dict
+
     check_create:
         description:
             - Check if the configpack was created on the target citrix adm.
@@ -110,6 +122,11 @@ EXAMPLES = '''
 
         check_create: true
         check_create_delay: 10
+        change_stylebook: false
+        old_stylebook: # This will be considered only if `change_stylebook` is true
+          name: basic-lb-config-via-ansible
+          namespace: com.example.stylebooks
+          version: "0.1"
 
         parameters:
           ip: 192.199.19.1
@@ -213,7 +230,7 @@ class ModuleExecutor(object):
                 log('Cannot parse response data')
         return data
 
-    def get_configpack(self):
+    def get_configpack(self, stylebook):
         if self.module.params.get('is_cloud'):
             url = '%s://%s/stylebook/nitro/v2/config/configpacks' % (
                 self.module.params['nitro_protocol'],
@@ -223,9 +240,9 @@ class ModuleExecutor(object):
             url = '%s://%s/stylebook/nitro/v1/config/stylebooks/%s/%s/%s/configpacks' % (
                 self.module.params['nitro_protocol'],
                 self.module.params['nsip'],
-                self.module.params['stylebook']['namespace'],
-                self.module.params['stylebook']['version'],
-                self.module.params['stylebook']['name'],
+                stylebook['namespace'],
+                stylebook['version'],
+                stylebook['name'],
             )
 
         r, info = fetch_url(
@@ -265,31 +282,31 @@ class ModuleExecutor(object):
                 return None
             else:
                 if self.module.params.get('is_cloud'):
-                    return self.get_relevant_configpack_adm_service(configpack_list)
+                    return self.get_relevant_configpack_adm_service(configpack_list, stylebook)
                 else:
-                    return self.get_relevant_configpack_adm_onprem(configpack_list)
+                    return self.get_relevant_configpack_adm_onprem(configpack_list, stylebook)
         else:
             self.module.fail_json(msg='GET response does not have a body', **self.module_result)
 
 
-    def get_relevant_configpack_adm_onprem(self, configpack_list):
+    def get_relevant_configpack_adm_onprem(self, configpack_list, stylebook):
         # Get the relevant configpack object from the many configpacks returned by the GET
         # compare each configpack object with the attributes `stylebook` and `targets`
         log('get_relevant_configpack_adm_onprem')
         for configpack in configpack_list:
-            if configpack['name'] == self.module.params['stylebook']['name'] and \
-                configpack['namespace'] == self.module.params['stylebook']['namespace'] and \
-                    configpack['version'] == self.module.params['stylebook']['version']:
+            if configpack['name'] == stylebook['name'] and \
+                configpack['namespace'] == stylebook['namespace'] and \
+                    configpack['version'] == stylebook['version']:
                 if _compare_two_targets(configpack.get('targets'), self.module.params.get('targets')):
                     return configpack
         return None
 
-    def get_relevant_configpack_adm_service(self, configpack_list):
+    def get_relevant_configpack_adm_service(self, configpack_list, stylebook):
         # Get the relevant configpack object from the many configpacks returned by the GET
         # compare each configpack object with the attributes `stylebook` and `targets`
         log('get_relevant_configpack_adm_service')
         for configpack in configpack_list:
-            if configpack.get('stylebook') == self.module.params.get('stylebook'):
+            if configpack.get('stylebook') == stylebook:
                 if _compare_two_targets(configpack.get('targets'), self.module.params.get('targets')):
                     return configpack
         return None
@@ -324,6 +341,91 @@ class ModuleExecutor(object):
                 self.module.params['stylebook']['namespace'],
                 self.module.params['stylebook']['version'],
                 self.module.params['stylebook']['name'],
+            )
+
+        log('url %s' % url)
+
+        log('headers %s' % self.http_headers)
+        r, info = fetch_url(
+            self.module,
+            url=url,
+            headers=self.http_headers,
+            data=payload,
+            method='POST',
+        )
+
+        log('POST info: %s' % info)
+
+        data = self._parse_response_body(r)
+        nitro_errorcode = data.get('errorcode')
+
+        status = info.get('status')
+        http_msg = info.get('msg')
+
+        message_tuple = (
+            status,
+            http_msg,
+            data.get('errorcode'),
+            data.get('message'),
+            data.get('severity'),
+        )
+        if status not in {200, 201, 202}:
+            log('Fail due to status')
+            msg = 'HTTP status fail status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
+        elif nitro_errorcode not in (0, None):
+            log('Fail due to nitro_errorcode')
+            log('nitro error code %s %s' % (type(nitro_errorcode), nitro_errorcode))
+            msg = 'nitro_errorcode fail HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
+            self.module.fail_json(msg=msg, **self.module_result)
+
+    def upgrade_configpack(self, configpack):
+        log('upgrade_configpack')
+        configpack_id = configpack.get('id')
+
+        if configpack_id is None:
+            self.module.fail_json('Cannot change stylebook for configpack without id', **self.module_result)
+
+        if self.module.params.get('is_cloud'):
+            request_data = {
+                "upgrade": {
+                    "configpack_ids": [
+                        configpack_id
+                    ],
+                    "stylebook": {
+                        "name": self.module.params['stylebook']['name'],
+                        "namespace": self.module.params['stylebook']['namespace'],
+                        "version": self.module.params['stylebook']['version'],
+                    }
+                }
+            }
+        else:
+            request_data = {
+                "upgrade": {
+                    "configpacks": [
+                        configpack_id
+                    ],
+                    "stylebook": {
+                        "name": self.module.params['stylebook']['name'],
+                        "namespace": self.module.params['stylebook']['namespace'],
+                        "version": self.module.params['stylebook']['version'],
+                    }
+                }
+            }
+        payload = '%s' % self.module.jsonify(request_data)
+
+        log('request data %s' % request_data)
+        log('payload %s' % payload)
+
+        if self.module.params.get('is_cloud'):
+            url = '%s://%s/stylebook/nitro/v2/config/configpacks/actions/upgrade' % (
+                self.module.params['nitro_protocol'],
+                self.module.params['nsip'],
+            )
+        else:
+            url = '%s://%s/stylebook/nitro/v1/config/configpacks/actions/upgrade' % (
+                self.module.params['nitro_protocol'],
+                self.module.params['nsip'],
             )
 
         log('url %s' % url)
@@ -478,21 +580,47 @@ class ModuleExecutor(object):
             msg = 'HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
 
+
+    def input_validation(self):
+        # old_configpack dictionary to be present when change_stylebook is present
+        if self.module.params['change_stylebook'] is True:
+            if 'old_stylebook' not in self.module.params:
+                msg = 'ERROR: Invalid Input: `old_stylebook` should be present when `change_stylebook` attribute is true'
+                self.module.fail_json(msg=msg, **self.module_result)
+            else:
+                # even if old_stylebook is present, it should contain `namespace`, `name` and `version`
+                if not all(key in self.module.params['old_stylebook'] for key in ('namespace', 'name', 'version')):
+                    msg = 'ERROR: Invalid Input: `old_stylebook` must contain `namespace`, `name` and `version` values'
+                    self.module.fail_json(msg=msg, **self.module_result)
+
+
     def main(self):
         try:
-            configpack = self.get_configpack()
+            self.input_validation()
+            stylebook = self.module.params['stylebook']
+            if self.module.params['change_stylebook'] is True:
+                old_stylebook = self.module.params['old_stylebook']
+                configpack = self.get_configpack(old_stylebook)
+                if configpack is None:
+                    msg = 'ERROR: Invalid Input: if `change_stylebook` is true, then the configpack should be associated with `old_stylebook`. TIP: If you are not upgrading your stylebook, change `change_stylebook` to false.'
+                    self.module.fail_json(msg=msg, **self.module_result)
+            else:
+                configpack = self.get_configpack(stylebook)
+
             log('existing configpack %s' % configpack)
             if self.module.params['state'] == 'present':
                 self.module_result['changed'] = True
                 if configpack is None:
                     self.post_configpack()
+                elif self.module.params['change_stylebook'] is True:
+                    self.upgrade_configpack(configpack)
                 else:
                     self.put_configpack(configpack)
 
                 # Return the created/updated configpack in the module results
                 if self.module.params['check_create']:
                     time.sleep(self.module.params['check_create_delay'])
-                    created_configpack = self.get_configpack()
+                    created_configpack = self.get_configpack(stylebook)
                     if created_configpack is None:
                         self.module.fail_json(msg='Failed to create configpack', **self.module_result)
                     else:
@@ -528,16 +656,12 @@ def main():
 
     module_specific_arguments = dict(
         stylebook=dict(type='dict'),
+        old_stylebook=dict(type='dict'),
         parameters=dict(type='dict'),
         targets=dict(type='list'),
-        check_create=dict(
-            type='bool',
-            default=True,
-        ),
-        check_create_delay=dict(
-            type='int',
-            default=10,
-        )
+        check_create=dict(type='bool', default=True),
+        change_stylebook=dict(type='bool', default=False),
+        check_create_delay=dict(type='int', default=10)
     )
 
     argument_spec.update(netscaler_common_arguments)

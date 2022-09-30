@@ -46,6 +46,12 @@
         check_create: true
         check_create_delay: 10
 
+        change_stylebook: false # true when we need to change the stylebook associated to this configpack
+        old_stylebook: # old_stylebook will be considered only when change_stylebook is true
+          name: basic-lb-config
+          namespace: com.example.stylebooks
+          version: "0.1"
+
         parameters:
           ip: 192.168.10.10
           lb-alg: ROUNDROBIN
@@ -58,4 +64,4 @@
         stylebook:
           name: basic-lb-config
           namespace: com.example.stylebooks
-          version: "0.1"
+          version: "0.2"
