@@ -1,140 +1,98 @@
 # Citrix ADC & Citrix ADM Ansible modules
 
-This repository provides [Ansible](https://www.ansible.com)  modules for configuring [Citrix ADC](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix ADC are supported.
+This repository contains [two collections](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/ansible-collections) - Citrix ADC ansible modules and Citrix ADM ansible modules.
 
-To learn more about Automation of Citrix ADC, check out the blog [here](https://www.citrix.com/blogs/2020/10/06/terraform-and-ansible-automation-for-app-delivery-and-security/).
+Citrix ADC Ansible modules provides [Ansible](https://www.ansible.com) modules for configuring [Citrix ADC](https://www.citrix.com/products/netscaler-adc/) instances. It uses the [NITRO REST API](https://docs.citrix.com/en-us/netscaler/11/nitro-api.html). All form factors of Citrix ADC are supported.
 
+Citrix ADM Ansible modules provides modules for configuring [Citrix ADM](https://docs.citrix.com/en-us/citrix-application-delivery-management-service/overview.html).It uses Citrix ADM APIs to configure or invoke ADM capabilities.
 
-## Table of contents
+Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citrix-adc/current-release/deploying-vpx/citrix-adc-automation.html)
 
-* [Module renaming](#module-renaming)
-* [Documentation](#documentation)
-* [List of implemented modules](#list-of-implemented-modules)
-  - [ADC modules](#adc-modules)
-  - [ADM modules](#adm-modules)
-  - [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
-* [Pre-requisites](#pre-requisites)
-* [Installation](#installation)
-  - [Setting up prerequisites](#setting-up-prerequisites)
-  - [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
-* [Usage](#usage)
-  - [Secure variable storage](#secure-variable-storage)
-  - [Use cases supported by ADC and ADM modules](#use-cases-supported-by-adc-and-adm-modules)
-  - [NITRO API TLS](#nitro-api-tls)
-  - [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
-  - [Citrix ADM service calls](#citrix-adm-service-calls)
-* [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
-  - [Installation](#installation)
-  - [Usage](#usage-1)
-  - [Security notice](#security-notice)
-  - [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
-* [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
-  - [Use the citrix\_adc\_nitro\_request module](#use-the-citrix_adc_nitro_request-module)
-  - [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
-  - [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
-* [Directory structure](#directory-structure)
-* [LICENSE](#license)
-* [COPYRIGHT](#copyright)
+> :round_pushpin:For deploying Citrix ADC in Public Cloud - AWS and Azure, check out cloud scripts in github repo [terraform-cloud-scripts](https://github.com/citrix/terraform-cloud-scripts).
 
+> :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
 
-## Module renaming
+-----------
 
-Note that as of this [commit](https://github.com/citrix/netscaler-ansible-modules/commit/b53935432646741d9af27d9617480517a28aa86d)
-all modules were renamed to match the new Citrix product names.
+# Contents
+## Ansible Modules Documentation
+ * [Directory structure](#directory-structure)
+ * [Pre-requisites](#pre-requisites)
+ * [Installation](#installation)
+    * [Setting up prerequisites](#setting-up-prerequisites)
+    * [Using `virtualenv` (recommended)](#using-virtualenv-recommended)
+    * [Global environment](#global-environment)
+    * [Installing ADC and ADM modules and plugins](#installing-adc-and-adm-modules-and-plugins)
+ * [List of ADC Use-cases supported](#list-of-adc-use-cases-supported)
+    * [ADC modules](#adc-modules)
+    * [ADM modules](#adm-modules)
+    * [`citrix_adc_nitro_resource` workflows list](#citrix_adc_nitro_resource-workflows-list)
+ * [How to use Ansible modules ?](#how-to-use-ansible-modules-)
+    * [Secure variable storage](#secure-variable-storage)
+    * [NITRO API TLS](#nitro-api-tls)
+    * [Citrix ADM proxied calls](#citrix-adm-proxied-calls)
+    * [Citrix ADM service calls](#citrix-adm-service-calls)
+  * [What if there is no module for your configuration?](#what-if-there-is-no-module-for-your-configuration)
+    * [Use the citrix\_adc\_nitro\_request module.](#use-the-citrix_adc_nitro_request-module)
+    * [Use the citrix\_adc\_nitro\_resource module.](#use-the-citrix_adc_nitro_resource-module)
+    * [Use the connection plugin with the `shell` Ansible module](#use-the-connection-plugin-with-the-shell-ansible-module)
+  * [Citrix ADC connection plugin](#citrix-adc-connection-plugin)
+    * [Installation](#installation-1)
+    * [Usage](#usage)
+    * [Security notice](#security-notice)
+    * [Citrix ADC and standard Ansible modules in a single playbook](#citrix-adc-and-standard-ansible-modules-in-a-single-playbook)
+  * [Module renaming](#module-renaming)
+  * [Extended Documentation](#extended-documentation)
+  * [LICENSE](#license)
+  * [COPYRIGHT](#copyright)
+  * [Contributions](#contributions)
 
-See [here](https://www.citrix.com/about/citrix-product-guide) for reference.
+## Beginners Guide to usign ADC Ansible Modules
+* [Hands-On Lab for ADC Automation with Ansible](#hands-on-lab-for-adc-automation-with-ansible)
+*  [Getting Started with Ansible and ADC collection installation](#getting-started-with-ansible-and-adc-collection-installation)
+*  [Make your first Configuration on ADC with Ansible](#make-your-first-configuration-on-adc-with-ansible)
+*  [General Guidelines on creating Ansible playbooks](#general-guidelines-on-creating-ansible-playbooks)
+*  [Nitro Request - Generic Module to execute Nitro API operations via Ansible](#nitro-request---generic-module-to-execute-nitro-api-operations-via-ansible)
+*  [Nitro Resource - Generic module to create any ADC entity using Ansible](#nitro-resource---generic-module-to-create-any-adc-entity-using-ansible)
+*  [Nitro Info - Generic module to emulate show commands](#nitro-info---generic-module-to-emulate-show-commands)
+*  [Proxy your ADC Nitro API calls via ADM](#proxy-your-adc-nitro-api-calls-via-adm)
 
-All modules which previously started with the `netscaler_` prefix have been renamed to
-to start with the `citrix_adc_` prefix.
+## Beginners Guide to using ADM Ansible Modules
 
-All new modules will follow this convention as well.
+*  [Getting Started with ADM Ansible modules](#getting-started-with-adm-ansible-modules)
+*  [Creating Stylebooks with ADM Ansible modules](#creating-stylebooks-with-adm-ansible-modules)
+*  [Applying ADC config via Configpacks through ADM Ansible Modules](#applying-adc-config-via-configpacks-through-adm-ansible-modules)
+*  [Updating Config-Packs to new Stylebooks via ADM Ansible Modules](#updating-config-packs-to-new-stylebooks-via-adm-ansible-modules)
 
-Until these changes are integrated into the Ansible distribution the Citrix ADC
-module names will differ depending on where they were installed from.
+-------------
+# Ansible Modules Documentation
 
-## Documentation
+## Directory structure
 
-Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
+* `ansible-modules.` Contains all the ansible modules available. These are the files that must be installed on an ansible control node in order for the functionality to be present
 
-## List of implemented modules
+* `ansible-plugins.` Contains all the ansible plugins available.
 
-Currently the following modules are implemented
+* `tests.` Contains the test suite for the modules. It requires some extra dependencies than the plain modules in order to run.
 
-### ADC modules
+* `sample_playbook.` Contains some sample playbooks that combine more than one modules together to achieve a desired configuration.
+Examples of the modules' usage are also contained in the EXAMPLES section of the modules themselves.
 
-Included in the `citrix.adc` collection
+* `htmldoc.` Contains the html documentation for each module.
 
-* citrix\_adc\_appfw\_confidfield - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_fieldtype - Configuration for application firewall form field type resource
-* citrix\_adc\_appfw\_global\_bindings - Define global bindings for AppFW
-* citrix\_adc\_appfw\_htmlerrorpage - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_jsoncontenttype - Configuration for JSON content type resource
-* citrix\_adc\_appfw\_learningsettings - Configuration for learning settings resource
-* citrix\_adc\_appfw\_policy - Manage Citrix ADC Web Application Firewall policies
-* citrix\_adc\_appfw\_policylabel - Manage Citrix ADC Web Application Firewall policy labels
-* citrix\_adc\_appfw\_profile - Manage Citrix ADC Web Application Firewall profiles
-* citrix\_adc\_appfw\_settings - Manage Citrix ADC Web Application Firewall settings
-* citrix\_adc\_appfw\_signatures - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_wsdl - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_xmlcontenttype - Configuration for XML Content type resource
-* citrix\_adc\_appfw\_xmlerrorpage - Configuration for configured confidential form fields resource
-* citrix\_adc\_appfw\_xmlschema - Configuration for configured confidential form fields resource
-* citrix\_adc\_cs\_action - Manage content switching actions
-* citrix\_adc\_cs\_policy - Manage content switching policy
-* citrix\_adc\_cs\_vserver - Manage content switching vserver
-* citrix\_adc\_dnsnsrec - Configuration for name server record resource
-* citrix\_adc\_gslb\_service - Manage gslb service entities in Citrix ADC
-* citrix\_adc\_gslb\_site - Manage gslb site entities in Citrix ADC
-* citrix\_adc\_gslb\_vserver - Configure gslb vserver entities in Citrix ADC
-* citrix\_adc\_lb\_monitor - Manage load balancing monitors
-* citrix\_adc\_lb\_vserver - Manage load balancing vserver configuration
-* citrix\_adc\_nitro\_info - Retrieve information from various NITRO API endpoints
-* citrix\_adc\_nitro\_request - Issue Nitro API requests to a Citrix ADC instance
-* citrix\_adc\_nitro\_resource - Create, update, delete resources on Citrix ADC
-* citrix\_adc\_password\_reset - Perform default password reset
-* citrix\_adc\_save\_config - Save Citrix ADC configuration
-* citrix\_adc\_server - Manage server configuration
-* citrix\_adc\_service - Manage service configuration in Citrix ADC
-* citrix\_adc\_servicegroup - Manage service group configuration in Citrix ADC
-* citrix\_adc\_ssl\_certkey - Manage ssl certificate keys
-* citrix\_adc\_sslcipher - Manage custom SSL ciphers
-* citrix\_adc\_sslcipher\_sslciphersuite\_binding - Manage SSL cipher and SSL ciphersuite bindings
-* citrix\_adc\_sslprofile\_sslcipher\_binding - Manage SSL profile and SSL cipher bindings
-* citrix\_adc\_system\_file - Upload systemfile to ADC
+* `utils.` Contains utilities mainly used for the authoring of the modules and are not relevant to the end user.
 
+* `documentation_fragments.` Contains the Citrix ADC specific documentation files for ansible.
 
-### ADM modules
-
-Included in the `citrix.adm` collection
-
-* citrix\_adm\_application - Manage applications on Citrix ADM
-* citrix\_adm\_dns\_domain\_entry - Manage Citrix ADM domain names
-* citrix\_adm\_login - Login to a Citrix ADM instance
-* citrix\_adm\_logout - Logout from a Citrix ADM instance
-* citrix\_adm\_mpsgroup - Manage Citrix ADM user groups
-* citrix\_adm\_mpsuser - Manage Citrix ADM users
-* citrix\_adm\_ns\_facts - Retrieve facts about Citrix ADM managed instances
-* citrix\_adm\_poll\_instances - Force the poll instances network function on the target Citrix ADM
-* citrix\_adm\_rba\_policy - Manage Citrix ADM rba policies
-* citrix\_adm\_rba\_role - Manage Citrix ADM rba roles
-* citrix\_adm\_stylebook - Create or delete Citrix ADM stylebooks
-* citrix\_adm\_tenant\_facts - Retrieve facts about Citrix ADM tenants
-
-## `citrix_adc_nitro_resource` workflows list
-
-The following NITRO API endpoints have their workflow dictionaries available
-for use with the `citrix_adc_nitro_resource` module.
-
-The workflows yaml file can be found [here](deps/workflows.yaml).
-
-csvserver\_rewritepolicy\_binding, dnssoarec, lbgroup, lbgroup\_lbvserver\_binding, lbmetrictable, lbmetrictable\_metric\_binding, lbmonitor, lbmonitor\_metric\_binding, lbmonitor\_sslcertkey\_binding, lbprofile, lbroute, lbroute6, lbvserver, lbvserver\_analyticsprofile\_binding, lbvserver\_appflowpolicy\_binding, lbvserver\_appfwpolicy\_binding, lbvserver\_appqoepolicy\_binding, lbvserver\_auditnslogpolicy\_binding, lbvserver\_auditsyslogpolicy\_binding, lbvserver\_authorizationpolicy\_binding, lbvserver\_cachepolicy\_binding, lbvserver\_capolicy\_binding, lbvserver\_cmppolicy\_binding, lbvserver\_contentinspectionpolicy\_binding, lbvserver\_csvserver\_binding, lbvserver\_dnspolicy64\_binding, lbvserver\_feopolicy\_binding, lbvserver\_filterpolicy\_binding, lbvserver\_pqpolicy\_binding, lbvserver\_responderpolicy\_binding, lbvserver\_rewritepolicy\_binding, lbvserver\_scpolicy\_binding, lbvserver\_service\_binding, lbvserver\_servicegroup\_binding, lbvserver\_servicegroupmember\_binding, lbvserver\_spilloverpolicy\_binding, lbvserver\_transformpolicy\_binding, lbvserver\_videooptimizationdetectionpolicy\_binding, lbvserver\_videooptimizationpacingpolicy\_binding, nsacl, ntpparam, ntpserver, policypatset, policypatset\_pattern\_binding, rewriteaction, rewritepolicy, server, service, service\_lbmonitor\_binding, servicegroup, servicegroup\_lbmonitor\_binding, snmpmanager, spilloverpolicy, sslparameter, sslprofile, sslprofile\_sslcipher\_binding, sslvserver, sslvserver\_sslcertkey\_binding, systemuser, transformaction, transformpolicy, transformprofile
-
+* `run_tests.py`. Top level script to run all the tests.
 
 ## Pre-requisites
 
 * NITRO Python SDK
-* Ansible
+* Ansible (<=5.5.0) | ansible-core (<=2.12.9)
 * Python 2.7 or 3.x
+
+> The modules are not test for `ansible>=5.5.0` (OR `ansible-core>=2.12.9`) and may break.
 
 ## Installation
 
@@ -147,7 +105,7 @@ Use of a python virtualenv during installation is recommended.
 * Install all dependencies by running ```pip install -r requirements.test.txt``` from the project checkout.
 
 #### Global environment
-* Install Ansible (`sudo pip install ansible`)
+* Install Ansible (`sudo pip install ansible==5.5.0`)
 * Install NetScaler SDK (`pip install deps/nitro-python-1.0_kamet.tar.gz`)
 
 ### Installing ADC and ADM modules and plugins
@@ -167,22 +125,160 @@ To install the available collections from a local checkout of the repository:
 ```bash
 # ADC modules and connection plugin
 cd ansible-collections/adc
-ansible-galaxy collection build 
+ansible-galaxy collection build
 ansible-galaxy collection install citrix-adc-<semver>.tar.gz
 
 # ADM modules
 cd ansible-collections/adm
-ansible-galaxy collection build 
+ansible-galaxy collection build
 ansible-galaxy collection install citrix-adm-<semver>.tar.gz
 ```
 
+## List of ADC Use-cases supported
 
-## Usage
+Currently the following modules are implemented
+
+### ADC modules
+
+Included in the `citrix.adc` collection
+
+|**ADC Module**|**Description**|**Documentation**|**Example Playbook**|
+|--|--|--|--|
+| citrix_adc_appfw_confidfield                | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_confidfield_module.rst)                | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_fieldtype                  | Configuration for application firewall form field type resource | [HERE](./docs/modules/citrix_adc_appfw_fieldtype_module.rst)                  | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_global_bindings            | Define global bindings for AppFW                                | [HERE](./docs/modules/citrix_adc_appfw_global_bindings_module.rst)            | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_htmlerrorpage              | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_htmlerrorpage_module.rst)              | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_jsoncontenttype            | Configuration for JSON content type resource                    | [HERE](./docs/modules/citrix_adc_appfw_jsoncontenttype_module.rst)            | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_learningsettings           | Configuration for learning settings resource                    | [HERE](./docs/modules/citrix_adc_appfw_learningsettings_module.rst)           | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_policy                     | Manage Citrix ADC Web Application Firewall policies             | [HERE](./docs/modules/citrix_adc_appfw_policy_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_policylabel                | Manage Citrix ADC Web Application Firewall policy labels        | [HERE](./docs/modules/citrix_adc_appfw_policylabel_module.rst)                | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_profile                    | Manage Citrix ADC Web Application Firewall profiles             | [HERE](./docs/modules/citrix_adc_appfw_profile_module.rst)                    | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_settings                   | Manage Citrix ADC Web Application Firewall settings             | [HERE](./docs/modules/citrix_adc_appfw_settings_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_signatures                 | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_signatures_module.rst)                 | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_wsdl                       | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_wsdl_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlcontenttype             | Configuration for XML Content type resource                     | [HERE](./docs/modules/citrix_adc_appfw_xmlcontenttype_module.rst)             | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlerrorpage               | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_xmlerrorpage_module.rst)               | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_appfw_xmlschema                  | Configuration for configured confidential form fields resource  | [HERE](./docs/modules/citrix_adc_appfw_xmlschema_module.rst)                  | [HERE](./sample_playbooks/citrix_adc/appfw/) |
+| citrix_adc_cs_action                        | Manage content switching actions                                | [HERE](./docs/modules/citrix_adc_cs_action_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_cs_policy                        | Manage content switching policy                                 | [HERE](./docs/modules/citrix_adc_cs_policy_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_cs_vserver                       | Manage content switching vserver                                | [HERE](./docs/modules/citrix_adc_cs_vserver_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/content_switching/) |
+| citrix_adc_dnsnsrec                         | Configuration for name server record resource                   | [HERE](./docs/modules/citrix_adc_dnsnsrec_module.rst)                         | [HERE](./sample_playbooks/citrix_adc/dns/) |
+| citrix_adc_gslb_service                     | Manage gslb service entities in Citrix ADC                      | [HERE](./docs/modules/citrix_adc_gslb_service_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_gslb_site                        | Manage gslb site entities in Citrix ADC                         | [HERE](./docs/modules/citrix_adc_gslb_site_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_gslb_vserver                     | Configure gslb vserver entities in Citrix ADC                   | [HERE](./docs/modules/citrix_adc_gslb_vserver_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/gslb/) |
+| citrix_adc_lb_monitor                       | Manage load balancing monitors                                  | [HERE](./docs/modules/citrix_adc_lb_monitor_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/load_balancing/) |
+| citrix_adc_lb_vserver                       | Manage load balancing vserver configuration                     | [HERE](./docs/modules/citrix_adc_lb_vserver_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/load_balancing/) |
+| citrix_adc_nitro_info                       | Retrieve information from various NITRO API endpoints           | [HERE](./docs/modules/citrix_adc_nitro_info_module.rst)                       | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_nitro_request                    | Issue Nitro API requests to a Citrix ADC instance               | [HERE](./docs/modules/citrix_adc_nitro_request_module.rst)                    | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_nitro_resource                   | Create, update, delete resources on Citrix ADC                  | [HERE](./docs/modules/citrix_adc_nitro_resource_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/special_citrix_adc_modules/) |
+| citrix_adc_password_reset                   | Perform default password reset                                  | [HERE](./docs/modules/citrix_adc_password_reset_module.rst)                   | [HERE](./sample_playbooks/citrix_adc/password_reset/) |
+| citrix_adc_save_config                      | Save Citrix ADC configuration                                   | [HERE](./docs/modules/citrix_adc_save_config_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_server                           | Manage server configuration                                     | [HERE](./docs/modules/citrix_adc_server_module.rst)                           | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_service                          | Manage service configuration in Citrix ADC                      | [HERE](./docs/modules/citrix_adc_service_module.rst)                          | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_servicegroup                     | Manage service group configuration in Citrix ADC                | [HERE](./docs/modules/citrix_adc_servicegroup_module.rst)                     | [HERE](./sample_playbooks/citrix_adc/basic/) |
+| citrix_adc_ssl_certkey                      | Manage ssl certificate keys                                     | [HERE](./docs/modules/citrix_adc_ssl_certkey_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslcipher                        | Manage custom SSL ciphers                                       | [HERE](./docs/modules/citrix_adc_sslcipher_module.rst)                        | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslcipher_sslciphersuite_binding | Manage SSL cipher and SSL ciphersuite bindings                  | [HERE](./docs/modules/citrix_adc_sslcipher_sslciphersuite_binding_module.rst) | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_sslprofile_sslcipher_binding     | Manage SSL profile and SSL cipher bindings                      | [HERE](./docs/modules/citrix_adc_sslprofile_sslcipher_binding_module.rst)     | [HERE](./sample_playbooks/citrix_adc/ssl/) |
+| citrix_adc_system_file                      | upload systemfile to adc                                        | [HERE](./docs/modules/citrix_adc_system_file_module.rst)                      | [HERE](./sample_playbooks/citrix_adc/system/) |
+
+### ADM modules
+
+Included in the `citrix.adm` collection
+
+|**ADM Module**|**Description**|**Documentation**|**Example Playbook**|
+|--|--|--|--|
+| citrix_adm_application      | Manage applications on Citrix ADM                                  | [HERE](./docs/modules/citrix_adm_application_module.rst)      | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_configpack       | Creates a configpack from a stylebook                              | TBD                                                           | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_dns_domain_entry | Manage Citrix ADM domain names                                     | [HERE](./docs/modules/citrix_adm_dns_domain_entry_module.rst) | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_login            | Login to a Citrix ADM instance                                     | [HERE](./docs/modules/citrix_adm_login_module.rst)            | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_logout           | Logout from a Citrix ADM instance                                  | [HERE](./docs/modules/citrix_adm_logout_module.rst)           | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_mpsgroup         | Manage Citrix ADM user groups                                      | [HERE](./docs/modules/citrix_adm_mpsgroup_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_mpsuser          | Manage Citrix ADM users                                            | [HERE](./docs/modules/citrix_adm_mpsuser_module.rst)          | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_ns_facts         | Retrieve facts about Citrix ADM managed instances                  | [HERE](./docs/modules/citrix_adm_ns_facts_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_poll_instances   | Force the poll instances network function on the target Citrix ADM | [HERE](./docs/modules/citrix_adm_poll_instances_module.rst)   | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_rba_policy       | Manage Citrix ADM rba policies                                     | [HERE](./docs/modules/citrix_adm_rba_policy_module.rst)       | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_rba_role         | Manage Citrix ADM rba roles                                        | [HERE](./docs/modules/citrix_adm_rba_role_module.rst)         | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_stylebook        | Create or delete Citrix ADM stylebooks                             | [HERE](./docs/modules/citrix_adm_stylebook_module.rst)        | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+| citrix_adm_tenant_facts     | Retrieve facts about Citrix ADM tenants                            | [HERE](./docs/modules/citrix_adm_tenant_facts_module.rst)     | [ADM-OnPrem](./sample_playbooks/citrix_adm_onprem/) • [ADM-Service](./sample_playbooks/citrix_adm_service/) |
+
+## `citrix_adc_nitro_resource` workflows list
+
+The following NITRO API endpoints have their workflow dictionaries available for use with the `citrix_adc_nitro_resource` module.
+
+> The workflows yaml file can be found [here](deps/workflows.yaml).
+
+- authentication_epaaction
+- csvserver_rewritepolicy_binding
+- dnssoarec
+- lbgroup
+- lbgroup_lbvserver_binding
+- lbmetrictable
+- lbmetrictable_metric_binding
+- lbmonitor
+- lbmonitor_metric_binding
+- lbmonitor_sslcertkey_binding
+- lbprofile
+- lbroute
+- lbroute6
+- lbvserver
+- lbvserver_analyticsprofile_binding
+- lbvserver_appflowpolicy_binding
+- lbvserver_appfwpolicy_binding
+- lbvserver_appqoepolicy_binding
+- lbvserver_auditnslogpolicy_binding
+- lbvserver_auditsyslogpolicy_binding
+- lbvserver_authorizationpolicy_binding
+- lbvserver_cachepolicy_binding
+- lbvserver_capolicy_binding
+- lbvserver_cmppolicy_binding
+- lbvserver_contentinspectionpolicy_binding
+- lbvserver_csvserver_binding
+- lbvserver_dnspolicy64_binding
+- lbvserver_feopolicy_binding
+- lbvserver_filterpolicy_binding
+- lbvserver_pqpolicy_binding
+- lbvserver_responderpolicy_binding
+- lbvserver_rewritepolicy_binding
+- lbvserver_scpolicy_binding
+- lbvserver_service_binding
+- lbvserver_servicegroup_binding
+- lbvserver_servicegroupmember_binding
+- lbvserver_spilloverpolicy_binding
+- lbvserver_transformpolicy_binding
+- lbvserver_videooptimizationdetectionpolicy_binding
+- lbvserver_videooptimizationpacingpolicy_binding
+- nsacl
+- ntpparam
+- ntpserver
+- policypatset
+- policypatset_pattern_binding
+- rewriteaction
+- rewritepolicy
+- server
+- service
+- service_lbmonitor_binding
+- servicegroup
+- servicegroup_lbmonitor_binding
+- snmpmanager
+- spilloverpolicy
+- sslparameter
+- sslprofile
+- sslprofile_sslcipher_binding
+- sslvserver
+- sslvserver_sslcertkey_binding
+- systemuser
+- transformaction
+- transformpolicy
+- transformprofile
+
+
+## How to use Ansible modules ?
 
 All modules are intended to be run on the ansible control machine or a jumpserver with access to the Citrix ADC appliance.
 To do this you need to use the `local_action` or the `delegate_to` options in your playbooks.
 
-There are sample playbooks in the `samples` directory.
+There are sample playbooks in the `sample_playbooks` directory.
 
 Detailed documentation for each module can be found in the htmldoc directory.
 
@@ -207,32 +303,6 @@ and decrypt it as needed.
 
 For more information see the full [documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html)
 
-### Use cases supported by ADC and ADM modules
-
-Examples can be found in the [samples](samples) directory.
-
-| ADC Use Case | Configuration Examples |
-| ------------ | ---------------------- |
-| Web Application Firewall (WAF) | appfw\_signatures\_custom\_import <br /> appfw\_confidfield <br /> appfw\_fieldtype <br /> appfw\_global\_bindings <br /> appfw\_htmlerrorpage <br /> appfw\_jsoncontenttype <br /> appfw\_learningdata\_delete <br /> appfw\_learningdata\_export <br /> appfw\_learningdata\_get <br /> appfw\_learningdata\_reset <br /> appfw\_learningsettings <br /> appfw\_policy <br /> appfw\_policylabel <br /> appfw\_profile <br /> appfw\_settings <br /> appfw\_signatures <br /> appfw\_wsdl <br /> appfw\_xmlcontenttype <br /> appfw\_xmlerrorpage <br /> appfw\_xmlschema <br /> |
-| Core ADC features | citrix\_adc\_servicegroup\_dsapi <br /> save\_conifg\_handler\_server <br /> server <br /> server2 <br /> service <br /> servicegroup <br /> servicegroup2 <br /> |
-| Content Switching | content\_switch\_ssl\_lb\_mon <br /> cs\_action <br /> cs\_action\_expr <br /> cs\_vserver <br /> cs\_vserver\_appfw\_policy\_setup <br /> |
-| DNS | dnsnsrec <br /> dnssoarec <br /> |
-| Global Load Server Balancing (GSLB) | gslb\_basic <br /> gslb\_full <br /> gslb\_service <br /> gslb\_service\_disable <br /> gslb\_site <br /> gslb\_vserver <br /> |
-| ADM Proxy Calls | proxied\_server |
-| Generic Module nitro\_info | nitro\_info <br /> |
-| Generic Module nitro\_request | adc\_login <br /> add\_or\_update\_server <br /> add\_or\_update\_simpleacl <br /> add\_server\_idempotent <br /> count <br /> delete <br /> delete\_all\_cs\_vsevers <br /> delete\_by\_args <br /> delete\_simpleacl <br /> do\_action <br /> enable\_feature <br /> get <br /> get\_all <br /> get\_by\_args <br /> get\_filtered <br /> log <br /> mas\_get\_all <br /> mas\_login <br /> rename <br /> save\_config <br /> switch\_partition <br /> uri-nitro-api-calls <br /> |
-| Generic Module nitro\_resource | create\_and\_disable\_server <br /> object <br /> object\_by\_args <br /> object\_with\_bindings <br /> object\_with\_bindings\_list <br /> parameter\_object <br /> |
-| NS | nsip <br /> nspartition <br /> nspartition\_switch <br /> |
-| SSL A+ certified | ssl-aplus-certified-via-citrix-adc |
-| SSL | ssl\_certkey <br /> sslcipherlist <br /> sslprofile\_sslcipher\_binding <br /> sslvserver\_sslcertkey\_binding <br /> sslvserver\_sslcipher\_binding <br /> |
-| System | system\_file |
-| Various | password\_reset <br /> citrix\_adc\_connection\_plugin <br /> |
-
-
-| ADM Use Case | Configuration Examples |
-| ------------ | ---------------------- |
-| ADM resources | citrix\_adm\_application <br /> citrix\_adm\_configuration\_template\_facts <br /> citrix\_adm\_dns\_domain\_entry <br /> citrix\_adm\_login <br /> citrix\_adm\_managed\_device <br /> citrix\_adm\_mps\_agent\_facts <br /> citrix\_adm\_mps\_datacenter\_facts <br /> citrix\_adm\_mpsgroup <br /> citrix\_adm\_mpsuser <br /> citrix\_adm\_ns\_device\_profile <br /> citrix\_adm\_ns\_facts <br /> citrix\_adm\_poll\_instances <br /> citrix\_adm\_provision\_vpx <br /> citrix\_adm\_rba\_policy <br /> citrix\_adm\_rba\_policy\_full <br /> citrix\_adm\_rba\_role <br /> citrix\_adm\_service\_login <br /> citrix\_adm\_service\_logout <br /> citrix\_adm\_stylebook <br /> citrix\_adm\_stylebook\_lookup <br /> citrix\_adm\_tenant\_facts <br /> |
-
 ### NITRO API TLS
 
 By default the `nitro_protocol` parameter is set to `http`.
@@ -248,8 +318,6 @@ is set to `true`.
 
 Please consult the [Citrix ADC secure deployment guide](https://docs.citrix.com/en-us/citrix-adc/citrix-adc-secure-deployment/secure-deployment-guide.html) where among other things the usage of trusted TLS certificates is documented.
 
-
-
 ### Citrix ADM proxied calls
 
 There is also the ability to proxy module NITRO calls through a Citrix ADM to a target ADC.
@@ -259,7 +327,7 @@ In order to do that you need a NITRO Python SDK that has the MAS proxy calls cap
 1. First acquire a nitro authentication token with the use of the ```netscaler_nitro_request```  ```mas_login``` operation.
 2. Next all subsequent module invocations should have the ```mas_proxy_call``` option set to ```true``` , replace the ```nitro_user``` and ```nitro_pass``` authentication options with the ```nitro_auth_token``` acquired from the previous step and finally include the ```instance_ip``` option to instruct MAS to which citrix ADC to proxy the calls.
 
-A  sample playbook is provided in the samples directory. [mas_proxied_server.yaml](https://github.com/citrix/citrix-adc-ansible-modules/blob/master/samples/mas_proxied_server.yaml)
+A  sample playbook is provided in the sample_playbooks directory. [mas_proxied_server.yaml](./sample_playbooks/citrix_adm_onprem_as_proxy/mas_proxied_server.yaml)
 
 There is also the option to use the ADM service as a NITRO API proxy.
 
@@ -280,7 +348,7 @@ And one of:
 2. `instance_id`
 3. `instance_name`
 
-You can find examples in this [folder](samples/adm_service_proxy).
+You can find examples in this [folder](sample_playbooks/citrix_adm_service_as_proxy).
 
 ### Citrix ADM service calls
 
@@ -291,7 +359,56 @@ token for all subsequent module calls.
 
 Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
 
-Examples can be found in this [folder](samples/citrix_adm).
+Examples can be found in this [folder](sample_playbooks/citrix_adm).
+
+## What if there is no module for your configuration?
+
+When there is no module that covers the ADC configuration you want to apply there are
+a few options that will allow you to still apply the configuration through an ansible playbook.
+
+### Use the citrix\_adc\_nitro\_request module.
+
+This a module that is a thin wrapper around the NITRO REST API.
+It provides a number of operations which it then translates into HTTP requests
+and provides the resulting NITRO API response in a well defined return value.
+
+You can find examples of using the module in this [folder](sample_playbooks/nitro_request)
+
+### Use the citrix\_adc\_nitro\_resource module.
+
+The `citrix_adc_nitro_resource` module can be used to create, update and delete
+NITRO objects.
+
+It has the same base parameters as the other modules for connecting to the ADC.
+
+Its most important attributes are the `workflow` parameter which determines
+the execution of the module with respect to how the NITRO object will be created, updated
+or deleted and the `resource` parameter which contains the actual attributes
+for the NITRO resource.
+
+The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
+
+Examples can be found in this [folder](sample_playbooks/nitro_resource).
+
+Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
+
+If an endpoint cannot be found in the existing workflows file please open an issue
+so that we can investigate if this endpoint is covered by the existing workflows and publish its dictionary.
+
+
+### Use the connection plugin with the `shell` Ansible module
+
+As a last resort the user can user the `shell` Ansible module
+along with the Citrix ADC connection plugin to issue `nscli` commands
+to the target ADC.
+
+This provides the least feedback but it is useful for one off
+configuration steps or when nothing else is applicable.
+
+> This requires password-less (SSH-key based) authentication. Follow [this article](https://docs.citrix.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html) to setup the ADC
+
+Examples can be found in this [folder](sample_playbooks/citrix_adc_connection_plugin)
+
 
 ## Citrix ADC connection plugin
 
@@ -318,7 +435,7 @@ scp_if_ssh = True
 ```
 
 
-You can find usage samples in this [folder](samples/citrix_adc_connection_plugin).
+You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc_connection_plugin).
 
 ### Security notice
 
@@ -348,87 +465,113 @@ There are some conflicting configuration options when using a standard Ansible m
 
 To have such a playbook execute correctly the following solutions are proposed.
 
-* Have a single playbook with multiple plays ( [sample](samples/citrix_adc_connection_plugin/multiple_plays.yaml) ).
-* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](samples/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
-* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](samples/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
+* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc_connection_plugin/multiple_plays.yaml) ).
+* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
+* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
+## Module renaming
 
-## What if there is no module for your configuration?
+Note that as of this [commit](https://github.com/citrix/netscaler-ansible-modules/commit/b53935432646741d9af27d9617480517a28aa86d)
+all modules were renamed to match the new Citrix product names.
 
-When there is no module that covers the ADC configuration you want to apply there are
-a few options that will allow you to still apply the configuration through an ansible playbook.
+See [here](https://www.citrix.com/about/citrix-product-guide) for reference.
 
-### Use the citrix\_adc\_nitro\_request module.
+All modules which previously started with the `netscaler_` prefix have been renamed to
+to start with the `citrix_adc_` prefix.
 
-This a module that is a thin wrapper around the NITRO REST API.
-It provides a number of operations which it then translates into HTTP requests
-and provides the resulting NITRO API response in a well defined return value.
+All new modules will follow this convention as well.
 
-You can find examples of using the module in this [folder](samples/nitro_request)
+Until these changes are integrated into the Ansible distribution the Citrix ADC
+module names will differ depending on where they were installed from.
 
-### Use the citrix\_adc\_nitro\_resource module.
+## Extended Documentation
 
-The `citrix_adc_nitro_resource` module can be used to create, update and delete
-NITRO objects.
+Extended documentation is hosted at [readthedocs](http://netscaler-ansible.readthedocs.io/).
 
-It has the same base parameters as the other modules for connecting to the ADC.
-
-Its most important attributes are the `workflow` parameter which determines
-the execution of the module with respect to how the NITRO object will be created, updated
-or deleted and the `resource` parameter which contains the actual attributes
-for the NITRO resource.
-
-The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
-
-Examples can be found in this [folder](samples/nitro_resource).
-
-Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
-
-If an endpoint cannot be found in the existing workflows file please open an issue
-so that we can investigate if this endpoint is covered by the existing workflows and publish its dictionary.
-
-
-### Use the connection plugin with the `shell` Ansible module
-
-As a last resort the user can user the `shell` Ansible module
-along with the Citrix ADC connection plugin to issue `nscli` commands
-to the target ADC.
-
-This provides the least feedback but it is useful for one off
-configuration steps or when nothing else is applicable.
-
-> This requires password-less (SSH-key based) authentication. Follow [this article](https://docs.citrix.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html) to setup the ADC
-
-Examples can be found in this [folder](samples/citrix_adc_connection_plugin)
-
-
-
-## Directory structure
-
-* `ansible-modules.` Contains all the ansible modules available. These are the files that must be installed on an ansible control node in order for the functionality to be present
-
-* `ansible-plugins.` Contains all the ansible plugins available.
-
-* `tests.` Contains the test suite for the modules. It requires some extra dependencies than the plain modules in order to run.
-
-* `samples.` Contains some sample playbooks that combine more than one modules together to achieve a desired configuration.
-Examples of the modules' usage are also contained in the EXAMPLES section of the modules themselves.
-
-* `htmldoc.` Contains the html documentation for each module.
-
-* `utils.` Contains utilities mainly used for the authoring of the modules and are not relevant to the end user.
-
-* `documentation_fragments.` Contains the Citrix ADC specific documentation files for ansible.
-
-* `run_tests.py`. Top level script to run all the tests.
-
-## LICENSE
+## License
 **MIT License**
 See [LICENSE](./LICENSE)
 
-## COPYRIGHT
+## Copyright
 
 **COPYRIGHT 2017 CITRIX Systems Inc**
 
 ## Contributions
-Pull requests and issues are welcome.
+
+3rd party contributions are not accepted as of today. You can reach out to us at **appmodernization@citrix.com** ! for quick response or create GitHub issues.
+
+-----
+
+# Beginners guide to ADC Automation with Ansible
+
+## Hands-On Lab for ADC Automation with Ansible
+Try out the [lab](https://forum.developer.cloud.com/s/citrix-labs?articleId=ka08b0000005Xl8AAE) that takes you through the ADC Automation journey with Ansible
+
+## Getting Started with Ansible and ADC collection installation
+Refer the Steps 1 and Steps 2 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+
+## Make your first Configuration on ADC with Ansible
+Refer the Steps 3 and Steps 4 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+
+## General Guidelines on creating Ansible playbooks
+Refer the [How to use Ansible Modules section ?](#how-to-use-ansible-modules) for usage guidelines on ADC Ansible playbooks.
+
+To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding orof endpoint, parameters etc.
+
+##  Nitro Request - Generic Module to execute Nitro API operations via Ansible
+
+**citrix_adc_nitro_request** which doesn’t target a particular endpoint instead can be used to perform NITRO API operations on various endpoints.
+
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Ansible-for-ADC-Nitro-API-operations).
+You can find its example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples/nitro_request).
+
+##  Nitro Resource - Generic module to create any ADC entity using Ansible
+
+**citrix_adc_nitro_resource** implements the CRUD operations in a generic manner applicable to multiple endpoints. You can use generic module citrix_adc_nitro_resource if you dont find a dedicated module for the usecase you are targeting.
+
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Generic-ADC-Ansible-module).
+You can find its example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/samples/nitro_resource).
+
+##  Nitro Info - Generic module to emulate show commands
+
+**citrix_adc_nitro_info** modules is to emulate show commands in Netscaler.It returns a list or dictionary for each endpoint it is invoked for. 
+You can find usage example [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_info). 
+
+
+##  Proxy your ADC Nitro API calls via ADM
+
+ADC Ansible modules invoke Nitro API calls internally to configure your ADC. You can proxy all those Nitro API calls via ADM on-prem or ADM Service.
+
+Learn more about using ADM as API Proxy Server [here](https://docs.citrix.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html). You can find the usage example for ADM on-prem [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adm_onprem_as_proxy) and ADM Service [here](https://github.com/citrix/citrix-adc-ansible-modules/tree/vadharm-patch-1/sample_playbooks/citrix_adm_service_as_proxy)
+
+
+
+
+
+
+---------
+# Beginners guide to ADM Automation with Ansible
+
+##  Getting Started with ADM Ansible modules
+
+Here are the playbooks to get started with ADM Ansible modules:
+1. [Login to ADM On-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_login.yaml)
+2. [Add Netscaler instance to ADM on-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml) 
+
+For ADM Service 
+1. [Login to ADM Service](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_login.yaml)
+2. [Add Netscaler instance to ADM on-prem](https://github.com/citrix/citrix-adc-ansible-modules/blob/vadharm-patch-1/sample_playbooks/citrix_adm_onprem/citrix_adm_managed_device.yaml) 
+
+##  Creating Stylebooks with ADM Ansible modules
+
+TBD
+
+##  Applying ADC config via Configpacks through ADM Ansible Modules
+
+TBD
+
+##  Updating Config-Packs to new Stylebooks via ADM Ansible Modules
+
+TBD
+
+> :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
