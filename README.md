@@ -535,31 +535,31 @@ See [LICENSE](./LICENSE)
 # Beginners guide to ADC Automation with Ansible
 
 ## Hands-On Lab for ADC Automation with Ansible
-Try out the [lab](https://forum.developer.cloud.com/s/citrix-labs?articleId=ka08b0000005Xl8AAE) that takes you through the ADC Automation journey with Ansible
+Try out the [lab](https://forum.developer.cloud.com/s/netscaler-labs?labId=000001069) that takes you through the ADC Automation journey with Ansible
 
 ## Getting Started with Ansible and ADC collection installation
-Refer the Steps 1 and Steps 2 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+Refer the Steps 1 and Steps 2 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-NetScaler-Automation-using-Ansible)
 
 ## Make your first Configuration on ADC with Ansible
-Refer the Steps 3 and Steps 4 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-ADC-Automation-using-Ansible)
+Refer the Steps 3 and Steps 4 in the [Get Started with ADC Automation using Ansible](https://forum.developer.cloud.com/s/article/Get-Started-with-NetScaler-Automation-using-Ansible)
 
 ## General Guidelines on creating Ansible playbooks
 Refer the [How to use Ansible Modules section ?](#how-to-use-ansible-modules) for usage guidelines on ADC Ansible playbooks.
 
-To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding orof endpoint, parameters etc.
+To create Ansible playbooks for your specfic ADC use-cases/entities refer the [Ansible modules documenation](https://github.com/citrix/citrix-adc-ansible-modules/tree/master/docs/modules) and the [NITRO API documentation](https://developer-docs.citrix.com/projects/citrix-adc-nitro-api-reference/en/latest/configuration/configuration/) for understanding of endpoint, parameters etc.
 
 ##  Nitro Request - Generic Module to execute Nitro API operations via Ansible
 
 **citrix_adc_nitro_request** which doesn’t target a particular endpoint instead can be used to perform NITRO API operations on various endpoints.
 
-Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Ansible-for-ADC-Nitro-API-operations).
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Ansible-for-NetScaler-Nitro-API-operations).
 You can find its example [here](./sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_request/).
 
 ##  Nitro Resource - Generic module to create any ADC entity using Ansible
 
 **citrix_adc_nitro_resource** implements the CRUD operations in a generic manner applicable to multiple endpoints. You can use generic module citrix_adc_nitro_resource if you dont find a dedicated module for the usecase you are targeting.
 
-Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Generic-ADC-Ansible-module).
+Learn more about its usage [here](https://forum.developer.cloud.com/s/article/Generic-NetScaler-Ansible-module).
 You can find its example [here](./sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_resource/).
 
 ##  Nitro Info - Generic module to emulate show commands
