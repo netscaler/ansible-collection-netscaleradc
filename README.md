@@ -606,6 +606,21 @@ ADM Service - [Applying configs to ADC via ADM Configpacks through Ansible](./sa
 
 ##  Updating Config-Packs to new Stylebooks via ADM Ansible Modules
 
-TBD
+**change_stylebook** param in **citrix_adm_configpack** when set to **true** can be used to upgrade your existing config-pack to new Stylebook version.
+
+```
+change_stylebook: true # true when we need to change the stylebook associated to this configpack
+old_stylebook: # old_stylebook will be considered only when change_stylebook is true
+   name: basic-lb-config
+   namespace: com.example.stylebooks
+   version: "0.1"
+```
+
+Use the below playbooks and set **change_stylebook** as **true** :
+ 
+ADM On_Prem - [Applying configs to ADC via ADM Configpacks through Ansible](./sample_playbooks/citrix_adm_onprem/citrix_adm_configpack_admonprem.yaml)
+
+ADM Service - [Applying configs to ADC via ADM Configpacks through Ansible](./sample_playbooks/citrix_adm_service/citrix_adm_configpack_admservice.yaml)
+
 
 > :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
