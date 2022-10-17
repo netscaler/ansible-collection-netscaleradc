@@ -111,7 +111,9 @@ Use of a python virtualenv during installation is recommended.
 
 ### Installing ADC and ADM modules and plugins
 
-To install the available collections from the repository directly:
+To install the available collections from the repository directly:  
+
+> Minimum `ansible` version should be *2.10* to install collections directory from the repository (https://github.com/ansible/ansible/pull/69154)
 
 ```bash
 # ADC modules and connection plugin
