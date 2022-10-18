@@ -1,14 +1,5 @@
 - hosts: citrix_adm_service
 
-  vars:
-    max_clients: 5
-    adm_host: adm.cloud.com
-    customer_id: "{{ lookup('env', 'CITRIXADM_CUSTOMER_ID') }}"
-    client_id: "{{ lookup('env', 'CITRIXADM_CLIENT_ID') }}"
-    client_secret: "{{ lookup('env', 'CITRIXADM_CLIENT_SECRET') }}"
-    validate_certs: false
-    instance_ip: "{{ instance_ip }}"
-
   gather_facts: False
   collections:
     - citrix.adm
@@ -38,13 +29,13 @@
 
         state: present
 
-        name: basic-lb-config-via-ansible
+        name: basic-lb-config
         namespace: com.example.stylebooks
-        version: "0.1"
+        version: "0.2"
 
         source: |
           ---
-          name: basic-lb-config-via-ansible
+          name: basic-lb-config
           namespace: com.example.stylebooks
           version: "0.1"
           display-name: Load Balancing Configuration
