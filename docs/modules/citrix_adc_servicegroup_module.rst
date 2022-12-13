@@ -382,7 +382,7 @@ Parameters
 
         Range 1 - 65535
 
-        * in CLI is represented as 65535 in NITRO API
+        Note: ``*`` in CLI is represented as 65535 in NITRO API
     * - riseapbrstatsmsgcode
 
         *(int)*
