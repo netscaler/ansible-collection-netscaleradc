@@ -435,7 +435,7 @@ class NitroAPIFetcher(object):
         self.info = info
 
         # Search for body in both http body and http data
-        if r is not None:
+        if r is not None and not isinstance(r, Exception):
             result['http_response_body'] = codecs.decode(r.read(), 'utf-8')
         elif 'body' in info:
             result['http_response_body'] = codecs.decode(info['body'], 'utf-8')
