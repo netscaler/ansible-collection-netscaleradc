@@ -59,6 +59,16 @@ options:
             - "The targets to which the configpack is to be applied."
         type: list
 
+    instances_username:
+        description:
+            - "Target instances username. Required when when `Prompt Credentials for instance Login` is enabled in ADM System Configuration"
+        type: str
+
+    instances_password:
+        description:
+            - "Target instances password. Required when when `Prompt Credentials for instance Login` is enabled in ADM System Configuration"
+        type: str
+
     change_stylebook:
         description:
             - 'true' if stylebook needs to be changed. Defaults to 'false'
@@ -210,6 +220,14 @@ class ModuleExecutor(object):
         nitro_pass = self.module.params.get('nitro_pass')
         if nitro_pass is not None:
             self.http_headers['X-NITRO-PASS'] = nitro_pass
+
+        instances_password = self.module.params.get('instances_password')
+        if instances_password is not None:
+            self.http_headers['X-INSTANCES-PASSWORD'] = instances_password
+
+        instances_username = self.module.params.get('instances_username')
+        if instances_username is not None:
+            self.http_headers['X-INSTANCES-USERNAME'] = instances_username
 
         # Prepare module result
         self.module_result = dict(
@@ -526,6 +544,14 @@ class ModuleExecutor(object):
         elif nitro_errorcode not in (0, None):
             msg = 'nitro_errorcode fail. HTTP status %s, msg: %s. nitro_errorcode=%s nitro_message=%s nitro_severity=%s' % message_tuple
             self.module.fail_json(msg=msg, **self.module_result)
+        else:
+            # Check for idempotency. That is if the PUT call has modified any configuration or not.
+            try:
+                if data['message'] == 'No change in configuration':
+                    self.module_result['changed'] = False
+            except KeyError as e:
+                log("KeyError: %s" % e)
+
 
     def delete_configpack(self, configpack):
         log('delete_configpack')
@@ -582,6 +608,15 @@ class ModuleExecutor(object):
 
 
     def input_validation(self):
+        # if `instances_username` is present, then `instances_password` should also be present and vice-versa
+        if 'instances_username' in self.module.params and 'instances_password' not in self.module.params:
+            msg = 'ERROR: Invalid Input: `instances_password` should be present when `instances_username` attribute is present'
+            self.module.fail_json(msg=msg, **self.module_result)
+
+        if 'instances_password' in self.module.params and 'instances_username' not in self.module.params:
+            msg = 'ERROR: Invalid Input: `instances_username` should be present when `instances_password` attribute is present'
+            self.module.fail_json(msg=msg, **self.module_result)
+
         # old_configpack dictionary to be present when change_stylebook is present
         if self.module.params['change_stylebook'] is True:
             if 'old_stylebook' not in self.module.params:
@@ -661,7 +696,15 @@ def main():
         targets=dict(type='list'),
         check_create=dict(type='bool', default=True),
         change_stylebook=dict(type='bool', default=False),
-        check_create_delay=dict(type='int', default=10)
+        check_create_delay=dict(type='int', default=10),
+        instances_username=dict(
+            type='str',
+            no_log=True
+        ),
+        instances_password=dict(
+            type='str',
+            no_log=True
+        ),
     )
 
     argument_spec.update(netscaler_common_arguments)
