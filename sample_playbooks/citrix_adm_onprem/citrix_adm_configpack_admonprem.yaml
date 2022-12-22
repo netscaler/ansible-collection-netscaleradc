@@ -1,24 +1,25 @@
 - hosts: citrix_adm
 
   vars:
-    adm_ip: "{{ adm_ip }}"
-    adm_user: "{{ adm_user }}"
-    adm_pass: "{{ adm_pass }}"
+    adm_ip: "{{ adm_ip1 }}"
+    adm_user: "{{ adm_user1 }}"
+    adm_pass: "{{ adm_pass1 }}"
     validate_certs: no
-    instance_ip: "{{ instance_ip }}"
+    instance_ip: "{{ instance_ip1 }}"
+    state: present
 
   gather_facts: False
   collections:
     - citrix.adm
 
   tasks:
-    - name: Login to ADM {{ adm_ip }}
+    - name: Login to ADM {{ adm_ip1 }}
       delegate_to: localhost
       register: login_result
       citrix_adm_login:
-        adm_ip: "{{ adm_ip }}"
-        adm_user: "{{ adm_user }}"
-        adm_pass: "{{ adm_pass }}"
+        adm_ip: "{{ adm_ip1 }}"
+        adm_user: "{{ adm_user1 }}"
+        adm_pass: "{{ adm_pass1 }}"
         validate_certs: "{{ validate_certs }}"
 
     - name: Get NS instance
@@ -26,22 +27,22 @@
       register: ns_facts
       citrix_adm_ns_facts:
         nitro_protocol: http
-        adm_ip: "{{ adm_ip }}"
+        adm_ip: "{{ adm_ip1 }}"
         nitro_auth_token: "{{ login_result.session_id }}"
         validate_certs: "{{ validate_certs }}"
 
-        ip_address: "{{ instance_ip }}"
+        ip_address: "{{ instance_ip1 }}"
 
     - name: Add a configpack
       delegate_to: localhost
       register: configpack_result
       citrix_adm_configpack:
         nitro_protocol: http
-        adm_ip: "{{ adm_ip }}"
+        adm_ip: "{{ adm_ip1 }}"
         nitro_auth_token: "{{ login_result.session_id }}"
         validate_certs: "{{ validate_certs }}"
 
-        state: present
+        state: "{{ state }}"
 
         check_create: true
         check_create_delay: 10
@@ -61,7 +62,12 @@
             - 192.168.10.11
         targets:
           - id: '{{ ns_facts.ns[0].id }}'
+
+        # Below two parameters are required when `Prompt Credentials for instance Login` is enabled in ADM System Configuration
+        # instances_username: <target-username>
+        # instances_password: <target-password>
+
         stylebook:
-          name: basic-lb-config
+          name: basic-lb-config-via-ansible
           namespace: com.example.stylebooks
-          version: "0.2"
+          version: "0.1"
