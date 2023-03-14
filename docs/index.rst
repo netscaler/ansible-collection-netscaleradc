@@ -6,7 +6,7 @@ Users of these modules can create, edit, update, and delete configuration
 objects on a Citrix ADC. For more information on the basic principals that the
 modules use, see the :doc:`usage/index`.
 
-The code is licensed under the GPL and the authoritative repository is on
+The code is licensed under the MIT and the authoritative repository is on
 `github`_
 
 .. _github: https://github.com/citrix/citrix-adc-ansible-modules
