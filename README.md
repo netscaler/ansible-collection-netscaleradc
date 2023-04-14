@@ -10,7 +10,7 @@ Learn more about Citrix ADC Automation [here](https://docs.citrix.com/en-us/citr
 
 > :round_pushpin: For deploying Citrix ADC in Public Cloud - AWS and Azure, check out cloud scripts in github repo [terraform-cloud-scripts](https://github.com/citrix/terraform-cloud-scripts).
 
-> :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
+> :envelope: For any immediate issues or help , reach out to us at NetScaler-AutomationToolkit@cloud.com !
 
 -----------
 
@@ -111,7 +111,7 @@ Use of a python virtualenv during installation is recommended.
 
 ### Installing ADC and ADM modules and plugins
 
-To install the available collections from the repository directly:  
+To install the available collections from the repository directly:
 
 > Minimum `ansible` version should be *2.10* to install collections directory from the repository (https://github.com/ansible/ansible/pull/69154)
 
@@ -530,7 +530,7 @@ See [LICENSE](./LICENSE)
 
 ## Contributions
 
-3rd party contributions are not accepted as of today. You can reach out to us at **appmodernization@citrix.com** ! for quick response or create GitHub issues.
+3rd party contributions are not accepted as of today. You can reach out to us at **NetScaler-AutomationToolkit@cloud.com** ! for quick response or create GitHub issues.
 
 -----
 
@@ -619,10 +619,10 @@ old_stylebook: # old_stylebook will be considered only when change_stylebook is 
 ```
 
 Use the below playbooks and set **change_stylebook** as **true** :
- 
+
 ADM On_Prem - [Applying configs to ADC via ADM Configpacks through Ansible](./sample_playbooks/citrix_adm_onprem/citrix_adm_configpack_admonprem.yaml)
 
 ADM Service - [Applying configs to ADC via ADM Configpacks through Ansible](./sample_playbooks/citrix_adm_service/citrix_adm_configpack_admservice.yaml)
 
 
-> :envelope: For any immediate issues or help , reach out to us at appmodernization@citrix.com !
+> :envelope: For any immediate issues or help , reach out to us at NetScaler-AutomationToolkit@cloud.com !
