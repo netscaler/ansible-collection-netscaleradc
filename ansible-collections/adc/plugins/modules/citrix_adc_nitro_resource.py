@@ -117,6 +117,7 @@ msg:
 '''
 
 import copy
+from urllib.parse import quote
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
     NitroResourceConfig,
@@ -156,7 +157,8 @@ class ModuleExecutor(object):
 
         id_key = self.module.params['workflow'].get('primary_id_attribute')
         if id_key is not None:
-            self.id = self.module.params['resource'][id_key]
+            # encode self.id as it may contain special characters such as spaces
+            self.id = quote(self.module.params['resource'][id_key])
         else:
             self.id = None
 
