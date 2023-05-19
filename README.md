@@ -362,7 +362,7 @@ token for all subsequent module calls.
 
 Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
 
-Examples can be found in this [folder](sample_playbooks/citrix_adm).
+Examples can be found in this [folder](sample_playbooks/citrix_adm_service).
 
 ### Configure CPX via Ansible
 
@@ -404,7 +404,7 @@ This a module that is a thin wrapper around the NITRO REST API.
 It provides a number of operations which it then translates into HTTP requests
 and provides the resulting NITRO API response in a well defined return value.
 
-You can find examples of using the module in this [folder](sample_playbooks/nitro_request)
+You can find examples of using the module in this [folder](sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_request)
 
 ### Use the citrix\_adc\_nitro\_resource module.
 
@@ -420,7 +420,7 @@ for the NITRO resource.
 
 The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
 
-Examples can be found in this [folder](sample_playbooks/nitro_resource).
+Examples can be found in this [folder](sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_resource).
 
 Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
 
@@ -439,7 +439,7 @@ configuration steps or when nothing else is applicable.
 
 > This requires password-less (SSH-key based) authentication. Follow [this article](https://docs.citrix.com/en-us/citrix-adc/current-release/system/authentication-and-authorization-for-system-user/ssh-key-based-authentication-for-system-users.html) to setup the ADC
 
-Examples can be found in this [folder](sample_playbooks/citrix_adc_connection_plugin)
+Examples can be found in this [folder](sample_playbooks/citrix_adc/citrix_adc_connection_plugin)
 
 
 ## Citrix ADC connection plugin
@@ -467,7 +467,7 @@ scp_if_ssh = True
 ```
 
 
-You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc_connection_plugin).
+You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc/citrix_adc_connection_plugin).
 
 ### Security notice
 
