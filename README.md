@@ -497,9 +497,9 @@ There are some conflicting configuration options when using a standard Ansible m
 
 To have such a playbook execute correctly the following solutions are proposed.
 
-* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc_connection_plugin/multiple_plays.yaml) ).
-* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
-* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
+* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/multiple_plays.yaml) ).
+* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
+* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
 ## Module renaming
 
