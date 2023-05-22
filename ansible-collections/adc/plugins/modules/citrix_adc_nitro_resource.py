@@ -117,7 +117,7 @@ msg:
 '''
 
 import copy
-from urllib.parse import quote
+from ansible.module_utils.six.moves.urllib.parse import quote
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.citrix.adc.plugins.module_utils.citrix_adc import (
     NitroResourceConfig,
