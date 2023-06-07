@@ -1,0 +1,20 @@
+- name: Change NS Hostname
+  hosts: demo_netscalers
+  gather_facts: false
+
+  tasks:
+    - name: Update NS Hostname
+      delegate_to: localhost
+      citrix.adc.citrix_adc_nitro_request:
+        nsip: "{{ nsip }}"
+        nitro_user: "{{ nitro_user }}"
+        nitro_pass: "{{ nitro_pass }}"
+        nitro_protocol: "{{ nitro_protocol }}"
+        validate_certs: "{{ validate_certs }}"
+
+        operation: update # Changing `nshostname` is update operation
+
+        resource: nshostname
+        name: '' # nshostname is an unnamed object.
+        attributes:
+          hostname: demouser
