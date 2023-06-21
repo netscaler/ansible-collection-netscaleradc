@@ -11,3 +11,10 @@ generate_modules:
 
 install_collection:
 	ansible-galaxy collection install . --force
+
+# build_docs:
+# 	antsibull-docs sphinx-init --use-current --dest-dir _built_docs netscaler.adc
+# 	cd _built_docs
+# 	pip3 install -r requirements.txt
+# 	./build.sh
+# 	rsync -cprv --delete-after _built_docs/rst/ docs/
