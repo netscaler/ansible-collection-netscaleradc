@@ -1,3 +1,0 @@
-paramiko
-file:../citrix-adc-ansible-modules/deps/nitro-python-1.0_kamet.tar.gz
-git+https://github.com/ansible/ansible.git@v2.11.12

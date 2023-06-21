@@ -1,5 +1,0 @@
----
-major_changes:
-  - >
-    Update citrix_adc_service module to use NITRO API directly.
-    Also update arguments to current NITRO API version.

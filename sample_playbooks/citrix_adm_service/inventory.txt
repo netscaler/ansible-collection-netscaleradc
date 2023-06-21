@@ -1,9 +1,0 @@
-[citrix_adm_service]
-admservice
-
-[citrix_adm_service:vars]
-adm_host=adm.cloud.com
-client_id=abcdefgh-ijkl-mnop-qrst-uvwxyz123456
-client_secret=LKLHJalsdjflajlkasdlCw==
-instance_ip=10.222.74.157
-validate_certs=no

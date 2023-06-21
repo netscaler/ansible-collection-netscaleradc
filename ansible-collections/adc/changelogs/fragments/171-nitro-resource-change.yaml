@@ -1,5 +1,0 @@
----
-minor_changes:
-  - >-
-    Patch citrix_adc_nitro_resource object workflow to return no exists for a resource
-    if the endpoint is not on the returned object

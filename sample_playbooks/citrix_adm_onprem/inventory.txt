@@ -1,2 +1,0 @@
-[citrix_adm]
-citrix_adm1 adm_ip1=10.222.74.160 adm_user1=nsroot adm_pass1=verystrongpassword instance_ip1=10.222.74.145
