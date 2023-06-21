@@ -1,0 +1,119 @@
+#!/usr/bin/python
+
+# -*- coding: utf-8 -*-
+
+# TODO: Add license
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
+
+ANSIBLE_METADATA = {
+    "metadata_version": "1.1",
+    "status": ["preview"],
+    "supported_by": "community",
+}
+
+DOCUMENTATION = r"""
+module: aaakcdaccount
+short_description: Configuration for Kerberos constrained delegation account resource.
+description: Configuration for Kerberos constrained delegation account resource.
+version_added: 2.0.0
+author:
+  - Sumanth Lingappa (@sumanth-lingappa)
+options:
+  cacert:
+    description:
+      - CA Cert for UserCert or when doing PKINIT backchannel.
+    type: str
+  delegateduser:
+    description:
+      - Username that can perform kerberos constrained delegation.
+    type: str
+  enterpriserealm:
+    description:
+      - Enterprise Realm of the user. This should be given only in certain KDC deployments
+        where KDC expects Enterprise username instead of Principal Name
+    type: str
+  kcdaccount:
+    description:
+      - The name of the KCD account.
+    type: str
+  kcdpassword:
+    description:
+      - Password for Delegated User.
+    type: str
+  keytab:
+    description:
+      - The path to the keytab file. If specified other parameters in this command
+        need not be given
+    type: str
+  realmstr:
+    description:
+      - Kerberos Realm.
+    type: str
+  servicespn:
+    description:
+      - Service SPN. When specified, this will be used to fetch kerberos tickets.
+        If not specified, Citrix ADC will construct SPN using service fqdn
+    type: str
+  usercert:
+    description:
+      - SSL Cert (including private key) for Delegated User.
+    type: str
+  userrealm:
+    description:
+      - Realm of the user
+    type: str
+extends_documentation_fragment: netscaler.adc.netscaler_adc
+
+"""
+
+EXAMPLES = r"""
+"""
+
+RETURN = r"""
+changed:
+    description: Indicates if any change is made by the module
+    returned: always
+    type: bool
+    sample: true
+diff:
+    description: Dictionary of before and after changes
+    returned: always
+    type: dict
+    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+diff_list:
+    description: List of differences between the actual configured object and the configuration specified in the module
+    returned: when changed
+    type: list
+    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+failed:
+    description: Indicates if the module failed or not
+    returned: always
+    type: bool
+    sample: false
+loglines:
+    description: list of logged messages by the module
+    returned: always
+    type: list
+    sample: ['message 1', 'message 2']
+
+"""
+
+
+import os
+
+from ..module_utils.module_executor import ModuleExecutor
+
+RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
+
+
+def main():
+    executor = ModuleExecutor(RESOURCE_NAME)
+    executor.main()
+
+
+if __name__ == "__main__":
+    main()

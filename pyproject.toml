@@ -1,0 +1,13 @@
+[tool.black]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+
+[tool.autoflake]
+in-place = true
+remove-unused-variables = true
+remove-all-unused-imports = true
+
+[tool.docformatter]
+in-place = true
