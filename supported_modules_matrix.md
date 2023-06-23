@@ -3,12 +3,12 @@
 
 This is a matrix of all the resources supported by the `netscaler` collection. The table below shows the list of all the resources and whether they are supported or not.
 
-Total number of resources: **905**
-Total number of supported resources: **727**
-Total number of unsupported resources: **178**
+Total number of resources: **905**  
+Total number of supported resources: **727**  
+Total number of unsupported resources: **178**  
 
-Percentage of supported resources: **80.33%**
-Percentage of unsupported resources: **19.67%**
+Percentage of supported resources: **80.33%**  
+Percentage of unsupported resources: **19.67%**  
 
 ## Matrix
 
