@@ -1,7 +1,7 @@
 
-# Supported Modules Matrix
+# NetScaler Ansible Collection Modules Matrix
 
-This is a matrix of all the resources supported by the `netscaler` collection. The table below shows the list of all the resources and whether they are supported or not.
+This is a matrix of all the resources supported by the `netscaler` ansible collection. The table below shows the list of all the resources and whether they are supported or not.
 
 Total number of resources: **905**  
 Total number of supported resources: **727**  
