@@ -27,8 +27,9 @@
           default: stable-2.14
         init-dest-dir:
           description: A directory relative to the checkout where the init process has already been run.
-          required: true
+          required: false
           type: string
+          default: '_built-dest'
         init-lenient:
           description: |
             Use the lenient option during build init. Has no effect if init-dest-dir is supplied.
