@@ -27,7 +27,7 @@
           default: stable-2.14
         init-dest-dir:
           description: A directory relative to the checkout where the init process has already been run.
-          required: false
+          required: true
           type: string
         init-lenient:
           description: |
