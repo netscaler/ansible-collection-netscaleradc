@@ -24,7 +24,7 @@
           description: The ref from which to install ansible, for example "stable-2.14" or "milestone".
           required: false
           type: string
-          default: stable-2.15
+          default: stable-2.14
         init-dest-dir:
           description: A directory relative to the checkout where the init process has already been run.
           required: false
@@ -278,7 +278,7 @@
             python-version: ${{ inputs.python }}
 
         - name: Install Ansible
-          run: pip install https://github.com/ansible/ansible/archive/${{ inputs.ansible-ref }}.tar.gz --disable-pip-version-check
+          run: pip install https://github.com/ansible/ansible/archive/stable-2.14.tar.gz --disable-pip-version-check
 
         - name: Install extra collections
           shell: bash
