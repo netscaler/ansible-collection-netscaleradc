@@ -1,383 +1,95 @@
 ---
-  name: Ansible collection docs build (PR)
+  # Copyright (c) Ansible Project
+  # GNU General Public License v3.0+ (see LICENSES/GPL-3.0-or-later.txt or https://www.gnu.org/licenses/gpl-3.0.txt)
+  # SPDX-License-Identifier: GPL-3.0-or-later
+
+  name: Collection Docs
+  concurrency:
+    group: docs-pr-${{ github.head_ref }}
+    cancel-in-progress: true
   on:
     pull_request:
       branches:
         v2.0.0-alpha
-    workflow_call:
-      inputs:
-        collection-name:
-          description: The collection name in the form namespace.collection.
-          required: false
-          type: string
-          default: netscaler.adc
-        collection-path:
-          description: This is the relative path component of the collection in question, for example community/general.
-          required: false
-          type: string
-        python:
-          description: The version of Python to install.
-          required: false
-          type: string
-          default: '3.10'
-        ansible-ref:
-          description: The ref from which to install ansible, for example "stable-2.14" or "milestone".
-          required: false
-          type: string
-          default: stable-2.14
-        init-dest-dir:
-          description: A directory relative to the checkout where the init process has already been run.
-          required: false
-          type: string
-          default: '_built-dest'
-        init-lenient:
-          description: |
-            Use the lenient option during build init. Has no effect if init-dest-dir is supplied.
-            This is only passed to the HEAD build. The BASE build always runs with `true`.
-          required: false
-          type: boolean
-          default: false
-        init-fail-on-error:
-          description: |
-            Use the fail-on-error option during build init. Has no effect if init-dest-dir is supplied.
-            This is only passed to the HEAD build. The BASE build always runs with `false`.
-          required: false
-          type: boolean
-          default: false
-        init-antsibull-docs-version:
-          description: |
-            The version of antsibull-docs to use during build init. Has no effect if init-dest-dir is supplied.
-            If not supplied, the latest version from PyPI is used. If supplied, must be a git ref from the antsibull-docs repository.
-          required: false
-          type: string
-        init-antsibull-docs-repository:
-          description: |
-            When init-antsibull-docs-version is specified, this is the GitHub repository to which init-antsibull-docs-version refers.
-            Has no effect if init-dest-dir is supplied, or if init-antsibull-docs-version is not supplied.
-          required: false
-          type: string
-          default: ansible-community/antsibull-docs
-        init-index-rst-source:
-          description: |
-            Copy the provided file to `rst/index.rst` intead of templating a default one.
-          required: false
-          type: string
-        init-project:
-          description: |
-            Sets the `project` value in the Sphinx configuration.
-          required: false
-          type: string
-        init-copyright:
-          description: |
-            Sets the `copyright` value in the Sphinx configuration.
-          required: false
-          type: string
-        init-title:
-          description: |
-            Sets the `title` and `html_short_title` values in the Sphinx configuration.
-            If `init-html-short-title` is also specified, only `title` will be set to the value
-            specified here.
-          required: false
-          type: string
-        init-html-short-title:
-          description: |
-            Sets the `html_short_title` value in the Sphinx configuration. If not specified,
-            the value of `init-title` will be used.
-          required: false
-          type: string
-        init-extra-conf:
-          description: |
-            A newline separated list of `key=value` entries that will be added to the generated
-            `conf.py`.
-          required: false
-          type: string
-        init-extra-html-context:
-          description: |
-            A newline separated list of `key=value` entries that will be added to the generated
-            `conf.py` in `html_context`
-          required: false
-          type: string
-        init-extra-html-theme-options:
-          description: |
-            A newline separated list of `key=value` entries that will be added to the generated
-            `conf.py` in `html_theme_options`
-          required: false
-          type: string
-        artifact-name:
-          description: The name of the artifact to upload.
-          required: false
-          type: string
-          default: ${{ github.event.repository.name }}_docs_${{ github.event.pull_request.head.sha }}
-        diff-size-limit:
-          description: The max size of the diff, past which it will be truncated.
-          required: false
-          type: number
-          default: 60000
-        sort-files:
-          description: If true, sort the trimmed and rendered list of files.
-          required: false
-          default: true
-          type: boolean
-        render-file-line:
-          description: |
-            A template used to render each line of the file list as markdown. This will be processed as a JavaScript regex replace string,
-            and the following named capture groups can be referenced:
-            - $<status> -- the single character "status" letter in the file list, like "A" or an added file or "M" for a modified file.
-            - $<path_stub> -- the part of the path that will be discarded in the "trimmed" file list.
-            - $<path_tail> -- the relative part of the path; this can be used to concatenate to a URL to create links to the published site.
+    pull_request_target:
+      types: [opened, synchronize, reopened, closed]
 
-            Note that literal $ characters must be escaped as $$ and literal backslashes must be escaped as \\
-          required: false
-          default: '> * `$<status>` $<path_tail>'
-          type: string
-        render-diff-truncate-text:
-          description: Markdown text to be used if the diff text was truncated. It will be available in the render-diff template.
-          required: false
-          default: '**The diff output was truncated because it exceeded the maximum size.**'
-          type: string
-        render-diff:
-          description: |
-            A template used to render the diff output as markdown. It will be interpreted as a pseudo-JavaScript template literal and the following
-            variables are available for ${var} interpolation:
-            - ${diff} -- the diff text
-            - ${truncated_msg} -- empty if the diff is not truncated, otherwise the value of render-diff-truncate-text
-          required: false
-          type: string
-          default: |
-            <details>
-            <summary>Click to see the diff comparison.</summary>
-
-            **NOTE:** only file modifications are shown here. New and deleted files are excluded.
-            See the file list and check the published docs to see those files.
-
-            ${truncated_msg}
-
-            ```diff
-            ${diff}
-            ```
-
-            </details>
-        extra-collections:
-          description: A space separated list of additional collections to install prior to building the documentation.
-          required: false
-          type: string
-        provide-link-targets:
-          description: A newline separated list of link targets that should not cause reference errors. A small RST file will be created during the build which contains these labels.
-          required: false
-          type: string
-        intersphinx-links:
-          description: |
-            A newline separated list of entries to add to the intersphinx_mapping in the generated conf.py.
-            Use the syntax `identifier:https://server/path` to add the identifier `identifier` with URL
-            `https://server/path`.
-          required: false
-          type: string
-        squash-hierarchy:
-          description: |
-            If 'true', the collection documentation will be created at top-level and not in a subdirectory `namespace/collection_name/`.
-            Has no effect if init-dest-dir is supplied.
-          required: false
-          type: boolean
-          default: false
-
-      outputs:
-        artifact-name:
-          description: The same artifact name as passed in, available as an output.
-          value: ${{ inputs.artifact-name }}
-        artifact-url:
-          description: The URL to the build artifacts.
-          value: ${{ jobs.build-ansible-docs.outputs.artifact-url }}
-        changed:
-          description: If false, the PR does not change the documentation.
-          value: ${{ jobs.build-ansible-docs.outputs.changed }}
-        diff:
-          description: The diff between the base and head of the PR.
-          value: ${{ jobs.build-ansible-docs.outputs.diff }}
-        diff-truncated:
-          description: If true, the diff was truncated because it exceeded the max size.
-          value: ${{ jobs.build-ansible-docs.outputs.diff-truncated }}
-        diff-rendered:
-          description: The markdownr rendered diff between the base and head of the PR.
-          value: ${{ jobs.build-ansible-docs.outputs.diff-rendered }}
-        diff-files:
-          description: The raw file list from the diff output.
-          value: ${{ jobs.build-ansible-docs.outputs.diff-files }}
-        diff-files-trimmed:
-          description: The file list from the diff with the paths trimmed.
-          value: ${{ jobs.build-ansible-docs.outputs.diff-files-trimmed }}
-        diff-files-rendered:
-          description: The markdown rendered file list from the diff.
-          value: ${{ jobs.build-ansible-docs.outputs.diff-files-rendered }}
+  env:
+    GHP_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
 
   jobs:
-    build-ansible-docs:
-      name: Build Ansible Docs
-      runs-on: ubuntu-latest
+    build-docs:
       permissions:
         contents: read
-      outputs:
-        artifact-url: ${{ steps.build-head.outputs.artifact-url }}
-        changed: ${{ steps.build-base.outputs.hash != steps.build-head.outputs.hash }}
-        diff: ${{ steps.diff.outputs.diff }}
-        diff-truncated: ${{ steps.diff.outputs.truncated }}
-        diff-rendered: ${{ steps.diff.outputs.diff-rendered }}
-        diff-files: ${{ steps.diff.outputs.files-raw }}
-        diff-files-trimmed: ${{ steps.diff.outputs.files-trimmed }}
-        diff-files-rendered: ${{ steps.diff.outputs.files-rendered }}
+      name: Build Ansible Docs
+      uses: ansible-community/github-docs-build/.github/workflows/_shared-docs-build-pr.yml@main
+      with:
+        collection-name: netscaler.adc
+        init-lenient: false
+        init-fail-on-error: true
+        squash-hierarchy: true
+        init-project: NetScaler.ADC Collection
+        init-copyright: NetScaler.ADC Contributors
+        init-title: NetScaler.ADC Collection Documentation
+        init-html-short-title: NetScaler.ADC Collection Docs
+        init-extra-html-theme-options: |
+          documentation_home_url=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/branch/v2.0.0-alpha/
+        render-file-line: '> * `$<status>` [$<path_tail>](https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr/${{ github.event.number }}/$<path_tail>)'
+
+    publish-docs-gh-pages:
+      # for now we won't run this on forks
+      if: github.repository == 'felixfontein/netscaler.adc'
+      permissions:
+        contents: write
+      needs: [build-docs]
+      name: Publish Ansible Docs
+      uses: ansible-community/github-docs-build/.github/workflows/_shared-docs-build-publish-gh-pages.yml@main
+      with:
+        artifact-name: ${{ needs.build-docs.outputs.artifact-name }}
+        action: ${{ (github.event.action == 'closed' || needs.build-docs.outputs.changed != 'true') && 'teardown' || 'publish' }}
+      secrets:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    comment:
+      permissions:
+        pull-requests: write
+      runs-on: ubuntu-latest
+      needs: [build-docs, publish-docs-gh-pages]
+      name: PR comments
       steps:
-        - name: Variable setup
-          id: vars
-          uses: actions/github-script@v6
+        - name: PR comment
+          uses: ansible-community/github-docs-build/actions/ansible-docs-build-comment@main
           with:
-            script: |
-              const inputs = ${{ toJSON(inputs) }}
-              var colpath = inputs['collection-path']
-              if (colpath == '') {
-                  colpath = inputs['collection-name'].replace('.', '/')
-              }
+            body-includes: '## Docs Build'
+            reactions: heart
+            action: ${{ needs.build-docs.outputs.changed != 'true' && 'remove' || '' }}
+            on-closed-body: |
+              ## Docs Build 📝
 
-              core.exportVariable('ANSIBLE_COLLECTIONS_PATHS', process.env.GITHUB_WORKSPACE)
+              This PR is closed and any previously published docsite has been unpublished.
+            on-merged-body: |
+              ## Docs Build 📝
 
-              const checkoutPath = `ansible_collections/${colpath}`
+              Thank you for contribution!✨
 
-              core.setOutput('col-path', colpath)
-              core.setOutput('checkout-path', checkoutPath)
+              This PR has been merged and the docs are now incorporated into `v2.0.0-alpha`:
+              ${{ env.GHP_BASE_URL }}/branch/v2.0.0-alpha
+            body: |
+              ## Docs Build 📝
 
-              var initPath = '${{ runner.temp }}/docsbuild'
-              var skipInit = false
+              Thank you for contribution!✨
 
-              if (inputs['init-dest-dir'] != '') {
-                  initPath = `${checkoutPath}/${inputs['init-dest-dir']}`
-                  skipInit = true
-                  core.setOutput('init-dir-base', initPath)
-                  core.setOutput('init-dir-head', initPath)
-              } else {
-                  core.setOutput('init-dir-base', `${initPath}/base`)
-                  core.setOutput('init-dir-head', `${initPath}/head`)
-              }
+              The docs for **this PR** have been published here:
+              ${{ env.GHP_BASE_URL }}/pr/${{ github.event.number }}
 
-              core.setOutput('skip-init', skipInit)
+              You can compare to the docs for the `v2.0.0-alpha` branch here:
+              ${{ env.GHP_BASE_URL }}/branch/v2.0.0-alpha
 
-              // The merge branch is what we want, but it doesn't exist
-              // on closed events. The merge SHA does exist though and
-              // should be correct. The merge SHA does not exist when a
-              // PR is first opened, and on subsequent updates it is
-              // tricky to use; used directly it is probably stale, and
-              // would need additional API calls to get the correct value.
-              // See also:
-              // - https://github.com/ansible-community/github-docs-build/issues/36
+              The docsite for **this PR** is also available for download as an artifact from this run:
+              ${{ needs.build-docs.outputs.artifact-url }}
 
-              if ('${{ github.event.action }}' == 'closed') {
-                  core.setOutput('pr-checkout-ref', '${{ github.event.pull_request.merge_commit_sha }}')
-              } else {
-                  core.setOutput('pr-checkout-ref', 'refs/pull/${{ github.event.number }}/merge')
-              }
+              File changes:
 
-        - name: Set up Python
-          uses: actions/setup-python@v4
-          with:
-            python-version: ${{ inputs.python }}
+              ${{ needs.build-docs.outputs.diff-files-rendered }}
 
-        - name: Install Ansible
-          run: pip install https://github.com/ansible/ansible/archive/stable-2.14.tar.gz --disable-pip-version-check
-
-        - name: Install extra collections
-          shell: bash
-          run: |
-            if [[ "${{ inputs.extra-collections }}" != "" ]] ; then
-              ansible-galaxy collection install ${{ inputs.extra-collections }}
-            fi
-
-        - name: Checkout BASE
-          uses: actions/checkout@v3
-          with:
-            ref: ${{ github.event.pull_request.base.sha }}
-            path: ${{ steps.vars.outputs.checkout-path }}
-
-        - name: Initialize the build environment (BASE)
-          id: init-base
-          uses: ansible-community/github-docs-build/actions/ansible-docs-build-init@main
-          with:
-            collections: ${{ inputs.collection-name }}
-            dest-dir: ${{ steps.vars.outputs.init-dir-base }}
-            skip-init: ${{ steps.vars.outputs.skip-init }}
-            antsibull-docs-version: '${{ inputs.init-antsibull-docs-version }}'
-            antsibull-docs-repository: '${{ inputs.init-antsibull-docs-repository }}'
-            lenient: true
-            fail-on-error: false
-            provide-link-targets: ${{ inputs.provide-link-targets }}
-            intersphinx-links: ${{ inputs.intersphinx-links }}
-            squash-hierarchy: ${{ inputs.squash-hierarchy }}
-            index-rst-source: ${{ inputs.init-index-rst-source }}
-            project: ${{ inputs.init-project }}
-            copyright: ${{ inputs.init-copyright }}
-            title: ${{ inputs.init-title }}
-            html-short-title: ${{ inputs.init-html-short-title }}
-            extra-conf: ${{ inputs.init-extra-conf }}
-            extra-html-context: ${{ inputs.init-extra-html-context }}
-            extra-html-theme-options: ${{ inputs.init-extra-html-theme-options }}
-
-        - name: Build BASE
-          id: build-base
-          uses: ansible-community/github-docs-build/actions/ansible-docs-build-html@main
-          with:
-            build-script: ${{ steps.init-base.outputs.build-script }}
-            build-html: ${{ steps.init-base.outputs.build-html }}
-            copy-build: ${{ github.workspace }}/docsbuild/base
-            artifact-upload: 'false'
-
-        - name: Checkout HEAD
-          uses: actions/checkout@v3
-          with:
-            # It would be better to use
-            #
-            #     ref: ${{ github.event.pull_request.head.sha }}
-            #
-            # since that also works when re-running this action for older commits of
-            # a PR, **but** then we get https://github.com/ansible-community/github-docs-build/issues/3 back...
-            ref: ${{ steps.vars.outputs.pr-checkout-ref }}
-            path: ${{ steps.vars.outputs.checkout-path }}
-
-        - name: Initialize the build environment (HEAD)
-          id: init-head
-          uses: ansible-community/github-docs-build/actions/ansible-docs-build-init@main
-          with:
-            collections: ${{ inputs.collection-name }}
-            dest-dir: ${{ steps.vars.outputs.init-dir-head }}
-            skip-init: ${{ steps.vars.outputs.skip-init }}
-            antsibull-docs-version: '${{ inputs.init-antsibull-docs-version }}'
-            antsibull-docs-repository: '${{ inputs.init-antsibull-docs-repository }}'
-            lenient: ${{ inputs.init-lenient }}
-            fail-on-error: ${{ inputs.init-fail-on-error }}
-            provide-link-targets: ${{ inputs.provide-link-targets }}
-            intersphinx-links: ${{ inputs.intersphinx-links }}
-            squash-hierarchy: ${{ inputs.squash-hierarchy }}
-            index-rst-source: ${{ inputs.init-index-rst-source }}
-            project: ${{ inputs.init-project }}
-            copyright: ${{ inputs.init-copyright }}
-            title: ${{ inputs.init-title }}
-            html-short-title: ${{ inputs.init-html-short-title }}
-            extra-conf: ${{ inputs.init-extra-conf }}
-            extra-html-context: ${{ inputs.init-extra-html-context }}
-            extra-html-theme-options: ${{ inputs.init-extra-html-theme-options }}
-
-        - name: Build HEAD
-          id: build-head
-          uses: ansible-community/github-docs-build/actions/ansible-docs-build-html@main
-          with:
-            build-script: ${{ steps.init-head.outputs.build-script }}
-            build-html: ${{ steps.init-head.outputs.build-html }}
-            copy-build: ${{ github.workspace }}/docsbuild/head
-            artifact-name: ${{ inputs.artifact-name }}
-
-        - name: Get a diff of the changes
-          if: steps.build-base.outputs.hash != steps.build-head.outputs.hash
-          id: diff
-          uses: ansible-community/github-docs-build/actions/ansible-docs-build-diff@main
-          with:
-            build-html-a: ${{ steps.build-base.outputs.build-html }}
-            build-html-b: ${{ steps.build-head.outputs.build-html }}
-            diff-size-limit: ${{ inputs.diff-size-limit }}
-            render-file-line: ${{ inputs.render-file-line }}
-            render-diff-truncate-text: ${{ inputs.render-diff-truncate-text }}
-            render-diff: ${{ inputs.render-diff }}
+              ${{ needs.build-docs.outputs.diff-rendered }}
