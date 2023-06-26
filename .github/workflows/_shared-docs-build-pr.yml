@@ -1,6 +1,9 @@
 ---
   name: Ansible collection docs build (PR)
   on:
+    pull_request:
+      branches:
+        v2.0.0-alpha
     workflow_call:
       inputs:
         collection-name:
