@@ -17,7 +17,7 @@ ANSIBLE_METADATA = {
 
 DOCUMENTATION = r"""
 module: aaagroup
-short_description: Configuration for AAA group resource.
+short_description: Configuration for AAA group resource. EDITED
 description: Configuration for AAA group resource.
 version_added: 2.0.0
 author:
