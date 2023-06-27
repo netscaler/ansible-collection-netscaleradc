@@ -30,15 +30,18 @@ options:
     type: int
     default: 3
   failsafe:
+    choices:
+      - true
+      - false
     description:
       - Keep one node primary if both nodes fail the health check, so that a partially
         available node can back up data and handle traffic. This mode is set independently
         on each node.
     type: str
-    choices:
-      - true
-      - false
   haprop:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Automatically propagate all commands from the primary to the secondary node,
         except the following:'
@@ -54,33 +57,33 @@ options:
       - 'Note: After enabling propagation, run force synchronization on either node.'
     type: str
     default: ENABLED
+  hastatus:
     choices:
       - ENABLED
+      - STAYSECONDARY
       - DISABLED
-  hastatus:
+      - STAYPRIMARY
     description:
-      - The HA status of the node. The HA status STAYSECONDARY is used to force the
-        secondary device stay as secondary independent of the state of the Primary
+      - The HA status of the node. The HA status C(STAYSECONDARY) is used to force
+        the secondary device stay as secondary independent of the state of the Primary
         device. For example, in an existing HA setup, the Primary node has to be upgraded
         and this process would take few seconds. During the upgradation, it is possible
         that the Primary node may suffer from a downtime for a few seconds. However,
         the Secondary should not take over as the Primary node. Thus, the Secondary
         node should remain as Secondary even if there is a failure in the Primary
         node.
-      - "\t STAYPRIMARY configuration keeps the node in primary state in case if it\
-        \ is healthy, even if the peer node was the primary node initially. If the\
-        \ node with STAYPRIMARY setting (and no peer node) is added to a primary node\
-        \ (which has this node as the peer) then this node takes over as the new primary\
-        \ and the older node becomes secondary. ENABLED state means normal HA operation\
-        \ without any constraints/preferences. DISABLED state disables the normal\
-        \ HA operation of the node."
+      - "\t C(STAYPRIMARY) configuration keeps the node in primary state in case if\
+        \ it is healthy, even if the peer node was the primary node initially. If\
+        \ the node with C(STAYPRIMARY) setting (and no peer node) is added to a primary\
+        \ node (which has this node as the peer) then this node takes over as the\
+        \ new primary and the older node becomes secondary. C(ENABLED) state means\
+        \ normal HA operation without any constraints/preferences. C(DISABLED) state\
+        \ disables the normal HA operation of the node."
     type: str
+  hasync:
     choices:
       - ENABLED
-      - STAYSECONDARY
       - DISABLED
-      - STAYPRIMARY
-  hasync:
     description:
       - Automatically maintain synchronization by duplicating the configuration of
         the primary node on the secondary node. This setting is not propagated. Automatic
@@ -88,9 +91,6 @@ options:
         current secondary node. Synchronization uses TCP port 3010.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   hellointerval:
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
@@ -103,6 +103,9 @@ options:
         0. Peer node values can range from 1-64.
     type: int
   inc:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'This option is required if the HA nodes reside on different networks. When
         this mode is enabled, the following independent network entities and configurations
@@ -112,9 +115,6 @@ options:
         independently on each node.'
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ipaddress:
     description:
       - The NSIP or NSIP6 address of the node to be added for an HA configuration.
@@ -129,19 +129,67 @@ options:
       - Interval after which flipping of node states can again start
     type: int
   syncstatusstrictmode:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - strict mode flag for sync status
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   syncvlan:
     description:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync
         and session state sync. However HA heartbeats can go all interfaces.
     type: int
+  hanode_routemonitor6_binding:
+    type: dict
+    description: Bindings for hanode_routemonitor6_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  hanode_routemonitor_binding:
+    type: dict
+    description: Bindings for hanode_routemonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

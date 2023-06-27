@@ -36,14 +36,14 @@ options:
         quotation marks (for example, "my phrase" or 'my phrase').
     type: str
   authtype:
+    choices:
+      - MD5
+      - SHA
     description:
       - Authentication algorithm used by the Citrix ADC and the SNMPv3 user for authenticating
         the communication between them. You must specify the same authentication algorithm
         when you configure the SNMPv3 user in the SNMP manager.
     type: str
-    choices:
-      - MD5
-      - SHA
   group:
     description:
       - Name of the configured SNMPv3 group to which to bind this SNMPv3 user. The
@@ -72,14 +72,14 @@ options:
         marks (for example, "my key" or 'my key').
     type: str
   privtype:
+    choices:
+      - DES
+      - AES
     description:
       - Encryption algorithm used by the Citrix ADC and the SNMPv3 user for encrypting
         the communication between them. You must specify the same encryption algorithm
         when you configure the SNMPv3 user in the SNMP manager.
     type: str
-    choices:
-      - DES
-      - AES
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

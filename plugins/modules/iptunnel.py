@@ -29,14 +29,14 @@ options:
     type: int
     default: 6081
   grepayload:
-    description:
-      - The payload GRE will carry
-    type: str
-    default: ETHERNETwithDOT1Q
     choices:
       - ETHERNETwithDOT1Q
       - ETHERNET
       - IP
+    description:
+      - The payload GRE will carry
+    type: str
+    default: ETHERNETwithDOT1Q
   ipsecprofilename:
     description:
       - Name of IPSec profile to be associated.
@@ -59,16 +59,16 @@ options:
     type: str
     default: DEFAULT_NG
   protocol:
-    description:
-      - Name of the protocol to be used on this tunnel.
-    type: str
-    default: IPIP
     choices:
       - IPIP
       - GRE
       - IPSEC
       - UDP
       - GENEVE
+    description:
+      - Name of the protocol to be used on this tunnel.
+    type: str
+    default: IPIP
   remote:
     description:
       - Public IPv4 address, of the remote device, used to set up the tunnel. For
@@ -79,27 +79,27 @@ options:
       - Subnet mask of the remote IP address of the tunnel.
     type: str
   tosinherit:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Default behavior is to copy the ToS field of the internal IP Packet (Payload)
         to the outer IP packet (Transport packet). But the user can configure a new
         ToS field using this option.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   vlan:
     description:
       - The vlan for mulicast packets
     type: int
   vlantagging:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to select Vlan Tagging.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   vnid:
     description:
       - Virtual network identifier (VNID) is the value that identifies a specific

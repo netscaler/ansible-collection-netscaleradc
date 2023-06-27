@@ -24,66 +24,162 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   dynamicrouting:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable dynamic routing on this VXLAN.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   id:
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
     type: int
   innervlantagging:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN
         tag.
     type: str
     default: DISABLED
+  ipv6dynamicrouting:
     choices:
       - ENABLED
       - DISABLED
-  ipv6dynamicrouting:
     description:
-      - 'Enable all IPv6 dynamic routing protocols on this VXLAN. Note: For the ENABLED
+      - 'Enable all IPv6 dynamic routing protocols on this VXLAN. Note: For the C(ENABLED)
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   port:
     description:
       - Specifies UDP destination port for VXLAN packets.
     type: int
     default: 4789
   protocol:
-    description:
-      - VXLAN-GPE next protocol. RESERVED, IPv4, IPv6, ETHERNET, NSH
-    type: str
-    default: ETHERNET
     choices:
       - IPv4
       - IPv6
       - ETHERNET
       - NSH
-  type:
     description:
-      - VXLAN encapsulation type. VXLAN, VXLANGPE
+      - VXLAN-GPE next protocol. RESERVED, C(IPv4), C(IPv6), C(ETHERNET), C(NSH)
     type: str
-    default: VXLAN
+    default: ETHERNET
+  type:
     choices:
       - VXLAN
       - VXLANGPE
+    description:
+      - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
+    type: str
+    default: VXLAN
   vlan:
     description:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part
         of any other VXLANs.
     type: int
+  vxlan_nsip6_binding:
+    type: dict
+    description: Bindings for vxlan_nsip6_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vxlan_nsip_binding:
+    type: dict
+    description: Bindings for vxlan_nsip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vxlan_srcip_binding:
+    type: dict
+    description: Bindings for vxlan_srcip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vxlanvlanmap_vxlan_binding:
+    type: dict
+    description: Bindings for vxlanvlanmap_vxlan_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

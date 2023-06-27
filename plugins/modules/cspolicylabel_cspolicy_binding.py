@@ -43,11 +43,11 @@ options:
       - Name of the policy label to which to bind a content switching policy.
     type: str
   labeltype:
+    choices:
+      - policylabel
     description:
       - Type of policy label invocation.
     type: str
-    choices:
-      - policylabel
   policyname:
     description:
       - Name of the content switching policy.

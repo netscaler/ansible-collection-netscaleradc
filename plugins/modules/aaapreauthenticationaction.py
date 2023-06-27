@@ -50,12 +50,12 @@ options:
         quotation marks (for example, "my aaa action" or 'my aaa action').
     type: str
   preauthenticationaction:
-    description:
-      - Allow or deny logon after endpoint analysis (EPA) results.
-    type: str
     choices:
       - ALLOW
       - DENY
+    description:
+      - Allow or deny logon after endpoint analysis (EPA) results.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -43,12 +43,12 @@ options:
         set, dataset, stringmap, or HTTP callout.
     type: str
   type:
-    description:
-      - Type of expression. Can be a classic or default syntax (advanced) expression.
-    type: str
     choices:
       - CLASSIC
       - ADVANCED
+    description:
+      - Type of expression. Can be a classic or default syntax (advanced) expression.
+    type: str
   value:
     description:
       - 'Expression string. For example: http.req.body(100).contains("this").'

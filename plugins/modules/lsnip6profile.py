@@ -43,12 +43,12 @@ options:
       - IPv6 address of the Citrix ADC AFTR device
     type: str
   type:
-    description:
-      - IPv6 translation type for which to set the LSN IP6 profile parameters.
-    type: str
     choices:
       - DS-Lite
       - NAT64
+    description:
+      - IPv6 translation type for which to set the LSN IP6 profile parameters.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

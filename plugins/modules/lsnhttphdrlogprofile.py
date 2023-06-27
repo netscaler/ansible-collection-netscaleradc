@@ -28,37 +28,37 @@ options:
       - The name of the HTTP header logging Profile.
     type: str
   loghost:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Host information is logged if option is enabled.
     type: str
     default: ENABLED
+  logmethod:
     choices:
       - ENABLED
       - DISABLED
-  logmethod:
     description:
       - HTTP method information is logged if option is enabled.
     type: str
     default: ENABLED
+  logurl:
     choices:
       - ENABLED
       - DISABLED
-  logurl:
     description:
       - URL information is logged if option is enabled.
     type: str
     default: ENABLED
+  logversion:
     choices:
       - ENABLED
       - DISABLED
-  logversion:
     description:
       - Version information is logged if option is enabled.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

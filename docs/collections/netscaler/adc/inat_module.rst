@@ -1055,7 +1055,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      To enable/disable TFTP (Default DISABLED).
+      To enable/disable TFTP (Default \ :literal:`DISABLED`\ ).
 
 
       .. rst-class:: ansible-option-line

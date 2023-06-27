@@ -1074,13 +1074,13 @@ Parameters
 
       Name of the action to perform if the Vserver/Server representing the remote service does not respond with any response within the timeout value configured. The Supported actions are
 
-      \* BYPASS - This Ignores the remote server response and sends the request/response to Client/Server.
+      \* \ :literal:`BYPASS`\  - This Ignores the remote server response and sends the request/response to Client/Server.
 
                  \* If the ICAP response with Encapsulated headers is not received within the request-timeout value configured, this Ignores the remote ICAP server response and sends the Full request/response to Server/Client.
 
-      \* RESET - Reset the client connection by closing it. The client program, such as a browser, will handle this and may inform the user. The client may then resend the request if desired.
+      \* \ :literal:`RESET`\  - Reset the client connection by closing it. The client program, such as a browser, will handle this and may inform the user. The client may then resend the request if desired.
 
-      \* DROP - Drop the request without sending a response to the user.
+      \* \ :literal:`DROP`\  - Drop the request without sending a response to the user.
 
 
       .. rst-class:: ansible-option-line

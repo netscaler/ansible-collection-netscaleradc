@@ -311,7 +311,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Specify the congestion control algorithm to be used for QUIC connections. The default congestion control algorithm is CUBIC.
+      Specify the congestion control algorithm to be used for QUIC connections. The default congestion control algorithm is \ :literal:`CUBIC`\ .
 
 
       .. rst-class:: ansible-option-line

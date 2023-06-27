@@ -103,6 +103,9 @@ options:
         pair in AAA session
     type: str
   authentication:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Perform LDAP authentication.
       - 'If authentication is disabled, any LDAP authentication attempt returns authentication
@@ -112,23 +115,20 @@ options:
         to a primary list or flagged as secondary.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authtimeout:
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
     type: int
     default: 3
   cloudattributes:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - The Citrix ADC uses the cloud attributes to extract additional attributes
         from LDAP servers required for Citrix Cloud operations
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   defaultauthenticationgroup:
     description:
       - This is the default group that is chosen when the authentication succeeds
@@ -141,13 +141,13 @@ options:
     type: str
     default: mail
   followreferrals:
+    choices:
+      - true
+      - false
     description:
       - Setting this option to ON enables following LDAP referrals received from the
         LDAP server.
     type: str
-    choices:
-      - true
-      - false
   groupattrname:
     description:
       - LDAP group attribute name.
@@ -243,40 +243,43 @@ options:
         action').
     type: str
   nestedgroupextraction:
+    choices:
+      - true
+      - false
     description:
       - Allow nested group extraction, in which the Citrix ADC queries external LDAP
         servers to determine whether a group is part of another group.
     type: str
-    choices:
-      - true
-      - false
   otpsecret:
     description:
       - OneTimePassword(OTP) Secret key attribute on AD. This attribute is used to
         store and retrieve secret key used for OTP check
     type: str
   passwdchange:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow password change requests.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   pushservice:
     description:
       - Name of the service used to send push notifications
     type: str
   referraldnslookup:
-    description:
-      - Specifies the DNS Record lookup Type for the referrals
-    type: str
-    default: A-REC
     choices:
       - A-REC
       - SRV-REC
       - MSSRV-REC
+    description:
+      - Specifies the DNS Record lookup Type for the referrals
+    type: str
+    default: A-REC
   requireuser:
+    choices:
+      - true
+      - false
     description:
       - Require a successful user search for authentication.
       - CAUTION!  This field should be set to NO only if usersearch not required [Both
@@ -285,9 +288,6 @@ options:
         as secondary.
     type: str
     default: true
-    choices:
-      - true
-      - false
   searchfilter:
     description:
       - String to be combined with the default LDAP user search string to form the
@@ -298,15 +298,15 @@ options:
         both sets are needed.).
     type: str
   sectype:
-    description:
-      - Type of security used for communications between the Citrix ADC and the LDAP
-        server. For the PLAINTEXT setting, no encryption is required.
-    type: str
-    default: PLAINTEXT
     choices:
       - PLAINTEXT
       - TLS
       - SSL
+    description:
+      - Type of security used for communications between the Citrix ADC and the LDAP
+        server. For the C(PLAINTEXT) setting, no encryption is required.
+    type: str
+    default: PLAINTEXT
   serverip:
     description:
       - IP address assigned to the LDAP server.
@@ -337,20 +337,20 @@ options:
       - Used for group extraction from the LDAP server.
     type: str
   svrtype:
+    choices:
+      - AD
+      - NDS
     description:
       - The type of LDAP server.
     type: str
     default: AAA_LDAP_SERVER_TYPE_DEFAULT
-    choices:
-      - AD
-      - NDS
   validateservercert:
-    description:
-      - When to validate LDAP server certs
-    type: str
     choices:
       - true
       - false
+    description:
+      - When to validate LDAP server certs
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -146,69 +146,6 @@ options:
         entity name or url that represents ServiceProvider
     type: str
   authnctxclassref:
-    description:
-      - This element specifies the authentication class types that are requested from
-        IdP (IdentityProvider).
-      - 'InternetProtocol: This is applicable when a principal is authenticated through
-        the use of a provided IP address.'
-      - 'InternetProtocolPassword: This is applicable when a principal is authenticated
-        through the use of a provided IP address, in addition to a username/password.'
-      - 'Kerberos: This is applicable when the principal has authenticated using a
-        password to a local authentication authority, in order to acquire a Kerberos
-        ticket.'
-      - 'MobileOneFactorUnregistered: This indicates authentication of the mobile
-        device without requiring explicit end-user interaction.'
-      - 'MobileTwoFactorUnregistered: This indicates two-factor based authentication
-        during mobile customer registration process, such as secure device and user
-        PIN.'
-      - 'MobileOneFactorContract: Reflects mobile contract customer registration procedures
-        and a single factor authentication.'
-      - 'MobileTwoFactorContract: Reflects mobile contract customer registration procedures
-        and a two-factor based authentication.'
-      - 'Password: This class is applicable when a principal authenticates using password
-        over unprotected http session.'
-      - 'PasswordProtectedTransport: This class is applicable when a principal authenticates
-        to an authentication authority through the presentation of a password over
-        a protected session.'
-      - 'PreviousSession: This class is applicable when a principal had authenticated
-        to an authentication authority at some point in the past using any authentication
-        context.'
-      - 'X509: This indicates that the principal authenticated by means of a digital
-        signature where the key was validated as part of an X.509 Public Key Infrastructure.'
-      - 'PGP: This indicates that the principal authenticated by means of a digital
-        signature where the key was validated as part of a PGP Public Key Infrastructure.'
-      - 'SPKI: This indicates that the principal authenticated by means of a digital
-        signature where the key was validated via an SPKI Infrastructure.'
-      - 'XMLDSig: This indicates that the principal authenticated by means of a digital
-        signature according to the processing rules specified in the XML Digital Signature
-        specification.'
-      - 'Smartcard: This indicates that the principal has authenticated using smartcard.'
-      - 'SmartcardPKI: This class is applicable when a principal authenticates to
-        an authentication authority through a two-factor authentication mechanism
-        using a smartcard with enclosed private key and a PIN.'
-      - 'SoftwarePKI: This class is applicable when a principal uses an X.509 certificate
-        stored in software to authenticate to the authentication authority.'
-      - 'Telephony: This class is used to indicate that the principal authenticated
-        via the provision of a fixed-line telephone number, transported via a telephony
-        protocol such as ADSL.'
-      - 'NomadTelephony: Indicates that the principal is "roaming" and authenticates
-        via the means of the line number, a user suffix, and a password element.'
-      - 'PersonalTelephony: This class is used to indicate that the principal authenticated
-        via the provision of a fixed-line telephone.'
-      - 'AuthenticatedTelephony: Indicates that the principal authenticated via the
-        means of the line number, a user suffix, and a password element.'
-      - 'SecureRemotePassword: This class is applicable when the authentication was
-        performed by means of Secure Remote Password.'
-      - 'TLSClient: This class indicates that the principal authenticated by means
-        of a client certificate, secured with the SSL/TLS transport.'
-      - 'TimeSyncToken: This is applicable when a principal authenticates through
-        a time synchronization token.'
-      - 'Unspecified: This indicates that the authentication was performed by unspecified
-        means.'
-      - 'Windows: This indicates that Windows integrated authentication is utilized
-        for authentication.'
-    type: list
-    elements: str
     choices:
       - InternetProtocol
       - InternetProtocolPassword
@@ -236,6 +173,69 @@ options:
       - TimeSyncToken
       - Unspecified
       - Windows
+    description:
+      - This element specifies the authentication class types that are requested from
+        IdP (IdentityProvider).
+      - 'C(InternetProtocol): This is applicable when a principal is authenticated
+        through the use of a provided IP address.'
+      - 'C(InternetProtocolPassword): This is applicable when a principal is authenticated
+        through the use of a provided IP address, in addition to a username/password.'
+      - 'C(Kerberos): This is applicable when the principal has authenticated using
+        a password to a local authentication authority, in order to acquire a C(Kerberos)
+        ticket.'
+      - 'C(MobileOneFactorUnregistered): This indicates authentication of the mobile
+        device without requiring explicit end-user interaction.'
+      - 'C(MobileTwoFactorUnregistered): This indicates two-factor based authentication
+        during mobile customer registration process, such as secure device and user
+        PIN.'
+      - 'C(MobileOneFactorContract): Reflects mobile contract customer registration
+        procedures and a single factor authentication.'
+      - 'C(MobileTwoFactorContract): Reflects mobile contract customer registration
+        procedures and a two-factor based authentication.'
+      - 'C(Password): This class is applicable when a principal authenticates using
+        password over unprotected http session.'
+      - 'C(PasswordProtectedTransport): This class is applicable when a principal
+        authenticates to an authentication authority through the presentation of a
+        password over a protected session.'
+      - 'C(PreviousSession): This class is applicable when a principal had authenticated
+        to an authentication authority at some point in the past using any authentication
+        context.'
+      - 'C(X509): This indicates that the principal authenticated by means of a digital
+        signature where the key was validated as part of an X.509 Public Key Infrastructure.'
+      - 'C(PGP): This indicates that the principal authenticated by means of a digital
+        signature where the key was validated as part of a C(PGP) Public Key Infrastructure.'
+      - 'C(SPKI): This indicates that the principal authenticated by means of a digital
+        signature where the key was validated via an C(SPKI) Infrastructure.'
+      - 'C(XMLDSig): This indicates that the principal authenticated by means of a
+        digital signature according to the processing rules specified in the XML Digital
+        Signature specification.'
+      - 'C(Smartcard): This indicates that the principal has authenticated using smartcard.'
+      - 'C(SmartcardPKI): This class is applicable when a principal authenticates
+        to an authentication authority through a two-factor authentication mechanism
+        using a smartcard with enclosed private key and a PIN.'
+      - 'C(SoftwarePKI): This class is applicable when a principal uses an X.509 certificate
+        stored in software to authenticate to the authentication authority.'
+      - 'C(Telephony): This class is used to indicate that the principal authenticated
+        via the provision of a fixed-line telephone number, transported via a telephony
+        protocol such as ADSL.'
+      - 'C(NomadTelephony): Indicates that the principal is "roaming" and authenticates
+        via the means of the line number, a user suffix, and a password element.'
+      - 'C(PersonalTelephony): This class is used to indicate that the principal authenticated
+        via the provision of a fixed-line telephone.'
+      - 'C(AuthenticatedTelephony): Indicates that the principal authenticated via
+        the means of the line number, a user suffix, and a password element.'
+      - 'C(SecureRemotePassword): This class is applicable when the authentication
+        was performed by means of Secure Remote C(Password).'
+      - 'C(TLSClient): This class indicates that the principal authenticated by means
+        of a client certificate, secured with the SSL/TLS transport.'
+      - 'C(TimeSyncToken): This is applicable when a principal authenticates through
+        a time synchronization token.'
+      - 'C(Unspecified): This indicates that the authentication was performed by unspecified
+        means.'
+      - 'C(Windows): This indicates that C(Windows) integrated authentication is utilized
+        for authentication.'
+    type: list
+    elements: str
   customauthnctxclassref:
     description:
       - This element specifies the custom authentication class reference to be sent
@@ -253,42 +253,42 @@ options:
         in addition to extracted groups.
     type: str
   digestmethod:
+    choices:
+      - SHA1
+      - SHA256
     description:
       - Algorithm to be used to compute/verify digest for SAML transactions
     type: str
     default: SHA256
-    choices:
-      - SHA1
-      - SHA256
   enforceusername:
+    choices:
+      - true
+      - false
     description:
       - Option to choose whether the username that is extracted from SAML assertion
         can be edited in login page while doing second factor
     type: str
     default: true
+  forceauthn:
     choices:
       - true
       - false
-  forceauthn:
     description:
       - Option that forces authentication at the Identity Provider (IdP) that receives
         Citrix ADC's request
     type: str
-    choices:
-      - true
-      - false
   groupnamefield:
     description:
       - Name of the tag in assertion that contains user groups.
     type: str
   logoutbinding:
+    choices:
+      - REDIRECT
+      - POST
     description:
       - This element specifies the transport mechanism of saml logout messages.
     type: str
     default: POST
-    choices:
-      - REDIRECT
-      - POST
   logouturl:
     description:
       - SingleLogout URL on IdP to which logoutRequest will be sent on Citrix ADC
@@ -328,30 +328,30 @@ options:
       - set authentication samlAction samlsp -relaystateRule 'AAA.LOGIN.RELAYSTATE.REGEX_MATCH(re#http://<regex>.com/#)'.
     type: str
   requestedauthncontext:
-    description:
-      - This element specifies the authentication context requirements of authentication
-        statements returned in the response.
-    type: str
-    default: exact
     choices:
       - exact
       - minimum
       - maximum
       - better
+    description:
+      - This element specifies the authentication context requirements of authentication
+        statements returned in the response.
+    type: str
+    default: exact
   samlacsindex:
     description:
       - Index/ID of the metadata entry corresponding to this configuration.
     type: int
     default: 255
   samlbinding:
-    description:
-      - This element specifies the transport mechanism of saml messages.
-    type: str
-    default: POST
     choices:
       - REDIRECT
       - POST
       - ARTIFACT
+    description:
+      - This element specifies the transport mechanism of saml messages.
+    type: str
+    default: POST
   samlidpcertname:
     description:
       - Name of the SSL certificate used to verify responses from SAML Identity Provider
@@ -368,47 +368,47 @@ options:
         is present then this filed should be empty
     type: str
   samlrejectunsignedassertion:
+    choices:
+      - true
+      - false
+      - STRICT
     description:
       - Reject unsigned SAML assertions. ON option results in rejection of Assertion
         that is received without signature. STRICT option ensures that both Response
         and Assertion are signed. OFF allows unsigned Assertions.
     type: str
     default: true
-    choices:
-      - true
-      - false
-      - STRICT
   samlsigningcertname:
     description:
       - Name of the SSL certificate to sign requests from ServiceProvider (SP) to
         Identity Provider (IdP).
     type: str
   samltwofactor:
-    description:
-      - Option to enable second factor after SAML
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to enable second factor after SAML
+    type: str
   samluserfield:
     description:
       - SAML user ID, as given in the SAML assertion.
     type: str
   sendthumbprint:
-    description:
-      - Option to send thumbprint instead of x509 certificate in SAML request
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to send thumbprint instead of x509 certificate in SAML request
+    type: str
   signaturealg:
+    choices:
+      - RSA-SHA1
+      - RSA-SHA256
     description:
       - Algorithm to be used to sign/verify SAML transactions
     type: str
     default: RSA-SHA256
-    choices:
-      - RSA-SHA1
-      - RSA-SHA256
   skewtime:
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
@@ -425,12 +425,12 @@ options:
       - set authentication samlaction <actionname> -stateChecks 'HTTP.REQ.HOSTNAME.EQ("https://fqdn.com/")'
     type: str
   storesamlresponse:
-    description:
-      - Option to store entire SAML Response through the life of user session.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to store entire SAML Response through the life of user session.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,23 +24,23 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   authentication:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Authentication needs to be disabled for searching user object without performing
         authentication.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authenticationtype:
+    choices:
+      - CITRIXCONNECTOR
+      - ATHENA
     description:
       - Type of the Citrix Authentication implementation. Default implementation uses
         Citrix Cloud Connector.
     type: str
     default: CITRIXCONNECTOR
-    choices:
-      - CITRIXCONNECTOR
-      - ATHENA
   name:
     description:
       - Name for the new Citrix Authentication action. Must begin with an ASCII alphanumeric

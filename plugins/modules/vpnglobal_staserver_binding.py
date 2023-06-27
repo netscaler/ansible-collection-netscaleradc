@@ -32,12 +32,12 @@ options:
         current policy rule evaluates to TRUE.
     type: str
   staaddresstype:
-    description:
-      - Type of the STA server address(ipv4/v6).
-    type: str
     choices:
       - IPV4
       - IPV6
+    description:
+      - Type of the STA server address(ipv4/v6).
+    type: str
   staserver:
     description:
       - Configured Secure Ticketing Authority (STA) server.

@@ -43,21 +43,21 @@ options:
         same name, all such entries are associated with the SNMPv3 group.
     type: str
   securitylevel:
+    choices:
+      - noAuthNoPriv
+      - authNoPriv
+      - authPriv
     description:
       - 'Security level required for communication between the Citrix ADC and the
         SNMPv3 users who belong to the group. Specify one of the following options:'
-      - noAuthNoPriv. Require neither authentication nor encryption.
-      - authNoPriv. Require authentication but no encryption.
-      - authPriv. Require authentication and encryption.
+      - C(noAuthNoPriv). Require neither authentication nor encryption.
+      - C(authNoPriv). Require authentication but no encryption.
+      - C(authPriv). Require authentication and encryption.
       - 'Note: If you specify authentication, you must specify an encryption algorithm
         when you assign an SNMPv3 user to the group. If you also specify encryption,
         you must assign both an authentication and an encryption algorithm for each
         group member.'
     type: str
-    choices:
-      - noAuthNoPriv
-      - authNoPriv
-      - authPriv
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

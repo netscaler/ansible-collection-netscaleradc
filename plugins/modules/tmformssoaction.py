@@ -45,15 +45,15 @@ options:
         example, name1=value1&name2=value2).
     type: str
   nvtype:
-    description:
-      - Type of processing of the name-value pair. If you specify STATIC, the values
-        configured by the administrator are used. For DYNAMIC, the response is parsed,
-        and the form is extracted and then submitted.
-    type: str
-    default: DYNAMIC
     choices:
       - STATIC
       - DYNAMIC
+    description:
+      - Type of processing of the name-value pair. If you specify C(STATIC), the values
+        configured by the administrator are used. For C(DYNAMIC), the response is
+        parsed, and the form is extracted and then submitted.
+    type: str
+    default: DYNAMIC
   passwdfield:
     description:
       - Name of the form field in which the user types in the password.
@@ -68,14 +68,14 @@ options:
       - Expression, that checks to see if single sign-on is successful.
     type: str
   submitmethod:
+    choices:
+      - GET
+      - POST
     description:
       - HTTP method used by the single sign-on form to send the logon credentials
         to the logon server. Applies only to STATIC name-value type.
     type: str
     default: GET
-    choices:
-      - GET
-      - POST
   userfield:
     description:
       - Name of the form field in which the user types in the user ID.

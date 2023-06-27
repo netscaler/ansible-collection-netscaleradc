@@ -81,13 +81,13 @@ options:
         on URLs that match the resUrlFrom pattern.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable this action.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

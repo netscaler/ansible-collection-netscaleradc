@@ -886,7 +886,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Source for the maximum record size value. If ENABLED, the value is taken from the PMTU table. If DISABLED, the value is taken from the profile.
+      Source for the maximum record size value. If \ :literal:`ENABLED`\ , the value is taken from the PMTU table. If \ :literal:`DISABLED`\ , the value is taken from the profile.
 
 
       .. rst-class:: ansible-option-line

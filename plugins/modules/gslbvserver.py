@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging appflow flow information
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   backupip:
     description:
       - The IP address of the backup service for the specified domain name. Used when
@@ -38,11 +38,6 @@ options:
         virtual servers is down.
     type: str
   backuplbmethod:
-    description:
-      - Backup load balancing method. Becomes operational if the primary load balancing
-        method fails or cannot be used. Valid only if the primary method is based
-        on either round-trip time (RTT) or static proximity.
-    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -54,6 +49,11 @@ options:
       - RTT
       - CUSTOMLOAD
       - API
+    description:
+      - Backup load balancing method. Becomes operational if the primary load balancing
+        method fails or cannot be used. Valid only if the primary method is based
+        on either round-trip time (C(RTT)) or static proximity.
+    type: str
   backupsessiontimeout:
     description:
       - A non zero value enables the feature whose minimum value is 2 minutes. The
@@ -71,12 +71,15 @@ options:
       - Any comments that you might want to associate with the GSLB virtual server.
     type: str
   considereffectivestate:
+    choices:
+      - NONE
+      - STATE_ONLY
     description:
       - 'If the primary state of all bound GSLB services is DOWN, consider the effective
         states of all the GSLB services, obtained through the Metrics Exchange Protocol
         (MEP), when determining the state of the GSLB virtual server. To consider
-        the effective state, set the parameter to STATE_ONLY. To disregard the effective
-        state, set the parameter to NONE. '
+        the effective state, set the parameter to C(STATE_ONLY). To disregard the
+        effective state, set the parameter to C(NONE). '
       - ''
       - The effective state of a GSLB service is the ability of the corresponding
         virtual server to serve traffic. The effective state of the load balancing
@@ -84,9 +87,6 @@ options:
         one virtual server in the backup chain of virtual servers is in the UP state.
     type: str
     default: NONE
-    choices:
-      - NONE
-      - STATE_ONLY
   cookie_domain:
     description:
       - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
@@ -97,31 +97,35 @@ options:
       - Timeout, in minutes, for the GSLB site cookie.
     type: int
   disableprimaryondown:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Continue to direct traffic to the backup chain even after the primary GSLB
         virtual server returns to the UP state. Used when spillover is configured
         for the virtual server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dnsrecordtype:
-    description:
-      - DNS record type to associate with the GSLB virtual server's domain name.
-    type: str
-    default: A
     choices:
       - A
       - AAAA
       - CNAME
       - NAPTR
+    description:
+      - DNS record type to associate with the GSLB virtual server's domain name.
+    type: str
+    default: A
   domainname:
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
     type: str
   dynamicweight:
+    choices:
+      - SERVICECOUNT
+      - SERVICEWEIGHT
+      - DISABLED
     description:
       - Specify if the appliance should consider the service count, service weights,
         or ignore both when using weight-based load balancing methods. The state of
@@ -129,11 +133,10 @@ options:
         the service.
     type: str
     default: DISABLED
-    choices:
-      - SERVICECOUNT
-      - SERVICEWEIGHT
-      - DISABLED
   ecs:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If enabled, respond with EDNS Client Subnet (ECS) option in the response for
         a DNS query with ECS. The ECS address will be used for persistence and spillover
@@ -141,39 +144,32 @@ options:
         ignored if ECS is enabled.
     type: str
     default: DISABLED
+  ecsaddrvalidation:
     choices:
       - ENABLED
       - DISABLED
-  ecsaddrvalidation:
     description:
       - Validate if ECS address is a private or unroutable address and in such cases,
         use the LDNS IP.
     type: str
     default: DISABLED
+  edr:
     choices:
       - ENABLED
       - DISABLED
-  edr:
     description:
       - Send clients an empty DNS response when the GSLB virtual server is DOWN.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   iptype:
+    choices:
+      - IPV4
+      - IPV6
     description:
       - The IP type for this GSLB vserver.
     type: str
     default: IPV4
-    choices:
-      - IPV4
-      - IPV6
   lbmethod:
-    description:
-      - Load balancing method for the GSLB virtual server.
-    type: str
-    default: LEASTCONNECTION
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -185,14 +181,18 @@ options:
       - RTT
       - CUSTOMLOAD
       - API
+    description:
+      - Load balancing method for the GSLB virtual server.
+    type: str
+    default: LEASTCONNECTION
   mir:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Include multiple IP addresses in the DNS responses sent to clients.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - Name for the GSLB virtual server. Must begin with an ASCII alphanumeric or
@@ -229,15 +229,15 @@ options:
         virtual server.
     type: int
   persistencetype:
+    choices:
+      - SOURCEIP
+      - NONE
     description:
       - 'Use source IP address based persistence for the virtual server. '
       - After the load balancing method selects a service for the first packet, the
         IP address received in response to the DNS query is used for subsequent requests
         from the same client.
     type: str
-    choices:
-      - SOURCEIP
-      - NONE
   persistmask:
     description:
       - The optional IPv4 network mask applied to IPv4 addresses to establish source
@@ -266,9 +266,6 @@ options:
       - Name of the GSLB service for which to change the weight.
     type: str
   servicetype:
-    description:
-      - Protocol used by services bound to the virtual server.
-    type: str
     choices:
       - HTTP
       - FTP
@@ -288,6 +285,9 @@ options:
       - MYSQL
       - MSSQL
       - ORACLE
+    description:
+      - Protocol used by services bound to the virtual server.
+    type: str
   sitedomainttl:
     description:
       - TTL, in seconds, for all internally created site domains (created when a site
@@ -295,49 +295,49 @@ options:
         server.
     type: int
   sobackupaction:
-    description:
-      - Action to be performed if spillover is to take effect, but no backup chain
-        to spillover is usable or exists
-    type: str
     choices:
       - DROP
       - ACCEPT
       - REDIRECT
-  somethod:
     description:
-      - 'Type of threshold that, when exceeded, triggers spillover. Available settings
-        function as follows:'
-      - '* CONNECTION - Spillover occurs when the number of client connections exceeds
-        the threshold.'
-      - '* DYNAMICCONNECTION - Spillover occurs when the number of client connections
-        at the GSLB virtual server exceeds the sum of the maximum client (Max Clients)
-        settings for bound GSLB services. Do not specify a spillover threshold for
-        this setting, because the threshold is implied by the Max Clients settings
-        of the bound GSLB services.'
-      - '* BANDWIDTH - Spillover occurs when the bandwidth consumed by the GSLB virtual
-        server''s incoming and outgoing traffic exceeds the threshold. '
-      - '* HEALTH - Spillover occurs when the percentage of weights of the GSLB services
-        that are UP drops below the threshold. For example, if services gslbSvc1,
-        gslbSvc2, and gslbSvc3 are bound to a virtual server, with weights 1, 2, and
-        3, and the spillover threshold is 50%, spillover occurs if gslbSvc1 and gslbSvc3
-        or gslbSvc2 and gslbSvc3 transition to DOWN. '
-      - '* NONE - Spillover does not occur.'
+      - Action to be performed if spillover is to take effect, but no backup chain
+        to spillover is usable or exists
     type: str
+  somethod:
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
       - NONE
+    description:
+      - 'Type of threshold that, when exceeded, triggers spillover. Available settings
+        function as follows:'
+      - '* C(CONNECTION) - Spillover occurs when the number of client connections
+        exceeds the threshold.'
+      - '* C(DYNAMICCONNECTION) - Spillover occurs when the number of client connections
+        at the GSLB virtual server exceeds the sum of the maximum client (Max Clients)
+        settings for bound GSLB services. Do not specify a spillover threshold for
+        this setting, because the threshold is implied by the Max Clients settings
+        of the bound GSLB services.'
+      - '* C(BANDWIDTH) - Spillover occurs when the bandwidth consumed by the GSLB
+        virtual server''s incoming and outgoing traffic exceeds the threshold. '
+      - '* C(HEALTH) - Spillover occurs when the percentage of weights of the GSLB
+        services that are UP drops below the threshold. For example, if services gslbSvc1,
+        gslbSvc2, and gslbSvc3 are bound to a virtual server, with weights 1, 2, and
+        3, and the spillover threshold is 50%, spillover occurs if gslbSvc1 and gslbSvc3
+        or gslbSvc2 and gslbSvc3 transition to DOWN. '
+      - '* C(NONE) - Spillover does not occur.'
+    type: str
   sopersistence:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup GSLB virtual servers.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sopersistencetimeout:
     description:
       - Timeout for spillover persistence, in minutes.
@@ -351,26 +351,26 @@ options:
         not enter the percentage symbol).
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of the GSLB virtual server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   timeout:
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
     type: int
     default: 2
   toggleorder:
+    choices:
+      - ASCENDING
+      - DESCENDING
     description:
       - Configure this option to toggle order preference
     type: str
     default: ASCENDING
-    choices:
-      - ASCENDING
-      - DESCENDING
   tolerance:
     description:
       - Site selection tolerance, in milliseconds, for implementing the RTT load balancing
@@ -401,6 +401,126 @@ options:
     description:
       - Weight for the service.
     type: int
+  gslbvserver_domain_binding:
+    type: dict
+    description: Bindings for gslbvserver_domain_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbvserver_gslbservice_binding:
+    type: dict
+    description: Bindings for gslbvserver_gslbservice_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbvserver_gslbservicegroup_binding:
+    type: dict
+    description: Bindings for gslbvserver_gslbservicegroup_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbvserver_lbpolicy_binding:
+    type: dict
+    description: Bindings for gslbvserver_lbpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbvserver_spilloverpolicy_binding:
+    type: dict
+    description: Bindings for gslbvserver_spilloverpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

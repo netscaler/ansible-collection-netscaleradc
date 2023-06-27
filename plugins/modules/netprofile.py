@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   mbf:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Response will be sent using learnt info if enabled. When creating a netprofile,
         if you do not set this parameter, the netprofile inherits the global MBF setting
@@ -31,9 +34,6 @@ options:
         System > Settings > Configure modes > Configure Modes dialog box). However,
         you can override this setting after you create the netprofile
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - Name for the net profile. Must begin with a letter, number, or the underscore
@@ -43,44 +43,47 @@ options:
         that helps identify the net profile.
     type: str
   overridelsn:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - USNIP/USIP settings override LSN settings for configured
       - '              service/virtual server traffic..'
     type: str
     default: DISABLED
+  proxyprotocol:
     choices:
       - ENABLED
       - DISABLED
-  proxyprotocol:
     description:
       - Proxy Protocol Action (Enabled/Disabled)
     type: str
     default: DISABLED
+  proxyprotocolaftertlshandshake:
     choices:
       - ENABLED
       - DISABLED
-  proxyprotocolaftertlshandshake:
     description:
       - ADC doesnt look for proxy header before TLS handshake, if enabled. Proxy protocol
         parsed after TLS handshake
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   proxyprotocoltxversion:
-    description:
-      - Proxy Protocol Version (V1/V2)
-    type: str
-    default: V1
     choices:
       - V1
       - V2
+    description:
+      - Proxy Protocol Version (C(V1)/C(V2))
+    type: str
+    default: V1
   srcip:
     description:
       - IP address or the name of an IP set.
     type: str
   srcippersistency:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - When the net profile is associated with a virtual server or its bound services,
         this option enables the Citrix ADC to use the same  address, specified in
@@ -88,15 +91,60 @@ options:
         a particular client to the virtual server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
     type: int
+  netprofile_natrule_binding:
+    type: dict
+    description: Bindings for netprofile_natrule_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  netprofile_srcportset_binding:
+    type: dict
+    description: Bindings for netprofile_srcportset_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

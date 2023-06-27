@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   admserviceconnect:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter to enable/disable Citrix ADM Service Connect. This feature helps
         you discover your Citrix ADC instances effortlessly on Citrix ADM service
@@ -34,9 +37,6 @@ options:
         End User ServiceAgreement. View here [https://www.citrix.com/buy/licensing/agreements.html]
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

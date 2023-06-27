@@ -261,7 +261,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      The state of the CRL check parameter. (Mandatory/Optional)
+      The state of the CRL check parameter. (\ :literal:`Mandatory`\ /\ :literal:`Optional`\ )
 
 
       .. rst-class:: ansible-option-line
@@ -730,7 +730,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      The state of the OCSP check parameter. (Mandatory/Optional)
+      The state of the OCSP check parameter. (\ :literal:`Mandatory`\ /\ :literal:`Optional`\ )
 
 
       .. rst-class:: ansible-option-line

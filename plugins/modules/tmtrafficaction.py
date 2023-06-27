@@ -29,13 +29,13 @@ options:
         closed.
     type: int
   forcedtimeout:
-    description:
-      - Setting to start, stop or reset TM session force timer
-    type: str
     choices:
       - START
       - STOP
       - RESET
+    description:
+      - Setting to start, stop or reset TM session force timer
+    type: str
   forcedtimeoutval:
     description:
       - Time interval, in minutes, for which force timer should be set.
@@ -45,13 +45,13 @@ options:
       - Name of the configured form-based single sign-on profile.
     type: str
   initiatelogout:
+    choices:
+      - true
+      - false
     description:
       - Initiate logout for the traffic management (TM) session if the policy evaluates
         to true. The session is then terminated after two minutes.
     type: str
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - Kerberos constrained delegation account name
@@ -73,25 +73,25 @@ options:
       - expression that will be evaluated to obtain password for SingleSignOn
     type: str
   persistentcookie:
+    choices:
+      - true
+      - false
     description:
       - Use persistent cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
     type: str
-    choices:
-      - true
-      - false
   samlssoprofile:
     description:
       - Profile to be used for doing SAML SSO to remote relying party
     type: str
   sso:
-    description:
-      - Use single sign-on for the resource that the user is accessing now.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use single sign-on for the resource that the user is accessing now.
+    type: str
   userexpression:
     description:
       - expression that will be evaluated to obtain username for SingleSignOn

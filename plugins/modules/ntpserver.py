@@ -49,13 +49,13 @@ options:
         expressed as a power of 2.
     type: int
   preferredntpserver:
+    choices:
+      - true
+      - false
     description:
       - Preferred NTP server. The Citrix ADC chooses this NTP server for time synchronization
         among a set of correctly operating hosts.
     type: str
-    choices:
-      - true
-      - false
   serverip:
     description:
       - IP address of the NTP server.

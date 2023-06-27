@@ -24,31 +24,31 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   conmultiplex:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Use the same server-side connection for multiple client-side requests. Default
         is enabled.
     type: str
     default: ENABLED
+  enablecachingconmuxoff:
     choices:
       - ENABLED
       - DISABLED
-  enablecachingconmuxoff:
     description:
       - Enable caching when connection multiplexing is OFF.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   interpretquery:
+    choices:
+      - true
+      - false
     description:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
     type: str
     default: true
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - Name of the KCD account that is used for Windows authentication.
@@ -64,12 +64,12 @@ options:
         \ profile')."
     type: str
   stickiness:
-    description:
-      - If the queries are related to each other, forward to the same backend server.
-    type: str
     choices:
       - true
       - false
+    description:
+      - If the queries are related to each other, forward to the same backend server.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

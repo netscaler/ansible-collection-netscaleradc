@@ -26,10 +26,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   action:
-    description:
-      - Safe Object action types. (BLOCK | LOG | STATS | NONE)
-    type: list
-    elements: str
     choices:
       - none
       - block
@@ -37,13 +33,17 @@ options:
       - remove
       - stats
       - xout
-  alertonly:
     description:
-      - Send SNMP alert?
-    type: str
+      - Safe Object action types. (BLOCK | LOG | STATS | NONE)
+    type: list
+    elements: str
+  alertonly:
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_expression:
     description:
       - A regular expression that defines the Safe Object.
@@ -54,12 +54,12 @@ options:
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   maxmatchlength:
     description:
       - Maximum match length for a Safe Object expression.
@@ -73,23 +73,23 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
+    description:
+      - Specifies rule type of binding
+    type: str
   safeobject:
     description:
       - Name of the Safe Object.
     type: str
   state:
-    description:
-      - Enabled.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

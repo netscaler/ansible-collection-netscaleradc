@@ -24,83 +24,83 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   clientaudioredirection:
+    choices:
+      - DEFAULT
+      - DISABLED
     description:
       - Allow Default access/Disable applications hosted on the server to play sounds
         through a sound device installed on the client computer, also allows or prevents
         users to record audio input
     type: str
     default: DISABLED
+  clientclipboardredirection:
     choices:
       - DEFAULT
       - DISABLED
-  clientclipboardredirection:
     description:
       - Allow Default access/Disable the clipboard on the client device to be mapped
         to the clipboard on the server
     type: str
     default: DISABLED
+  clientcomportredirection:
     choices:
       - DEFAULT
       - DISABLED
-  clientcomportredirection:
     description:
       - Allow Default access/Disable COM port redirection to and from the client
     type: str
     default: DISABLED
+  clientdriveredirection:
     choices:
       - DEFAULT
       - DISABLED
-  clientdriveredirection:
     description:
       - Allow Default access/Disables drive redirection to and from the client
     type: str
     default: DISABLED
+  clientprinterredirection:
     choices:
       - DEFAULT
       - DISABLED
-  clientprinterredirection:
     description:
       - Allow Default access/Disable client printers to be mapped to a server when
         a user logs on to a session
     type: str
     default: DISABLED
+  clientusbdriveredirection:
     choices:
       - DEFAULT
       - DISABLED
-  clientusbdriveredirection:
     description:
       - Allow Default access/Disable the redirection of USB devices to and from the
         client
     type: str
     default: DISABLED
+  connectclientlptports:
     choices:
       - DEFAULT
       - DISABLED
-  connectclientlptports:
     description:
       - Allow Default access/Disable automatic connection of LPT ports from the client
         when the user logs on
     type: str
     default: DISABLED
+  localremotedatasharing:
     choices:
       - DEFAULT
       - DISABLED
-  localremotedatasharing:
     description:
       - Allow Default access/Disable file/data sharing via the Receiver for HTML5
     type: str
     default: DISABLED
+  multistream:
     choices:
       - DEFAULT
       - DISABLED
-  multistream:
     description:
       - Allow Default access/Disable the multistream feature for the specified users
     type: str
     default: DISABLED
-    choices:
-      - DEFAULT
-      - DISABLED
   name:
     description:
       - Name for the ICA accessprofile. Must begin with a letter, number, or the underscore

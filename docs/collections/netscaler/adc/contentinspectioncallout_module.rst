@@ -760,11 +760,11 @@ Parameters
 
       Available settings function as follows:
 
-      \* TEXT - Treat the returned value as a text string.
+      \* \ :literal:`TEXT`\  - Treat the returned value as a text string.
 
-      \* NUM - Treat the returned value as a number.
+      \* \ :literal:`NUM`\  - Treat the returned value as a number.
 
-      \* BOOL - Treat the returned value as a Boolean value.
+      \* \ :literal:`BOOL`\  - Treat the returned value as a Boolean value.
 
       Note: You cannot change the return type after it is set.
 
@@ -1015,7 +1015,7 @@ Parameters
 
       Type of the Content Inspection callout. It must be one of the following:
 
-      \* ICAP - Sends ICAP request to the configured ICAP server.
+      \* \ :literal:`ICAP`\  - Sends \ :literal:`ICAP`\  request to the configured \ :literal:`ICAP`\  server.
 
 
       .. rst-class:: ansible-option-line

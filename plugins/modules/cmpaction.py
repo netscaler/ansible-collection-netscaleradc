@@ -24,17 +24,22 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   addvaryheader:
+    choices:
+      - GLOBAL
+      - DISABLED
+      - ENABLED
     description:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
     type: str
     default: GLOBAL
-    choices:
-      - GLOBAL
-      - DISABLED
-      - ENABLED
   cmptype:
+    choices:
+      - compress
+      - gzip
+      - deflate
+      - nocompress
     description:
       - 'Type of compression performed by this action. '
       - 'Available settings function as follows: '
@@ -42,22 +47,17 @@ options:
         on the request header. Prefer GZIP.'
       - '* GZIP - Apply GZIP compression.'
       - '* DEFLATE - Apply DEFLATE compression.'
-      - '* NOCOMPRESS - Do not compress the response if the request matches a policy
+      - '* NOCOMPRESS - Do not C(compress) the response if the request matches a policy
         that uses this action.'
     type: str
-    choices:
-      - compress
-      - gzip
-      - deflate
-      - nocompress
   deltatype:
+    choices:
+      - PERURL
+      - PERPOLICY
     description:
       - The type of delta action (if delta type compression action is defined).
     type: str
     default: PERURL
-    choices:
-      - PERURL
-      - PERPOLICY
   name:
     description:
       - 'Name of the compression action. Must begin with an ASCII alphabetic or underscore

@@ -26,51 +26,51 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_value_expr_json_xss:
     description:
       - JSON_XSS key value expressions consistituting expressions for Keyword and
         SpecialString
     type: str
   as_value_type_json_xss:
-    description:
-      - JSON Command key value type. (Keyword | SpecialString)
-    type: str
     choices:
       - Tag
       - Attribute
       - Pattern
+    description:
+      - JSON Command key value type. (Keyword | SpecialString)
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   iskeyregex_json_xss:
-    description:
-      - Is a regular expression?
-    type: str
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - Is a regular expression?
+    type: str
   isvalueregex_json_xss:
-    description:
-      - Is a regular expression?
-    type: str
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - Is a regular expression?
+    type: str
   jsonxssurl:
     description:
       - A regular expression that designates a URL on the Json XSS URL list for which
@@ -91,19 +91,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

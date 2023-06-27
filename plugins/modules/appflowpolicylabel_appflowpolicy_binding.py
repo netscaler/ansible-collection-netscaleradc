@@ -45,12 +45,12 @@ options:
       - Name of the policy label to which to bind the policy.
     type: str
   labeltype:
-    description:
-      - Type of policy label to be invoked.
-    type: str
     choices:
       - vserver
       - policylabel
+    description:
+      - Type of policy label to be invoked.
+    type: str
   policyname:
     description:
       - Name of the AppFlow policy.

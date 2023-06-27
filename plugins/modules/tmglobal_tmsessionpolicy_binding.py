@@ -26,19 +26,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
-  feature:
     description:
-      - The feature to be checked while applying this config
-    type: str
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
+  feature:
     choices:
       - WL
       - WebLogging
@@ -111,6 +108,9 @@ options:
       - ContentInspection
       - Bot
       - APIGateway
+    description:
+      - The feature to be checked while applying this config
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated

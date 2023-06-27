@@ -24,27 +24,27 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   defaultauthorizationaction:
+    choices:
+      - ALLOW
+      - DENY
     description:
       - Allow or deny access to content for which there is no specific authorization
         policy.
     type: str
-    choices:
-      - ALLOW
-      - DENY
   homepage:
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
     type: str
   httponlycookie:
+    choices:
+      - true
+      - false
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
     type: str
     default: true
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - Kerberos constrained delegation account name
@@ -61,6 +61,9 @@ options:
         quotation marks (for example, "my action" or 'my action').
     type: str
   persistentcookie:
+    choices:
+      - true
+      - false
     description:
       - 'Enable or disable persistent SSO cookies for the traffic management (TM)
         session. A persistent cookie remains on the user device and is sent with each
@@ -69,9 +72,6 @@ options:
       - 'Note: If persistent cookie is enabled, make sure you set the persistent cookie
         validity.'
     type: str
-    choices:
-      - true
-      - false
   persistentcookievalidity:
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
@@ -83,6 +83,9 @@ options:
         the user is disconnected and must reauthenticate to access intranet resources.
     type: int
   sso:
+    choices:
+      - true
+      - false
     description:
       - Use single sign-on (SSO) to log users on to all web applications automatically
         after they authenticate, or pass users to the web application logon page to
@@ -91,17 +94,14 @@ options:
         DIGEST, and NTLM (without Negotiate NTLM2 Key or Negotiate Sign Flag). Use
         TM TrafficAction to configure SSO for these authentication types.
     type: str
-    choices:
-      - true
-      - false
   ssocredential:
+    choices:
+      - PRIMARY
+      - SECONDARY
     description:
       - Use the primary or secondary authentication credentials for single sign-on
         (SSO).
     type: str
-    choices:
-      - PRIMARY
-      - SECONDARY
   ssodomain:
     description:
       - Domain to use for single sign-on (SSO).

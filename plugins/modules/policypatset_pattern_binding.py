@@ -33,34 +33,31 @@ options:
         DELETE_ALL, INSERT_AFTER_ALL, and INSERT_BEFORE_ALL, is three characters.'
     type: str
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
+    description:
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
   charset:
+    choices:
+      - ASCII
+      - UTF_8
     description:
       - Character set associated with the characters in the string.
       - 'Note: UTF-8 characters can be entered directly (if the UI supports it) or
         can be encoded as a sequence of hexadecimal bytes ''\xNN''. For example, the
         UTF-8 character '''' can be encoded as ''\xC3\xBC''.'
     type: str
-    choices:
-      - ASCII
-      - UTF_8
   comment:
     description:
       - Any comments to preserve information about this patset or a pattern bound
         to this patset.
     type: str
   feature:
-    description:
-      - The feature to be checked while applying this config
-    type: str
     choices:
       - WL
       - WebLogging
@@ -133,6 +130,9 @@ options:
       - ContentInspection
       - Bot
       - APIGateway
+    description:
+      - The feature to be checked while applying this config
+    type: str
   index:
     description:
       - The index of the string associated with the patset.

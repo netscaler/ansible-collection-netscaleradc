@@ -42,21 +42,21 @@ options:
         ( ), at (@), equals (=), colon (:), and underscore characters.
     type: str
   type:
-    description:
-      - 'Type of video optimization action. Available settings function as follows:'
-      - '* clear_text_pd - Cleartext PD type is detected.'
-      - '* clear_text_abr - Cleartext ABR is detected.'
-      - '* encrypted_abr - Encrypted ABR is detected.'
-      - '* trigger_enc_abr - Possible encrypted ABR is detected.'
-      - '* trigger_body_detection - Possible cleartext ABR is detected. Triggers body
-        content detection.'
-    type: str
     choices:
       - clear_text_pd
       - clear_text_abr
       - encrypted_abr
       - trigger_enc_abr
       - trigger_body_detection
+    description:
+      - 'Type of video optimization action. Available settings function as follows:'
+      - '* C(clear_text_pd) - Cleartext PD type is detected.'
+      - '* C(clear_text_abr) - Cleartext ABR is detected.'
+      - '* C(encrypted_abr) - Encrypted ABR is detected.'
+      - '* C(trigger_enc_abr) - Possible encrypted ABR is detected.'
+      - '* C(trigger_body_detection) - Possible cleartext ABR is detected. Triggers
+        body content detection.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

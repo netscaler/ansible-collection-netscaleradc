@@ -28,23 +28,23 @@ options:
       - Web address for the bookmark link.
     type: str
   applicationtype:
-    description:
-      - The type of application this VPN URL represents. Possible values are CVPN/SaaS/VPN
-    type: str
     choices:
       - CVPN
       - VPN
       - SaaS
+    description:
+      - The type of application this C(VPN) URL represents. Possible values are C(CVPN)/C(SaaS)/C(VPN)
+    type: str
   clientlessaccess:
+    choices:
+      - true
+      - false
     description:
       - If clientless access to the resource hosting the link is allowed, also use
         clientless access for the bookmarked web address in the Secure Client Access
         based session. Allows single sign-on and other HTTP processing on NetScaler
         Gateway for HTTPS resources.
     type: str
-    choices:
-      - true
-      - false
   comment:
     description:
       - Any comments associated with the bookmark link.
@@ -77,13 +77,13 @@ options:
       - Profile to be used for doing SAML SSO
     type: str
   ssotype:
-    description:
-      - Single sign on type for unified gateway
-    type: str
     choices:
       - unifiedgateway
       - selfauth
       - samlauth
+    description:
+      - Single sign on type for unified gateway
+    type: str
   vservername:
     description:
       - Name of the associated vserver to handle selfAuth SSO

@@ -28,14 +28,14 @@ options:
       - An extended ACL defined for the RNAT entry.
     type: str
   connfailover:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Synchronize all connection-related information for the RNAT sessions with
         the secondary ADC in a high availability (HA) pair.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - Name for the RNAT4 rule. Must begin with a letter, number, or the underscore
@@ -80,14 +80,14 @@ options:
         UDP protocols.
     type: int
   srcippersistency:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
@@ -95,14 +95,110 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   useproxyport:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable source port proxying, which enables the Citrix ADC to use the RNAT
         ips using proxied source port.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
+  rnat6_nsip6_binding:
+    type: dict
+    description: Bindings for rnat6_nsip6_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  rnat_nsip_binding:
+    type: dict
+    description: Bindings for rnat_nsip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  rnat_retainsourceportset_binding:
+    type: dict
+    description: Bindings for rnat_retainsourceportset_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  rnatglobal_auditsyslogpolicy_binding:
+    type: dict
+    description: Bindings for rnatglobal_auditsyslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

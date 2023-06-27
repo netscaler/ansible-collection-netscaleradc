@@ -24,54 +24,55 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging of AppFlow information.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   arp:
-    description:
-      - Use ARP to determine the destination MAC address.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use ARP to determine the destination MAC address.
+    type: str
   backendssl:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Decides whether the backend connection made by Citrix ADC to the origin server
         will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   backupvserver:
     description:
       - Name of the backup virtual server to which traffic is forwarded if the active
         server becomes unavailable.
     type: str
   cachetype:
-    description:
-      - 'Mode of operation for the cache redirection virtual server. Available settings
-        function as follows:'
-      - '* TRANSPARENT - Intercept all traffic flowing to the appliance and apply
-        cache redirection policies to determine whether content should be served from
-        the cache or from the origin server.'
-      - '* FORWARD - Resolve the hostname of the incoming request, by using a DNS
-        server, and forward requests for non-cacheable content to the resolved origin
-        servers. Cacheable requests are sent to the configured cache servers.'
-      - '* REVERSE - Configure reverse proxy caches for specific origin servers. Incoming
-        traffic directed to the reverse proxy can either be served from a cache server
-        or be sent to the origin server with or without modification to the URL.'
-      - The default value for cache type is TRANSPARENT if service is HTTP or SSL
-        whereas the default cache type is FORWARD if the service is HDX.
-    type: str
     choices:
       - TRANSPARENT
       - REVERSE
       - FORWARD
+    description:
+      - 'Mode of operation for the cache redirection virtual server. Available settings
+        function as follows:'
+      - '* C(TRANSPARENT) - Intercept all traffic flowing to the appliance and apply
+        cache redirection policies to determine whether content should be served from
+        the cache or from the origin server.'
+      - '* C(FORWARD) - Resolve the hostname of the incoming request, by using a DNS
+        server, and forward requests for non-cacheable content to the resolved origin
+        servers. Cacheable requests are sent to the configured cache servers.'
+      - '* C(REVERSE) - Configure reverse proxy caches for specific origin servers.
+        Incoming traffic directed to the reverse proxy can either be served from a
+        cache server or be sent to the origin server with or without modification
+        to the URL.'
+      - The default value for cache type is C(TRANSPARENT) if service is HTTP or SSL
+        whereas the default cache type is C(FORWARD) if the service is HDX.
+    type: str
   cachevserver:
     description:
       - Name of the default cache virtual server to which to redirect requests (the
@@ -91,24 +92,24 @@ options:
         virtual server.
     type: str
   disableprimaryondown:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Continue sending traffic to a backup virtual server even after the primary
         virtual server comes UP from the DOWN state.
     type: str
     default: DISABLED
+  disallowserviceaccess:
     choices:
       - ENABLED
       - DISABLED
-  disallowserviceaccess:
     description:
       - This is effective when a FORWARD type cr vserver is added. By default, this
-        parameter is DISABLED. When it is ENABLED, backend services cannot be accessed
-        through a FORWARD type cr vserver.
+        parameter is C(DISABLED). When it is C(ENABLED), backend services cannot be
+        accessed through a FORWARD type cr vserver.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dnsvservername:
     description:
       - Name of the DNS virtual server that resolves domain names arriving at the
@@ -126,42 +127,42 @@ options:
         target domain.
     type: str
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Perform delayed cleanup of connections to this virtual server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   format:
-    description:
-      - '0'
-    type: str
     choices:
       - true
       - false
+    description:
+      - '0'
+    type: str
   ghost:
-    description:
-      - '0'
-    type: str
     choices:
       - true
       - false
+    description:
+      - '0'
+    type: str
   httpprofilename:
     description:
       - Name of the profile containing HTTP configuration information for cache redirection
         virtual server.
     type: str
   icmpvsrresponse:
-    description:
-      - Criterion for responding to PING requests sent to this virtual server. If
-        ACTIVE, respond only if the virtual server is available. If PASSIVE, respond
-        even if the virtual server is not available.
-    type: str
-    default: PASSIVE
     choices:
       - PASSIVE
       - ACTIVE
+    description:
+      - Criterion for responding to PING requests sent to this virtual server. If
+        C(ACTIVE), respond only if the virtual server is available. If C(PASSIVE),
+        respond even if the virtual server is not available.
+    type: str
+    default: PASSIVE
   ipset:
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
@@ -175,12 +176,12 @@ options:
         (*) to specify a wildcard virtual server address.'
     type: str
   l2conn:
-    description:
-      - Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.
+    type: str
   listenpolicy:
     description:
       - String specifying the listen policy for the cache redirection virtual server.
@@ -194,12 +195,12 @@ options:
     type: int
     default: 101
   map:
-    description:
-      - Obsolete.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Obsolete.
+    type: str
   name:
     description:
       - Name for the cache redirection virtual server. Must begin with an ASCII alphanumeric
@@ -226,6 +227,9 @@ options:
         name').
     type: str
   onpolicymatch:
+    choices:
+      - CACHE
+      - ORIGIN
     description:
       - Redirect requests that match the policy to either the cache or the origin
         server, as specified.
@@ -233,59 +237,56 @@ options:
         POLICY.'
     type: str
     default: ORIGIN
-    choices:
-      - CACHE
-      - ORIGIN
   originusip:
+    choices:
+      - true
+      - false
     description:
       - 'Use the client''s IP address as the source IP address in requests sent to
         the origin server.  '
       - 'Note: You can enable this parameter to implement fully transparent CR deployment.'
     type: str
-    choices:
-      - true
-      - false
   port:
     description:
       - Port number of the virtual server.
     type: int
     default: 80
   precedence:
+    choices:
+      - RULE
+      - URL
     description:
-      - 'Type of policy (URL or RULE) that takes precedence on the cache redirection
+      - 'Type of policy (C(URL) or C(RULE)) that takes precedence on the cache redirection
         virtual server. Applies only to cache redirection virtual servers that have
-        both URL and RULE based policies. If you specify URL, URL based policies are
-        applied first, in the following order:'
-      - 1.   Domain and exact URL
+        both C(URL) and C(RULE) based policies. If you specify C(URL), C(URL) based
+        policies are applied first, in the following order:'
+      - 1.   Domain and exact C(URL)
       - 2.   Domain, prefix and suffix
       - 3.   Domain and suffix
       - 4.   Domain and prefix
       - 5.   Domain only
-      - 6.   Exact URL
+      - 6.   Exact C(URL)
       - 7.   Prefix and suffix
       - 8.   Suffix only
       - 9.   Prefix only
       - 10.  Default
-      - If you specify RULE, the rule based policies are applied before URL based
-        policies are applied.
+      - If you specify C(RULE), the rule based policies are applied before C(URL)
+        based policies are applied.
     type: str
     default: RULE
-    choices:
-      - RULE
-      - URL
   probeport:
     description:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
     type: int
   probeprotocol:
-    description:
-      - Citrix ADC provides support for external health check of the vserver status.
-        Select HTTP or TCP probes for healthcheck
-    type: str
     choices:
       - TCP
       - HTTP
+    description:
+      - Citrix ADC provides support for external health check of the vserver status.
+        Select C(HTTP) or C(TCP) probes for healthcheck
+    type: str
   probesuccessresponsecode:
     description:
       - HTTP code to return in SUCCESS case.
@@ -299,25 +300,28 @@ options:
     type: int
     default: 1
   redirect:
-    description:
-      - 'Type of cache server to which to redirect HTTP requests. Available settings
-        function as follows:'
-      - '* CACHE - Direct all requests to the cache.'
-      - '* POLICY - Apply the cache redirection policy to determine whether the request
-        should be directed to the cache or to the origin.'
-      - '* ORIGIN - Direct all requests to the origin server.'
-    type: str
-    default: POLICY
     choices:
       - CACHE
       - POLICY
       - ORIGIN
+    description:
+      - 'Type of cache server to which to redirect HTTP requests. Available settings
+        function as follows:'
+      - '* C(CACHE) - Direct all requests to the cache.'
+      - '* C(POLICY) - Apply the cache redirection policy to determine whether the
+        request should be directed to the cache or to the origin.'
+      - '* C(ORIGIN) - Direct all requests to the origin server.'
+    type: str
+    default: POLICY
   redirecturl:
     description:
       - URL of the server to which to redirect traffic if the cache redirection virtual
         server configured on the Citrix ADC becomes unavailable.
     type: str
   reuse:
+    choices:
+      - true
+      - false
     description:
       - 'Reuse TCP connections to the origin server across client connections. Do
         not set this parameter unless the Service Type parameter is set to HTTP. If
@@ -330,33 +334,30 @@ options:
         to cache servers are reused.
     type: str
     default: true
-    choices:
-      - true
-      - false
   rhistate:
-    description:
-      - A host route is injected according to the setting on the virtual servers
-      - '            * If set to PASSIVE on all the virtual servers that share the
-        IP address, the appliance always injects the hostroute.'
-      - '            * If set to ACTIVE on all the virtual servers that share the
-        IP address, the appliance injects even if one virtual server is UP.'
-      - '            * If set to ACTIVE on some virtual servers and PASSIVE on the
-        others, the appliance, injects even if one virtual server set to ACTIVE is
-        UP.'
-    type: str
-    default: PASSIVE
     choices:
       - PASSIVE
       - ACTIVE
-  servicetype:
     description:
-      - Protocol (type of service) handled by the virtual server.
+      - A host route is injected according to the setting on the virtual servers
+      - '            * If set to C(PASSIVE) on all the virtual servers that share
+        the IP address, the appliance always injects the hostroute.'
+      - '            * If set to C(ACTIVE) on all the virtual servers that share the
+        IP address, the appliance injects even if one virtual server is UP.'
+      - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
+        on the others, the appliance, injects even if one virtual server set to C(ACTIVE)
+        is UP.'
     type: str
+    default: PASSIVE
+  servicetype:
     choices:
       - HTTP
       - SSL
       - NNTP
       - HDX
+    description:
+      - Protocol (type of service) handled by the virtual server.
+    type: str
   sopersistencetimeout:
     description:
       - Time-out, in minutes, for spillover persistence.
@@ -376,13 +377,13 @@ options:
         expression.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the cache redirection virtual server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tcpprobeport:
     description:
       - Port number for external TCP probe. NetScaler provides support for external
@@ -401,33 +402,393 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   useoriginipportforcache:
+    choices:
+      - true
+      - false
     description:
       - Use origin ip/port while forwarding request to the cache. Change the destination
         IP, destination port of the request came to CR vserver to Origin IP and Origin
         Port and forward it to Cache
     type: str
+  useportrange:
     choices:
       - true
       - false
-  useportrange:
     description:
       - Use a port number from the port range (set by using the set ns param command,
         or in the Create Virtual Server (Cache Redirection) dialog box) as the source
         port in the requests sent to the origin server.
     type: str
+  via:
     choices:
       - true
       - false
-  via:
     description:
       - Insert a via header in each HTTP request. In the case of a cache miss, the
         request is redirected from the cache server to the origin server. This header
         indicates whether the request is being sent from a cache server.
     type: str
     default: true
-    choices:
-      - true
-      - false
+  crvserver_analyticsprofile_binding:
+    type: dict
+    description: Bindings for crvserver_analyticsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_appflowpolicy_binding:
+    type: dict
+    description: Bindings for crvserver_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_appfwpolicy_binding:
+    type: dict
+    description: Bindings for crvserver_appfwpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_appqoepolicy_binding:
+    type: dict
+    description: Bindings for crvserver_appqoepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_cachepolicy_binding:
+    type: dict
+    description: Bindings for crvserver_cachepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_cmppolicy_binding:
+    type: dict
+    description: Bindings for crvserver_cmppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_crpolicy_binding:
+    type: dict
+    description: Bindings for crvserver_crpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_cspolicy_binding:
+    type: dict
+    description: Bindings for crvserver_cspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_feopolicy_binding:
+    type: dict
+    description: Bindings for crvserver_feopolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_icapolicy_binding:
+    type: dict
+    description: Bindings for crvserver_icapolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_lbvserver_binding:
+    type: dict
+    description: Bindings for crvserver_lbvserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_policymap_binding:
+    type: dict
+    description: Bindings for crvserver_policymap_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_responderpolicy_binding:
+    type: dict
+    description: Bindings for crvserver_responderpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_rewritepolicy_binding:
+    type: dict
+    description: Bindings for crvserver_rewritepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  crvserver_spilloverpolicy_binding:
+    type: dict
+    description: Bindings for crvserver_spilloverpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -44,13 +44,13 @@ options:
       - Name of the SSL policy label to which to bind policies.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - vserver
       - service
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - Name of the SSL policy to bind to the policy label.

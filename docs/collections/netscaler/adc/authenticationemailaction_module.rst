@@ -966,7 +966,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of the email action. Default type is SMTP.
+      Type of the email action. Default type is \ :literal:`SMTP`\ .
 
 
       .. rst-class:: ansible-option-line

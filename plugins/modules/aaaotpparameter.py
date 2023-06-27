@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   encryption:
-    description:
-      - To encrypt otp secret in AD or not. Default value is OFF
-    type: str
     choices:
       - true
       - false
+    description:
+      - To encrypt otp secret in AD or not. Default value is OFF
+    type: str
   maxotpdevices:
     description:
       - Maximum number of otp devices user can register. Default value is 4. Max value

@@ -40,18 +40,18 @@ options:
         quotation marks (for example, my transform profile or my transform profile).
     type: str
   onlytransformabsurlinbody:
-    description:
-      - In the HTTP body, transform only absolute URLs. Relative URLs are ignored.
-    type: str
     choices:
       - true
       - false
-  type:
     description:
-      - Type of transformation. Always URL for URL Transformation profiles.
+      - In the HTTP body, transform only absolute URLs. Relative URLs are ignored.
     type: str
+  type:
     choices:
       - URL
+    description:
+      - Type of transformation. Always C(URL) for C(URL) Transformation profiles.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

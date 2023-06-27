@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   helloverifyrequest:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send a Hello Verify request to validate the client.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxbadmacignorecount:
     description:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
@@ -67,23 +67,23 @@ options:
         characters. Cannot be changed after the profile is created.
     type: str
   pmtudiscovery:
-    description:
-      - Source for the maximum record size value. If ENABLED, the value is taken from
-        the PMTU table. If DISABLED, the value is taken from the profile.
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Source for the maximum record size value. If C(ENABLED), the value is taken
+        from the PMTU table. If C(DISABLED), the value is taken from the profile.
+    type: str
+    default: DISABLED
   terminatesession:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Terminate the session if the message authentication code (MAC) of the client
         and server do not match.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

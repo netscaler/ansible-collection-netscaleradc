@@ -498,9 +498,9 @@ Parameters
 
       Type of invocation, Available settings function as follows:
 
-      \* vserver - Forward the request to the specified virtual server.
+      \* \ :literal:`vserver`\  - Forward the request to the specified virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line
@@ -988,33 +988,33 @@ Parameters
 
       Specifies the bind point whose policies you want to display. Available settings function as follows:
 
-      \* REQ\_OVERRIDE - Request override. Binds the policy to the priority request queue.
+      \* \ :literal:`REQ\_OVERRIDE`\  - Request override. Binds the policy to the priority request queue.
 
-      \* REQ\_DEFAULT - Binds the policy to the default request queue.
+      \* \ :literal:`REQ\_DEFAULT`\  - Binds the policy to the default request queue.
 
-      \* OTHERTCP\_REQ\_OVERRIDE - Binds the policy to the non-HTTP TCP priority request queue.
+      \* \ :literal:`OTHERTCP\_REQ\_OVERRIDE`\  - Binds the policy to the non-HTTP TCP priority request queue.
 
-      \* OTHERTCP\_REQ\_DEFAULT - Binds the policy to the non-HTTP TCP default request queue..
+      \* \ :literal:`OTHERTCP\_REQ\_DEFAULT`\  - Binds the policy to the non-HTTP TCP default request queue..
 
-      \* SIPUDP\_REQ\_OVERRIDE - Binds the policy to the SIP UDP priority response queue..
+      \* \ :literal:`SIPUDP\_REQ\_OVERRIDE`\  - Binds the policy to the SIP UDP priority response queue..
 
-      \* SIPUDP\_REQ\_DEFAULT - Binds the policy to the SIP UDP default response queue.
+      \* \ :literal:`SIPUDP\_REQ\_DEFAULT`\  - Binds the policy to the SIP UDP default response queue.
 
-      \* RADIUS\_REQ\_OVERRIDE - Binds the policy to the RADIUS priority response queue..
+      \* \ :literal:`RADIUS\_REQ\_OVERRIDE`\  - Binds the policy to the RADIUS priority response queue..
 
-      \* RADIUS\_REQ\_DEFAULT - Binds the policy to the RADIUS default response queue.
+      \* \ :literal:`RADIUS\_REQ\_DEFAULT`\  - Binds the policy to the RADIUS default response queue.
 
-      \* MSSQL\_REQ\_OVERRIDE - Binds the policy to the Microsoft SQL priority response queue..
+      \* \ :literal:`MSSQL\_REQ\_OVERRIDE`\  - Binds the policy to the Microsoft SQL priority response queue..
 
-      \* MSSQL\_REQ\_DEFAULT - Binds the policy to the Microsoft SQL default response queue.
+      \* \ :literal:`MSSQL\_REQ\_DEFAULT`\  - Binds the policy to the Microsoft SQL default response queue.
 
-      \* MYSQL\_REQ\_OVERRIDE - Binds the policy to the MySQL priority response queue.
+      \* \ :literal:`MYSQL\_REQ\_OVERRIDE`\  - Binds the policy to the MySQL priority response queue.
 
-      \* MYSQL\_REQ\_DEFAULT - Binds the policy to the MySQL default response queue.
+      \* \ :literal:`MYSQL\_REQ\_DEFAULT`\  - Binds the policy to the MySQL default response queue.
 
-      \* HTTPQUIC\_REQ\_OVERRIDE - Binds the policy to the HTTP\_QUIC override response queue.
+      \* \ :literal:`HTTPQUIC\_REQ\_OVERRIDE`\  - Binds the policy to the HTTP\_QUIC override response queue.
 
-      \* HTTPQUIC\_REQ\_DEFAULT - Binds the policy to the HTTP\_QUIC default response queue.
+      \* \ :literal:`HTTPQUIC\_REQ\_DEFAULT`\  - Binds the policy to the HTTP\_QUIC default response queue.
 
 
       .. rst-class:: ansible-option-line

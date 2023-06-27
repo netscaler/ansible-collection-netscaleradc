@@ -24,14 +24,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   basetheme:
-    description:
-      - '0'
-    type: str
     choices:
       - Default
       - Greenbubble
       - X1
       - RfWebUI
+    description:
+      - '0'
+    type: str
   name:
     description:
       - Name of the uitheme

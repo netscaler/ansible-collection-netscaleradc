@@ -28,13 +28,13 @@ options:
       - Content type to be classified as gRPC
     type: str
   isregex:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is gRPC content type a regular expression?
     type: str
     default: NOTREGEX
-    choices:
-      - REGEX
-      - NOTREGEX
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -36,11 +36,11 @@ options:
       - shared secret for authentication with service
     type: str
   type:
+    choices:
+      - CLOUDSTACK
     description:
       - The type of profile.
     type: str
-    choices:
-      - CLOUDSTACK
   url:
     description:
       - URL providing the service

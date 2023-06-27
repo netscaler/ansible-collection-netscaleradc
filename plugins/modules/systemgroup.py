@@ -24,17 +24,17 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowedmanagementinterface:
-    description:
-      - Allowed Management interfaces of the system users in the group. By default
-        allowed from both API and CLI interfaces. If management interface for a group
-        is set to API, then all users under this group will not allowed to access
-        NS through CLI. GUI interface will come under API interface
-    type: list
-    elements: str
-    default: NS_INTERFACE_ALL
     choices:
       - CLI
       - API
+    description:
+      - Allowed Management interfaces of the system users in the group. By default
+        allowed from both C(API) and C(CLI) interfaces. If management interface for
+        a group is set to C(API), then all users under this group will not allowed
+        to access NS through C(CLI). GUI interface will come under C(API) interface
+    type: list
+    elements: str
+    default: NS_INTERFACE_ALL
   groupname:
     description:
       - Name for the group. Must begin with a letter, number, hash(#) or the underscore
@@ -68,6 +68,78 @@ options:
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
     type: int
+  systemgroup_nspartition_binding:
+    type: dict
+    description: Bindings for systemgroup_nspartition_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  systemgroup_systemcmdpolicy_binding:
+    type: dict
+    description: Bindings for systemgroup_systemcmdpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  systemgroup_systemuser_binding:
+    type: dict
+    description: Bindings for systemgroup_systemuser_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

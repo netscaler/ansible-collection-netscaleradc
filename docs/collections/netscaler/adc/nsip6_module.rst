@@ -235,7 +235,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Decrement Hop Limit by 1 when ENABLED.This setting is applicable only for UDP traffic.
+      Decrement Hop Limit by 1 when \ :literal:`ENABLED`\ .This setting is applicable only for UDP traffic.
 
 
       .. rst-class:: ansible-option-line
@@ -1982,17 +1982,17 @@ Parameters
 
       Advertise or do not advertise the route for the Virtual IP (VIP6) address on the basis of the state of the virtual servers associated with that VIP6.
 
-      \* NONE - Advertise the route for the VIP6 address, irrespective of the state of the virtual servers associated with the address.
+      \* \ :literal:`NONE`\  - Advertise the route for the VIP6 address, irrespective of the state of the virtual servers associated with the address.
 
       \* ONE VSERVER - Advertise the route for the VIP6 address if at least one of the associated virtual servers is in UP state.
 
       \* ALL VSERVER - Advertise the route for the VIP6 address if all of the associated virtual servers are in UP state.
 
-      \* VSVR\_CNTRLD.   Advertise the route for the VIP address according to the  RHIstate (RHI STATE) parameter setting on all the associated virtual servers of the VIP address along with their states.
+      \* \ :literal:`VSVR\_CNTRLD`\ .   Advertise the route for the VIP address according to the  RHIstate (RHI STATE) parameter setting on all the associated virtual servers of the VIP address along with their states.
 
       
 
-      When Vserver RHI Level (RHI) parameter is set to VSVR\_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
+      When Vserver RHI Level (RHI) parameter is set to \ :literal:`VSVR\_CNTRLD`\ , the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
 
        \* If you set RHI STATE to PASSIVE on all virtual servers, the Citrix ADC always advertises the route for the VIP address.
 

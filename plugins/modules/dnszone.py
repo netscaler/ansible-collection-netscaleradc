@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   dnssecoffload:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable dnssec offload for this zone.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   keyname:
     description:
       - Name of the public/private DNS key pair with which to sign the zone. You can
@@ -38,14 +38,17 @@ options:
     type: list
     elements: str
   nsec:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable nsec generation for dnssec offload.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   proxymode:
+    choices:
+      - true
+      - false
     description:
       - 'Deploy the zone in proxy mode. Enable in the following scenarios:'
       - '* The load balanced DNS servers are authoritative for the zone and all resource
@@ -63,22 +66,19 @@ options:
         the zone.
     type: str
     default: ENABLED
-    choices:
-      - true
-      - false
   type:
-    description:
-      - 'Type of zone to display. Mutually exclusive with the DNS Zone (zoneName)
-        parameter. Available settings function as follows:'
-      - '* ADNS - Display all the zones for which the Citrix ADC is authoritative.'
-      - '* PROXY - Display all the zones for which the Citrix ADC is functioning as
-        a proxy server.'
-      - '* ALL - Display all the zones configured on the appliance.'
-    type: str
     choices:
       - ALL
       - ADNS
       - PROXY
+    description:
+      - 'Type of zone to display. Mutually exclusive with the DNS Zone (zoneName)
+        parameter. Available settings function as follows:'
+      - '* C(ADNS) - Display all the zones for which the Citrix ADC is authoritative.'
+      - '* C(PROXY) - Display all the zones for which the Citrix ADC is functioning
+        as a proxy server.'
+      - '* C(ALL) - Display all the zones configured on the appliance.'
+    type: str
   zonename:
     description:
       - Name of the zone to create.

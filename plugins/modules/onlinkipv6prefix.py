@@ -26,39 +26,39 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   autonomusprefix:
+    choices:
+      - true
+      - false
     description:
       - RA Prefix Autonomus flag.
     type: str
     default: true
+  decrementprefixlifetimes:
     choices:
       - true
       - false
-  decrementprefixlifetimes:
     description:
       - RA Prefix Autonomus flag.
     type: str
+  depricateprefix:
     choices:
       - true
       - false
-  depricateprefix:
     description:
       - Depricate the prefix.
     type: str
-    choices:
-      - true
-      - false
   ipv6prefix:
     description:
       - Onlink prefixes for RA messages.
     type: str
   onlinkprefix:
+    choices:
+      - true
+      - false
     description:
       - RA Prefix onlink flag.
     type: str
     default: true
-    choices:
-      - true
-      - false
   prefixpreferredlifetime:
     description:
       - Preferred life time of the prefix, in seconds.

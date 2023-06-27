@@ -28,41 +28,41 @@ options:
       - Name of the Analytics Profile attached to this lsn profile.
     type: str
   logcompact:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Logs in Compact Logging format if option is enabled.
     type: str
     default: ENABLED
+  logipfix:
     choices:
       - ENABLED
       - DISABLED
-  logipfix:
     description:
       - Logs in IPFIX  format if option is enabled.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   logprofilename:
     description:
       - The name of the logging Profile.
     type: str
   logsessdeletion:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - LSN Session deletion will not be logged if disabled.
     type: str
     default: ENABLED
+  logsubscrinfo:
     choices:
       - ENABLED
       - DISABLED
-  logsubscrinfo:
     description:
       - Subscriber ID information is logged if option is enabled.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

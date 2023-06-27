@@ -26,35 +26,35 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_blockkeyword_formurl:
     description:
       - The blockkeyword form action URL.
     type: str
   as_fieldname_isregex_blockkeyword:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is block keyword field name regular expression?
     type: str
     default: NOTREGEX
-    choices:
-      - REGEX
-      - NOTREGEX
   blockkeyword:
     description:
       - Field name of the block keyword binding.
     type: str
   blockkeywordtype:
-    description:
-      - block keyword type(literal|PCRE)
-    type: str
     choices:
       - literal
       - PCRE
+    description:
+      - block keyword type(C(literal)|C(PCRE))
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
@@ -65,12 +65,12 @@ options:
       - A block keyword field name
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -80,19 +80,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

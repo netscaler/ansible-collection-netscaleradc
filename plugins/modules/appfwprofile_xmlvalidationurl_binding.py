@@ -26,24 +26,24 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -53,30 +53,33 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
-  xmladditionalsoapheaders:
     description:
-      - Allow addtional soap headers.
+      - Enabled.
     type: str
+  xmladditionalsoapheaders:
     choices:
       - true
       - false
+    description:
+      - Allow addtional soap headers.
+    type: str
   xmlendpointcheck:
+    choices:
+      - ABSOLUTE
+      - RELATIVE
     description:
       - Modifies the behaviour of the Request URL validation w.r.t. the Service URL.
-      - "\tIf set to ABSOLUTE, the entire request URL is validated with the entire\
+      - "\tIf set to C(ABSOLUTE), the entire request URL is validated with the entire\
         \ URL mentioned in Service of the associated WSDL."
       - "\t\teg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService\
         \ would FAIL the validation."
@@ -85,9 +88,6 @@ options:
       - "\t\teg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService\
         \ would PASS the validation."
     type: str
-    choices:
-      - ABSOLUTE
-      - RELATIVE
   xmlrequestschema:
     description:
       - XML Schema object for request validation .
@@ -97,19 +97,19 @@ options:
       - XML Schema object for response validation.
     type: str
   xmlvalidateresponse:
+    choices:
+      - true
+      - false
     description:
       - Validate response message.
     type: str
+  xmlvalidatesoapenvelope:
     choices:
       - true
       - false
-  xmlvalidatesoapenvelope:
     description:
       - Validate SOAP Evelope only.
     type: str
-    choices:
-      - true
-      - false
   xmlvalidationurl:
     description:
       - XML Validation URL regular expression.

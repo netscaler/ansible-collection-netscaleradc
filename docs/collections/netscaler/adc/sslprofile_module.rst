@@ -171,7 +171,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Application protocol supported by the server and used in negotiation of the protocol with the client. Possible values are HTTP1.1, HTTP2 and NONE. Default value is NONE which implies application protocol is not enabled hence remain unknown to the TLS layer. This parameter is relevant only if SSL connection is handled by the virtual server of the type SSL\_TCP.
+      Application protocol supported by the server and used in negotiation of the protocol with the client. Possible values are \ :literal:`HTTP1.1`\ , \ :literal:`HTTP2`\  and \ :literal:`NONE`\ . Default value is \ :literal:`NONE`\  which implies application protocol is not enabled hence remain unknown to the TLS layer. This parameter is relevant only if SSL connection is handled by the virtual server of the type SSL\_TCP.
 
 
       .. rst-class:: ansible-option-line
@@ -354,7 +354,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      State of Cipher Redirect. If this parameter is set to ENABLED, you can configure an SSL virtual server or service to display meaningful error messages if the SSL handshake fails because of a cipher mismatch between the virtual server or service and the client.
+      State of Cipher Redirect. If this parameter is set to \ :literal:`ENABLED`\ , you can configure an SSL virtual server or service to display meaningful error messages if the SSL handshake fails because of a cipher mismatch between the virtual server or service and the client.
 
       This parameter is not applicable when configuring a backend profile.
 
@@ -1668,9 +1668,9 @@ Parameters
 
       State of OCSP stapling support on the SSL virtual server. Supported only if the protocol used is higher than SSLv3. Possible values:
 
-      ENABLED: The appliance sends a request to the OCSP responder to check the status of the server certificate and caches the response for the specified time. If the response is valid at the time of SSL handshake with the client, the OCSP-based server certificate status is sent to the client during the handshake.
+      \ :literal:`ENABLED`\ : The appliance sends a request to the OCSP responder to check the status of the server certificate and caches the response for the specified time. If the response is valid at the time of SSL handshake with the client, the OCSP-based server certificate status is sent to the client during the handshake.
 
-      DISABLED: The appliance does not check the status of the server certificate.
+      \ :literal:`DISABLED`\ : The appliance does not check the status of the server certificate.
 
 
       .. rst-class:: ansible-option-line
@@ -1792,7 +1792,7 @@ Parameters
 
       \* ALWAYS - Any PUSH packet triggers encryption.
 
-      \* IGNORE - Ignore PUSH packet for triggering encryption.
+      \* IGNORE - \ :literal:`Ignore`\  PUSH packet for triggering encryption.
 
       \* MERGE - For a consecutive sequence of PUSH packets, the last PUSH packet triggers encryption.
 
@@ -1963,7 +1963,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      State of the port rewrite while performing HTTPS redirect. If this parameter is set to ENABLED, and the URL from the server does not contain the standard port, the port is rewritten to the standard.
+      State of the port rewrite while performing HTTPS redirect. If this parameter is set to \ :literal:`ENABLED`\ , and the URL from the server does not contain the standard port, the port is rewritten to the standard.
 
 
       .. rst-class:: ansible-option-line
@@ -2327,7 +2327,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      State of session reuse. Establishing the initial handshake requires CPU-intensive public key encryption operations. With the ENABLED setting, session key exchange is avoided for session resumption requests received from the client.
+      State of session reuse. Establishing the initial handshake requires CPU-intensive public key encryption operations. With the \ :literal:`ENABLED`\  setting, session key exchange is avoided for session resumption requests received from the client.
 
 
       .. rst-class:: ansible-option-line
@@ -2556,7 +2556,7 @@ Parameters
 
       State of SSLv3 protocol support for the SSL profile.
 
-      Note: On platforms with SSL acceleration chips, if the SSL chip does not support SSLv3, this parameter cannot be set to ENABLED.
+      Note: On platforms with SSL acceleration chips, if the SSL chip does not support SSLv3, this parameter cannot be set to \ :literal:`ENABLED`\ .
 
 
       .. rst-class:: ansible-option-line
@@ -2772,6 +2772,494 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_ecccurve_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_ecccurve_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **sslprofile_ecccurve_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_ecccurve_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for sslprofile\_ecccurve\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_ecccurve_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_ecccurve_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_ecccurve_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_ecccurve_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_ecccurve_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_ecccurve_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcertkey_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcertkey_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **sslprofile_sslcertkey_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcertkey_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for sslprofile\_sslcertkey\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcertkey_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcertkey_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcertkey_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcertkey_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcertkey_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcertkey_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcipher_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcipher_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **sslprofile_sslcipher_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcipher_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for sslprofile\_sslcipher\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcipher_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcipher_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcipher_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslcipher_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslcipher_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslcipher_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslciphersuite_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslciphersuite_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **sslprofile_sslciphersuite_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslciphersuite_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for sslprofile\_sslciphersuite\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslciphersuite_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslciphersuite_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslciphersuite_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslprofile_sslciphersuite_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofile_sslciphersuite_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslprofile_sslciphersuite_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-sslprofiletype"></div>
 
       .. _ansible_collections.netscaler.adc.sslprofile_module__parameter-sslprofiletype:
@@ -2843,7 +3331,7 @@ Parameters
 
       For an SSL session, if the client browser receives a redirect message, the browser tries to connect to the new location. However, the secure SSL session breaks if the object has moved from a secure site (https://) to an unsecure site (http://). Typically, a warning message appears on the screen, prompting the user to continue or disconnect.
 
-      If SSL Redirect is ENABLED, the redirect message is automatically converted from http:// to https:// and the SSL session does not break.
+      If SSL Redirect is \ :literal:`ENABLED`\ , the redirect message is automatically converted from http:// to https:// and the SSL session does not break.
 
       This parameter is not applicable when configuring a backend profile.
 

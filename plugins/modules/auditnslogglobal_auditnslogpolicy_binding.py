@@ -26,25 +26,25 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
-  globalbindtype:
     description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
+  globalbindtype:
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   policyname:
     description:
       - Name of the audit nslog policy.

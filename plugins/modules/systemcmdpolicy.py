@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   action:
-    description:
-      - Action to perform when a request matches the policy.
-    type: str
     choices:
       - ALLOW
       - DENY
+    description:
+      - Action to perform when a request matches the policy.
+    type: str
   cmdspec:
     description:
       - Regular expression specifying the data that matches the policy.

@@ -24,18 +24,18 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   action:
-    description:
-      - 'Action to apply to content that matches the policy. '
-      - '* CACHE or MAY_CACHE action - positive cachability policy'
-      - '* NOCACHE or MAY_NOCACHE action - negative cachability policy'
-      - '* INVAL action - Dynamic Invalidation Policy'
-    type: str
     choices:
       - CACHE
       - NOCACHE
       - MAY_CACHE
       - MAY_NOCACHE
       - INVAL
+    description:
+      - 'Action to apply to content that matches the policy. '
+      - '* C(CACHE) or C(MAY_CACHE) action - positive cachability policy'
+      - '* C(NOCACHE) or C(MAY_NOCACHE) action - negative cachability policy'
+      - '* C(INVAL) action - Dynamic Invalidation Policy'
+    type: str
   invalgroups:
     description:
       - Content group(s) to be invalidated when the INVAL action is applied. Maximum
@@ -80,12 +80,36 @@ options:
         content groups.
     type: str
   undefaction:
-    description:
-      - Action to be performed when the result of rule evaluation is undefined.
-    type: str
     choices:
       - NOCACHE
       - RESET
+    description:
+      - Action to be performed when the result of rule evaluation is undefined.
+    type: str
+  cachepolicylabel_cachepolicy_binding:
+    type: dict
+    description: Bindings for cachepolicylabel_cachepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

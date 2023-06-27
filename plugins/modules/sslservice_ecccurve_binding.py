@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   ecccurvename:
-    description:
-      - Named ECC curve bound to service/vserver.
-    type: str
     choices:
       - ALL
       - P_224
       - P_256
       - P_384
       - P_521
+    description:
+      - Named ECC curve bound to service/vserver.
+    type: str
   servicename:
     description:
       - Name of the SSL service for which to set advanced configuration.

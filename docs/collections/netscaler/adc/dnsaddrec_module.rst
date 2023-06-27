@@ -894,11 +894,11 @@ Parameters
 
       The address record type. The type can take 3 values:
 
-      ADNS -  If this is specified, all of the authoritative address records will be displayed.
+      \ :literal:`ADNS`\  -  If this is specified, all of the authoritative address records will be displayed.
 
-      PROXY - If this is specified, all of the proxy address records will be displayed.
+      \ :literal:`PROXY`\  - If this is specified, all of the proxy address records will be displayed.
 
-      ALL  -  If this is specified, all of the address records will be displayed.
+      \ :literal:`ALL`\   -  If this is specified, all of the address records will be displayed.
 
 
       .. rst-class:: ansible-option-line

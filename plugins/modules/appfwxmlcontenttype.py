@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   isregex:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is field name a regular expression?
     type: str
     default: NOTREGEX
-    choices:
-      - REGEX
-      - NOTREGEX
   xmlcontenttypevalue:
     description:
       - Content type to be classified as XML

@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   accounting:
-    description:
-      - Whether the TACACS+ server is currently accepting accounting messages.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Whether the TACACS+ server is currently accepting accounting messages.
+    type: str
   attribute1:
     description:
       - Name of the custom attribute to be extracted from server and stored at index
@@ -121,19 +121,19 @@ options:
         pair in AAA session
     type: str
   auditfailedcmds:
+    choices:
+      - true
+      - false
     description:
       - The state of the TACACS+ server that will receive accounting messages.
     type: str
+  authorization:
     choices:
       - true
       - false
-  authorization:
     description:
       - Use streaming authorization on the TACACS+ server.
     type: str
-    choices:
-      - true
-      - false
   authtimeout:
     description:
       - Number of seconds the Citrix ADC waits for a response from the TACACS+ server.

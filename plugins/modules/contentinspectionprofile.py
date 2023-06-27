@@ -58,14 +58,14 @@ options:
         or single quotation marks \(for example, "my ips profile" or ''my ips profile''\).'
     type: str
   type:
+    choices:
+      - InlineInspection
+      - Mirror
     description:
       - 'Type of ContentInspection profile. Following types are available to configure:'
       - '           INLINEINSPECTION : To inspect the packets/requests using IPS.'
       - "\t   MIRROR : To forward cloned packets."
     type: str
-    choices:
-      - InlineInspection
-      - Mirror
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

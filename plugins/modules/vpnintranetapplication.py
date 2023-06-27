@@ -44,16 +44,16 @@ options:
         during interception when users log on with the Citrix Gateway Plug-in.
     type: str
   interception:
-    description:
-      - Interception mode for the intranet application or resource. Correct value
-        depends on the type of client software used to make connections. If the interception
-        mode is set to TRANSPARENT, users connect with the Citrix Gateway Plug-in
-        for Windows. With the PROXY setting, users connect with the Citrix Gateway
-        Plug-in for Java.
-    type: str
     choices:
       - PROXY
       - TRANSPARENT
+    description:
+      - Interception mode for the intranet application or resource. Correct value
+        depends on the type of client software used to make connections. If the interception
+        mode is set to C(TRANSPARENT), users connect with the Citrix Gateway Plug-in
+        for Windows. With the C(PROXY) setting, users connect with the Citrix Gateway
+        Plug-in for Java.
+    type: str
   intranetapplication:
     description:
       - Name of the intranet application.
@@ -70,23 +70,23 @@ options:
       - Destination subnet mask for the intranet application.
     type: str
   protocol:
-    description:
-      - Protocol used by the intranet application. If protocol is set to BOTH, TCP
-        and UDP traffic is allowed.
-    type: str
     choices:
       - TCP
       - UDP
       - ANY
+    description:
+      - Protocol used by the intranet application. If protocol is set to BOTH, C(TCP)
+        and C(UDP) traffic is allowed.
+    type: str
   spoofiip:
+    choices:
+      - true
+      - false
     description:
       - IP address that the intranet application will use to route the connection
         through the virtual adapter.
     type: str
     default: true
-    choices:
-      - true
-      - false
   srcip:
     description:
       - Source IP address. Required if interception mode is set to PROXY. Default

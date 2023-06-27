@@ -263,9 +263,9 @@ Parameters
 
       Action to perform if an assignment to a map exceeds its configured max-entries:
 
-         lru - (default) reuse the least recently used entry in the map.
+         \ :literal:`lru`\  - (default) reuse the least recently used entry in the map.
 
-         undef - force the assignment to return an undefined (Undef) result to the policy executing the assignment.
+         \ :literal:`undef`\  - force the assignment to return an undefined (Undef) result to the policy executing the assignment.
 
 
       .. rst-class:: ansible-option-line
@@ -311,11 +311,11 @@ Parameters
 
       or if the variable is a map and there is no value for the specified key:
 
-         init - (default) initialize the single-value variable, or create a map entry for the key and the initial value,
+         \ :literal:`init`\  - (default) initialize the single-value variable, or create a map entry for the key and the initial value,
 
-      using the -init value or its default.
+      using the -\ :literal:`init`\  value or its default.
 
-         undef - force the expression evaluation to return an undefined (Undef) result to the policy executing the expression.
+         \ :literal:`undef`\  - force the expression evaluation to return an undefined (Undef) result to the policy executing the expression.
 
 
       .. rst-class:: ansible-option-line
@@ -361,9 +361,9 @@ Parameters
 
       or if a key is used that exceeds its configured max-size:
 
-         truncate - (default) truncate the text string to the first max-size bytes and proceed.
+         \ :literal:`truncate`\  - (default) \ :literal:`truncate`\  the text string to the first max-size bytes and proceed.
 
-         undef - force the assignment or expression evaluation to return an undefined (Undef) result to the policy executing the assignment or expression.
+         \ :literal:`undef`\  - force the assignment or expression evaluation to return an undefined (Undef) result to the policy executing the assignment or expression.
 
 
       .. rst-class:: ansible-option-line
@@ -956,9 +956,9 @@ Parameters
 
       Scope of the variable:
 
-         global - (default) one set of values visible across all Packet Engines on a standalone Citrix ADC, an HA pair, or all nodes of a cluster
+         \ :literal:`global`\  - (default) one set of values visible across all Packet Engines on a standalone Citrix ADC, an HA pair, or all nodes of a cluster
 
-         transaction - one value for each request-response transaction (singleton variables only; no expiration)
+         \ :literal:`transaction`\  - one value for each request-response \ :literal:`transaction`\  (singleton variables only; no expiration)
 
 
       .. rst-class:: ansible-option-line

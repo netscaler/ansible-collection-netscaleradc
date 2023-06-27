@@ -26,13 +26,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - The bindpoint to which the policy is bound
-    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+    description:
+      - The bindpoint to which the policy is bound
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -47,13 +47,13 @@ options:
       - Name of the label invoked.
     type: str
   labeltype:
-    description:
-      - The invocation type.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - The invocation type.
+    type: str
   name:
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore

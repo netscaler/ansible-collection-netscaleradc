@@ -52,15 +52,15 @@ options:
         quotation marks (for example, "my lb policy label" or 'my lb policy label').
     type: str
   labeltype:
+    choices:
+      - reqvserver
+      - policylabel
     description:
       - 'Type of policy label to invoke. Available settings function as follows:'
       - '* vserver - Invokes the unnamed policy label associated with the specified
         virtual server.'
-      - '* policylabel - Invoke a user-defined policy label.'
+      - '* C(policylabel) - Invoke a user-defined policy label.'
     type: str
-    choices:
-      - reqvserver
-      - policylabel
   policyname:
     description:
       - Name of the LB policy.

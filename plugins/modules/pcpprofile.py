@@ -29,13 +29,13 @@ options:
     type: int
     default: 10
   mapping:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This argument is for enabling/disabling the MAP opcode  of current PCP Profile
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxmaplife:
     description:
       - Integer value that identify the maximum mapping lifetime (in seconds) for
@@ -54,22 +54,22 @@ options:
         quotation marks (for example, "my pcpProfile" or my pcpProfile).'
     type: str
   peer:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This argument is for enabling/disabling the PEER opcode of current PCP Profile
     type: str
     default: ENABLED
+  thirdparty:
     choices:
       - ENABLED
       - DISABLED
-  thirdparty:
     description:
       - This argument is for enabling/disabling the THIRD PARTY opcode of current
         PCP Profile
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

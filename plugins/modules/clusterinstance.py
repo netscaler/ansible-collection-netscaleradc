@@ -24,26 +24,26 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   backplanebasedview:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - View based on heartbeat only on bkplane interface
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   clid:
     description:
       - Unique number that identifies the cluster.
     type: int
   clusterproxyarp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This field controls the proxy arp feature in cluster. By default the flag
         is enabled.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   deadinterval:
     description:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
@@ -52,13 +52,13 @@ options:
     type: int
     default: 3
   dfdretainl2params:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - flag to add ext l2 header during steering. By default the flag is disabled.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   hellointerval:
     description:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
@@ -67,63 +67,63 @@ options:
     type: int
     default: 200
   inc:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This option is required if the cluster nodes reside on different networks.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   nodegroup:
     description:
       - The node group in a Cluster system used for transition from L2 to L3.
     type: str
   preemption:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes
         available.
     type: str
     default: DISABLED
+  processlocal:
     choices:
       - ENABLED
       - DISABLED
-  processlocal:
     description:
       - By turning on this option packets destined to a service in a cluster will
         not under go any steering.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   quorumtype:
+    choices:
+      - MAJORITY
+      - NONE
     description:
       - Quorum Configuration Choices  - "Majority" (recommended) requires majority
         of nodes to be online for the cluster to be UP. "None" relaxes this requirement.
     type: str
     default: MAJORITY
-    choices:
-      - MAJORITY
-      - NONE
   retainconnectionsoncluster:
+    choices:
+      - true
+      - false
     description:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
     type: str
-    choices:
-      - true
-      - false
   syncstatusstrictmode:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - strict mode for sync status of cluster. Depending on the the mode if there
         are any errors while applying config, sync status is displayed accordingly.
         By default the flag is disabled.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

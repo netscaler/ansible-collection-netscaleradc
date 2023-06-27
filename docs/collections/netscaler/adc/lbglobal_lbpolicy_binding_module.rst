@@ -500,7 +500,7 @@ Parameters
 
       \* vserver - Invokes the unnamed policy label associated with the specified virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line

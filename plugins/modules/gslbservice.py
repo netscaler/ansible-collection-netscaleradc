@@ -24,23 +24,23 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging appflow flow information
     type: str
     default: ENABLED
+  cip:
     choices:
       - ENABLED
       - DISABLED
-  cip:
     description:
       - In the request that is forwarded to the GSLB service, insert a header that
         stores the client's IP address. Client IP header insertion is used in connection-proxy
         based site persistence.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cipheader:
     description:
       - Name for the HTTP header that stores the client's IP address. Used with the
@@ -68,28 +68,28 @@ options:
         is enabled.
     type: int
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with the GSLB service when its state
         transitions from UP to DOWN. Do not enable this option for services that must
         complete their transactions. Applicable if connection proxy based site persistence
         is used.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   hashid:
     description:
       - Unique hash identifier for the GSLB service, used by hash based load balancing
         methods.
     type: int
   healthmonitor:
+    choices:
+      - true
+      - false
     description:
       - Monitor the health of the GSLB service.
     type: str
     default: true
-    choices:
-      - true
-      - false
   ip:
     description:
       - IP address for the GSLB service. Should represent a load balancing, content
@@ -191,10 +191,6 @@ options:
         or single quotation marks (for example, "my gslbsvc" or ''my gslbsvc'').'
     type: str
   servicetype:
-    description:
-      - Type of service to create.
-    type: str
-    default: NSSVC_SERVICE_UNKNOWN
     choices:
       - HTTP
       - FTP
@@ -214,18 +210,22 @@ options:
       - MYSQL
       - MSSQL
       - ORACLE
+    description:
+      - Type of service to create.
+    type: str
+    default: NSSVC_SERVICE_UNKNOWN
   sitename:
     description:
       - Name of the GSLB site to which the service belongs.
     type: str
   sitepersistence:
-    description:
-      - Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.
-    type: str
     choices:
       - ConnectionProxy
       - HTTPRedirect
       - NONE
+    description:
+      - Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.
+    type: str
   siteprefix:
     description:
       - The site's prefix string. When the service is bound to a GSLB virtual server,
@@ -236,13 +236,13 @@ options:
         GSLB requests to GSLB services by using their site domains.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the service.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   svrtimeout:
     description:
       - Idle time, in seconds, after which a server connection is terminated. Applicable
@@ -264,6 +264,102 @@ options:
         a greater weight. Contributes to the monitoring threshold, which determines
         the state of the service.
     type: int
+  gslbservice_dnsview_binding:
+    type: dict
+    description: Bindings for gslbservice_dnsview_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbservice_lbmonitor_binding:
+    type: dict
+    description: Bindings for gslbservice_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbservicegroup_gslbservicegroupmember_binding:
+    type: dict
+    description: Bindings for gslbservicegroup_gslbservicegroupmember_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbservicegroup_lbmonitor_binding:
+    type: dict
+    description: Bindings for gslbservicegroup_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

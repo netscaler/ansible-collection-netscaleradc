@@ -378,9 +378,9 @@ Parameters
 
       Smooth or bursty request type.
 
-      \* SMOOTH - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice
+      \* \ :literal:`SMOOTH`\  - When you want the permitted number of requests in a given interval of time to be spread evenly across the timeslice
 
-      \* BURSTY - When you want the permitted number of requests to exhaust the quota anytime within the timeslice.
+      \* \ :literal:`BURSTY`\  - When you want the permitted number of requests to exhaust the quota anytime within the timeslice.
 
       This argument is needed only when the mode is set to REQUEST\_RATE.
 
@@ -517,9 +517,9 @@ Parameters
 
       Defines the type of traffic to be tracked.
 
-      \* REQUEST\_RATE - Tracks requests/timeslice.
+      \* \ :literal:`REQUEST\_RATE`\  - Tracks requests/timeslice.
 
-      \* CONNECTION - Tracks active transactions.
+      \* \ :literal:`CONNECTION`\  - Tracks active transactions.
 
       
 

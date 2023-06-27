@@ -28,37 +28,37 @@ options:
       - The name of the ssllogprofile.
     type: str
   ssllogclauth:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - log all SSL ClAuth events.
     type: str
     default: DISABLED
+  ssllogclauthfailures:
     choices:
       - ENABLED
       - DISABLED
-  ssllogclauthfailures:
     description:
       - log all SSL ClAuth error events.
     type: str
     default: DISABLED
+  sslloghs:
     choices:
       - ENABLED
       - DISABLED
-  sslloghs:
     description:
       - log all SSL HS events.
     type: str
     default: DISABLED
+  sslloghsfailures:
     choices:
       - ENABLED
       - DISABLED
-  sslloghsfailures:
     description:
       - log all SSL HS error events.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

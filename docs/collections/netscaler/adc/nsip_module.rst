@@ -283,7 +283,7 @@ Parameters
 
       
 
-      \* NONE - The Citrix ADC responds to any ARP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+      \* \ :literal:`NONE`\  - The Citrix ADC responds to any ARP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
 
       \* ONE VSERVER - The Citrix ADC responds to any ARP request for the VIP address if at least one of the associated virtual servers is in UP state.
 
@@ -412,7 +412,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Decrement TTL by 1 when ENABLED.This setting is applicable only for UDP traffic.
+      Decrement TTL by 1 when \ :literal:`ENABLED`\ .This setting is applicable only for UDP traffic.
 
 
       .. rst-class:: ansible-option-line
@@ -705,13 +705,13 @@ Parameters
 
       Respond to ICMP requests for a Virtual IP (VIP) address on the basis of the states of the virtual servers associated with that VIP. Available settings function as follows:
 
-      \* NONE - The Citrix ADC responds to any ICMP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
+      \* \ :literal:`NONE`\  - The Citrix ADC responds to any ICMP request for the VIP address, irrespective of the states of the virtual servers associated with the address.
 
       \* ONE VSERVER - The Citrix ADC responds to any ICMP request for the VIP address if at least one of the associated virtual servers is in UP state.
 
       \* ALL VSERVER - The Citrix ADC responds to any ICMP request for the VIP address if all of the associated virtual servers are in UP state.
 
-      \* VSVR\_CNTRLD - The behavior depends on the ICMP VSERVER RESPONSE setting on all the associated virtual servers.
+      \* \ :literal:`VSVR\_CNTRLD`\  - The behavior depends on the ICMP VSERVER RESPONSE setting on all the associated virtual servers.
 
       
 
@@ -1992,13 +1992,13 @@ Parameters
 
       Type of the IP address to create on the Citrix ADC. Cannot be changed after the IP address is created. The following are the different types of Citrix ADC owned IP addresses:
 
-      \* A Subnet IP (SNIP) address is used by the Citrix ADC to communicate with the servers. The Citrix ADC also uses the subnet IP address when generating its own packets, such as packets related to dynamic routing protocols, or to send monitor probes to check the health of the servers.
+      \* A Subnet IP (\ :literal:`SNIP`\ ) address is used by the Citrix ADC to communicate with the servers. The Citrix ADC also uses the subnet IP address when generating its own packets, such as packets related to dynamic routing protocols, or to send monitor probes to check the health of the servers.
 
-      \* A Virtual IP (VIP) address is the IP address associated with a virtual server. It is the IP address to which clients connect. An appliance managing a wide range of traffic may have many VIPs configured. Some of the attributes of the VIP address are customized to meet the requirements of the virtual server.
+      \* A Virtual IP (\ :literal:`VIP`\ ) address is the IP address associated with a virtual server. It is the IP address to which clients connect. An appliance managing a wide range of traffic may have many VIPs configured. Some of the attributes of the \ :literal:`VIP`\  address are customized to meet the requirements of the virtual server.
 
       \* A GSLB site IP (GSLBIP) address is associated with a GSLB site. It is not mandatory to specify a GSLBIP address when you initially configure the Citrix ADC. A GSLBIP address is used only when you create a GSLB site.
 
-      \* A Cluster IP (CLIP) address is the management address of the cluster. All cluster configurations must be performed by accessing the cluster through this IP address.
+      \* A Cluster IP (\ :literal:`CLIP`\ ) address is the management address of the cluster. All cluster configurations must be performed by accessing the cluster through this IP address.
 
 
       .. rst-class:: ansible-option-line
@@ -2164,17 +2164,17 @@ Parameters
 
       Advertise the route for the Virtual IP (VIP) address on the basis of the state of the virtual servers associated with that VIP.
 
-      \* NONE - Advertise the route for the VIP address, regardless of the state of the virtual servers associated with the address.
+      \* \ :literal:`NONE`\  - Advertise the route for the VIP address, regardless of the state of the virtual servers associated with the address.
 
       \* ONE VSERVER - Advertise the route for the VIP address if at least one of the associated virtual servers is in UP state.
 
       \* ALL VSERVER - Advertise the route for the VIP address if all of the associated virtual servers are in UP state.
 
-      \* VSVR\_CNTRLD - Advertise the route for the VIP address according to the  RHIstate (RHI STATE) parameter setting on all the associated virtual servers of the VIP address along with their states.
+      \* \ :literal:`VSVR\_CNTRLD`\  - Advertise the route for the VIP address according to the  RHIstate (RHI STATE) parameter setting on all the associated virtual servers of the VIP address along with their states.
 
       
 
-      When Vserver RHI Level (RHI) parameter is set to VSVR\_CNTRLD, the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
+      When Vserver RHI Level (RHI) parameter is set to \ :literal:`VSVR\_CNTRLD`\ , the following are different RHI behaviors for the VIP address on the basis of RHIstate (RHI STATE) settings on the virtual servers associated with the VIP address:
 
        \* If you set RHI STATE to PASSIVE on all virtual servers, the Citrix ADC always advertises the route for the VIP address.
 

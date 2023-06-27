@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -49,9 +49,6 @@ options:
       - The priority assigned to the policy binding.
     type: int
   type:
-    description:
-      - Bindpoint to which the policy is bound.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -60,6 +57,9 @@ options:
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
       - NONE
+    description:
+      - Bindpoint to which the policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

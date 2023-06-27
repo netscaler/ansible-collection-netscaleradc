@@ -46,14 +46,38 @@ options:
         quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel')
     type: str
   policylabeltype:
-    description:
-      - Type of traffic evaluated by the policies bound to the policy label.
-    type: str
-    default: HTTP
     choices:
       - HTTP
       - OTHERTCP
       - HTTP_QUIC
+    description:
+      - Type of traffic evaluated by the policies bound to the policy label.
+    type: str
+    default: HTTP
+  appflowpolicylabel_appflowpolicy_binding:
+    type: dict
+    description: Bindings for appflowpolicylabel_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

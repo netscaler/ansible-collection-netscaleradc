@@ -24,15 +24,20 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   context:
-    description:
-      - 'Context for describing locations. In geographic context, qualifier labels
-        are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization.
-        In custom context, the qualifiers labels can have any meaning that you designate.'
-    type: str
     choices:
       - geographic
       - custom
+    description:
+      - 'Context for describing locations. In C(geographic) context, qualifier labels
+        are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization.
+        In C(custom) context, the qualifiers labels can have any meaning that you
+        designate.'
+    type: str
   matchwildcardtoany:
+    choices:
+      - true
+      - false
+      - Expression
     description:
       - Indicates whether wildcard qualifiers should match any other
       - qualifier including non-wildcard while evaluating
@@ -46,10 +51,6 @@ options:
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
     type: str
-    choices:
-      - true
-      - false
-      - Expression
   q1label:
     description:
       - Label specifying the meaning of the first qualifier. Can be specified for

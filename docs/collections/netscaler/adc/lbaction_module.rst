@@ -836,9 +836,9 @@ Parameters
 
       Type of an LB action. Available settings function as follows:
 
-      \* NOLBACTION - Does not consider LB action in making LB decision.
+      \* \ :literal:`NOLBACTION`\  - Does not consider LB action in making LB decision.
 
-      \* SELECTIONORDER - services bound to vserver with order specified in value parameter is considerd for lb/gslb decision.
+      \* \ :literal:`SELECTIONORDER`\  - services bound to vserver with order specified in value parameter is considerd for lb/gslb decision.
 
 
       .. rst-class:: ansible-option-line

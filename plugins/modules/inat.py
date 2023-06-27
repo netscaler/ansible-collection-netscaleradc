@@ -24,30 +24,30 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   connfailover:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Synchronize connection information with the secondary appliance in a high
         availability (HA) pair. That is, synchronize all connection-related information
         for the INAT session
     type: str
     default: DISABLED
+  ftp:
     choices:
       - ENABLED
       - DISABLED
-  ftp:
     description:
       - Enable the FTP protocol on the server for transferring files between the client
         and the server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   mode:
+    choices:
+      - STATELESS
     description:
       - Stateless translation.
     type: str
-    choices:
-      - STATELESS
   name:
     description:
       - 'Name for the Inbound NAT (INAT) entry. Leading character must be a number
@@ -70,14 +70,14 @@ options:
         VIP or VIP6 address.
     type: str
   tcpproxy:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
@@ -85,38 +85,38 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   tftp:
-    description:
-      - To enable/disable TFTP (Default DISABLED).
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - To enable/disable TFTP (Default C(DISABLED)).
+    type: str
+    default: DISABLED
   useproxyport:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable the Citrix ADC to proxy the source port of packets before sending the
         packets to the server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   usip:
+    choices:
+      - true
+      - false
     description:
       - Enable the Citrix ADC to retain the source IP address of packets before sending
         the packets to the server.
     type: str
+  usnip:
     choices:
       - true
       - false
-  usnip:
     description:
       - Enable the Citrix ADC to use a SNIP address as the source IP address of packets
         before sending the packets to the server.
     type: str
-    choices:
-      - true
-      - false
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

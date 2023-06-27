@@ -824,7 +824,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Name of the protocol(TCP,UDP) for which the parameters of this LSN application port ATTRIBUTES applies
+      Name of the protocol(\ :literal:`TCP`\ ,\ :literal:`UDP`\ ) for which the parameters of this LSN application port ATTRIBUTES applies
 
 
       .. rst-class:: ansible-option-line

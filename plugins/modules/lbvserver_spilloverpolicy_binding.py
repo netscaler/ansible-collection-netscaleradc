@@ -26,13 +26,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - The bindpoint to which the policy is bound
-    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+    description:
+      - The bindpoint to which the policy is bound
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -48,20 +48,20 @@ options:
         evaluates to TRUE.
     type: str
   labeltype:
-    description:
-      - 'Type of policy label to invoke. Applicable only to rewrite, videooptimization
-        and cache policies. Available settings function as follows:'
-      - '* reqvserver - Evaluate the request against the request-based policies bound
-        to the specified virtual server.'
-      - '* resvserver - Evaluate the response against the response-based policies
-        bound to the specified virtual server.'
-      - '* policylabel - invoke the request or response against the specified user-defined
-        policy label.'
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - 'Type of policy label to invoke. Applicable only to rewrite, videooptimization
+        and cache policies. Available settings function as follows:'
+      - '* C(reqvserver) - Evaluate the request against the request-based policies
+        bound to the specified virtual server.'
+      - '* C(resvserver) - Evaluate the response against the response-based policies
+        bound to the specified virtual server.'
+      - '* C(policylabel) - invoke the request or response against the specified user-defined
+        policy label.'
+    type: str
   name:
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore

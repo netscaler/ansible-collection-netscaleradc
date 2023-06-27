@@ -26,16 +26,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
+    choices:
+      - REQUEST
+      - RESPONSE
+      - ICA_REQUEST
     description:
       - 'For a rewrite policy, the bind point to which to bind the policy. Note: This
         parameter applies only to rewrite'
       - policies, because content switching policies are evaluated only at request
         time.
     type: str
-    choices:
-      - REQUEST
-      - RESPONSE
-      - ICA_REQUEST
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -50,13 +50,13 @@ options:
       - Name of the label invoked.
     type: str
   labeltype:
-    description:
-      - The invocation type.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - The invocation type.
+    type: str
   name:
     description:
       - Name of the cache redirection virtual server to which to bind the cache redirection

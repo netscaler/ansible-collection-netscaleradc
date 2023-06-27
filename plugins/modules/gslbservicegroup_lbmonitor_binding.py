@@ -35,12 +35,12 @@ options:
       - Monitor name.
     type: str
   monstate:
-    description:
-      - Monitor state.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Monitor state.
+    type: str
   order:
     description:
       - Order number to be assigned to the gslb servicegroup member
@@ -79,13 +79,13 @@ options:
         redirects GSLB requests to GSLB services by using their site domains.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the service after binding.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   weight:
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity

@@ -46,14 +46,14 @@ options:
       - Name of the cache policy label to which to bind the policy.
     type: str
   labeltype:
-    description:
-      - 'Type of policy label to invoke: an unnamed label associated with a virtual
-        server, or user-defined policy label.'
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - 'Type of policy label to invoke: an unnamed label associated with a virtual
+        server, or user-defined policy label.'
+    type: str
   policyname:
     description:
       - Name of the cache policy to bind to the policy label.

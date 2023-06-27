@@ -28,15 +28,15 @@ options:
       - Activation code for the NGS Connector instance
     type: str
   connectorresidence:
-    description:
-      - Identifies whether the connector is located Onprem, Aws or Azure
-    type: str
     choices:
       - None
       - Onprem
       - Aws
       - Azure
       - Cpx
+    description:
+      - Identifies whether the connector is located C(Onprem), C(Aws) or C(Azure)
+    type: str
   controllerfqdn:
     description:
       - FQDN of the controller to which the Citrix ADC SDProxy Connects
@@ -50,13 +50,14 @@ options:
       - Customer ID of the citrix cloud customer
     type: str
   deployment:
-    description:
-      - Describes if the customer is a Staging/Production or Dev Citrix Cloud customer
-    type: str
     choices:
       - Production
       - Staging
       - Dev
+    description:
+      - Describes if the customer is a C(Staging)/C(Production) or C(Dev) Citrix Cloud
+        customer
+    type: str
   instanceid:
     description:
       - Instance ID of the customer provided by Trust

@@ -33,45 +33,45 @@ options:
         period it will be deleted. 0 (the default) means no expiration.
     type: int
   iffull:
-    description:
-      - 'Action to perform if an assignment to a map exceeds its configured max-entries:'
-      - '   lru - (default) reuse the least recently used entry in the map.'
-      - '   undef - force the assignment to return an undefined (Undef) result to
-        the policy executing the assignment.'
-    type: str
-    default: lru
     choices:
       - undef
       - lru
+    description:
+      - 'Action to perform if an assignment to a map exceeds its configured max-entries:'
+      - '   C(lru) - (default) reuse the least recently used entry in the map.'
+      - '   C(undef) - force the assignment to return an undefined (Undef) result
+        to the policy executing the assignment.'
+    type: str
+    default: lru
   ifnovalue:
+    choices:
+      - undef
+      - init
     description:
       - Action to perform if on a variable reference in an expression if the variable
         is single-valued and uninitialized
       - 'or if the variable is a map and there is no value for the specified key:'
-      - '   init - (default) initialize the single-value variable, or create a map
-        entry for the key and the initial value,'
-      - using the -init value or its default.
-      - '   undef - force the expression evaluation to return an undefined (Undef)
+      - '   C(init) - (default) initialize the single-value variable, or create a
+        map entry for the key and the initial value,'
+      - using the -C(init) value or its default.
+      - '   C(undef) - force the expression evaluation to return an undefined (Undef)
         result to the policy executing the expression.'
     type: str
     default: init
+  ifvaluetoobig:
     choices:
       - undef
-      - init
-  ifvaluetoobig:
+      - truncate
     description:
       - Action to perform if an value is assigned to a text variable that exceeds
         its configured max-size,
       - 'or if a key is used that exceeds its configured max-size:'
-      - '   truncate - (default) truncate the text string to the first max-size bytes
-        and proceed.'
-      - '   undef - force the assignment or expression evaluation to return an undefined
-        (Undef) result to the policy executing the assignment or expression.'
+      - '   C(truncate) - (default) C(truncate) the text string to the first max-size
+        bytes and proceed.'
+      - '   C(undef) - force the assignment or expression evaluation to return an
+        undefined (Undef) result to the policy executing the assignment or expression.'
     type: str
     default: truncate
-    choices:
-      - undef
-      - truncate
   init:
     description:
       - 'Initialization value for this variable, to which a singleton variable or
@@ -92,17 +92,17 @@ options:
         dataset, stringmap, or named expression).'
     type: str
   scope:
-    description:
-      - 'Scope of the variable:'
-      - '   global - (default) one set of values visible across all Packet Engines
-        on a standalone Citrix ADC, an HA pair, or all nodes of a cluster'
-      - '   transaction - one value for each request-response transaction (singleton
-        variables only; no expiration)'
-    type: str
-    default: global
     choices:
       - global
       - transaction
+    description:
+      - 'Scope of the variable:'
+      - '   C(global) - (default) one set of values visible across all Packet Engines
+        on a standalone Citrix ADC, an HA pair, or all nodes of a cluster'
+      - '   C(transaction) - one value for each request-response C(transaction) (singleton
+        variables only; no expiration)'
+    type: str
+    default: global
   type:
     description:
       - 'Specification of the variable type; one of the following:'

@@ -193,7 +193,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Mode in which the connection failover feature must operate for the IPSec Alg. After a failover, established UDP connections and ESP packet flows are kept active and resumed on the secondary appliance. Recomended setting is ENABLED.
+      Mode in which the connection failover feature must operate for the IPSec Alg. After a failover, established UDP connections and ESP packet flows are kept active and resumed on the secondary appliance. Recomended setting is \ :literal:`ENABLED`\ .
 
 
       .. rst-class:: ansible-option-line

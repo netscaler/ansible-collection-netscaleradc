@@ -341,7 +341,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      HTTP method used to send ocsp request. POST is the default httpmethod. If request length is \> 255, POST wil be used even if GET is set as httpMethod
+      HTTP method used to send ocsp request. \ :literal:`POST`\  is the default httpmethod. If request length is \> 255, \ :literal:`POST`\  wil be used even if \ :literal:`GET`\  is set as httpMethod
 
 
       .. rst-class:: ansible-option-line

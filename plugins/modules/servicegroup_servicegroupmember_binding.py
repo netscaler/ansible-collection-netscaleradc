@@ -72,13 +72,13 @@ options:
       - Name of the service group.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the service group.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   weight:
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity

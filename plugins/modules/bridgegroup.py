@@ -24,27 +24,99 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   dynamicrouting:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable dynamic routing for this bridgegroup.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   id:
     description:
       - An integer that uniquely identifies the bridge group.
     type: int
   ipv6dynamicrouting:
-    description:
-      - 'Enable all IPv6 dynamic routing protocols on all VLANs bound to this bridgegroup.
-        Note: For the ENABLED setting to work, you must configure IPv6 dynamic routing
-        protocols from the VTYSH command line.'
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - 'Enable all IPv6 dynamic routing protocols on all VLANs bound to this bridgegroup.
+        Note: For the C(ENABLED) setting to work, you must configure IPv6 dynamic
+        routing protocols from the VTYSH command line.'
+    type: str
+    default: DISABLED
+  bridgegroup_nsip6_binding:
+    type: dict
+    description: Bindings for bridgegroup_nsip6_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  bridgegroup_nsip_binding:
+    type: dict
+    description: Bindings for bridgegroup_nsip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  bridgegroup_vlan_binding:
+    type: dict
+    description: Bindings for bridgegroup_vlan_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

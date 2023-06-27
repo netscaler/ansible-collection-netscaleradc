@@ -44,34 +44,34 @@ options:
     type: list
     elements: str
   alwaysevalpolicies:
+    choices:
+      - true
+      - false
     description:
       - Force policy evaluation for each response arriving from the origin server.
         Cannot be set to YES if the Prefetch parameter is also set to YES.
     type: str
-    choices:
-      - true
-      - false
   cachecontrol:
     description:
       - Insert a Cache-Control header into the response.
     type: str
   expireatlastbyte:
+    choices:
+      - true
+      - false
     description:
       - Force expiration of the content immediately after the response is downloaded
         (upon receipt of the last byte of the response body). Applicable only to positive
         responses.
     type: str
+  flashcache:
     choices:
       - true
       - false
-  flashcache:
     description:
       - Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the
         same content group.
     type: str
-    choices:
-      - true
-      - false
   heurexpiryparam:
     description:
       - Heuristic expiry time, in percent of the duration, since the object was last
@@ -95,57 +95,57 @@ options:
         for the group must be set to YES.
     type: str
   ignoreparamvaluecase:
+    choices:
+      - true
+      - false
     description:
       - Ignore case when comparing parameter values during parameterized hit evaluation.
         (Parameter value case is ignored by default during parameterized invalidation.)
     type: str
+  ignorereloadreq:
     choices:
       - true
       - false
-  ignorereloadreq:
     description:
       - Ignore any request to reload a cached object from the origin server.
       - To guard against Denial of Service attacks, set this parameter to YES. For
         RFC-compliant behavior, set it to NO.
     type: str
     default: true
+  ignorereqcachinghdrs:
     choices:
       - true
       - false
-  ignorereqcachinghdrs:
     description:
       - Ignore Cache-Control and Pragma headers in the incoming request.
     type: str
     default: true
+  insertage:
     choices:
       - true
       - false
-  insertage:
     description:
       - Insert an Age header into the response. An Age header contains information
         about the age of the object, in seconds, as calculated by the integrated cache.
     type: str
     default: true
+  insertetag:
     choices:
       - true
       - false
-  insertetag:
     description:
       - Insert an ETag header in the response. With ETag header insertion, the integrated
         cache does not serve full responses on repeat requests.
     type: str
     default: true
+  insertvia:
     choices:
       - true
       - false
-  insertvia:
     description:
       - Insert a Via header into the response.
     type: str
     default: true
-    choices:
-      - true
-      - false
   invalparams:
     description:
       - Parameters for parameterized invalidation of an object. You can specify up
@@ -153,33 +153,33 @@ options:
     type: list
     elements: str
   invalrestrictedtohost:
-    description:
-      - Take the host header into account during parameterized invalidation.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Take the host header into account during parameterized invalidation.
+    type: str
   invalselector:
     description:
       - Selector for invalidating objects in the content group. A selector is an abstraction
         for a collection of PIXL expressions.
     type: str
   lazydnsresolve:
+    choices:
+      - true
+      - false
     description:
       - Perform DNS resolution for responses only if the destination IP address in
         the request does not match the destination IP address of the cached response.
     type: str
     default: true
+  matchcookies:
     choices:
       - true
       - false
-  matchcookies:
     description:
       - Evaluate for parameters in the cookie header also.
     type: str
-    choices:
-      - true
-      - false
   maxressize:
     description:
       - Maximum size of a response that can be cached in this content group.
@@ -208,36 +208,36 @@ options:
         Cannot be changed after the content group is created.
     type: str
   persistha:
+    choices:
+      - true
+      - false
     description:
       - Setting persistHA to YES causes IC to save objects in contentgroup to Secondary
         node in HA deployment.
     type: str
+  pinned:
     choices:
       - true
       - false
-  pinned:
     description:
       - Do not flush objects from this content group under memory pressure.
     type: str
+  polleverytime:
     choices:
       - true
       - false
-  polleverytime:
     description:
       - Always poll for the objects in this content group. That is, retrieve the objects
         from the origin server whenever they are requested.
     type: str
+  prefetch:
     choices:
       - true
       - false
-  prefetch:
     description:
       - Attempt to refresh objects that are about to go stale.
     type: str
     default: true
-    choices:
-      - true
-      - false
   prefetchmaxpending:
     description:
       - Maximum number of outstanding prefetches that can be queued for the content
@@ -278,34 +278,34 @@ options:
         in this content group.
     type: int
   removecookies:
+    choices:
+      - true
+      - false
     description:
       - Remove cookies from responses.
     type: str
     default: true
-    choices:
-      - true
-      - false
   selectorvalue:
     description:
       - Value of the selector to be used for flushing objects from the content group.
         Requires that an invalidation selector be configured for the content group.
     type: str
   tosecondary:
-    description:
-      - content group whose objects are to be sent to secondary.
-    type: str
     choices:
       - true
       - false
-  type:
     description:
-      - The type of the content group.
+      - content group whose objects are to be sent to secondary.
     type: str
-    default: HTTP
+  type:
     choices:
       - HTTP
       - MYSQL
       - MSSQL
+    description:
+      - The type of the content group.
+    type: str
+    default: HTTP
   weaknegrelexpiry:
     description:
       - 'Relative expiry time, in seconds, for expiring negative responses. This value

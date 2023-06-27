@@ -24,28 +24,28 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging of AppFlow information for the specified GSLB service group.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   autoscale:
+    choices:
+      - DISABLED
+      - DNS
     description:
       - Auto scale option for a GSLB servicegroup
     type: str
     default: DISABLED
-    choices:
-      - DISABLED
-      - DNS
   cip:
-    description:
-      - Insert the Client IP header in requests forwarded to the GSLB service.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Insert the Client IP header in requests forwarded to the GSLB service.
+    type: str
   cipheader:
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
@@ -73,33 +73,36 @@ options:
         or connections will be sent to the service.
     type: int
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with all the services in the GSLB
         service group whose state transitions from UP to DOWN. Do not enable this
         option for applications that must complete their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dup_weight:
     description:
       - weight of the monitor that is bound to GSLB servicegroup.
     type: int
   graceful:
+    choices:
+      - true
+      - false
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
     type: str
-    choices:
-      - true
-      - false
   hashid:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
     type: int
   healthmonitor:
+    choices:
+      - true
+      - false
     description:
       - 'Monitor the health of this GSLB service.Available settings function are as
         follows:'
@@ -108,9 +111,6 @@ options:
         NO option, the appliance shows the service as UP at all times.
     type: str
     default: true
-    choices:
-      - true
-      - false
   includemembers:
     description:
       - Display the members of the listed GSLB service groups in addition to their
@@ -173,9 +173,6 @@ options:
         Can be changed after the name is created.
     type: str
   servicetype:
-    description:
-      - Protocol used to exchange data with the GSLB service.
-    type: str
     choices:
       - HTTP
       - FTP
@@ -195,19 +192,22 @@ options:
       - MYSQL
       - MSSQL
       - ORACLE
+    description:
+      - Protocol used to exchange data with the GSLB service.
+    type: str
   sitename:
     description:
       - Name of the GSLB site to which the service group belongs.
     type: str
   sitepersistence:
-    description:
-      - Use cookie-based site persistence. Applicable only to HTTP and SSL non-autoscale
-        enabled GSLB servicegroups.
-    type: str
     choices:
       - ConnectionProxy
       - HTTPRedirect
       - NONE
+    description:
+      - Use cookie-based site persistence. Applicable only to HTTP and SSL non-autoscale
+        enabled GSLB servicegroups.
+    type: str
   siteprefix:
     description:
       - The site's prefix string. When the GSLB service group is bound to a GSLB virtual
@@ -218,13 +218,13 @@ options:
         redirects GSLB requests to GSLB services by using their site domains.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the GSLB service group.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
@@ -235,6 +235,54 @@ options:
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
     type: int
+  gslbservicegroup_gslbservicegroupmember_binding:
+    type: dict
+    description: Bindings for gslbservicegroup_gslbservicegroupmember_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  gslbservicegroup_lbmonitor_binding:
+    type: dict
+    description: Bindings for gslbservicegroup_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

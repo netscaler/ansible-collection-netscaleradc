@@ -1052,11 +1052,11 @@ Parameters
 
       Responder action to be taken when the threshold is reached. Available settings function as follows:
 
-                  ACS - Serve content from an alternative content service
+                  \ :literal:`ACS`\  - Serve content from an alternative content service
 
                         Threshold : maxConn or delay
 
-                  NS - Serve from the Citrix ADC (built-in response)
+                  \ :literal:`NS`\  - Serve from the Citrix ADC (built-in response)
 
                        Threshold : maxConn or delay
 

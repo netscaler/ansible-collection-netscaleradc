@@ -24,32 +24,32 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   botinsight:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the bot insight records
         to the configured collectors.
     type: str
     default: DISABLED
+  ciinsight:
     choices:
       - ENABLED
       - DISABLED
-  ciinsight:
     description:
       - On enabling this option, the Citrix ADC will send the ContentInspection Insight
         records to the configured collectors.
     type: str
     default: DISABLED
+  clientsidemeasurements:
     choices:
       - ENABLED
       - DISABLED
-  clientsidemeasurements:
     description:
       - On enabling this option, the Citrix ADC will collect the time required to
         load and render the mainpage on the client.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   collectors:
     description:
       - Name(s) of collector(s) to be associated with the AppFlow action.
@@ -62,14 +62,14 @@ options:
         in the configuration utility.)
     type: str
   distributionalgorithm:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will distribute records among the
         collectors. Else, all records will be sent to all the collectors.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   metricslog:
     description:
       - If only the stats records are to be exported, turn on this option.
@@ -96,49 +96,73 @@ options:
         quotation marks (for example, "my appflow action" or 'my appflow action').
     type: str
   pagetracking:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will start tracking the page for waterfall
         chart by inserting a NS_ESNS cookie in the response.
     type: str
     default: DISABLED
+  securityinsight:
     choices:
       - ENABLED
       - DISABLED
-  securityinsight:
     description:
       - On enabling this option, the Citrix ADC will send the security insight records
         to the configured collectors.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   transactionlog:
-    description:
-      - Log ANOMALOUS or ALL transactions
-    type: str
-    default: ALL
     choices:
       - ALL
       - ANOMALOUS
+    description:
+      - Log C(ANOMALOUS) or C(ALL) transactions
+    type: str
+    default: ALL
   videoanalytics:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the videoinsight records
         to the configured collectors.
     type: str
     default: DISABLED
+  webinsight:
     choices:
       - ENABLED
       - DISABLED
-  webinsight:
     description:
       - On enabling this option, the Citrix ADC will send the webinsight records to
         the configured collectors.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
+  appflowaction_analyticsprofile_binding:
+    type: dict
+    description: Bindings for appflowaction_analyticsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

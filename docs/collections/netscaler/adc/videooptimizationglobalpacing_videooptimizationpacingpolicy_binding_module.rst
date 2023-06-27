@@ -500,9 +500,9 @@ Parameters
 
       Type of invocation, Available settings function as follows:
 
-      \* vserver - Forward the request to the specified virtual server.
+      \* \ :literal:`vserver`\  - Forward the request to the specified virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line

@@ -756,7 +756,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Address Type (IPV4/IPv6) of DNS name of nextHopServer FQDN.
+      Address Type (\ :literal:`IPV4`\ /IPv6) of DNS name of nextHopServer FQDN.
 
 
       .. rst-class:: ansible-option-line

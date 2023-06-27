@@ -436,7 +436,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Interception mode for the intranet application or resource. Correct value depends on the type of client software used to make connections. If the interception mode is set to TRANSPARENT, users connect with the Citrix Gateway Plug-in for Windows. With the PROXY setting, users connect with the Citrix Gateway Plug-in for Java.
+      Interception mode for the intranet application or resource. Correct value depends on the type of client software used to make connections. If the interception mode is set to \ :literal:`TRANSPARENT`\ , users connect with the Citrix Gateway Plug-in for Windows. With the \ :literal:`PROXY`\  setting, users connect with the Citrix Gateway Plug-in for Java.
 
 
       .. rst-class:: ansible-option-line
@@ -900,7 +900,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Protocol used by the intranet application. If protocol is set to BOTH, TCP and UDP traffic is allowed.
+      Protocol used by the intranet application. If protocol is set to BOTH, \ :literal:`TCP`\  and \ :literal:`UDP`\  traffic is allowed.
 
 
       .. rst-class:: ansible-option-line

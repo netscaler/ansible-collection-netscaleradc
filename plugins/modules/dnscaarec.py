@@ -32,13 +32,13 @@ options:
       - Subnet for which the cached CAA record need to be removed.
     type: str
   flag:
+    choices:
+      - NONE
+      - CRITICAL
     description:
       - Flag associated with the CAA record.
     type: str
     default: 5
-    choices:
-      - NONE
-      - CRITICAL
   nodeid:
     description:
       - Unique number that identifies the cluster node.
@@ -70,17 +70,17 @@ options:
     type: int
     default: 3600
   type:
-    description:
-      - 'Type of records to display. Available settings function as follows:'
-      - '* ADNS - Display all authoritative address records.'
-      - '* PROXY - Display all proxy address records.'
-      - '* ALL - Display all address records.'
-    type: str
-    default: ADNS
     choices:
       - ALL
       - ADNS
       - PROXY
+    description:
+      - 'Type of records to display. Available settings function as follows:'
+      - '* C(ADNS) - Display all authoritative address records.'
+      - '* C(PROXY) - Display all proxy address records.'
+      - '* C(ALL) - Display all address records.'
+    type: str
+    default: ADNS
   valuestring:
     description:
       - Value associated with the chosen property tag in the CAA resource record.

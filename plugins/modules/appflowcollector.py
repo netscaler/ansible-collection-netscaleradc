@@ -62,14 +62,14 @@ options:
       - Port on which the collector listens.
     type: int
   transport:
-    description:
-      - 'Type of collector: either logstream or ipfix or rest.'
-    type: str
-    default: ipfix
     choices:
       - ipfix
       - logstream
       - rest
+    description:
+      - 'Type of collector: either C(logstream) or C(ipfix) or C(rest).'
+    type: str
+    default: ipfix
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

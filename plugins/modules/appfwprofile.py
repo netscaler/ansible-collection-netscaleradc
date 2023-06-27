@@ -24,6 +24,11 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   addcookieflags:
+    choices:
+      - none
+      - httpOnly
+      - secure
+      - all
     description:
       - 'Add the specified flags to cookies. Available settings function as follows:'
       - '* None - Do not add flags to cookies.'
@@ -33,11 +38,6 @@ options:
       - '* All - Add both HTTPOnly and Secure flags to cookies.'
     type: str
     default: none
-    choices:
-      - none
-      - httpOnly
-      - secure
-      - all
   archivename:
     description:
       - Source for tar archive.
@@ -47,6 +47,11 @@ options:
       - Augment Relaxation Rules during import
     type: bool
   blockkeywordaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'Block Keyword action. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -56,16 +61,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -blockKeywordAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -blockKeywordAction none".'
+        appfw profile -blockKeywordAction C(none)".'
     type: list
     elements: str
     default: none
+  bufferoverflowaction:
     choices:
       - none
       - block
       - log
       - stats
-  bufferoverflowaction:
     description:
       - 'One or more Buffer Overflow actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -75,14 +80,9 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -bufferOverflowAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -bufferOverflowAction none".'
+        appfw profile -bufferOverflowAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   bufferoverflowmaxcookielength:
     description:
       - Maximum length, in characters, for cookies sent to your protected web sites.
@@ -115,34 +115,39 @@ options:
     type: int
     default: 1024
   canonicalizehtmlresponse:
+    choices:
+      - true
+      - false
     description:
       - Perform HTML entity encoding for any special characters in responses sent
         by your protected web sites.
     type: str
     default: true
+  ceflogging:
     choices:
       - true
       - false
-  ceflogging:
     description:
       - Enable CEF format logs for the profile.
     type: str
+  checkrequestheaders:
     choices:
       - true
       - false
-  checkrequestheaders:
     description:
       - Check request headers as well as web forms for injected SQL and cross-site
         scripts.
     type: str
-    choices:
-      - true
-      - false
   clientipexpression:
     description:
       - Expression to get the client IP.
     type: str
   cmdinjectionaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'Command injection action. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -152,45 +157,46 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -cmdInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -cmdInjectionAction none".'
+        appfw profile -cmdInjectionAction C(none)".'
     type: list
     elements: str
     default: none
-    choices:
-      - none
-      - block
-      - log
-      - stats
   cmdinjectiongrammar:
-    description:
-      - Check for CMD injection using CMD grammar
-    type: str
     choices:
       - true
       - false
-  cmdinjectiontype:
     description:
-      - 'Available CMD injection types. '
-      - '-CMDSplChar              : Checks for CMD Special Chars'
-      - '-CMDKeyword              : Checks for CMD Keywords'
-      - '-CMDSplCharANDKeyword    : Checks for both and blocks if both are found'
-      - '-CMDSplCharORKeyword     : Checks for both and blocks if anyone is found,'
-      - '-None                    : Disables checking using both CMD Special Char
-        and Keyword'
+      - Check for CMD injection using CMD grammar
     type: str
-    default: CMDSplCharANDKeyword
+  cmdinjectiontype:
     choices:
       - CMDSplChar
       - CMDKeyword
       - CMDSplCharORKeyword
       - CMDSplCharANDKeyword
       - None
+    description:
+      - 'Available CMD injection types. '
+      - '-C(CMDSplChar)              : Checks for CMD Special Chars'
+      - '-C(CMDKeyword)              : Checks for CMD Keywords'
+      - '-C(CMDSplCharANDKeyword)    : Checks for both and blocks if both are found'
+      - '-C(CMDSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
+      - '-C(None)                    : Disables checking using both CMD Special Char
+        and Keyword'
+    type: str
+    default: CMDSplCharANDKeyword
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   contenttypeaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Content-type actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -202,16 +208,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -contentTypeaction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -contentTypeaction none".'
+        appfw profile -contentTypeaction C(none)".'
     type: list
     elements: str
+  cookieconsistencyaction:
     choices:
       - none
       - block
       - learn
       - log
       - stats
-  cookieconsistencyaction:
     description:
       - 'One or more Cookie Consistency actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -223,17 +229,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -cookieConsistencyAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -cookieConsistencyAction none".'
+        appfw profile -cookieConsistencyAction C(none)".'
     type: list
     elements: str
     default: none
+  cookieencryption:
     choices:
       - none
-      - block
-      - learn
-      - log
-      - stats
-  cookieencryption:
+      - decryptOnly
+      - encryptSessionOnly
+      - encryptAll
     description:
       - 'Type of cookie encryption. Available settings function as follows:'
       - '* None - Do not encrypt cookies.'
@@ -242,12 +247,12 @@ options:
       - '* Encrypt All - Encrypt all cookies.'
     type: str
     default: none
+  cookiehijackingaction:
     choices:
       - none
-      - decryptOnly
-      - encryptSessionOnly
-      - encryptAll
-  cookiehijackingaction:
+      - block
+      - log
+      - stats
     description:
       - 'One or more actions to prevent cookie hijacking. Available settings function
         as follows:'
@@ -259,16 +264,14 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -cookieHijackingAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -cookieHijackingAction none".'
+        appfw profile -cookieHijackingAction C(none)".'
     type: list
     elements: str
     default: none
+  cookieproxying:
     choices:
       - none
-      - block
-      - log
-      - stats
-  cookieproxying:
+      - sessionOnly
     description:
       - 'Cookie proxy setting. Available settings function as follows:'
       - '* None - Do not proxy cookies.'
@@ -276,21 +279,21 @@ options:
         but do not proxy permanent cookies.'
     type: str
     default: none
-    choices:
-      - none
-      - sessionOnly
   cookiesamesiteattribute:
+    choices:
+      - None
+      - LAX
+      - STRICT
     description:
       - Cookie Samesite attribute added to support adding cookie SameSite attribute
         for all set-cookies including appfw session cookies. Default value will be
         "SameSite=Lax".
     type: str
     default: LAX
-    choices:
-      - None
-      - LAX
-      - STRICT
   cookietransforms:
+    choices:
+      - true
+      - false
     description:
       - 'Perform the specified type of cookie transformation. '
       - 'Available settings function as follows: '
@@ -302,15 +305,7 @@ options:
         any cookie transformations. If it is set to OFF, no cookie transformations
         are performed regardless of any other settings.'
     type: str
-    choices:
-      - true
-      - false
   creditcard:
-    description:
-      - Credit card types that the application firewall should protect.
-    type: list
-    elements: str
-    default: none
     choices:
       - none
       - visa
@@ -319,7 +314,18 @@ options:
       - amex
       - jcb
       - dinersclub
+    description:
+      - Credit card types that the application firewall should protect.
+    type: list
+    elements: str
+    default: none
   creditcardaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Credit Card actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -329,16 +335,10 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -creditCardAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -creditCardAction none".'
+        appfw profile -creditCardAction C(none)".'
     type: list
     elements: str
     default: none
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   creditcardmaxallowed:
     description:
       - This parameter value is used by the block action. It represents the maximum
@@ -346,14 +346,20 @@ options:
         protected web sites. Pages that contain more credit card numbers are blocked.
     type: int
   creditcardxout:
+    choices:
+      - true
+      - false
     description:
       - Mask any credit card number detected in a response by replacing each digit,
         except the digits in the final group, with the letter "X."
     type: str
-    choices:
-      - true
-      - false
   crosssitescriptingaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Cross-Site Scripting (XSS) actions. Available settings function
         as follows:'
@@ -366,24 +372,21 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -crossSiteScriptingAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -crossSiteScriptingAction none".'
+        appfw profile -crossSiteScriptingAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   crosssitescriptingcheckcompleteurls:
+    choices:
+      - true
+      - false
     description:
       - Check complete URLs for cross-site scripts, instead of just the query portions
         of URLs.
     type: str
+  crosssitescriptingtransformunsafehtml:
     choices:
       - true
       - false
-  crosssitescriptingtransformunsafehtml:
     description:
       - 'Transform cross-site scripts. This setting configures the application firewall
         to disable dangerous HTML instead of blocking the request. '
@@ -391,10 +394,13 @@ options:
         any cross-site scripting transformations. If it is set to OFF, no cross-site
         scripting transformations are performed regardless of any other settings.'
     type: str
-    choices:
-      - true
-      - false
   csrftagaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Cross-Site Request Forgery (CSRF) Tagging actions. Available
         settings function as follows:'
@@ -407,16 +413,10 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -CSRFTagAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -CSRFTagAction none".'
+        appfw profile -CSRFTagAction C(none)".'
     type: list
     elements: str
     default: none
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   customsettings:
     description:
       - Object name for custom settings.
@@ -456,6 +456,10 @@ options:
         have a field type explicitly assigned to them.
     type: str
   defaults:
+    choices:
+      - basic
+      - advanced
+      - core
     description:
       - Default configuration to apply to the profile. Basic defaults are intended
         for standard content that requires little further configuration, such as static
@@ -468,11 +472,12 @@ options:
         by using the add appfw profile command, and then use the set appfw profile
         command to configure the other option.'
     type: str
-    choices:
-      - basic
-      - advanced
-      - core
   denyurlaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more Deny URL actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -487,38 +492,19 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -denyURLaction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -denyURLaction none".'
+        appfw profile -denyURLaction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   dosecurecreditcardlogging:
+    choices:
+      - true
+      - false
     description:
       - Setting this option logs credit card numbers in the response when the match
         is found.
     type: str
     default: true
-    choices:
-      - true
-      - false
   dynamiclearning:
-    description:
-      - 'One or more security checks. Available options are as follows:'
-      - '* SQLInjection - Enable dynamic learning for SQLInjection security check.'
-      - '* CrossSiteScripting - Enable dynamic learning for CrossSiteScripting security
-        check.'
-      - '* fieldFormat - Enable dynamic learning for  fieldFormat security check.'
-      - '* None - Disable security checks for all security checks.'
-      - ''
-      - 'CLI users: To enable dynamic learning on one or more security checks, type
-        "set appfw profile -dynamicLearning" followed by the security checks to be
-        enabled. To turn off dynamic learning on all security checks, type "set appfw
-        profile -dynamicLearning none".'
-    type: list
-    elements: str
     choices:
       - none
       - SQLInjection
@@ -529,45 +515,66 @@ options:
       - fieldConsistency
       - CSRFtag
       - ContentType
+    description:
+      - 'One or more security checks. Available options are as follows:'
+      - '* C(SQLInjection) - Enable dynamic learning for C(SQLInjection) security
+        check.'
+      - '* C(CrossSiteScripting) - Enable dynamic learning for C(CrossSiteScripting)
+        security check.'
+      - '* C(fieldFormat) - Enable dynamic learning for  C(fieldFormat) security check.'
+      - '* None - Disable security checks for all security checks.'
+      - ''
+      - 'CLI users: To enable dynamic learning on one or more security checks, type
+        "set appfw profile -dynamicLearning" followed by the security checks to be
+        enabled. To turn off dynamic learning on all security checks, type "set appfw
+        profile -dynamicLearning C(none)".'
+    type: list
+    elements: str
   enableformtagging:
+    choices:
+      - true
+      - false
     description:
       - Enable tagging of web form fields for use by the Form Field Consistency and
         CSRF Form Tagging checks.
     type: str
     default: true
-    choices:
-      - true
-      - false
   errorurl:
     description:
       - URL that application firewall uses as the Error URL.
     type: str
   excludefileuploadfromchecks:
-    description:
-      - Exclude uploaded files from Form checks.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Exclude uploaded files from Form checks.
+    type: str
   exemptclosureurlsfromsecuritychecks:
+    choices:
+      - true
+      - false
     description:
       - Exempt URLs that pass the Start URL closure check from SQL injection, cross-site
         script, field format and field consistency security checks at locations other
         than headers.
     type: str
     default: true
+  fakeaccountdetection:
     choices:
       - true
       - false
-  fakeaccountdetection:
     description:
       - 'Fake account detection flag : ON/OFF. If set to ON fake account detection
         in enabled on ADC, if set to OFF fake account detection is disabled.'
     type: str
-    choices:
-      - true
-      - false
   fieldconsistencyaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Form Field Consistency actions. Available settings function as
         follows:'
@@ -580,17 +587,17 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -fieldConsistencyaction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -fieldConsistencyAction none".'
+        appfw profile -fieldConsistencyAction C(none)".'
     type: list
     elements: str
     default: none
+  fieldformataction:
     choices:
       - none
       - block
       - learn
       - log
       - stats
-  fieldformataction:
     description:
       - 'One or more Field Format actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -602,15 +609,9 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -fieldFormatAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -fieldFormatAction none".'
+        appfw profile -fieldFormatAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   fileuploadmaxnum:
     description:
       - Maximum allowed number of file uploads per form-submission request. The maximum
@@ -618,6 +619,11 @@ options:
     type: int
     default: 65535
   fileuploadtypesaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more file upload types actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -627,31 +633,26 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -fileUploadTypeAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -fileUploadTypeAction none".'
+        appfw profile -fileUploadTypeAction C(none)".'
     type: list
     elements: str
+  geolocationlogging:
+    choices:
+      - true
+      - false
+    description:
+      - Enable Geo-Location Logging in CEF format logs for the profile.
+    type: str
+  grpcaction:
     choices:
       - none
       - block
       - log
       - stats
-  geolocationlogging:
-    description:
-      - Enable Geo-Location Logging in CEF format logs for the profile.
-    type: str
-    choices:
-      - true
-      - false
-  grpcaction:
     description:
       - gRPC validation
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   htmlerrorobject:
     description:
       - 'Name to assign to the HTML Error Object. '
@@ -681,6 +682,11 @@ options:
         rules
     type: str
   infercontenttypexmlpayloadaction:
+    choices:
+      - block
+      - log
+      - stats
+      - none
     description:
       - 'One or more infer content type payload actions. Available settings function
         as follows:'
@@ -695,33 +701,18 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -inferContentTypeXMLPayloadAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -inferContentTypeXMLPayloadAction none". Please note "none"
+        appfw profile -inferContentTypeXMLPayloadAction C(none)". Please note "C(none)"
         action cannot be used with any other action type.'
     type: list
     elements: str
-    choices:
-      - block
-      - log
-      - stats
-      - none
   insertcookiesamesiteattribute:
-    description:
-      - Configure whether application firewall should add samesite attribute for set-cookies
-    type: str
     choices:
       - true
       - false
-  inspectcontenttypes:
     description:
-      - 'One or more InspectContentType lists. '
-      - '* application/x-www-form-urlencoded'
-      - '* multipart/form-data'
-      - '* text/x-gwt-rpc'
-      - ''
-      - 'CLI users: To enable, type "set appfw profile -InspectContentTypes" followed
-        by the content types to be inspected.'
-    type: list
-    elements: str
+      - Configure whether application firewall should add samesite attribute for set-cookies
+    type: str
+  inspectcontenttypes:
     choices:
       - none
       - application/x-www-form-urlencoded
@@ -730,31 +721,46 @@ options:
       - application/grpc
       - application/grpc-web-text
       - application/grpc-web+json
-  inspectquerycontenttypes:
     description:
-      - Inspect request query as well as web forms for injected SQL and cross-site
-        scripts for following content types.
+      - 'One or more InspectContentType lists. '
+      - '* C(application/x-www-form-urlencoded)'
+      - '* C(multipart/form-data)'
+      - '* C(text/x-gwt-rpc)'
+      - ''
+      - 'CLI users: To enable, type "set appfw profile -InspectContentTypes" followed
+        by the content types to be inspected.'
     type: list
     elements: str
+  inspectquerycontenttypes:
     choices:
       - HTML
       - XML
       - JSON
       - OTHER
-  invalidpercenthandling:
     description:
-      - 'Configure the method that the application firewall uses to handle percent-encoded
-        names and values. Available settings function as follows: '
-      - '* apache_mode - Apache format.'
-      - '* asp_mode - Microsoft ASP format.'
-      - '* secure_mode - Secure format.'
-    type: str
-    default: secure_mode
+      - Inspect request query as well as web forms for injected SQL and cross-site
+        scripts for following content types.
+    type: list
+    elements: str
+  invalidpercenthandling:
     choices:
       - apache_mode
       - asp_mode
       - secure_mode
+    description:
+      - 'Configure the method that the application firewall uses to handle percent-encoded
+        names and values. Available settings function as follows: '
+      - '* C(apache_mode) - Apache format.'
+      - '* C(asp_mode) - Microsoft ASP format.'
+      - '* C(secure_mode) - Secure format.'
+    type: str
+    default: secure_mode
   jsonblockkeywordaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'JSON Block Keyword action. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -764,16 +770,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONBlockKeywordAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -JSONBlockKeywordAction none".'
+        appfw profile -JSONBlockKeywordAction C(none)".'
     type: list
     elements: str
     default: none
+  jsoncmdinjectionaction:
     choices:
       - none
       - block
       - log
       - stats
-  jsoncmdinjectionaction:
     description:
       - 'One or more JSON CMD Injection actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -783,39 +789,39 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONCMDInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -JSONCMDInjectionAction none".'
+        appfw profile -JSONCMDInjectionAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   jsoncmdinjectiongrammar:
-    description:
-      - Check for CMD injection using CMD grammar in JSON
-    type: str
     choices:
       - true
       - false
-  jsoncmdinjectiontype:
     description:
-      - Available CMD injection types.
-      - '-CMDSplChar              : Checks for CMD Special Chars'
-      - '-CMDKeyword              : Checks for CMD Keywords'
-      - '-CMDSplCharANDKeyword    : Checks for both and blocks if both are found'
-      - '-CMDSplCharORKeyword     : Checks for both and blocks if anyone is found,'
-      - '-None                    : Disables checking using both SQL Special Char
-        and Keyword'
+      - Check for CMD injection using CMD grammar in JSON
     type: str
-    default: CMDSplCharANDKeyword
+  jsoncmdinjectiontype:
     choices:
       - CMDSplChar
       - CMDKeyword
       - CMDSplCharORKeyword
       - CMDSplCharANDKeyword
       - None
+    description:
+      - Available CMD injection types.
+      - '-C(CMDSplChar)              : Checks for CMD Special Chars'
+      - '-C(CMDKeyword)              : Checks for CMD Keywords'
+      - '-C(CMDSplCharANDKeyword)    : Checks for both and blocks if both are found'
+      - '-C(CMDSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
+      - '-C(None)                    : Disables checking using both SQL Special Char
+        and Keyword'
+    type: str
+    default: CMDSplCharANDKeyword
   jsondosaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more JSON Denial-of-Service (JsonDoS) actions. Available settings
         function as follows:'
@@ -826,14 +832,9 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONDoSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -JSONDoSAction none".'
+        appfw profile -JSONDoSAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   jsonerrorobject:
     description:
       - Name to the imported JSON Error Object to be set on application firewall profile.
@@ -854,6 +855,11 @@ options:
       - Response status message associated with JSON error page
     type: str
   jsonsqlinjectionaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more JSON SQL Injection actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -863,39 +869,39 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONSQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -JSONSQLInjectionAction none".'
+        appfw profile -JSONSQLInjectionAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   jsonsqlinjectiongrammar:
-    description:
-      - Check for SQL injection using SQL grammar in JSON
-    type: str
     choices:
       - true
       - false
-  jsonsqlinjectiontype:
     description:
-      - Available SQL injection types.
-      - '-SQLSplChar              : Checks for SQL Special Chars'
-      - '-SQLKeyword              : Checks for SQL Keywords'
-      - '-SQLSplCharANDKeyword    : Checks for both and blocks if both are found'
-      - '-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found,'
-      - '-None                    : Disables checking using both SQL Special Char
-        and Keyword'
+      - Check for SQL injection using SQL grammar in JSON
     type: str
-    default: SQLSplCharANDKeyword
+  jsonsqlinjectiontype:
     choices:
       - SQLSplChar
       - SQLKeyword
       - SQLSplCharORKeyword
       - SQLSplCharANDKeyword
       - None
+    description:
+      - Available SQL injection types.
+      - '-C(SQLSplChar)              : Checks for SQL Special Chars'
+      - '-C(SQLKeyword)              : Checks for SQL Keywords'
+      - '-C(SQLSplCharANDKeyword)    : Checks for both and blocks if both are found'
+      - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
+      - '-C(None)                    : Disables checking using both SQL Special Char
+        and Keyword'
+    type: str
+    default: SQLSplCharANDKeyword
   jsonxssaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more JSON Cross-Site Scripting actions. Available settings function
         as follows:'
@@ -906,26 +912,26 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -JSONXssAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -JSONXssAction none".'
+        appfw profile -JSONXssAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   logeverypolicyhit:
-    description:
-      - Log every profile match, regardless of security checks results.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Log every profile match, regardless of security checks results.
+    type: str
   matchurlstring:
     description:
       - Match this action url in archived Relaxation Rules to replace.
     type: str
   multipleheaderaction:
+    choices:
+      - block
+      - keepLast
+      - log
+      - none
     description:
       - 'One or more multiple header actions. Available settings function as follows:'
       - '* Block - Block connections that have multiple headers.'
@@ -936,11 +942,6 @@ options:
         followed by the actions to be enabled.'
     type: list
     elements: str
-    choices:
-      - block
-      - keepLast
-      - log
-      - none
   name:
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
@@ -953,6 +954,9 @@ options:
         quotation marks (for example, "my profile" or 'my profile').
     type: str
   optimizepartialreqs:
+    choices:
+      - true
+      - false
     description:
       - Optimize handle of HTTP partial requests i.e. those with range headers.
       - 'Available settings are as follows: '
@@ -962,22 +966,19 @@ options:
         backend server'
     type: str
     default: true
-    choices:
-      - true
-      - false
   overwrite:
     description:
       - Purge existing Relaxation Rules and replace during import
     type: bool
   percentdecoderecursively:
+    choices:
+      - true
+      - false
     description:
       - Configure whether the application firewall should use percentage recursive
         decoding
     type: str
     default: true
-    choices:
-      - true
-      - false
   postbodylimit:
     description:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
@@ -986,6 +987,10 @@ options:
     type: int
     default: 20000000
   postbodylimitaction:
+    choices:
+      - block
+      - log
+      - stats
     description:
       - 'One or more Post Body Limit actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check. Must always
@@ -994,13 +999,9 @@ options:
       - '* Stats - Generate statistics for this security check.'
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -PostBodyLimitAction
-        block" followed by the other actions to be enabled.'
+        C(block)" followed by the other actions to be enabled.'
     type: list
     elements: str
-    choices:
-      - block
-      - log
-      - stats
   postbodylimitsignature:
     description:
       - Maximum allowed HTTP post body size for signature inspection for location
@@ -1013,6 +1014,11 @@ options:
       - Name of the imported proto file.
     type: str
   refererheadercheck:
+    choices:
+      - false
+      - if_present
+      - AlwaysExceptStartURLs
+      - AlwaysExceptFirstRequest
     description:
       - 'Enable validation of Referer headers. '
       - 'Referer validation ensures that a web form that a user sends to your web
@@ -1021,11 +1027,6 @@ options:
         protects against cross-site request forgery (CSRF) attacks, not Start URL
         attacks.
     type: str
-    choices:
-      - false
-      - if_present
-      - AlwaysExceptStartURLs
-      - AlwaysExceptFirstRequest
   relaxationrules:
     description:
       - Import all appfw relaxation rules
@@ -1052,34 +1053,40 @@ options:
       - Object name of the rfc profile.
     type: str
   semicolonfieldseparator:
-    description:
-      - Allow ';' as a form field separator in URL queries and POST form bodies.
-    type: str
     choices:
       - true
       - false
-  sessionlessfieldconsistency:
     description:
-      - Perform sessionless Field Consistency Checks.
+      - Allow ';' as a form field separator in URL queries and POST form bodies.
     type: str
+  sessionlessfieldconsistency:
     choices:
       - false
       - true
       - postOnly
+    description:
+      - Perform sessionless Field Consistency Checks.
+    type: str
   sessionlessurlclosure:
+    choices:
+      - true
+      - false
     description:
       - Enable session less URL Closure Checks.
       - 'This check is applicable to Profile Type: HTML.'
     type: str
-    choices:
-      - true
-      - false
   signatures:
     description:
       - Object name for signatures.
       - 'This check is applicable to Profile Type: HTML, XML.'
     type: str
   sqlinjectionaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more HTML SQL Injection actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1091,30 +1098,27 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -SQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -SQLInjectionAction none".'
+        appfw profile -SQLInjectionAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   sqlinjectionchecksqlwildchars:
+    choices:
+      - true
+      - false
     description:
       - Check for form fields that contain SQL wild chars .
     type: str
+  sqlinjectiongrammar:
     choices:
       - true
       - false
-  sqlinjectiongrammar:
     description:
       - Check for SQL injection using SQL grammar
     type: str
+  sqlinjectiononlycheckfieldswithsqlchars:
     choices:
       - true
       - false
-  sqlinjectiononlycheckfieldswithsqlchars:
     description:
       - Check only form fields that contain SQL special strings (characters) for injected
         SQL code.
@@ -1122,35 +1126,35 @@ options:
         code without a special string is harmless to most SQL servers.
     type: str
     default: true
-    choices:
-      - true
-      - false
   sqlinjectionparsecomments:
+    choices:
+      - checkall
+      - ansi
+      - nested
+      - ansinested
     description:
       - 'Parse HTML comments and exempt them from the HTML SQL Injection check. You
         must specify the type of comments that the application firewall is to detect
         and exempt from this security check. Available settings function as follows:'
       - '* Check all - Check all content.'
       - '* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. '
-      - '* Nested - Exempt content that is part of a nested (Microsoft-style) comment.'
+      - '* Nested - Exempt content that is part of a C(nested) (Microsoft-style) comment.'
       - '* ANSI Nested - Exempt content that is part of any type of comment.'
     type: str
-    choices:
-      - checkall
-      - ansi
-      - nested
-      - ansinested
   sqlinjectionruletype:
-    description:
-      - 'Specifies SQL Injection rule type: ALLOW/DENY. If ALLOW rule type is configured
-        then allow list rules are used, if DENY rule type is configured then deny
-        rules are used.'
-    type: str
-    default: ALLOW
     choices:
       - ALLOW
       - DENY
+    description:
+      - 'Specifies SQL Injection rule type: C(ALLOW)/C(DENY). If C(ALLOW) rule type
+        is configured then allow list rules are used, if C(DENY) rule type is configured
+        then deny rules are used.'
+    type: str
+    default: ALLOW
   sqlinjectiontransformspecialchars:
+    choices:
+      - true
+      - false
     description:
       - Transform injected SQL code. This setting configures the application firewall
         to disable SQL special strings instead of blocking the request. Since most
@@ -1160,27 +1164,30 @@ options:
         any SQL injection transformations. If it is set to OFF, no SQL injection transformations
         are performed regardless of any other settings.'
     type: str
-    choices:
-      - true
-      - false
   sqlinjectiontype:
-    description:
-      - 'Available SQL injection types. '
-      - '-SQLSplChar              : Checks for SQL Special Chars'
-      - "-SQLKeyword\t\t : Checks for SQL Keywords"
-      - '-SQLSplCharANDKeyword    : Checks for both and blocks if both are found'
-      - '-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found'
-      - '-None                    : Disables checking using both SQL Special Char
-        and Keyword'
-    type: str
-    default: SQLSplCharANDKeyword
     choices:
       - SQLSplChar
       - SQLKeyword
       - SQLSplCharORKeyword
       - SQLSplCharANDKeyword
       - None
+    description:
+      - 'Available SQL injection types. '
+      - '-C(SQLSplChar)              : Checks for SQL Special Chars'
+      - "-C(SQLKeyword)\t\t : Checks for SQL Keywords"
+      - '-C(SQLSplCharANDKeyword)    : Checks for both and blocks if both are found'
+      - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found'
+      - '-C(None)                    : Disables checking using both SQL Special Char
+        and Keyword'
+    type: str
+    default: SQLSplCharANDKeyword
   starturlaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more Start URL actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1192,23 +1199,20 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -startURLaction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -startURLaction none".'
+        appfw profile -startURLaction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   starturlclosure:
-    description:
-      - Toggle  the state of Start URL Closure.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Toggle  the state of Start URL Closure.
+    type: str
   streaming:
+    choices:
+      - true
+      - false
     description:
       - 'Setting this option converts content-length form submission requests (requests
         with content-type "application/x-www-form-urlencoded" or "multipart/form-data")
@@ -1218,89 +1222,93 @@ options:
         make sure that the backend server accepts chunked requests before enabling
         this option. Citrix recommends enabling this option for large request sizes(>20MB).'
     type: str
+  stripcomments:
     choices:
       - true
       - false
-  stripcomments:
     description:
       - Strip HTML comments.
       - 'This check is applicable to Profile Type: HTML.'
     type: str
-    choices:
-      - true
-      - false
   striphtmlcomments:
+    choices:
+      - none
+      - all
+      - exclude_script_tag
     description:
       - Strip HTML comments before forwarding a web page sent by a protected web site
         in response to a user request.
     type: str
     default: none
+  stripxmlcomments:
     choices:
       - none
       - all
-      - exclude_script_tag
-  stripxmlcomments:
     description:
       - Strip XML comments before forwarding a web page sent by a protected web site
         in response to a user request.
     type: str
     default: none
-    choices:
-      - none
-      - all
   trace:
-    description:
-      - Toggle  the state of trace
-    type: str
     choices:
       - true
       - false
-  type:
     description:
-      - 'Application firewall profile type, which controls which security checks and
-        settings are applied to content that is filtered with the profile. Available
-        settings function as follows:'
-      - '* HTML - HTML-based web sites.'
-      - '* XML -  XML-based web sites and services.'
-      - '* JSON - JSON-based web sites and services.'
-      - '* HTML XML (Web 2.0) - Sites that contain both HTML and XML content, such
-        as ATOM feeds, blogs, and RSS feeds.'
-      - '* HTML JSON  - Sites that contain both HTML and JSON content.'
-      - '* XML JSON   - Sites that contain both XML and JSON content.'
-      - '* HTML XML JSON   - Sites that contain HTML, XML and JSON content.'
-    type: list
-    elements: str
-    default: HTML
+      - Toggle  the state of trace
+    type: str
+  type:
     choices:
       - HTML
       - XML
       - JSON
+    description:
+      - 'Application firewall profile type, which controls which security checks and
+        settings are applied to content that is filtered with the profile. Available
+        settings function as follows:'
+      - '* C(HTML) - C(HTML)-based web sites.'
+      - '* C(XML) -  C(XML)-based web sites and services.'
+      - '* C(JSON) - C(JSON)-based web sites and services.'
+      - '* C(HTML) C(XML) (Web 2.0) - Sites that contain both C(HTML) and C(XML) content,
+        such as ATOM feeds, blogs, and RSS feeds.'
+      - '* C(HTML) C(JSON)  - Sites that contain both C(HTML) and C(JSON) content.'
+      - '* C(XML) C(JSON)   - Sites that contain both C(XML) and C(JSON) content.'
+      - '* C(HTML) C(XML) C(JSON)   - Sites that contain C(HTML), C(XML) and C(JSON)
+        content.'
+    type: list
+    elements: str
+    default: HTML
   urldecoderequestcookies:
+    choices:
+      - true
+      - false
     description:
       - URL Decode request cookies before subjecting them to SQL and cross-site scripting
         checks.
     type: str
+  usehtmlerrorobject:
     choices:
       - true
       - false
-  usehtmlerrorobject:
     description:
       - Send an imported HTML Error object to a user when a request is blocked, instead
         of redirecting the user to the designated Error URL.
     type: str
-    choices:
-      - true
-      - false
   verboseloglevel:
-    description:
-      - Detailed Logging Verbose Log Level.
-    type: str
-    default: pattern
     choices:
       - pattern
       - patternPayload
       - patternPayloadHeader
+    description:
+      - Detailed Logging Verbose Log Level.
+    type: str
+    default: pattern
   xmlattachmentaction:
+    choices:
+      - none
+      - block
+      - learn
+      - log
+      - stats
     description:
       - 'One or more XML Attachment actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1312,16 +1320,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLAttachmentAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLAttachmentAction none".'
+        appfw profile -XMLAttachmentAction C(none)".'
     type: list
     elements: str
+  xmldosaction:
     choices:
       - none
       - block
       - learn
       - log
       - stats
-  xmldosaction:
     description:
       - 'One or more XML Denial-of-Service (XDoS) actions. Available settings function
         as follows:'
@@ -1334,15 +1342,9 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLDoSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLDoSAction none".'
+        appfw profile -XMLDoSAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
   xmlerrorobject:
     description:
       - Name to assign to the XML Error Object, which the application firewall displays
@@ -1367,6 +1369,11 @@ options:
       - Response status message associated with XML error page
     type: str
   xmlformataction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more XML Format actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1376,15 +1383,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLFormatAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLFormatAction none".'
+        appfw profile -XMLFormatAction C(none)".'
     type: list
     elements: str
+  xmlsoapfaultaction:
     choices:
       - none
       - block
       - log
+      - remove
       - stats
-  xmlsoapfaultaction:
     description:
       - 'One or more XML SOAP Fault Filtering actions. Available settings function
         as follows:'
@@ -1396,16 +1404,15 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLSOAPFaultAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLSOAPFaultAction none".'
+        appfw profile -XMLSOAPFaultAction C(none)".'
     type: list
     elements: str
+  xmlsqlinjectionaction:
     choices:
       - none
       - block
       - log
-      - remove
       - stats
-  xmlsqlinjectionaction:
     description:
       - 'One or more XML SQL Injection actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1415,31 +1422,31 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLSQLInjectionAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLSQLInjectionAction none".'
+        appfw profile -XMLSQLInjectionAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - log
-      - stats
   xmlsqlinjectionchecksqlwildchars:
-    description:
-      - Check for form fields that contain SQL wild chars .
-    type: str
     choices:
       - true
       - false
+    description:
+      - Check for form fields that contain SQL wild chars .
+    type: str
   xmlsqlinjectiononlycheckfieldswithsqlchars:
+    choices:
+      - true
+      - false
     description:
       - Check only form fields that contain SQL special characters, which most SQL
         servers require before accepting an SQL command, for injected SQL.
     type: str
     default: true
-    choices:
-      - true
-      - false
   xmlsqlinjectionparsecomments:
+    choices:
+      - checkall
+      - ansi
+      - nested
+      - ansinested
     description:
       - 'Parse comments in XML Data and exempt those sections of the request that
         are from the XML SQL Injection check. You must configure the type of comments
@@ -1447,31 +1454,31 @@ options:
         Available settings function as follows:'
       - '* Check all - Check all content.'
       - '* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment. '
-      - '* Nested - Exempt content that is part of a nested (Microsoft-style) comment.'
+      - '* Nested - Exempt content that is part of a C(nested) (Microsoft-style) comment.'
       - '* ANSI Nested - Exempt content that is part of any type of comment.'
     type: str
     default: checkall
-    choices:
-      - checkall
-      - ansi
-      - nested
-      - ansinested
   xmlsqlinjectiontype:
-    description:
-      - Available SQL injection types.
-      - '-SQLSplChar              : Checks for SQL Special Chars'
-      - '-SQLKeyword              : Checks for SQL Keywords'
-      - '-SQLSplCharANDKeyword    : Checks for both and blocks if both are found'
-      - '-SQLSplCharORKeyword     : Checks for both and blocks if anyone is found'
-    type: str
-    default: SQLSplCharANDKeyword
     choices:
       - SQLSplChar
       - SQLKeyword
       - SQLSplCharORKeyword
       - SQLSplCharANDKeyword
       - None
+    description:
+      - Available SQL injection types.
+      - '-C(SQLSplChar)              : Checks for SQL Special Chars'
+      - '-C(SQLKeyword)              : Checks for SQL Keywords'
+      - '-C(SQLSplCharANDKeyword)    : Checks for both and blocks if both are found'
+      - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found'
+    type: str
+    default: SQLSplCharANDKeyword
   xmlvalidationaction:
+    choices:
+      - none
+      - block
+      - log
+      - stats
     description:
       - 'One or more XML Validation actions. Available settings function as follows:'
       - '* Block - Block connections that violate this security check.'
@@ -1481,15 +1488,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLValidationAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLValidationAction none".'
+        appfw profile -XMLValidationAction C(none)".'
     type: list
     elements: str
+  xmlwsiaction:
     choices:
       - none
       - block
+      - learn
       - log
       - stats
-  xmlwsiaction:
     description:
       - 'One or more Web Services Interoperability (WSI) actions. Available settings
         function as follows:'
@@ -1502,16 +1510,16 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLWSIAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLWSIAction none".'
+        appfw profile -XMLWSIAction C(none)".'
     type: list
     elements: str
+  xmlxssaction:
     choices:
       - none
       - block
       - learn
       - log
       - stats
-  xmlxssaction:
     description:
       - 'One or more XML Cross-Site Scripting actions. Available settings function
         as follows:'
@@ -1522,15 +1530,777 @@ options:
       - ''
       - 'CLI users: To enable one or more actions, type "set appfw profile -XMLXSSAction"
         followed by the actions to be enabled. To turn off all actions, type "set
-        appfw profile -XMLXSSAction none".'
+        appfw profile -XMLXSSAction C(none)".'
     type: list
     elements: str
-    choices:
-      - none
-      - block
-      - learn
-      - log
-      - stats
+  appfwprofile_appfwconfidfield_binding:
+    type: dict
+    description: Bindings for appfwprofile_appfwconfidfield_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_blockkeyword_binding:
+    type: dict
+    description: Bindings for appfwprofile_blockkeyword_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_bypasslist_binding:
+    type: dict
+    description: Bindings for appfwprofile_bypasslist_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_cmdinjection_binding:
+    type: dict
+    description: Bindings for appfwprofile_cmdinjection_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_contenttype_binding:
+    type: dict
+    description: Bindings for appfwprofile_contenttype_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_cookieconsistency_binding:
+    type: dict
+    description: Bindings for appfwprofile_cookieconsistency_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_creditcardnumber_binding:
+    type: dict
+    description: Bindings for appfwprofile_creditcardnumber_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_crosssitescripting_binding:
+    type: dict
+    description: Bindings for appfwprofile_crosssitescripting_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_csrftag_binding:
+    type: dict
+    description: Bindings for appfwprofile_csrftag_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_denylist_binding:
+    type: dict
+    description: Bindings for appfwprofile_denylist_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_denyurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_denyurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_excluderescontenttype_binding:
+    type: dict
+    description: Bindings for appfwprofile_excluderescontenttype_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_fakeaccount_binding:
+    type: dict
+    description: Bindings for appfwprofile_fakeaccount_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_fieldconsistency_binding:
+    type: dict
+    description: Bindings for appfwprofile_fieldconsistency_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_fieldformat_binding:
+    type: dict
+    description: Bindings for appfwprofile_fieldformat_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_fileuploadtype_binding:
+    type: dict
+    description: Bindings for appfwprofile_fileuploadtype_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_jsonblockkeyword_binding:
+    type: dict
+    description: Bindings for appfwprofile_jsonblockkeyword_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_jsoncmdurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_jsoncmdurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_jsondosurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_jsondosurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_jsonsqlurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_jsonsqlurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_jsonxssurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_jsonxssurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_logexpression_binding:
+    type: dict
+    description: Bindings for appfwprofile_logexpression_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_safeobject_binding:
+    type: dict
+    description: Bindings for appfwprofile_safeobject_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_sqlinjection_binding:
+    type: dict
+    description: Bindings for appfwprofile_sqlinjection_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_starturl_binding:
+    type: dict
+    description: Bindings for appfwprofile_starturl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_trustedlearningclients_binding:
+    type: dict
+    description: Bindings for appfwprofile_trustedlearningclients_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmlattachmenturl_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmlattachmenturl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmldosurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmldosurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmlsqlinjection_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmlsqlinjection_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmlvalidationurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmlvalidationurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmlwsiurl_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmlwsiurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  appfwprofile_xmlxss_binding:
+    type: dict
+    description: Bindings for appfwprofile_xmlxss_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

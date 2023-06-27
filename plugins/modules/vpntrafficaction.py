@@ -34,20 +34,20 @@ options:
         of requiring them to log on separately to access each one.
     type: str
   fta:
+    choices:
+      - true
+      - false
     description:
       - Specify file type association, which is a list of file extensions that users
         are allowed to open.
     type: str
+  hdx:
     choices:
       - true
       - false
-  hdx:
     description:
       - Provide hdx proxy to the ICA traffic
     type: str
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - Kerberos constrained delegation account name
@@ -74,37 +74,37 @@ options:
         request.
     type: str
   qual:
-    description:
-      - Protocol, either HTTP or TCP, to be used with the action.
-    type: str
     choices:
       - http
       - tcp
+    description:
+      - Protocol, either HTTP or TCP, to be used with the action.
+    type: str
   samlssoprofile:
     description:
       - Profile to be used for doing SAML SSO to remote relying party
     type: str
   sso:
+    choices:
+      - true
+      - false
     description:
       - Provide single sign-on to the web application.
       - "\t    NOTE : Authentication mechanisms like Basic-authentication  require\
         \ the user credentials to be sent in plaintext which is not secure if the\
         \ server is running on HTTP (instead of HTTPS)."
     type: str
-    choices:
-      - true
-      - false
   userexpression:
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
     type: str
   wanscaler:
-    description:
-      - Use the Repeater Plug-in to optimize network traffic.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use the Repeater Plug-in to optimize network traffic.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

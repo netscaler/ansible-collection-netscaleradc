@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -49,13 +49,13 @@ options:
       - Specifies the priority of the policy.
     type: int
   type:
+    choices:
+      - ICA_REQ_OVERRIDE
+      - ICA_REQ_DEFAULT
     description:
       - Global bind point for which to show detailed information about the policies
         bound to the bind point.
     type: str
-    choices:
-      - ICA_REQ_OVERRIDE
-      - ICA_REQ_DEFAULT
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

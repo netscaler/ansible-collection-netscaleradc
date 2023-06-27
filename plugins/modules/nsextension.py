@@ -28,12 +28,12 @@ options:
       - Any comments to preserve information about the extension object.
     type: str
   detail:
-    description:
-      - Show detail for extension function.
-    type: str
     choices:
       - brief
       - all
+    description:
+      - Show detail for extension function.
+    type: str
   name:
     description:
       - Name to assign to the extension object on the Citrix ADC.
@@ -50,6 +50,11 @@ options:
         that requires client certificate authentication for access.'
     type: str
   trace:
+    choices:
+      - false
+      - calls
+      - lines
+      - all
     description:
       - 'Enables tracing to the NS log file of extension execution:'
       - '   off   - turns off tracing (equivalent to unset ns extension <extension-name>
@@ -62,11 +67,6 @@ options:
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
     type: str
-    choices:
-      - false
-      - calls
-      - lines
-      - all
   tracefunctions:
     description:
       - Comma-separated list of extension functions to trace. By default, all extension

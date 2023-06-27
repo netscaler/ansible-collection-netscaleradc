@@ -65,13 +65,13 @@ options:
       - Priority.
     type: int
   type:
-    description:
-      - The bindpoint to which the policy is bound
-    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
+    description:
+      - The bindpoint to which the policy is bound
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

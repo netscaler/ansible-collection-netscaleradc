@@ -730,23 +730,23 @@ Parameters
 
       Type of responses sent by the policies bound to this policy label. Types are:
 
-      \* HTTP - HTTP responses. 
+      \* \ :literal:`HTTP`\  - \ :literal:`HTTP`\  responses. 
 
-      \* OTHERTCP - NON-HTTP TCP responses.
+      \* \ :literal:`OTHERTCP`\  - NON-\ :literal:`HTTP`\  TCP responses.
 
-      \* SIP\_UDP - SIP responses.
+      \* \ :literal:`SIP\_UDP`\  - SIP responses.
 
-      \* RADIUS - RADIUS responses.
+      \* \ :literal:`RADIUS`\  - \ :literal:`RADIUS`\  responses.
 
-      \* MYSQL - SQL responses in MySQL format.
+      \* \ :literal:`MYSQL`\  - SQL responses in MySQL format.
 
-      \* MSSQL - SQL responses in Microsoft SQL format.
+      \* \ :literal:`MSSQL`\  - SQL responses in Microsoft SQL format.
 
-      \* NAT - NAT response.
+      \* \ :literal:`NAT`\  - \ :literal:`NAT`\  response.
 
-      \* MQTT - Trigger policies bind with MQTT type.
+      \* \ :literal:`MQTT`\  - Trigger policies bind with \ :literal:`MQTT`\  type.
 
-      \* MQTT\_JUMBO - Trigger policies bind with MQTT Jumbo type.
+      \* \ :literal:`MQTT\_JUMBO`\  - Trigger policies bind with \ :literal:`MQTT`\  Jumbo type.
 
 
       .. rst-class:: ansible-option-line
@@ -772,6 +772,128 @@ Parameters
       .. raw:: html
 
         </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-responderpolicylabel_responderpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.responderpolicylabel_module__parameter-responderpolicylabel_responderpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **responderpolicylabel_responderpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-responderpolicylabel_responderpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for responderpolicylabel\_responderpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-responderpolicylabel_responderpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.responderpolicylabel_module__parameter-responderpolicylabel_responderpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-responderpolicylabel_responderpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-responderpolicylabel_responderpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.responderpolicylabel_module__parameter-responderpolicylabel_responderpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-responderpolicylabel_responderpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
 
   * - .. raw:: html
 

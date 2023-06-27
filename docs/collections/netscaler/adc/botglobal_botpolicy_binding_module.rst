@@ -498,9 +498,9 @@ Parameters
 
       Type of invocation, Available settings function as follows:
 
-      \* vserver - Forward the request to the specified virtual server.
+      \* \ :literal:`vserver`\  - Forward the request to the specified virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line
@@ -988,9 +988,9 @@ Parameters
 
       Specifies the bind point whose policies you want to display. Available settings function as follows:
 
-      \* REQ\_OVERRIDE - Request override. Binds the policy to the priority request queue.
+      \* \ :literal:`REQ\_OVERRIDE`\  - Request override. Binds the policy to the priority request queue.
 
-      \* REQ\_DEFAULT - Binds the policy to the default request queue.
+      \* \ :literal:`REQ\_DEFAULT`\  - Binds the policy to the default request queue.
 
 
       .. rst-class:: ansible-option-line

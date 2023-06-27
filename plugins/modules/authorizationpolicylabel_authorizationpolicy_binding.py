@@ -47,16 +47,16 @@ options:
       - Name of the authorization policy label to which to bind the policy.
     type: str
   labeltype:
-    description:
-      - 'Type of invocation. Available settings function as follows:'
-      - '* reqvserver - Send the request to the specified request virtual server.'
-      - '* resvserver - Send the response to the specified response virtual server.'
-      - '* policylabel - Invoke the specified policy label.'
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - 'Type of invocation. Available settings function as follows:'
+      - '* C(reqvserver) - Send the request to the specified request virtual server.'
+      - '* C(resvserver) - Send the response to the specified response virtual server.'
+      - '* C(policylabel) - Invoke the specified policy label.'
+    type: str
   policyname:
     description:
       - Name of the authorization policy to bind to the policy label.

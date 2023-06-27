@@ -24,30 +24,30 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   automaticconfigsync:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - GSLB configuration will be synced automatically to remote gslb sites if enabled.
     type: str
     default: DISABLED
+  dropldnsreq:
     choices:
       - ENABLED
       - DISABLED
-  dropldnsreq:
     description:
       - Drop LDNS requests if round-trip time (RTT) information is not available.
     type: str
     default: DISABLED
+  gslbconfigsyncmonitor:
     choices:
       - ENABLED
       - DISABLED
-  gslbconfigsyncmonitor:
     description:
       - If enabled, remote gslb site's rsync port will be monitored and site is considered
         for configuration sync only when the monitor is successful.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   gslbsvcstatedelaytime:
     description:
       - Amount of delay in updating the state of GSLB service to DOWN when MEP goes
@@ -62,31 +62,31 @@ options:
     type: int
     default: 10
   gslbsynclocfiles:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If disabled, Location files will not be synced to the remote sites as part
         of automatic sync.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   gslbsyncmode:
+    choices:
+      - IncrementalSync
+      - FullSync
     description:
       - Mode in which configuration will be synced from master site to remote sites.
     type: str
     default: IncrementalSync
-    choices:
-      - IncrementalSync
-      - FullSync
   gslbsyncsaveconfigcommand:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If enabled, 'save ns config' command will be treated as other GSLB commands
         and synced to GSLB nodes when auto gslb sync option is enabled.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ldnsentrytimeout:
     description:
       - Time, in seconds, after which an inactive LDNS entry is removed.
@@ -97,14 +97,14 @@ options:
       - The IPv4 network mask with which to create LDNS entries.
     type: str
   ldnsprobeorder:
-    description:
-      - Order in which monitors should be initiated to calculate RTT.
-    type: list
-    elements: str
     choices:
       - PING
       - DNS
       - TCP
+    description:
+      - Order in which monitors should be initiated to calculate RTT.
+    type: list
+    elements: str
   mepkeepalivetimeout:
     description:
       - Time duartion (in seconds) during which if no new packets received by Local

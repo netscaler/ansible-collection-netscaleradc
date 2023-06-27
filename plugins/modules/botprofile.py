@@ -24,40 +24,40 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bot_enable_black_list:
+    choices:
+      - true
+      - false
     description:
       - Enable black-list bot detection.
     type: str
+  bot_enable_ip_reputation:
     choices:
       - true
       - false
-  bot_enable_ip_reputation:
     description:
       - Enable IP-reputation bot detection.
     type: str
+  bot_enable_rate_limit:
     choices:
       - true
       - false
-  bot_enable_rate_limit:
     description:
       - Enable rate-limit bot detection.
     type: str
+  bot_enable_tps:
     choices:
       - true
       - false
-  bot_enable_tps:
     description:
       - Enable TPS.
     type: str
+  bot_enable_white_list:
     choices:
       - true
       - false
-  bot_enable_white_list:
     description:
       - Enable white-list bot detection.
     type: str
-    choices:
-      - true
-      - false
   clientipexpression:
     description:
       - Expression to get the client IP.
@@ -68,18 +68,13 @@ options:
         the profile.
     type: str
   devicefingerprint:
-    description:
-      - Enable device-fingerprint bot detection
-    type: str
     choices:
       - true
       - false
-  devicefingerprintaction:
     description:
-      - Action to be taken for device-fingerprint based bot detection.
-    type: list
-    elements: str
-    default: NONE
+      - Enable device-fingerprint bot detection
+    type: str
+  devicefingerprintaction:
     choices:
       - NONE
       - LOG
@@ -87,34 +82,39 @@ options:
       - REDIRECT
       - RESET
       - MITIGATION
+    description:
+      - Action to be taken for device-fingerprint based bot detection.
+    type: list
+    elements: str
+    default: NONE
   devicefingerprintmobile:
+    choices:
+      - NONE
+      - Android
+      - iOS
     description:
       - Enabling bot device fingerprint protection for mobile clients
     type: list
     elements: str
     default: NONE
-    choices:
-      - NONE
-      - Android
-      - iOS
   errorurl:
     description:
       - URL that Bot protection uses as the Error URL.
     type: str
   headlessbrowserdetection:
+    choices:
+      - true
+      - false
     description:
       - Enable Headless Browser detection.
     type: str
+  kmdetection:
     choices:
       - true
       - false
-  kmdetection:
     description:
       - Enable keyboard-mouse based bot detection.
     type: str
-    choices:
-      - true
-      - false
   kmeventspostbodylimit:
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
@@ -148,76 +148,292 @@ options:
       - Name of object containing bot static signature details.
     type: str
   signaturemultipleuseragentheaderaction:
-    description:
-      - Actions to be taken if multiple User-Agent headers are seen in a request (Applicable
-        if Signature check is enabled). Log action should be combined with other actions
-    type: list
-    elements: str
-    default: CHECKLAST
     choices:
       - CHECKLAST
       - LOG
       - DROP
       - REDIRECT
       - RESET
+    description:
+      - Actions to be taken if multiple User-Agent headers are seen in a request (Applicable
+        if Signature check is enabled). Log action should be combined with other actions
+    type: list
+    elements: str
+    default: CHECKLAST
   signaturenouseragentheaderaction:
+    choices:
+      - NONE
+      - LOG
+      - DROP
+      - REDIRECT
+      - RESET
     description:
       - Actions to be taken if no User-Agent header in the request (Applicable if
         Signature check is enabled).
     type: list
     elements: str
     default: DROP
+  spoofedreqaction:
     choices:
       - NONE
       - LOG
       - DROP
       - REDIRECT
       - RESET
-  spoofedreqaction:
     description:
       - Actions to be taken on a spoofed request (A request spoofing good bot user
         agent string).
     type: list
     elements: str
     default: LOG
+  trap:
+    choices:
+      - true
+      - false
+    description:
+      - Enable trap bot detection.
+    type: str
+  trapaction:
     choices:
       - NONE
       - LOG
       - DROP
       - REDIRECT
       - RESET
-  trap:
-    description:
-      - Enable trap bot detection.
-    type: str
-    choices:
-      - true
-      - false
-  trapaction:
     description:
       - Action to be taken for bot trap based bot detection.
     type: list
     elements: str
     default: NONE
-    choices:
-      - NONE
-      - LOG
-      - DROP
-      - REDIRECT
-      - RESET
   trapurl:
     description:
       - URL that Bot protection uses as the Trap URL.
     type: str
   verboseloglevel:
+    choices:
+      - NONE
+      - HTTP_FULL_HEADER
     description:
       - Bot verbose Logging. Based on the log level, ADC will log additional information
         whenever client is detected as a bot.
     type: str
     default: NONE
-    choices:
-      - NONE
-      - HTTP_FULL_HEADER
+  botprofile_blacklist_binding:
+    type: dict
+    description: Bindings for botprofile_blacklist_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_captcha_binding:
+    type: dict
+    description: Bindings for botprofile_captcha_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_ipreputation_binding:
+    type: dict
+    description: Bindings for botprofile_ipreputation_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_kmdetectionexpr_binding:
+    type: dict
+    description: Bindings for botprofile_kmdetectionexpr_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_logexpression_binding:
+    type: dict
+    description: Bindings for botprofile_logexpression_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_ratelimit_binding:
+    type: dict
+    description: Bindings for botprofile_ratelimit_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_tps_binding:
+    type: dict
+    description: Bindings for botprofile_tps_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_trapinsertionurl_binding:
+    type: dict
+    description: Bindings for botprofile_trapinsertionurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  botprofile_whitelist_binding:
+    type: dict
+    description: Bindings for botprofile_whitelist_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

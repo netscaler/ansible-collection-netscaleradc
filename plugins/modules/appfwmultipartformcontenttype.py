@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   isregex:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is multipart_form content type a regular expression?
     type: str
     default: NOTREGEX
-    choices:
-      - REGEX
-      - NOTREGEX
   multipartformcontenttypevalue:
     description:
       - Content type to be classified as multipart form

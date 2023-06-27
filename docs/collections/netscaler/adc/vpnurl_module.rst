@@ -225,7 +225,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      The type of application this VPN URL represents. Possible values are CVPN/SaaS/VPN
+      The type of application this \ :literal:`VPN`\  URL represents. Possible values are \ :literal:`CVPN`\ /\ :literal:`SaaS`\ /\ :literal:`VPN`\ 
 
 
       .. rst-class:: ansible-option-line

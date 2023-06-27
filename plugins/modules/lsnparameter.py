@@ -34,6 +34,9 @@ options:
       - This command is deprecated, use 'set extendedmemoryparam -memlimit' instead.
     type: int
   sessionsync:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Synchronize all LSN sessions with the secondary node in a high availability
         (HA) deployment (global synchronization). After a failover, established TCP
@@ -48,10 +51,10 @@ options:
         sessions related to this LSN group with the secondary node.
     type: str
     default: ENABLED
+  subscrsessionremoval:
     choices:
       - ENABLED
       - DISABLED
-  subscrsessionremoval:
     description:
       - LSN global setting for controlling subscriber aware session removal, when
         this is enabled, when ever the subscriber info is deleted from subscriber
@@ -60,9 +63,6 @@ options:
         time out settings.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

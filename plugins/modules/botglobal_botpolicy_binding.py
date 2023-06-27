@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -52,14 +52,14 @@ options:
         the invoke parameter is set, and Label Type is policylabel.
     type: str
   labeltype:
-    description:
-      - 'Type of invocation, Available settings function as follows:'
-      - '* vserver - Forward the request to the specified virtual server.'
-      - '* policylabel - Invoke the specified policy label.'
-    type: str
     choices:
       - vserver
       - policylabel
+    description:
+      - 'Type of invocation, Available settings function as follows:'
+      - '* C(vserver) - Forward the request to the specified virtual server.'
+      - '* C(policylabel) - Invoke the specified policy label.'
+    type: str
   policyname:
     description:
       - Name of the bot policy.
@@ -69,16 +69,16 @@ options:
       - Specifies the priority of the policy.
     type: int
   type:
-    description:
-      - 'Specifies the bind point whose policies you want to display. Available settings
-        function as follows:'
-      - '* REQ_OVERRIDE - Request override. Binds the policy to the priority request
-        queue.'
-      - '* REQ_DEFAULT - Binds the policy to the default request queue.'
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
+    description:
+      - 'Specifies the bind point whose policies you want to display. Available settings
+        function as follows:'
+      - '* C(REQ_OVERRIDE) - Request override. Binds the policy to the priority request
+        queue.'
+      - '* C(REQ_DEFAULT) - Binds the policy to the default request queue.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

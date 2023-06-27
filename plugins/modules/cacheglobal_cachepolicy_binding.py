@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -53,33 +53,29 @@ options:
         virtual server.)
     type: str
   labeltype:
-    description:
-      - Type of policy label to invoke.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - Type of policy label to invoke.
+    type: str
   policy:
     description:
       - Name of the cache policy.
     type: str
   precededefrules:
-    description:
-      - Specify whether this policy should be evaluated.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Specify whether this policy should be evaluated.
+    type: str
   priority:
     description:
       - Specifies the priority of the policy.
     type: int
   type:
-    description:
-      - The bind point to which policy is bound. When you specify the type, detailed
-        information about that bind point appears.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -89,6 +85,10 @@ options:
       - HTTPQUIC_REQ_DEFAULT
       - HTTPQUIC_RES_OVERRIDE
       - HTTPQUIC_RES_DEFAULT
+    description:
+      - The bind point to which policy is bound. When you specify the type, detailed
+        information about that bind point appears.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

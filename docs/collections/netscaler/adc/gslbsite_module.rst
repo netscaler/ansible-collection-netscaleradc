@@ -1176,11 +1176,11 @@ Parameters
 
       Specify the conditions under which the GSLB service must be monitored by a monitor, if one is bound. Available settings function as follows:
 
-      \* ALWAYS - Monitor the GSLB service at all times.
+      \* \ :literal:`ALWAYS`\  - Monitor the GSLB service at all times.
 
-      \* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.
+      \* \ :literal:`MEPDOWN`\  - Monitor the GSLB service only when the exchange of metrics through the Metrics Exchange Protocol (MEP) is disabled.
 
-      MEPDOWN\_SVCDOWN - Monitor the service in either of the following situations: 
+      \ :literal:`MEPDOWN\_SVCDOWN`\  - Monitor the service in either of the following situations: 
 
       \* The exchange of metrics through MEP is disabled.
 

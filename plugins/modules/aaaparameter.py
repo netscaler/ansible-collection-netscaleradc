@@ -24,19 +24,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   aaadloglevel:
-    description:
-      - 'AAAD log level, which specifies the types of AAAD events to log in nsvpn.log. '
-      - 'Available values function as follows: '
-      - '* EMERGENCY - Events that indicate an immediate crisis on the server.'
-      - '* ALERT - Events that might require action.'
-      - '* CRITICAL - Events that indicate an imminent server crisis.'
-      - '* ERROR - Events that indicate some type of error.'
-      - '* WARNING - Events that require action in the near future.'
-      - '* NOTICE - Events that the administrator should know about.'
-      - '* INFORMATIONAL - All but low-level events.'
-      - '* DEBUG - All events, in extreme detail.'
-    type: str
-    default: INFORMATIONAL
     choices:
       - EMERGENCY
       - ALERT
@@ -46,25 +33,24 @@ options:
       - NOTICE
       - INFORMATIONAL
       - DEBUG
+    description:
+      - 'AAAD log level, which specifies the types of AAAD events to log in nsvpn.log. '
+      - 'Available values function as follows: '
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
+    type: str
+    default: INFORMATIONAL
   aaadnatip:
     description:
       - Source IP address to use for traffic that is sent to the authentication server.
     type: str
   aaasessionloglevel:
-    description:
-      - 'Audit log level, which specifies the types of events to log for cli executed
-        commands. '
-      - 'Available values function as follows: '
-      - '* EMERGENCY - Events that indicate an immediate crisis on the server.'
-      - '* ALERT - Events that might require action.'
-      - '* CRITICAL - Events that indicate an imminent server crisis.'
-      - '* ERROR - Events that indicate some type of error.'
-      - '* WARNING - Events that require action in the near future.'
-      - '* NOTICE - Events that the administrator should know about.'
-      - '* INFORMATIONAL - All but low-level events.'
-      - '* DEBUG - All events, in extreme detail.'
-    type: str
-    default: DEFAULT_LOGLEVEL_AAA
     choices:
       - EMERGENCY
       - ALERT
@@ -74,87 +60,101 @@ options:
       - NOTICE
       - INFORMATIONAL
       - DEBUG
+    description:
+      - 'Audit log level, which specifies the types of events to log for cli executed
+        commands. '
+      - 'Available values function as follows: '
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
+    type: str
+    default: DEFAULT_LOGLEVEL_AAA
   apitokencache:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to enable/disable API cache feature.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   defaultauthtype:
-    description:
-      - The default authentication server type.
-    type: str
-    default: LOCAL
     choices:
       - LOCAL
       - LDAP
       - RADIUS
       - TACACS
       - CERT
+    description:
+      - The default authentication server type.
+    type: str
+    default: LOCAL
   defaultcspheader:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter to enable/disable default CSP header
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dynaddr:
-    description:
-      - Set by the DHCP client when the IP address was fetched dynamically.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Set by the DHCP client when the IP address was fetched dynamically.
+    type: str
   enableenhancedauthfeedback:
+    choices:
+      - true
+      - false
     description:
       - Enhanced auth feedback provides more information to the end user about the
         reason for an authentication failure.  The default value is set to NO.
     type: str
+  enablesessionstickiness:
     choices:
       - true
       - false
-  enablesessionstickiness:
     description:
       - Enables/Disables stickiness to authentication servers
     type: str
+  enablestaticpagecaching:
     choices:
       - true
       - false
-  enablestaticpagecaching:
     description:
       - The default state of VPN Static Page caching. Static Page caching is enabled
         by default.
     type: str
     default: true
-    choices:
-      - true
-      - false
   failedlogintimeout:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
     type: int
   ftmode:
+    choices:
+      - true
+      - HA
+      - false
     description:
       - First time user mode determines which configuration options are shown by default
         when logging in to the GUI. This setting is controlled by the GUI.
     type: str
     default: true
-    choices:
-      - true
-      - HA
-      - false
   loginencryption:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter to encrypt login information for nFactor flow
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxaaausers:
     description:
       - Maximum number of concurrent users allowed to log on to VPN simultaneously.
@@ -173,28 +173,28 @@ options:
       - This will set the maximum deflate size in case of SAML Redirect binding.
     type: int
   persistentloginattempts:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Persistent storage of unsuccessful user login attempts
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   pwdexpirynotificationdays:
     description:
       - This will set the threshold time in days for password expiry notification.
         Default value is 0, which means no notification is sent
     type: int
   samesite:
+    choices:
+      - None
+      - LAX
+      - STRICT
     description:
       - SameSite attribute value for Cookies generated in AAATM context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
     type: str
-    choices:
-      - None
-      - LAX
-      - STRICT
   tokenintrospectioninterval:
     description:
       - Frequency at which a token must be verified at the Authorization Server (AS)

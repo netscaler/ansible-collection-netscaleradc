@@ -26,38 +26,38 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
-  as_scan_location_xmlsql:
     description:
-      - Location of SQL injection exception - XML Element or Attribute.
+      - Send SNMP alert?
     type: str
+  as_scan_location_xmlsql:
     choices:
       - ELEMENT
       - ATTRIBUTE
+    description:
+      - Location of SQL injection exception - XML Element or Attribute.
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
-  isregex_xmlsql:
     description:
-      - Is the XML SQL Injection exempted field name a regular expression?
+      - Is the rule auto deployed by dynamic profile ?
     type: str
+  isregex_xmlsql:
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - Is the XML SQL Injection exempted field name a regular expression?
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -67,19 +67,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
   xmlsqlinjection:
     description:
       - 'Exempt the specified URL from the XML SQL injection check. '

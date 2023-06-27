@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -51,13 +51,13 @@ options:
       - Name of the label to invoke if the current policy evaluates to TRUE.
     type: str
   labeltype:
-    description:
-      - Type of policy label to invoke. Specify vserver for a policy label associated
-        with a virtual server, or policylabel for a user-defined policy label.
-    type: str
     choices:
       - vserver
       - policylabel
+    description:
+      - Type of policy label to invoke. Specify C(vserver) for a policy label associated
+        with a virtual server, or C(policylabel) for a user-defined policy label.
+    type: str
   policyname:
     description:
       - Name of the AppFlow policy.
@@ -67,10 +67,6 @@ options:
       - Specifies the priority of the policy.
     type: int
   type:
-    description:
-      - Global bind point for which to show detailed information about the policies
-        bound to the bind point.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -88,6 +84,10 @@ options:
       - ORACLE_REQ_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
+    description:
+      - Global bind point for which to show detailed information about the policies
+        bound to the bind point.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

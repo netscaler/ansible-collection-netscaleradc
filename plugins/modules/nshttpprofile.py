@@ -24,15 +24,18 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   adpttimeout:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Adapts the configured request timeout based on flow conditions. The timeout
         is increased or decreased internally and applied on the flow.
     type: str
     default: DISABLED
+  allowonlywordcharactersandhyphen:
     choices:
       - ENABLED
       - DISABLED
-  allowonlywordcharactersandhyphen:
     description:
       - When enabled allows only the word characters [A-Za-z0-9_] and hyphen [-] in
         the request/response header names and the connection will be reset for the
@@ -40,17 +43,14 @@ options:
         except delimiters (double quotes and "(),/:;<=>?@[]{}").
     type: str
     default: DISABLED
+  altsvc:
     choices:
       - ENABLED
       - DISABLED
-  altsvc:
     description:
       - Choose whether to enable support for Alternative Services.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   altsvcvalue:
     description:
       - Configure a custom Alternative Services header value that should be inserted
@@ -72,45 +72,45 @@ options:
       - Name of the header that contains the real client IP address.
     type: str
   cmponpush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Start data compression on receiving a TCP packet with PUSH flag set.
     type: str
     default: DISABLED
+  conmultiplex:
     choices:
       - ENABLED
       - DISABLED
-  conmultiplex:
     description:
       - Reuse server connections for requests from more than one client connections.
     type: str
     default: ENABLED
+  dropextracrlf:
     choices:
       - ENABLED
       - DISABLED
-  dropextracrlf:
     description:
       - Drop any extra 'CR' and 'LF' characters present after the header.
     type: str
     default: ENABLED
+  dropextradata:
     choices:
       - ENABLED
       - DISABLED
-  dropextradata:
     description:
       - Drop any extra data when server sends more data than the specified content-length.
     type: str
     default: DISABLED
+  dropinvalreqs:
     choices:
       - ENABLED
       - DISABLED
-  dropinvalreqs:
     description:
       - Drop invalid HTTP requests or responses.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   grpcholdlimit:
     description:
       - Maximum size in bytes allowed to buffer gRPC packets till trailer is received
@@ -123,39 +123,39 @@ options:
     type: int
     default: 1000
   grpclengthdelimitation:
-    description:
-      - Set to DISABLED for gRPC without a length delimitation.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Set to C(DISABLED) for gRPC without a length delimitation.
+    type: str
+    default: ENABLED
   http2:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Choose whether to enable support for HTTP/2.
     type: str
     default: DISABLED
+  http2altsvcframe:
     choices:
       - ENABLED
       - DISABLED
-  http2altsvcframe:
     description:
       - Choose whether to enable support for sending HTTP/2 ALTSVC frames. When enabled,
         the ADC sends HTTP/2 ALTSVC frames to HTTP/2 clients, instead of the Alt-Svc
         response header field. Not applicable to servers.
     type: str
     default: DISABLED
+  http2direct:
     choices:
       - ENABLED
       - DISABLED
-  http2direct:
     description:
       - Choose whether to enable support for Direct HTTP/2.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   http2headertablesize:
     description:
       - Maximum size of the header compression table used to decode header blocks,
@@ -219,21 +219,21 @@ options:
     type: int
     default: 20
   http2strictcipher:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Choose whether to enable strict HTTP/2 cipher selection
     type: str
     default: ENABLED
+  http3:
     choices:
       - ENABLED
       - DISABLED
-  http3:
     description:
       - Choose whether to enable support for HTTP/3.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   http3maxheaderblockedstreams:
     description:
       - Maximum number of HTTP/3 streams that can be blocked while HTTP/3 headers
@@ -263,45 +263,45 @@ options:
     type: int
     default: 7000
   markconnreqinval:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Mark CONNECT requests as invalid.
     type: str
     default: DISABLED
+  markhttp09inval:
     choices:
       - ENABLED
       - DISABLED
-  markhttp09inval:
     description:
       - Mark HTTP/0.9 requests as invalid.
     type: str
     default: DISABLED
+  markhttpheaderextrawserror:
     choices:
       - ENABLED
       - DISABLED
-  markhttpheaderextrawserror:
     description:
       - Mark Http header with extra white space as invalid
     type: str
     default: DISABLED
+  markrfc7230noncompliantinval:
     choices:
       - ENABLED
       - DISABLED
-  markrfc7230noncompliantinval:
     description:
       - Mark RFC7230 non-compliant transaction as invalid
     type: str
     default: DISABLED
+  marktracereqinval:
     choices:
       - ENABLED
       - DISABLED
-  marktracereqinval:
     description:
       - Mark TRACE requests as invalid.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxheaderfieldlen:
     description:
       - Number of bytes allowed for header field for HTTP header. If number of bytes
@@ -349,22 +349,22 @@ options:
         or single quotation marks \(for example, "my http profile" or ''my http profile''\).'
     type: str
   passprotocolupgrade:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Pass protocol upgrade request to the server.
     type: str
     default: ENABLED
+  persistentetag:
     choices:
       - ENABLED
       - DISABLED
-  persistentetag:
     description:
       - Generate the persistent Citrix ADC specific ETag for the HTTP response with
         ETag header.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   reqtimeout:
     description:
       - Time, in seconds, within which the HTTP request must complete. If the request
@@ -386,32 +386,32 @@ options:
         in the re-use pool are flushed, if they remain idle for the configured timeout.
     type: int
   rtsptunnel:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow RTSP tunnel in HTTP. Once application/x-rtsp-tunnelled is seen in Accept
         or Content-Type header, Citrix ADC does not process Layer 7 traffic on this
         connection.
     type: str
     default: DISABLED
+  weblog:
     choices:
       - ENABLED
       - DISABLED
-  weblog:
     description:
       - Enable or disable web logging.
     type: str
     default: ENABLED
+  websocket:
     choices:
       - ENABLED
       - DISABLED
-  websocket:
     description:
       - HTTP connection to be upgraded to a web socket connection. Once upgraded,
         Citrix ADC does not process Layer 7 traffic on this connection.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

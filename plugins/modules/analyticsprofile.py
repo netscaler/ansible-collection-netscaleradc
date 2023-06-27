@@ -24,22 +24,22 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allhttpheaders:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log all the request and response
         headers.
     type: str
     default: DISABLED
+  auditlogs:
     choices:
       - ENABLED
       - DISABLED
-  auditlogs:
     description:
       - This option indicates the whether auditlog should be sent to the REST collector.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   collectors:
     description:
       - The collector can be an IP, an appflow collector name, a service or a vserver.
@@ -50,188 +50,188 @@ options:
         bound to it are considered as collectors and the records are load balanced.
     type: str
   cqareporting:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP CQA parameters.
     type: str
     default: DISABLED
+  events:
     choices:
       - ENABLED
       - DISABLED
-  events:
     description:
       - This option indicates the whether events should be sent to the REST collector.
     type: str
     default: DISABLED
+  grpcstatus:
     choices:
       - ENABLED
       - DISABLED
-  grpcstatus:
     description:
       - On enabling this option, the Citrix ADC will log the gRPC status headers
     type: str
     default: DISABLED
+  httpauthentication:
     choices:
       - ENABLED
       - DISABLED
-  httpauthentication:
     description:
       - On enabling this option, the Citrix ADC will log Authentication header.
     type: str
     default: DISABLED
+  httpclientsidemeasurements:
     choices:
       - ENABLED
       - DISABLED
-  httpclientsidemeasurements:
     description:
       - On enabling this option, the Citrix ADC will insert a javascript into the
         HTTP response to collect the client side page-timings and will send the same
         to the configured collectors.
     type: str
     default: DISABLED
+  httpcontenttype:
     choices:
       - ENABLED
       - DISABLED
-  httpcontenttype:
     description:
       - On enabling this option, the Citrix ADC will log content-length header.
     type: str
     default: DISABLED
+  httpcookie:
     choices:
       - ENABLED
       - DISABLED
-  httpcookie:
     description:
       - On enabling this option, the Citrix ADC will log cookie header.
     type: str
     default: DISABLED
+  httpdomainname:
     choices:
       - ENABLED
       - DISABLED
-  httpdomainname:
     description:
       - On enabling this option, the Citrix ADC will log domain name.
     type: str
     default: DISABLED
+  httphost:
     choices:
       - ENABLED
       - DISABLED
-  httphost:
     description:
       - On enabling this option, the Citrix ADC will log the Host header in appflow
         records
     type: str
     default: DISABLED
+  httplocation:
     choices:
       - ENABLED
       - DISABLED
-  httplocation:
     description:
       - On enabling this option, the Citrix ADC will log location header.
     type: str
     default: DISABLED
+  httpmethod:
     choices:
       - ENABLED
       - DISABLED
-  httpmethod:
     description:
       - On enabling this option, the Citrix ADC will log the method header in appflow
         records
     type: str
     default: DISABLED
+  httppagetracking:
     choices:
       - ENABLED
       - DISABLED
-  httppagetracking:
     description:
       - On enabling this option, the Citrix ADC will link the embedded objects of
         a page together.
     type: str
     default: DISABLED
+  httpreferer:
     choices:
       - ENABLED
       - DISABLED
-  httpreferer:
     description:
       - On enabling this option, the Citrix ADC will log the referer header in appflow
         records
     type: str
     default: DISABLED
+  httpsetcookie:
     choices:
       - ENABLED
       - DISABLED
-  httpsetcookie:
     description:
       - On enabling this option, the Citrix ADC will log set-cookie header.
     type: str
     default: DISABLED
+  httpsetcookie2:
     choices:
       - ENABLED
       - DISABLED
-  httpsetcookie2:
     description:
       - On enabling this option, the Citrix ADC will log set-cookie2 header.
     type: str
     default: DISABLED
+  httpurl:
     choices:
       - ENABLED
       - DISABLED
-  httpurl:
     description:
       - On enabling this option, the Citrix ADC will log the URL in appflow records
     type: str
     default: DISABLED
+  httpurlquery:
     choices:
       - ENABLED
       - DISABLED
-  httpurlquery:
     description:
       - On enabling this option, the Citrix ADC will log URL Query.
     type: str
     default: DISABLED
+  httpuseragent:
     choices:
       - ENABLED
       - DISABLED
-  httpuseragent:
     description:
       - On enabling this option, the Citrix ADC will log User-Agent header.
     type: str
     default: DISABLED
+  httpvia:
     choices:
       - ENABLED
       - DISABLED
-  httpvia:
     description:
       - On enabling this option, the Citrix ADC will Via header.
     type: str
     default: DISABLED
+  httpxforwardedforheader:
     choices:
       - ENABLED
       - DISABLED
-  httpxforwardedforheader:
     description:
       - On enabling this option, the Citrix ADC will log X-Forwarded-For header.
     type: str
     default: DISABLED
+  integratedcache:
     choices:
       - ENABLED
       - DISABLED
-  integratedcache:
     description:
       - On enabling this option, the Citrix ADC will log the Integrated Caching appflow
         records
     type: str
     default: DISABLED
+  metrics:
     choices:
       - ENABLED
       - DISABLED
-  metrics:
     description:
       - This option indicates the whether metrics should be sent to the REST collector.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - Name for the analytics profile. Must begin with an ASCII alphabetic or underscore
@@ -244,40 +244,37 @@ options:
         quotation marks (for example, "my appflow profile" or 'my appflow profile').
     type: str
   outputmode:
+    choices:
+      - avro
+      - prometheus
+      - influx
     description:
       - This option indicates the format of REST API POST body. It depends on the
         consumer of the analytics data.
     type: str
     default: avro
-    choices:
-      - avro
-      - prometheus
-      - influx
   schemafile:
     description:
       - This option is for configuring json schema file containing a list of counters
         to be exported by metricscollector
     type: str
   servemode:
+    choices:
+      - Push
+      - Pull
     description:
       - This option is for setting the mode of how data is provided
     type: str
     default: Push
-    choices:
-      - Push
-      - Pull
   tcpburstreporting:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP burst parameters.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - This option indicates what information needs to be collected and exported.
-    type: str
     choices:
       - global
       - webinsight
@@ -290,14 +287,17 @@ options:
       - lsninsight
       - botinsight
       - CIinsight
+    description:
+      - This option indicates what information needs to be collected and exported.
+    type: str
   urlcategory:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the URL category record.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

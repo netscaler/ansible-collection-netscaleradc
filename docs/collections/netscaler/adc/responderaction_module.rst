@@ -1074,15 +1074,15 @@ Parameters
 
       Type of responder action. Available settings function as follows:
 
-      \* respondwith \<target\> - Respond to the request with the expression specified as the target.
+      \* \ :literal:`respondwith`\  \<target\> - Respond to the request with the expression specified as the target.
 
-      \* respondwithhtmlpage - Respond to the request with the uploaded HTML page object specified as the target.
+      \* \ :literal:`respondwithhtmlpage`\  - Respond to the request with the uploaded HTML page object specified as the target.
 
-      \* redirect - Redirect the request to the URL specified as the target.
+      \* \ :literal:`redirect`\  - Redirect the request to the URL specified as the target.
 
-      \* sqlresponse\_ok - Send an SQL OK response.
+      \* \ :literal:`sqlresponse\_ok`\  - Send an SQL OK response.
 
-      \* sqlresponse\_error - Send an SQL ERROR response.
+      \* \ :literal:`sqlresponse\_error`\  - Send an SQL ERROR response.
 
 
       .. rst-class:: ansible-option-line

@@ -121,7 +121,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Spillover action. Currently only type SPILLOVER is supported
+      Spillover action. Currently only type \ :literal:`SPILLOVER`\  is supported
 
 
       .. rst-class:: ansible-option-line

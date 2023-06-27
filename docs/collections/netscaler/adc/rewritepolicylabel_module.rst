@@ -712,6 +712,128 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-rewritepolicylabel_rewritepolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.rewritepolicylabel_module__parameter-rewritepolicylabel_rewritepolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **rewritepolicylabel_rewritepolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-rewritepolicylabel_rewritepolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for rewritepolicylabel\_rewritepolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-rewritepolicylabel_rewritepolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.rewritepolicylabel_module__parameter-rewritepolicylabel_rewritepolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-rewritepolicylabel_rewritepolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-rewritepolicylabel_rewritepolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.rewritepolicylabel_module__parameter-rewritepolicylabel_rewritepolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-rewritepolicylabel_rewritepolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-save_config"></div>
 
       .. _ansible_collections.netscaler.adc.rewritepolicylabel_module__parameter-save_config:
@@ -836,41 +958,41 @@ Parameters
 
       Types of transformations allowed by the policies bound to the label. For Rewrite, the following types are supported:
 
-      \* http\_req - HTTP requests
+      \* \ :literal:`http\_req`\  - HTTP requests
 
-      \* http\_res - HTTP responses
+      \* \ :literal:`http\_res`\  - HTTP responses
 
-      \* othertcp\_req - Non-HTTP TCP requests
+      \* \ :literal:`othertcp\_req`\  - Non-HTTP TCP requests
 
-      \* othertcp\_res - Non-HTTP TCP responses
+      \* \ :literal:`othertcp\_res`\  - Non-HTTP TCP responses
 
-      \* url - URLs
+      \* \ :literal:`url`\  - URLs
 
-      \* text - Text strings
+      \* \ :literal:`text`\  - Text strings
 
-      \* clientless\_vpn\_req - Citrix ADC clientless VPN requests
+      \* \ :literal:`clientless\_vpn\_req`\  - Citrix ADC clientless VPN requests
 
-      \* clientless\_vpn\_res - Citrix ADC clientless VPN responses
+      \* \ :literal:`clientless\_vpn\_res`\  - Citrix ADC clientless VPN responses
 
-      \* sipudp\_req - SIP requests
+      \* \ :literal:`sipudp\_req`\  - SIP requests
 
-      \* sipudp\_res - SIP responses
+      \* \ :literal:`sipudp\_res`\  - SIP responses
 
-      \* diameter\_req - DIAMETER requests
+      \* \ :literal:`diameter\_req`\  - DIAMETER requests
 
-      \* diameter\_res - DIAMETER responses
+      \* \ :literal:`diameter\_res`\  - DIAMETER responses
 
-      \* radius\_req - RADIUS requests
+      \* \ :literal:`radius\_req`\  - RADIUS requests
 
-      \* radius\_res - RADIUS responses
+      \* \ :literal:`radius\_res`\  - RADIUS responses
 
-      \* dns\_req - DNS requests
+      \* \ :literal:`dns\_req`\  - DNS requests
 
-      \* dns\_res - DNS responses
+      \* \ :literal:`dns\_res`\  - DNS responses
 
-      \* mqtt\_req - MQTT requests
+      \* \ :literal:`mqtt\_req`\  - MQTT requests
 
-      \* mqtt\_res - MQTT responses
+      \* \ :literal:`mqtt\_res`\  - MQTT responses
 
 
       .. rst-class:: ansible-option-line

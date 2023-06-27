@@ -388,21 +388,21 @@ Parameters
 
       The following loglevels are valid: 
 
-      \* EMERGENCY - Events that indicate an immediate crisis on the server.
+      \* \ :literal:`EMERGENCY`\  - Events that indicate an immediate crisis on the server.
 
-      \* ALERT - Events that might require action.
+      \* \ :literal:`ALERT`\  - Events that might require action.
 
-      \* CRITICAL - Events that indicate an imminent server crisis.
+      \* \ :literal:`CRITICAL`\  - Events that indicate an imminent server crisis.
 
-      \* ERROR - Events that indicate some type of error.
+      \* \ :literal:`ERROR`\  - Events that indicate some type of error.
 
-      \* WARNING - Events that require action in the near future.
+      \* \ :literal:`WARNING`\  - Events that require action in the near future.
 
-      \* NOTICE - Events that the administrator should know about.
+      \* \ :literal:`NOTICE`\  - Events that the administrator should know about.
 
-      \* INFORMATIONAL - All but low-level events.
+      \* \ :literal:`INFORMATIONAL`\  - All but low-level events.
 
-      \* DEBUG - All events, in extreme detail.
+      \* \ :literal:`DEBUG`\  - All events, in extreme detail.
 
 
       .. rst-class:: ansible-option-line

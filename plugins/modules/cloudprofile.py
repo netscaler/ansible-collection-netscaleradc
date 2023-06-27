@@ -37,9 +37,6 @@ options:
       - Azure tag value
     type: str
   boundservicegroupsvctype:
-    description:
-      - The type of bound service
-    type: str
     choices:
       - HTTP
       - FTP
@@ -89,19 +86,22 @@ options:
       - MQTT
       - MQTT_TLS
       - QUIC_BRIDGE
+    description:
+      - The type of bound service
+    type: str
   delay:
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
     type: int
   graceful:
+    choices:
+      - true
+      - false
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
     type: str
-    choices:
-      - true
-      - false
   ipaddress:
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
@@ -122,9 +122,6 @@ options:
       - servicegroups bind to this server
     type: str
   servicetype:
-    description:
-      - Protocol used by the service (also called the service type).
-    type: str
     choices:
       - HTTP
       - FTP
@@ -170,13 +167,16 @@ options:
       - MQTT_TLS
       - QUIC_BRIDGE
       - HTTP_QUIC
-  type:
     description:
-      - Type of cloud profile that you want to create, Vserver or based on Azure Tags
+      - Protocol used by the service (also called the service type).
     type: str
+  type:
     choices:
       - autoscale
       - azuretags
+    description:
+      - Type of cloud profile that you want to create, Vserver or based on Azure Tags
+    type: str
   vservername:
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore

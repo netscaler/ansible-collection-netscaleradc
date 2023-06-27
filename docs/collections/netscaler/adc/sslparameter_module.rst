@@ -1370,15 +1370,15 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Signature Digest Algorithms that are supported by appliance. Default value is "ALL" and it will enable the following algorithms depending on the platform.
+      Signature Digest Algorithms that are supported by appliance. Default value is "\ :literal:`ALL`\ " and it will enable the following algorithms depending on the platform.
 
-      On VPX: ECDSA-SHA1 ECDSA-SHA224 ECDSA-SHA256 ECDSA-SHA384 ECDSA-SHA512 RSA-SHA1 RSA-SHA224 RSA-SHA256 RSA-SHA384 RSA-SHA512 DSA-SHA1 DSA-SHA224 DSA-SHA256 DSA-SHA384 DSA-SHA512
+      On VPX: \ :literal:`ECDSA-SHA1`\  \ :literal:`ECDSA-SHA224`\  \ :literal:`ECDSA-SHA256`\  \ :literal:`ECDSA-SHA384`\  \ :literal:`ECDSA-SHA512`\  \ :literal:`RSA-SHA1`\  \ :literal:`RSA-SHA224`\  \ :literal:`RSA-SHA256`\  \ :literal:`RSA-SHA384`\  \ :literal:`RSA-SHA512`\  \ :literal:`DSA-SHA1`\  \ :literal:`DSA-SHA224`\  \ :literal:`DSA-SHA256`\  \ :literal:`DSA-SHA384`\  \ :literal:`DSA-SHA512`\ 
 
-      On MPX with Nitrox-III and coleto cards: RSA-SHA1 RSA-SHA224 RSA-SHA256 RSA-SHA384 RSA-SHA512 ECDSA-SHA1 ECDSA-SHA224 ECDSA-SHA256 ECDSA-SHA384 ECDSA-SHA512
+      On MPX with Nitrox-III and coleto cards: \ :literal:`RSA-SHA1`\  \ :literal:`RSA-SHA224`\  \ :literal:`RSA-SHA256`\  \ :literal:`RSA-SHA384`\  \ :literal:`RSA-SHA512`\  \ :literal:`ECDSA-SHA1`\  \ :literal:`ECDSA-SHA224`\  \ :literal:`ECDSA-SHA256`\  \ :literal:`ECDSA-SHA384`\  \ :literal:`ECDSA-SHA512`\ 
 
-      Others: RSA-SHA1 RSA-SHA224 RSA-SHA256 RSA-SHA384 RSA-SHA512.
+      Others: \ :literal:`RSA-SHA1`\  \ :literal:`RSA-SHA224`\  \ :literal:`RSA-SHA256`\  \ :literal:`RSA-SHA384`\  \ :literal:`RSA-SHA512`\ .
 
-      Note:ALL doesnot include RSA-MD5 for any platform.
+      Note:\ :literal:`ALL`\  doesnot include \ :literal:`RSA-MD5`\  for any platform.
 
 
       .. rst-class:: ansible-option-line

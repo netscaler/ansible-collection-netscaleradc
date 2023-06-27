@@ -47,6 +47,9 @@ options:
         sessions through that packet engine.
     type: int
   portpreserveparity:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Enable port parity between a subscriber port and its mapped LSN NAT port.
         For example, if a subscriber initiates a connection from an odd numbered port,
@@ -56,10 +59,10 @@ options:
         that use RTP or RTCP protocol.
     type: str
     default: DISABLED
+  portpreserverange:
     choices:
       - ENABLED
       - DISABLED
-  portpreserverange:
     description:
       - If a subscriber initiates a connection from a well-known port (0-1023), allocate
         a NAT port from the well-known port range (0-1023) for this connection. For
@@ -75,9 +78,6 @@ options:
         a connection from a well-known port, the Citrix ADC drops this connection.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   portquota:
     description:
       - Maximum number of LSN NAT ports to be used at a time by each subscriber for
@@ -107,6 +107,9 @@ options:
     type: int
     default: 600
   syncheck:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Silently drop any non-SYN packets for connections for which there is no LSN-NAT
         session present on the Citrix ADC. '
@@ -122,9 +125,6 @@ options:
       - '* Such packets can be a part of a DoS attack.'
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   synidletimeout:
     description:
       - SYN Idle timeout
@@ -141,13 +141,13 @@ options:
         marks (for example, "lsn transport profile1" or ''lsn transport profile1'').'
     type: str
   transportprotocol:
-    description:
-      - Protocol for which to set the LSN transport profile parameters.
-    type: str
     choices:
       - TCP
       - UDP
       - ICMP
+    description:
+      - Protocol for which to set the LSN transport profile parameters.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

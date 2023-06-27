@@ -24,36 +24,36 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allocpolicy:
+    choices:
+      - PORTS
+      - IPADDRS
     description:
       - NAT IP and PORT block allocation policy for Deterministic NAT. Supported Policies
         are,
-      - '1: PORTS: Port blocks from single NATIP will be allocated to LSN subscribers
+      - '1: C(PORTS): Port blocks from single NATIP will be allocated to LSN subscribers
         sequentially. After all blocks are exhausted, port blocks from next NATIP
         will be allocated and so on.'
-      - '2: IPADDRS(Default): One port block from each NATIP will be allocated and
-        once all the NATIPs are over second port block from each NATIP will be allocated
-        and so on.'
+      - '2: C(IPADDRS)(Default): One port block from each NATIP will be allocated
+        and once all the NATIPs are over second port block from each NATIP will be
+        allocated and so on.'
       - To understand better if we assume port blocks of all NAT IPs as two dimensional
-        array, PORTS policy follows "row major order" and IPADDRS policy follows "column
-        major order" while allocating port blocks.
+        array, C(PORTS) policy follows "row major order" and C(IPADDRS) policy follows
+        "column major order" while allocating port blocks.
       - 'Example:'
       - 'Client IPs: 2.2.2.1, 2.2.2.2 and 2.2.2.3'
       - 'NAT IPs and PORT Blocks: '
       - 4.4.4.1:PB1, PB2, PB3,., PBn
       - '4.4.4.2: PB1, PB2, PB3,., PBn'
-      - 'PORTS Policy: '
+      - 'C(PORTS) Policy: '
       - 2.2.2.1 => 4.4.4.1:PB1
       - 2.2.2.2 => 4.4.4.1:PB2
       - 2.2.2.3 => 4.4.4.1:PB3
-      - 'IPADDRS Policy:'
+      - 'C(IPADDRS) Policy:'
       - 2.2.2.1 => 4.4.4.1:PB1
       - 2.2.2.2 => 4.4.4.2:PB1
       - 2.2.2.3 => 4.4.4.1:PB2
     type: str
     default: PORTS
-    choices:
-      - PORTS
-      - IPADDRS
   clientname:
     description:
       - Name of the LSN client entity to be associated with the LSN group. You can
@@ -62,6 +62,9 @@ options:
         created.
     type: str
   ftp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Enable Application Layer Gateway (ALG) for the FTP protocol. For some application-layer
         protocols, the IP addresses and protocol port numbers are usually communicated
@@ -76,19 +79,16 @@ options:
         port as 69 (well-known port for TFTP), to the LSN group.'
     type: str
     default: ENABLED
+  ftpcm:
     choices:
       - ENABLED
       - DISABLED
-  ftpcm:
     description:
       - Enable the FTP connection mirroring for specified LSN group. Connection mirroring
         (CM or connection failover) refers to keeping active an established TCP or
         UDP connection when a failover occurs.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   groupname:
     description:
       - 'Name for the LSN group. Must begin with an ASCII alphanumeric or underscore
@@ -108,6 +108,9 @@ options:
         creation. Only one ip6profile can be associated with a group.
     type: str
   logging:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Log mapping entries and sessions created or deleted for this LSN group. The
         Citrix ADC logs LSN sessions for this LSN group only when both logging and
@@ -138,10 +141,10 @@ options:
         mapping'
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   nattype:
+    choices:
+      - DYNAMIC
+      - DETERMINISTIC
     description:
       - 'Type of NAT IP address and port allocation (from the bound LSN pools) for
         subscribers:'
@@ -173,9 +176,6 @@ options:
         ADC allocates a new random port block for the subscriber.'
     type: str
     default: DYNAMIC
-    choices:
-      - DYNAMIC
-      - DETERMINISTIC
   portblocksize:
     description:
       - Size of the NAT port block to be allocated for each subscriber.
@@ -193,22 +193,25 @@ options:
         NAT.
     type: int
   pptp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable the PPTP Application Layer Gateway.
     type: str
     default: DISABLED
+  rtspalg:
     choices:
       - ENABLED
       - DISABLED
-  rtspalg:
     description:
       - Enable the RTSP ALG.
     type: str
     default: DISABLED
+  sessionlogging:
     choices:
       - ENABLED
       - DISABLED
-  sessionlogging:
     description:
       - Log sessions created or deleted for the LSN group. The Citrix ADC logs LSN
         sessions for this LSN group only when both logging and session logging parameters
@@ -225,10 +228,10 @@ options:
       - '* Destination IP address, port, and traffic domain ID'
     type: str
     default: DISABLED
+  sessionsync:
     choices:
       - ENABLED
       - DISABLED
-  sessionsync:
     description:
       - In a high availability (HA) deployment, synchronize information of all LSN
         sessions related to this LSN group with the secondary node. After a failover,
@@ -239,23 +242,236 @@ options:
         parameter.
     type: str
     default: ENABLED
+  sipalg:
     choices:
       - ENABLED
       - DISABLED
-  sipalg:
     description:
       - Enable the SIP ALG.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   snmptraplimit:
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.
     type: int
     default: 100
+  lsngroup_ipsecalgprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_ipsecalgprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnappsprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnappsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnhttphdrlogprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnhttphdrlogprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnlogprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnlogprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnpool_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnpool_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnrtspalgprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnrtspalgprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsnsipalgprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsnsipalgprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_lsntransportprofile_binding:
+    type: dict
+    description: Bindings for lsngroup_lsntransportprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsngroup_pcpserver_binding:
+    type: dict
+    description: Bindings for lsngroup_pcpserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

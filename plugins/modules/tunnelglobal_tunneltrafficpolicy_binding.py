@@ -26,19 +26,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
-  feature:
     description:
-      - The feature to be checked while applying this config
-    type: str
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
+  feature:
     choices:
       - WL
       - WebLogging
@@ -111,16 +108,19 @@ options:
       - ContentInspection
       - Bot
       - APIGateway
-  globalbindtype:
     description:
-      - '0'
+      - The feature to be checked while applying this config
     type: str
-    default: SYSTEM_GLOBAL
+  globalbindtype:
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -135,21 +135,21 @@ options:
       - Priority.
     type: int
   state:
-    description:
-      - Current state of the binding. If the binding is enabled, the policy is active.
-    type: str
     choices:
       - ENABLED
       - DISABLED
-  type:
     description:
-      - Bind point to which the policy is bound.
+      - Current state of the binding. If the binding is enabled, the policy is active.
     type: str
+  type:
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - RES_OVERRIDE
       - RES_DEFAULT
+    description:
+      - Bind point to which the policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

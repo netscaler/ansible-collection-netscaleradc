@@ -34,12 +34,12 @@ options:
       - SSL certkey to use in signing tokens.
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter (Mandatory/Optional).
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter (C(Mandatory)/C(Optional)).
+    type: str
   gotopriorityexpression:
     description:
       - Applicable only to advance vpn session policy. An expression or other value
@@ -47,12 +47,12 @@ options:
         current policy rule evaluates to TRUE.
     type: str
   ocspcheck:
-    description:
-      - The state of the OCSP check parameter (Mandatory/Optional).
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the OCSP check parameter (C(Mandatory)/C(Optional)).
+    type: str
   userdataencryptionkey:
     description:
       - Certificate to be used for encrypting user data like KB Question and Answers,

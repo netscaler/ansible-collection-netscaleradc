@@ -46,12 +46,12 @@ options:
         in Assertion
     type: str
   attribute10format:
-    description:
-      - Format of Attribute10 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute10 to be sent in Assertion.
+    type: str
   attribute10friendlyname:
     description:
       - User-Friendly Name of attribute10 that needs to be sent in SAML Assertion
@@ -66,12 +66,12 @@ options:
         in Assertion
     type: str
   attribute11format:
-    description:
-      - Format of Attribute11 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute11 to be sent in Assertion.
+    type: str
   attribute11friendlyname:
     description:
       - User-Friendly Name of attribute11 that needs to be sent in SAML Assertion
@@ -86,12 +86,12 @@ options:
         in Assertion
     type: str
   attribute12format:
-    description:
-      - Format of Attribute12 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute12 to be sent in Assertion.
+    type: str
   attribute12friendlyname:
     description:
       - User-Friendly Name of attribute12 that needs to be sent in SAML Assertion
@@ -106,12 +106,12 @@ options:
         in Assertion
     type: str
   attribute13format:
-    description:
-      - Format of Attribute13 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute13 to be sent in Assertion.
+    type: str
   attribute13friendlyname:
     description:
       - User-Friendly Name of attribute13 that needs to be sent in SAML Assertion
@@ -126,12 +126,12 @@ options:
         in Assertion
     type: str
   attribute14format:
-    description:
-      - Format of Attribute14 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute14 to be sent in Assertion.
+    type: str
   attribute14friendlyname:
     description:
       - User-Friendly Name of attribute14 that needs to be sent in SAML Assertion
@@ -146,12 +146,12 @@ options:
         in Assertion
     type: str
   attribute15format:
-    description:
-      - Format of Attribute15 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute15 to be sent in Assertion.
+    type: str
   attribute15friendlyname:
     description:
       - User-Friendly Name of attribute15 that needs to be sent in SAML Assertion
@@ -166,12 +166,12 @@ options:
         in Assertion
     type: str
   attribute16format:
-    description:
-      - Format of Attribute16 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute16 to be sent in Assertion.
+    type: str
   attribute16friendlyname:
     description:
       - User-Friendly Name of attribute16 that needs to be sent in SAML Assertion
@@ -182,12 +182,12 @@ options:
         in Assertion
     type: str
   attribute1format:
-    description:
-      - Format of Attribute1 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute1 to be sent in Assertion.
+    type: str
   attribute1friendlyname:
     description:
       - User-Friendly Name of attribute1 that needs to be sent in SAML Assertion
@@ -202,12 +202,12 @@ options:
         in Assertion
     type: str
   attribute2format:
-    description:
-      - Format of Attribute2 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute2 to be sent in Assertion.
+    type: str
   attribute2friendlyname:
     description:
       - User-Friendly Name of attribute2 that needs to be sent in SAML Assertion
@@ -222,12 +222,12 @@ options:
         in Assertion
     type: str
   attribute3format:
-    description:
-      - Format of Attribute3 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute3 to be sent in Assertion.
+    type: str
   attribute3friendlyname:
     description:
       - User-Friendly Name of attribute3 that needs to be sent in SAML Assertion
@@ -242,12 +242,12 @@ options:
         in Assertion
     type: str
   attribute4format:
-    description:
-      - Format of Attribute4 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute4 to be sent in Assertion.
+    type: str
   attribute4friendlyname:
     description:
       - User-Friendly Name of attribute4 that needs to be sent in SAML Assertion
@@ -262,12 +262,12 @@ options:
         in Assertion
     type: str
   attribute5format:
-    description:
-      - Format of Attribute5 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute5 to be sent in Assertion.
+    type: str
   attribute5friendlyname:
     description:
       - User-Friendly Name of attribute5 that needs to be sent in SAML Assertion
@@ -282,12 +282,12 @@ options:
         in Assertion
     type: str
   attribute6format:
-    description:
-      - Format of Attribute6 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute6 to be sent in Assertion.
+    type: str
   attribute6friendlyname:
     description:
       - User-Friendly Name of attribute6 that needs to be sent in SAML Assertion
@@ -302,12 +302,12 @@ options:
         in Assertion
     type: str
   attribute7format:
-    description:
-      - Format of Attribute7 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute7 to be sent in Assertion.
+    type: str
   attribute7friendlyname:
     description:
       - User-Friendly Name of attribute7 that needs to be sent in SAML Assertion
@@ -322,12 +322,12 @@ options:
         in Assertion
     type: str
   attribute8format:
-    description:
-      - Format of Attribute8 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute8 to be sent in Assertion.
+    type: str
   attribute8friendlyname:
     description:
       - User-Friendly Name of attribute8 that needs to be sent in SAML Assertion
@@ -342,12 +342,12 @@ options:
         in Assertion
     type: str
   attribute9format:
-    description:
-      - Format of Attribute9 to be sent in Assertion.
-    type: str
     choices:
       - URI
       - Basic
+    description:
+      - Format of Attribute9 to be sent in Assertion.
+    type: str
   attribute9friendlyname:
     description:
       - User-Friendly Name of attribute9 that needs to be sent in SAML Assertion
@@ -365,46 +365,46 @@ options:
         way to use this feature.
     type: str
   digestmethod:
+    choices:
+      - SHA1
+      - SHA256
     description:
       - Algorithm to be used to compute/verify digest for SAML transactions
     type: str
     default: SHA256
-    choices:
-      - SHA1
-      - SHA256
   encryptassertion:
-    description:
-      - Option to encrypt assertion when Citrix ADC IDP sends one.
-    type: str
     choices:
       - true
       - false
-  encryptionalgorithm:
     description:
-      - Algorithm to be used to encrypt SAML assertion
+      - Option to encrypt assertion when Citrix ADC IDP sends one.
     type: str
-    default: AES256
+  encryptionalgorithm:
     choices:
       - DES3
       - AES128
       - AES192
       - AES256
+    description:
+      - Algorithm to be used to encrypt SAML assertion
+    type: str
+    default: AES256
   keytransportalg:
+    choices:
+      - RSA-V1_5
+      - RSA_OAEP
     description:
       - Key transport algorithm to be used in encryption of SAML assertion
     type: str
     default: RSA_OAEP
-    choices:
-      - RSA-V1_5
-      - RSA_OAEP
   logoutbinding:
+    choices:
+      - REDIRECT
+      - POST
     description:
       - This element specifies the transport mechanism of saml logout messages.
     type: str
     default: POST
-    choices:
-      - REDIRECT
-      - POST
   metadatarefreshinterval:
     description:
       - Interval in minute for fetching metadata from specified metadata URL
@@ -430,10 +430,6 @@ options:
       - Expression that will be evaluated to obtain NameIdentifier to be sent in assertion
     type: str
   nameidformat:
-    description:
-      - Format of Name Identifier sent in Assertion.
-    type: str
-    default: transient
     choices:
       - Unspecified
       - emailAddress
@@ -443,24 +439,28 @@ options:
       - entity
       - persistent
       - transient
+    description:
+      - Format of Name Identifier sent in Assertion.
+    type: str
+    default: transient
   rejectunsignedrequests:
+    choices:
+      - true
+      - false
     description:
       - Option to Reject unsigned SAML Requests. ON option denies any authentication
         requests that arrive without signature.
     type: str
     default: true
-    choices:
-      - true
-      - false
   samlbinding:
-    description:
-      - This element specifies the transport mechanism of saml messages.
-    type: str
-    default: POST
     choices:
       - REDIRECT
       - POST
       - ARTIFACT
+    description:
+      - This element specifies the transport mechanism of saml messages.
+    type: str
+    default: POST
   samlidpcertname:
     description:
       - Name of the certificate used to sign the SAMLResposne that is sent to Relying
@@ -488,12 +488,12 @@ options:
         of the incoming AuthnRequest from a Relying Party or Service Provider
     type: str
   sendpassword:
-    description:
-      - Option to send password in assertion.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to send password in assertion.
+    type: str
   serviceproviderid:
     description:
       - Unique identifier of the Service Provider that sends SAML Request. Citrix
@@ -502,25 +502,25 @@ options:
         configured in samlAction.
     type: str
   signassertion:
+    choices:
+      - NONE
+      - ASSERTION
+      - RESPONSE
+      - BOTH
     description:
       - Option to sign portions of assertion when Citrix ADC IDP sends one. Based
         on the user selection, either Assertion or Response or Both or none can be
         signed
     type: str
     default: ASSERTION
-    choices:
-      - NONE
-      - ASSERTION
-      - RESPONSE
-      - BOTH
   signaturealg:
+    choices:
+      - RSA-SHA1
+      - RSA-SHA256
     description:
       - Algorithm to be used to sign/verify SAML transactions
     type: str
     default: RSA-SHA256
-    choices:
-      - RSA-SHA1
-      - RSA-SHA256
   signatureservice:
     description:
       - Name of the service in cloud used to sign the data

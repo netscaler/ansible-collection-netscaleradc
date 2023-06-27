@@ -728,7 +728,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of processing of the name-value pair. If you specify STATIC, the values configured by the administrator are used. For DYNAMIC, the response is parsed, and the form is extracted and then submitted.
+      Type of processing of the name-value pair. If you specify \ :literal:`STATIC`\ , the values configured by the administrator are used. For \ :literal:`DYNAMIC`\ , the response is parsed, and the form is extracted and then submitted.
 
 
       .. rst-class:: ansible-option-line

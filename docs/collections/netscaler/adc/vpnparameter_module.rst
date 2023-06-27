@@ -121,7 +121,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be set to STRICT to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
+      Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be set to \ :literal:`STRICT`\  to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
 
 
       .. rst-class:: ansible-option-line
@@ -776,11 +776,11 @@ Parameters
 
       When clientless access is enabled, you can choose to encode the addresses of internal web applications or to leave the address as clear text. Available settings function as follows: 
 
-      \* OPAQUE - Use standard encoding mechanisms to make the domain and protocol part of the resource unclear to users. 
+      \* \ :literal:`OPAQUE`\  - Use standard encoding mechanisms to make the domain and protocol part of the resource unclear to users. 
 
-      \* TRANSPARENT - Do not encode the web address and make it visible to users. 
+      \* \ :literal:`TRANSPARENT`\  - Do not encode the web address and make it visible to users. 
 
-      \* ENCRYPT - Allow the domain and protocol to be encrypted using a session key. When the web address is encrypted, the URL is different for each user session for the same web resource. If users bookmark the encoded web address, save it in the web browser and then log off, they cannot connect to the web address when they log on and use the bookmark. If users save the encrypted bookmark in the Access Interface during their session, the bookmark works each time the user logs on.
+      \* \ :literal:`ENCRYPT`\  - Allow the domain and protocol to be encrypted using a session key. When the web address is encrypted, the URL is different for each user session for the same web resource. If users bookmark the encoded web address, save it in the web browser and then log off, they cannot connect to the web address when they log on and use the bookmark. If users save the encrypted bookmark in the Access Interface during their session, the bookmark works each time the user logs on.
 
 
       .. rst-class:: ansible-option-line
@@ -825,11 +825,11 @@ Parameters
 
       State of persistent cookies in clientless access mode. Persistent cookies are required for accessing certain features of SharePoint, such as opening and editing Microsoft Word, Excel, and PowerPoint documents hosted on the SharePoint server. A persistent cookie remains on the user device and is sent with each HTTP request. Citrix Gateway encrypts the persistent cookie before sending it to the plug-in on the user device, and refreshes the cookie periodically as long as the session exists. The cookie becomes stale if the session ends. Available settings function as follows: 
 
-      \* ALLOW - Enable persistent cookies. Users can open and edit Microsoft documents stored in SharePoint. 
+      \* \ :literal:`ALLOW`\  - Enable persistent cookies. Users can open and edit Microsoft documents stored in SharePoint. 
 
-      \* DENY - Disable persistent cookies. Users cannot open and edit Microsoft documents stored in SharePoint. 
+      \* \ :literal:`DENY`\  - Disable persistent cookies. Users cannot open and edit Microsoft documents stored in SharePoint. 
 
-      \* PROMPT - Prompt users to allow or deny persistent cookies during the session. Persistent cookies are not required for clientless access if users do not connect to SharePoint.
+      \* \ :literal:`PROMPT`\  - Prompt users to allow or deny persistent cookies during the session. Persistent cookies are not required for clientless access if users do not connect to SharePoint.
 
 
       .. rst-class:: ansible-option-line
@@ -1144,7 +1144,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Specify the network resources that users have access to when they log on to the internal network. The default setting for authorization is to deny access to all network resources. Citrix recommends using the default global setting and then creating authorization policies to define the network resources users can access. If you set the default authorization policy to DENY, you must explicitly authorize access to any network resource, which improves security.
+      Specify the network resources that users have access to when they log on to the internal network. The default setting for authorization is to deny access to all network resources. Citrix recommends using the default global setting and then creating authorization policies to define the network resources users can access. If you set the default authorization policy to \ :literal:`DENY`\ , you must explicitly authorize access to any network resource, which improves security.
 
 
       .. rst-class:: ansible-option-line
@@ -1342,7 +1342,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Force cache clean-up when the user closes a session. You can specify all, none, or any combination of the client-side items.
+      Force \ :literal:`cache`\  clean-up when the user closes a session. You can specify \ :literal:`all`\ , \ :literal:`none`\ , or any combination of the client-side items.
 
 
       .. rst-class:: ansible-option-line
@@ -3767,7 +3767,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of the wihome address(IPV4/V6)
+      Type of the wihome address(\ :literal:`IPV4`\ /V6)
 
 
       .. rst-class:: ansible-option-line
@@ -3974,7 +3974,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Layout on the Access Interface. The COMPACT value indicates the use of small icons.
+      Layout on the Access Interface. The \ :literal:`COMPACT`\  value indicates the use of small icons.
 
 
       .. rst-class:: ansible-option-line

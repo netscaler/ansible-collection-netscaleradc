@@ -32,20 +32,20 @@ options:
       - Name of the backup file(*.tgz) to be restored.
     type: str
   includekernel:
-    description:
-      - Use this option to add kernel in the backup file
-    type: str
     choices:
       - false
       - true
+    description:
+      - Use this option to add kernel in the backup file
+    type: str
   level:
+    choices:
+      - basic
+      - full
     description:
       - Level of data to be backed up.
     type: str
     default: basic
-    choices:
-      - basic
-      - full
   skipbackup:
     description:
       - Use this option to skip taking backup during restore operation

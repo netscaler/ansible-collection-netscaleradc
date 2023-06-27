@@ -52,28 +52,6 @@ options:
         quotation marks (for example, "my policy label" or 'my policy label').
     type: str
   transform:
-    description:
-      - 'Types of transformations allowed by the policies bound to the label. For
-        Rewrite, the following types are supported:'
-      - '* http_req - HTTP requests'
-      - '* http_res - HTTP responses'
-      - '* othertcp_req - Non-HTTP TCP requests'
-      - '* othertcp_res - Non-HTTP TCP responses'
-      - '* url - URLs'
-      - '* text - Text strings'
-      - '* clientless_vpn_req - Citrix ADC clientless VPN requests'
-      - '* clientless_vpn_res - Citrix ADC clientless VPN responses'
-      - '* sipudp_req - SIP requests'
-      - '* sipudp_res - SIP responses'
-      - '* diameter_req - DIAMETER requests'
-      - '* diameter_res - DIAMETER responses'
-      - '* radius_req - RADIUS requests'
-      - '* radius_res - RADIUS responses'
-      - '* dns_req - DNS requests'
-      - '* dns_res - DNS responses'
-      - '* mqtt_req - MQTT requests'
-      - '* mqtt_res - MQTT responses'
-    type: str
     choices:
       - http_req
       - http_res
@@ -97,6 +75,52 @@ options:
       - httpquic_res
       - mqtt_req
       - mqtt_res
+    description:
+      - 'Types of transformations allowed by the policies bound to the label. For
+        Rewrite, the following types are supported:'
+      - '* C(http_req) - HTTP requests'
+      - '* C(http_res) - HTTP responses'
+      - '* C(othertcp_req) - Non-HTTP TCP requests'
+      - '* C(othertcp_res) - Non-HTTP TCP responses'
+      - '* C(url) - URLs'
+      - '* C(text) - Text strings'
+      - '* C(clientless_vpn_req) - Citrix ADC clientless VPN requests'
+      - '* C(clientless_vpn_res) - Citrix ADC clientless VPN responses'
+      - '* C(sipudp_req) - SIP requests'
+      - '* C(sipudp_res) - SIP responses'
+      - '* C(diameter_req) - DIAMETER requests'
+      - '* C(diameter_res) - DIAMETER responses'
+      - '* C(radius_req) - RADIUS requests'
+      - '* C(radius_res) - RADIUS responses'
+      - '* C(dns_req) - DNS requests'
+      - '* C(dns_res) - DNS responses'
+      - '* C(mqtt_req) - MQTT requests'
+      - '* C(mqtt_res) - MQTT responses'
+    type: str
+  rewritepolicylabel_rewritepolicy_binding:
+    type: dict
+    description: Bindings for rewritepolicylabel_rewritepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,34 +24,34 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowedmanagementinterface:
-    description:
-      - Allowed Management interfaces to the system user. By default user is allowed
-        from both API and CLI interfaces. If management interface for a user is set
-        to API, then user is not allowed to access NS through CLI. GUI interface will
-        come under API interface
-    type: list
-    elements: str
-    default: NS_INTERFACE_ALL
     choices:
       - CLI
       - API
+    description:
+      - Allowed Management interfaces to the system user. By default user is allowed
+        from both C(API) and C(CLI) interfaces. If management interface for a user
+        is set to C(API), then user is not allowed to access NS through C(CLI). GUI
+        interface will come under C(API) interface
+    type: list
+    elements: str
+    default: NS_INTERFACE_ALL
   externalauth:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Whether to use external authentication servers for the system user authentication
         or not
     type: str
     default: ENABLED
+  logging:
     choices:
       - ENABLED
       - DISABLED
-  logging:
     description:
       - Users logging privilege
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxsession:
     description:
       - Maximum number of client connection allowed per user
@@ -94,6 +94,54 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my user" or ''my user'').'
     type: str
+  systemuser_nspartition_binding:
+    type: dict
+    description: Bindings for systemuser_nspartition_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  systemuser_systemcmdpolicy_binding:
+    type: dict
+    description: Bindings for systemuser_systemcmdpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

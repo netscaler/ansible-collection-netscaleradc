@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allpartitions:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send traps of all partitions to this destination.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   communityname:
     description:
       - 'Password (string) sent with the trap messages, so that the trap listener
@@ -52,21 +52,22 @@ options:
     type: int
     default: 162
   severity:
-    description:
-      - 'Severity level at or above which the Citrix ADC sends trap messages to this
-        trap listener. The severity levels, in increasing order of severity, are Informational,
-        Warning, Minor, Major, Critical. This parameter can be set for trap listeners
-        of type SPECIFIC only. The default is to send all levels of trap messages. '
-      - 'Important: Trap messages are not assigned severity levels unless you specify
-        severity levels when configuring SNMP alarms.'
-    type: str
-    default: Unknown
     choices:
       - Critical
       - Major
       - Minor
       - Warning
       - Informational
+    description:
+      - 'Severity level at or above which the Citrix ADC sends trap messages to this
+        trap listener. The severity levels, in increasing order of severity, are C(Informational),
+        C(Warning), C(Minor), C(Major), C(Critical). This parameter can be set for
+        trap listeners of type SPECIFIC only. The default is to send all levels of
+        trap messages. '
+      - 'Important: Trap messages are not assigned severity levels unless you specify
+        severity levels when configuring SNMP alarms.'
+    type: str
+    default: Unknown
   srcip:
     description:
       - IPv4 or IPv6 address that the Citrix ADC inserts as the source IP address
@@ -83,19 +84,23 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   trapclass:
-    description:
-      - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
-        or the enterprise-specific messages defined in the MIB file.'
-    type: str
     choices:
       - generic
       - specific
+    description:
+      - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
+        or the enterprise-C(specific) messages defined in the MIB file.'
+    type: str
   trapdestination:
     description:
       - IPv4 or the IPv6 address of the trap listener to which the Citrix ADC is to
         send SNMP trap messages.
     type: str
   version:
+    choices:
+      - V1
+      - V2
+      - V3
     description:
       - 'SNMP version, which determines the format of trap messages sent to the trap
         listener. '
@@ -103,10 +108,30 @@ options:
         drops the trap messages.
     type: str
     default: V2
-    choices:
-      - V1
-      - V2
-      - V3
+  snmptrap_snmpuser_binding:
+    type: dict
+    description: Bindings for snmptrap_snmpuser_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

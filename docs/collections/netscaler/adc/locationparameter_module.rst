@@ -193,7 +193,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Context for describing locations. In geographic context, qualifier labels are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization. In custom context, the qualifiers labels can have any meaning that you designate.
+      Context for describing locations. In \ :literal:`geographic`\  context, qualifier labels are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization. In \ :literal:`custom`\  context, the qualifiers labels can have any meaning that you designate.
 
 
       .. rst-class:: ansible-option-line

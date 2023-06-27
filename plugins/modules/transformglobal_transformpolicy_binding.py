@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -52,16 +52,16 @@ options:
         the invoke parameter is set, and the label type is Policy Label.
     type: str
   labeltype:
-    description:
-      - 'Type of invocation. Available settings function as follows:'
-      - '* reqvserver - Send the request to the specified request virtual server.'
-      - '* resvserver - Send the response to the specified response virtual server.'
-      - '* policylabel - Invoke the specified policy label.'
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - 'Type of invocation. Available settings function as follows:'
+      - '* C(reqvserver) - Send the request to the specified request virtual server.'
+      - '* C(resvserver) - Send the response to the specified response virtual server.'
+      - '* C(policylabel) - Invoke the specified policy label.'
+    type: str
   policyname:
     description:
       - Name of the transform policy.
@@ -71,22 +71,22 @@ options:
       - Specifies the priority of the policy.
     type: int
   type:
-    description:
-      - 'Specifies the bind point to which to bind the policy. Available settings
-        function as follows:'
-      - '* REQ_OVERRIDE. Request override. Binds the policy to the priority request
-        queue.'
-      - '* REQ_DEFAULT. Binds the policy to the default request queue.'
-      - '* HTTPQUIC_REQ_OVERRIDE - Binds the policy to the HTTP_QUIC override request
-        queue.'
-      - '* HTTPQUIC_REQ_DEFAULT - Binds the policy to the HTTP_QUIC default request
-        queue.'
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
+    description:
+      - 'Specifies the bind point to which to bind the policy. Available settings
+        function as follows:'
+      - '* C(REQ_OVERRIDE). Request override. Binds the policy to the priority request
+        queue.'
+      - '* C(REQ_DEFAULT). Binds the policy to the default request queue.'
+      - '* C(HTTPQUIC_REQ_OVERRIDE) - Binds the policy to the HTTP_QUIC override request
+        queue.'
+      - '* C(HTTPQUIC_REQ_DEFAULT) - Binds the policy to the HTTP_QUIC default request
+        queue.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

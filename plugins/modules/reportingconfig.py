@@ -24,9 +24,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   entitytypes:
-    description:
-      - Object type of the entity
-    type: str
     choices:
       - appfwpolicy
       - appfwpolicylabel
@@ -92,6 +89,9 @@ options:
       - videooptimizationpacingpolicylabel
       - vlan
       - vxlan
+    description:
+      - Object type of the entity
+    type: str
   name:
     description:
       - Name of the entity

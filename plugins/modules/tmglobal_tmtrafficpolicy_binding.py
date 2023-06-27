@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - 'Applicable only to advance tmsession policy. Expression or other value specifying
@@ -71,14 +71,14 @@ options:
       - The priority of the policy.
     type: int
   type:
-    description:
-      - Bindpoint to which the policy is bound
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - RES_OVERRIDE
       - RES_DEFAULT
+    description:
+      - Bindpoint to which the policy is bound
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -41,21 +41,21 @@ options:
       - Cipher name.
     type: str
   cipheroperation:
-    description:
-      - The operation that is performed when adding the cipher-suite.
-      - ''
-      - 'Possible cipher operations are:'
-      - "\tADD - Appends the given cipher-suite to the existing one configured for\
-        \ the virtual server."
-      - "\tREM - Removes the given cipher-suite from the existing one configured for\
-        \ the virtual server."
-      - "\tORD - Overrides the current configured cipher-suite for the virtual server\
-        \ with the given cipher-suite."
-    type: str
     choices:
       - ADD
       - REM
       - ORD
+    description:
+      - The operation that is performed when adding the cipher-suite.
+      - ''
+      - 'Possible cipher operations are:'
+      - "\tC(ADD) - Appends the given cipher-suite to the existing one configured\
+        \ for the virtual server."
+      - "\tC(REM) - Removes the given cipher-suite from the existing one configured\
+        \ for the virtual server."
+      - "\tC(ORD) - Overrides the current configured cipher-suite for the virtual\
+        \ server with the given cipher-suite."
+    type: str
   cipherpriority:
     description:
       - This indicates priority assigned to the particular cipher

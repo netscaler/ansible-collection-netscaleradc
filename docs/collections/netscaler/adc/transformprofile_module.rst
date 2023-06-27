@@ -834,7 +834,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of transformation. Always URL for URL Transformation profiles.
+      Type of transformation. Always \ :literal:`URL`\  for \ :literal:`URL`\  Transformation profiles.
 
 
       .. rst-class:: ansible-option-line

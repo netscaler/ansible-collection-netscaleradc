@@ -52,13 +52,13 @@ options:
     type: int
     default: 5
   graceful:
+    choices:
+      - true
+      - false
     description:
       - Shut down gracefully, without accepting any new connections, and disabling
         each service when all of its connections are closed.
     type: str
-    choices:
-      - true
-      - false
   ipaddress:
     description:
       - 'IPv4 or IPv6 address of the server. If you create an IP address based server,
@@ -67,13 +67,13 @@ options:
         that you enter when you create a service becomes the name of the server.'
     type: str
   ipv6address:
+    choices:
+      - true
+      - false
     description:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
     type: str
-    choices:
-      - true
-      - false
   name:
     description:
       - 'Name for the server. '
@@ -89,25 +89,25 @@ options:
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
     type: str
   querytype:
-    description:
-      - Specify the type of DNS resolution to be done on the configured domain to
-        get the backend services. Valid query types are A, AAAA and SRV with A being
-        the default querytype. The type of DNS resolution done on the domains in SRV
-        records is inherited from ipv6 argument.
-    type: str
-    default: A
     choices:
       - A
       - AAAA
       - SRV
+    description:
+      - Specify the type of DNS resolution to be done on the configured domain to
+        get the backend services. Valid query types are C(A), C(AAAA) and C(SRV) with
+        C(A) being the default querytype. The type of DNS resolution done on the domains
+        in C(SRV) records is inherited from ipv6 argument.
+    type: str
+    default: A
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want

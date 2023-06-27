@@ -46,19 +46,19 @@ options:
         example, "my cert" or ''my cert'').'
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
+    type: str
   ocspcheck:
-    description:
-      - The state of the OCSP check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -269,7 +269,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      One to more actions to be taken if bot is detected based on this TPS binding. Only LOG action can be combined with DROP, RESET, REDIRECT, or MITIGIATION action.
+      One to more actions to be taken if bot is detected based on this TPS binding. Only \ :literal:`LOG`\  action can be combined with \ :literal:`DROP`\ , \ :literal:`RESET`\ , \ :literal:`REDIRECT`\ , or MITIGIATION action.
 
 
       .. rst-class:: ansible-option-line

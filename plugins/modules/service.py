@@ -28,53 +28,53 @@ options:
       - Display only dynamically learned services.
     type: bool
   accessdown:
+    choices:
+      - true
+      - false
     description:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
     type: str
-    choices:
-      - true
-      - false
   all:
     description:
       - Display both user-configured and dynamically learned services.
     type: bool
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging of AppFlow information.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cacheable:
+    choices:
+      - true
+      - false
     description:
       - Use the transparent cache redirection virtual server to forward requests to
         the cache server.
       - 'Note: Do not specify this parameter if you set the Cache Type parameter.'
     type: str
-    choices:
-      - true
-      - false
   cachetype:
-    description:
-      - Cache type supported by the cache server.
-    type: str
     choices:
       - TRANSPARENT
       - REVERSE
       - FORWARD
+    description:
+      - Cache type supported by the cache server.
+    type: str
   cip:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Before forwarding a request to the service, insert an HTTP header with the
         client's IPv4 or IPv6 address as its value. Used if the server needs the client's
         IP address for security, accounting, or other purposes, and setting the Use
         Source IP parameter is not a viable option.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   cipheader:
     description:
       - Name for the HTTP header whose value must be set to the IP address of the
@@ -87,12 +87,12 @@ options:
         a header with the name "client-ip."
     type: str
   cka:
-    description:
-      - Enable client keep-alive for the service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable client keep-alive for the service.
+    type: str
   cleartextport:
     description:
       - Port to which clear text data must be sent after the appliance decrypts incoming
@@ -103,12 +103,12 @@ options:
       - Time, in seconds, after which to terminate an idle client connection.
     type: int
   cmp:
-    description:
-      - Enable compression for the service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable compression for the service.
+    type: str
   comment:
     description:
       - Any information about the service.
@@ -140,29 +140,32 @@ options:
         valid only for ADNS and ADNS-TCP services.
     type: str
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with a service whose state transitions
         from UP to DOWN. Do not enable this option for applications that must complete
         their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   graceful:
+    choices:
+      - true
+      - false
     description:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
     type: str
-    choices:
-      - true
-      - false
   hashid:
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
     type: int
   healthmonitor:
+    choices:
+      - true
+      - false
     description:
       - 'Monitor the health of this service. Available settings function as follows:'
       - YES - Send probes to check the health of the service.
@@ -170,9 +173,6 @@ options:
         the appliance shows the service as UP at all times.
     type: str
     default: true
-    choices:
-      - true
-      - false
   httpprofilename:
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
@@ -201,14 +201,14 @@ options:
       - 'Note: Connection requests beyond this value are rejected.'
     type: int
   monconnectionclose:
+    choices:
+      - RESET
+      - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
     type: str
     default: NONE
-    choices:
-      - RESET
-      - FIN
   monitor_name_svc:
     description:
       - Name of the monitor bound to the specified service.
@@ -236,24 +236,27 @@ options:
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
     type: str
   pathmonitor:
+    choices:
+      - true
+      - false
     description:
       - Path monitoring for clustering
     type: str
+  pathmonitorindv:
     choices:
       - true
       - false
-  pathmonitorindv:
     description:
       - Individual Path monitoring decisions
     type: str
-    choices:
-      - true
-      - false
   port:
     description:
       - Port number of the service.
     type: int
   processlocal:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - By turning on this option packets destined to a service in a cluster will
         not under go any steering. Turn this option for single packet request response
@@ -261,16 +264,13 @@ options:
         based distribution.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   rtspsessionidremap:
-    description:
-      - Enable RTSP session ID mapping for the service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable RTSP session ID mapping for the service.
+    type: str
   serverid:
     description:
       - The  identifier for the service. This is used when the persistency type is
@@ -281,9 +281,6 @@ options:
       - Name of the server that hosts the service.
     type: str
   servicetype:
-    description:
-      - Protocol in which data is exchanged with the service.
-    type: str
     choices:
       - HTTP
       - FTP
@@ -333,32 +330,35 @@ options:
       - MQTT
       - MQTT_TLS
       - QUIC_BRIDGE
-  sp:
     description:
-      - Enable surge protection for the service.
+      - Protocol in which data is exchanged with the service.
     type: str
+  sp:
     choices:
       - true
       - false
+    description:
+      - Enable surge protection for the service.
+    type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the service.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
     type: int
   tcpb:
-    description:
-      - Enable TCP buffering for the service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable TCP buffering for the service.
+    type: str
   tcpprofilename:
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service.
@@ -370,6 +370,9 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   useproxyport:
+    choices:
+      - true
+      - false
     description:
       - 'Use the proxy port as the source port when initiating connections with the
         server. With the NO setting, the client-side connection port is used as the
@@ -377,10 +380,10 @@ options:
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to YES.'
     type: str
+  usip:
     choices:
       - true
       - false
-  usip:
     description:
       - Use the client's IP address as the source IP address when initiating a connection
         to the server. When creating a service, if you do not set this parameter,
@@ -389,9 +392,6 @@ options:
         modes > Configure Modes dialog box). However, you can override this setting
         after you create the service.
     type: str
-    choices:
-      - true
-      - false
   weight:
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
@@ -399,6 +399,78 @@ options:
         contributes toward keeping the health of the service above the value configured
         for the Monitor Threshold parameter.
     type: int
+  service_lbmonitor_binding:
+    type: dict
+    description: Bindings for service_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  servicegroup_lbmonitor_binding:
+    type: dict
+    description: Bindings for servicegroup_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  servicegroup_servicegroupmember_binding:
+    type: dict
+    description: Bindings for servicegroup_servicegroupmember_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   charset:
-    description:
-      - Character set associated with the characters in the string.
-    type: str
     choices:
       - ASCII
       - UTF_8
+    description:
+      - Character set associated with the characters in the string.
+    type: str
   comment:
     description:
       - Any comments to preserve information about this patsetfile.

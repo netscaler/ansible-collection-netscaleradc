@@ -40,15 +40,15 @@ options:
         this SNMPv3 view. You must specify the subtree as an SNMP OID.
     type: str
   type:
-    description:
-      - Include or exclude the subtree, specified by the subtree parameter, in or
-        from this view. This setting can be useful when you have included a subtree,
-        such as A, in an SNMPv3 view and you want to exclude a specific subtree of
-        A, such as B, from the SNMPv3 view.
-    type: str
     choices:
       - included
       - excluded
+    description:
+      - Include or exclude the subtree, specified by the subtree parameter, in or
+        from this view. This setting can be useful when you have C(included) a subtree,
+        such as A, in an SNMPv3 view and you want to exclude a specific subtree of
+        A, such as B, from the SNMPv3 view.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

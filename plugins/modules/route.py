@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advertise:
-    description:
-      - Advertise this route.
-    type: str
     choices:
       - DISABLED
       - ENABLED
+    description:
+      - Advertise this route.
+    type: str
   cost:
     description:
       - Positive integer used by the routing algorithms to determine preference for
@@ -63,13 +63,13 @@ options:
         monitor this route.
     type: str
   msr:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Monitor this route using a monitor of type ARP or PING.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   netmask:
     description:
       - The subnet mask associated with the network address.
@@ -86,21 +86,17 @@ options:
     type: str
     default: DEFAULT_NG
   protocol:
-    description:
-      - Routing protocol used for advertising this route.
-    type: list
-    elements: str
-    default: ADV_ROUTE_FLAGS
     choices:
       - OSPF
       - ISIS
       - RIP
       - BGP
-  routetype:
     description:
-      - Protocol used by routes that you want to remove from the routing table of
-        the Citrix ADC.
-    type: str
+      - Routing protocol used for advertising this route.
+    type: list
+    elements: str
+    default: ADV_ROUTE_FLAGS
+  routetype:
     choices:
       - CONNECTED
       - STATIC
@@ -109,6 +105,10 @@ options:
       - ISIS
       - RIP
       - BGP
+    description:
+      - Protocol used by routes that you want to remove from the routing table of
+        the Citrix ADC.
+    type: str
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want

@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - 'Expression or other value specifying the priority of the next policy, within
@@ -76,13 +76,13 @@ options:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - The name of the globally bound HTTP compression policy.
@@ -97,9 +97,6 @@ options:
         the entry to a new position, the priority level is updated automatically.
     type: int
   type:
-    description:
-      - Bind point to which the policy is bound.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -110,6 +107,9 @@ options:
       - HTTPQUIC_RES_OVERRIDE
       - HTTPQUIC_RES_DEFAULT
       - NONE
+    description:
+      - Bind point to which the policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -38,44 +38,44 @@ options:
         returned to normal.
     type: int
   conndistr:
-    description:
-      - The 'connection' distribution mode for the LA channel.
-    type: str
     choices:
       - DISABLED
       - ENABLED
-  flowctl:
     description:
-      - Specifies the flow control type for this LA channel to manage the flow of
-        frames. Flow control is a function as mentioned in clause 31 of the IEEE 802.3
-        standard. Flow control allows congested ports to pause traffic from the peer
-        device. Flow control is achieved by sending PAUSE frames.
+      - The 'connection' distribution mode for the LA channel.
     type: str
+  flowctl:
     choices:
       - false
       - RX
       - TX
       - RXTX
       - true
+    description:
+      - Specifies the flow control type for this LA channel to manage the flow of
+        frames. Flow control is a function as mentioned in clause 31 of the IEEE 802.3
+        standard. Flow control allows congested ports to pause traffic from the peer
+        device. Flow control is achieved by sending PAUSE frames.
+    type: str
   haheartbeat:
+    choices:
+      - false
+      - true
     description:
       - In a High Availability (HA) configuration, configure the LA channel for sending
         heartbeats. LA channel that has HA Heartbeat disabled should not send the
         heartbeats.
     type: str
     default: true
-    choices:
-      - false
-      - true
   hamonitor:
+    choices:
+      - true
+      - false
     description:
       - In a High Availability (HA) configuration, monitor the LA channel for failure
         events. Failure of any LA channel that has HA MON enabled triggers HA failover.
     type: str
     default: true
-    choices:
-      - true
-      - false
   id:
     description:
       - ID for the LA channel or cluster LA channel or LR channel to be created. Specify
@@ -114,12 +114,12 @@ options:
         each LA channel. These MAC addresses change after each reboot.
     type: str
   linkredundancy:
-    description:
-      - Link Redundancy for Cluster LAG.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Link Redundancy for Cluster LAG.
+    type: str
   lrminthroughput:
     description:
       - Specifies the minimum throughput threshold (in Mbps) to be met by the active
@@ -130,20 +130,20 @@ options:
         active.
     type: int
   macdistr:
-    description:
-      - The  'MAC' distribution mode for the LA channel.
-    type: str
     choices:
       - SOURCE
       - DESTINATION
       - BOTH
-  mode:
     description:
-      - The initital mode for the LA channel.
+      - The  'MAC' distribution mode for the LA channel.
     type: str
+  mode:
     choices:
       - MANUAL
       - AUTO
+    description:
+      - The initital mode for the LA channel.
+    type: str
   mtu:
     description:
       - The Maximum Transmission Unit (MTU) is the largest packet size, measured in
@@ -170,13 +170,6 @@ options:
     type: int
     default: 1500
   speed:
-    description:
-      - Ethernet speed of the channel, in Mbps. If the speed of any bound interface
-        is greater than or equal to the value set for this parameter, the state of
-        the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose
-        state is INACTIVE do not process any traffic.
-    type: str
-    default: AUTO
     choices:
       - AUTO
       - 10
@@ -187,23 +180,30 @@ options:
       - 40000
       - 50000
       - 100000
+    description:
+      - Ethernet speed of the channel, in Mbps. If the speed of any bound interface
+        is greater than or equal to the value set for this parameter, the state of
+        the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose
+        state is INACTIVE do not process any traffic.
+    type: str
+    default: AUTO
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the LA channel.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tagall:
+    choices:
+      - true
+      - false
     description:
       - Adds a four-byte 802.1q tag to every packet sent on this channel.  The ON
         setting applies tags for all VLANs that are bound to this channel. OFF applies
         the tag for all VLANs other than the native VLAN.
     type: str
-    choices:
-      - true
-      - false
   throughput:
     description:
       - Low threshold value for the throughput of the LA channel, in Mbps. In an high
@@ -211,12 +211,36 @@ options:
         has HA MON enabled and the throughput is below the specified threshold.
     type: int
   trunk:
-    description:
-      - This is deprecated by tagall
-    type: str
     choices:
       - true
       - false
+    description:
+      - This is deprecated by tagall
+    type: str
+  channel_interface_binding:
+    type: dict
+    description: Bindings for channel_interface_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

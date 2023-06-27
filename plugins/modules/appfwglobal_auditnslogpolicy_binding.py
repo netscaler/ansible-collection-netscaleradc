@@ -68,16 +68,16 @@ options:
         the invoke parameter is set, and Label Type is set to Policy Label.
     type: str
   labeltype:
-    description:
-      - 'Type of policy label to invoke if the current policy evaluates to TRUE and
-        the invoke parameter is set. Available settings function as follows:'
-      - '* reqvserver. Invoke the unnamed policy label associated with the specified
-        request virtual server.'
-      - '* policylabel. Invoke the specified user-defined policy label.'
-    type: str
     choices:
       - reqvserver
       - policylabel
+    description:
+      - 'Type of policy label to invoke if the current policy evaluates to TRUE and
+        the invoke parameter is set. Available settings function as follows:'
+      - '* C(reqvserver). Invoke the unnamed policy label associated with the specified
+        request virtual server.'
+      - '* C(policylabel). Invoke the specified user-defined policy label.'
+    type: str
   policyname:
     description:
       - Name of the policy.
@@ -87,23 +87,23 @@ options:
       - The priority of the policy.
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the binding to activate or deactivate the policy. This is
         applicable to classic policies only.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - Bind point to which to policy is bound.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
       - NONE
+    description:
+      - Bind point to which to policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -34,6 +34,10 @@ options:
         marks (for example, "lsn application profile1" or ''lsn application profile1'').'
     type: str
   filtering:
+    choices:
+      - ENDPOINT-INDEPENDENT
+      - ADDRESS-DEPENDENT
+      - ADDRESS-PORT-DEPENDENT
     description:
       - Type of filter to apply to packets originating from external hosts.
       - ''
@@ -62,11 +66,10 @@ options:
         to that external IP address and port.'
     type: str
     default: ADDRESS-PORT-DEPENDENT
-    choices:
-      - ENDPOINT-INDEPENDENT
-      - ADDRESS-DEPENDENT
-      - ADDRESS-PORT-DEPENDENT
   ippooling:
+    choices:
+      - PAIRED
+      - RANDOM
     description:
       - NAT IP address allocation options for sessions associated with the same subscriber.
       - ''
@@ -81,19 +84,20 @@ options:
       - This parameter is applicable to dynamic NAT allocation only.
     type: str
     default: RANDOM
-    choices:
-      - PAIRED
-      - RANDOM
   l2info:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable l2info by creating natpcbs for LSN, which enables the Citrix ADC to
         use L2CONN/MBF with LSN.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   mapping:
+    choices:
+      - ENDPOINT-INDEPENDENT
+      - ADDRESS-DEPENDENT
+      - ADDRESS-PORT-DEPENDENT
     description:
       - Type of LSN mapping to apply to subsequent packets originating from the same
         subscriber IP address and port.
@@ -103,32 +107,28 @@ options:
       - ''
       - 'Available options function as follows: '
       - ''
-      - '* ENDPOINT-INDEPENDENT - Reuse the LSN mapping for subsequent packets sent
-        from the same subscriber IP address and port (X:x) to any external IP address
-        and port. '
+      - '* C(ENDPOINT-INDEPENDENT) - Reuse the LSN mapping for subsequent packets
+        sent from the same subscriber IP address and port (X:x) to any external IP
+        address and port. '
       - ''
-      - '* ADDRESS-DEPENDENT - Reuse the LSN mapping for subsequent packets sent from
-        the same subscriber IP address and port (X:x) to the same external IP address
-        (Y), regardless of the external port.'
+      - '* C(ADDRESS-DEPENDENT) - Reuse the LSN mapping for subsequent packets sent
+        from the same subscriber IP address and port (X:x) to the same external IP
+        address (Y), regardless of the external port.'
       - ''
-      - '* ADDRESS-PORT-DEPENDENT - Reuse the LSN mapping for subsequent packets sent
-        from the same internal IP address and port (X:x) to the same external IP address
-        and port (Y:y) while the mapping is still active.'
+      - '* C(ADDRESS-PORT-DEPENDENT) - Reuse the LSN mapping for subsequent packets
+        sent from the same internal IP address and port (X:x) to the same external
+        IP address and port (Y:y) while the mapping is still active.'
     type: str
     default: ADDRESS-PORT-DEPENDENT
-    choices:
-      - ENDPOINT-INDEPENDENT
-      - ADDRESS-DEPENDENT
-      - ADDRESS-PORT-DEPENDENT
   tcpproxy:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the  TCP traffic
         by using Layer 4 features.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - 'ID of the traffic domain through which the Citrix ADC sends the outbound
@@ -139,14 +139,62 @@ options:
     type: int
     default: 4095
   transportprotocol:
-    description:
-      - Name of the protocol for which the parameters of this LSN application profile
-        applies.
-    type: str
     choices:
       - TCP
       - UDP
       - ICMP
+    description:
+      - Name of the protocol for which the parameters of this LSN application profile
+        applies.
+    type: str
+  lsnappsprofile_lsnappsattributes_binding:
+    type: dict
+    description: Bindings for lsnappsprofile_lsnappsattributes_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lsnappsprofile_port_binding:
+    type: dict
+    description: Bindings for lsnappsprofile_port_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

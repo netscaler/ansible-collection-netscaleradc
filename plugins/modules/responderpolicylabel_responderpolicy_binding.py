@@ -45,14 +45,14 @@ options:
       - Name of the responder policy label to which to bind the policy.
     type: str
   labeltype:
-    description:
-      - 'Type of policy label to invoke. Available settings function as follows:'
-      - '* vserver - Invoke an unnamed policy label associated with a virtual server.'
-      - '* policylabel - Invoke a user-defined policy label.'
-    type: str
     choices:
       - vserver
       - policylabel
+    description:
+      - 'Type of policy label to invoke. Available settings function as follows:'
+      - '* C(vserver) - Invoke an unnamed policy label associated with a virtual server.'
+      - '* C(policylabel) - Invoke a user-defined policy label.'
+    type: str
   policyname:
     description:
       - Name of the responder policy.

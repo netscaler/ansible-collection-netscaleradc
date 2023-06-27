@@ -24,13 +24,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advancedepa:
-    description:
-      - This option tells whether advanced EPA is enabled on this virtual server
-    type: str
     choices:
       - true
       - false
+    description:
+      - This option tells whether advanced EPA is enabled on this virtual server
+    type: str
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Log AppFlow records that contain standard NetFlow or IPFIX information, such
         as time stamps for the beginning and end of a flow, packet count, and byte
@@ -39,17 +42,14 @@ options:
         response time, and latency.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authentication:
+    choices:
+      - true
+      - false
     description:
       - Require authentication for users connecting to Citrix Gateway.
     type: str
     default: true
-    choices:
-      - true
-      - false
   authnprofile:
     description:
       - Authentication Profile entity on virtual server. This entity can be used to
@@ -61,6 +61,9 @@ options:
         server as the Certificate Authority for the device certificate
     type: str
   cginfrahomepageredirect:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - When client requests ShareFile resources and Citrix Gateway detects that the
         user is unauthenticated or the user session has expired, disabling this option
@@ -68,31 +71,31 @@ options:
         (instead of taking the user to the default VPN home page)
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   comment:
     description:
       - Any comments associated with the virtual server.
     type: str
   deploymenttype:
-    description:
-      - '0'
-    type: str
-    default: 5
     choices:
       - NONE
       - ICA_WEBINTERFACE
       - ICA_STOREFRONT
       - MOBILITY
-  devicecert:
     description:
-      - Indicates whether device certificate check as a part of EPA is on or off.
+      - '0'
     type: str
+    default: 5
+  devicecert:
     choices:
       - true
       - false
+    description:
+      - Indicates whether device certificate check as a part of EPA is on or off.
+    type: str
   doublehop:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Use the Citrix Gateway appliance in a double-hop configuration. A double-hop
         deployment provides an extra layer of security for the internal network by
@@ -100,10 +103,10 @@ options:
         can have one appliance in the DMZ and one appliance in the secure network.
     type: str
     default: DISABLED
+  downstateflush:
     choices:
       - ENABLED
       - DISABLED
-  downstateflush:
     description:
       - Close existing connections when the virtual server is marked DOWN, which means
         the server might have timed out. Disconnecting existing connections frees
@@ -113,17 +116,14 @@ options:
         that must complete their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dtls:
+    choices:
+      - true
+      - false
     description:
       - This option starts/stops the turn service on the vserver
     type: str
     default: true
-    choices:
-      - true
-      - false
   failedlogintimeout:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
@@ -135,6 +135,9 @@ options:
     type: str
     default: '"nshttp_default_strict_validation"'
   icaonly:
+    choices:
+      - true
+      - false
     description:
       - '- When set to ON, it implies Basic mode where the user can log on using either
         Citrix Receiver or a browser and get access to the published apps configured
@@ -151,27 +154,25 @@ options:
         Number of users that can log in and access the resources are limited by the
         CCU licenses in this mode.'
     type: str
+  icaproxysessionmigration:
     choices:
       - true
       - false
-  icaproxysessionmigration:
     description:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
     type: str
-    choices:
-      - true
-      - false
   icmpvsrresponse:
-    description:
-      - Criterion for responding to PING requests sent to this virtual server. If
-        this parameter is set to ACTIVE, respond only if the virtual server is available.
-        With the PASSIVE setting, respond even if the virtual server is not available.
-    type: str
-    default: PASSIVE
     choices:
       - PASSIVE
       - ACTIVE
+    description:
+      - Criterion for responding to PING requests sent to this virtual server. If
+        this parameter is set to C(ACTIVE), respond only if the virtual server is
+        available. With the C(PASSIVE) setting, respond even if the virtual server
+        is not available.
+    type: str
+    default: PASSIVE
   ipset:
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
@@ -183,23 +184,23 @@ options:
         IP address. User devices send connection requests to this IP address.
     type: str
   l2conn:
+    choices:
+      - true
+      - false
     description:
       - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition
         to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>)
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to coexist on the Citrix ADC.
     type: str
-    choices:
-      - true
-      - false
   linuxepapluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Linux
-    type: str
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Linux
+    type: str
   listenpolicy:
     description:
       - String specifying the listen policy for the Citrix Gateway virtual server.
@@ -216,27 +217,27 @@ options:
     type: int
     default: 101
   loginonce:
+    choices:
+      - true
+      - false
     description:
       - This option enables/disables seamless SSO for this Vserver.
     type: str
+  logoutonsmartcardremoval:
     choices:
       - true
       - false
-  logoutonsmartcardremoval:
     description:
       - Option to VPN plugin behavior when smartcard or its reader is removed
     type: str
-    choices:
-      - true
-      - false
   macepapluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Mac
-    type: str
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Mac
+    type: str
   maxaaausers:
     description:
       - Maximum number of concurrent user sessions allowed on this virtual server.
@@ -294,47 +295,47 @@ options:
       - Name of the RDP server profile associated with the vserver.
     type: str
   rhistate:
-    description:
-      - A host route is injected according to the setting on the virtual servers.
-      - '            * If set to PASSIVE on all the virtual servers that share the
-        IP address, the appliance always injects the hostroute.'
-      - '            * If set to ACTIVE on all the virtual servers that share the
-        IP address, the appliance injects even if one virtual server is UP.'
-      - '            * If set to ACTIVE on some virtual servers and PASSIVE on the
-        others, the appliance injects even if one virtual server set to ACTIVE is
-        UP.'
-    type: str
-    default: PASSIVE
     choices:
       - PASSIVE
       - ACTIVE
+    description:
+      - A host route is injected according to the setting on the virtual servers.
+      - '            * If set to C(PASSIVE) on all the virtual servers that share
+        the IP address, the appliance always injects the hostroute.'
+      - '            * If set to C(ACTIVE) on all the virtual servers that share the
+        IP address, the appliance injects even if one virtual server is UP.'
+      - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
+        on the others, the appliance injects even if one virtual server set to C(ACTIVE)
+        is UP.'
+    type: str
+    default: PASSIVE
   samesite:
+    choices:
+      - None
+      - LAX
+      - STRICT
     description:
       - SameSite attribute value for Cookies generated in VPN context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
     type: str
-    choices:
-      - None
-      - LAX
-      - STRICT
   servicetype:
+    choices:
+      - SSL
+      - DTLS
     description:
       - Protocol used by the Citrix Gateway virtual server.
     type: str
     default: SSL
-    choices:
-      - SSL
-      - DTLS
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of the virtual server. If the virtual server is disabled, requests are
         not processed.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tcpprofilename:
     description:
       - Name of the TCP profile to assign to this virtual server.
@@ -349,13 +350,949 @@ options:
         StoreFront configuration generation.
     type: str
   windowsepapluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Win
-    type: str
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Win
+    type: str
+  vpnvserver_aaapreauthenticationpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_aaapreauthenticationpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_analyticsprofile_binding:
+    type: dict
+    description: Bindings for vpnvserver_analyticsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_appcontroller_binding:
+    type: dict
+    description: Bindings for vpnvserver_appcontroller_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_appflowpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_auditnslogpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_auditnslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_auditsyslogpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_auditsyslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationcertpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationcertpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationdfapolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationdfapolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationldappolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationldappolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationlocalpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationlocalpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationloginschemapolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationloginschemapolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationnegotiatepolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationnegotiatepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationoauthidppolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationoauthidppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationradiuspolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationradiuspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationsamlidppolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationsamlidppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationsamlpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationsamlpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationtacacspolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationtacacspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_authenticationwebauthpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_authenticationwebauthpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_cachepolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_cachepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_cspolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_cspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_feopolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_feopolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_icapolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_icapolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_intranetip6_binding:
+    type: dict
+    description: Bindings for vpnvserver_intranetip6_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_intranetip_binding:
+    type: dict
+    description: Bindings for vpnvserver_intranetip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_responderpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_responderpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_rewritepolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_rewritepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_sharefileserver_binding:
+    type: dict
+    description: Bindings for vpnvserver_sharefileserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_staserver_binding:
+    type: dict
+    description: Bindings for vpnvserver_staserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnclientlessaccesspolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnclientlessaccesspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnepaprofile_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnepaprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpneula_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpneula_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnintranetapplication_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnintranetapplication_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnnexthopserver_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnnexthopserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnportaltheme_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnportaltheme_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnsessionpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnsessionpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpntrafficpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpntrafficpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnurl_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnurl_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vpnvserver_vpnurlpolicy_binding:
+    type: dict
+    description: Bindings for vpnvserver_vpnurlpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

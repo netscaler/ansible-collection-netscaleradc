@@ -269,7 +269,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      One or more actions to be taken if  bot is detected based on this Blacklist binding. Only LOG action can be combined with DROP or RESET action.
+      One or more actions to be taken if  bot is detected based on this Blacklist binding. Only \ :literal:`LOG`\  action can be combined with \ :literal:`DROP`\  or \ :literal:`RESET`\  action.
 
 
       .. rst-class:: ansible-option-line

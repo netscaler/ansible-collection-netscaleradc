@@ -56,13 +56,13 @@ options:
       - Port number for the virtual server.
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the user vserver.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   userprotocol:
     description:
       - User protocol uesd by the service.

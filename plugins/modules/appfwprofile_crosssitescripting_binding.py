@@ -26,34 +26,34 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
-  as_scan_location_xss:
     description:
-      - Location of cross-site scripting exception - form field, header, cookie or
-        URL.
+      - Send SNMP alert?
     type: str
+  as_scan_location_xss:
     choices:
       - FORMFIELD
       - HEADER
       - COOKIE
       - URL
+    description:
+      - Location of cross-site scripting exception - form field, header, cookie or
+        C(URL).
+    type: str
   as_value_expr_xss:
     description:
       - The web form value expression.
     type: str
   as_value_type_xss:
-    description:
-      - The web form value type.
-    type: str
     choices:
       - Tag
       - Attribute
       - Pattern
+    description:
+      - The web form value type.
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
@@ -68,26 +68,26 @@ options:
       - The web form action URL.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   isregex_xss:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is the web form field name a regular expression?
     type: str
+  isvalueregex_xss:
     choices:
       - REGEX
       - NOTREGEX
-  isvalueregex_xss:
     description:
       - Is the web form field value a regular expression?
     type: str
-    choices:
-      - REGEX
-      - NOTREGEX
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -97,19 +97,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

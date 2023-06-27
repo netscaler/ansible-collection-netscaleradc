@@ -46,12 +46,12 @@ options:
       - Monitor name.
     type: str
   monstate:
-    description:
-      - Monitor state.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Monitor state.
+    type: str
   nameserver:
     description:
       - Specify the nameserver to which the query for bound domain needs to be sent.
@@ -80,13 +80,13 @@ options:
       - Name of the service group.
     type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the service after binding.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   weight:
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity

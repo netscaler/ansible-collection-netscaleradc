@@ -60,13 +60,13 @@ options:
       - The index at which user entered password should be stored in session.
     type: int
   ssocredentials:
+    choices:
+      - true
+      - false
     description:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
     type: str
-    choices:
-      - true
-      - false
   usercredentialindex:
     description:
       - The index at which user entered username should be stored in session.

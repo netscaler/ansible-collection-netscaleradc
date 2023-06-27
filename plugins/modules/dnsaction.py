@@ -28,9 +28,6 @@ options:
       - Name of the dns action.
     type: str
   actiontype:
-    description:
-      - The type of DNS action that is being configured.
-    type: str
     choices:
       - ViewName
       - GslbPrefLoc
@@ -38,6 +35,9 @@ options:
       - Drop
       - Cache_Bypass
       - Rewrite_Response
+    description:
+      - The type of DNS action that is being configured.
+    type: str
   dnsprofilename:
     description:
       - Name of the DNS profile to be associated with the transaction for which the

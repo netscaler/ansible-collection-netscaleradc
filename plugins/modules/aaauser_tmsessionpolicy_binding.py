@@ -42,15 +42,15 @@ options:
         max priority is 64000.
     type: int
   type:
-    description:
-      - Bindpoint to which the policy is bound.
-    type: str
-    default: REQUEST
     choices:
       - REQUEST
       - UDP_REQUEST
       - DNS_REQUEST
       - ICMP_REQUEST
+    description:
+      - Bindpoint to which the policy is bound.
+    type: str
+    default: REQUEST
   username:
     description:
       - User account to which to bind the policy.

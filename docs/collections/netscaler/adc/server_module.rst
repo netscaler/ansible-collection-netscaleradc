@@ -1034,7 +1034,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Specify the type of DNS resolution to be done on the configured domain to get the backend services. Valid query types are A, AAAA and SRV with A being the default querytype. The type of DNS resolution done on the domains in SRV records is inherited from ipv6 argument.
+      Specify the type of DNS resolution to be done on the configured domain to get the backend services. Valid query types are \ :literal:`A`\ , \ :literal:`AAAA`\  and \ :literal:`SRV`\  with \ :literal:`A`\  being the default querytype. The type of DNS resolution done on the domains in \ :literal:`SRV`\  records is inherited from ipv6 argument.
 
 
       .. rst-class:: ansible-option-line

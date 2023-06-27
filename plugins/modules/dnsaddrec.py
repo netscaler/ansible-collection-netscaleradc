@@ -52,17 +52,18 @@ options:
     type: int
     default: 3600
   type:
-    description:
-      - 'The address record type. The type can take 3 values:'
-      - ADNS -  If this is specified, all of the authoritative address records will
-        be displayed.
-      - PROXY - If this is specified, all of the proxy address records will be displayed.
-      - ALL  -  If this is specified, all of the address records will be displayed.
-    type: str
     choices:
       - ALL
       - ADNS
       - PROXY
+    description:
+      - 'The address record type. The type can take 3 values:'
+      - C(ADNS) -  If this is specified, all of the authoritative address records
+        will be displayed.
+      - C(PROXY) - If this is specified, all of the proxy address records will be
+        displayed.
+      - C(ALL)  -  If this is specified, all of the address records will be displayed.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

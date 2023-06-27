@@ -30,27 +30,31 @@ options:
         Reserved words must not be used.
     type: str
   limittype:
+    choices:
+      - BURSTY
+      - SMOOTH
     description:
       - Smooth or bursty request type.
-      - '* SMOOTH - When you want the permitted number of requests in a given interval
+      - '* C(SMOOTH) - When you want the permitted number of requests in a given interval
         of time to be spread evenly across the timeslice'
-      - '* BURSTY - When you want the permitted number of requests to exhaust the
+      - '* C(BURSTY) - When you want the permitted number of requests to exhaust the
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
     type: str
     default: BURSTY
-    choices:
-      - BURSTY
-      - SMOOTH
   maxbandwidth:
     description:
       - Maximum bandwidth permitted, in kbps.
     type: int
   mode:
+    choices:
+      - CONNECTION
+      - REQUEST_RATE
+      - NONE
     description:
       - Defines the type of traffic to be tracked.
-      - '* REQUEST_RATE - Tracks requests/timeslice.'
-      - '* CONNECTION - Tracks active transactions.'
+      - '* C(REQUEST_RATE) - Tracks requests/timeslice.'
+      - '* C(CONNECTION) - Tracks active transactions.'
       - ''
       - Examples
       - ''
@@ -75,10 +79,6 @@ options:
         5000 -limitType BURSTY
     type: str
     default: REQUEST_RATE
-    choices:
-      - CONNECTION
-      - REQUEST_RATE
-      - NONE
   selectorname:
     description:
       - Name of the rate limit selector. If this argument is NULL, rate limiting will

@@ -45,13 +45,13 @@ options:
       - Name of the HTTP compression policy label to which to bind the policy.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - The compression policy name.

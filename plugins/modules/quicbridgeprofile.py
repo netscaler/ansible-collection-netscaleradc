@@ -31,12 +31,12 @@ options:
         characters. Cannot be changed after the profile is created.
     type: str
   routingalgorithm:
+    choices:
+      - PLAINTEXT
     description:
       - Routing algorithm to generate routable connection IDs.
     type: str
     default: PLAINTEXT
-    choices:
-      - PLAINTEXT
   serveridlength:
     description:
       - Length of serverid to encode/decode server information

@@ -490,9 +490,9 @@ Parameters
 
       Type of policy label to invoke. Available settings function as follows:
 
-      \* vserver - Invoke an unnamed policy label associated with a virtual server.
+      \* \ :literal:`vserver`\  - Invoke an unnamed policy label associated with a virtual server.
 
-      \* policylabel - Invoke a user-defined policy label.
+      \* \ :literal:`policylabel`\  - Invoke a user-defined policy label.
 
 
       .. rst-class:: ansible-option-line

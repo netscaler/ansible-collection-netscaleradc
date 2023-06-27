@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - 'Expression or other value specifying the next policy to be evaluated if the
@@ -78,15 +78,15 @@ options:
         evaluates to TRUE.
     type: str
   labeltype:
+    choices:
+      - vserver
+      - service
+      - policylabel
     description:
       - Type of policy label to invoke. Specify virtual server for a policy label
         associated with a virtual server, or policy label for a user-defined policy
         label.
     type: str
-    choices:
-      - vserver
-      - service
-      - policylabel
   policyname:
     description:
       - The name for the SSL policy.
@@ -96,9 +96,6 @@ options:
       - The priority of the policy binding.
     type: int
   type:
-    description:
-      - Global bind point to which the policy is bound.
-    type: str
     choices:
       - CONTROL_OVERRIDE
       - CONTROL_DEFAULT
@@ -108,6 +105,9 @@ options:
       - HTTPQUIC_CONTROL_DEFAULT
       - HTTPQUIC_DATA_OVERRIDE
       - HTTPQUIC_DATA_DEFAULT
+    description:
+      - Global bind point to which the policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

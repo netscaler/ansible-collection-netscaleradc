@@ -711,7 +711,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Set to DISABLED for gRPC without a length delimitation.
+      Set to \ :literal:`DISABLED`\  for gRPC without a length delimitation.
 
 
       .. rst-class:: ansible-option-line

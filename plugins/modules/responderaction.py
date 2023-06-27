@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bypasssafetycheck:
+    choices:
+      - true
+      - false
     description:
       - Bypass the safety check, allowing potentially unsafe expressions. An unsafe
         expression in a response is one that contains references to request elements
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
     type: str
-    choices:
-      - true
-      - false
   comment:
     description:
       - Comment. Any type of information about this responder action.
@@ -112,16 +112,6 @@ options:
         expression, but do not need to be enclosed in double quotation marks.)
     type: str
   type:
-    description:
-      - 'Type of responder action. Available settings function as follows:'
-      - '* respondwith <target> - Respond to the request with the expression specified
-        as the target.'
-      - '* respondwithhtmlpage - Respond to the request with the uploaded HTML page
-        object specified as the target.'
-      - '* redirect - Redirect the request to the URL specified as the target.'
-      - '* sqlresponse_ok - Send an SQL OK response.'
-      - '* sqlresponse_error - Send an SQL ERROR response.'
-    type: str
     choices:
       - noop
       - respondwith
@@ -129,6 +119,16 @@ options:
       - respondwithhtmlpage
       - sqlresponse_ok
       - sqlresponse_error
+    description:
+      - 'Type of responder action. Available settings function as follows:'
+      - '* C(respondwith) <target> - Respond to the request with the expression specified
+        as the target.'
+      - '* C(respondwithhtmlpage) - Respond to the request with the uploaded HTML
+        page object specified as the target.'
+      - '* C(redirect) - Redirect the request to the URL specified as the target.'
+      - '* C(sqlresponse_ok) - Send an SQL OK response.'
+      - '* C(sqlresponse_error) - Send an SQL ERROR response.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
