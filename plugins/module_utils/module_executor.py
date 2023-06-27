@@ -12,13 +12,13 @@ from .common import (
     get_bindings,
     get_resource,
     get_valid_desired_states,
-    netscaler_common_arguments,
     save_config,
     unbind_resource,
     update_resource,
 )
 from .decorators import trace
 from .log import log, loglines
+from .constants import NETSCALER_COMMON_ARGUMENTS
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
@@ -32,7 +32,7 @@ class ModuleExecutor(object):
             "readwrite_arguments"
         ]
         argument_spec = dict()
-        argument_spec.update(netscaler_common_arguments)
+        argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
         module_state_argument = dict(
             state=dict(
