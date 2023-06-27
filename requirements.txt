@@ -2,6 +2,6 @@ antsibull
 ansible-pygments
 sphinx-notfound-page
 sphinx_rtd_theme
-antsibull-docs >= 2.0.0, < 3.0.0
+antsibull-docs
 sphinx
-sphinx-ansible-theme >= 0.9.0
+sphinx-ansible-theme
