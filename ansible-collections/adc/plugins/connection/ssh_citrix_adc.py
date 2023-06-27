@@ -376,7 +376,7 @@ def _return_tuple_manipulate(func):
         try:
           return_tuple[1] = re.findall(regex2, str(return_tuple[1]))[0]
         except IndexError:
-          pass
+          pass # If no match, return the old `return_tuple[1]` (i.e., stdout)
 
         return_tuple = tuple(return_tuple)
         return return_tuple
