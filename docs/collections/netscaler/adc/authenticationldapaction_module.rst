@@ -2337,7 +2337,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of security used for communications between the Citrix ADC and the LDAP server. For the PLAINTEXT setting, no encryption is required.
+      Type of security used for communications between the Citrix ADC and the LDAP server. For the \ :literal:`PLAINTEXT`\  setting, no encryption is required.
 
 
       .. rst-class:: ansible-option-line

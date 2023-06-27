@@ -29,20 +29,20 @@ options:
         servers.
     type: str
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Apply AppFlow logging to the virtual server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authentication:
-    description:
-      - Enable or disable user authentication.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable or disable user authentication.
+    type: str
   authenticationhost:
     description:
       - Fully qualified domain name (FQDN) of the authentication virtual server to
@@ -50,12 +50,12 @@ options:
         parameter is set to ENABLED.
     type: str
   authn401:
-    description:
-      - Enable or disable user authentication with HTTP 401 responses.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable or disable user authentication with HTTP 401 responses.
+    type: str
   authnprofile:
     description:
       - Name of the authentication profile to be used when authentication is turned
@@ -66,14 +66,6 @@ options:
       - Name of an authentication virtual server with which to authenticate users.
     type: str
   backuplbmethod:
-    description:
-      - Backup load balancing method. Becomes operational if the primary load balancing
-        me
-      - thod fails or cannot be used.
-      - '                       Valid only if the primary method is based on static
-        proximity.'
-    type: str
-    default: ROUNDROBIN
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -82,6 +74,14 @@ options:
       - LEASTBANDWIDTH
       - LEASTPACKETS
       - CUSTOMLOAD
+    description:
+      - Backup load balancing method. Becomes operational if the primary load balancing
+        me
+      - thod fails or cannot be used.
+      - '                       Valid only if the primary method is based on static
+        proximity.'
+    type: str
+    default: ROUNDROBIN
   backuppersistencetimeout:
     description:
       - Time period for which backup persistence is in effect.
@@ -93,23 +93,23 @@ options:
         virtual server goes DOWN or reaches its spillover threshold.
     type: str
   bypassaaaa:
+    choices:
+      - true
+      - false
     description:
       - If this option is enabled while resolving DNS64 query AAAA queries are not
         sent to back end dns server
     type: str
+  cacheable:
     choices:
       - true
       - false
-  cacheable:
     description:
       - Route cacheable requests to a cache redirection virtual server. The load balancing
         virtual server can forward requests only to a transparent cache redirection
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
     type: str
-    choices:
-      - true
-      - false
   clttimeout:
     description:
       - Idle time, in seconds, after which a client connection is terminated.
@@ -119,23 +119,23 @@ options:
       - Any comments that you might want to associate with the virtual server.
     type: str
   connfailover:
+    choices:
+      - DISABLED
+      - STATEFUL
+      - STATELESS
     description:
       - 'Mode in which the connection failover feature must operate for the virtual
         server. After a failover, established TCP connections and UDP packet flows
         are kept active and resumed on the secondary appliance. Clients remain connected
         to the same servers. Available settings function as follows:'
-      - '* STATEFUL - The primary appliance shares state information with the secondary
+      - '* C(STATEFUL) - The primary appliance shares state information with the secondary
         appliance, in real time, resulting in some runtime processing overhead. '
-      - '* STATELESS - State information is not shared, and the new primary appliance
+      - '* C(STATELESS) - State information is not shared, and the new primary appliance
         tries to re-create the packet flow on the basis of the information contained
         in the packets it receives. '
-      - '* DISABLED - Connection failover does not occur.'
+      - '* C(DISABLED) - Connection failover does not occur.'
     type: str
     default: DISABLED
-    choices:
-      - DISABLED
-      - STATEFUL
-      - STATELESS
   cookiename:
     description:
       - Use this parameter to specify the cookie name for COOKIE peristence type.
@@ -160,29 +160,29 @@ options:
       - Name of the DB profile whose settings are to be applied to the virtual server.
     type: str
   dbslb:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
     type: str
     default: DISABLED
+  disableprimaryondown:
     choices:
       - ENABLED
       - DISABLED
-  disableprimaryondown:
     description:
       - If the primary virtual server goes down, do not allow it to return to primary
         status until manually enabled.
     type: str
     default: DISABLED
+  dns64:
     choices:
       - ENABLED
       - DISABLED
-  dns64:
     description:
       - This argument is for enabling/disabling the dns64 on lbvserver
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   dnsprofilename:
     description:
       - Name of the DNS profile to be associated with the VServer. DNS profile properties
@@ -190,15 +190,15 @@ options:
         is valid only for DNS and DNS-TCP VServers.
     type: str
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with a virtual server whose state
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   hashlength:
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
@@ -221,16 +221,19 @@ options:
         parameter is redirected.
     type: str
   icmpvsrresponse:
+    choices:
+      - PASSIVE
+      - ACTIVE
     description:
       - 'How the Citrix ADC responds to ping requests received for an IP address that
         is common to one or more virtual servers. Available settings function as follows:'
-      - '* If set to PASSIVE on all the virtual servers that share the IP address,
+      - '* If set to C(PASSIVE) on all the virtual servers that share the IP address,
         the appliance always responds to the ping requests.'
-      - '* If set to ACTIVE on all the virtual servers that share the IP address,
+      - '* If set to C(ACTIVE) on all the virtual servers that share the IP address,
         the appliance responds to the ping requests if at least one of the virtual
         servers is UP. Otherwise, the appliance does not respond.'
-      - '* If set to ACTIVE on some virtual servers and PASSIVE on the others, the
-        appliance responds if at least one virtual server with the ACTIVE setting
+      - '* If set to C(ACTIVE) on some virtual servers and C(PASSIVE) on the others,
+        the appliance responds if at least one virtual server with the C(ACTIVE) setting
         is UP. Otherwise, the appliance does not respond.'
       - 'Note: This parameter is available at the virtual server level. A similar
         parameter, ICMP Response, is available at the IP address level, for IPv4 addresses
@@ -238,10 +241,11 @@ options:
         Create IP dialog box in the GUI.'
     type: str
     default: PASSIVE
-    choices:
-      - PASSIVE
-      - ACTIVE
   insertvserveripport:
+    choices:
+      - false
+      - VIPADDR
+      - V6TOV4MAPPING
     description:
       - 'Insert an HTTP header, whose value is the IP address and port number of the
         virtual server, before forwarding a request to the server. The format of the
@@ -259,10 +263,6 @@ options:
         address.'
       - '* OFF - Disable header insertion.'
     type: str
-    choices:
-      - false
-      - VIPADDR
-      - V6TOV4MAPPING
   ipmask:
     description:
       - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have
@@ -303,57 +303,16 @@ options:
       - IPv4 or IPv6 address to assign to the virtual server.
     type: str
   l2conn:
+    choices:
+      - true
+      - false
     description:
       - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition
         to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>)
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to co-exist on the Citrix ADC.
     type: str
-    choices:
-      - true
-      - false
   lbmethod:
-    description:
-      - 'Load balancing method.  The available settings function as follows:'
-      - '* ROUNDROBIN - Distribute requests in rotation, regardless of the load. Weights
-        can be assigned to services to enforce weighted round robin distribution.'
-      - '* LEASTCONNECTION (default) - Select the service with the fewest connections. '
-      - '* LEASTRESPONSETIME - Select the service with the lowest average response
-        time. '
-      - '* LEASTBANDWIDTH - Select the service currently handling the least traffic.'
-      - '* LEASTPACKETS - Select the service currently serving the lowest number of
-        packets per second.'
-      - '* CUSTOMLOAD - Base service selection on the SNMP metrics obtained by custom
-        load monitors.'
-      - '* LRTM - Select the service with the lowest response time. Response times
-        are learned through monitoring probes. This method also takes the number of
-        active connections into account.'
-      - 'Also available are a number of hashing methods, in which the appliance extracts
-        a predetermined portion of the request, creates a hash of the portion, and
-        then checks whether any previous requests had the same hash value. If it finds
-        a match, it forwards the request to the service that served those previous
-        requests. Following are the hashing methods: '
-      - '* URLHASH - Create a hash of the request URL (or part of the URL).'
-      - '* DOMAINHASH - Create a hash of the domain name in the request (or part of
-        the domain name). The domain name is taken from either the URL or the Host
-        header. If the domain name appears in both locations, the URL is preferred.
-        If the request does not contain a domain name, the load balancing method defaults
-        to LEASTCONNECTION.'
-      - '* DESTINATIONIPHASH - Create a hash of the destination IP address in the
-        IP header. '
-      - '* SOURCEIPHASH - Create a hash of the source IP address in the IP header.  '
-      - '* TOKEN - Extract a token from the request, create a hash of the token, and
-        then select the service to which any previous requests with the same token
-        hash value were sent. '
-      - '* SRCIPDESTIPHASH - Create a hash of the string obtained by concatenating
-        the source IP address and destination IP address in the IP header.  '
-      - '* SRCIPSRCPORTHASH - Create a hash of the source IP address and source port
-        in the IP header.  '
-      - '* CALLIDHASH - Create a hash of the SIP Call-ID header.'
-      - '* USER_TOKEN - Same as TOKEN LB method but token needs to be provided from
-        an extension.'
-    type: str
-    default: LEASTCONNECTION
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -374,6 +333,47 @@ options:
       - AUDITLOGHASH
       - STATICPROXIMITY
       - USER_TOKEN
+    description:
+      - 'Load balancing method.  The available settings function as follows:'
+      - '* C(ROUNDROBIN) - Distribute requests in rotation, regardless of the load.
+        Weights can be assigned to services to enforce weighted round robin distribution.'
+      - '* C(LEASTCONNECTION) (default) - Select the service with the fewest connections. '
+      - '* C(LEASTRESPONSETIME) - Select the service with the lowest average response
+        time. '
+      - '* C(LEASTBANDWIDTH) - Select the service currently handling the least traffic.'
+      - '* C(LEASTPACKETS) - Select the service currently serving the lowest number
+        of packets per second.'
+      - '* C(CUSTOMLOAD) - Base service selection on the SNMP metrics obtained by
+        custom load monitors.'
+      - '* C(LRTM) - Select the service with the lowest response time. Response times
+        are learned through monitoring probes. This method also takes the number of
+        active connections into account.'
+      - 'Also available are a number of hashing methods, in which the appliance extracts
+        a predetermined portion of the request, creates a hash of the portion, and
+        then checks whether any previous requests had the same hash value. If it finds
+        a match, it forwards the request to the service that served those previous
+        requests. Following are the hashing methods: '
+      - '* C(URLHASH) - Create a hash of the request URL (or part of the URL).'
+      - '* C(DOMAINHASH) - Create a hash of the domain name in the request (or part
+        of the domain name). The domain name is taken from either the URL or the Host
+        header. If the domain name appears in both locations, the URL is preferred.
+        If the request does not contain a domain name, the load balancing method defaults
+        to C(LEASTCONNECTION).'
+      - '* C(DESTINATIONIPHASH) - Create a hash of the destination IP address in the
+        IP header. '
+      - '* C(SOURCEIPHASH) - Create a hash of the source IP address in the IP header.  '
+      - '* C(TOKEN) - Extract a token from the request, create a hash of the token,
+        and then select the service to which any previous requests with the same token
+        hash value were sent. '
+      - '* C(SRCIPDESTIPHASH) - Create a hash of the string obtained by concatenating
+        the source IP address and destination IP address in the IP header.  '
+      - '* C(SRCIPSRCPORTHASH) - Create a hash of the source IP address and source
+        port in the IP header.  '
+      - '* C(CALLIDHASH) - Create a hash of the SIP Call-ID header.'
+      - '* C(USER_TOKEN) - Same as C(TOKEN) LB method but token needs to be provided
+        from an extension.'
+    type: str
+    default: LEASTCONNECTION
   lbprofilename:
     description:
       - Name of the LB profile which is associated to the vserver
@@ -395,36 +395,39 @@ options:
     type: int
     default: 101
   m:
-    description:
-      - 'Redirection mode for load balancing. Available settings function as follows:'
-      - '* IP - Before forwarding a request to a server, change the destination IP
-        address to the server''s IP address. '
-      - '* MAC - Before forwarding a request to a server, change the destination MAC
-        address to the server''s MAC address.  The destination IP address is not changed.
-        MAC-based redirection mode is used mostly in firewall load balancing deployments. '
-      - '* IPTUNNEL - Perform IP-in-IP encapsulation for client IP packets. In the
-        outer IP headers, set the destination IP address to the IP address of the
-        server and the source IP address to the subnet IP (SNIP). The client IP packets
-        are not modified. Applicable to both IPv4 and IPv6 packets. '
-      - '* TOS - Encode the virtual server''s TOS ID in the TOS field of the IP header. '
-      - You can use either the IPTUNNEL or the TOS option to implement Direct Server
-        Return (DSR).
-    type: str
-    default: IP
     choices:
       - IP
       - MAC
       - IPTUNNEL
       - TOS
+    description:
+      - 'Redirection mode for load balancing. Available settings function as follows:'
+      - '* C(IP) - Before forwarding a request to a server, change the destination
+        C(IP) address to the server''s C(IP) address. '
+      - '* C(MAC) - Before forwarding a request to a server, change the destination
+        C(MAC) address to the server''s C(MAC) address.  The destination C(IP) address
+        is not changed. C(MAC)-based redirection mode is used mostly in firewall load
+        balancing deployments. '
+      - '* C(IPTUNNEL) - Perform C(IP)-in-C(IP) encapsulation for client C(IP) packets.
+        In the outer C(IP) headers, set the destination C(IP) address to the C(IP)
+        address of the server and the source C(IP) address to the subnet C(IP) (SNIP).
+        The client C(IP) packets are not modified. Applicable to both IPv4 and IPv6
+        packets. '
+      - '* C(TOS) - Encode the virtual server''s C(TOS) ID in the C(TOS) field of
+        the C(IP) header. '
+      - You can use either the C(IPTUNNEL) or the C(TOS) option to implement Direct
+        Server Return (DSR).
+    type: str
+    default: IP
   macmoderetainvlan:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This option is used to retain vlan information of incoming packet when macmode
         is enabled
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   maxautoscalemembers:
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
@@ -434,14 +437,6 @@ options:
       - Minimum number of members expected to be present when vserver is used in Autoscale.
     type: int
   mssqlserverversion:
-    description:
-      - For a load balancing virtual server of type MSSQL, the Microsoft SQL Server
-        version. Set this parameter if you expect some clients to run a version different
-        from the version of the database. This setting provides compatibility between
-        the client-side and server-side connections by ensuring that all communication
-        conforms to the server's version.
-    type: str
-    default: 2008R2
     choices:
       - 70
       - 2000
@@ -451,6 +446,14 @@ options:
       - 2008R2
       - 2012
       - 2014
+    description:
+      - For a load balancing virtual server of type MSSQL, the Microsoft SQL Server
+        version. Set this parameter if you expect some clients to run a version different
+        from the version of the database. This setting provides compatibility between
+        the client-side and server-side connections by ensuring that all communication
+        conforms to the server's version.
+    type: str
+    default: 2008R2
   mysqlcharacterset:
     description:
       - Character set that the virtual server advertises to clients.
@@ -509,21 +512,21 @@ options:
         specifies manual slow start.
     type: int
   newservicerequestunit:
+    choices:
+      - PER_SECOND
+      - PERCENT
     description:
       - Units in which to increment load at each interval in slow-start mode.
     type: str
     default: PER_SECOND
-    choices:
-      - PER_SECOND
-      - PERCENT
   oracleserverversion:
+    choices:
+      - 10G
+      - 11G
     description:
       - Oracle server version
     type: str
     default: 10G
-    choices:
-      - 10G
-      - 11G
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
@@ -544,46 +547,14 @@ options:
         list as  Z Y X'
     type: list
   persistencebackup:
+    choices:
+      - SOURCEIP
+      - NONE
     description:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
     type: str
-    choices:
-      - SOURCEIP
-      - NONE
   persistencetype:
-    description:
-      - 'Type of persistence for the virtual server. Available settings function as
-        follows:'
-      - '* SOURCEIP - Connections from the same client IP address belong to the same
-        persistence session.'
-      - '* COOKIEINSERT - Connections that have the same HTTP Cookie, inserted by
-        a Set-Cookie directive from a server, belong to the same persistence session. '
-      - '* SSLSESSION - Connections that have the same SSL Session ID belong to the
-        same persistence session.'
-      - '* CUSTOMSERVERID - Connections with the same server ID form part of the same
-        session. For this persistence type, set the Server ID (CustomServerID) parameter
-        for each service and configure the Rule parameter to identify the server ID
-        in a request.'
-      - '* RULE - All connections that match a user defined rule belong to the same
-        persistence session. '
-      - '* URLPASSIVE - Requests that have the same server ID in the URL query belong
-        to the same persistence session. The server ID is the hexadecimal representation
-        of the IP address and port of the service to which the request must be forwarded.
-        This persistence type requires a rule to identify the server ID in the request. '
-      - '* DESTIP - Connections to the same destination IP address belong to the same
-        persistence session.'
-      - '* SRCIPDESTIP - Connections that have the same source IP address and destination
-        IP address belong to the same persistence session.'
-      - '* CALLID - Connections that have the same CALL-ID SIP header belong to the
-        same persistence session.'
-      - '* RTSPSID - Connections that have the same RTSP Session ID belong to the
-        same persistence session.'
-      - '* FIXSESSION - Connections that have the same SenderCompID and TargetCompID
-        values belong to the same persistence session.'
-      - '* USERSESSION - Persistence session is created based on the persistence parameter
-        value provided from an extension.'
-    type: str
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -599,6 +570,38 @@ options:
       - FIXSESSION
       - USERSESSION
       - NONE
+    description:
+      - 'Type of persistence for the virtual server. Available settings function as
+        follows:'
+      - '* C(SOURCEIP) - Connections from the same client IP address belong to the
+        same persistence session.'
+      - '* C(COOKIEINSERT) - Connections that have the same HTTP Cookie, inserted
+        by a Set-Cookie directive from a server, belong to the same persistence session. '
+      - '* C(SSLSESSION) - Connections that have the same SSL Session ID belong to
+        the same persistence session.'
+      - '* C(CUSTOMSERVERID) - Connections with the same server ID form part of the
+        same session. For this persistence type, set the Server ID (CustomServerID)
+        parameter for each service and configure the Rule parameter to identify the
+        server ID in a request.'
+      - '* C(RULE) - All connections that match a user defined rule belong to the
+        same persistence session. '
+      - '* C(URLPASSIVE) - Requests that have the same server ID in the URL query
+        belong to the same persistence session. The server ID is the hexadecimal representation
+        of the IP address and port of the service to which the request must be forwarded.
+        This persistence type requires a rule to identify the server ID in the request. '
+      - '* C(DESTIP) - Connections to the same destination IP address belong to the
+        same persistence session.'
+      - '* C(SRCIPDESTIP) - Connections that have the same source IP address and destination
+        IP address belong to the same persistence session.'
+      - '* C(CALLID) - Connections that have the same CALL-ID SIP header belong to
+        the same persistence session.'
+      - '* C(RTSPSID) - Connections that have the same RTSP Session ID belong to the
+        same persistence session.'
+      - '* C(FIXSESSION) - Connections that have the same SenderCompID and TargetCompID
+        values belong to the same persistence session.'
+      - '* C(USERSESSION) - Persistence session is created based on the persistence
+        parameter value provided from an extension.'
+    type: str
   persistmask:
     description:
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
@@ -613,19 +616,22 @@ options:
         Select port for HTTP/TCP monitring
     type: int
   probeprotocol:
-    description:
-      - Citrix ADC provides support for external health check of the vserver status.
-        Select HTTP or TCP probes for healthcheck
-    type: str
     choices:
       - TCP
       - HTTP
+    description:
+      - Citrix ADC provides support for external health check of the vserver status.
+        Select C(HTTP) or C(TCP) probes for healthcheck
+    type: str
   probesuccessresponsecode:
     description:
       - HTTP code to return in SUCCESS case.
     type: str
     default: '"200 OK"'
   processlocal:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - By turning on this option packets destined to a vserver in a cluster will
         not under go any steering. Turn this option for single packet request response
@@ -633,18 +639,15 @@ options:
         based distribution.
     type: str
     default: DISABLED
+  push:
     choices:
       - ENABLED
       - DISABLED
-  push:
     description:
       - Process traffic with the push virtual server that is bound to this load balancing
         virtual server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   pushlabel:
     description:
       - Expression for extracting a label from the server's response. Can be either
@@ -652,13 +655,13 @@ options:
     type: str
     default: '"none"'
   pushmulticlients:
+    choices:
+      - true
+      - false
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
     type: str
-    choices:
-      - true
-      - false
   pushvserver:
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
@@ -692,28 +695,28 @@ options:
     type: int
     default: 1
   recursionavailable:
+    choices:
+      - true
+      - false
     description:
       - When set to YES, this option causes the DNS replies from this vserver to have
         the RA bit turned on. Typically one would set this option to YES, when the
         vserver is load balancing a set of DNS servers thatsupport recursive queries.
     type: str
-    choices:
-      - true
-      - false
   redirectfromport:
     description:
       - Port number for the virtual server, from which we absorb the traffic for http
         redirect
     type: int
   redirectportrewrite:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Rewrite the port and change the protocol to ensure successful HTTP redirects
         from services.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   redirurl:
     description:
       - 'URL to which to redirect traffic if the virtual server becomes unavailable. '
@@ -735,41 +738,41 @@ options:
     type: str
     default: '"none"'
   retainconnectionsoncluster:
+    choices:
+      - true
+      - false
     description:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
     type: str
-    choices:
-      - true
-      - false
   rhistate:
+    choices:
+      - PASSIVE
+      - ACTIVE
     description:
       - 'Route Health Injection (RHI) functionality of the NetSaler appliance for
         advertising the route of the VIP address associated with the virtual server.
         When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following
         are different RHI behaviors for the VIP address on the basis of RHIstate (RHI
         STATE) settings on the virtual servers associated with the VIP address:'
-      - '* If you set RHI STATE to PASSIVE on all virtual servers, the Citrix ADC
+      - '* If you set RHI STATE to C(PASSIVE) on all virtual servers, the Citrix ADC
         always advertises the route for the VIP address.'
-      - '* If you set RHI STATE to ACTIVE on all virtual servers, the Citrix ADC advertises
-        the route for the VIP address if at least one of the associated virtual servers
-        is in UP state.'
-      - '* If you set RHI STATE to ACTIVE on some and PASSIVE on others, the Citrix
-        ADC advertises the route for the VIP address if at least one of the associated
-        virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
+      - '* If you set RHI STATE to C(ACTIVE) on all virtual servers, the Citrix ADC
+        advertises the route for the VIP address if at least one of the associated
+        virtual servers is in UP state.'
+      - '* If you set RHI STATE to C(ACTIVE) on some and C(PASSIVE) on others, the
+        Citrix ADC advertises the route for the VIP address if at least one of the
+        associated virtual servers, whose RHI STATE set to C(ACTIVE), is in UP state.'
     type: str
     default: PASSIVE
-    choices:
-      - PASSIVE
-      - ACTIVE
   rtspnat:
-    description:
-      - Use network address translation (NAT) for RTSP data connections.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use network address translation (NAT) for RTSP data connections.
+    type: str
   rule:
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
@@ -787,9 +790,6 @@ options:
       - Service to bind to the virtual server.
     type: str
   servicetype:
-    description:
-      - Protocol used by the service (also called the service type).
-    type: str
     choices:
       - HTTP
       - FTP
@@ -835,7 +835,13 @@ options:
       - MQTT_TLS
       - QUIC_BRIDGE
       - HTTP_QUIC
+    description:
+      - Protocol used by the service (also called the service type).
+    type: str
   sessionless:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Perform load balancing on a per-packet basis, without establishing sessions.
         Recommended for load balancing of intrusion detection system (IDS) servers
@@ -843,63 +849,60 @@ options:
         is unnecessary.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   skippersistency:
+    choices:
+      - Bypass
+      - ReLb
+      - None
     description:
       - This argument decides the behavior incase the service which is selected from
         an existing persistence session has reached threshold.
     type: str
     default: None
-    choices:
-      - Bypass
-      - ReLb
-      - None
   sobackupaction:
-    description:
-      - Action to be performed if spillover is to take effect, but no backup chain
-        to spillover is usable or exists
-    type: str
     choices:
       - DROP
       - ACCEPT
       - REDIRECT
-  somethod:
     description:
-      - 'Type of threshold that, when exceeded, triggers spillover. Available settings
-        function as follows:'
-      - '* CONNECTION - Spillover occurs when the number of client connections exceeds
-        the threshold.'
-      - '* DYNAMICCONNECTION - Spillover occurs when the number of client connections
-        at the virtual server exceeds the sum of the maximum client (Max Clients)
-        settings for bound services. Do not specify a spillover threshold for this
-        setting, because the threshold is implied by the Max Clients settings of bound
-        services.'
-      - '* BANDWIDTH - Spillover occurs when the bandwidth consumed by the virtual
-        server''s incoming and outgoing traffic exceeds the threshold. '
-      - '* HEALTH - Spillover occurs when the percentage of weights of the services
-        that are UP drops below the threshold. For example, if services svc1, svc2,
-        and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the
-        spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and
-        svc3 transition to DOWN. '
-      - '* NONE - Spillover does not occur.'
+      - Action to be performed if spillover is to take effect, but no backup chain
+        to spillover is usable or exists
     type: str
+  somethod:
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
       - NONE
+    description:
+      - 'Type of threshold that, when exceeded, triggers spillover. Available settings
+        function as follows:'
+      - '* C(CONNECTION) - Spillover occurs when the number of client connections
+        exceeds the threshold.'
+      - '* C(DYNAMICCONNECTION) - Spillover occurs when the number of client connections
+        at the virtual server exceeds the sum of the maximum client (Max Clients)
+        settings for bound services. Do not specify a spillover threshold for this
+        setting, because the threshold is implied by the Max Clients settings of bound
+        services.'
+      - '* C(BANDWIDTH) - Spillover occurs when the bandwidth consumed by the virtual
+        server''s incoming and outgoing traffic exceeds the threshold. '
+      - '* C(HEALTH) - Spillover occurs when the percentage of weights of the services
+        that are UP drops below the threshold. For example, if services svc1, svc2,
+        and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the
+        spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and
+        svc3 transition to DOWN. '
+      - '* C(NONE) - Spillover does not occur.'
+    type: str
   sopersistence:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup virtual servers.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sopersistencetimeout:
     description:
       - Timeout for spillover persistence, in minutes.
@@ -913,13 +916,13 @@ options:
         not enter the percentage symbol).
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of the load balancing virtual server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tcpprobeport:
     description:
       - Port number for external TCP probe. NetScaler provides support for external
@@ -942,27 +945,27 @@ options:
     type: int
     default: 2
   toggleorder:
+    choices:
+      - ASCENDING
+      - DESCENDING
     description:
       - Configure this option to toggle order preference
     type: str
     default: ASCENDING
-    choices:
-      - ASCENDING
-      - DESCENDING
   tosid:
     description:
       - TOS ID of the virtual server. Applicable only when the load balancing redirection
         mode is set to TOS.
     type: int
   trofspersistence:
-    description:
-      - When value is ENABLED, Trofs persistence is honored. When value is DISABLED,
-        Trofs persistence is not honored.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - When value is C(ENABLED), Trofs persistence is honored. When value is C(DISABLED),
+        Trofs persistence is not honored.
+    type: str
+    default: ENABLED
   v6netmasklen:
     description:
       - Number of bits to consider in an IPv6 destination or source IP address, for
@@ -983,6 +986,558 @@ options:
     description:
       - Weight to assign to the specified service.
     type: int
+  lbvserver_analyticsprofile_binding:
+    type: dict
+    description: Bindings for lbvserver_analyticsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_appflowpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_appfwpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_appfwpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_appqoepolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_appqoepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_auditnslogpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_auditnslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_auditsyslogpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_auditsyslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_authorizationpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_authorizationpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_botpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_botpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_cachepolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_cachepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_cmppolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_cmppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_contentinspectionpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_contentinspectionpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_dnspolicy64_binding:
+    type: dict
+    description: Bindings for lbvserver_dnspolicy64_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_feopolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_feopolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_lbpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_lbpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_responderpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_responderpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_rewritepolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_rewritepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_service_binding:
+    type: dict
+    description: Bindings for lbvserver_service_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_servicegroup_binding:
+    type: dict
+    description: Bindings for lbvserver_servicegroup_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_spilloverpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_spilloverpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_tmtrafficpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_tmtrafficpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_transformpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_transformpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_videooptimizationdetectionpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_videooptimizationdetectionpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbvserver_videooptimizationpacingpolicy_binding:
+    type: dict
+    description: Bindings for lbvserver_videooptimizationpacingpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

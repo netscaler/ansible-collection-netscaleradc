@@ -34,15 +34,15 @@ options:
         as a forwarding session rule.
     type: str
   connfailover:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Synchronize connection information with the secondary appliance in a high
         availability (HA) pair. That is, synchronize all connection-related information
         for the forwarding session.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - Name for the forwarding session rule. Can begin with a letter, number, or
@@ -63,22 +63,22 @@ options:
         traffic originates or to which it is destined.
     type: str
   processlocal:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enabling this option on forwarding session will not steer the packet to flow
         processor. Instead, packet will be routed.
     type: str
     default: DISABLED
+  sourceroutecache:
     choices:
       - ENABLED
       - DISABLED
-  sourceroutecache:
     description:
       - Cache the source ip address and mac address of the DA servers.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want

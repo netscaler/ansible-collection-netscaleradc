@@ -412,9 +412,9 @@ Parameters
 
       Method of specifying the form field name. Available settings function as follows:
 
-      \* REGEX. Form field is a regular expression.
+      \* \ :literal:`REGEX`\ . Form field is a regular expression.
 
-      \* NOTREGEX. Form field is a literal string.
+      \* \ :literal:`NOTREGEX`\ . Form field is a literal string.
 
 
       .. rst-class:: ansible-option-line

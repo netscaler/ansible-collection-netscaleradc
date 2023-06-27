@@ -50,18 +50,18 @@ options:
         must be a text based expression, as in the following example: icap.res.header("ISTag")'
     type: str
   returntype:
-    description:
-      - Type of data that the target callout agent returns in response to the callout.
-      - 'Available settings function as follows:'
-      - '* TEXT - Treat the returned value as a text string.'
-      - '* NUM - Treat the returned value as a number.'
-      - '* BOOL - Treat the returned value as a Boolean value.'
-      - 'Note: You cannot change the return type after it is set.'
-    type: str
     choices:
       - BOOL
       - NUM
       - TEXT
+    description:
+      - Type of data that the target callout agent returns in response to the callout.
+      - 'Available settings function as follows:'
+      - '* C(TEXT) - Treat the returned value as a text string.'
+      - '* C(NUM) - Treat the returned value as a number.'
+      - '* C(BOOL) - Treat the returned value as a Boolean value.'
+      - 'Note: You cannot change the return type after it is set.'
+    type: str
   serverip:
     description:
       - IP address of Content Inspection server. Mutually exclusive with the server
@@ -80,12 +80,12 @@ options:
     type: int
     default: 1344
   type:
-    description:
-      - 'Type of the Content Inspection callout. It must be one of the following:'
-      - '* ICAP - Sends ICAP request to the configured ICAP server.'
-    type: str
     choices:
       - ICAP
+    description:
+      - 'Type of the Content Inspection callout. It must be one of the following:'
+      - '* C(ICAP) - Sends C(ICAP) request to the configured C(ICAP) server.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

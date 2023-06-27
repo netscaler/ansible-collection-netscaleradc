@@ -49,15 +49,39 @@ options:
         quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').
     type: str
   type:
-    description:
-      - Type of packets (request packets or response) against which to match the policies
-        bound to this policy label.
-    type: str
     choices:
       - REQ
       - RES
       - HTTPQUIC_REQ
       - HTTPQUIC_RES
+    description:
+      - Type of packets (request packets or response) against which to match the policies
+        bound to this policy label.
+    type: str
+  cmppolicylabel_cmppolicy_binding:
+    type: dict
+    description: Bindings for cmppolicylabel_cmppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

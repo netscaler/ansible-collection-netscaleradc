@@ -110,6 +110,36 @@ options:
       - Expression that specifies which part of the request or response to rewrite.
     type: str
   type:
+    choices:
+      - noop
+      - delete
+      - insert_http_header
+      - delete_http_header
+      - corrupt_http_header
+      - insert_before
+      - insert_after
+      - replace
+      - replace_http_res
+      - delete_all
+      - replace_all
+      - insert_before_all
+      - insert_after_all
+      - clientless_vpn_encode
+      - clientless_vpn_encode_all
+      - clientless_vpn_decode
+      - clientless_vpn_decode_all
+      - insert_sip_header
+      - delete_sip_header
+      - corrupt_sip_header
+      - replace_sip_res
+      - replace_diameter_header_field
+      - replace_dns_header_field
+      - replace_dns_answer_section
+      - replace_mqtt
+      - delete_mqtt
+      - insert_mqtt
+      - insert_before_mqtt
+      - insert_after_mqtt
     description:
       - 'Type of user-defined rewrite action. The information that you provide for,
         and the effect of, each type are as follows:: '
@@ -168,36 +198,6 @@ options:
         before the specified target_expr.'
       - '* DELETE_MQTT <target> : Deletes the specified target in the MQTT message.'
     type: str
-    choices:
-      - noop
-      - delete
-      - insert_http_header
-      - delete_http_header
-      - corrupt_http_header
-      - insert_before
-      - insert_after
-      - replace
-      - replace_http_res
-      - delete_all
-      - replace_all
-      - insert_before_all
-      - insert_after_all
-      - clientless_vpn_encode
-      - clientless_vpn_encode_all
-      - clientless_vpn_decode
-      - clientless_vpn_decode_all
-      - insert_sip_header
-      - delete_sip_header
-      - corrupt_sip_header
-      - replace_sip_res
-      - replace_diameter_header_field
-      - replace_dns_header_field
-      - replace_dns_answer_section
-      - replace_mqtt
-      - delete_mqtt
-      - insert_mqtt
-      - insert_before_mqtt
-      - insert_after_mqtt
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

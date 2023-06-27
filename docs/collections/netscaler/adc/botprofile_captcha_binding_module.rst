@@ -227,7 +227,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      One or more actions to be taken when client fails captcha challenge. Only, log action can be configured with DROP, REDIRECT or RESET action.
+      One or more actions to be taken when client fails captcha challenge. Only, log action can be configured with \ :literal:`DROP`\ , \ :literal:`REDIRECT`\  or \ :literal:`RESET`\  action.
 
 
       .. rst-class:: ansible-option-line

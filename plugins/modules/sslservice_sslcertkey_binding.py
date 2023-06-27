@@ -34,13 +34,16 @@ options:
       - The certificate key pair binding.
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
+    type: str
   ocspcheck:
+    choices:
+      - Mandatory
+      - Optional
     description:
       - Rule to use for the OCSP responder associated with the CA certificate during
         client authentication. If MANDATORY is specified, deny all SSL clients if
@@ -49,9 +52,6 @@ options:
         allow SSL clients even if the OCSP check fails except when the client certificate
         is revoked.
     type: str
-    choices:
-      - Mandatory
-      - Optional
   servicename:
     description:
       - Name of the SSL service for which to set advanced configuration.

@@ -41,15 +41,15 @@ options:
     type: int
     default: 3389
   rdpredirection:
+    choices:
+      - ENABLE
+      - DISABLE
     description:
       - Enable/Disable RDP redirection support. This needs to be enabled in presence
         of connection broker or session directory with IP cookie(msts cookie) based
         redirection support
     type: str
     default: DISABLE
-    choices:
-      - ENABLE
-      - DISABLE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

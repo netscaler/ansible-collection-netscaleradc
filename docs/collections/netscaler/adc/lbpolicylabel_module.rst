@@ -392,6 +392,128 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbpolicylabel_lbpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.lbpolicylabel_module__parameter-lbpolicylabel_lbpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **lbpolicylabel_lbpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbpolicylabel_lbpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for lbpolicylabel\_lbpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbpolicylabel_lbpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.lbpolicylabel_module__parameter-lbpolicylabel_lbpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbpolicylabel_lbpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbpolicylabel_lbpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.lbpolicylabel_module__parameter-lbpolicylabel_lbpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbpolicylabel_lbpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-mas_proxy_call"></div>
 
       .. _ansible_collections.netscaler.adc.lbpolicylabel_module__parameter-mas_proxy_call:
@@ -730,33 +852,33 @@ Parameters
 
       Protocols supported by the policylabel. Available Types are :
 
-      \* HTTP - HTTP requests.
+      \* \ :literal:`HTTP`\  - \ :literal:`HTTP`\  requests.
 
-      \* DNS - DNS request.
+      \* \ :literal:`DNS`\  - \ :literal:`DNS`\  request.
 
-      \* OTHERTCP - OTHERTCP request.
+      \* \ :literal:`OTHERTCP`\  - \ :literal:`OTHERTCP`\  request.
 
-      \* SIP\_UDP - SIP\_UDP request.
+      \* \ :literal:`SIP\_UDP`\  - \ :literal:`SIP\_UDP`\  request.
 
-      \* SIP\_TCP - SIP\_TCP request.
+      \* \ :literal:`SIP\_TCP`\  - \ :literal:`SIP\_TCP`\  request.
 
-      \* MYSQL - MYSQL request.
+      \* \ :literal:`MYSQL`\  - \ :literal:`MYSQL`\  request.
 
-      \* MSSQL - MSSQL request.
+      \* \ :literal:`MSSQL`\  - \ :literal:`MSSQL`\  request.
 
-      \* ORACLE - ORACLE request.
+      \* \ :literal:`ORACLE`\  - \ :literal:`ORACLE`\  request.
 
-      \* NAT - NAT request.
+      \* \ :literal:`NAT`\  - \ :literal:`NAT`\  request.
 
-      \* DIAMETER - DIAMETER request.
+      \* \ :literal:`DIAMETER`\  - \ :literal:`DIAMETER`\  request.
 
-      \* RADIUS - RADIUS request.
+      \* \ :literal:`RADIUS`\  - \ :literal:`RADIUS`\  request.
 
-      \* MQTT - MQTT request.
+      \* \ :literal:`MQTT`\  - \ :literal:`MQTT`\  request.
 
-      \* QUIC\_BRIDGE - QUIC\_BRIDGE request.
+      \* \ :literal:`QUIC\_BRIDGE`\  - \ :literal:`QUIC\_BRIDGE`\  request.
 
-      \* HTTP\_QUIC - HTTP\_QUIC request.
+      \* \ :literal:`HTTP\_QUIC`\  - \ :literal:`HTTP\_QUIC`\  request.
 
 
       .. rst-class:: ansible-option-line

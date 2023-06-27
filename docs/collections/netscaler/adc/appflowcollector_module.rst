@@ -906,7 +906,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of collector: either logstream or ipfix or rest.
+      Type of collector: either \ :literal:`logstream`\  or \ :literal:`ipfix`\  or \ :literal:`rest`\ .
 
 
       .. rst-class:: ansible-option-line

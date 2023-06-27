@@ -795,7 +795,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of trap messages that the Citrix ADC sends to the trap listener: Generic or the enterprise-specific messages defined in the MIB file.
+      Type of trap messages that the Citrix ADC sends to the trap listener: Generic or the enterprise-\ :literal:`specific`\  messages defined in the MIB file.
 
 
       .. rst-class:: ansible-option-line

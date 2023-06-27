@@ -26,12 +26,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_logexpression:
     description:
       - LogExpression to log when violation happened on appfw profile
@@ -42,12 +42,12 @@ options:
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   logexpression:
     description:
       - Name of LogExpression object.
@@ -61,19 +61,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

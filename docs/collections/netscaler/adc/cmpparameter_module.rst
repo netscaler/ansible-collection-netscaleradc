@@ -985,7 +985,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of the policy. The only possible value is ADVANCED
+      Type of the policy. The only possible value is \ :literal:`ADVANCED`\ 
 
 
       .. rst-class:: ansible-option-line

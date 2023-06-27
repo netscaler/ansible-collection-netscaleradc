@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advancedclientlessvpnmode:
-    description:
-      - Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be
-        set to STRICT to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
       - STRICT
+    description:
+      - Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be
+        set to C(STRICT) to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
+    type: str
+    default: DISABLED
   allowedlogingroups:
     description:
       - Specify groups that have permission to log on to Citrix Gateway. Users who
@@ -65,21 +65,21 @@ options:
       - URL to auto proxy config file
     type: str
   backendcertvalidation:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - enables backend server certificate validation
     type: str
     default: DISABLED
+  backendserversni:
     choices:
       - ENABLED
       - DISABLED
-  backendserversni:
     description:
       - enables sni extension for backend server handshakes
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   citrixreceiverhome:
     description:
       - Web address for the Citrix Receiver home page. Configure Citrix Gateway so
@@ -87,6 +87,9 @@ options:
         a web browser that allows single sign-on to the Citrix Receiver home page.
     type: str
   clientchoices:
+    choices:
+      - true
+      - false
     description:
       - Provide users with multiple logon options. With client choices, users have
         the option of logging on by using the Citrix Gateway Plug-in for Windows,
@@ -95,27 +98,29 @@ options:
         with up to three icons for logon choices. The most common are the Citrix Gateway
         Plug-in for Windows, Web Interface, and clientless access.
     type: str
+  clientcleanupprompt:
     choices:
       - true
       - false
-  clientcleanupprompt:
     description:
       - Prompt for client-side cache clean-up when a client-initiated session closes.
     type: str
     default: true
-    choices:
-      - true
-      - false
   clientconfiguration:
+    choices:
+      - none
+      - trace
     description:
       - Allow users to change client Debug logging level in Configuration tab of the
         Citrix Gateway Plug-in for Windows.
     type: list
     elements: str
-    choices:
-      - none
-      - trace
   clientdebug:
+    choices:
+      - debug
+      - stats
+      - events
+      - false
     description:
       - 'Set the trace level on Citrix Gateway. Technical support technicians use
         these debug logs for in-depth debugging and troubleshooting purposes. Available
@@ -128,25 +133,24 @@ options:
         file. '
       - '* OFF - Only critical events are logged into the Windows Application Log.'
     type: str
-    choices:
-      - debug
-      - stats
-      - events
-      - false
   clientidletimeout:
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
         does not detect mouse or keyboard activity.
     type: int
   clientlessmodeurlencoding:
+    choices:
+      - TRANSPARENT
+      - OPAQUE
+      - ENCRYPT
     description:
       - 'When clientless access is enabled, you can choose to encode the addresses
         of internal web applications or to leave the address as clear text. Available
         settings function as follows: '
-      - '* OPAQUE - Use standard encoding mechanisms to make the domain and protocol
+      - '* C(OPAQUE) - Use standard encoding mechanisms to make the domain and protocol
         part of the resource unclear to users. '
-      - '* TRANSPARENT - Do not encode the web address and make it visible to users. '
-      - '* ENCRYPT - Allow the domain and protocol to be encrypted using a session
+      - '* C(TRANSPARENT) - Do not encode the web address and make it visible to users. '
+      - '* C(ENCRYPT) - Allow the domain and protocol to be encrypted using a session
         key. When the web address is encrypted, the URL is different for each user
         session for the same web resource. If users bookmark the encoded web address,
         save it in the web browser and then log off, they cannot connect to the web
@@ -155,11 +159,11 @@ options:
         each time the user logs on.'
     type: str
     default: OPAQUE
-    choices:
-      - TRANSPARENT
-      - OPAQUE
-      - ENCRYPT
   clientlesspersistentcookie:
+    choices:
+      - ALLOW
+      - DENY
+      - PROMPT
     description:
       - 'State of persistent cookies in clientless access mode. Persistent cookies
         are required for accessing certain features of SharePoint, such as opening
@@ -169,20 +173,20 @@ options:
         sending it to the plug-in on the user device, and refreshes the cookie periodically
         as long as the session exists. The cookie becomes stale if the session ends.
         Available settings function as follows: '
-      - '* ALLOW - Enable persistent cookies. Users can open and edit Microsoft documents
-        stored in SharePoint. '
-      - '* DENY - Disable persistent cookies. Users cannot open and edit Microsoft
+      - '* C(ALLOW) - Enable persistent cookies. Users can open and edit Microsoft
         documents stored in SharePoint. '
-      - '* PROMPT - Prompt users to allow or deny persistent cookies during the session.
-        Persistent cookies are not required for clientless access if users do not
-        connect to SharePoint.'
+      - '* C(DENY) - Disable persistent cookies. Users cannot open and edit Microsoft
+        documents stored in SharePoint. '
+      - '* C(PROMPT) - Prompt users to allow or deny persistent cookies during the
+        session. Persistent cookies are not required for clientless access if users
+        do not connect to SharePoint.'
     type: str
     default: DENY
-    choices:
-      - ALLOW
-      - DENY
-      - PROMPT
   clientlessvpnmode:
+    choices:
+      - true
+      - false
+      - DISABLED
     description:
       - 'Enable clientless access for web, XenApp or XenDesktop, and FileShare resources
         without installing the Citrix Gateway Plug-in. Available settings function
@@ -192,22 +196,18 @@ options:
         Plug-in. '
       - '* DISABLED - Do not allow clientless access.'
     type: str
-    choices:
-      - true
-      - false
-      - DISABLED
   clientoptions:
-    description:
-      - Display only the configured menu options when you select the "Configure Citrix
-        Gateway" option in the Citrix Gateway Plug-in's system tray icon for Windows.
-    type: list
-    elements: str
     choices:
       - none
       - all
       - services
       - filetransfer
       - configuration
+    description:
+      - Display only the configured menu options when you select the "Configure Citrix
+        Gateway" option in the Citrix Gateway Plug-in's system tray icon for Windows.
+    type: list
+    elements: str
   clientsecurity:
     description:
       - Specify the client security check for the user device to permit a Citrix Gateway
@@ -221,13 +221,13 @@ options:
         Security Group may have a more restrictive security policy.
     type: str
   clientsecuritylog:
+    choices:
+      - true
+      - false
     description:
       - Specifies whether or not to display all failed Client Security scans to the
         end user
     type: str
-    choices:
-      - true
-      - false
   clientsecuritymessage:
     description:
       - The client security message that will be displayed on failure of the client
@@ -238,18 +238,18 @@ options:
       - checkversion api
     type: str
   defaultauthorizationaction:
+    choices:
+      - ALLOW
+      - DENY
     description:
       - Specify the network resources that users have access to when they log on to
         the internal network. The default setting for authorization is to deny access
         to all network resources. Citrix recommends using the default global setting
         and then creating authorization policies to define the network resources users
-        can access. If you set the default authorization policy to DENY, you must
+        can access. If you set the default authorization policy to C(DENY), you must
         explicitly authorize access to any network resource, which improves security.
     type: str
     default: DENY
-    choices:
-      - ALLOW
-      - DENY
   dnsvservername:
     description:
       - Name of the DNS virtual server for the user session.
@@ -259,29 +259,24 @@ options:
       - Web address for the web-based email, such as Outlook Web Access.
     type: str
   encryptcsecexp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable encryption of client security expressions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   epaclienttype:
+    choices:
+      - AGENT
+      - PLUGIN
     description:
       - Choose between two types of End point Windows Client
       - a) Application Agent - which always runs in the task bar as a standalone application
         and also has a supporting service which runs permanently when installed
       - b) Activex Control - ActiveX control run by Microsoft Internet Explorer.
     type: str
-    choices:
-      - AGENT
-      - PLUGIN
   forcecleanup:
-    description:
-      - Force cache clean-up when the user closes a session. You can specify all,
-        none, or any combination of the client-side items.
-    type: list
-    elements: str
     choices:
       - none
       - all
@@ -294,6 +289,11 @@ options:
       - clientcertificate
       - autocomplete
       - cache
+    description:
+      - Force C(cache) clean-up when the user closes a session. You can specify C(all),
+        C(none), or any combination of the client-side items.
+    type: list
+    elements: str
   forcedtimeout:
     description:
       - Force a disconnection from the Citrix Gateway Plug-in with Citrix Gateway
@@ -335,34 +335,34 @@ options:
         connections to the internal network.
     type: str
   icaproxy:
+    choices:
+      - true
+      - false
     description:
       - Enable ICA proxy to configure secure Internet access to servers running Citrix
         XenApp or XenDesktop by using Citrix Receiver instead of the Citrix Gateway
         Plug-in.
     type: str
+  icasessiontimeout:
     choices:
       - true
       - false
-  icasessiontimeout:
     description:
       - Enable or disable ica session timeout. If enabled and in case AAA session
         gets terminated, ICA connections associated with that will also get terminated
     type: str
-    choices:
-      - true
-      - false
   icauseraccounting:
     description:
       - The name of the radiusPolicy to use for RADIUS user accounting info on the
         session.
     type: str
   iconwithreceiver:
-    description:
-      - Option to decide whether to show plugin icon along with receiver icon
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to decide whether to show plugin icon along with receiver icon
+    type: str
   iipdnssuffix:
     description:
       - An intranet IP DNS suffix. When a user logs on to Citrix Gateway and is assigned
@@ -378,6 +378,9 @@ options:
       - The KCD account details to be used in SSO
     type: str
   killconnections:
+    choices:
+      - true
+      - false
     description:
       - Specify whether the Citrix Gateway Plug-in should disconnect all preexisting
         connections, such as the connections existing before the user logged on to
@@ -385,19 +388,20 @@ options:
         Plug-in for Windows and MAC when the user is connected to Citrix Gateway and
         split tunneling is disabled.
     type: str
-    choices:
-      - true
-      - false
   linuxpluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Linux
-    type: str
-    default: Always
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Linux
+    type: str
+    default: Always
   locallanaccess:
+    choices:
+      - true
+      - false
+      - FORCED
     description:
       - Set local LAN access. If split tunneling is OFF, and you set local LAN access
         to ON, the local client can route traffic to its local interface. When the
@@ -405,10 +409,6 @@ options:
         The client can allow local LAN access to devices that commonly have non-routable
         addresses, such as local printers or local file servers.
     type: str
-    choices:
-      - true
-      - false
-      - FORCED
   loginscript:
     description:
       - Path to the logon script that is run when a session is established. Separate
@@ -421,14 +421,14 @@ options:
         in the path signifies that the word following the "$" is an environment variable.
     type: str
   macpluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Mac
-    type: str
-    default: Always
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Mac
+    type: str
+    default: Always
   mdxtokentimeout:
     description:
       - Validity of MDX Token in minutes. This token is used for mdx services to access
@@ -450,6 +450,10 @@ options:
       - Name of the PCOIP profile.
     type: str
   proxy:
+    choices:
+      - BROWSER
+      - NS
+      - false
     description:
       - 'Set options to apply proxy for accessing the internal resources. Available
         settings function as follows:'
@@ -458,29 +462,28 @@ options:
       - '* NS - Proxy settings are configured on the Citrix ADC.'
       - '* OFF - Proxy settings are not configured.'
     type: str
-    choices:
-      - BROWSER
-      - NS
-      - false
   proxyexception:
     description:
       - Proxy exception string that will be configured in the browser for bypassing
         the previously configured proxies. Allowed only if proxy type is Browser.
     type: str
   proxylocalbypass:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Bypass proxy server for local addresses option in Internet Explorer and Firefox
         proxy server settings.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   rdpclientprofilename:
     description:
       - Name of the RDP profile associated with the vserver.
     type: str
   rfc1918:
+    choices:
+      - true
+      - false
     description:
       - 'As defined in the local area network, allow only the following local area
         network addresses to bypass the VPN tunnel when the local LAN access feature
@@ -489,29 +492,26 @@ options:
       - '* 172.16.*.*,'
       - '* 192.168.*.*'
     type: str
-    choices:
-      - true
-      - false
   samesite:
+    choices:
+      - None
+      - LAX
+      - STRICT
     description:
       - SameSite attribute value for Cookies generated in VPN context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
     type: str
-    choices:
-      - None
-      - LAX
-      - STRICT
   securebrowse:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow users to connect through Citrix Gateway to network resources from iOS
         and Android mobile devices with Citrix Receiver. Users do not need to establish
         a full VPN tunnel to access resources in the secure network.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sesstimeout:
     description:
       - Number of minutes after which the session times out.
@@ -528,15 +528,19 @@ options:
         connections to the internal network.
     type: str
   splitdns:
-    description:
-      - Route the DNS requests to the local DNS server configured on the user device,
-        or Citrix Gateway (remote), or both.
-    type: str
     choices:
       - LOCAL
       - REMOTE
       - BOTH
+    description:
+      - Route the DNS requests to the local DNS server configured on the user device,
+        or Citrix Gateway (remote), or both.
+    type: str
   splittunnel:
+    choices:
+      - true
+      - false
+      - REVERSE
     description:
       - Send, through the tunnel, traffic only for intranet applications that are
         defined in Citrix Gateway. Route all other traffic directly to the Internet.
@@ -548,25 +552,24 @@ options:
         network and are logged on through the Citrix Gateway Plug-in, network traffic
         destined to a printer or another device within the home network is not intercepted.
     type: str
+  spoofiip:
     choices:
       - true
       - false
-      - REVERSE
-  spoofiip:
     description:
       - Indicate whether or not the application requires IP spoofing, which routes
         the connection to the intranet application through the virtual adapter.
     type: str
     default: true
-    choices:
-      - true
-      - false
   sslproxy:
     description:
       - IP address of the proxy server to be used for SSL access for all subsequent
         connections to the internal network.
     type: str
   sso:
+    choices:
+      - true
+      - false
     description:
       - Set single sign-on (SSO) for the session. When the user accesses a server,
         the user's logon credentials are passed to the server for authentication.
@@ -575,24 +578,24 @@ options:
         \ Key or Negotiate Sign Flag). Use VPN TrafficAction to configure SSO for\
         \ these authentication types."
     type: str
-    choices:
-      - true
-      - false
   ssocredential:
+    choices:
+      - PRIMARY
+      - SECONDARY
     description:
       - Specify whether to use the primary or secondary authentication credentials
         for single sign-on to the server.
     type: str
     default: PRIMARY
-    choices:
-      - PRIMARY
-      - SECONDARY
   storefronturl:
     description:
       - Web address for StoreFront to be used in this session for enumeration of resources
         from XenApp or XenDesktop.
     type: str
   transparentinterception:
+    choices:
+      - true
+      - false
     description:
       - Allow access to network resources by using a single IP address and subnet
         mask or a range of IP addresses. The OFF setting sets the mode to proxy, in
@@ -601,18 +604,19 @@ options:
         to ON, in which the mode is set to transparent. If you are using the Citrix
         Gateway Plug-in for Java, set this parameter to OFF.
     type: str
-    choices:
-      - true
-      - false
   uitheme:
-    description:
-      - Set VPN UI Theme to Green-Bubble, Caxton or Custom; default is Caxton.
-    type: str
     choices:
       - DEFAULT
       - GREENBUBBLE
       - CUSTOM
+    description:
+      - Set VPN UI Theme to Green-Bubble, Caxton or Custom; default is Caxton.
+    type: str
   useiip:
+    choices:
+      - NOSPILLOVER
+      - SPILLOVER
+      - false
     description:
       - 'Define IP address pool options. Available settings function as follows: '
       - '* SPILLOVER - When an address pool is configured and the mapped IP is used
@@ -624,11 +628,10 @@ options:
       - '* OFF - Address pool is not configured.'
     type: str
     default: NOSPILLOVER
-    choices:
-      - NOSPILLOVER
-      - SPILLOVER
-      - false
   usemip:
+    choices:
+      - NS
+      - false
     description:
       - 'Enable or disable the use of a unique IP address alias, or a mapped IP address,
         as the client IP address for each client session. Allow Citrix Gateway to
@@ -639,9 +642,6 @@ options:
         be assigned.
     type: str
     default: NS
-    choices:
-      - NS
-      - false
   userdomains:
     description:
       - List of user domains specified as comma seperated value
@@ -659,22 +659,25 @@ options:
         is not configured, the XenApp option does not appear as a client choice.
     type: str
   wihomeaddresstype:
-    description:
-      - Type of the wihome address(IPV4/V6)
-    type: str
     choices:
       - IPV4
       - IPV6
+    description:
+      - Type of the wihome address(C(IPV4)/V6)
+    type: str
   windowsautologon:
+    choices:
+      - true
+      - false
     description:
       - Enable or disable the Windows Auto Logon for the session. If a VPN session
         is established after this setting is enabled, the user is automatically logged
         on by using Windows credentials after the system is restarted.
     type: str
-    choices:
-      - true
-      - false
   windowsclienttype:
+    choices:
+      - AGENT
+      - PLUGIN
     description:
       - The Windows client type. Choose between two types of Windows Client\
       - a) Application Agent - which always runs in the task bar as a standalone application
@@ -682,30 +685,27 @@ options:
       - b) Activex Control - ActiveX control run by Microsoft Internet Explorer.
     type: str
     default: AGENT
-    choices:
-      - AGENT
-      - PLUGIN
   windowspluginupgrade:
-    description:
-      - Option to set plugin upgrade behaviour for Win
-    type: str
-    default: Always
     choices:
       - Always
       - Essential
       - Never
+    description:
+      - Option to set plugin upgrade behaviour for Win
+    type: str
+    default: Always
   winsip:
     description:
       - WINS server IP address to add to Citrix Gateway for name resolution.
     type: str
   wiportalmode:
-    description:
-      - Layout on the Access Interface. The COMPACT value indicates the use of small
-        icons.
-    type: str
     choices:
       - NORMAL
       - COMPACT
+    description:
+      - Layout on the Access Interface. The C(COMPACT) value indicates the use of
+        small icons.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

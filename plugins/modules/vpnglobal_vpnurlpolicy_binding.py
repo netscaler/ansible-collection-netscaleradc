@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
+    description:
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
   gotopriorityexpression:
     description:
       - Applicable only to advance vpn session policy. An expression or other value

@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   connfailover:
-    description:
-      - Mode in which the connection failover feature must operate for the IPSec Alg.
-        After a failover, established UDP connections and ESP packet flows are kept
-        active and resumed on the secondary appliance. Recomended setting is ENABLED.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Mode in which the connection failover feature must operate for the IPSec Alg.
+        After a failover, established UDP connections and ESP packet flows are kept
+        active and resumed on the secondary appliance. Recomended setting is C(ENABLED).
+    type: str
+    default: ENABLED
   espgatetimeout:
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation

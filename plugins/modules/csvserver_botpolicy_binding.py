@@ -26,16 +26,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - 'Bind point at which policy needs to be bound. Note: Content switching policies
-        are evaluated only at request time.'
-    type: str
     choices:
       - REQUEST
       - RESPONSE
       - ICA_REQUEST
       - OTHERTCP_REQUEST
       - MQTT_JUMBO_REQ
+    description:
+      - 'Bind point at which policy needs to be bound. Note: Content switching policies
+        are evaluated only at request time.'
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -50,13 +50,13 @@ options:
       - Name of the label invoked.
     type: str
   labeltype:
-    description:
-      - The invocation type.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - The invocation type.
+    type: str
   name:
     description:
       - Name of the content switching virtual server to which the content switching

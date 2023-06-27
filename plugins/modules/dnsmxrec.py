@@ -61,17 +61,17 @@ options:
     type: int
     default: 3600
   type:
-    description:
-      - 'Type of records to display. Available settings function as follows:'
-      - '* ADNS - Display all authoritative address records.'
-      - '* PROXY - Display all proxy address records.'
-      - '* ALL - Display all address records.'
-    type: str
-    default: ADNS
     choices:
       - ALL
       - ADNS
       - PROXY
+    description:
+      - 'Type of records to display. Available settings function as follows:'
+      - '* C(ADNS) - Display all authoritative address records.'
+      - '* C(PROXY) - Display all proxy address records.'
+      - '* C(ALL) - Display all address records.'
+    type: str
+    default: ADNS
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

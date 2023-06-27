@@ -29,13 +29,13 @@ options:
       - Maximum of 6 decimal places is supported.
     type: str
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable/disable Appflow logging for stream identifier
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   breachthreshold:
     description:
       - Breaching transactions threshold calculated over interval.
@@ -75,21 +75,14 @@ options:
       - Name of the selector to use with the stream identifier.
     type: str
   snmptrap:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable/disable SNMP trap for stream identifier
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sort:
-    description:
-      - Sort stored records by the specified statistics column, in descending order.
-        Performed during data collection, the sorting enables real-time data evaluation
-        through Citrix ADC policies (for example, compression and caching policies)
-        that use functions such as IS_TOP(n).
-    type: str
-    default: REQUESTS
     choices:
       - REQUESTS
       - CONNECTIONS
@@ -97,25 +90,32 @@ options:
       - BANDWIDTH
       - RESPTIME_BREACHES
       - NONE
+    description:
+      - Sort stored records by the specified statistics column, in descending order.
+        Performed during data collection, the sorting enables real-time data evaluation
+        through Citrix ADC policies (for example, compression and caching policies)
+        that use functions such as IS_TOP(n).
+    type: str
+    default: REQUESTS
   trackackonlypackets:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Track ack only packets as well. This setting is applicable only when packet
         rate limiting is being used.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tracktransactions:
+    choices:
+      - RESPTIME
+      - NONE
     description:
       - 'Track transactions exceeding configured threshold. Transaction tracking can
         be enabled for following metric: ResponseTime.'
       - By default transaction tracking is disabled
     type: str
     default: NONE
-    choices:
-      - RESPTIME
-      - NONE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

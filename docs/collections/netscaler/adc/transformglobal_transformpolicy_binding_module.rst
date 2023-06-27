@@ -498,11 +498,11 @@ Parameters
 
       Type of invocation. Available settings function as follows:
 
-      \* reqvserver - Send the request to the specified request virtual server.
+      \* \ :literal:`reqvserver`\  - Send the request to the specified request virtual server.
 
-      \* resvserver - Send the response to the specified response virtual server.
+      \* \ :literal:`resvserver`\  - Send the response to the specified response virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line
@@ -991,13 +991,13 @@ Parameters
 
       Specifies the bind point to which to bind the policy. Available settings function as follows:
 
-      \* REQ\_OVERRIDE. Request override. Binds the policy to the priority request queue.
+      \* \ :literal:`REQ\_OVERRIDE`\ . Request override. Binds the policy to the priority request queue.
 
-      \* REQ\_DEFAULT. Binds the policy to the default request queue.
+      \* \ :literal:`REQ\_DEFAULT`\ . Binds the policy to the default request queue.
 
-      \* HTTPQUIC\_REQ\_OVERRIDE - Binds the policy to the HTTP\_QUIC override request queue.
+      \* \ :literal:`HTTPQUIC\_REQ\_OVERRIDE`\  - Binds the policy to the HTTP\_QUIC override request queue.
 
-      \* HTTPQUIC\_REQ\_DEFAULT - Binds the policy to the HTTP\_QUIC default request queue.
+      \* \ :literal:`HTTPQUIC\_REQ\_DEFAULT`\  - Binds the policy to the HTTP\_QUIC default request queue.
 
 
       .. rst-class:: ansible-option-line

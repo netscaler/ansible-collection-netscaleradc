@@ -48,23 +48,23 @@ options:
         resolver and load balances the name servers.
     type: bool
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Administrative state of the name server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - Protocol used by the name server. UDP_TCP is not valid if the name server
-        is a DNS virtual server configured on the appliance.
-    type: str
-    default: UDP
     choices:
       - UDP
       - TCP
       - UDP_TCP
+    description:
+      - Protocol used by the name server. C(UDP_TCP) is not valid if the name server
+        is a DNS virtual server configured on the appliance.
+    type: str
+    default: UDP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

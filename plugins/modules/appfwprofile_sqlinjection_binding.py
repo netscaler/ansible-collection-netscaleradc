@@ -26,32 +26,32 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
-  as_scan_location_sql:
     description:
-      - Location of SQL injection exception - form field, header or cookie.
+      - Send SNMP alert?
     type: str
+  as_scan_location_sql:
     choices:
       - FORMFIELD
       - HEADER
       - COOKIE
+    description:
+      - Location of SQL injection exception - form field, header or cookie.
+    type: str
   as_value_expr_sql:
     description:
       - The web form value expression.
     type: str
   as_value_type_sql:
-    description:
-      - The web form value type.
-    type: str
     choices:
       - Keyword
       - SpecialString
       - Wildchar
+    description:
+      - The web form value type.
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
@@ -62,26 +62,26 @@ options:
       - The web form action URL.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   isregex_sql:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is the web form field name a regular expression?
     type: str
+  isvalueregex_sql:
     choices:
       - REGEX
       - NOTREGEX
-  isvalueregex_sql:
     description:
       - Is the web form field value a regular expression?
     type: str
-    choices:
-      - REGEX
-      - NOTREGEX
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -91,23 +91,23 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
+    description:
+      - Specifies rule type of binding
+    type: str
   sqlinjection:
     description:
       - The web form field name.
     type: str
   state:
-    description:
-      - Enabled.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

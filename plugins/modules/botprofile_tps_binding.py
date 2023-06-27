@@ -36,13 +36,6 @@ options:
         then needs to bind again with new values.
     type: bool
   bot_tps_action:
-    description:
-      - One to more actions to be taken if bot is detected based on this TPS binding.
-        Only LOG action can be combined with DROP, RESET, REDIRECT, or MITIGIATION
-        action.
-    type: list
-    elements: str
-    default: NONE
     choices:
       - NONE
       - LOG
@@ -50,23 +43,30 @@ options:
       - REDIRECT
       - RESET
       - MITIGATION
+    description:
+      - One to more actions to be taken if bot is detected based on this TPS binding.
+        Only C(LOG) action can be combined with C(DROP), C(RESET), C(REDIRECT), or
+        MITIGIATION action.
+    type: list
+    elements: str
+    default: NONE
   bot_tps_enabled:
+    choices:
+      - true
+      - false
     description:
       - Enabled or disabled TPS binding.
     type: str
     default: true
-    choices:
-      - true
-      - false
   bot_tps_type:
-    description:
-      - Type of TPS binding.
-    type: str
     choices:
       - SOURCE_IP
       - GEOLOCATION
       - REQUEST_URL
       - Host
+    description:
+      - Type of TPS binding.
+    type: str
   logmessage:
     description:
       - Message to be logged for this binding.

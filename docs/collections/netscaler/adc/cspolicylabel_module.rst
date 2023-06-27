@@ -169,6 +169,128 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-cspolicylabel_cspolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.cspolicylabel_module__parameter-cspolicylabel_cspolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **cspolicylabel_cspolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-cspolicylabel_cspolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for cspolicylabel\_cspolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-cspolicylabel_cspolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.cspolicylabel_module__parameter-cspolicylabel_cspolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-cspolicylabel_cspolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-cspolicylabel_cspolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.cspolicylabel_module__parameter-cspolicylabel_cspolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-cspolicylabel_cspolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-cspolicylabeltype"></div>
 
       .. _ansible_collections.netscaler.adc.cspolicylabel_module__parameter-cspolicylabeltype:
@@ -195,29 +317,29 @@ Parameters
 
       Protocol supported by the policy label. All policies bound to the policy label must either match the specified protocol or be a subtype of that protocol. Available settings function as follows:
 
-      \* HTTP - Supports policies that process HTTP traffic. Used to access unencrypted Web sites. (The default.)
+      \* \ :literal:`HTTP`\  - Supports policies that process \ :literal:`HTTP`\  traffic. Used to access unencrypted Web sites. (The default.)
 
-      \* SSL - Supports policies that process HTTPS/SSL encrypted traffic. Used to access encrypted Web sites.
+      \* \ :literal:`SSL`\  - Supports policies that process HTTPS/\ :literal:`SSL`\  encrypted traffic. Used to access encrypted Web sites.
 
-      \* TCP - Supports policies that process any type of TCP traffic, including HTTP.
+      \* \ :literal:`TCP`\  - Supports policies that process any type of \ :literal:`TCP`\  traffic, including \ :literal:`HTTP`\ .
 
-      \* SSL\_TCP - Supports policies that process SSL-encrypted TCP traffic, including SSL.
+      \* \ :literal:`SSL\_TCP`\  - Supports policies that process \ :literal:`SSL`\ -encrypted \ :literal:`TCP`\  traffic, including \ :literal:`SSL`\ .
 
-      \* UDP - Supports policies that process any type of UDP-based traffic, including DNS.
+      \* \ :literal:`UDP`\  - Supports policies that process any type of \ :literal:`UDP`\ -based traffic, including \ :literal:`DNS`\ .
 
-      \* DNS - Supports policies that process DNS traffic.
+      \* \ :literal:`DNS`\  - Supports policies that process \ :literal:`DNS`\  traffic.
 
-      \* ANY - Supports all types of policies except HTTP, SSL, and TCP.             
+      \* \ :literal:`ANY`\  - Supports all types of policies except \ :literal:`HTTP`\ , \ :literal:`SSL`\ , and \ :literal:`TCP`\ .             
 
-      \* SIP\_UDP - Supports policies that process UDP based Session Initiation Protocol (SIP) traffic. SIP initiates, manages, and terminates multimedia communications sessions, and has emerged as the standard for Internet telephony (VoIP).
+      \* \ :literal:`SIP\_UDP`\  - Supports policies that process \ :literal:`UDP`\  based Session Initiation Protocol (SIP) traffic. SIP initiates, manages, and terminates multimedia communications sessions, and has emerged as the standard for Internet telephony (VoIP).
 
-      \* RTSP - Supports policies that process Real Time Streaming Protocol (RTSP) traffic. RTSP provides delivery of multimedia and other streaming data, such as audio, video, and other types of streamed media.
+      \* \ :literal:`RTSP`\  - Supports policies that process Real Time Streaming Protocol (\ :literal:`RTSP`\ ) traffic. \ :literal:`RTSP`\  provides delivery of multimedia and other streaming data, such as audio, video, and other types of streamed media.
 
-      \* RADIUS - Supports policies that process Remote Authentication Dial In User Service (RADIUS) traffic. RADIUS supports combined authentication, authorization, and auditing services for network management.
+      \* \ :literal:`RADIUS`\  - Supports policies that process Remote Authentication Dial In User Service (\ :literal:`RADIUS`\ ) traffic. \ :literal:`RADIUS`\  supports combined authentication, authorization, and auditing services for network management.
 
-      \* MYSQL - Supports policies that process MYSQL traffic.
+      \* \ :literal:`MYSQL`\  - Supports policies that process \ :literal:`MYSQL`\  traffic.
 
-      \* MSSQL - Supports policies that process Microsoft SQL traffic.
+      \* \ :literal:`MSSQL`\  - Supports policies that process Microsoft SQL traffic.
 
 
       .. rst-class:: ansible-option-line

@@ -357,7 +357,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      TCP Burst Rate Control DISABLED/FIXED/DYNAMIC. FIXED requires a TCP rate to be set.
+      TCP Burst Rate Control \ :literal:`DISABLED`\ /\ :literal:`FIXED`\ /\ :literal:`DYNAMIC`\ . \ :literal:`FIXED`\  requires a TCP rate to be set.
 
 
       .. rst-class:: ansible-option-line
@@ -2411,7 +2411,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Send Client Port number along with Client IP in TCP-Options. ClientIpTcpOption must be ENABLED
+      Send Client Port number along with Client IP in TCP-Options. ClientIpTcpOption must be \ :literal:`ENABLED`\ 
 
 
       .. rst-class:: ansible-option-line
@@ -2789,7 +2789,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      TCP Optimization modes TRANSPARENT / ENDPOINT.
+      TCP Optimization modes \ :literal:`TRANSPARENT`\  / \ :literal:`ENDPOINT`\ .
 
 
       .. rst-class:: ansible-option-line
@@ -2865,7 +2865,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Offload TCP segmentation to the NIC. If set to AUTOMATIC, TCP segmentation will be offloaded to the NIC, if the NIC supports it.
+      Offload TCP segmentation to the NIC. If set to \ :literal:`AUTOMATIC`\ , TCP segmentation will be offloaded to the NIC, if the NIC supports it.
 
 
       .. rst-class:: ansible-option-line

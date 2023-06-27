@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   endpointkind:
-    description:
-      - Endpoint kind. Currently, IP endpoints are supported
-    type: str
-    default: IP
     choices:
       - IP
+    description:
+      - Endpoint kind. Currently, C(IP) endpoints are supported
+    type: str
+    default: IP
   endpointlabelsjson:
     description:
       - String representing labels in json form. Maximum length 16K

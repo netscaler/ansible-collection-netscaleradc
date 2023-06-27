@@ -500,11 +500,11 @@ Parameters
 
       Type of invocation. Available settings function as follows:
 
-      \* reqvserver - Forward the request to the specified request virtual server.
+      \* \ :literal:`reqvserver`\  - Forward the request to the specified request virtual server.
 
-      \* resvserver - Forward the response to the specified response virtual server.
+      \* \ :literal:`resvserver`\  - Forward the response to the specified response virtual server.
 
-      \* policylabel - Invoke the specified policy label.
+      \* \ :literal:`policylabel`\  - Invoke the specified policy label.
 
 
       .. rst-class:: ansible-option-line

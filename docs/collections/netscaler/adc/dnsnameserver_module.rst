@@ -854,7 +854,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Protocol used by the name server. UDP\_TCP is not valid if the name server is a DNS virtual server configured on the appliance.
+      Protocol used by the name server. \ :literal:`UDP\_TCP`\  is not valid if the name server is a DNS virtual server configured on the appliance.
 
 
       .. rst-class:: ansible-option-line

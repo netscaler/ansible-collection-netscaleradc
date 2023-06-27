@@ -34,19 +34,19 @@ options:
       - The name of the certificate key pair binding.
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
+    type: str
   ocspcheck:
-    description:
-      - The state of the OCSP check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
+    type: str
   skipcaname:
     description:
       - The flag is used to indicate whether this particular CA certificate's CA_Name

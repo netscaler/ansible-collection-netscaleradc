@@ -24,33 +24,33 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging appflow flow information
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authentication:
+    choices:
+      - true
+      - false
     description:
       - Authenticate users who request a connection to the content switching virtual
         server.
     type: str
-    choices:
-      - true
-      - false
   authenticationhost:
     description:
       - FQDN of the authentication virtual server. The service type of the virtual
         server should be either HTTP or SSL.
     type: str
   authn401:
-    description:
-      - Enable HTTP 401-response based authentication.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable HTTP 401-response based authentication.
+    type: str
   authnprofile:
     description:
       - Name of the authentication profile to be used when authentication is turned
@@ -83,15 +83,18 @@ options:
         quotation marks.
     type: str
   cacheable:
+    choices:
+      - true
+      - false
     description:
       - Use this option to specify whether a virtual server, used for load balancing
         or content switching, routes requests to the cache redirection virtual server
         before sending it to the configured servers.
     type: str
+  casesensitive:
     choices:
       - true
       - false
-  casesensitive:
     description:
       - Consider case in URLs (for policies that use URLs instead of RULES). For example,
         with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently
@@ -99,9 +102,6 @@ options:
         OFF setting, /a/1.html and /A/1.HTML are switched to the same target.
     type: str
     default: true
-    choices:
-      - true
-      - false
   clttimeout:
     description:
       - 'Idle time, in seconds, after which the client connection is terminated. The
@@ -134,14 +134,14 @@ options:
       - Name of the DB profile.
     type: str
   disableprimaryondown:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Continue forwarding the traffic to backup virtual server even after the primary
         server comes UP from the DOWN state.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dnsprofilename:
     description:
       - Name of the DNS profile to be associated with the VServer. DNS profile properties
@@ -149,37 +149,37 @@ options:
         valid only for DNS and DNS-TCP VServers.
     type: str
   dnsrecordtype:
-    description:
-      - '0'
-    type: str
-    default: NSGSLB_IPV4
     choices:
       - A
       - AAAA
       - CNAME
       - NAPTR
+    description:
+      - '0'
+    type: str
+    default: NSGSLB_IPV4
   domainname:
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
     type: str
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with a virtual server whose state
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dtls:
-    description:
-      - This option starts/stops the dtls service on the vserver
-    type: str
     choices:
       - true
       - false
+    description:
+      - This option starts/stops the dtls service on the vserver
+    type: str
   httpprofilename:
     description:
       - Name of the HTTP profile containing HTTP configuration settings for the virtual
@@ -191,14 +191,18 @@ options:
         parameter is redirected.
     type: str
   icmpvsrresponse:
+    choices:
+      - PASSIVE
+      - ACTIVE
     description:
       - Can be active or passive
     type: str
     default: PASSIVE
-    choices:
-      - PASSIVE
-      - ACTIVE
   insertvserveripport:
+    choices:
+      - false
+      - VIPADDR
+      - V6TOV4MAPPING
     description:
       - 'Insert the virtual server''s VIP address and port number in the request header.
         Available values function as follows:'
@@ -209,10 +213,6 @@ options:
         to the IPv6 address of the vserver and the port number. An IPv6 address can
         be mapped to a user-specified IPv4 address using the set ns ip6 command.'
     type: str
-    choices:
-      - false
-      - VIPADDR
-      - V6TOV4MAPPING
   ipmask:
     description:
       - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have
@@ -253,12 +253,12 @@ options:
       - IP address of the content switching virtual server.
     type: str
   l2conn:
-    description:
-      - Use L2 Parameters to identify a connection
-    type: str
     choices:
       - true
       - false
+    description:
+      - Use L2 Parameters to identify a connection
+    type: str
   listenpolicy:
     description:
       - String specifying the listen policy for the content switching virtual server.
@@ -274,10 +274,6 @@ options:
     type: int
     default: 101
   mssqlserverversion:
-    description:
-      - The version of the MSSQL server
-    type: str
-    default: 2008R2
     choices:
       - 70
       - 2000
@@ -287,6 +283,10 @@ options:
       - 2008R2
       - 2012
       - 2014
+    description:
+      - The version of the MSSQL server
+    type: str
+    default: 2008R2
   mysqlcharacterset:
     description:
       - The character set returned by the mysql vserver.
@@ -332,41 +332,41 @@ options:
         quotation marks (for example, "my name" or 'my name').
     type: str
   oracleserverversion:
+    choices:
+      - 10G
+      - 11G
     description:
       - Oracle server version
     type: str
     default: 10G
-    choices:
-      - 10G
-      - 11G
   persistencebackup:
+    choices:
+      - SOURCEIP
+      - NONE
     description:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
     type: str
-    choices:
-      - SOURCEIP
-      - NONE
   persistenceid:
     description:
       - '0'
     type: int
   persistencetype:
-    description:
-      - 'Type of persistence for the virtual server. Available settings function as
-        follows:'
-      - '* SOURCEIP - Connections from the same client IP address belong to the same
-        persistence session.'
-      - '* COOKIEINSERT - Connections that have the same HTTP Cookie, inserted by
-        a Set-Cookie directive from a server, belong to the same persistence session.'
-      - '* SSLSESSION - Connections that have the same SSL Session ID belong to the
-        same persistence session.'
-    type: str
     choices:
       - SOURCEIP
       - COOKIEINSERT
       - SSLSESSION
       - NONE
+    description:
+      - 'Type of persistence for the virtual server. Available settings function as
+        follows:'
+      - '* C(SOURCEIP) - Connections from the same client IP address belong to the
+        same persistence session.'
+      - '* C(COOKIEINSERT) - Connections that have the same HTTP Cookie, inserted
+        by a Set-Cookie directive from a server, belong to the same persistence session.'
+      - '* C(SSLSESSION) - Connections that have the same SSL Session ID belong to
+        the same persistence session.'
+    type: str
   persistmask:
     description:
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
@@ -376,45 +376,45 @@ options:
       - Port number for content switching virtual server.
     type: int
   precedence:
-    description:
-      - Type of precedence to use for both RULE-based and URL-based policies on the
-        content switching virtual server. With the default (RULE) setting, incoming
-        requests are evaluated against the rule-based content switching policies.
-        If none of the rules match, the URL in the request is evaluated against the
-        URL-based content switching policies.
-    type: str
-    default: RULE
     choices:
       - RULE
       - URL
+    description:
+      - Type of precedence to use for both C(RULE)-based and C(URL)-based policies
+        on the content switching virtual server. With the default (C(RULE)) setting,
+        incoming requests are evaluated against the rule-based content switching policies.
+        If none of the rules match, the C(URL) in the request is evaluated against
+        the C(URL)-based content switching policies.
+    type: str
+    default: RULE
   probeport:
     description:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
     type: int
   probeprotocol:
-    description:
-      - Citrix ADC provides support for external health check of the vserver status.
-        Select HTTP or TCP probes for healthcheck
-    type: str
     choices:
       - TCP
       - HTTP
+    description:
+      - Citrix ADC provides support for external health check of the vserver status.
+        Select C(HTTP) or C(TCP) probes for healthcheck
+    type: str
   probesuccessresponsecode:
     description:
       - HTTP code to return in SUCCESS case.
     type: str
     default: '"200 OK"'
   push:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Process traffic with the push virtual server that is bound to this content
         switching virtual server (specified by the Push VServer parameter). The service
         type of the push virtual server should be either HTTP or SSL.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   pushlabel:
     description:
       - Expression for extracting the label from the response received from server.
@@ -423,13 +423,13 @@ options:
     type: str
     default: '"none"'
   pushmulticlients:
+    choices:
+      - true
+      - false
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
     type: str
-    choices:
-      - true
-      - false
   pushvserver:
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
@@ -453,13 +453,13 @@ options:
         redirect
     type: int
   redirectportrewrite:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of port rewrite while performing HTTP redirect.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   redirecturl:
     description:
       - URL to which traffic is redirected if the virtual server becomes unavailable.
@@ -469,32 +469,29 @@ options:
         to the unavailable virtual server.'
     type: str
   rhistate:
-    description:
-      - A host route is injected according to the setting on the virtual servers
-      - '            * If set to PASSIVE on all the virtual servers that share the
-        IP address, the appliance always injects the hostroute.'
-      - '            * If set to ACTIVE on all the virtual servers that share the
-        IP address, the appliance injects even if one virtual server is UP.'
-      - '            * If set to ACTIVE on some virtual servers and PASSIVE on the
-        others, the appliance, injects even if one virtual server set to ACTIVE is
-        UP.'
-    type: str
-    default: PASSIVE
     choices:
       - PASSIVE
       - ACTIVE
+    description:
+      - A host route is injected according to the setting on the virtual servers
+      - '            * If set to C(PASSIVE) on all the virtual servers that share
+        the IP address, the appliance always injects the hostroute.'
+      - '            * If set to C(ACTIVE) on all the virtual servers that share the
+        IP address, the appliance injects even if one virtual server is UP.'
+      - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
+        on the others, the appliance, injects even if one virtual server set to C(ACTIVE)
+        is UP.'
+    type: str
+    default: PASSIVE
   rtspnat:
+    choices:
+      - true
+      - false
     description:
       - Enable network address translation (NAT) for real-time streaming protocol
         (RTSP) connections.
     type: str
-    choices:
-      - true
-      - false
   servicetype:
-    description:
-      - Protocol used by the virtual server.
-    type: str
     choices:
       - HTTP
       - SSL
@@ -523,40 +520,43 @@ options:
       - MQTT
       - MQTT_TLS
       - HTTP_QUIC
+    description:
+      - Protocol used by the virtual server.
+    type: str
   sitedomainttl:
     description:
       - '0'
     type: int
   sobackupaction:
-    description:
-      - Action to be performed if spillover is to take effect, but no backup chain
-        to spillover is usable or exists
-    type: str
     choices:
       - DROP
       - ACCEPT
       - REDIRECT
-  somethod:
     description:
-      - Type of spillover used to divert traffic to the backup virtual server when
-        the primary virtual server reaches the spillover threshold. Connection spillover
-        is based on the number of connections. Bandwidth spillover is based on the
-        total Kbps of incoming and outgoing traffic.
+      - Action to be performed if spillover is to take effect, but no backup chain
+        to spillover is usable or exists
     type: str
+  somethod:
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
       - BANDWIDTH
       - HEALTH
       - NONE
+    description:
+      - Type of spillover used to divert traffic to the backup virtual server when
+        the primary virtual server reaches the spillover threshold. Connection spillover
+        is based on the number of connections. Bandwidth spillover is based on the
+        total Kbps of incoming and outgoing traffic.
+    type: str
   sopersistence:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Maintain source-IP based persistence on primary and backup virtual servers.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sopersistencetimeout:
     description:
       - Time-out value, in minutes, for spillover persistence.
@@ -569,38 +569,38 @@ options:
         occurs.
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the load balancing virtual server.
     type: str
     default: ENABLED
+  stateupdate:
     choices:
       - ENABLED
       - DISABLED
-  stateupdate:
+      - UPDATEONBACKENDUPDATE
     description:
       - 'Enable state updates for a specific content switching virtual server. By
         default, the Content Switching virtual server is always UP, regardless of
         the state of the Load Balancing virtual servers bound to it. This parameter
         interacts with the global setting as follows:'
       - Global Level | Vserver Level | Result
-      - ENABLED      ENABLED        ENABLED
-      - ENABLED      DISABLED       ENABLED
-      - DISABLED     ENABLED        ENABLED
-      - DISABLED     DISABLED       DISABLED
+      - C(ENABLED)      C(ENABLED)        C(ENABLED)
+      - C(ENABLED)      C(DISABLED)       C(ENABLED)
+      - C(DISABLED)     C(ENABLED)        C(ENABLED)
+      - C(DISABLED)     C(DISABLED)       C(DISABLED)
       - If you want to enable state updates for only some content switching virtual
         servers, be sure to disable the state update parameter.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
-      - UPDATEONBACKENDUPDATE
   targettype:
+    choices:
+      - GSLB
     description:
       - Virtual server target type.
     type: str
-    choices:
-      - GSLB
   tcpprobeport:
     description:
       - Port number for external TCP probe. NetScaler provides support for external
@@ -637,6 +637,534 @@ options:
       - Name of virtual server IP and port header, for use with the VServer IP Port
         Insertion parameter.
     type: str
+  csvserver_analyticsprofile_binding:
+    type: dict
+    description: Bindings for csvserver_analyticsprofile_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_appflowpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_appflowpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_appfwpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_appfwpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_appqoepolicy_binding:
+    type: dict
+    description: Bindings for csvserver_appqoepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_auditnslogpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_auditnslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_auditsyslogpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_auditsyslogpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_authorizationpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_authorizationpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_botpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_botpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_cachepolicy_binding:
+    type: dict
+    description: Bindings for csvserver_cachepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_cmppolicy_binding:
+    type: dict
+    description: Bindings for csvserver_cmppolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_contentinspectionpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_contentinspectionpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_cspolicy_binding:
+    type: dict
+    description: Bindings for csvserver_cspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_domain_binding:
+    type: dict
+    description: Bindings for csvserver_domain_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_feopolicy_binding:
+    type: dict
+    description: Bindings for csvserver_feopolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_gslbvserver_binding:
+    type: dict
+    description: Bindings for csvserver_gslbvserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_lbvserver_binding:
+    type: dict
+    description: Bindings for csvserver_lbvserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_responderpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_responderpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_rewritepolicy_binding:
+    type: dict
+    description: Bindings for csvserver_rewritepolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_spilloverpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_spilloverpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_tmtrafficpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_tmtrafficpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_transformpolicy_binding:
+    type: dict
+    description: Bindings for csvserver_transformpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  csvserver_vpnvserver_binding:
+    type: dict
+    description: Bindings for csvserver_vpnvserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

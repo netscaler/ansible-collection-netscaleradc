@@ -26,14 +26,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   securitylevel:
-    description:
-      - Security level of the SNMPv3 trap.
-    type: str
-    default: authNoPriv
     choices:
       - noAuthNoPriv
       - authNoPriv
       - authPriv
+    description:
+      - Security level of the SNMPv3 trap.
+    type: str
+    default: authNoPriv
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
@@ -41,13 +41,13 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   trapclass:
-    description:
-      - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
-        or the enterprise-specific messages defined in the MIB file.'
-    type: str
     choices:
       - generic
       - specific
+    description:
+      - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
+        or the enterprise-C(specific) messages defined in the MIB file.'
+    type: str
   trapdestination:
     description:
       - IPv4 or the IPv6 address of the trap listener to which the Citrix ADC is to
@@ -58,6 +58,10 @@ options:
       - Name of the SNMP user that will send the SNMPv3 traps.
     type: str
   version:
+    choices:
+      - V1
+      - V2
+      - V3
     description:
       - 'SNMP version, which determines the format of trap messages sent to the trap
         listener. '
@@ -65,10 +69,6 @@ options:
         drops the trap messages.
     type: str
     default: V3
-    choices:
-      - V1
-      - V2
-      - V3
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

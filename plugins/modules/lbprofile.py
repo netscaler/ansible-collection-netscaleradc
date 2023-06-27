@@ -49,34 +49,34 @@ options:
         cookie value. It specifies the passphrase with a maximum of 31 characters.
     type: str
   dbslb:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
     type: str
     default: DISABLED
+  httponlycookieflag:
     choices:
       - ENABLED
       - DISABLED
-  httponlycookieflag:
     description:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   lbhashalgorithm:
+    choices:
+      - DEFAULT
+      - PRAC
+      - JARH
     description:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
     type: str
     default: DEFAULT
-    choices:
-      - DEFAULT
-      - PRAC
-      - JARH
   lbhashfingers:
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
@@ -98,6 +98,9 @@ options:
       - '             add lb profile lbprof -LiteralADCCookieAttribute ";SameSite=None"'
     type: str
   processlocal:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - By turning on this option packets destined to a vserver in a cluster will
         not under go any steering. Turn this option for single pa
@@ -105,33 +108,30 @@ options:
         RSS for connection based distribution.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   storemqttclientidandusername:
+    choices:
+      - true
+      - false
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
     type: str
-    choices:
-      - true
-      - false
   useencryptedpersistencecookie:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   usesecuredpersistencecookie:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

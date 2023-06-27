@@ -39,13 +39,13 @@ options:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - vserver
       - service
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - The name of the SSL policy binding.
@@ -55,23 +55,24 @@ options:
       - The priority of the policies bound to this SSL service
     type: int
   type:
-    description:
-      - 'Bind point to which to bind the policy. Possible Values: REQUEST, INTERCEPT_REQ
-        and CLIENTHELLO_REQ. These bindpoints mean:'
-      - '1. REQUEST: Policy evaluation will be done at appplication above SSL. This
-        bindpoint is default and is used for actions based on clientauth and client
-        cert.'
-      - '2. INTERCEPT_REQ: Policy evaluation will be done during SSL handshake to
-        decide whether to intercept or not. Actions allowed with this type are: INTERCEPT,
-        BYPASS and RESET.'
-      - '3. CLIENTHELLO_REQ: Policy evaluation will be done during handling of Client
-        Hello Request. Action allowed with this type is: RESET, FORWARD and PICKCACERTGRP.'
-    type: str
-    default: REQUEST
     choices:
       - INTERCEPT_REQ
       - REQUEST
       - CLIENTHELLO_REQ
+    description:
+      - 'Bind point to which to bind the policy. Possible Values: C(REQUEST), C(INTERCEPT_REQ)
+        and C(CLIENTHELLO_REQ). These bindpoints mean:'
+      - '1. C(REQUEST): Policy evaluation will be done at appplication above SSL.
+        This bindpoint is default and is used for actions based on clientauth and
+        client cert.'
+      - '2. C(INTERCEPT_REQ): Policy evaluation will be done during SSL handshake
+        to decide whether to intercept or not. Actions allowed with this type are:
+        INTERCEPT, BYPASS and RESET.'
+      - '3. C(CLIENTHELLO_REQ): Policy evaluation will be done during handling of
+        Client Hello Request. Action allowed with this type is: RESET, FORWARD and
+        PICKCACERTGRP.'
+    type: str
+    default: REQUEST
   vservername:
     description:
       - Name of the SSL virtual server.

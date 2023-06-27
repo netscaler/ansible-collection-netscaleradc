@@ -892,11 +892,11 @@ Parameters
 
       Type of zone to display. Mutually exclusive with the DNS Zone (zoneName) parameter. Available settings function as follows:
 
-      \* ADNS - Display all the zones for which the Citrix ADC is authoritative.
+      \* \ :literal:`ADNS`\  - Display all the zones for which the Citrix ADC is authoritative.
 
-      \* PROXY - Display all the zones for which the Citrix ADC is functioning as a proxy server.
+      \* \ :literal:`PROXY`\  - Display all the zones for which the Citrix ADC is functioning as a proxy server.
 
-      \* ALL - Display all the zones configured on the appliance.
+      \* \ :literal:`ALL`\  - Display all the zones configured on the appliance.
 
 
       .. rst-class:: ansible-option-line

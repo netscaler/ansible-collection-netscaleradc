@@ -40,23 +40,23 @@ options:
       - The name of the certificate bound to the monitor.
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
+    type: str
   monitorname:
     description:
       - Name of the monitor.
     type: str
   ocspcheck:
-    description:
-      - The state of the OCSP check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

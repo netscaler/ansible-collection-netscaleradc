@@ -28,14 +28,14 @@ options:
       - '0'
     type: str
   hsmtype:
-    description:
-      - Type of HSM.
-    type: str
-    default: THALES
     choices:
       - THALES
       - SAFENET
       - KEYVAULT
+    description:
+      - Type of HSM.
+    type: str
+    default: THALES
   key:
     description:
       - Name of the key. optionally, for Thales, path to the HSM key file; /var/opt/nfast/kmdata/local/

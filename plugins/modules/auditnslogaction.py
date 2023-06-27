@@ -24,47 +24,47 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   acl:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Log access control list (ACL) messages.
     type: str
+  alg:
     choices:
       - ENABLED
       - DISABLED
-  alg:
     description:
       - Log the ALG messages
     type: str
+  appflowexport:
     choices:
       - ENABLED
       - DISABLED
-  appflowexport:
     description:
       - Export log messages to AppFlow collectors.
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
     type: str
+  contentinspectionlog:
     choices:
       - ENABLED
       - DISABLED
-  contentinspectionlog:
     description:
       - Log Content Inspection event information
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   dateformat:
-    description:
-      - Format of dates in the logs.
-      - 'Supported formats are: '
-      - '* MMDDYYYY - U.S. style month/date/year format.'
-      - '* DDMMYYYY - European style date/month/year format.'
-      - '* YYYYMMDD - ISO style year/month/date format.'
-    type: str
     choices:
       - MMDDYYYY
       - DDMMYYYY
       - YYYYMMDD
+    description:
+      - Format of dates in the logs.
+      - 'Supported formats are: '
+      - '* C(MMDDYYYY) - U.S. style month/date/year format.'
+      - '* C(DDMMYYYY) - European style date/month/year format.'
+      - '* C(YYYYMMDD) - ISO style year/month/date format.'
+    type: str
   domainresolvenow:
     description:
       - Immediately send a DNS query to resolve the server's domain name.
@@ -76,12 +76,6 @@ options:
     type: int
     default: 5
   logfacility:
-    description:
-      - 'Facility value, as defined in RFC 3164, assigned to the log message. '
-      - Log facility values are numbers 0 to 7 (LOCAL0 through LOCAL7). Each number
-        indicates where a specific message originated from, such as the Citrix ADC
-        itself, the VPN, or external.
-    type: str
     choices:
       - LOCAL0
       - LOCAL1
@@ -91,22 +85,13 @@ options:
       - LOCAL5
       - LOCAL6
       - LOCAL7
-  loglevel:
     description:
-      - 'Audit log level, which specifies the types of events to log. '
-      - 'Available settings function as follows: '
-      - '* ALL - All events.'
-      - '* EMERGENCY - Events that indicate an immediate crisis on the server.'
-      - '* ALERT - Events that might require action.'
-      - '* CRITICAL - Events that indicate an imminent server crisis.'
-      - '* ERROR - Events that indicate some type of error.'
-      - '* WARNING - Events that require action in the near future.'
-      - '* NOTICE - Events that the administrator should know about.'
-      - '* INFORMATIONAL - All but low-level events.'
-      - '* DEBUG - All events, in extreme detail.'
-      - '* NONE - No events.'
-    type: list
-    elements: str
+      - 'Facility value, as defined in RFC 3164, assigned to the log message. '
+      - Log facility values are numbers 0 to 7 (C(LOCAL0) through C(LOCAL7)). Each
+        number indicates where a specific message originated from, such as the Citrix
+        ADC itself, the VPN, or external.
+    type: str
+  loglevel:
     choices:
       - ALL
       - EMERGENCY
@@ -118,13 +103,28 @@ options:
       - INFORMATIONAL
       - DEBUG
       - NONE
-  lsn:
     description:
-      - Log the LSN messages
-    type: str
+      - 'Audit log level, which specifies the types of events to log. '
+      - 'Available settings function as follows: '
+      - '* C(ALL) - All events.'
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
+      - '* C(NONE) - No events.'
+    type: list
+    elements: str
+  lsn:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Log the LSN messages
+    type: str
   name:
     description:
       - Name of the nslog action. Must begin with a letter, number, or the underscore
@@ -149,53 +149,53 @@ options:
       - Port on which the nslog server accepts connections.
     type: int
   sslinterception:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Log SSL Interception event information
     type: str
+  subscriberlog:
     choices:
       - ENABLED
       - DISABLED
-  subscriberlog:
     description:
       - Log subscriber session event information
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   tcp:
-    description:
-      - Log TCP messages.
-    type: str
     choices:
       - NONE
       - ALL
-  timezone:
     description:
-      - 'Time zone used for date and timestamps in the logs. '
-      - 'Available settings function as follows: '
-      - '* GMT_TIME. Coordinated Universal Time.'
-      - '* LOCAL_TIME. The server''s timezone setting.'
+      - Log TCP messages.
     type: str
+  timezone:
     choices:
       - GMT_TIME
       - LOCAL_TIME
-  urlfiltering:
     description:
-      - Log URL filtering event information
+      - 'Time zone used for date and timestamps in the logs. '
+      - 'Available settings function as follows: '
+      - '* C(GMT_TIME). Coordinated Universal Time.'
+      - '* C(LOCAL_TIME). The server''s timezone setting.'
     type: str
+  urlfiltering:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Log URL filtering event information
+    type: str
   userdefinedauditlog:
+    choices:
+      - true
+      - false
     description:
       - Log user-configurable log messages to nslog.
       - Setting this parameter to NO causes auditing to ignore all user-configured
         message actions. Setting this parameter to YES causes auditing to log user-configured
         message actions that meet the other logging criteria.
     type: str
-    choices:
-      - true
-      - false
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

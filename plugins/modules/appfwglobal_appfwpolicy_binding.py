@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -52,12 +52,12 @@ options:
         the invoke parameter is set, and Label Type is set to Policy Label.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - reqvserver
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - Name of the policy.
@@ -67,23 +67,23 @@ options:
       - The priority of the policy.
     type: int
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the binding to activate or deactivate the policy. This is
         applicable to classic policies only.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - Bind point to which to policy is bound.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - HTTPQUIC_REQ_OVERRIDE
       - HTTPQUIC_REQ_DEFAULT
       - NONE
+    description:
+      - Bind point to which to policy is bound.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

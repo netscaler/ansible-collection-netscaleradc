@@ -535,13 +535,13 @@ Parameters
 
       Cipher method to be used to encrypt and decrypt content.
 
-         NONE - no encryption or decryption is performed The output of ENCRYPT() and DECRYPT() is the same as the input.
+         \ :literal:`NONE`\  - no encryption or decryption is performed The output of ENCRYPT() and DECRYPT() is the same as the input.
 
-         RC4  - the RC4 stream cipher with a 128 bit (16 byte) key; RC4 is now considered insecure and should only be used if required by existing applciations.
+         \ :literal:`RC4`\   - the \ :literal:`RC4`\  stream cipher with a 128 bit (16 byte) key; \ :literal:`RC4`\  is now considered insecure and should only be used if required by existing applciations.
 
-         DES[-\<mode\>] - the Data Encryption Standard (DES) block cipher with a 64-bit (8 byte) key, with 56 data bits and 8 parity bits. DES is considered less secure than DES3 or AES so it should only be used if required by an existing applicastion. The optional mode is described below; DES without a mode is equivalent to DES-CBC.
+         \ :literal:`DES`\ [-\<mode\>] - the Data Encryption Standard (\ :literal:`DES`\ ) block cipher with a 64-bit (8 byte) key, with 56 data bits and 8 parity bits. \ :literal:`DES`\  is considered less secure than \ :literal:`DES3`\  or AES so it should only be used if required by an existing applicastion. The optional mode is described below; \ :literal:`DES`\  without a mode is equivalent to \ :literal:`DES`\ -CBC.
 
-         DES3[-\<mode\>] - the Triple Data Encryption Standard (DES) block cipher with a 192-bit (24 byte) key. The optional mode is described below; DES3 without a mode is equivalent to DES3-CBC.
+         \ :literal:`DES3`\ [-\<mode\>] - the Triple Data Encryption Standard (\ :literal:`DES`\ ) block cipher with a 192-bit (24 byte) key. The optional mode is described below; \ :literal:`DES3`\  without a mode is equivalent to \ :literal:`DES3`\ -CBC.
 
          AES\<keysize\>[-\<mode\>] - the Advanced Encryption Standard block cipher, available with 128 bit (16 byte), 192 bit (24 byte), and 256 bit (32 byte) keys. The optional mode is described below; AES\<keysize\> without a mode is equivalent to AES\<keysize\>-CBC.
 

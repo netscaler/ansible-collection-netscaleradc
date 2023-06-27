@@ -26,49 +26,49 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_value_expr_json_cmd:
     description:
       - The JSON CMD key value expression.
     type: str
   as_value_type_json_cmd:
-    description:
-      - Type of the relaxed JSON CMD key value
-    type: str
     choices:
       - Keyword
       - SpecialString
+    description:
+      - Type of the relaxed JSON CMD key value
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   iskeyregex_json_cmd:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is the key name a regular expression?
     type: str
+  isvalueregex_json_cmd:
     choices:
       - REGEX
       - NOTREGEX
-  isvalueregex_json_cmd:
     description:
       - Is the JSON CMD key value a regular expression?
     type: str
-    choices:
-      - REGEX
-      - NOTREGEX
   jsoncmdurl:
     description:
       - A regular expression that designates a URL on the Json CMD URL list for which
@@ -90,19 +90,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

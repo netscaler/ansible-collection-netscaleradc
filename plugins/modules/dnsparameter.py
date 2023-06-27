@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   cacheecszeroprefix:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Cache ECS responses with a Scope Prefix length of zero. Such a cached response
         will be used for all queries with this domain name and any subnet. When disabled,
@@ -32,29 +35,29 @@ options:
         in the corresponding DNS profile.
     type: str
     default: ENABLED
+  cachehitbypass:
     choices:
       - ENABLED
       - DISABLED
-  cachehitbypass:
     description:
       - This parameter is applicable only in proxy mode and if this parameter is enabled  we
         will forward all the client requests to the backend DNS server and the response
         served will be cached on Citrix ADC
     type: str
     default: DISABLED
+  cachenoexpire:
     choices:
       - ENABLED
       - DISABLED
-  cachenoexpire:
     description:
       - If this flag is set to YES, the existing entries in cache do not age out.
         On reaching the max limit the cache records are frozen
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cacherecords:
+    choices:
+      - true
+      - false
     description:
       - Cache resource records in the DNS cache. Applies to resource records obtained
         through proxy configurations only. End resolver and forwarder configurations
@@ -64,9 +67,6 @@ options:
         from the cache until record caching is enabled again.
     type: str
     default: true
-    choices:
-      - true
-      - false
   dns64timeout:
     description:
       - While doing DNS64 resolution, this parameter specifies the time to wait before
@@ -74,6 +74,9 @@ options:
         AAAA query.
     type: int
   dnsrootreferral:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send a root referral if a client queries a domain name that is unrelated to
         the domains configured/cached on the Citrix ADC. If the setting is disabled,
@@ -83,10 +86,10 @@ options:
         queries for unrelated domains.
     type: str
     default: DISABLED
+  dnssec:
     choices:
       - ENABLED
       - DISABLED
-  dnssec:
     description:
       - 'Enable or disable the Domain Name System Security Extensions (DNSSEC) feature
         on the appliance. Note: Even when the DNSSEC feature is enabled, forwarder
@@ -95,9 +98,6 @@ options:
         the EDNS0 OPT header.'
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ecsmaxsubnets:
     description:
       - Maximum number of subnets that can be cached corresponding to a single domain.
@@ -165,14 +165,15 @@ options:
         changed.
     type: int
   namelookuppriority:
-    description:
-      - Type of lookup (DNS or WINS) to attempt first. If the first-priority lookup
-        fails, the second-priority lookup is attempted. Used only by the SSL VPN feature.
-    type: str
-    default: WINS
     choices:
       - WINS
       - DNS
+    description:
+      - Type of lookup (C(DNS) or C(WINS)) to attempt first. If the first-priority
+        lookup fails, the second-priority lookup is attempted. Used only by the SSL
+        VPN feature.
+    type: str
+    default: WINS
   nxdomainratelimitthreshold:
     description:
       - Rate limit threshold for Non-Existant domain (NXDOMAIN) responses generated
@@ -182,6 +183,9 @@ options:
         and per second.
     type: int
   recursion:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Function as an end resolver and recursively resolve queries for domains that
         are not hosted on the Citrix ADC. Also resolve queries recursively when the
@@ -191,32 +195,29 @@ options:
         an end resolver configuration.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   resolutionorder:
+    choices:
+      - OnlyAQuery
+      - OnlyAAAAQuery
+      - AThenAAAAQuery
+      - AAAAThenAQuery
     description:
       - 'Type of DNS queries (A, AAAA, or both) to generate during the routine functioning
         of certain Citrix ADC features, such as SSL VPN, cache redirection, and the
         integrated cache. The queries are sent to the external name servers that are
         configured for the forwarder function. If you specify both query types, you
         can also specify the order. Available settings function as follows:'
-      - '* OnlyAQuery. Send queries for IPv4 address records (A records) only. '
-      - '* OnlyAAAAQuery. Send queries for IPv6 address records (AAAA records) instead
-        of queries for IPv4 address records (A records).'
-      - '* AThenAAAAQuery. Send a query for an A record, and then send a query for
-        an AAAA record if the query for the A record results in a NODATA response
+      - '* C(OnlyAQuery). Send queries for IPv4 address records (A records) only. '
+      - '* C(OnlyAAAAQuery). Send queries for IPv6 address records (AAAA records)
+        instead of queries for IPv4 address records (A records).'
+      - '* C(AThenAAAAQuery). Send a query for an A record, and then send a query
+        for an AAAA record if the query for the A record results in a NODATA response
         from the name server.'
-      - '* AAAAThenAQuery. Send a query for an AAAA record, and then send a query
+      - '* C(AAAAThenAQuery). Send a query for an AAAA record, and then send a query
         for an A record if the query for the AAAA record results in a NODATA response
         from the name server.'
     type: str
     default: OnlyAQuery
-    choices:
-      - OnlyAQuery
-      - OnlyAAAAQuery
-      - AThenAAAAQuery
-      - AAAAThenAQuery
   retries:
     description:
       - Maximum number of retry attempts when no response is received for a query
@@ -224,13 +225,13 @@ options:
     type: int
     default: 5
   splitpktqueryprocessing:
+    choices:
+      - ALLOW
+      - DROP
     description:
       - Processing requests split across multiple packets
     type: str
     default: ALLOW
-    choices:
-      - ALLOW
-      - DROP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

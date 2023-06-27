@@ -32,6 +32,9 @@ options:
       - Integer value that uniquely identifies a traffic domain.
     type: int
   vmac:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Associate the traffic domain with a VMAC address instead of with VLANs. The
         Citrix ADC then sends the VMAC address of the traffic domain in all responses
@@ -43,9 +46,78 @@ options:
         operations.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
+  nstrafficdomain_bridgegroup_binding:
+    type: dict
+    description: Bindings for nstrafficdomain_bridgegroup_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  nstrafficdomain_vlan_binding:
+    type: dict
+    description: Bindings for nstrafficdomain_vlan_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  nstrafficdomain_vxlan_binding:
+    type: dict
+    description: Bindings for nstrafficdomain_vxlan_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

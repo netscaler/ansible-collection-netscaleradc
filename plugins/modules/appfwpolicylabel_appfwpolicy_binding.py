@@ -46,16 +46,16 @@ options:
       - Name of the application firewall policy label.
     type: str
   labeltype:
-    description:
-      - 'Type of policy label to invoke if the current policy evaluates to TRUE and
-        the invoke parameter is set. Available settings function as follows:'
-      - '* reqvserver. Invoke the unnamed policy label associated with the specified
-        request virtual server.'
-      - '* policylabel. Invoke the specified user-defined policy label.'
-    type: str
     choices:
       - reqvserver
       - policylabel
+    description:
+      - 'Type of policy label to invoke if the current policy evaluates to TRUE and
+        the invoke parameter is set. Available settings function as follows:'
+      - '* C(reqvserver). Invoke the unnamed policy label associated with the specified
+        request virtual server.'
+      - '* C(policylabel). Invoke the specified user-defined policy label.'
+    type: str
   policyname:
     description:
       - Name of the application firewall policy to bind to the policy label.

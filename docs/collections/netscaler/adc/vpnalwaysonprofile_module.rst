@@ -517,7 +517,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Option to block network traffic when tunnel is not established(and the config requires that tunnel be established). When set to onlyToGateway, the network traffic to and from the client (except Gateway IP) is blocked. When set to fullAccess, the network traffic is not blocked
+      Option to block network traffic when tunnel is not established(and the config requires that tunnel be established). When set to \ :literal:`onlyToGateway`\ , the network traffic to and from the client (except Gateway IP) is blocked. When set to \ :literal:`fullAccess`\ , the network traffic is not blocked
 
 
       .. rst-class:: ansible-option-line

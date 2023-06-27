@@ -24,38 +24,38 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowdtls12:
-    description:
-      - Enables DTLS1.2 for client connections on CGS
-    type: str
     choices:
       - true
       - false
-  allowedudtversion:
     description:
-      - Enables the required UDT version to EDT connections in the CGS deployment
+      - Enables DTLS1.2 for client connections on CGS
     type: str
-    default: V4
+  allowedudtversion:
     choices:
       - V4
       - V5
       - V6
       - V7
+    description:
+      - Enables the required UDT version to EDT connections in the CGS deployment
+    type: str
+    default: V4
   blockonallowedngstktprof:
+    choices:
+      - true
+      - false
     description:
       - Enables blocking connections authenticated with a ticket createdby by an entity
         not whitelisted in allowedngstktprofile
     type: str
+  csvserverticketingdecouple:
     choices:
       - true
       - false
-  csvserverticketingdecouple:
     description:
       - Enables Decoupling CSVSERVER state from Ticketing Service state in the CGS
         deployment
     type: str
-    choices:
-      - true
-      - false
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

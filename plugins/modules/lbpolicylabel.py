@@ -46,24 +46,6 @@ options:
         and underscore characters.
     type: str
   policylabeltype:
-    description:
-      - 'Protocols supported by the policylabel. Available Types are :'
-      - '* HTTP - HTTP requests.'
-      - '* DNS - DNS request.'
-      - '* OTHERTCP - OTHERTCP request.'
-      - '* SIP_UDP - SIP_UDP request.'
-      - '* SIP_TCP - SIP_TCP request.'
-      - '* MYSQL - MYSQL request.'
-      - '* MSSQL - MSSQL request.'
-      - '* ORACLE - ORACLE request.'
-      - '* NAT - NAT request.'
-      - '* DIAMETER - DIAMETER request.'
-      - '* RADIUS - RADIUS request.'
-      - '* MQTT - MQTT request.'
-      - '* QUIC_BRIDGE - QUIC_BRIDGE request.'
-      - '* HTTP_QUIC - HTTP_QUIC request.'
-    type: str
-    default: HTTP
     choices:
       - HTTP
       - OTHERTCP
@@ -79,6 +61,48 @@ options:
       - MQTT
       - QUIC_BRIDGE
       - HTTP_QUIC
+    description:
+      - 'Protocols supported by the policylabel. Available Types are :'
+      - '* C(HTTP) - C(HTTP) requests.'
+      - '* C(DNS) - C(DNS) request.'
+      - '* C(OTHERTCP) - C(OTHERTCP) request.'
+      - '* C(SIP_UDP) - C(SIP_UDP) request.'
+      - '* C(SIP_TCP) - C(SIP_TCP) request.'
+      - '* C(MYSQL) - C(MYSQL) request.'
+      - '* C(MSSQL) - C(MSSQL) request.'
+      - '* C(ORACLE) - C(ORACLE) request.'
+      - '* C(NAT) - C(NAT) request.'
+      - '* C(DIAMETER) - C(DIAMETER) request.'
+      - '* C(RADIUS) - C(RADIUS) request.'
+      - '* C(MQTT) - C(MQTT) request.'
+      - '* C(QUIC_BRIDGE) - C(QUIC_BRIDGE) request.'
+      - '* C(HTTP_QUIC) - C(HTTP_QUIC) request.'
+    type: str
+    default: HTTP
+  lbpolicylabel_lbpolicy_binding:
+    type: dict
+    description: Bindings for lbpolicylabel_lbpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -50,15 +50,15 @@ options:
         quotation marks (for example, "my lb action" or my lb action').
     type: str
   type:
-    description:
-      - 'Type of an LB action. Available settings function as follows:'
-      - '* NOLBACTION - Does not consider LB action in making LB decision.'
-      - '* SELECTIONORDER - services bound to vserver with order specified in value
-        parameter is considerd for lb/gslb decision.'
-    type: str
     choices:
       - NOLBACTION
       - SELECTIONORDER
+    description:
+      - 'Type of an LB action. Available settings function as follows:'
+      - '* C(NOLBACTION) - Does not consider LB action in making LB decision.'
+      - '* C(SELECTIONORDER) - services bound to vserver with order specified in value
+        parameter is considerd for lb/gslb decision.'
+    type: str
   value:
     description:
       - 'The selection order list used during lb/gslb decision. Preference of services

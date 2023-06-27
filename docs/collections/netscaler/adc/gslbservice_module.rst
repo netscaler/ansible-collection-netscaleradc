@@ -465,6 +465,494 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_dnsview_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_dnsview_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **gslbservice_dnsview_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_dnsview_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for gslbservice\_dnsview\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_dnsview_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_dnsview_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_dnsview_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_dnsview_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_dnsview_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_dnsview_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_lbmonitor_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_lbmonitor_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **gslbservice_lbmonitor_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_lbmonitor_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for gslbservice\_lbmonitor\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_lbmonitor_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_lbmonitor_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_lbmonitor_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservice_lbmonitor_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservice_lbmonitor_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservice_lbmonitor_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_gslbservicegroupmember_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_gslbservicegroupmember_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **gslbservicegroup_gslbservicegroupmember_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_gslbservicegroupmember_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for gslbservicegroup\_gslbservicegroupmember\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_gslbservicegroupmember_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_gslbservicegroupmember_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_gslbservicegroupmember_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_gslbservicegroupmember_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_gslbservicegroupmember_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_gslbservicegroupmember_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_lbmonitor_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_lbmonitor_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **gslbservicegroup_lbmonitor_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_lbmonitor_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for gslbservicegroup\_lbmonitor\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_lbmonitor_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_lbmonitor_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_lbmonitor_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-gslbservicegroup_lbmonitor_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-gslbservicegroup_lbmonitor_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-gslbservicegroup_lbmonitor_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-hashid"></div>
 
       .. _ansible_collections.netscaler.adc.gslbservice_module__parameter-hashid:

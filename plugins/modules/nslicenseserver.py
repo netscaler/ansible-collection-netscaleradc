@@ -30,16 +30,16 @@ options:
         has the required capacity.
     type: bool
   licensemode:
-    description:
-      - This paramter indicates type of license customer interested while configuring
-        add/set licenseserver
-    type: str
     choices:
       - Pooled
       - VCPU
       - CICO
       - SelfManagedPool
       - SelfManagedvCPU
+    description:
+      - This paramter indicates type of license customer interested while configuring
+        add/set licenseserver
+    type: str
   licenseserverip:
     description:
       - IP address of the License server.

@@ -227,7 +227,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      One or more actions to be taken if bot is detected based on this IP Reputation binding. Only LOG action can be combinded with DROP, RESET, REDIRECT or MITIGATION action.
+      One or more actions to be taken if bot is detected based on this IP Reputation binding. Only \ :literal:`LOG`\  action can be combinded with \ :literal:`DROP`\ , \ :literal:`RESET`\ , \ :literal:`REDIRECT`\  or \ :literal:`MITIGATION`\  action.
 
 
       .. rst-class:: ansible-option-line
@@ -361,47 +361,47 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      IP Repuation category. Following IP Reuputation categories are allowed:
+      \ :literal:`IP`\  Repuation category. Following \ :literal:`IP`\  Reuputation categories are allowed:
 
-      \*IP\_BASED - This category checks whether client IP is malicious or not.
+      \*IP\_BASED - This category checks whether client \ :literal:`IP`\  is malicious or not.
 
       \*BOTNET - This category includes Botnet C&C channels, and infected zombie machines controlled by Bot master.
 
-      \*SPAM\_SOURCES - This category includes tunneling spam messages through a proxy, anomalous SMTP activities, and forum spam activities.
+      \*\ :literal:`SPAM\_SOURCES`\  - This category includes tunneling spam messages through a proxy, anomalous SMTP activities, and forum spam activities.
 
-      \*SCANNERS - This category includes all reconnaissance such as probes, host scan, domain scan, and password brute force attack.
+      \*\ :literal:`SCANNERS`\  - This category includes all reconnaissance such as probes, host scan, domain scan, and password brute force attack.
 
-      \*DOS - This category includes DOS, DDOS, anomalous sync flood, and anomalous traffic detection.
+      \*\ :literal:`DOS`\  - This category includes \ :literal:`DOS`\ , DDOS, anomalous sync flood, and anomalous traffic detection.
 
-      \*REPUTATION - This category denies access from IP addresses currently known to be infected with malware. This category also includes IPs with average low Webroot Reputation Index score. Enabling this category will prevent access from sources identified to contact malware distribution points.
+      \*\ :literal:`REPUTATION`\  - This category denies access from \ :literal:`IP`\  addresses currently known to be infected with malware. This category also includes IPs with average low Webroot Reputation Index score. Enabling this category will prevent access from sources identified to contact malware distribution points.
 
-      \*PHISHING - This category includes IP addresses hosting phishing sites and other kinds of fraud activities such as ad click fraud or gaming fraud.
+      \*\ :literal:`PHISHING`\  - This category includes \ :literal:`IP`\  addresses hosting phishing sites and other kinds of fraud activities such as ad click fraud or gaming fraud.
 
-      \*PROXY - This category includes IP addresses providing proxy services.
+      \*\ :literal:`PROXY`\  - This category includes \ :literal:`IP`\  addresses providing proxy services.
 
-      \*NETWORK - IPs providing proxy and anonymization services including The Onion Router aka TOR or darknet.
+      \*\ :literal:`NETWORK`\  - IPs providing proxy and anonymization services including The Onion Router aka TOR or darknet.
 
-      \*MOBILE\_THREATS - This category checks client IP with the list of IPs harmful for mobile devices.
+      \*\ :literal:`MOBILE\_THREATS`\  - This category checks client \ :literal:`IP`\  with the list of IPs harmful for mobile devices.
 
-      \*WINDOWS\_EXPLOITS - This category includes active IP address offering or distributig malware, shell code, rootkits, worms or viruses.
+      \*\ :literal:`WINDOWS\_EXPLOITS`\  - This category includes active \ :literal:`IP`\  address offering or distributig malware, shell code, rootkits, worms or viruses.
 
-      \*WEB\_ATTACKS - This category includes cross site scripting, iFrame injection, SQL injection, cross domain injection or domain password brute force attack.
+      \*\ :literal:`WEB\_ATTACKS`\  - This category includes cross site scripting, iFrame injection, SQL injection, cross domain injection or domain password brute force attack.
 
-      \*TOR\_PROXY - This category includes IP address acting as exit nodes for the Tor Network.
+      \*\ :literal:`TOR\_PROXY`\  - This category includes \ :literal:`IP`\  address acting as exit nodes for the Tor Network.
 
-      \*CLOUD - This category checks client IP with list of public cloud IPs.
+      \*\ :literal:`CLOUD`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs.
 
-      \*CLOUD\_AWS - This category checks client IP with list of public cloud IPs from Amazon Web Services.
+      \*\ :literal:`CLOUD\_AWS`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from Amazon Web Services.
 
-      \*CLOUD\_GCP - This category checks client IP with list of public cloud IPs from Google Cloud Platform.
+      \*\ :literal:`CLOUD\_GCP`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from Google Cloud Platform.
 
-      \*CLOUD\_AZURE - This category checks client IP with list of public cloud IPs from Azure.
+      \*\ :literal:`CLOUD\_AZURE`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from Azure.
 
-      \*CLOUD\_ORACLE - This category checks client IP with list of public cloud IPs from Oracle.
+      \*\ :literal:`CLOUD\_ORACLE`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from Oracle.
 
-      \*CLOUD\_IBM - This category checks client IP with list of public cloud IPs from IBM.
+      \*\ :literal:`CLOUD\_IBM`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from IBM.
 
-      \*CLOUD\_SALESFORCE - This category checks client IP with list of public cloud IPs from Salesforce.
+      \*\ :literal:`CLOUD\_SALESFORCE`\  - This category checks client \ :literal:`IP`\  with list of public cloud IPs from Salesforce.
 
 
       .. rst-class:: ansible-option-line

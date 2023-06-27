@@ -227,7 +227,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Identifies whether the connector is located Onprem, Aws or Azure
+      Identifies whether the connector is located \ :literal:`Onprem`\ , \ :literal:`Aws`\  or \ :literal:`Azure`\ 
 
 
       .. rst-class:: ansible-option-line
@@ -374,7 +374,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Describes if the customer is a Staging/Production or Dev Citrix Cloud customer
+      Describes if the customer is a \ :literal:`Staging`\ /\ :literal:`Production`\  or \ :literal:`Dev`\  Citrix Cloud customer
 
 
       .. rst-class:: ansible-option-line

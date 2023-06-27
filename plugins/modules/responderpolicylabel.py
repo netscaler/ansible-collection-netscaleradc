@@ -48,20 +48,6 @@ options:
         (:), and underscore characters.
     type: str
   policylabeltype:
-    description:
-      - 'Type of responses sent by the policies bound to this policy label. Types
-        are:'
-      - '* HTTP - HTTP responses. '
-      - '* OTHERTCP - NON-HTTP TCP responses.'
-      - '* SIP_UDP - SIP responses.'
-      - '* RADIUS - RADIUS responses.'
-      - '* MYSQL - SQL responses in MySQL format.'
-      - '* MSSQL - SQL responses in Microsoft SQL format.'
-      - '* NAT - NAT response.'
-      - '* MQTT - Trigger policies bind with MQTT type.'
-      - '* MQTT_JUMBO - Trigger policies bind with MQTT Jumbo type.'
-    type: str
-    default: HTTP
     choices:
       - HTTP
       - OTHERTCP
@@ -77,6 +63,44 @@ options:
       - MQTT_JUMBO
       - QUIC_BRIDGE
       - HTTP_QUIC
+    description:
+      - 'Type of responses sent by the policies bound to this policy label. Types
+        are:'
+      - '* C(HTTP) - C(HTTP) responses. '
+      - '* C(OTHERTCP) - NON-C(HTTP) TCP responses.'
+      - '* C(SIP_UDP) - SIP responses.'
+      - '* C(RADIUS) - C(RADIUS) responses.'
+      - '* C(MYSQL) - SQL responses in MySQL format.'
+      - '* C(MSSQL) - SQL responses in Microsoft SQL format.'
+      - '* C(NAT) - C(NAT) response.'
+      - '* C(MQTT) - Trigger policies bind with C(MQTT) type.'
+      - '* C(MQTT_JUMBO) - Trigger policies bind with C(MQTT) Jumbo type.'
+    type: str
+    default: HTTP
+  responderpolicylabel_responderpolicy_binding:
+    type: dict
+    description: Bindings for responderpolicylabel_responderpolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -97,6 +97,1348 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditnslogpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditnslogpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_auditnslogpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditnslogpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_auditnslogpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditnslogpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditnslogpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditnslogpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditnslogpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditnslogpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditnslogpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditsyslogpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditsyslogpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_auditsyslogpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditsyslogpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_auditsyslogpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditsyslogpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditsyslogpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditsyslogpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_auditsyslogpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_auditsyslogpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_auditsyslogpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_authorizationpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_authorizationpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_authorizationpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_authorizationpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_authorizationpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_authorizationpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_authorizationpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_authorizationpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_authorizationpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_authorizationpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_authorizationpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip6_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip6_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_intranetip6_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip6_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_intranetip6\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip6_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip6_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip6_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip6_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip6_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip6_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_intranetip_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_intranetip\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_intranetip_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_intranetip_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_intranetip_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_tmsessionpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_tmsessionpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_tmsessionpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_tmsessionpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_tmsessionpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_tmsessionpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_tmsessionpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_tmsessionpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_tmsessionpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_tmsessionpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_tmsessionpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnintranetapplication_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnintranetapplication_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_vpnintranetapplication_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnintranetapplication_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_vpnintranetapplication\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnintranetapplication_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnintranetapplication_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnintranetapplication_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnintranetapplication_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnintranetapplication_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnintranetapplication_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnsessionpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnsessionpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_vpnsessionpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnsessionpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_vpnsessionpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnsessionpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnsessionpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnsessionpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnsessionpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnsessionpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnsessionpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpntrafficpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpntrafficpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_vpntrafficpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpntrafficpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_vpntrafficpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpntrafficpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpntrafficpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpntrafficpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpntrafficpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpntrafficpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpntrafficpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurl_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurl_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_vpnurl_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurl_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_vpnurl\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurl_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurl_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurl_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurl_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurl_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurl_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurlpolicy_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurlpolicy_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **aaauser_vpnurlpolicy_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurlpolicy_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for aaauser\_vpnurlpolicy\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurlpolicy_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurlpolicy_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurlpolicy_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-aaauser_vpnurlpolicy_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.aaauser_module__parameter-aaauser_vpnurlpolicy_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-aaauser_vpnurlpolicy_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-api_path"></div>
 
       .. _ansible_collections.netscaler.adc.aaauser_module__parameter-api_path:

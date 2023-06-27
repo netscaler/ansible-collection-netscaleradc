@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowextendedmastersecret:
+    choices:
+      - true
+      - false
     description:
       - When set to YES, attempt to use the TLS Extended Master Secret (EMS, as
       - described in RFC 7627) when negotiating TLS 1.0, TLS 1.1 and TLS 1.2
@@ -31,22 +34,19 @@ options:
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
     type: str
-    choices:
-      - true
-      - false
   alpnprotocol:
-    description:
-      - Application protocol supported by the server and used in negotiation of the
-        protocol with the client. Possible values are HTTP1.1, HTTP2 and NONE. Default
-        value is NONE which implies application protocol is not enabled hence remain
-        unknown to the TLS layer. This parameter is relevant only if SSL connection
-        is handled by the virtual server of the type SSL_TCP.
-    type: str
-    default: NONE
     choices:
       - NONE
       - HTTP1.1
       - HTTP2
+    description:
+      - Application protocol supported by the server and used in negotiation of the
+        protocol with the client. Possible values are C(HTTP1.1), C(HTTP2) and C(NONE).
+        Default value is C(NONE) which implies application protocol is not enabled
+        hence remain unknown to the TLS layer. This parameter is relevant only if
+        SSL connection is handled by the virtual server of the type SSL_TCP.
+    type: str
+    default: NONE
   ciphername:
     description:
       - The cipher group/alias/individual cipher configuration
@@ -56,17 +56,17 @@ options:
       - cipher priority
     type: int
   cipherredirect:
-    description:
-      - State of Cipher Redirect. If this parameter is set to ENABLED, you can configure
-        an SSL virtual server or service to display meaningful error messages if the
-        SSL handshake fails because of a cipher mismatch between the virtual server
-        or service and the client.
-      - This parameter is not applicable when configuring a backend profile.
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of Cipher Redirect. If this parameter is set to C(ENABLED), you can
+        configure an SSL virtual server or service to display meaningful error messages
+        if the SSL handshake fails because of a cipher mismatch between the virtual
+        server or service and the client.
+      - This parameter is not applicable when configuring a backend profile.
+    type: str
+    default: DISABLED
   cipherurl:
     description:
       - The redirect URL to be used with the Cipher Redirect feature.
@@ -77,37 +77,43 @@ options:
         specify this parameter for SSL offloading with end-to-end encryption.
     type: int
   clientauth:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of client authentication. In service-based SSL offload, the service
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend profile.
     type: str
     default: DISABLED
+  clientauthuseboundcachain:
     choices:
       - ENABLED
       - DISABLED
-  clientauthuseboundcachain:
     description:
       - Certficates bound on the VIP are used for validating the client cert. Certficates
         came along with client cert are not used for validating the client cert
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   clientcert:
-    description:
-      - The rule for client certificate requirement in client authentication.
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The rule for client certificate requirement in client authentication.
+    type: str
   commonname:
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server.
     type: str
   denysslreneg:
+    choices:
+      - false
+      - FRONTEND_CLIENT
+      - FRONTEND_CLIENTSERVER
+      - ALL
+      - NONSECURE
     description:
       - 'Deny renegotiation in specified circumstances. Available settings function
         as follows:'
@@ -121,21 +127,15 @@ options:
         support RFC 5746.'
     type: str
     default: ALL
-    choices:
-      - false
-      - FRONTEND_CLIENT
-      - FRONTEND_CLIENTSERVER
-      - ALL
-      - NONSECURE
   dh:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of Diffie-Hellman (DH) key exchange.
       - This parameter is not applicable when configuring a backend profile.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dhcount:
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
@@ -145,6 +145,9 @@ options:
         DH count values are 0 and >= 500.
     type: int
   dhekeyexchangewithpsk:
+    choices:
+      - true
+      - false
     description:
       - Whether or not the SSL Virtual Server will require a DHE key exchange to occur
         when a PSK is accepted during a TLS 1.3 resumption handshake.
@@ -157,14 +160,14 @@ options:
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
     type: str
-    choices:
-      - true
-      - false
   dhfile:
     description:
       - The file name and path for the DH parameter.
     type: str
   dhkeyexpsizelimit:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This option enables the use of NIST recommended (NIST Special Publication
         800-56A) bit size for private-key size. For example, for DH params of size
@@ -172,19 +175,16 @@ options:
         256bits.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dropreqwithnohostheader:
+    choices:
+      - true
+      - false
     description:
       - Host header check for SNI enabled sessions. If this check is enabled and the
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
     type: str
-    choices:
-      - true
-      - false
   encrypttriggerpktcount:
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
@@ -193,6 +193,9 @@ options:
     type: int
     default: 45
   ersa:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of Ephemeral RSA (eRSA) key exchange. Ephemeral RSA allows clients that
         support only export ciphers to communicate with the secure server even if
@@ -205,40 +208,37 @@ options:
       - This parameter is not applicable when configuring a backend profile.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ersacount:
     description:
       - The  refresh  count  for the re-generation of RSA public-key and private-key
         pair.
     type: int
   hsts:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of HSTS protocol support for the SSL profile. Using HSTS, a server can
         enforce the use of an HTTPS connection for all communication with a client
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   includesubdomains:
+    choices:
+      - true
+      - false
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
     type: str
-    choices:
-      - true
-      - false
   insertionencoding:
+    choices:
+      - Unicode
+      - UTF-8
     description:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
     type: str
     default: Unicode
-    choices:
-      - Unicode
-      - UTF-8
   maxage:
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
@@ -252,49 +252,49 @@ options:
         Cannot be changed after the profile is created.
     type: str
   ocspstapling:
-    description:
-      - 'State of OCSP stapling support on the SSL virtual server. Supported only
-        if the protocol used is higher than SSLv3. Possible values:'
-      - 'ENABLED: The appliance sends a request to the OCSP responder to check the
-        status of the server certificate and caches the response for the specified
-        time. If the response is valid at the time of SSL handshake with the client,
-        the OCSP-based server certificate status is sent to the client during the
-        handshake.'
-      - 'DISABLED: The appliance does not check the status of the server certificate.'
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
-  preload:
     description:
-      - Flag indicates the consent of the site owner to have their domain preloaded.
+      - 'State of OCSP stapling support on the SSL virtual server. Supported only
+        if the protocol used is higher than SSLv3. Possible values:'
+      - 'C(ENABLED): The appliance sends a request to the OCSP responder to check
+        the status of the server certificate and caches the response for the specified
+        time. If the response is valid at the time of SSL handshake with the client,
+        the OCSP-based server certificate status is sent to the client during the
+        handshake.'
+      - 'C(DISABLED): The appliance does not check the status of the server certificate.'
     type: str
+    default: DISABLED
+  preload:
     choices:
       - true
       - false
+    description:
+      - Flag indicates the consent of the site owner to have their domain preloaded.
+    type: str
   prevsessionkeylifetime:
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
     type: int
   pushenctrigger:
+    choices:
+      - Always
+      - Merge
+      - Ignore
+      - Timer
     description:
       - 'Trigger encryption on the basis of the PUSH flag value. Available settings
         function as follows:'
       - '* ALWAYS - Any PUSH packet triggers encryption.'
-      - '* IGNORE - Ignore PUSH packet for triggering encryption.'
+      - '* IGNORE - C(Ignore) PUSH packet for triggering encryption.'
       - '* MERGE - For a consecutive sequence of PUSH packets, the last PUSH packet
         triggers encryption.'
       - '* TIMER - PUSH packet triggering encryption is delayed by the time defined
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
     type: str
-    choices:
-      - Always
-      - Merge
-      - Ignore
-      - Timer
   pushenctriggertimeout:
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
@@ -313,42 +313,42 @@ options:
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
     type: int
   quantumsize:
+    choices:
+      - 4096
+      - 8192
+      - 16384
     description:
       - Amount of data to collect before the data is pushed to the crypto hardware
         for encryption. For large downloads, a larger quantum size better utilizes
         the crypto resources.
     type: str
     default: 8192
-    choices:
-      - 4096
-      - 8192
-      - 16384
   redirectportrewrite:
-    description:
-      - State of the port rewrite while performing HTTPS redirect. If this parameter
-        is set to ENABLED, and the URL from the server does not contain the standard
-        port, the port is rewritten to the standard.
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of the port rewrite while performing HTTPS redirect. If this parameter
+        is set to C(ENABLED), and the URL from the server does not contain the standard
+        port, the port is rewritten to the standard.
+    type: str
+    default: DISABLED
   sendclosenotify:
+    choices:
+      - true
+      - false
     description:
       - Enable sending SSL Close-Notify at the end of a transaction.
     type: str
     default: true
-    choices:
-      - true
-      - false
   serverauth:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of server authentication support for the SSL Backend profile.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sessionkeylifetime:
     description:
       - This option sets the life time of symm key used to generate session tickets
@@ -356,45 +356,48 @@ options:
     type: int
     default: 3000
   sessionticket:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sessionticketkeydata:
     description:
       - Session ticket enc/dec key , admin can set it
     type: str
   sessionticketkeyrefresh:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sessionticketlifetime:
     description:
       - This option sets the life time of session tickets issued by NS in secs
     type: int
     default: 300
   sessreuse:
-    description:
-      - State of session reuse. Establishing the initial handshake requires CPU-intensive
-        public key encryption operations. With the ENABLED setting, session key exchange
-        is avoided for session resumption requests received from the client.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of session reuse. Establishing the initial handshake requires CPU-intensive
+        public key encryption operations. With the C(ENABLED) setting, session key
+        exchange is avoided for session resumption requests received from the client.
+    type: str
+    default: ENABLED
   sesstimeout:
     description:
       - The Session timeout value in seconds.
     type: int
   skipclientcertpolicycheck:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This flag controls the processing of X509 certificate policies. If this option
         is Enabled, then the policy check in Client authentication will be skipped.
@@ -402,10 +405,10 @@ options:
         is set to Mandatory
     type: str
     default: DISABLED
+  snienable:
     choices:
       - ENABLED
       - DISABLED
-  snienable:
     description:
       - State of the Server Name Indication (SNI) feature on the virtual server and
         service-based offload. SNI helps to enable SSL encryption on multiple domains
@@ -414,10 +417,11 @@ options:
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   snihttphostmatch:
+    choices:
+      - false
+      - CERT
+      - STRICT
     description:
       - Controls how the HTTP 'Host' header value is validated. These checks are performed
         only if the session is SNI enabled (i.e when vserver or profile bound to vserver
@@ -437,20 +441,16 @@ options:
       - '         header value.'
     type: str
     default: CERT
-    choices:
-      - false
-      - CERT
-      - STRICT
   ssl3:
-    description:
-      - State of SSLv3 protocol support for the SSL profile.
-      - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
-        support SSLv3, this parameter cannot be set to ENABLED.'
-    type: str
-    default: DISABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of SSLv3 protocol support for the SSL profile.
+      - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
+        support SSLv3, this parameter cannot be set to C(ENABLED).'
+    type: str
+    default: DISABLED
   sslimaxsessperserver:
     description:
       - Maximum ssl session to be cached per dynamic origin server. A unique ssl session
@@ -459,46 +459,49 @@ options:
     type: int
     default: 10
   sslinterception:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable transparent interception of SSL sessions.
     type: str
     default: DISABLED
+  ssliocspcheck:
     choices:
       - ENABLED
       - DISABLED
-  ssliocspcheck:
     description:
       - Enable or disable OCSP check for origin server certificate.
     type: str
     default: ENABLED
+  sslireneg:
     choices:
       - ENABLED
       - DISABLED
-  sslireneg:
     description:
       - Enable or disable triggering the client renegotiation when renegotiation request
         is received from the origin server.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ssllogprofile:
     description:
       - The name of the ssllogprofile.
     type: str
   sslprofiletype:
+    choices:
+      - BackEnd
+      - FrontEnd
+      - QUIC-FrontEnd
     description:
       - Type of profile. Front end profiles apply to the entity that receives requests
         from a client. Backend profiles apply to the entity that sends client requests
         to a server.
     type: str
     default: FrontEnd
-    choices:
-      - BackEnd
-      - FrontEnd
-      - QUIC-FrontEnd
   sslredirect:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of HTTPS redirects for the SSL service.
       - For an SSL session, if the client browser receives a redirect message, the
@@ -506,14 +509,11 @@ options:
         breaks if the object has moved from a secure site (https://) to an unsecure
         site (http://). Typically, a warning message appears on the screen, prompting
         the user to continue or disconnect.
-      - If SSL Redirect is ENABLED, the redirect message is automatically converted
+      - If SSL Redirect is C(ENABLED), the redirect message is automatically converted
         from http:// to https:// and the SSL session does not break.
       - This parameter is not applicable when configuring a backend profile.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ssltriggertimeout:
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
@@ -523,54 +523,54 @@ options:
     type: int
     default: 100
   strictcachecks:
-    description:
-      - Enable strict CA certificate checks on the appliance.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable strict CA certificate checks on the appliance.
+    type: str
   strictsigdigestcheck:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Parameter indicating to check whether peer entity certificate during TLS1.2
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
     type: str
     default: DISABLED
+  tls1:
     choices:
       - ENABLED
       - DISABLED
-  tls1:
     description:
       - State of TLSv1.0 protocol support for the SSL profile.
     type: str
     default: ENABLED
+  tls11:
     choices:
       - ENABLED
       - DISABLED
-  tls11:
     description:
       - State of TLSv1.1 protocol support for the SSL profile.
     type: str
     default: ENABLED
+  tls12:
     choices:
       - ENABLED
       - DISABLED
-  tls12:
     description:
       - State of TLSv1.2 protocol support for the SSL profile.
     type: str
     default: ENABLED
+  tls13:
     choices:
       - ENABLED
       - DISABLED
-  tls13:
     description:
       - State of TLSv1.3 protocol support for the SSL profile.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tls13sessionticketsperauthcontext:
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
@@ -582,6 +582,9 @@ options:
     type: int
     default: 1
   zerorttearlydata:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - State of TLS 1.3 0-RTT early data support for the SSL Virtual Server. This
         setting only has an effect if resumption is enabled, as early data cannot
@@ -590,9 +593,102 @@ options:
         particular there is no guarantee that the data cannot be replayed.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
+  sslprofile_ecccurve_binding:
+    type: dict
+    description: Bindings for sslprofile_ecccurve_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  sslprofile_sslcertkey_binding:
+    type: dict
+    description: Bindings for sslprofile_sslcertkey_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  sslprofile_sslcipher_binding:
+    type: dict
+    description: Bindings for sslprofile_sslcipher_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  sslprofile_sslciphersuite_binding:
+    type: dict
+    description: Bindings for sslprofile_sslciphersuite_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

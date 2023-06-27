@@ -24,26 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bypasssafetycheck:
-    description:
-      - Bypass the safety check and allow unsafe expressions.
-    type: str
     choices:
       - true
       - false
-  loglevel:
     description:
-      - 'Audit log level, which specifies the severity level of the log message being
-        generated.. '
-      - 'The following loglevels are valid: '
-      - '* EMERGENCY - Events that indicate an immediate crisis on the server.'
-      - '* ALERT - Events that might require action.'
-      - '* CRITICAL - Events that indicate an imminent server crisis.'
-      - '* ERROR - Events that indicate some type of error.'
-      - '* WARNING - Events that require action in the near future.'
-      - '* NOTICE - Events that the administrator should know about.'
-      - '* INFORMATIONAL - All but low-level events.'
-      - '* DEBUG - All events, in extreme detail.'
+      - Bypass the safety check and allow unsafe expressions.
     type: str
+  loglevel:
     choices:
       - EMERGENCY
       - ALERT
@@ -53,13 +40,26 @@ options:
       - NOTICE
       - INFORMATIONAL
       - DEBUG
-  logtonewnslog:
     description:
-      - Send the message to the new nslog.
+      - 'Audit log level, which specifies the severity level of the log message being
+        generated.. '
+      - 'The following loglevels are valid: '
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
     type: str
+  logtonewnslog:
     choices:
       - true
       - false
+    description:
+      - Send the message to the new nslog.
+    type: str
   name:
     description:
       - Name of the audit message action. Must begin with a letter, number, or the

@@ -26,12 +26,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
@@ -58,19 +58,19 @@ options:
       - Action URL of the form field to which a field format will be assigned.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
-  isregex_ff:
     description:
-      - Is the form field name a regular expression?
+      - Is the rule auto deployed by dynamic profile ?
     type: str
+  isregex_ff:
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - Is the form field name a regular expression?
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -80,19 +80,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

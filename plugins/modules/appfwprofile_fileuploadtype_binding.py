@@ -26,12 +26,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   as_fileuploadtypes_url:
     description:
       - FileUploadTypes action URL.
@@ -42,42 +42,42 @@ options:
         the profile.
     type: str
   filetype:
-    description:
-      - FileUploadTypes file types.
-    type: list
-    elements: str
     choices:
       - pdf
       - msdoc
       - text
       - image
       - any
+    description:
+      - FileUploadTypes file types.
+    type: list
+    elements: str
   fileuploadtype:
     description:
       - FileUploadTypes to allow/deny.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   isnameregex:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is field name a regular expression?
     type: str
     default: NOTREGEX
+  isregex_fileuploadtypes_url:
     choices:
       - REGEX
       - NOTREGEX
-  isregex_fileuploadtypes_url:
     description:
       - Is a regular expression?
     type: str
-    choices:
-      - REGEX
-      - NOTREGEX
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -87,19 +87,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

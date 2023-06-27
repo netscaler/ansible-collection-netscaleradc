@@ -26,43 +26,43 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   iskeyregex_json_blockkeyword:
+    choices:
+      - REGEX
+      - NOTREGEX
     description:
       - Is JSON blockkeyword key a regular expression?
     type: str
     default: NOTREGEX
-    choices:
-      - REGEX
-      - NOTREGEX
   jsonblockkeyword:
     description:
       - Field name of json block keyword binding
     type: str
   jsonblockkeywordtype:
-    description:
-      - JSON block keyword type
-    type: str
     choices:
       - literal
       - PCRE
+    description:
+      - JSON block keyword type
+    type: str
   jsonblockkeywordurl:
     description:
       - The json blockkeyword URL.
@@ -80,19 +80,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

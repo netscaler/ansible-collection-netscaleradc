@@ -969,7 +969,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of lookup (DNS or WINS) to attempt first. If the first-priority lookup fails, the second-priority lookup is attempted. Used only by the SSL VPN feature.
+      Type of lookup (\ :literal:`DNS`\  or \ :literal:`WINS`\ ) to attempt first. If the first-priority lookup fails, the second-priority lookup is attempted. Used only by the SSL VPN feature.
 
 
       .. rst-class:: ansible-option-line
@@ -1310,13 +1310,13 @@ Parameters
 
       Type of DNS queries (A, AAAA, or both) to generate during the routine functioning of certain Citrix ADC features, such as SSL VPN, cache redirection, and the integrated cache. The queries are sent to the external name servers that are configured for the forwarder function. If you specify both query types, you can also specify the order. Available settings function as follows:
 
-      \* OnlyAQuery. Send queries for IPv4 address records (A records) only. 
+      \* \ :literal:`OnlyAQuery`\ . Send queries for IPv4 address records (A records) only. 
 
-      \* OnlyAAAAQuery. Send queries for IPv6 address records (AAAA records) instead of queries for IPv4 address records (A records).
+      \* \ :literal:`OnlyAAAAQuery`\ . Send queries for IPv6 address records (AAAA records) instead of queries for IPv4 address records (A records).
 
-      \* AThenAAAAQuery. Send a query for an A record, and then send a query for an AAAA record if the query for the A record results in a NODATA response from the name server.
+      \* \ :literal:`AThenAAAAQuery`\ . Send a query for an A record, and then send a query for an AAAA record if the query for the A record results in a NODATA response from the name server.
 
-      \* AAAAThenAQuery. Send a query for an AAAA record, and then send a query for an A record if the query for the AAAA record results in a NODATA response from the name server.
+      \* \ :literal:`AAAAThenAQuery`\ . Send a query for an AAAA record, and then send a query for an A record if the query for the AAAA record results in a NODATA response from the name server.
 
 
       .. rst-class:: ansible-option-line

@@ -35,35 +35,35 @@ options:
         detection.
     type: bool
   bot_blacklist_action:
-    description:
-      - One or more actions to be taken if  bot is detected based on this Blacklist
-        binding. Only LOG action can be combined with DROP or RESET action.
-    type: list
-    elements: str
-    default: NONE
     choices:
       - NONE
       - LOG
       - DROP
       - RESET
       - REDIRECT
-  bot_blacklist_enabled:
     description:
-      - Enabled or disbaled black-list binding.
-    type: str
+      - One or more actions to be taken if  bot is detected based on this Blacklist
+        binding. Only C(LOG) action can be combined with C(DROP) or C(RESET) action.
+    type: list
+    elements: str
+    default: NONE
+  bot_blacklist_enabled:
     choices:
       - true
       - false
-  bot_blacklist_type:
     description:
-      - Type of the black-list entry.
+      - Enabled or disbaled black-list binding.
     type: str
+  bot_blacklist_type:
     choices:
       - IPv4
       - SUBNET
       - IPv6
       - IPv6_SUBNET
       - EXPRESSION
+    description:
+      - Type of the black-list entry.
+    type: str
   bot_blacklist_value:
     description:
       - Value of the bot black-list entry.

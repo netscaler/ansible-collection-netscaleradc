@@ -28,13 +28,13 @@ options:
       - Connection server URL
     type: str
   icvverification:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - ICV verification for PCOIP transport packets.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   name:
     description:
       - name of PCoIP profile

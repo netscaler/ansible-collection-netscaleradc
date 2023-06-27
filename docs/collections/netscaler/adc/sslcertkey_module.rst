@@ -463,11 +463,11 @@ Parameters
 
       Input format of the certificate and the private-key files. The three formats supported by the appliance are:
 
-      PEM - Privacy Enhanced Mail
+      \ :literal:`PEM`\  - Privacy Enhanced Mail
 
-      DER - Distinguished Encoding Rule
+      \ :literal:`DER`\  - Distinguished Encoding Rule
 
-      PFX - Personal Information Exchange
+      \ :literal:`PFX`\  - Personal Information Exchange
 
 
       .. rst-class:: ansible-option-line
@@ -1215,6 +1215,128 @@ Parameters
       .. raw:: html
 
         </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslcertkey_sslocspresponder_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.sslcertkey_module__parameter-sslcertkey_sslocspresponder_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **sslcertkey_sslocspresponder_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslcertkey_sslocspresponder_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for sslcertkey\_sslocspresponder\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslcertkey_sslocspresponder_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.sslcertkey_module__parameter-sslcertkey_sslocspresponder_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslcertkey_sslocspresponder_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-sslcertkey_sslocspresponder_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.sslcertkey_module__parameter-sslcertkey_sslocspresponder_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-sslcertkey_sslocspresponder_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
 
   * - .. raw:: html
 

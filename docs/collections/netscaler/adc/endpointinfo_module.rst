@@ -193,7 +193,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Endpoint kind. Currently, IP endpoints are supported
+      Endpoint kind. Currently, \ :literal:`IP`\  endpoints are supported
 
 
       .. rst-class:: ansible-option-line

@@ -51,14 +51,14 @@ options:
     type: int
     default: 30
   transportprotocol:
-    description:
-      - Name of the protocol(TCP,UDP) for which the parameters of this LSN application
-        port ATTRIBUTES applies
-    type: str
     choices:
       - TCP
       - UDP
       - ICMP
+    description:
+      - Name of the protocol(C(TCP),C(UDP)) for which the parameters of this LSN application
+        port ATTRIBUTES applies
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

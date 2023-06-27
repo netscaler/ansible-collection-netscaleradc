@@ -939,13 +939,13 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Bind point to which to bind the policy. Possible Values: REQUEST, INTERCEPT\_REQ and CLIENTHELLO\_REQ. These bindpoints mean:
+      Bind point to which to bind the policy. Possible Values: \ :literal:`REQUEST`\ , \ :literal:`INTERCEPT\_REQ`\  and \ :literal:`CLIENTHELLO\_REQ`\ . These bindpoints mean:
 
-      1. REQUEST: Policy evaluation will be done at appplication above SSL. This bindpoint is default and is used for actions based on clientauth and client cert.
+      1. \ :literal:`REQUEST`\ : Policy evaluation will be done at appplication above SSL. This bindpoint is default and is used for actions based on clientauth and client cert.
 
-      2. INTERCEPT\_REQ: Policy evaluation will be done during SSL handshake to decide whether to intercept or not. Actions allowed with this type are: INTERCEPT, BYPASS and RESET.
+      2. \ :literal:`INTERCEPT\_REQ`\ : Policy evaluation will be done during SSL handshake to decide whether to intercept or not. Actions allowed with this type are: INTERCEPT, BYPASS and RESET.
 
-      3. CLIENTHELLO\_REQ: Policy evaluation will be done during handling of Client Hello Request. Action allowed with this type is: RESET, FORWARD and PICKCACERTGRP.
+      3. \ :literal:`CLIENTHELLO\_REQ`\ : Policy evaluation will be done during handling of Client Hello Request. Action allowed with this type is: RESET, FORWARD and PICKCACERTGRP.
 
 
       .. rst-class:: ansible-option-line

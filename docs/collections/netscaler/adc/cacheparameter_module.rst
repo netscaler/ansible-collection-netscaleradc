@@ -998,13 +998,13 @@ Parameters
 
       Criteria for deciding whether a cached object can be served for an incoming HTTP request. Available settings function as follows:
 
-      HOSTNAME - The URL, host name, and host port values in the incoming HTTP request header must match the cache policy. The IP address and the TCP port of the destination host are not evaluated. Do not use the HOSTNAME setting unless you are certain that no rogue client can access a rogue server through the cache. 
+      \ :literal:`HOSTNAME`\  - The URL, host name, and host port values in the incoming HTTP request header must match the cache policy. The IP address and the TCP port of the destination host are not evaluated. Do not use the \ :literal:`HOSTNAME`\  setting unless you are certain that no rogue client can access a rogue server through the cache. 
 
-      HOSTNAME\_AND\_IP - The URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of
+      \ :literal:`HOSTNAME\_AND\_IP`\  - The URL, host name, host port in the incoming HTTP request header, and the IP address and TCP port of
 
       the destination server, must match the cache policy.
 
-      DNS - The URL, host name and host port in the incoming HTTP request, and the TCP port must match the cache policy. The host name is used for DNS lookup of the destination server's IP address, and is compared with the set of addresses returned by the DNS lookup.
+      \ :literal:`DNS`\  - The URL, host name and host port in the incoming HTTP request, and the TCP port must match the cache policy. The host name is used for \ :literal:`DNS`\  lookup of the destination server's IP address, and is compared with the set of addresses returned by the \ :literal:`DNS`\  lookup.
 
 
       .. rst-class:: ansible-option-line

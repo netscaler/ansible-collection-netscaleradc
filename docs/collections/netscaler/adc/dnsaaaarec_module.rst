@@ -894,11 +894,11 @@ Parameters
 
       Type of records to display. Available settings function as follows:
 
-      \* ADNS - Display all authoritative address records.
+      \* \ :literal:`ADNS`\  - Display all authoritative address records.
 
-      \* PROXY - Display all proxy address records.
+      \* \ :literal:`PROXY`\  - Display all proxy address records.
 
-      \* ALL - Display all address records.
+      \* \ :literal:`ALL`\  - Display all address records.
 
 
       .. rst-class:: ansible-option-line

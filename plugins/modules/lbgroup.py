@@ -53,27 +53,27 @@ options:
       - New name for the load balancing virtual server group.
     type: str
   persistencebackup:
-    description:
-      - Type of backup persistence for the group.
-    type: str
     choices:
       - SOURCEIP
       - NONE
-  persistencetype:
     description:
-      - 'Type of persistence for the group. Available settings function as follows:'
-      - '* SOURCEIP - Create persistence sessions based on the client IP.'
-      - '* COOKIEINSERT - Create persistence sessions based on a cookie in client
-        requests. The cookie is inserted by a Set-Cookie directive from the server,
-        in its first response to a client.'
-      - '* RULE - Create persistence sessions based on a user defined rule.'
-      - '* NONE - Disable persistence for the group.'
+      - Type of backup persistence for the group.
     type: str
+  persistencetype:
     choices:
       - SOURCEIP
       - COOKIEINSERT
       - RULE
       - NONE
+    description:
+      - 'Type of persistence for the group. Available settings function as follows:'
+      - '* C(SOURCEIP) - Create persistence sessions based on the client IP.'
+      - '* C(COOKIEINSERT) - Create persistence sessions based on a cookie in client
+        requests. The cookie is inserted by a Set-Cookie directive from the server,
+        in its first response to a client.'
+      - '* C(RULE) - Create persistence sessions based on a user defined rule.'
+      - '* C(NONE) - Disable persistence for the group.'
+    type: str
   persistmask:
     description:
       - Persistence mask to apply to source IPv4 addresses when creating source IP
@@ -98,6 +98,9 @@ options:
     type: int
     default: 2
   usevserverpersistency:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Use this parameter to enable vserver level persistence on group members. This
         allows member vservers to have their own persistence, but need to be compatible
@@ -105,15 +108,36 @@ options:
         sessions created by any of the members can be shared by other member vservers.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   v6persistmasklen:
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.
     type: int
     default: 128
+  lbgroup_lbvserver_binding:
+    type: dict
+    description: Bindings for lbgroup_lbvserver_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - 'Expression or other value specifying the next policy to be evaluated if the
@@ -74,11 +74,11 @@ options:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
     type: str
   labeltype:
+    choices:
+      - policylabel
     description:
       - Type of policy label invocation.
     type: str
-    choices:
-      - policylabel
   policyname:
     description:
       - Name of the dns policy.
@@ -89,14 +89,14 @@ options:
         priority should be less than 65535
     type: int
   type:
-    description:
-      - Type of global bind point for which to show bound policies.
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - RES_OVERRIDE
       - RES_DEFAULT
+    description:
+      - Type of global bind point for which to show bound policies.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

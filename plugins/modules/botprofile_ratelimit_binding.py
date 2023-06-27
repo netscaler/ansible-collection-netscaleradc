@@ -30,39 +30,39 @@ options:
       - Any comments about this binding.
     type: str
   bot_rate_limit_action:
-    description:
-      - One or more actions to be taken when the current rate becomes more than the
-        configured rate. Only LOG action can be combined with DROP, REDIRECT or RESET
-        action.
-    type: list
-    elements: str
-    default: NONE
     choices:
       - NONE
       - LOG
       - DROP
       - REDIRECT
       - RESET
-  bot_rate_limit_enabled:
     description:
-      - Enable or disable rate-limit binding.
-    type: str
+      - One or more actions to be taken when the current rate becomes more than the
+        configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT)
+        or C(RESET) action.
+    type: list
+    elements: str
+    default: NONE
+  bot_rate_limit_enabled:
     choices:
       - true
       - false
-  bot_rate_limit_type:
     description:
-      - 'Rate-limiting type Following rate-limiting types are allowed:'
-      - '*SOURCE_IP - Rate-limiting based on the client IP.'
-      - '*SESSION - Rate-limiting based on the configured cookie name.'
-      - '*URL - Rate-limiting based on the configured URL.'
-      - '*GEOLOCATION - Rate-limiting based on the configured country name.'
+      - Enable or disable rate-limit binding.
     type: str
+  bot_rate_limit_type:
     choices:
       - SESSION
       - SOURCE_IP
       - URL
       - GEOLOCATION
+    description:
+      - 'Rate-limiting type Following rate-limiting types are allowed:'
+      - '*C(SOURCE_IP) - Rate-limiting based on the client IP.'
+      - '*C(SESSION) - Rate-limiting based on the configured cookie name.'
+      - '*C(URL) - Rate-limiting based on the configured C(URL).'
+      - '*C(GEOLOCATION) - Rate-limiting based on the configured country name.'
+    type: str
   bot_rate_limit_url:
     description:
       - URL for the resource based rate-limiting.
@@ -81,9 +81,6 @@ options:
       - Cookie name which is used to identify the session for session rate-limiting.
     type: str
   countrycode:
-    description:
-      - Country name which is used for geolocation rate-limiting.
-    type: str
     choices:
       - AF
       - AX
@@ -334,6 +331,9 @@ options:
       - YE
       - ZM
       - ZW
+    description:
+      - Country name which is used for geolocation rate-limiting.
+    type: str
   logmessage:
     description:
       - Message to be logged for this binding.

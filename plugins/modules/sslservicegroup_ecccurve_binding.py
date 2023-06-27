@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   ecccurvename:
-    description:
-      - Named ECC curve bound to servicegroup.
-    type: str
     choices:
       - ALL
       - P_224
       - P_256
       - P_384
       - P_521
+    description:
+      - Named ECC curve bound to servicegroup.
+    type: str
   servicegroupname:
     description:
       - The name of the SSL service to which the SSL policy needs to be bound.

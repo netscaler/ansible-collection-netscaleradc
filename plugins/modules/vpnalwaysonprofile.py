@@ -24,14 +24,17 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   clientcontrol:
+    choices:
+      - ALLOW
+      - DENY
     description:
       - Allow/Deny user to log off and connect to another Gateway
     type: str
     default: DENY
-    choices:
-      - ALLOW
-      - DENY
   locationbasedvpn:
+    choices:
+      - Remote
+      - Everywhere
     description:
       - Option to decide if tunnel should be established when in enterprise network.
         When locationBasedVPN is remote, client tries to detect if it is located in
@@ -43,24 +46,21 @@ options:
         enterprise network and tries to establish the tunnel
     type: str
     default: Remote
-    choices:
-      - Remote
-      - Everywhere
   name:
     description:
       - name of AlwaysON profile
     type: str
   networkaccessonvpnfailure:
-    description:
-      - Option to block network traffic when tunnel is not established(and the config
-        requires that tunnel be established). When set to onlyToGateway, the network
-        traffic to and from the client (except Gateway IP) is blocked. When set to
-        fullAccess, the network traffic is not blocked
-    type: str
-    default: fullAccess
     choices:
       - onlyToGateway
       - fullAccess
+    description:
+      - Option to block network traffic when tunnel is not established(and the config
+        requires that tunnel be established). When set to C(onlyToGateway), the network
+        traffic to and from the client (except Gateway IP) is blocked. When set to
+        C(fullAccess), the network traffic is not blocked
+    type: str
+    default: fullAccess
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

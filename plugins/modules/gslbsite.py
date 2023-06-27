@@ -37,6 +37,9 @@ options:
         the cluster.'
     type: str
   metricexchange:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Exchange metrics with other sites. Metrics are exchanged by using Metric
         Exchange Protocol (MEP). The appliances in the GSLB setup exchange health
@@ -50,15 +53,15 @@ options:
         the state of GSLB services. Otherwise, the service is marked as DOWN.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   naptrreplacementsuffix:
     description:
       - The naptr replacement suffix configured here will be used to construct the
         naptr replacement field in NAPTR record.
     type: str
   nwmetricexchange:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Exchange, with other GSLB sites, network metrics such as round-trip time (RTT),
         learned from communications with various local DNS (LDNS) servers used by
@@ -66,9 +69,6 @@ options:
         and is exchanged every 5 seconds.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   parentsite:
     description:
       - Parent site of the GSLB site, in a parent-child topology.
@@ -85,13 +85,13 @@ options:
         an external firewall or a NAT device.
     type: str
   sessionexchange:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Exchange persistent session entries with other GSLB sites every five seconds.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   siteipaddress:
     description:
       - IP address for the GSLB site. The GSLB site uses this IP address to communicate
@@ -110,6 +110,9 @@ options:
         or single quotation marks (for example, "my gslbsite" or ''my gslbsite'').'
     type: str
   sitetype:
+    choices:
+      - REMOTE
+      - LOCAL
     description:
       - Type of site to create. If the type is not specified, the appliance automatically
         detects and sets the type on the basis of the IP address being assigned to
@@ -118,26 +121,23 @@ options:
         it is a remote site.
     type: str
     default: NONE
-    choices:
-      - REMOTE
-      - LOCAL
   triggermonitor:
+    choices:
+      - ALWAYS
+      - MEPDOWN
+      - MEPDOWN_SVCDOWN
     description:
       - 'Specify the conditions under which the GSLB service must be monitored by
         a monitor, if one is bound. Available settings function as follows:'
-      - '* ALWAYS - Monitor the GSLB service at all times.'
-      - '* MEPDOWN - Monitor the GSLB service only when the exchange of metrics through
-        the Metrics Exchange Protocol (MEP) is disabled.'
-      - 'MEPDOWN_SVCDOWN - Monitor the service in either of the following situations: '
+      - '* C(ALWAYS) - Monitor the GSLB service at all times.'
+      - '* C(MEPDOWN) - Monitor the GSLB service only when the exchange of metrics
+        through the Metrics Exchange Protocol (MEP) is disabled.'
+      - 'C(MEPDOWN_SVCDOWN) - Monitor the service in either of the following situations: '
       - '* The exchange of metrics through MEP is disabled.'
       - '* The exchange of metrics through MEP is enabled but the status of the service,
         learned through metrics exchange, is DOWN.'
     type: str
     default: ALWAYS
-    choices:
-      - ALWAYS
-      - MEPDOWN
-      - MEPDOWN_SVCDOWN
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

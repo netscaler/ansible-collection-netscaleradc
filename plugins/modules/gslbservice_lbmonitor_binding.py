@@ -30,12 +30,12 @@ options:
       - Monitor name.
     type: str
   monstate:
-    description:
-      - State of the monitor bound to gslb service.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of the monitor bound to gslb service.
+    type: str
   servicename:
     description:
       - Name of the GSLB service.

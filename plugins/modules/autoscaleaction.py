@@ -41,12 +41,12 @@ options:
     type: int
     default: 300
   type:
-    description:
-      - The type of action.
-    type: str
     choices:
       - SCALE_UP
       - SCALE_DOWN
+    description:
+      - The type of action.
+    type: str
   vmdestroygraceperiod:
     description:
       - Time in minutes a VM is kept in inactive state before destroying

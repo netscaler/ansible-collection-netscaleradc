@@ -58,12 +58,12 @@ options:
         way to use this feature.
     type: str
   encrypttoken:
-    description:
-      - Option to encrypt token when Citrix ADC IDP sends one.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to encrypt token when Citrix ADC IDP sends one.
+    type: str
   issuer:
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
@@ -97,20 +97,20 @@ options:
         jwks_uri for RP public key(s).
     type: str
   sendpassword:
-    description:
-      - Option to send encrypted password in idtoken.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to send encrypted password in idtoken.
+    type: str
   signaturealg:
+    choices:
+      - RS256
+      - RS512
     description:
       - Algorithm to be used to sign OpenID tokens.
     type: str
     default: RS256
-    choices:
-      - RS256
-      - RS512
   signatureservice:
     description:
       - Name of the service in cloud used to sign the data. This is applicable only

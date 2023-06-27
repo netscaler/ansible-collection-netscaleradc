@@ -24,22 +24,22 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allow204:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'Enable or Disable sending Allow: 204 header in ICAP request.'
     type: str
     default: ENABLED
+  connectionkeepalive:
     choices:
       - ENABLED
       - DISABLED
-  connectionkeepalive:
     description:
       - If enabled, Citrix ADC keeps the ICAP connection alive after a transaction
         to reuse it to send next ICAP request.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   hostheader:
     description:
       - ICAP Host Header
@@ -69,12 +69,12 @@ options:
         ICAP response to emit the logs.
     type: str
   mode:
-    description:
-      - ICAP Mode of operation. It is a mandatory argument while creating an icapprofile.
-    type: str
     choices:
       - REQMOD
       - RESPMOD
+    description:
+      - ICAP Mode of operation. It is a mandatory argument while creating an icapprofile.
+    type: str
   name:
     description:
       - Name for an ICAP profile. Must begin with a letter, number, or the underscore
@@ -87,6 +87,9 @@ options:
         or single quotation marks \(for example, "my icap profile" or ''my icap profile''\).'
     type: str
   preview:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or Disable preview header with ICAP request. This feature allows an
         ICAP server to see the beginning of a transaction, then decide if it wants
@@ -94,9 +97,6 @@ options:
         the request message.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   previewlength:
     description:
       - Value of Preview Header field. Citrix ADC uses the minimum of this set value
@@ -116,25 +116,25 @@ options:
         request timeout action is performed. Zero value disables this timeout functionality.
     type: int
   reqtimeoutaction:
-    description:
-      - Name of the action to perform if the Vserver/Server representing the remote
-        service does not respond with any response within the timeout value configured.
-        The Supported actions are
-      - '* BYPASS - This Ignores the remote server response and sends the request/response
-        to Client/Server.'
-      - '           * If the ICAP response with Encapsulated headers is not received
-        within the request-timeout value configured, this Ignores the remote ICAP
-        server response and sends the Full request/response to Server/Client.'
-      - '* RESET - Reset the client connection by closing it. The client program,
-        such as a browser, will handle this and may inform the user. The client may
-        then resend the request if desired.'
-      - '* DROP - Drop the request without sending a response to the user.'
-    type: str
-    default: RESET
     choices:
       - BYPASS
       - DROP
       - RESET
+    description:
+      - Name of the action to perform if the Vserver/Server representing the remote
+        service does not respond with any response within the timeout value configured.
+        The Supported actions are
+      - '* C(BYPASS) - This Ignores the remote server response and sends the request/response
+        to Client/Server.'
+      - '           * If the ICAP response with Encapsulated headers is not received
+        within the request-timeout value configured, this Ignores the remote ICAP
+        server response and sends the Full request/response to Server/Client.'
+      - '* C(RESET) - Reset the client connection by closing it. The client program,
+        such as a browser, will handle this and may inform the user. The client may
+        then resend the request if desired.'
+      - '* C(DROP) - Drop the request without sending a response to the user.'
+    type: str
+    default: RESET
   uri:
     description:
       - URI representing icap service. It is a mandatory argument while creating an

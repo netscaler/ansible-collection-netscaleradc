@@ -24,12 +24,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advertise:
-    description:
-      - Advertise this route.
-    type: str
     choices:
       - DISABLED
       - ENABLED
+    description:
+      - Advertise this route.
+    type: str
   cost:
     description:
       - Positive integer used by the routing algorithms to determine preference for
@@ -56,13 +56,13 @@ options:
         monitor this route.
     type: str
   msr:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Monitor this route with a monitor of type ND6 or PING.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   network:
     description:
       - IPv6 network address for which to add a route entry to the routing table of
@@ -75,9 +75,6 @@ options:
     type: str
     default: DEFAULT_NG
   routetype:
-    description:
-      - Type of IPv6 routes to remove from the routing table of the Citrix ADC.
-    type: str
     choices:
       - CONNECTED
       - STATIC
@@ -88,6 +85,9 @@ options:
       - RIP
       - ND-RA-ROUTE
       - FIB6
+    description:
+      - Type of IPv6 routes to remove from the routing table of the Citrix ADC.
+    type: str
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want

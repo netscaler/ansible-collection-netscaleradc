@@ -273,11 +273,11 @@ Parameters
 
       Possible cipher operations are:
 
-      	ADD - Appends the given cipher-suite to the existing one configured for the virtual server.
+      	\ :literal:`ADD`\  - Appends the given cipher-suite to the existing one configured for the virtual server.
 
-      	REM - Removes the given cipher-suite from the existing one configured for the virtual server.
+      	\ :literal:`REM`\  - Removes the given cipher-suite from the existing one configured for the virtual server.
 
-      	ORD - Overrides the current configured cipher-suite for the virtual server with the given cipher-suite.
+      	\ :literal:`ORD`\  - Overrides the current configured cipher-suite for the virtual server with the given cipher-suite.
 
 
       .. rst-class:: ansible-option-line

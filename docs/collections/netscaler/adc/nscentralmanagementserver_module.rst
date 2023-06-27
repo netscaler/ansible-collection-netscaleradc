@@ -956,7 +956,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of the central management server. Must be either CLOUD or ONPREM depending on whether the server is on the cloud or on premise.
+      Type of the central management server. Must be either \ :literal:`CLOUD`\  or \ :literal:`ONPREM`\  depending on whether the server is on the cloud or on premise.
 
 
       .. rst-class:: ansible-option-line

@@ -24,11 +24,11 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   aclaction:
+    choices:
+      - DENY
     description:
       - Drop incoming IPv4 packets that match the simple ACL rule.
     type: str
-    choices:
-      - DENY
   aclname:
     description:
       - Name for the simple ACL rule. Must begin with an ASCII alphabetic or underscore
@@ -51,13 +51,13 @@ options:
       - '0'
     type: bool
   protocol:
+    choices:
+      - TCP
+      - UDP
     description:
       - Protocol to match against the protocol of an incoming IPv4 packet. You must
         set this parameter if you have set the Destination Port parameter.
     type: str
-    choices:
-      - TCP
-      - UDP
   srcip:
     description:
       - IP address to match against the source IP address of an incoming IPv4 packet.

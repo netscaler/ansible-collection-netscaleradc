@@ -31,12 +31,12 @@ options:
         the LDAP directory structure's DN.
     type: str
   binary:
-    description:
-      - Set the LDAP-based CRL retrieval mode to binary.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Set the LDAP-based CRL retrieval mode to binary.
+    type: str
   binddn:
     description:
       - Bind distinguished name (DN) to be used to access the CRL object in the LDAP
@@ -94,35 +94,35 @@ options:
         the file. /nsconfig/ssl/ is the default path
     type: str
   inform:
-    description:
-      - 'Input format of the CRL file. The two formats supported on the appliance
-        are:'
-      - PEM - Privacy Enhanced Mail.
-      - DER - Distinguished Encoding Rule.
-    type: str
-    default: PEM
     choices:
       - DER
       - PEM
-  interval:
     description:
-      - CRL refresh interval. Use the NONE setting to unset this parameter.
+      - 'Input format of the CRL file. The two formats supported on the appliance
+        are:'
+      - C(PEM) - Privacy Enhanced Mail.
+      - C(DER) - Distinguished Encoding Rule.
     type: str
+    default: PEM
+  interval:
     choices:
       - MONTHLY
       - WEEKLY
       - DAILY
       - NOW
       - NONE
-  method:
     description:
-      - Method for CRL refresh. If LDAP is selected, specify the method, CA certificate,
-        base DN, port, and LDAP server name. If HTTP is selected, specify the CA certificate,
-        method, URL, and port. Cannot be changed after a CRL is added.
+      - CRL refresh interval. Use the C(NONE) setting to unset this parameter.
     type: str
+  method:
     choices:
       - HTTP
       - LDAP
+    description:
+      - Method for CRL refresh. If C(LDAP) is selected, specify the method, CA certificate,
+        base DN, port, and C(LDAP) server name. If C(HTTP) is selected, specify the
+        CA certificate, method, URL, and port. Cannot be changed after a CRL is added.
+    type: str
   password:
     description:
       - Password to access the CRL in the LDAP repository if access to the LDAP repository
@@ -133,28 +133,28 @@ options:
       - Port for the LDAP server.
     type: int
   refresh:
-    description:
-      - Set CRL auto refresh.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Set CRL auto refresh.
+    type: str
   revoke:
     description:
       - Name of and, optionally, path to the certificate to be revoked. /nsconfig/ssl/
         is the default path.
     type: str
   scope:
-    description:
-      - 'Extent of the search operation on the LDAP server. Available settings function
-        as follows:'
-      - One - One level below Base DN.
-      - Base - Exactly the same level as Base DN.
-    type: str
-    default: One
     choices:
       - Base
       - One
+    description:
+      - 'Extent of the search operation on the LDAP server. Available settings function
+        as follows:'
+      - C(One) - C(One) level below C(Base) DN.
+      - C(Base) - Exactly the same level as C(Base) DN.
+    type: str
+    default: One
   server:
     description:
       - IP address of the LDAP server from which to fetch the CRLs.

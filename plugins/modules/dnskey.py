@@ -24,14 +24,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   algorithm:
-    description:
-      - Algorithm to generate for zone signing.
-    type: str
-    default: RSASHA1
     choices:
       - RSASHA1
       - RSASHA256
       - RSASHA512
+    description:
+      - Algorithm to generate for zone signing.
+    type: str
+    default: RSASHA1
   expires:
     description:
       - Time period for which to consider the key valid, after the key is used to
@@ -56,15 +56,15 @@ options:
     type: int
     default: 512
   keytype:
-    description:
-      - Type of key to create.
-    type: str
-    default: ZSK
     choices:
       - KSK
       - KeySigningKey
       - ZSK
       - ZoneSigningKey
+    description:
+      - Type of key to create.
+    type: str
+    default: ZSK
   notificationperiod:
     description:
       - Time at which to generate notification of key expiration, specified as number
@@ -101,23 +101,23 @@ options:
     type: int
     default: 3600
   units1:
+    choices:
+      - MINUTES
+      - HOURS
+      - DAYS
     description:
       - Units for the expiry period.
     type: str
     default: DAYS
+  units2:
     choices:
       - MINUTES
       - HOURS
       - DAYS
-  units2:
     description:
       - Units for the notification period.
     type: str
     default: DAYS
-    choices:
-      - MINUTES
-      - HOURS
-      - DAYS
   zonename:
     description:
       - Name of the zone for which to create a key.

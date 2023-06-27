@@ -740,11 +740,11 @@ Parameters
 
       Security level required for communication between the Citrix ADC and the SNMPv3 users who belong to the group. Specify one of the following options:
 
-      noAuthNoPriv. Require neither authentication nor encryption.
+      \ :literal:`noAuthNoPriv`\ . Require neither authentication nor encryption.
 
-      authNoPriv. Require authentication but no encryption.
+      \ :literal:`authNoPriv`\ . Require authentication but no encryption.
 
-      authPriv. Require authentication and encryption.
+      \ :literal:`authPriv`\ . Require authentication and encryption.
 
       Note: If you specify authentication, you must specify an encryption algorithm when you assign an SNMPv3 user to the group. If you also specify encryption, you must assign both an authentication and an encryption algorithm for each group member.
 

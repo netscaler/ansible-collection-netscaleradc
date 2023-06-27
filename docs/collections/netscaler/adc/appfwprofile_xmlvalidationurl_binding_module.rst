@@ -1024,7 +1024,7 @@ Parameters
 
       Modifies the behaviour of the Request URL validation w.r.t. the Service URL.
 
-      	If set to ABSOLUTE, the entire request URL is validated with the entire URL mentioned in Service of the associated WSDL.
+      	If set to \ :literal:`ABSOLUTE`\ , the entire request URL is validated with the entire URL mentioned in Service of the associated WSDL.
 
       		eg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService would FAIL the validation.
 

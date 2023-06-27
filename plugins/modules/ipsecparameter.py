@@ -24,39 +24,39 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   encalgo:
-    description:
-      - 'Type of encryption algorithm (Note: Selection of AES enables AES128)'
-    type: list
-    elements: str
-    default: AES
     choices:
       - AES
       - AES192
       - AES256
-  hashalgo:
     description:
-      - Type of hashing algorithm
+      - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
     type: list
     elements: str
-    default: HMAC_SHA256
+    default: AES
+  hashalgo:
     choices:
       - HMAC_SHA1
       - HMAC_SHA256
       - HMAC_SHA384
       - HMAC_SHA512
       - HMAC_MD5
+    description:
+      - Type of hashing algorithm
+    type: list
+    elements: str
+    default: HMAC_SHA256
   ikeretryinterval:
     description:
       - IKE retry interval for bringing up the connection
     type: int
   ikeversion:
+    choices:
+      - V1
+      - V2
     description:
       - IKE Protocol Version
     type: str
     default: V2
-    choices:
-      - V1
-      - V2
   lifetime:
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
@@ -69,13 +69,13 @@ options:
         Zero value disables liveliness checks.
     type: int
   perfectforwardsecrecy:
+    choices:
+      - ENABLE
+      - DISABLE
     description:
       - Enable/Disable PFS.
     type: str
     default: DISABLE
-    choices:
-      - ENABLE
-      - DISABLE
   replaywindowsize:
     description:
       - IPSec Replay window size for the data traffic

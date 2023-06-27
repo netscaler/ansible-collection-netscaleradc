@@ -786,7 +786,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Severity level at or above which the Citrix ADC sends trap messages to this trap listener. The severity levels, in increasing order of severity, are Informational, Warning, Minor, Major, Critical. This parameter can be set for trap listeners of type SPECIFIC only. The default is to send all levels of trap messages. 
+      Severity level at or above which the Citrix ADC sends trap messages to this trap listener. The severity levels, in increasing order of severity, are \ :literal:`Informational`\ , \ :literal:`Warning`\ , \ :literal:`Minor`\ , \ :literal:`Major`\ , \ :literal:`Critical`\ . This parameter can be set for trap listeners of type SPECIFIC only. The default is to send all levels of trap messages. 
 
       Important: Trap messages are not assigned severity levels unless you specify severity levels when configuring SNMP alarms.
 
@@ -809,6 +809,128 @@ Parameters
       .. raw:: html
 
         </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-snmptrap_snmpuser_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.snmptrap_module__parameter-snmptrap_snmpuser_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **snmptrap_snmpuser_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-snmptrap_snmpuser_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for snmptrap\_snmpuser\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-snmptrap_snmpuser_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.snmptrap_module__parameter-snmptrap_snmpuser_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-snmptrap_snmpuser_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-snmptrap_snmpuser_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.snmptrap_module__parameter-snmptrap_snmpuser_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-snmptrap_snmpuser_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
 
   * - .. raw:: html
 
@@ -959,7 +1081,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of trap messages that the Citrix ADC sends to the trap listener: Generic or the enterprise-specific messages defined in the MIB file.
+      Type of trap messages that the Citrix ADC sends to the trap listener: Generic or the enterprise-\ :literal:`specific`\  messages defined in the MIB file.
 
 
       .. rst-class:: ansible-option-line

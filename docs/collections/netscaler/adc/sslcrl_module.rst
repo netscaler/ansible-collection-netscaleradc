@@ -585,9 +585,9 @@ Parameters
 
       Input format of the CRL file. The two formats supported on the appliance are:
 
-      PEM - Privacy Enhanced Mail.
+      \ :literal:`PEM`\  - Privacy Enhanced Mail.
 
-      DER - Distinguished Encoding Rule.
+      \ :literal:`DER`\  - Distinguished Encoding Rule.
 
 
       .. rst-class:: ansible-option-line
@@ -736,7 +736,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      CRL refresh interval. Use the NONE setting to unset this parameter.
+      CRL refresh interval. Use the \ :literal:`NONE`\  setting to unset this parameter.
 
 
       .. rst-class:: ansible-option-line
@@ -880,7 +880,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Method for CRL refresh. If LDAP is selected, specify the method, CA certificate, base DN, port, and LDAP server name. If HTTP is selected, specify the CA certificate, method, URL, and port. Cannot be changed after a CRL is added.
+      Method for CRL refresh. If \ :literal:`LDAP`\  is selected, specify the method, CA certificate, base DN, port, and \ :literal:`LDAP`\  server name. If \ :literal:`HTTP`\  is selected, specify the CA certificate, method, URL, and port. Cannot be changed after a CRL is added.
 
 
       .. rst-class:: ansible-option-line
@@ -1333,9 +1333,9 @@ Parameters
 
       Extent of the search operation on the LDAP server. Available settings function as follows:
 
-      One - One level below Base DN.
+      \ :literal:`One`\  - \ :literal:`One`\  level below \ :literal:`Base`\  DN.
 
-      Base - Exactly the same level as Base DN.
+      \ :literal:`Base`\  - Exactly the same level as \ :literal:`Base`\  DN.
 
 
       .. rst-class:: ansible-option-line

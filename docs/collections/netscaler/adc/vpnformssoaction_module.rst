@@ -724,9 +724,9 @@ Parameters
 
       How to process the name-value pair. Available settings function as follows:
 
-      \* STATIC - The administrator-configured values are used.
+      \* \ :literal:`STATIC`\  - The administrator-configured values are used.
 
-      \* DYNAMIC - The response is parsed, the form is extracted, and then submitted.
+      \* \ :literal:`DYNAMIC`\  - The response is parsed, the form is extracted, and then submitted.
 
 
       .. rst-class:: ansible-option-line
@@ -972,7 +972,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      HTTP method (GET or POST) used by the single sign-on form to send the logon credentials to the logon server.
+      HTTP method (\ :literal:`GET`\  or \ :literal:`POST`\ ) used by the single sign-on form to send the logon credentials to the logon server.
 
 
       .. rst-class:: ansible-option-line

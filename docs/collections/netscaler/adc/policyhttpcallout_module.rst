@@ -1048,11 +1048,11 @@ Parameters
 
       Available settings function as follows:
 
-      \* TEXT - Treat the returned value as a text string. 
+      \* \ :literal:`TEXT`\  - Treat the returned value as a text string. 
 
-      \* NUM - Treat the returned value as a number.
+      \* \ :literal:`NUM`\  - Treat the returned value as a number.
 
-      \* BOOL - Treat the returned value as a Boolean value. 
+      \* \ :literal:`BOOL`\  - Treat the returned value as a Boolean value. 
 
       Note: You cannot change the return type after it is set.
 

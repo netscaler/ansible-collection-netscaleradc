@@ -24,64 +24,64 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advertiseondefaultpartition:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition
     type: str
     default: DISABLED
+  decrementhoplimit:
     choices:
       - ENABLED
       - DISABLED
-  decrementhoplimit:
     description:
-      - Decrement Hop Limit by 1 when ENABLED.This setting is applicable only for
+      - Decrement Hop Limit by 1 when C(ENABLED).This setting is applicable only for
         UDP traffic.
     type: str
     default: DISABLED
+  dynamicrouting:
     choices:
       - ENABLED
       - DISABLED
-  dynamicrouting:
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IPv6 (SNIP6)
         address.
     type: str
     default: DISABLED
+  ftp:
     choices:
       - ENABLED
       - DISABLED
-  ftp:
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   gui:
-    description:
-      - Allow graphical user interface (GUI) access to this IP address.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - SECUREONLY
       - DISABLED
+    description:
+      - Allow graphical user interface (GUI) access to this IP address.
+    type: str
+    default: ENABLED
   hostroute:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to push the VIP6 to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols.
     type: str
+  icmp:
     choices:
       - ENABLED
       - DISABLED
-  icmp:
     description:
       - Respond to ICMP requests for this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ip6hostrtgw:
     description:
       - 'IPv6 address of the gateway for the route. If Gateway is not set, VIP uses
@@ -101,51 +101,51 @@ options:
         for the VIP6 address.
     type: int
   mgmtaccess:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow access to management applications on this IP address.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   mptcpadvertise:
+    choices:
+      - true
+      - false
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
     type: str
-    choices:
-      - true
-      - false
   nd:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Respond to Neighbor Discovery (ND) requests for this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ndowner:
     description:
       - NdOwner in Cluster for VIPS and Striped SNIPS
     type: int
     default: 255
   networkroute:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to push the SNIP6 subnet to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocol.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   ospf6lsatype:
+    choices:
+      - INTRA_AREA
+      - EXTERNAL
     description:
       - Type of LSAs to be used by the IPv6 OSPF protocol, running on the Citrix ADC,
         for advertising the route for the VIP6 address.
     type: str
     default: EXTERNAL
-    choices:
-      - INTRA_AREA
-      - EXTERNAL
   ospfarea:
     description:
       - ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for
@@ -154,14 +154,14 @@ options:
     type: int
     default: -1
   ownerdownresponse:
+    choices:
+      - true
+      - false
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
     type: str
     default: true
-    choices:
-      - true
-      - false
   ownernode:
     description:
       - ID of the cluster node for which you are adding the IP address. Must be used
@@ -171,48 +171,48 @@ options:
     type: int
     default: 255
   restrictaccess:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Block access to nonmanagement applications on this IP address. This option
         is applicable forMIP6s, SNIP6s, and NSIP6s, and is disabled by default. Nonmanagement
         applications can run on the underlying Citrix ADC Free BSD operating system.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   scope:
+    choices:
+      - global
+      - link-local
     description:
       - Scope of the IPv6 address to be created. Cannot be changed after the IP address
         is created.
     type: str
     default: global
-    choices:
-      - global
-      - link-local
   snmp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
     type: str
     default: ENABLED
+  ssh:
     choices:
       - ENABLED
       - DISABLED
-  ssh:
     description:
       - Allow secure Shell (SSH) access to this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   state:
+    choices:
+      - DISABLED
+      - ENABLED
     description:
       - Enable or disable the IP address.
     type: str
     default: ENABLED
-    choices:
-      - DISABLED
-      - ENABLED
   tag:
     description:
       - Tag value for the network/host route associated with this IP.
@@ -224,19 +224,14 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   telnet:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow Telnet access to this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - Type of IP address to be created on the Citrix ADC. Cannot be changed after
-        the IP address is created.
-    type: str
-    default: SNIP
     choices:
       - NSIP
       - VIP
@@ -245,6 +240,11 @@ options:
       - ADNSsvcIP
       - RADIUSListenersvcIP
       - CLIP
+    description:
+      - Type of IP address to be created on the Citrix ADC. Cannot be changed after
+        the IP address is created.
+    type: str
+    default: SNIP
   vlan:
     description:
       - The VLAN number.
@@ -256,29 +256,34 @@ options:
         configuration using VRRP.
     type: int
   vserver:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the state of all the virtual servers associated with this
         VIP6 address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   vserverrhilevel:
+    choices:
+      - ONE_VSERVER
+      - ALL_VSERVERS
+      - NONE
+      - VSVR_CNTRLD
     description:
       - Advertise or do not advertise the route for the Virtual IP (VIP6) address
         on the basis of the state of the virtual servers associated with that VIP6.
-      - '* NONE - Advertise the route for the VIP6 address, irrespective of the state
-        of the virtual servers associated with the address.'
+      - '* C(NONE) - Advertise the route for the VIP6 address, irrespective of the
+        state of the virtual servers associated with the address.'
       - '* ONE VSERVER - Advertise the route for the VIP6 address if at least one
         of the associated virtual servers is in UP state.'
       - '* ALL VSERVER - Advertise the route for the VIP6 address if all of the associated
         virtual servers are in UP state.'
-      - '* VSVR_CNTRLD.   Advertise the route for the VIP address according to the  RHIstate
-        (RHI STATE) parameter setting on all the associated virtual servers of the
-        VIP address along with their states.'
+      - '* C(VSVR_CNTRLD).   Advertise the route for the VIP address according to
+        the  RHIstate (RHI STATE) parameter setting on all the associated virtual
+        servers of the VIP address along with their states.'
       - ''
-      - 'When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following
+      - 'When Vserver RHI Level (RHI) parameter is set to C(VSVR_CNTRLD), the following
         are different RHI behaviors for the VIP address on the basis of RHIstate (RHI
         STATE) settings on the virtual servers associated with the VIP address:'
       - ' * If you set RHI STATE to PASSIVE on all virtual servers, the Citrix ADC
@@ -291,11 +296,6 @@ options:
         virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
     type: str
     default: ONE_VSERVER
-    choices:
-      - ONE_VSERVER
-      - ALL_VSERVERS
-      - NONE
-      - VSVR_CNTRLD
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

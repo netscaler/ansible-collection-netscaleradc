@@ -26,12 +26,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - Bind point to which to bind the policy. Applies only to rewrite and cache
-        policies. If you do not set this parameter, the policy is bound to REQ_DEFAULT
-        or RES_DEFAULT, depending on whether the policy rule is a response-time or
-        a request-time expression.
-    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -39,6 +33,12 @@ options:
       - OTHERTCP_REQUEST
       - AAA_REQUEST
       - AAA_RESPONSE
+    description:
+      - Bind point to which to bind the policy. Applies only to rewrite and cache
+        policies. If you do not set this parameter, the policy is bound to REQ_DEFAULT
+        or RES_DEFAULT, depending on whether the policy rule is a response-time or
+        a request-time expression.
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated

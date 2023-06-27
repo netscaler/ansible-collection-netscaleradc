@@ -26,15 +26,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   globalbindtype:
-    description:
-      - '0'
-    type: str
-    default: SYSTEM_GLOBAL
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
+    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -52,15 +52,15 @@ options:
         evaluates to TRUE.
     type: str
   labeltype:
+    choices:
+      - reqvserver
+      - policylabel
     description:
       - 'Type of invocation, Available settings function as follows:'
       - '* vserver - Invokes the unnamed policy label associated with the specified
         virtual server.'
-      - '* policylabel - Invoke the specified policy label.'
+      - '* C(policylabel) - Invoke the specified policy label.'
     type: str
-    choices:
-      - reqvserver
-      - policylabel
   policyname:
     description:
       - Name of the LB policy.
@@ -70,9 +70,6 @@ options:
       - Specifies the priority of the policy.
     type: int
   type:
-    description:
-      - '0'
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -104,6 +101,9 @@ options:
       - HTTPQUIC_REQ_DEFAULT
       - GSLB_REQ_OVERRIDE
       - GSLB_REQ_DEFAULT
+    description:
+      - '0'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

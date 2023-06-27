@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowedalgorithms:
+    choices:
+      - HS256
+      - RS256
+      - RS512
     description:
       - Multivalued option to specify allowed token verification algorithms.
     type: list
     elements: str
     default: OAUTH_ALG_ALL
-    choices:
-      - HS256
-      - RS256
-      - RS512
   attribute1:
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
@@ -128,13 +128,13 @@ options:
         is typically entity name or url that represents the recipient
     type: str
   authentication:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If authentication is disabled, password is not sent in the request.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   authorizationendpoint:
     description:
       - Authorization endpoint/url to which unauthenticated user will be redirected.
@@ -168,13 +168,13 @@ options:
         in addition to extracted groups.
     type: str
   granttype:
+    choices:
+      - CODE
+      - PASSWORD
     description:
       - Grant type support. value can be code or password
     type: str
     default: CODE
-    choices:
-      - CODE
-      - PASSWORD
   graphendpoint:
     description:
       - URL of the Graph API service to learn Enterprise Mobility Services (EMS) endpoints.
@@ -212,23 +212,23 @@ options:
         action').
     type: str
   oauthtype:
+    choices:
+      - GENERIC
+      - INTUNE
+      - ATHENA
     description:
       - Type of the OAuth implementation. Default value is generic implementation
         that is applicable for most deployments.
     type: str
     default: GENERIC
-    choices:
-      - GENERIC
-      - INTUNE
-      - ATHENA
   pkce:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to enable/disable PKCE flow during authentication.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   refreshinterval:
     description:
       - Interval at which services are monitored for necessary configuration.
@@ -258,16 +258,16 @@ options:
         ADC will validate presented token by posting it to the URL configured
     type: str
   tokenendpointauthmethod:
-    description:
-      - Option to select the variant of token authentication method. This method is
-        used while exchanging code with IdP.
-    type: str
-    default: client_secret_post
     choices:
       - client_secret_post
       - client_secret_jwt
       - private_key_jwt
       - client_secret_basic
+    description:
+      - Option to select the variant of token authentication method. This method is
+        used while exchanging code with IdP.
+    type: str
+    default: client_secret_post
   userinfourl:
     description:
       - URL to which OAuth access token will be posted to obtain user information.

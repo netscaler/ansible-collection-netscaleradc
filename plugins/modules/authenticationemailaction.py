@@ -66,13 +66,13 @@ options:
     type: int
     default: 180
   type:
-    description:
-      - Type of the email action. Default type is SMTP.
-    type: str
-    default: SMTP
     choices:
       - SMTP
       - ATHENA
+    description:
+      - Type of the email action. Default type is C(SMTP).
+    type: str
+    default: SMTP
   username:
     description:
       - Username/Clientid/EmailID to be used to authenticate to the server.

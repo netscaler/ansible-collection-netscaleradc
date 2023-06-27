@@ -488,9 +488,9 @@ Parameters
 
       Type of policy label to invoke if the current policy evaluates to TRUE and the invoke parameter is set. Available settings function as follows:
 
-      \* reqvserver. Invoke the unnamed policy label associated with the specified request virtual server.
+      \* \ :literal:`reqvserver`\ . Invoke the unnamed policy label associated with the specified request virtual server.
 
-      \* policylabel. Invoke the specified user-defined policy label.
+      \* \ :literal:`policylabel`\ . Invoke the specified user-defined policy label.
 
 
       .. rst-class:: ansible-option-line

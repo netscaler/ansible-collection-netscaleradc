@@ -30,12 +30,12 @@ options:
       - Any comments about this binding.
     type: str
   bot_log_expression_enabled:
-    description:
-      - Enable or disable the log expression binding.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable or disable the log expression binding.
+    type: str
   bot_log_expression_name:
     description:
       - Name of the log expression object.

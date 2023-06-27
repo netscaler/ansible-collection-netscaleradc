@@ -26,12 +26,12 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   cffield_url:
     description:
       - URL of the web page that contains the web form.
@@ -46,19 +46,19 @@ options:
       - Name of the form field to designate as confidential.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
-  isregex_cffield:
     description:
-      - Is Fake Account Detection field name regular expression?
+      - Is the rule auto deployed by dynamic profile ?
     type: str
+  isregex_cffield:
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - Is Fake Account Detection field name regular expression?
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -68,19 +68,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

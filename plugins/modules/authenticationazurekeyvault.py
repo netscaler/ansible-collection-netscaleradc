@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   authentication:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - If authentication is disabled, otp checks are not performed after azure vault
         keys are obtained. This is useful to distinguish whether user has registered
         devices.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   clientid:
     description:
       - Unique identity of the relying party requesting for authentication.
@@ -71,12 +71,12 @@ options:
       - Friendly name of the Key to be used to compute signature.
     type: str
   signaturealg:
+    choices:
+      - RS256
     description:
       - Algorithm to be used to sign/verify transactions
     type: str
     default: RS256
-    choices:
-      - RS256
   tenantid:
     description:
       - TenantID of the application. This is usually specific to providers such as

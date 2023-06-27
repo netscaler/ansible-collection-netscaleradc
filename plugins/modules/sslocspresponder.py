@@ -36,14 +36,14 @@ options:
         delay) to avoid inordinately delaying the processing of a single certificate.
     type: int
   cache:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable caching of responses. Caching of responses received from the OCSP responder
         enables faster responses to the clients and reduces the load on the OCSP responder.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cachetimeout:
     description:
       - Timeout for caching the OCSP response. After the timeout, the Citrix ADC sends
@@ -52,21 +52,21 @@ options:
     type: int
     default: 1
   httpmethod:
-    description:
-      - HTTP method used to send ocsp request. POST is the default httpmethod. If
-        request length is > 255, POST wil be used even if GET is set as httpMethod
-    type: str
-    default: POST
     choices:
       - GET
       - POST
-  insertclientcert:
     description:
-      - Include the complete client certificate in the OCSP request.
+      - HTTP method used to send ocsp request. C(POST) is the default httpmethod.
+        If request length is > 255, C(POST) wil be used even if C(GET) is set as httpMethod
     type: str
+    default: POST
+  insertclientcert:
     choices:
       - true
       - false
+    description:
+      - Include the complete client certificate in the OCSP request.
+    type: str
   name:
     description:
       - Name for the OCSP responder. Cannot begin with a hash (#) or space character
@@ -118,12 +118,12 @@ options:
       - URL of the OCSP responder.
     type: str
   usenonce:
-    description:
-      - Enable the OCSP nonce extension, which is designed to prevent replay attacks.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable the OCSP nonce extension, which is designed to prevent replay attacks.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

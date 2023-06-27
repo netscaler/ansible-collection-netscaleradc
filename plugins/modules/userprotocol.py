@@ -39,12 +39,12 @@ options:
         or underscore characters.
     type: str
   transport:
-    description:
-      - Transport layer's protocol.
-    type: str
     choices:
       - TCP
       - SSL
+    description:
+      - Transport layer's protocol.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

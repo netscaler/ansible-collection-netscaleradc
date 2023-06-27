@@ -246,7 +246,7 @@ Parameters
 
       \* DEFLATE - Apply DEFLATE compression.
 
-      \* NOCOMPRESS - Do not compress the response if the request matches a policy that uses this action.
+      \* NOCOMPRESS - Do not \ :literal:`compress`\  the response if the request matches a policy that uses this action.
 
 
       .. rst-class:: ansible-option-line

@@ -30,12 +30,12 @@ options:
       - The monitor Names.
     type: str
   monstate:
-    description:
-      - The configured state (enable/disable) of the monitor on this server.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - The configured state (enable/disable) of the monitor on this server.
+    type: str
   name:
     description:
       - Name of the service to which to bind a monitor.

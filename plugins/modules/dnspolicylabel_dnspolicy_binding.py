@@ -43,11 +43,11 @@ options:
       - Name of the dns policy label.
     type: str
   labeltype:
+    choices:
+      - policylabel
     description:
       - Type of policy label invocation.
     type: str
-    choices:
-      - policylabel
   policyname:
     description:
       - The dns policy name.

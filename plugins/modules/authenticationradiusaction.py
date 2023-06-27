@@ -24,20 +24,20 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   accounting:
-    description:
-      - Whether the RADIUS server is currently accepting accounting messages.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Whether the RADIUS server is currently accepting accounting messages.
+    type: str
   authentication:
+    choices:
+      - true
+      - false
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
     type: str
     default: true
-    choices:
-      - true
-      - false
   authservretry:
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
@@ -50,14 +50,14 @@ options:
     type: int
     default: 3
   callingstationid:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send Calling-Station-ID of the client to the RADIUS server. IP Address of
         the client is sent as its Calling-Station-ID.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   defaultauthenticationgroup:
     description:
       - This is the default group that is chosen when the authentication succeeds
@@ -81,16 +81,16 @@ options:
         after the RADIUS action is added.
     type: str
   passencoding:
-    description:
-      - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
-        the RADIUS server.
-    type: str
-    default: pap
     choices:
       - pap
       - chap
       - mschapv1
       - mschapv2
+    description:
+      - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
+        the RADIUS server.
+    type: str
+    default: pap
   pwdattributetype:
     description:
       - Vendor-specific password attribute type in a RADIUS response.
@@ -127,14 +127,14 @@ options:
         Server ID (NASID).
     type: str
   radnasip:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'If enabled, the Citrix ADC IP address (NSIP) is sent to the RADIUS server
         as the  Network Access Server IP (NASIP) address. '
       - The RADIUS protocol defines the meaning and use of the NASIP address.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   radvendorid:
     description:
       - RADIUS vendor ID attribute, used for RADIUS group extraction.
@@ -157,22 +157,22 @@ options:
         LB vserver needs to be of type TCP and service associated needs to be SSL_TCP
     type: str
   transport:
-    description:
-      - Transport mode to RADIUS server.
-    type: str
-    default: UDP
     choices:
       - UDP
       - TCP
       - TLS
+    description:
+      - Transport mode to RADIUS server.
+    type: str
+    default: UDP
   tunnelendpointclientip:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send Tunnel Endpoint Client IP address to the RADIUS server.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

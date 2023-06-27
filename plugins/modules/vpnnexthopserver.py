@@ -40,19 +40,19 @@ options:
       - Port number of the Citrix Gateway proxy in the second DMZ.
     type: int
   resaddresstype:
-    description:
-      - Address Type (IPV4/IPv6) of DNS name of nextHopServer FQDN.
-    type: str
     choices:
       - IPV4
       - IPV6
-  secure:
     description:
-      - Use of a secure port, such as 443, for the double-hop configuration.
+      - Address Type (C(IPV4)/IPv6) of DNS name of nextHopServer FQDN.
     type: str
+  secure:
     choices:
       - true
       - false
+    description:
+      - Use of a secure port, such as 443, for the double-hop configuration.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

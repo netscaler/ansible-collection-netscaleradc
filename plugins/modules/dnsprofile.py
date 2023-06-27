@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   cacheecsresponses:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Cache DNS responses with EDNS Client Subnet(ECS) option in the DNS cache.
         When disabled, the appliance stops caching responses with ECS option. This
@@ -32,10 +35,10 @@ options:
         in GSLB vserver. In all other modes, ECS option is ignored.
     type: str
     default: DISABLED
+  cachenegativeresponses:
     choices:
       - ENABLED
       - DISABLED
-  cachenegativeresponses:
     description:
       - Cache negative responses in the DNS cache. When disabled, the appliance stops
         caching negative responses except referral records. This applies to all configurations
@@ -44,10 +47,10 @@ options:
         parameter is enabled again.
     type: str
     default: ENABLED
+  cacherecords:
     choices:
       - ENABLED
       - DISABLED
-  cacherecords:
     description:
       - Cache resource records in the DNS cache. Applies to resource records obtained
         through proxy configurations only. End resolver and forwarder configurations
@@ -57,49 +60,49 @@ options:
         from the cache until record caching is enabled again.
     type: str
     default: ENABLED
+  dnsanswerseclogging:
     choices:
       - ENABLED
       - DISABLED
-  dnsanswerseclogging:
     description:
       - DNS answer section; if enabled, answer section in the response will be logged.
     type: str
     default: DISABLED
+  dnserrorlogging:
     choices:
       - ENABLED
       - DISABLED
-  dnserrorlogging:
     description:
       - DNS error logging; if enabled, whenever error is encountered in DNS module
         reason for the error will be logged.
     type: str
     default: DISABLED
+  dnsextendedlogging:
     choices:
       - ENABLED
       - DISABLED
-  dnsextendedlogging:
     description:
       - DNS extended logging; if enabled, authority and additional section in the
         response will be logged.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dnsprofilename:
     description:
       - Name of the DNS profile
     type: str
   dnsquerylogging:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - DNS query logging; if enabled, DNS query information such as DNS query id,
         DNS query flags , DNS domain name and DNS query type will be logged
     type: str
     default: DISABLED
+  dropmultiqueryrequest:
     choices:
       - ENABLED
       - DISABLED
-  dropmultiqueryrequest:
     description:
       - Drop the DNS requests containing multiple queries. When enabled, DNS requests
         containing multiple queries will be dropped. In case of proxy configuration
@@ -108,9 +111,6 @@ options:
         will be sent to the client.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

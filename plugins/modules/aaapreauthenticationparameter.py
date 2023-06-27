@@ -33,12 +33,12 @@ options:
       - String specifying the name of a process to be terminated by the EPA tool.
     type: str
   preauthenticationaction:
-    description:
-      - Deny or allow login on the basis of end point analysis results.
-    type: str
     choices:
       - ALLOW
       - DENY
+    description:
+      - Deny or allow login on the basis of end point analysis results.
+    type: str
   rule:
     description:
       - Name of the Citrix ADC named rule, or an expression, to be evaluated by the

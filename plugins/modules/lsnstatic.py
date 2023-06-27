@@ -56,13 +56,13 @@ options:
         in case of static wildcard
     type: int
   nattype:
-    description:
-      - Type of sessions to be displayed.
-    type: str
     choices:
       - NAT44
       - DS-Lite
       - NAT64
+    description:
+      - Type of sessions to be displayed.
+    type: str
   network6:
     description:
       - B4 address in DS-Lite setup
@@ -85,14 +85,14 @@ options:
         default traffic domain.
     type: int
   transportprotocol:
-    description:
-      - Protocol for the LSN mapping entry.
-    type: str
     choices:
       - TCP
       - UDP
       - ICMP
       - ALL
+    description:
+      - Protocol for the LSN mapping entry.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

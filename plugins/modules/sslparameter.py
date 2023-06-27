@@ -36,14 +36,20 @@ options:
         value of zero implies that the ADC does not automatically restart.
     type: int
   defaultprofile:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Global parameter used to enable default profile feature.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   denysslreneg:
+    choices:
+      - false
+      - FRONTEND_CLIENT
+      - FRONTEND_CLIENTSERVER
+      - ALL
+      - NONSECURE
     description:
       - 'Deny renegotiation in specified circumstances. Available settings function
         as follows:'
@@ -57,22 +63,16 @@ options:
         support RFC 5746.'
     type: str
     default: ALL
-    choices:
-      - false
-      - FRONTEND_CLIENT
-      - FRONTEND_CLIENTSERVER
-      - ALL
-      - NONSECURE
   dropreqwithnohostheader:
+    choices:
+      - true
+      - false
     description:
       - Host header check for SNI enabled sessions. If this check is enabled and the
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
     type: str
-    choices:
-      - true
-      - false
   encrypttriggerpktcount:
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
@@ -81,41 +81,44 @@ options:
     type: int
     default: 45
   heterogeneoussslhw:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - To support both cavium and coleto based platforms in cluster environment,
         this mode has to be enabled.
     type: str
     default: DISABLED
+  hybridfipsmode:
     choices:
       - ENABLED
       - DISABLED
-  hybridfipsmode:
     description:
       - When this mode is enabled, system will use additional crypto hardware to accelerate
         symmetric crypto operations.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   insertcertspace:
+    choices:
+      - true
+      - false
     description:
       - To insert space between lines in the certificate header of request
     type: str
     default: true
-    choices:
-      - true
-      - false
   insertionencoding:
+    choices:
+      - Unicode
+      - UTF-8
     description:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
     type: str
     default: Unicode
-    choices:
-      - Unicode
-      - UTF-8
   ndcppcompliancecertcheck:
+    choices:
+      - true
+      - false
     description:
       - Applies when the Citrix ADC appliance acts as a client (back-end connection).
       - 'Settings apply as follows:'
@@ -123,9 +126,6 @@ options:
         in the certificate.
       - NO - Do not ignore common name.
     type: str
-    choices:
-      - true
-      - false
   ocspcachesize:
     description:
       - Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10%
@@ -158,38 +158,25 @@ options:
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
     type: int
   quantumsize:
+    choices:
+      - 4096
+      - 8192
+      - 16384
     description:
       - Amount of data to collect before the data is pushed to the crypto hardware
         for encryption. For large downloads, a larger quantum size better utilizes
         the crypto resources.
     type: str
     default: 8192
-    choices:
-      - 4096
-      - 8192
-      - 16384
   sendclosenotify:
+    choices:
+      - true
+      - false
     description:
       - Send an SSL Close-Notify message to the client at the end of a transaction.
     type: str
     default: true
-    choices:
-      - true
-      - false
   sigdigesttype:
-    description:
-      - Signature Digest Algorithms that are supported by appliance. Default value
-        is "ALL" and it will enable the following algorithms depending on the platform.
-      - 'On VPX: ECDSA-SHA1 ECDSA-SHA224 ECDSA-SHA256 ECDSA-SHA384 ECDSA-SHA512 RSA-SHA1
-        RSA-SHA224 RSA-SHA256 RSA-SHA384 RSA-SHA512 DSA-SHA1 DSA-SHA224 DSA-SHA256
-        DSA-SHA384 DSA-SHA512'
-      - 'On MPX with Nitrox-III and coleto cards: RSA-SHA1 RSA-SHA224 RSA-SHA256 RSA-SHA384
-        RSA-SHA512 ECDSA-SHA1 ECDSA-SHA224 ECDSA-SHA256 ECDSA-SHA384 ECDSA-SHA512'
-      - 'Others: RSA-SHA1 RSA-SHA224 RSA-SHA256 RSA-SHA384 RSA-SHA512.'
-      - Note:ALL doesnot include RSA-MD5 for any platform.
-    type: list
-    elements: str
-    default: ALL
     choices:
       - ALL
       - RSA-MD5
@@ -208,7 +195,25 @@ options:
       - ECDSA-SHA256
       - ECDSA-SHA384
       - ECDSA-SHA512
+    description:
+      - Signature Digest Algorithms that are supported by appliance. Default value
+        is "C(ALL)" and it will enable the following algorithms depending on the platform.
+      - 'On VPX: C(ECDSA-SHA1) C(ECDSA-SHA224) C(ECDSA-SHA256) C(ECDSA-SHA384) C(ECDSA-SHA512)
+        C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512) C(DSA-SHA1)
+        C(DSA-SHA224) C(DSA-SHA256) C(DSA-SHA384) C(DSA-SHA512)'
+      - 'On MPX with Nitrox-III and coleto cards: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256)
+        C(RSA-SHA384) C(RSA-SHA512) C(ECDSA-SHA1) C(ECDSA-SHA224) C(ECDSA-SHA256)
+        C(ECDSA-SHA384) C(ECDSA-SHA512)'
+      - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
+      - Note:C(ALL) doesnot include C(RSA-MD5) for any platform.
+    type: list
+    elements: str
+    default: ALL
   snihttphostmatch:
+    choices:
+      - false
+      - CERT
+      - STRICT
     description:
       - Controls how the HTTP 'Host' header value is validated. These checks are performed
         only if the session is SNI enabled (i.e when vserver or profile bound to vserver
@@ -228,10 +233,6 @@ options:
       - '         header value.'
     type: str
     default: CERT
-    choices:
-      - false
-      - CERT
-      - STRICT
   softwarecryptothreshold:
     description:
       - Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations
@@ -239,15 +240,15 @@ options:
       - A value of zero implies that CPU is not utilized for doing crypto in software.
     type: int
   sslierrorcache:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable dynamically learning and caching the learned information
         to make the subsequent interception or bypass decision. When enabled, NS does
         the lookup of this cached data to do early bypass.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sslimaxerrorcachemem:
     description:
       - Specify the maximum memory that can be used for caching the learned data.
@@ -264,12 +265,12 @@ options:
     type: int
     default: 100
   strictcachecks:
-    description:
-      - Enable strict CA certificate checks on the appliance.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable strict CA certificate checks on the appliance.
+    type: str
   undefactioncontrol:
     description:
       - 'Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH,

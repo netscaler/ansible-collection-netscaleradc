@@ -24,33 +24,37 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   advertiseondefaultpartition:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition.
     type: str
     default: DISABLED
+  arp:
     choices:
       - ENABLED
       - DISABLED
-  arp:
     description:
       - Respond to ARP requests for this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   arpowner:
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
     type: int
     default: 255
   arpresponse:
+    choices:
+      - NONE
+      - ONE_VSERVER
+      - ALL_VSERVERS
     description:
       - 'Respond to ARP requests for a Virtual IP (VIP) address on the basis of the
         states of the virtual servers associated with that VIP. Available settings
         function as follows:'
       - ''
-      - '* NONE - The Citrix ADC responds to any ARP request for the VIP address,
+      - '* C(NONE) - The Citrix ADC responds to any ARP request for the VIP address,
         irrespective of the states of the virtual servers associated with the address.'
       - '* ONE VSERVER - The Citrix ADC responds to any ARP request for the VIP address
         if at least one of the associated virtual servers is in UP state.'
@@ -58,84 +62,86 @@ options:
         if all of the associated virtual servers are in UP state.'
     type: str
     default: 5
-    choices:
-      - NONE
-      - ONE_VSERVER
-      - ALL_VSERVERS
   bgp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Use this option to enable or disable BGP on this IP address for the entity.
     type: str
     default: DISABLED
+  decrementttl:
     choices:
       - ENABLED
       - DISABLED
-  decrementttl:
     description:
-      - Decrement TTL by 1 when ENABLED.This setting is applicable only for UDP traffic.
+      - Decrement TTL by 1 when C(ENABLED).This setting is applicable only for UDP
+        traffic.
     type: str
     default: DISABLED
+  dynamicrouting:
     choices:
       - ENABLED
       - DISABLED
-  dynamicrouting:
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IP (SNIP) address.
     type: str
     default: DISABLED
+  ftp:
     choices:
       - ENABLED
       - DISABLED
-  ftp:
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   gui:
-    description:
-      - Allow graphical user interface (GUI) access to this IP address.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - SECUREONLY
       - DISABLED
+    description:
+      - Allow graphical user interface (GUI) access to this IP address.
+    type: str
+    default: ENABLED
   hostroute:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to push the VIP to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   hostrtgw:
     description:
       - IP address of the gateway of the route for this VIP address.
     type: str
     default: -1
   icmp:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   icmpresponse:
+    choices:
+      - NONE
+      - ONE_VSERVER
+      - ALL_VSERVERS
+      - VSVR_CNTRLD
     description:
       - 'Respond to ICMP requests for a Virtual IP (VIP) address on the basis of the
         states of the virtual servers associated with that VIP. Available settings
         function as follows:'
-      - '* NONE - The Citrix ADC responds to any ICMP request for the VIP address,
+      - '* C(NONE) - The Citrix ADC responds to any ICMP request for the VIP address,
         irrespective of the states of the virtual servers associated with the address.'
       - '* ONE VSERVER - The Citrix ADC responds to any ICMP request for the VIP address
         if at least one of the associated virtual servers is in UP state.'
       - '* ALL VSERVER - The Citrix ADC responds to any ICMP request for the VIP address
         if all of the associated virtual servers are in UP state.'
-      - '* VSVR_CNTRLD - The behavior depends on the ICMP VSERVER RESPONSE setting
+      - '* C(VSVR_CNTRLD) - The behavior depends on the ICMP VSERVER RESPONSE setting
         on all the associated virtual servers.'
       - ''
       - 'The following settings can be made for the ICMP VSERVER RESPONSE parameter
@@ -148,11 +154,6 @@ options:
         Citrix ADC responds if even one virtual server set to ACTIVE is UP.'
     type: str
     default: 5
-    choices:
-      - NONE
-      - ONE_VSERVER
-      - ALL_VSERVERS
-      - VSVR_CNTRLD
   ipaddress:
     description:
       - IPv4 address to create on the Citrix ADC. Cannot be changed after the IP address
@@ -164,41 +165,41 @@ options:
         for the VIP address.
     type: int
   mgmtaccess:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow access to management applications on this IP address.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   mptcpadvertise:
+    choices:
+      - true
+      - false
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
     type: str
-    choices:
-      - true
-      - false
   netmask:
     description:
       - Subnet mask associated with the IP address.
     type: str
   networkroute:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Option to push the SNIP subnet to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocol.
     type: str
+  ospf:
     choices:
       - ENABLED
       - DISABLED
-  ospf:
     description:
       - Use this option to enable or disable OSPF on this IP address for the entity.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   ospfarea:
     description:
       - ID of the area in which the type1 link-state advertisements (LSAs) are to
@@ -208,23 +209,23 @@ options:
     type: int
     default: -1
   ospflsatype:
+    choices:
+      - TYPE1
+      - TYPE5
     description:
       - Type of LSAs to be used by the OSPF protocol, running on the Citrix ADC, for
         advertising the route for this VIP address.
     type: str
     default: TYPE5
-    choices:
-      - TYPE1
-      - TYPE5
   ownerdownresponse:
+    choices:
+      - true
+      - false
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
     type: str
     default: true
-    choices:
-      - true
-      - false
   ownernode:
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from
@@ -232,47 +233,47 @@ options:
     type: int
     default: 255
   restrictaccess:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Block access to nonmanagement applications on this IP. This option is applicable
         for MIPs, SNIPs, and NSIP, and is disabled by default. Nonmanagement applications
         can run on the underlying Citrix ADC Free BSD operating system.
     type: str
     default: DISABLED
+  rip:
     choices:
       - ENABLED
       - DISABLED
-  rip:
     description:
       - Use this option to enable or disable RIP on this IP address for the entity.
     type: str
     default: DISABLED
+  snmp:
     choices:
       - ENABLED
       - DISABLED
-  snmp:
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
     type: str
     default: ENABLED
+  ssh:
     choices:
       - ENABLED
       - DISABLED
-  ssh:
     description:
       - Allow secure shell (SSH) access to this IP address.
     type: str
     default: ENABLED
+  state:
     choices:
       - ENABLED
       - DISABLED
-  state:
     description:
       - Enable or disable the IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   tag:
     description:
       - Tag value for the network/host route associated with this IP.
@@ -285,35 +286,14 @@ options:
         for  LSN use
     type: int
   telnet:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allow Telnet access to this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   type:
-    description:
-      - 'Type of the IP address to create on the Citrix ADC. Cannot be changed after
-        the IP address is created. The following are the different types of Citrix
-        ADC owned IP addresses:'
-      - '* A Subnet IP (SNIP) address is used by the Citrix ADC to communicate with
-        the servers. The Citrix ADC also uses the subnet IP address when generating
-        its own packets, such as packets related to dynamic routing protocols, or
-        to send monitor probes to check the health of the servers.'
-      - '* A Virtual IP (VIP) address is the IP address associated with a virtual
-        server. It is the IP address to which clients connect. An appliance managing
-        a wide range of traffic may have many VIPs configured. Some of the attributes
-        of the VIP address are customized to meet the requirements of the virtual
-        server.'
-      - '* A GSLB site IP (GSLBIP) address is associated with a GSLB site. It is not
-        mandatory to specify a GSLBIP address when you initially configure the Citrix
-        ADC. A GSLBIP address is used only when you create a GSLB site.'
-      - '* A Cluster IP (CLIP) address is the management address of the cluster. All
-        cluster configurations must be performed by accessing the cluster through
-        this IP address.'
-    type: str
-    default: SNIP
     choices:
       - SNIP
       - VIP
@@ -321,6 +301,27 @@ options:
       - HostIP
       - GSLBsiteIP
       - CLIP
+    description:
+      - 'Type of the IP address to create on the Citrix ADC. Cannot be changed after
+        the IP address is created. The following are the different types of Citrix
+        ADC owned IP addresses:'
+      - '* A Subnet IP (C(SNIP)) address is used by the Citrix ADC to communicate
+        with the servers. The Citrix ADC also uses the subnet IP address when generating
+        its own packets, such as packets related to dynamic routing protocols, or
+        to send monitor probes to check the health of the servers.'
+      - '* A Virtual IP (C(VIP)) address is the IP address associated with a virtual
+        server. It is the IP address to which clients connect. An appliance managing
+        a wide range of traffic may have many VIPs configured. Some of the attributes
+        of the C(VIP) address are customized to meet the requirements of the virtual
+        server.'
+      - '* A GSLB site IP (GSLBIP) address is associated with a GSLB site. It is not
+        mandatory to specify a GSLBIP address when you initially configure the Citrix
+        ADC. A GSLBIP address is used only when you create a GSLB site.'
+      - '* A Cluster IP (C(CLIP)) address is the management address of the cluster.
+        All cluster configurations must be performed by accessing the cluster through
+        this IP address.'
+    type: str
+    default: SNIP
   vrid:
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
@@ -328,29 +329,34 @@ options:
         configuration using VRRP.
     type: int
   vserver:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Use this option to set (enable or disable) the virtual server attribute for
         this IP address.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   vserverrhilevel:
+    choices:
+      - ONE_VSERVER
+      - ALL_VSERVERS
+      - NONE
+      - VSVR_CNTRLD
     description:
       - Advertise the route for the Virtual IP (VIP) address on the basis of the state
         of the virtual servers associated with that VIP.
-      - '* NONE - Advertise the route for the VIP address, regardless of the state
+      - '* C(NONE) - Advertise the route for the VIP address, regardless of the state
         of the virtual servers associated with the address.'
       - '* ONE VSERVER - Advertise the route for the VIP address if at least one of
         the associated virtual servers is in UP state.'
       - '* ALL VSERVER - Advertise the route for the VIP address if all of the associated
         virtual servers are in UP state.'
-      - '* VSVR_CNTRLD - Advertise the route for the VIP address according to the  RHIstate
+      - '* C(VSVR_CNTRLD) - Advertise the route for the VIP address according to the  RHIstate
         (RHI STATE) parameter setting on all the associated virtual servers of the
         VIP address along with their states.'
       - ''
-      - 'When Vserver RHI Level (RHI) parameter is set to VSVR_CNTRLD, the following
+      - 'When Vserver RHI Level (RHI) parameter is set to C(VSVR_CNTRLD), the following
         are different RHI behaviors for the VIP address on the basis of RHIstate (RHI
         STATE) settings on the virtual servers associated with the VIP address:'
       - ' * If you set RHI STATE to PASSIVE on all virtual servers, the Citrix ADC
@@ -363,11 +369,6 @@ options:
         virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
     type: str
     default: ONE_VSERVER
-    choices:
-      - ONE_VSERVER
-      - ALL_VSERVERS
-      - NONE
-      - VSVR_CNTRLD
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

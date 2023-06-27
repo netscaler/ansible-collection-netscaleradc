@@ -824,15 +824,15 @@ Parameters
 
       Type of video optimization action. Available settings function as follows:
 
-      \* clear\_text\_pd - Cleartext PD type is detected.
+      \* \ :literal:`clear\_text\_pd`\  - Cleartext PD type is detected.
 
-      \* clear\_text\_abr - Cleartext ABR is detected.
+      \* \ :literal:`clear\_text\_abr`\  - Cleartext ABR is detected.
 
-      \* encrypted\_abr - Encrypted ABR is detected.
+      \* \ :literal:`encrypted\_abr`\  - Encrypted ABR is detected.
 
-      \* trigger\_enc\_abr - Possible encrypted ABR is detected.
+      \* \ :literal:`trigger\_enc\_abr`\  - Possible encrypted ABR is detected.
 
-      \* trigger\_body\_detection - Possible cleartext ABR is detected. Triggers body content detection.
+      \* \ :literal:`trigger\_body\_detection`\  - Possible cleartext ABR is detected. Triggers body content detection.
 
 
       .. rst-class:: ansible-option-line

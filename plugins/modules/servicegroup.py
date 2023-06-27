@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   appflowlog:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable logging of AppFlow information for the specified service group.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   autodisabledelay:
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
@@ -42,48 +42,48 @@ options:
         or connections will be sent to the service.
     type: int
   autodisablegraceful:
+    choices:
+      - true
+      - false
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
     type: str
-    choices:
-      - true
-      - false
   autoscale:
-    description:
-      - Auto scale option for a servicegroup
-    type: str
-    default: DISABLED
     choices:
       - DISABLED
       - DNS
       - POLICY
       - CLOUD
       - API
+    description:
+      - Auto scale option for a servicegroup
+    type: str
+    default: DISABLED
   cacheable:
+    choices:
+      - true
+      - false
     description:
       - Use the transparent cache redirection virtual server to forward the request
         to the cache server.
       - 'Note: Do not set this parameter if you set the Cache Type.'
     type: str
-    choices:
-      - true
-      - false
   cachetype:
-    description:
-      - Cache type supported by the cache server.
-    type: str
     choices:
       - TRANSPARENT
       - REVERSE
       - FORWARD
-  cip:
     description:
-      - Insert the Client IP header in requests forwarded to the service.
+      - Cache type supported by the cache server.
     type: str
+  cip:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Insert the Client IP header in requests forwarded to the service.
+    type: str
   cipheader:
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
@@ -93,23 +93,23 @@ options:
         name.
     type: str
   cka:
-    description:
-      - Enable client keep-alive for the service group.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable client keep-alive for the service group.
+    type: str
   clttimeout:
     description:
       - Time, in seconds, after which to terminate an idle client connection.
     type: int
   cmp:
-    description:
-      - Enable compression for the specified service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable compression for the specified service.
+    type: str
   comment:
     description:
       - Any information about the service group.
@@ -135,33 +135,36 @@ options:
         (OUT OF SERVICE).
     type: int
   downstateflush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Flush all active transactions associated with all the services in the service
         group whose state transitions from UP to DOWN. Do not enable this option for
         applications that must complete their transactions.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   dup_weight:
     description:
       - weight of the monitor that is bound to servicegroup.
     type: int
   graceful:
+    choices:
+      - true
+      - false
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
     type: str
-    choices:
-      - true
-      - false
   hashid:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
     type: int
   healthmonitor:
+    choices:
+      - true
+      - false
     description:
       - 'Monitor the health of this service.  Available settings function as follows:'
       - YES - Send probes to check the health of the service.
@@ -169,9 +172,6 @@ options:
         the appliance shows the service as UP at all times.
     type: str
     default: true
-    choices:
-      - true
-      - false
   httpprofilename:
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
@@ -205,14 +205,14 @@ options:
       - member port
     type: int
   monconnectionclose:
+    choices:
+      - RESET
+      - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
     type: str
     default: NONE
-    choices:
-      - RESET
-      - FIN
   monitor_name_svc:
     description:
       - Name of the monitor bound to the service group. Used to assign a weight to
@@ -241,30 +241,30 @@ options:
       - Order number to be assigned to the servicegroup member
     type: int
   pathmonitor:
+    choices:
+      - true
+      - false
     description:
       - Path monitoring for clustering
     type: str
+  pathmonitorindv:
     choices:
       - true
       - false
-  pathmonitorindv:
     description:
       - Individual Path monitoring decisions.
     type: str
-    choices:
-      - true
-      - false
   port:
     description:
       - Server port number.
     type: int
   rtspsessionidremap:
-    description:
-      - Enable RTSP session ID mapping for the service group.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable RTSP session ID mapping for the service group.
+    type: str
   serverid:
     description:
       - The  identifier for the service. This is used when the persistency type is
@@ -282,9 +282,6 @@ options:
         Can be changed after the name is created.
     type: str
   servicetype:
-    description:
-      - Protocol used to exchange data with the service.
-    type: str
     choices:
       - HTTP
       - FTP
@@ -334,32 +331,35 @@ options:
       - MQTT
       - MQTT_TLS
       - QUIC_BRIDGE
-  sp:
     description:
-      - Enable surge protection for the service group.
+      - Protocol used to exchange data with the service.
     type: str
+  sp:
     choices:
       - true
       - false
+    description:
+      - Enable surge protection for the service group.
+    type: str
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Initial state of the service group.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
     type: int
   tcpb:
-    description:
-      - Enable TCP buffering for the service group.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable TCP buffering for the service group.
+    type: str
   tcpprofilename:
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service
@@ -372,6 +372,9 @@ options:
         of the default traffic domain, which has an ID of 0.
     type: int
   useproxyport:
+    choices:
+      - true
+      - false
     description:
       - 'Use the proxy port as the source port when initiating connections with the
         server. With the NO setting, the client-side connection port is used as the
@@ -379,25 +382,70 @@ options:
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to YES.'
     type: str
+  usip:
     choices:
       - true
       - false
-  usip:
     description:
       - Use client's IP address as the source IP address when initiating connection
         to the server. With the NO setting, which is the default, a mapped IP (MIP)
         address or subnet IP (SNIP) address is used as the source IP address to initiate
         server side connections.
     type: str
-    choices:
-      - true
-      - false
   weight:
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
     type: int
+  servicegroup_lbmonitor_binding:
+    type: dict
+    description: Bindings for servicegroup_lbmonitor_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  servicegroup_servicegroupmember_binding:
+    type: dict
+    description: Bindings for servicegroup_servicegroupmember_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

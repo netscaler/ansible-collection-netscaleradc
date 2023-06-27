@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   enablebypass:
+    choices:
+      - true
+      - false
     description:
       - Evaluate the request-time policies before attempting hit selection. If set
         to NO, an incoming request for which a matching object is found in cache storage
@@ -33,18 +36,15 @@ options:
       - This parameter does not affect processing of requests that match any invalidation
         policy.
     type: str
+  enablehaobjpersist:
     choices:
       - true
       - false
-  enablehaobjpersist:
     description:
       - The HA object persisting parameter. When this value is set to YES, cache objects
         can be synced to Secondary in a HA deployment.  If set to NO, objects will
         never be synced to Secondary node.
     type: str
-    choices:
-      - true
-      - false
   maxpostlen:
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
@@ -63,33 +63,33 @@ options:
       - Maximum number of outstanding prefetches in the Integrated Cache.
     type: int
   undefaction:
-    description:
-      - Action to take when a policy cannot be evaluated.
-    type: str
     choices:
       - NOCACHE
       - RESET
-  verifyusing:
     description:
-      - 'Criteria for deciding whether a cached object can be served for an incoming
-        HTTP request. Available settings function as follows:'
-      - 'HOSTNAME - The URL, host name, and host port values in the incoming HTTP
-        request header must match the cache policy. The IP address and the TCP port
-        of the destination host are not evaluated. Do not use the HOSTNAME setting
-        unless you are certain that no rogue client can access a rogue server through
-        the cache. '
-      - HOSTNAME_AND_IP - The URL, host name, host port in the incoming HTTP request
-        header, and the IP address and TCP port of
-      - the destination server, must match the cache policy.
-      - DNS - The URL, host name and host port in the incoming HTTP request, and the
-        TCP port must match the cache policy. The host name is used for DNS lookup
-        of the destination server's IP address, and is compared with the set of addresses
-        returned by the DNS lookup.
+      - Action to take when a policy cannot be evaluated.
     type: str
+  verifyusing:
     choices:
       - HOSTNAME
       - HOSTNAME_AND_IP
       - DNS
+    description:
+      - 'Criteria for deciding whether a cached object can be served for an incoming
+        HTTP request. Available settings function as follows:'
+      - 'C(HOSTNAME) - The URL, host name, and host port values in the incoming HTTP
+        request header must match the cache policy. The IP address and the TCP port
+        of the destination host are not evaluated. Do not use the C(HOSTNAME) setting
+        unless you are certain that no rogue client can access a rogue server through
+        the cache. '
+      - C(HOSTNAME_AND_IP) - The URL, host name, host port in the incoming HTTP request
+        header, and the IP address and TCP port of
+      - the destination server, must match the cache policy.
+      - C(DNS) - The URL, host name and host port in the incoming HTTP request, and
+        the TCP port must match the cache policy. The host name is used for C(DNS)
+        lookup of the destination server's IP address, and is compared with the set
+        of addresses returned by the C(DNS) lookup.
+    type: str
   via:
     description:
       - String to include in the Via header. A Via header is inserted into all responses

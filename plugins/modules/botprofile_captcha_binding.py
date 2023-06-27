@@ -30,25 +30,25 @@ options:
       - Any comments about this binding.
     type: str
   bot_captcha_action:
-    description:
-      - One or more actions to be taken when client fails captcha challenge. Only,
-        log action can be configured with DROP, REDIRECT or RESET action.
-    type: list
-    elements: str
-    default: NONE
     choices:
       - NONE
       - LOG
       - DROP
       - REDIRECT
       - RESET
-  bot_captcha_enabled:
     description:
-      - Enable or disable the captcha binding.
-    type: str
+      - One or more actions to be taken when client fails captcha challenge. Only,
+        log action can be configured with C(DROP), C(REDIRECT) or C(RESET) action.
+    type: list
+    elements: str
+    default: NONE
+  bot_captcha_enabled:
     choices:
       - true
       - false
+    description:
+      - Enable or disable the captcha binding.
+    type: str
   bot_captcha_url:
     description:
       - URL for which the Captcha action, if configured under IP reputation, TPS or

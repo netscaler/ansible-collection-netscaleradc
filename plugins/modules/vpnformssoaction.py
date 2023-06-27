@@ -38,15 +38,15 @@ options:
         such as in name1=value1&name2=value2.
     type: str
   nvtype:
-    description:
-      - 'How to process the name-value pair. Available settings function as follows:'
-      - '* STATIC - The administrator-configured values are used.'
-      - '* DYNAMIC - The response is parsed, the form is extracted, and then submitted.'
-    type: str
-    default: DYNAMIC
     choices:
       - STATIC
       - DYNAMIC
+    description:
+      - 'How to process the name-value pair. Available settings function as follows:'
+      - '* C(STATIC) - The administrator-configured values are used.'
+      - '* C(DYNAMIC) - The response is parsed, the form is extracted, and then submitted.'
+    type: str
+    default: DYNAMIC
   passwdfield:
     description:
       - Name of the form field in which the user types in the password.
@@ -63,14 +63,14 @@ options:
         for cookie in the response is a common example.
     type: str
   submitmethod:
-    description:
-      - HTTP method (GET or POST) used by the single sign-on form to send the logon
-        credentials to the logon server.
-    type: str
-    default: GET
     choices:
       - GET
       - POST
+    description:
+      - HTTP method (C(GET) or C(POST)) used by the single sign-on form to send the
+        logon credentials to the logon server.
+    type: str
+    default: GET
   userfield:
     description:
       - Name of the form field in which the user types in the user ID.

@@ -35,33 +35,33 @@ options:
         detection.
     type: bool
   bot_whitelist_enabled:
-    description:
-      - Enabled or disabled white-list binding.
-    type: str
     choices:
       - true
       - false
-  bot_whitelist_type:
     description:
-      - Type of the white-list entry.
+      - Enabled or disabled white-list binding.
     type: str
+  bot_whitelist_type:
     choices:
       - IPv4
       - SUBNET
       - IPv6
       - IPv6_SUBNET
       - EXPRESSION
+    description:
+      - Type of the white-list entry.
+    type: str
   bot_whitelist_value:
     description:
       - Value of bot white-list entry.
     type: str
   log:
-    description:
-      - Enable logging for Whitelist binding.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable logging for Whitelist binding.
+    type: str
   logmessage:
     description:
       - Message to be logged for this binding.

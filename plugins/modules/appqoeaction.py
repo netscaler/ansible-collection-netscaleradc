@@ -43,13 +43,13 @@ options:
         then requests are dropped to the lowest priority level
     type: int
   dosaction:
+    choices:
+      - SimpleResponse
+      - HICResponse
     description:
       - DoS Action to take when vserver will be considered under DoS attack and corresponding
         rule matches. Mandatory if AppQoE actions are to be used for DoS attack prevention.
     type: str
-    choices:
-      - SimpleResponse
-      - HICResponse
   dostrigexpression:
     description:
       - Optional expression to add second level check to trigger DoS actions. Specifically
@@ -80,6 +80,11 @@ options:
         priority level.
     type: int
   priority:
+    choices:
+      - HIGH
+      - MEDIUM
+      - LOW
+      - LOWEST
     description:
       - Priority for queuing the request. If server resources are not available for
         a request that matches the configured rule, this option specifies a priority
@@ -87,11 +92,6 @@ options:
         priority is not configured then Lowest priority will be used to queue the
         request.
     type: str
-    choices:
-      - HIGH
-      - MEDIUM
-      - LOW
-      - LOWEST
   priqdepth:
     description:
       - Queue depth threshold value per priorirty level. If the queue size (number
@@ -100,24 +100,24 @@ options:
         requests are dropped to the lowest priority level.
     type: int
   respondwith:
-    description:
-      - 'Responder action to be taken when the threshold is reached. Available settings
-        function as follows:'
-      - '            ACS - Serve content from an alternative content service'
-      - '                  Threshold : maxConn or delay'
-      - '            NS - Serve from the Citrix ADC (built-in response)'
-      - '                 Threshold : maxConn or delay'
-    type: str
     choices:
       - ACS
       - NS
-  retryonreset:
     description:
-      - Retry on TCP Reset
+      - 'Responder action to be taken when the threshold is reached. Available settings
+        function as follows:'
+      - '            C(ACS) - Serve content from an alternative content service'
+      - '                  Threshold : maxConn or delay'
+      - '            C(NS) - Serve from the Citrix ADC (built-in response)'
+      - '                 Threshold : maxConn or delay'
     type: str
+  retryonreset:
     choices:
       - true
       - false
+    description:
+      - Retry on TCP Reset
+    type: str
   retryontimeout:
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers

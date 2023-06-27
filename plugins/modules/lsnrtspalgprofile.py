@@ -37,13 +37,13 @@ options:
       - port for the RTSP
     type: str
   rtsptransportprotocol:
+    choices:
+      - TCP
+      - UDP
     description:
       - RTSP ALG Profile transport protocol type.
     type: str
     default: TCP
-    choices:
-      - TCP
-      - UDP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -38,25 +38,25 @@ options:
     type: int
     default: 3
   activeconnectionmigration:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Specify whether the Citrix ADC should allow the remote QUIC endpoint to perform
         active QUIC connection migration.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   congestionctrlalgorithm:
-    description:
-      - Specify the congestion control algorithm to be used for QUIC connections.
-        The default congestion control algorithm is CUBIC.
-    type: str
-    default: Default
     choices:
       - Default
       - NewReno
       - CUBIC
       - BBR
+    description:
+      - Specify the congestion control algorithm to be used for QUIC connections.
+        The default congestion control algorithm is C(CUBIC).
+    type: str
+    default: Default
   initialmaxdata:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
@@ -150,6 +150,9 @@ options:
     type: int
     default: 10
   statelessaddressvalidation:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Specify whether the Citrix ADC should perform stateless address validation
         for QUIC clients, by sending tokens in QUIC Retry packets during QUIC connection
@@ -157,9 +160,6 @@ options:
         establishment.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

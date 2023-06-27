@@ -31,13 +31,13 @@ options:
     type: int
     default: 5
   l7latencymonitoring:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable/Disable L7 Latency monitoring for L7 latency notifications
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   l7latencynotifyinterval:
     description:
       - L7 Latency Notify Interval. This is the interval at which the Citrix ADC sends

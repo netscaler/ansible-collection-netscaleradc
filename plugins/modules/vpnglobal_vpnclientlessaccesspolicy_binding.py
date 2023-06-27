@@ -26,19 +26,16 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   builtin:
-    description:
-      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
-    elements: str
     choices:
       - MODIFIABLE
       - DELETABLE
       - IMMUTABLE
       - PARTITION_ALL
-  feature:
     description:
-      - The feature to be checked while applying this config
-    type: str
+      - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
+    type: list
+    elements: str
+  feature:
     choices:
       - WL
       - WebLogging
@@ -111,15 +108,18 @@ options:
       - ContentInspection
       - Bot
       - APIGateway
-  globalbindtype:
     description:
-      - '0'
+      - The feature to be checked while applying this config
     type: str
+  globalbindtype:
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
       - RNAT_GLOBAL
       - APPFW_GLOBAL
+    description:
+      - '0'
+    type: str
   gotopriorityexpression:
     description:
       - Applicable only to advance vpn session policy. An expression or other value
@@ -153,14 +153,14 @@ options:
         different passwords.
     type: bool
   type:
-    description:
-      - Bindpoint to which the policy is bound
-    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
       - RES_OVERRIDE
       - RES_DEFAULT
+    description:
+      - Bindpoint to which the policy is bound
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

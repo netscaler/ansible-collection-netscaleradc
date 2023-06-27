@@ -24,15 +24,15 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   addvaryheader:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cmpbypasspct:
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
@@ -40,6 +40,10 @@ options:
     type: int
     default: 100
   cmplevel:
+    choices:
+      - optimal
+      - bestspeed
+      - bestcompression
     description:
       - 'Specify a compression level. Available settings function as follows:'
       - ' * Optimal - Corresponds to a gzip GZIP level of 5-7.'
@@ -47,36 +51,32 @@ options:
       - ' * Best compression - Corresponds to a gzip level of 9.'
     type: str
     default: optimal
-    choices:
-      - optimal
-      - bestspeed
-      - bestcompression
   cmponpush:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Citrix ADC does not wait for the quantum to be filled before starting to compress
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   externalcache:
+    choices:
+      - true
+      - false
     description:
       - 'Enable insertion of  Cache-Control: private response directive to indicate
         response message is intended for a single user and must not be cached by a
         shared or proxy cache.'
     type: str
+  heurexpiry:
     choices:
       - true
       - false
-  heurexpiry:
     description:
       - Heuristic basefile expiry.
     type: str
-    choices:
-      - true
-      - false
   heurexpiryhistwt:
     description:
       - For heuristic basefile expiry, weightage to be given to historical delta compression
@@ -96,26 +96,26 @@ options:
       - Smallest response size, in bytes, to be compressed.
     type: int
   policytype:
-    description:
-      - Type of the policy. The only possible value is ADVANCED
-    type: str
-    default: ADVANCED
     choices:
       - ADVANCED
+    description:
+      - Type of the policy. The only possible value is C(ADVANCED)
+    type: str
+    default: ADVANCED
   quantumsize:
     description:
       - Minimum quantum of data to be filled before compression begins.
     type: int
     default: 57344
   servercmp:
+    choices:
+      - true
+      - false
     description:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
     type: str
     default: true
-    choices:
-      - true
-      - false
   varyheadervalue:
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument

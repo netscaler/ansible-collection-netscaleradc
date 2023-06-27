@@ -129,12 +129,12 @@ options:
         action').
     type: str
   scheme:
-    description:
-      - Type of scheme for the web server.
-    type: str
     choices:
       - http
       - https
+    description:
+      - Type of scheme for the web server.
+    type: str
   serverip:
     description:
       - IP address of the web server to be used for authentication.

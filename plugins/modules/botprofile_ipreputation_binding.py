@@ -30,13 +30,6 @@ options:
       - Any comments about this binding.
     type: str
   bot_iprep_action:
-    description:
-      - One or more actions to be taken if bot is detected based on this IP Reputation
-        binding. Only LOG action can be combinded with DROP, RESET, REDIRECT or MITIGATION
-        action.
-    type: list
-    elements: str
-    default: NONE
     choices:
       - NONE
       - LOG
@@ -44,13 +37,20 @@ options:
       - REDIRECT
       - RESET
       - MITIGATION
-  bot_iprep_enabled:
     description:
-      - Enabled or disabled IP-repuation binding.
-    type: str
+      - One or more actions to be taken if bot is detected based on this IP Reputation
+        binding. Only C(LOG) action can be combinded with C(DROP), C(RESET), C(REDIRECT)
+        or C(MITIGATION) action.
+    type: list
+    elements: str
+    default: NONE
+  bot_iprep_enabled:
     choices:
       - true
       - false
+    description:
+      - Enabled or disabled IP-repuation binding.
+    type: str
   bot_ipreputation:
     description:
       - IP reputation binding. For each category, only one binding is allowed. To
@@ -58,48 +58,6 @@ options:
         and then needs to bind again with the new values.
     type: bool
   category:
-    description:
-      - 'IP Repuation category. Following IP Reuputation categories are allowed:'
-      - '*IP_BASED - This category checks whether client IP is malicious or not.'
-      - '*BOTNET - This category includes Botnet C&C channels, and infected zombie
-        machines controlled by Bot master.'
-      - '*SPAM_SOURCES - This category includes tunneling spam messages through a
-        proxy, anomalous SMTP activities, and forum spam activities.'
-      - '*SCANNERS - This category includes all reconnaissance such as probes, host
-        scan, domain scan, and password brute force attack.'
-      - '*DOS - This category includes DOS, DDOS, anomalous sync flood, and anomalous
-        traffic detection.'
-      - '*REPUTATION - This category denies access from IP addresses currently known
-        to be infected with malware. This category also includes IPs with average
-        low Webroot Reputation Index score. Enabling this category will prevent access
-        from sources identified to contact malware distribution points.'
-      - '*PHISHING - This category includes IP addresses hosting phishing sites and
-        other kinds of fraud activities such as ad click fraud or gaming fraud.'
-      - '*PROXY - This category includes IP addresses providing proxy services.'
-      - '*NETWORK - IPs providing proxy and anonymization services including The Onion
-        Router aka TOR or darknet.'
-      - '*MOBILE_THREATS - This category checks client IP with the list of IPs harmful
-        for mobile devices.'
-      - '*WINDOWS_EXPLOITS - This category includes active IP address offering or
-        distributig malware, shell code, rootkits, worms or viruses.'
-      - '*WEB_ATTACKS - This category includes cross site scripting, iFrame injection,
-        SQL injection, cross domain injection or domain password brute force attack.'
-      - '*TOR_PROXY - This category includes IP address acting as exit nodes for the
-        Tor Network.'
-      - '*CLOUD - This category checks client IP with list of public cloud IPs.'
-      - '*CLOUD_AWS - This category checks client IP with list of public cloud IPs
-        from Amazon Web Services.'
-      - '*CLOUD_GCP - This category checks client IP with list of public cloud IPs
-        from Google Cloud Platform.'
-      - '*CLOUD_AZURE - This category checks client IP with list of public cloud IPs
-        from Azure.'
-      - '*CLOUD_ORACLE - This category checks client IP with list of public cloud
-        IPs from Oracle.'
-      - '*CLOUD_IBM - This category checks client IP with list of public cloud IPs
-        from IBM.'
-      - '*CLOUD_SALESFORCE - This category checks client IP with list of public cloud
-        IPs from Salesforce.'
-    type: str
     choices:
       - IP
       - BOTNETS
@@ -121,6 +79,48 @@ options:
       - CLOUD_ORACLE
       - CLOUD_IBM
       - CLOUD_SALESFORCE
+    description:
+      - 'C(IP) Repuation category. Following C(IP) Reuputation categories are allowed:'
+      - '*IP_BASED - This category checks whether client C(IP) is malicious or not.'
+      - '*BOTNET - This category includes Botnet C&C channels, and infected zombie
+        machines controlled by Bot master.'
+      - '*C(SPAM_SOURCES) - This category includes tunneling spam messages through
+        a proxy, anomalous SMTP activities, and forum spam activities.'
+      - '*C(SCANNERS) - This category includes all reconnaissance such as probes,
+        host scan, domain scan, and password brute force attack.'
+      - '*C(DOS) - This category includes C(DOS), DDOS, anomalous sync flood, and
+        anomalous traffic detection.'
+      - '*C(REPUTATION) - This category denies access from C(IP) addresses currently
+        known to be infected with malware. This category also includes IPs with average
+        low Webroot Reputation Index score. Enabling this category will prevent access
+        from sources identified to contact malware distribution points.'
+      - '*C(PHISHING) - This category includes C(IP) addresses hosting phishing sites
+        and other kinds of fraud activities such as ad click fraud or gaming fraud.'
+      - '*C(PROXY) - This category includes C(IP) addresses providing proxy services.'
+      - '*C(NETWORK) - IPs providing proxy and anonymization services including The
+        Onion Router aka TOR or darknet.'
+      - '*C(MOBILE_THREATS) - This category checks client C(IP) with the list of IPs
+        harmful for mobile devices.'
+      - '*C(WINDOWS_EXPLOITS) - This category includes active C(IP) address offering
+        or distributig malware, shell code, rootkits, worms or viruses.'
+      - '*C(WEB_ATTACKS) - This category includes cross site scripting, iFrame injection,
+        SQL injection, cross domain injection or domain password brute force attack.'
+      - '*C(TOR_PROXY) - This category includes C(IP) address acting as exit nodes
+        for the Tor Network.'
+      - '*C(CLOUD) - This category checks client C(IP) with list of public cloud IPs.'
+      - '*C(CLOUD_AWS) - This category checks client C(IP) with list of public cloud
+        IPs from Amazon Web Services.'
+      - '*C(CLOUD_GCP) - This category checks client C(IP) with list of public cloud
+        IPs from Google Cloud Platform.'
+      - '*C(CLOUD_AZURE) - This category checks client C(IP) with list of public cloud
+        IPs from Azure.'
+      - '*C(CLOUD_ORACLE) - This category checks client C(IP) with list of public
+        cloud IPs from Oracle.'
+      - '*C(CLOUD_IBM) - This category checks client C(IP) with list of public cloud
+        IPs from IBM.'
+      - '*C(CLOUD_SALESFORCE) - This category checks client C(IP) with list of public
+        cloud IPs from Salesforce.'
+    type: str
   logmessage:
     description:
       - Message to be logged for this binding.

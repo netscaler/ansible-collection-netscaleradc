@@ -199,7 +199,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Location of cross-site scripting exception - form field, header, cookie or URL.
+      Location of cross-site scripting exception - form field, header, cookie or \ :literal:`URL`\ .
 
 
       .. rst-class:: ansible-option-line

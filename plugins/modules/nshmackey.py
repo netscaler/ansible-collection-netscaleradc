@@ -28,9 +28,6 @@ options:
       - Comments associated with this encryption key.
     type: str
   digest:
-    description:
-      - Digest (hash) function to be used in the HMAC computation.
-    type: str
     choices:
       - MD2
       - MD4
@@ -40,6 +37,9 @@ options:
       - SHA256
       - SHA384
       - SHA512
+    description:
+      - Digest (hash) function to be used in the HMAC computation.
+    type: str
   keyvalue:
     description:
       - 'The hex-encoded key to be used in the HMAC computation. The key can be any

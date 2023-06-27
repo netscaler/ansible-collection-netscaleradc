@@ -24,39 +24,39 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   addusernameinrdpfile:
-    description:
-      - Add username in rdp file.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Add username in rdp file.
+    type: str
   audiocapturemode:
+    choices:
+      - ENABLE
+      - DISABLE
     description:
       - This setting corresponds to the selections in the Remote audio area on the
         Local Resources tab under Options in RDC.
     type: str
     default: DISABLE
-    choices:
-      - ENABLE
-      - DISABLE
   keyboardhook:
+    choices:
+      - OnLocal
+      - OnRemote
+      - InFullScreenMode
     description:
       - This setting corresponds to the selection in the Keyboard drop-down list on
         the Local Resources tab under Options in RDC.
     type: str
     default: InFullScreenMode
-    choices:
-      - OnLocal
-      - OnRemote
-      - InFullScreenMode
   multimonitorsupport:
+    choices:
+      - ENABLE
+      - DISABLE
     description:
       - Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).
     type: str
     default: ENABLE
-    choices:
-      - ENABLE
-      - DISABLE
   name:
     description:
       - The name of the rdp profile
@@ -66,15 +66,15 @@ options:
       - Pre shared key value
     type: str
   randomizerdpfilename:
+    choices:
+      - true
+      - false
     description:
       - Will generate unique filename everytime rdp file is downloaded by appending
         output of time() function in the format <rdpfileName>_<time>.rdp. This tries
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
     type: str
-    choices:
-      - true
-      - false
   rdpcookievalidity:
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
@@ -110,77 +110,77 @@ options:
         the port in the format IP:Port (or) FQDN:Port
     type: str
   rdpurloverride:
+    choices:
+      - ENABLE
+      - DISABLE
     description:
       - This setting determines whether the RDP parameters supplied in the vpn url
         override those specified in the RDP profile.
     type: str
     default: ENABLE
+  rdpvalidateclientip:
     choices:
       - ENABLE
       - DISABLE
-  rdpvalidateclientip:
     description:
       - This setting determines whether RDC launch is initiated by the valid client
         IP
     type: str
     default: DISABLE
+  redirectclipboard:
     choices:
       - ENABLE
       - DISABLE
-  redirectclipboard:
     description:
       - This setting corresponds to the Clipboard check box on the Local Resources
         tab under Options in RDC.
     type: str
     default: ENABLE
+  redirectcomports:
     choices:
       - ENABLE
       - DISABLE
-  redirectcomports:
     description:
       - This setting corresponds to the selections for comports under More on the
         Local Resources tab under Options in RDC.
     type: str
     default: DISABLE
+  redirectdrives:
     choices:
       - ENABLE
       - DISABLE
-  redirectdrives:
     description:
       - This setting corresponds to the selections for Drives under More on the Local
         Resources tab under Options in RDC.
     type: str
     default: DISABLE
+  redirectpnpdevices:
     choices:
       - ENABLE
       - DISABLE
-  redirectpnpdevices:
     description:
       - This setting corresponds to the selections for pnpdevices under More on the
         Local Resources tab under Options in RDC.
     type: str
     default: DISABLE
+  redirectprinters:
     choices:
       - ENABLE
       - DISABLE
-  redirectprinters:
     description:
       - This setting corresponds to the selection in the Printers check box on the
         Local Resources tab under Options in RDC.
     type: str
     default: ENABLE
+  videoplaybackmode:
     choices:
       - ENABLE
       - DISABLE
-  videoplaybackmode:
     description:
       - This setting determines if Remote Desktop Connection (RDC) will use RDP efficient
         multimedia streaming for video playback.
     type: str
     default: ENABLE
-    choices:
-      - ENABLE
-      - DISABLE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

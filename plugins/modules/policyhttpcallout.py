@@ -72,13 +72,13 @@ options:
         exclusive with the full HTTP request expression.
     type: str
   httpmethod:
+    choices:
+      - GET
+      - POST
     description:
       - Method used in the HTTP request that this callout sends.  Mutually exclusive
         with the full HTTP request expression.
     type: str
-    choices:
-      - GET
-      - POST
   ipaddress:
     description:
       - IP Address of the server (callout agent) to which the callout is sent. Can
@@ -120,25 +120,25 @@ options:
         (resultExpr) must return a numeric value, as in the following example: http.res.body(10000).length.'
     type: str
   returntype:
-    description:
-      - 'Type of data that the target callout agent returns in response to the callout. '
-      - 'Available settings function as follows:'
-      - '* TEXT - Treat the returned value as a text string. '
-      - '* NUM - Treat the returned value as a number.'
-      - '* BOOL - Treat the returned value as a Boolean value. '
-      - 'Note: You cannot change the return type after it is set.'
-    type: str
     choices:
       - BOOL
       - NUM
       - TEXT
-  scheme:
     description:
-      - Type of scheme for the callout server.
+      - 'Type of data that the target callout agent returns in response to the callout. '
+      - 'Available settings function as follows:'
+      - '* C(TEXT) - Treat the returned value as a text string. '
+      - '* C(NUM) - Treat the returned value as a number.'
+      - '* C(BOOL) - Treat the returned value as a Boolean value. '
+      - 'Note: You cannot change the return type after it is set.'
     type: str
+  scheme:
     choices:
       - http
       - https
+    description:
+      - Type of scheme for the callout server.
+    type: str
   urlstemexpr:
     description:
       - String expression for generating the URL stem. Can contain a literal string

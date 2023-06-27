@@ -33,16 +33,16 @@ options:
         quotation marks (for example, "my string" or 'my string').
     type: str
   permissions:
-    description:
-      - The SNMP V1 or V2 query-type privilege that you want to associate with this
-        SNMP community.
-    type: str
     choices:
       - GET
       - GET_NEXT
       - GET_BULK
       - SET
       - ALL
+    description:
+      - The SNMP V1 or V2 query-type privilege that you want to associate with this
+        SNMP community.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

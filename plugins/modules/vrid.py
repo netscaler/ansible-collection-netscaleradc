@@ -41,6 +41,9 @@ options:
         displayed as ALL and one node is dynamically elected as the owner.
     type: int
   preemption:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - 'In an active-active mode configuration, make a backup VIP address the master
         if its priority becomes higher than that of a master VIP address bound to
@@ -50,9 +53,6 @@ options:
         higher than that of the current master.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   preemptiondelaytimer:
     description:
       - Preemption delay time, in seconds, in an active-active configuration. If any
@@ -66,42 +66,186 @@ options:
     type: int
     default: 255
   sharing:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   trackifnumpriority:
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
     type: int
   tracking:
-    description:
-      - The effective priority (EP) value, relative to the base priority (BP) value
-        in an active-active mode configuration. When EP is set to a value other than
-        None, it is EP, not BP, which determines the master VIP address.
-      - 'Available settings function as follows:'
-      - '* NONE - No tracking. EP = BP'
-      - '* ALL -  If the status of all virtual servers is UP, EP = BP. Otherwise,
-        EP = 0.'
-      - '* ONE - If the status of at least one virtual server is UP, EP = BP. Otherwise,
-        EP = 0.'
-      - '* PROGRESSIVE - If the status of all virtual servers is UP, EP = BP. If the
-        status of all virtual servers is DOWN, EP = 0. Otherwise EP = BP (1 - K/N),
-        where N is the total number of virtual servers associated with the VIP address
-        and K is the number of virtual servers for which the status is DOWN.'
-      - 'Default: NONE.'
-    type: str
-    default: NONE
     choices:
       - NONE
       - ONE
       - ALL
       - PROGRESSIVE
+    description:
+      - The effective priority (EP) value, relative to the base priority (BP) value
+        in an active-active mode configuration. When EP is set to a value other than
+        None, it is EP, not BP, which determines the master VIP address.
+      - 'Available settings function as follows:'
+      - '* C(NONE) - No tracking. EP = BP'
+      - '* C(ALL) -  If the status of all virtual servers is UP, EP = BP. Otherwise,
+        EP = 0.'
+      - '* C(ONE) - If the status of at least one virtual server is UP, EP = BP. Otherwise,
+        EP = 0.'
+      - '* C(PROGRESSIVE) - If the status of all virtual servers is UP, EP = BP. If
+        the status of all virtual servers is DOWN, EP = 0. Otherwise EP = BP (1 -
+        K/N), where N is the total number of virtual servers associated with the VIP
+        address and K is the number of virtual servers for which the status is DOWN.'
+      - 'Default: C(NONE).'
+    type: str
+    default: NONE
+  vrid6_channel_binding:
+    type: dict
+    description: Bindings for vrid6_channel_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vrid6_interface_binding:
+    type: dict
+    description: Bindings for vrid6_interface_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vrid6_trackinterface_binding:
+    type: dict
+    description: Bindings for vrid6_trackinterface_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vrid_channel_binding:
+    type: dict
+    description: Bindings for vrid_channel_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vrid_interface_binding:
+    type: dict
+    description: Bindings for vrid_interface_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  vrid_trackinterface_binding:
+    type: dict
+    description: Bindings for vrid_trackinterface_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -46,15 +46,15 @@ options:
         is 64000.
     type: int
   type:
-    description:
-      - Bindpoint to which the policy is bound.
-    type: str
-    default: REQUEST
     choices:
       - REQUEST
       - UDP_REQUEST
       - DNS_REQUEST
       - ICMP_REQUEST
+    description:
+      - Bindpoint to which the policy is bound.
+    type: str
+    default: REQUEST
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

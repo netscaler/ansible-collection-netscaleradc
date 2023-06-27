@@ -54,13 +54,13 @@ options:
         to locate ADM service.
     type: str
   type:
-    description:
-      - Type of the central management server. Must be either CLOUD or ONPREM depending
-        on whether the server is on the cloud or on premise.
-    type: str
     choices:
       - CLOUD
       - ONPREM
+    description:
+      - Type of the central management server. Must be either C(CLOUD) or C(ONPREM)
+        depending on whether the server is on the cloud or on premise.
+    type: str
   username:
     description:
       - Username for access to central management server. Must begin with a letter,
@@ -73,13 +73,13 @@ options:
       - single quotation marks (for example, "my ns centralmgmtserver" or "my ns centralmgmtserver").
     type: str
   validatecert:
+    choices:
+      - true
+      - false
     description:
       - validate the server certificate for secure SSL connections.
     type: str
     default: true
-    choices:
-      - true
-      - false
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

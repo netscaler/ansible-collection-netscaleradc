@@ -345,7 +345,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      block keyword type(literal|PCRE)
+      block keyword type(\ :literal:`literal`\ |\ :literal:`PCRE`\ )
 
 
       .. rst-class:: ansible-option-line

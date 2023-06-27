@@ -34,6 +34,9 @@ options:
     type: int
     default: 65536
   nattype:
+    choices:
+      - DYNAMIC
+      - DETERMINISTIC
     description:
       - 'Type of NAT IP address and port allocation (from the LSN pools bound to an
         LSN group) for subscribers (of the LSN client entity bound to the LSN group):'
@@ -67,9 +70,6 @@ options:
         LSN pools can be bound to an LSN group.
     type: str
     default: DYNAMIC
-    choices:
-      - DYNAMIC
-      - DETERMINISTIC
   poolname:
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore
@@ -81,6 +81,9 @@ options:
         or ''lsn pool1'').'
     type: str
   portblockallocation:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Allocate a random NAT port block, from the available NAT port pool of an NAT
         IP address, for each subscriber when the NAT allocation is set as Dynamic
@@ -96,9 +99,6 @@ options:
         disable it.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   portrealloctimeout:
     description:
       - 'The waiting time, in seconds, between deallocating LSN NAT ports (when an
@@ -112,6 +112,30 @@ options:
       - '* Dynamic NAT with port block allocation'
       - In these cases, ports are immediately reallocated.
     type: int
+  lsnpool_lsnip_binding:
+    type: dict
+    description: Bindings for lsnpool_lsnip_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

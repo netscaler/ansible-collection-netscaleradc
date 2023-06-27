@@ -24,11 +24,11 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   action:
-    description:
-      - Spillover action. Currently only type SPILLOVER is supported
-    type: str
     choices:
       - SPILLOVER
+    description:
+      - Spillover action. Currently only type C(SPILLOVER) is supported
+    type: str
   name:
     description:
       - Name of the spillover action.

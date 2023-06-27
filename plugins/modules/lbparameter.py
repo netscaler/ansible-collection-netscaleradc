@@ -24,6 +24,9 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   allowboundsvcremoval:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - This is used, to enable/disable the option of svc/svcgroup removal, if it
         is bound to one or more vserver. If it is enabled, the svc/svcgroup can be
@@ -31,9 +34,6 @@ options:
         when the user tries to remove a svc/svcgroup without unbinding from its vservers.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   computedadccookieattribute:
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
@@ -55,6 +55,9 @@ options:
         then SameSite=Strict will be appended to ADC generated cookie'
     type: str
   consolidatedlconn:
+    choices:
+      - true
+      - false
     description:
       - To find the service with the fewest connections, the virtual server uses the
         consolidated connection statistics from all the packet engines. The NO setting
@@ -62,9 +65,6 @@ options:
         that received the new connection.
     type: str
     default: true
-    choices:
-      - true
-      - false
   cookiepassphrase:
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
@@ -76,35 +76,35 @@ options:
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
     type: int
   dropmqttjumbomessage:
+    choices:
+      - true
+      - false
     description:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
     type: str
     default: true
-    choices:
-      - true
-      - false
   httponlycookieflag:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   lbhashalgorithm:
+    choices:
+      - DEFAULT
+      - PRAC
+      - JARH
     description:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
     type: str
     default: DEFAULT
-    choices:
-      - DEFAULT
-      - PRAC
-      - JARH
   lbhashfingers:
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
@@ -130,15 +130,18 @@ options:
         to the number of concurrent requests allowed on a single client connection
     type: int
   monitorconnectionclose:
+    choices:
+      - RESET
+      - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
     type: str
     default: FIN
-    choices:
-      - RESET
-      - FIN
   monitorskipmaxclient:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - When a monitor initiates a connection to a service, do not check to determine
         whether the number of connections to the service has reached the limit specified
@@ -146,10 +149,10 @@ options:
         if the service has reached its connection limit.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   preferdirectroute:
+    choices:
+      - true
+      - false
     description:
       - Perform route lookup for traffic received by the Citrix ADC, and forward the
         traffic according to configured routes. Do not set this parameter if you want
@@ -159,17 +162,14 @@ options:
         been processed and returned by the intermediary device.
     type: str
     default: true
+  retainservicestate:
     choices:
       - true
       - false
-  retainservicestate:
     description:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
     type: str
-    choices:
-      - true
-      - false
   startuprrfactor:
     description:
       - 'Number of requests, per service, for which to apply the round robin load
@@ -202,13 +202,13 @@ options:
         is configured.
     type: int
   storemqttclientidandusername:
+    choices:
+      - true
+      - false
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
     type: str
-    choices:
-      - true
-      - false
   undefaction:
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
@@ -220,32 +220,35 @@ options:
     type: str
     default: '"NOLBACTION"'
   useencryptedpersistencecookie:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   useportforhashlb:
+    choices:
+      - true
+      - false
     description:
       - Include the port number of the service when creating a hash for hash based
         load balancing methods. With the NO setting, only the IP address of the service
         is considered when creating a hash.
     type: str
     default: true
-    choices:
-      - true
-      - false
   usesecuredpersistencecookie:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
     type: str
     default: DISABLED
+  vserverspecificmac:
     choices:
       - ENABLED
       - DISABLED
-  vserverspecificmac:
     description:
       - Allow a MAC-mode virtual server to accept traffic returned by an intermediary
         device, such as a firewall, to which the traffic was previously forwarded
@@ -258,9 +261,6 @@ options:
         through multiple sets of intermediary devices.'
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

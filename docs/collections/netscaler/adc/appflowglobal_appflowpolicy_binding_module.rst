@@ -496,7 +496,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of policy label to invoke. Specify vserver for a policy label associated with a virtual server, or policylabel for a user-defined policy label.
+      Type of policy label to invoke. Specify \ :literal:`vserver`\  for a policy label associated with a virtual server, or \ :literal:`policylabel`\  for a user-defined policy label.
 
 
       .. rst-class:: ansible-option-line

@@ -367,11 +367,11 @@ Parameters
 
       Supported formats are: 
 
-      \* MMDDYYYY. -U.S. style month/date/year format.
+      \* \ :literal:`MMDDYYYY`\ . -U.S. style month/date/year format.
 
-      \* DDMMYYYY - European style date/month/year format.
+      \* \ :literal:`DDMMYYYY`\  - European style date/month/year format.
 
-      \* YYYYMMDD - ISO style year/month/date format.
+      \* \ :literal:`YYYYMMDD`\  - ISO style year/month/date format.
 
 
       .. rst-class:: ansible-option-line
@@ -721,7 +721,7 @@ Parameters
 
       Facility value, as defined in RFC 3164, assigned to the log message. 
 
-      Log facility values are numbers 0 to 7 (LOCAL0 through LOCAL7). Each number indicates where a specific message originated from, such as the Citrix ADC itself, the VPN, or external.
+      Log facility values are numbers 0 to 7 (\ :literal:`LOCAL0`\  through \ :literal:`LOCAL7`\ ). Each number indicates where a specific message originated from, such as the Citrix ADC itself, the VPN, or external.
 
 
       .. rst-class:: ansible-option-line
@@ -773,25 +773,25 @@ Parameters
 
       Available values function as follows: 
 
-      \* ALL - All events.
+      \* \ :literal:`ALL`\  - All events.
 
-      \* EMERGENCY - Events that indicate an immediate crisis on the server.
+      \* \ :literal:`EMERGENCY`\  - Events that indicate an immediate crisis on the server.
 
-      \* ALERT - Events that might require action.
+      \* \ :literal:`ALERT`\  - Events that might require action.
 
-      \* CRITICAL - Events that indicate an imminent server crisis.
+      \* \ :literal:`CRITICAL`\  - Events that indicate an imminent server crisis.
 
-      \* ERROR - Events that indicate some type of error.
+      \* \ :literal:`ERROR`\  - Events that indicate some type of error.
 
-      \* WARNING - Events that require action in the near future.
+      \* \ :literal:`WARNING`\  - Events that require action in the near future.
 
-      \* NOTICE - Events that the administrator should know about.
+      \* \ :literal:`NOTICE`\  - Events that the administrator should know about.
 
-      \* INFORMATIONAL - All but low-level events.
+      \* \ :literal:`INFORMATIONAL`\  - All but low-level events.
 
-      \* DEBUG - All events, in extreme detail.
+      \* \ :literal:`DEBUG`\  - All events, in extreme detail.
 
-      \* NONE - No events.
+      \* \ :literal:`NONE`\  - No events.
 
 
       .. rst-class:: ansible-option-line
@@ -1639,9 +1639,9 @@ Parameters
 
       Supported settings are: 
 
-      \* GMT\_TIME. Coordinated Universal time.
+      \* \ :literal:`GMT\_TIME`\ . Coordinated Universal time.
 
-      \* LOCAL\_TIME. Use the server's timezone setting.
+      \* \ :literal:`LOCAL\_TIME`\ . Use the server's timezone setting.
 
 
       .. rst-class:: ansible-option-line
@@ -1683,7 +1683,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Transport type used to send auditlogs to syslog server. Default type is UDP.
+      Transport type used to send auditlogs to syslog server. Default type is \ :literal:`UDP`\ .
 
 
       .. rst-class:: ansible-option-line

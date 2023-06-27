@@ -38,15 +38,15 @@ options:
     type: list
     elements: str
   subscriptionidtype:
-    description:
-      - Subscription-Id type
-    type: str
     choices:
       - E164
       - IMSI
       - SIP_URI
       - NAI
       - PRIVATE
+    description:
+      - Subscription-Id type
+    type: str
   subscriptionidvalue:
     description:
       - Subscription-Id value

@@ -26,13 +26,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - The bindpoint to which the policy is bound
-    type: str
     choices:
       - REQUEST
       - RESPONSE
       - ICA_REQUEST
+    description:
+      - The bindpoint to which the policy is bound
+    type: str
   gotopriorityexpression:
     description:
       - Expression specifying the priority of the next policy which will get evaluated
@@ -47,13 +47,13 @@ options:
       - Name of the label invoked.
     type: str
   labeltype:
-    description:
-      - The invocation type.
-    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
+    description:
+      - The invocation type.
+    type: str
   name:
     description:
       - Name of the cache redirection virtual server to which to bind the cache redirection

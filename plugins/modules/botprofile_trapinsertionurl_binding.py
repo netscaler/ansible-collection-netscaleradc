@@ -34,12 +34,12 @@ options:
       - Request URL regex pattern for which Trap URL is inserted.
     type: str
   bot_trap_url_insertion_enabled:
-    description:
-      - Enable or disable the request URL pattern.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable or disable the request URL pattern.
+    type: str
   logmessage:
     description:
       - Message to be logged for this binding.

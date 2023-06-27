@@ -24,14 +24,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   stateupdate:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Specifies whether the virtual server checks the attached load balancing server
         for state information.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

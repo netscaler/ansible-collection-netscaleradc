@@ -24,28 +24,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   basicauth:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable basic authentication for Nitro API.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   cliloglevel:
-    description:
-      - Audit log level, which specifies the types of events to log for cli executed
-        commands.
-      - 'Available values function as follows:'
-      - '* EMERGENCY - Events that indicate an immediate crisis on the server.'
-      - '* ALERT - Events that might require action.'
-      - '* CRITICAL - Events that indicate an imminent server crisis.'
-      - '* ERROR - Events that indicate some type of error.'
-      - '* WARNING - Events that require action in the near future.'
-      - '* NOTICE - Events that the administrator should know about.'
-      - '* INFORMATIONAL - All but low-level events.'
-      - '* DEBUG - All events, in extreme detail.'
-    type: str
-    default: INFORMATIONAL
     choices:
       - EMERGENCY
       - ALERT
@@ -55,15 +41,32 @@ options:
       - NOTICE
       - INFORMATIONAL
       - DEBUG
+    description:
+      - Audit log level, which specifies the types of events to log for cli executed
+        commands.
+      - 'Available values function as follows:'
+      - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
+      - '* C(ALERT) - Events that might require action.'
+      - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
+      - '* C(ERROR) - Events that indicate some type of error.'
+      - '* C(WARNING) - Events that require action in the near future.'
+      - '* C(NOTICE) - Events that the administrator should know about.'
+      - '* C(INFORMATIONAL) - All but low-level events.'
+      - '* C(DEBUG) - All events, in extreme detail.'
+    type: str
+    default: INFORMATIONAL
   doppler:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable Doppler
     type: str
     default: ENABLED
+  fipsusermode:
     choices:
       - ENABLED
       - DISABLED
-  fipsusermode:
     description:
       - Use this option to set the FIPS mode for key user-land processes. When enabled,
         these user-land processes will operate in FIPS mode. In this mode, these processes
@@ -73,26 +76,26 @@ options:
         processes will not operate in FIPS mode.
     type: str
     default: DISABLED
+  forcepasswordchange:
     choices:
       - ENABLED
       - DISABLED
-  forcepasswordchange:
     description:
       - Enable or disable force password change for nsroot user
     type: str
     default: DISABLED
+  googleanalytics:
     choices:
       - ENABLED
       - DISABLED
-  googleanalytics:
     description:
       - Enable or disable Google analytics
     type: str
     default: DISABLED
+  localauth:
     choices:
       - ENABLED
       - DISABLED
-  localauth:
     description:
       - When enabled, local users can access Citrix ADC even when external authentication
         is configured. When disabled, local users are not allowed to access the Citrix
@@ -101,9 +104,6 @@ options:
         SSH Key-based authentication
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   minpasswordlen:
     description:
       - Minimum length of system user password. When strong password is enabled default
@@ -118,14 +118,14 @@ options:
     type: int
     default: 2147483647
   natpcbrstontimeout:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Send a reset signal to client and server connections when their NATPCBs time
         out. Avoids the buildup of idle TCP connections on both the sides.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   promptstring:
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
@@ -142,23 +142,26 @@ options:
         to the characters that replace the variables.'
     type: str
   rbaonresponse:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable Role-Based Authentication (RBA) on responses.
     type: str
     default: ENABLED
+  reauthonauthparamchange:
     choices:
       - ENABLED
       - DISABLED
-  reauthonauthparamchange:
     description:
       - Enable or disable External user reauthentication when authentication parameter
         changes
     type: str
     default: DISABLED
+  removesensitivefiles:
     choices:
       - ENABLED
       - DISABLED
-  removesensitivefiles:
     description:
       - Use this option to remove the sensitive files from the system like authorise
         keys, public keys etc. The commands which will remove sensitive files when
@@ -166,10 +169,10 @@ options:
         rm ha node, clear config full, join cluster and add cluster instance.
     type: str
     default: DISABLED
+  restrictedtimeout:
     choices:
       - ENABLED
       - DISABLED
-  restrictedtimeout:
     description:
       - Enable/Disable the restricted timeout behaviour. When enabled, timeout cannot
         be configured beyond admin configured timeout  and also it will have the [minimum
@@ -177,26 +180,23 @@ options:
         By default the value is disabled
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   strongpassword:
-    description:
-      - 'After enabling strong password (enableall / enablelocal - not included in
-        exclude list), all the passwords / sensitive information must have - Atleast
-        1 Lower case character, Atleast 1 Upper case character, Atleast 1 numeric
-        character, Atleast 1 special character ( ~, `, !, @, #, $, %, ^, &, *, -,
-        _, =, +, {, }, [, ], |, \, :, <, >, /, ., ,, " "). Exclude list in case of
-        enablelocal is - NS_FIPS, NS_CRL, NS_RSAKEY, NS_PKCS12, NS_PKCS8, NS_LDAP,
-        NS_TACACS, NS_TACACSACTION, NS_RADIUS, NS_RADIUSACTION, NS_ENCRYPTION_PARAMS.
-        So no Strong Password checks will be performed on these ObjectType commands
-        for enablelocal case.'
-    type: str
-    default: disabled
     choices:
       - enableall
       - enablelocal
       - disabled
+    description:
+      - 'After enabling strong password (C(enableall) / C(enablelocal) - not included
+        in exclude list), all the passwords / sensitive information must have - Atleast
+        1 Lower case character, Atleast 1 Upper case character, Atleast 1 numeric
+        character, Atleast 1 special character ( ~, `, !, @, #, $, %, ^, &, *, -,
+        _, =, +, {, }, [, ], |, \, :, <, >, /, ., ,, " "). Exclude list in case of
+        C(enablelocal) is - NS_FIPS, NS_CRL, NS_RSAKEY, NS_PKCS12, NS_PKCS8, NS_LDAP,
+        NS_TACACS, NS_TACACSACTION, NS_RADIUS, NS_RADIUSACTION, NS_ENCRYPTION_PARAMS.
+        So no Strong Password checks will be performed on these ObjectType commands
+        for C(enablelocal) case.'
+    type: str
+    default: disabled
   timeout:
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument

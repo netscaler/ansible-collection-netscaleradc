@@ -32,24 +32,24 @@ options:
       - Name of the form field to designate as confidential.
     type: str
   isregex:
-    description:
-      - 'Method of specifying the form field name. Available settings function as
-        follows:'
-      - '* REGEX. Form field is a regular expression.'
-      - '* NOTREGEX. Form field is a literal string.'
-    type: str
-    default: NOTREGEX
     choices:
       - REGEX
       - NOTREGEX
+    description:
+      - 'Method of specifying the form field name. Available settings function as
+        follows:'
+      - '* C(REGEX). Form field is a regular expression.'
+      - '* C(NOTREGEX). Form field is a literal string.'
+    type: str
+    default: NOTREGEX
   state:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Enable or disable the confidential field designation.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   url:
     description:
       - URL of the web page that contains the web form.

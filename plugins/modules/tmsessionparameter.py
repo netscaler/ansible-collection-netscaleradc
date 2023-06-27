@@ -24,14 +24,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   defaultauthorizationaction:
+    choices:
+      - ALLOW
+      - DENY
     description:
       - Allow or deny access to content for which there is no specific authorization
         policy.
     type: str
     default: DENY
-    choices:
-      - ALLOW
-      - DENY
   homepage:
     description:
       - Web address of the home page that a user is displayed when authentication
@@ -39,27 +39,27 @@ options:
     type: str
     default: '"None"'
   httponlycookie:
+    choices:
+      - true
+      - false
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
     type: str
     default: true
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - Kerberos constrained delegation account name
     type: str
   persistentcookie:
+    choices:
+      - true
+      - false
     description:
       - Use persistent SSO cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
     type: str
-    choices:
-      - true
-      - false
   persistentcookievalidity:
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
@@ -72,6 +72,9 @@ options:
     type: int
     default: 30
   sso:
+    choices:
+      - true
+      - false
     description:
       - Log users on to all web applications automatically after they authenticate,
         or pass users to the web application logon page to authenticate for each application.
@@ -80,17 +83,14 @@ options:
         or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication
         types.
     type: str
-    choices:
-      - true
-      - false
   ssocredential:
+    choices:
+      - PRIMARY
+      - SECONDARY
     description:
       - Use primary or secondary authentication credentials for single sign-on.
     type: str
     default: PRIMARY
-    choices:
-      - PRIMARY
-      - SECONDARY
   ssodomain:
     description:
       - Domain to use for single sign-on.

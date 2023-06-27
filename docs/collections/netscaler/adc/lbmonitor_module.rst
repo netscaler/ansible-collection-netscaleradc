@@ -155,15 +155,15 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered DOWN if the response code is not one of the codes that have been specified for the Response Code parameter. 
+      Action to perform when the response to an inline monitor (a monitor of type HTTP-INLINE) indicates that the service is down. A service monitored by an inline monitor is considered \ :literal:`DOWN`\  if the response code is not one of the codes that have been specified for the Response Code parameter. 
 
       Available settings function as follows: 
 
-      \* NONE - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
+      \* \ :literal:`NONE`\  - Do not take any action. However, the show service command and the show lb monitor command indicate the total number of responses that were checked and the number of consecutive error responses received after the last successful probe.
 
-      \* LOG - Log the event in NSLOG or SYSLOG. 
+      \* \ :literal:`LOG`\  - Log the event in NSLOG or SYSLOG. 
 
-      \* DOWN - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as DOWN. Also, log the event in NSLOG or SYSLOG.
+      \* \ :literal:`DOWN`\  - Mark the service as being down, and then do not direct any traffic to the service until the configured down time has expired. Persistent connections to the service are terminated as soon as the service is marked as \ :literal:`DOWN`\ . Also, log the event in NSLOG or SYSLOG.
 
 
       .. rst-class:: ansible-option-line
@@ -1559,6 +1559,250 @@ Parameters
   * - .. raw:: html
 
         <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_metric_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_metric_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **lbmonitor_metric_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_metric_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for lbmonitor\_metric\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_metric_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_metric_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_metric_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_metric_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_metric_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_metric_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_sslcertkey_binding"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_sslcertkey_binding:
+
+      .. rst-class:: ansible-option-title
+
+      **lbmonitor_sslcertkey_binding**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_sslcertkey_binding" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-cell">
+
+      Bindings for lbmonitor\_sslcertkey\_binding resource
+
+
+      .. raw:: html
+
+        </div>
+    
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_sslcertkey_binding/binding_members"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_sslcertkey_binding/binding_members:
+
+      .. rst-class:: ansible-option-title
+
+      **binding_members**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_sslcertkey_binding/binding_members" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`list` / :ansible-option-elements:`elements=dictionary`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      List of binding members
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-default-bold:`Default:` :ansible-option-default:`[]`
+
+      .. raw:: html
+
+        </div>
+
+  * - .. raw:: html
+
+        <div class="ansible-option-indent"></div><div class="ansible-option-cell">
+        <div class="ansibleOptionAnchor" id="parameter-lbmonitor_sslcertkey_binding/mode"></div>
+
+      .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-lbmonitor_sslcertkey_binding/mode:
+
+      .. rst-class:: ansible-option-title
+
+      **mode**
+
+      .. raw:: html
+
+        <a class="ansibleOptionLink" href="#parameter-lbmonitor_sslcertkey_binding/mode" title="Permalink to this option"></a>
+
+      .. rst-class:: ansible-option-type-line
+
+      :ansible-option-type:`string`
+
+      .. raw:: html
+
+        </div>
+
+    - .. raw:: html
+
+        <div class="ansible-option-indent-desc"></div><div class="ansible-option-cell">
+
+      The mode in which to configure the bindings.
+
+      If mode is set to \ :literal:`desired`\ , the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.
+
+      If mode is set to \ :literal:`bind`\ , the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.
+
+      If mode is set to \ :literal:`unbind`\ , the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.
+
+
+      .. rst-class:: ansible-option-line
+
+      :ansible-option-choices:`Choices:`
+
+      - :ansible-option-choices-entry-default:`"desired"` :ansible-option-choices-default-mark:`← (default)`
+      - :ansible-option-choices-entry:`"bind"`
+      - :ansible-option-choices-entry:`"unbind"`
+
+
+      .. raw:: html
+
+        </div>
+
+
+  * - .. raw:: html
+
+        <div class="ansible-option-cell">
         <div class="ansibleOptionAnchor" id="parameter-logonpointname"></div>
 
       .. _ansible_collections.netscaler.adc.lbmonitor_module__parameter-logonpointname:
@@ -2507,7 +2751,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of DNS record for which to send monitoring queries. Set to Address for querying A records, AAAA for querying AAAA records, and Zone for querying the SOA record.
+      Type of DNS record for which to send monitoring queries. Set to \ :literal:`Address`\  for querying A records, \ :literal:`AAAA`\  for querying \ :literal:`AAAA`\  records, and \ :literal:`Zone`\  for querying the SOA record.
 
 
       .. rst-class:: ansible-option-line
@@ -3765,7 +4009,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      State of the monitor. The DISABLED setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to ENABLED. If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.
+      State of the monitor. The \ :literal:`DISABLED`\  setting disables not only the monitor being configured, but all monitors of the same type, until the parameter is set to \ :literal:`ENABLED`\ . If the monitor is bound to a service, the state of the monitor is not taken into account when the state of the service is determined.
 
 
       .. rst-class:: ansible-option-line

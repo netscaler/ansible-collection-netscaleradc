@@ -30,12 +30,12 @@ options:
       - Any comments about this binding.
     type: str
   bot_km_detection_enabled:
-    description:
-      - Enable or disable the keyboard-mouse based binding.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Enable or disable the keyboard-mouse based binding.
+    type: str
   bot_km_expression_name:
     description:
       - Name of the keyboard-mouse expression object.

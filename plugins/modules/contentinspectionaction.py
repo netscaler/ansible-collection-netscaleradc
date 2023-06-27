@@ -28,22 +28,22 @@ options:
       - Name of the ICAP profile to be attached to the contentInspection action.
     type: str
   ifserverdown:
-    description:
-      - 'Name of the action to perform if the Vserver representing the remote service
-        is not UP. This is not supported for NOINSPECTION Type. The Supported actions
-        are:'
-      - '* RESET - Reset the client connection by closing it. The client program,
-        such as a browser, will handle this and may inform the user. The client may
-        then resend the request if desired.'
-      - '* DROP - Drop the request without sending a response to the user.'
-      - '* CONTINUE - It bypasses the ContentIsnpection and Continues/resumes the
-        Traffic-Flow to Client/Server.'
-    type: str
-    default: RESET
     choices:
       - CONTINUE
       - DROP
       - RESET
+    description:
+      - 'Name of the action to perform if the Vserver representing the remote service
+        is not UP. This is not supported for NOINSPECTION Type. The Supported actions
+        are:'
+      - '* C(RESET) - Reset the client connection by closing it. The client program,
+        such as a browser, will handle this and may inform the user. The client may
+        then resend the request if desired.'
+      - '* C(DROP) - Drop the request without sending a response to the user.'
+      - '* C(CONTINUE) - It bypasses the ContentIsnpection and Continues/resumes the
+        Traffic-Flow to Client/Server.'
+    type: str
+    default: RESET
   name:
     description:
       - Name of the remote service action. Must begin with an ASCII alphabetic or
@@ -65,22 +65,23 @@ options:
     type: int
     default: 1344
   type:
-    description:
-      - 'Type of operation this action is going to perform. following actions are
-        available to configure:'
-      - '* ICAP - forward the incoming request or response to an ICAP server for modification.'
-      - '* INLINEINSPECTION - forward the incoming or outgoing packets to IPS server
-        for Intrusion Prevention.'
-      - '* MIRROR - Forwards cloned packets for Intrusion Detection.'
-      - '* NOINSPECTION - This does not forward incoming and outgoing packets to the
-        Inspection device.'
-      - '* NSTRACE - capture current and further incoming packets on this transaction.'
-    type: str
     choices:
       - ICAP
       - INLINEINSPECTION
       - MIRROR
       - NOINSPECTION
+    description:
+      - 'Type of operation this action is going to perform. following actions are
+        available to configure:'
+      - '* C(ICAP) - forward the incoming request or response to an C(ICAP) server
+        for modification.'
+      - '* C(INLINEINSPECTION) - forward the incoming or outgoing packets to IPS server
+        for Intrusion Prevention.'
+      - '* C(MIRROR) - Forwards cloned packets for Intrusion Detection.'
+      - '* C(NOINSPECTION) - This does not forward incoming and outgoing packets to
+        the Inspection device.'
+      - '* NSTRACE - capture current and further incoming packets on this transaction.'
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

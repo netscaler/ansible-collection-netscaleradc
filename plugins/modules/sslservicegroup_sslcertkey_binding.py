@@ -34,19 +34,19 @@ options:
       - The name of the certificate bound to the SSL service group.
     type: str
   crlcheck:
-    description:
-      - The state of the CRL check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
+    type: str
   ocspcheck:
-    description:
-      - The state of the OCSP check parameter. (Mandatory/Optional)
-    type: str
     choices:
       - Mandatory
       - Optional
+    description:
+      - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
+    type: str
   servicegroupname:
     description:
       - The name of the SSL service to which the SSL policy needs to be bound.

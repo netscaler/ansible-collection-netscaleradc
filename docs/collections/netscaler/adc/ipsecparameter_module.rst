@@ -193,7 +193,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Type of encryption algorithm (Note: Selection of AES enables AES128)
+      Type of encryption algorithm (Note: Selection of \ :literal:`AES`\  enables AES128)
 
 
       .. rst-class:: ansible-option-line

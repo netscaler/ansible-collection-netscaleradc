@@ -26,9 +26,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bindpoint:
-    description:
-      - Bindpoint to which the policy is bound.
-    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -36,6 +33,9 @@ options:
       - OTHERTCP_REQUEST
       - AAA_REQUEST
       - AAA_RESPONSE
+    description:
+      - Bindpoint to which the policy is bound.
+    type: str
   gotopriorityexpression:
     description:
       - Next priority expression.

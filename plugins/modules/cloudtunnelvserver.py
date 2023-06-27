@@ -50,13 +50,13 @@ options:
       - '"my server" or ''my server'').'
     type: str
   servicetype:
+    choices:
+      - TCP
+      - UDP
     description:
       - ServiceType of Listener using which traffic will be tunneled through cloud
         tunnel server.
     type: str
-    choices:
-      - TCP
-      - UDP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

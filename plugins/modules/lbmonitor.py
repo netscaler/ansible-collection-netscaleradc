@@ -34,27 +34,27 @@ options:
         these AVPs are supported in a monitoring message.
     type: list
   action:
-    description:
-      - 'Action to perform when the response to an inline monitor (a monitor of type
-        HTTP-INLINE) indicates that the service is down. A service monitored by an
-        inline monitor is considered DOWN if the response code is not one of the codes
-        that have been specified for the Response Code parameter. '
-      - 'Available settings function as follows: '
-      - '* NONE - Do not take any action. However, the show service command and the
-        show lb monitor command indicate the total number of responses that were checked
-        and the number of consecutive error responses received after the last successful
-        probe.'
-      - '* LOG - Log the event in NSLOG or SYSLOG. '
-      - '* DOWN - Mark the service as being down, and then do not direct any traffic
-        to the service until the configured down time has expired. Persistent connections
-        to the service are terminated as soon as the service is marked as DOWN. Also,
-        log the event in NSLOG or SYSLOG.'
-    type: str
-    default: DOWN
     choices:
       - NONE
       - LOG
       - DOWN
+    description:
+      - 'Action to perform when the response to an inline monitor (a monitor of type
+        HTTP-INLINE) indicates that the service is down. A service monitored by an
+        inline monitor is considered C(DOWN) if the response code is not one of the
+        codes that have been specified for the Response Code parameter. '
+      - 'Available settings function as follows: '
+      - '* C(NONE) - Do not take any action. However, the show service command and
+        the show lb monitor command indicate the total number of responses that were
+        checked and the number of consecutive error responses received after the last
+        successful probe.'
+      - '* C(LOG) - Log the event in NSLOG or SYSLOG. '
+      - '* C(DOWN) - Mark the service as being down, and then do not direct any traffic
+        to the service until the configured down time has expired. Persistent connections
+        to the service are terminated as soon as the service is marked as C(DOWN).
+        Also, log the event in NSLOG or SYSLOG.'
+    type: str
+    default: DOWN
   alertretries:
     description:
       - Number of consecutive probe failures after which the appliance generates an
@@ -179,12 +179,12 @@ options:
         service is marked as DOWN. Applicable to NNTP monitors.
     type: str
   grpchealthcheck:
-    description:
-      - Option to enable or disable gRPC health check service.
-    type: str
     choices:
       - true
       - false
+    description:
+      - Option to enable or disable gRPC health check service.
+    type: str
   grpcservicename:
     description:
       - Option to specify gRPC service name on which gRPC health check need to be
@@ -213,13 +213,13 @@ options:
       - HTTP request to send to the server (for example, "HEAD /file.html").
     type: str
   inbandsecurityid:
+    choices:
+      - NO_INBAND_SECURITY
+      - TLS
     description:
       - Inband-Security-Id for the Capabilities-Exchange-Request (CER) message to
         use for monitoring Diameter servers.
     type: str
-    choices:
-      - NO_INBAND_SECURITY
-      - TLS
   interval:
     description:
       - Time interval between two successive probes. Must be greater than the value
@@ -233,13 +233,13 @@ options:
     type: list
     elements: str
   iptunnel:
+    choices:
+      - true
+      - false
     description:
       - Send the monitoring probe to the service through an IP tunnel. A destination
         IP address must be specified.
     type: str
-    choices:
-      - true
-      - false
   kcdaccount:
     description:
       - KCD Account used by MSSQL monitor
@@ -257,14 +257,14 @@ options:
         monitors.
     type: str
   lrtm:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Calculate the least response times for bound services. If this parameter is
         not enabled, the appliance does not learn the response times of the bound
         services. Also used for LRTM load balancing.
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
   maxforwards:
     description:
       - Maximum number of hops that the SIP request used for monitoring can traverse
@@ -308,10 +308,6 @@ options:
     type: int
     default: 4
   mssqlprotocolversion:
-    description:
-      - Version of MSSQL server that is to be monitored.
-    type: str
-    default: 70
     choices:
       - 70
       - 2000
@@ -321,6 +317,10 @@ options:
       - 2008R2
       - 2012
       - 2014
+    description:
+      - Version of MSSQL server that is to be monitored.
+    type: str
+    default: 70
   netprofile:
     description:
       - Name of the network profile.
@@ -358,15 +358,15 @@ options:
         example.com).
     type: str
   querytype:
-    description:
-      - Type of DNS record for which to send monitoring queries. Set to Address for
-        querying A records, AAAA for querying AAAA records, and Zone for querying
-        the SOA record.
-    type: str
     choices:
       - Address
       - Zone
       - AAAA
+    description:
+      - Type of DNS record for which to send monitoring queries. Set to C(Address)
+        for querying A records, C(AAAA) for querying C(AAAA) records, and C(Zone)
+        for querying the SOA record.
+    type: str
   radaccountsession:
     description:
       - Account Session ID to be used in Account Request Packet. Applicable to monitors
@@ -448,13 +448,13 @@ options:
     type: int
     default: 3
   reverse:
+    choices:
+      - true
+      - false
     description:
       - Mark a service as DOWN, instead of UP, when probe criteria are satisfied,
         and as UP instead of DOWN when probe criteria are not satisfied.
     type: str
-    choices:
-      - true
-      - false
   rtsprequest:
     description:
       - RTSP request to send to the server (for example, "OPTIONS *").
@@ -475,14 +475,14 @@ options:
         Gateway server. Applicable to CITRIX-AG monitors.
     type: str
   secure:
+    choices:
+      - true
+      - false
     description:
       - Use a secure SSL connection when monitoring a service. Applicable only to
         TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor,
         because a CITRIX-AG monitor uses a secure connection by default.
     type: str
-    choices:
-      - true
-      - false
   secureargs:
     description:
       - List of arguments for the script which should be secure
@@ -501,13 +501,13 @@ options:
       - The name of the service to which the monitor is bound.
     type: str
   sipmethod:
-    description:
-      - SIP method to use for the query. Applicable only to monitors of type SIP-UDP.
-    type: str
     choices:
       - OPTIONS
       - INVITE
       - REGISTER
+    description:
+      - SIP method to use for the query. Applicable only to monitors of type SIP-UDP.
+    type: str
   sipreguri:
     description:
       - SIP user to be registered. Applicable only if the monitor is of type SIP-UDP
@@ -533,12 +533,12 @@ options:
       - Threshold for SNMP monitors.
     type: str
   snmpversion:
-    description:
-      - SNMP version to be used for SNMP monitors.
-    type: str
     choices:
       - V1
       - V2
+    description:
+      - SNMP version to be used for SNMP monitors.
+    type: str
   sqlquery:
     description:
       - SQL query for a MYSQL-ECV or MSSQL-ECV monitor. Sent to the database server
@@ -549,44 +549,44 @@ options:
       - SSL Profile associated with the monitor
     type: str
   state:
-    description:
-      - State of the monitor. The DISABLED setting disables not only the monitor being
-        configured, but all monitors of the same type, until the parameter is set
-        to ENABLED. If the monitor is bound to a service, the state of the monitor
-        is not taken into account when the state of the service is determined.
-    type: str
-    default: ENABLED
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - State of the monitor. The C(DISABLED) setting disables not only the monitor
+        being configured, but all monitors of the same type, until the parameter is
+        set to C(ENABLED). If the monitor is bound to a service, the state of the
+        monitor is not taken into account when the state of the service is determined.
+    type: str
+    default: ENABLED
   storedb:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - Store the database list populated with the responses to monitor probes. Used
         in database specific load balancing if MSSQL-ECV/MYSQL-ECV  monitor is configured.
     type: str
     default: DISABLED
-    choices:
-      - ENABLED
-      - DISABLED
   storefrontacctservice:
+    choices:
+      - true
+      - false
     description:
       - Enable/Disable probing for Account Service. Applicable only to Store Front
         monitors. For multi-tenancy configuration users my skip account service
     type: str
     default: true
+  storefrontcheckbackendservices:
     choices:
       - true
       - false
-  storefrontcheckbackendservices:
     description:
       - This option will enable monitoring of services running on storefront server.
         Storefront services are monitored by probing to a Windows service that runs
         on the Storefront server and exposes details of which storefront services
         are running.
     type: str
-    choices:
-      - true
-      - false
   storename:
     description:
       - Store Name. For monitors of type STOREFRONT, STORENAME is an optional argument
@@ -605,19 +605,22 @@ options:
         AVPs are supported in a monitoring message.
     type: list
   tos:
+    choices:
+      - true
+      - false
     description:
       - Probe the service by encoding the destination IP address in the IP TOS (6)
         bits.
     type: str
-    choices:
-      - true
-      - false
   tosid:
     description:
       - The TOS ID of the specified destination IP. Applicable only when the TOS parameter
         is set.
     type: int
   transparent:
+    choices:
+      - true
+      - false
     description:
       - The monitor is bound to a transparent device such as a firewall or router.
         The state of a transparent device depends on the responsiveness of the services
@@ -625,9 +628,6 @@ options:
         must be specified. The probe is sent to the specified IP address by using
         the MAC address of the transparent device.
     type: str
-    choices:
-      - true
-      - false
   trofscode:
     description:
       - Code expected when the server is under maintenance
@@ -638,9 +638,6 @@ options:
         to HTTP-ECV/TCP-ECV monitors.
     type: str
   type:
-    description:
-      - Type of monitor that you want to create.
-    type: str
     choices:
       - PING
       - TCP
@@ -691,44 +688,47 @@ options:
       - CITRIX-STA-SERVICE-NHOP
       - MQTT
       - HTTP2
+    description:
+      - Type of monitor that you want to create.
+    type: str
   units1:
+    choices:
+      - SEC
+      - MSEC
+      - MIN
     description:
       - Unit of measurement for the Deviation parameter. Cannot be changed after the
         monitor is created.
     type: str
     default: SEC
+  units2:
     choices:
       - SEC
       - MSEC
       - MIN
-  units2:
     description:
       - Unit of measurement for the Down Time parameter. Cannot be changed after the
         monitor is created.
     type: str
     default: SEC
+  units3:
     choices:
       - SEC
       - MSEC
       - MIN
-  units3:
     description:
       - monitor interval units
     type: str
     default: SEC
+  units4:
     choices:
       - SEC
       - MSEC
       - MIN
-  units4:
     description:
       - monitor response timeout units
     type: str
     default: SEC
-    choices:
-      - SEC
-      - MSEC
-      - MIN
   username:
     description:
       - User name with which to probe the RADIUS, NNTP, FTP, FTP-EXTENDED, MYSQL,
@@ -736,13 +736,13 @@ options:
         server.
     type: str
   validatecred:
+    choices:
+      - true
+      - false
     description:
       - Validate the credentials of the Xen Desktop DDC server user. Applicable to
         monitors of type CITRIX-XD-DDC.
     type: str
-    choices:
-      - true
-      - false
   vendorid:
     description:
       - Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use
@@ -772,6 +772,54 @@ options:
         or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported
         for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.
     type: int
+  lbmonitor_metric_binding:
+    type: dict
+    description: Bindings for lbmonitor_metric_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
+  lbmonitor_sslcertkey_binding:
+    type: dict
+    description: Bindings for lbmonitor_sslcertkey_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

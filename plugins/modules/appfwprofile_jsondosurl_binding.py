@@ -26,24 +26,24 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   alertonly:
-    description:
-      - Send SNMP alert?
-    type: str
     choices:
       - true
       - false
+    description:
+      - Send SNMP alert?
+    type: str
   comment:
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
     type: str
   isautodeployed:
-    description:
-      - Is the rule auto deployed by dynamic profile ?
-    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
+    description:
+      - Is the rule auto deployed by dynamic profile ?
+    type: str
   jsondosurl:
     description:
       - The URL on which we need to enforce the specified JSON denial-of-service (JSONDoS)
@@ -77,12 +77,12 @@ options:
     type: int
     default: 10000
   jsonmaxarraylengthcheck:
-    description:
-      - State if JSON Max array value count check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max array value count check is ON or OFF.
+    type: str
   jsonmaxcontainerdepth:
     description:
       - Maximum allowed nesting depth  of JSON document. JSON allows one to nest the
@@ -91,24 +91,24 @@ options:
     type: int
     default: 5
   jsonmaxcontainerdepthcheck:
-    description:
-      - State if JSON Max depth check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max depth check is ON or OFF.
+    type: str
   jsonmaxdocumentlength:
     description:
       - Maximum document length of JSON document, in bytes.
     type: int
     default: 20000000
   jsonmaxdocumentlengthcheck:
-    description:
-      - State if JSON Max document length check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max document length check is ON or OFF.
+    type: str
   jsonmaxobjectkeycount:
     description:
       - Maximum key count in the any of JSON object. This check protects against objects
@@ -116,12 +116,12 @@ options:
     type: int
     default: 10000
   jsonmaxobjectkeycountcheck:
-    description:
-      - State if JSON Max object key count check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max object key count check is ON or OFF.
+    type: str
   jsonmaxobjectkeylength:
     description:
       - Maximum key length in the any of JSON object. This check protects against
@@ -129,12 +129,12 @@ options:
     type: int
     default: 128
   jsonmaxobjectkeylengthcheck:
-    description:
-      - State if JSON Max object key length check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max object key length check is ON or OFF.
+    type: str
   jsonmaxstringlength:
     description:
       - Maximum string length in the JSON. This check protects against strings that
@@ -142,12 +142,12 @@ options:
     type: int
     default: 1000000
   jsonmaxstringlengthcheck:
-    description:
-      - State if JSON Max string value count check is ON or OFF.
-    type: str
     choices:
       - true
       - false
+    description:
+      - State if JSON Max string value count check is ON or OFF.
+    type: str
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.
@@ -157,19 +157,19 @@ options:
       - A "id" that identifies the rule.
     type: str
   ruletype:
-    description:
-      - Specifies rule type of binding
-    type: str
     choices:
       - ALLOW
       - DENY
-  state:
     description:
-      - Enabled.
+      - Specifies rule type of binding
     type: str
+  state:
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Enabled.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

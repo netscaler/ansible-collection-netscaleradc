@@ -849,57 +849,57 @@ Parameters
 
       This element specifies the authentication class types that are requested from IdP (IdentityProvider).
 
-      InternetProtocol: This is applicable when a principal is authenticated through the use of a provided IP address.
+      \ :literal:`InternetProtocol`\ : This is applicable when a principal is authenticated through the use of a provided IP address.
 
-      InternetProtocolPassword: This is applicable when a principal is authenticated through the use of a provided IP address, in addition to a username/password.
+      \ :literal:`InternetProtocolPassword`\ : This is applicable when a principal is authenticated through the use of a provided IP address, in addition to a username/password.
 
-      Kerberos: This is applicable when the principal has authenticated using a password to a local authentication authority, in order to acquire a Kerberos ticket.
+      \ :literal:`Kerberos`\ : This is applicable when the principal has authenticated using a password to a local authentication authority, in order to acquire a \ :literal:`Kerberos`\  ticket.
 
-      MobileOneFactorUnregistered: This indicates authentication of the mobile device without requiring explicit end-user interaction.
+      \ :literal:`MobileOneFactorUnregistered`\ : This indicates authentication of the mobile device without requiring explicit end-user interaction.
 
-      MobileTwoFactorUnregistered: This indicates two-factor based authentication during mobile customer registration process, such as secure device and user PIN.
+      \ :literal:`MobileTwoFactorUnregistered`\ : This indicates two-factor based authentication during mobile customer registration process, such as secure device and user PIN.
 
-      MobileOneFactorContract: Reflects mobile contract customer registration procedures and a single factor authentication.
+      \ :literal:`MobileOneFactorContract`\ : Reflects mobile contract customer registration procedures and a single factor authentication.
 
-      MobileTwoFactorContract: Reflects mobile contract customer registration procedures and a two-factor based authentication.
+      \ :literal:`MobileTwoFactorContract`\ : Reflects mobile contract customer registration procedures and a two-factor based authentication.
 
-      Password: This class is applicable when a principal authenticates using password over unprotected http session.
+      \ :literal:`Password`\ : This class is applicable when a principal authenticates using password over unprotected http session.
 
-      PasswordProtectedTransport: This class is applicable when a principal authenticates to an authentication authority through the presentation of a password over a protected session.
+      \ :literal:`PasswordProtectedTransport`\ : This class is applicable when a principal authenticates to an authentication authority through the presentation of a password over a protected session.
 
-      PreviousSession: This class is applicable when a principal had authenticated to an authentication authority at some point in the past using any authentication context.
+      \ :literal:`PreviousSession`\ : This class is applicable when a principal had authenticated to an authentication authority at some point in the past using any authentication context.
 
-      X509: This indicates that the principal authenticated by means of a digital signature where the key was validated as part of an X.509 Public Key Infrastructure.
+      \ :literal:`X509`\ : This indicates that the principal authenticated by means of a digital signature where the key was validated as part of an X.509 Public Key Infrastructure.
 
-      PGP: This indicates that the principal authenticated by means of a digital signature where the key was validated as part of a PGP Public Key Infrastructure.
+      \ :literal:`PGP`\ : This indicates that the principal authenticated by means of a digital signature where the key was validated as part of a \ :literal:`PGP`\  Public Key Infrastructure.
 
-      SPKI: This indicates that the principal authenticated by means of a digital signature where the key was validated via an SPKI Infrastructure.
+      \ :literal:`SPKI`\ : This indicates that the principal authenticated by means of a digital signature where the key was validated via an \ :literal:`SPKI`\  Infrastructure.
 
-      XMLDSig: This indicates that the principal authenticated by means of a digital signature according to the processing rules specified in the XML Digital Signature specification.
+      \ :literal:`XMLDSig`\ : This indicates that the principal authenticated by means of a digital signature according to the processing rules specified in the XML Digital Signature specification.
 
-      Smartcard: This indicates that the principal has authenticated using smartcard.
+      \ :literal:`Smartcard`\ : This indicates that the principal has authenticated using smartcard.
 
-      SmartcardPKI: This class is applicable when a principal authenticates to an authentication authority through a two-factor authentication mechanism using a smartcard with enclosed private key and a PIN.
+      \ :literal:`SmartcardPKI`\ : This class is applicable when a principal authenticates to an authentication authority through a two-factor authentication mechanism using a smartcard with enclosed private key and a PIN.
 
-      SoftwarePKI: This class is applicable when a principal uses an X.509 certificate stored in software to authenticate to the authentication authority.
+      \ :literal:`SoftwarePKI`\ : This class is applicable when a principal uses an X.509 certificate stored in software to authenticate to the authentication authority.
 
-      Telephony: This class is used to indicate that the principal authenticated via the provision of a fixed-line telephone number, transported via a telephony protocol such as ADSL.
+      \ :literal:`Telephony`\ : This class is used to indicate that the principal authenticated via the provision of a fixed-line telephone number, transported via a telephony protocol such as ADSL.
 
-      NomadTelephony: Indicates that the principal is "roaming" and authenticates via the means of the line number, a user suffix, and a password element.
+      \ :literal:`NomadTelephony`\ : Indicates that the principal is "roaming" and authenticates via the means of the line number, a user suffix, and a password element.
 
-      PersonalTelephony: This class is used to indicate that the principal authenticated via the provision of a fixed-line telephone.
+      \ :literal:`PersonalTelephony`\ : This class is used to indicate that the principal authenticated via the provision of a fixed-line telephone.
 
-      AuthenticatedTelephony: Indicates that the principal authenticated via the means of the line number, a user suffix, and a password element.
+      \ :literal:`AuthenticatedTelephony`\ : Indicates that the principal authenticated via the means of the line number, a user suffix, and a password element.
 
-      SecureRemotePassword: This class is applicable when the authentication was performed by means of Secure Remote Password.
+      \ :literal:`SecureRemotePassword`\ : This class is applicable when the authentication was performed by means of Secure Remote \ :literal:`Password`\ .
 
-      TLSClient: This class indicates that the principal authenticated by means of a client certificate, secured with the SSL/TLS transport.
+      \ :literal:`TLSClient`\ : This class indicates that the principal authenticated by means of a client certificate, secured with the SSL/TLS transport.
 
-      TimeSyncToken: This is applicable when a principal authenticates through a time synchronization token.
+      \ :literal:`TimeSyncToken`\ : This is applicable when a principal authenticates through a time synchronization token.
 
-      Unspecified: This indicates that the authentication was performed by unspecified means.
+      \ :literal:`Unspecified`\ : This indicates that the authentication was performed by unspecified means.
 
-      Windows: This indicates that Windows integrated authentication is utilized for authentication.
+      \ :literal:`Windows`\ : This indicates that \ :literal:`Windows`\  integrated authentication is utilized for authentication.
 
 
       .. rst-class:: ansible-option-line

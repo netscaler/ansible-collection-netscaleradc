@@ -24,34 +24,6 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   cspolicylabeltype:
-    description:
-      - 'Protocol supported by the policy label. All policies bound to the policy
-        label must either match the specified protocol or be a subtype of that protocol.
-        Available settings function as follows:'
-      - '* HTTP - Supports policies that process HTTP traffic. Used to access unencrypted
-        Web sites. (The default.)'
-      - '* SSL - Supports policies that process HTTPS/SSL encrypted traffic. Used
-        to access encrypted Web sites.'
-      - '* TCP - Supports policies that process any type of TCP traffic, including
-        HTTP.'
-      - '* SSL_TCP - Supports policies that process SSL-encrypted TCP traffic, including
-        SSL.'
-      - '* UDP - Supports policies that process any type of UDP-based traffic, including
-        DNS.'
-      - '* DNS - Supports policies that process DNS traffic.'
-      - '* ANY - Supports all types of policies except HTTP, SSL, and TCP.             '
-      - '* SIP_UDP - Supports policies that process UDP based Session Initiation Protocol
-        (SIP) traffic. SIP initiates, manages, and terminates multimedia communications
-        sessions, and has emerged as the standard for Internet telephony (VoIP).'
-      - '* RTSP - Supports policies that process Real Time Streaming Protocol (RTSP)
-        traffic. RTSP provides delivery of multimedia and other streaming data, such
-        as audio, video, and other types of streamed media.'
-      - '* RADIUS - Supports policies that process Remote Authentication Dial In User
-        Service (RADIUS) traffic. RADIUS supports combined authentication, authorization,
-        and auditing services for network management.'
-      - '* MYSQL - Supports policies that process MYSQL traffic.'
-      - '* MSSQL - Supports policies that process Microsoft SQL traffic.'
-    type: str
     choices:
       - HTTP
       - TCP
@@ -76,6 +48,35 @@ options:
       - MQTT
       - MQTT_TLS
       - HTTP_QUIC
+    description:
+      - 'Protocol supported by the policy label. All policies bound to the policy
+        label must either match the specified protocol or be a subtype of that protocol.
+        Available settings function as follows:'
+      - '* C(HTTP) - Supports policies that process C(HTTP) traffic. Used to access
+        unencrypted Web sites. (The default.)'
+      - '* C(SSL) - Supports policies that process HTTPS/C(SSL) encrypted traffic.
+        Used to access encrypted Web sites.'
+      - '* C(TCP) - Supports policies that process any type of C(TCP) traffic, including
+        C(HTTP).'
+      - '* C(SSL_TCP) - Supports policies that process C(SSL)-encrypted C(TCP) traffic,
+        including C(SSL).'
+      - '* C(UDP) - Supports policies that process any type of C(UDP)-based traffic,
+        including C(DNS).'
+      - '* C(DNS) - Supports policies that process C(DNS) traffic.'
+      - '* C(ANY) - Supports all types of policies except C(HTTP), C(SSL), and C(TCP).             '
+      - '* C(SIP_UDP) - Supports policies that process C(UDP) based Session Initiation
+        Protocol (SIP) traffic. SIP initiates, manages, and terminates multimedia
+        communications sessions, and has emerged as the standard for Internet telephony
+        (VoIP).'
+      - '* C(RTSP) - Supports policies that process Real Time Streaming Protocol (C(RTSP))
+        traffic. C(RTSP) provides delivery of multimedia and other streaming data,
+        such as audio, video, and other types of streamed media.'
+      - '* C(RADIUS) - Supports policies that process Remote Authentication Dial In
+        User Service (C(RADIUS)) traffic. C(RADIUS) supports combined authentication,
+        authorization, and auditing services for network management.'
+      - '* C(MYSQL) - Supports policies that process C(MYSQL) traffic.'
+      - '* C(MSSQL) - Supports policies that process Microsoft SQL traffic.'
+    type: str
   labelname:
     description:
       - 'Name for the policy label. Must begin with an ASCII alphanumeric or underscore
@@ -92,6 +93,30 @@ options:
     description:
       - The new name of the content switching policylabel.
     type: str
+  cspolicylabel_cspolicy_binding:
+    type: dict
+    description: Bindings for cspolicylabel_cspolicy_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

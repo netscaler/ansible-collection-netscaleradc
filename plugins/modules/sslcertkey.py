@@ -24,13 +24,13 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   bundle:
+    choices:
+      - true
+      - false
     description:
       - Parse the certificate chain as a single file after linking the server certificate
         to its issuer's certificate within the file.
     type: str
-    choices:
-      - true
-      - false
   cert:
     description:
       - Name of and, optionally, path to the X509 certificate file that is used to
@@ -55,12 +55,12 @@ options:
       - Delete cert/key file from file system.
     type: bool
   expirymonitor:
-    description:
-      - Issue an alert when the certificate is about to expire.
-    type: str
     choices:
       - ENABLED
       - DISABLED
+    description:
+      - Issue an alert when the certificate is about to expire.
+    type: str
   fipskey:
     description:
       - Name of the FIPS key that was created inside the Hardware Security Module
@@ -72,18 +72,18 @@ options:
         (HSM) of a FIPS appliance.
     type: str
   inform:
-    description:
-      - 'Input format of the certificate and the private-key files. The three formats
-        supported by the appliance are:'
-      - PEM - Privacy Enhanced Mail
-      - DER - Distinguished Encoding Rule
-      - PFX - Personal Information Exchange
-    type: str
-    default: PEM
     choices:
       - DER
       - PEM
       - PFX
+    description:
+      - 'Input format of the certificate and the private-key files. The three formats
+        supported by the appliance are:'
+      - C(PEM) - Privacy Enhanced Mail
+      - C(DER) - Distinguished Encoding Rule
+      - C(PFX) - Personal Information Exchange
+    type: str
+    default: PEM
   key:
     description:
       - Name of and, optionally, path to the private-key file that is used to form
@@ -120,6 +120,30 @@ options:
       - Passphrase that was used to encrypt the private-key. Use this option to load
         encrypted private-keys in PEM format.
     type: bool
+  sslcertkey_sslocspresponder_binding:
+    type: dict
+    description: Bindings for sslcertkey_sslocspresponder_binding resource
+    suboptions:
+      mode:
+        default: desired
+        description:
+          - The mode in which to configure the bindings.
+          - If mode is set to C(desired), the bindings will be added or removed from
+            the target NetScaler ADCs as necessary to match the bindings specified
+            in the state.
+          - If mode is set to C(bind), the specified bindings will be added to the
+            resource. The existing bindings in the target ADCs will not be modified.
+          - If mode is set to C(unbind), the specified bindings will be removed from
+            the resource. The existing bindings in the target ADCs will not be modified.
+        choices:
+          - desired
+          - bind
+          - unbind
+      binding_members:
+        type: list
+        elements: dict
+        description: List of binding members
+        default: []
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

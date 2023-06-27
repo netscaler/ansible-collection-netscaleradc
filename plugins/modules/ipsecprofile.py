@@ -24,36 +24,36 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   encalgo:
-    description:
-      - 'Type of encryption algorithm (Note: Selection of AES enables AES128)'
-    type: list
-    elements: str
     choices:
       - AES
       - AES192
       - AES256
-  hashalgo:
     description:
-      - Type of hashing algorithm
+      - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
     type: list
     elements: str
+  hashalgo:
     choices:
       - HMAC_SHA1
       - HMAC_SHA256
       - HMAC_SHA384
       - HMAC_SHA512
       - HMAC_MD5
+    description:
+      - Type of hashing algorithm
+    type: list
+    elements: str
   ikeretryinterval:
     description:
       - IKE retry interval for bringing up the connection
     type: int
   ikeversion:
-    description:
-      - IKE Protocol Version
-    type: str
     choices:
       - V1
       - V2
+    description:
+      - IKE Protocol Version
+    type: str
   lifetime:
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
@@ -74,12 +74,12 @@ options:
       - Peer public key file path
     type: str
   perfectforwardsecrecy:
-    description:
-      - Enable/Disable PFS.
-    type: str
     choices:
       - ENABLE
       - DISABLE
+    description:
+      - Enable/Disable PFS.
+    type: str
   privatekey:
     description:
       - Private key file path

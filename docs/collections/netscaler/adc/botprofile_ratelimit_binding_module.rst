@@ -227,7 +227,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      One or more actions to be taken when the current rate becomes more than the configured rate. Only LOG action can be combined with DROP, REDIRECT or RESET action.
+      One or more actions to be taken when the current rate becomes more than the configured rate. Only \ :literal:`LOG`\  action can be combined with \ :literal:`DROP`\ , \ :literal:`REDIRECT`\  or \ :literal:`RESET`\  action.
 
 
       .. rst-class:: ansible-option-line
@@ -320,13 +320,13 @@ Parameters
 
       Rate-limiting type Following rate-limiting types are allowed:
 
-      \*SOURCE\_IP - Rate-limiting based on the client IP.
+      \*\ :literal:`SOURCE\_IP`\  - Rate-limiting based on the client IP.
 
-      \*SESSION - Rate-limiting based on the configured cookie name.
+      \*\ :literal:`SESSION`\  - Rate-limiting based on the configured cookie name.
 
-      \*URL - Rate-limiting based on the configured URL.
+      \*\ :literal:`URL`\  - Rate-limiting based on the configured \ :literal:`URL`\ .
 
-      \*GEOLOCATION - Rate-limiting based on the configured country name.
+      \*\ :literal:`GEOLOCATION`\  - Rate-limiting based on the configured country name.
 
 
       .. rst-class:: ansible-option-line

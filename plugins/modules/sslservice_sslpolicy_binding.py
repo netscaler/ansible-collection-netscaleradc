@@ -39,13 +39,13 @@ options:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
     type: str
   labeltype:
-    description:
-      - Type of policy label invocation.
-    type: str
     choices:
       - vserver
       - service
       - policylabel
+    description:
+      - Type of policy label invocation.
+    type: str
   policyname:
     description:
       - The SSL policy binding.

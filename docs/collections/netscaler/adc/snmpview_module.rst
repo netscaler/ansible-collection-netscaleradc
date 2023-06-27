@@ -792,7 +792,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      Include or exclude the subtree, specified by the subtree parameter, in or from this view. This setting can be useful when you have included a subtree, such as A, in an SNMPv3 view and you want to exclude a specific subtree of A, such as B, from the SNMPv3 view.
+      Include or exclude the subtree, specified by the subtree parameter, in or from this view. This setting can be useful when you have \ :literal:`included`\  a subtree, such as A, in an SNMPv3 view and you want to exclude a specific subtree of A, such as B, from the SNMPv3 view.
 
 
       .. rst-class:: ansible-option-line

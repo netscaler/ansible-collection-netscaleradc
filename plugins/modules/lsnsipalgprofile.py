@@ -29,58 +29,58 @@ options:
     type: int
     default: 120
   opencontactpinhole:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - ENABLE/DISABLE ContactPinhole creation.
     type: str
     default: ENABLED
+  openrecordroutepinhole:
     choices:
       - ENABLED
       - DISABLED
-  openrecordroutepinhole:
     description:
       - ENABLE/DISABLE RecordRoutePinhole creation.
     type: str
     default: ENABLED
+  openregisterpinhole:
     choices:
       - ENABLED
       - DISABLED
-  openregisterpinhole:
     description:
       - ENABLE/DISABLE RegisterPinhole creation.
     type: str
     default: ENABLED
+  openroutepinhole:
     choices:
       - ENABLED
       - DISABLED
-  openroutepinhole:
     description:
       - ENABLE/DISABLE RoutePinhole creation.
     type: str
     default: ENABLED
+  openviapinhole:
     choices:
       - ENABLED
       - DISABLED
-  openviapinhole:
     description:
       - ENABLE/DISABLE ViaPinhole creation.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   registrationtimeout:
     description:
       - SIP registration timeout in seconds.
     type: int
     default: 60
   rport:
+    choices:
+      - ENABLED
+      - DISABLED
     description:
       - ENABLE/DISABLE rport.
     type: str
     default: ENABLED
-    choices:
-      - ENABLED
-      - DISABLED
   sipalgprofilename:
     description:
       - The name of the SIPALG Profile.
@@ -99,12 +99,12 @@ options:
       - Source port range for SIP_UDP and SIP_TCP.
     type: str
   siptransportprotocol:
-    description:
-      - SIP ALG Profile transport protocol type.
-    type: str
     choices:
       - TCP
       - UDP
+    description:
+      - SIP ALG Profile transport protocol type.
+    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

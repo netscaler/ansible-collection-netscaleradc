@@ -239,21 +239,21 @@ Parameters
 
       Available values function as follows:
 
-      \* EMERGENCY - Events that indicate an immediate crisis on the server.
+      \* \ :literal:`EMERGENCY`\  - Events that indicate an immediate crisis on the server.
 
-      \* ALERT - Events that might require action.
+      \* \ :literal:`ALERT`\  - Events that might require action.
 
-      \* CRITICAL - Events that indicate an imminent server crisis.
+      \* \ :literal:`CRITICAL`\  - Events that indicate an imminent server crisis.
 
-      \* ERROR - Events that indicate some type of error.
+      \* \ :literal:`ERROR`\  - Events that indicate some type of error.
 
-      \* WARNING - Events that require action in the near future.
+      \* \ :literal:`WARNING`\  - Events that require action in the near future.
 
-      \* NOTICE - Events that the administrator should know about.
+      \* \ :literal:`NOTICE`\  - Events that the administrator should know about.
 
-      \* INFORMATIONAL - All but low-level events.
+      \* \ :literal:`INFORMATIONAL`\  - All but low-level events.
 
-      \* DEBUG - All events, in extreme detail.
+      \* \ :literal:`DEBUG`\  - All events, in extreme detail.
 
 
       .. rst-class:: ansible-option-line
@@ -1372,7 +1372,7 @@ Parameters
 
         <div class="ansible-option-cell">
 
-      After enabling strong password (enableall / enablelocal - not included in exclude list), all the passwords / sensitive information must have - Atleast 1 Lower case character, Atleast 1 Upper case character, Atleast 1 numeric character, Atleast 1 special character ( ~, \`, !, @, #, $, %, ^, &, \*, -, \_, =, +, {, }, [, ], |, \\, :, \<, \>, /, ., ,, " "). Exclude list in case of enablelocal is - NS\_FIPS, NS\_CRL, NS\_RSAKEY, NS\_PKCS12, NS\_PKCS8, NS\_LDAP, NS\_TACACS, NS\_TACACSACTION, NS\_RADIUS, NS\_RADIUSACTION, NS\_ENCRYPTION\_PARAMS. So no Strong Password checks will be performed on these ObjectType commands for enablelocal case.
+      After enabling strong password (\ :literal:`enableall`\  / \ :literal:`enablelocal`\  - not included in exclude list), all the passwords / sensitive information must have - Atleast 1 Lower case character, Atleast 1 Upper case character, Atleast 1 numeric character, Atleast 1 special character ( ~, \`, !, @, #, $, %, ^, &, \*, -, \_, =, +, {, }, [, ], |, \\, :, \<, \>, /, ., ,, " "). Exclude list in case of \ :literal:`enablelocal`\  is - NS\_FIPS, NS\_CRL, NS\_RSAKEY, NS\_PKCS12, NS\_PKCS8, NS\_LDAP, NS\_TACACS, NS\_TACACSACTION, NS\_RADIUS, NS\_RADIUSACTION, NS\_ENCRYPTION\_PARAMS. So no Strong Password checks will be performed on these ObjectType commands for \ :literal:`enablelocal`\  case.
 
 
       .. rst-class:: ansible-option-line
