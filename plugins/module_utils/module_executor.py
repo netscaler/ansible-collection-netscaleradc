@@ -75,7 +75,8 @@ class ModuleExecutor(object):
 
         # Fiter out non-resource module params in the playbook such as `state`, `delegate_to`, `nitro_user`, `nitro_pass`, etc
         self._filter_resource_module_params()
-        self._filter_desired_bindings()
+        if not self.resource_name.endswith("_binding"):
+            self._filter_desired_bindings()
         self.get_existing_resource()
 
     @trace
@@ -96,23 +97,13 @@ class ModuleExecutor(object):
                 self.diff_dict.get("prepared", "") + os.linesep + kwargs["custom_msg"]
             )
             self.diff_dict["prepared"] = prepared_str
-        if existing and desired:
-            if delete:
-                self.diff_dict = {
-                    # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
-                    "before": {
-                        k: v for k, v in existing.items() if k in desired.keys()
-                    },
-                    "after": {},
-                }
-            else:
-                self.diff_dict = {
-                    # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
-                    "before": {
-                        k: v for k, v in existing.items() if k in desired.keys()
-                    },
-                    "after": desired,
-                }
+
+        if existing or desired:
+            self.diff_dict = {
+                # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
+                "before": {k: v for k, v in existing.items() if k in desired.keys()},
+                "after": {} if delete else desired,
+            }
 
     @trace
     def return_failure(self, msg):
