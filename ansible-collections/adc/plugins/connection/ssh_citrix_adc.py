@@ -370,6 +370,14 @@ def _return_tuple_manipulate(func):
         subst = ""
         regex = r"(\r\n|\r|\n|)( Done)(\r\n|\r|\n)+"
         return_tuple[1] = re.sub(regex, subst, codecs.decode(return_tuple[1]), 0, re.UNICODE)
+
+        # Ansible needs some data from return_tuple[1](or stdout). So, we are returning the same to ansible
+        regex2 = r'{.*}'
+        try:
+          return_tuple[1] = re.findall(regex2, str(return_tuple[1]))[0]
+        except IndexError:
+          pass
+
         return_tuple = tuple(return_tuple)
         return return_tuple
     return wrapped
