@@ -458,8 +458,14 @@ def get_valid_desired_states(resource_name):
         desired_states.add("present")
     if "delete_arg_keys" in resource_map_keys:
         desired_states.add("absent")
-    if "enable_payload_keys" in resource_map_keys:
-        desired_states.add("enabled")
-    if "disable_payload_keys" in resource_map_keys:
-        desired_states.add("disabled")
+    try:
+        if len(NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]) > 0:
+            desired_states.add("enabled")
+    except KeyError:
+        pass
+    try:
+        if len(NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]) > 0:
+            desired_states.add("disabled")
+    except KeyError:
+        pass
     return desired_states
