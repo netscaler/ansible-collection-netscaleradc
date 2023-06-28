@@ -1,5 +1,9 @@
 # `netscaler.adc` collection features
 
+## NITRO Python SDK is not required
+
+Unlike the `citrix.adc` collection, the new `netscaler.adc` collection does not require the NITRO Python SDK to be installed on the Ansible control node.
+
 ## 4 modes of operation (`state` option in the module task)
 
 The `netscaler.adc` collection supports 4 modes of operation.
