@@ -1,5 +1,7 @@
 # Migrating from `citrix.adc` collection to `netscaler.adc` collection
 
+> Both `citrix.adc` and `netscaler.adc` can be used in the same Ansible playbook. However, it is recommended to migrate to `netscaler.adc` collection.
+
 1. List of supported modules can be found at [Supported Modules](./supported_modules_matrix.md).
    1. For any non supported modules, please raise an issue at the issue section of the repository.
    2. Meanwhile, you can use the `citrix_adc_nitro_request` and `citrix_adc_nitro_response` modules of the `citrix.adc` collection to perform the operations.
