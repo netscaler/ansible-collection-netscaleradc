@@ -6,10 +6,10 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 ---
 
 - Total number of resources: **905**
-- Total number of supported resources: **736**
-- Total number of unsupported resources: **169**
-- Percentage of supported resources: **81.33%**
-- Percentage of unsupported resources: **18.67%**
+- Total number of supported resources: **799**
+- Total number of unsupported resources: **106**
+- Percentage of supported resources: **88.29%**
+- Percentage of unsupported resources: **11.71%**
 
 ---
 
@@ -61,18 +61,18 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | analyticsprofile | ✅ |
 | apispec | ❌ |
 | apispecfile | ❌ |
-| appalgparam | ❌ |
+| appalgparam | ✅ |
 | appflowaction | ✅ |
 | appflowaction_analyticsprofile_binding | ✅ |
 | appflowcollector | ✅ |
 | appflowglobal_appflowpolicy_binding | ✅ |
-| appflowparam | ❌ |
+| appflowparam | ✅ |
 | appflowpolicy | ✅ |
 | appflowpolicylabel | ✅ |
 | appflowpolicylabel_appflowpolicy_binding | ✅ |
 | appfwarchive | ❌ |
 | appfwconfidfield | ✅ |
-| appfwcustomsettings | ❌ |
+| appfwcustomsettings | ✅ |
 | appfwfieldtype | ✅ |
 | appfwglobal_appfwpolicy_binding | ✅ |
 | appfwglobal_auditnslogpolicy_binding | ✅ |
@@ -84,7 +84,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | appfwjsoncontenttype | ✅ |
 | appfwjsonerrorpage | ❌ |
 | appfwlearningdata | ❌ |
-| appfwlearningsettings | ❌ |
+| appfwlearningsettings | ✅ |
 | appfwmultipartformcontenttype | ✅ |
 | appfwpolicy | ✅ |
 | appfwpolicylabel | ✅ |
@@ -123,7 +123,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | appfwprofile_xmlwsiurl_binding | ✅ |
 | appfwprofile_xmlxss_binding | ✅ |
 | appfwprotofile | ❌ |
-| appfwsettings | ❌ |
+| appfwsettings | ✅ |
 | appfwsignatures | ❌ |
 | appfwurlencodedformcontenttype | ✅ |
 | appfwwsdl | ❌ |
@@ -136,7 +136,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | appqoeparameter | ✅ |
 | appqoepolicy | ✅ |
 | arp | ✅ |
-| arpparam | ❌ |
+| arpparam | ✅ |
 | auditmessageaction | ✅ |
 | auditnslogaction | ✅ |
 | auditnslogglobal_auditnslogpolicy_binding | ✅ |
@@ -229,7 +229,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | botprofile_tps_binding | ✅ |
 | botprofile_trapinsertionurl_binding | ✅ |
 | botprofile_whitelist_binding | ✅ |
-| botsettings | ❌ |
+| botsettings | ✅ |
 | botsignature | ❌ |
 | bridgegroup | ✅ |
 | bridgegroup_nsip6_binding | ✅ |
@@ -245,11 +245,11 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | cachepolicylabel | ✅ |
 | cachepolicylabel_cachepolicy_binding | ✅ |
 | cacheselector | ✅ |
-| callhome | ❌ |
+| callhome | ✅ |
 | channel | ✅ |
 | channel_interface_binding | ✅ |
 | cloudallowedngsticketprofile | ✅ |
-| cloudawsparam | ❌ |
+| cloudawsparam | ✅ |
 | cloudcredential | ❌ |
 | cloudngsparameter | ✅ |
 | cloudparameter | ✅ |
@@ -364,7 +364,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | dnsview | ✅ |
 | dnszone | ✅ |
 | endpointinfo | ✅ |
-| extendedmemoryparam | ❌ |
+| extendedmemoryparam | ✅ |
 | feoaction | ✅ |
 | feoglobal_feopolicy_binding | ✅ |
 | feoparameter | ✅ |
@@ -403,12 +403,12 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | icaparameter | ✅ |
 | icapolicy | ✅ |
 | inat | ✅ |
-| inatparam | ❌ |
+| inatparam | ✅ |
 | install | ❌ |
 | interface | ❌ |
 | interfacepair | ✅ |
 | ip6tunnel | ✅ |
-| ip6tunnelparam | ❌ |
+| ip6tunnelparam | ✅ |
 | ipsecalgprofile | ✅ |
 | ipsecalgsession | ❌ |
 | ipsecparameter | ✅ |
@@ -417,12 +417,12 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | ipset_nsip6_binding | ✅ |
 | ipset_nsip_binding | ✅ |
 | iptunnel | ✅ |
-| iptunnelparam | ❌ |
-| ipv6 | ❌ |
-| l2param | ❌ |
-| l3param | ❌ |
-| l4param | ❌ |
-| lacp | ❌ |
+| iptunnelparam | ✅ |
+| ipv6 | ✅ |
+| l2param | ✅ |
+| l3param | ✅ |
+| l4param | ✅ |
+| lacp | ✅ |
 | lbaction | ✅ |
 | lbglobal_lbpolicy_binding | ✅ |
 | lbgroup | ✅ |
@@ -440,7 +440,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | lbprofile | ✅ |
 | lbroute | ✅ |
 | lbroute6 | ✅ |
-| lbsipparameters | ❌ |
+| lbsipparameters | ✅ |
 | lbvserver | ✅ |
 | lbvserver_analyticsprofile_binding | ✅ |
 | lbvserver_appflowpolicy_binding | ✅ |
@@ -471,7 +471,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | linkset_channel_binding | ✅ |
 | linkset_interface_binding | ✅ |
 | lldpneighbors | ❌ |
-| lldpparam | ❌ |
+| lldpparam | ✅ |
 | location | ✅ |
 | locationfile | ❌ |
 | locationfile6 | ❌ |
@@ -515,9 +515,9 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | mapdomain | ✅ |
 | mapdomain_mapbmr_binding | ✅ |
 | nat64 | ✅ |
-| nat64param | ❌ |
+| nat64param | ✅ |
 | nd6 | ✅ |
-| nd6ravariables | ❌ |
+| nd6ravariables | ✅ |
 | nd6ravariables_onlinkipv6prefix_binding | ✅ |
 | netbridge | ✅ |
 | netbridge_iptunnel_binding | ✅ |
@@ -532,28 +532,28 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | nsacls | ❌ |
 | nsacls6 | ❌ |
 | nsappflowcollector | ✅ |
-| nsappflowparam | ❌ |
+| nsappflowparam | ✅ |
 | nsaptlicense | ❌ |
 | nsassignment | ✅ |
-| nscapacity | ❌ |
+| nscapacity | ✅ |
 | nscentralmanagementserver | ✅ |
-| nsconfig | ❌ |
-| nsconsoleloginprompt | ❌ |
-| nscqaparam | ❌ |
+| nsconfig | ✅ |
+| nsconsoleloginprompt | ✅ |
+| nscqaparam | ✅ |
 | nsdhcpparams | ✅ |
-| nsdiameter | ❌ |
+| nsdiameter | ✅ |
 | nsencryptionkey | ✅ |
 | nsencryptionparams | ✅ |
 | nsextension | ✅ |
 | nsfeature | ❌ |
 | nshmackey | ✅ |
-| nshostname | ❌ |
-| nshttpparam | ❌ |
+| nshostname | ✅ |
+| nshttpparam | ✅ |
 | nshttpprofile | ✅ |
 | nsicapprofile | ✅ |
 | nsip | ✅ |
 | nsip6 | ✅ |
-| nslicenseparameters | ❌ |
+| nslicenseparameters | ✅ |
 | nslicenseproxyserver | ✅ |
 | nslicenseserver | ✅ |
 | nslimitidentifier | ✅ |
@@ -562,15 +562,15 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | nsmemrecovery | ❌ |
 | nsmigration | ❌ |
 | nsmode | ❌ |
-| nsparam | ❌ |
+| nsparam | ✅ |
 | nspartition | ✅ |
 | nspartition_bridgegroup_binding | ✅ |
 | nspartition_vlan_binding | ✅ |
 | nspartition_vxlan_binding | ✅ |
 | nspbr | ❌ |
 | nspbr6 | ❌ |
-| nsratecontrol | ❌ |
-| nsrpcnode | ❌ |
+| nsratecontrol | ✅ |
+| nsrpcnode | ✅ |
 | nsservicefunction | ✅ |
 | nsservicepath | ✅ |
 | nsservicepath_nsservicefunction_binding | ✅ |
@@ -579,10 +579,10 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | nsspparams | ✅ |
 | nsstats | ❌ |
 | nssurgeq | ❌ |
-| nstcpbufparam | ❌ |
-| nstcpparam | ❌ |
+| nstcpbufparam | ✅ |
+| nstcpparam | ✅ |
 | nstcpprofile | ✅ |
-| nstimeout | ❌ |
+| nstimeout | ✅ |
 | nstimer | ✅ |
 | nstimer_autoscalepolicy_binding | ✅ |
 | nstrace | ❌ |
@@ -591,10 +591,10 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | nstrafficdomain_vlan_binding | ✅ |
 | nstrafficdomain_vxlan_binding | ✅ |
 | nsvariable | ✅ |
-| nsvpxparam | ❌ |
-| nsweblogparam | ❌ |
+| nsvpxparam | ✅ |
+| nsweblogparam | ✅ |
 | nsxmlnamespace | ✅ |
-| ntpparam | ❌ |
+| ntpparam | ✅ |
 | ntpserver | ✅ |
 | onlinkipv6prefix | ✅ |
 | pcpprofile | ✅ |
@@ -606,17 +606,17 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | policyexpression | ✅ |
 | policyhttpcallout | ✅ |
 | policymap | ✅ |
-| policyparam | ❌ |
+| policyparam | ✅ |
 | policypatset | ✅ |
 | policypatset_pattern_binding | ✅ |
 | policypatsetfile | ✅ |
 | policystringmap | ✅ |
 | policystringmap_pattern_binding | ✅ |
 | policyurlset | ✅ |
-| protocolhttpband | ❌ |
-| ptp | ❌ |
+| protocolhttpband | ✅ |
+| ptp | ✅ |
 | quicbridgeprofile | ✅ |
-| quicparam | ❌ |
+| quicparam | ✅ |
 | quicprofile | ✅ |
 | radiusnode | ✅ |
 | rdpclientprofile | ✅ |
@@ -624,17 +624,17 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | rdpserverprofile | ✅ |
 | reboot | ❌ |
 | reportingconfig | ✅ |
-| reputationsettings | ❌ |
+| reputationsettings | ✅ |
 | responderaction | ✅ |
 | responderglobal_responderpolicy_binding | ✅ |
 | responderhtmlpage | ❌ |
-| responderparam | ❌ |
+| responderparam | ✅ |
 | responderpolicy | ✅ |
 | responderpolicylabel | ✅ |
 | responderpolicylabel_responderpolicy_binding | ✅ |
 | rewriteaction | ✅ |
 | rewriteglobal_rewritepolicy_binding | ✅ |
-| rewriteparam | ❌ |
+| rewriteparam | ✅ |
 | rewritepolicy | ✅ |
 | rewritepolicylabel | ✅ |
 | rewritepolicylabel_rewritepolicy_binding | ✅ |
@@ -644,27 +644,27 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | rnat_nsip_binding | ✅ |
 | rnat_retainsourceportset_binding | ✅ |
 | rnatglobal_auditsyslogpolicy_binding | ✅ |
-| rnatparam | ❌ |
+| rnatparam | ✅ |
 | rnatsession | ❌ |
 | route | ✅ |
 | route6 | ✅ |
 | routerdynamicrouting | ❌ |
-| rsskeytype | ❌ |
+| rsskeytype | ✅ |
 | server | ✅ |
 | service | ✅ |
 | service_lbmonitor_binding | ✅ |
 | servicegroup | ✅ |
 | servicegroup_lbmonitor_binding | ✅ |
 | servicegroup_servicegroupmember_binding | ✅ |
-| smppparam | ❌ |
+| smppparam | ✅ |
 | smppuser | ✅ |
 | snmpalarm | ❌ |
 | snmpcommunity | ✅ |
-| snmpengineid | ❌ |
+| snmpengineid | ✅ |
 | snmpgroup | ✅ |
 | snmpmanager | ✅ |
 | snmpmib | ❌ |
-| snmpoption | ❌ |
+| snmpoption | ✅ |
 | snmptrap | ✅ |
 | snmptrap_snmpuser_binding | ✅ |
 | snmpuser | ✅ |
@@ -687,10 +687,10 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | sslcrl | ✅ |
 | sslcrlfile | ❌ |
 | ssldhfile | ❌ |
-| ssldhparam | ❌ |
+| ssldhparam | ✅ |
 | ssldtlsprofile | ✅ |
 | sslecdsakey | ❌ |
-| sslfips | ❌ |
+| sslfips | ✅ |
 | sslfipskey | ❌ |
 | sslfipssimsource | ❌ |
 | sslfipssimtarget | ❌ |
@@ -711,18 +711,18 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | sslprofile_sslcipher_binding | ✅ |
 | sslprofile_sslciphersuite_binding | ✅ |
 | sslrsakey | ❌ |
-| sslservice | ❌ |
+| sslservice | ✅ |
 | sslservice_ecccurve_binding | ✅ |
 | sslservice_sslcertkey_binding | ✅ |
 | sslservice_sslcipher_binding | ✅ |
 | sslservice_sslciphersuite_binding | ✅ |
 | sslservice_sslpolicy_binding | ✅ |
-| sslservicegroup | ❌ |
+| sslservicegroup | ✅ |
 | sslservicegroup_ecccurve_binding | ✅ |
 | sslservicegroup_sslcertkey_binding | ✅ |
 | sslservicegroup_sslcipher_binding | ✅ |
 | sslservicegroup_sslciphersuite_binding | ✅ |
-| sslvserver | ❌ |
+| sslvserver | ✅ |
 | sslvserver_appfwpolicy_binding | ❌ |
 | sslvserver_auditnslogpolicy_binding | ❌ |
 | sslvserver_auditsyslogpolicy_binding | ❌ |
@@ -741,16 +741,16 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | streamidentifier | ✅ |
 | streamselector | ✅ |
 | streamsession | ❌ |
-| subscribergxinterface | ❌ |
-| subscriberparam | ❌ |
+| subscribergxinterface | ✅ |
+| subscriberparam | ✅ |
 | subscriberprofile | ✅ |
-| subscriberradiusinterface | ❌ |
+| subscriberradiusinterface | ✅ |
 | subscribersessions | ❌ |
 | systemadmuserinfo | ❌ |
 | systembackup | ✅ |
 | systemcmdpolicy | ✅ |
-| systemcollectionparam | ❌ |
-| systemcpuparam | ❌ |
+| systemcollectionparam | ✅ |
+| systemcpuparam | ✅ |
 | systementitydata | ❌ |
 | systemextramgmtcpu | ❌ |
 | systemfile | ✅ |
@@ -914,7 +914,7 @@ This is a matrix of all the resources supported by the `netscaler` collection. T
 | vrid_channel_binding | ✅ |
 | vrid_interface_binding | ✅ |
 | vrid_trackinterface_binding | ✅ |
-| vridparam | ❌ |
+| vridparam | ✅ |
 | vserver | ❌ |
 | vxlan | ✅ |
 | vxlan_nsip6_binding | ✅ |
