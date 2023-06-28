@@ -1,10 +1,10 @@
 import copy
 
-
 from .constants import HTTP_RESOURCE_NOT_FOUND, HTTP_SUCCESS_CODES
 from .decorators import trace
 from .log import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
+
 
 @trace
 def get_resource(

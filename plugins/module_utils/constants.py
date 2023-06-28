@@ -62,4 +62,3 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         no_log=True,
     ),
 )
-

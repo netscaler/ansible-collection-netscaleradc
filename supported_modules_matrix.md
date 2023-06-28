@@ -1,20 +1,23 @@
 
-# Supported Modules Matrix
+# NetScaler Ansible Collection - Supported Resources Matrix
 
 This is a matrix of all the resources supported by the `netscaler` collection. The table below shows the list of all the resources and whether they are supported or not.
 
-Total number of resources: **905**
-Total number of supported resources: **727**
-Total number of unsupported resources: **178**
+---
 
-Percentage of supported resources: **80.33%**
-Percentage of unsupported resources: **19.67%**
+- Total number of resources: **905**
+- Total number of supported resources: **736**
+- Total number of unsupported resources: **169**
+- Percentage of supported resources: **81.33%**
+- Percentage of unsupported resources: **18.67%**
+
+---
 
 ## Matrix
 
 | Resource Name | Supported? |
 | ------------- | ------------- |
-| aaacertparams | ❌ |
+| aaacertparams | ✅ |
 | aaaglobal_aaapreauthenticationpolicy_binding | ✅ |
 | aaaglobal_authenticationnegotiateaction_binding | ✅ |
 | aaagroup | ✅ |
@@ -31,16 +34,16 @@ Percentage of unsupported resources: **19.67%**
 | aaagroup_vpnurl_binding | ✅ |
 | aaagroup_vpnurlpolicy_binding | ✅ |
 | aaakcdaccount | ✅ |
-| aaaldapparams | ❌ |
+| aaaldapparams | ✅ |
 | aaaotpparameter | ✅ |
 | aaaparameter | ✅ |
 | aaapreauthenticationaction | ✅ |
 | aaapreauthenticationparameter | ✅ |
 | aaapreauthenticationpolicy | ✅ |
-| aaaradiusparams | ❌ |
+| aaaradiusparams | ✅ |
 | aaasession | ❌ |
 | aaassoprofile | ✅ |
-| aaatacacsparams | ❌ |
+| aaatacacsparams | ✅ |
 | aaauser | ✅ |
 | aaauser_auditnslogpolicy_binding | ✅ |
 | aaauser_auditsyslogpolicy_binding | ✅ |
@@ -137,11 +140,11 @@ Percentage of unsupported resources: **19.67%**
 | auditmessageaction | ✅ |
 | auditnslogaction | ✅ |
 | auditnslogglobal_auditnslogpolicy_binding | ✅ |
-| auditnslogparams | ❌ |
+| auditnslogparams | ✅ |
 | auditnslogpolicy | ✅ |
 | auditsyslogaction | ✅ |
 | auditsyslogglobal_auditsyslogpolicy_binding | ✅ |
-| auditsyslogparams | ❌ |
+| auditsyslogparams | ✅ |
 | auditsyslogpolicy | ✅ |
 | authenticationadfsproxyprofile | ✅ |
 | authenticationauthnprofile | ✅ |
@@ -537,10 +540,10 @@ Percentage of unsupported resources: **19.67%**
 | nsconfig | ❌ |
 | nsconsoleloginprompt | ❌ |
 | nscqaparam | ❌ |
-| nsdhcpparams | ❌ |
+| nsdhcpparams | ✅ |
 | nsdiameter | ❌ |
 | nsencryptionkey | ✅ |
-| nsencryptionparams | ❌ |
+| nsencryptionparams | ✅ |
 | nsextension | ✅ |
 | nsfeature | ❌ |
 | nshmackey | ✅ |
@@ -573,7 +576,7 @@ Percentage of unsupported resources: **19.67%**
 | nsservicepath_nsservicefunction_binding | ✅ |
 | nssimpleacl | ✅ |
 | nssimpleacl6 | ✅ |
-| nsspparams | ❌ |
+| nsspparams | ✅ |
 | nsstats | ❌ |
 | nssurgeq | ❌ |
 | nstcpbufparam | ❌ |

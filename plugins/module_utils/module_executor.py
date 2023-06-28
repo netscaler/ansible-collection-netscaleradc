@@ -16,9 +16,9 @@ from .common import (
     unbind_resource,
     update_resource,
 )
+from .constants import NETSCALER_COMMON_ARGUMENTS
 from .decorators import trace
 from .log import log, loglines
-from .constants import NETSCALER_COMMON_ARGUMENTS
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
