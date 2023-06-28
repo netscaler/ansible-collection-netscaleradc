@@ -1,20 +1,25 @@
 
-# NetScaler Ansible Collection Modules Matrix
+
+# NetScaler Ansible Collection - Supported Resources Matrix
 
 This is a matrix of all the resources supported by the `netscaler` ansible collection. The table below shows the list of all the resources and whether they are supported or not.
 
-Total number of resources: **905**  
-Total number of supported resources: **727**  
-Total number of unsupported resources: **178**  
+---
 
-Percentage of supported resources: **80.33%**  
-Percentage of unsupported resources: **19.67%**  
+- Total number of resources: **905**
+- Total number of supported resources: **799**
+- Total number of unsupported resources: **106**
+- Percentage of supported resources: **88.29%**
+- Percentage of unsupported resources: **11.71%**
+
+---
+
 
 ## Matrix
 
 | Resource Name | Supported? |
 | ------------- | ------------- |
-| aaacertparams | ❌ |
+| aaacertparams | ✅ |
 | aaaglobal_aaapreauthenticationpolicy_binding | ✅ |
 | aaaglobal_authenticationnegotiateaction_binding | ✅ |
 | aaagroup | ✅ |
@@ -31,16 +36,16 @@ Percentage of unsupported resources: **19.67%**
 | aaagroup_vpnurl_binding | ✅ |
 | aaagroup_vpnurlpolicy_binding | ✅ |
 | aaakcdaccount | ✅ |
-| aaaldapparams | ❌ |
+| aaaldapparams | ✅ |
 | aaaotpparameter | ✅ |
 | aaaparameter | ✅ |
 | aaapreauthenticationaction | ✅ |
 | aaapreauthenticationparameter | ✅ |
 | aaapreauthenticationpolicy | ✅ |
-| aaaradiusparams | ❌ |
+| aaaradiusparams | ✅ |
 | aaasession | ❌ |
 | aaassoprofile | ✅ |
-| aaatacacsparams | ❌ |
+| aaatacacsparams | ✅ |
 | aaauser | ✅ |
 | aaauser_auditnslogpolicy_binding | ✅ |
 | aaauser_auditsyslogpolicy_binding | ✅ |
@@ -58,18 +63,18 @@ Percentage of unsupported resources: **19.67%**
 | analyticsprofile | ✅ |
 | apispec | ❌ |
 | apispecfile | ❌ |
-| appalgparam | ❌ |
+| appalgparam | ✅ |
 | appflowaction | ✅ |
 | appflowaction_analyticsprofile_binding | ✅ |
 | appflowcollector | ✅ |
 | appflowglobal_appflowpolicy_binding | ✅ |
-| appflowparam | ❌ |
+| appflowparam | ✅ |
 | appflowpolicy | ✅ |
 | appflowpolicylabel | ✅ |
 | appflowpolicylabel_appflowpolicy_binding | ✅ |
 | appfwarchive | ❌ |
 | appfwconfidfield | ✅ |
-| appfwcustomsettings | ❌ |
+| appfwcustomsettings | ✅ |
 | appfwfieldtype | ✅ |
 | appfwglobal_appfwpolicy_binding | ✅ |
 | appfwglobal_auditnslogpolicy_binding | ✅ |
@@ -81,7 +86,7 @@ Percentage of unsupported resources: **19.67%**
 | appfwjsoncontenttype | ✅ |
 | appfwjsonerrorpage | ❌ |
 | appfwlearningdata | ❌ |
-| appfwlearningsettings | ❌ |
+| appfwlearningsettings | ✅ |
 | appfwmultipartformcontenttype | ✅ |
 | appfwpolicy | ✅ |
 | appfwpolicylabel | ✅ |
@@ -120,7 +125,7 @@ Percentage of unsupported resources: **19.67%**
 | appfwprofile_xmlwsiurl_binding | ✅ |
 | appfwprofile_xmlxss_binding | ✅ |
 | appfwprotofile | ❌ |
-| appfwsettings | ❌ |
+| appfwsettings | ✅ |
 | appfwsignatures | ❌ |
 | appfwurlencodedformcontenttype | ✅ |
 | appfwwsdl | ❌ |
@@ -133,15 +138,15 @@ Percentage of unsupported resources: **19.67%**
 | appqoeparameter | ✅ |
 | appqoepolicy | ✅ |
 | arp | ✅ |
-| arpparam | ❌ |
+| arpparam | ✅ |
 | auditmessageaction | ✅ |
 | auditnslogaction | ✅ |
 | auditnslogglobal_auditnslogpolicy_binding | ✅ |
-| auditnslogparams | ❌ |
+| auditnslogparams | ✅ |
 | auditnslogpolicy | ✅ |
 | auditsyslogaction | ✅ |
 | auditsyslogglobal_auditsyslogpolicy_binding | ✅ |
-| auditsyslogparams | ❌ |
+| auditsyslogparams | ✅ |
 | auditsyslogpolicy | ✅ |
 | authenticationadfsproxyprofile | ✅ |
 | authenticationauthnprofile | ✅ |
@@ -226,7 +231,7 @@ Percentage of unsupported resources: **19.67%**
 | botprofile_tps_binding | ✅ |
 | botprofile_trapinsertionurl_binding | ✅ |
 | botprofile_whitelist_binding | ✅ |
-| botsettings | ❌ |
+| botsettings | ✅ |
 | botsignature | ❌ |
 | bridgegroup | ✅ |
 | bridgegroup_nsip6_binding | ✅ |
@@ -242,11 +247,11 @@ Percentage of unsupported resources: **19.67%**
 | cachepolicylabel | ✅ |
 | cachepolicylabel_cachepolicy_binding | ✅ |
 | cacheselector | ✅ |
-| callhome | ❌ |
+| callhome | ✅ |
 | channel | ✅ |
 | channel_interface_binding | ✅ |
 | cloudallowedngsticketprofile | ✅ |
-| cloudawsparam | ❌ |
+| cloudawsparam | ✅ |
 | cloudcredential | ❌ |
 | cloudngsparameter | ✅ |
 | cloudparameter | ✅ |
@@ -361,7 +366,7 @@ Percentage of unsupported resources: **19.67%**
 | dnsview | ✅ |
 | dnszone | ✅ |
 | endpointinfo | ✅ |
-| extendedmemoryparam | ❌ |
+| extendedmemoryparam | ✅ |
 | feoaction | ✅ |
 | feoglobal_feopolicy_binding | ✅ |
 | feoparameter | ✅ |
@@ -400,12 +405,12 @@ Percentage of unsupported resources: **19.67%**
 | icaparameter | ✅ |
 | icapolicy | ✅ |
 | inat | ✅ |
-| inatparam | ❌ |
+| inatparam | ✅ |
 | install | ❌ |
 | interface | ❌ |
 | interfacepair | ✅ |
 | ip6tunnel | ✅ |
-| ip6tunnelparam | ❌ |
+| ip6tunnelparam | ✅ |
 | ipsecalgprofile | ✅ |
 | ipsecalgsession | ❌ |
 | ipsecparameter | ✅ |
@@ -414,12 +419,12 @@ Percentage of unsupported resources: **19.67%**
 | ipset_nsip6_binding | ✅ |
 | ipset_nsip_binding | ✅ |
 | iptunnel | ✅ |
-| iptunnelparam | ❌ |
-| ipv6 | ❌ |
-| l2param | ❌ |
-| l3param | ❌ |
-| l4param | ❌ |
-| lacp | ❌ |
+| iptunnelparam | ✅ |
+| ipv6 | ✅ |
+| l2param | ✅ |
+| l3param | ✅ |
+| l4param | ✅ |
+| lacp | ✅ |
 | lbaction | ✅ |
 | lbglobal_lbpolicy_binding | ✅ |
 | lbgroup | ✅ |
@@ -437,7 +442,7 @@ Percentage of unsupported resources: **19.67%**
 | lbprofile | ✅ |
 | lbroute | ✅ |
 | lbroute6 | ✅ |
-| lbsipparameters | ❌ |
+| lbsipparameters | ✅ |
 | lbvserver | ✅ |
 | lbvserver_analyticsprofile_binding | ✅ |
 | lbvserver_appflowpolicy_binding | ✅ |
@@ -468,7 +473,7 @@ Percentage of unsupported resources: **19.67%**
 | linkset_channel_binding | ✅ |
 | linkset_interface_binding | ✅ |
 | lldpneighbors | ❌ |
-| lldpparam | ❌ |
+| lldpparam | ✅ |
 | location | ✅ |
 | locationfile | ❌ |
 | locationfile6 | ❌ |
@@ -512,9 +517,9 @@ Percentage of unsupported resources: **19.67%**
 | mapdomain | ✅ |
 | mapdomain_mapbmr_binding | ✅ |
 | nat64 | ✅ |
-| nat64param | ❌ |
+| nat64param | ✅ |
 | nd6 | ✅ |
-| nd6ravariables | ❌ |
+| nd6ravariables | ✅ |
 | nd6ravariables_onlinkipv6prefix_binding | ✅ |
 | netbridge | ✅ |
 | netbridge_iptunnel_binding | ✅ |
@@ -529,28 +534,28 @@ Percentage of unsupported resources: **19.67%**
 | nsacls | ❌ |
 | nsacls6 | ❌ |
 | nsappflowcollector | ✅ |
-| nsappflowparam | ❌ |
+| nsappflowparam | ✅ |
 | nsaptlicense | ❌ |
 | nsassignment | ✅ |
-| nscapacity | ❌ |
+| nscapacity | ✅ |
 | nscentralmanagementserver | ✅ |
-| nsconfig | ❌ |
-| nsconsoleloginprompt | ❌ |
-| nscqaparam | ❌ |
-| nsdhcpparams | ❌ |
-| nsdiameter | ❌ |
+| nsconfig | ✅ |
+| nsconsoleloginprompt | ✅ |
+| nscqaparam | ✅ |
+| nsdhcpparams | ✅ |
+| nsdiameter | ✅ |
 | nsencryptionkey | ✅ |
-| nsencryptionparams | ❌ |
+| nsencryptionparams | ✅ |
 | nsextension | ✅ |
 | nsfeature | ❌ |
 | nshmackey | ✅ |
-| nshostname | ❌ |
-| nshttpparam | ❌ |
+| nshostname | ✅ |
+| nshttpparam | ✅ |
 | nshttpprofile | ✅ |
 | nsicapprofile | ✅ |
 | nsip | ✅ |
 | nsip6 | ✅ |
-| nslicenseparameters | ❌ |
+| nslicenseparameters | ✅ |
 | nslicenseproxyserver | ✅ |
 | nslicenseserver | ✅ |
 | nslimitidentifier | ✅ |
@@ -559,27 +564,27 @@ Percentage of unsupported resources: **19.67%**
 | nsmemrecovery | ❌ |
 | nsmigration | ❌ |
 | nsmode | ❌ |
-| nsparam | ❌ |
+| nsparam | ✅ |
 | nspartition | ✅ |
 | nspartition_bridgegroup_binding | ✅ |
 | nspartition_vlan_binding | ✅ |
 | nspartition_vxlan_binding | ✅ |
 | nspbr | ❌ |
 | nspbr6 | ❌ |
-| nsratecontrol | ❌ |
-| nsrpcnode | ❌ |
+| nsratecontrol | ✅ |
+| nsrpcnode | ✅ |
 | nsservicefunction | ✅ |
 | nsservicepath | ✅ |
 | nsservicepath_nsservicefunction_binding | ✅ |
 | nssimpleacl | ✅ |
 | nssimpleacl6 | ✅ |
-| nsspparams | ❌ |
+| nsspparams | ✅ |
 | nsstats | ❌ |
 | nssurgeq | ❌ |
-| nstcpbufparam | ❌ |
-| nstcpparam | ❌ |
+| nstcpbufparam | ✅ |
+| nstcpparam | ✅ |
 | nstcpprofile | ✅ |
-| nstimeout | ❌ |
+| nstimeout | ✅ |
 | nstimer | ✅ |
 | nstimer_autoscalepolicy_binding | ✅ |
 | nstrace | ❌ |
@@ -588,10 +593,10 @@ Percentage of unsupported resources: **19.67%**
 | nstrafficdomain_vlan_binding | ✅ |
 | nstrafficdomain_vxlan_binding | ✅ |
 | nsvariable | ✅ |
-| nsvpxparam | ❌ |
-| nsweblogparam | ❌ |
+| nsvpxparam | ✅ |
+| nsweblogparam | ✅ |
 | nsxmlnamespace | ✅ |
-| ntpparam | ❌ |
+| ntpparam | ✅ |
 | ntpserver | ✅ |
 | onlinkipv6prefix | ✅ |
 | pcpprofile | ✅ |
@@ -603,17 +608,17 @@ Percentage of unsupported resources: **19.67%**
 | policyexpression | ✅ |
 | policyhttpcallout | ✅ |
 | policymap | ✅ |
-| policyparam | ❌ |
+| policyparam | ✅ |
 | policypatset | ✅ |
 | policypatset_pattern_binding | ✅ |
 | policypatsetfile | ✅ |
 | policystringmap | ✅ |
 | policystringmap_pattern_binding | ✅ |
 | policyurlset | ✅ |
-| protocolhttpband | ❌ |
-| ptp | ❌ |
+| protocolhttpband | ✅ |
+| ptp | ✅ |
 | quicbridgeprofile | ✅ |
-| quicparam | ❌ |
+| quicparam | ✅ |
 | quicprofile | ✅ |
 | radiusnode | ✅ |
 | rdpclientprofile | ✅ |
@@ -621,17 +626,17 @@ Percentage of unsupported resources: **19.67%**
 | rdpserverprofile | ✅ |
 | reboot | ❌ |
 | reportingconfig | ✅ |
-| reputationsettings | ❌ |
+| reputationsettings | ✅ |
 | responderaction | ✅ |
 | responderglobal_responderpolicy_binding | ✅ |
 | responderhtmlpage | ❌ |
-| responderparam | ❌ |
+| responderparam | ✅ |
 | responderpolicy | ✅ |
 | responderpolicylabel | ✅ |
 | responderpolicylabel_responderpolicy_binding | ✅ |
 | rewriteaction | ✅ |
 | rewriteglobal_rewritepolicy_binding | ✅ |
-| rewriteparam | ❌ |
+| rewriteparam | ✅ |
 | rewritepolicy | ✅ |
 | rewritepolicylabel | ✅ |
 | rewritepolicylabel_rewritepolicy_binding | ✅ |
@@ -641,27 +646,27 @@ Percentage of unsupported resources: **19.67%**
 | rnat_nsip_binding | ✅ |
 | rnat_retainsourceportset_binding | ✅ |
 | rnatglobal_auditsyslogpolicy_binding | ✅ |
-| rnatparam | ❌ |
+| rnatparam | ✅ |
 | rnatsession | ❌ |
 | route | ✅ |
 | route6 | ✅ |
 | routerdynamicrouting | ❌ |
-| rsskeytype | ❌ |
+| rsskeytype | ✅ |
 | server | ✅ |
 | service | ✅ |
 | service_lbmonitor_binding | ✅ |
 | servicegroup | ✅ |
 | servicegroup_lbmonitor_binding | ✅ |
 | servicegroup_servicegroupmember_binding | ✅ |
-| smppparam | ❌ |
+| smppparam | ✅ |
 | smppuser | ✅ |
 | snmpalarm | ❌ |
 | snmpcommunity | ✅ |
-| snmpengineid | ❌ |
+| snmpengineid | ✅ |
 | snmpgroup | ✅ |
 | snmpmanager | ✅ |
 | snmpmib | ❌ |
-| snmpoption | ❌ |
+| snmpoption | ✅ |
 | snmptrap | ✅ |
 | snmptrap_snmpuser_binding | ✅ |
 | snmpuser | ✅ |
@@ -684,10 +689,10 @@ Percentage of unsupported resources: **19.67%**
 | sslcrl | ✅ |
 | sslcrlfile | ❌ |
 | ssldhfile | ❌ |
-| ssldhparam | ❌ |
+| ssldhparam | ✅ |
 | ssldtlsprofile | ✅ |
 | sslecdsakey | ❌ |
-| sslfips | ❌ |
+| sslfips | ✅ |
 | sslfipskey | ❌ |
 | sslfipssimsource | ❌ |
 | sslfipssimtarget | ❌ |
@@ -708,18 +713,18 @@ Percentage of unsupported resources: **19.67%**
 | sslprofile_sslcipher_binding | ✅ |
 | sslprofile_sslciphersuite_binding | ✅ |
 | sslrsakey | ❌ |
-| sslservice | ❌ |
+| sslservice | ✅ |
 | sslservice_ecccurve_binding | ✅ |
 | sslservice_sslcertkey_binding | ✅ |
 | sslservice_sslcipher_binding | ✅ |
 | sslservice_sslciphersuite_binding | ✅ |
 | sslservice_sslpolicy_binding | ✅ |
-| sslservicegroup | ❌ |
+| sslservicegroup | ✅ |
 | sslservicegroup_ecccurve_binding | ✅ |
 | sslservicegroup_sslcertkey_binding | ✅ |
 | sslservicegroup_sslcipher_binding | ✅ |
 | sslservicegroup_sslciphersuite_binding | ✅ |
-| sslvserver | ❌ |
+| sslvserver | ✅ |
 | sslvserver_appfwpolicy_binding | ❌ |
 | sslvserver_auditnslogpolicy_binding | ❌ |
 | sslvserver_auditsyslogpolicy_binding | ❌ |
@@ -738,16 +743,16 @@ Percentage of unsupported resources: **19.67%**
 | streamidentifier | ✅ |
 | streamselector | ✅ |
 | streamsession | ❌ |
-| subscribergxinterface | ❌ |
-| subscriberparam | ❌ |
+| subscribergxinterface | ✅ |
+| subscriberparam | ✅ |
 | subscriberprofile | ✅ |
-| subscriberradiusinterface | ❌ |
+| subscriberradiusinterface | ✅ |
 | subscribersessions | ❌ |
 | systemadmuserinfo | ❌ |
 | systembackup | ✅ |
 | systemcmdpolicy | ✅ |
-| systemcollectionparam | ❌ |
-| systemcpuparam | ❌ |
+| systemcollectionparam | ✅ |
+| systemcpuparam | ✅ |
 | systementitydata | ❌ |
 | systemextramgmtcpu | ❌ |
 | systemfile | ✅ |
@@ -911,7 +916,7 @@ Percentage of unsupported resources: **19.67%**
 | vrid_channel_binding | ✅ |
 | vrid_interface_binding | ✅ |
 | vrid_trackinterface_binding | ✅ |
-| vridparam | ❌ |
+| vridparam | ✅ |
 | vserver | ❌ |
 | vxlan | ✅ |
 | vxlan_nsip6_binding | ✅ |

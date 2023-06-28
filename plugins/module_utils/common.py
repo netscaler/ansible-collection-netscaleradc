@@ -1,65 +1,9 @@
 import copy
 
-from ansible.module_utils.basic import env_fallback
-
 from .constants import HTTP_RESOURCE_NOT_FOUND, HTTP_SUCCESS_CODES
 from .decorators import trace
 from .log import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
-
-# https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
-netscaler_common_arguments = dict(
-    nsip=dict(
-        required=True,
-        fallback=(env_fallback, ["NETSCALER_NSIP"]),
-    ),
-    nitro_user=dict(
-        required=False,
-        fallback=(env_fallback, ["NETSCALER_NITRO_USER"]),
-        no_log=True,
-    ),
-    nitro_pass=dict(
-        required=False,
-        fallback=(env_fallback, ["NETSCALER_NITRO_PASS"]),
-        no_log=True,
-    ),
-    nitro_protocol=dict(
-        required=False,
-        choices=["http", "https"],
-        fallback=(env_fallback, ["NETSCALER_NITRO_PROTOCOL"]),
-        default="https",
-    ),
-    validate_certs=dict(
-        default=True,
-        type="bool",
-        fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"]),
-    ),
-    nitro_timeout=dict(default=310, type="float"),
-    save_config=dict(
-        type="bool",
-        default=False,
-        fallback=(env_fallback, ["NETSCALER_SAVE_CONFIG"]),
-    ),
-    mas_proxy_call=dict(default=False, type="bool"),
-    nitro_auth_token=dict(
-        type="str",
-        no_log=True,
-    ),
-    instance_ip=dict(type="str"),
-    instance_id=dict(type="str"),
-    instance_name=dict(type="str"),
-    is_cloud=dict(
-        type="bool",
-        default=False,
-    ),
-    api_path=dict(
-        type="str",
-    ),
-    bearer_token=dict(
-        type="str",
-        no_log=True,
-    ),
-)
 
 
 @trace
@@ -458,8 +402,14 @@ def get_valid_desired_states(resource_name):
         desired_states.add("present")
     if "delete_arg_keys" in resource_map_keys:
         desired_states.add("absent")
-    if "enable_payload_keys" in resource_map_keys:
-        desired_states.add("enabled")
-    if "disable_payload_keys" in resource_map_keys:
-        desired_states.add("disabled")
+    try:
+        if len(NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]) > 0:
+            desired_states.add("enabled")
+    except KeyError:
+        pass
+    try:
+        if len(NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]) > 0:
+            desired_states.add("disabled")
+    except KeyError:
+        pass
     return desired_states

@@ -7,3 +7,6 @@ __pycache__/
 
 # Sphinx documentation
 _built_docs/
+
+# collection package
+**/netscaler-adc-*.tar.gz

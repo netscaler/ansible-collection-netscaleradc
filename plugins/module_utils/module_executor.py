@@ -12,11 +12,11 @@ from .common import (
     get_bindings,
     get_resource,
     get_valid_desired_states,
-    netscaler_common_arguments,
     save_config,
     unbind_resource,
     update_resource,
 )
+from .constants import NETSCALER_COMMON_ARGUMENTS
 from .decorators import trace
 from .log import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
@@ -32,7 +32,7 @@ class ModuleExecutor(object):
             "readwrite_arguments"
         ]
         argument_spec = dict()
-        argument_spec.update(netscaler_common_arguments)
+        argument_spec.update(NETSCALER_COMMON_ARGUMENTS)
         argument_spec.update(module_specific_arguments)
         module_state_argument = dict(
             state=dict(
@@ -75,7 +75,8 @@ class ModuleExecutor(object):
 
         # Fiter out non-resource module params in the playbook such as `state`, `delegate_to`, `nitro_user`, `nitro_pass`, etc
         self._filter_resource_module_params()
-        self._filter_desired_bindings()
+        if not self.resource_name.endswith("_binding"):
+            self._filter_desired_bindings()
         self.get_existing_resource()
 
     @trace
@@ -96,23 +97,13 @@ class ModuleExecutor(object):
                 self.diff_dict.get("prepared", "") + os.linesep + kwargs["custom_msg"]
             )
             self.diff_dict["prepared"] = prepared_str
-        if existing and desired:
-            if delete:
-                self.diff_dict = {
-                    # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
-                    "before": {
-                        k: v for k, v in existing.items() if k in desired.keys()
-                    },
-                    "after": {},
-                }
-            else:
-                self.diff_dict = {
-                    # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
-                    "before": {
-                        k: v for k, v in existing.items() if k in desired.keys()
-                    },
-                    "after": desired,
-                }
+
+        if existing or desired:
+            self.diff_dict = {
+                # prepare `before` dict from `existing` keys for the keys present in the `desired` dict
+                "before": {k: v for k, v in existing.items() if k in desired.keys()},
+                "after": {} if delete else desired,
+            }
 
     @trace
     def return_failure(self, msg):
@@ -156,11 +147,13 @@ class ModuleExecutor(object):
             if attr in self.resource_module_params:
                 get_args[attr] = self.resource_module_params[attr]
 
+        # binding resources require `filter` instead of `args` to uniquely identify a resource
         existing_resource = get_resource(
             self.client,
             resource_name=self.resource_name,
             resource_id=self.resource_id,
-            args=get_args,
+            args=get_args if not self.resource_name.endswith("_binding") else {},
+            filter=get_args if self.resource_name.endswith("_binding") else {},
         )
         if len(existing_resource) > 1:
             msg = (
@@ -176,6 +169,22 @@ class ModuleExecutor(object):
         return self.existing_resource
 
     @trace
+    def is_attribute_equal(
+        self, attribute_name, existing_attribute_value, module_params_attribute_value
+    ):
+        # check their type and convert the existing attribute type to the module params attribute type
+        attribute_type = NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"][
+            attribute_name
+        ]["type"]
+        if attribute_type == "int":
+            # convert the existing attribute type to int
+            return int(existing_attribute_value) == int(module_params_attribute_value)
+        elif attribute_type == "str":
+            return str(existing_attribute_value) == str(module_params_attribute_value)
+
+        return existing_attribute_value == module_params_attribute_value
+
+    @trace
     def is_resource_identical(self):
         """
         check the diff between module_params and the target resource.
@@ -187,7 +196,10 @@ class ModuleExecutor(object):
         for attr in self.resource_module_params.keys():
             existing_attribute_value = self.existing_resource.get(attr)
             module_params_attribute_value = self.resource_module_params.get(attr)
-            if existing_attribute_value != module_params_attribute_value:
+            # if existing_attribute_value != module_params_attribute_value:
+            if not self.is_attribute_equal(
+                attr, existing_attribute_value, module_params_attribute_value
+            ):
                 str_tuple = (
                     attr,
                     type(module_params_attribute_value),
@@ -596,13 +608,13 @@ class ModuleExecutor(object):
                     else:
                         self.enable_or_disable(self.module.params["state"])
                 # Bindings
-                if NITRO_RESOURCE_MAP[self.resource_name]["bindings"]:
+                if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
             elif self.module.params["state"] in {"absent"}:
                 if self.resource_primary_key:
                     # Bindings
-                    if NITRO_RESOURCE_MAP[self.resource_name]["bindings"]:
+                    if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                         self.sync_all_bindings()
                     self.delete()
                 else:
