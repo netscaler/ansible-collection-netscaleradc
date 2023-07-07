@@ -57,5 +57,7 @@ NETSCALER_COMMON_ARGUMENTS = dict(
     ),
     api_path=dict(
         type="str",
+        required=False,
+        default="nitro/v1/config",
     ),
 )

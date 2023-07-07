@@ -13,10 +13,7 @@ class NitroAPIClient(object):
     def __init__(self, module):
         self._module = module
         self.check_mode = module.check_mode  # Dry run mode
-        module_api_path = self._module.params.get("api_path")
-        self.api_path = (
-            module_api_path if (module_api_path is not None) else "nitro/v1/config"
-        )
+        self.api_path = self._module.params.get("api_path")
 
         # Prepare the http headers according to module arguments
         self._headers = {}
