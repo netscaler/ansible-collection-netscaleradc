@@ -1,15 +1,20 @@
 fmt:
 	autoflake plugins/modules/*.py
 	autoflake plugins/module_utils/*.py
+	autoflake tools/module_generator.py
+
 	black plugins/modules/*.py
 	black plugins/module_utils/*.py
+	black tools/module_generator.py
+
 	isort plugins/modules/*.py
 	isort plugins/module_utils/*.py
+	isort tools/module_generator.py
 
 generate_modules:
 	python3 tools/module_generator.py
 
-install_collection:
+install:
 	ansible-galaxy collection install . --force
 
 # build_docs:

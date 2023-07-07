@@ -10,3 +10,6 @@ _built_docs/
 
 # collection package
 **/netscaler-adc-*.tar.gz
+
+TODO.md
+Dockerfile

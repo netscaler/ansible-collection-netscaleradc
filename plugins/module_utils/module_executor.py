@@ -4,6 +4,8 @@ from ansible.module_utils.basic import AnsibleModule
 
 from .client import NitroAPIClient
 from .common import (
+    adc_login,
+    adc_logout,
     bind_resource,
     create_resource,
     delete_resource,
@@ -16,7 +18,7 @@ from .common import (
     unbind_resource,
     update_resource,
 )
-from .constants import NETSCALER_COMMON_ARGUMENTS
+from .constants import NETSCALER_COMMON_ARGUMENTS, NETSCALER_NO_GET_RESOURCE
 from .decorators import trace
 from .log import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
@@ -25,6 +27,8 @@ from .nitro_resource_map import NITRO_RESOURCE_MAP
 class ModuleExecutor(object):
     def __init__(self, resource_name, supports_check_mode=True):
         self.resource_name = resource_name
+        if self.resource_name == "login":
+            self.sessionid = ""
         log("DEBUG: Initializing ModuleExecutor for resource %s" % self.resource_name)
         self.valid_states = get_valid_desired_states(self.resource_name)
 
@@ -77,7 +81,8 @@ class ModuleExecutor(object):
         self._filter_resource_module_params()
         if not self.resource_name.endswith("_binding"):
             self._filter_desired_bindings()
-        self.get_existing_resource()
+        if not self.resource_name in NETSCALER_NO_GET_RESOURCE:
+            self.get_existing_resource()
 
     @trace
     def return_success(self):
@@ -88,6 +93,8 @@ class ModuleExecutor(object):
             #     "after": {"a":"c"},
             #     "prepared": "prepared string",
             # }
+        if self.resource_name == "login":
+            self.module_result["sessionid"] = self.sessionid
         self.module.exit_json(**self.module_result)
 
     @trace
@@ -593,6 +600,46 @@ class ModuleExecutor(object):
                 if v != existing_binding_members[k]:
                     return False
         return True
+
+    @trace
+    def login(self):
+        try:
+            if self.module.check_mode:
+                self.sessionid = "check_mode_sessionid"
+                self.module_result["changed"] = True
+                self.return_success()
+            else:
+                ok, response_body = adc_login(
+                    self.client,
+                    self.resource_module_params["username"],
+                    self.resource_module_params["password"],
+                )
+                if not ok:
+                    self.return_failure(response_body)
+
+                self.module_result["changed"] = True
+                self.sessionid = response_body["sessionid"]
+                self.return_success()
+        except Exception as e:
+            msg = "Exception %s: %s" % (type(e), str(e))
+            self.return_failure(msg)
+
+    @trace
+    def logout(self):
+        try:
+            if self.module.check_mode:
+                self.module_result["changed"] = True
+                self.return_success()
+            else:
+                ok, response_body = adc_logout(self.client)
+                if not ok:
+                    self.return_failure(response_body)
+
+                self.module_result["changed"] = True
+                self.return_success()
+        except Exception as e:
+            msg = "Exception %s: %s" % (type(e), str(e))
+            self.return_failure(msg)
 
     @trace
     def main(self):
