@@ -45,30 +45,17 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         type="bool",
         fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"]),
     ),
-    nitro_timeout=dict(default=310, type="float"),
     save_config=dict(
         type="bool",
         default=False,
         fallback=(env_fallback, ["NETSCALER_SAVE_CONFIG"]),
     ),
-    mas_proxy_call=dict(default=False, type="bool"),
     nitro_auth_token=dict(
         type="str",
         no_log=True,
         fallback=(env_fallback, ["NETSCALER_NITRO_AUTH_TOKEN"]),
     ),
-    instance_ip=dict(type="str"),
-    instance_id=dict(type="str"),
-    instance_name=dict(type="str"),
-    is_cloud=dict(
-        type="bool",
-        default=False,
-    ),
     api_path=dict(
         type="str",
-    ),
-    bearer_token=dict(
-        type="str",
-        no_log=True,
     ),
 )

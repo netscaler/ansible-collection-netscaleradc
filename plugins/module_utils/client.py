@@ -45,34 +45,6 @@ class NitroAPIClient(object):
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
 
-        if self._module.params.get("is_cloud", False):
-            self._headers["isCloud"] = "true"
-
-        bearer_token = self._module.params.get("bearer_token")
-        if bearer_token is not None:
-            self._headers["Authorization"] = "CwsAuth bearer=%s" % bearer_token
-
-        # Do header manipulation when doing a MAS proxy call
-        if self._module.params.get(
-            "mas_proxy_call"
-        ) is not None and self._module.params.get("mas_proxy_call"):
-            if self._module.params.get("instance_ip") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_IP"
-                ] = self._module.params["instance_ip"]
-            elif self._module.params.get("instance_name") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_NAME"
-                ] = self._module.params["instance_name"]
-            elif self._module.params.get("instance_id") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_ID"
-                ] = self._module.params["instance_id"]
-            else:
-                self._module.fail_json(
-                    msg="Target NetScaler ADC is undefined for NetScaler ADM proxied NITRO call"
-                )
-
     def url_builder(
         self,
         resource,

@@ -39,12 +39,6 @@ options:
         default: false
         type: bool
 
-    nitro_timeout:
-        description:
-            - Time in seconds until a timeout error is thrown when establishing a new session with NetScaler ADC
-        default: 310
-        type: float
-
     state:
         choices: ['present', 'absent', 'enabled', 'disabled']
         default: 'present'
@@ -64,59 +58,17 @@ options:
         type: bool
         default: false
 
-    mas_proxy_call:
-        description:
-            - If C(true) the underlying NITRO API calls made by the module will be proxied through a NetScaler ADM node to the target NetScaler ADC instance.
-            - "When C(true) you must also define the following options: I(nitro_auth_token)"
-            - "When C(true) and adm service is the api proxy the following option must also be defined: I(bearer_token)"
-            - "When C(true) you must define a target ADC by defining any of the following parameters"
-            - "I(instance_ip)"
-            - "I(instance_id)"
-            - "I(instance_name)"
-        type: bool
-        default: false
-        version_added: "2.6.0"
-
     nitro_auth_token:
         description:
             - The authentication token provided by a login operation.
         version_added: "2.6.0"
         type: str
 
-    instance_ip:
-        description:
-            - The target NetScaler ADC instance ip address to which all underlying NITRO API calls will be proxied to.
-            - It is meaningful only when having set C(mas_proxy_call) to C(true)
-        version_added: "2.6.0"
-        type: str
-
-    instance_name:
-        type: str
-        description:
-            - The name of the target NetScaler ADC instance when issuing a Nitro request through a NetScaler ADM proxy.
-
-    instance_id:
-        type: str
-        description:
-            - The id of the target NetScaler ADC instance when issuing a Nitro request through a NetScaler ADM proxy.
-
-    is_cloud:
-        type: bool
-        default: false
-        description:
-            - When performing a Proxy API call with ADM service set this to C(true)
-
     api_path:
         type: str
         description:
             - Base NITRO API path.
             - Define only in case of an ADM service proxy call
-
-    bearer_token:
-        type: str
-        description:
-            - Authentication bearer token.
-            - Needed when doing an ADM service proxy call.
 
 notes:
   - For more information on using Ansible to manage NetScaler ADC Network devices see U(https://www.ansible.com/integrations/networks/citrixadc).
