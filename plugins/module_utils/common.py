@@ -6,7 +6,7 @@ from .constants import (
     NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES,
 )
 from .decorators import trace
-from .log import log
+from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 

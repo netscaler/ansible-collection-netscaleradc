@@ -20,7 +20,7 @@ from .common import (
 )
 from .constants import NETSCALER_COMMON_ARGUMENTS, NETSCALER_NO_GET_RESOURCE
 from .decorators import trace
-from .log import log, loglines
+from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
@@ -50,6 +50,17 @@ class ModuleExecutor(object):
         self.module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=supports_check_mode,
+            mutually_exclusive=[
+                ("nitro_auth_token", "nitro_user"),
+                ("nitro_auth_token", "nitro_pass"),
+            ],
+            required_together=[
+                ("nitro_user", "nitro_pass"),
+            ],
+            required_one_of=[
+                ("nitro_auth_token", "nitro_user"),
+                ("nitro_auth_token", "nitro_pass"),
+            ],
         )
 
         self.diff_dict = {}

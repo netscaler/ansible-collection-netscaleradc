@@ -6,7 +6,7 @@ from ansible.module_utils.six.moves.urllib.parse import quote
 from ansible.module_utils.urls import fetch_url
 
 from .decorators import trace
-from .log import log
+from .logger import log
 
 
 class NitroAPIClient(object):
