@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>netscaler.adc.csvserver module – Configuration for CS virtual server resource. &mdash; Ansible collections  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/ansible.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/antsibull-minimal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/rtd-ethical-ads.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="netscaler.adc.csvserver_analyticsprofile_binding module – Binding Resource definition for describing association between csvserver and analyticsprofile resources" href="csvserver_analyticsprofile_binding_module.html" />
+    <link rel="prev" title="netscaler.adc.cspolicylabel_cspolicy_binding module – Binding Resource definition for describing association between cspolicylabel and cspolicy resources" href="cspolicylabel_cspolicy_binding_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+
+
+
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Collections Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible collections
+          </a><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Collections:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Netscaler Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Netscaler.Adc</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Plugin indexes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index_module.html">Index of all Modules</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference indexes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../environment_variables.html">Index of all Collection Environment Variables</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible collections</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Netscaler Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Netscaler.Adc</a></li>
+      <li class="breadcrumb-item active">netscaler.adc.csvserver module – Configuration for CS virtual server resource.</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-netscaler-adc-csvserver-module"></span><section id="netscaler-adc-csvserver-module-configuration-for-cs-virtual-server-resource">
+<h1>netscaler.adc.csvserver module – Configuration for CS virtual server resource.<a class="headerlink" href="#netscaler-adc-csvserver-module-configuration-for-cs-virtual-server-resource" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/netscaler/adc">netscaler.adc collection</a> (version 2.0.0-alpha).</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">netscaler.adc.csvserver</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in netscaler.adc 2.0.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id3">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id5">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Configuration for CS virtual server resource.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<table class="ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_path"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-api-path"><strong>api_path</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_path" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Base NITRO API path.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-appflowlog"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-appflowlog"><strong>appflowlog</strong></p>
+<a class="ansibleOptionLink" href="#parameter-appflowlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable logging appflow flow information</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authentication"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-authentication"><strong>authentication</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Authenticate users who request a connection to the content switching virtual server.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authenticationhost"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-authenticationhost"><strong>authenticationhost</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authenticationhost" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>FQDN of the authentication virtual server. The service type of the virtual server should be either HTTP or SSL.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authn401"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-authn401"><strong>authn401</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authn401" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable HTTP 401-response based authentication.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authnprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-authnprofile"><strong>authnprofile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authnprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the authentication profile to be used when authentication is turned on.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-authnvsname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-authnvsname"><strong>authnvsname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-authnvsname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of authentication virtual server that authenticates the incoming user requests to this content switching virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-backupip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-backupip"><strong>backupip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-backupip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-backuppersistencetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-backuppersistencetimeout"><strong>backuppersistencetimeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-backuppersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time period for which backup persistence is in effect.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-backupvserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-backupvserver"><strong>backupvserver</strong></p>
+<a class="ansibleOptionLink" href="#parameter-backupvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the backup virtual server that you are configuring. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (&#64;), equal sign (=), and hyphen (-) characters. Can be changed after the backup virtual server is created. You can assign a different backup virtual server or rename the existing virtual server.</p>
+<p>The following requirement applies only to the Citrix ADC CLI:</p>
+<p>If the name includes one or more spaces, enclose the name in double or single quotation marks.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cacheable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-cacheable"><strong>cacheable</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cacheable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use this option to specify whether a virtual server, used for load balancing or content switching, routes requests to the cache redirection virtual server before sending it to the configured servers.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-casesensitive"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-casesensitive"><strong>casesensitive</strong></p>
+<a class="ansibleOptionLink" href="#parameter-casesensitive" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Consider case in URLs (for policies that use URLs instead of RULES). For example, with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently and can have different targets (set by content switching policies). With the OFF setting, /a/1.html and /A/1.HTML are switched to the same target.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-clttimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-clttimeout"><strong>clttimeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-clttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Idle time, in seconds, after which the client connection is terminated. The default values are:</p>
+<p>180 seconds for HTTP/SSL-based services.</p>
+<p>9000 seconds for other TCP-based services.</p>
+<p>120 seconds for DNS-based services.</p>
+<p>120 seconds for other UDP-based services.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-comment"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-comment"><strong>comment</strong></p>
+<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Information about this virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cookiedomain"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-cookiedomain"><strong>cookiedomain</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cookiedomain" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cookiename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-cookiename"><strong>cookiename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use this parameter to  specify the cookie name for COOKIE peristence type. It specifies the name of cookie with a maximum of 32 characters. If not specified, cookie name is internally generated.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-cookietimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-cookietimeout"><strong>cookietimeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-cookietimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_analyticsprofile_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-analyticsprofile-binding"><strong>csvserver_analyticsprofile_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_analyticsprofile_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_analyticsprofile_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_analyticsprofile_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-analyticsprofile-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_analyticsprofile_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_analyticsprofile_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-analyticsprofile-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_analyticsprofile_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appflowpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appflowpolicy-binding"><strong>csvserver_appflowpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appflowpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_appflowpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appflowpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appflowpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appflowpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appflowpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appflowpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appflowpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appfwpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appfwpolicy-binding"><strong>csvserver_appfwpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appfwpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_appfwpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appfwpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appfwpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appfwpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appfwpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appfwpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appfwpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appqoepolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appqoepolicy-binding"><strong>csvserver_appqoepolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appqoepolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_appqoepolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appqoepolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appqoepolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appqoepolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_appqoepolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-appqoepolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_appqoepolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditnslogpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditnslogpolicy-binding"><strong>csvserver_auditnslogpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditnslogpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_auditnslogpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditnslogpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditnslogpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditnslogpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditnslogpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditnslogpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditnslogpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditsyslogpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditsyslogpolicy-binding"><strong>csvserver_auditsyslogpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditsyslogpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_auditsyslogpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditsyslogpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditsyslogpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditsyslogpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_auditsyslogpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-auditsyslogpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_auditsyslogpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_authorizationpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-authorizationpolicy-binding"><strong>csvserver_authorizationpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_authorizationpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_authorizationpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_authorizationpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-authorizationpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_authorizationpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_authorizationpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-authorizationpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_authorizationpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_botpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-botpolicy-binding"><strong>csvserver_botpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_botpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_botpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_botpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-botpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_botpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_botpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-botpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_botpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cachepolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cachepolicy-binding"><strong>csvserver_cachepolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cachepolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_cachepolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cachepolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cachepolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cachepolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cachepolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cachepolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cachepolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cmppolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cmppolicy-binding"><strong>csvserver_cmppolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cmppolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_cmppolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cmppolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cmppolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cmppolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cmppolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cmppolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cmppolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_contentinspectionpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-contentinspectionpolicy-binding"><strong>csvserver_contentinspectionpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_contentinspectionpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_contentinspectionpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_contentinspectionpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-contentinspectionpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_contentinspectionpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_contentinspectionpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-contentinspectionpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_contentinspectionpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cspolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cspolicy-binding"><strong>csvserver_cspolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cspolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_cspolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cspolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cspolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cspolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_cspolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-cspolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_cspolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_domain_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-domain-binding"><strong>csvserver_domain_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_domain_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_domain_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_domain_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-domain-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_domain_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_domain_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-domain-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_domain_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_feopolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-feopolicy-binding"><strong>csvserver_feopolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_feopolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_feopolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_feopolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-feopolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_feopolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_feopolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-feopolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_feopolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_gslbvserver_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-gslbvserver-binding"><strong>csvserver_gslbvserver_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_gslbvserver_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_gslbvserver_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_gslbvserver_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-gslbvserver-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_gslbvserver_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_gslbvserver_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-gslbvserver-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_gslbvserver_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_lbvserver_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-lbvserver-binding"><strong>csvserver_lbvserver_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_lbvserver_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_lbvserver_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_lbvserver_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-lbvserver-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_lbvserver_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_lbvserver_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-lbvserver-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_lbvserver_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_responderpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-responderpolicy-binding"><strong>csvserver_responderpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_responderpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_responderpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_responderpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-responderpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_responderpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_responderpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-responderpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_responderpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_rewritepolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-rewritepolicy-binding"><strong>csvserver_rewritepolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_rewritepolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_rewritepolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_rewritepolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-rewritepolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_rewritepolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_rewritepolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-rewritepolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_rewritepolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_spilloverpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-spilloverpolicy-binding"><strong>csvserver_spilloverpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_spilloverpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_spilloverpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_spilloverpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-spilloverpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_spilloverpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_spilloverpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-spilloverpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_spilloverpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_tmtrafficpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-tmtrafficpolicy-binding"><strong>csvserver_tmtrafficpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_tmtrafficpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_tmtrafficpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_tmtrafficpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-tmtrafficpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_tmtrafficpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_tmtrafficpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-tmtrafficpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_tmtrafficpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_transformpolicy_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-transformpolicy-binding"><strong>csvserver_transformpolicy_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_transformpolicy_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_transformpolicy_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_transformpolicy_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-transformpolicy-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_transformpolicy_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_transformpolicy_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-transformpolicy-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_transformpolicy_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_vpnvserver_binding"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-vpnvserver-binding"><strong>csvserver_vpnvserver_binding</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_vpnvserver_binding" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Bindings for csvserver_vpnvserver_binding resource</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_vpnvserver_binding/binding_members"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-vpnvserver-binding-binding-members"><strong>binding_members</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_vpnvserver_binding/binding_members" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>List of binding members</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-indent"></div><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-csvserver_vpnvserver_binding/mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-csvserver-vpnvserver-binding-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-csvserver_vpnvserver_binding/mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-indent-desc"></div><div class="ansible-option-cell"><p>The mode in which to configure the bindings.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">desired</span></code>, the bindings will be added or removed from the target NetScaler ADCs as necessary to match the bindings specified in the state.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">bind</span></code>, the specified bindings will be added to the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p>If mode is set to <code class="docutils literal notranslate"><span class="pre">unbind</span></code>, the specified bindings will be removed from the resource. The existing bindings in the target ADCs will not be modified.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;desired&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;bind&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;unbind&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dbprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-dbprofilename"><strong>dbprofilename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dbprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the DB profile.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-disableprimaryondown"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-disableprimaryondown"><strong>disableprimaryondown</strong></p>
+<a class="ansibleOptionLink" href="#parameter-disableprimaryondown" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Continue forwarding the traffic to backup virtual server even after the primary server comes UP from the DOWN state.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dnsprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-dnsprofilename"><strong>dnsprofilename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dnsprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the DNS profile to be associated with the VServer. DNS profile properties will applied to the transactions processed by a VServer. This parameter is valid only for DNS and DNS-TCP VServers.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dnsrecordtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-dnsrecordtype"><strong>dnsrecordtype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dnsrecordtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;A&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;AAAA&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CNAME&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NAPTR&quot;</span></code></p></li>
+</ul>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;NSGSLB_IPV4&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-domainname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-domainname"><strong>domainname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-domainname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Domain name for which to change the time to live (TTL) and/or backup service IP address.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-downstateflush"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-downstateflush"><strong>downstateflush</strong></p>
+<a class="ansibleOptionLink" href="#parameter-downstateflush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Flush all active transactions associated with a virtual server whose state transitions from UP to DOWN. Do not enable this option for applications that must complete their transactions.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-dtls"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-dtls"><strong>dtls</strong></p>
+<a class="ansibleOptionLink" href="#parameter-dtls" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>This option starts/stops the dtls service on the vserver</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-httpprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-httpprofilename"><strong>httpprofilename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-httpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the HTTP profile containing HTTP configuration settings for the virtual server. The service type of the virtual server should be either HTTP or SSL.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-httpsredirecturl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-httpsredirecturl"><strong>httpsredirecturl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-httpsredirecturl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>URL to which all HTTP traffic received on the port specified in the -redirectFromPort parameter is redirected.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-icmpvsrresponse"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-icmpvsrresponse"><strong>icmpvsrresponse</strong></p>
+<a class="ansibleOptionLink" href="#parameter-icmpvsrresponse" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Can be active or passive</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;PASSIVE&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ACTIVE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-insertvserveripport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-insertvserveripport"><strong>insertvserveripport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-insertvserveripport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Insert the virtual server’s VIP address and port number in the request header. Available values function as follows:</p>
+<blockquote>
+<div><p>VIPADDR - Header contains the vserver’s IP address and port number without any translation.</p>
+<p>OFF     - The virtual IP and port header insertion option is disabled.</p>
+<p>V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding to the IPv6 address of the vserver and the port number. An IPv6 address can be mapped to a user-specified IPv4 address using the set ns ip6 command.</p>
+</div></blockquote>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;VIPADDR&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;V6TOV4MAPPING&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ipmask"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-ipmask"><strong>ipmask</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ipmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255). Accordingly, the mask specifies whether the first n bits or the last n bits of the destination IP address in a client request are to be matched with the corresponding bits in the IP pattern. The former is called a forward mask. The latter is called a reverse mask.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ippattern"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-ippattern"><strong>ippattern</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ippattern" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP address pattern, in dotted decimal notation, for identifying packets to be accepted by the virtual server. The IP Mask parameter specifies which part of the destination IP address is matched against the pattern. Mutually exclusive with the IP Address parameter.</p>
+<p>For example, if the IP pattern assigned to the virtual server is 198.51.100.0 and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the destination IP addresses are matched with the first 20 bits in the pattern. The virtual server accepts requests with IP addresses that range from 198.51.96.1 to 198.51.111.254. You can also use a pattern such as 0.0.2.2 and a mask such as 0.0.255.255 (a reverse mask).</p>
+<p>If a destination IP address matches more than one IP pattern, the pattern with the longest match is selected, and the associated virtual server processes the request. For example, if the virtual servers, vs1 and vs2, have the same IP pattern, 0.0.100.128, but different IP masks of 0.0.255.255 and 0.0.224.255, a destination IP address of 198.51.100.128 has the longest match with the IP pattern of vs1. If a destination IP address matches two or more virtual servers to the same extent, the request is processed by the virtual server whose port number matches the port number in the request.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ipset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-ipset"><strong>ipset</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ipset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The list of IPv4/IPv6 addresses bound to ipset would form a part of listening service on the current cs vserver</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ipv46"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-ipv46"><strong>ipv46</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ipv46" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>IP address of the content switching virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-l2conn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-l2conn"><strong>l2conn</strong></p>
+<a class="ansibleOptionLink" href="#parameter-l2conn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use L2 Parameters to identify a connection</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-listenpolicy"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-listenpolicy"><strong>listenpolicy</strong></p>
+<a class="ansibleOptionLink" href="#parameter-listenpolicy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>String specifying the listen policy for the content switching virtual server. Can be either the name of an existing expression or an in-line expression.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;\&quot;NONE\&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-listenpriority"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-listenpriority"><strong>listenpriority</strong></p>
+<a class="ansibleOptionLink" href="#parameter-listenpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">101</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mssqlserverversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-mssqlserverversion"><strong>mssqlserverversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mssqlserverversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The version of the MSSQL server</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;70&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2000&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2000SP1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2005&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2008&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;2008R2&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2012&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;2014&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mysqlcharacterset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-mysqlcharacterset"><strong>mysqlcharacterset</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlcharacterset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The character set returned by the mysql vserver.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">8</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mysqlprotocolversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-mysqlprotocolversion"><strong>mysqlprotocolversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlprotocolversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The protocol version returned by the mysql vserver.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">10</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mysqlservercapabilities"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-mysqlservercapabilities"><strong>mysqlservercapabilities</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlservercapabilities" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The server capabilities returned by the mysql vserver.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">41613</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mysqlserverversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-mysqlserverversion"><strong>mysqlserverversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlserverversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The server version string returned by the mysql vserver.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-name"><strong>name</strong></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name for the content switching virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (&#64;), equal sign (=), and hyphen (-) characters.</p>
+<p>Cannot be changed after the CS virtual server is created.</p>
+<p>The following requirement applies only to the Citrix ADC CLI:</p>
+<p>If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, my server or my server).</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-netprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-netprofile"><strong>netprofile</strong></p>
+<a class="ansibleOptionLink" href="#parameter-netprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The name of the network profile.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-newname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-newname"><strong>newname</strong></p>
+<a class="ansibleOptionLink" href="#parameter-newname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>New name for the virtual server. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at sign (&#64;), equal sign (=), and hyphen (-) characters.</p>
+<p>The following requirement applies only to the Citrix ADC CLI:</p>
+<p>If the name includes one or more spaces, enclose the name in double or single quotation marks (for example, “my name” or ‘my name’).</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><span class="ansible-option-versionadded">added in netscaler.adc 2.6.0</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_pass"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-nitro-pass"><strong>nitro_pass</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_pass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password with which to authenticate to the NetScaler ADC node.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_protocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-nitro-protocol"><strong>nitro_protocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Which protocol to use when accessing the nitro API objects.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;https&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_user"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-nitro-user"><strong>nitro_user</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username with which to authenticate to the NetScaler ADC node.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-nsip"><strong>nsip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ip address of the NetScaler ADC appliance where the nitro API calls will be made.</p>
+<p>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-oracleserverversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-oracleserverversion"><strong>oracleserverversion</strong></p>
+<a class="ansibleOptionLink" href="#parameter-oracleserverversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Oracle server version</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;10G&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;11G&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistencebackup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-persistencebackup"><strong>persistencebackup</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistencebackup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Backup persistence type for the virtual server. Becomes operational if the primary persistence mechanism fails.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SOURCEIP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NONE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistenceid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-persistenceid"><strong>persistenceid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistenceid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistencetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-persistencetype"><strong>persistencetype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistencetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of persistence for the virtual server. Available settings function as follows:</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">SOURCEIP</span></code> - Connections from the same client IP address belong to the same persistence session.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">COOKIEINSERT</span></code> - Connections that have the same HTTP Cookie, inserted by a Set-Cookie directive from a server, belong to the same persistence session.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">SSLSESSION</span></code> - Connections that have the same SSL Session ID belong to the same persistence session.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SOURCEIP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;COOKIEINSERT&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSLSESSION&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NONE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-persistmask"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-persistmask"><strong>persistmask</strong></p>
+<a class="ansibleOptionLink" href="#parameter-persistmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Persistence mask for IP based persistence types, for IPv4 virtual servers.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-port"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-port"><strong>port</strong></p>
+<a class="ansibleOptionLink" href="#parameter-port" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Port number for content switching virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-precedence"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-precedence"><strong>precedence</strong></p>
+<a class="ansibleOptionLink" href="#parameter-precedence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of precedence to use for both <code class="docutils literal notranslate"><span class="pre">RULE</span></code>-based and <code class="docutils literal notranslate"><span class="pre">URL</span></code>-based policies on the content switching virtual server. With the default (<code class="docutils literal notranslate"><span class="pre">RULE</span></code>) setting, incoming requests are evaluated against the rule-based content switching policies. If none of the rules match, the <code class="docutils literal notranslate"><span class="pre">URL</span></code> in the request is evaluated against the <code class="docutils literal notranslate"><span class="pre">URL</span></code>-based content switching policies.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;RULE&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;URL&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-probeport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-probeport"><strong>probeport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-probeport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Citrix ADC provides support for external health check of the vserver status. Select port for HTTP/TCP monitring</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-probeprotocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-probeprotocol"><strong>probeprotocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-probeprotocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Citrix ADC provides support for external health check of the vserver status. Select <code class="docutils literal notranslate"><span class="pre">HTTP</span></code> or <code class="docutils literal notranslate"><span class="pre">TCP</span></code> probes for healthcheck</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-probesuccessresponsecode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-probesuccessresponsecode"><strong>probesuccessresponsecode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-probesuccessresponsecode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>HTTP code to return in SUCCESS case.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;\&quot;200</span> <span class="pre">OK\&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-push"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-push"><strong>push</strong></p>
+<a class="ansibleOptionLink" href="#parameter-push" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Process traffic with the push virtual server that is bound to this content switching virtual server (specified by the Push VServer parameter). The service type of the push virtual server should be either HTTP or SSL.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-pushlabel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-pushlabel"><strong>pushlabel</strong></p>
+<a class="ansibleOptionLink" href="#parameter-pushlabel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Expression for extracting the label from the response received from server. This string can be either an existing rule name or an inline expression. The service type of the virtual server should be either HTTP or SSL.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">&quot;\&quot;none\&quot;&quot;</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-pushmulticlients"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-pushmulticlients"><strong>pushmulticlients</strong></p>
+<a class="ansibleOptionLink" href="#parameter-pushmulticlients" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-pushvserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-pushvserver"><strong>pushvserver</strong></p>
+<a class="ansibleOptionLink" href="#parameter-pushvserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which the server pushes updates received on the client-facing load balancing virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-quicprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-quicprofilename"><strong>quicprofilename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-quicprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of QUIC profile which will be attached to the Content Switching VServer.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-range"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-range"><strong>range</strong></p>
+<a class="ansibleOptionLink" href="#parameter-range" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of consecutive IP addresses, starting with the address specified by the IP Address parameter, to include in a range of addresses assigned to this virtual server.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-redirectfromport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-redirectfromport"><strong>redirectfromport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-redirectfromport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Port number for the virtual server, from which we absorb the traffic for http redirect</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-redirectportrewrite"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-redirectportrewrite"><strong>redirectportrewrite</strong></p>
+<a class="ansibleOptionLink" href="#parameter-redirectportrewrite" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>State of port rewrite while performing HTTP redirect.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-redirecturl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-redirecturl"><strong>redirecturl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-redirecturl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>URL to which traffic is redirected if the virtual server becomes unavailable. The service type of the virtual server should be either HTTP or SSL.</p>
+<p>Caution: Make sure that the domain in the URL does not match the domain specified for a content switching policy. If it does, requests are continuously redirected to the unavailable virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rhistate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-rhistate"><strong>rhistate</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rhistate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>A host route is injected according to the setting on the virtual servers</p>
+<blockquote>
+<div><p>* If set to <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code> on all the virtual servers that share the IP address, the appliance always injects the hostroute.</p>
+<p>* If set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> on all the virtual servers that share the IP address, the appliance injects even if one virtual server is UP.</p>
+<p>* If set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> on some virtual servers and <code class="docutils literal notranslate"><span class="pre">PASSIVE</span></code> on the others, the appliance, injects even if one virtual server set to <code class="docutils literal notranslate"><span class="pre">ACTIVE</span></code> is UP.</p>
+</div></blockquote>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;PASSIVE&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ACTIVE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-rtspnat"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-rtspnat"><strong>rtspnat</strong></p>
+<a class="ansibleOptionLink" href="#parameter-rtspnat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable network address translation (NAT) for real-time streaming protocol (RTSP) connections.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-save-config"><strong>save_config</strong></p>
+<a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> the module will save the configuration on the NetScaler ADC node if it makes any changes.</p>
+<p>The module will not save the configuration on the NetScaler ADC node if it made no changes.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">false</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-servicetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-servicetype"><strong>servicetype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-servicetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Protocol used by the virtual server.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSL&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FTP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RTSP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSL_TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;UDP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DNS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SIP_UDP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SIP_TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SIP_SSL&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ANY&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RADIUS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RDP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MYSQL&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MSSQL&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DIAMETER&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SSL_DIAMETER&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DNS_TCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ORACLE&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;SMPP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PROXY&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MONGO&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MONGO_TLS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MQTT&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MQTT_TLS&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP_QUIC&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sitedomainttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-sitedomainttl"><strong>sitedomainttl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sitedomainttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sobackupaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-sobackupaction"><strong>sobackupaction</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sobackupaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Action to be performed if spillover is to take effect, but no backup chain to spillover is usable or exists</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DROP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ACCEPT&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;REDIRECT&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-somethod"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-somethod"><strong>somethod</strong></p>
+<a class="ansibleOptionLink" href="#parameter-somethod" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Type of spillover used to divert traffic to the backup virtual server when the primary virtual server reaches the spillover threshold. Connection spillover is based on the number of connections. Bandwidth spillover is based on the total Kbps of incoming and outgoing traffic.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;CONNECTION&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DYNAMICCONNECTION&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;BANDWIDTH&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HEALTH&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NONE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sopersistence"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-sopersistence"><strong>sopersistence</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sopersistence" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Maintain source-IP based persistence on primary and backup virtual servers.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sopersistencetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-sopersistencetimeout"><strong>sopersistencetimeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sopersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time-out value, in minutes, for spillover persistence.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-sothreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-sothreshold"><strong>sothreshold</strong></p>
+<a class="ansibleOptionLink" href="#parameter-sothreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Depending on the spillover method, the maximum number of connections or the maximum total bandwidth (Kbps) that a virtual server can handle before spillover occurs.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Initial state of the load balancing virtual server.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-stateupdate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-stateupdate"><strong>stateupdate</strong></p>
+<a class="ansibleOptionLink" href="#parameter-stateupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable state updates for a specific content switching virtual server. By default, the Content Switching virtual server is always UP, regardless of the state of the Load Balancing virtual servers bound to it. This parameter interacts with the global setting as follows:</p>
+<p>Global Level | Vserver Level | Result</p>
+<p><code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>      <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>        <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>      <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>       <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>     <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>        <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>     <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>       <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code></p>
+<p>If you want to enable state updates for only some content switching virtual servers, be sure to disable the state update parameter.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;UPDATEONBACKENDUPDATE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-targettype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-targettype"><strong>targettype</strong></p>
+<a class="ansibleOptionLink" href="#parameter-targettype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Virtual server target type.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;GSLB&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tcpprobeport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-tcpprobeport"><strong>tcpprobeport</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tcpprobeport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Port number for external TCP probe. NetScaler provides support for external TCP health check of the vserver status over the selected port. This option is only supported for vservers assigned with an IPAddress or ipset.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tcpprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-tcpprofilename"><strong>tcpprofilename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tcpprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the TCP profile containing TCP configuration settings for the virtual server.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-td"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-td"><strong>td</strong></p>
+<a class="ansibleOptionLink" href="#parameter-td" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-timeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-timeout"><strong>timeout</strong></p>
+<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time period for which a persistence session is in effect.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-ttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-ttl"><strong>ttl</strong></p>
+<a class="ansibleOptionLink" href="#parameter-ttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>0</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-v6persistmasklen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-v6persistmasklen"><strong>v6persistmasklen</strong></p>
+<a class="ansibleOptionLink" href="#parameter-v6persistmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Persistence mask for IP based persistence types, for IPv6 virtual servers.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">128</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-validate-certs"><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">false</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-vipheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-parameter-vipheader"><strong>vipheader</strong></p>
+<a class="ansibleOptionLink" href="#parameter-vipheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of virtual server IP and port header, for use with the VServer IP Port Insertion parameter.</p>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For more information on using Ansible to manage NetScaler ADC Network devices see <a class="reference external" href="https://www.ansible.com/integrations/networks/citrixadc">https://www.ansible.com/integrations/networks/citrixadc</a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Permalink to this heading"></a></h2>
+<p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/devel/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible vdevel)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-changed"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-return-changed"><strong>changed</strong></p>
+<a class="ansibleOptionLink" href="#return-changed" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates if any change is made by the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">true</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-diff"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-return-diff"><strong>diff</strong></p>
+<a class="ansibleOptionLink" href="#return-diff" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Dictionary of before and after changes</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;after&quot;:</span> <span class="pre">{&quot;key2&quot;:</span> <span class="pre">&quot;pqr&quot;},</span> <span class="pre">&quot;before&quot;:</span> <span class="pre">{&quot;key1&quot;:</span> <span class="pre">&quot;xyz&quot;},</span> <span class="pre">&quot;prepared&quot;:</span> <span class="pre">&quot;changes</span> <span class="pre">done&quot;}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-diff_list"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-return-diff-list"><strong>diff_list</strong></p>
+<a class="ansibleOptionLink" href="#return-diff_list" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of differences between the actual configured object and the configuration specified in the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> when changed</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;Attribute</span> <span class="pre">`key1`</span> <span class="pre">differs.</span> <span class="pre">Desired:</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;)</span> <span class="pre">XYZ.</span> <span class="pre">Existing:</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;)</span> <span class="pre">PQR&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-failed"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-return-failed"><strong>failed</strong></p>
+<a class="ansibleOptionLink" href="#return-failed" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates if the module failed or not</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">false</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-loglines"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-csvserver-module-return-loglines"><strong>loglines</strong></p>
+<a class="ansibleOptionLink" href="#return-loglines" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>list of logged messages by the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;message</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;message</span> <span class="pre">2&quot;]</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
+<p class="ansible-links">
+  <a href="http://example.com/issue/tracker" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
+  <a href="http://example.com" aria-role="button" target="_blank" rel="noopener external">Homepage</a>
+  <a href="http://example.com/repository" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+</p></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cspolicylabel_cspolicy_binding_module.html" class="btn btn-neutral float-left" title="netscaler.adc.cspolicylabel_cspolicy_binding module – Binding Resource definition for describing association between cspolicylabel and cspolicy resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="csvserver_analyticsprofile_binding_module.html" class="btn btn-neutral float-right" title="netscaler.adc.csvserver_analyticsprofile_binding module – Binding Resource definition for describing association between csvserver and analyticsprofile resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible contributors.</p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+
+</body>
+</html>
