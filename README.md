@@ -94,7 +94,11 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 
 ## Todo list for `netscaler.adc` collection
 
+- [x] Support for `nitro_auth_token` parameter in all modules.
+- [ ] Update supported matrix to have documentation links
 - [ ] Test modules against all NetScaler ADC versions.
 - [ ] Test modules againsts ansible versions 2.9+
 - [ ] Configure GitHub Actions to automate the collection build and release process.
 - [ ] Configure GitHub Actions to automate the collection documentation build and release process.
+- [ ] Add more examples.
+- [ ] Add appropriate license to the collection.
