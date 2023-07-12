@@ -6,17 +6,14 @@ from ansible.module_utils.six.moves.urllib.parse import quote
 from ansible.module_utils.urls import fetch_url
 
 from .decorators import trace
-from .log import log
+from .logger import log
 
 
 class NitroAPIClient(object):
     def __init__(self, module):
         self._module = module
         self.check_mode = module.check_mode  # Dry run mode
-        module_api_path = self._module.params.get("api_path")
-        self.api_path = (
-            module_api_path if (module_api_path is not None) else "nitro/v1/config"
-        )
+        self.api_path = self._module.params.get("api_path")
 
         # Prepare the http headers according to module arguments
         self._headers = {}
@@ -44,34 +41,6 @@ class NitroAPIClient(object):
         if have_userpass:
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
-
-        if self._module.params.get("is_cloud", False):
-            self._headers["isCloud"] = "true"
-
-        bearer_token = self._module.params.get("bearer_token")
-        if bearer_token is not None:
-            self._headers["Authorization"] = "CwsAuth bearer=%s" % bearer_token
-
-        # Do header manipulation when doing a MAS proxy call
-        if self._module.params.get(
-            "mas_proxy_call"
-        ) is not None and self._module.params.get("mas_proxy_call"):
-            if self._module.params.get("instance_ip") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_IP"
-                ] = self._module.params["instance_ip"]
-            elif self._module.params.get("instance_name") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_NAME"
-                ] = self._module.params["instance_name"]
-            elif self._module.params.get("instance_id") is not None:
-                self._headers[
-                    "_MPS_API_PROXY_MANAGED_INSTANCE_ID"
-                ] = self._module.params["instance_id"]
-            else:
-                self._module.fail_json(
-                    msg="Target NetScaler ADC is undefined for NetScaler ADM proxied NITRO call"
-                )
 
     def url_builder(
         self,

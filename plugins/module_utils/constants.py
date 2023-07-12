@@ -9,6 +9,15 @@ HTTP_STATUS_CODES = {
     409: "Resource already exists",
 }
 
+NETSCALER_NO_GET_RESOURCE = [
+    "login",
+    "logout",
+]
+
+NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
+    "logout",
+]
+
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
 NETSCALER_COMMON_ARGUMENTS = dict(
     nsip=dict(
@@ -36,29 +45,19 @@ NETSCALER_COMMON_ARGUMENTS = dict(
         type="bool",
         fallback=(env_fallback, ["NETSCALER_VALIDATE_CERTS"]),
     ),
-    nitro_timeout=dict(default=310, type="float"),
     save_config=dict(
         type="bool",
         default=False,
         fallback=(env_fallback, ["NETSCALER_SAVE_CONFIG"]),
     ),
-    mas_proxy_call=dict(default=False, type="bool"),
     nitro_auth_token=dict(
         type="str",
         no_log=True,
-    ),
-    instance_ip=dict(type="str"),
-    instance_id=dict(type="str"),
-    instance_name=dict(type="str"),
-    is_cloud=dict(
-        type="bool",
-        default=False,
+        fallback=(env_fallback, ["NETSCALER_NITRO_AUTH_TOKEN"]),
     ),
     api_path=dict(
         type="str",
-    ),
-    bearer_token=dict(
-        type="str",
-        no_log=True,
+        required=False,
+        default="nitro/v1/config",
     ),
 )

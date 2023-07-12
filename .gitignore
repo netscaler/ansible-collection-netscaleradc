@@ -6,7 +6,10 @@ tools/
 __pycache__/
 
 # Sphinx documentation
-_built_docs/
+_built_docs*
 
 # collection package
 **/netscaler-adc-*.tar.gz
+
+TODO.md
+Dockerfile

@@ -1,8 +1,12 @@
 import copy
 
-from .constants import HTTP_RESOURCE_NOT_FOUND, HTTP_SUCCESS_CODES
+from .constants import (
+    HTTP_RESOURCE_NOT_FOUND,
+    HTTP_SUCCESS_CODES,
+    NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES,
+)
 from .decorators import trace
-from .log import log
+from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 
@@ -73,6 +77,7 @@ def _check_create_resource_params(resource_name, resource_module_params):
         return False, err, {}
 
     # TODO: check for other mandatory keys for the resource
+    # This will be checked by ansible itself by reading the `required` field in the schema
 
     # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
     for key in resource_module_params.keys():
@@ -327,7 +332,7 @@ def return_response(
             log(f"DEBUG: {operation} {resource_name}/{resource_id} SUCCESS")
         else:
             log(f"DEBUG: {operation} {resource_name} SUCCESS")
-        return True, None
+        return True, response_body
     else:
         err = f"ERROR: {operation} FAILED; status_code: {status_code}; Reason:{response_body}"
         log(err)
@@ -394,11 +399,51 @@ def disable_resource(client, resource_name, resource_params):
 
 
 @trace
+def adc_login(client, username, password):
+    post_data = {
+        "login": {
+            "username": username,
+            "password": password,
+        }
+    }
+    status_code, response_body = client.post(
+        post_data=post_data,
+        resource="login",
+    )
+    return return_response(
+        status_code=status_code,
+        response_body=response_body,
+        operation="login",
+        resource_name="login",
+    )
+
+
+@trace
+def adc_logout(client):
+    post_data = {
+        "logout": {},
+    }
+    status_code, response_body = client.post(
+        post_data=post_data,
+        resource="logout",
+    )
+    return return_response(
+        status_code=status_code,
+        response_body=response_body,
+        operation="logout",
+        resource_name="logout",
+    )
+
+
+@trace
 def get_valid_desired_states(resource_name):
     desired_states = set()
     # Read the desired states from the resource map
     resource_map_keys = NITRO_RESOURCE_MAP[resource_name].keys()
-    if "add_payload_keys" in resource_map_keys:
+    if (
+        "add_payload_keys" in resource_map_keys
+        or resource_name in NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES
+    ):
         desired_states.add("present")
     if "delete_arg_keys" in resource_map_keys:
         desired_states.add("absent")

@@ -1,6 +1,6 @@
 import functools
 
-from .log import log
+from .logger import log
 
 
 def trace(func):
