@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+
+# TODO: Add license
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 import functools
 
 from .logger import log

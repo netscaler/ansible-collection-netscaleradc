@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+
+# TODO: Add license
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 import copy
 
 from .constants import (
@@ -329,12 +337,12 @@ def return_response(
 ):
     if status_code in HTTP_SUCCESS_CODES:
         if resource_id:
-            log(f"DEBUG: {operation} {resource_name}/{resource_id} SUCCESS")
+            log("DEBUG: %s %s/%s SUCCESS" % (operation, resource_name, resource_id))
         else:
-            log(f"DEBUG: {operation} {resource_name} SUCCESS")
+            log("DEBUG: %s %s SUCCESS" % (operation, resource_name))
         return True, response_body
     else:
-        err = f"ERROR: {operation} FAILED; status_code: {status_code}; Reason:{response_body}"
+        err = "ERROR: %s FAILED; status_code: %s; Reason:%s" % ( operation, status_code, response_body)
         log(err)
         return False, err
 
