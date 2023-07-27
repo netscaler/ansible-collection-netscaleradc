@@ -39,7 +39,7 @@ netscaler.adc                 2.0.0-alpha
 
 ## Collection Modules Documentation
 
-<https://netscaler-ansible.readthedocs.io/en/v2.0.0-alpha/>
+<https://citrix.github.io/citrix-adc-ansible-modules/>
 
 ## Examples
 
