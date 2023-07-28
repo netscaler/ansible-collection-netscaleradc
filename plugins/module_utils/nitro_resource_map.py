@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2020 Citrix Systems, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 NITRO_RESOURCE_MAP = {
     "login": {
         "add_payload_keys": [

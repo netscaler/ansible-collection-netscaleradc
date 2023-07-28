@@ -21,15 +21,16 @@ authors:
 
 ### OPTIONAL but strongly recommended
 # A short summary description of the collection
-description: Ansible Modules Collection for NetScaler ADC
+description: Ansible Collection Modules for NetScaler ADC
 
 # Either a single license or a list of licenses for content inside of a collection. Ansible Galaxy currently only
 # accepts L(SPDX,https://spdx.org/licenses/) licenses. This key is mutually exclusive with 'license_file'
-license: [] # TODO
+license:
+  - MIT
 
 # The path to the license file for the collection. This path is relative to the root of the collection. This key is
 # mutually exclusive with 'license'
-license_file: '' # TODO
+# license_file: '' # TODO
 
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
@@ -45,7 +46,8 @@ tags:
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/citrix/citrix-adc-ansible-modules
+repository: https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha
+
 # The URL to any online docs
 documentation: https://citrix.github.io/citrix-adc-ansible-modules
 
@@ -69,7 +71,6 @@ build_ignore:
   - tools
   - examples
   - docs
-  - "*.md"
   - tests
   - Dockerfile
   - .gitignore
