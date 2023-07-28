@@ -1,4 +1,12 @@
-import copy
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2020 Citrix Systems, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 
 from .constants import (
     HTTP_RESOURCE_NOT_FOUND,
@@ -275,22 +283,6 @@ def bind_resource(client, binding_name, binding_module_params):
         resource_name=binding_name,
         resource_module_params=binding_module_params,
     )
-    # put_values = copy.deepcopy(configured_dict)
-    # put_values["name"] = self.module.params["name"]
-    # put_values = get_transformed_dict(
-    #     transforms=self.attribute_config["servicebindings"]["transforms"],
-    #     values_dict=put_values,
-    # )
-
-    put_data = {binding_name: payload}
-    status_code, response_body = client.put(put_data=put_data, resource=binding_name)
-
-    return return_response(
-        status_code=status_code,
-        response_body=response_body,
-        operation="bind_resource",
-        resource_name=binding_name,
-    )
 
 
 @trace
@@ -300,27 +292,6 @@ def unbind_resource(client, binding_name, binding_module_params):
         resource_name=binding_name,
         resource_module_params=binding_module_params,
     )
-    service_binding = copy.deepcopy(binding_module_params)
-    args = {}
-    delete_id_attributes = NITRO_RESOURCE_MAP[binding_name]["delete_arg_keys"]
-    for attribute in delete_id_attributes:
-        value = service_binding.get(attribute)
-        if value is not None and value != "":
-            log("Appending to args %s:%s" % (attribute, value))
-            args[attribute] = value
-
-    status_code, response_body = client.delete(
-        resource=binding_name,
-        id=binding_id,
-        args=args,
-    )
-    return return_response(
-        status_code=status_code,
-        response_body=response_body,
-        operation="unbind_resource",
-        resource_name=binding_name,
-        resource_id=binding_id,
-    )
 
 
 @trace
@@ -329,12 +300,16 @@ def return_response(
 ):
     if status_code in HTTP_SUCCESS_CODES:
         if resource_id:
-            log(f"DEBUG: {operation} {resource_name}/{resource_id} SUCCESS")
+            log("DEBUG: %s %s/%s SUCCESS" % (operation, resource_name, resource_id))
         else:
-            log(f"DEBUG: {operation} {resource_name} SUCCESS")
+            log("DEBUG: %s %s SUCCESS" % (operation, resource_name))
         return True, response_body
     else:
-        err = f"ERROR: {operation} FAILED; status_code: {status_code}; Reason:{response_body}"
+        err = "ERROR: %s FAILED; status_code: %s; Reason:%s" % (
+            operation,
+            status_code,
+            response_body,
+        )
         log(err)
         return False, err
 

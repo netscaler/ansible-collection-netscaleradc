@@ -17,6 +17,10 @@ generate_modules:
 install:
 	ansible-galaxy collection install . --force
 
+lint: install
+	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
+	ansible-test sanity --docker default -v
+
 # build_docs:
 # 	antsibull-docs sphinx-init --use-current --dest-dir _built_docs netscaler.adc
 # 	cd _built_docs

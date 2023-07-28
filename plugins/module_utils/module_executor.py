@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2020 Citrix Systems, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 import os
 
 from ansible.module_utils.basic import AnsibleModule
@@ -92,7 +101,7 @@ class ModuleExecutor(object):
         self._filter_resource_module_params()
         if not self.resource_name.endswith("_binding"):
             self._filter_desired_bindings()
-        if not self.resource_name in NETSCALER_NO_GET_RESOURCE:
+        if self.resource_name not in NETSCALER_NO_GET_RESOURCE:
             self.get_existing_resource()
 
     @trace
@@ -150,7 +159,9 @@ class ModuleExecutor(object):
                 and k
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
             ):
-                # self.module.params is a dict of key:value pairs. If an attribute is not defined in the playbook, it's value will be None. So, filter out those attributes. Also, filter out attributes ending with `_binding` as they are handled separately
+                # self.module.params is a dict of key:value pairs. If an attribute is not
+                # defined in the playbook, it's value will be None. So, filter out those attributes.
+                # Also, filter out attributes ending with `_binding` as they are handled separately
                 if v:
                     self.resource_module_params[k] = v
         log(
@@ -506,7 +517,12 @@ class ModuleExecutor(object):
         )
 
         if binding_mode == "desired":
-            # In `desired` mode, we will check if the existing bindings are identical to the desired bindings, if not, we will delete the existing bindings and add the desired bindings. If they are identical, we will do nothing. If there are no existing bindings, we will add the desired bindings. If there are no desired bindings, we will delete the existing bindings. If there are no existing and desired bindings, we will do nothing.
+            # In `desired` mode, we will check if the existing bindings are identical to the desired
+            # bindings, if not, we will delete the existing bindings and add the desired bindings.
+            # If they are identical, we will do nothing. If there are no existing bindings,
+            # we will add the desired bindings. If there are no desired bindings,
+            # we will delete the existing bindings. If there are no existing and desired bindings,
+            # we will do nothing.
 
             log("DEBUG: To be deleted bindings: %s" % to_be_deleted_bindings)
             log("DEBUG: To be added bindings: %s" % to_be_added_bindings)
@@ -676,7 +692,9 @@ class ModuleExecutor(object):
                         self.sync_all_bindings()
                     self.delete()
                 else:
-                    # `primary_key` will not be present for `update-only` resources such as `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported for such resources.
+                    # `primary_key` will not be present for `update-only` resources such as
+                    # `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
+                    # for such resources.
                     # FIXME: Should we `unset` the resource instead?
                     pass
             else:

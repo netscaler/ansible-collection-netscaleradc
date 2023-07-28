@@ -1,3 +1,12 @@
+# -*- coding: utf-8 -*-
+
+# Copyright (c) 2020 Citrix Systems, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
 from ansible.module_utils.basic import env_fallback
 
 HTTP_SUCCESS_CODES = {0, 200, 201}  # 0 is for check_mode

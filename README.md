@@ -1,5 +1,13 @@
 # NetScaler Ansible Collection `version2` - netscaler.adc
 
+## Vision
+
+The vision of the `netscaler.adc` collection is to provide a complete declarative interface to configure and manage NetScaler ADC.
+
+If you need any feature or flexibility that is not available in the collection, please raise issues/enhancement-requests/recommendations at <https://github.com/citrix/citrix-adc-ansible-modules/issues>
+
+> :envelope: For any immediate issues or help , reach out to us at <NetScaler-AutomationToolkit@cloud.com> !
+
 ## About `version1` and `version2` of the collection
 
 We refer the earlier `citrix.adc` ansible collection as `version1` and the new `netscaler.adc` as `version2`.
@@ -21,9 +29,16 @@ Please raise issues at <https://github.com/citrix/citrix-adc-ansible-modules/iss
 ## Installation
 
 ```bash
+ansible-galaxy collection install netscaler.adc --pre --force
+
+# OR
+
 git clone --branch v2.0.0-alpha --single-branch https://github.com/citrix/citrix-adc-ansible-modules.git /tmp/citrix-adc-ansible-modules-v2.0.0-alpha
 ansible-galaxy collection install /tmp/citrix-adc-ansible-modules-v2.0.0-alpha --force
 ```
+
+> `--pre` is required to install the pre-releae (alpha) version of the collection from ansible galaxy.
+> `--force` is required to overwrite the existing `netscaler.adc` collection.
 
 ### Verify the installation
 
@@ -34,7 +49,7 @@ ansible-galaxy collection list | grep netscaler.adc
 The above command should display the following output:
 
 ```text
-netscaler.adc                 2.0.0-alpha
+netscaler.adc 2.0.0-alpha
 ```
 
 ## Collection Modules Documentation
@@ -76,7 +91,9 @@ echo $NETSCALER_NITRO_AUTH_TOKEN
 
 ## Supported Ansible Versions
 
-TODO: Update the supported ansible versions. Test with ansible versions 2.9+
+This collection supports Ansible version 2.9 and above.
+
+> Since this is an alpha release, the collection is not tested with all the Ansible versions. Please raise issues at <https://github.com/citrix/citrix-adc-ansible-modules/issues> if you face any issues with the collection.
 
 ## Features of `netscaler.adc` collection
 
@@ -95,10 +112,17 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 ## Todo list for `netscaler.adc` collection
 
 - [x] Support for `nitro_auth_token` parameter in all modules.
-- [ ] Update supported matrix to have documentation links
+- [x] Update supported matrix to have documentation links
+- [x] Add appropriate license to the collection.
+- [x] Upload the collection to Ansible Galaxy.
+- [ ] Add more examples
+- [ ] Write a python script which converts examples/playbook.yaml to module's EXAMPLE documentation
+- [ ] SSH Connection module
+- [ ] Run `ansible-test` on the collection.
+- [ ] Run `ansible-lint` on the collection for Python 2.7, 3.6, 3.7, 3.8 and 3.9.
 - [ ] Test modules against all NetScaler ADC versions.
 - [ ] Test modules againsts ansible versions 2.9+
 - [ ] Configure GitHub Actions to automate the collection build and release process.
 - [ ] Configure GitHub Actions to automate the collection documentation build and release process.
-- [ ] Add more examples.
-- [ ] Add appropriate license to the collection.
+- [ ] Configure GitHub Actions to automate the collection testing process.
+- [ ] Configure GitHub Actions to automate the collection linting process.
