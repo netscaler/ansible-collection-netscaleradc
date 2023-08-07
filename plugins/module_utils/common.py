@@ -7,6 +7,7 @@ from __future__ import absolute_import, division, print_function
 
 __metaclass__ = type
 
+import re
 
 from .constants import (
     HTTP_RESOURCE_NOT_FOUND,
@@ -16,6 +17,21 @@ from .constants import (
 from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
+
+
+@trace
+def get_netscaler_version(client):
+    response =  get_resource(client, "nsversion")
+    # response = [{'installedversion': True, 'version': 'NetScaler NS13.0: Build 79.1002.nc, Date: Jul  7 2021, 10:31:36   (64-bit)', 'mode': '1'}]
+    try:
+        # send a tuple of (major, minor) version. i.e. (13.0, 79.1002)
+        pattern = r"NetScaler NS(\d+\.\d+): Build (\d+\.\d+)\.nc"
+        version = response[0]["version"]
+        major, minor = re.search(pattern, version).groups()
+        return (float(major), float(minor))
+    except Exception as e:
+        log("ERROR: Failed to get NetScaler version: {}".format(e))
+        return (0.0, 0.0) # return a dummy version
 
 
 @trace

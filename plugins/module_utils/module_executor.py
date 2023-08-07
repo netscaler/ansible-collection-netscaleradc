@@ -26,6 +26,7 @@ from .common import (
     save_config,
     unbind_resource,
     update_resource,
+    get_netscaler_version,
 )
 from .constants import NETSCALER_COMMON_ARGUMENTS, NETSCALER_NO_GET_RESOURCE
 from .decorators import trace
@@ -72,8 +73,12 @@ class ModuleExecutor(object):
             # ],
         )
 
-        self.diff_dict = {}
         self.client = NitroAPIClient(self.module)
+        self.ns_major_version, self.ns_minor_version = get_netscaler_version(
+            self.client
+        )
+        log("INFO: NetScaler version: %s-%s" % (self.ns_major_version, self.ns_minor_version))
+        self.diff_dict = {}
         self.resource_primary_key = NITRO_RESOURCE_MAP[self.resource_name][
             "primary_key"
         ]
