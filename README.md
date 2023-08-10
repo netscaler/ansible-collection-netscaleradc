@@ -62,6 +62,8 @@ Refer to the [examples](examples) directory for the sample playbooks.
 
 Also refer [playbook_anatomy.md](playbook_anatomy.md) for the anatomy of a playbook.
 
+## :key: Authentication
+
 ### Authenticate to NetScaler via username and password
 
 Every module in the collection requires the user to authenticate to the NetScaler ADC appliance. The authentication can be done using the `nitro_user` and `nitro_pass` parameters. These parameters can also be passed as environment variables `NETSCALER_NITRO_USER` and `NETSCALER_NITRO_PASS`.
