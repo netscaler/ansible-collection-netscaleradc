@@ -27,19 +27,23 @@ The collection is in `alpha` testing stage. It is not recommended to use the col
 Please raise issues at <https://github.com/citrix/citrix-adc-ansible-modules/issues> and help us improve the collection.
 
 ## Installation
-
+<!---
 ```bash
 ansible-galaxy collection install netscaler.adc --pre --force
 ```
 
 OR
+--->
 
 ```bash
 git clone --branch v2.0.0-alpha --single-branch https://github.com/citrix/citrix-adc-ansible-modules.git /tmp/citrix-adc-ansible-modules-v2.0.0-alpha
 ansible-galaxy collection install /tmp/citrix-adc-ansible-modules-v2.0.0-alpha --force
 ```
 
+<!---
 > `--pre` is required to install the pre-releae (alpha) version of the collection from ansible galaxy.
+--->
+
 > `--force` is required to overwrite the existing `netscaler.adc` collection.
 
 ### Verify the installation
