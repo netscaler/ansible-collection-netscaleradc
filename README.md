@@ -62,6 +62,8 @@ netscaler.adc 2.0.0-alpha
 
 <https://citrix.github.io/citrix-adc-ansible-modules/>
 
+> Click on the desired module name in the [supported_modules_matrix.md](supported_modules_matrix.md) file to go to the specific module documentation
+
 ## Examples
 
 Refer to the [examples](examples) directory for the sample playbooks.
