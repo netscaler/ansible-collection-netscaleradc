@@ -9,6 +9,7 @@ __metaclass__ = type
 
 import codecs
 import json
+import traceback
 
 from ansible.module_utils._text import to_text
 from ansible.module_utils.six.moves.urllib.parse import quote
@@ -133,15 +134,34 @@ class NitroAPIClient(object):
         body = r.read() if r else None
         # info['body'] will not be present for status_codes < 400
         if status_code >= 400:
-            return status_code, json.loads(to_text(info["body"]))
+            try:
+                return status_code, json.loads(to_text(info["body"]))
+            # Catch json.decoder.JSONDecodeError and print the full stack trace
+            except json.decoder.JSONDecodeError as e:
+                log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                log("DEBUG: info['body'] = %s" % info["body"])
+                log("DEBUG: Traceback = %s" % traceback.format_exc())
+                return status_code, {}
         else:
             if not body:
                 if "body" in info:
-                    return status_code, json.loads(to_text(info["body"]))
+                    try:
+                        return status_code, json.loads(to_text(info["body"]))
+                    except json.decoder.JSONDecodeError:
+                        log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                        log("DEBUG: info['body'] = %s" % info["body"])
+                        log("DEBUG: Traceback = %s" % traceback.format_exc())
+                        return status_code, {}
                 else:
                     return status_code, {}
             else:
-                return status_code, json.loads(to_text(body))
+                try:
+                    return status_code, json.loads(to_text(body))
+                except json.decoder.JSONDecodeError:
+                    log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                    log("DEBUG: info['body'] = %s" % info["body"])
+                    log("DEBUG: Traceback = %s" % traceback.format_exc())
+                    return status_code, {}
 
     def get(self, resource, id=None, args=None, attrs=None, filter=None):
         url = self.url_builder(resource, id=id, args=args, attrs=attrs, filter=filter)
