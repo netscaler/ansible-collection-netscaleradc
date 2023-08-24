@@ -75,7 +75,9 @@ class NitroAPIClient(object):
 
         # Append resource id
         if id is not None:
-            url = "%s/%s" % (url, id)
+            # Double encode the id
+            # https://owasp.org/www-community/Double_Encoding
+            url = "%s/%s" % (url, quote(quote(id, safe=""), safe=""))
 
         # Query String Builder
         # Construct args
