@@ -21,7 +21,7 @@ from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 @trace
 def get_netscaler_version(client):
-    response =  get_resource(client, "nsversion")
+    response = get_resource(client, "nsversion")
     # response = [{'installedversion': True, 'version': 'NetScaler NS13.0: Build 79.1002.nc, Date: Jul  7 2021, 10:31:36   (64-bit)', 'mode': '1'}]
     try:
         # send a tuple of (major, minor) version. i.e. (13.0, 79.1002)
@@ -31,7 +31,7 @@ def get_netscaler_version(client):
         return (float(major), float(minor))
     except Exception as e:
         log("ERROR: Failed to get NetScaler version: {}".format(e))
-        return (0.0, 0.0) # return a dummy version
+        return (0.0, 0.0)  # return a dummy version
 
 
 @trace
