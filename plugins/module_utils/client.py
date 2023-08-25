@@ -78,7 +78,7 @@ class NitroAPIClient(object):
         if id is not None:
             # Double encode the id
             # https://owasp.org/www-community/Double_Encoding
-            url = "%s/%s" % (url, quote(quote(id, safe=""), safe=""))
+            url = "%s/%s" % (url, quote(quote(str(id), safe=""), safe=""))
 
         # Query String Builder
         # Construct args
