@@ -209,6 +209,9 @@ class ModuleExecutor(object):
     def is_attribute_equal(
         self, attribute_name, existing_attribute_value, module_params_attribute_value
     ):
+        # existing_attribute value will be None when there is no existing attribute for the resource.
+        if existing_attribute_value is None:
+            return False
         # check their type and convert the existing attribute type to the module params attribute type
         attribute_type = NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"][
             attribute_name
