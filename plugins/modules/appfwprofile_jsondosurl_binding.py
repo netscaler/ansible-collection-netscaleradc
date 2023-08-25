@@ -28,8 +28,8 @@ author:
 options:
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str
@@ -79,10 +79,10 @@ options:
     default: 10000
   jsonmaxarraylengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max array value count check is ON or OFF.
+      - State if JSON Max array value count check is C(ON) or C(OFF).
     type: str
   jsonmaxcontainerdepth:
     description:
@@ -93,10 +93,10 @@ options:
     default: 5
   jsonmaxcontainerdepthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max depth check is ON or OFF.
+      - State if JSON Max depth check is C(ON) or C(OFF).
     type: str
   jsonmaxdocumentlength:
     description:
@@ -105,10 +105,10 @@ options:
     default: 20000000
   jsonmaxdocumentlengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max document length check is ON or OFF.
+      - State if JSON Max document length check is C(ON) or C(OFF).
     type: str
   jsonmaxobjectkeycount:
     description:
@@ -118,10 +118,10 @@ options:
     default: 10000
   jsonmaxobjectkeycountcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max object key count check is ON or OFF.
+      - State if JSON Max object key count check is C(ON) or C(OFF).
     type: str
   jsonmaxobjectkeylength:
     description:
@@ -131,10 +131,10 @@ options:
     default: 128
   jsonmaxobjectkeylengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max object key length check is ON or OFF.
+      - State if JSON Max object key length check is C(ON) or C(OFF).
     type: str
   jsonmaxstringlength:
     description:
@@ -144,10 +144,10 @@ options:
     default: 1000000
   jsonmaxstringlengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if JSON Max string value count check is ON or OFF.
+      - State if JSON Max string value count check is C(ON) or C(OFF).
     type: str
   name:
     description:

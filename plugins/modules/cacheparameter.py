@@ -26,12 +26,12 @@ author:
 options:
   enablebypass:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Evaluate the request-time policies before attempting hit selection. If set
-        to NO, an incoming request for which a matching object is found in cache storage
-        results in a response regardless of the policy configuration.
+        to C(NO), an incoming request for which a matching object is found in cache
+        storage results in a response regardless of the policy configuration.
       - 'If the request matches a policy with a NOCACHE action, the request bypasses
         all cache processing. '
       - This parameter does not affect processing of requests that match any invalidation
@@ -39,13 +39,14 @@ options:
     type: str
   enablehaobjpersist:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
-      - The HA object persisting parameter. When this value is set to YES, cache objects
-        can be synced to Secondary in a HA deployment.  If set to NO, objects will
-        never be synced to Secondary node.
+      - The HA object persisting parameter. When this value is set to C(YES), cache
+        objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
+        will never be synced to Secondary node.
     type: str
+    default: 'NO'
   maxpostlen:
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for

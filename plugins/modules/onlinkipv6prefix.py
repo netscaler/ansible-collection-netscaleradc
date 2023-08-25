@@ -28,38 +28,40 @@ author:
 options:
   autonomusprefix:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - RA Prefix Autonomus flag.
     type: str
-    default: true
+    default: 'YES'
   decrementprefixlifetimes:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - RA Prefix Autonomus flag.
     type: str
+    default: 'NO'
   depricateprefix:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Depricate the prefix.
     type: str
+    default: 'NO'
   ipv6prefix:
     description:
       - Onlink prefixes for RA messages.
     type: str
   onlinkprefix:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - RA Prefix onlink flag.
     type: str
-    default: true
+    default: 'YES'
   prefixpreferredlifetime:
     description:
       - Preferred life time of the prefix, in seconds.

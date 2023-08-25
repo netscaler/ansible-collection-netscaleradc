@@ -89,8 +89,8 @@ options:
     type: str
   clientchoices:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Provide users with multiple logon options. With client choices, users have
         the option of logging on by using the Citrix Gateway Plug-in for Windows,
@@ -99,14 +99,15 @@ options:
         with up to three icons for logon choices. The most common are the Citrix Gateway
         Plug-in for Windows, Web Interface, and clientless access.
     type: str
+    default: 'OFF'
   clientcleanupprompt:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Prompt for client-side cache clean-up when a client-initiated session closes.
     type: str
-    default: true
+    default: 'ON'
   clientconfiguration:
     choices:
       - none
@@ -121,19 +122,21 @@ options:
       - debug
       - stats
       - events
-      - false
+      - 'OFF'
     description:
       - 'Set the trace level on Citrix Gateway. Technical support technicians use
-        these debug logs for in-depth debugging and troubleshooting purposes. Available
+        these C(debug) logs for in-depth debugging and troubleshooting purposes. Available
         settings function as follows: '
-      - '* DEBUG - Detailed debug messages are collected and written into the specified
+      - '* DEBUG - Detailed C(debug) messages are collected and written into the specified
         file.'
-      - '* STATS - Application audit level error messages and debug statistic counters
+      - '* STATS - Application audit level error messages and C(debug) statistic counters
         are written into the specified file. '
       - '* EVENTS - Application audit-level error messages are written into the specified
         file. '
-      - '* OFF - Only critical events are logged into the Windows Application Log.'
+      - '* C(OFF) - Only critical C(events) are logged into the Windows Application
+        Log.'
     type: str
+    default: 'OFF'
   clientidletimeout:
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
@@ -185,18 +188,19 @@ options:
     default: DENY
   clientlessvpnmode:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
       - DISABLED
     description:
       - 'Enable clientless access for web, XenApp or XenDesktop, and FileShare resources
         without installing the Citrix Gateway Plug-in. Available settings function
         as follows: '
-      - '* ON - Allow only clientless access. '
-      - '* OFF - Allow clientless access after users log on with the Citrix Gateway
+      - '* C(ON) - Allow only clientless access. '
+      - '* C(OFF) - Allow clientless access after users log on with the Citrix Gateway
         Plug-in. '
-      - '* DISABLED - Do not allow clientless access.'
+      - '* C(DISABLED) - Do not allow clientless access.'
     type: str
+    default: 'OFF'
   clientoptions:
     choices:
       - none
@@ -223,12 +227,13 @@ options:
     type: str
   clientsecuritylog:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Specifies whether or not to display all failed Client Security scans to the
         end user
     type: str
+    default: 'OFF'
   clientsecuritymessage:
     description:
       - The client security message that will be displayed on failure of the client
@@ -337,21 +342,23 @@ options:
     type: str
   icaproxy:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable ICA proxy to configure secure Internet access to servers running Citrix
         XenApp or XenDesktop by using Citrix Receiver instead of the Citrix Gateway
         Plug-in.
     type: str
+    default: 'OFF'
   icasessiontimeout:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable ica session timeout. If enabled and in case AAA session
         gets terminated, ICA connections associated with that will also get terminated
     type: str
+    default: 'OFF'
   icauseraccounting:
     description:
       - The name of the radiusPolicy to use for RADIUS user accounting info on the
@@ -359,11 +366,12 @@ options:
     type: str
   iconwithreceiver:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to decide whether to show plugin icon along with receiver icon
     type: str
+    default: 'OFF'
   iipdnssuffix:
     description:
       - An intranet IP DNS suffix. When a user logs on to Citrix Gateway and is assigned
@@ -380,8 +388,8 @@ options:
     type: str
   killconnections:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Specify whether the Citrix Gateway Plug-in should disconnect all preexisting
         connections, such as the connections existing before the user logged on to
@@ -389,6 +397,7 @@ options:
         Plug-in for Windows and MAC when the user is connected to Citrix Gateway and
         split tunneling is disabled.
     type: str
+    default: 'OFF'
   linuxpluginupgrade:
     choices:
       - Always
@@ -400,16 +409,17 @@ options:
     default: Always
   locallanaccess:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
       - FORCED
     description:
-      - Set local LAN access. If split tunneling is OFF, and you set local LAN access
-        to ON, the local client can route traffic to its local interface. When the
-        local area network switch is specified, this combination of switches is useful.
-        The client can allow local LAN access to devices that commonly have non-routable
-        addresses, such as local printers or local file servers.
+      - Set local LAN access. If split tunneling is C(OFF), and you set local LAN
+        access to C(ON), the local client can route traffic to its local interface.
+        When the local area network switch is specified, this combination of switches
+        is useful. The client can allow local LAN access to devices that commonly
+        have non-routable addresses, such as local printers or local file servers.
     type: str
+    default: 'OFF'
   loginscript:
     description:
       - Path to the logon script that is run when a session is established. Separate
@@ -454,14 +464,14 @@ options:
     choices:
       - BROWSER
       - NS
-      - false
+      - 'OFF'
     description:
       - 'Set options to apply proxy for accessing the internal resources. Available
         settings function as follows:'
-      - '* BROWSER - Proxy settings are configured only in Internet Explorer and Firefox
-        browsers.'
-      - '* NS - Proxy settings are configured on the Citrix ADC.'
-      - '* OFF - Proxy settings are not configured.'
+      - '* C(BROWSER) - Proxy settings are configured only in Internet Explorer and
+        Firefox browsers.'
+      - '* C(NS) - Proxy settings are configured on the Citrix ADC.'
+      - '* C(OFF) - Proxy settings are not configured.'
     type: str
   proxyexception:
     description:
@@ -483,8 +493,8 @@ options:
     type: str
   rfc1918:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'As defined in the local area network, allow only the following local area
         network addresses to bypass the VPN tunnel when the local LAN access feature
@@ -493,6 +503,7 @@ options:
       - '* 172.16.*.*,'
       - '* 192.168.*.*'
     type: str
+    default: 'OFF'
   samesite:
     choices:
       - None
@@ -539,13 +550,13 @@ options:
     type: str
   splittunnel:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
       - REVERSE
     description:
       - Send, through the tunnel, traffic only for intranet applications that are
         defined in Citrix Gateway. Route all other traffic directly to the Internet.
-        The OFF setting routes all traffic through Citrix Gateway. With the REVERSE
+        The C(OFF) setting routes all traffic through Citrix Gateway. With the C(REVERSE)
         setting, intranet applications define the network traffic that is not intercepted.
         All network traffic directed to internal IP addresses bypasses the VPN tunnel,
         while other traffic goes through Citrix Gateway. Reverse split tunneling can
@@ -553,15 +564,16 @@ options:
         network and are logged on through the Citrix Gateway Plug-in, network traffic
         destined to a printer or another device within the home network is not intercepted.
     type: str
+    default: 'OFF'
   spoofiip:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Indicate whether or not the application requires IP spoofing, which routes
         the connection to the intranet application through the virtual adapter.
     type: str
-    default: true
+    default: 'ON'
   sslproxy:
     description:
       - IP address of the proxy server to be used for SSL access for all subsequent
@@ -569,8 +581,8 @@ options:
     type: str
   sso:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Set single sign-on (SSO) for the session. When the user accesses a server,
         the user's logon credentials are passed to the server for authentication.
@@ -579,6 +591,7 @@ options:
         \ Key or Negotiate Sign Flag). Use VPN TrafficAction to configure SSO for\
         \ these authentication types."
     type: str
+    default: 'OFF'
   ssocredential:
     choices:
       - PRIMARY
@@ -595,16 +608,17 @@ options:
     type: str
   transparentinterception:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Allow access to network resources by using a single IP address and subnet
-        mask or a range of IP addresses. The OFF setting sets the mode to proxy, in
-        which you configure destination and source IP addresses and port numbers.
+        mask or a range of IP addresses. The C(OFF) setting sets the mode to proxy,
+        in which you configure destination and source IP addresses and port numbers.
         If you are using the Citrix Gateway Plug-in for Windows, set this parameter
-        to ON, in which the mode is set to transparent. If you are using the Citrix
-        Gateway Plug-in for Java, set this parameter to OFF.
+        to C(ON), in which the mode is set to transparent. If you are using the Citrix
+        Gateway Plug-in for Java, set this parameter to C(OFF).
     type: str
+    default: 'OFF'
   uitheme:
     choices:
       - DEFAULT
@@ -617,22 +631,22 @@ options:
     choices:
       - NOSPILLOVER
       - SPILLOVER
-      - false
+      - 'OFF'
     description:
       - 'Define IP address pool options. Available settings function as follows: '
-      - '* SPILLOVER - When an address pool is configured and the mapped IP is used
-        as an intranet IP address, the mapped IP address is used when an intranet
+      - '* C(SPILLOVER) - When an address pool is configured and the mapped IP is
+        used as an intranet IP address, the mapped IP address is used when an intranet
         IP address cannot be assigned. '
-      - '* NOSPILLOVER - When intranet IP addresses are enabled and the mapped IP
-        address is not used, the Transfer Login page appears for users who have used
-        all available intranet IP addresses. '
-      - '* OFF - Address pool is not configured.'
+      - '* C(NOSPILLOVER) - When intranet IP addresses are enabled and the mapped
+        IP address is not used, the Transfer Login page appears for users who have
+        used all available intranet IP addresses. '
+      - '* C(OFF) - Address pool is not configured.'
     type: str
     default: NOSPILLOVER
   usemip:
     choices:
       - NS
-      - false
+      - 'OFF'
     description:
       - 'Enable or disable the use of a unique IP address alias, or a mapped IP address,
         as the client IP address for each client session. Allow Citrix Gateway to
@@ -668,13 +682,14 @@ options:
     type: str
   windowsautologon:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable the Windows Auto Logon for the session. If a VPN session
         is established after this setting is enabled, the user is automatically logged
         on by using Windows credentials after the system is restarted.
     type: str
+    default: 'OFF'
   windowsclienttype:
     choices:
       - AGENT

@@ -37,11 +37,12 @@ options:
     type: bool
   bot_whitelist_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enabled or disabled white-list binding.
     type: str
+    default: 'OFF'
   bot_whitelist_type:
     choices:
       - IPv4
@@ -58,11 +59,12 @@ options:
     type: str
   log:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable logging for Whitelist binding.
     type: str
+    default: 'OFF'
   logmessage:
     description:
       - Message to be logged for this binding.

@@ -26,11 +26,12 @@ author:
 options:
   advancedepa:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option tells whether advanced EPA is enabled on this virtual server
     type: str
+    default: 'OFF'
   appflowlog:
     choices:
       - ENABLED
@@ -45,12 +46,12 @@ options:
     default: ENABLED
   authentication:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Require authentication for users connecting to Citrix Gateway.
     type: str
-    default: true
+    default: 'ON'
   authnprofile:
     description:
       - Authentication Profile entity on virtual server. This entity can be used to
@@ -88,11 +89,12 @@ options:
     default: 5
   devicecert:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Indicates whether device certificate check as a part of EPA is on or off.
     type: str
+    default: 'OFF'
   doublehop:
     choices:
       - ENABLED
@@ -119,12 +121,12 @@ options:
     default: ENABLED
   dtls:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option starts/stops the turn service on the vserver
     type: str
-    default: true
+    default: 'ON'
   failedlogintimeout:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
@@ -137,32 +139,34 @@ options:
     default: '"nshttp_default_strict_validation"'
   icaonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - '- When set to ON, it implies Basic mode where the user can log on using either
-        Citrix Receiver or a browser and get access to the published apps configured
+      - '- When set to C(ON), it implies Basic mode where the user can log on using
+        either Citrix Receiver or a browser and get access to the published apps configured
         at the XenApp/XenDEsktop environment pointed out by the WIHome parameter.
         Users are not allowed to connect using the Citrix Gateway Plug-in and end
         point scans cannot be configured. Number of users that can log in and access
         the apps are not limited by the license in this mode.'
       - ' '
-      - '- When set to OFF, it implies Smart Access mode where the user can log on
-        using either Citrix Receiver or a browser or a Citrix Gateway Plug-in. The
-        admin can configure end point scans to be run on the client systems and then
-        use the results to control access to the published apps. In this mode, the
-        client can connect to the gateway in other client modes namely VPN and CVPN.
-        Number of users that can log in and access the resources are limited by the
-        CCU licenses in this mode.'
+      - '- When set to C(OFF), it implies Smart Access mode where the user can log
+        on using either Citrix Receiver or a browser or a Citrix Gateway Plug-in.
+        The admin can configure end point scans to be run on the client systems and
+        then use the results to control access to the published apps. In this mode,
+        the client can connect to the gateway in other client modes namely VPN and
+        CVPN. Number of users that can log in and access the resources are limited
+        by the CCU licenses in this mode.'
     type: str
+    default: 'OFF'
   icaproxysessionmigration:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
     type: str
+    default: 'OFF'
   icmpvsrresponse:
     choices:
       - PASSIVE
@@ -186,8 +190,8 @@ options:
     type: str
   l2conn:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition
         to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>)
@@ -219,18 +223,20 @@ options:
     default: 101
   loginonce:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option enables/disables seamless SSO for this Vserver.
     type: str
+    default: 'OFF'
   logoutonsmartcardremoval:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to VPN plugin behavior when smartcard or its reader is removed
     type: str
+    default: 'OFF'
   macepapluginupgrade:
     choices:
       - Always

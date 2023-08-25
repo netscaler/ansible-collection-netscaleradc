@@ -26,15 +26,16 @@ author:
 options:
   allowextendedmastersecret:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
-      - When set to YES, attempt to use the TLS Extended Master Secret (EMS, as
+      - When set to C(YES), attempt to use the TLS Extended Master Secret (EMS, as
       - described in RFC 7627) when negotiating TLS 1.0, TLS 1.1 and TLS 1.2
       - connection parameters. EMS must be supported by both the TLS client and server
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
     type: str
+    default: 'NO'
   alpnprotocol:
     choices:
       - NONE
@@ -110,7 +111,7 @@ options:
     type: str
   denysslreneg:
     choices:
-      - false
+      - 'NO'
       - FRONTEND_CLIENT
       - FRONTEND_CLIENTSERVER
       - ALL
@@ -118,13 +119,13 @@ options:
     description:
       - 'Deny renegotiation in specified circumstances. Available settings function
         as follows:'
-      - '* NO - Allow SSL renegotiation.'
-      - '* FRONTEND_CLIENT - Deny secure and nonsecure SSL renegotiation initiated
+      - '* C(NO) - Allow SSL renegotiation.'
+      - '* C(FRONTEND_CLIENT) - Deny secure and nonsecure SSL renegotiation initiated
         by the client.'
-      - '* FRONTEND_CLIENTSERVER - Deny secure and nonsecure SSL renegotiation initiated
-        by the client or the Citrix ADC during policy-based client authentication.'
-      - '* ALL - Deny all secure and nonsecure SSL renegotiation.'
-      - '* NONSECURE - Deny nonsecure SSL renegotiation. Allows only clients that
+      - '* C(FRONTEND_CLIENTSERVER) - Deny secure and nonsecure SSL renegotiation
+        initiated by the client or the Citrix ADC during policy-based client authentication.'
+      - '* C(ALL) - Deny all secure and nonsecure SSL renegotiation.'
+      - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
     type: str
     default: ALL
@@ -147,8 +148,8 @@ options:
     type: int
   dhekeyexchangewithpsk:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Whether or not the SSL Virtual Server will require a DHE key exchange to occur
         when a PSK is accepted during a TLS 1.3 resumption handshake.
@@ -161,6 +162,7 @@ options:
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
     type: str
+    default: 'NO'
   dhfile:
     description:
       - The file name and path for the DH parameter.
@@ -178,14 +180,15 @@ options:
     default: DISABLED
   dropreqwithnohostheader:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Host header check for SNI enabled sessions. If this check is enabled and the
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
     type: str
+    default: 'NO'
   encrypttriggerpktcount:
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
@@ -225,12 +228,13 @@ options:
     default: DISABLED
   includesubdomains:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
     type: str
+    default: 'NO'
   insertionencoding:
     choices:
       - Unicode
@@ -269,11 +273,12 @@ options:
     default: DISABLED
   preload:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
     type: str
+    default: 'NO'
   prevsessionkeylifetime:
     description:
       - This option sets the life time of symm key used to generate session tickets
@@ -336,12 +341,12 @@ options:
     default: DISABLED
   sendclosenotify:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction.
     type: str
-    default: true
+    default: 'YES'
   serverauth:
     choices:
       - ENABLED
@@ -420,7 +425,7 @@ options:
     default: DISABLED
   snihttphostmatch:
     choices:
-      - false
+      - 'NO'
       - CERT
       - STRICT
     description:
@@ -429,16 +434,16 @@ options:
         has SNI enabled and 'Client Hello' arrived with SNI extension) and HTTP request
         contains 'Host' header.
       - 'Available settings function as follows:'
-      - CERT   - Request is forwarded if the 'Host' value is covered
+      - C(CERT)   - Request is forwarded if the 'Host' value is covered
       - '         by the certificate used to establish this SSL session.'
-      - '         Note: ''CERT'' matching mode cannot be applied in'
+      - '         Note: ''C(CERT)'' matching mode cannot be applied in'
       - '         TLS 1.3 connections established by resuming from a'
-      - '         previous TLS 1.3 session. On these connections, ''STRICT'''
+      - '         previous TLS 1.3 session. On these connections, ''C(STRICT)'''
       - '         matching mode will be used instead.'
-      - STRICT - Request is forwarded only if value of 'Host' header
+      - C(STRICT) - Request is forwarded only if value of 'Host' header
       - '         in HTTP is identical to the ''Server name'' value passed'
       - '         in ''Client Hello'' of the SSL connection.'
-      - NO     - No validation is performed on the HTTP 'Host'
+      - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
     type: str
     default: CERT
@@ -525,11 +530,12 @@ options:
     default: 100
   strictcachecks:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
     type: str
+    default: 'NO'
   strictsigdigestcheck:
     choices:
       - ENABLED

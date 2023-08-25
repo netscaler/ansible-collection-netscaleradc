@@ -57,15 +57,15 @@ options:
     type: str
   consolidatedlconn:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - To find the service with the fewest connections, the virtual server uses the
-        consolidated connection statistics from all the packet engines. The NO setting
-        allows consideration of only the number of connections on the packet engine
-        that received the new connection.
+        consolidated connection statistics from all the packet engines. The C(NO)
+        setting allows consideration of only the number of connections on the packet
+        engine that received the new connection.
     type: str
-    default: true
+    default: 'YES'
   cookiepassphrase:
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
@@ -78,13 +78,13 @@ options:
     type: int
   dropmqttjumbomessage:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
     type: str
-    default: true
+    default: 'YES'
   httponlycookieflag:
     choices:
       - ENABLED
@@ -152,8 +152,8 @@ options:
     default: DISABLED
   preferdirectroute:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Perform route lookup for traffic received by the Citrix ADC, and forward the
         traffic according to configured routes. Do not set this parameter if you want
@@ -162,15 +162,16 @@ options:
         connected to the appliance. Route lookup is performed after the packets have
         been processed and returned by the intermediary device.
     type: str
-    default: true
+    default: 'YES'
   retainservicestate:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
     type: str
+    default: 'OFF'
   startuprrfactor:
     description:
       - 'Number of requests, per service, for which to apply the round robin load
@@ -204,12 +205,13 @@ options:
     type: int
   storemqttclientidandusername:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
     type: str
+    default: 'NO'
   undefaction:
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
@@ -230,14 +232,14 @@ options:
     default: DISABLED
   useportforhashlb:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Include the port number of the service when creating a hash for hash based
-        load balancing methods. With the NO setting, only the IP address of the service
-        is considered when creating a hash.
+        load balancing methods. With the C(NO) setting, only the IP address of the
+        service is considered when creating a hash.
     type: str
-    default: true
+    default: 'YES'
   usesecuredpersistencecookie:
     choices:
       - ENABLED

@@ -36,11 +36,12 @@ options:
     type: str
   bot_trap_url_insertion_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable the request URL pattern.
     type: str
+    default: 'OFF'
   logmessage:
     description:
       - Message to be logged for this binding.

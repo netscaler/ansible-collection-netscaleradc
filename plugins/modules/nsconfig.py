@@ -188,14 +188,14 @@ options:
     default: 10
   rbaconfig:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - RBA configurations and TACACS policies bound to system global will not be
-        cleared if RBA is set to NO.This option is applicable only for BASIC level
-        of clear configuration.Default is YES, which will clear rba configurations.
+        cleared if RBA is set to C(NO).This option is applicable only for BASIC level
+        of clear configuration.Default is C(YES), which will clear rba configurations.
     type: str
-    default: true
+    default: 'YES'
   securecookie:
     choices:
       - ENABLED
@@ -206,8 +206,8 @@ options:
     default: ENABLED
   tagged:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Specifies that the interfaces will be added as 802.1q tagged interfaces. Packets
         sent on these interface on this VLAN will have an additional 4-byte 802.1q
@@ -215,7 +215,7 @@ options:
       - To use 802.1q tagging, the switch connected to the appliance's interfaces
         must also be configured for tagging.
     type: str
-    default: true
+    default: 'YES'
   template:
     description:
       - File that contains the commands to be compared.

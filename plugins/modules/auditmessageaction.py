@@ -26,11 +26,12 @@ author:
 options:
   bypasssafetycheck:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Bypass the safety check and allow unsafe expressions.
     type: str
+    default: 'NO'
   loglevel:
     choices:
       - EMERGENCY
@@ -56,8 +57,8 @@ options:
     type: str
   logtonewnslog:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Send the message to the new nslog.
     type: str

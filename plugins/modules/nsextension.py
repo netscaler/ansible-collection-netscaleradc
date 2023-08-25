@@ -52,22 +52,23 @@ options:
     type: str
   trace:
     choices:
-      - false
+      - 'off'
       - calls
       - lines
       - all
     description:
       - 'Enables tracing to the NS log file of extension execution:'
-      - '   off   - turns off tracing (equivalent to unset ns extension <extension-name>
+      - '   C(off)   - turns C(off) tracing (equivalent to unset ns extension <extension-name>
         -trace)'
-      - '   calls - traces extension function calls with arguments and function returns
-        with the first return value'
-      - '   lines - traces the above plus line numbers for executed extension lines'
-      - '   all   - traces the above plus local variables changed by executed extension
-        lines'
+      - '   C(calls) - traces extension function C(calls) with arguments and function
+        returns with the first return value'
+      - '   C(lines) - traces the above plus line numbers for executed extension C(lines)'
+      - '   C(all)   - traces the above plus local variables changed by executed extension
+        C(lines)'
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
     type: str
+    default: 'off'
   tracefunctions:
     description:
       - Comma-separated list of extension functions to trace. By default, all extension

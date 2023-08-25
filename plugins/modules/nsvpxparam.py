@@ -27,17 +27,17 @@ options:
   cpuyield:
     choices:
       - DEFAULT
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This setting applicable in virtual appliances, is to affect the cpu yield(relinquishing
         the cpu resources) in any hypervised environment.
       - ''
       - '* There are 3 options for the behavior:'
-      - 1. YES - Allow the Virtual Appliance to yield its vCPUs periodically, if there
-        is no data traffic.
-      - 2. NO - Virtual Appliance will not yield the vCPU.
-      - 3. DEFAULT - Restores the default behaviour, according to the license.
+      - 1. C(YES) - Allow the Virtual Appliance to yield its vCPUs periodically, if
+        there is no data traffic.
+      - 2. C(NO) - Virtual Appliance will not yield the vCPU.
+      - 3. C(DEFAULT) - Restores the default behaviour, according to the license.
       - ''
       - '* Its behavior in different scenarios:'
       - 1. As this setting is node specific only, it will not be propagated to other
@@ -49,8 +49,8 @@ options:
     default: DEFAULT
   masterclockcpu1:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This argument is deprecated.
     type: str

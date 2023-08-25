@@ -60,13 +60,14 @@ options:
     type: str
   proxymode:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enables or disables the proxy mode. The proxy server can be set by either
         specifying the IP address of the server or the name of the service representing
         the proxy server.
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -53,12 +53,12 @@ options:
     default: NONE
   bot_tps_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enabled or disabled TPS binding.
     type: str
-    default: true
+    default: 'ON'
   bot_tps_type:
     choices:
       - SOURCE_IP

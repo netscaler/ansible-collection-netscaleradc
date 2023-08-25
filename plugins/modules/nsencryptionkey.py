@@ -139,19 +139,20 @@ options:
     type: str
   padding:
     choices:
-      - false
-      - true
+      - 'OFF'
+      - 'ON'
     description:
       - 'Enables or disables the padding of plaintext to meet the block size requirements
         of block ciphers:'
-      - '   ON - For encryption, PKCS5/7 padding is used, which appends n bytes of
-        value n on the end of the plaintext to bring it to the cipher block lnegth.
+      - '   C(ON) - For encryption, PKCS5/7 padding is used, which appends n bytes
+        of value n on the end of the plaintext to bring it to the cipher block lnegth.
         If the plaintext length is alraady a multiple of the block length, an additional
         block with bytes of value block_length will be added. For decryption, ISO
         10126 padding is accepted, which expects the last byte of the block to be
         the number of added pad bytes. Note that this accepts PKCS5/7 padding, as
-        well as ANSI_X923 padding. Padding ON is the default for the ECB and CBD modes.'
-      - '   OFF - No padding. An Undef error will occur with the ECB or CBC modes
+        well as ANSI_X923 padding. Padding C(ON) is the default for the ECB and CBD
+        modes.'
+      - '   C(OFF) - No padding. An Undef error will occur with the ECB or CBC modes
         if the plaintext length is not a multitple of the cipher block size. This
         can be used with the CFB and OFB modes, and with the ECB and CBC modes if
         the plaintext will always be an integral number of blocks, or if custom padding

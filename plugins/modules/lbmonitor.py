@@ -181,11 +181,12 @@ options:
     type: str
   grpchealthcheck:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Option to enable or disable gRPC health check service.
     type: str
+    default: 'NO'
   grpcservicename:
     description:
       - Option to specify gRPC service name on which gRPC health check need to be
@@ -235,12 +236,13 @@ options:
     elements: str
   iptunnel:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Send the monitoring probe to the service through an IP tunnel. A destination
         IP address must be specified.
     type: str
+    default: 'NO'
   kcdaccount:
     description:
       - KCD Account used by MSSQL monitor
@@ -450,12 +452,13 @@ options:
     default: 3
   reverse:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Mark a service as DOWN, instead of UP, when probe criteria are satisfied,
         and as UP instead of DOWN when probe criteria are not satisfied.
     type: str
+    default: 'NO'
   rtsprequest:
     description:
       - RTSP request to send to the server (for example, "OPTIONS *").
@@ -477,13 +480,14 @@ options:
     type: str
   secure:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use a secure SSL connection when monitoring a service. Applicable only to
         TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor,
         because a CITRIX-AG monitor uses a secure connection by default.
     type: str
+    default: 'NO'
   secureargs:
     description:
       - List of arguments for the script which should be secure
@@ -571,23 +575,24 @@ options:
     default: DISABLED
   storefrontacctservice:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable/Disable probing for Account Service. Applicable only to Store Front
         monitors. For multi-tenancy configuration users my skip account service
     type: str
-    default: true
+    default: 'YES'
   storefrontcheckbackendservices:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option will enable monitoring of services running on storefront server.
         Storefront services are monitored by probing to a Windows service that runs
         on the Storefront server and exposes details of which storefront services
         are running.
     type: str
+    default: 'NO'
   storename:
     description:
       - Store Name. For monitors of type STOREFRONT, STORENAME is an optional argument
@@ -607,8 +612,8 @@ options:
     type: list
   tos:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Probe the service by encoding the destination IP address in the IP TOS (6)
         bits.
@@ -620,8 +625,8 @@ options:
     type: int
   transparent:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - The monitor is bound to a transparent device such as a firewall or router.
         The state of a transparent device depends on the responsiveness of the services
@@ -629,6 +634,7 @@ options:
         must be specified. The probe is sent to the specified IP address by using
         the MAC address of the transparent device.
     type: str
+    default: 'NO'
   trofscode:
     description:
       - Code expected when the server is under maintenance
@@ -738,12 +744,13 @@ options:
     type: str
   validatecred:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Validate the credentials of the Xen Desktop DDC server user. Applicable to
         monitors of type CITRIX-XD-DDC.
     type: str
+    default: 'NO'
   vendorid:
     description:
       - Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use

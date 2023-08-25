@@ -111,12 +111,13 @@ options:
     default: DISABLED
   mptcpadvertise:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
     type: str
+    default: 'NO'
   nd:
     choices:
       - ENABLED
@@ -156,13 +157,13 @@ options:
     default: -1
   ownerdownresponse:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
     type: str
-    default: true
+    default: 'YES'
   ownernode:
     description:
       - ID of the cluster node for which you are adding the IP address. Must be used

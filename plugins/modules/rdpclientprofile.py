@@ -26,11 +26,12 @@ author:
 options:
   addusernameinrdpfile:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Add username in rdp file.
     type: str
+    default: 'NO'
   audiocapturemode:
     choices:
       - ENABLE
@@ -68,14 +69,15 @@ options:
     type: str
   randomizerdpfilename:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Will generate unique filename everytime rdp file is downloaded by appending
         output of time() function in the format <rdpfileName>_<time>.rdp. This tries
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
     type: str
+    default: 'NO'
   rdpcookievalidity:
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new

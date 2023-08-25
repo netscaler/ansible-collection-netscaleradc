@@ -27,11 +27,12 @@ author:
 options:
   ceaserouteradv:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Cease router advertisements on this vlan.
     type: str
+    default: 'NO'
   currhoplimit:
     description:
       - Current Hop limit.
@@ -48,11 +49,12 @@ options:
     type: int
   managedaddrconfig:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Value to be placed in the Managed address configuration flag field.
     type: str
+    default: 'NO'
   maxrtadvinterval:
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
@@ -65,18 +67,20 @@ options:
     default: 198
   onlyunicastrtadvresponse:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Send only Unicast Router Advertisements in respond to Router Solicitations.
     type: str
+    default: 'NO'
   otheraddrconfig:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Value to be placed in the Other configuration flag field.
     type: str
+    default: 'NO'
   reachabletime:
     description:
       - Reachable time, in milliseconds.
@@ -87,19 +91,20 @@ options:
     type: int
   sendrouteradv:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - whether the router sends periodic RAs and responds to Router Solicitations.
     type: str
+    default: 'NO'
   srclinklayeraddroption:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Include source link layer address option in RA messages.
     type: str
-    default: true
+    default: 'YES'
   vlan:
     description:
       - The VLAN number.

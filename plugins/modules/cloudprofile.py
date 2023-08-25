@@ -97,12 +97,13 @@ options:
     type: int
   graceful:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
     type: str
+    default: 'NO'
   ipaddress:
     description:
       - IPv4 or IPv6 address to assign to the virtual server.

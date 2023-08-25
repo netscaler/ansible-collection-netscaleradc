@@ -26,14 +26,15 @@ author:
 options:
   bypasssafetycheck:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Bypass the safety check, allowing potentially unsafe expressions. An unsafe
         expression in a response is one that contains references to request elements
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
     type: str
+    default: 'NO'
   comment:
     description:
       - Comment. Any type of information about this responder action.

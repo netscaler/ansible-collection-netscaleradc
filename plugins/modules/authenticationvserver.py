@@ -34,13 +34,13 @@ options:
     default: ENABLED
   authentication:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Require users to be authenticated before sending traffic through this virtual
         server.
     type: str
-    default: true
+    default: 'ON'
   authenticationdomain:
     description:
       - The domain of the authentication cookie set by Authentication vserver

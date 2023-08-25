@@ -55,12 +55,13 @@ options:
     default: TRANSCEIVER
   msgqueue:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
     type: str
+    default: 'OFF'
   msgqueuesize:
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,

@@ -79,11 +79,12 @@ options:
     type: int
   signatureautoupdate:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Flag used to enable/disable bot auto update signatures
     type: str
+    default: 'OFF'
   signatureurl:
     description:
       - URL to download the bot signature mapping file from server
@@ -91,12 +92,13 @@ options:
     default: https://nsbotsignatures.s3.amazonaws.com/BotSignatureMapping.json
   trapurlautogenerate:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
     type: str
+    default: 'OFF'
   trapurlinterval:
     description:
       - Time in seconds after which trap URL is updated.

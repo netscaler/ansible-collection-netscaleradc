@@ -28,8 +28,8 @@ author:
 options:
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str
@@ -69,28 +69,30 @@ options:
     type: str
   xmlblockdtd:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML DTD is ON or OFF. Protects against recursive Document Type Declaration
-        (DTD) entity expansion attacks. Also, SOAP messages cannot have DTDs in messages.
+      - State if XML DTD is C(ON) or C(OFF). Protects against recursive Document Type
+        Declaration (DTD) entity expansion attacks. Also, SOAP messages cannot have
+        DTDs in messages.
     type: str
   xmlblockexternalentities:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Block External Entities Check is ON or OFF. Protects against
+      - State if XML Block External Entities Check is C(ON) or C(OFF). Protects against
         XML External Entity (XXE) attacks that force applications to parse untrusted
         external entities (sources) in XML documents.
     type: str
   xmlblockpi:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Block PI is ON or OFF. Protects resources from denial of service
-        attacks as SOAP messages cannot have processing instructions (PI) in messages.
+      - State if XML Block PI is C(ON) or C(OFF). Protects resources from denial of
+        service attacks as SOAP messages cannot have processing instructions (PI)
+        in messages.
     type: str
   xmldosurl:
     description:
@@ -102,10 +104,10 @@ options:
     type: int
   xmlmaxattributenamelengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max attribute name length check is ON or OFF.
+      - State if XML Max attribute name length check is C(ON) or C(OFF).
     type: str
   xmlmaxattributes:
     description:
@@ -114,10 +116,10 @@ options:
     type: int
   xmlmaxattributescheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max attributes check is ON or OFF.
+      - State if XML Max attributes check is C(ON) or C(OFF).
     type: str
   xmlmaxattributevaluelength:
     description:
@@ -126,10 +128,10 @@ options:
     type: int
   xmlmaxattributevaluelengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max atribute value length is ON or OFF.
+      - State if XML Max atribute value length is C(ON) or C(OFF).
     type: str
   xmlmaxchardatalength:
     description:
@@ -138,10 +140,10 @@ options:
     type: int
   xmlmaxchardatalengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max CDATA length check is ON or OFF.
+      - State if XML Max CDATA length check is C(ON) or C(OFF).
     type: str
   xmlmaxelementchildren:
     description:
@@ -150,10 +152,10 @@ options:
     type: int
   xmlmaxelementchildrencheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max element children check is ON or OFF.
+      - State if XML Max element children check is C(ON) or C(OFF).
     type: str
   xmlmaxelementdepth:
     description:
@@ -162,10 +164,10 @@ options:
     type: int
   xmlmaxelementdepthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max element depth check is ON or OFF.
+      - State if XML Max element depth check is C(ON) or C(OFF).
     type: str
   xmlmaxelementnamelength:
     description:
@@ -174,10 +176,10 @@ options:
     type: int
   xmlmaxelementnamelengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max element name length check is ON or OFF.
+      - State if XML Max element name length check is C(ON) or C(OFF).
     type: str
   xmlmaxelements:
     description:
@@ -186,10 +188,10 @@ options:
     type: int
   xmlmaxelementscheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max elements check is ON or OFF.
+      - State if XML Max elements check is C(ON) or C(OFF).
     type: str
   xmlmaxentityexpansiondepth:
     description:
@@ -198,10 +200,10 @@ options:
     type: int
   xmlmaxentityexpansiondepthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max Entity Expansions Depth Check is ON or OFF.
+      - State if XML Max Entity Expansions Depth Check is C(ON) or C(OFF).
     type: str
   xmlmaxentityexpansions:
     description:
@@ -210,10 +212,10 @@ options:
     type: int
   xmlmaxentityexpansionscheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max Entity Expansions Check is ON or OFF.
+      - State if XML Max Entity Expansions Check is C(ON) or C(OFF).
     type: str
   xmlmaxfilesize:
     description:
@@ -221,10 +223,10 @@ options:
     type: int
   xmlmaxfilesizecheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max file size check is ON or OFF.
+      - State if XML Max file size check is C(ON) or C(OFF).
     type: str
   xmlmaxnamespaces:
     description:
@@ -232,10 +234,10 @@ options:
     type: int
   xmlmaxnamespacescheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max namespaces check is ON or OFF.
+      - State if XML Max namespaces check is C(ON) or C(OFF).
     type: str
   xmlmaxnamespaceurilength:
     description:
@@ -243,10 +245,10 @@ options:
     type: int
   xmlmaxnamespaceurilengthcheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max namespace URI length check is ON or OFF.
+      - State if XML Max namespace URI length check is C(ON) or C(OFF).
     type: str
   xmlmaxnodes:
     description:
@@ -254,10 +256,10 @@ options:
     type: int
   xmlmaxnodescheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max nodes check is ON or OFF.
+      - State if XML Max nodes check is C(ON) or C(OFF).
     type: str
   xmlmaxsoaparrayrank:
     description:
@@ -273,17 +275,17 @@ options:
     type: int
   xmlminfilesizecheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Min file size check is ON or OFF.
+      - State if XML Min file size check is C(ON) or C(OFF).
     type: str
   xmlsoaparraycheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML SOAP Array check is ON or OFF.
+      - State if XML SOAP Array check is C(ON) or C(OFF).
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

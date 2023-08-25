@@ -171,12 +171,12 @@ options:
     type: str
   userdefinedauditlog:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Log user-configurable log messages to syslog. '
-      - Setting this parameter to NO causes audit to ignore all user-configured message
-        actions. Setting this parameter to YES causes audit to log user-configured
+      - Setting this parameter to C(NO) causes audit to ignore all user-configured
+        message actions. Setting this parameter to C(YES) causes audit to log user-configured
         message actions that meet the other logging criteria.
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -175,12 +175,13 @@ options:
     default: DISABLED
   mptcpadvertise:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
     type: str
+    default: 'NO'
   netmask:
     description:
       - Subnet mask associated with the IP address.
@@ -220,13 +221,13 @@ options:
     default: TYPE5
   ownerdownresponse:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
     type: str
-    default: true
+    default: 'YES'
   ownernode:
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from

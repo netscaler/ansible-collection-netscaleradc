@@ -30,13 +30,14 @@ options:
     type: bool
   accessdown:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
     type: str
+    default: 'NO'
   all:
     description:
       - Display both user-configured and dynamically learned services.
@@ -51,13 +52,14 @@ options:
     default: ENABLED
   cacheable:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use the transparent cache redirection virtual server to forward requests to
         the cache server.
       - 'Note: Do not specify this parameter if you set the Cache Type parameter.'
     type: str
+    default: 'NO'
   cachetype:
     choices:
       - TRANSPARENT
@@ -89,8 +91,8 @@ options:
     type: str
   cka:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable client keep-alive for the service.
     type: str
@@ -105,8 +107,8 @@ options:
     type: int
   cmp:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable compression for the service.
     type: str
@@ -152,12 +154,13 @@ options:
     default: ENABLED
   graceful:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
     type: str
+    default: 'NO'
   hashid:
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
@@ -165,15 +168,15 @@ options:
     type: int
   healthmonitor:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Monitor the health of this service. Available settings function as follows:'
-      - YES - Send probes to check the health of the service.
-      - NO - Do not send probes to check the health of the service. With the NO option,
-        the appliance shows the service as UP at all times.
+      - C(YES) - Send probes to check the health of the service.
+      - C(NO) - Do not send probes to check the health of the service. With the C(NO)
+        option, the appliance shows the service as UP at all times.
     type: str
-    default: true
+    default: 'YES'
   httpprofilename:
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
@@ -238,15 +241,15 @@ options:
     type: str
   pathmonitor:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Path monitoring for clustering
     type: str
   pathmonitorindv:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Individual Path monitoring decisions
     type: str
@@ -267,11 +270,12 @@ options:
     default: DISABLED
   rtspsessionidremap:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service.
     type: str
+    default: 'OFF'
   serverid:
     description:
       - The  identifier for the service. This is used when the persistency type is
@@ -336,8 +340,8 @@ options:
     type: str
   sp:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable surge protection for the service.
     type: str
@@ -355,8 +359,8 @@ options:
     type: int
   tcpb:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable TCP buffering for the service.
     type: str
@@ -372,19 +376,19 @@ options:
     type: int
   useproxyport:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Use the proxy port as the source port when initiating connections with the
-        server. With the NO setting, the client-side connection port is used as the
-        source port for the server-side connection. '
+        server. With the C(NO) setting, the client-side connection port is used as
+        the source port for the server-side connection. '
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
-        is set to YES.'
+        is set to C(YES).'
     type: str
   usip:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use the client's IP address as the source IP address when initiating a connection
         to the server. When creating a service, if you do not set this parameter,

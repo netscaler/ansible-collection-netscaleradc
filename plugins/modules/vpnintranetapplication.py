@@ -81,13 +81,13 @@ options:
     type: str
   spoofiip:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - IP address that the intranet application will use to route the connection
         through the virtual adapter.
     type: str
-    default: true
+    default: 'ON'
   srcip:
     description:
       - Source IP address. Required if interception mode is set to PROXY. Default

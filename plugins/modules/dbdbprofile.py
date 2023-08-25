@@ -43,13 +43,13 @@ options:
     default: DISABLED
   interpretquery:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
     type: str
-    default: true
+    default: 'YES'
   kcdaccount:
     description:
       - Name of the KCD account that is used for Windows authentication.
@@ -66,11 +66,12 @@ options:
     type: str
   stickiness:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - If the queries are related to each other, forward to the same backend server.
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

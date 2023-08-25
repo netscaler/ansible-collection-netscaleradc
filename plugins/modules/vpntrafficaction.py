@@ -36,16 +36,16 @@ options:
     type: str
   fta:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Specify file type association, which is a list of file extensions that users
         are allowed to open.
     type: str
   hdx:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Provide hdx proxy to the ICA traffic
     type: str
@@ -87,8 +87,8 @@ options:
     type: str
   sso:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Provide single sign-on to the web application.
       - "\t    NOTE : Authentication mechanisms like Basic-authentication  require\
@@ -101,8 +101,8 @@ options:
     type: str
   wanscaler:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use the Repeater Plug-in to optimize network traffic.
     type: str

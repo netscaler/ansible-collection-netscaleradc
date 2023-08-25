@@ -26,11 +26,12 @@ author:
 options:
   dropfrag:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Drop any packet that requires fragmentation.
     type: str
+    default: 'NO'
   dropfragcputhreshold:
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
@@ -42,8 +43,8 @@ options:
     type: str
   srciproundrobin:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use a different source IPv6 address for each new session through a particular
         IPv6 tunnel, as determined by round robin selection of one of the SNIP6 addresses.
@@ -51,14 +52,16 @@ options:
         for all the IPv6 tunnels. This setting does not apply to a tunnel for which
         a source IPv6 address has been specified.
     type: str
+    default: 'NO'
   useclientsourceipv6:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use client source IPv6 address as source IPv6 address for outer tunnel IPv6
         header
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

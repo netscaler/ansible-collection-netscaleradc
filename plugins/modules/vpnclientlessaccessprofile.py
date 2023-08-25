@@ -82,14 +82,15 @@ options:
     type: str
   requirepersistentcookie:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Specify whether a persistent session cookie is set and accepted for clientless
-        access. If this parameter is set to ON, COM objects, such as MSOffice, which
-        are invoked by the browser can access the files using clientless access. Use
-        caution because the persistent cookie is stored on the disk.
+        access. If this parameter is set to C(ON), COM objects, such as MSOffice,
+        which are invoked by the browser can access the files using clientless access.
+        Use caution because the persistent cookie is stored on the disk.
     type: str
+    default: 'OFF'
   reshdrrewritepolicylabel:
     description:
       - Name of the configured Response rewrite policy label.

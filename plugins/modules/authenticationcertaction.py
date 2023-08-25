@@ -50,13 +50,14 @@ options:
     type: str
   twofactor:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Enables or disables two-factor authentication. '
       - Two factor authentication is client cert authentication followed by password
         authentication.
     type: str
+    default: 'OFF'
   usernamefield:
     description:
       - Client-cert field from which the username is extracted. Must be set to either

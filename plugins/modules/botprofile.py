@@ -26,39 +26,44 @@ author:
 options:
   bot_enable_black_list:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable black-list bot detection.
     type: str
+    default: 'OFF'
   bot_enable_ip_reputation:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable IP-reputation bot detection.
     type: str
+    default: 'OFF'
   bot_enable_rate_limit:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable rate-limit bot detection.
     type: str
+    default: 'OFF'
   bot_enable_tps:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable TPS.
     type: str
+    default: 'OFF'
   bot_enable_white_list:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable white-list bot detection.
     type: str
+    default: 'OFF'
   clientipexpression:
     description:
       - Expression to get the client IP.
@@ -70,11 +75,12 @@ options:
     type: str
   devicefingerprint:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable device-fingerprint bot detection
     type: str
+    default: 'OFF'
   devicefingerprintaction:
     choices:
       - NONE
@@ -104,18 +110,20 @@ options:
     type: str
   headlessbrowserdetection:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable Headless Browser detection.
     type: str
+    default: 'OFF'
   kmdetection:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable keyboard-mouse based bot detection.
     type: str
+    default: 'OFF'
   kmeventspostbodylimit:
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
@@ -189,11 +197,12 @@ options:
     default: LOG
   trap:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable trap bot detection.
     type: str
+    default: 'OFF'
   trapaction:
     choices:
       - NONE

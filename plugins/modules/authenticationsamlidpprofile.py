@@ -375,11 +375,12 @@ options:
     default: SHA256
   encryptassertion:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to encrypt assertion when Citrix ADC IDP sends one.
     type: str
+    default: 'OFF'
   encryptionalgorithm:
     choices:
       - DES3
@@ -446,13 +447,13 @@ options:
     default: transient
   rejectunsignedrequests:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - Option to Reject unsigned SAML Requests. ON option denies any authentication
+      - Option to Reject unsigned SAML Requests. C(ON) option denies any authentication
         requests that arrive without signature.
     type: str
-    default: true
+    default: 'ON'
   samlbinding:
     choices:
       - REDIRECT
@@ -490,11 +491,12 @@ options:
     type: str
   sendpassword:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to send password in assertion.
     type: str
+    default: 'OFF'
   serviceproviderid:
     description:
       - Unique identifier of the Service Provider that sends SAML Request. Citrix

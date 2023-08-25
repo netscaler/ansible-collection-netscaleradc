@@ -89,12 +89,13 @@ options:
     type: int
   graceful:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
     type: str
+    default: 'NO'
   hashid:
     description:
       - The hash identifier for the service. This must be unique for each service.
@@ -102,16 +103,16 @@ options:
     type: int
   healthmonitor:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Monitor the health of this GSLB service.Available settings function are as
         follows:'
-      - YES - Send probes to check the health of the GSLB service.
-      - NO - Do not send probes to check the health of the GSLB service. With the
-        NO option, the appliance shows the service as UP at all times.
+      - C(YES) - Send probes to check the health of the GSLB service.
+      - C(NO) - Do not send probes to check the health of the GSLB service. With the
+        C(NO) option, the appliance shows the service as UP at all times.
     type: str
-    default: true
+    default: 'YES'
   includemembers:
     description:
       - Display the members of the listed GSLB service groups in addition to their

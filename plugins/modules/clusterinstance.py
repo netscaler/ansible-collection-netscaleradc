@@ -108,13 +108,14 @@ options:
     default: MAJORITY
   retainconnectionsoncluster:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
     type: str
+    default: 'NO'
   syncstatusstrictmode:
     choices:
       - ENABLED

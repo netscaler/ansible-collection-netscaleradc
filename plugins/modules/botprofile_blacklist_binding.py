@@ -50,11 +50,12 @@ options:
     default: NONE
   bot_blacklist_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enabled or disbaled black-list binding.
     type: str
+    default: 'OFF'
   bot_blacklist_type:
     choices:
       - IPv4

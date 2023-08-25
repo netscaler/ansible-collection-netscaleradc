@@ -47,36 +47,37 @@ options:
     type: str
   flowctl:
     choices:
-      - false
+      - 'OFF'
       - RX
       - TX
       - RXTX
-      - true
+      - 'ON'
     description:
       - Specifies the flow control type for this LA channel to manage the flow of
         frames. Flow control is a function as mentioned in clause 31 of the IEEE 802.3
         standard. Flow control allows congested ports to pause traffic from the peer
         device. Flow control is achieved by sending PAUSE frames.
     type: str
+    default: 'OFF'
   haheartbeat:
     choices:
-      - false
-      - true
+      - 'OFF'
+      - 'ON'
     description:
       - In a High Availability (HA) configuration, configure the LA channel for sending
         heartbeats. LA channel that has HA Heartbeat disabled should not send the
         heartbeats.
     type: str
-    default: true
+    default: 'ON'
   hamonitor:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - In a High Availability (HA) configuration, monitor the LA channel for failure
         events. Failure of any LA channel that has HA MON enabled triggers HA failover.
     type: str
-    default: true
+    default: 'ON'
   id:
     description:
       - ID for the LA channel or cluster LA channel or LR channel to be created. Specify
@@ -116,11 +117,12 @@ options:
     type: str
   linkredundancy:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Link Redundancy for Cluster LAG.
     type: str
+    default: 'OFF'
   lrminthroughput:
     description:
       - Specifies the minimum throughput threshold (in Mbps) to be met by the active
@@ -198,13 +200,14 @@ options:
     default: ENABLED
   tagall:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - Adds a four-byte 802.1q tag to every packet sent on this channel.  The ON
-        setting applies tags for all VLANs that are bound to this channel. OFF applies
-        the tag for all VLANs other than the native VLAN.
+      - Adds a four-byte 802.1q tag to every packet sent on this channel.  The C(ON)
+        setting applies tags for all VLANs that are bound to this channel. C(OFF)
+        applies the tag for all VLANs other than the native VLAN.
     type: str
+    default: 'OFF'
   throughput:
     description:
       - Low threshold value for the throughput of the LA channel, in Mbps. In an high
@@ -213,11 +216,12 @@ options:
     type: int
   trunk:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This is deprecated by tagall
     type: str
+    default: 'OFF'
   channel_interface_binding:
     type: dict
     description: Bindings for channel_interface_binding resource

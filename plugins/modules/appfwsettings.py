@@ -26,18 +26,20 @@ author:
 options:
   ceflogging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable CEF format logs.
     type: str
+    default: 'OFF'
   centralizedlearning:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Flag used to enable/disable ADM centralized learning
     type: str
+    default: 'OFF'
   clientiploggingheader:
     description:
       - Name of an HTTP header that contains the IP address that the client used to
@@ -56,18 +58,20 @@ options:
     default: APPFW_BYPASS
   entitydecoding:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Transform multibyte (double- or half-width) characters to single width characters.
     type: str
+    default: 'OFF'
   geolocationlogging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs.
     type: str
+    default: 'OFF'
   importsizelimit:
     description:
       - Cumulative total maximum number of bytes in web forms imported to a protected
@@ -85,13 +89,13 @@ options:
     default: 400
   logmalformedreq:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Log requests that are so malformed that application firewall parsing doesn't
         occur.
     type: str
-    default: true
+    default: 'ON'
   malformedreqaction:
     choices:
       - none
@@ -147,11 +151,12 @@ options:
     default: 900
   signatureautoupdate:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Flag used to enable/disable auto update signatures
     type: str
+    default: 'OFF'
   signatureurl:
     description:
       - URL to download the mapping file from server
@@ -168,11 +173,12 @@ options:
     default: APPFW_BLOCK
   useconfigurablesecretkey:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use configurable secret key in AppFw operations
     type: str
+    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

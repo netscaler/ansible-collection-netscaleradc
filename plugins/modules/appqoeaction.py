@@ -114,11 +114,12 @@ options:
     type: str
   retryonreset:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Retry on TCP Reset
     type: str
+    default: 'NO'
   retryontimeout:
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers

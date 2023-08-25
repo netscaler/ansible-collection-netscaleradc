@@ -37,15 +37,15 @@ options:
     type: str
   cachebypass:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - By pass dns cache for this.
     type: str
   drop:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - The dns packet must be dropped.
     type: str

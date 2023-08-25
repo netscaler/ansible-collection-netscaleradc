@@ -45,11 +45,12 @@ options:
     default: NONE
   bot_captcha_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable the captcha binding.
     type: str
+    default: 'OFF'
   bot_captcha_url:
     description:
       - URL for which the Captcha action, if configured under IP reputation, TPS or

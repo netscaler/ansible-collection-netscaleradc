@@ -32,12 +32,12 @@ options:
     type: str
   clearnodegroupconfig:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Option to remove nodegroup config
     type: str
-    default: true
+    default: 'YES'
   delay:
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in

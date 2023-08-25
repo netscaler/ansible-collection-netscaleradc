@@ -50,12 +50,13 @@ options:
     type: str
   serverclosepropagation:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - when a Server connection goes down, whether to close the corresponding client
         connection if there were requests pending on the server.
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

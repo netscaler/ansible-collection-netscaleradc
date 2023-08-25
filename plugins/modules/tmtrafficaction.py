@@ -47,8 +47,8 @@ options:
     type: str
   initiatelogout:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Initiate logout for the traffic management (TM) session if the policy evaluates
         to true. The session is then terminated after two minutes.
@@ -75,8 +75,8 @@ options:
     type: str
   persistentcookie:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use persistent cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
@@ -88,8 +88,8 @@ options:
     type: str
   sso:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use single sign-on for the resource that the user is accessing now.
     type: str

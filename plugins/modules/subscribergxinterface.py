@@ -32,13 +32,14 @@ options:
     type: int
   healthcheck:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - q!Set this setting to yes if Citrix ADC should send DWR packets to PCRF server.
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
     type: str
+    default: 'NO'
   healthcheckttl:
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
@@ -48,17 +49,17 @@ options:
     default: 30
   holdonsubscriberabsence:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Set this setting to yes if Citrix ADC needs to Hold pakcets till subscriber
-        session is fetched from PCRF. Else set to NO. By default set to yes. If this
-        setting is set to NO, then till Citrix ADC fetches subscriber from PCRF, default
-        subscriber profile will be applied to this subscriber if configured. If default
-        subscriber profile is also not configured an undef would be raised to expressions
-        which use Subscriber attributes.
+        session is fetched from PCRF. Else set to C(NO). By default set to yes. If
+        this setting is set to C(NO), then till Citrix ADC fetches subscriber from
+        PCRF, default subscriber profile will be applied to this subscriber if configured.
+        If default subscriber profile is also not configured an undef would be raised
+        to expressions which use Subscriber attributes.
     type: str
-    default: true
+    default: 'YES'
   idlettl:
     description:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
@@ -83,13 +84,14 @@ options:
     default: 600
   negativettllimitedsuccess:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
-      - Set this to YES if Citrix ADC should create negative session for Result-Code
-        DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to NO, regular session
-        is created.
+      - Set this to C(YES) if Citrix ADC should create negative session for Result-Code
+        DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to C(NO), regular
+        session is created.
     type: str
+    default: 'NO'
   nodeid:
     description:
       - Unique number that identifies the cluster node.
@@ -102,12 +104,13 @@ options:
     type: str
   purgesdbongxfailure:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
-      - Set this setting to YES if needed to purge Subscriber Database in case of
-        Gx failure. By default set to NO.
+      - Set this setting to C(YES) if needed to purge Subscriber Database in case
+        of Gx failure. By default set to C(NO).
     type: str
+    default: 'NO'
   requestretryattempts:
     description:
       - If the request does not complete within requestTimeout time, the request is

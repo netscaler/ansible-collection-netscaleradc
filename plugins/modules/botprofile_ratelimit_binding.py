@@ -46,11 +46,12 @@ options:
     default: NONE
   bot_rate_limit_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable rate-limit binding.
     type: str
+    default: 'OFF'
   bot_rate_limit_type:
     choices:
       - SESSION
@@ -247,7 +248,7 @@ options:
       - NF
       - KP
       - MP
-      - false
+      - 'NO'
       - OM
       - PK
       - PW

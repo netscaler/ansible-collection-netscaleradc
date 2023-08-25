@@ -263,21 +263,22 @@ options:
     default: SHA256
   enforceusername:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to choose whether the username that is extracted from SAML assertion
         can be edited in login page while doing second factor
     type: str
-    default: true
+    default: 'ON'
   forceauthn:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option that forces authentication at the Identity Provider (IdP) that receives
         Citrix ADC's request
     type: str
+    default: 'OFF'
   groupnamefield:
     description:
       - Name of the tag in assertion that contains user groups.
@@ -370,15 +371,15 @@ options:
     type: str
   samlrejectunsignedassertion:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
       - STRICT
     description:
-      - Reject unsigned SAML assertions. ON option results in rejection of Assertion
-        that is received without signature. STRICT option ensures that both Response
-        and Assertion are signed. OFF allows unsigned Assertions.
+      - Reject unsigned SAML assertions. C(ON) option results in rejection of Assertion
+        that is received without signature. C(STRICT) option ensures that both Response
+        and Assertion are signed. C(OFF) allows unsigned Assertions.
     type: str
-    default: true
+    default: 'ON'
   samlsigningcertname:
     description:
       - Name of the SSL certificate to sign requests from ServiceProvider (SP) to
@@ -386,22 +387,24 @@ options:
     type: str
   samltwofactor:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to enable second factor after SAML
     type: str
+    default: 'OFF'
   samluserfield:
     description:
       - SAML user ID, as given in the SAML assertion.
     type: str
   sendthumbprint:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to send thumbprint instead of x509 certificate in SAML request
     type: str
+    default: 'OFF'
   signaturealg:
     choices:
       - RSA-SHA1
@@ -427,11 +430,12 @@ options:
     type: str
   storesamlresponse:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to store entire SAML Response through the life of user session.
     type: str
+    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -75,12 +75,12 @@ options:
     type: str
   validatecert:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - validate the server certificate for secure SSL connections.
     type: str
-    default: true
+    default: 'YES'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,8 +26,8 @@ author:
 options:
   accounting:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Whether the TACACS+ server is currently accepting accounting messages.
     type: str
@@ -123,15 +123,15 @@ options:
     type: str
   auditfailedcmds:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - The state of the TACACS+ server that will receive accounting messages.
     type: str
   authorization:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use streaming authorization on the TACACS+ server.
     type: str

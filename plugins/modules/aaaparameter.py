@@ -104,35 +104,38 @@ options:
     default: DISABLED
   dynaddr:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Set by the DHCP client when the IP address was fetched dynamically.
     type: str
+    default: 'OFF'
   enableenhancedauthfeedback:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enhanced auth feedback provides more information to the end user about the
-        reason for an authentication failure.  The default value is set to NO.
+        reason for an authentication failure.  The default value is set to C(NO).
     type: str
+    default: 'NO'
   enablesessionstickiness:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enables/Disables stickiness to authentication servers
     type: str
+    default: 'NO'
   enablestaticpagecaching:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - The default state of VPN Static Page caching. Static Page caching is enabled
         by default.
     type: str
-    default: true
+    default: 'YES'
   failedlogintimeout:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
@@ -140,14 +143,14 @@ options:
     type: int
   ftmode:
     choices:
-      - true
+      - 'ON'
       - HA
-      - false
+      - 'OFF'
     description:
       - First time user mode determines which configuration options are shown by default
         when logging in to the GUI. This setting is controlled by the GUI.
     type: str
-    default: true
+    default: 'ON'
   loginencryption:
     choices:
       - ENABLED

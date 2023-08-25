@@ -39,11 +39,12 @@ options:
     default: ENABLED
   authentication:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable user authentication.
     type: str
+    default: 'OFF'
   authenticationhost:
     description:
       - Fully qualified domain name (FQDN) of the authentication virtual server to
@@ -52,11 +53,12 @@ options:
     type: str
   authn401:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable user authentication with HTTP 401 responses.
     type: str
+    default: 'OFF'
   authnprofile:
     description:
       - Name of the authentication profile to be used when authentication is turned
@@ -95,22 +97,24 @@ options:
     type: str
   bypassaaaa:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - If this option is enabled while resolving DNS64 query AAAA queries are not
         sent to back end dns server
     type: str
+    default: 'NO'
   cacheable:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Route cacheable requests to a cache redirection virtual server. The load balancing
         virtual server can forward requests only to a transparent cache redirection
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
     type: str
+    default: 'NO'
   clttimeout:
     description:
       - Idle time, in seconds, after which a client connection is terminated.
@@ -244,7 +248,7 @@ options:
     default: PASSIVE
   insertvserveripport:
     choices:
-      - false
+      - 'OFF'
       - VIPADDR
       - V6TOV4MAPPING
     description:
@@ -256,13 +260,13 @@ options:
         to separate it from the port number. If you have mapped an IPv4 address to
         a virtual server''s IPv6 address, the value of this parameter determines which
         IP address is inserted in the header, as follows:'
-      - '* VIPADDR - Insert the IP address of the virtual server in the HTTP header
+      - '* C(VIPADDR) - Insert the IP address of the virtual server in the HTTP header
         regardless of whether the virtual server has an IPv4 address or an IPv6 address.
         A mapped IPv4 address, if configured, is ignored.'
-      - '* V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server''s
-        IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6
-        address.'
-      - '* OFF - Disable header insertion.'
+      - '* C(V6TOV4MAPPING) - Insert the IPv4 address that is mapped to the virtual
+        server''s IPv6 address. If a mapped IPv4 address is not configured, insert
+        the IPv6 address.'
+      - '* C(OFF) - Disable header insertion.'
     type: str
   ipmask:
     description:
@@ -305,8 +309,8 @@ options:
     type: str
   l2conn:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition
         to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>)
@@ -657,12 +661,13 @@ options:
     default: '"none"'
   pushmulticlients:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
     type: str
+    default: 'NO'
   pushvserver:
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
@@ -697,13 +702,15 @@ options:
     default: 1
   recursionavailable:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
-      - When set to YES, this option causes the DNS replies from this vserver to have
-        the RA bit turned on. Typically one would set this option to YES, when the
-        vserver is load balancing a set of DNS servers thatsupport recursive queries.
+      - When set to C(YES), this option causes the DNS replies from this vserver to
+        have the RA bit turned on. Typically one would set this option to C(YES),
+        when the vserver is load balancing a set of DNS servers thatsupport recursive
+        queries.
     type: str
+    default: 'NO'
   redirectfromport:
     description:
       - Port number for the virtual server, from which we absorb the traffic for http
@@ -740,13 +747,14 @@ options:
     default: '"none"'
   retainconnectionsoncluster:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
     type: str
+    default: 'NO'
   rhistate:
     choices:
       - PASSIVE
@@ -769,11 +777,12 @@ options:
     default: PASSIVE
   rtspnat:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use network address translation (NAT) for RTSP data connections.
     type: str
+    default: 'OFF'
   rule:
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.

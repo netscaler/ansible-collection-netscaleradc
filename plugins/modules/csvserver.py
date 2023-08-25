@@ -34,12 +34,13 @@ options:
     default: ENABLED
   authentication:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Authenticate users who request a connection to the content switching virtual
         server.
     type: str
+    default: 'OFF'
   authenticationhost:
     description:
       - FQDN of the authentication virtual server. The service type of the virtual
@@ -47,11 +48,12 @@ options:
     type: str
   authn401:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable HTTP 401-response based authentication.
     type: str
+    default: 'OFF'
   authnprofile:
     description:
       - Name of the authentication profile to be used when authentication is turned
@@ -85,24 +87,25 @@ options:
     type: str
   cacheable:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use this option to specify whether a virtual server, used for load balancing
         or content switching, routes requests to the cache redirection virtual server
         before sending it to the configured servers.
     type: str
+    default: 'NO'
   casesensitive:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Consider case in URLs (for policies that use URLs instead of RULES). For example,
-        with the ON setting, the URLs /a/1.html and /A/1.HTML are treated differently
+        with the C(ON) setting, the URLs /a/1.html and /A/1.HTML are treated differently
         and can have different targets (set by content switching policies). With the
-        OFF setting, /a/1.html and /A/1.HTML are switched to the same target.
+        C(OFF) setting, /a/1.html and /A/1.HTML are switched to the same target.
     type: str
-    default: true
+    default: 'ON'
   clttimeout:
     description:
       - 'Idle time, in seconds, after which the client connection is terminated. The
@@ -176,11 +179,12 @@ options:
     default: ENABLED
   dtls:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - This option starts/stops the dtls service on the vserver
     type: str
+    default: 'OFF'
   httpprofilename:
     description:
       - Name of the HTTP profile containing HTTP configuration settings for the virtual
@@ -201,16 +205,16 @@ options:
     default: PASSIVE
   insertvserveripport:
     choices:
-      - false
+      - 'OFF'
       - VIPADDR
       - V6TOV4MAPPING
     description:
       - 'Insert the virtual server''s VIP address and port number in the request header.
         Available values function as follows:'
-      - '        VIPADDR - Header contains the vserver''s IP address and port number
+      - '        C(VIPADDR) - Header contains the vserver''s IP address and port number
         without any translation.'
-      - '        OFF     - The virtual IP and port header insertion option is disabled.'
-      - '        V6TOV4MAPPING - Header contains the mapped IPv4 address corresponding
+      - '        C(OFF)     - The virtual IP and port header insertion option is disabled.'
+      - '        C(V6TOV4MAPPING) - Header contains the mapped IPv4 address corresponding
         to the IPv6 address of the vserver and the port number. An IPv6 address can
         be mapped to a user-specified IPv4 address using the set ns ip6 command.'
     type: str
@@ -255,8 +259,8 @@ options:
     type: str
   l2conn:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use L2 Parameters to identify a connection
     type: str
@@ -425,12 +429,13 @@ options:
     default: '"none"'
   pushmulticlients:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
     type: str
+    default: 'NO'
   pushvserver:
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
@@ -486,12 +491,13 @@ options:
     default: PASSIVE
   rtspnat:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable network address translation (NAT) for real-time streaming protocol
         (RTSP) connections.
     type: str
+    default: 'OFF'
   servicetype:
     choices:
       - HTTP
