@@ -17207,7 +17207,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "ownernode": {"type": "int"},
             "syspriority": {"type": "int"},
@@ -21669,7 +21669,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "identity": {"type": "str"},
             "ownernode": {"type": "int"},
@@ -21855,7 +21855,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "hostname": {"type": "str"},
             "ownernode": {"type": "int"},
@@ -23531,7 +23531,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "cpuyield": {"choices": ["DEFAULT", "NO", "YES"], "type": "str"},
             "masterclockcpu1": {"choices": ["NO", "YES"], "type": "str"},
@@ -26094,7 +26094,7 @@ NITRO_RESOURCE_MAP = {
         "enable_payload_keys": [],
         "get_arg_keys": [],
         "immutable_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "engineid": {"type": "str"},
             "ownernode": {"type": "int"},
