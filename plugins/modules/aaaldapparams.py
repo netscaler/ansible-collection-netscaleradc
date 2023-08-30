@@ -85,12 +85,13 @@ options:
     default: 2
   nestedgroupextraction:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Queries the external LDAP server to determine whether the specified group
         belongs to another group.
     type: str
+    default: 'OFF'
   passwdchange:
     choices:
       - ENABLED

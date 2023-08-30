@@ -125,6 +125,8 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [x] Update supported matrix to have documentation links
 - [x] Add appropriate license to the collection.
 - [x] Upload the collection to Ansible Galaxy.
+- [ ] Support configuring ADC with ADM as proxy. Refer to [NetScaler ADM as an API proxy server](https://docs.netscaler.com/en-us/citrix-application-delivery-management-software/current-release/adm-as-api-proxy-server.html) for more details.
+- [ ] Implement SSH connection module
 - [ ] Add more examples
 - [ ] Write a python script which converts examples/playbook.yaml to module's EXAMPLE documentation
 - [ ] SSH Connection module
@@ -136,3 +138,4 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [ ] Configure GitHub Actions to automate the collection documentation build and release process.
 - [ ] Configure GitHub Actions to automate the collection testing process.
 - [ ] Configure GitHub Actions to automate the collection linting process.
+- [x] Collect NetScaler info (version, etc) and store it in the `facts` dictionary

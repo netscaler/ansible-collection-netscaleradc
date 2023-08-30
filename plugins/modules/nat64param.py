@@ -35,11 +35,12 @@ options:
     default: ENABLED
   nat64ignoretos:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Ignore TOS.
     type: str
+    default: 'NO'
   nat64v6mtu:
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,

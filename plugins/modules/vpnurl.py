@@ -42,14 +42,15 @@ options:
     type: str
   clientlessaccess:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - If clientless access to the resource hosting the link is allowed, also use
         clientless access for the bookmarked web address in the Secure Client Access
         based session. Allows single sign-on and other HTTP processing on Citrix Gateway
         for HTTPS resources.
     type: str
+    default: 'OFF'
   comment:
     description:
       - Any comments associated with the bookmark link.

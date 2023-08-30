@@ -47,11 +47,12 @@ options:
     default: NONE
   bot_iprep_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enabled or disabled IP-repuation binding.
     type: str
+    default: 'OFF'
   bot_ipreputation:
     description:
       - IP reputation binding. For each category, only one binding is allowed. To

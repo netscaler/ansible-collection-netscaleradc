@@ -83,8 +83,8 @@ options:
     type: int
   dhekeyexchangewithpsk:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Whether or not the SSL Virtual Server will require a DHE key exchange to occur
         when a PSK is accepted during a TLS 1.3 resumption handshake.
@@ -97,6 +97,7 @@ options:
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
     type: str
+    default: 'NO'
   dhfile:
     description:
       - Name of and, optionally, path to the DH parameter file, in PEM format, to
@@ -164,12 +165,13 @@ options:
     default: DISABLED
   includesubdomains:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
     type: str
+    default: 'NO'
   maxage:
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
@@ -192,11 +194,12 @@ options:
     default: DISABLED
   preload:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
     type: str
+    default: 'NO'
   pushenctrigger:
     choices:
       - Always
@@ -226,12 +229,12 @@ options:
     default: DISABLED
   sendclosenotify:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
     type: str
-    default: true
+    default: 'YES'
   sessreuse:
     choices:
       - ENABLED

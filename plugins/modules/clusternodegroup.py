@@ -44,8 +44,8 @@ options:
     type: str
   sticky:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Only one node can be bound to nodegroup with this option enabled. It specifies
         whether to prempt the traffic for the entities bound to nodegroup when owner
@@ -59,10 +59,11 @@ options:
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
     type: str
+    default: 'NO'
   strict:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Specifies whether cluster nodes, that are not part of the nodegroup, will
         be used as backup for the nodegroup.
@@ -73,6 +74,7 @@ options:
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
     type: str
+    default: 'NO'
   clusternodegroup_authenticationvserver_binding:
     type: dict
     description: Bindings for clusternodegroup_authenticationvserver_binding resource

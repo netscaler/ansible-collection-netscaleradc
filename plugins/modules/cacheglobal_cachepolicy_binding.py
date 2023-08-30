@@ -67,11 +67,12 @@ options:
     type: str
   precededefrules:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Specify whether this policy should be evaluated.
     type: str
+    default: 'NO'
   priority:
     description:
       - Specifies the priority of the policy.

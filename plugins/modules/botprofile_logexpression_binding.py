@@ -32,11 +32,12 @@ options:
     type: str
   bot_log_expression_enabled:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable or disable the log expression binding.
     type: str
+    default: 'OFF'
   bot_log_expression_name:
     description:
       - Name of the log expression object.

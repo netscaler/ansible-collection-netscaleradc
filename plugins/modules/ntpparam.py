@@ -26,13 +26,13 @@ author:
 options:
   authentication:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
     type: str
-    default: true
+    default: 'YES'
   autokeylogsec:
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter

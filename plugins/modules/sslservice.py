@@ -191,12 +191,12 @@ options:
     default: DISABLED
   sendclosenotify:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
     type: str
-    default: true
+    default: 'YES'
   serverauth:
     choices:
       - ENABLED

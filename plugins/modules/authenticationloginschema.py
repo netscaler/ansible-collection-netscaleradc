@@ -62,12 +62,13 @@ options:
     type: int
   ssocredentials:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
     type: str
+    default: 'NO'
   usercredentialindex:
     description:
       - The index at which user entered username should be stored in session.

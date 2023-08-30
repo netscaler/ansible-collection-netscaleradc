@@ -85,12 +85,12 @@ options:
     type: int
   healthmonitor:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Monitor the health of the GSLB service.
     type: str
-    default: true
+    default: 'YES'
   ip:
     description:
       - IP address for the GSLB service. Should represent a load balancing, content

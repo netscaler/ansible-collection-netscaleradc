@@ -104,16 +104,16 @@ options:
     default: ENABLED
   usip:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable the Citrix ADC to retain the source IP address of packets before sending
         the packets to the server.
     type: str
   usnip:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable the Citrix ADC to use a SNIP address as the source IP address of packets
         before sending the packets to the server.

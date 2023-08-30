@@ -48,8 +48,8 @@ options:
     default: DISABLED
   proxymode:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Deploy the zone in proxy mode. Enable in the following scenarios:'
       - '* The load balanced DNS servers are authoritative for the zone and all resource

@@ -63,8 +63,8 @@ options:
     default: POST
   insertclientcert:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Include the complete client certificate in the OCSP request.
     type: str
@@ -120,8 +120,8 @@ options:
     type: str
   usenonce:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable the OCSP nonce extension, which is designed to prevent replay attacks.
     type: str

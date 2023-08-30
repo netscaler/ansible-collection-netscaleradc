@@ -42,8 +42,8 @@ options:
     type: str
   onlytransformabsurlinbody:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - In the HTTP body, transform only absolute URLs. Relative URLs are ignored.
     type: str

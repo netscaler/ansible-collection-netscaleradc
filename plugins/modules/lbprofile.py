@@ -111,12 +111,13 @@ options:
     default: DISABLED
   storemqttclientidandusername:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
     type: str
+    default: 'NO'
   useencryptedpersistencecookie:
     choices:
       - ENABLED

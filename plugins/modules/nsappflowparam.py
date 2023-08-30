@@ -26,11 +26,12 @@ author:
 options:
   clienttrafficonly:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Control whether AppFlow records should be generated only for client-side traffic.
     type: str
+    default: 'NO'
   httpcookie:
     choices:
       - ENABLED

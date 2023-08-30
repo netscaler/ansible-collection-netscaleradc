@@ -54,12 +54,13 @@ options:
     default: 5
   graceful:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Shut down gracefully, without accepting any new connections, and disabling
         each service when all of its connections are closed.
     type: str
+    default: 'NO'
   ipaddress:
     description:
       - 'IPv4 or IPv6 address of the server. If you create an IP address based server,
@@ -69,12 +70,13 @@ options:
     type: str
   ipv6address:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
     type: str
+    default: 'NO'
   name:
     description:
       - 'Name for the server. '

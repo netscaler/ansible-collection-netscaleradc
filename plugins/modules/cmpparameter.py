@@ -64,20 +64,22 @@ options:
     default: DISABLED
   externalcache:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - 'Enable insertion of  Cache-Control: private response directive to indicate
         response message is intended for a single user and must not be cached by a
         shared or proxy cache.'
     type: str
+    default: 'NO'
   heurexpiry:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Heuristic basefile expiry.
     type: str
+    default: 'OFF'
   heurexpiryhistwt:
     description:
       - For heuristic basefile expiry, weightage to be given to historical delta compression
@@ -110,13 +112,13 @@ options:
     default: 57344
   servercmp:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
     type: str
-    default: true
+    default: 'ON'
   varyheadervalue:
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument

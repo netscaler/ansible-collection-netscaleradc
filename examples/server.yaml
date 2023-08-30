@@ -1,0 +1,10 @@
+- name: V2 | Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: V2 | Sample Task | server
+      delegate_to: localhost
+      netscaler.adc.server:
+        state: present
+        name: 'test-server'
+        ipaddress: '10.10.10.10'

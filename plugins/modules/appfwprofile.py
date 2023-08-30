@@ -117,28 +117,29 @@ options:
     default: 1024
   canonicalizehtmlresponse:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Perform HTML entity encoding for any special characters in responses sent
         by your protected web sites.
     type: str
-    default: true
+    default: 'ON'
   ceflogging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable CEF format logs for the profile.
     type: str
   checkrequestheaders:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check request headers as well as web forms for injected SQL and cross-site
         scripts.
     type: str
+    default: 'OFF'
   clientipexpression:
     description:
       - Expression to get the client IP.
@@ -164,11 +165,12 @@ options:
     default: none
   cmdinjectiongrammar:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for CMD injection using CMD grammar
     type: str
+    default: 'OFF'
   cmdinjectiontype:
     choices:
       - CMDSplChar
@@ -293,8 +295,8 @@ options:
     default: LAX
   cookietransforms:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Perform the specified type of cookie transformation. '
       - 'Available settings function as follows: '
@@ -302,10 +304,11 @@ options:
       - '* Proxying - Mask contents of server cookies by sending proxy cookie to users.'
       - '* Cookie flags - Flag cookies as HTTP only to prevent scripts on user''s
         browser from accessing and possibly modifying them.'
-      - 'CAUTION: Make sure that this parameter is set to ON if you are configuring
-        any cookie transformations. If it is set to OFF, no cookie transformations
+      - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
+        any cookie transformations. If it is set to C(OFF), no cookie transformations
         are performed regardless of any other settings.'
     type: str
+    default: 'OFF'
   creditcard:
     choices:
       - none
@@ -348,12 +351,13 @@ options:
     type: int
   creditcardxout:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Mask any credit card number detected in a response by replacing each digit,
         except the digits in the final group, with the letter "X."
     type: str
+    default: 'OFF'
   crosssitescriptingaction:
     choices:
       - none
@@ -378,23 +382,25 @@ options:
     elements: str
   crosssitescriptingcheckcompleteurls:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check complete URLs for cross-site scripts, instead of just the query portions
         of URLs.
     type: str
+    default: 'OFF'
   crosssitescriptingtransformunsafehtml:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Transform cross-site scripts. This setting configures the application firewall
         to disable dangerous HTML instead of blocking the request. '
-      - 'CAUTION: Make sure that this parameter is set to ON if you are configuring
-        any cross-site scripting transformations. If it is set to OFF, no cross-site
+      - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
+        any cross-site scripting transformations. If it is set to C(OFF), no cross-site
         scripting transformations are performed regardless of any other settings.'
     type: str
+    default: 'OFF'
   csrftagaction:
     choices:
       - none
@@ -498,13 +504,13 @@ options:
     elements: str
   dosecurecreditcardlogging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Setting this option logs credit card numbers in the response when the match
         is found.
     type: str
-    default: true
+    default: 'ON'
   dynamiclearning:
     choices:
       - none
@@ -533,42 +539,44 @@ options:
     elements: str
   enableformtagging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable tagging of web form fields for use by the Form Field Consistency and
         CSRF Form Tagging checks.
     type: str
-    default: true
+    default: 'ON'
   errorurl:
     description:
       - URL that application firewall uses as the Error URL.
     type: str
   excludefileuploadfromchecks:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Exclude uploaded files from Form checks.
     type: str
+    default: 'OFF'
   exemptclosureurlsfromsecuritychecks:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Exempt URLs that pass the Start URL closure check from SQL injection, cross-site
         script, field format and field consistency security checks at locations other
         than headers.
     type: str
-    default: true
+    default: 'ON'
   fakeaccountdetection:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - 'Fake account detection flag : ON/OFF. If set to ON fake account detection
-        in enabled on ADC, if set to OFF fake account detection is disabled.'
+      - 'Fake account detection flag : C(ON)/C(OFF). If set to C(ON) fake account
+        detection in enabled on ADC, if set to C(OFF) fake account detection is disabled.'
     type: str
+    default: 'OFF'
   fieldconsistencyaction:
     choices:
       - none
@@ -639,8 +647,8 @@ options:
     elements: str
   geolocationlogging:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs for the profile.
     type: str
@@ -708,11 +716,12 @@ options:
     elements: str
   insertcookiesamesiteattribute:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Configure whether application firewall should add samesite attribute for set-cookies
     type: str
+    default: 'OFF'
   inspectcontenttypes:
     choices:
       - none
@@ -795,11 +804,12 @@ options:
     elements: str
   jsoncmdinjectiongrammar:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for CMD injection using CMD grammar in JSON
     type: str
+    default: 'OFF'
   jsoncmdinjectiontype:
     choices:
       - CMDSplChar
@@ -875,11 +885,12 @@ options:
     elements: str
   jsonsqlinjectiongrammar:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for SQL injection using SQL grammar in JSON
     type: str
+    default: 'OFF'
   jsonsqlinjectiontype:
     choices:
       - SQLSplChar
@@ -918,11 +929,12 @@ options:
     elements: str
   logeverypolicyhit:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Log every profile match, regardless of security checks results.
     type: str
+    default: 'OFF'
   matchurlstring:
     description:
       - Match this action url in archived Relaxation Rules to replace.
@@ -956,30 +968,30 @@ options:
     type: str
   optimizepartialreqs:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Optimize handle of HTTP partial requests i.e. those with range headers.
       - 'Available settings are as follows: '
-      - '* ON  - Partial requests by the client result in partial requests to the
+      - '* C(ON)  - Partial requests by the client result in partial requests to the
         backend server in most cases.'
-      - '* OFF - Partial requests by the client are changed to full requests to the
-        backend server'
+      - '* C(OFF) - Partial requests by the client are changed to full requests to
+        the backend server'
     type: str
-    default: true
+    default: 'ON'
   overwrite:
     description:
       - Purge existing Relaxation Rules and replace during import
     type: bool
   percentdecoderecursively:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Configure whether the application firewall should use percentage recursive
         decoding
     type: str
-    default: true
+    default: 'ON'
   postbodylimit:
     description:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
@@ -1016,7 +1028,7 @@ options:
     type: str
   refererheadercheck:
     choices:
-      - false
+      - 'OFF'
       - if_present
       - AlwaysExceptStartURLs
       - AlwaysExceptFirstRequest
@@ -1028,6 +1040,7 @@ options:
         protects against cross-site request forgery (CSRF) attacks, not Start URL
         attacks.
     type: str
+    default: 'OFF'
   relaxationrules:
     description:
       - Import all appfw relaxation rules
@@ -1055,27 +1068,30 @@ options:
     type: str
   semicolonfieldseparator:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Allow ';' as a form field separator in URL queries and POST form bodies.
     type: str
+    default: 'OFF'
   sessionlessfieldconsistency:
     choices:
-      - false
-      - true
+      - 'OFF'
+      - 'ON'
       - postOnly
     description:
       - Perform sessionless Field Consistency Checks.
     type: str
+    default: 'OFF'
   sessionlessurlclosure:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Enable session less URL Closure Checks.
       - 'This check is applicable to Profile Type: HTML.'
     type: str
+    default: 'OFF'
   signatures:
     description:
       - Object name for signatures.
@@ -1104,29 +1120,31 @@ options:
     elements: str
   sqlinjectionchecksqlwildchars:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
     type: str
+    default: 'OFF'
   sqlinjectiongrammar:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for SQL injection using SQL grammar
     type: str
+    default: 'OFF'
   sqlinjectiononlycheckfieldswithsqlchars:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check only form fields that contain SQL special strings (characters) for injected
         SQL code.
       - Most SQL servers require a special string to activate an SQL request, so SQL
         code without a special string is harmless to most SQL servers.
     type: str
-    default: true
+    default: 'ON'
   sqlinjectionparsecomments:
     choices:
       - checkall
@@ -1154,17 +1172,18 @@ options:
     default: ALLOW
   sqlinjectiontransformspecialchars:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Transform injected SQL code. This setting configures the application firewall
         to disable SQL special strings instead of blocking the request. Since most
         SQL servers require a special string to activate an SQL keyword, in most cases
         a request that contains injected SQL code is safe if special strings are disabled.
-      - 'CAUTION: Make sure that this parameter is set to ON if you are configuring
-        any SQL injection transformations. If it is set to OFF, no SQL injection transformations
-        are performed regardless of any other settings.'
+      - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
+        any SQL injection transformations. If it is set to C(OFF), no SQL injection
+        transformations are performed regardless of any other settings.'
     type: str
+    default: 'OFF'
   sqlinjectiontype:
     choices:
       - SQLSplChar
@@ -1205,15 +1224,16 @@ options:
     elements: str
   starturlclosure:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Toggle  the state of Start URL Closure.
     type: str
+    default: 'OFF'
   streaming:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Setting this option converts content-length form submission requests (requests
         with content-type "application/x-www-form-urlencoded" or "multipart/form-data")
@@ -1223,14 +1243,16 @@ options:
         make sure that the backend server accepts chunked requests before enabling
         this option. Citrix recommends enabling this option for large request sizes(>20MB).'
     type: str
+    default: 'OFF'
   stripcomments:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Strip HTML comments.
       - 'This check is applicable to Profile Type: HTML.'
     type: str
+    default: 'OFF'
   striphtmlcomments:
     choices:
       - none
@@ -1252,11 +1274,12 @@ options:
     default: none
   trace:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Toggle  the state of trace
     type: str
+    default: 'OFF'
   type:
     choices:
       - HTML
@@ -1280,20 +1303,22 @@ options:
     default: HTML
   urldecoderequestcookies:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - URL Decode request cookies before subjecting them to SQL and cross-site scripting
         checks.
     type: str
+    default: 'OFF'
   usehtmlerrorobject:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send an imported HTML Error object to a user when a request is blocked, instead
         of redirecting the user to the designated Error URL.
     type: str
+    default: 'OFF'
   verboseloglevel:
     choices:
       - pattern
@@ -1428,20 +1453,21 @@ options:
     elements: str
   xmlsqlinjectionchecksqlwildchars:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
     type: str
+    default: 'OFF'
   xmlsqlinjectiononlycheckfieldswithsqlchars:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Check only form fields that contain SQL special characters, which most SQL
         servers require before accepting an SQL command, for injected SQL.
     type: str
-    default: true
+    default: 'ON'
   xmlsqlinjectionparsecomments:
     choices:
       - checkall

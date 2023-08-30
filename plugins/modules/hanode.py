@@ -32,13 +32,14 @@ options:
     default: 3
   failsafe:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Keep one node primary if both nodes fail the health check, so that a partially
         available node can back up data and handle traffic. This mode is set independently
         on each node.
     type: str
+    default: 'OFF'
   haprop:
     choices:
       - ENABLED

@@ -9,6 +9,7 @@ __metaclass__ = type
 
 import codecs
 import json
+import traceback
 
 from ansible.module_utils._text import to_text
 from ansible.module_utils.six.moves.urllib.parse import quote
@@ -75,7 +76,9 @@ class NitroAPIClient(object):
 
         # Append resource id
         if id is not None:
-            url = "%s/%s" % (url, id)
+            # Double encode the id
+            # https://owasp.org/www-community/Double_Encoding
+            url = "%s/%s" % (url, quote(quote(str(id), safe=""), safe=""))
 
         # Query String Builder
         # Construct args
@@ -131,15 +134,34 @@ class NitroAPIClient(object):
         body = r.read() if r else None
         # info['body'] will not be present for status_codes < 400
         if status_code >= 400:
-            return status_code, json.loads(to_text(info["body"]))
+            try:
+                return status_code, json.loads(to_text(info["body"]))
+            # Catch json.decoder.JSONDecodeError and print the full stack trace
+            except json.decoder.JSONDecodeError as e:
+                log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                log("DEBUG: info['body'] = %s" % info["body"])
+                log("DEBUG: Traceback = %s" % traceback.format_exc())
+                return status_code, {}
         else:
             if not body:
                 if "body" in info:
-                    return status_code, json.loads(to_text(info["body"]))
+                    try:
+                        return status_code, json.loads(to_text(info["body"]))
+                    except json.decoder.JSONDecodeError:
+                        log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                        log("DEBUG: info['body'] = %s" % info["body"])
+                        log("DEBUG: Traceback = %s" % traceback.format_exc())
+                        return status_code, {}
                 else:
                     return status_code, {}
             else:
-                return status_code, json.loads(to_text(body))
+                try:
+                    return status_code, json.loads(to_text(body))
+                except json.decoder.JSONDecodeError:
+                    log("ERROR: json.decoder.JSONDecodeError: %s" % e)
+                    log("DEBUG: info['body'] = %s" % info["body"])
+                    log("DEBUG: Traceback = %s" % traceback.format_exc())
+                    return status_code, {}
 
     def get(self, resource, id=None, args=None, attrs=None, filter=None):
         url = self.url_builder(resource, id=id, args=args, attrs=attrs, filter=filter)
@@ -148,6 +170,11 @@ class NitroAPIClient(object):
     def post(self, post_data, resource, action=None):
         url = self.url_builder(resource, action=action)
         data = self._module.jsonify(post_data)
+        if resource == "login":
+            # Remove 'X-NITRO-USER', 'X-NITRO-PASS' and 'Cookie' headers if present
+            self._headers.pop("X-NITRO-USER", None)
+            self._headers.pop("X-NITRO-PASS", None)
+            self._headers.pop("Cookie", None)
         return self.send("POST", url, data)
 
     def put(self, put_data, resource=None, id=None):

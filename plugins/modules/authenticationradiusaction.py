@@ -26,19 +26,19 @@ author:
 options:
   accounting:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Whether the RADIUS server is currently accepting accounting messages.
     type: str
   authentication:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
     type: str
-    default: true
+    default: 'ON'
   authservretry:
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS

@@ -33,11 +33,12 @@ options:
     type: str
   binary:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Set the LDAP-based CRL retrieval mode to binary.
     type: str
+    default: 'NO'
   binddn:
     description:
       - Bind distinguished name (DN) to be used to access the CRL object in the LDAP

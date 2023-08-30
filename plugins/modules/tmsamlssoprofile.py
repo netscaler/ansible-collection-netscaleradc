@@ -363,11 +363,12 @@ options:
     default: SHA256
   encryptassertion:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to encrypt assertion when Citrix ADC sends one.
     type: str
+    default: 'OFF'
   encryptionalgorithm:
     choices:
       - DES3
@@ -429,11 +430,12 @@ options:
     type: str
   sendpassword:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to send password in assertion.
     type: str
+    default: 'OFF'
   signassertion:
     choices:
       - NONE

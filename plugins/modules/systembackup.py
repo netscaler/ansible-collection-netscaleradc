@@ -34,11 +34,12 @@ options:
     type: str
   includekernel:
     choices:
-      - false
-      - true
+      - 'NO'
+      - 'YES'
     description:
       - Use this option to add kernel in the backup file
     type: str
+    default: 'NO'
   level:
     choices:
       - basic

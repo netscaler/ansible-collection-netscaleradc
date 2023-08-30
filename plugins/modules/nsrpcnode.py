@@ -34,12 +34,12 @@ options:
     type: str
   secure:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - State of the channel when talking to the node.
     type: str
-    default: true
+    default: 'YES'
   srcip:
     description:
       - Source IP address to be used to communicate with the peer system node. The
@@ -48,11 +48,12 @@ options:
     type: str
   validatecert:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - validate the server certificate for secure SSL connections
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

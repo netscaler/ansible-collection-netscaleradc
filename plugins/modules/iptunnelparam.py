@@ -26,12 +26,13 @@ author:
 options:
   dropfrag:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
     type: str
+    default: 'NO'
   dropfragcputhreshold:
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
@@ -40,18 +41,20 @@ options:
     type: int
   enablestrictrx:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
     type: str
+    default: 'NO'
   enablestricttx:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
     type: str
+    default: 'NO'
   mac:
     description:
       - The shared MAC used for shared IP between cluster nodes/HA peers
@@ -64,8 +67,8 @@ options:
     type: str
   srciproundrobin:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use a different source IP address for each new session through a particular
         IP tunnel, as determined by round robin selection of one of the SNIP addresses.
@@ -73,13 +76,15 @@ options:
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
     type: str
+    default: 'NO'
   useclientsourceip:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use client source IP as source IP for outer tunnel IP header
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

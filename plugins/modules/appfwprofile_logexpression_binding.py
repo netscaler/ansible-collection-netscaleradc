@@ -28,8 +28,8 @@ author:
 options:
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str

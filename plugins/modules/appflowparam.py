@@ -63,11 +63,12 @@ options:
     default: DISABLED
   clienttrafficonly:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Generate AppFlow records for only the traffic from the client.
     type: str
+    default: 'NO'
   connectionchaining:
     choices:
       - ENABLED

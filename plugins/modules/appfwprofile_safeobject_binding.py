@@ -40,8 +40,8 @@ options:
     elements: str
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str

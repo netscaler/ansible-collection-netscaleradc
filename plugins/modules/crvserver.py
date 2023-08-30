@@ -34,8 +34,8 @@ options:
     default: ENABLED
   arp:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use ARP to determine the destination MAC address.
     type: str
@@ -137,15 +137,15 @@ options:
     default: ENABLED
   format:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - '0'
     type: str
   ghost:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - '0'
     type: str
@@ -178,8 +178,8 @@ options:
     type: str
   l2conn:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use L2 parameters, such as MAC, VLAN, and channel to identify a connection.
     type: str
@@ -197,8 +197,8 @@ options:
     default: 101
   map:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Obsolete.
     type: str
@@ -240,8 +240,8 @@ options:
     default: ORIGIN
   originusip:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Use the client''s IP address as the source IP address in requests sent to
         the origin server.  '
@@ -321,20 +321,20 @@ options:
     type: str
   reuse:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - 'Reuse TCP connections to the origin server across client connections. Do
         not set this parameter unless the Service Type parameter is set to HTTP. If
-        you set this parameter to OFF, the possible settings of the Redirect parameter
+        you set this parameter to C(OFF), the possible settings of the Redirect parameter
         function as follows:'
       - '* CACHE - TCP connections to the cache servers are not reused.'
       - '* ORIGIN - TCP connections to the origin servers are not reused. '
       - '* POLICY - TCP connections to the origin servers are not reused.'
-      - If you set the Reuse parameter to ON, connections to origin servers and connections
-        to cache servers are reused.
+      - If you set the Reuse parameter to C(ON), connections to origin servers and
+        connections to cache servers are reused.
     type: str
-    default: true
+    default: 'ON'
   rhistate:
     choices:
       - PASSIVE
@@ -404,32 +404,34 @@ options:
     type: int
   useoriginipportforcache:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Use origin ip/port while forwarding request to the cache. Change the destination
         IP, destination port of the request came to CR vserver to Origin IP and Origin
         Port and forward it to Cache
     type: str
+    default: 'NO'
   useportrange:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use a port number from the port range (set by using the set ns param command,
         or in the Create Virtual Server (Cache Redirection) dialog box) as the source
         port in the requests sent to the origin server.
     type: str
+    default: 'OFF'
   via:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Insert a via header in each HTTP request. In the case of a cache miss, the
         request is redirected from the cache server to the origin server. This header
         indicates whether the request is being sent from a cache server.
     type: str
-    default: true
+    default: 'ON'
   crvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for crvserver_analyticsprofile_binding resource

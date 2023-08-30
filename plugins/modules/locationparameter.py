@@ -36,22 +36,23 @@ options:
     type: str
   matchwildcardtoany:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
       - Expression
     description:
       - Indicates whether wildcard qualifiers should match any other
       - qualifier including non-wildcard while evaluating
       - location based expressions.
-      - 'Possible values: Yes, No, Expression.'
+      - 'Possible values: Yes, No, C(Expression).'
       - '    Yes - Wildcard qualifiers match any other qualifiers.'
       - '    No  - Wildcard qualifiers do not match non-wildcard'
       - '          qualifiers, but match other wildcard qualifiers.'
-      - '    Expression - Wildcard qualifiers in an expression'
+      - '    C(Expression) - Wildcard qualifiers in an expression'
       - '          match any qualifier in an LDNS location,'
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
     type: str
+    default: 'NO'
   q1label:
     description:
       - Label specifying the meaning of the first qualifier. Can be specified for

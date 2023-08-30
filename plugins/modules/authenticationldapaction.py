@@ -143,12 +143,13 @@ options:
     default: mail
   followreferrals:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - Setting this option to ON enables following LDAP referrals received from the
-        LDAP server.
+      - Setting this option to C(ON) enables following LDAP referrals received from
+        the LDAP server.
     type: str
+    default: 'OFF'
   groupattrname:
     description:
       - LDAP group attribute name.
@@ -245,12 +246,13 @@ options:
     type: str
   nestedgroupextraction:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Allow nested group extraction, in which the Citrix ADC queries external LDAP
         servers to determine whether a group is part of another group.
     type: str
+    default: 'OFF'
   otpsecret:
     description:
       - OneTimePassword(OTP) Secret key attribute on AD. This attribute is used to
@@ -279,16 +281,16 @@ options:
     default: A-REC
   requireuser:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Require a successful user search for authentication.
-      - CAUTION!  This field should be set to NO only if usersearch not required [Both
-        username validation as well as password validation skipped] and (non-LDAP)
+      - CAUTION!  This field should be set to C(NO) only if usersearch not required
+        [Both username validation as well as password validation skipped] and (non-LDAP)
         authentication methods are in use and either bound to a primary list or flagged
         as secondary.
     type: str
-    default: true
+    default: 'YES'
   searchfilter:
     description:
       - String to be combined with the default LDAP user search string to form the
@@ -347,11 +349,12 @@ options:
     default: AAA_LDAP_SERVER_TYPE_DEFAULT
   validateservercert:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - When to validate LDAP server certs
     type: str
+    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

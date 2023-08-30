@@ -41,26 +41,27 @@ options:
     default: '"None"'
   httponlycookie:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
     type: str
-    default: true
+    default: 'YES'
   kcdaccount:
     description:
       - Kerberos constrained delegation account name
     type: str
   persistentcookie:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use persistent SSO cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
     type: str
+    default: 'OFF'
   persistentcookievalidity:
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
@@ -74,8 +75,8 @@ options:
     default: 30
   sso:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Log users on to all web applications automatically after they authenticate,
         or pass users to the web application logon page to authenticate for each application.
@@ -84,6 +85,7 @@ options:
         or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication
         types.
     type: str
+    default: 'OFF'
   ssocredential:
     choices:
       - PRIMARY

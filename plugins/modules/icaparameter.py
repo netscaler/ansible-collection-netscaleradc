@@ -39,20 +39,21 @@ options:
     default: 100
   enablesronhafailover:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
     type: str
+    default: 'NO'
   hdxinsightnonnsap:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
     type: str
-    default: true
+    default: 'YES'
   l7latencyfrequency:
     description:
       - Specify the time interval/period for which L7 Client Latency value is to be

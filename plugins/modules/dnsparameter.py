@@ -57,8 +57,8 @@ options:
     default: DISABLED
   cacherecords:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Cache resource records in the DNS cache. Applies to resource records obtained
         through proxy configurations only. End resolver and forwarder configurations
@@ -67,7 +67,7 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
     type: str
-    default: true
+    default: 'YES'
   dns64timeout:
     description:
       - While doing DNS64 resolution, this parameter specifies the time to wait before

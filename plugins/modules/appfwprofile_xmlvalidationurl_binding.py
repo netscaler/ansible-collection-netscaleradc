@@ -28,8 +28,8 @@ author:
 options:
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str
@@ -69,8 +69,8 @@ options:
     type: str
   xmladditionalsoapheaders:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Allow addtional soap headers.
     type: str
@@ -99,15 +99,15 @@ options:
     type: str
   xmlvalidateresponse:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Validate response message.
     type: str
   xmlvalidatesoapenvelope:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Validate SOAP Evelope only.
     type: str

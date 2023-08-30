@@ -26,12 +26,13 @@ author:
 options:
   bundle:
     choices:
-      - true
-      - false
+      - 'YES'
+      - 'NO'
     description:
       - Parse the certificate chain as a single file after linking the server certificate
         to its issuer's certificate within the file.
     type: str
+    default: 'NO'
   cert:
     description:
       - Name of and, optionally, path to the X509 certificate file that is used to

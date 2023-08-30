@@ -28,8 +28,8 @@ author:
 options:
   alertonly:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send SNMP alert?
     type: str
@@ -73,10 +73,10 @@ options:
     type: str
   xmlattachmentcontenttypecheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML attachment content-type check is ON or OFF. Protects against
+      - State if XML attachment content-type check is C(ON) or C(OFF). Protects against
         XML requests with illegal attachments.
     type: str
   xmlattachmenturl:
@@ -89,11 +89,11 @@ options:
     type: int
   xmlmaxattachmentsizecheck:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
-      - State if XML Max attachment size Check is ON or OFF. Protects against XML
-        requests with large attachment data.
+      - State if XML Max attachment size Check is C(ON) or C(OFF). Protects against
+        XML requests with large attachment data.
     type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

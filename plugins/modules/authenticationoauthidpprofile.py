@@ -60,11 +60,12 @@ options:
     type: str
   encrypttoken:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to encrypt token when Citrix ADC IDP sends one.
     type: str
+    default: 'OFF'
   issuer:
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
@@ -99,11 +100,12 @@ options:
     type: str
   sendpassword:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Option to send encrypted password in idtoken.
     type: str
+    default: 'OFF'
   signaturealg:
     choices:
       - RS256

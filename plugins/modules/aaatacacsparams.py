@@ -26,22 +26,22 @@ author:
 options:
   accounting:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Send accounting messages to the TACACS+ server.
     type: str
   auditfailedcmds:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - The option for sending accounting messages to the TACACS+ server.
     type: str
   authorization:
     choices:
-      - true
-      - false
+      - 'ON'
+      - 'OFF'
     description:
       - Use streaming authorization on the TACACS+ server.
     type: str
