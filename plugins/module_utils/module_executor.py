@@ -162,15 +162,14 @@ class ModuleExecutor(object):
     @trace
     def _filter_resource_module_params(self):
         for k, v in self.module.params.items():
-            if (
-                not k.endswith("_binding")
-                and k
+            if (not k.endswith("_binding")) and (
+                k
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
             ):
                 # self.module.params is a dict of key:value pairs. If an attribute is not
                 # defined in the playbook, it's value will be None. So, filter out those attributes.
                 # Also, filter out attributes ending with `_binding` as they are handled separately
-                if v:
+                if v is not None:
                     self.resource_module_params[k] = v
         log(
             "DEBUG: Desired `%s` module specific params are: %s"
@@ -638,6 +637,37 @@ class ModuleExecutor(object):
                 if v != existing_binding_members[k]:
                     return False
         return True
+
+    @trace
+    def change_password(self):
+        try:
+            if self.module.check_mode:
+                self.module_result["changed"] = True
+                self.return_success()
+            else:
+                if self.resource_module_params["first_boot"]:
+                    ok, err = adc_login(
+                        self.client,
+                        self.resource_module_params["username"],
+                        self.resource_module_params["password"],
+                        self.resource_module_params["new_password"],
+                    )
+                else:
+                    # set system user USERNAME -password NEW_PASSWORD
+                    self.resource_module_params[
+                        "password"
+                    ] = self.resource_module_params["new_password"]
+                    ok, err = update_resource(
+                        self.client, "systemuser", self.resource_module_params
+                    )
+                if not ok:
+                    self.return_failure(err)
+
+                self.module_result["changed"] = True
+                self.return_success()
+        except Exception as e:
+            msg = "Exception %s: %s" % (type(e), str(e))
+            self.return_failure(msg)
 
     @trace
     def login(self):

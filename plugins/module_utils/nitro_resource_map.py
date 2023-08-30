@@ -48,6 +48,45 @@ NITRO_RESOURCE_MAP = {
         "readwrite_arguments": {},
         "update_payload_keys": [],
     },
+    "change_password": {
+        "add_payload_keys": [
+            "username",
+            "password",
+            "new_password",
+            "first_boot",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": [],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": ["username", "password", "new_password"],
+        "primary_key": "",
+        "readwrite_arguments": {
+            "username": {
+                "type": "str",
+                "required": True,
+                "no_log": True,
+            },
+            "password": {
+                "type": "str",
+                "required": True,
+                "no_log": True,
+            },
+            "new_password": {
+                "type": "str",
+                "required": True,
+                "no_log": True,
+            },
+            "first_boot": {
+                "type": "bool",
+                "required": True,
+                "no_log": False,
+            },
+        },
+        "update_payload_keys": [],
+    },
     "aaacertparams": {
         "add_payload_keys": [],
         "bindings": [],

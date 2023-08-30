@@ -390,13 +390,16 @@ def disable_resource(client, resource_name, resource_params):
 
 
 @trace
-def adc_login(client, username, password):
+def adc_login(client, username, password, new_password=None):
     post_data = {
         "login": {
             "username": username,
             "password": password,
         }
     }
+    if new_password:
+        post_data["login"]["new_password"] = new_password
+
     status_code, response_body = client.post(
         post_data=post_data,
         resource="login",

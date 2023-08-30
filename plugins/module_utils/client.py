@@ -170,6 +170,11 @@ class NitroAPIClient(object):
     def post(self, post_data, resource, action=None):
         url = self.url_builder(resource, action=action)
         data = self._module.jsonify(post_data)
+        if resource == "login":
+            # Remove 'X-NITRO-USER', 'X-NITRO-PASS' and 'Cookie' headers if present
+            self._headers.pop("X-NITRO-USER", None)
+            self._headers.pop("X-NITRO-PASS", None)
+            self._headers.pop("Cookie", None)
         return self.send("POST", url, data)
 
     def put(self, put_data, resource=None, id=None):
