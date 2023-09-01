@@ -29,7 +29,7 @@ options:
       - High threshold value for the bandwidth usage of the LA channel, in Mbps. The
         Citrix ADC generates an SNMP trap message when the bandwidth usage of the
         LA channel is greater than or equal to the specified high threshold value.
-    type: int
+    type: float
   bandwidthnormal:
     description:
       - Normal threshold value for the bandwidth usage of the LA channel, in Mbps.
@@ -37,7 +37,7 @@ options:
         the specified normal threshold after exceeding the high threshold, the Citrix
         ADC generates an SNMP trap message to indicate that the bandwidth usage has
         returned to normal.
-    type: int
+    type: float
   conndistr:
     choices:
       - DISABLED
@@ -131,7 +131,7 @@ options:
         mode.  When the maximum supported throughput of the active channel falls below
         the lrMinThroughput value, link failover occurs and a standby subchannel becomes
         active.
-    type: int
+    type: float
   macdistr:
     choices:
       - SOURCE
@@ -170,7 +170,7 @@ options:
         On certain Virtualized / Cloud Platforms, the maximum  possible MTU is restricted
         to a lesser value, Similar calculation can be applied, Maximum Data Plane
         MTU in Cluster = (Maximum possible MTU - 78).
-    type: int
+    type: float
     default: 1500
   speed:
     choices:
@@ -213,7 +213,7 @@ options:
       - Low threshold value for the throughput of the LA channel, in Mbps. In an high
         availability (HA) configuration, failover is triggered when the LA channel
         has HA MON enabled and the throughput is below the specified threshold.
-    type: int
+    type: float
   trunk:
     choices:
       - 'ON'

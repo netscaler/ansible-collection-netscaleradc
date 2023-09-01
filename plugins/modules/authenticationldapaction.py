@@ -119,7 +119,7 @@ options:
   authtimeout:
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
-    type: int
+    type: float
     default: 3
   cloudattributes:
     choices:
@@ -216,13 +216,13 @@ options:
   maxldapreferrals:
     description:
       - Specifies the maximum number of nested referrals to follow.
-    type: int
+    type: float
     default: 1
   maxnestinglevel:
     description:
       - If nested group extraction is ON, specifies the number of levels up to which
         group extraction is performed.
-    type: int
+    type: float
     default: 2
   mssrvrecordlocation:
     description:

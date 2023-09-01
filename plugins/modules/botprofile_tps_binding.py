@@ -87,12 +87,12 @@ options:
     description:
       - Maximum percentage increase in the requests from (or to) a IP, Geolocation,
         URL or Host in 30 minutes interval.
-    type: int
+    type: float
   threshold:
     description:
       - Maximum number of requests that are allowed from (or to) a IP, Geolocation,
         URL or Host in 1 second time interval.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

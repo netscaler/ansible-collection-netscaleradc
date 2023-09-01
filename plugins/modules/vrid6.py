@@ -31,13 +31,13 @@ options:
   id:
     description:
       - Integer value that uniquely identifies a VMAC6 address.
-    type: int
+    type: float
   ownernode:
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, ow ner node is
         displayed as ALL and one node is dynamically elected as the owner.
-    type: int
+    type: float
   preemption:
     choices:
       - ENABLED
@@ -56,12 +56,12 @@ options:
       - Preemption delay time in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
-    type: int
+    type: float
   priority:
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
-    type: int
+    type: float
     default: 255
   sharing:
     choices:
@@ -76,7 +76,7 @@ options:
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
-    type: int
+    type: float
   tracking:
     choices:
       - NONE

@@ -107,7 +107,7 @@ options:
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.
-    type: int
+    type: float
   ocspstaplingcache:
     description:
       - Clear cached ocspStapling response in certkey.

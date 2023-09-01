@@ -127,7 +127,7 @@ options:
   kmeventspostbodylimit:
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
-    type: int
+    type: float
   kmjavascriptname:
     description:
       - Name of the JavaScript file that the Bot Management feature will insert in

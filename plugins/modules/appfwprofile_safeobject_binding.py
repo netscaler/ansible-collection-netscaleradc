@@ -64,7 +64,7 @@ options:
   maxmatchlength:
     description:
       - Maximum match length for a Safe Object expression.
-    type: int
+    type: float
   name:
     description:
       - Name of the profile to which to bind an exemption or rule.

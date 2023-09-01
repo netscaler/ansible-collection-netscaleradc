@@ -27,12 +27,12 @@ options:
   memlimit:
     description:
       - Maximum memory, in megabytes, that can be used for buffering.
-    type: int
+    type: float
     default: 64
   size:
     description:
       - TCP buffering size per connection, in kilobytes.
-    type: int
+    type: float
     default: 64
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

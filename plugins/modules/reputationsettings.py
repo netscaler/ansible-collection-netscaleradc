@@ -27,7 +27,7 @@ options:
   proxyport:
     description:
       - Proxy server port.
-    type: int
+    type: float
   proxyserver:
     description:
       - Proxy server IP to get Reputation data.

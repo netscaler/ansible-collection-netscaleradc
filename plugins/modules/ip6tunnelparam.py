@@ -36,7 +36,7 @@ options:
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
-    type: int
+    type: float
   srcip:
     description:
       - Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.

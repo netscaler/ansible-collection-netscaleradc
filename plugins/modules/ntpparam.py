@@ -38,13 +38,13 @@ options:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
-    type: int
+    type: float
     default: 12
   revokelogsec:
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.
-    type: int
+    type: float
     default: 16
   trustedkey:
     description:

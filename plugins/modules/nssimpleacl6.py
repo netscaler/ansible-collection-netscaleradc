@@ -68,13 +68,13 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   ttl:
     description:
       - Number of seconds, in multiples of four, after which the simple ACL6 rule
         expires. If you do not want the simple ACL6 rule to expire, do not specify
         a TTL value.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

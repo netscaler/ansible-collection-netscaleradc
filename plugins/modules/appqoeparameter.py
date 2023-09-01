@@ -27,18 +27,18 @@ options:
   avgwaitingclient:
     description:
       - average number of client connections, that can sit in service waiting queue
-    type: int
+    type: float
     default: 1000000
   dosattackthresh:
     description:
       - average number of client connection that can queue up on vserver level without
         triggering DoS mitigation module
-    type: int
+    type: float
     default: 2000
   maxaltrespbandwidth:
     description:
       - maximum bandwidth which will determine whether to send alternate content response
-    type: int
+    type: float
     default: 100
   sessionlife:
     description:
@@ -46,7 +46,7 @@ options:
         content window is displayed. The alternative content window is displayed only
         once during a session for the same browser accessing a configured URL, so
         this parameter determines the length of a session.
-    type: int
+    type: float
     default: 300
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

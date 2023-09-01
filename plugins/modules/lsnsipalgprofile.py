@@ -27,7 +27,7 @@ options:
   datasessionidletimeout:
     description:
       - Idle timeout for the data channel sessions in seconds.
-    type: int
+    type: float
     default: 120
   opencontactpinhole:
     choices:
@@ -72,7 +72,7 @@ options:
   registrationtimeout:
     description:
       - SIP registration timeout in seconds.
-    type: int
+    type: float
     default: 60
   rport:
     choices:
@@ -93,7 +93,7 @@ options:
   sipsessiontimeout:
     description:
       - SIP control channel session timeout in seconds.
-    type: int
+    type: float
     default: 600
   sipsrcportrange:
     description:

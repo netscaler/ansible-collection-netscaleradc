@@ -70,7 +70,7 @@ options:
   priority:
     description:
       - The priority for the policy.
-    type: int
+    type: float
   targetvserver:
     description:
       - Name of the virtual server to which content is forwarded. Applicable only

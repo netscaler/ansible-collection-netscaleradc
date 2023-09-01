@@ -37,7 +37,7 @@ options:
   authenticationstrength:
     description:
       - Weight of the current authentication
-    type: int
+    type: float
   name:
     description:
       - Name for the new login schema. Login schema defines the way login form is
@@ -59,7 +59,7 @@ options:
   passwordcredentialindex:
     description:
       - The index at which user entered password should be stored in session.
-    type: int
+    type: float
   ssocredentials:
     choices:
       - 'YES'
@@ -72,7 +72,7 @@ options:
   usercredentialindex:
     description:
       - The index at which user entered username should be stored in session.
-    type: int
+    type: float
   userexpression:
     description:
       - Expression for username extraction during login. This can be any relevant

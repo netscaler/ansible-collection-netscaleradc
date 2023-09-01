@@ -32,7 +32,7 @@ options:
   egressvlan:
     description:
       - Egress Vlan for CI
-    type: int
+    type: float
   ingressinterface:
     description:
       - Ingress interface for CI profile.It is a mandatory argument while creating
@@ -41,7 +41,7 @@ options:
   ingressvlan:
     description:
       - Ingress Vlan for CI
-    type: int
+    type: float
   iptunnel:
     description:
       - IP Tunnel for CI profile. It is used while creating a ContentInspection profile

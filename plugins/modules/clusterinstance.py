@@ -35,7 +35,7 @@ options:
   clid:
     description:
       - Unique number that identifies the cluster.
-    type: int
+    type: float
   clusterproxyarp:
     choices:
       - ENABLED
@@ -50,7 +50,7 @@ options:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
         are assumed to be down.If the value is less than 3 sec, set the helloInterval
         parameter to 200 msec
-    type: int
+    type: float
     default: 3
   dfdretainl2params:
     choices:
@@ -65,7 +65,7 @@ options:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
         to check the health status.Set the value to 200 msec, if the deadInterval
         parameter is less than 3 sec
-    type: int
+    type: float
     default: 200
   inc:
     choices:

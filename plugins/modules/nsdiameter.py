@@ -38,7 +38,7 @@ options:
     description:
       - ID of the cluster node for which the diameter id is set, can be configured
         only through CLIP
-    type: int
+    type: float
     default: -1
   realm:
     description:

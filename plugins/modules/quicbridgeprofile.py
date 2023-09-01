@@ -41,7 +41,7 @@ options:
   serveridlength:
     description:
       - Length of serverid to encode/decode server information
-    type: int
+    type: float
     default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

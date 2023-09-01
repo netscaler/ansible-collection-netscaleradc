@@ -88,32 +88,32 @@ options:
     description:
       - Maximum length, in characters, for cookies sent to your protected web sites.
         Requests with longer cookies are blocked.
-    type: int
+    type: float
     default: 4096
   bufferoverflowmaxheaderlength:
     description:
       - Maximum length, in characters, for HTTP headers in requests sent to your protected
         web sites. Requests with longer headers are blocked.
-    type: int
+    type: float
     default: 4096
   bufferoverflowmaxquerylength:
     description:
       - Maximum length, in bytes, for query string sent to your protected web sites.
         Requests with longer query strings are blocked.
-    type: int
+    type: float
     default: 65535
   bufferoverflowmaxtotalheaderlength:
     description:
       - Maximum length, in bytes, for the total HTTP header length in requests sent
         to your protected web sites. The minimum value of this and maxHeaderLen in
         httpProfile will be used. Requests with longer length are blocked.
-    type: int
+    type: float
     default: 65535
   bufferoverflowmaxurllength:
     description:
       - Maximum length, in characters, for URLs on your protected web sites. Requests
         with longer URLs are blocked.
-    type: int
+    type: float
     default: 1024
   canonicalizehtmlresponse:
     choices:
@@ -348,7 +348,7 @@ options:
       - This parameter value is used by the block action. It represents the maximum
         number of credit card numbers that can appear on a web page served by your
         protected web sites. Pages that contain more credit card numbers are blocked.
-    type: int
+    type: float
   creditcardxout:
     choices:
       - 'ON'
@@ -448,7 +448,7 @@ options:
     description:
       - Maximum length, in characters, for data entered into a field that is assigned
         the default field type.
-    type: int
+    type: float
     default: 65535
   defaultfieldformatminlength:
     description:
@@ -456,7 +456,7 @@ options:
         the default field type. '
       - To disable the minimum and maximum length settings and allow data of any length
         to be entered into the field, set this parameter to zero (0).
-    type: int
+    type: float
   defaultfieldformattype:
     description:
       - Designate a default field type to be applied to web form fields that do not
@@ -625,7 +625,7 @@ options:
     description:
       - Maximum allowed number of file uploads per form-submission request. The maximum
         setting (65535) allows an unlimited number of uploads.
-    type: int
+    type: float
     default: 65535
   fileuploadtypesaction:
     choices:
@@ -679,7 +679,7 @@ options:
       - Response status code associated with HTML error page. Non-empty HTML error
         object must be imported to the application firewall profile for the status
         code.
-    type: int
+    type: float
     default: 200
   htmlerrorstatusmessage:
     description:
@@ -859,7 +859,7 @@ options:
       - Response status code associated with JSON error page. Non-empty JSON error
         object must be imported to the application firewall profile for the status
         code.
-    type: int
+    type: float
     default: 200
   jsonerrorstatusmessage:
     description:
@@ -997,7 +997,7 @@ options:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
         10GB. Citrix recommends enabling streaming option for large values of post
         body limit (>20MB).
-    type: int
+    type: float
     default: 20000000
   postbodylimitaction:
     choices:
@@ -1020,7 +1020,7 @@ options:
       - Maximum allowed HTTP post body size for signature inspection for location
         HTTP_POST_BODY in the signatures, in bytes. Note that the changes in value
         could impact CPU and latency profile.
-    type: int
+    type: float
     default: 2048
   protofileobject:
     description:
@@ -1388,7 +1388,7 @@ options:
     description:
       - Response status code associated with XML error page. Non-empty XML error object
         must be imported to the application firewall profile for the status code.
-    type: int
+    type: float
     default: 200
   xmlerrorstatusmessage:
     description:

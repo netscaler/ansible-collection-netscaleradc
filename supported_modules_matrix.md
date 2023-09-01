@@ -7,10 +7,10 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 ---
 
 - Total number of resources: **905**
-- Total number of supported resources: **801**
-- Total number of unsupported resources: **104**
-- Percentage of supported resources: **88.51%**
-- Percentage of unsupported resources: **11.49%**
+- Total number of supported resources: **807**
+- Total number of unsupported resources: **98**
+- Percentage of supported resources: **89.17%**
+- Percentage of unsupported resources: **10.83%**
 
 ---
 
@@ -237,7 +237,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [bridgegroup_nsip6_binding](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/bridgegroup_nsip6_binding_module.html) | ✅ |
 | [bridgegroup_nsip_binding](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/bridgegroup_nsip_binding_module.html) | ✅ |
 | [bridgegroup_vlan_binding](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/bridgegroup_vlan_binding_module.html) | ✅ |
-| bridgetable | ❌ |
+| [bridgetable](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/bridgetable_module.html) | ✅ |
 | [cachecontentgroup](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/cachecontentgroup_module.html) | ✅ |
 | [cacheforwardproxy](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/cacheforwardproxy_module.html) | ✅ |
 | [cacheglobal_cachepolicy_binding](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/cacheglobal_cachepolicy_binding_module.html) | ✅ |
@@ -475,8 +475,8 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | lldpneighbors | ❌ |
 | [lldpparam](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/lldpparam_module.html) | ✅ |
 | [location](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/location_module.html) | ✅ |
-| locationfile | ❌ |
-| locationfile6 | ❌ |
+| [locationfile](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/locationfile_module.html) | ✅ |
+| [locationfile6](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/locationfile6_module.html) | ✅ |
 | [locationparameter](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/locationparameter_module.html) | ✅ |
 | [logout](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/logout_module.html) | ✅ |
 | [lsnappsattributes](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/lsnappsattributes_module.html) | ✅ |
@@ -650,7 +650,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | rnatsession | ❌ |
 | [route](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/route_module.html) | ✅ |
 | [route6](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/route6_module.html) | ✅ |
-| routerdynamicrouting | ❌ |
+| [routerdynamicrouting](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/routerdynamicrouting_module.html) | ✅ |
 | [rsskeytype](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/rsskeytype_module.html) | ✅ |
 | [server](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/server_module.html) | ✅ |
 | [service](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/service_module.html) | ✅ |
@@ -798,7 +798,7 @@ This is a matrix of all the resources supported by the `netscaler` ansible colle
 | [tunnelglobal_tunneltrafficpolicy_binding](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/tunnelglobal_tunneltrafficpolicy_binding_module.html) | ✅ |
 | [tunneltrafficpolicy](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/tunneltrafficpolicy_module.html) | ✅ |
 | [ulfdserver](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/ulfdserver_module.html) | ✅ |
-| urlfilteringcategorization | ❌ |
+| [urlfilteringcategorization](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/urlfilteringcategorization_module.html) | ✅ |
 | [urlfilteringparameter](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/urlfilteringparameter_module.html) | ✅ |
 | [userprotocol](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/userprotocol_module.html) | ✅ |
 | [uservserver](https://citrix.github.io/citrix-adc-ansible-modules/collections/netscaler/adc/uservserver_module.html) | ✅ |

@@ -53,7 +53,7 @@ options:
   apptokentimeout:
     description:
       - The timeout value in seconds for tokens to access XenMobile applications
-    type: int
+    type: float
     default: 100
   authorizationgroup:
     description:
@@ -141,7 +141,7 @@ options:
     description:
       - Time, in minutes, after which to time out the user session if Citrix Gateway
         does not detect mouse or keyboard activity.
-    type: int
+    type: float
   clientlessmodeurlencoding:
     choices:
       - TRANSPARENT
@@ -305,11 +305,11 @@ options:
       - Force a disconnection from the Citrix Gateway Plug-in with Citrix Gateway
         after a specified number of minutes. If the session closes, the user must
         log on again.
-    type: int
+    type: float
   forcedtimeoutwarning:
     description:
       - Number of minutes to warn a user before the user session is disconnected.
-    type: int
+    type: float
   fqdnspoofedip:
     description:
       - Spoofed IP address range that can be used by client for FQDN based split tunneling
@@ -444,7 +444,7 @@ options:
     description:
       - Validity of MDX Token in minutes. This token is used for mdx services to access
         backend and valid  HEAD and GET request.
-    type: int
+    type: float
     default: 10
   netmask:
     description:
@@ -527,7 +527,7 @@ options:
   sesstimeout:
     description:
       - Number of minutes after which the session times out.
-    type: int
+    type: float
     default: 30
   smartgroup:
     description:

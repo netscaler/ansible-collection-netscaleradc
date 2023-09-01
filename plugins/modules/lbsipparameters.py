@@ -72,7 +72,7 @@ options:
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.
-    type: int
+    type: float
     default: 100
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

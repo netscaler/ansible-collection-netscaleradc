@@ -104,7 +104,7 @@ options:
   clttimeout:
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: int
+    type: float
   cmp:
     choices:
       - 'YES'
@@ -135,7 +135,7 @@ options:
         new clients are load balanced among other available services. After the delay
         time expires, no requests are sent to the service, and the service is marked
         as unavailable (OUT OF SERVICE).
-    type: int
+    type: float
   dnsprofilename:
     description:
       - Name of the DNS profile to be associated with the service. DNS profile properties
@@ -165,7 +165,7 @@ options:
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
-    type: int
+    type: float
   healthmonitor:
     choices:
       - 'YES'
@@ -193,17 +193,17 @@ options:
   maxbandwidth:
     description:
       - Maximum bandwidth, in Kbps, allocated to the service.
-    type: int
+    type: float
   maxclient:
     description:
       - Maximum number of simultaneous open connections to the service.
-    type: int
+    type: float
   maxreq:
     description:
       - 'Maximum number of requests that can be sent on a persistent connection to
         the service. '
       - 'Note: Connection requests beyond this value are rejected.'
-    type: int
+    type: float
   monconnectionclose:
     choices:
       - RESET
@@ -221,7 +221,7 @@ options:
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
-    type: int
+    type: float
   name:
     description:
       - Name for the service. Must begin with an ASCII alphabetic or underscore (_)
@@ -280,7 +280,7 @@ options:
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: int
+    type: float
   servername:
     description:
       - Name of the server that hosts the service.
@@ -356,7 +356,7 @@ options:
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: int
+    type: float
   tcpb:
     choices:
       - 'YES'
@@ -373,7 +373,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   useproxyport:
     choices:
       - 'YES'
@@ -403,7 +403,7 @@ options:
         weight assigned to its binding with the service determines how much the monitor
         contributes toward keeping the health of the service above the value configured
         for the Monitor Threshold parameter.
-    type: int
+    type: float
   service_lbmonitor_binding:
     type: dict
     description: Bindings for service_lbmonitor_binding resource

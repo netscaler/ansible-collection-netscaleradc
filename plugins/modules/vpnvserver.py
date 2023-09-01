@@ -131,7 +131,7 @@ options:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
-    type: int
+    type: float
   httpprofilename:
     description:
       - Name of the HTTP profile to assign to this virtual server.
@@ -219,7 +219,7 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: int
+    type: float
     default: 101
   loginonce:
     choices:
@@ -250,11 +250,11 @@ options:
       - Maximum number of concurrent user sessions allowed on this virtual server.
         The actual number of users allowed to log on to this virtual server depends
         on the total number of user licenses.
-    type: int
+    type: float
   maxloginattempts:
     description:
       - Maximum number of logon attempts
-    type: int
+    type: float
   name:
     description:
       - Name for the Citrix Gateway virtual server. Must begin with an ASCII alphabetic
@@ -295,7 +295,7 @@ options:
         range of IP addresses begins with the address specified by the IP Address
         parameter. '
       - In the configuration utility, select Network VServer to enter a range.
-    type: int
+    type: float
     default: 1
   rdpserverprofilename:
     description:

@@ -28,7 +28,7 @@ options:
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
-    type: int
+    type: float
     default: 16
   customreqhdrs:
     description:

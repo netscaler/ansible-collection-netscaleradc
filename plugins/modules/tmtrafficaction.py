@@ -28,7 +28,7 @@ options:
     description:
       - Time interval, in minutes, of user inactivity after which the connection is
         closed.
-    type: int
+    type: float
   forcedtimeout:
     choices:
       - START
@@ -40,7 +40,7 @@ options:
   forcedtimeoutval:
     description:
       - Time interval, in minutes, for which force timer should be set.
-    type: int
+    type: float
   formssoaction:
     description:
       - Name of the configured form-based single sign-on profile.

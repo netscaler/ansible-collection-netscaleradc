@@ -27,7 +27,7 @@ options:
   announcemulticount:
     description:
       - Integer value that identify the number announce message to be send.
-    type: int
+    type: float
     default: 10
   mapping:
     choices:
@@ -41,12 +41,12 @@ options:
     description:
       - Integer value that identify the maximum mapping lifetime (in seconds) for
         a pcp profile. default(86400s = 24Hours).
-    type: int
+    type: float
   minmaplife:
     description:
       - Integer value that identify the minimum mapping lifetime (in seconds) for
         a pcp profile. default(120s)
-    type: int
+    type: float
   name:
     description:
       - 'Name for the PCP Profile. Must begin with an ASCII alphanumeric or underscore

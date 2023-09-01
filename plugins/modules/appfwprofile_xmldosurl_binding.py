@@ -101,7 +101,7 @@ options:
   xmlmaxattributenamelength:
     description:
       - Specify the longest name of any XML attribute. Protects against overflow attacks.
-    type: int
+    type: float
   xmlmaxattributenamelengthcheck:
     choices:
       - 'ON'
@@ -113,7 +113,7 @@ options:
     description:
       - Specify maximum number of attributes per XML element. Protects against overflow
         attacks.
-    type: int
+    type: float
   xmlmaxattributescheck:
     choices:
       - 'ON'
@@ -125,7 +125,7 @@ options:
     description:
       - Specify the longest value of any XML attribute. Protects against overflow
         attacks.
-    type: int
+    type: float
   xmlmaxattributevaluelengthcheck:
     choices:
       - 'ON'
@@ -137,7 +137,7 @@ options:
     description:
       - Specify the maximum size of CDATA. Protects against overflow attacks and large
         quantities of unparsed data within XML messages.
-    type: int
+    type: float
   xmlmaxchardatalengthcheck:
     choices:
       - 'ON'
@@ -149,7 +149,7 @@ options:
     description:
       - Specify the maximum number of children allowed per XML element. Protects against
         overflow attacks.
-    type: int
+    type: float
   xmlmaxelementchildrencheck:
     choices:
       - 'ON'
@@ -161,7 +161,7 @@ options:
     description:
       - Maximum nesting (depth) of XML elements. This check protects against documents
         that have excessive hierarchy depths.
-    type: int
+    type: float
   xmlmaxelementdepthcheck:
     choices:
       - 'ON'
@@ -173,7 +173,7 @@ options:
     description:
       - Specify the longest name of any element (including the expanded namespace)
         to protect against overflow attacks.
-    type: int
+    type: float
   xmlmaxelementnamelengthcheck:
     choices:
       - 'ON'
@@ -185,7 +185,7 @@ options:
     description:
       - Specify the maximum number of XML elements allowed. Protects against overflow
         attacks.
-    type: int
+    type: float
   xmlmaxelementscheck:
     choices:
       - 'ON'
@@ -197,7 +197,7 @@ options:
     description:
       - Specify maximum entity expansion depth. Protects aganist Entity Expansion
         Attack.
-    type: int
+    type: float
   xmlmaxentityexpansiondepthcheck:
     choices:
       - 'ON'
@@ -209,7 +209,7 @@ options:
     description:
       - Specify maximum allowed number of entity expansions. Protects aganist Entity
         Expansion Attack.
-    type: int
+    type: float
   xmlmaxentityexpansionscheck:
     choices:
       - 'ON'
@@ -220,7 +220,7 @@ options:
   xmlmaxfilesize:
     description:
       - Specify the maximum size of XML messages. Protects against overflow attacks.
-    type: int
+    type: float
   xmlmaxfilesizecheck:
     choices:
       - 'ON'
@@ -231,7 +231,7 @@ options:
   xmlmaxnamespaces:
     description:
       - Specify maximum number of active namespaces. Protects against overflow attacks.
-    type: int
+    type: float
   xmlmaxnamespacescheck:
     choices:
       - 'ON'
@@ -242,7 +242,7 @@ options:
   xmlmaxnamespaceurilength:
     description:
       - Specify the longest URI of any XML namespace. Protects against overflow attacks.
-    type: int
+    type: float
   xmlmaxnamespaceurilengthcheck:
     choices:
       - 'ON'
@@ -253,7 +253,7 @@ options:
   xmlmaxnodes:
     description:
       - Specify the maximum number of XML nodes. Protects against overflow attacks.
-    type: int
+    type: float
   xmlmaxnodescheck:
     choices:
       - 'ON'
@@ -264,15 +264,15 @@ options:
   xmlmaxsoaparrayrank:
     description:
       - XML Max Individual SOAP Array Rank. This is the dimension of the SOAP array.
-    type: int
+    type: float
   xmlmaxsoaparraysize:
     description:
       - XML Max Total SOAP Array Size. Protects against SOAP Array Abuse attack.
-    type: int
+    type: float
   xmlminfilesize:
     description:
       - Enforces minimum message size.
-    type: int
+    type: float
   xmlminfilesizecheck:
     choices:
       - 'ON'

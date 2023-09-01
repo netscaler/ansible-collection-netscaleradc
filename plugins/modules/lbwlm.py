@@ -32,7 +32,7 @@ options:
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.
-    type: int
+    type: float
     default: 2
   lbuid:
     description:

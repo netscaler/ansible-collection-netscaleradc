@@ -52,7 +52,7 @@ options:
   buffersize:
     description:
       - TCP buffering size, in bytes.
-    type: int
+    type: float
     default: 8190
   burstratecontrol:
     choices:
@@ -75,11 +75,11 @@ options:
   clientiptcpoptionnumber:
     description:
       - ClientIP TCP Option number
-    type: int
+    type: float
   delayedack:
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
-    type: int
+    type: float
     default: 100
   dropestconnontimeout:
     choices:
@@ -108,7 +108,7 @@ options:
   dupackthresh:
     description:
       - TCP dupack threshold.
-    type: int
+    type: float
     default: 3
   dynamicreceivebuffering:
     choices:
@@ -177,7 +177,7 @@ options:
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
-    type: int
+    type: float
     default: 4
   ka:
     choices:
@@ -191,17 +191,17 @@ options:
     description:
       - Duration, in seconds, for the connection to be idle, before sending a keep-alive
         (KA) probe.
-    type: int
+    type: float
   kamaxprobes:
     description:
       - Number of keep-alive (KA) probes to be sent when not acknowledged, before
         assuming the peer to be down.
-    type: int
+    type: float
   kaprobeinterval:
     description:
       - Time interval, in seconds, before the next keep-alive (KA) probe, if the peer
         does not respond.
-    type: int
+    type: float
   kaprobeupdatelastactivity:
     choices:
       - ENABLED
@@ -213,22 +213,22 @@ options:
   maxburst:
     description:
       - Maximum number of TCP segments allowed in a burst.
-    type: int
+    type: float
     default: 6
   maxcwnd:
     description:
       - TCP Maximum Congestion Window.
-    type: int
+    type: float
     default: 524288
   maxpktpermss:
     description:
       - Maximum number of TCP packets allowed per maximum segment size (MSS).
-    type: int
+    type: float
   minrto:
     description:
       - Minimum retransmission timeout, in milliseconds, specified in 10-millisecond
         increments (value must yield a whole number if divided by  10).
-    type: int
+    type: float
     default: 1000
   mpcapablecbit:
     choices:
@@ -269,11 +269,11 @@ options:
     description:
       - MPTCP session timeout in seconds. If this value is not set, idle MPTCP sessions
         are flushed after vserver's client idle timeout.
-    type: int
+    type: float
   mss:
     description:
       - Maximum number of octets to allow in a TCP data segment.
-    type: int
+    type: float
   nagle:
     choices:
       - ENABLED
@@ -296,18 +296,18 @@ options:
   oooqsize:
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
-    type: int
+    type: float
     default: 64
   pktperretx:
     description:
       - Maximum limit on the number of packets that should be retransmitted on receiving
         a partial ACK.
-    type: int
+    type: float
     default: 1
   rateqmax:
     description:
       - Maximum connection queue size in bytes, when BurstRateControl is used
-    type: int
+    type: float
   rstmaxack:
     choices:
       - ENABLED
@@ -337,7 +337,7 @@ options:
   sendbuffsize:
     description:
       - TCP Send Buffer Size
-    type: int
+    type: float
     default: 8190
   sendclientportintcpoption:
     choices:
@@ -352,12 +352,12 @@ options:
     description:
       - Multiplier that determines the rate at which slow start increases the size
         of the TCP transmission window after each acknowledgement of successful transmission.
-    type: int
+    type: float
     default: 2
   slowstartthreshold:
     description:
       - TCP Slow Start Threhsold Value.
-    type: int
+    type: float
     default: 524288
   spoofsyndrop:
     choices:
@@ -399,7 +399,7 @@ options:
     description:
       - TCP FastOpen Cookie size. This accepts only even numbers. Odd number is trimmed
         down to nearest even number.
-    type: int
+    type: float
     default: 8
   tcpmode:
     choices:
@@ -412,7 +412,7 @@ options:
   tcprate:
     description:
       - TCP connection payload send rate in Kb/s
-    type: int
+    type: float
   tcpsegoffload:
     choices:
       - AUTOMATIC
@@ -442,7 +442,7 @@ options:
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when window scaling is enabled.
-    type: int
+    type: float
     default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

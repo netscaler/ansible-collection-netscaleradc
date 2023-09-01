@@ -95,7 +95,7 @@ options:
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time.
-    type: int
+    type: float
   nssrvrhdr:
     description:
       - The server header value to be inserted. If no explicit header is specified

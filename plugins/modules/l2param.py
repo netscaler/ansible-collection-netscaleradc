@@ -48,7 +48,7 @@ options:
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
-    type: int
+    type: float
     default: 300
   garponvridintf:
     choices:
@@ -78,7 +78,7 @@ options:
   maxbridgecollision:
     description:
       - Maximum bridge collision for loop detection
-    type: int
+    type: float
     default: 20
   mbfinstlearning:
     choices:
@@ -92,7 +92,7 @@ options:
     description:
       - When mbf_instant_learning is enabled, learn any changes in peer's MAC after
         this time interval, which is in 10ms ticks.
-    type: int
+    type: float
     default: 10
   proxyarp:
     choices:

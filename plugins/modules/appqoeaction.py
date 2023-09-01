@@ -42,7 +42,7 @@ options:
         If the delay statistics gathered for the matching request exceed the specified
         delay, configured action triggered for that request, if there is no action
         then requests are dropped to the lowest priority level
-    type: int
+    type: float
   dosaction:
     choices:
       - SimpleResponse
@@ -60,7 +60,7 @@ options:
     description:
       - Maximum number of concurrent connections that can be open for requests that
         matches with rule.
-    type: int
+    type: float
   name:
     description:
       - Name for the AppQoE action. Must begin with a letter, number, or the underscore
@@ -71,7 +71,7 @@ options:
   numretries:
     description:
       - Retry count
-    type: int
+    type: float
     default: 3
   polqdepth:
     description:
@@ -79,7 +79,7 @@ options:
         requests queued for the policy binding this action is attached to) increases
         to the specified polqDepth value, subsequent requests are dropped to the lowest
         priority level.
-    type: int
+    type: float
   priority:
     choices:
       - HIGH
@@ -99,7 +99,7 @@ options:
         of requests in the queue of that particular priorirty) on the virtual server
         to which this policy is bound, increases to the specified qDepth value, subsequent
         requests are dropped to the lowest priority level.
-    type: int
+    type: float
   respondwith:
     choices:
       - ACS
@@ -123,7 +123,7 @@ options:
   retryontimeout:
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers
-    type: int
+    type: float
   tcpprofile:
     description:
       - Bind TCP Profile based on L2/L3/L7 parameters.

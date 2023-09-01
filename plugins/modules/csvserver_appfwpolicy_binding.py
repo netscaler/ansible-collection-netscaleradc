@@ -69,7 +69,7 @@ options:
   priority:
     description:
       - Priority for the policy.
-    type: int
+    type: float
   targetlbvserver:
     description:
       - Name of the Load Balancing virtual server to which the content is switched,

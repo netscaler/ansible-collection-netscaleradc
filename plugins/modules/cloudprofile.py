@@ -27,7 +27,7 @@ options:
   azurepollperiod:
     description:
       - Azure polling period (in seconds)
-    type: int
+    type: float
     default: 60
   azuretagname:
     description:
@@ -94,7 +94,7 @@ options:
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
-    type: int
+    type: float
   graceful:
     choices:
       - 'YES'

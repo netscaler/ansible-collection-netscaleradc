@@ -45,7 +45,7 @@ options:
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
-    type: int
+    type: float
     default: 1280
   nat64zerochecksum:
     choices:
@@ -60,7 +60,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

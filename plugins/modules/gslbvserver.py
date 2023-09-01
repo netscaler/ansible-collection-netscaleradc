@@ -60,7 +60,7 @@ options:
       - A non zero value enables the feature whose minimum value is 2 minutes. The
         feature can be disabled by setting the value to zero. The created session
         is in effect for a specific client per domain.
-    type: int
+    type: float
   backupvserver:
     description:
       - Name of the backup GSLB virtual server to which the appliance should to forward
@@ -96,7 +96,7 @@ options:
   cookietimeout:
     description:
       - Timeout, in minutes, for the GSLB site cookie.
-    type: int
+    type: float
   disableprimaryondown:
     choices:
       - ENABLED
@@ -216,19 +216,19 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   orderthreshold:
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
-    type: int
+    type: float
   persistenceid:
     description:
       - The persistence ID for the GSLB virtual server. The ID is a positive integer
         that enables GSLB sites to identify the GSLB virtual server, and is required
         if source IP address based or spill over based persistence is enabled on the
         virtual server.
-    type: int
+    type: float
   persistencetype:
     choices:
       - SOURCEIP
@@ -294,7 +294,7 @@ options:
       - TTL, in seconds, for all internally created site domains (created when a site
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
-    type: int
+    type: float
   sobackupaction:
     choices:
       - DROP
@@ -342,7 +342,7 @@ options:
   sopersistencetimeout:
     description:
       - Timeout for spillover persistence, in minutes.
-    type: int
+    type: float
     default: 2
   sothreshold:
     description:
@@ -350,7 +350,7 @@ options:
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
-    type: int
+    type: float
   state:
     choices:
       - ENABLED
@@ -362,7 +362,7 @@ options:
   timeout:
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
-    type: int
+    type: float
     default: 2
   toggleorder:
     choices:
@@ -381,27 +381,27 @@ options:
         between sites whose RTT values are within the specified tolerance. If the
         tolerance is 0 (zero), the appliance always sends clients the IP address of
         the site with the lowest RTT.
-    type: int
+    type: float
   ttl:
     description:
       - Time to live (TTL) for the domain.
-    type: int
+    type: float
   v6netmasklen:
     description:
       - Number of bits to consider, in an IPv6 source IP address, for creating the
         hash that is required by the SOURCEIPHASH load balancing method.
-    type: int
+    type: float
     default: 128
   v6persistmasklen:
     description:
       - Number of bits to consider in an IPv6 source IP address when creating source
         IP address based persistence sessions.
-    type: int
+    type: float
     default: 128
   weight:
     description:
       - Weight for the service.
-    type: int
+    type: float
   gslbvserver_domain_binding:
     type: dict
     description: Bindings for gslbvserver_domain_binding resource

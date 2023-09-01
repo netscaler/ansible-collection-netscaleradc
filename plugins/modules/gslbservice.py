@@ -54,7 +54,7 @@ options:
     description:
       - Idle time, in seconds, after which a client connection is terminated. Applicable
         if connection proxy based site persistence is used.
-    type: int
+    type: float
   cnameentry:
     description:
       - Canonical name of the GSLB service. Used in CNAME-based GSLB.
@@ -67,7 +67,7 @@ options:
     description:
       - Timeout value, in minutes, for the cookie, when cookie based site persistence
         is enabled.
-    type: int
+    type: float
   downstateflush:
     choices:
       - ENABLED
@@ -82,7 +82,7 @@ options:
     description:
       - Unique hash identifier for the GSLB service, used by hash based load balancing
         methods.
-    type: int
+    type: float
   healthmonitor:
     choices:
       - 'YES'
@@ -107,20 +107,20 @@ options:
         VPN virtual server that is represented by this GSLB service. A GSLB service
         whose user count reaches the maximum is not considered when a GSLB decision
         is made, until the count drops below the maximum.
-    type: int
+    type: float
   maxbandwidth:
     description:
       - Integer specifying the maximum bandwidth allowed for the service. A GSLB service
         whose bandwidth reaches the maximum is not considered when a GSLB decision
         is made, until its bandwidth consumption drops below the maximum.
-    type: int
+    type: float
   maxclient:
     description:
       - The maximum number of open connections that the service can support at any
         given time. A GSLB service whose connection count reaches the maximum is not
         considered when a GSLB decision is made, until the connection count drops
         below the maximum.
-    type: int
+    type: float
   monitor_name_svc:
     description:
       - Name of the monitor to bind to the service.
@@ -131,24 +131,24 @@ options:
         of the monitors that are bound to this GSLB service and are in the UP state
         is not equal to or greater than this threshold value, the service is marked
         as DOWN.
-    type: int
+    type: float
   naptrdomainttl:
     description:
       - Modify the TTL of the internally created naptr domain
-    type: int
+    type: float
     default: 3600
   naptrorder:
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
-    type: int
+    type: float
     default: 1
   naptrpreference:
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
-    type: int
+    type: float
     default: 1
   naptrreplacement:
     description:
@@ -248,7 +248,7 @@ options:
     description:
       - Idle time, in seconds, after which a server connection is terminated. Applicable
         if connection proxy based site persistence is used.
-    type: int
+    type: float
   viewip:
     description:
       - IP address to be used for the given view
@@ -264,7 +264,7 @@ options:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
         the state of the service.
-    type: int
+    type: float
   gslbservice_dnsview_binding:
     type: dict
     description: Bindings for gslbservice_dnsview_binding resource

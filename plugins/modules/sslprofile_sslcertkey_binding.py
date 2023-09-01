@@ -29,7 +29,7 @@ options:
   cipherpriority:
     description:
       - Priority of the cipher binding
-    type: int
+    type: float
   name:
     description:
       - Name of the SSL profile.

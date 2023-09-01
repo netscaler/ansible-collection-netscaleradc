@@ -29,13 +29,13 @@ options:
   td:
     description:
       - Integer value that uniquely identifies a traffic domain.
-    type: int
+    type: float
   vxlan:
     description:
       - ID of the VXLAN to bind to this traffic domain. More than one VXLAN can be
         bound to a traffic domain, but the same VXLAN cannot be a part of multiple
         traffic domains.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -43,14 +43,14 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   recordid:
     description:
       - Unique, internally generated record ID. View the details of the CAA record
         to obtain its record ID. Records can be removedby either specifying the domain
         name and record id OR by specifying domain name and all other CAA record attributes
         as was supplied during the add command.
-    type: int
+    type: float
   tag:
     description:
       - String that represents the identifier of the property represented by the CAA
@@ -68,7 +68,7 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: int
+    type: float
     default: 3600
   type:
     choices:

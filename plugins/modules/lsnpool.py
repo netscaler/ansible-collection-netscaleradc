@@ -32,7 +32,7 @@ options:
       - ''
       - When the queue size is full, the next port deallocated is reallocated immediately
         for a new LSN session.
-    type: int
+    type: float
     default: 65536
   nattype:
     choices:
@@ -112,7 +112,7 @@ options:
       - '* Address-Dependent filtering and Address-Port-Dependent filtering'
       - '* Dynamic NAT with port block allocation'
       - In these cases, ports are immediately reallocated.
-    type: int
+    type: float
   lsnpool_lsnip_binding:
     type: dict
     description: Bindings for lsnpool_lsnip_binding resource

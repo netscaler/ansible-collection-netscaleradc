@@ -233,7 +233,7 @@ options:
   refreshinterval:
     description:
       - Interval at which services are monitored for necessary configuration.
-    type: int
+    type: float
     default: 1440
   resourceuri:
     description:
@@ -245,7 +245,7 @@ options:
         ADC allows on an incoming token. For example, if skewTime is 10, then token
         would be valid from (current time - 10) min to (current time + 10) min, ie
         20min in all.
-    type: int
+    type: float
     default: 5
   tenantid:
     description:

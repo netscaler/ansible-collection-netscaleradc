@@ -35,7 +35,7 @@ options:
   id:
     description:
       - An integer that uniquely identifies the bridge group.
-    type: int
+    type: float
   ipv6dynamicrouting:
     choices:
       - ENABLED

@@ -29,7 +29,7 @@ options:
   index:
     description:
       - The serviceindex of each servicefunction in path.
-    type: int
+    type: float
   servicefunction:
     description:
       - List of service functions constituting the chain.

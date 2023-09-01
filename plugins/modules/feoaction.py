@@ -27,7 +27,7 @@ options:
   cachemaxage:
     description:
       - Maxage for cache extension.
-    type: int
+    type: float
     default: 30
   clientsidemeasurements:
     description:

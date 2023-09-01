@@ -34,13 +34,13 @@ options:
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with
         a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c,
         where 3c is the hexadecimal representation of 60.
-    type: int
+    type: float
   ownernode:
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, owner node is
         displayed as ALL and one node is dynamically elected as the owner.
-    type: int
+    type: float
   preemption:
     choices:
       - ENABLED
@@ -59,12 +59,12 @@ options:
       - Preemption delay time, in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
-    type: int
+    type: float
   priority:
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
-    type: int
+    type: float
     default: 255
   sharing:
     choices:
@@ -79,7 +79,7 @@ options:
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
-    type: int
+    type: float
   tracking:
     choices:
       - NONE

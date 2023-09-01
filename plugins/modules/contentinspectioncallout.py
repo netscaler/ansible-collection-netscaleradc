@@ -78,7 +78,7 @@ options:
   serverport:
     description:
       - Port of the Content Inspection server.
-    type: int
+    type: float
     default: 1344
   type:
     choices:

@@ -30,7 +30,7 @@ options:
         the LLDP information in its database before discarding or removing it. The
         duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter
         value multiplied by the timer (Timer) parameter value.
-    type: int
+    type: float
     default: 4
   mode:
     choices:
@@ -47,7 +47,7 @@ options:
     description:
       - Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the
         Citrix ADC sends to a directly connected device.
-    type: int
+    type: float
     default: 30
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

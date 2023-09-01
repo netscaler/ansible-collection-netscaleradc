@@ -44,7 +44,7 @@ options:
   ownernode:
     description:
       - ID(s) of cluster node(s) on which command is to be executed
-    type: int
+    type: float
   poolname:
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore

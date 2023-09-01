@@ -130,7 +130,7 @@ options:
       - Index/ID of the attribute specification at Identity Provider (IdP). IdP will
         locate attributes requested by SP using this index and send those attributes
         in Assertion
-    type: int
+    type: float
     default: 255
   attributes:
     description:
@@ -299,7 +299,7 @@ options:
   metadatarefreshinterval:
     description:
       - Interval in minutes for fetching metadata from specified metadata URL
-    type: int
+    type: float
     default: 3600
   metadataurl:
     description:
@@ -343,7 +343,7 @@ options:
   samlacsindex:
     description:
       - Index/ID of the metadata entry corresponding to this configuration.
-    type: int
+    type: float
     default: 255
   samlbinding:
     choices:
@@ -419,7 +419,7 @@ options:
         ADC ServiceProvider allows on an incoming assertion. For example, if skewTime
         is 10, then assertion would be valid from (current time - 10) min to (current
         time + 10) min, ie 20min in all.
-    type: int
+    type: float
     default: 5
   statechecks:
     description:

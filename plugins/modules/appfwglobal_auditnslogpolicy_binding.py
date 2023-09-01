@@ -86,7 +86,7 @@ options:
   priority:
     description:
       - The priority of the policy.
-    type: int
+    type: float
   state:
     choices:
       - ENABLED

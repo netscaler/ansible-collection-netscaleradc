@@ -43,7 +43,7 @@ options:
   sessionidletimeout:
     description:
       - PCOIP Idle Session timeout
-    type: int
+    type: float
     default: 180
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

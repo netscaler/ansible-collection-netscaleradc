@@ -41,7 +41,7 @@ options:
         system will not be sent to the service. Instead, they will be load balanced
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
-    type: int
+    type: float
   autodisablegraceful:
     choices:
       - 'YES'
@@ -105,7 +105,7 @@ options:
   clttimeout:
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: int
+    type: float
   cmp:
     choices:
       - 'YES'
@@ -127,7 +127,7 @@ options:
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: int
+    type: float
   delay:
     description:
       - Time, in seconds, allocated for a shutdown of the services in the service
@@ -136,7 +136,7 @@ options:
         are load balanced among other available services. After the delay time expires,
         no requests are sent to the service, and the service is marked as unavailable
         (OUT OF SERVICE).
-    type: int
+    type: float
   downstateflush:
     choices:
       - ENABLED
@@ -150,7 +150,7 @@ options:
   dup_weight:
     description:
       - weight of the monitor that is bound to servicegroup.
-    type: int
+    type: float
   graceful:
     choices:
       - 'YES'
@@ -164,7 +164,7 @@ options:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: int
+    type: float
   healthmonitor:
     choices:
       - 'YES'
@@ -193,17 +193,17 @@ options:
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the service
         group.
-    type: int
+    type: float
   maxclient:
     description:
       - Maximum number of simultaneous open connections for the service group.
-    type: int
+    type: float
   maxreq:
     description:
       - 'Maximum number of requests that can be sent on a persistent connection to
         the service group. '
       - 'Note: Connection requests beyond this value are rejected.'
-    type: int
+    type: float
   memberport:
     description:
       - member port
@@ -226,7 +226,7 @@ options:
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
-    type: int
+    type: float
   nameserver:
     description:
       - Specify the nameserver to which the query for bound domain needs to be sent.
@@ -243,7 +243,7 @@ options:
   order:
     description:
       - Order number to be assigned to the servicegroup member
-    type: int
+    type: float
   pathmonitor:
     choices:
       - 'YES'
@@ -274,7 +274,7 @@ options:
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: int
+    type: float
   servername:
     description:
       - Name of the server to which to bind the service group.
@@ -358,7 +358,7 @@ options:
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: int
+    type: float
   tcpb:
     choices:
       - 'YES'
@@ -376,7 +376,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   useproxyport:
     choices:
       - 'YES'
@@ -403,7 +403,7 @@ options:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: int
+    type: float
   servicegroup_lbmonitor_binding:
     type: dict
     description: Bindings for servicegroup_lbmonitor_binding resource

@@ -71,7 +71,7 @@ options:
   backuppersistencetimeout:
     description:
       - Time period for which backup persistence is in effect.
-    type: int
+    type: float
     default: 2
   backupvserver:
     description:
@@ -114,7 +114,7 @@ options:
       - 9000 seconds for other TCP-based services.
       - 120 seconds for DNS-based services.
       - 120 seconds for other UDP-based services.
-    type: int
+    type: float
   comment:
     description:
       - Information about this virtual server.
@@ -132,7 +132,7 @@ options:
   cookietimeout:
     description:
       - '0'
-    type: int
+    type: float
   dbprofilename:
     description:
       - Name of the DB profile.
@@ -276,7 +276,7 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: int
+    type: float
     default: 101
   mssqlserverversion:
     choices:
@@ -295,17 +295,17 @@ options:
   mysqlcharacterset:
     description:
       - The character set returned by the mysql vserver.
-    type: int
+    type: float
     default: 8
   mysqlprotocolversion:
     description:
       - The protocol version returned by the mysql vserver.
-    type: int
+    type: float
     default: 10
   mysqlservercapabilities:
     description:
       - The server capabilities returned by the mysql vserver.
-    type: int
+    type: float
     default: 41613
   mysqlserverversion:
     description:
@@ -355,7 +355,7 @@ options:
   persistenceid:
     description:
       - '0'
-    type: int
+    type: float
   persistencetype:
     choices:
       - SOURCEIP
@@ -451,7 +451,7 @@ options:
       - Number of consecutive IP addresses, starting with the address specified by
         the IP Address parameter, to include in a range of addresses assigned to this
         virtual server.
-    type: int
+    type: float
     default: 1
   redirectfromport:
     description:
@@ -533,7 +533,7 @@ options:
   sitedomainttl:
     description:
       - '0'
-    type: int
+    type: float
   sobackupaction:
     choices:
       - DROP
@@ -567,14 +567,14 @@ options:
   sopersistencetimeout:
     description:
       - Time-out value, in minutes, for spillover persistence.
-    type: int
+    type: float
     default: 2
   sothreshold:
     description:
       - Depending on the spillover method, the maximum number of connections or the
         maximum total bandwidth (Kbps) that a virtual server can handle before spillover
         occurs.
-    type: int
+    type: float
   state:
     choices:
       - ENABLED
@@ -624,20 +624,20 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   timeout:
     description:
       - Time period for which a persistence session is in effect.
-    type: int
+    type: float
     default: 2
   ttl:
     description:
       - '0'
-    type: int
+    type: float
   v6persistmasklen:
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
-    type: int
+    type: float
     default: 128
   vipheader:
     description:

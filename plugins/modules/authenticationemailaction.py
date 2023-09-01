@@ -64,7 +64,7 @@ options:
   timeout:
     description:
       - Time after which the code expires.
-    type: int
+    type: float
     default: 180
   type:
     choices:

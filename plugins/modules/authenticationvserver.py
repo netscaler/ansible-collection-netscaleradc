@@ -58,7 +58,7 @@ options:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
-    type: int
+    type: float
   ipv46:
     description:
       - IP address of the authentication virtual server, if a single IP address is
@@ -67,7 +67,7 @@ options:
   maxloginattempts:
     description:
       - Maximum Number of login Attempts
-    type: int
+    type: float
   name:
     description:
       - 'Name for the new authentication virtual server. '
@@ -105,7 +105,7 @@ options:
       - The new range of authentication virtual servers will have IP addresses consecutively
         numbered, starting with the primary address specified with the IP Address
         parameter.
-    type: int
+    type: float
     default: 1
   samesite:
     choices:
@@ -137,7 +137,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   authenticationvserver_auditnslogpolicy_binding:
     type: dict
     description: Bindings for authenticationvserver_auditnslogpolicy_binding resource

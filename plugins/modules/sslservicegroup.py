@@ -79,7 +79,7 @@ options:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: int
+    type: float
     default: 300
   snienable:
     choices:

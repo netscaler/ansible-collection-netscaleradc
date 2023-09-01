@@ -30,7 +30,7 @@ options:
       - DISABLED
     description:
       - Parameter to tune acl logging time
-    type: int
+    type: float
     default: 5000
   allowclasseipv4:
     choices:
@@ -84,7 +84,7 @@ options:
   icmpgenratethreshold:
     description:
       - NS generated ICMP pkts per 10ms rate threshold
-    type: int
+    type: float
     default: 100
   implicitaclallow:
     choices:

@@ -82,7 +82,7 @@ options:
   clttimeout:
     description:
       - Time-out value, in seconds, after which to terminate an idle client connection.
-    type: int
+    type: float
   comment:
     description:
       - Comments associated with this virtual server.
@@ -193,7 +193,7 @@ options:
     description:
       - Priority of the listen policy specified by the Listen Policy parameter. The
         lower the number, higher the priority.
-    type: int
+    type: float
     default: 101
   map:
     choices:
@@ -298,7 +298,7 @@ options:
       - Number of consecutive IP addresses, starting with the address specified by
         the IPAddress parameter, to include in a range of addresses assigned to this
         virtual server.
-    type: int
+    type: float
     default: 1
   redirect:
     choices:
@@ -362,7 +362,7 @@ options:
   sopersistencetimeout:
     description:
       - Time-out, in minutes, for spillover persistence.
-    type: int
+    type: float
   sothreshold:
     description:
       - For CONNECTION (or) DYNAMICCONNECTION spillover, the number of connections
@@ -370,7 +370,7 @@ options:
         the amount of incoming and outgoing traffic (in Kbps) before spillover. For
         HEALTH spillover, the percentage of active services (by weight) below which
         spillover occurs.
-    type: int
+    type: float
   srcipexpr:
     description:
       - Expression used to extract the source IP addresses from the requests originating
@@ -401,7 +401,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   useoriginipportforcache:
     choices:
       - 'YES'

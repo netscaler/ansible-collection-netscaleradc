@@ -36,7 +36,7 @@ options:
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
-    type: int
+    type: float
   domain:
     description:
       - Domain name of the server. For a domain based configuration, you must create
@@ -116,7 +116,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   translationip:
     description:
       - IP address used to transform the server's DNS-resolved IP address.

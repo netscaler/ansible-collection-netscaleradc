@@ -48,11 +48,11 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   port:
     description:
       - License server port.
-    type: int
+    type: float
   servername:
     description:
       - Fully qualified domain name of the License server.

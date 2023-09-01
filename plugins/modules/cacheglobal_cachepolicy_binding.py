@@ -76,7 +76,7 @@ options:
   priority:
     description:
       - Specifies the priority of the policy.
-    type: int
+    type: float
   type:
     choices:
       - REQ_OVERRIDE

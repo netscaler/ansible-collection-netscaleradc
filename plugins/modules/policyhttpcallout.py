@@ -40,7 +40,7 @@ options:
         responses.
       - "\t   Note that the calloutContentGroup definition may not be modified or\
         \ removed nor may it be used with other cache policies."
-    type: int
+    type: float
   comment:
     description:
       - Any comments to preserve information about this HTTP callout.

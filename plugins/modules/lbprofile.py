@@ -83,7 +83,7 @@ options:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory.
-    type: int
+    type: float
     default: 256
   lbprofilename:
     description:

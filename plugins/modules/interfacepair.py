@@ -27,7 +27,7 @@ options:
   id:
     description:
       - The Interface pair id
-    type: int
+    type: float
   ifnum:
     description:
       - The constituent interfaces in the interface pair

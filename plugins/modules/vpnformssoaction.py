@@ -56,7 +56,7 @@ options:
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.
-    type: int
+    type: float
     default: 8096
   ssosuccessrule:
     description:

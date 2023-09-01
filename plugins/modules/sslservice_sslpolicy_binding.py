@@ -54,7 +54,7 @@ options:
   priority:
     description:
       - The priority of the policies bound to this SSL service
-    type: int
+    type: float
   servicename:
     description:
       - Name of the SSL service for which to set advanced configuration.

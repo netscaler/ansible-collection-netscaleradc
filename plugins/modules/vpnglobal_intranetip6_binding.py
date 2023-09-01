@@ -39,7 +39,7 @@ options:
   numaddr:
     description:
       - The intranet ip address or range's netmask.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

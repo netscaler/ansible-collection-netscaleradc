@@ -192,7 +192,7 @@ options:
       - ''
       - The default port block size is 256 for Deterministic NAT, and 0 for Dynamic
         NAT.
-    type: int
+    type: float
   pptp:
     choices:
       - ENABLED
@@ -255,7 +255,7 @@ options:
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.
-    type: int
+    type: float
     default: 100
   lsngroup_ipsecalgprofile_binding:
     type: dict

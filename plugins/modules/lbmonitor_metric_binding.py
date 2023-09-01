@@ -34,11 +34,11 @@ options:
   metricthreshold:
     description:
       - Threshold to be used for that metric.
-    type: int
+    type: float
   metricweight:
     description:
       - The weight for the specified service metric with respect to others.
-    type: int
+    type: float
   monitorname:
     description:
       - Name of the monitor.

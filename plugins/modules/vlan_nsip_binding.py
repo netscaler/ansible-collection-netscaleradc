@@ -29,7 +29,7 @@ options:
   id:
     description:
       - Specifies the virtual LAN ID.
-    type: int
+    type: float
   ipaddress:
     description:
       - The IP address assigned to the VLAN.
@@ -48,7 +48,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

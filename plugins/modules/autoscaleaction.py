@@ -39,7 +39,7 @@ options:
   quiettime:
     description:
       - Time in seconds no other policy is evaluated or action is taken
-    type: int
+    type: float
     default: 300
   type:
     choices:
@@ -51,7 +51,7 @@ options:
   vmdestroygraceperiod:
     description:
       - Time in minutes a VM is kept in inactive state before destroying
-    type: int
+    type: float
     default: 10
   vserver:
     description:

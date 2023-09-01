@@ -42,7 +42,7 @@ options:
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in
         minutes)
-    type: int
+    type: float
   ipaddress:
     description:
       - Citrix ADC IP (NSIP) address of the appliance to add to the cluster. Must
@@ -56,7 +56,7 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   priority:
     description:
       - Preference for selecting a node as the configuration coordinator. The node
@@ -68,7 +68,7 @@ options:
       - 'Note: When priority is not configured for any of the nodes or if multiple
         nodes have the same priority, the cluster elects one of the nodes as the configuration
         coordinator.'
-    type: int
+    type: float
     default: 31
   state:
     choices:

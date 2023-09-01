@@ -39,18 +39,18 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   order:
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
-    type: int
+    type: float
   preference:
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
-    type: int
+    type: float
   recordid:
     description:
       - Unique, internally generated record ID. View the details of the naptr record
@@ -58,7 +58,7 @@ options:
         name and record id OR by specifying
       - domain name and all other naptr record attributes as was supplied during the
         add command.
-    type: int
+    type: float
   regexp:
     description:
       - The regular expression, that specifies the substitution expression for this
@@ -82,7 +82,7 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: int
+    type: float
     default: 3600
   type:
     choices:

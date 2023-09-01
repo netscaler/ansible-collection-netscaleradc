@@ -42,7 +42,7 @@ options:
   priority:
     description:
       - Specifies the priority of the timer policy.
-    type: int
+    type: float
   samplesize:
     description:
       - Denotes the sample size. Sample size value of 'x' means that previous '(x
@@ -50,7 +50,7 @@ options:
         present with the binding. For example, sample size of 10 means that there
         is a state of previous 9 policy evaluation results and also the current policy
         evaluation result.
-    type: int
+    type: float
     default: 3
   threshold:
     description:
@@ -58,7 +58,7 @@ options:
         'threshold size' number of times in 'sample size' to true, then the corresponding
         action is taken. Its value needs to be less than or equal to the sample size
         value.
-    type: int
+    type: float
     default: 3
   vserver:
     description:

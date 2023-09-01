@@ -111,12 +111,12 @@ options:
         minimum length is 8. User entered value can be greater than or equal to 8.
         Default mininum value is 1 when strong password is disabled. Maximum value
         is 127 in both cases.
-    type: int
+    type: float
   natpcbforceflushlimit:
     description:
       - Flush the system if the number of Network Address Translation Protocol Control
         Blocks (NATPCBs) exceeds this value.
-    type: int
+    type: float
     default: 2147483647
   natpcbrstontimeout:
     choices:
@@ -204,11 +204,11 @@ options:
         is enabled, Timeout can have values in the range [300-86400] seconds.
       - If Restrictedtimeout argument is disabled, Timeout can have values in the
         range [0, 10-100000000] seconds. Default value is 900 seconds.
-    type: int
+    type: float
   totalauthtimeout:
     description:
       - Total time a request can take for authentication/authorization
-    type: int
+    type: float
     default: 20
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

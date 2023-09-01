@@ -33,7 +33,7 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   servicegroupname:
     description:
       - The GSLB service group name bound to the selected GSLB virtual server.

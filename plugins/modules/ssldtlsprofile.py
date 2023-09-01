@@ -37,28 +37,28 @@ options:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
         Disabling parameter terminateSession terminates session immediately when bad
         MAC is detected in the connection.
-    type: int
+    type: float
     default: 100
   maxholdqlen:
     description:
       - Maximum number of datagrams that can be queued at DTLS layer for processing
-    type: int
+    type: float
     default: 32
   maxpacketsize:
     description:
       - Maximum number of packets to reassemble. This value helps protect against
         a fragmented packet attack.
-    type: int
+    type: float
     default: 120
   maxrecordsize:
     description:
       - Maximum size of records that can be sent if PMTU is disabled.
-    type: int
+    type: float
     default: 1459
   maxretrytime:
     description:
       - Wait for the specified time, in seconds, before resending the request.
-    type: int
+    type: float
     default: 3
   name:
     description:

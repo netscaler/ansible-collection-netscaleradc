@@ -35,13 +35,13 @@ options:
     description:
       - Positive integer used by the routing algorithms to determine preference for
         using this route. The lower the cost, the higher the preference.
-    type: int
+    type: float
   cost1:
     description:
       - 'The cost of a route is used to compare routes of the same type. The route
         having the lowest cost is the most preferred route. Possible values: 0 through
         65535. Default: 0.'
-    type: int
+    type: float
   detail:
     description:
       - Display a detailed view.
@@ -51,7 +51,7 @@ options:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
         protocols. A lower value is preferred.
-    type: int
+    type: float
     default: 1
   gateway:
     description:
@@ -115,17 +115,17 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   vlan:
     description:
       - VLAN as the gateway for this route.
-    type: int
+    type: float
   weight:
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    type: int
+    type: float
     default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

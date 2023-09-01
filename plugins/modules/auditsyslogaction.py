@@ -140,7 +140,7 @@ options:
   maxlogdatasizetohold:
     description:
       - Max size of log data that can be held in NSB chain of server info.
-    type: int
+    type: float
     default: 500
   name:
     description:

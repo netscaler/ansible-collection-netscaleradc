@@ -39,7 +39,7 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   servicegroupname:
     description:
       - Name of the service group.
@@ -51,7 +51,7 @@ options:
   weight:
     description:
       - Weight to assign to the specified service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

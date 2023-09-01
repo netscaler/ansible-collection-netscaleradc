@@ -83,7 +83,7 @@ options:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to
         network disruption or during fail-over.
-    type: int
+    type: float
     default: 60
   rdpcustomparams:
     description:

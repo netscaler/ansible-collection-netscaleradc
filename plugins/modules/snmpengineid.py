@@ -31,7 +31,7 @@ options:
   ownernode:
     description:
       - ID of the cluster node for which you are setting the engineid
-    type: int
+    type: float
     default: -1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

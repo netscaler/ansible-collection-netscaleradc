@@ -44,12 +44,12 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   recordid:
     description:
       - Unique, internally generated record ID. View the details of the TXT record
         to obtain its record ID. Mutually exclusive with the string parameter.
-    type: int
+    type: float
   ttl:
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
@@ -60,7 +60,7 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: int
+    type: float
     default: 3600
   type:
     choices:

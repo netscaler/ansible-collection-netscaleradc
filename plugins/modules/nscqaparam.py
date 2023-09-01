@@ -27,7 +27,7 @@ options:
   harqretxdelay:
     description:
       - HARQ retransmission delay (in ms).
-    type: int
+    type: float
   lr1coeflist:
     description:
       - coefficients values for Label1.
@@ -36,7 +36,7 @@ options:
     description:
       - Probability threshold values for LR model to differentiate between NET1 and
         reset(NET2 and NET3).
-    type: int
+    type: float
   lr2coeflist:
     description:
       - coefficients values for Label 2.
@@ -45,19 +45,19 @@ options:
     description:
       - Probability threshold values for LR model to differentiate between NET2 and
         NET3.
-    type: int
+    type: float
   minrttnet1:
     description:
       - MIN RTT (in ms) for the first network.
-    type: int
+    type: float
   minrttnet2:
     description:
       - MIN RTT (in ms) for the second network.
-    type: int
+    type: float
   minrttnet3:
     description:
       - MIN RTT (in ms) for the third network.
-    type: int
+    type: float
   net1cclscale:
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.

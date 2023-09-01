@@ -33,7 +33,7 @@ options:
   nodeid:
     description:
       - A number that uniquely identifies the cluster node.
-    type: int
+    type: float
   routemonitor:
     description:
       - The IP address (IPv4 or IPv6).

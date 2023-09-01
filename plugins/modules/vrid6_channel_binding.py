@@ -29,7 +29,7 @@ options:
   id:
     description:
       - Integer value that uniquely identifies a VMAC6 address.
-    type: int
+    type: float
   ifnum:
     description:
       - Interfaces to bind to the VMAC6, specified in (slot/port) notation (for example,

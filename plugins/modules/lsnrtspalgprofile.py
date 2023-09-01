@@ -31,7 +31,7 @@ options:
   rtspidletimeout:
     description:
       - Idle timeout for the rtsp sessions in seconds.
-    type: int
+    type: float
     default: 120
   rtspportrange:
     description:

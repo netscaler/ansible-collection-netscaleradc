@@ -29,7 +29,7 @@ options:
       - q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers
         that no CCA packet received to the initiated CCR. After this time Citrix ADC
         should send again CCR to PCRF server. !
-    type: int
+    type: float
   healthcheck:
     choices:
       - 'YES'
@@ -45,7 +45,7 @@ options:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
         the timer. !
-    type: int
+    type: float
     default: 30
   holdonsubscriberabsence:
     choices:
@@ -65,7 +65,7 @@ options:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
-    type: int
+    type: float
     default: 900
   negativettl:
     description:
@@ -80,7 +80,7 @@ options:
         from Radius as well if Radius is configued.
       - Zero value disables the Negative Sessions. And Citrix ADC does not install
         Negative sessions even if subscriber session could not be fetched. !
-    type: int
+    type: float
     default: 600
   negativettllimitedsuccess:
     choices:
@@ -95,7 +95,7 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   pcrfrealm:
     description:
       - PCRF realm is of type DiameterIdentity and contains the realm of PCRF to which
@@ -115,7 +115,7 @@ options:
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
-    type: int
+    type: float
     default: 3
   requesttimeout:
     description:
@@ -126,7 +126,7 @@ options:
         profile is also not configured an undef would be raised to expressions which
         use Subscriber attributes.
       - Zero disables the timeout. !
-    type: int
+    type: float
     default: 10
   revalidationtimeout:
     description:
@@ -134,7 +134,7 @@ options:
         be sent after any PCRF activity on a session. Any RAR or CCA message resets
         the timer.
       - Zero value disables the idle timeout. !
-    type: int
+    type: float
   service:
     description:
       - Name of DIAMETER/SSL_DIAMETER service corresponding to PCRF to which the Gx
@@ -149,7 +149,7 @@ options:
   servicepathvendorid:
     description:
       - The vendorid of the AVP in which PCRF sends service path for subscriber.
-    type: int
+    type: float
   vserver:
     description:
       - Name of the load balancing, or content switching vserver to which the Gx connections

@@ -33,7 +33,7 @@ options:
   priority:
     description:
       - The priority of the policy.
-    type: int
+    type: float
   username:
     description:
       - Name of the system-user entry to which to bind the command policy.

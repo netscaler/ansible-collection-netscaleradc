@@ -29,14 +29,14 @@ options:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         indicating an exponent that the remote QUIC endpoint should use, to decode
         the ACK Delay field in QUIC ACK frames sent by the Citrix ADC.
-    type: int
+    type: float
     default: 3
   activeconnectionidlimit:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the maximum number of QUIC connection IDs from the remote QUIC
         endpoint, that the Citrix ADC is willing to store.
-    type: int
+    type: float
     default: 3
   activeconnectionmigration:
     choices:
@@ -63,49 +63,49 @@ options:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial value, in bytes, for the maximum amount of data that
         can be sent on a QUIC connection.
-    type: int
+    type: float
     default: 1048576
   initialmaxstreamdatabidilocal:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for bidirectional QUIC
         streams initiated by the Citrix ADC.
-    type: int
+    type: float
     default: 262144
   initialmaxstreamdatabidiremote:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for bidirectional QUIC
         streams initiated by the remote QUIC endpoint.
-    type: int
+    type: float
     default: 262144
   initialmaxstreamdatauni:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial flow control limit, in bytes, for unidirectional streams
         initiated by the remote QUIC endpoint.
-    type: int
+    type: float
     default: 262144
   initialmaxstreamsbidi:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial maximum number of bidirectional streams the remote
         QUIC endpoint may initiate.
-    type: int
+    type: float
     default: 100
   initialmaxstreamsuni:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the initial maximum number of unidirectional streams the remote
         QUIC endpoint may initiate.
-    type: int
+    type: float
     default: 10
   maxackdelay:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the maximum amount of time, in milliseconds, by which the Citrix
         ADC will delay sending acknowledgments.
-    type: int
+    type: float
     default: 20
   maxidletimeout:
     description:
@@ -115,21 +115,21 @@ options:
         idle for longer than the minimum of the idle timeout values advertised by
         the Citrix ADC and the remote QUIC endpoint, and three times the current Probe
         Timeout (PTO).
-    type: int
+    type: float
     default: 180
   maxudpdatagramsperburst:
     description:
       - An integer value, specifying the maximum number of UDP datagrams that can
         be transmitted by the Citrix ADC in a single transmission burst on a QUIC
         connection.
-    type: int
+    type: float
     default: 8
   maxudppayloadsize:
     description:
       - An integer value advertised by the Citrix ADC to the remote QUIC endpoint,
         specifying the size of the largest UDP datagram payload, in bytes, that the
         Citrix ADC is willing to receive on a QUIC connection.
-    type: int
+    type: float
     default: 1472
   name:
     description:
@@ -142,13 +142,13 @@ options:
     description:
       - An integer value, specifying the validity period, in seconds, of address validation
         tokens issued through QUIC NEW_TOKEN frames sent by the Citrix ADC.
-    type: int
+    type: float
     default: 300
   retrytokenvalidityperiod:
     description:
       - An integer value, specifying the validity period, in seconds, of address validation
         tokens issued through QUIC Retry packets sent by the Citrix ADC.
-    type: int
+    type: float
     default: 10
   statelessaddressvalidation:
     choices:

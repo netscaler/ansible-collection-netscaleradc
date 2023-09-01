@@ -34,27 +34,27 @@ options:
       - Maximum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits.
-    type: int
+    type: float
     default: 10240
   maxconn:
     description:
       - Maximum number of concurrent connections that can be open in the partition.
         A zero value indicates no limit on number of open connections.
-    type: int
+    type: float
     default: 1024
   maxmemlimit:
     description:
       - Maximum memory, in megabytes, allocated to the partition.  A zero value indicates
         the memory is unlimited on the partition and it can consume up to the system
         limits.
-    type: int
+    type: float
     default: 10
   minbandwidth:
     description:
       - Minimum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits
-    type: int
+    type: float
     default: 10240
   partitionmac:
     description:

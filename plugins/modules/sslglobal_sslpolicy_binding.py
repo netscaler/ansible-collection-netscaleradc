@@ -95,7 +95,7 @@ options:
   priority:
     description:
       - The priority of the policy binding.
-    type: int
+    type: float
   type:
     choices:
       - CONTROL_OVERRIDE

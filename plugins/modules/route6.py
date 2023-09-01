@@ -35,7 +35,7 @@ options:
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route. The lower the cost, the higher the preference.
-    type: int
+    type: float
     default: 1
   detail:
     description:
@@ -44,7 +44,7 @@ options:
   distance:
     description:
       - Administrative distance of this route from the appliance.
-    type: int
+    type: float
     default: 1
   gateway:
     description:
@@ -94,23 +94,23 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   vlan:
     description:
       - Integer value that uniquely identifies a VLAN through which the Citrix ADC
         forwards the packets for this route.
-    type: int
+    type: float
   vxlan:
     description:
       - Integer value that uniquely identifies a VXLAN through which the Citrix ADC
         forwards the packets for this route.
-    type: int
+    type: float
   weight:
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    type: int
+    type: float
     default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

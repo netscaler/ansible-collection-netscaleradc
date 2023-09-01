@@ -88,7 +88,7 @@ options:
   backuppersistencetimeout:
     description:
       - Time period for which backup persistence is in effect.
-    type: int
+    type: float
     default: 2
   backupvserver:
     description:
@@ -118,7 +118,7 @@ options:
   clttimeout:
     description:
       - Idle time, in seconds, after which a client connection is terminated.
-    type: int
+    type: float
   comment:
     description:
       - Any comments that you might want to associate with the virtual server.
@@ -153,13 +153,13 @@ options:
         for use in the token method of load balancing. The length of the token, specified
         in bytes, must not be greater than 24 KB. Applicable to virtual servers of
         type TCP.
-    type: int
+    type: float
   dataoffset:
     description:
       - Offset to be considered when extracting a token from the TCP payload. Applicable
         to virtual servers, of type TCP, using the token method of load balancing.
         Must be within the first 24 KB of the TCP payload.
-    type: int
+    type: float
   dbprofilename:
     description:
       - Name of the DB profile whose settings are to be applied to the virtual server.
@@ -208,14 +208,14 @@ options:
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
         load balancing methods.
-    type: int
+    type: float
     default: 80
   healththreshold:
     description:
       - Threshold in percent of active services below which vserver state is made
         down. If this threshold is 0, vserver state will be up even if one bound service
         is up.
-    type: int
+    type: float
   httpprofilename:
     description:
       - Name of the HTTP profile whose settings are to be applied to the virtual server.
@@ -397,7 +397,7 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: int
+    type: float
     default: 101
   m:
     choices:
@@ -436,11 +436,11 @@ options:
   maxautoscalemembers:
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
-    type: int
+    type: float
   minautoscalemembers:
     description:
       - Minimum number of members expected to be present when vserver is used in Autoscale.
-    type: int
+    type: float
   mssqlserverversion:
     choices:
       - 70
@@ -462,15 +462,15 @@ options:
   mysqlcharacterset:
     description:
       - Character set that the virtual server advertises to clients.
-    type: int
+    type: float
   mysqlprotocolversion:
     description:
       - MySQL protocol version that the virtual server advertises to clients.
-    type: int
+    type: float
   mysqlservercapabilities:
     description:
       - Server capabilities that the virtual server advertises to clients.
-    type: int
+    type: float
   mysqlserverversion:
     description:
       - MySQL server version string that the virtual server advertises to clients.
@@ -509,13 +509,13 @@ options:
         will cause services currently in slow start to take the full traffic as determined
         by the LB method. Subsequently, any new services added will use the global
         RR factor.
-    type: int
+    type: float
   newservicerequestincrementinterval:
     description:
       - Interval, in seconds, between successive increments in the load on a new service
         or a service whose state has just changed from DOWN to UP. A value of 0 (zero)
         specifies manual slow start.
-    type: int
+    type: float
   newservicerequestunit:
     choices:
       - PER_SECOND
@@ -535,12 +535,12 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   orderthreshold:
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
-    type: int
+    type: float
   persistavpno:
     description:
       - 'Persist AVP number for Diameter Persistency. '
@@ -698,7 +698,7 @@ options:
         use brackets in the IP Address and Name parameters to specify the range. For
         example:'
       - add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80
-    type: int
+    type: float
     default: 1
   recursionavailable:
     choices:
@@ -916,7 +916,7 @@ options:
   sopersistencetimeout:
     description:
       - Timeout for spillover persistence, in minutes.
-    type: int
+    type: float
     default: 2
   sothreshold:
     description:
@@ -924,7 +924,7 @@ options:
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
-    type: int
+    type: float
   state:
     choices:
       - ENABLED
@@ -948,11 +948,11 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   timeout:
     description:
       - Time period for which a persistence session is in effect.
-    type: int
+    type: float
     default: 2
   toggleorder:
     choices:
@@ -966,7 +966,7 @@ options:
     description:
       - TOS ID of the virtual server. Applicable only when the load balancing redirection
         mode is set to TOS.
-    type: int
+    type: float
   trofspersistence:
     choices:
       - ENABLED
@@ -981,12 +981,12 @@ options:
       - Number of bits to consider in an IPv6 destination or source IP address, for
         creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH
         load balancing methods.
-    type: int
+    type: float
     default: 128
   v6persistmasklen:
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
-    type: int
+    type: float
     default: 128
   vipheader:
     description:
@@ -995,7 +995,7 @@ options:
   weight:
     description:
       - Weight to assign to the specified service.
-    type: int
+    type: float
   lbvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for lbvserver_analyticsprofile_binding resource

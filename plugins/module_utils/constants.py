@@ -27,6 +27,10 @@ NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
     "logout",
 ]
 
+ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE = {
+    "sslcertkey": {"password"},
+}
+
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
 NETSCALER_COMMON_ARGUMENTS = dict(
     nsip=dict(

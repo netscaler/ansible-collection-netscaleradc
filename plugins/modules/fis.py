@@ -35,7 +35,7 @@ options:
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.
-    type: int
+    type: float
   fis_channel_binding:
     type: dict
     description: Bindings for fis_channel_binding resource

@@ -36,7 +36,7 @@ options:
         of any TCP LSN sessions, this timeout accommodates the transmission of the
         FIN or RST, and ACK messages from the other endpoint so that both endpoints
         can properly close the connection.
-    type: int
+    type: float
     default: 30
   groupsessionlimit:
     description:
@@ -46,7 +46,7 @@ options:
         the number of LSN sessions reaches the limit for a group in packet engine,
         the Citrix ADC does not allow the subscriber of that group to open additional
         sessions through that packet engine.
-    type: int
+    type: float
   portpreserveparity:
     choices:
       - ENABLED
@@ -85,14 +85,14 @@ options:
         the specified protocol. For example, each subscriber can be limited to a maximum
         of 500 TCP NAT ports. When the LSN NAT mappings for a subscriber reach the
         limit, the Citrix ADC does not allocate additional NAT ports for that subscriber.
-    type: int
+    type: float
   sessionquota:
     description:
       - 'Maximum number of concurrent LSN sessions allowed for each subscriber for
         the specified protocol. '
       - When the number of LSN sessions reaches the limit for a subscriber, the Citrix
         ADC does not allow the subscriber to open additional sessions.
-    type: int
+    type: float
   sessiontimeout:
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
@@ -100,12 +100,12 @@ options:
       - ''
       - This timeout does not apply for a TCP LSN session when a FIN or RST message
         is received from either of the endpoints.
-    type: int
+    type: float
     default: 120
   stuntimeout:
     description:
       - STUN protocol timeout
-    type: int
+    type: float
     default: 600
   syncheck:
     choices:
@@ -129,7 +129,7 @@ options:
   synidletimeout:
     description:
       - SYN Idle timeout
-    type: int
+    type: float
     default: 60
   transportprofilename:
     description:

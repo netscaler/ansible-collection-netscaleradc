@@ -27,11 +27,11 @@ options:
   quicpacingrate:
     description:
       - QUIC Video Pacing Rate (Kbps).
-    type: int
+    type: float
   randomsamplingpercentage:
     description:
       - Random Sampling Percentage.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

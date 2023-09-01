@@ -50,14 +50,14 @@ options:
       - Base reachable time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, that the Citrix ADC assumes an adjacent device is reachable
         after receiving a reachability confirmation.
-    type: int
+    type: float
     default: 30000
   ndretransmissiontime:
     description:
       - Retransmission time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, between retransmitted Neighbor Solicitation (NS) messages, to
         an adjacent device.
-    type: int
+    type: float
     default: 1000
   ralearning:
     choices:
@@ -81,7 +81,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   usipnatprefix:
     description:
       - IPV6 NATPREFIX used in NAT46 scenario when USIP is turned on

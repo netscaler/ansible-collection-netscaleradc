@@ -67,7 +67,7 @@ options:
         a higher priority. Must be unique within a group of policies that are bound
         to the same bind point or label. Policies are evaluated in the order of their
         priority numbers.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

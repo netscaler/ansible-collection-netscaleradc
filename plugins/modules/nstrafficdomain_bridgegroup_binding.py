@@ -31,11 +31,11 @@ options:
       - ID of the configured bridge to bind to this traffic domain. More than one
         bridge group can be bound to a traffic domain, but the same bridge group cannot
         be a part of multiple traffic domains.
-    type: int
+    type: float
   td:
     description:
       - Integer value that uniquely identifies a traffic domain.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

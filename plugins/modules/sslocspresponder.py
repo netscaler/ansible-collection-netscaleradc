@@ -28,14 +28,14 @@ options:
     description:
       - Maximum time, in milliseconds, to wait to accumulate OCSP requests to batch.  Does
         not apply if the Batching Depth is 1.
-    type: int
+    type: float
   batchingdepth:
     description:
       - Number of client certificates to batch together into one OCSP request. Batching
         avoids overloading the OCSP responder. A value of 1 signifies that each request
         is queried independently. For a value greater than 1, specify a timeout (batching
         delay) to avoid inordinately delaying the processing of a single certificate.
-    type: int
+    type: float
   cache:
     choices:
       - ENABLED
@@ -50,7 +50,7 @@ options:
       - Timeout for caching the OCSP response. After the timeout, the Citrix ADC sends
         a fresh request to the OCSP responder for the certificate status. If a timeout
         is not specified, the timeout provided in the OCSP response applies.
-    type: int
+    type: float
     default: 1
   httpmethod:
     choices:
@@ -84,14 +84,14 @@ options:
       - Time, in milliseconds, to wait for an OCSP URL Resolution. When this time
         elapses, an error message appears or the transaction is forwarded, depending
         on the settings on the virtual server.
-    type: int
+    type: float
   producedattimeskew:
     description:
       - Time, in seconds, for which the Citrix ADC waits before considering the response
         as invalid. The response is considered invalid if the Produced At time stamp
         in the OCSP response exceeds or precedes the current Citrix ADC clock time
         by the amount of time specified.
-    type: int
+    type: float
     default: 300
   respondercert:
     description:
@@ -102,7 +102,7 @@ options:
       - Time, in milliseconds, to wait for an OCSP response. When this time elapses,
         an error message appears or the transaction is forwarded, depending on the
         settings on the virtual server. Includes Batching Delay time.
-    type: int
+    type: float
   signingcert:
     description:
       - Certificate-key pair that is used to sign OCSP requests. If this parameter

@@ -75,7 +75,7 @@ options:
     description:
       - Specify the TTL for DNS record for domain based service. The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: int
+    type: float
   dropmqttjumbomessage:
     choices:
       - 'YES'
@@ -111,7 +111,7 @@ options:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory
-    type: int
+    type: float
     default: 256
   literaladccookieattribute:
     description:
@@ -129,7 +129,7 @@ options:
         is applicable to ANY service type and all UDP service types (except DNS) and
         only when "svrTimeout" is set to zero. A value of 0 (zero) applies no limit
         to the number of concurrent requests allowed on a single client connection
-    type: int
+    type: float
   monitorconnectionclose:
     choices:
       - RESET
@@ -202,7 +202,7 @@ options:
         200 requests.'
       - Not applicable to a virtual server for which a hash based load balancing method
         is configured.
-    type: int
+    type: float
   storemqttclientidandusername:
     choices:
       - 'YES'

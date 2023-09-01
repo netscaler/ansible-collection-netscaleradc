@@ -29,11 +29,11 @@ options:
   id:
     description:
       - The integer that uniquely identifies the bridge group.
-    type: int
+    type: float
   vlan:
     description:
       - Names of all member VLANs.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -37,7 +37,7 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: int
+    type: float
     default: 101
   name:
     description:

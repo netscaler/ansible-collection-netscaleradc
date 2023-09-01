@@ -28,7 +28,7 @@ options:
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         LDAP server.
-    type: int
+    type: float
     default: 3
   defaultauthenticationgroup:
     description:
@@ -81,7 +81,7 @@ options:
   maxnestinglevel:
     description:
       - Number of levels up to which the system can query nested LDAP groups.
-    type: int
+    type: float
     default: 2
   nestedgroupextraction:
     choices:

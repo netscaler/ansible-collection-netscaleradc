@@ -29,7 +29,7 @@ options:
   id:
     description:
       - Integer value that uniquely identifies a VMAC6 address.
-    type: int
+    type: float
   trackifnum:
     description:
       - Interfaces which need to be tracked for this vrID.

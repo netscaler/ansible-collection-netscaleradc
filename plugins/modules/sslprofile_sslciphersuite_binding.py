@@ -33,7 +33,7 @@ options:
   cipherpriority:
     description:
       - cipher priority
-    type: int
+    type: float
   description:
     description:
       - The cipher suite description.

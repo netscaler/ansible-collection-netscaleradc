@@ -32,7 +32,7 @@ options:
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with
         a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c,
         where 3c is the hexadecimal representation of 60.
-    type: int
+    type: float
   ifnum:
     description:
       - Interfaces to bind to the VMAC, specified in (slot/port) notation (for example,

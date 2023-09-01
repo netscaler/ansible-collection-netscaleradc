@@ -63,7 +63,7 @@ options:
   numaddr:
     description:
       - Numbers of ipv6 address bound starting with intranetip6
-    type: int
+    type: float
   username:
     description:
       - User account to which to bind the policy.

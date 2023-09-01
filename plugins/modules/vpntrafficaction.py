@@ -27,7 +27,7 @@ options:
   apptimeout:
     description:
       - Maximum amount of time, in minutes, a user can stay logged on to the web application.
-    type: int
+    type: float
   formssoaction:
     description:
       - Name of the form-based single sign-on profile. Form-based single sign-on allows

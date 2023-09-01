@@ -38,7 +38,7 @@ options:
   numaddr:
     description:
       - The number of ipv6 addresses
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

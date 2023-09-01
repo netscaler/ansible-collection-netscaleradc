@@ -140,7 +140,7 @@ options:
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
-    type: int
+    type: float
   ftmode:
     choices:
       - 'ON'
@@ -162,20 +162,20 @@ options:
   maxaaausers:
     description:
       - Maximum number of concurrent users allowed to log on to VPN simultaneously.
-    type: int
+    type: float
   maxkbquestions:
     description:
       - This will set maximum number of Questions to be asked for KB Validation. Default
         value is 2, Max Value is 6
-    type: int
+    type: float
   maxloginattempts:
     description:
       - Maximum Number of login Attempts
-    type: int
+    type: float
   maxsamldeflatesize:
     description:
       - This will set the maximum deflate size in case of SAML Redirect binding.
-    type: int
+    type: float
   persistentloginattempts:
     choices:
       - ENABLED
@@ -188,7 +188,7 @@ options:
     description:
       - This will set the threshold time in days for password expiry notification.
         Default value is 0, which means no notification is sent
-    type: int
+    type: float
   samesite:
     choices:
       - None
@@ -203,7 +203,7 @@ options:
     description:
       - Frequency at which a token must be verified at the Authorization Server (AS)
         despite being found in cache.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

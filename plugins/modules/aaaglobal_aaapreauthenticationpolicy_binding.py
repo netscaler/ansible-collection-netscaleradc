@@ -43,7 +43,7 @@ options:
   priority:
     description:
       - Priority of the bound policy
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

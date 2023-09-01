@@ -60,7 +60,7 @@ options:
   ttl:
     description:
       - Time to live, in seconds.
-    type: int
+    type: float
     default: 3600
   viewname:
     description:

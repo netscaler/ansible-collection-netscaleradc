@@ -41,7 +41,7 @@ options:
         higher priority. Policies are evaluated in the order of their priority numbers.
         Maximum value for default syntax policies is 2147483647 and for classic policies
         max priority is 64000.
-    type: int
+    type: float
   type:
     choices:
       - REQUEST

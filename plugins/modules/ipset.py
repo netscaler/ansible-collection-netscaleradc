@@ -37,7 +37,7 @@ options:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   ipset_nsip6_binding:
     type: dict
     description: Bindings for ipset_nsip6_binding resource

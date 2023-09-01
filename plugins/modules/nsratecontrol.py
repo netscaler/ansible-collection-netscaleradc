@@ -27,22 +27,22 @@ options:
   icmpthreshold:
     description:
       - Number of ICMP packets permitted per 10 milliseconds.
-    type: int
+    type: float
     default: 100
   tcprstthreshold:
     description:
       - The number of TCP RST packets permitted per 10 milli second. zero means rate
         control is disabled and 0xffffffff means every thing is rate controlled
-    type: int
+    type: float
     default: 100
   tcpthreshold:
     description:
       - Number of SYNs permitted per 10 milliseconds.
-    type: int
+    type: float
   udpthreshold:
     description:
       - Number of UDP packets permitted per 10 milliseconds.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

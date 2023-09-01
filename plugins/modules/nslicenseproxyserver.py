@@ -27,7 +27,7 @@ options:
   port:
     description:
       - License proxy server port.
-    type: int
+    type: float
   serverip:
     description:
       - IP address of the License proxy server.

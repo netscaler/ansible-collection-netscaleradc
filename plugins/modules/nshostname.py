@@ -32,7 +32,7 @@ options:
     description:
       - ID of the cluster node for which you are setting the hostname. Can be configured
         only through the cluster IP address.
-    type: int
+    type: float
     default: 255
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

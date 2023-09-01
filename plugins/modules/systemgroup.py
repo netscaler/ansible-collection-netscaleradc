@@ -68,7 +68,7 @@ options:
         seconds.If Restrictedtimeout argument of system parameter is disabled, Timeout
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
-    type: int
+    type: float
   systemgroup_nspartition_binding:
     type: dict
     description: Bindings for systemgroup_nspartition_binding resource

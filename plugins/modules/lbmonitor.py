@@ -118,7 +118,7 @@ options:
         the average response time of bound services and adds the deviation to the
         average. The final value is then continually adjusted to accommodate response
         time variations over time. Specified in milliseconds, seconds, or minutes.
-    type: int
+    type: float
   dispatcherip:
     description:
       - IP address of the dispatcher to which to send the probe.
@@ -170,7 +170,7 @@ options:
     description:
       - Firmware-Revision value for the Capabilities-Exchange-Request (CER) message
         to use for monitoring Diameter servers.
-    type: int
+    type: float
   group:
     description:
       - Name of a newsgroup available on the NNTP service that is to be monitored.
@@ -272,7 +272,7 @@ options:
     description:
       - Maximum number of hops that the SIP request used for monitoring can traverse
         to reach the server. Applicable only to monitors of type SIP-UDP.
-    type: int
+    type: float
     default: 1
   metric:
     description:
@@ -286,11 +286,11 @@ options:
   metricthreshold:
     description:
       - Threshold to be used for that metric.
-    type: int
+    type: float
   metricweight:
     description:
       - The weight for the specified service metric with respect to others.
-    type: int
+    type: float
   monitorname:
     description:
       - Name for the monitor. Must begin with an ASCII alphanumeric or underscore
@@ -308,7 +308,7 @@ options:
     description:
       - Version of MQTT protocol used in connect message, default is version 3.1.1
         [4]
-    type: int
+    type: float
     default: 4
   mssqlprotocolversion:
     choices:
@@ -379,7 +379,7 @@ options:
     description:
       - Account Type to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
-    type: int
+    type: float
     default: 1
   radapn:
     description:
@@ -443,7 +443,7 @@ options:
         After the response time returns to a value below the threshold, the appliance
         generates a monRespTimeoutBelowThresh SNMP trap. For the traps to be generated,
         the "MONITOR-RTO-THRESHOLD" alarm must also be enabled.
-    type: int
+    type: float
   retries:
     description:
       - Maximum number of probes to send to establish the state of a service for which
@@ -622,7 +622,7 @@ options:
     description:
       - The TOS ID of the specified destination IP. Applicable only when the TOS parameter
         is set.
-    type: int
+    type: float
   transparent:
     choices:
       - 'YES'
@@ -638,7 +638,7 @@ options:
   trofscode:
     description:
       - Code expected when the server is under maintenance
-    type: int
+    type: float
   trofsstring:
     description:
       - String expected from the server for the service to be marked as trofs. Applicable
@@ -755,7 +755,7 @@ options:
     description:
       - Vendor-Id value for the Capabilities-Exchange-Request (CER) message to use
         for monitoring Diameter servers.
-    type: int
+    type: float
   vendorspecificacctapplicationids:
     description:
       - List of Vendor-Specific-Acct-Application-Id attribute value pairs (AVPs) to
@@ -779,7 +779,7 @@ options:
         Acct-Application-Id in Vendor-Specific-Application-Id, use vendorSpecificAuthApplicationIds
         or vendorSpecificAcctApplicationIds, respectively. Only one Vendor-Id is supported
         for all the Vendor-Specific-Application-Id AVPs in a CER monitoring message.
-    type: int
+    type: float
   lbmonitor_metric_binding:
     type: dict
     description: Bindings for lbmonitor_metric_binding resource

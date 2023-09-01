@@ -43,12 +43,12 @@ options:
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
-    type: int
+    type: float
     default: 3
   authtimeout:
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
-    type: int
+    type: float
     default: 3
   callingstationid:
     choices:
@@ -67,12 +67,12 @@ options:
   ipattributetype:
     description:
       - Remote IP address attribute type in a RADIUS response.
-    type: int
+    type: float
   ipvendorid:
     description:
       - Vendor ID of the intranet IP attribute in the RADIUS response.
       - 'NOTE: A value of 0 indicates that the attribute is not vendor encoded.'
-    type: int
+    type: float
   name:
     description:
       - 'Name for the RADIUS action. '
@@ -95,16 +95,16 @@ options:
   pwdattributetype:
     description:
       - Vendor-specific password attribute type in a RADIUS response.
-    type: int
+    type: float
   pwdvendorid:
     description:
       - Vendor ID of the attribute, in the RADIUS response, used to extract the user
         password.
-    type: int
+    type: float
   radattributetype:
     description:
       - RADIUS attribute type, used for RADIUS group extraction.
-    type: int
+    type: float
   radgroupseparator:
     description:
       - RADIUS group separator string
@@ -139,7 +139,7 @@ options:
   radvendorid:
     description:
       - RADIUS vendor ID attribute, used for RADIUS group extraction.
-    type: int
+    type: float
   serverip:
     description:
       - IP address assigned to the RADIUS server.
