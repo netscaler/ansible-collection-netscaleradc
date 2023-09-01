@@ -418,6 +418,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nshttpProfile
+      delegate_to: localhost
+      netscaler.adc.nshttpprofile:
+        state: present
+        name: httpprofile-HTTP2-0
+        http2: ENABLED
+
 """
 
 RETURN = r"""

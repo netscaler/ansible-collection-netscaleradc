@@ -70,6 +70,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | dnsaddRec
+      delegate_to: localhost
+      netscaler.adc.dnsaddrec:
+        state: present
+        hostname: k.root-servers.net
+        ipaddress: 193.0.14.129
+        ttl: 3600000
+
 """
 
 RETURN = r"""

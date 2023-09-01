@@ -132,6 +132,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | route
+      delegate_to: localhost
+      netscaler.adc.route:
+        state: present
+        network: 0.0.0.0
+        netmask: 0.0.0.0
+        gateway: 10.10.10.1
+
 """
 
 RETURN = r"""

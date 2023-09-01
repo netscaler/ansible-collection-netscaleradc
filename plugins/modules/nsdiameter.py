@@ -62,6 +62,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsdiameter
+      delegate_to: localhost
+      netscaler.adc.nsdiameter:
+        state: present
+        identity: netscaler.com
+        realm: com
+
 """
 
 RETURN = r"""

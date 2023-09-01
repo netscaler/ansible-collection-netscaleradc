@@ -1,12 +1,12 @@
 ---
 
-- name: V2 | Sample Playbook
+- name: Sample Playbook
   hosts: demo_netscalers
 
   gather_facts: false
 
   tasks:
-    - name: V2 | Sample Task | lbvserver
+    - name: Sample Task | lbvserver
       delegate_to: localhost
       netscaler.adc.lbvserver:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
@@ -23,7 +23,7 @@
         ipv46: 6.92.2.2
         port: 80
 
-    - name: V2 | Sample Task | csaction
+    - name: Sample Task | csaction
       delegate_to: localhost
       netscaler.adc.csaction:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable

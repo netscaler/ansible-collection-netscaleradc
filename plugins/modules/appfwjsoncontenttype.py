@@ -41,6 +41,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | appfwJSONContentType
+      delegate_to: localhost
+      netscaler.adc.appfwjsoncontenttype:
+        state: present
+        jsoncontenttypevalue: "^application/json$"
+        isregex: REGEX
+
 """
 
 RETURN = r"""

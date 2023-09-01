@@ -1177,6 +1177,73 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+
+- name: Sample Playbook
+  hosts: demo_netscalers
+
+  gather_facts: false
+
+  tasks:
+    - name: Set lb vserver 1
+      delegate_to: localhost
+      netscaler.adc.lbvserver:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        name: lbvserver_1
+        servicetype: HTTP
+        ipv46: 10.78.1.1
+        port: 80
+
+
+    - name: Set cs policy
+      delegate_to: localhost
+      netscaler.adc.cspolicy:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        policyname: policy_1
+        rule: "HTTP.REQ.URL.CONTAINS(\"/test\")"
+
+
+    - name: Set cs vserver
+      delegate_to: localhost
+      netscaler.adc.csvserver:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        name: cs-vserver-1
+        ipv46: 192.168.1.1
+        port: 90
+        servicetype: HTTP
+
+        csvserver_cspolicy_binding:
+          mode: desired
+          binding_members:
+            - name: cs-vserver-1
+              policyname: policy_1
+              targetlbvserver: lbvserver_1
+              priority: 1
+
 """
 
 RETURN = r"""

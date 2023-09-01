@@ -116,6 +116,28 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cachepolicy
+      delegate_to: localhost
+      netscaler.adc.cachepolicy:
+        state: present
+        policyname: _nonGetReq
+        rule: '!HTTP.REQ.METHOD.eq(GET)'
+        action: NOCACHE
+    - name: Sample Task | cachepolicy | 2
+      delegate_to: localhost
+      netscaler.adc.cachepolicy:
+        state: present
+        policyname: _cacheableCacheControlRes
+        rule: ((HTTP.RES.CACHE_CONTROL.IS_PUBLIC) || (HTTP.RES.CACHE_CONTROL.IS_MAX_AGE)
+          || (HTTP.RES.CACHE_CONTROL.IS_MUST_REVALIDATE) || (HTTP.RES.CACHE_CONTROL.IS_PROXY_REVALIDATE)
+          || (HTTP.RES.CACHE_CONTROL.IS_S_MAXAGE))
+        action: CACHE
+        storeingroup: DEFAULT
+
 """
 
 RETURN = r"""

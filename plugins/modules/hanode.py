@@ -197,6 +197,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | HAnode
+      delegate_to: localhost
+      netscaler.adc.hanode:
+        state: present
+        id: 1
+        ipaddress: 10.222.74.141
+
 """
 
 RETURN = r"""

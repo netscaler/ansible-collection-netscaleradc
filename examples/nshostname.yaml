@@ -1,0 +1,9 @@
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nshostName
+      delegate_to: localhost
+      netscaler.adc.nshostname:
+        state: present
+        hostname: HA-NetScaler-Pair

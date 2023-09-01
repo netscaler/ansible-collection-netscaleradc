@@ -102,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cacheparameter
+      delegate_to: localhost
+      netscaler.adc.cacheparameter:
+        state: present
+        via: 'NS-CACHE-10.0: 141'
+
 """
 
 RETURN = r"""

@@ -481,6 +481,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | service
+      delegate_to: localhost
+      netscaler.adc.service:
+        state: present
+        name: service-http
+        servicetype: HTTP
+        ipaddress: 172.18.0.4
+        port: 5000
+
 """
 
 RETURN = r"""

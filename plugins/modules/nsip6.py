@@ -303,6 +303,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsip6
+      delegate_to: localhost
+      netscaler.adc.nsip6:
+        state: present
+        ipv6address: ae80::1024:45aa:fe3b:9843/64
+        scope: link-local
+        type: SNIP
+        vlan: '1'
+        vserver: DISABLED
+        mgmtaccess: DISABLED
+        dynamicrouting: ENABLED
+
 """
 
 RETURN = r"""

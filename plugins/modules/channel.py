@@ -251,6 +251,20 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | channel
+      delegate_to: localhost
+      netscaler.adc.channel:
+        state: present
+        id: LA/1
+        throughput: '0'
+        lrminthroughput: '0'
+        bandwidthhigh: '0'
+        bandwidthnormal: '0'
+
 """
 
 RETURN = r"""

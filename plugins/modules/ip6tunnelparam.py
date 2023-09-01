@@ -67,6 +67,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | ip6TunnelParam
+      delegate_to: localhost
+      netscaler.adc.ip6tunnelparam:
+        state: present
+        srcip: '::'
+
 """
 
 RETURN = r"""

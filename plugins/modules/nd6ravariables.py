@@ -138,6 +138,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nd6RAvariables
+      delegate_to: localhost
+      netscaler.adc.nd6ravariables:
+        state: present
+        vlan: '1'
+
 """
 
 RETURN = r"""

@@ -37,6 +37,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | videooptimizationparameter
+      delegate_to: localhost
+      netscaler.adc.videooptimizationparameter:
+        state: present
+        randomsamplingpercentage: 0.0
+
 """
 
 RETURN = r"""

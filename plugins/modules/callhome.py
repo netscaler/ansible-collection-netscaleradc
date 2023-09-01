@@ -73,6 +73,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | callhome
+      delegate_to: localhost
+      netscaler.adc.callhome:
+        state: present
+        hbcustominterval: '30'
+
 """
 
 RETURN = r"""

@@ -449,6 +449,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nstcpProfile
+      delegate_to: localhost
+      netscaler.adc.nstcpprofile:
+        state: present
+        name: tcpprofile-mptcp
+        mptcp: ENABLED
+
 """
 
 RETURN = r"""

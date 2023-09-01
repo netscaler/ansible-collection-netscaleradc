@@ -146,6 +146,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | systemgroup
+      delegate_to: localhost
+      netscaler.adc.systemgroup:
+        state: present
+        groupname: sys-group1
+        promptstring: '[%T] %u@%h/%s'
+
 """
 
 RETURN = r"""

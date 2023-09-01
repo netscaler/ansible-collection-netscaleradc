@@ -5,7 +5,7 @@
   gather_facts: false
 
   tasks:
-    - name: V2 | Sample Task | login
+    - name: Sample Task | login
       delegate_to: localhost
       register: login_result
       netscaler.adc.login:
@@ -21,7 +21,7 @@
       ansible.builtin.debug:
         var: login_result.sessionid
 
-    - name: V2 | Sample Task | nsip
+    - name: Sample Task | nsip
       delegate_to: localhost
       netscaler.adc.nsip:
         nitro_auth_token: "{{ login_result.sessionid }}" # This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
@@ -36,7 +36,7 @@
         netmask: 255.255.255.192
         type: VIP
 
-    - name: V2 | Sample Task | logout
+    - name: Sample Task | logout
       delegate_to: localhost
       netscaler.adc.logout:
         nitro_auth_token: "{{ login_result.sessionid }}" # This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
