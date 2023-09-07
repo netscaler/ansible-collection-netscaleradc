@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.tmsessionparameter module – Configuration for session parameter resource. &mdash; Ansible collections  documentation</title>
@@ -194,8 +194,8 @@
 <td><div class="ansible-option-cell"><p>Allow only an HTTP session cookie, in which case the cookie cannot be accessed by scripts.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -255,14 +255,14 @@
 <td><div class="ansible-option-cell"><p>Use persistent SSO cookies for the traffic session. A persistent cookie remains on the user device and is sent with each HTTP request. The cookie becomes stale if the session ends.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-persistentcookievalidity"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmsessionparameter-module-parameter-persistentcookievalidity"><strong>persistentcookievalidity</strong></p>
-<a class="ansibleOptionLink" href="#parameter-persistentcookievalidity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-persistentcookievalidity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Integer specifying the number of minutes for which the persistent cookie remains valid. Can be set only if the persistence cookie setting is enabled.</p>
 </div></td>
@@ -282,10 +282,10 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sesstimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-tmsessionparameter-module-parameter-sesstimeout"><strong>sesstimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Session timeout, in minutes. If there is no traffic during the timeout period, the user is disconnected and must reauthenticate to access the intranet resources.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">30</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">30.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -295,8 +295,8 @@
 <td><div class="ansible-option-cell"><p>Log users on to all web applications automatically after they authenticate, or pass users to the web application logon page to authenticate for each application. Note that this configuration does not honor the following authentication types for security reason. BASIC, DIGEST, and NTLM (without Negotiate NTLM2 Key or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication types.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -435,7 +435,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>

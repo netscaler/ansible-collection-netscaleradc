@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.lsngroup module – Configuration for LSN group resource. &mdash; Ansible collections  documentation</title>
@@ -605,7 +605,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-portblocksize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-portblocksize"><strong>portblocksize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-portblocksize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-portblocksize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Size of the NAT port block to be allocated for each subscriber.</p>
 <p>To set this parameter for Dynamic NAT, you must enable the port block allocation parameter in the bound LSN pool. For Deterministic NAT, the port block allocation parameter is always  enabled, and you cannot disable it.</p>
@@ -698,10 +698,10 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-snmptraplimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lsngroup-module-parameter-snmptraplimit"><strong>snmptraplimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-snmptraplimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-snmptraplimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of SNMP Trap messages that can be generated for the LSN group in one minute.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">100</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">100.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -820,7 +820,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>

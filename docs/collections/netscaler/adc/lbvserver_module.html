@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.lbvserver module – Configuration for Load Balancing Virtual Server resource. &mdash; Ansible collections  documentation</title>
@@ -193,8 +193,8 @@
 <td><div class="ansible-option-cell"><p>Enable or disable user authentication.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -212,8 +212,8 @@
 <td><div class="ansible-option-cell"><p>Enable or disable user authentication with HTTP 401 responses.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -254,10 +254,10 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-backuppersistencetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-backuppersistencetimeout"><strong>backuppersistencetimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-backuppersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-backuppersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time period for which backup persistence is in effect.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -274,8 +274,8 @@
 <td><div class="ansible-option-cell"><p>If this option is enabled while resolving DNS64 query AAAA queries are not sent to back end dns server</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -286,14 +286,14 @@
 <td><div class="ansible-option-cell"><p>Route cacheable requests to a cache redirection virtual server. The load balancing virtual server can forward requests only to a transparent cache redirection virtual server that has an IP address and port combination of *:80, so such a cache redirection virtual server must be configured on the appliance.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clttimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-clttimeout"><strong>clttimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-clttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Idle time, in seconds, after which a client connection is terminated.</p>
 </div></td>
@@ -330,14 +330,14 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-datalength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-datalength"><strong>datalength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-datalength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-datalength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Length of the token to be extracted from the data segment of an incoming packet, for use in the token method of load balancing. The length of the token, specified in bytes, must not be greater than 24 KB. Applicable to virtual servers of type TCP.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dataoffset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-dataoffset"><strong>dataoffset</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dataoffset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-dataoffset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Offset to be considered when extracting a token from the TCP payload. Applicable to virtual servers, of type TCP, using the token method of load balancing. Must be within the first 24 KB of the TCP payload.</p>
 </div></td>
@@ -406,15 +406,15 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hashlength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-hashlength"><strong>hashlength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hashlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-hashlength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH load balancing methods.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">80</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">80.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-healththreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-healththreshold"><strong>healththreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-healththreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-healththreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Threshold in percent of active services below which vserver state is made down. If this threshold is 0, vserver state will be up even if one bound service is up.</p>
 </div></td>
@@ -454,12 +454,12 @@
 <a class="ansibleOptionLink" href="#parameter-insertvserveripport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert an HTTP header, whose value is the IP address and port number of the virtual server, before forwarding a request to the server. The format of the header is &lt;vipHeader&gt;: &lt;virtual server IP address&gt;_&lt;port number &gt;, where vipHeader is the name that you specify for the header. If the virtual server has an IPv6 address, the address in the header is enclosed in brackets ([ and ]) to separate it from the port number. If you have mapped an IPv4 address to a virtual server’s IPv6 address, the value of this parameter determines which IP address is inserted in the header, as follows:</p>
-<p>* VIPADDR - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.</p>
-<p>* V6TOV4MAPPING - Insert the IPv4 address that is mapped to the virtual server’s IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.</p>
-<p>* OFF - Disable header insertion.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">VIPADDR</span></code> - Insert the IP address of the virtual server in the HTTP header regardless of whether the virtual server has an IPv4 address or an IPv6 address. A mapped IPv4 address, if configured, is ignored.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">V6TOV4MAPPING</span></code> - Insert the IPv4 address that is mapped to the virtual server’s IPv6 address. If a mapped IPv4 address is not configured, insert the IPv6 address.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">OFF</span></code> - Disable header insertion.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;VIPADDR&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;V6TOV4MAPPING&quot;</span></code></p></li>
 </ul>
@@ -502,8 +502,8 @@
 <td><div class="ansible-option-cell"><p>Use Layer 2 parameters (channel number, MAC address, and VLAN ID) in addition to the 4-tuple (&lt;source IP&gt;:&lt;source port&gt;::&lt;destination IP&gt;:&lt;destination port&gt;) that is used to identify a connection. Allows multiple TCP and non-TCP connections with the same 4-tuple to co-exist on the Citrix ADC.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1283,10 +1283,10 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-listenpriority"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-listenpriority"><strong>listenpriority</strong></p>
-<a class="ansibleOptionLink" href="#parameter-listenpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-listenpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Integer specifying the priority of the listen policy. A higher number specifies a lower priority. If a request matches the listen policies of more than one virtual server the virtual server whose listen policy has the highest priority (the lowest priority number) accepts the request.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">101</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">101.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -1322,14 +1322,14 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxautoscalemembers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-maxautoscalemembers"><strong>maxautoscalemembers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxautoscalemembers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxautoscalemembers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of members expected to be present when vserver is used in Autoscale.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minautoscalemembers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-minautoscalemembers"><strong>minautoscalemembers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minautoscalemembers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-minautoscalemembers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum number of members expected to be present when vserver is used in Autoscale.</p>
 </div></td>
@@ -1354,21 +1354,21 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mysqlcharacterset"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-mysqlcharacterset"><strong>mysqlcharacterset</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mysqlcharacterset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlcharacterset" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Character set that the virtual server advertises to clients.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mysqlprotocolversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-mysqlprotocolversion"><strong>mysqlprotocolversion</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mysqlprotocolversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlprotocolversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>MySQL protocol version that the virtual server advertises to clients.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mysqlservercapabilities"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-mysqlservercapabilities"><strong>mysqlservercapabilities</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mysqlservercapabilities" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-mysqlservercapabilities" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Server capabilities that the virtual server advertises to clients.</p>
 </div></td>
@@ -1411,14 +1411,14 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-newservicerequest"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-newservicerequest"><strong>newservicerequest</strong></p>
-<a class="ansibleOptionLink" href="#parameter-newservicerequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-newservicerequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of requests, or percentage of the load on existing services, by which to increase the load on a new service at each interval in slow-start mode. A non-zero value indicates that slow-start is applicable. A zero value indicates that the global RR startup parameter is applied. Changing the value to zero will cause services currently in slow start to take the full traffic as determined by the LB method. Subsequently, any new services added will use the global RR factor.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-newservicerequestincrementinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-newservicerequestincrementinterval"><strong>newservicerequestincrementinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-newservicerequestincrementinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-newservicerequestincrementinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, between successive increments in the load on a new service or a service whose state has just changed from DOWN to UP. A value of 0 (zero) specifies manual slow start.</p>
 </div></td>
@@ -1491,14 +1491,14 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-order"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-order"><strong>order</strong></p>
-<a class="ansibleOptionLink" href="#parameter-order" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-order" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Order number to be assigned to the service when it is bound to the lb vserver.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-orderthreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-orderthreshold"><strong>orderthreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-orderthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-orderthreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is used to to specify the threshold of minimum number of services to be UP in an order, for it to be considered in Lb decision.</p>
 </div></td>
@@ -1643,8 +1643,8 @@
 <td><div class="ansible-option-cell"><p>Allow multiple Web 2.0 connections from the same client to connect to the virtual server and expect updates.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1671,25 +1671,25 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-range"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-range"><strong>range</strong></p>
-<a class="ansibleOptionLink" href="#parameter-range" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-range" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of IP addresses that the appliance must generate and assign to the virtual server. The virtual server then functions as a network virtual server, accepting traffic on any of the generated IP addresses. The IP addresses are generated automatically, as follows:</p>
 <p>* For a range of n, the last octet of the address specified by the IP Address parameter increments n-1 times.</p>
 <p>* If the last octet exceeds 255, it rolls over to 0 and the third octet increments by 1.</p>
 <p>Note: The Range parameter assigns multiple IP addresses to one virtual server. To generate an array of virtual servers, each of which owns only one IP address, use brackets in the IP Address and Name parameters to specify the range. For example:</p>
 <p>add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-recursionavailable"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-recursionavailable"><strong>recursionavailable</strong></p>
 <a class="ansibleOptionLink" href="#parameter-recursionavailable" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>When set to YES, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to YES, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.</p>
+<td><div class="ansible-option-cell"><p>When set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, this option causes the DNS replies from this vserver to have the RA bit turned on. Typically one would set this option to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, when the vserver is load balancing a set of DNS servers thatsupport recursive queries.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1749,8 +1749,8 @@
 <td><div class="ansible-option-cell"><p>This option enables you to retain existing connections on a node joining a Cluster system or when a node is being configured for passive timeout. By default, this option is disabled.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1776,8 +1776,8 @@
 <td><div class="ansible-option-cell"><p>Use network address translation (NAT) for RTSP data connections.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ON&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;OFF&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1939,15 +1939,15 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sopersistencetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-sopersistencetimeout"><strong>sopersistencetimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sopersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sopersistencetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout for spillover persistence, in minutes.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sothreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-sothreshold"><strong>sothreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sothreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sothreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Threshold at which spillover occurs. Specify an integer for the CONNECTION spillover method, a bandwidth value in kilobits per second for the BANDWIDTH method (do not enter the units), or a percentage for the HEALTH method (do not enter the percentage symbol).</p>
 </div></td>
@@ -1980,17 +1980,17 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-td"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-td"><strong>td</strong></p>
-<a class="ansibleOptionLink" href="#parameter-td" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-td" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Integer value that uniquely identifies the traffic domain in which you want to configure the entity. If you do not specify an ID, the entity becomes part of the default traffic domain, which has an ID of 0.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-timeout"><strong>timeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-timeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time period for which a persistence session is in effect.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">2.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -2007,7 +2007,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tosid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-tosid"><strong>tosid</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tosid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-tosid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TOS ID of the virtual server. Applicable only when the load balancing redirection mode is set to TOS.</p>
 </div></td>
@@ -2026,18 +2026,18 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-v6netmasklen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-v6netmasklen"><strong>v6netmasklen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-v6netmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-v6netmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of bits to consider in an IPv6 destination or source IP address, for creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH load balancing methods.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">128</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">128.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-v6persistmasklen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-v6persistmasklen"><strong>v6persistmasklen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-v6persistmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-v6persistmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Persistence mask for IP based persistence types, for IPv6 virtual servers.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">128</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">128.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -2061,7 +2061,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-weight"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbvserver-module-parameter-weight"><strong>weight</strong></p>
-<a class="ansibleOptionLink" href="#parameter-weight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-weight" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Weight to assign to the specified service.</p>
 </div></td>
@@ -2080,7 +2080,95 @@
 </section>
 <section id="examples">
 <h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Simple LBVserver playbook</span>
+<span class="w">  </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">demo_netscalers</span>
+
+<span class="w">  </span><span class="nt">gather_facts</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+
+<span class="w">  </span><span class="nt">tasks</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | service</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.service</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
+<span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
+<span class="w">        </span><span class="c1"># save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable</span>
+
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s1</span>
+<span class="w">        </span><span class="nt">ipaddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.222.74.181</span>
+<span class="w">        </span><span class="nt">servicetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | service</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.service</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
+<span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
+<span class="w">        </span><span class="c1"># save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable</span>
+
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s2</span>
+<span class="w">        </span><span class="nt">ipaddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.10.10</span>
+<span class="w">        </span><span class="nt">servicetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | servicegroup</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.servicegroup</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
+<span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
+<span class="w">        </span><span class="c1"># save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable</span>
+
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">present</span>
+
+<span class="w">        </span><span class="nt">servicegroupname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg1</span>
+<span class="w">        </span><span class="nt">servicetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Sample Task | lbvserver with bindings</span>
+<span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
+<span class="w">      </span><span class="nt">netscaler.adc.lbvserver</span><span class="p">:</span>
+<span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable</span>
+<span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
+<span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
+<span class="w">        </span><span class="c1"># save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable</span>
+
+<span class="w">        </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
+
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_lbvser</span>
+<span class="w">        </span><span class="nt">servicetype</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTP</span>
+<span class="w">        </span><span class="nt">ipv46</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.10.10.11</span>
+<span class="w">        </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<span class="w">        </span><span class="nt">lbmethod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LEASTCONNECTION</span>
+
+<span class="w">        </span><span class="nt">lbvserver_servicegroup_binding</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># mode: desired # bind | unbind | desired</span>
+<span class="w">          </span><span class="nt">binding_members</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_lbvser</span>
+<span class="w">              </span><span class="nt">servicename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg1</span>
+<span class="w">        </span><span class="nt">lbvserver_service_binding</span><span class="p">:</span>
+<span class="w">          </span><span class="c1"># mode: desired # bind | unbind | desired</span>
+<span class="w">          </span><span class="nt">binding_members</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_lbvser</span>
+<span class="w">              </span><span class="nt">servicename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s1</span>
+<span class="w">              </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">16</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test_lbvser</span>
+<span class="w">              </span><span class="nt">servicename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">s2</span>
+<span class="w">              </span><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">20</span>
 </pre></div>
 </div>
 </section>
@@ -2151,7 +2239,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>

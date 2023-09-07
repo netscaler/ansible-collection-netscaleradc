@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.appqoeaction module – Configuration for AppQoS action resource. &mdash; Ansible collections  documentation</title>
@@ -190,7 +190,7 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-delay"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-delay"><strong>delay</strong></p>
-<a class="ansibleOptionLink" href="#parameter-delay" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-delay" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Delay threshold, in microseconds, for requests that match the policy’s rule. If the delay statistics gathered for the matching request exceed the specified delay, configured action triggered for that request, if there is no action then requests are dropped to the lowest priority level</p>
 </div></td>
@@ -216,7 +216,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxconn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-maxconn"><strong>maxconn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of concurrent connections that can be open for requests that matches with rule.</p>
 </div></td>
@@ -272,15 +272,15 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-numretries"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-numretries"><strong>numretries</strong></p>
-<a class="ansibleOptionLink" href="#parameter-numretries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-numretries" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Retry count</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-polqdepth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-polqdepth"><strong>polqdepth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-polqdepth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-polqdepth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Policy queue depth threshold value. When the policy queue size (number of requests queued for the policy binding this action is attached to) increases to the specified polqDepth value, subsequent requests are dropped to the lowest priority level.</p>
 </div></td>
@@ -301,7 +301,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-priqdepth"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-priqdepth"><strong>priqdepth</strong></p>
-<a class="ansibleOptionLink" href="#parameter-priqdepth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-priqdepth" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Queue depth threshold value per priorirty level. If the queue size (number of requests in the queue of that particular priorirty) on the virtual server to which this policy is bound, increases to the specified qDepth value, subsequent requests are dropped to the lowest priority level.</p>
 </div></td>
@@ -335,14 +335,14 @@
 <td><div class="ansible-option-cell"><p>Retry on TCP Reset</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-retryontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-appqoeaction-module-parameter-retryontimeout"><strong>retryontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-retryontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-retryontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Retry on request Timeout(in millisec) upon sending request to backend servers</p>
 </div></td>
@@ -483,7 +483,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>

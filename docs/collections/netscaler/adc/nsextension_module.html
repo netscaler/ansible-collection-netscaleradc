@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.nsextension module – Configuration for Extension resource. &mdash; Ansible collections  documentation</title>
@@ -293,16 +293,16 @@
 </div></td>
 <td><div class="ansible-option-cell"><p>Enables tracing to the NS log file of extension execution:</p>
 <blockquote>
-<div><p>off   - turns off tracing (equivalent to unset ns extension &lt;extension-name&gt; -trace)</p>
-<p>calls - traces extension function calls with arguments and function returns with the first return value</p>
-<p>lines - traces the above plus line numbers for executed extension lines</p>
-<p>all   - traces the above plus local variables changed by executed extension lines</p>
+<div><p><code class="docutils literal notranslate"><span class="pre">off</span></code>   - turns <code class="docutils literal notranslate"><span class="pre">off</span></code> tracing (equivalent to unset ns extension &lt;extension-name&gt; -trace)</p>
+<p><code class="docutils literal notranslate"><span class="pre">calls</span></code> - traces extension function <code class="docutils literal notranslate"><span class="pre">calls</span></code> with arguments and function returns with the first return value</p>
+<p><code class="docutils literal notranslate"><span class="pre">lines</span></code> - traces the above plus line numbers for executed extension <code class="docutils literal notranslate"><span class="pre">lines</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">all</span></code>   - traces the above plus local variables changed by executed extension <code class="docutils literal notranslate"><span class="pre">lines</span></code></p>
 </div></blockquote>
 <p>Note that the DEBUG log level must be enabled to see extension tracing.</p>
 <p>This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;off&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;calls&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;lines&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;all&quot;</span></code></p></li>
@@ -420,7 +420,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>
