@@ -28,7 +28,7 @@ options:
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
-    type: int
+    type: float
     default: 16
   customreqhdrs:
     description:
@@ -47,6 +47,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsweblogparam
+      delegate_to: localhost
+      netscaler.adc.nsweblogparam:
+        state: present
+        buffersizemb: '3'
+
 """
 
 RETURN = r"""

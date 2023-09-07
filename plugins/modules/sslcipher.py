@@ -42,7 +42,7 @@ options:
   cipherpriority:
     description:
       - This indicates priority assigned to the particular cipher
-    type: int
+    type: float
   ciphgrpalias:
     description:
       - The individual cipher name(s), a user-defined cipher group, or a system predefined

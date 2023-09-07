@@ -56,7 +56,7 @@ options:
   maxsession:
     description:
       - Maximum number of client connection allowed per user
-    type: int
+    type: float
     default: 20
   password:
     description:
@@ -84,7 +84,7 @@ options:
         seconds. If Restrictedtimeout argument of system parameter is disabled, Timeout
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
-    type: int
+    type: float
   username:
     description:
       - Name for a user. Must begin with a letter, number, or the underscore (_) character,
@@ -148,6 +148,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | systemuser
+      delegate_to: localhost
+      netscaler.adc.systemuser:
+        state: present
+        username: nsroot
+        timeout: 900
+    - name: Sample Task | systemuser | 2
+      delegate_to: localhost
+      netscaler.adc.systemuser:
+        state: present
+        username: user_adm1
+        password: pwd_adm1
+
 """
 
 RETURN = r"""

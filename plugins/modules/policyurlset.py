@@ -46,12 +46,12 @@ options:
     description:
       - The interval, in seconds, rounded down to the nearest 15 minutes, at which
         the update of urlset occurs.
-    type: int
+    type: float
   matchedid:
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.
-    type: int
+    type: float
     default: 1
   name:
     description:

@@ -31,7 +31,7 @@ options:
   td:
     description:
       - Integer value that uniquely identifies a traffic domain.
-    type: int
+    type: float
   vmac:
     choices:
       - ENABLED

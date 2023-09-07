@@ -86,7 +86,7 @@ options:
   xmlmaxattachmentsize:
     description:
       - Specify maximum attachment size.
-    type: int
+    type: float
   xmlmaxattachmentsizecheck:
     choices:
       - 'ON'

@@ -36,7 +36,7 @@ options:
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
-    type: int
+    type: float
   innervlantagging:
     choices:
       - ENABLED
@@ -84,7 +84,7 @@ options:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part
         of any other VXLANs.
-    type: int
+    type: float
   vxlan_nsip6_binding:
     type: dict
     description: Bindings for vxlan_nsip6_binding resource

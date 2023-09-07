@@ -39,7 +39,7 @@ options:
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

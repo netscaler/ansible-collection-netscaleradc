@@ -48,7 +48,7 @@ options:
         delete the session'' or ''delete and CCR-T'' (if PCRF is configured) or ''do
         not delete but send a CCR-U''. '
       - Zero value disables the idle timeout. !
-    type: int
+    type: float
   interfacetype:
     choices:
       - None

@@ -29,7 +29,7 @@ options:
   bridgegroup:
     description:
       - Identifier of the bridge group that is assigned to this partition.
-    type: int
+    type: float
   partitionname:
     description:
       - Name of the Partition. Must begin with an ASCII alphanumeric or underscore

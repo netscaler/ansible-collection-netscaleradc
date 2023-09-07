@@ -129,7 +129,7 @@ options:
   priority:
     description:
       - Specifies the priority of the policy.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

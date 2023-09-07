@@ -55,12 +55,12 @@ options:
         down.
       - "\t\t\tThis parameter is applicable only if monitors are not bound to GSLB\
         \ services"
-    type: int
+    type: float
   gslbsyncinterval:
     description:
       - Time duartion (in seconds) for which the gslb sync process will wait before
         checking for config changes.
-    type: int
+    type: float
     default: 10
   gslbsynclocfiles:
     choices:
@@ -91,7 +91,7 @@ options:
   ldnsentrytimeout:
     description:
       - Time, in seconds, after which an inactive LDNS entry is removed.
-    type: int
+    type: float
     default: 180
   ldnsmask:
     description:
@@ -110,7 +110,7 @@ options:
     description:
       - Time duartion (in seconds) during which if no new packets received by Local
         gslb site from Remote gslb site then mark the MEP connection DOWN
-    type: int
+    type: float
     default: 10
   rtttolerance:
     description:
@@ -119,7 +119,7 @@ options:
         is less than or equal to the specified tolerance value, the LDNS entry in
         the network metric table is not updated with the new RTT value. Prevents the
         exchange of metrics when variations in RTT values are negligible.
-    type: int
+    type: float
     default: 5
   svcstatelearningtime:
     description:
@@ -130,7 +130,7 @@ options:
         to learning phase when primary parent goes down. While a service is in learning
         period, remote site will not honour the state and stats got through MEP for
         that service. State can be learnt from health monitor if bound explicitly.
-    type: int
+    type: float
   undefaction:
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
@@ -146,7 +146,7 @@ options:
       - Mask for creating LDNS entries for IPv6 source addresses. The mask is defined
         as the number of leading bits to consider, in the source IP address, when
         creating an LDNS entry.
-    type: int
+    type: float
     default: 128
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

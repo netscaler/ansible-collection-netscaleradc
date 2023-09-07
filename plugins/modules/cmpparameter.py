@@ -38,7 +38,7 @@ options:
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
-    type: int
+    type: float
     default: 100
   cmplevel:
     choices:
@@ -86,18 +86,18 @@ options:
         ratio, specified as percentage.  For example, to give 25% weightage to historical
         ratio (and therefore 75% weightage to the ratio for current delta compression
         transaction), specify 25.
-    type: int
+    type: float
     default: 50
   heurexpirythres:
     description:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
-    type: int
+    type: float
     default: 100
   minressize:
     description:
       - Smallest response size, in bytes, to be compressed.
-    type: int
+    type: float
   policytype:
     choices:
       - ADVANCED
@@ -108,7 +108,7 @@ options:
   quantumsize:
     description:
       - Minimum quantum of data to be filled before compression begins.
-    type: int
+    type: float
     default: 57344
   servercmp:
     choices:

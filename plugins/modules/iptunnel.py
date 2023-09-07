@@ -92,7 +92,7 @@ options:
   vlan:
     description:
       - The vlan for mulicast packets
-    type: int
+    type: float
   vlantagging:
     choices:
       - ENABLED
@@ -105,7 +105,7 @@ options:
     description:
       - Virtual network identifier (VNID) is the value that identifies a specific
         virtual network in the data plane.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

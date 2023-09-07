@@ -38,7 +38,7 @@ options:
       - Timeout for the server to function in syncookie mode after the synattack.
         This is valid if TCP syncookie is disabled on the profile and server acts
         in non syncookie mode by default.
-    type: int
+    type: float
     default: 30
   compacttcpoptionnoop:
     choices:
@@ -79,11 +79,11 @@ options:
         if the system has more than specified number of connections, and a new connection
         is to be established.  Note: This value may be rounded down to be a whole
         multiple of the number of packet engines running.'
-    type: int
+    type: float
   delayedack:
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
-    type: int
+    type: float
     default: 100
   delinkclientserveronrst:
     choices:
@@ -106,7 +106,7 @@ options:
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
-    type: int
+    type: float
     default: 10
   kaprobeupdatelastactivity:
     choices:
@@ -135,44 +135,44 @@ options:
   maxburst:
     description:
       - Maximum number of TCP segments allowed in a burst.
-    type: int
+    type: float
     default: 6
   maxdynserverprobes:
     description:
       - Maximum number of probes that Citrix ADC can send out in 10 milliseconds,
         to dynamically learn a service. Citrix ADC probes for the existence of the
         origin in case of wildcard virtual server or services.
-    type: int
+    type: float
     default: 7
   maxpktpermss:
     description:
       - Maximum number of TCP packets allowed per maximum segment size (MSS).
-    type: int
+    type: float
   maxsynackretx:
     description:
       - When 'syncookie' is disabled in the TCP profile that is bound to the virtual
         server or service, and the number of TCP SYN+ACK retransmission by Citrix
         ADC for that virtual server or service crosses this threshold, the Citrix
         ADC responds by using the TCP SYN-Cookie mechanism.
-    type: int
+    type: float
     default: 100
   maxsynhold:
     description:
       - Limit the number of client connections (SYN) waiting for status of probe system
         wide. Any new SYN packets will be dropped.
-    type: int
+    type: float
     default: 16384
   maxsynholdperprobe:
     description:
       - Limit the number of client connections (SYN) waiting for status of single
         probe. Any new SYN packets will be dropped.
-    type: int
+    type: float
     default: 128
   maxtimewaitconn:
     description:
       - Maximum number of connections to hold in the TCP TIME_WAIT state on a packet
         engine. New connections entering TIME_WAIT state are proactively cleaned up.
-    type: int
+    type: float
     default: 7000
   minrto:
     description:
@@ -227,18 +227,18 @@ options:
     description:
       - Maximum number of subflow connections supported in pending join state per
         mptcp connection.
-    type: int
+    type: float
     default: 4
   mptcpmaxsf:
     description:
       - Maximum number of subflow connections supported in established state per mptcp
         connection.
-    type: int
+    type: float
     default: 4
   mptcppendingjointhreshold:
     description:
       - Maximum system level pending join connections allowed.
-    type: int
+    type: float
   mptcpreliableaddaddr:
     choices:
       - ENABLED
@@ -253,7 +253,7 @@ options:
     description:
       - Number of RTO's at subflow level, after which MPCTP should start using other
         subflow.
-    type: int
+    type: float
     default: 2
   mptcpsendsfresetoption:
     choices:
@@ -270,13 +270,13 @@ options:
         the sublow is replaced by new incoming subflow if maximum subflow limit is
         reached. The priority for replacement is given to those subflow without any
         transaction
-    type: int
+    type: float
     default: 10
   mptcpsftimeout:
     description:
       - The timeout value in seconds for idle mptcp subflows. If this timeout is not
         set, idle subflows are cleared after cltTimeout of vserver
-    type: int
+    type: float
   mptcpusebackupondss:
     choices:
       - ENABLED
@@ -293,7 +293,7 @@ options:
       - Frequency, in seconds, at which the virtual servers learn the Maximum segment
         size (MSS) from the services. The argument to enable maximum segment size
         (MSS) for virtual servers must be enabled.
-    type: int
+    type: float
     default: 3600
   msslearninterval:
     description:
@@ -301,7 +301,7 @@ options:
         The Citrix ADC determines the best MSS to set for the virtual server based
         on this sampling. The argument to enable maximum segment size (MSS) for virtual
         servers must be enabled.
-    type: int
+    type: float
     default: 180
   nagle:
     choices:
@@ -314,7 +314,7 @@ options:
   oooqsize:
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
-    type: int
+    type: float
     default: 300
   pktperretx:
     description:
@@ -325,7 +325,7 @@ options:
   recvbuffsize:
     description:
       - TCP Receive buffer size
-    type: int
+    type: float
     default: 8190
   sack:
     choices:
@@ -354,24 +354,24 @@ options:
       - Maximum threshold. After crossing this threshold number of outstanding probes
         for origin, the Citrix ADC reduces the number of connection retries for probe
         connections.
-    type: int
+    type: float
     default: 1024
   tcpfastopencookietimeout:
     description:
       - Timeout in seconds after which a new TFO Key is computed for generating TFO
         Cookie. If zero, the same key is used always. If timeout is less than 120seconds,
         NS defaults to 120seconds timeout.
-    type: int
+    type: float
   tcpfintimeout:
     description:
       - The amount of time in seconds, after which a TCP connnection in the TCP TIME-WAIT
         state is flushed.
-    type: int
+    type: float
     default: 40
   tcpmaxretries:
     description:
       - Number of RTO's after which a connection should be freed.
-    type: int
+    type: float
     default: 7
   ws:
     choices:
@@ -385,7 +385,7 @@ options:
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when the window scaling is enabled.
-    type: int
+    type: float
     default: 8
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

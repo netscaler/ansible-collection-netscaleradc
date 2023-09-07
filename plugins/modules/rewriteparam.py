@@ -30,7 +30,7 @@ options:
         their selected actions without interruption. If the timeout is reached then
         the evaluation causes an UNDEF to be raised and no further processing is performed.
         Note that some rewrites may have already been performed.
-    type: int
+    type: float
     default: 3900
   undefaction:
     description:

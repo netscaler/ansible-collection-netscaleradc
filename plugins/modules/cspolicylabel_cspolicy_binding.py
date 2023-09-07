@@ -56,7 +56,7 @@ options:
   priority:
     description:
       - Specifies the priority of the policy.
-    type: int
+    type: float
   targetvserver:
     description:
       - Name of the virtual server to which to forward requests that match the policy.

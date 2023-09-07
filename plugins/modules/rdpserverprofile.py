@@ -39,7 +39,7 @@ options:
   rdpport:
     description:
       - TCP port on which the RDP connection is established.
-    type: int
+    type: float
     default: 3389
   rdpredirection:
     choices:

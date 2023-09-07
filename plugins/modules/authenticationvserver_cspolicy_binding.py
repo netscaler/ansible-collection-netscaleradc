@@ -66,7 +66,7 @@ options:
   priority:
     description:
       - The priority, if any, of the vpn vserver policy.
-    type: int
+    type: float
   secondary:
     description:
       - Applicable only while bindind classic authentication policy as advance authentication

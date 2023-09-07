@@ -84,7 +84,7 @@ options:
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200
-    type: int
+    type: float
   target:
     description:
       - 'Expression specifying what to respond with. Typically a URL for redirect

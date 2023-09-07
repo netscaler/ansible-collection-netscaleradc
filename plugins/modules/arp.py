@@ -44,22 +44,22 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   ownernode:
     description:
       - The owner node for the Arp entry.
-    type: int
+    type: float
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   vlan:
     description:
       - The VLAN ID through which packets are to be sent after matching the ARP entry.
         This is a numeric value.
-    type: int
+    type: float
   vtep:
     description:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IP address
@@ -68,7 +68,7 @@ options:
   vxlan:
     description:
       - ID of the VXLAN on which the IP address of this ARP entry is reachable.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

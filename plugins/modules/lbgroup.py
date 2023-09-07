@@ -27,7 +27,7 @@ options:
   backuppersistencetimeout:
     description:
       - Time period, in minutes, for which backup persistence is in effect.
-    type: int
+    type: float
     default: 2
   cookiedomain:
     description:
@@ -96,7 +96,7 @@ options:
   timeout:
     description:
       - Time period for which a persistence session is in effect.
-    type: int
+    type: float
     default: 2
   usevserverpersistency:
     choices:
@@ -113,7 +113,7 @@ options:
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.
-    type: int
+    type: float
     default: 128
   lbgroup_lbvserver_binding:
     type: dict

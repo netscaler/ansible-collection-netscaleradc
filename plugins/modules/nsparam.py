@@ -72,12 +72,12 @@ options:
   exclusivequotamaxclient:
     description:
       - Percentage of maxClient to be given to PEs.
-    type: int
+    type: float
     default: 80
   exclusivequotaspillover:
     description:
       - Percentage of maximum limit to be given to PEs.
-    type: int
+    type: float
     default: 80
   ftpportrange:
     description:
@@ -86,12 +86,12 @@ options:
   grantquotamaxclient:
     description:
       - Percentage of shared quota to be granted at a time for maxClient.
-    type: int
+    type: float
     default: 10
   grantquotaspillover:
     description:
       - Percentage of shared quota to be granted at a time for spillover.
-    type: int
+    type: float
     default: 10
   httpport:
     description:
@@ -120,21 +120,21 @@ options:
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
-    type: int
+    type: float
     default: 255
   maxconn:
     description:
       - Maximum number of connections that will be made from the appliance to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
-    type: int
+    type: float
   maxreq:
     description:
       - Maximum number of requests that the system can pass on a particular connection
         between the appliance and a server attached to it. Setting this value to 0
         allows an unlimited number of requests to be passed. This value is overridden
         by the maximum number of requests configured on the individual service.
-    type: int
+    type: float
   mgmthttpport:
     description:
       - This allow the configuration of management HTTP port.
@@ -150,12 +150,12 @@ options:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
-    type: int
+    type: float
     default: 576
   pmtutimeout:
     description:
       - Interval, in minutes, for flushing the PMTU entries.
-    type: int
+    type: float
     default: 10
   proxyprotocol:
     choices:
@@ -183,7 +183,7 @@ options:
   servicepathingressvlan:
     description:
       - VLAN on which the subscriber traffic arrives on the appliance.
-    type: int
+    type: float
   tcpcip:
     choices:
       - ENABLED
@@ -214,6 +214,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsparam
+      delegate_to: localhost
+      netscaler.adc.nsparam:
+        state: present
+        timezone: GMT+09:00-KST-Asia/Seoul
+
 """
 
 RETURN = r"""

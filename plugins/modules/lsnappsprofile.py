@@ -137,7 +137,7 @@ options:
       - ''
       - If you do not specify an ID, the ADC sends the outbound traffic through the
         default traffic domain, which has an ID of 0.
-    type: int
+    type: float
     default: 4095
   transportprotocol:
     choices:

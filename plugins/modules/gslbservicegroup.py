@@ -58,7 +58,7 @@ options:
   clttimeout:
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: int
+    type: float
   comment:
     description:
       - Any information about the GSLB service group.
@@ -72,7 +72,7 @@ options:
         system will not be sent to the service. Instead, they will be load balanced
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
-    type: int
+    type: float
   downstateflush:
     choices:
       - ENABLED
@@ -86,7 +86,7 @@ options:
   dup_weight:
     description:
       - weight of the monitor that is bound to GSLB servicegroup.
-    type: int
+    type: float
   graceful:
     choices:
       - 'YES'
@@ -100,7 +100,7 @@ options:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: int
+    type: float
   healthmonitor:
     choices:
       - 'YES'
@@ -125,11 +125,11 @@ options:
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the GSLB service
         group.
-    type: int
+    type: float
   maxclient:
     description:
       - Maximum number of simultaneous open connections for the GSLB service group.
-    type: int
+    type: float
   monitor_name_svc:
     description:
       - Name of the monitor bound to the GSLB service group. Used to assign a weight
@@ -139,7 +139,7 @@ options:
     description:
       - Minimum sum of weights of the monitors that are bound to this GSLB service.
         Used to determine whether to mark a GSLB service as UP or DOWN.
-    type: int
+    type: float
   newname:
     description:
       - New name for the GSLB service group.
@@ -147,7 +147,7 @@ options:
   order:
     description:
       - Order number to be assigned to the gslb servicegroup member
-    type: int
+    type: float
   port:
     description:
       - Server port number.
@@ -230,13 +230,13 @@ options:
   svrtimeout:
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: int
+    type: float
   weight:
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: int
+    type: float
   gslbservicegroup_gslbservicegroupmember_binding:
     type: dict
     description: Bindings for gslbservicegroup_gslbservicegroupmember_binding resource

@@ -41,13 +41,13 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   vlan:
     description:
       - Integer value that uniquely identifies the VLAN on which the adjacent network
@@ -61,7 +61,7 @@ options:
   vxlan:
     description:
       - ID of the VXLAN on which the IPv6 address of this ND6 entry is reachable.
-    type: int
+    type: float
   nd6ravariables_onlinkipv6prefix_binding:
     type: dict
     description: Bindings for nd6ravariables_onlinkipv6prefix_binding resource

@@ -67,7 +67,7 @@ options:
     description:
       - Time (in seconds) duration for which no new captcha challenge is sent after
         current captcha challenge has been answered successfully.
-    type: int
+    type: float
     default: 900
   logmessage:
     description:
@@ -78,7 +78,7 @@ options:
       - Time (in seconds) duration for which client which failed captcha need to wait
         until allowed to try again. The requests from this client are silently dropped
         during the mute period.
-    type: int
+    type: float
     default: 300
   name:
     description:
@@ -96,18 +96,18 @@ options:
       - Length of body request (in Bytes) up to (equal or less than) which captcha
         challenge will be provided to client. Above this length threshold the request
         will be dropped. This is to avoid DOS and DDOS attacks.
-    type: int
+    type: float
     default: 8000
   retryattempts:
     description:
       - Number of times client can retry solving the captcha.
-    type: int
+    type: float
     default: 3
   waittime:
     description:
       - Wait time in seconds for which ADC needs to wait for the Captcha response.
         This is to avoid DOS attacks.
-    type: int
+    type: float
     default: 15
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

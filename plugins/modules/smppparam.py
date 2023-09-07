@@ -28,7 +28,7 @@ options:
     description:
       - Numbering Plan Indicator, such as landline, data, or WAP client, used in the
         ESME address sent in the bind request.
-    type: int
+    type: float
   addrrange:
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
@@ -38,7 +38,7 @@ options:
     description:
       - Type of Number, such as an international number or a national number, used
         in the ESME address sent in the bind request.
-    type: int
+    type: float
   clientmode:
     choices:
       - TRANSCEIVER
@@ -67,7 +67,7 @@ options:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,
         to the message center.
-    type: int
+    type: float
     default: 10000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

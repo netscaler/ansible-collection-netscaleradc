@@ -47,7 +47,7 @@ options:
         (as specified by the network parameter) belongs. '
       - If you do not specify an ID, the subscriber or the subscriber network becomes
         part of the default traffic domain.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

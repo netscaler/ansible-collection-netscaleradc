@@ -46,7 +46,7 @@ options:
   maxbandwidth:
     description:
       - Maximum bandwidth permitted, in kbps.
-    type: int
+    type: float
   mode:
     choices:
       - CONNECTION
@@ -93,20 +93,20 @@ options:
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
-    type: int
+    type: float
     default: 1
   timeslice:
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
-    type: int
+    type: float
     default: 1000
   trapsintimeslice:
     description:
       - Number of traps to be sent in the timeslice configured. A value of 0 indicates
         that traps are disabled.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

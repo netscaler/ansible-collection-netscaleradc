@@ -28,89 +28,89 @@ options:
     description:
       - Global idle timeout, in seconds, for non-TCP client connections. This value
         is over ridden by the client timeout that is configured on individual entities.
-    type: int
+    type: float
   anyserver:
     description:
       - Global idle timeout, in seconds, for non TCP server connections. This value
         is over ridden by the server timeout that is configured on individual entities.
-    type: int
+    type: float
   anytcpclient:
     description:
       - Global idle timeout, in seconds, for TCP client connections. This value takes
         precedence over  entity level timeout settings (vserver/service). This is
         applicable only to transport protocol TCP.
-    type: int
+    type: float
   anytcpserver:
     description:
       - Global idle timeout, in seconds, for TCP server connections. This value takes
         precedence over entity level timeout settings ( vserver/service). This is
         applicable only to transport protocol TCP.
-    type: int
+    type: float
   client:
     description:
       - Client idle timeout (in seconds). If zero, the service-type default value
         is taken when service is created.
-    type: int
+    type: float
   halfclose:
     description:
       - Idle timeout, in seconds, for connections that are in TCP half-closed state.
-    type: int
+    type: float
     default: 10
   httpclient:
     description:
       - Global idle timeout, in seconds, for client connections of HTTP service type.
         This value is over ridden by the client timeout that is configured on individual
         entities.
-    type: int
+    type: float
   httpserver:
     description:
       - Global idle timeout, in seconds, for server connections of HTTP service type.
         This value is over ridden by the server timeout that is configured on individual
         entities.
-    type: int
+    type: float
   newconnidletimeout:
     description:
       - Timer interval, in seconds, for new TCP NATPCB connections on which no data
         was received.
-    type: int
+    type: float
     default: 4
   nontcpzombie:
     description:
       - Interval at which the zombie clean-up process for non-TCP connections should
         run. Inactive IP NAT connections will be cleaned up.
-    type: int
+    type: float
     default: 60
   reducedfintimeout:
     description:
       - Alternative idle timeout, in seconds, for closed TCP NATPCB connections.
-    type: int
+    type: float
     default: 30
   reducedrsttimeout:
     description:
       - Timer interval, in seconds, for abruptly terminated TCP NATPCB connections.
-    type: int
+    type: float
   server:
     description:
       - Server idle timeout (in seconds).  If zero, the service-type default value
         is taken when service is created.
-    type: int
+    type: float
   tcpclient:
     description:
       - Global idle timeout, in seconds, for non-HTTP client connections of TCP service
         type. This value is over ridden by the client timeout that is configured on
         individual entities.
-    type: int
+    type: float
   tcpserver:
     description:
       - Global idle timeout, in seconds, for non-HTTP server connections of TCP service
         type. This value is over ridden by the server timeout that is configured on
         entities.
-    type: int
+    type: float
   zombie:
     description:
       - Interval, in seconds, at which the Citrix ADC zombie cleanup process must
         run. This process cleans up inactive TCP connections.
-    type: int
+    type: float
     default: 120
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

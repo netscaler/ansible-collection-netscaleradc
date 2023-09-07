@@ -58,7 +58,7 @@ options:
       - Integer specifying the policy's priority. The lower the priority number, the
         higher the policy's priority. Maximum value for default syntax policies is
         2147483647 and for classic policies is 64000.
-    type: int
+    type: float
   secondary:
     description:
       - Bind the authentication policy as the secondary policy to use in a two-factor

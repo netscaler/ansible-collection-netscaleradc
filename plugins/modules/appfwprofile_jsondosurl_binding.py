@@ -75,7 +75,7 @@ options:
     description:
       - Maximum array length in the any of JSON object. This check protects against
         arrays having large lengths.
-    type: int
+    type: float
     default: 10000
   jsonmaxarraylengthcheck:
     choices:
@@ -89,7 +89,7 @@ options:
       - Maximum allowed nesting depth  of JSON document. JSON allows one to nest the
         containers (object and array) in any order to any depth. This check protects
         against documents that have excessive depth of hierarchy.
-    type: int
+    type: float
     default: 5
   jsonmaxcontainerdepthcheck:
     choices:
@@ -101,7 +101,7 @@ options:
   jsonmaxdocumentlength:
     description:
       - Maximum document length of JSON document, in bytes.
-    type: int
+    type: float
     default: 20000000
   jsonmaxdocumentlengthcheck:
     choices:
@@ -114,7 +114,7 @@ options:
     description:
       - Maximum key count in the any of JSON object. This check protects against objects
         that have large number of keys.
-    type: int
+    type: float
     default: 10000
   jsonmaxobjectkeycountcheck:
     choices:
@@ -127,7 +127,7 @@ options:
     description:
       - Maximum key length in the any of JSON object. This check protects against
         objects that have large keys.
-    type: int
+    type: float
     default: 128
   jsonmaxobjectkeylengthcheck:
     choices:
@@ -140,7 +140,7 @@ options:
     description:
       - Maximum string length in the JSON. This check protects against strings that
         have large length.
-    type: int
+    type: float
     default: 1000000
   jsonmaxstringlengthcheck:
     choices:

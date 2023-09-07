@@ -43,7 +43,7 @@ options:
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
-    type: int
+    type: float
   javascriptname:
     description:
       - Name of the JavaScript that the Bot Management feature  uses in response.
@@ -76,7 +76,7 @@ options:
   sessiontimeout:
     description:
       - Timeout, in seconds, after which a user session is terminated.
-    type: int
+    type: float
   signatureautoupdate:
     choices:
       - 'ON'
@@ -102,12 +102,12 @@ options:
   trapurlinterval:
     description:
       - Time in seconds after which trap URL is updated.
-    type: int
+    type: float
     default: 3600
   trapurllength:
     description:
       - Length of the auto-generated trap URL.
-    type: int
+    type: float
     default: 32
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

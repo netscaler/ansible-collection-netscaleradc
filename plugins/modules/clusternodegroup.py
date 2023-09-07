@@ -32,7 +32,7 @@ options:
     description:
       - Priority of Nodegroup. This priority is used for all the nodes bound to the
         nodegroup for Nodegroup selection
-    type: int
+    type: float
   state:
     choices:
       - ACTIVE

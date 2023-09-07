@@ -69,7 +69,7 @@ options:
   priority:
     description:
       - Priority for the policy.
-    type: int
+    type: float
   targetlbvserver:
     description:
       - target vserver name.

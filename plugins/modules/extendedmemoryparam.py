@@ -34,7 +34,7 @@ options:
       - 'Note: If you later reduce the value of this parameter, the amount of active
         memory is not reduced. Changing the configured memory limit can only increase
         the amount of active memory.'
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

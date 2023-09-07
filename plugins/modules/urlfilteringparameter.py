@@ -31,11 +31,11 @@ options:
   hoursbetweendbupdates:
     description:
       - URL Filtering hours between DB updates.
-    type: int
+    type: float
   localdatabasethreads:
     description:
       - URL Filtering Local DB number of threads.
-    type: int
+    type: float
   seeddbpath:
     description:
       - URL Filtering Seed DB path.

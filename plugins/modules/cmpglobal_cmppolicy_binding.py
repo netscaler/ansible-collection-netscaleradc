@@ -96,7 +96,7 @@ options:
       - In the configuration utility, you can click the Priority field and edit the
         priority level or drag the entry to a new position in the list. If you drag
         the entry to a new position, the priority level is updated automatically.
-    type: int
+    type: float
   type:
     choices:
       - REQ_OVERRIDE

@@ -107,7 +107,7 @@ options:
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.
-    type: int
+    type: float
   ocspstaplingcache:
     description:
       - Clear cached ocspStapling response in certkey.
@@ -151,6 +151,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcertKey
+      delegate_to: localhost
+      netscaler.adc.sslcertkey:
+        state: present
+        certkey: ns-server-certificate
+        cert: ns-server.cert
+        key: ns-server.key
+        password: false
+
 """
 
 RETURN = r"""

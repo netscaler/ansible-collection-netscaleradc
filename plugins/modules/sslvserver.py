@@ -80,7 +80,7 @@ options:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time.
-    type: int
+    type: float
   dhekeyexchangewithpsk:
     choices:
       - 'YES'
@@ -153,7 +153,7 @@ options:
     description:
       - Refresh count for regeneration of the RSA public-key and private-key pair.
         Zero (0) specifies infinite usage (no refresh).
-    type: int
+    type: float
   hsts:
     choices:
       - ENABLED
@@ -176,7 +176,7 @@ options:
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
-    type: int
+    type: float
   ocspstapling:
     choices:
       - ENABLED
@@ -250,7 +250,7 @@ options:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: int
+    type: float
     default: 120
   snienable:
     choices:
@@ -369,7 +369,7 @@ options:
       - This value can be increased to enable clients to open multiple parallel connections
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
-    type: int
+    type: float
     default: 1
   vservername:
     description:

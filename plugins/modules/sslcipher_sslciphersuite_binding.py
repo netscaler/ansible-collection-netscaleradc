@@ -60,7 +60,7 @@ options:
   cipherpriority:
     description:
       - This indicates priority assigned to the particular cipher
-    type: int
+    type: float
   ciphgrpals:
     description:
       - A cipher-suite can consist of an individual cipher name, the system predefined

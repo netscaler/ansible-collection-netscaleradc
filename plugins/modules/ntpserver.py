@@ -38,17 +38,17 @@ options:
         from the server must include authentication fields encrypted by using this
         key. To require authentication for communication with the server, you must
         set either the value of this parameter or the autokey parameter.
-    type: int
+    type: float
   maxpoll:
     description:
       - Maximum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
-    type: int
+    type: float
   minpoll:
     description:
       - Minimum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
-    type: int
+    type: float
   preferredntpserver:
     choices:
       - 'YES'

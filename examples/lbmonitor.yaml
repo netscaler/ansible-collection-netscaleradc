@@ -1,24 +1,27 @@
----
-
-- name: Simple LBMonitor playbook
+- name: Sample Playbook
   hosts: demo_netscalers
-
   gather_facts: false
-
   tasks:
-    - name: V2 | Sample Task | lbmonitor
+    - name: Sample Task | lbmonitor
       delegate_to: localhost
       netscaler.adc.lbmonitor:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
         state: present
-
-        monitorname: test_lbmonitor
-        type: HTTP-ECV
-        send: "GET /"
-        recv: ""
+        monitorname: ldns-dns
+        type: LDNS-DNS
+        query: .
+        querytype: Address
+        deviation: '0'
+        interval: 6
+        resptimeout: 3
+        downtime: 20
+    - name: Sample Task | lbmonitor | 2
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: stasecure
+        type: CITRIX-STA-SERVICE
+        deviation: '0'
+        interval: 2
+        units3: MIN
+        resptimeout: 4
+        downtime: 5

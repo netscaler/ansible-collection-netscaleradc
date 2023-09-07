@@ -36,12 +36,12 @@ options:
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: int
+    type: float
   hashid:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: int
+    type: float
   ip:
     description:
       - IP Address.
@@ -54,7 +54,7 @@ options:
   order:
     description:
       - Order number to be assigned to the servicegroup member
-    type: int
+    type: float
   port:
     description:
       - Server port number.
@@ -63,7 +63,7 @@ options:
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: int
+    type: float
   servername:
     description:
       - Name of the server to which to bind the service group.
@@ -85,7 +85,7 @@ options:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

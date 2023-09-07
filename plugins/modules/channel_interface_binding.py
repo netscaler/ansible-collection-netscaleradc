@@ -54,7 +54,7 @@ options:
     description:
       - New attribute added to identify the source of cmd, when SVM fires the nitro
         cmd, it will set the value of SVMCMD to be 1.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

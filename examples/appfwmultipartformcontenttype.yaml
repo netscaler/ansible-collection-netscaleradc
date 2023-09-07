@@ -1,0 +1,15 @@
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | appfwmultipartFormContentType
+      delegate_to: localhost
+      netscaler.adc.appfwmultipartformcontenttype:
+        state: present
+        multipartformcontenttypevalue: multipart/form-data
+    - name: Sample Task | appfwmultipartFormContentType | 2
+      delegate_to: localhost
+      netscaler.adc.appfwmultipartformcontenttype:
+        state: present
+        multipartformcontenttypevalue: multipart/form-data.*
+        isregex: REGEX

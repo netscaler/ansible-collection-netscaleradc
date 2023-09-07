@@ -51,7 +51,7 @@ options:
   cookietimeout:
     description:
       - Timeout, in minutes, for the GSLB site cookie.
-    type: int
+    type: float
   domainname:
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
@@ -64,17 +64,17 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   sitedomainttl:
     description:
       - TTL, in seconds, for all internally created site domains (created when a site
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
-    type: int
+    type: float
   ttl:
     description:
       - Time to live (TTL) for the domain.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

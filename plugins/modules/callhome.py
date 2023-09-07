@@ -31,7 +31,7 @@ options:
   hbcustominterval:
     description:
       - Interval (in days) between CallHome heartbeats
-    type: int
+    type: float
     default: 7
   ipaddress:
     description:
@@ -48,7 +48,7 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   port:
     description:
       - HTTP port on the Proxy server. This is a mandatory parameter for both IP address
@@ -73,6 +73,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | callhome
+      delegate_to: localhost
+      netscaler.adc.callhome:
+        state: present
+        hbcustominterval: '30'
+
 """
 
 RETURN = r"""

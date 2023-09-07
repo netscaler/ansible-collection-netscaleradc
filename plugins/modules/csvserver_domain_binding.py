@@ -37,7 +37,7 @@ options:
   cookietimeout:
     description:
       - '0'
-    type: int
+    type: float
   domainname:
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
@@ -51,11 +51,11 @@ options:
   sitedomainttl:
     description:
       - '0'
-    type: int
+    type: float
   ttl:
     description:
       - '0'
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

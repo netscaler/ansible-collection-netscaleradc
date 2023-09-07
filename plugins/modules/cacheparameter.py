@@ -52,18 +52,18 @@ options:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
-    type: int
+    type: float
     default: 4096
   memlimit:
     description:
       - Amount of memory available for storing the cache objects. In practice, the
         amount of memory available for caching can be less than half the total memory
         of the Citrix ADC.
-    type: int
+    type: float
   prefetchmaxpending:
     description:
       - Maximum number of outstanding prefetches in the Integrated Cache.
-    type: int
+    type: float
   undefaction:
     choices:
       - NOCACHE
@@ -102,6 +102,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cacheparameter
+      delegate_to: localhost
+      netscaler.adc.cacheparameter:
+        state: present
+        via: 'NS-CACHE-10.0: 141'
+
 """
 
 RETURN = r"""

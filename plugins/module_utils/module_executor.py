@@ -28,7 +28,11 @@ from .common import (
     unbind_resource,
     update_resource,
 )
-from .constants import NETSCALER_COMMON_ARGUMENTS, NETSCALER_NO_GET_RESOURCE
+from .constants import (
+    ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    NETSCALER_COMMON_ARGUMENTS,
+    NETSCALER_NO_GET_RESOURCE,
+)
 from .decorators import trace
 from .logger import log, loglines
 from .nitro_resource_map import NITRO_RESOURCE_MAP
@@ -216,11 +220,13 @@ class ModuleExecutor(object):
             attribute_name
         ]["type"]
         if attribute_type == "int":
-            # convert the existing attribute type to int
             return int(existing_attribute_value) == int(module_params_attribute_value)
-        elif attribute_type == "str":
+        if attribute_type == "float":
+            return float(existing_attribute_value) == float(
+                module_params_attribute_value
+            )
+        if attribute_type == "str":
             return str(existing_attribute_value) == str(module_params_attribute_value)
-
         return existing_attribute_value == module_params_attribute_value
 
     @trace
@@ -235,7 +241,15 @@ class ModuleExecutor(object):
         for attr in self.resource_module_params.keys():
             existing_attribute_value = self.existing_resource.get(attr)
             module_params_attribute_value = self.resource_module_params.get(attr)
-            # if existing_attribute_value != module_params_attribute_value:
+
+            # If the attribute is a password, skip it as the NITRO returns None for the existing password attributes
+            if attr in NITRO_RESOURCE_MAP[self.resource_name]["password_keys"]:
+                continue
+            try:
+                if attr in ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE[self.resource_name]:
+                    continue
+            except KeyError:
+                pass
             if not self.is_attribute_equal(
                 attr, existing_attribute_value, module_params_attribute_value
             ):
@@ -632,6 +646,9 @@ class ModuleExecutor(object):
                 )
             if binding_readwrite_arguments[k]["type"] == "int":
                 if int(v) != int(existing_binding_members[k]):
+                    return False
+            elif binding_readwrite_arguments[k]["type"] == "float":
+                if float(v) != float(existing_binding_members[k]):
                     return False
             else:
                 if v != existing_binding_members[k]:

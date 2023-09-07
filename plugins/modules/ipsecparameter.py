@@ -49,7 +49,7 @@ options:
   ikeretryinterval:
     description:
       - IKE retry interval for bringing up the connection
-    type: int
+    type: float
   ikeversion:
     choices:
       - V1
@@ -62,13 +62,13 @@ options:
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
         SA/8)
-    type: int
+    type: float
   livenesscheckinterval:
     description:
       - Number of seconds after which a notify payload is sent to check the liveliness
         of the peer. Additional retries are done as per retransmit interval setting.
         Zero value disables liveliness checks.
-    type: int
+    type: float
   perfectforwardsecrecy:
     choices:
       - ENABLE
@@ -80,13 +80,13 @@ options:
   replaywindowsize:
     description:
       - IPSec Replay window size for the data traffic
-    type: int
+    type: float
   retransmissiontime:
     description:
       - The interval in seconds to retry sending the IKE messages to peer, three consecutive
         attempts are done with doubled interval after every failure,
       - increases for every retransmit till 6 retransmits.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

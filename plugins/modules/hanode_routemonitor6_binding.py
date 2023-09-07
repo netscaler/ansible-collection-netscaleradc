@@ -30,7 +30,7 @@ options:
     description:
       - Number that uniquely identifies the local node. The ID of the local node is
         always 0.
-    type: int
+    type: float
   netmask:
     description:
       - The netmask.

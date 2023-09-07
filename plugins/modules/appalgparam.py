@@ -27,7 +27,7 @@ options:
   pptpgreidletimeout:
     description:
       - Interval in sec, after which data sessions of PPTP GRE is cleared.
-    type: int
+    type: float
     default: 9000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

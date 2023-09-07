@@ -36,7 +36,7 @@ options:
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
-    type: int
+    type: float
   srcip:
     description:
       - Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.
@@ -67,6 +67,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | ip6TunnelParam
+      delegate_to: localhost
+      netscaler.adc.ip6tunnelparam:
+        state: present
+        srcip: '::'
+
 """
 
 RETURN = r"""

@@ -38,7 +38,7 @@ options:
   order:
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: int
+    type: float
   servicename:
     description:
       - Name of the GSLB service for which to change the weight.
@@ -46,7 +46,7 @@ options:
   weight:
     description:
       - Weight for the service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

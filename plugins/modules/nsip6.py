@@ -129,7 +129,7 @@ options:
   ndowner:
     description:
       - NdOwner in Cluster for VIPS and Striped SNIPS
-    type: int
+    type: float
     default: 255
   networkroute:
     choices:
@@ -153,7 +153,7 @@ options:
       - ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for
         the VIP6 address by the IPv6 OSPF protocol running on the Citrix ADC. When
         ospfArea is not set, VIP6 is advertised on all areas.
-    type: int
+    type: float
     default: -1
   ownerdownresponse:
     choices:
@@ -170,7 +170,7 @@ options:
         if you want the IP address to be active only on the specific node. Can be
         configured only through the cluster IP address. Cannot be changed after the
         IP address is created.
-    type: int
+    type: float
     default: 255
   restrictaccess:
     choices:
@@ -218,13 +218,13 @@ options:
   tag:
     description:
       - Tag value for the network/host route associated with this IP.
-    type: int
+    type: float
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   telnet:
     choices:
       - ENABLED
@@ -250,13 +250,13 @@ options:
   vlan:
     description:
       - The VLAN number.
-    type: int
+    type: float
   vrid6:
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
-    type: int
+    type: float
   vserver:
     choices:
       - ENABLED
@@ -303,6 +303,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsip6
+      delegate_to: localhost
+      netscaler.adc.nsip6:
+        state: present
+        ipv6address: ae80::1024:45aa:fe3b:9843/64
+        scope: link-local
+        type: SNIP
+        vlan: '1'
+        vserver: DISABLED
+        mgmtaccess: DISABLED
+        dynamicrouting: ENABLED
+
 """
 
 RETURN = r"""

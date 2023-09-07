@@ -35,7 +35,7 @@ options:
       - ''
       - If you do not specify an ID, the destination IP address is assumed to be reachable
         through the default traffic domain, which has an ID of 0.
-    type: int
+    type: float
   name:
     description:
       - 'Name for the LSN static mapping entry. Must begin with an ASCII alphanumeric
@@ -84,7 +84,7 @@ options:
       - ''
       - If you do not specify an ID, the subscriber is assumed to be a part of the
         default traffic domain.
-    type: int
+    type: float
   transportprotocol:
     choices:
       - TCP

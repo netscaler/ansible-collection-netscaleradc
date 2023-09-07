@@ -65,12 +65,12 @@ options:
   prefixpreferredlifetime:
     description:
       - Preferred life time of the prefix, in seconds.
-    type: int
+    type: float
     default: 604800
   prefixvalidelifetime:
     description:
       - Valide life time of the prefix, in seconds.
-    type: int
+    type: float
     default: 2592000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

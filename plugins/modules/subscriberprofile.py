@@ -55,7 +55,7 @@ options:
   vlan:
     description:
       - The vlan number on which the subscriber is located.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

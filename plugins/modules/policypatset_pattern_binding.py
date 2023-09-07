@@ -137,7 +137,7 @@ options:
   index:
     description:
       - The index of the string associated with the patset.
-    type: int
+    type: float
   name:
     description:
       - Name of the pattern set to which to bind the string.

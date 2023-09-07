@@ -40,7 +40,7 @@ options:
         is used to order TM vservers based on the protection required. A session that
         is created by authenticating against TM vserver at given level cannot be used
         to access TM vserver at a higher level.
-    type: int
+    type: float
   authnvsname:
     description:
       - Name of the authentication vserver at which authentication should be done.

@@ -62,7 +62,7 @@ options:
   responsesize:
     description:
       - Number of bytes, in the response, to parse for extracting the forms.
-    type: int
+    type: float
     default: 8096
   ssosuccessrule:
     description:

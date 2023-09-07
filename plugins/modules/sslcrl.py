@@ -82,7 +82,7 @@ options:
         specify the date. If Interval is set to WEEKLY, specify the day of the week
         (for example, Sun=0 and Sat=6). This parameter is not applicable if the Interval
         is set to DAILY.
-    type: int
+    type: float
   gencrl:
     description:
       - Name of and, optionally, path to the CRL file to be generated. The list of

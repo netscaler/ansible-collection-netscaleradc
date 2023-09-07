@@ -43,7 +43,7 @@ options:
   arpowner:
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
-    type: int
+    type: float
     default: 255
   arpresponse:
     choices:
@@ -208,7 +208,7 @@ options:
         be advertised for this virtual IP (VIP)  address by the OSPF protocol running
         on the Citrix ADC.  When this parameter is not set, the VIP is advertised
         on all areas.
-    type: int
+    type: float
     default: -1
   ospflsatype:
     choices:
@@ -232,7 +232,7 @@ options:
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from
         0 to 31. If ownernode is not specified then the IP is treated as Striped IP.
-    type: int
+    type: float
     default: 255
   restrictaccess:
     choices:
@@ -279,14 +279,14 @@ options:
   tag:
     description:
       - Tag value for the network/host route associated with this IP.
-    type: int
+    type: float
   td:
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0. TD id 4095 is used reserved
         for  LSN use
-    type: int
+    type: float
   telnet:
     choices:
       - ENABLED
@@ -329,7 +329,7 @@ options:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
-    type: int
+    type: float
   vserver:
     choices:
       - ENABLED
@@ -376,6 +376,44 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsip
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 1.1.1.1
+        netmask: 255.255.255.192
+        type: VIP
+    - name: Sample Task | nsip | 2
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.188.1.1
+        netmask: 255.255.255.0
+        vserver: DISABLED
+        dynamicrouting: ENABLED
+    - name: Sample Task | nsip | 3
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.179.1.1
+        netmask: 255.255.255.255
+        type: VIP
+        arp: DISABLED
+        snmp: DISABLED
+        hostroute: ENABLED
+        hostrtgw: 0.0.0.0
+    - name: Sample Task | nsip | 4
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.188.1.2
+        netmask: 255.255.0.0
+        vserver: DISABLED
+
 """
 
 RETURN = r"""

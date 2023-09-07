@@ -77,7 +77,7 @@ options:
       - Cumulative total maximum number of bytes in web forms imported to a protected
         web site. If a user attempts to upload files with a total byte count higher
         than the specified limit, the application firewall blocks the request.
-    type: int
+    type: float
     default: 134217728
   learnratelimit:
     description:
@@ -85,7 +85,7 @@ options:
         engine examines to generate new relaxations for learning-enabled security
         checks. The application firewall drops any connections above this limit from
         the list of connections used by the learning engine.
-    type: int
+    type: float
     default: 400
   logmalformedreq:
     choices:
@@ -134,20 +134,20 @@ options:
         the user session is terminated. Before continuing to use the protected web
         site, the user must establish a new session by opening a designated start
         URL.
-    type: int
+    type: float
   sessionlimit:
     description:
       - Maximum number of sessions that the application firewall allows to be active,
         regardless of user activity. After the max_limit reaches, No more user session
         will be created .
-    type: int
+    type: float
     default: 100000
   sessiontimeout:
     description:
       - Timeout, in seconds, after which a user session is terminated. Before continuing
         to use the protected web site, the user must establish a new session by opening
         a designated start URL.
-    type: int
+    type: float
     default: 900
   signatureautoupdate:
     choices:

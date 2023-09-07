@@ -38,7 +38,7 @@ options:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter
         is set to NO. The default value, 0, specifies that this parameter is not set.
-    type: int
+    type: float
   enablestrictrx:
     choices:
       - 'YES'

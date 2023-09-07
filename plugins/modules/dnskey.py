@@ -37,7 +37,7 @@ options:
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
-    type: int
+    type: float
     default: 120
   filenameprefix:
     description:
@@ -54,7 +54,7 @@ options:
   keysize:
     description:
       - Size of the key, in bits.
-    type: int
+    type: float
     default: 512
   keytype:
     choices:
@@ -72,7 +72,7 @@ options:
         of days, hours, or minutes before expiry. Must be less than the expiry period.
         The notification is an SNMP trap sent to an SNMP manager. To enable the appliance
         to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.
-    type: int
+    type: float
     default: 7
   password:
     description:
@@ -99,7 +99,7 @@ options:
         the zone. TTL is the time for which the record must be cached by the DNS proxies.
         If the TTL is not specified, either the DNS zone's minimum TTL or the default
         value of 3600 is used.
-    type: int
+    type: float
     default: 3600
   units1:
     choices:

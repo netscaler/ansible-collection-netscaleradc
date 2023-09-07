@@ -27,7 +27,7 @@ options:
   bandwidth:
     description:
       - System bandwidth limit.
-    type: int
+    type: float
   edition:
     choices:
       - Standard
@@ -39,7 +39,7 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   platform:
     choices:
       - VS10

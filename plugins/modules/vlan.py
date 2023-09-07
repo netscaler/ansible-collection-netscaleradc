@@ -44,7 +44,7 @@ options:
   id:
     description:
       - A positive integer that uniquely identifies a VLAN.
-    type: int
+    type: float
   ipv6dynamicrouting:
     choices:
       - ENABLED
@@ -60,7 +60,7 @@ options:
       - Specifies the maximum transmission unit (MTU), in bytes. The MTU is the largest
         packet size, excluding 14 bytes of ethernet header and 4 bytes of crc, that
         can be transmitted and received over this VLAN.
-    type: int
+    type: float
   sharing:
     choices:
       - ENABLED
@@ -196,6 +196,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | vlan
+      delegate_to: localhost
+      netscaler.adc.vlan:
+        state: present
+        id: '301'
+        aliasname: client_side_network
+
 """
 
 RETURN = r"""

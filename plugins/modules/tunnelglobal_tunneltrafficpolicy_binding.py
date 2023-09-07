@@ -134,7 +134,7 @@ options:
   priority:
     description:
       - Priority.
-    type: int
+    type: float
   state:
     choices:
       - ENABLED

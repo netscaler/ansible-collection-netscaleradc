@@ -56,7 +56,7 @@ options:
         A lower number specifies a higher priority. Must be unique within the list
         of actions bound to the profile. Policies are evaluated in the order of their
         priority numbers, and the first policy that matches is applied.
-    type: int
+    type: float
   profilename:
     description:
       - Name of the URL Transformation profile with which to associate this action.

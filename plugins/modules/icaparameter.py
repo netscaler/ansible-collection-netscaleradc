@@ -35,7 +35,7 @@ options:
   edtpmtuddftimeout:
     description:
       - DF enforcement timeout for EDTPMTUDDF
-    type: int
+    type: float
     default: 100
   enablesronhafailover:
     choices:
@@ -59,7 +59,7 @@ options:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.
         The default value is 0
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

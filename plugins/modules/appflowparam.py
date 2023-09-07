@@ -41,7 +41,7 @@ options:
       - Interval, in seconds, at which to send Appnames to the configured collectors.
         Appname refers to the name of an entity (virtual server, service, or service
         group) in the Citrix ADC.
-    type: int
+    type: float
     default: 600
   auditlogs:
     choices:
@@ -99,7 +99,7 @@ options:
   disttracingsamplingrate:
     description:
       - Sampling rate for Distributed Tracing
-    type: int
+    type: float
   emailaddress:
     choices:
       - ENABLED
@@ -119,7 +119,7 @@ options:
   flowrecordinterval:
     description:
       - Interval, in seconds, at which to send flow records to the configured collectors.
-    type: int
+    type: float
     default: 60
   gxsessionreporting:
     choices:
@@ -305,7 +305,7 @@ options:
       - 'An observation domain groups a set of Citrix ADCs based on deployment: cluster,
         HA etc. A unique Observation Domain ID is required to be assigned to each
         such group.'
-    type: int
+    type: float
   observationdomainname:
     description:
       - Name of the Observation Domain defined by the observation domain ID.
@@ -315,12 +315,12 @@ options:
       - An observation point ID is identifier for the NetScaler from which appflow
         records are being exported. By default, the NetScaler IP is the observation
         point ID.
-    type: int
+    type: float
   securityinsightrecordinterval:
     description:
       - Interval, in seconds, at which to send security insight flow records to the
         configured collectors.
-    type: int
+    type: float
     default: 600
   securityinsighttraffic:
     choices:
@@ -368,12 +368,12 @@ options:
     description:
       - Interval, in seconds, at which to send tcp attack counters to the configured
         collectors. If 0 is configured, the record is not sent.
-    type: int
+    type: float
   templaterefresh:
     description:
       - Refresh interval, in seconds, at which to export the template data. Because
         data transmission is in UDP, the templates must be resent at regular intervals.
-    type: int
+    type: float
     default: 600
   timeseriesovernsip:
     choices:
@@ -387,7 +387,7 @@ options:
   udppmtu:
     description:
       - MTU, in bytes, for IPFIX UDP packets.
-    type: int
+    type: float
     default: 1472
   urlcategory:
     choices:
@@ -401,7 +401,7 @@ options:
     description:
       - On enabling this option, the NGS will send bandwidth usage record to configured
         collectors.
-    type: int
+    type: float
   videoinsight:
     choices:
       - ENABLED
@@ -424,6 +424,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | appflowparam
+      delegate_to: localhost
+      netscaler.adc.appflowparam:
+        state: present
+        observationpointid: '2370493962'
+
 """
 
 RETURN = r"""

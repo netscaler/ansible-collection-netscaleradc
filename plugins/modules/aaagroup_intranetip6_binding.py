@@ -67,7 +67,7 @@ options:
   numaddr:
     description:
       - Numbers of ipv6 address bound starting with intranetip6
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

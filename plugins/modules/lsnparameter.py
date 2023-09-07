@@ -33,7 +33,7 @@ options:
         memory is not reduced. Changing the configured memory limit can only increase
         the amount of active memory.'
       - This command is deprecated, use 'set extendedmemoryparam -memlimit' instead.
-    type: int
+    type: float
   sessionsync:
     choices:
       - ENABLED

@@ -83,12 +83,12 @@ options:
   templaterefresh:
     description:
       - IPFIX template refresh interval (in seconds).
-    type: int
+    type: float
     default: 600
   udppmtu:
     description:
       - MTU to be used for IPFIX UDP packets.
-    type: int
+    type: float
     default: 1472
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

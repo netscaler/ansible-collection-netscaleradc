@@ -29,7 +29,7 @@ options:
   id:
     description:
       - Specifies the virtual LAN ID.
-    type: int
+    type: float
   ifnum:
     description:
       - The interface to be bound to the VLAN, specified in slot/port notation (for

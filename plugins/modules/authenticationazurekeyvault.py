@@ -65,7 +65,7 @@ options:
   refreshinterval:
     description:
       - Interval at which access token in obtained.
-    type: int
+    type: float
     default: 50
   servicekeyname:
     description:

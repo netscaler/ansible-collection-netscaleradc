@@ -6,7 +6,7 @@
   gather_facts: false
 
   tasks:
-    - name: V2 | Sample Task | service
+    - name: Sample Task | service
       delegate_to: localhost
       netscaler.adc.service:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
@@ -23,7 +23,7 @@
         servicetype: HTTP
         port: 80
 
-    - name: V2 | Sample Task | service
+    - name: Sample Task | service
       delegate_to: localhost
       netscaler.adc.service:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
@@ -36,11 +36,11 @@
         state: present
 
         name: s2
-        ipaddress: 10.222.74.166
+        ipaddress: 10.10.10.10
         servicetype: HTTP
         port: 80
 
-    - name: V2 | Sample Task | servicegroup
+    - name: Sample Task | servicegroup
       delegate_to: localhost
       netscaler.adc.servicegroup:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
@@ -55,7 +55,7 @@
         servicegroupname: sg1
         servicetype: HTTP
 
-    - name: V2 | Sample Task | lbvserver with bindings
+    - name: Sample Task | lbvserver with bindings
       delegate_to: localhost
       netscaler.adc.lbvserver:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
@@ -69,7 +69,7 @@
 
         name: test_lbvser
         servicetype: HTTP
-        ipv46: 10.222.74.171
+        ipv46: 10.10.10.11
         port: 80
         lbmethod: LEASTCONNECTION
 

@@ -50,7 +50,7 @@ options:
       - Positive integer specifying the priority of the field type. A lower number
         specifies a higher priority. Field types are checked in the order of their
         priority numbers.
-    type: int
+    type: float
   regex:
     description:
       - PCRE - format regular expression defining the characters and length allowed

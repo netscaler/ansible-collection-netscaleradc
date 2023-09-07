@@ -36,12 +36,12 @@ options:
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: int
+    type: float
   hashid:
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
-    type: int
+    type: float
   monitor_name:
     description:
       - Monitor name.
@@ -61,7 +61,7 @@ options:
   order:
     description:
       - Order number to be assigned to the servicegroup member
-    type: int
+    type: float
   passive:
     description:
       - Indicates if load monitor is passive. A passive load monitor does not remove
@@ -75,7 +75,7 @@ options:
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: int
+    type: float
   servicegroupname:
     description:
       - Name of the service group.
@@ -93,7 +93,7 @@ options:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

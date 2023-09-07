@@ -33,7 +33,7 @@ options:
   vlan:
     description:
       - The VLAN number.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

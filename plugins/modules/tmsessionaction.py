@@ -77,12 +77,12 @@ options:
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistent cookie setting is enabled.
-    type: int
+    type: float
   sesstimeout:
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access intranet resources.
-    type: int
+    type: float
   sso:
     choices:
       - 'ON'

@@ -39,17 +39,17 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   port:
     description:
       - Port on which the target host listens for client requests.
-    type: int
+    type: float
   priority:
     description:
       - Integer specifying the priority of the target host. The lower the number,
         the higher the priority. If multiple target hosts have the same priority,
         selection is based on the Weight parameter.
-    type: int
+    type: float
   target:
     description:
       - Target host for the specified service.
@@ -64,7 +64,7 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: int
+    type: float
     default: 3600
   type:
     choices:
@@ -81,7 +81,7 @@ options:
     description:
       - Weight for the target host. Aids host selection when two or more hosts have
         the same priority. A larger number indicates greater weight.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

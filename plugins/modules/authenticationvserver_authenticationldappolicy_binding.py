@@ -94,7 +94,7 @@ options:
   priority:
     description:
       - The priority, if any, of the vpn vserver policy.
-    type: int
+    type: float
   secondary:
     description:
       - Bind the authentication policy to the secondary chain.

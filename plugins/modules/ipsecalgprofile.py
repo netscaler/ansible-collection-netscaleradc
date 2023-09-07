@@ -37,17 +37,17 @@ options:
   espgatetimeout:
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation
-    type: int
+    type: float
     default: 30
   espsessiontimeout:
     description:
       - ESP session timeout in minutes.
-    type: int
+    type: float
     default: 60
   ikesessiontimeout:
     description:
       - IKE session timeout in minutes
-    type: int
+    type: float
     default: 60
   name:
     description:

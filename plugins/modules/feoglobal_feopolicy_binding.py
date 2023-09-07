@@ -48,7 +48,7 @@ options:
   priority:
     description:
       - The priority assigned to the policy binding.
-    type: int
+    type: float
   type:
     choices:
       - REQ_OVERRIDE

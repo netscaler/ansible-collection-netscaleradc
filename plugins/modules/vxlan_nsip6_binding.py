@@ -30,7 +30,7 @@ options:
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
-    type: int
+    type: float
   ipaddress:
     description:
       - The IP address assigned to the VXLAN.

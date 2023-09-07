@@ -33,7 +33,7 @@ options:
   vlan:
     description:
       - The VLAN that is extended by this network bridge.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

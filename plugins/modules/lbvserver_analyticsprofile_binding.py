@@ -46,7 +46,7 @@ options:
         order. Defines the order of the service relative to the other services in
         the load balancing vserver's bindings. Determines the priority given to the
         service among all the services bound.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

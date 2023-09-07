@@ -1,27 +1,37 @@
----
-
-- name: V2 | Sample Playbook
+- name: Sample Playbook
   hosts: demo_netscalers
-
   gather_facts: false
-
-  vars:
-    state: present
-
   tasks:
-
-    - name: V2 | Sample Task | nsip
+    - name: Sample Task | nsip
       delegate_to: localhost
       netscaler.adc.nsip:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: "{{ state }}"
-
-        ipaddress: 4.4.4.4
+        state: present
+        ipaddress: 1.1.1.1
         netmask: 255.255.255.192
         type: VIP
+    - name: Sample Task | nsip | 2
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.188.1.1
+        netmask: 255.255.255.0
+        vserver: DISABLED
+        dynamicrouting: ENABLED
+    - name: Sample Task | nsip | 3
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.179.1.1
+        netmask: 255.255.255.255
+        type: VIP
+        arp: DISABLED
+        snmp: DISABLED
+        hostroute: ENABLED
+        hostrtgw: 0.0.0.0
+    - name: Sample Task | nsip | 4
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 192.188.1.2
+        netmask: 255.255.0.0
+        vserver: DISABLED

@@ -40,7 +40,7 @@ options:
   index:
     description:
       - The index of the value (ipv4, ipv6, number) associated with the set.
-    type: int
+    type: float
   name:
     description:
       - Name of the dataset to which to bind the value.

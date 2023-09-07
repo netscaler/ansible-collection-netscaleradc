@@ -73,7 +73,7 @@ options:
       - While doing DNS64 resolution, this parameter specifies the time to wait before
         sending an A query if no response is received from backend DNS server for
         AAAA query.
-    type: int
+    type: float
   dnsrootreferral:
     choices:
       - ENABLED
@@ -106,17 +106,17 @@ options:
         Caching of such responses can be disabled using DNS profile settings. A value
         of zero indicates that the number of subnets cached is limited only by existing
         memory constraints. The default value is zero.
-    type: int
+    type: float
   maxcachesize:
     description:
       - Maximum memory, in megabytes, that can be used for dns caching per Packet
         Engine.
-    type: int
+    type: float
   maxnegativecachesize:
     description:
       - Maximum memory, in megabytes, that can be used for caching of negative DNS
         responses per packet engine.
-    type: int
+    type: float
   maxnegcachettl:
     description:
       - Maximum time to live (TTL) for all negative records ( NXDONAIN and NODATA
@@ -126,7 +126,7 @@ options:
         before caching. When you modify this setting, the new value is applied only
         to those records that are cached after the modification. The TTL values of
         existing records are not changed.
-    type: int
+    type: float
     default: 604800
   maxpipeline:
     description:
@@ -134,7 +134,7 @@ options:
         which is identified by the <clientip:port>-<vserver ip:port> tuple. A value
         of 0 (zero) applies no limit to the number of concurrent DNS requests allowed
         on a single client connection.
-    type: int
+    type: float
   maxttl:
     description:
       - Maximum time to live (TTL) for all records cached in the DNS cache by DNS
@@ -143,7 +143,7 @@ options:
         of the record is set to the value of maxTTL before caching. When you modify
         this setting, the new value is applied only to those records that are cached
         after the modification. The TTL values of existing records are not changed.
-    type: int
+    type: float
     default: 604800
   maxudppacketsize:
     description:
@@ -153,7 +153,7 @@ options:
         acting as a proxy, requests from clients are limited by this parameter - if
         a request contains a size greater than this value in the OPT record, it will
         be replaced.
-    type: int
+    type: float
     default: 1280
   minttl:
     description:
@@ -164,7 +164,7 @@ options:
         modify this setting, the new value is applied only to those records that are
         cached after the modification. The TTL values of existing records are not
         changed.
-    type: int
+    type: float
   namelookuppriority:
     choices:
       - WINS
@@ -182,7 +182,7 @@ options:
         response will be dropped. This threshold will not be applied for NXDOMAIN
         responses got from the backend. The threshold will be applied per packet engine
         and per second.
-    type: int
+    type: float
   recursion:
     choices:
       - ENABLED
@@ -223,7 +223,7 @@ options:
     description:
       - Maximum number of retry attempts when no response is received for a query
         sent to a name server. Applies to end resolver and forwarder configurations.
-    type: int
+    type: float
     default: 5
   splitpktqueryprocessing:
     choices:

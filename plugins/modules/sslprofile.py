@@ -56,7 +56,7 @@ options:
   cipherpriority:
     description:
       - cipher priority
-    type: int
+    type: float
   cipherredirect:
     choices:
       - ENABLED
@@ -145,7 +145,7 @@ options:
         every time.
       - This parameter is not applicable when configuring a backend profile. Allowed
         DH count values are 0 and >= 500.
-    type: int
+    type: float
   dhekeyexchangewithpsk:
     choices:
       - 'YES'
@@ -194,7 +194,7 @@ options:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
-    type: int
+    type: float
     default: 45
   ersa:
     choices:
@@ -216,7 +216,7 @@ options:
     description:
       - The  refresh  count  for the re-generation of RSA public-key and private-key
         pair.
-    type: int
+    type: float
   hsts:
     choices:
       - ENABLED
@@ -248,7 +248,7 @@ options:
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
-    type: int
+    type: float
   name:
     description:
       - Name for the SSL profile. Must begin with an ASCII alphanumeric or underscore
@@ -283,7 +283,7 @@ options:
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
-    type: int
+    type: float
   pushenctrigger:
     choices:
       - Always
@@ -306,7 +306,7 @@ options:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
-    type: int
+    type: float
     default: 1
   pushflag:
     description:
@@ -317,7 +317,7 @@ options:
       - 1 - Insert PUSH flag into every decrypted record.
       - 2 -Insert PUSH flag into every encrypted record.
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
-    type: int
+    type: float
   quantumsize:
     choices:
       - 4096
@@ -359,7 +359,7 @@ options:
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
-    type: int
+    type: float
     default: 3000
   sessionticket:
     choices:
@@ -384,7 +384,7 @@ options:
   sessionticketlifetime:
     description:
       - This option sets the life time of session tickets issued by NS in secs
-    type: int
+    type: float
     default: 300
   sessreuse:
     choices:
@@ -399,7 +399,7 @@ options:
   sesstimeout:
     description:
       - The Session timeout value in seconds.
-    type: int
+    type: float
   skipclientcertpolicycheck:
     choices:
       - ENABLED
@@ -462,7 +462,7 @@ options:
       - Maximum ssl session to be cached per dynamic origin server. A unique ssl session
         is created for each SNI received from the client on ClientHello and the matching
         session is used for server session reuse.
-    type: int
+    type: float
     default: 10
   sslinterception:
     choices:
@@ -526,7 +526,7 @@ options:
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
-    type: int
+    type: float
     default: 100
   strictcachecks:
     choices:
@@ -586,7 +586,7 @@ options:
       - This value can be increased to enable clients to open multiple parallel connections
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
-    type: int
+    type: float
     default: 1
   zerorttearlydata:
     choices:

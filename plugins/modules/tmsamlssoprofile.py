@@ -462,7 +462,7 @@ options:
         that the assertion would be valid. For example, if skewTime is 10, then assertion
         would be valid from (current time - 10) min to (current time + 10) min, ie
         20min in all.
-    type: int
+    type: float
     default: 5
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

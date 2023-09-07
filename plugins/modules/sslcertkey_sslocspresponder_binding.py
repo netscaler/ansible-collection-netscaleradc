@@ -44,7 +44,7 @@ options:
   priority:
     description:
       - ocsp priority
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

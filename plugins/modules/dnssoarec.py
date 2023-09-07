@@ -45,18 +45,18 @@ options:
         made during the period have failed. After the expiry period, the secondary
         server stops serving the zone. Typically one week. Not used by the primary
         server.
-    type: int
+    type: float
     default: 3600
   minimum:
     description:
       - Default time to live (TTL) for all records in the zone. Can be overridden
         for individual records.
-    type: int
+    type: float
     default: 5
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   originserver:
     description:
       - Domain name of the name server that responds authoritatively for the domain.
@@ -65,19 +65,19 @@ options:
     description:
       - Time, in seconds, for which a secondary server must wait between successive
         checks on the value of the serial number.
-    type: int
+    type: float
     default: 3600
   retry:
     description:
       - Time, in seconds, between retries if a secondary server's attempt to contact
         the primary server for a zone refresh fails.
-    type: int
+    type: float
     default: 3
   serial:
     description:
       - The secondary server uses this parameter to determine whether it requires
         a zone transfer from the primary server.
-    type: int
+    type: float
     default: 100
   ttl:
     description:
@@ -89,7 +89,7 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: int
+    type: float
     default: 3600
   type:
     choices:

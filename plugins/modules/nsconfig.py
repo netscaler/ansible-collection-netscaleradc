@@ -80,12 +80,12 @@ options:
   exclusivequotamaxclient:
     description:
       - The percentage of maxClient to be given to PEs
-    type: int
+    type: float
     default: 80
   exclusivequotaspillover:
     description:
       - The percentage of max limit to be given to PEs
-    type: int
+    type: float
     default: 80
   force:
     description:
@@ -98,12 +98,12 @@ options:
   grantquotamaxclient:
     description:
       - The percentage of shared quota to be granted at a time for maxClient
-    type: int
+    type: float
     default: 10
   grantquotaspillover:
     description:
       - The percentage of shared quota to be granted at a time for spillover
-    type: int
+    type: float
     default: 10
   httpport:
     description:
@@ -153,13 +153,13 @@ options:
       - The maximum number of connections that will be made from the system to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
-    type: int
+    type: float
   maxreq:
     description:
       - The maximum number of requests that the system can pass on a particular connection
         between the system and a server attached to it. Setting this value to 0 allows
         an unlimited number of requests to be passed.
-    type: int
+    type: float
   netmask:
     description:
       - Netmask corresponding to the IP address. This parameter is mandatory to bring
@@ -168,7 +168,7 @@ options:
   nsvlan:
     description:
       - VLAN (NSVLAN) for the subnet on which the IP address resides.
-    type: int
+    type: float
   outtype:
     choices:
       - cli
@@ -179,12 +179,12 @@ options:
   pmtumin:
     description:
       - The minimum Path MTU.
-    type: int
+    type: float
     default: 576
   pmtutimeout:
     description:
       - The timeout value in minutes.
-    type: int
+    type: float
     default: 10
   rbaconfig:
     choices:
@@ -237,6 +237,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsconfig
+      delegate_to: localhost
+      netscaler.adc.nsconfig:
+        state: present
+        ipaddress: 10.10.10.10
+        netmask: 255.255.255.0
+
 """
 
 RETURN = r"""

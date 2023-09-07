@@ -87,7 +87,7 @@ options:
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time. This parameter is not applicable when configuring a backend service.
         Allowed DH count values are 0 and >= 500.
-    type: int
+    type: float
   dhfile:
     description:
       - Name for and, optionally, path to the PEM-format DH parameter file to be installed.
@@ -146,7 +146,7 @@ options:
       - Refresh count for regeneration of RSA public-key and private-key pair. Zero
         (0) specifies infinite usage (no refresh).
       - This parameter is not applicable when configuring a backend service.
-    type: int
+    type: float
   ocspstapling:
     choices:
       - ENABLED
@@ -224,7 +224,7 @@ options:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: int
+    type: float
     default: 300
   snienable:
     choices:
@@ -560,6 +560,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslservice
+      delegate_to: localhost
+      netscaler.adc.sslservice:
+        state: present
+        servicename: nsrnatsip-127.0.0.1-5061
+        ersa: ENABLED
+        sessreuse: DISABLED
+        ssl3: DISABLED
+        tls1: DISABLED
+        tls11: DISABLED
+        dtls1: DISABLED
+
 """
 
 RETURN = r"""

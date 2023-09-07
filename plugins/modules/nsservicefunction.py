@@ -27,7 +27,7 @@ options:
   ingressvlan:
     description:
       - VLAN ID on which the traffic from service function reaches Citrix ADC.
-    type: int
+    type: float
   servicefunctionname:
     description:
       - 'Name of the service function to be created. Leading character must be a number

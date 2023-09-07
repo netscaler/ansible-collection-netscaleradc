@@ -80,7 +80,7 @@ options:
     description:
       - Heuristic expiry time, in percent of the duration, since the object was last
         modified.
-    type: int
+    type: float
   hitparams:
     description:
       - Parameters to use for parameterized hit evaluation of an object. Up to 128
@@ -187,13 +187,13 @@ options:
   maxressize:
     description:
       - Maximum size of a response that can be cached in this content group.
-    type: int
+    type: float
     default: 80
   memlimit:
     description:
       - Maximum amount of memory that the cache can use. The effective limit is based
         on the available memory of the Citrix ADC.
-    type: int
+    type: float
     default: 65536
   minhits:
     description:
@@ -203,7 +203,7 @@ options:
     description:
       - Minimum size of a response that can be cached in this content group.
       - ' Default minimum response size is 0.'
-    type: int
+    type: float
   name:
     description:
       - Name for the content group.  Must begin with an ASCII alphabetic or underscore
@@ -249,17 +249,17 @@ options:
     description:
       - Maximum number of outstanding prefetches that can be queued for the content
         group.
-    type: int
+    type: float
   prefetchperiod:
     description:
       - Time period, in seconds before an object's calculated expiry time, during
         which to attempt prefetch.
-    type: int
+    type: float
   prefetchperiodmillisec:
     description:
       - Time period, in milliseconds before an object's calculated expiry time, during
         which to attempt prefetch.
-    type: int
+    type: float
   query:
     description:
       - Query string specifying individual objects to flush from this group by using
@@ -272,18 +272,18 @@ options:
         the quick abort value, and a client aborts during the download, the cache
         stops downloading the response. If the object is larger than the quick abort
         size, the cache continues to download the response.
-    type: int
+    type: float
     default: 4194303
   relexpiry:
     description:
       - Relative expiry time, in seconds, after which to expire an object cached in
         this content group.
-    type: int
+    type: float
   relexpirymillisec:
     description:
       - Relative expiry time, in milliseconds, after which to expire an object cached
         in this content group.
-    type: int
+    type: float
   removecookies:
     choices:
       - 'YES'
@@ -319,18 +319,54 @@ options:
       - 'Relative expiry time, in seconds, for expiring negative responses. This value
         is used only if the expiry time cannot be determined from any other source.
         It is applicable only to the following status codes: 307, 403, 404, and 410.'
-    type: int
+    type: float
   weakposrelexpiry:
     description:
       - Relative expiry time, in seconds, for expiring positive responses with response
         codes between 200 and 399. Cannot be used in combination with other Expiry
         attributes. Similar to -relExpiry but has lower precedence.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cachecontentgroup
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: DEFAULT
+    - name: Sample Task | cachecontentgroup | 2
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: BASEFILE
+        relexpiry: 86000
+        weaknegrelexpiry: 600
+        maxressize: 256
+        memlimit: 2
+    - name: Sample Task | cachecontentgroup | 3
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: DELTAJS
+        relexpiry: 86000
+        weaknegrelexpiry: 600
+        insertage: 'NO'
+        maxressize: 256
+        memlimit: 1
+        pinned: 'YES'
+    - name: Sample Task | cachecontentgroup | 4
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: NSFEO
+        maxressize: 1994752
+
 """
 
 RETURN = r"""

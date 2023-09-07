@@ -46,7 +46,7 @@ options:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
         the state of the service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

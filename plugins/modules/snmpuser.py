@@ -86,6 +86,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | snmpuser
+      delegate_to: localhost
+      netscaler.adc.snmpuser:
+        state: present
+        name: v3
+        group: v3_grp
+
 """
 
 RETURN = r"""

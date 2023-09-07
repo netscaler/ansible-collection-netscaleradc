@@ -38,7 +38,7 @@ options:
   vxlan:
     description:
       - The VXLAN assigned to the vlan inside the cloud.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

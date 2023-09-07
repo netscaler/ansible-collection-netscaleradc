@@ -88,7 +88,7 @@ options:
     description:
       - Specifies the priority of the policy with which it is bound. Maximum allowed
         priority should be less than 65535
-    type: int
+    type: float
   type:
     choices:
       - REQ_OVERRIDE

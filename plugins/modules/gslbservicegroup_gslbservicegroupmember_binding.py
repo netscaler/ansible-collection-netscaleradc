@@ -30,7 +30,7 @@ options:
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: int
+    type: float
   ip:
     description:
       - IP Address.
@@ -38,7 +38,7 @@ options:
   order:
     description:
       - Order number to be assigned to the gslb servicegroup member
-    type: int
+    type: float
   port:
     description:
       - Server port number.
@@ -84,7 +84,7 @@ options:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

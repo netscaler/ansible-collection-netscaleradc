@@ -28,18 +28,18 @@ options:
     description:
       - If ADC remains in grace for the configured hours then first grace alert will
         be raised
-    type: int
+    type: float
     default: 6
   alert2gracetimeout:
     description:
       - If ADC remains in grace for the configured hours then major grace alert will
         be raised
-    type: int
+    type: float
     default: 240
   licenseexpiryalerttime:
     description:
       - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
-    type: int
+    type: float
     default: 30
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -36,7 +36,7 @@ options:
     description:
       - Maximum number of otp devices user can register. Default value is 4. Max value
         is 255
-    type: int
+    type: float
     default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

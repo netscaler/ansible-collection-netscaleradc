@@ -27,7 +27,7 @@ options:
   bits:
     description:
       - Size, in bits, of the DH key being generated.
-    type: int
+    type: float
   dhfile:
     description:
       - Name of and, optionally, path to the DH key file. /nsconfig/ssl/ is the default

@@ -101,7 +101,7 @@ options:
         value, higher the priority. Note: This option is available only when binding
         content switching, filtering, and compression policies to a cache redirection
         virtual server.'
-    type: int
+    type: float
   targetvserver:
     description:
       - The CSW target server names.

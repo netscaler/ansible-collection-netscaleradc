@@ -36,7 +36,7 @@ options:
   currhoplimit:
     description:
       - Current Hop limit.
-    type: int
+    type: float
     default: 64
   defaultlifetime:
     description:
@@ -46,7 +46,7 @@ options:
   linkmtu:
     description:
       - The Link MTU.
-    type: int
+    type: float
   managedaddrconfig:
     choices:
       - 'YES'
@@ -58,12 +58,12 @@ options:
   maxrtadvinterval:
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
-    type: int
+    type: float
     default: 600
   minrtadvinterval:
     description:
       - Minimum time interval between RA messages, in seconds.
-    type: int
+    type: float
     default: 198
   onlyunicastrtadvresponse:
     choices:
@@ -84,11 +84,11 @@ options:
   reachabletime:
     description:
       - Reachable time, in milliseconds.
-    type: int
+    type: float
   retranstime:
     description:
       - Retransmission time, in milliseconds.
-    type: int
+    type: float
   sendrouteradv:
     choices:
       - 'YES'
@@ -108,7 +108,7 @@ options:
   vlan:
     description:
       - The VLAN number.
-    type: int
+    type: float
   nd6ravariables_onlinkipv6prefix_binding:
     type: dict
     description: Bindings for nd6ravariables_onlinkipv6prefix_binding resource
@@ -138,6 +138,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nd6RAvariables
+      delegate_to: localhost
+      netscaler.adc.nd6ravariables:
+        state: present
+        vlan: '1'
+
 """
 
 RETURN = r"""

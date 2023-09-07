@@ -44,7 +44,7 @@ options:
     description:
       - Weight of this group with respect to other configured aaa groups (lower the
         number higher the weight)
-    type: int
+    type: float
   aaagroup_aaauser_binding:
     type: dict
     description: Bindings for aaagroup_aaauser_binding resource

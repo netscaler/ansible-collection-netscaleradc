@@ -66,7 +66,7 @@ options:
         than 4*T time is considered frustrating. Citrix ADC maintains stats for such
         tolerable and frustrating transcations. And client response time related apdex
         counters are only updated on a vserver which receives clients traffic.
-    type: int
+    type: float
     default: 500
   clientiphdrexpr:
     description:
@@ -115,13 +115,13 @@ options:
   grpcholdlimit:
     description:
       - Maximum size in bytes allowed to buffer gRPC packets till trailer is received
-    type: int
+    type: float
     default: 131072
   grpcholdtimeout:
     description:
       - Maximum time in milliseconds allowed to buffer gRPC packets till trailer is
         received. The value should be in multiples of 100
-    type: int
+    type: float
     default: 1000
   grpclengthdelimitation:
     choices:
@@ -161,33 +161,33 @@ options:
     description:
       - Maximum size of the header compression table used to decode header blocks,
         in bytes.
-    type: int
+    type: float
     default: 4096
   http2initialconnwindowsize:
     description:
       - Initial window size for connection level flow control, in bytes.
-    type: int
+    type: float
     default: 65535
   http2initialwindowsize:
     description:
       - Initial window size for stream level flow control, in bytes.
-    type: int
+    type: float
     default: 65535
   http2maxconcurrentstreams:
     description:
       - Maximum number of concurrent streams that is allowed per connection.
-    type: int
+    type: float
     default: 100
   http2maxemptyframespermin:
     description:
       - Maximum number of empty  frames allowed in HTTP2 connection per minute
-    type: int
+    type: float
     default: 60
   http2maxframesize:
     description:
       - Maximum size of the frame payload that the Citrix ADC is willing to receive,
         in bytes.
-    type: int
+    type: float
     default: 16384
   http2maxheaderlistsize:
     description:
@@ -195,29 +195,29 @@ options:
         bytes. NOTE: The actual plain text header size that the Citrix ADC accepts
         is limited by maxHeaderLen. Please change maxHeaderLen parameter as well when
         modifying http2MaxHeaderListSize.'
-    type: int
+    type: float
     default: 24576
   http2maxpingframespermin:
     description:
       - Maximum number of ping frames allowed in HTTP2 connection per minute
-    type: int
+    type: float
     default: 60
   http2maxresetframespermin:
     description:
       - Maximum number of reset frames allowed in HTTP/2 connection per minute
-    type: int
+    type: float
     default: 90
   http2maxsettingsframespermin:
     description:
       - Maximum number of settings frames allowed in HTTP2 connection per minute
-    type: int
+    type: float
     default: 15
   http2minseverconn:
     description:
       - Minimum number of HTTP2 connections established to backend server, on receiving
         HTTP requests from client before multiplexing the streams into the available
         HTTP/2 connections.
-    type: int
+    type: float
     default: 20
   http2strictcipher:
     choices:
@@ -239,29 +239,29 @@ options:
     description:
       - Maximum number of HTTP/3 streams that can be blocked while HTTP/3 headers
         are being decoded.
-    type: int
+    type: float
     default: 100
   http3maxheaderfieldsectionsize:
     description:
       - Maximum size of the HTTP/3 header field section, in bytes.
-    type: int
+    type: float
     default: 24576
   http3maxheadertablesize:
     description:
       - Maximum size of the HTTP/3 QPACK dynamic header table, in bytes.
-    type: int
+    type: float
     default: 4096
   httppipelinebuffsize:
     description:
       - Application pipeline request buffering size, in bytes.
-    type: int
+    type: float
     default: 131072
   incomphdrdelay:
     description:
       - Maximum time to wait, in milliseconds, between incomplete header packets.
         If the header packets take longer to arrive at Citrix ADC, the connection
         is silently dropped.
-    type: int
+    type: float
     default: 7000
   markconnreqinval:
     choices:
@@ -307,7 +307,7 @@ options:
     description:
       - Number of bytes allowed for header field for HTTP header. If number of bytes
         exceeds beyond configured value, then request will be marked invalid
-    type: int
+    type: float
     default: 24820
   maxheaderlen:
     description:
@@ -315,13 +315,13 @@ options:
         error. If complete header is not obtained after queuing these many bytes,
         request will be marked as invalid and no L7 processing will be done for that
         TCP connection.
-    type: int
+    type: float
     default: 24820
   maxreq:
     description:
       - Maximum number of requests allowed on a single connection. Zero implies no
         limit on the number of requests.
-    type: int
+    type: float
   maxreusepool:
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
@@ -330,14 +330,14 @@ options:
         after the peak time. Zero implies no limit on reuse pool size. If non-zero
         value is given, it has to be greater than or equal to the number of running
         Packet Engines.
-    type: int
+    type: float
   minreusepool:
     description:
       - Minimum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time. Zero implies no limit on reuse pool size.
-    type: int
+    type: float
   name:
     description:
       - Name for an HTTP profile. Must begin with a letter, number, or the underscore
@@ -371,7 +371,7 @@ options:
       - Time, in seconds, within which the HTTP request must complete. If the request
         does not complete within this time, the specified request timeout action is
         executed. Zero disables the timeout.
-    type: int
+    type: float
   reqtimeoutaction:
     description:
       - 'Action to take when the HTTP request does not complete within the specified
@@ -385,7 +385,7 @@ options:
     description:
       - Idle timeout (in seconds) for server connections in re-use pool. Connections
         in the re-use pool are flushed, if they remain idle for the configured timeout.
-    type: int
+    type: float
   rtsptunnel:
     choices:
       - ENABLED
@@ -418,6 +418,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nshttpProfile
+      delegate_to: localhost
+      netscaler.adc.nshttpprofile:
+        state: present
+        name: httpprofile-HTTP2-0
+        http2: ENABLED
+
 """
 
 RETURN = r"""

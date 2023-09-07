@@ -7,7 +7,7 @@
 
   tasks:
 
-    - name: V2 | Sample playbook
+    - name: Sample playbook
       delegate_to: localhost
       netscaler.adc.lbparameter:
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable

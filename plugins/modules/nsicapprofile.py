@@ -102,7 +102,7 @@ options:
     description:
       - Value of Preview Header field. Citrix ADC uses the minimum of this set value
         and the preview size received on OPTIONS response.
-    type: int
+    type: float
     default: 4096
   queryparams:
     description:
@@ -115,7 +115,7 @@ options:
       - Time, in seconds, within which the remote server should respond to the ICAP-request.
         If the Netscaler does not receive full response with this time, the specified
         request timeout action is performed. Zero value disables this timeout functionality.
-    type: int
+    type: float
   reqtimeoutaction:
     choices:
       - BYPASS

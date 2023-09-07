@@ -54,7 +54,7 @@ options:
   priority:
     description:
       - The priority of the policies bound to this SSL service
-    type: int
+    type: float
   type:
     choices:
       - INTERCEPT_REQ

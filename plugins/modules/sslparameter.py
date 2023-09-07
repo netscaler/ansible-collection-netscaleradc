@@ -29,13 +29,13 @@ options:
       - Maximum memory size to use for certificate revocation lists (CRLs). This parameter
         reserves memory for a CRL but sets a limit to the maximum memory that the
         CRLs loaded on the appliance can consume.
-    type: int
+    type: float
     default: 256
   cryptodevdisablelimit:
     description:
       - Limit to the number of disabled SSL chips after which the ADC restarts. A
         value of zero implies that the ADC does not automatically restart.
-    type: int
+    type: float
   defaultprofile:
     choices:
       - ENABLED
@@ -80,7 +80,7 @@ options:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
-    type: int
+    type: float
     default: 45
   heterogeneoussslhw:
     choices:
@@ -135,20 +135,20 @@ options:
         of the packet engine memory can be assigned. Because the maximum allowed packet
         engine memory is 4GB, the maximum value that can be assigned to the OCSP cache
         is approximately 410 MB.
-    type: int
+    type: float
     default: 10
   operationqueuelimit:
     description:
       - Limit in percentage of capacity of the crypto operations queue beyond which
         new SSL connections are not accepted until the queue is reduced.
-    type: int
+    type: float
     default: 150
   pushenctriggertimeout:
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
-    type: int
+    type: float
     default: 1
   pushflag:
     description:
@@ -159,7 +159,7 @@ options:
       - 1 - Insert PUSH flag into every decrypted record.
       - 2 -Insert PUSH flag into every encrypted record.
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
-    type: int
+    type: float
   quantumsize:
     choices:
       - 4096
@@ -241,7 +241,7 @@ options:
       - Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations
         are not done in software.
       - A value of zero implies that CPU is not utilized for doing crypto in software.
-    type: int
+    type: float
   sslierrorcache:
     choices:
       - ENABLED
@@ -258,14 +258,14 @@ options:
         This memory is used as a LRU cache so that the old entries gets replaced with
         new entry once the set memory limit is fully utilised. A value of 0 decides
         the limit automatically.
-    type: int
+    type: float
   ssltriggertimeout:
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
-    type: int
+    type: float
     default: 100
   strictcachecks:
     choices:

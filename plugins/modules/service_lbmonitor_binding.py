@@ -52,7 +52,7 @@ options:
         weight assigned to its binding with the service determines how much the monitor
         contributes toward keeping the health of the service above the value configured
         for the Monitor Threshold parameter.
-    type: int
+    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

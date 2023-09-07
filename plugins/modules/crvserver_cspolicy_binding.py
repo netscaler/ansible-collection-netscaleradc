@@ -67,7 +67,7 @@ options:
   priority:
     description:
       - The priority for the policy.
-    type: int
+    type: float
   targetvserver:
     description:
       - The CSW target server names.

@@ -49,7 +49,7 @@ options:
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.
-    type: int
+    type: float
     default: 3
   defaultauthenticationgroup:
     description:

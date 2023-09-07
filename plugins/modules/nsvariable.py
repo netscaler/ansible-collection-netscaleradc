@@ -32,7 +32,7 @@ options:
     description:
       - Value expiration in seconds. If the value is not referenced within the expiration
         period it will be deleted. 0 (the default) means no expiration.
-    type: int
+    type: float
   iffull:
     choices:
       - undef

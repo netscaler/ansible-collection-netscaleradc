@@ -355,13 +355,13 @@ options:
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
-    type: int
+    type: float
     default: 1
   timeslice:
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.
-    type: int
+    type: float
     default: 1000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

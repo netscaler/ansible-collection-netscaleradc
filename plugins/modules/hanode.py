@@ -28,7 +28,7 @@ options:
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
-    type: int
+    type: float
     default: 3
   failsafe:
     choices:
@@ -97,13 +97,13 @@ options:
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
-    type: int
+    type: float
     default: 200
   id:
     description:
       - Number that uniquely identifies the node. For self node, it will always be
         0. Peer node values can range from 1-64.
-    type: int
+    type: float
   inc:
     choices:
       - ENABLED
@@ -125,11 +125,11 @@ options:
   maxflips:
     description:
       - Max number of flips allowed before becoming sticky primary
-    type: int
+    type: float
   maxfliptime:
     description:
       - Interval after which flipping of node states can again start
-    type: int
+    type: float
   syncstatusstrictmode:
     choices:
       - ENABLED
@@ -143,7 +143,7 @@ options:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync
         and session state sync. However HA heartbeats can go all interfaces.
-    type: int
+    type: float
   hanode_routemonitor6_binding:
     type: dict
     description: Bindings for hanode_routemonitor6_binding resource
@@ -197,6 +197,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: demo_netscalers
+  gather_facts: false
+  tasks:
+    - name: Sample Task | HAnode
+      delegate_to: localhost
+      netscaler.adc.hanode:
+        state: present
+        id: 1
+        ipaddress: 10.222.74.141
+
 """
 
 RETURN = r"""

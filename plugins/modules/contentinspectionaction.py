@@ -63,7 +63,7 @@ options:
   serverport:
     description:
       - Port of remoteService
-    type: int
+    type: float
     default: 1344
   type:
     choices:

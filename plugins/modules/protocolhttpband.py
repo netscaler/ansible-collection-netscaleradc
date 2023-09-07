@@ -27,7 +27,7 @@ options:
   nodeid:
     description:
       - Unique number that identifies the cluster node.
-    type: int
+    type: float
   reqbandsize:
     description:
       - 'Band size, in bytes, for HTTP request band statistics. For example, if you
