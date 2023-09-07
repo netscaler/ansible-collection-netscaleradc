@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.ipsecprofile module – Configuration for IPSEC profile resource. &mdash; Ansible collections  documentation</title>
@@ -197,7 +197,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ikeretryinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecprofile-module-parameter-ikeretryinterval"><strong>ikeretryinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ikeretryinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-ikeretryinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IKE retry interval for bringing up the connection</p>
 </div></td>
@@ -216,14 +216,14 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecprofile-module-parameter-lifetime"><strong>lifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-lifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE SA/8)</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-livenesscheckinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecprofile-module-parameter-livenesscheckinterval"><strong>livenesscheckinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-livenesscheckinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-livenesscheckinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of seconds after which a notify payload is sent to check the liveliness of the peer. Additional retries are done as per retransmit interval setting. Zero value disables liveliness checks.</p>
 </div></td>
@@ -319,14 +319,14 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-replaywindowsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecprofile-module-parameter-replaywindowsize"><strong>replaywindowsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-replaywindowsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-replaywindowsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IPSec Replay window size for the data traffic</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-retransmissiontime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecprofile-module-parameter-retransmissiontime"><strong>retransmissiontime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-retransmissiontime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-retransmissiontime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The interval in seconds to retry sending the IKE messages to peer, three consecutive attempts are done with doubled interval after every failure.</p>
 </div></td>
@@ -460,7 +460,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>

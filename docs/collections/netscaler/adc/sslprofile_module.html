@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>netscaler.adc.sslprofile module – Configuration for SSL profile resource. &mdash; Ansible collections  documentation</title>
@@ -163,15 +163,15 @@
 <div class="ansibleOptionAnchor" id="parameter-allowextendedmastersecret"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-allowextendedmastersecret"><strong>allowextendedmastersecret</strong></p>
 <a class="ansibleOptionLink" href="#parameter-allowextendedmastersecret" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
-<td><div class="ansible-option-cell"><p>When set to YES, attempt to use the TLS Extended Master Secret (EMS, as</p>
+<td><div class="ansible-option-cell"><p>When set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, attempt to use the TLS Extended Master Secret (EMS, as</p>
 <p>described in RFC 7627) when negotiating TLS 1.0, TLS 1.1 and TLS 1.2</p>
 <p>connection parameters. EMS must be supported by both the TLS client and server</p>
 <p>in order to be enabled during a handshake. This setting applies to both</p>
 <p>frontend and backend SSL profiles.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -205,7 +205,7 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cipherpriority"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-cipherpriority"><strong>cipherpriority</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cipherpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-cipherpriority" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>cipher priority</p>
 </div></td>
@@ -286,14 +286,14 @@
 <a class="ansibleOptionLink" href="#parameter-denysslreneg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Deny renegotiation in specified circumstances. Available settings function as follows:</p>
-<p>* NO - Allow SSL renegotiation.</p>
-<p>* FRONTEND_CLIENT - Deny secure and nonsecure SSL renegotiation initiated by the client.</p>
-<p>* FRONTEND_CLIENTSERVER - Deny secure and nonsecure SSL renegotiation initiated by the client or the Citrix ADC during policy-based client authentication.</p>
-<p>* ALL - Deny all secure and nonsecure SSL renegotiation.</p>
-<p>* NONSECURE - Deny nonsecure SSL renegotiation. Allows only clients that support RFC 5746.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">NO</span></code> - Allow SSL renegotiation.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">FRONTEND_CLIENT</span></code> - Deny secure and nonsecure SSL renegotiation initiated by the client.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">FRONTEND_CLIENTSERVER</span></code> - Deny secure and nonsecure SSL renegotiation initiated by the client or the Citrix ADC during policy-based client authentication.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">ALL</span></code> - Deny all secure and nonsecure SSL renegotiation.</p>
+<p>* <code class="docutils literal notranslate"><span class="pre">NONSECURE</span></code> - Deny nonsecure SSL renegotiation. Allows only clients that support RFC 5746.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FRONTEND_CLIENT&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;FRONTEND_CLIENTSERVER&quot;</span></code></p></li>
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;ALL&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
@@ -316,7 +316,7 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dhcount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-dhcount"><strong>dhcount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dhcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-dhcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of interactions, between the client and the Citrix ADC, after which the DH private-public pair is regenerated. A value of zero (0) specifies refresh every time.</p>
 <p>This parameter is not applicable when configuring a backend profile. Allowed DH count values are 0 and &gt;= 500.</p>
@@ -332,8 +332,8 @@
 <p>If enabled, the server will require a DHE key exchange when a PSK is accepted regardless of whether the client supports combined PSK-DHE key exchange. This setting only has an effect when resumption is enabled.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -363,17 +363,17 @@
 <td><div class="ansible-option-cell"><p>Host header check for SNI enabled sessions. If this check is enabled and the HTTP request does not contain the host header for SNI enabled sessions(i.e vserver or profile bound to vserver has SNI enabled and ‘Client Hello’ arrived with SNI extension), the request is dropped.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-encrypttriggerpktcount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-encrypttriggerpktcount"><strong>encrypttriggerpktcount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-encrypttriggerpktcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-encrypttriggerpktcount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of queued packets after which encryption is triggered. Use this setting for SSL transactions that send small packets from server to Citrix ADC.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">45</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">45.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -391,7 +391,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ersacount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-ersacount"><strong>ersacount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ersacount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-ersacount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The  refresh  count  for the re-generation of RSA public-key and private-key pair.</p>
 </div></td>
@@ -415,8 +415,8 @@
 <td><div class="ansible-option-cell"><p>Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests for subdomains.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -434,7 +434,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-maxage"><strong>maxage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set the maximum time, in seconds, in the strict transport security (STS) header during which the client must send only HTTPS requests to the server</p>
 </div></td>
@@ -509,14 +509,14 @@
 <td><div class="ansible-option-cell"><p>Flag indicates the consent of the site owner to have their domain preloaded.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prevsessionkeylifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-prevsessionkeylifetime"><strong>prevsessionkeylifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prevsessionkeylifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-prevsessionkeylifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option sets the life time of symm key used to generate session tickets issued by NS in secs</p>
 </div></td>
@@ -541,15 +541,15 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pushenctriggertimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-pushenctriggertimeout"><strong>pushenctriggertimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pushenctriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-pushenctriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>PUSH encryption trigger timeout value. The timeout value is applied only if you set the Push Encryption Trigger parameter to Timer in the SSL virtual server settings.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pushflag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-pushflag"><strong>pushflag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pushflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-pushflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag is set to a value other than 0, the buffered records are forwarded on the basis of the value of the PUSH flag. Available settings function as follows:</p>
 <p>0 - Auto (PUSH flag is not set.)</p>
@@ -603,8 +603,8 @@
 <td><div class="ansible-option-cell"><p>Enable sending SSL Close-Notify at the end of a transaction.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -622,10 +622,10 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionkeylifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-sessionkeylifetime"><strong>sessionkeylifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionkeylifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionkeylifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option sets the life time of symm key used to generate session tickets issued by NS in secs</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3000</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3000.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -661,10 +661,10 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessionticketlifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-sessionticketlifetime"><strong>sessionticketlifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessionticketlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessionticketlifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option sets the life time of session tickets issued by NS in secs</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">300</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">300.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -681,7 +681,7 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sesstimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-sesstimeout"><strong>sesstimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sesstimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The Session timeout value in seconds.</p>
 </div></td>
@@ -716,26 +716,26 @@
 </div></td>
 <td><div class="ansible-option-cell"><p>Controls how the HTTP ‘Host’ header value is validated. These checks are performed only if the session is SNI enabled (i.e when vserver or profile bound to vserver has SNI enabled and ‘Client Hello’ arrived with SNI extension) and HTTP request contains ‘Host’ header.</p>
 <p>Available settings function as follows:</p>
-<p>CERT   - Request is forwarded if the ‘Host’ value is covered</p>
+<p><code class="docutils literal notranslate"><span class="pre">CERT</span></code>   - Request is forwarded if the ‘Host’ value is covered</p>
 <blockquote>
 <div><p>by the certificate used to establish this SSL session.</p>
-<p>Note: ‘CERT’ matching mode cannot be applied in</p>
+<p>Note: ‘<code class="docutils literal notranslate"><span class="pre">CERT</span></code>‘ matching mode cannot be applied in</p>
 <p>TLS 1.3 connections established by resuming from a</p>
-<p>previous TLS 1.3 session. On these connections, ‘STRICT’</p>
+<p>previous TLS 1.3 session. On these connections, ‘<code class="docutils literal notranslate"><span class="pre">STRICT</span></code>‘</p>
 <p>matching mode will be used instead.</p>
 </div></blockquote>
-<p>STRICT - Request is forwarded only if value of ‘Host’ header</p>
+<p><code class="docutils literal notranslate"><span class="pre">STRICT</span></code> - Request is forwarded only if value of ‘Host’ header</p>
 <blockquote>
 <div><p>in HTTP is identical to the ‘Server name’ value passed</p>
 <p>in ‘Client Hello’ of the SSL connection.</p>
 </div></blockquote>
-<p>NO     - No validation is performed on the HTTP ‘Host’</p>
+<p><code class="docutils literal notranslate"><span class="pre">NO</span></code>     - No validation is performed on the HTTP ‘Host’</p>
 <blockquote>
 <div><p>header value.</p>
 </div></blockquote>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 <li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;CERT&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;STRICT&quot;</span></code></p></li>
 </ul>
@@ -756,10 +756,10 @@
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslimaxsessperserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-sslimaxsessperserver"><strong>sslimaxsessperserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslimaxsessperserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslimaxsessperserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum ssl session to be cached per dynamic origin server. A unique ssl session is created for each SNI received from the client on ClientHello and the matching session is used for server session reuse.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">10</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">10.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
@@ -959,10 +959,10 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssltriggertimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-ssltriggertimeout"><strong>ssltriggertimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssltriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssltriggertimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time, in milliseconds, after which encryption is triggered for transactions that are not tracked on the Citrix ADC because their length is not known. There can be a delay of up to 10ms from the specified timeout value before the packet is pushed into the queue.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">100</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">100.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -991,8 +991,8 @@
 <td><div class="ansible-option-cell"><p>Enable strict CA certificate checks on the appliance.</p>
 <p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;True&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;False&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
 </ul>
 </div></td>
 </tr>
@@ -1058,12 +1058,12 @@
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tls13sessionticketsperauthcontext"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-sslprofile-module-parameter-tls13sessionticketsperauthcontext"><strong>tls13sessionticketsperauthcontext</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tls13sessionticketsperauthcontext" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-tls13sessionticketsperauthcontext" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated, ticket-based resumption is enabled, and either (1) a handshake completes or (2) post-handhsake client auth completes.</p>
 <p>This value can be increased to enable clients to open multiple parallel connections using a fresh ticket for each connection.</p>
 <p>No tickets are sent if resumption is disabled.</p>
-<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1</span></code></p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -1176,7 +1176,7 @@
 <h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
 <p class="ansible-links">
   <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
-  <a href="https://github.com/citrix/citrix-adc-ansible-modules" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
 </p></section>
 </section>
 </section>
