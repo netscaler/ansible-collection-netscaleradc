@@ -45,6 +45,9 @@ class ModuleExecutor(object):
             self.sessionid = ""
         log("DEBUG: Initializing ModuleExecutor for resource %s" % self.resource_name)
         self.valid_states = get_valid_desired_states(self.resource_name)
+        self.supported_operations = NITRO_RESOURCE_MAP[self.resource_name][
+            "_supported_operations"
+        ]
 
         module_specific_arguments = NITRO_RESOURCE_MAP[self.resource_name][
             "readwrite_arguments"
@@ -284,7 +287,7 @@ class ModuleExecutor(object):
 
     @trace
     def create_or_update(self):
-        self.get_existing_resource()
+        # self.get_existing_resource()
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
@@ -730,7 +733,11 @@ class ModuleExecutor(object):
     def main(self):
         try:
             if self.module.params["state"] in {"present", "enabled", "disabled"}:
-                self.create_or_update()
+                if (
+                    "add" in self.supported_operations
+                    or "update" in self.supported_operations
+                ):
+                    self.create_or_update()
                 if self.module.params["state"] in {"enabled", "disabled"}:
                     if self.module.check_mode:
                         log(

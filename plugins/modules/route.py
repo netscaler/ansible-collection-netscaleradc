@@ -140,10 +140,9 @@ EXAMPLES = r"""
       delegate_to: localhost
       netscaler.adc.route:
         state: present
-        network: 0.0.0.0
-        netmask: 0.0.0.0
-        gateway: 10.10.10.1
-
+        network: 172.31.0.0
+        netmask: 255.255.0.0
+        gateway: 172.31.0.1
 """
 
 RETURN = r"""

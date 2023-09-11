@@ -9,11 +9,7 @@ __metaclass__ = type
 
 import re
 
-from .constants import (
-    HTTP_RESOURCE_NOT_FOUND,
-    HTTP_SUCCESS_CODES,
-    NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES,
-)
+from .constants import HTTP_RESOURCE_NOT_FOUND, HTTP_SUCCESS_CODES
 from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
@@ -430,25 +426,21 @@ def adc_logout(client):
 
 
 @trace
+def get_supported_operations(resource_name):
+    return NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
+
+
+@trace
 def get_valid_desired_states(resource_name):
     desired_states = set()
     # Read the desired states from the resource map
-    resource_map_keys = NITRO_RESOURCE_MAP[resource_name].keys()
-    if (
-        "add_payload_keys" in resource_map_keys
-        or resource_name in NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES
-    ):
+    supported_operations = NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
+    if "add" in supported_operations or "update" in supported_operations:
         desired_states.add("present")
-    if "delete_arg_keys" in resource_map_keys:
+    if "delete" in supported_operations:
         desired_states.add("absent")
-    try:
-        if len(NITRO_RESOURCE_MAP[resource_name]["enable_payload_keys"]) > 0:
-            desired_states.add("enabled")
-    except KeyError:
-        pass
-    try:
-        if len(NITRO_RESOURCE_MAP[resource_name]["disable_payload_keys"]) > 0:
-            desired_states.add("disabled")
-    except KeyError:
-        pass
+    if "enable" in supported_operations:
+        desired_states.add("enabled")
+    if "disable" in supported_operations:
+        desired_states.add("disabled")
     return desired_states
