@@ -31228,7 +31228,6 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [
             "cachetype",
             "cleartextport",
-            "ip",
             "nodefaultbindings",
             "port",
             "servername",

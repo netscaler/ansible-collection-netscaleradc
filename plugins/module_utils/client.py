@@ -76,6 +76,13 @@ class NitroAPIClient(object):
 
         # Append resource id
         if id is not None:
+            # if id is float type and it is equal to int(id) then convert it to int
+            # Reason: nd6ravariables module has a primary key (vlan) of type float
+            # however, the Nitro API expects the id to be of type int
+            # http://NSIP/nitro/v1/config/nd6ravariables/1.0 -- This does not work
+            # http://NSIP/nitro/v1/config/nd6ravariables/1 -- This works
+            if isinstance(id, float) and id == int(id):
+                id = int(id)
             # Double encode the id
             # https://owasp.org/www-community/Double_Encoding
             url = "%s/%s" % (url, quote(quote(str(id), safe=""), safe=""))
