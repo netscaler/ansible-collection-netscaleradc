@@ -167,6 +167,8 @@ def _check_update_resource_params(resource_name, resource_module_params):
     for key in resource_module_params.copy().keys():
         if key in resource_update_keys:
             put_data[key] = resource_module_params[key]
+        elif resource_name == "service" and key == "ip":
+            put_data["ipaddress"] = resource_module_params[key]
         else:
             log(
                 "WARNING: Key `{}` is not allowed for the resource `{}` for the UPDATE operation. Skipping the key for the operation".format(
