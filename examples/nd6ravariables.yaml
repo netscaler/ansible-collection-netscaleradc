@@ -6,4 +6,4 @@
       delegate_to: localhost
       netscaler.adc.nd6ravariables:
         state: present
-        vlan: '1'
+        vlan: 1
