@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>netscaler.adc.nstrace module – Configuration for nstrace operations resource. &mdash; Ansible collections  documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/ansible.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/antsibull-minimal.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/rtd-ethical-ads.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/images/Ansible-Mark-RGB_Black.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="netscaler.adc.nstrafficdomain module – Configuration for Traffic Domain resource." href="nstrafficdomain_module.html" />
+    <link rel="prev" title="netscaler.adc.nstimer_autoscalepolicy_binding module – Binding Resource definition for describing association between nstimer and autoscalepolicy resources" href="nstimer_autoscalepolicy_binding_module.html" /><!-- extra head elements for Ansible beyond RTD Sphinx Theme -->
+
+
+
+
+</head>
+
+<body class="wy-body-for-nav"><!-- extra body elements for Ansible beyond RTD Sphinx Theme -->
+
+<div class="DocSite-globalNav ansibleNav">
+  <ul>
+    <li><a href="https://www.ansible.com/ansiblefest" target="_blank">AnsibleFest</a></li>
+    <li><a href="https://www.ansible.com/tower" target="_blank">Products</a></li>
+    <li><a href="https://www.ansible.com/community" target="_blank">Community</a></li>
+    <li><a href="https://www.ansible.com/webinars-training" target="_blank">Webinars & Training</a></li>
+    <li><a href="https://www.ansible.com/blog" target="_blank">Blog</a></li>
+  </ul>
+</div>
+
+<a class="DocSite-nav" href="/" style="padding-bottom: 30px;">
+
+  <img class="DocSiteNav-logo"
+    src="../../../_static/images/Ansible-Mark-RGB_White.png"
+    alt="Ansible Logo">
+  <div class="DocSiteNav-title">Ansible Collections Documentation</div>
+</a>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Ansible collections
+          </a><!--- Based on https://github.com/rtfd/sphinx_rtd_theme/pull/438/files -->
+
+<div class="version">
+  
+    
+  
+</div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <label class="sr-only" for="q">Search docs:</label>
+    <input type="text" class="st-default-search-input" id="q" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+  
+              <p class="caption" role="heading"><span class="caption-text">Collections:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Collection Index</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Collections in the Netscaler Namespace</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Netscaler.Adc</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#description">Description</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#plugin-index">Plugin Index</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Plugin indexes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index_module.html">Index of all Modules</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference indexes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../environment_variables.html">Index of all Collection Environment Variables</a></li>
+</ul>
+<!-- extra nav elements for Ansible beyond RTD Sphinx Theme -->
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Ansible collections</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Collection Index</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Collections in the Netscaler Namespace</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Netscaler.Adc</a></li>
+      <li class="breadcrumb-item active">netscaler.adc.nstrace module – Configuration for nstrace operations resource.</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+  
+           <div itemprop="articleBody">
+             
+  <span class="target" id="ansible-collections-netscaler-adc-nstrace-module"></span><section id="netscaler-adc-nstrace-module-configuration-for-nstrace-operations-resource">
+<h1>netscaler.adc.nstrace module – Configuration for nstrace operations resource.<a class="headerlink" href="#netscaler-adc-nstrace-module-configuration-for-nstrace-operations-resource" title="Permalink to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/netscaler/adc">netscaler.adc collection</a> (version 2.0.0-alpha).</p>
+<p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
+<p>To use it in a playbook, specify: <code class="code docutils literal notranslate"><span class="pre">netscaler.adc.nstrace</span></code>.</p>
+</div>
+<p class="ansible-version-added">New in netscaler.adc 2.0.0</p>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#synopsis" id="id1">Synopsis</a></p></li>
+<li><p><a class="reference internal" href="#parameters" id="id2">Parameters</a></p></li>
+<li><p><a class="reference internal" href="#notes" id="id3">Notes</a></p></li>
+<li><p><a class="reference internal" href="#examples" id="id4">Examples</a></p></li>
+<li><p><a class="reference internal" href="#return-values" id="id5">Return Values</a></p></li>
+</ul>
+</nav>
+<section id="synopsis">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Synopsis</a><a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p>Configuration for nstrace operations resource.</p></li>
+</ul>
+</section>
+<section id="parameters">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this heading"></a></h2>
+<table class="ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter</p></th>
+<th class="head"><p>Comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-api_path"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-api-path"><strong>api_path</strong></p>
+<a class="ansibleOptionLink" href="#parameter-api_path" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Base NITRO API path.</p>
+<p>Define only in case of an ADM service proxy call</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-capdroppkt"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-capdroppkt"><strong>capdroppkt</strong></p>
+<a class="ansibleOptionLink" href="#parameter-capdroppkt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Captures Dropped Packets if set to <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-capsslkeys"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-capsslkeys"><strong>capsslkeys</strong></p>
+<a class="ansibleOptionLink" href="#parameter-capsslkeys" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Capture SSL Master keys. Master keys will not be captured on FIPS machine.</p>
+<blockquote>
+<div><p>Warning: The captured keys can be used to decrypt information that may be confidential. The captured key files have to be stored in a secure environment</p>
+</div></blockquote>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-doruntimecleanup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-doruntimecleanup"><strong>doruntimecleanup</strong></p>
+<a class="ansibleOptionLink" href="#parameter-doruntimecleanup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Enable or disable runtime temp file cleanup</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-fileid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-fileid"><strong>fileid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-fileid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>ID for the trace file name for uniqueness. Should be used only with -name option.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-filename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-filename"><strong>filename</strong></p>
+<a class="ansibleOptionLink" href="#parameter-filename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Name of the trace file.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-filesize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-filesize"><strong>filesize</strong></p>
+<a class="ansibleOptionLink" href="#parameter-filesize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>File size, in MB, treshold for rollover. If free disk space is less than 2GB at the time of rollover, trace will stop</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">1024.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-filter"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-filter"><strong>filter</strong></p>
+<a class="ansibleOptionLink" href="#parameter-filter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Filter expression for nstrace. Maximum length of filter is 255 and it can be of following format:</p>
+<blockquote>
+<div><p>&lt;expression&gt; [&lt;relop&gt; &lt;expression&gt;]</p>
+<p>&lt;relop&gt; = ( &amp;&amp; | || )</p>
+<p>&lt;expression&gt; =:</p>
+<p>CONNECTION.&lt;qualifier&gt;.&lt;qualifier-method&gt;.(&lt;qualifier-value&gt;)</p>
+<p>&lt;qualifier&gt; = SRCIP</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>example = CONNECTION.SRCIP.EQ(127.0.0.1)</p>
+<p>&lt;qualifier&gt; = DSTIP</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>example = CONNECTION.DSTIP.EQ(127.0.0.1)</p>
+<p>&lt;qualifier&gt; = IP</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv4 address.</p>
+<p>example = CONNECTION.IP.EQ(127.0.0.1)</p>
+<p>&lt;qualifier&gt; = SRCIPv6</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>example = CONNECTION.SRCIPv6.EQ(2001:db8:0:0:1::1)</p>
+<p>&lt;qualifier&gt; = DSTIPv6</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>example = CONNECTION.DSTIPv6.EQ(2001:db8:0:0:1::1)</p>
+<p>&lt;qualifier&gt; = IPv6</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = A valid IPv6 address.</p>
+<p>example = CONNECTION.IPv6.EQ(2001:db8:0:0:1::1)</p>
+<p>&lt;qualifier&gt; = SRCPORT</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>example = CONNECTION.SRCPORT.EQ(80)</p>
+<p>&lt;qualifier&gt; = DSTPORT</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>example = CONNECTION.DSTPORT.EQ(80)</p>
+<p>&lt;qualifier&gt; = PORT</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid port number.</p>
+<p>example = CONNECTION.PORT.EQ(80)</p>
+<p>&lt;qualifier&gt; = VLANID</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid VLAN ID.</p>
+<p>example = CONNECTION.VLANID.EQ(0)</p>
+<p>&lt;qualifier&gt; = CONNID</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid PCB dev number.</p>
+<p>example = CONNECTION.CONNID.EQ(0)</p>
+<p>&lt;qualifier&gt; = PPEID</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid core ID.</p>
+<blockquote>
+<div><p>example = CONNECTION.PPEID.EQ(0)</p>
+</div></blockquote>
+<p>&lt;qualifier&gt; = SVCNAME</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ENDSWITH ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid text string.</p>
+<p>example = CONNECTION.SVCNAME.EQ(“name”)</p>
+<p>&lt;qualifier&gt; = LB_VSERVER.NAME</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ENDSWITH ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = LB vserver name.</p>
+<p>example = CONNECTION.LB_VSERVER.NAME.EQ(“name”)</p>
+<p>&lt;qualifier&gt; = CS_VSERVER.NAME</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | CONTAINS | STARTSWITH</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">ENDSWITH ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = CS vserver name.</p>
+<p>example = CONNECTION.CS_VSERVER.NAME.EQ(“name”)</p>
+<p>&lt;qualifier&gt; = INTF</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  =  A valid interface id in the</p>
+<blockquote>
+<div><p>form of x/y.</p>
+</div></blockquote>
+<p>example = CONNECTION.INTF.EQ(“x/y”)</p>
+<p>&lt;qualifier&gt; = SERVICE_TYPE</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE ]</p>
+<p>&lt;qualifier-value&gt;  = ( SVC_HTTP | FTP | TCP | UDP | SSL |</p>
+<blockquote>
+<div><p>SSL_BRIDGE | SSL_TCP | NNTP | RPCSVR | RPCSVRS |</p>
+<p>RPCCLNT | SVC_DNS | ADNS | SNMP | RTSP | DHCPRA | ANY|</p>
+<p>MONITOR | MONITOR_UDP | MONITOR_PING | SIP_UDP |</p>
+<p>SVC_MYSQL | SVC_MSSQL | FIX | SSL_FIX | PKTSTEER |</p>
+<p>SVC_AAA | SERVICE_UNKNOWN )</p>
+</div></blockquote>
+<p>example = CONNECTION.SERVICE_TYPE.EQ(ANY)</p>
+<p>&lt;qualifier&gt; = TRAFFIC_DOMAIN_ID</p>
+<p>&lt;qualifier-method&gt; = [ EQ | NE | GT | GE | LT | LE</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">BETWEEN ]</div>
+</div>
+</div></blockquote>
+<p>&lt;qualifier-value&gt;  = A valid traffic domain ID.</p>
+<p>example = CONNECTION.TRAFFIC_DOMAIN_ID.EQ(0)</p>
+<p>eg: start nstrace -filter “CONNECTION.SRCIP.EQ(127.0.0.1) || (CONNECTION.SVCNAME.NE(“s1”) &amp;&amp; CONNECTION.SRCPORT.EQ(80))”</p>
+<p>The filter expression should be given in double quotes.</p>
+</div></blockquote>
+<p>common use cases:</p>
+<p>Trace capturing full sized traffic from/to ip 10.102.44.111, excluding loopback traffic</p>
+<p>start nstrace -size 0 -filter “CONNECTION.IP.NE(127.0.0.1) &amp;&amp; CONNECTION.IP.EQ(10.102.44.111)”</p>
+<p>Trace capturing all traffic to (terminating at) port 80 or 443</p>
+<p>start nstrace -size 0 -filter “CONNECTION.DSTPORT.EQ(443) || CONNECTION.DSTPORT.EQ(80)”</p>
+<p>Trace capturing all backend traffic specific to service service1 along with corresponding client side traffic</p>
+<p>start nstrace -size 0 -filter “CONNECTION.SVCNAME.EQ(“service1”)” -link ENABLED</p>
+<p>Trace capturing all traffic through Citrix ADC interface 1/1</p>
+<p>start nstrace -filter “CONNECTION.INTF.EQ(“1/1”)”</p>
+<p>Trace capturing all traffic specific through vlan 2</p>
+<p>start nstrace -filter “CONNECTION.VLANID.EQ(2)”</p>
+<p>Trace capturing all frontend (client side) traffic specific to lb vserver vserver1 along with corresponding server side traffic</p>
+<p>start nstrace -size 0 -filter “CONNECTION.LB_VSERVER.NAME.EQ(“vserver1”)” -link ENABLED</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-inmemorytrace"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-inmemorytrace"><strong>inmemorytrace</strong></p>
+<a class="ansibleOptionLink" href="#parameter-inmemorytrace" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Logs packets in appliance’s memory and dumps the trace file on stopping the nstrace operation</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-link"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-link"><strong>link</strong></p>
+<a class="ansibleOptionLink" href="#parameter-link" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Includes filtered connection’s peer traffic.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-merge"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-merge"><strong>merge</strong></p>
+<a class="ansibleOptionLink" href="#parameter-merge" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Specify how traces across PE’s are merged</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ONSTOP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ONTHEFLY&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NOMERGE&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-mode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-mode"><strong>mode</strong></p>
+<a class="ansibleOptionLink" href="#parameter-mode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Capturing mode for trace. Mode can be any of the following values or combination of these values:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">RX</span></code>          Received packets before NIC pipelining (Filter does not work when <code class="docutils literal notranslate"><span class="pre">RX</span></code> capturing mode is ON)</p>
+<p><code class="docutils literal notranslate"><span class="pre">NEW_RX</span></code>      Received packets after NIC pipelining</p>
+<p><code class="docutils literal notranslate"><span class="pre">TX</span></code>          Transmitted packets</p>
+<p><code class="docutils literal notranslate"><span class="pre">TXB</span></code>         Packets buffered for transmission</p>
+<p><code class="docutils literal notranslate"><span class="pre">IPV6</span></code>        Translated IPv6 packets</p>
+<p><code class="docutils literal notranslate"><span class="pre">C2C</span></code>         Capture <code class="docutils literal notranslate"><span class="pre">C2C</span></code> message</p>
+<p><code class="docutils literal notranslate"><span class="pre">NS_FR_TX</span></code>    <code class="docutils literal notranslate"><span class="pre">TX</span></code>/<code class="docutils literal notranslate"><span class="pre">TXB</span></code> packets are not captured in flow receiver.</p>
+<p><code class="docutils literal notranslate"><span class="pre">MPTCP</span></code>       <code class="docutils literal notranslate"><span class="pre">MPTCP</span></code> master flow</p>
+<p><code class="docutils literal notranslate"><span class="pre">HTTP_QUIC</span></code>   HTTP-over-QUIC stream data and stream events</p>
+<p>Default mode: <code class="docutils literal notranslate"><span class="pre">NEW_RX</span></code> <code class="docutils literal notranslate"><span class="pre">TXB</span></code></p>
+</div></blockquote>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TX&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;TXB&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;RX&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;IPV6&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NEW_RX&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;C2C&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NS_FR_TX&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;APPFW&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;MPTCP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PolicyBased&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;HTTP_QUIC&quot;</span></code></p></li>
+</ul>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">[&quot;DEFAULT_MODE&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nf"><strong>nf</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of files to be generated in cycle.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">24.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_auth_token"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nitro-auth-token"><strong>nitro_auth_token</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_auth_token" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<p><span class="ansible-option-versionadded">added in netscaler.adc 2.6.0</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The authentication token provided by a login operation.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_pass"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nitro-pass"><strong>nitro_pass</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_pass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The password with which to authenticate to the NetScaler ADC node.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_protocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nitro-protocol"><strong>nitro_protocol</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_protocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Which protocol to use when accessing the nitro API objects.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;http&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;https&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nitro_user"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nitro-user"><strong>nitro_user</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nitro_user" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The username with which to authenticate to the NetScaler ADC node.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nodeid"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nodeid"><strong>nodeid</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nodeid" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Unique number that identifies the cluster node.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nodes"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nodes"><strong>nodes</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nodes" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Nodes on which tracing is started.</p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-nsip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-nsip"><strong>nsip</strong></p>
+<a class="ansibleOptionLink" href="#parameter-nsip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span> / <span class="ansible-option-required">required</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The ip address of the NetScaler ADC appliance where the nitro API calls will be made.</p>
+<p>The port can be specified with the colon (:). E.g. 192.168.1.1:555.</p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-pernic"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-pernic"><strong>pernic</strong></p>
+<a class="ansibleOptionLink" href="#parameter-pernic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Use separate trace files for each interface. Works only with cap format.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-save_config"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-save-config"><strong>save_config</strong></p>
+<a class="ansibleOptionLink" href="#parameter-save_config" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">true</span></code> the module will save the configuration on the NetScaler ADC node if it makes any changes.</p>
+<p>The module will not save the configuration on the NetScaler ADC node if it made no changes.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">false</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-size"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-size"><strong>size</strong></p>
+<a class="ansibleOptionLink" href="#parameter-size" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Size of the captured data. Set 0 for full packet trace.</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">164.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-skiplocalssh"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-skiplocalssh"><strong>skiplocalssh</strong></p>
+<a class="ansibleOptionLink" href="#parameter-skiplocalssh" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>skip local SSH packets</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-skiprpc"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-skiprpc"><strong>skiprpc</strong></p>
+<a class="ansibleOptionLink" href="#parameter-skiprpc" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>skip RPC packets</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLED&quot;</span></code></p></li>
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;DISABLED&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-state"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-state"><strong>state</strong></p>
+<a class="ansibleOptionLink" href="#parameter-state" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>The state of the resource being configured by the module on the NetScaler ADC node.</p>
+<p><code class="docutils literal notranslate"><span class="pre">enabled</span></code> and <code class="docutils literal notranslate"><span class="pre">disabled</span></code> are only valid for resources that can be enabled or disabled.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">present</span></code> the resource will be created if needed and configured according to the module’s parameters.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">absent</span></code> the resource will be deleted from the NetScaler ADC node.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">enabled</span></code> the resource will be enabled on the NetScaler ADC node.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">disabled</span></code> the resource will be disabled on the NetScaler ADC node.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">&quot;present&quot;</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;absent&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;enabled&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;disabled&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-time"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-time"><strong>time</strong></p>
+<a class="ansibleOptionLink" href="#parameter-time" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Time per file (sec).</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">3600.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-tracebuffers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-tracebuffers"><strong>tracebuffers</strong></p>
+<a class="ansibleOptionLink" href="#parameter-tracebuffers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Number of 16KB trace buffers</p>
+<p class="ansible-option-line"><span class="ansible-option-default-bold">Default:</span> <code class="ansible-option-default docutils literal notranslate"><span class="pre">5000.0</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-traceformat"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-traceformat"><strong>traceformat</strong></p>
+<a class="ansibleOptionLink" href="#parameter-traceformat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Format in which trace will be generated</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NSCAP&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;PCAP&quot;</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="parameter-validate_certs"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-parameter-validate-certs"><strong>validate_certs</strong></p>
+<a class="ansibleOptionLink" href="#parameter-validate_certs" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>If <code class="docutils literal notranslate"><span class="pre">false</span></code>, SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.</p>
+<p class="ansible-option-line"><span class="ansible-option-choices">Choices:</span></p>
+<ul class="simple">
+<li><p><code class="ansible-option-default-bold docutils literal notranslate"><span class="pre">false</span></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">true</span></code></p></li>
+</ul>
+</div></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="notes">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Notes</a><a class="headerlink" href="#notes" title="Permalink to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>For more information on using Ansible to manage NetScaler ADC Network devices see <a class="reference external" href="https://www.ansible.com/integrations/networks/citrixadc">https://www.ansible.com/integrations/networks/citrixadc</a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="examples">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Examples</a><a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</section>
+<section id="return-values">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Return Values</a><a class="headerlink" href="#return-values" title="Permalink to this heading"></a></h2>
+<p>Common return values are documented <a class="reference external" href="https://docs.ansible.com/ansible/devel/reference_appendices/common_return_values.html#common-return-values" title="(in Ansible vdevel)"><span class="xref std std-ref">here</span></a>, the following are the fields unique to this module:</p>
+<table class="ansible-option-table docutils align-default" style="width: 100%">
+<thead>
+<tr class="row-odd"><th class="head"><p>Key</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-changed"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-return-changed"><strong>changed</strong></p>
+<a class="ansibleOptionLink" href="#return-changed" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates if any change is made by the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">true</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-diff"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-return-diff"><strong>diff</strong></p>
+<a class="ansibleOptionLink" href="#return-diff" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">dictionary</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Dictionary of before and after changes</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">{&quot;after&quot;:</span> <span class="pre">{&quot;key2&quot;:</span> <span class="pre">&quot;pqr&quot;},</span> <span class="pre">&quot;before&quot;:</span> <span class="pre">{&quot;key1&quot;:</span> <span class="pre">&quot;xyz&quot;},</span> <span class="pre">&quot;prepared&quot;:</span> <span class="pre">&quot;changes</span> <span class="pre">done&quot;}</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-diff_list"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-return-diff-list"><strong>diff_list</strong></p>
+<a class="ansibleOptionLink" href="#return-diff_list" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>List of differences between the actual configured object and the configuration specified in the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> when changed</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;Attribute</span> <span class="pre">`key1`</span> <span class="pre">differs.</span> <span class="pre">Desired:</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;)</span> <span class="pre">XYZ.</span> <span class="pre">Existing:</span> <span class="pre">(&lt;class</span> <span class="pre">'str'&gt;)</span> <span class="pre">PQR&quot;]</span></code></p>
+</div></td>
+</tr>
+<tr class="row-odd"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-failed"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-return-failed"><strong>failed</strong></p>
+<a class="ansibleOptionLink" href="#return-failed" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">boolean</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>Indicates if the module failed or not</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">false</span></code></p>
+</div></td>
+</tr>
+<tr class="row-even"><td><div class="ansible-option-cell">
+<div class="ansibleOptionAnchor" id="return-loglines"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstrace-module-return-loglines"><strong>loglines</strong></p>
+<a class="ansibleOptionLink" href="#return-loglines" title="Permalink to this return value"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+</div></td>
+<td><div class="ansible-option-cell"><p>list of logged messages by the module</p>
+<p class="ansible-option-line"><span class="ansible-option-returned-bold">Returned:</span> always</p>
+<p class="ansible-option-line ansible-option-sample"><span class="ansible-option-sample-bold">Sample:</span> <code class="ansible-option-sample docutils literal notranslate"><span class="pre">[&quot;message</span> <span class="pre">1&quot;,</span> <span class="pre">&quot;message</span> <span class="pre">2&quot;]</span></code></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<section id="authors">
+<h3>Authors<a class="headerlink" href="#authors" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Sumanth Lingappa (&#64;sumanth-lingappa)</p></li>
+</ul>
+</section>
+<section id="collection-links">
+<h3>Collection links<a class="headerlink" href="#collection-links" title="Permalink to this heading"></a></h3>
+<p class="ansible-links">
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/issues" aria-role="button" target="_blank" rel="noopener external">Issue Tracker</a>
+  <a href="https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha" aria-role="button" target="_blank" rel="noopener external">Repository (Sources)</a>
+</p></section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          
+
+<footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="nstimer_autoscalepolicy_binding_module.html" class="btn btn-neutral float-left" title="netscaler.adc.nstimer_autoscalepolicy_binding module – Binding Resource definition for describing association between nstimer and autoscalepolicy resources" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="nstrafficdomain_module.html" class="btn btn-neutral float-right" title="netscaler.adc.nstrafficdomain module – Configuration for Traffic Domain resource." accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright Ansible contributors.</p>
+  </div>
+
+  
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script><!-- extra footer elements for Ansible beyond RTD Sphinx Theme -->
+
+</body>
+</html>
