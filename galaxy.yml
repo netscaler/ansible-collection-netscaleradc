@@ -16,7 +16,7 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- Sumanth Lingappa <sumanth.lingappa@cloud.com>
+  - Sumanth Lingappa <sumanth.lingappa@cloud.com>
 
 
 ### OPTIONAL but strongly recommended
@@ -46,16 +46,16 @@ tags:
 dependencies: {}
 
 # The URL of the originating SCM repository
-repository: https://github.com/citrix/citrix-adc-ansible-modules/tree/v2.0.0-alpha
+repository: https://github.com/netscaler/ansible-collection-netscaleradc
 
 # The URL to any online docs
-documentation: https://citrix.github.io/citrix-adc-ansible-modules
+documentation: https://netscaler.github.io/ansible-collection-netscaleradc
 
 # The URL to the homepage of the collection/project
-homepage: https://citrix.github.io/citrix-adc-ansible-modules
+homepage: https://netscaler.github.io/ansible-collection-netscaleradc
 
 # The URL to the collection issue tracker
-issues: https://github.com/citrix/citrix-adc-ansible-modules/issues
+issues: https://github.com/netscaler/ansible-collection-netscaleradc/issues
 
 # A list of file glob-like patterns used to filter any files or directories that should not be included in the build
 # artifact. A pattern is matched from the relative path of the file or directory of the collection directory. This
@@ -81,4 +81,3 @@ build_ignore:
 # 'omit_default_directives' is a boolean that controls whether the default directives are used. Mutually exclusive
 # with 'build_ignore'
 # manifest: null
-
