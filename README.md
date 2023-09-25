@@ -1,5 +1,11 @@
 # NetScaler Ansible Collection `version2` - netscaler.adc
 
+
+> ⚠️ Note:
+> The earlier `citrix.adc` ansible collection is replaced with the new `netscaler.adc` ansible collection.
+> The `citrix.adc` ansible collection is backed up by a seperate branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
+
+
 ## Vision
 
 The vision of the `netscaler.adc` collection is to provide a complete declarative interface to configure and manage NetScaler ADC.
