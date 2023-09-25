@@ -45,6 +45,7 @@ If applicable, add screenshots to help explain your problem.
 **Environment (please complete the following information):**
  - Python version `python --version` output
  - Ansible version `ansible --version` output
+ - NetScaler version `show ns version` output
 
 
 **Additional context**
