@@ -4,7 +4,7 @@
 
 The vision of the `netscaler.adc` collection is to provide a complete declarative interface to configure and manage NetScaler ADC.
 
-If you need any feature or flexibility that is not available in the collection, please raise issues/enhancement-requests/recommendations at <https://github.com/citrix/citrix-adc-ansible-modules/issues>
+If you need any feature or flexibility that is not available in the collection, please raise issues/enhancement-requests/recommendations at <https://github.com/netscaler/ansible-collection-netscaleradc/issues>
 
 > :envelope: For any immediate issues or help , reach out to us at <NetScaler-AutomationToolkit@cloud.com> !
 
@@ -24,7 +24,7 @@ The collection provides Ansible modules to configure and manage NetScaler ADC ap
 
 The collection is in `alpha` testing stage. It is not recommended to use the collection in production environment.
 
-Please raise issues at <https://github.com/citrix/citrix-adc-ansible-modules/issues> and help us improve the collection.
+Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> and help us improve the collection.
 
 ## Installation
 <!---
@@ -36,8 +36,8 @@ OR
 --->
 
 ```bash
-git clone --branch v2.0.0-alpha --single-branch https://github.com/citrix/citrix-adc-ansible-modules.git /tmp/citrix-adc-ansible-modules-v2.0.0-alpha
-ansible-galaxy collection install /tmp/citrix-adc-ansible-modules-v2.0.0-alpha --force
+git clone --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/ansible-collection-netscaleradc
+ansible-galaxy collection install /tmp/ansible-collection-netscaleradc --force
 ```
 
 <!---
@@ -60,7 +60,7 @@ netscaler.adc 2.0.0-alpha
 
 ## Collection Modules Documentation
 
-<https://citrix.github.io/citrix-adc-ansible-modules/>
+<https://netscaler.github.io/ansible-collection-netscaleradc/>
 
 > Click on the desired module name in the [supported_modules_matrix.md](supported_modules_matrix.md) file to go to the specific module documentation
 
@@ -103,7 +103,7 @@ echo $NETSCALER_NITRO_AUTH_TOKEN
 
 This collection supports Ansible version 2.9 and above.
 
-> Since this is an alpha release, the collection is not tested with all the Ansible versions. Please raise issues at <https://github.com/citrix/citrix-adc-ansible-modules/issues> if you face any issues with the collection.
+> Since this is an alpha release, the collection is not tested with all the Ansible versions. Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
 
 ## Features of `netscaler.adc` collection
 
