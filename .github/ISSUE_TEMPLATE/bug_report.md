@@ -13,9 +13,28 @@ A clear and concise description of what the bug is.
 **To Reproduce**
 Steps to reproduce the behaviour:
 1. My ansible-playbook is...
-2. The command I executed is...
+```yaml
+# playbook goes here
+```
+
+2. The ansible-playbook command I executed is...
+```bash
+# command goes here
+```
+
 3. The ansible-playbook logs are...
+```bash
+# logs go here
+```
+
 4. I am seeing the below error...
+```bash
+# errors go here
+```
+
+**Please specify the equivalent NSCLI command, if you were to manually configure via CLI**
+```bash
+```
 
 **Expected behaviour**
 A clear and concise description of what you expected to happen.
