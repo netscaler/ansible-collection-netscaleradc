@@ -1,6 +1,9 @@
 .vscode/
 
 tools/
+issues/
+
+plugins/module_utils/test.ipynb
 
 *.pyc
 __pycache__/
@@ -10,6 +13,8 @@ _built_docs*
 
 # collection package
 **/netscaler-adc-*.tar.gz
+
+examples/*.out
 
 TODO.md
 Dockerfile
