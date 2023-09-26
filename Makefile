@@ -11,6 +11,20 @@ fmt:
 	isort plugins/module_utils/*.py
 	isort tools/module_generator.py
 
+fmt_tools:
+	# ignore if file not found
+	-autoflake tools/generated_modules/*.py
+	-autoflake tools/module_generator.py
+	-autoflake tools/nitro_resource_map.py
+
+	-black tools/generated_modules/*.py
+	-black tools/module_generator.py
+	-black tools/nitro_resource_map.py
+
+	-isort tools/generated_modules/*.py
+	-isort tools/module_generator.py
+	-isort tools/nitro_resource_map.py
+
 generate_modules:
 	python3 tools/module_generator.py
 
@@ -26,4 +40,20 @@ lint: install
 # 	cd _built_docs
 # 	pip3 install -r requirements.txt
 # 	./build.sh
-# 	rsync -cprv --delete-after _built_docs/rst/ docs/
+# 	cd ..
+# 	rsync -cprv _built_docs/build/html/ docs/ # Do not use --delete-after as this will delete .nojekyll file
+
+
+# Run examples/*.yaml playbooks individually
+# ansible-playbook -i examples/inventory examples/playbook.yaml
+# Run the playbook. if the return code is non-zero, save the output to a file
+# skip the playbook which contains "password" in the file name
+run_examples:
+	@for playbook in examples/*.yaml; do \
+		if [[ $$playbook == *"password"* ]]; then \
+			continue; \
+		fi; \
+		echo "Running $$playbook"; \
+		ansible-playbook -i examples/inventory.ini $$playbook || \
+		ansible-playbook -i examples/inventory.ini $$playbook -vvv > $$playbook.out; \
+	done

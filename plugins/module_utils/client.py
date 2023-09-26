@@ -154,7 +154,7 @@ class NitroAPIClient(object):
                 if "body" in info:
                     try:
                         return status_code, json.loads(to_text(info["body"]))
-                    except json.decoder.JSONDecodeError:
+                    except json.decoder.JSONDecodeError as e:
                         log("ERROR: json.decoder.JSONDecodeError: %s" % e)
                         log("DEBUG: info['body'] = %s" % info["body"])
                         log("DEBUG: Traceback = %s" % traceback.format_exc())
@@ -164,7 +164,7 @@ class NitroAPIClient(object):
             else:
                 try:
                     return status_code, json.loads(to_text(body))
-                except json.decoder.JSONDecodeError:
+                except json.decoder.JSONDecodeError as e:
                     log("ERROR: json.decoder.JSONDecodeError: %s" % e)
                     log("DEBUG: info['body'] = %s" % info["body"])
                     log("DEBUG: Traceback = %s" % traceback.format_exc())
