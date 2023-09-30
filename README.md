@@ -26,31 +26,21 @@ This is the `version2` of the NetScaler Ansible Collection. It is a complete rew
 
 The collection provides Ansible modules to configure and manage NetScaler ADC appliances. The modules are written using the NITRO API. The modules are idempotent and can be used to configure the NetScaler ADC appliances in declarative manner.
 
-## :warning: Warning and disclaimer for `version2` (`netscaler.adc`) of the collection
-
-The collection is in `alpha` testing stage. It is not recommended to use the collection in production environment.
-
-Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> and help us improve the collection.
-
 ## Installation
-<!---
-```bash
-ansible-galaxy collection install netscaler.adc --pre --force
-```
 
-OR
---->
+### ansible-galaxy
 
 ```bash
-git clone --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/ansible-collection-netscaleradc
-ansible-galaxy collection install /tmp/ansible-collection-netscaleradc --force
+ansible-galaxy collection install netscaler.adc 
 ```
 
-<!---
-> `--pre` is required to install the pre-releae (alpha) version of the collection from ansible galaxy.
---->
+### via github (to have the latest updated which are yet to be released in ansible-galaxy)
 
-> `--force` is required to overwrite the existing `netscaler.adc` collection.
+
+```bash
+git clone --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/ansible-collection-netscaleradc && ansible-galaxy collection install /tmp/ansible-collection-netscaleradc --force
+```
+
 
 ### Verify the installation
 
@@ -61,7 +51,7 @@ ansible-galaxy collection list | grep netscaler.adc
 The above command should display the following output:
 
 ```text
-netscaler.adc 2.0.0-alpha
+netscaler.adc 2.x.x
 ```
 
 ## Collection Modules Documentation
@@ -109,7 +99,7 @@ echo $NETSCALER_NITRO_AUTH_TOKEN
 
 This collection supports Ansible version 2.9 and above.
 
-> Since this is an alpha release, the collection is not tested with all the Ansible versions. Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
+> Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
 
 ## Features of `netscaler.adc` collection
 
