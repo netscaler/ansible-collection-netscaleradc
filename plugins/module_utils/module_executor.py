@@ -229,7 +229,8 @@ class ModuleExecutor(object):
                 module_params_attribute_value
             )
         if attribute_type == "str":
-            return str(existing_attribute_value) == str(module_params_attribute_value)
+            # NITRO is case insensitive for string attribute values. So, convert both to lower case and compare
+            return str(existing_attribute_value).lower() == str(module_params_attribute_value).lower()
         return existing_attribute_value == module_params_attribute_value
 
     @trace
