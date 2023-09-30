@@ -43,6 +43,7 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
+ - `ansible-galaxy collection list | grep netscaler.adc` output
  - Python version `python --version` output
  - Ansible version `ansible --version` output
  - NetScaler version `show ns version` output
