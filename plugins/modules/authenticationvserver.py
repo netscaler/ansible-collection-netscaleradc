@@ -24,53 +24,70 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log AppFlow flow information.
-    type: str
     default: ENABLED
   authentication:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Require users to be authenticated before sending traffic through this virtual
         server.
-    type: str
     default: 'ON'
   authenticationdomain:
+    type: str
     description:
       - The domain of the authentication cookie set by Authentication vserver
-    type: str
   certkeynames:
+    type: str
     description:
       - Name of the certificate key that was bound to the corresponding SSL virtual
         server as the Certificate Authority for the device certificate
-    type: str
   comment:
+    type: str
     description:
       - Any comments associated with this virtual server.
-    type: str
   failedlogintimeout:
+    type: float
     description:
       - Number of minutes an account will be locked if user exceeds maximum permissible
         attempts
-    type: float
   ipv46:
+    type: str
     description:
       - IP address of the authentication virtual server, if a single IP address is
         assigned to the virtual server.
-    type: str
   maxloginattempts:
+    type: float
     description:
       - Maximum Number of login Attempts
-    type: float
   name:
+    type: str
     description:
-      - 'Name for the new authentication virtual server. '
+      - Name for the new authentication virtual server.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Can be changed
@@ -81,10 +98,10 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
-    type: str
   newname:
+    type: str
     description:
-      - 'New name of the authentication virtual server. '
+      - New name of the authentication virtual server.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters.
@@ -93,21 +110,21 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, 'my authentication policy' or "my authentication
         policy").
-    type: str
   port:
+    type: int
     description:
       - TCP port on which the virtual server accepts connections.
-    type: int
   range:
+    type: float
     description:
-      - 'If you are creating a series of virtual servers with a range of IP addresses
-        assigned to them, the length of the range. '
+      - If you are creating a series of virtual servers with a range of IP addresses
+        assigned to them, the length of the range.
       - The new range of authentication virtual servers will have IP addresses consecutively
         numbered, starting with the primary address specified with the IP Address
         parameter.
-    type: float
     default: 1
   samesite:
+    type: str
     choices:
       - None
       - LAX
@@ -116,33 +133,25 @@ options:
       - SameSite attribute value for Cookies generated in AAATM context. This attribute
         value will be appended only for the cookies which are specified in the builtin
         patset ns_cookies_samesite
-    type: str
   servicetype:
+    type: str
     choices:
       - SSL
     description:
       - Protocol type of the authentication virtual server. Always C(SSL).
-    type: str
     default: SSL
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the new virtual server.
-    type: str
-    default: ENABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   authenticationvserver_auditnslogpolicy_binding:
     type: dict
     description: Bindings for authenticationvserver_auditnslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -167,6 +176,7 @@ options:
     description: Bindings for authenticationvserver_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -192,6 +202,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -217,6 +228,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -242,6 +254,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -267,6 +280,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -292,6 +306,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -317,6 +332,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -341,6 +357,7 @@ options:
     description: Bindings for authenticationvserver_authenticationpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -366,6 +383,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -391,6 +409,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -416,6 +435,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -441,6 +461,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -466,6 +487,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -491,6 +513,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -515,6 +538,7 @@ options:
     description: Bindings for authenticationvserver_cachepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -539,6 +563,7 @@ options:
     description: Bindings for authenticationvserver_cspolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -563,6 +588,7 @@ options:
     description: Bindings for authenticationvserver_responderpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -587,6 +613,7 @@ options:
     description: Bindings for authenticationvserver_rewritepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -611,6 +638,7 @@ options:
     description: Bindings for authenticationvserver_tmsessionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -635,6 +663,7 @@ options:
     description: Bindings for authenticationvserver_vpnportaltheme_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

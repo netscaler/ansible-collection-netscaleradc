@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ciphergroupname:
+    type: str
     description:
       - Name for the user-defined cipher group. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -34,32 +47,32 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my ciphergroup" or 'my ciphergroup').
-    type: str
   ciphername:
+    type: str
     description:
       - Cipher name.
-    type: str
   cipherpriority:
+    type: float
     description:
       - This indicates priority assigned to the particular cipher
-    type: float
   ciphgrpalias:
+    type: str
     description:
       - The individual cipher name(s), a user-defined cipher group, or a system predefined
         cipher alias that will be added to the  predefined cipher alias that will
         be added to the group cipherGroupName.
       - If a cipher alias or a cipher group is specified, all the individual ciphers
         in the cipher alias or group will be added to the user-defined cipher group.
-    type: str
   sslprofile:
+    type: str
     description:
       - Name of the profile to which cipher is attached.
-    type: str
   sslcipher_sslciphersuite_binding:
     type: dict
     description: Bindings for sslcipher_sslciphersuite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

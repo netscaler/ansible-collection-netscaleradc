@@ -24,71 +24,81 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   clienttrafficonly:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Control whether AppFlow records should be generated only for client-side traffic.
-    type: str
     default: 'NO'
   httpcookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP cookie logging.
-    type: str
     default: DISABLED
   httphost:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP host logging.
-    type: str
     default: DISABLED
   httpmethod:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP method logging.
-    type: str
     default: DISABLED
   httpreferer:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP referer logging.
-    type: str
     default: DISABLED
   httpurl:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP URL logging.
-    type: str
     default: DISABLED
   httpuseragent:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP user-agent logging.
-    type: str
     default: DISABLED
   templaterefresh:
+    type: float
     description:
       - IPFIX template refresh interval (in seconds).
-    type: float
     default: 600
   udppmtu:
+    type: float
     description:
       - MTU to be used for IPFIX UDP packets.
-    type: float
     default: 1472
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

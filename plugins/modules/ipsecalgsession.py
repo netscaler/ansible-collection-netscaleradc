@@ -24,30 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   destip:
+    type: str
     description:
       - Destination IP address
-    type: str
   destip_alg:
+    type: str
     description:
       - Destination IP address
-    type: str
   natip:
+    type: str
     description:
       - Natted Source IP address
-    type: str
   natip_alg:
+    type: str
     description:
       - Natted Source IP address
-    type: str
   sourceip:
+    type: str
     description:
       - Original Source IP address
-    type: str
   sourceip_alg:
+    type: str
     description:
       - Original Source IP address
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

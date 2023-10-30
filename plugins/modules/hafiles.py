@@ -24,7 +24,15 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   mode:
+    type: list
     choices:
       - all
       - bookmarks
@@ -41,16 +49,15 @@ options:
       - Specify one of the following modes of synchronization.
       - '* C(all) - Synchronize files related to system configuration, Access Gateway
         C(bookmarks), SSL certificates, SSL CRL lists,  and Application Firewall XML
-        objects. '
+        objects.'
       - '* C(bookmarks) - Synchronize C(all) Access Gateway C(bookmarks).'
-      - '* C(ssl) - Synchronize C(all) certificates, keys, and CRLs for the SSL feature. '
+      - '* C(ssl) - Synchronize C(all) certificates, keys, and CRLs for the SSL feature.'
       - '* C(imports). Synchronize C(all) XML objects (for example, WSDLs, schemas,
-        error pages) configured for the application firewall. '
-      - '* C(misc) - Synchronize C(all) license files and the rc.conf file. '
+        error pages) configured for the application firewall.'
+      - '* C(misc) - Synchronize C(all) license files and the rc.conf file.'
       - '* C(all_plus_misc) - Synchronize files related to system configuration, Access
         Gateway C(bookmarks), SSL certificates, SSL CRL lists, application firewall
         XML objects, licenses, and the rc.conf file.'
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

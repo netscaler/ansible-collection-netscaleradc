@@ -24,88 +24,100 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   datasessionidletimeout:
+    type: float
     description:
       - Idle timeout for the data channel sessions in seconds.
-    type: float
     default: 120
   opencontactpinhole:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ContactPinhole creation.
-    type: str
     default: ENABLED
   openrecordroutepinhole:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RecordRoutePinhole creation.
-    type: str
     default: ENABLED
   openregisterpinhole:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RegisterPinhole creation.
-    type: str
     default: ENABLED
   openroutepinhole:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE RoutePinhole creation.
-    type: str
     default: ENABLED
   openviapinhole:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE ViaPinhole creation.
-    type: str
     default: ENABLED
   registrationtimeout:
+    type: float
     description:
       - SIP registration timeout in seconds.
-    type: float
     default: 60
   rport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ENABLE/DISABLE rport.
-    type: str
     default: ENABLED
   sipalgprofilename:
+    type: str
     description:
       - The name of the SIPALG Profile.
-    type: str
   sipdstportrange:
+    type: str
     description:
       - Destination port range for SIP_UDP and SIP_TCP.
-    type: str
   sipsessiontimeout:
+    type: float
     description:
       - SIP control channel session timeout in seconds.
-    type: float
     default: 600
   sipsrcportrange:
+    type: str
     description:
       - Source port range for SIP_UDP and SIP_TCP.
-    type: str
   siptransportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
     description:
       - SIP ALG Profile transport protocol type.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

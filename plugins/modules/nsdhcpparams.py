@@ -24,22 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   dhcpclient:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enables DHCP client to acquire IP address from the DHCP server in the next
         boot. When set to C(OFF), disables the DHCP client in the next boot.
-    type: str
     default: 'OFF'
   saveroute:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - DHCP acquired routes are saved on the Citrix ADC.
-    type: str
     default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   maxportrealloctmq:
+    type: float
     description:
       - Maximum number of ports for which the port reallocation timeout applies for
         each NAT IP address. In other words, the maximum deallocated-port queue size
@@ -32,9 +45,9 @@ options:
       - ''
       - When the queue size is full, the next port deallocated is reallocated immediately
         for a new LSN session.
-    type: float
     default: 65536
   nattype:
+    type: str
     choices:
       - DYNAMIC
       - DETERMINISTIC
@@ -69,9 +82,9 @@ options:
       - Only LSN Pools and LSN groups with the same NAT type settings can be bound
         together. Multiples LSN pools can be bound to an LSN group. A maximum of 16
         LSN pools can be bound to an LSN group.
-    type: str
     default: DYNAMIC
   poolname:
+    type: str
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -80,8 +93,8 @@ options:
         applies only to the Citrix ADC CLI: If the name includes one or more spaces,
         enclose the name in double or single quotation marks (for example, "lsn pool1"
         or ''lsn pool1'').'
-    type: str
   portblockallocation:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -98,9 +111,9 @@ options:
       - ''
       - For Deterministic NAT, this parameter is enabled by default, and you cannot
         disable it.
-    type: str
     default: DISABLED
   portrealloctimeout:
+    type: float
     description:
       - 'The waiting time, in seconds, between deallocating LSN NAT ports (when an
         LSN mapping is removed) and reallocating them for a new LSN session. This
@@ -112,12 +125,12 @@ options:
       - '* Address-Dependent filtering and Address-Port-Dependent filtering'
       - '* Dynamic NAT with port block allocation'
       - In these cases, ports are immediately reallocated.
-    type: float
   lsnpool_lsnip_binding:
     type: dict
     description: Bindings for lsnpool_lsnip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

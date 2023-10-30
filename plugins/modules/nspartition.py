@@ -24,59 +24,72 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   force:
+    type: bool
     description:
       - Switches to new admin partition without prompt for saving configuration. Configuration
         will not be saved
-    type: bool
   maxbandwidth:
+    type: float
     description:
       - Maximum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits.
-    type: float
     default: 10240
   maxconn:
+    type: float
     description:
       - Maximum number of concurrent connections that can be open in the partition.
         A zero value indicates no limit on number of open connections.
-    type: float
     default: 1024
   maxmemlimit:
+    type: float
     description:
       - Maximum memory, in megabytes, allocated to the partition.  A zero value indicates
         the memory is unlimited on the partition and it can consume up to the system
         limits.
-    type: float
     default: 10
   minbandwidth:
+    type: float
     description:
       - Minimum bandwidth, in Kbps, that the partition can consume. A zero value indicates
         the bandwidth is unrestricted on the partition and it can consume up to the
         system limits
-    type: float
     default: 10240
   partitionmac:
+    type: str
     description:
       - Special MAC address for the partition which is used for communication over
         shared vlans in this partition. If not specified, the MAC address is auto-generated.
-    type: str
   partitionname:
+    type: str
     description:
       - Name of the Partition. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-    type: str
   save:
+    type: bool
     description:
       - Switches to new admin partition without prompt for saving configuration. Configuration
         will be saved
-    type: bool
   nspartition_bridgegroup_binding:
     type: dict
     description: Bindings for nspartition_bridgegroup_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -101,6 +114,7 @@ options:
     description: Bindings for nspartition_vlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -125,6 +139,7 @@ options:
     description: Bindings for nspartition_vxlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

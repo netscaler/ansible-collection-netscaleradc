@@ -26,55 +26,61 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
   xmladditionalsoapheaders:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Allow addtional soap headers.
-    type: str
   xmlendpointcheck:
+    type: str
     choices:
       - ABSOLUTE
       - RELATIVE
@@ -88,37 +94,36 @@ options:
         \ against the non-hostname part of the Service URL."
       - "\t\teg: Service URL: http://example.org/ExampleService, Request URL: http//example.com/ExampleService\
         \ would PASS the validation."
-    type: str
   xmlrequestschema:
+    type: str
     description:
       - XML Schema object for request validation .
-    type: str
   xmlresponseschema:
+    type: str
     description:
       - XML Schema object for response validation.
-    type: str
   xmlvalidateresponse:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Validate response message.
-    type: str
   xmlvalidatesoapenvelope:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Validate SOAP Evelope only.
-    type: str
   xmlvalidationurl:
+    type: str
     description:
       - XML Validation URL regular expression.
-    type: str
   xmlwsdl:
+    type: str
     description:
       - WSDL object for soap request validation.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

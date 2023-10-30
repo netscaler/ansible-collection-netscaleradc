@@ -24,22 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   listenpolicy:
+    type: str
     description:
       - String specifying the listen policy for the Cloud Tunnel virtual server. Can
         be either a named expression or an expression. The Cloud Tunnel virtual server
         processes only the traffic for which the expression evaluates to true.
-    type: str
     default: '"none"'
   listenpriority:
+    type: float
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: float
     default: 101
   name:
+    type: str
     description:
       - Name for the Cloud Tunnel virtual server. Must begin with an ASCII alphabetic
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -49,15 +62,14 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example,
       - '"my server" or ''my server'').'
-    type: str
   servicetype:
+    type: str
     choices:
       - TCP
       - UDP
     description:
       - ServiceType of Listener using which traffic will be tunneled through cloud
         tunnel server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

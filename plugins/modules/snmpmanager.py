@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   domainresolveretry:
+    type: int
     description:
       - Amount of time, in seconds, for which the Citrix ADC waits before sending
         another DNS query to resolve the host name of the SNMP manager if the last
         query failed. This parameter is valid for host-name based SNMP managers only.
         After a query succeeds, the TTL determines the wait time. The minimum and
         default value is 5.
-    type: int
   ipaddress:
+    type: str
     description:
       - 'IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead
         specify an IPv4 network address or IPv6 network prefix if you want the Citrix
@@ -42,12 +55,11 @@ options:
         the host name of the SNMP manager to its IP address. '
       - 'Note: The Citrix ADC does not support host names for SNMP managers that have
         IPv6 addresses.'
-    type: str
   netmask:
+    type: str
     description:
       - Subnet mask associated with an IPv4 network address. If the IP address specifies
         the address or host name of a specific host, accept the default value of 255.255.255.255.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

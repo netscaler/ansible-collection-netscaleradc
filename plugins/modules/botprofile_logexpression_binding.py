@@ -26,35 +26,48 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_log_expression_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable the log expression binding.
-    type: str
     default: 'OFF'
   bot_log_expression_name:
+    type: str
     description:
       - Name of the log expression object.
-    type: str
   bot_log_expression_value:
+    type: str
     description:
       - Expression whose result to be logged when violation happened on the bot profile.
-    type: str
   logexpression:
+    type: bool
     description:
       - Log expression binding.
-    type: bool
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -64,7 +77,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

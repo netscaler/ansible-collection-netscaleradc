@@ -24,24 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   dropfrag:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Drop any packet that requires fragmentation.
-    type: str
     default: 'NO'
   dropfragcputhreshold:
+    type: float
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
-    type: float
   srcip:
+    type: str
     description:
       - Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.
-    type: str
   srciproundrobin:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -51,32 +62,21 @@ options:
         This setting is ignored if a common global source IPv6 address has been specified
         for all the IPv6 tunnels. This setting does not apply to a tunnel for which
         a source IPv6 address has been specified.
-    type: str
     default: 'NO'
   useclientsourceipv6:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Use client source IPv6 address as source IPv6 address for outer tunnel IPv6
         header
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | ip6TunnelParam
-      delegate_to: localhost
-      netscaler.adc.ip6tunnelparam:
-        state: present
-        srcip: '::'
-
 """
 
 RETURN = r"""

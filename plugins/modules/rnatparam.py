@@ -24,23 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   srcippersistency:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
-    type: str
     default: DISABLED
   tcpproxy:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
-    type: str
     default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

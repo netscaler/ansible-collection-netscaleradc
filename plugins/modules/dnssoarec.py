@@ -24,62 +24,75 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   contact:
+    type: str
     description:
       - Email address of the contact to whom domain issues can be addressed. In the
         email address, replace the @ sign with a period (.). For example, enter domainadmin.example.com
         instead of domainadmin@example.com.
-    type: str
   domain:
+    type: str
     description:
       - Domain name for which to add the SOA record.
-    type: str
   ecssubnet:
+    type: str
     description:
       - Subnet for which the cached SOA record need to be removed.
-    type: str
   expire:
+    type: float
     description:
       - Time, in seconds, after which the zone data on a secondary name server can
         no longer be considered authoritative because all refresh and retry attempts
         made during the period have failed. After the expiry period, the secondary
         server stops serving the zone. Typically one week. Not used by the primary
         server.
-    type: float
     default: 3600
   minimum:
+    type: float
     description:
       - Default time to live (TTL) for all records in the zone. Can be overridden
         for individual records.
-    type: float
     default: 5
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   originserver:
+    type: str
     description:
       - Domain name of the name server that responds authoritatively for the domain.
-    type: str
   refresh:
+    type: float
     description:
       - Time, in seconds, for which a secondary server must wait between successive
         checks on the value of the serial number.
-    type: float
     default: 3600
   retry:
+    type: float
     description:
       - Time, in seconds, between retries if a secondary server's attempt to contact
         the primary server for a zone refresh fails.
-    type: float
     default: 3
   serial:
+    type: float
     description:
       - The secondary server uses this parameter to determine whether it requires
         a zone transfer from the primary server.
-    type: float
     default: 100
   ttl:
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -89,9 +102,9 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: float
     default: 3600
   type:
+    type: str
     choices:
       - ALL
       - ADNS
@@ -101,7 +114,6 @@ options:
       - '* C(ADNS) - Display all authoritative address records.'
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the next policy to evaluate if the current
         policy evaluates to TRUE.  Specify one of the following values:'
@@ -55,19 +68,18 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   intranetip6:
+    type: str
     description:
       - The Intranet IP6 bound to the user
-    type: str
   numaddr:
+    type: float
     description:
       - Numbers of ipv6 address bound starting with intranetip6
-    type: float
   username:
+    type: str
     description:
       - User account to which to bind the policy.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

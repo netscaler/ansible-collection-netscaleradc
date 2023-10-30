@@ -26,18 +26,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Remove all RNAT global config
-    type: bool
   policy:
+    type: str
     description:
       - The policy Name.
-    type: str
   priority:
+    type: float
     description:
       - The priority of the policy.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

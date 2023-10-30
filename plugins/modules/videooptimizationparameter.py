@@ -24,29 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   quicpacingrate:
+    type: float
     description:
       - QUIC Video Pacing Rate (Kbps).
-    type: float
   randomsamplingpercentage:
+    type: float
     description:
       - Random Sampling Percentage.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | videooptimizationparameter
-      delegate_to: localhost
-      netscaler.adc.videooptimizationparameter:
-        state: present
-        randomsamplingpercentage: 0.0
-
 """
 
 RETURN = r"""

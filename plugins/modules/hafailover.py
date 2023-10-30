@@ -24,10 +24,17 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   force:
+    type: bool
     description:
       - Force a failover without prompting for confirmation.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

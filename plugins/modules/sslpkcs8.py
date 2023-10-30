@@ -24,29 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   keyfile:
+    type: str
     description:
       - Name of and, optionally, path to the input key file to be converted from PEM
         or DER format to PKCS#8 format. /nsconfig/ssl/ is the default path.
-    type: str
   keyform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format in which the key file is stored on the appliance.
-    type: str
     default: PEM
   password:
+    type: str
     description:
       - Password to assign to the file if the key is encrypted. Applies only for PEM
         format files.
-    type: str
   pkcs8file:
+    type: str
     description:
       - Name for and, optionally, path to, the output file where the PKCS#8 format
         key file is stored. /nsconfig/ssl/ is the default path.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

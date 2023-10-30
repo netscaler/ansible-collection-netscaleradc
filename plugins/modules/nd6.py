@@ -24,49 +24,62 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ifnum:
+    type: str
     description:
       - Interface through which the adjacent network device is available, specified
         in slot/port notation (for example, 1/3). Use spaces to separate multiple
         entries.
-    type: str
   mac:
+    type: str
     description:
       - MAC address of the adjacent network device.
-    type: str
   neighbor:
+    type: str
     description:
       - Link-local IPv6 address of the adjacent network device to add to the ND6 table.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   vlan:
+    type: int
     description:
       - Integer value that uniquely identifies the VLAN on which the adjacent network
         device exists.
-    type: int
   vtep:
+    type: str
     description:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IPv6 address
         of this ND6 entry is reachable.
-    type: str
   vxlan:
+    type: float
     description:
       - ID of the VXLAN on which the IPv6 address of this ND6 entry is reachable.
-    type: float
   nd6ravariables_onlinkipv6prefix_binding:
     type: dict
     description: Bindings for nd6ravariables_onlinkipv6prefix_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

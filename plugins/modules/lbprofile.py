@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   computedadccookieattribute:
+    type: str
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -43,21 +56,21 @@ options:
       - '             add lb profile lbprof -ComputedADCCookieAttribute "$lbvar"'
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
-    type: str
   cookiepassphrase:
+    type: str
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
-    type: str
   dbslb:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
-    type: str
     default: DISABLED
   httponlycookieflag:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -65,9 +78,9 @@ options:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
-    type: str
     default: ENABLED
   lbhashalgorithm:
+    type: str
     choices:
       - DEFAULT
       - PRAC
@@ -76,20 +89,20 @@ options:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
-    type: str
     default: DEFAULT
   lbhashfingers:
+    type: float
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory.
-    type: float
     default: 256
   lbprofilename:
+    type: str
     description:
       - Name of the LB profile.
-    type: str
   literaladccookieattribute:
+    type: str
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -97,8 +110,8 @@ options:
       - ''
       - Sample usage -
       - '             add lb profile lbprof -LiteralADCCookieAttribute ";SameSite=None"'
-    type: str
   processlocal:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -107,32 +120,31 @@ options:
         not under go any steering. Turn this option for single pa
       - cket request response mode or when the upstream device is performing a proper
         RSS for connection based distribution.
-    type: str
     default: DISABLED
   storemqttclientidandusername:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
-    type: str
     default: 'NO'
   useencryptedpersistencecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    type: str
     default: DISABLED
   usesecuredpersistencecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

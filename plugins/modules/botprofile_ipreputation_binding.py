@@ -26,11 +26,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_iprep_action:
+    type: list
     choices:
       - NONE
       - LOG
@@ -42,24 +55,24 @@ options:
       - One or more actions to be taken if bot is detected based on this IP Reputation
         binding. Only C(LOG) action can be combinded with C(DROP), C(RESET), C(REDIRECT)
         or C(MITIGATION) action.
-    type: list
     elements: str
     default: NONE
   bot_iprep_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enabled or disabled IP-repuation binding.
-    type: str
     default: 'OFF'
   bot_ipreputation:
+    type: bool
     description:
       - IP reputation binding. For each category, only one binding is allowed. To
         update the values of an existing binding, user has to first unbind that binding,
         and then needs to bind again with the new values.
-    type: bool
   category:
+    type: str
     choices:
       - IP
       - BOTNETS
@@ -122,12 +135,12 @@ options:
         IPs from IBM.'
       - '*C(CLOUD_SALESFORCE) - This category checks client C(IP) with list of public
         cloud IPs from Salesforce.'
-    type: str
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -137,7 +150,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

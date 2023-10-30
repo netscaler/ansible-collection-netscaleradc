@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   connfailover:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -32,92 +45,91 @@ options:
       - Synchronize connection information with the secondary appliance in a high
         availability (HA) pair. That is, synchronize all connection-related information
         for the INAT session
-    type: str
     default: DISABLED
   ftp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the FTP protocol on the server for transferring files between the client
         and the server.
-    type: str
     default: DISABLED
   mode:
+    type: str
     choices:
       - STATELESS
     description:
       - Stateless translation.
-    type: str
   name:
+    type: str
     description:
       - 'Name for the Inbound NAT (INAT) entry. Leading character must be a number
         or letter. Other characters allowed, after the first character, are @ _ -
         . (period) : (colon) # and space ( ).'
-    type: str
   privateip:
+    type: str
     description:
       - IP address of the server to which the packet is sent by the Citrix ADC. Can
         be an IPv4 or IPv6 address.
-    type: str
   proxyip:
+    type: str
     description:
       - Unique IP address used as the source IP address in packets sent to the server.
         Must be a MIP or SNIP address.
-    type: str
   publicip:
+    type: str
     description:
       - Public IP address of packets received on the Citrix ADC. Can be aNetScaler-owned
         VIP or VIP6 address.
-    type: str
   tcpproxy:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
-    type: str
     default: DISABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   tftp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - To enable/disable TFTP (Default C(DISABLED)).
-    type: str
     default: DISABLED
   useproxyport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the Citrix ADC to proxy the source port of packets before sending the
         packets to the server.
-    type: str
     default: ENABLED
   usip:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable the Citrix ADC to retain the source IP address of packets before sending
         the packets to the server.
-    type: str
   usnip:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable the Citrix ADC to use a SNIP address as the source IP address of packets
         before sending the packets to the server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,51 +24,57 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   aes256:
+    type: bool
     description:
       - Encrypt the generated ECDSA key by using the AES algorithm.
-    type: bool
   curve:
+    type: str
     choices:
       - P_256
       - P_384
     description:
       - Curve id to generate ECDSA key. Only C(P_256) and C(P_384) are supported
-    type: str
-    default: FIPSEXP_F4
   des:
+    type: bool
     description:
       - Encrypt the generated ECDSA key by using the DES algorithm. On the command
         line, you are prompted to enter the pass phrase (password) that is used to
         encrypt the key.
-    type: bool
   des3:
+    type: bool
     description:
       - Encrypt the generated ECDSA key by using the Triple-DES algorithm. On the
         command line, you are prompted to enter the pass phrase (password) that is
         used to encrypt the key.
-    type: bool
   keyfile:
+    type: str
     description:
       - Name for and, optionally, path to the ECDSA key file. /nsconfig/ssl/ is the
         default path.
-    type: str
   keyform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format in which the ECDSA key file is stored on the appliance.
-    type: str
     default: PEM
   password:
+    type: str
     description:
       - Pass phrase to use for encryption if DES or DES3 option is selected.
-    type: str
   pkcs8:
+    type: bool
     description:
       - Create the private key in PKCS#8 format.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

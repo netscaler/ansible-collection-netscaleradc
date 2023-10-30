@@ -26,19 +26,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: str
     description:
       - ID of the LA channel or the cluster LA channel to which you want to bind interfaces.
         Specify an LA channel in LA/x notation, where x can range from 1 to 8 or a
         cluster LA channel in CLA/x notation or  Link redundant channel in LR/x notation
         , where x can range from 1 to 4.
-    type: str
   ifnum:
+    type: list
     description:
       - Interfaces to be bound to the LA channel of a Citrix ADC or to the LA channel
         of a cluster configuration.
-      - 'For an LA channel of a Citrix ADC, specify an interface in C/U notation (for
-        example, 1/3). '
+      - For an LA channel of a Citrix ADC, specify an interface in C/U notation (for
+        example, 1/3).
       - For an LA channel of a cluster configuration, specify an interface in N/C/U
         notation (for example, 2/1/3).
       - 'where C can take one of the following values:'
@@ -48,13 +61,12 @@ options:
       - U is a unique integer for representing an interface in a particular port group.
       - N is the ID of the node to which an interface belongs in a cluster configuration.
       - Use spaces to separate multiple entries.
-    type: list
     elements: str
   svmcmd:
+    type: float
     description:
       - New attribute added to identify the source of cmd, when SVM fires the nitro
         cmd, it will set the value of SVMCMD to be 1.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

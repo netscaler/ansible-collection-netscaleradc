@@ -24,47 +24,54 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   clientname:
+    type: str
     description:
       - Name of the LSN Client entity.
-    type: str
   natip:
+    type: str
     description:
       - Mapped NAT IP address used in LSN sessions.
-    type: str
   natport2:
+    type: int
     description:
       - Mapped NAT port used in the LSN sessions.
-    type: int
   nattype:
+    type: str
     choices:
       - NAT44
       - DS-Lite
       - NAT64
     description:
       - Type of sessions to be displayed.
-    type: str
     default: NAT44
   netmask:
+    type: str
     description:
       - Subnet mask for the IP address specified by the network parameter.
-    type: str
   network:
+    type: str
     description:
       - IP address or network address of subscriber(s).
-    type: str
   network6:
+    type: str
     description:
       - IPv6 address of the LSN subscriber or B4 device.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   td:
+    type: float
     description:
       - Traffic domain ID of the LSN client entity.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

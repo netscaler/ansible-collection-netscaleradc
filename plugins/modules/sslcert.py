@@ -24,35 +24,43 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   cacert:
+    type: str
     description:
       - Name of the CA certificate file that issues and signs the Intermediate-CA
         certificate or the end-user client and server certificates.
-    type: str
   cacertform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format of the CA certificate.
-    type: str
     default: PEM
   cakey:
+    type: str
     description:
       - Private key, associated with the CA certificate that is used to sign the Intermediate-CA
         certificate or the end-user client and server certificate. If the CA key file
         is password protected, the user is prompted to enter the pass phrase that
         was used to encrypt the key.
-    type: str
   cakeyform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format for the CA certificate.
-    type: str
     default: PEM
   caserial:
+    type: str
     description:
       - Serial number file maintained for the CA certificate. This file contains the
         serial number of the next certificate to be issued or signed by the CA. If
@@ -61,21 +69,21 @@ options:
         serial file, a new serial file is created. This might change the certificate
         serial numbers assigned by the CA certificate to each of the certificates
         it signs.
-    type: str
   certfile:
+    type: str
     description:
       - Name for and, optionally, path to the generated certificate file. /nsconfig/ssl/
         is the default path.
-    type: str
   certform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format in which the certificate is stored on the appliance.
-    type: str
     default: PEM
   certtype:
+    type: str
     choices:
       - ROOT_CERT
       - INTM_CERT
@@ -90,14 +98,14 @@ options:
       - '* C(CLNT_CERT) - End-user client certificate used for client authentication.'
       - '* C(SRVR_CERT) - SSL server certificate used on SSL servers for end-to-end
         encryption.'
-    type: str
   days:
+    type: float
     description:
       - Number of days for which the certificate will be valid, beginning with the
         time and day (system time) of creation.
-    type: float
     default: 365
   keyfile:
+    type: str
     description:
       - Name for and, optionally, path to the private key. You can either use an existing
         RSA or DSA key that you own or create a new private key on the Citrix ADC.
@@ -105,25 +113,25 @@ options:
         The key file is stored in the /nsconfig/ssl directory by default.
       - If the input key specified is an encrypted key, you are prompted to enter
         the PEM pass phrase that was used for encrypting the key.
-    type: str
   keyform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format in which the key is stored on the appliance.
-    type: str
     default: PEM
   pempassphrase:
+    type: str
     description:
       - '0'
-    type: str
   reqfile:
+    type: str
     description:
       - Name for and, optionally, path to the certificate-signing request (CSR). /nsconfig/ssl/
         is the default path.
-    type: str
   subjectaltname:
+    type: str
     description:
       - 'Subject Alternative Name (SAN) is an extension to X.509 that allows various
         values to be associated with a security certificate using a subjectAltName
@@ -135,12 +143,12 @@ options:
         within the Subject field of the main certificate.)'
       - '      5. directory names (alternative Distinguished Names to that given in
         the Subject)'
-    type: str
   sslcertkey_sslocspresponder_binding:
     type: dict
     description: Bindings for sslcertkey_sslocspresponder_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,28 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this patset or a pattern bound
         to this patset.
-    type: str
   name:
+    type: str
     description:
       - Unique name of the pattern set. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character and must contain only alphanumeric and
         underscore characters. Must not be the name of an existing named expression,
         pattern set, dataset, string map, or HTTP callout.
-    type: str
   patsetfile:
+    type: str
     description:
       - File which contains list of patterns that needs to be bound to the patset.
         A patsetfile cannot be associated with multiple patsets.
-    type: str
   policypatset_pattern_binding:
     type: dict
     description: Bindings for policypatset_pattern_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -26,26 +26,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   jsondosurl:
+    type: str
     description:
       - The URL on which we need to enforce the specified JSON denial-of-service (JSONDoS)
         attack protections.
@@ -70,107 +83,99 @@ options:
       - '* Maximum-string-length-check toggle. ON to enable, OFF to disable.'
       - '* Maximum string length. Positive integer representing the maximum length
         of string in JSON.'
-    type: str
   jsonmaxarraylength:
+    type: float
     description:
       - Maximum array length in the any of JSON object. This check protects against
         arrays having large lengths.
-    type: float
     default: 10000
   jsonmaxarraylengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max array value count check is C(ON) or C(OFF).
-    type: str
   jsonmaxcontainerdepth:
+    type: float
     description:
       - Maximum allowed nesting depth  of JSON document. JSON allows one to nest the
         containers (object and array) in any order to any depth. This check protects
         against documents that have excessive depth of hierarchy.
-    type: float
     default: 5
   jsonmaxcontainerdepthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max depth check is C(ON) or C(OFF).
-    type: str
   jsonmaxdocumentlength:
+    type: float
     description:
       - Maximum document length of JSON document, in bytes.
-    type: float
     default: 20000000
   jsonmaxdocumentlengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max document length check is C(ON) or C(OFF).
-    type: str
   jsonmaxobjectkeycount:
+    type: float
     description:
       - Maximum key count in the any of JSON object. This check protects against objects
         that have large number of keys.
-    type: float
     default: 10000
   jsonmaxobjectkeycountcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max object key count check is C(ON) or C(OFF).
-    type: str
   jsonmaxobjectkeylength:
+    type: float
     description:
       - Maximum key length in the any of JSON object. This check protects against
         objects that have large keys.
-    type: float
     default: 128
   jsonmaxobjectkeylengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max object key length check is C(ON) or C(OFF).
-    type: str
   jsonmaxstringlength:
+    type: float
     description:
       - Maximum string length in the JSON. This check protects against strings that
         have large length.
-    type: float
     default: 1000000
   jsonmaxstringlengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if JSON Max string value count check is C(ON) or C(OFF).
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   appsprofilename:
+    type: str
     description:
       - Name of the LSN application profile to bind to the specified LSN group. For
         each set of destination ports, bind a profile for each protocol for which
@@ -39,8 +52,8 @@ options:
       - When you bind an LSN application profile, with a specified set of destination
         ports, to an LSN group, the bound profile overrides the default LSN application
         profile for that protocol at that set of destination ports.
-    type: str
   groupname:
+    type: str
     description:
       - 'Name for the LSN group. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -49,7 +62,6 @@ options:
         applies only to the Citrix ADC CLI: If the name includes one or more spaces,
         enclose the name in double or single quotation marks (for example, "lsn group1"
         or ''lsn group1'').'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   identity:
+    type: str
     description:
       - DiameterIdentity to be used by NS. DiameterIdentity is used to identify a
         Diameter node uniquely. Before setting up diameter configuration, Citrix ADC
@@ -33,46 +44,34 @@ options:
       - set ns diameter -identity netscaler.com
       - Now whenever Citrix ADC needs to use identity in diameter messages. It will
         use 'netscaler.com' as Origin-Host AVP as defined in RFC3588
-    type: str
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which the diameter id is set, can be configured
         only through CLIP
-    type: float
     default: -1
   realm:
+    type: str
     description:
       - Diameter Realm to be used by NS.
       - example =>
       - set ns diameter -realm com
       - Now whenever Citrix ADC system needs to use realm in diameter messages. It
         will use 'com' as Origin-Realm AVP as defined in RFC3588
-    type: str
   serverclosepropagation:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - when a Server connection goes down, whether to close the corresponding client
         connection if there were requests pending on the server.
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsdiameter
-      delegate_to: localhost
-      netscaler.adc.nsdiameter:
-        state: present
-        identity: netscaler.com
-        realm: com
-
 """
 
 RETURN = r"""

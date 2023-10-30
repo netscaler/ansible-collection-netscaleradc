@@ -26,39 +26,52 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_km_detection_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable the keyboard-mouse based binding.
-    type: str
     default: 'OFF'
   bot_km_expression_name:
+    type: str
     description:
       - Name of the keyboard-mouse expression object.
-    type: str
   bot_km_expression_value:
+    type: str
     description:
       - JavaScript file for keyboard-mouse detection, would be inserted if the result
         of the expression is true.
-    type: str
   kmdetectionexpr:
+    type: bool
     description:
       - Keyboard-mouse based detection binding. For each name, only one binding is
         allowed. To update the values of an existing binding, user has to first unbind
         that binding, then needs to bind again with new vlaues. Maximum 30 bindings
         can be configured per profile.
-    type: bool
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -68,7 +81,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

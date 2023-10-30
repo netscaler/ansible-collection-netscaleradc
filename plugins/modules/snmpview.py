@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the SNMPv3 view. Can consist of 1 to 31 characters that include uppercase
         and lowercase letters, numbers, and the hyphen (-), period (.) pound (#),
@@ -34,13 +47,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my view" or 'my view').
-    type: str
   subtree:
+    type: str
     description:
       - A particular branch (subtree) of the MIB tree that you want to associate with
         this SNMPv3 view. You must specify the subtree as an SNMP OID.
-    type: str
   type:
+    type: str
     choices:
       - included
       - excluded
@@ -49,24 +62,11 @@ options:
         from this view. This setting can be useful when you have C(included) a subtree,
         such as A, in an SNMPv3 view and you want to exclude a specific subtree of
         A, such as B, from the SNMPv3 view.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | snmpview
-      delegate_to: localhost
-      netscaler.adc.snmpview:
-        state: present
-        name: v3_grp_view
-        subtree: '1'
-        type: included
-
 """
 
 RETURN = r"""

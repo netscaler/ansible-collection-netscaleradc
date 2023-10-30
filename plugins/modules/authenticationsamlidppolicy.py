@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Name of the profile to apply to requests or connections that match this policy.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this policy.
-    type: str
   logaction:
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the SAML Identity Provider (IdP) authentication policy. This is used
         for configuring Citrix ADC as SAML Identity Provider. Must begin with an ASCII
@@ -47,10 +60,10 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
-    type: str
   newname:
+    type: str
     description:
-      - 'New name for the SAML IdentityProvider policy. '
+      - New name for the SAML IdentityProvider policy.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) hash (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters.
@@ -59,8 +72,8 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my samlidppolicy policy" or 'my samlidppolicy
         policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression which is evaluated to choose a profile for authentication.
       - ''
@@ -68,16 +81,15 @@ options:
       - '* If the expression includes one or more spaces, enclose the entire expression
         in double quotation marks.'
       - '* If the expression itself includes double quotation marks, escape the quotations
-        by using the \ character. '
+        by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   undefaction:
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
         actions can be used.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

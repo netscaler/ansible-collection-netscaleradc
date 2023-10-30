@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   certkeyname:
+    type: str
     description:
       - SSL certificate of the proxy that is registered at adfs server for trust.
-    type: str
   name:
+    type: str
     description:
       - Name for the adfs proxy profile. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -37,21 +50,20 @@ options:
       - "\t    CLI Users: If the name includes one or more spaces, enclose the name\
         \ in double or single quotation marks (for example, \"my push service\" or\
         \ 'my push service')."
-    type: str
   password:
+    type: str
     description:
       - This is the password of an account in directory that would be used to authenticate
         trust request from ADC acting as a proxy.
-    type: str
   serverurl:
+    type: str
     description:
       - Fully qualified url of the adfs server.
-    type: str
   username:
+    type: str
     description:
       - This is the name of an account in directory that would be used to authenticate
         trust request from ADC acting as a proxy.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,17 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Name of the built-in or user-defined action to perform on the request. Available
         built-in actions are NOOP, RESET, DROP, CLIENTAUTH, NOCLIENTAUTH, INTERCEPT
         AND BYPASS.
-    type: str
   comment:
+    type: str
     description:
       - Any comments associated with this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the new SSL policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -44,14 +57,14 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
-    type: str
   reqaction:
+    type: str
     description:
       - The name of the action to be performed on the request. Refer to 'add ssl action'
         command to add a new action. Builtin actions like NOOP, RESET, DROP, CLIENTAUTH
         and NOCLIENTAUTH are also allowed.
-    type: str
   rule:
+    type: str
     description:
       - Expression, against which traffic is evaluated.
       - ''
@@ -62,19 +75,19 @@ options:
         by using the  character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   undefaction:
+    type: str
     description:
       - 'Name of the action to be performed when the result of rule evaluation is
         undefined. Possible values for control policies: CLIENTAUTH, NOCLIENTAUTH,
         NOOP, RESET, DROP. Possible values for data policies: NOOP, RESET, DROP and
         BYPASS'
-    type: str
   sslpolicylabel_sslpolicy_binding:
     type: dict
     description: Bindings for sslpolicylabel_sslpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,43 +24,56 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   basedn:
+    type: str
     description:
       - Base distinguished name (DN), which is used in an LDAP search to search for
         a CRL. Citrix recommends searching for the Base DN instead of the Issuer Name
         from the CA certificate, because the Issuer Name field might not exactly match
         the LDAP directory structure's DN.
-    type: str
   binary:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Set the LDAP-based CRL retrieval mode to binary.
-    type: str
     default: 'NO'
   binddn:
+    type: str
     description:
       - Bind distinguished name (DN) to be used to access the CRL object in the LDAP
         repository if access to the LDAP repository is restricted or anonymous access
         is not allowed.
-    type: str
   cacert:
+    type: str
     description:
       - CA certificate that has issued the CRL. Required if CRL Auto Refresh is selected.
         Install the CA certificate on the appliance before adding the CRL.
-    type: str
   cacertfile:
+    type: str
     description:
       - Name of and, optionally, path to the CA certificate file.
       - /nsconfig/ssl/ is the default path.
-    type: str
   cakeyfile:
+    type: str
     description:
       - Name of and, optionally, path to the CA key file. /nsconfig/ssl/ is the default
         path
-    type: str
   crlname:
+    type: str
     description:
       - Name for the Certificate Revocation List (CRL). Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -70,32 +83,32 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my crl" or 'my crl').
-    type: str
   crlpath:
+    type: str
     description:
       - Path to the CRL file. /var/netscaler/ssl/ is the default path.
-    type: str
   day:
+    type: float
     description:
       - Day on which to refresh the CRL, or, if the Interval parameter is not set,
         the number of days after which to refresh the CRL. If Interval is set to MONTHLY,
         specify the date. If Interval is set to WEEKLY, specify the day of the week
         (for example, Sun=0 and Sat=6). This parameter is not applicable if the Interval
         is set to DAILY.
-    type: float
   gencrl:
+    type: str
     description:
       - Name of and, optionally, path to the CRL file to be generated. The list of
         certificates that have been revoked is obtained from the index file. /nsconfig/ssl/
         is the default path.
-    type: str
   indexfile:
+    type: str
     description:
       - Name of and, optionally, path to the file containing the serial numbers of
         all the certificates that are revoked. Revoked certificates are appended to
         the file. /nsconfig/ssl/ is the default path
-    type: str
   inform:
+    type: str
     choices:
       - DER
       - PEM
@@ -104,9 +117,9 @@ options:
         are:'
       - C(PEM) - Privacy Enhanced Mail.
       - C(DER) - Distinguished Encoding Rule.
-    type: str
     default: PEM
   interval:
+    type: str
     choices:
       - MONTHLY
       - WEEKLY
@@ -115,8 +128,8 @@ options:
       - NONE
     description:
       - CRL refresh interval. Use the C(NONE) setting to unset this parameter.
-    type: str
   method:
+    type: str
     choices:
       - HTTP
       - LDAP
@@ -124,29 +137,29 @@ options:
       - Method for CRL refresh. If C(LDAP) is selected, specify the method, CA certificate,
         base DN, port, and C(LDAP) server name. If C(HTTP) is selected, specify the
         CA certificate, method, URL, and port. Cannot be changed after a CRL is added.
-    type: str
   password:
+    type: str
     description:
       - Password to access the CRL in the LDAP repository if access to the LDAP repository
         is restricted or anonymous access is not allowed.
-    type: str
   port:
+    type: int
     description:
       - Port for the LDAP server.
-    type: int
   refresh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set CRL auto refresh.
-    type: str
   revoke:
+    type: str
     description:
       - Name of and, optionally, path to the certificate to be revoked. /nsconfig/ssl/
         is the default path.
-    type: str
   scope:
+    type: str
     choices:
       - Base
       - One
@@ -155,20 +168,19 @@ options:
         as follows:'
       - C(One) - C(One) level below C(Base) DN.
       - C(Base) - Exactly the same level as C(Base) DN.
-    type: str
     default: One
   server:
+    type: str
     description:
       - IP address of the LDAP server from which to fetch the CRLs.
-    type: str
   time:
+    type: str
     description:
       - Time, in hours (1-24) and minutes (1-60), at which to refresh the CRL.
-    type: str
   url:
+    type: str
     description:
       - URL of the CRL distribution point.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

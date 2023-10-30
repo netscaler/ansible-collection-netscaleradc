@@ -24,17 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientid:
+    type: str
     description:
       - Application ID that is generated when an application is created in Azure Active
         Directory using either the Azure CLI or the Azure portal (GUI)
-    type: str
   clientsecret:
+    type: str
     description:
       - Password for the application configured in Azure Active Directory. The password
         is specified in the Azure CLI or generated in the Azure portal (GUI).
-    type: str
   name:
+    type: str
     description:
       - Name for the application. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -43,22 +56,21 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my application" or ''my application'').'
-    type: str
   tenantid:
+    type: str
     description:
       - ID of the directory inside Azure Active Directory in which the application
         was created
-    type: str
   tokenendpoint:
+    type: str
     description:
       - URL from where access token can be obtained. If the token end point is not
         specified, the default value is https://login.microsoftonline.com/<tenant
         id>.
-    type: str
   vaultresource:
+    type: str
     description:
       - 'Vault resource for which access token is granted. Example : vault.azure.net'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

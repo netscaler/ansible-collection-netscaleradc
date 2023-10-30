@@ -26,36 +26,49 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke flag. This attribute is relevant only for ADVANCED policies
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
-    type: str
   labeltype:
+    type: str
     choices:
       - vserver
       - service
       - policylabel
     description:
       - Type of policy label invocation.
-    type: str
   policyname:
+    type: str
     description:
       - The name of the SSL policy binding.
-    type: str
   priority:
+    type: float
     description:
       - The priority of the policies bound to this SSL service
-    type: float
   type:
+    type: str
     choices:
       - INTERCEPT_REQ
       - REQUEST
@@ -72,12 +85,11 @@ options:
       - '3. C(CLIENTHELLO_REQ): Policy evaluation will be done during handling of
         Client Hello Request. Action allowed with this type is: RESET, FORWARD and
         PICKCACERTGRP.'
-    type: str
     default: REQUEST
   vservername:
+    type: str
     description:
       - Name of the SSL virtual server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

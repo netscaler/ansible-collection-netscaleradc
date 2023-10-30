@@ -24,62 +24,69 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   I:
+    type: bool
     description:
       - Use ICMP ECHO for probes.
-    type: bool
   T:
+    type: float
     description:
       - Traffic Domain Id
-    type: float
   host:
+    type: str
     description:
       - Destination host IP address or name.
-    type: str
   m:
+    type: int
     description:
       - Maximum hop value for outgoing probe packets. For Nitro API, default value
         is taken as 10.
-    type: int
     default: 64
   n:
+    type: bool
     description:
       - Print hop addresses numerically rather than symbolically and numerically.
-    type: bool
   p:
+    type: int
     description:
       - Base port number used in probes.
-    type: int
     default: 33434
   packetlen:
+    type: int
     description:
       - Length (in bytes) of the query packets.
-    type: int
     default: 44
   q:
+    type: int
     description:
       - Number of probes per hop. For Nitro API, default value is taken as 1.
-    type: int
     default: 3
   r:
+    type: bool
     description:
       - Bypass normal routing tables and send directly to a host on an attached network.
         If the host is not on a directly attached network, an error is returned.
-    type: bool
   s:
+    type: str
     description:
       - Source IP address to use in the outgoing query packets. If the IP address
         does not belong to this appliance,  an error is returned and nothing is sent.
-    type: str
   v:
+    type: bool
     description:
       - Verbose output. List received ICMP packets other than TIME_EXCEEDED and UNREACHABLE.
-    type: bool
   w:
+    type: int
     description:
       - Time (in seconds) to wait for a response to a query. For Nitro API, defalut
         value is set to 3.
-    type: int
     default: 5
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

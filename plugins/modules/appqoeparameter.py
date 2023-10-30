@@ -24,29 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   avgwaitingclient:
+    type: float
     description:
       - average number of client connections, that can sit in service waiting queue
-    type: float
     default: 1000000
   dosattackthresh:
+    type: float
     description:
       - average number of client connection that can queue up on vserver level without
         triggering DoS mitigation module
-    type: float
     default: 2000
   maxaltrespbandwidth:
+    type: float
     description:
       - maximum bandwidth which will determine whether to send alternate content response
-    type: float
     default: 100
   sessionlife:
+    type: float
     description:
       - Time, in seconds, between the first time and the next time the AppQoE alternative
         content window is displayed. The alternative content window is displayed only
         once during a session for the same browser accessing a configured URL, so
         this parameter determines the length of a session.
-    type: float
     default: 300
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

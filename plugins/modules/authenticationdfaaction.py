@@ -24,33 +24,45 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientid:
+    type: str
     description:
       - If configured, this string is sent to the DFA server as the X-Citrix-Exchange
         header value.
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the DFA action. '
+      - Name for the DFA action.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
         after the DFA action is added.
-    type: str
   passphrase:
-    description:
-      - 'Key shared between the DFA server and the Citrix ADC. '
-      - Required to allow the Citrix ADC to communicate with the DFA server.
     type: str
+    description:
+      - Key shared between the DFA server and the Citrix ADC.
+      - Required to allow the Citrix ADC to communicate with the DFA server.
   serverurl:
+    type: str
     description:
       - DFA Server URL
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

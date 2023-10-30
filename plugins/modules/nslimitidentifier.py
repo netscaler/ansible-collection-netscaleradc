@@ -24,13 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   limitidentifier:
+    type: str
     description:
       - Name for a rate limit identifier. Must begin with an ASCII letter or underscore
         (_) character, and must consist only of ASCII alphanumeric or underscore characters.
         Reserved words must not be used.
-    type: str
   limittype:
+    type: str
     choices:
       - BURSTY
       - SMOOTH
@@ -41,13 +54,13 @@ options:
       - '* C(BURSTY) - When you want the permitted number of requests to exhaust the
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
-    type: str
     default: BURSTY
   maxbandwidth:
+    type: float
     description:
       - Maximum bandwidth permitted, in kbps.
-    type: float
   mode:
+    type: str
     choices:
       - CONNECTION
       - REQUEST_RATE
@@ -78,35 +91,34 @@ options:
       - '5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:'
       - set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold
         5000 -limitType BURSTY
-    type: str
     default: REQUEST_RATE
   selectorname:
+    type: str
     description:
       - Name of the rate limit selector. If this argument is NULL, rate limiting will
         be applied on all traffic received by the virtual server or the Citrix ADC
         (depending on whether the limit identifier is bound to a virtual server or
         globally) without any filtering.
-    type: str
   threshold:
+    type: float
     description:
       - Maximum number of requests that are allowed in the given timeslice when requests
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
-    type: float
     default: 1
   timeslice:
+    type: float
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
-    type: float
     default: 1000
   trapsintimeslice:
+    type: float
     description:
       - Number of traps to be sent in the timeslice configured. A value of 0 indicates
         that traps are disabled.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

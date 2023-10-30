@@ -24,15 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   basicauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable basic authentication for Nitro API.
-    type: str
     default: ENABLED
   cliloglevel:
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -54,17 +65,17 @@ options:
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
-    type: str
     default: INFORMATIONAL
   doppler:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Doppler
-    type: str
     default: ENABLED
   fipsusermode:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -75,25 +86,25 @@ options:
       - With a FIPS license, it is enabled by default and cannot be disabled.
       - Without a FIPS license, it is disabled by default, wherein these user-land
         processes will not operate in FIPS mode.
-    type: str
     default: DISABLED
   forcepasswordchange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable force password change for nsroot user
-    type: str
     default: DISABLED
   googleanalytics:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Google analytics
-    type: str
     default: DISABLED
   localauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -103,35 +114,40 @@ options:
         ADC, Local users can access the Citrix ADC only when the configured external
         authentication servers are unavailable. This parameter is not applicable to
         SSH Key-based authentication
-    type: str
     default: ENABLED
+  maxsessionperuser:
+    type: float
+    description:
+      - Maximum number of client connection allowed per user.The maxsessionperuser
+        value ranges from 1 to 40
   minpasswordlen:
+    type: float
     description:
       - Minimum length of system user password. When strong password is enabled default
         minimum length is 8. User entered value can be greater than or equal to 8.
         Default mininum value is 1 when strong password is disabled. Maximum value
         is 127 in both cases.
-    type: float
   natpcbforceflushlimit:
+    type: float
     description:
       - Flush the system if the number of Network Address Translation Protocol Control
         Blocks (NATPCBs) exceeds this value.
-    type: float
     default: 2147483647
   natpcbrstontimeout:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send a reset signal to client and server connections when their NATPCBs time
         out. Avoids the buildup of idle TCP connections on both the sides.
-    type: str
     default: DISABLED
   promptstring:
+    type: str
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
-        underscore (_), and the following variables: '
+        underscore (_), and the following variables:'
       - '* %u - Will be replaced by the user name.'
       - '* %h - Will be replaced by the hostname of the Citrix ADC.'
       - '* %t - Will be replaced by the current time in 12-hour format.'
@@ -141,25 +157,25 @@ options:
       - ''
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
-    type: str
   rbaonresponse:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Role-Based Authentication (RBA) on responses.
-    type: str
     default: ENABLED
   reauthonauthparamchange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable External user reauthentication when authentication parameter
         changes
-    type: str
     default: DISABLED
   removesensitivefiles:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -168,9 +184,9 @@ options:
         keys, public keys etc. The commands which will remove sensitive files when
         this system paramter is enabled are rm cluster instance, rm cluster node,
         rm ha node, clear config full, join cluster and add cluster instance.
-    type: str
     default: DISABLED
   restrictedtimeout:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -179,9 +195,9 @@ options:
         be configured beyond admin configured timeout  and also it will have the [minimum
         - maximum] range check. When disabled, timeout will have the old behaviour.
         By default the value is disabled
-    type: str
     default: DISABLED
   strongpassword:
+    type: str
     choices:
       - enableall
       - enablelocal
@@ -196,35 +212,24 @@ options:
         NS_TACACS, NS_TACACSACTION, NS_RADIUS, NS_RADIUSACTION, NS_ENCRYPTION_PARAMS.
         So no Strong Password checks will be performed on these ObjectType commands
         for C(enablelocal) case.'
-    type: str
     default: disabled
   timeout:
+    type: float
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         is enabled, Timeout can have values in the range [300-86400] seconds.
       - If Restrictedtimeout argument is disabled, Timeout can have values in the
         range [0, 10-100000000] seconds. Default value is 900 seconds.
-    type: float
   totalauthtimeout:
+    type: float
     description:
       - Total time a request can take for authentication/authorization
-    type: float
     default: 20
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | systemparameter
-      delegate_to: localhost
-      netscaler.adc.systemparameter:
-        state: present
-        promptstring: '%u@%s'
-
 """
 
 RETURN = r"""

@@ -24,7 +24,17 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - 'Name to assign to the imported certificate bundle. Must begin with an ASCII
         alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric,
@@ -32,14 +42,13 @@ options:
         hyphen (-) characters. The following requirement applies only to the Citrix
         ADC CLI: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my file" or ''my file'').'
-    type: str
   src:
+    type: str
     description:
       - URL specifying the protocol, host, and path, including file name, to the certificate
         bundle to be imported or exported. For example, http://www.example.com/cert_bundle_file.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

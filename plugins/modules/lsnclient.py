@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientname:
+    type: str
     description:
       - 'Name for the LSN client entity. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -33,12 +46,12 @@ options:
         requirement applies only to the Citrix ADC CLI: If the name includes one or
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn client1" or ''lsn client1'').'
-    type: str
   lsnclient_network6_binding:
     type: dict
     description: Bindings for lsnclient_network6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -63,6 +76,7 @@ options:
     description: Bindings for lsnclient_network_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -87,6 +101,7 @@ options:
     description: Bindings for lsnclient_nsacl6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -111,6 +126,7 @@ options:
     description: Bindings for lsnclient_nsacl_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

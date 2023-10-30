@@ -24,17 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   azureapplication:
+    type: str
     description:
       - Name of the Azure Application object created on the ADC appliance. This object
         will be used for authentication with Azure Active Directory
-    type: str
   azurevaultname:
+    type: str
     description:
       - 'Name of the Key Vault configured in Azure cloud using either the Azure CLI
         or the Azure portal (GUI) with complete domain name. Example: Test.vault.azure.net.'
-    type: str
   name:
+    type: str
     description:
       - Name for the Key Vault. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -43,7 +56,6 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my keyvault" or ''my keyvault'').'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

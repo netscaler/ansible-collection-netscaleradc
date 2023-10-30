@@ -24,12 +24,23 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   commonname:
+    type: str
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
-    type: str
   ocspstapling:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -42,29 +53,29 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    type: str
     default: DISABLED
   sendclosenotify:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    type: str
     default: 'YES'
   serverauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service group.
-    type: str
     default: DISABLED
   servicegroupname:
+    type: str
     description:
       - Name of the SSL service group for which to set advanced configuration.
-    type: str
   sessreuse:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -72,16 +83,16 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    type: str
     default: ENABLED
   sesstimeout:
+    type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: float
     default: 300
   snienable:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -91,9 +102,9 @@ options:
         service if the domains are controlled by the same organization and share the
         same second-level domain name. For example, *.sports.net can be used to secure
         domains such as login.sports.net and help.sports.net.
-    type: str
     default: DISABLED
   ssl3:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -101,58 +112,58 @@ options:
       - State of SSLv3 protocol support for the SSL service group.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    type: str
     default: ENABLED
   sslprofile:
+    type: str
     description:
       - Name of the SSL profile that contains SSL settings for the Service Group.
-    type: str
   strictsigdigestcheck:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter indicating to check whether peer's certificate is signed with one
         of signature-hash combination supported by Citrix ADC
-    type: str
     default: DISABLED
   tls1:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service group.
-    type: str
     default: ENABLED
   tls11:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service group.
-    type: str
     default: ENABLED
   tls12:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service group.
-    type: str
     default: ENABLED
   tls13:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL service group.
-    type: str
     default: DISABLED
   sslservicegroup_ecccurve_binding:
     type: dict
     description: Bindings for sslservicegroup_ecccurve_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -177,6 +188,7 @@ options:
     description: Bindings for sslservicegroup_sslcertkey_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -201,6 +213,7 @@ options:
     description: Bindings for sslservicegroup_sslcipher_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -225,6 +238,7 @@ options:
     description: Bindings for sslservicegroup_sslciphersuite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

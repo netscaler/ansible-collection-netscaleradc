@@ -26,55 +26,67 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   backupip:
+    type: str
     description:
       - The IP address of the backup service for the specified domain name. Used when
         all the services bound to the domain are down, or when the backup chain of
         virtual servers is down.
-    type: str
   backupipflag:
+    type: bool
     description:
       - The IP address of the backup service for the specified domain name. Used when
         all the services bound to the domain are down, or when the backup chain of
         virtual servers is down.
-    type: bool
   cookie_domain:
-    description:
-      - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
-        in the HTTP response.
     type: str
-  cookie_domainflag:
     description:
       - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
         in the HTTP response.
+  cookie_domainflag:
     type: bool
+    description:
+      - The cookie domain for the GSLB site. Used when inserting the GSLB site cookie
+        in the HTTP response.
   cookietimeout:
+    type: float
     description:
       - Timeout, in minutes, for the GSLB site cookie.
-    type: float
   domainname:
+    type: str
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
-    type: str
   name:
+    type: str
     description:
       - Name of the virtual server on which to perform the binding operation.
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: float
   sitedomainttl:
+    type: float
     description:
       - TTL, in seconds, for all internally created site domains (created when a site
         prefix is configured on a GSLB service) that are associated with this virtual
         server.
-    type: float
   ttl:
+    type: float
     description:
       - Time to live (TTL) for the domain.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

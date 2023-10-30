@@ -26,48 +26,54 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
   xmlblockdtd:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -75,8 +81,8 @@ options:
       - State if XML DTD is C(ON) or C(OFF). Protects against recursive Document Type
         Declaration (DTD) entity expansion attacks. Also, SOAP messages cannot have
         DTDs in messages.
-    type: str
   xmlblockexternalentities:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -84,8 +90,8 @@ options:
       - State if XML Block External Entities Check is C(ON) or C(OFF). Protects against
         XML External Entity (XXE) attacks that force applications to parse untrusted
         external entities (sources) in XML documents.
-    type: str
   xmlblockpi:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -93,200 +99,199 @@ options:
       - State if XML Block PI is C(ON) or C(OFF). Protects resources from denial of
         service attacks as SOAP messages cannot have processing instructions (PI)
         in messages.
-    type: str
   xmldosurl:
+    type: str
     description:
       - XML DoS URL regular expression length.
-    type: str
   xmlmaxattributenamelength:
+    type: float
     description:
       - Specify the longest name of any XML attribute. Protects against overflow attacks.
-    type: float
   xmlmaxattributenamelengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max attribute name length check is C(ON) or C(OFF).
-    type: str
   xmlmaxattributes:
+    type: float
     description:
       - Specify maximum number of attributes per XML element. Protects against overflow
         attacks.
-    type: float
   xmlmaxattributescheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max attributes check is C(ON) or C(OFF).
-    type: str
   xmlmaxattributevaluelength:
+    type: float
     description:
       - Specify the longest value of any XML attribute. Protects against overflow
         attacks.
-    type: float
   xmlmaxattributevaluelengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max atribute value length is C(ON) or C(OFF).
-    type: str
   xmlmaxchardatalength:
+    type: float
     description:
       - Specify the maximum size of CDATA. Protects against overflow attacks and large
         quantities of unparsed data within XML messages.
-    type: float
   xmlmaxchardatalengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max CDATA length check is C(ON) or C(OFF).
-    type: str
   xmlmaxelementchildren:
+    type: float
     description:
       - Specify the maximum number of children allowed per XML element. Protects against
         overflow attacks.
-    type: float
   xmlmaxelementchildrencheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max element children check is C(ON) or C(OFF).
-    type: str
   xmlmaxelementdepth:
+    type: float
     description:
       - Maximum nesting (depth) of XML elements. This check protects against documents
         that have excessive hierarchy depths.
-    type: float
   xmlmaxelementdepthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max element depth check is C(ON) or C(OFF).
-    type: str
   xmlmaxelementnamelength:
+    type: float
     description:
       - Specify the longest name of any element (including the expanded namespace)
         to protect against overflow attacks.
-    type: float
   xmlmaxelementnamelengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max element name length check is C(ON) or C(OFF).
-    type: str
   xmlmaxelements:
+    type: float
     description:
       - Specify the maximum number of XML elements allowed. Protects against overflow
         attacks.
-    type: float
   xmlmaxelementscheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max elements check is C(ON) or C(OFF).
-    type: str
   xmlmaxentityexpansiondepth:
+    type: float
     description:
       - Specify maximum entity expansion depth. Protects aganist Entity Expansion
         Attack.
-    type: float
   xmlmaxentityexpansiondepthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max Entity Expansions Depth Check is C(ON) or C(OFF).
-    type: str
   xmlmaxentityexpansions:
+    type: float
     description:
       - Specify maximum allowed number of entity expansions. Protects aganist Entity
         Expansion Attack.
-    type: float
   xmlmaxentityexpansionscheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max Entity Expansions Check is C(ON) or C(OFF).
-    type: str
   xmlmaxfilesize:
+    type: float
     description:
       - Specify the maximum size of XML messages. Protects against overflow attacks.
-    type: float
   xmlmaxfilesizecheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max file size check is C(ON) or C(OFF).
-    type: str
   xmlmaxnamespaces:
+    type: float
     description:
       - Specify maximum number of active namespaces. Protects against overflow attacks.
-    type: float
   xmlmaxnamespacescheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max namespaces check is C(ON) or C(OFF).
-    type: str
   xmlmaxnamespaceurilength:
+    type: float
     description:
       - Specify the longest URI of any XML namespace. Protects against overflow attacks.
-    type: float
   xmlmaxnamespaceurilengthcheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max namespace URI length check is C(ON) or C(OFF).
-    type: str
   xmlmaxnodes:
+    type: float
     description:
       - Specify the maximum number of XML nodes. Protects against overflow attacks.
-    type: float
   xmlmaxnodescheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Max nodes check is C(ON) or C(OFF).
-    type: str
   xmlmaxsoaparrayrank:
+    type: float
     description:
       - XML Max Individual SOAP Array Rank. This is the dimension of the SOAP array.
-    type: float
   xmlmaxsoaparraysize:
+    type: float
     description:
       - XML Max Total SOAP Array Size. Protects against SOAP Array Abuse attack.
-    type: float
   xmlminfilesize:
+    type: float
     description:
       - Enforces minimum message size.
-    type: float
   xmlminfilesizecheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML Min file size check is C(ON) or C(OFF).
-    type: str
   xmlsoaparraycheck:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - State if XML SOAP Array check is C(ON) or C(OFF).
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

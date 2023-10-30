@@ -24,41 +24,54 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   apptimeout:
+    type: float
     description:
       - Time interval, in minutes, of user inactivity after which the connection is
         closed.
-    type: float
   forcedtimeout:
+    type: str
     choices:
       - START
       - STOP
       - RESET
     description:
       - Setting to start, stop or reset TM session force timer
-    type: str
   forcedtimeoutval:
+    type: float
     description:
       - Time interval, in minutes, for which force timer should be set.
-    type: float
   formssoaction:
+    type: str
     description:
       - Name of the configured form-based single sign-on profile.
-    type: str
   initiatelogout:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Initiate logout for the traffic management (TM) session if the policy evaluates
         to true. The session is then terminated after two minutes.
-    type: str
   kcdaccount:
+    type: str
     description:
       - Kerberos constrained delegation account name
-    type: str
     default: '"None"'
   name:
+    type: str
     description:
       - Name for the traffic action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -68,12 +81,12 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   passwdexpression:
+    type: str
     description:
       - expression that will be evaluated to obtain password for SingleSignOn
-    type: str
   persistentcookie:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -81,22 +94,21 @@ options:
       - Use persistent cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
-    type: str
   samlssoprofile:
+    type: str
     description:
       - Profile to be used for doing SAML SSO to remote relying party
-    type: str
   sso:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use single sign-on for the resource that the user is accessing now.
-    type: str
   userexpression:
+    type: str
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

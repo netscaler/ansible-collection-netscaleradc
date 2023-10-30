@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   azurepollperiod:
+    type: float
     description:
       - Azure polling period (in seconds)
-    type: float
     default: 60
   azuretagname:
+    type: str
     description:
       - Azure tag name
-    type: str
   azuretagvalue:
+    type: str
     description:
       - Azure tag value
-    type: str
   boundservicegroupsvctype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -89,41 +102,41 @@ options:
       - QUIC_BRIDGE
     description:
       - The type of bound service
-    type: str
   delay:
+    type: float
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
-    type: float
   graceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
-    type: str
     default: 'NO'
   ipaddress:
+    type: str
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
-    type: str
   name:
+    type: str
     description:
       - Name for the Cloud profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the profile is created.
-    type: str
   port:
+    type: int
     description:
       - Port number for the virtual server.
-    type: int
   servicegroupname:
+    type: str
     description:
       - servicegroups bind to this server
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -171,15 +184,15 @@ options:
       - HTTP_QUIC
     description:
       - Protocol used by the service (also called the service type).
-    type: str
   type:
+    type: str
     choices:
       - autoscale
       - azuretags
     description:
       - Type of cloud profile that you want to create, Vserver or based on Azure Tags
-    type: str
   vservername:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -188,11 +201,10 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   vsvrbindsvcport:
+    type: int
     description:
       - The port number to be used for the bound service.
-    type: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,63 +24,76 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   altcontentpath:
+    type: str
     description:
       - Path to the alternative content service to be used in the ACS
-    type: str
   altcontentsvcname:
+    type: str
     description:
       - Name of the alternative content service to be used in the ACS
-    type: str
   customfile:
+    type: str
     description:
       - name of the HTML page object to use as the response
-    type: str
   delay:
+    type: float
     description:
       - Delay threshold, in microseconds, for requests that match the policy's rule.
         If the delay statistics gathered for the matching request exceed the specified
         delay, configured action triggered for that request, if there is no action
         then requests are dropped to the lowest priority level
-    type: float
   dosaction:
+    type: str
     choices:
       - SimpleResponse
       - HICResponse
     description:
       - DoS Action to take when vserver will be considered under DoS attack and corresponding
         rule matches. Mandatory if AppQoE actions are to be used for DoS attack prevention.
-    type: str
   dostrigexpression:
+    type: str
     description:
       - Optional expression to add second level check to trigger DoS actions. Specifically
         used for Analytics based DoS response generation
-    type: str
   maxconn:
+    type: float
     description:
       - Maximum number of concurrent connections that can be open for requests that
         matches with rule.
-    type: float
   name:
+    type: str
     description:
       - Name for the AppQoE action. Must begin with a letter, number, or the underscore
         symbol (_). Other characters allowed, after the first character, are the hyphen
         (-), period (.) hash (#), space ( ), at (@), equals (=), and colon (:) characters.
         This is a mandatory argument
-    type: str
   numretries:
+    type: float
     description:
       - Retry count
-    type: float
     default: 3
   polqdepth:
+    type: float
     description:
       - Policy queue depth threshold value. When the policy queue size (number of
         requests queued for the policy binding this action is attached to) increases
         to the specified polqDepth value, subsequent requests are dropped to the lowest
         priority level.
-    type: float
   priority:
+    type: str
     choices:
       - HIGH
       - MEDIUM
@@ -92,15 +105,15 @@ options:
         for queuing the request until the server resources are available again. If
         priority is not configured then Lowest priority will be used to queue the
         request.
-    type: str
   priqdepth:
+    type: float
     description:
       - Queue depth threshold value per priorirty level. If the queue size (number
         of requests in the queue of that particular priorirty) on the virtual server
         to which this policy is bound, increases to the specified qDepth value, subsequent
         requests are dropped to the lowest priority level.
-    type: float
   respondwith:
+    type: str
     choices:
       - ACS
       - NS
@@ -111,23 +124,22 @@ options:
       - '                  Threshold : maxConn or delay'
       - '            C(NS) - Serve from the Citrix ADC (built-in response)'
       - '                 Threshold : maxConn or delay'
-    type: str
   retryonreset:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Retry on TCP Reset
-    type: str
     default: 'NO'
   retryontimeout:
+    type: float
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers
-    type: float
   tcpprofile:
+    type: str
     description:
       - Bind TCP Profile based on L2/L3/L7 parameters.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

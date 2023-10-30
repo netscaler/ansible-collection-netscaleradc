@@ -8,7 +8,7 @@ namespace: netscaler
 name: adc
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 2.0.1
+version: 2.0.2
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -71,9 +71,10 @@ build_ignore:
   - tools
   - examples
   - docs
-  - tests
   - Dockerfile
   - .gitignore
+  - issues
+  - "**/netscaler-adc-*.tar.gz"
 
 # A dict controlling use of manifest directives used in building the collection artifact. The key 'directives' is a
 # list of MANIFEST.in style

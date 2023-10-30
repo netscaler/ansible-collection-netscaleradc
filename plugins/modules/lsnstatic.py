@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   destip:
+    type: str
     description:
       - Destination IP address for the LSN mapping entry.
-    type: str
   dsttd:
+    type: float
     description:
       - ID of the traffic domain through which the destination IP address for this
         LSN mapping entry is reachable from the Citrix ADC.
       - ''
       - If you do not specify an ID, the destination IP address is assumed to be reachable
         through the default traffic domain, which has an ID of 0.
-    type: float
   name:
+    type: str
     description:
       - 'Name for the LSN static mapping entry. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -45,47 +58,47 @@ options:
         requirement applies only to the Citrix ADC CLI: If the name includes one or
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn static1" or ''lsn static1'').'
-    type: str
   natip:
+    type: str
     description:
       - IPv4 address, already existing on the Citrix ADC as type LSN, to be used as
         NAT IP address for this mapping entry.
-    type: str
   natport:
+    type: int
     description:
       - NAT port for this LSN mapping entry. * represents all ports being used. Used
         in case of static wildcard
-    type: int
   nattype:
+    type: str
     choices:
       - NAT44
       - DS-Lite
       - NAT64
     description:
       - Type of sessions to be displayed.
-    type: str
   network6:
+    type: str
     description:
       - B4 address in DS-Lite setup
-    type: str
   subscrip:
+    type: str
     description:
       - IPv4(NAT44 & DS-Lite)/IPv6(NAT64) address of an LSN subscriber for the LSN
         static mapping entry.
-    type: str
   subscrport:
+    type: int
     description:
       - Port of the LSN subscriber for the LSN mapping entry. * represents all ports
         being used. Used in case of static wildcard
-    type: int
   td:
+    type: float
     description:
       - 'ID of the traffic domain to which the subscriber belongs. '
       - ''
       - If you do not specify an ID, the subscriber is assumed to be a part of the
         default traffic domain.
-    type: float
   transportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
@@ -93,7 +106,6 @@ options:
       - ALL
     description:
       - Protocol for the LSN mapping entry.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

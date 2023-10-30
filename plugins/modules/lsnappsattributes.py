@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - 'Name for the LSN Application Port ATTRIBUTES. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -33,8 +46,8 @@ options:
         The following requirement applies only to the Citrix ADC CLI: If the name
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "lsn application profile1" or ''lsn application profile1'').'
-    type: str
   port:
+    type: str
     description:
       - This is used for Displaying Port/Port range in CLI/Nitro.Lowport, Highport
         values are populated and used for displaying.Port numbers or range of port
@@ -42,16 +55,16 @@ options:
         a subscriber. When the destination port is matched, the LSN application profile
         is applied for the LSN session. Separate a range of ports with a hyphen. For
         example, 40-90.
-    type: str
   sessiontimeout:
+    type: float
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
         a time that exceeds this value, the Citrix ADC removes the session.This timeout
         does not apply for a TCP LSN session when a FIN or RST message is received
         from either of the endpoints.
-    type: float
     default: 30
   transportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
@@ -59,7 +72,6 @@ options:
     description:
       - Name of the protocol(C(TCP),C(UDP)) for which the parameters of this LSN application
         port ATTRIBUTES applies
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

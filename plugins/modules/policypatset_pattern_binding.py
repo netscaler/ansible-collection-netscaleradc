@@ -26,14 +26,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   String:
+    type: str
     description:
       - String of characters that constitutes a pattern. For more information about
         the characters that can be used, refer to the character set parameter.
       - 'Note: Minimum length for pattern sets used in rewrite actions of type REPLACE_ALL,
         DELETE_ALL, INSERT_AFTER_ALL, and INSERT_BEFORE_ALL, is three characters.'
-    type: str
   builtin:
+    type: list
     choices:
       - MODIFIABLE
       - DELETABLE
@@ -41,9 +54,9 @@ options:
       - PARTITION_ALL
     description:
       - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
     elements: str
   charset:
+    type: str
     choices:
       - ASCII
       - UTF_8
@@ -52,13 +65,13 @@ options:
       - 'Note: UTF-8 characters can be entered directly (if the UI supports it) or
         can be encoded as a sequence of hexadecimal bytes ''\xNN''. For example, the
         UTF-8 character '''' can be encoded as ''\xC3\xBC''.'
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this patset or a pattern bound
         to this patset.
-    type: str
   feature:
+    type: str
     choices:
       - WL
       - WebLogging
@@ -133,15 +146,14 @@ options:
       - APIGateway
     description:
       - The feature to be checked while applying this config
-    type: str
   index:
+    type: float
     description:
       - The index of the string associated with the patset.
-    type: float
   name:
+    type: str
     description:
       - Name of the pattern set to which to bind the string.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

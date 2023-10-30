@@ -26,22 +26,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - If the current policy evaluates to TRUE, terminate evaluation of policies
         bound to the current policy label and evaluate the specified policy label.
-    type: bool
   invoke_labelname:
+    type: str
     description:
       - '* If labelType is policylabel, name of the policy label to invoke.'
       - '* If labelType is reqvserver, name of the virtual server.'
-    type: str
   labelname:
+    type: str
     description:
       - Name for the LB policy label. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -51,8 +64,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my lb policy label" or 'my lb policy label').
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - policylabel
@@ -61,15 +74,14 @@ options:
       - '* vserver - Invokes the unnamed policy label associated with the specified
         virtual server.'
       - '* C(policylabel) - Invoke a user-defined policy label.'
-    type: str
   policyname:
+    type: str
     description:
       - Name of the LB policy.
-    type: str
   priority:
+    type: float
     description:
       - Specifies the priority of the policy.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

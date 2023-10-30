@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Action for the spillover policy. Action is created using add spillover action
         command
-    type: str
   comment:
+    type: str
     description:
       - Any comments that you might want to associate with the spillover policy.
-    type: str
   name:
+    type: str
     description:
       - Name of the spillover policy.
-    type: str
   newname:
+    type: str
     description:
       - New name for the spillover policy. Must begin with an ASCII alphabetic or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -48,11 +61,10 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression to be used by the spillover policy.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

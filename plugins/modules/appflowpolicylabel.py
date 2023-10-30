@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   labelname:
+    type: str
     description:
       - Name of the AppFlow policy label. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -34,32 +47,32 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel').
-    type: str
   newname:
+    type: str
     description:
-      - 'New name for the policy label. Must begin with an ASCII alphabetic or underscore
+      - New name for the policy label. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
-        (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters. '
-      - '                    '
+        (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
+      - ''
       - '                    The following requirement applies only to the Citrix
         ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow policylabel" or 'my appflow policylabel')
-    type: str
   policylabeltype:
+    type: str
     choices:
       - HTTP
       - OTHERTCP
       - HTTP_QUIC
     description:
       - Type of traffic evaluated by the policies bound to the policy label.
-    type: str
     default: HTTP
   appflowpolicylabel_appflowpolicy_binding:
     type: dict
     description: Bindings for appflowpolicylabel_appflowpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

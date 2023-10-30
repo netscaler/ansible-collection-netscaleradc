@@ -24,39 +24,48 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   dnsprofilename:
+    type: str
     description:
       - Name of the DNS profile to be associated with the name server
-    type: str
   dnsvservername:
+    type: str
     description:
       - Name of a DNS virtual server. Overrides any IP address-based name servers
         configured on the Citrix ADC.
-    type: str
   ip:
+    type: str
     description:
       - IP address of an external name server or, if the Local parameter is set, IP
         address of a local DNS server (LDNS).
-    type: str
   local:
+    type: bool
     description:
-      - 'Mark the IP address as one that belongs to a local recursive DNS server on
+      - Mark the IP address as one that belongs to a local recursive DNS server on
         the Citrix ADC. The appliance recursively resolves queries received on an
         IP address that is marked as being local. For recursive resolution to work,
-        the global DNS parameter, Recursion, must also be set. '
+        the global DNS parameter, Recursion, must also be set.
       - ''
       - If no name server is marked as being local, the appliance functions as a stub
         resolver and load balances the name servers.
-    type: bool
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Administrative state of the name server.
-    type: str
-    default: ENABLED
   type:
+    type: str
     choices:
       - UDP
       - TCP
@@ -64,7 +73,6 @@ options:
     description:
       - Protocol used by the name server. C(UDP_TCP) is not valid if the name server
         is a DNS virtual server configured on the appliance.
-    type: str
     default: UDP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

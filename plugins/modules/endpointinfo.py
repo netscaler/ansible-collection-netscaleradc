@@ -24,29 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   endpointkind:
+    type: str
     choices:
       - IP
     description:
       - Endpoint kind. Currently, C(IP) endpoints are supported
-    type: str
     default: IP
   endpointlabelsjson:
+    type: str
     description:
       - String representing labels in json form. Maximum length 16K
-    type: str
   endpointmetadata:
+    type: str
     description:
       - 'String of qualifiers, in dotted notation, structured metadata for an endpoint.
         Each qualifier is more specific than the one that precedes it, as in cluster.namespace.service.
         For example: cluster.default.frontend. '
       - 'Note: A qualifier that includes a dot (.) or space ( ) must be enclosed in
         double quotation marks.'
-    type: str
   endpointname:
+    type: str
     description:
       - Name of endpoint, depends on kind. For IP Endpoint - IP address.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

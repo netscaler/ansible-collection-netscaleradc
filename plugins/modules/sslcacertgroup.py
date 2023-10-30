@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cacertgroupname:
+    type: str
     description:
       - 'Name given to the CA certificate group. The name will be used to add the
         CA certificates to the group. Must begin with an ASCII alphanumeric or underscore
@@ -33,12 +46,12 @@ options:
         The following requirement applies only to the Citrix ADC CLI: If the name
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "my file" or ''my file'').'
-    type: str
   sslcacertgroup_sslcertkey_binding:
     type: dict
     description: Bindings for sslcacertgroup_sslcertkey_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

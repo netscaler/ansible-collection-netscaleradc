@@ -24,105 +24,117 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cachemaxage:
+    type: float
     description:
       - Maxage for cache extension.
-    type: float
     default: 30
   clientsidemeasurements:
+    type: bool
     description:
       - Send AppFlow records about the web pages optimized by this action. The records
         provide FEO statistics, such as the number of HTTP requests that have been
         reduced for this page. You must enable the Appflow feature before enabling
         this parameter.
-    type: bool
   convertimporttolink:
+    type: bool
     description:
       - Convert CSS import statements to HTML link tags.
-    type: bool
   csscombine:
+    type: bool
     description:
       - Combine one or more CSS files into one file.
-    type: bool
   cssimginline:
+    type: bool
     description:
       - Inline small images (less than 2KB) referred within CSS files as background-URLs
-    type: bool
   cssinline:
+    type: bool
     description:
       - Inline CSS files, whose size is less than 2KB, within the main page.
-    type: bool
   cssminify:
+    type: bool
     description:
       - Remove comments and whitespaces from CSSs.
-    type: bool
   cssmovetohead:
+    type: bool
     description:
       - Move any CSS file present within the body tag of an HTML page to the head
         tag.
-    type: bool
   dnsshards:
+    type: list
     description:
       - Set of domain names that replaces the parent domain.
-    type: list
     elements: str
   domainsharding:
+    type: str
     description:
       - Domain name of the server
-    type: str
   htmlminify:
+    type: bool
     description:
       - Remove comments and whitespaces from an HTML page.
-    type: bool
   imggiftopng:
+    type: bool
     description:
       - Convert GIF image formats to PNG formats.
-    type: bool
   imginline:
+    type: bool
     description:
       - Inline images whose size is less than 2KB.
-    type: bool
   imglazyload:
+    type: bool
     description:
       - Download images, only when the user scrolls the page to view them.
-    type: bool
   imgshrinktoattrib:
+    type: bool
     description:
       - Shrink image dimensions as per the height and width attributes specified in
         the <img> tag.
-    type: bool
   imgtojpegxr:
+    type: bool
     description:
       - Convert JPEG, GIF, PNG image formats to JXR format.
-    type: bool
   imgtowebp:
+    type: bool
     description:
       - Convert JPEG, GIF, PNG image formats to WEBP format.
-    type: bool
   jpgoptimize:
+    type: bool
     description:
       - Remove non-image data such as comments from JPEG images.
-    type: bool
   jsinline:
+    type: bool
     description:
       - Convert linked JavaScript files (less than 2KB) to inline JavaScript files.
-    type: bool
   jsminify:
+    type: bool
     description:
       - Remove comments and whitespaces from JavaScript.
-    type: bool
   jsmovetoend:
+    type: bool
     description:
       - Move any JavaScript present in the body tag to the end of the body tag.
-    type: bool
   name:
+    type: str
     description:
       - The name of the front end optimization action.
-    type: str
   pageextendcache:
+    type: bool
     description:
       - Extend the time period during which the browser can use the cached resource.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

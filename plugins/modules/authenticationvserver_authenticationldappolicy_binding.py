@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -39,8 +52,8 @@ options:
         policies. If you do not set this parameter, the policy is bound to REQ_DEFAULT
         or RES_DEFAULT, depending on whether the policy rule is a response-time or
         a request-time expression.
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Applicable only to advance authentication policy. Expression or other value
         specifying the next policy to be evaluated if the current policy evaluates
@@ -70,32 +83,32 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   groupextraction:
+    type: bool
     description:
       - Bind the Authentication policy to a tertiary chain which will be used only
         for group extraction.  The user will not authenticate against this server,
         and this will only be called if primary and/or secondary authentication has
         succeeded.
-    type: bool
   name:
+    type: str
     description:
       - Name of the authentication virtual server to which to bind the policy.
-    type: str
   nextfactor:
+    type: str
     description:
       - Applicable only while binding advance authentication policy as classic authentication
         policy does not support nFactor
-    type: str
   policy:
+    type: str
     description:
       - The name of the policy, if any, bound to the authentication vserver.
-    type: str
   priority:
+    type: float
     description:
       - The priority, if any, of the vpn vserver policy.
-    type: float
   secondary:
+    type: bool
     description:
       - Bind the authentication policy to the secondary chain.
       - Provides for multifactor authentication in which a user must authenticate
@@ -103,7 +116,6 @@ options:
         method.
       - Because user groups are aggregated across authentication systems, usernames
         must be the same on all authentication servers. Passwords can be different.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

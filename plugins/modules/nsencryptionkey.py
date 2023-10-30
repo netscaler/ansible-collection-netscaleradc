@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this encryption key.
-    type: str
   iv:
+    type: str
     description:
       - 'The initalization voector (IV) for a block cipher, one block of data used
         to initialize the encryption. The best practice is to not specify an IV, in
@@ -42,8 +55,8 @@ options:
       - '   AES128 - 16 bytes (all modes)'
       - '   AES192 - 16 bytes (all modes)'
       - '   AES256 - 16 bytes (all modes)'
-    type: str
   keyvalue:
+    type: str
     description:
       - 'The hex-encoded key value. The length is determined by the cipher method:'
       - '   RC4    - 16 bytes'
@@ -58,8 +71,8 @@ options:
         specified method. This kind of key is
       - intended for use cases where the NetScaler both encrypts and decrypts the
         same data, such an HTTP header.
-    type: str
   method:
+    type: str
     choices:
       - NONE
       - RC4
@@ -125,8 +138,8 @@ options:
         An IV is not used. Padding is required. This mode is considered less secure
         than the other modes because the same plaintext always produces the same encrypted
         text and should only be used if required by an existing application.'
-    type: str
   name:
+    type: str
     description:
       - 'Key name.  This follows the same syntax rules as other expression entity
         names:'
@@ -136,8 +149,8 @@ options:
       - '   It cannot be an expression reserved word (e.g. SYS or HTTP).'
       - '   It cannot be used for an existing expression object (HTTP callout, patset,
         dataset, stringmap, or named expression).'
-    type: str
   padding:
+    type: str
     choices:
       - 'OFF'
       - 'ON'
@@ -158,8 +171,6 @@ options:
         the plaintext will always be an integral number of blocks, or if custom padding
         is implemented using a policy extension function. Padding OFf is the default
         for CFB and OFB modes.'
-    type: str
-    default: DEFAULT
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

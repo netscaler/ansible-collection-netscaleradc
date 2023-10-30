@@ -24,29 +24,42 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing on this VXLAN.
-    type: str
     default: DISABLED
   id:
+    type: float
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
-    type: float
   innervlantagging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN
         tag.
-    type: str
     default: DISABLED
   ipv6dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -54,14 +67,14 @@ options:
       - 'Enable all IPv6 dynamic routing protocols on this VXLAN. Note: For the C(ENABLED)
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
-    type: str
     default: DISABLED
   port:
+    type: int
     description:
       - Specifies UDP destination port for VXLAN packets.
-    type: int
     default: 4789
   protocol:
+    type: str
     choices:
       - IPv4
       - IPv6
@@ -69,27 +82,27 @@ options:
       - NSH
     description:
       - VXLAN-GPE next protocol. RESERVED, C(IPv4), C(IPv6), C(ETHERNET), C(NSH)
-    type: str
     default: ETHERNET
   type:
+    type: str
     choices:
       - VXLAN
       - VXLANGPE
     description:
       - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
-    type: str
     default: VXLAN
   vlan:
+    type: float
     description:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part
         of any other VXLANs.
-    type: float
   vxlan_nsip6_binding:
     type: dict
     description: Bindings for vxlan_nsip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -114,6 +127,7 @@ options:
     description: Bindings for vxlan_nsip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -138,6 +152,7 @@ options:
     description: Bindings for vxlan_srcip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -162,6 +177,7 @@ options:
     description: Bindings for vxlanvlanmap_vxlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

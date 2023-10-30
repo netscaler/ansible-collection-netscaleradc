@@ -24,22 +24,31 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this gRPC schema file.
-    type: str
   name:
+    type: str
     description:
       - Name of the gRPC schema object.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrite any existing gRPC schema object of the same name.
-    type: bool
   src:
+    type: str
     description:
       - Indicates source path of the gRPC schema file.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

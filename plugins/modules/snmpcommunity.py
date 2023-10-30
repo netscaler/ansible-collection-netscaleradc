@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   communityname:
+    type: str
     description:
       - The SNMP community string. Can consist of 1 to 31 characters that include
         uppercase and lowercase letters,numbers and special characters.
@@ -32,8 +45,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the string includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my string" or 'my string').
-    type: str
   permissions:
+    type: str
     choices:
       - GET
       - GET_NEXT
@@ -43,7 +56,6 @@ options:
     description:
       - The SNMP V1 or V2 query-type privilege that you want to associate with this
         SNMP community.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

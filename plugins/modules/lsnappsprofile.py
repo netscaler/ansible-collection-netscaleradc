@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   appsprofilename:
+    type: str
     description:
       - 'Name for the LSN application profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -33,8 +46,8 @@ options:
         The following requirement applies only to the Citrix ADC CLI: If the name
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "lsn application profile1" or ''lsn application profile1'').'
-    type: str
   filtering:
+    type: str
     choices:
       - ENDPOINT-INDEPENDENT
       - ADDRESS-DEPENDENT
@@ -65,9 +78,9 @@ options:
         not previously sent packets to Y:y.  In other words, receiving packets from
         a specific external host requires that the subscriber first send packets first
         to that external IP address and port.'
-    type: str
     default: ADDRESS-PORT-DEPENDENT
   ippooling:
+    type: str
     choices:
       - PAIRED
       - RANDOM
@@ -83,18 +96,18 @@ options:
         for different sessions associated with the same subscriber.'
       - ''
       - This parameter is applicable to dynamic NAT allocation only.
-    type: str
     default: RANDOM
   l2info:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable l2info by creating natpcbs for LSN, which enables the Citrix ADC to
         use L2CONN/MBF with LSN.
-    type: str
     default: DISABLED
   mapping:
+    type: str
     choices:
       - ENDPOINT-INDEPENDENT
       - ADDRESS-DEPENDENT
@@ -119,27 +132,27 @@ options:
       - '* C(ADDRESS-PORT-DEPENDENT) - Reuse the LSN mapping for subsequent packets
         sent from the same internal IP address and port (X:x) to the same external
         IP address and port (Y:y) while the mapping is still active.'
-    type: str
     default: ADDRESS-PORT-DEPENDENT
   tcpproxy:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the  TCP traffic
         by using Layer 4 features.
-    type: str
     default: DISABLED
   td:
+    type: float
     description:
       - 'ID of the traffic domain through which the Citrix ADC sends the outbound
         traffic after performing LSN. '
       - ''
       - If you do not specify an ID, the ADC sends the outbound traffic through the
         default traffic domain, which has an ID of 0.
-    type: float
     default: 4095
   transportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
@@ -147,12 +160,12 @@ options:
     description:
       - Name of the protocol for which the parameters of this LSN application profile
         applies.
-    type: str
   lsnappsprofile_lsnappsattributes_binding:
     type: dict
     description: Bindings for lsnappsprofile_lsnappsattributes_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -177,6 +190,7 @@ options:
     description: Bindings for lsnappsprofile_port_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

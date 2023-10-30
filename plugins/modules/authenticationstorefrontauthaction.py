@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   domain:
+    type: str
     description:
       - Domain of the server that is used for authentication. If users enter name
         without domain, this parameter is added to username in the authentication
         request to server.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the Storefront Authentication action. '
+      - Name for the Storefront Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -47,13 +60,12 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
-    type: str
   serverurl:
+    type: str
     description:
       - 'URL of the Storefront server. This is the FQDN of the Storefront server.
         example: https://storefront.com/.  Authentication endpoints are learned dynamically
         by Gateway.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

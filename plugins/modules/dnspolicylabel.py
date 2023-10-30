@@ -24,26 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   labelname:
+    type: str
     description:
       - Name of the dns policy label.
-    type: str
   newname:
+    type: str
     description:
       - The new name of the dns policylabel.
-    type: str
   transform:
+    type: str
     choices:
       - dns_req
       - dns_res
     description:
       - The type of transformations allowed by the policies bound to the label.
-    type: str
   dnspolicylabel_dnspolicy_binding:
     type: dict
     description: Bindings for dnspolicylabel_dnspolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

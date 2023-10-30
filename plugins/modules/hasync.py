@@ -24,19 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   force:
+    type: bool
     description:
       - Force synchronization regardless of the state of HA propagation and HA synchronization
         on either node.
-    type: bool
   save:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - After synchronization, automatically save the configuration in the secondary
         node configuration file (ns.conf) without prompting for confirmation.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

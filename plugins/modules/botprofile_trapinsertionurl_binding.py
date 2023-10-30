@@ -26,27 +26,40 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_trap_url:
+    type: str
     description:
       - Request URL regex pattern for which Trap URL is inserted.
-    type: str
   bot_trap_url_insertion_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable the request URL pattern.
-    type: str
     default: 'OFF'
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -56,12 +69,11 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
   trapinsertionurl:
+    type: bool
     description:
       - Bind the trap URL for the configured request URLs. Maximum 30 bindings can
         be configured per profile.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

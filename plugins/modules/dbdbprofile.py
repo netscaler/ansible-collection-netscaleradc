@@ -24,37 +24,50 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   conmultiplex:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use the same server-side connection for multiple client-side requests. Default
         is enabled.
-    type: str
     default: ENABLED
   enablecachingconmuxoff:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable caching when connection multiplexing is OFF.
-    type: str
     default: DISABLED
   interpretquery:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
-    type: str
     default: 'YES'
   kcdaccount:
+    type: str
     description:
       - Name of the KCD account that is used for Windows authentication.
-    type: str
   name:
+    type: str
     description:
       - Name for the database profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -63,14 +76,13 @@ options:
       - "\t    CLI Users: If the name includes one or more spaces, enclose the name\
         \ in double or single quotation marks (for example, \"my profile\" or 'my\
         \ profile')."
-    type: str
   stickiness:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - If the queries are related to each other, forward to the same backend server.
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

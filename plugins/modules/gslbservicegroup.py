@@ -24,46 +24,72 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information for the specified GSLB service group.
-    type: str
     default: ENABLED
+  autodelayedtrofs:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Indicates graceful movement of the service to TROFS. System will wait for
+        monitor response time out before moving to TROFS
+    default: 'NO'
   autoscale:
+    type: str
     choices:
       - DISABLED
       - DNS
     description:
       - Auto scale option for a GSLB servicegroup
-    type: str
     default: DISABLED
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Insert the Client IP header in requests forwarded to the GSLB service.
-    type: str
   cipheader:
+    type: str
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
         Used with the Client IP parameter. If client IP insertion is enabled, and
         the client IP header is not specified, the value of Client IP Header parameter
         or the value set by the set ns config command is used as client's IP header
         name.
-    type: str
   clttimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: float
   comment:
+    type: str
     description:
       - Any information about the GSLB service group.
-    type: str
   delay:
+    type: float
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
         new connections or requests will continue to be sent to this service for clients
@@ -72,8 +98,8 @@ options:
         system will not be sent to the service. Instead, they will be load balanced
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
-    type: float
   downstateflush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -81,27 +107,27 @@ options:
       - Flush all active transactions associated with all the services in the GSLB
         service group whose state transitions from UP to DOWN. Do not enable this
         option for applications that must complete their transactions.
-    type: str
     default: ENABLED
   dup_weight:
+    type: float
     description:
       - weight of the monitor that is bound to GSLB servicegroup.
-    type: float
   graceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
-    type: str
     default: 'NO'
   hashid:
+    type: float
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: float
   healthmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -111,70 +137,70 @@ options:
       - C(YES) - Send probes to check the health of the GSLB service.
       - C(NO) - Do not send probes to check the health of the GSLB service. With the
         C(NO) option, the appliance shows the service as UP at all times.
-    type: str
     default: 'YES'
   includemembers:
+    type: bool
     description:
       - Display the members of the listed GSLB service groups in addition to their
         settings. Can be specified when no service group name is provided in the command.
         In that case, the details displayed for each service group are identical to
         the details displayed when a service group name is provided, except that bound
         monitors are not displayed.
-    type: bool
   maxbandwidth:
+    type: float
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the GSLB service
         group.
-    type: float
   maxclient:
+    type: float
     description:
       - Maximum number of simultaneous open connections for the GSLB service group.
-    type: float
   monitor_name_svc:
+    type: str
     description:
       - Name of the monitor bound to the GSLB service group. Used to assign a weight
         to the monitor.
-    type: str
   monthreshold:
+    type: float
     description:
       - Minimum sum of weights of the monitors that are bound to this GSLB service.
         Used to determine whether to mark a GSLB service as UP or DOWN.
-    type: float
   newname:
+    type: str
     description:
       - New name for the GSLB service group.
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the gslb servicegroup member
-    type: float
   port:
+    type: int
     description:
       - Server port number.
-    type: int
   publicip:
+    type: str
     description:
       - The public IP address that a NAT device translates to the GSLB service's private
         IP address. Optional.
-    type: str
   publicport:
+    type: int
     description:
       - The public port associated with the GSLB service's public IP address. The
         port is mapped to the service's private port number. Applicable to the local
         GSLB service. Optional.
-    type: int
   servername:
+    type: str
     description:
       - Name of the server to which to bind the service group.
-    type: str
   servicegroupname:
+    type: str
     description:
       - Name of the GSLB service group. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Can be changed after the name is created.
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -196,12 +222,12 @@ options:
       - ORACLE
     description:
       - Protocol used to exchange data with the GSLB service.
-    type: str
   sitename:
+    type: str
     description:
       - Name of the GSLB site to which the service group belongs.
-    type: str
   sitepersistence:
+    type: str
     choices:
       - ConnectionProxy
       - HTTPRedirect
@@ -209,8 +235,8 @@ options:
     description:
       - Use cookie-based site persistence. Applicable only to HTTP and SSL non-autoscale
         enabled GSLB servicegroups.
-    type: str
   siteprefix:
+    type: str
     description:
       - The site's prefix string. When the GSLB service group is bound to a GSLB virtual
         server, a GSLB site domain is generated internally for each bound serviceitem-domain
@@ -218,30 +244,22 @@ options:
         the domain. If the special string NONE is specified, the site-prefix string
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the GSLB service group.
-    type: str
-    default: ENABLED
   svrtimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: float
   weight:
+    type: float
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: float
   gslbservicegroup_gslbservicegroupmember_binding:
     type: dict
     description: Bindings for gslbservicegroup_gslbservicegroupmember_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -266,6 +284,7 @@ options:
     description: Bindings for gslbservicegroup_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ca:
+    type: bool
     description:
       - The rule for use of CRL corresponding to this CA certificate during client
         authentication. If crlCheck is set to Mandatory, the system will deny all
@@ -35,29 +48,28 @@ options:
         the system will allow SSL clients in the above error cases.However, in any
         case if the client certificate is revoked in the CRL, the SSL client will
         be denied access.
-    type: bool
   certkeyname:
+    type: str
     description:
       - The name of the certificate bound to the monitor.
-    type: str
   crlcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
-    type: str
   monitorname:
+    type: str
     description:
       - Name of the monitor.
-    type: str
   ocspcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

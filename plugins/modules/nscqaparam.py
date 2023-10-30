@@ -24,91 +24,101 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   harqretxdelay:
+    type: float
     description:
       - HARQ retransmission delay (in ms).
-    type: float
   lr1coeflist:
+    type: str
     description:
       - coefficients values for Label1.
-    type: str
   lr1probthresh:
+    type: float
     description:
       - Probability threshold values for LR model to differentiate between NET1 and
         reset(NET2 and NET3).
-    type: float
   lr2coeflist:
+    type: str
     description:
       - coefficients values for Label 2.
-    type: str
   lr2probthresh:
+    type: float
     description:
       - Probability threshold values for LR model to differentiate between NET2 and
         NET3.
-    type: float
   minrttnet1:
+    type: float
     description:
       - MIN RTT (in ms) for the first network.
-    type: float
   minrttnet2:
+    type: float
     description:
       - MIN RTT (in ms) for the second network.
-    type: float
   minrttnet3:
+    type: float
     description:
       - MIN RTT (in ms) for the third network.
-    type: float
   net1cclscale:
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
-    type: str
   net1csqscale:
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
-    type: str
   net1label:
+    type: str
     description:
       - Name of the network label.
-    type: str
   net1logcoef:
+    type: str
     description:
       - Connection quality ranking Log coefficients of network 1.
-    type: str
   net2cclscale:
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
-    type: str
   net2csqscale:
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
-    type: str
   net2label:
+    type: str
     description:
       - Name of the network label 2.
-    type: str
   net2logcoef:
+    type: str
     description:
       - Connnection quality ranking Log coefficients of network 2.
-    type: str
   net3cclscale:
+    type: str
     description:
       - Three congestion level scores limits corresponding to None, Low, Medium.
-    type: str
   net3csqscale:
+    type: str
     description:
       - Three signal quality level scores limits corresponding to Excellent, Good,
         Fair.
-    type: str
   net3label:
+    type: str
     description:
       - Name of the network label 3.
-    type: str
   net3logcoef:
+    type: str
     description:
       - Connection quality ranking Log coefficients of network 3.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

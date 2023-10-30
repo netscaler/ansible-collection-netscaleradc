@@ -24,25 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   csecexpr:
+    type: str
     description:
       - it holds the ClientSecurityExpression to be sent to the client
-    type: str
   defaultepagroup:
+    type: str
     description:
       - This is the default group that is chosen when the EPA check succeeds.
-    type: str
   deletefiles:
+    type: str
     description:
       - String specifying the path(s) and name(s) of the files to be deleted by the
         endpoint analysis (EPA) tool. Multiple files to be delimited by comma
-    type: str
   killprocess:
+    type: str
     description:
       - String specifying the name of a process to be terminated by the endpoint analysis
         (EPA) tool. Multiple processes to be delimited by comma
-    type: str
   name:
+    type: str
     description:
       - Name for the epa action. Must begin with a
       - "\t    letter, number, or the underscore character (_), and must consist"
@@ -52,12 +65,11 @@ options:
         \ requirement applies only to the Citrix ADC CLI:If the name includes one\
         \ or more spaces, enclose the name in double or single quotation marks (for\
         \ example, \"my aaa action\" or 'my aaa action')."
-    type: str
   quarantinegroup:
+    type: str
     description:
       - This is the quarantine group that is chosen when the EPA check fails
       - if configured.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

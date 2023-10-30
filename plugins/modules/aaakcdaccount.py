@@ -24,49 +24,61 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cacert:
+    type: str
     description:
       - CA Cert for UserCert or when doing PKINIT backchannel.
-    type: str
   delegateduser:
+    type: str
     description:
       - Username that can perform kerberos constrained delegation.
-    type: str
   enterpriserealm:
+    type: str
     description:
       - Enterprise Realm of the user. This should be given only in certain KDC deployments
         where KDC expects Enterprise username instead of Principal Name
-    type: str
   kcdaccount:
+    type: str
     description:
       - The name of the KCD account.
-    type: str
   kcdpassword:
+    type: str
     description:
       - Password for Delegated User.
-    type: str
   keytab:
+    type: str
     description:
       - The path to the keytab file. If specified other parameters in this command
         need not be given
-    type: str
   realmstr:
+    type: str
     description:
       - Kerberos Realm.
-    type: str
   servicespn:
+    type: str
     description:
       - Service SPN. When specified, this will be used to fetch kerberos tickets.
         If not specified, Citrix ADC will construct SPN using service fqdn
-    type: str
   usercert:
+    type: str
     description:
       - SSL Cert (including private key) for Delegated User.
-    type: str
   userrealm:
+    type: str
     description:
       - Realm of the user
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

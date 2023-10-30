@@ -24,25 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the IP set. Must begin with a letter, number, or the underscore character
         (_), and can consist of letters, numbers, and the hyphen (-), period (.) pound
         (#), space ( ), at sign (@), equals (=), colon (:), and underscore characters.
         Cannot be changed after the IP set is created. Choose a name that helps identify
         the IP set.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   ipset_nsip6_binding:
     type: dict
     description: Bindings for ipset_nsip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -67,6 +80,7 @@ options:
     description: Bindings for ipset_nsip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -91,16 +105,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | ipset
-      delegate_to: localhost
-      netscaler.adc.ipset:
-        state: present
-        name: ipset-001
-
 """
 
 RETURN = r"""

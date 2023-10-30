@@ -24,25 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the XML error object.
-    type: str
   name:
+    type: str
     description:
       - Indicates name of the imported xml error page to be removed.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrite any existing XML error object of the same name.
-    type: bool
   src:
+    type: str
     description:
       - URL (protocol, host, path, and name) for the location at which to store the
         imported XML error object.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

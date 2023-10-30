@@ -26,37 +26,49 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ca:
+    type: bool
     description:
       - CA certificate.
-    type: bool
   certkeyname:
+    type: str
     description:
       - The name of the certificate bound to the SSL service group.
-    type: str
   crlcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
-    type: str
   ocspcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
-    type: str
   servicegroupname:
+    type: str
     description:
       - The name of the SSL service to which the SSL policy needs to be bound.
-    type: str
   snicert:
+    type: bool
     description:
       - The name of the CertKey. Use this option to bind Certkey(s) which will be
         used in SNI processing.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

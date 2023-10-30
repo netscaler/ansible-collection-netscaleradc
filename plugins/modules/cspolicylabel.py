@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cspolicylabeltype:
+    type: str
     choices:
       - HTTP
       - TCP
@@ -64,7 +77,7 @@ options:
       - '* C(UDP) - Supports policies that process any type of C(UDP)-based traffic,
         including C(DNS).'
       - '* C(DNS) - Supports policies that process C(DNS) traffic.'
-      - '* C(ANY) - Supports all types of policies except C(HTTP), C(SSL), and C(TCP).             '
+      - '* C(ANY) - Supports all types of policies except C(HTTP), C(SSL), and C(TCP).'
       - '* C(SIP_UDP) - Supports policies that process C(UDP) based Session Initiation
         Protocol (SIP) traffic. SIP initiates, manages, and terminates multimedia
         communications sessions, and has emerged as the standard for Internet telephony
@@ -77,28 +90,28 @@ options:
         authorization, and auditing services for network management.'
       - '* C(MYSQL) - Supports policies that process C(MYSQL) traffic.'
       - '* C(MSSQL) - Supports policies that process Microsoft SQL traffic.'
-    type: str
   labelname:
+    type: str
     description:
-      - 'Name for the policy label. Must begin with an ASCII alphanumeric or underscore
+      - Name for the policy label. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen
-        (-) characters. '
+        (-) characters.
       - The label name must be unique within the list of policy labels for content
         switching.
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policylabel" or 'my policylabel').
-    type: str
   newname:
+    type: str
     description:
       - The new name of the content switching policylabel.
-    type: str
   cspolicylabel_cspolicy_binding:
     type: dict
     description: Bindings for cspolicylabel_cspolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

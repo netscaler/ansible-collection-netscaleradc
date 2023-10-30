@@ -26,29 +26,42 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
     description:
       - Bind point to which to bind the policy.
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server or policy label.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the virtual server or user-defined policy label to invoke if the policy
         evaluates to TRUE.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
@@ -62,8 +75,8 @@ options:
         bound to the specified virtual server.'
       - '* C(policylabel) - invoke the request or response against the specified user-defined
         policy label.'
-    type: str
   name:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -72,22 +85,21 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   order:
+    type: float
     description:
       - Integer specifying the order of the service. A larger number specifies a lower
         order. Defines the order of the service relative to the other services in
         the load balancing vserver's bindings. Determines the priority given to the
         service among all the services bound.
-    type: float
   policyname:
+    type: str
     description:
       - Name of the policy bound to the LB vserver.
-    type: str
   priority:
+    type: float
     description:
       - Priority.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

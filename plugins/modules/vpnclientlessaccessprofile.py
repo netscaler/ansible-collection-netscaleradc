@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientconsumedcookies:
+    type: str
     description:
       - Specify the name of the pattern set containing the names of the cookies, which
         are allowed between the client and the server. If a pattern set is not specified,
         Citrix Gateway does not allow any cookies between the client and the server.
         A cookie that is not specified in the pattern set is handled by Citrix Gateway
         on behalf of the client.
-    type: str
   javascriptrewritepolicylabel:
+    type: str
     description:
       - Name of the configured JavaScript rewrite policy label.  If you do not specify
         a policy label name, then JAVA scripts are not rewritten.
-    type: str
   profilename:
+    type: str
     description:
       - Name for the Citrix Gateway clientless access profile. Must begin with an
         ASCII alphabetic or underscore (_) character, and must consist only of ASCII
@@ -48,39 +61,39 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
   regexforfindingcustomurls:
+    type: str
     description:
       - Name of the pattern set that contains the regular expressions, which match
         the URLs in the custom content type other than HTML, CSS, XML, XCOMP, and
         JavaScript. The custom content type should be included in the patset ns_cvpn_custom_content_types.
-    type: str
   regexforfindingurlincss:
+    type: str
     description:
       - Name of the pattern set that contains the regular expressions, which match
         the URL in the CSS.
-    type: str
   regexforfindingurlinjavascript:
+    type: str
     description:
       - Name of the pattern set that contains the regular expressions, which match
         the URL in Java script.
-    type: str
   regexforfindingurlinxcomponent:
+    type: str
     description:
       - Name of the pattern set that contains the regular expressions, which match
         the URL in X Component.
-    type: str
   regexforfindingurlinxml:
+    type: str
     description:
       - Name of the pattern set that contains the regular expressions, which match
         the URL in XML.
-    type: str
   reqhdrrewritepolicylabel:
+    type: str
     description:
       - Name of the configured Request rewrite policy label.  If you do not specify
         a policy label name, then requests are not rewritten.
-    type: str
   requirepersistentcookie:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -89,17 +102,16 @@ options:
         access. If this parameter is set to C(ON), COM objects, such as MSOffice,
         which are invoked by the browser can access the files using clientless access.
         Use caution because the persistent cookie is stored on the disk.
-    type: str
     default: 'OFF'
   reshdrrewritepolicylabel:
+    type: str
     description:
       - Name of the configured Response rewrite policy label.
-    type: str
   urlrewritepolicylabel:
+    type: str
     description:
       - Name of the configured URL rewrite policy label. If you do not specify a policy
         label name, then URLs are not rewritten.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

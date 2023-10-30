@@ -24,15 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   memlimit:
+    type: float
     description:
       - Maximum memory, in megabytes, that can be used for buffering.
-    type: float
     default: 64
   size:
+    type: float
     description:
       - TCP buffering size per connection, in kilobytes.
-    type: float
     default: 64
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

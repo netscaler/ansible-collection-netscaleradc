@@ -24,15 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   password:
+    type: str
     description:
       - Password string for the wrap key.
-    type: str
   salt:
+    type: str
     description:
       - Salt string for the wrap key.
-    type: str
   wrapkeyname:
+    type: str
     description:
       - Name for the wrap key. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -41,7 +51,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my key" or 'my key').
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

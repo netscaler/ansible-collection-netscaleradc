@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   lsnip:
+    type: str
     description:
       - IPv4 address or a range of IPv4 addresses to be used as NAT IP address(es)
         for LSN.
@@ -40,12 +53,12 @@ options:
         from the pool, and add IP addresses to the LSN pool.'
       - By default , arp is enabled on LSN IP address but, you can disable it using
         command - "set ns ip"
-    type: str
   ownernode:
+    type: float
     description:
       - ID(s) of cluster node(s) on which command is to be executed
-    type: float
   poolname:
+    type: str
     description:
       - 'Name for the LSN pool. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -54,7 +67,6 @@ options:
         applies only to the Citrix ADC CLI: If the name includes one or more spaces,
         enclose the name in double or single quotation marks (for example, "lsn pool1"
         or ''lsn pool1'').'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

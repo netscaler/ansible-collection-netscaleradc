@@ -24,26 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actionname:
+    type: str
     description:
       - Name of the dns64 action.
-    type: str
   excluderule:
+    type: str
     description:
       - The expression to select the criteria for eliminating the corresponding ipv6
         addresses from the response.
-    type: str
   mappedrule:
+    type: str
     description:
       - The expression to select the criteria for ipv4 addresses to be used for synthesis.
       - '                      Only if the mappedrule is evaluated to true the corresponding
-        ipv4 address is used for synthesis using respective prefix, '
+        ipv4 address is used for synthesis using respective prefix,'
       - '                      otherwise the A RR is discarded'
-    type: str
   prefix:
+    type: str
     description:
       - The dns64 prefix to be used if the after evaluating the rules
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,14 +24,21 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Terminate all the system sessions except the current session.
-    type: bool
   sid:
+    type: float
     description:
       - ID of the system session about which to display information.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

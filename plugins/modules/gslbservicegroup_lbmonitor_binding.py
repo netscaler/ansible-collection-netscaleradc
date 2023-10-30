@@ -26,51 +26,64 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   hashid:
+    type: float
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
-    type: float
   monitor_name:
+    type: str
     description:
       - Monitor name.
-    type: str
   monstate:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor state.
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the gslb servicegroup member
-    type: float
   passive:
+    type: bool
     description:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
-    type: bool
   port:
+    type: int
     description:
       - Port number of the GSLB service. Each service must have a unique port number.
-    type: int
   publicip:
+    type: str
     description:
       - The public IP address that a NAT device translates to the GSLB service's private
         IP address. Optional.
-    type: str
   publicport:
+    type: int
     description:
       - The public port associated with the GSLB service's public IP address. The
         port is mapped to the service's private port number. Applicable to the local
         GSLB service. Optional.
-    type: int
   servicegroupname:
+    type: str
     description:
       - Name of the GSLB service group.
-    type: str
   siteprefix:
+    type: str
     description:
       - The site's prefix string. When the GSLB service group is bound to a GSLB virtual
         server, a GSLB site domain is generated internally for each bound serviceitem-domain
@@ -78,21 +91,12 @@ options:
         the domain. If the special string NONE is specified, the site-prefix string
         is unset. When implementing HTTP redirect site persistence, the Citrix ADC
         redirects GSLB requests to GSLB services by using their site domains.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the service after binding.
-    type: str
-    default: ENABLED
   weight:
+    type: float
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

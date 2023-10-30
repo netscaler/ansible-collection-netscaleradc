@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     choices:
       - CACHE
       - NOCACHE
@@ -32,66 +45,66 @@ options:
       - MAY_NOCACHE
       - INVAL
     description:
-      - 'Action to apply to content that matches the policy. '
+      - Action to apply to content that matches the policy.
       - '* C(CACHE) or C(MAY_CACHE) action - positive cachability policy'
       - '* C(NOCACHE) or C(MAY_NOCACHE) action - negative cachability policy'
       - '* C(INVAL) action - Dynamic Invalidation Policy'
-    type: str
   invalgroups:
+    type: list
     description:
       - Content group(s) to be invalidated when the INVAL action is applied. Maximum
         number of content groups that can be specified is 16.
-    type: list
     elements: str
   invalobjects:
+    type: list
     description:
       - Content groups(s) in which the objects will be invalidated if the action is
         INVAL.
-    type: list
     elements: str
   newname:
+    type: str
     description:
       - New name for the cache policy. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-    type: str
   policyname:
+    type: str
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Can be changed after the policy is created.
-    type: str
   rule:
+    type: str
     description:
       - Expression against which the traffic is evaluated.
       - 'The following requirements apply only to the Citrix ADC CLI:'
       - '* If the expression includes one or more spaces, enclose the entire expression
         in double quotation marks.'
       - '* If the expression itself includes double quotation marks, escape the quotations
-        by using the \ character. '
+        by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   storeingroup:
+    type: str
     description:
       - Name of the content group in which to store the object when the final result
         of policy evaluation is CACHE. The content group must exist before being mentioned
         here. Use the "show cache contentgroup" command to view the list of existing
         content groups.
-    type: str
   undefaction:
+    type: str
     choices:
       - NOCACHE
       - RESET
     description:
       - Action to be performed when the result of rule evaluation is undefined.
-    type: str
   cachepolicylabel_cachepolicy_binding:
     type: dict
     description: Bindings for cachepolicylabel_cachepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -116,28 +129,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | cachepolicy
-      delegate_to: localhost
-      netscaler.adc.cachepolicy:
-        state: present
-        policyname: _nonGetReq
-        rule: '!HTTP.REQ.METHOD.eq(GET)'
-        action: NOCACHE
-    - name: Sample Task | cachepolicy | 2
-      delegate_to: localhost
-      netscaler.adc.cachepolicy:
-        state: present
-        policyname: _cacheableCacheControlRes
-        rule: ((HTTP.RES.CACHE_CONTROL.IS_PUBLIC) || (HTTP.RES.CACHE_CONTROL.IS_MAX_AGE)
-          || (HTTP.RES.CACHE_CONTROL.IS_MUST_REVALIDATE) || (HTTP.RES.CACHE_CONTROL.IS_PROXY_REVALIDATE)
-          || (HTTP.RES.CACHE_CONTROL.IS_S_MAXAGE))
-        action: CACHE
-        storeingroup: DEFAULT
-
 """
 
 RETURN = r"""

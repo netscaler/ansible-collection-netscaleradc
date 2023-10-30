@@ -24,55 +24,68 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   domain:
+    type: str
     description:
       - Name of the domain for the NAPTR record.
-    type: str
   ecssubnet:
+    type: str
     description:
       - Subnet for which the cached NAPTR record need to be removed.
-    type: str
   flags:
+    type: str
     description:
       - flags for this NAPTR.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   order:
+    type: float
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
-    type: float
   preference:
+    type: float
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
-    type: float
   recordid:
+    type: float
     description:
       - Unique, internally generated record ID. View the details of the naptr record
         to obtain its record ID. Records can be removed by either specifying the domain
         name and record id OR by specifying
       - domain name and all other naptr record attributes as was supplied during the
         add command.
-    type: float
   regexp:
+    type: str
     description:
       - The regular expression, that specifies the substitution expression for this
         NAPTR
-    type: str
   replacement:
+    type: str
     description:
       - The replacement domain name for this NAPTR.
-    type: str
   services:
+    type: str
     description:
       - Service Parameters applicable to this delegation path.
-    type: str
   ttl:
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -82,9 +95,9 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: float
     default: 3600
   type:
+    type: str
     choices:
       - ALL
       - ADNS
@@ -94,7 +107,6 @@ options:
       - '* C(ADNS) - Display all authoritative address records.'
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
-    type: str
     default: ADNS
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

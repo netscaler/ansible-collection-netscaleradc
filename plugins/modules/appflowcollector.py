@@ -24,52 +24,64 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipaddress:
+    type: str
     description:
       - IPv4 address of the collector.
-    type: str
   name:
+    type: str
     description:
       - Name for the collector. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at
       - (@), equals (=), and hyphen (-) characters.
-      - ' Only four collectors can be configured. '
+      - ' Only four collectors can be configured.'
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow collector" or 'my appflow collector').
-    type: str
   netprofile:
+    type: str
     description:
       - Netprofile to associate with the collector. The IP address defined in the
         profile is used as the source IP address for AppFlow traffic for this collector.  If
         you do not set this parameter, the Citrix ADC IP (NSIP) address is used as
         the source IP address.
-    type: str
   newname:
+    type: str
     description:
       - New name for the collector. Must begin with an ASCII alphabetic or underscore
         (_) character, and must
-      - 'contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
-        colon (:), at(@), equals (=), and hyphen (-) characters. '
+      - contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
+        colon (:), at(@), equals (=), and hyphen (-) characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow coll" or 'my appflow coll').
-    type: str
   port:
+    type: int
     description:
       - Port on which the collector listens.
-    type: int
   transport:
+    type: str
     choices:
       - ipfix
       - logstream
       - rest
     description:
       - 'Type of collector: either C(logstream) or C(ipfix) or C(rest).'
-    type: str
     default: ipfix
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

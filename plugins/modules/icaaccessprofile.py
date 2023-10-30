@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientaudioredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
@@ -32,77 +45,77 @@ options:
       - Allow Default access/Disable applications hosted on the server to play sounds
         through a sound device installed on the client computer, also allows or prevents
         users to record audio input
-    type: str
     default: DISABLED
   clientclipboardredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable the clipboard on the client device to be mapped
         to the clipboard on the server
-    type: str
     default: DISABLED
   clientcomportredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable COM port redirection to and from the client
-    type: str
     default: DISABLED
   clientdriveredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disables drive redirection to and from the client
-    type: str
     default: DISABLED
   clientprinterredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable client printers to be mapped to a server when
         a user logs on to a session
-    type: str
     default: DISABLED
   clientusbdriveredirection:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable the redirection of USB devices to and from the
         client
-    type: str
     default: DISABLED
   connectclientlptports:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable automatic connection of LPT ports from the client
         when the user logs on
-    type: str
     default: DISABLED
   localremotedatasharing:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable file/data sharing via the Receiver for HTML5
-    type: str
     default: DISABLED
   multistream:
+    type: str
     choices:
       - DEFAULT
       - DISABLED
     description:
       - Allow Default access/Disable the multistream feature for the specified users
-    type: str
     default: DISABLED
   name:
+    type: str
     description:
       - Name for the ICA accessprofile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and
@@ -126,7 +139,6 @@ options:
         as DEFAULT, then the Citrix ADC forwards the requests to the backend XenApp/XenDesktop
         server.It then makes the decision to allow/deny access based on the policy
         configured on it.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

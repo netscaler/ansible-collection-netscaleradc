@@ -26,23 +26,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   metric:
+    type: str
     description:
       - Metric name in the metric table, whose setting is changed. A value zero disables
         the metric and it will not be used for load calculation
-    type: str
   metricthreshold:
+    type: float
     description:
       - Threshold to be used for that metric.
-    type: float
   metricweight:
+    type: float
     description:
       - The weight for the specified service metric with respect to others.
-    type: float
   monitorname:
+    type: str
     description:
       - Name of the monitor.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

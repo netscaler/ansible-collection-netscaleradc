@@ -24,36 +24,48 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the Citrix Gateway appliance in the first DMZ.
-    type: str
   nexthopfqdn:
+    type: str
     description:
       - FQDN of the Citrix Gateway proxy in the second DMZ.
-    type: str
   nexthopip:
+    type: str
     description:
       - IP address of the Citrix Gateway proxy in the second DMZ.
-    type: str
   nexthopport:
+    type: int
     description:
       - Port number of the Citrix Gateway proxy in the second DMZ.
-    type: int
   resaddresstype:
+    type: str
     choices:
       - IPV4
       - IPV6
     description:
       - Address Type (C(IPV4)/IPv6) of DNS name of nextHopServer FQDN.
-    type: str
   secure:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use of a secure port, such as 443, for the double-hop configuration.
-    type: str
     default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

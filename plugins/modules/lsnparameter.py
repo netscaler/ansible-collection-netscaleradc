@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   memlimit:
+    type: float
     description:
       - Amount of Citrix ADC memory to reserve for the LSN feature, in multiples of
         2MB.
@@ -33,8 +44,8 @@ options:
         memory is not reduced. Changing the configured memory limit can only increase
         the amount of active memory.'
       - This command is deprecated, use 'set extendedmemoryparam -memlimit' instead.
-    type: float
   sessionsync:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -50,9 +61,9 @@ options:
       - For a group, when both the global level and the group level LSN session synchronization
         parameters are enabled, the primary node synchronizes information of all LSN
         sessions related to this LSN group with the secondary node.
-    type: str
     default: ENABLED
   subscrsessionremoval:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -62,7 +73,6 @@ options:
         database, sessions corresponding to that subscriber will be removed. if this
         setting is disabled, subscriber sessions will be timed out as per the idle
         time out settings.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

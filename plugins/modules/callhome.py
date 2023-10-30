@@ -24,41 +24,52 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   emailaddress:
+    type: str
     description:
       - Email address of the contact administrator.
-    type: str
   hbcustominterval:
+    type: float
     description:
       - Interval (in days) between CallHome heartbeats
-    type: float
     default: 7
   ipaddress:
+    type: str
     description:
       - IP address of the proxy server.
-    type: str
   mode:
+    type: str
     choices:
       - Default
       - CSP
     description:
       - CallHome mode of operation
-    type: str
     default: Default
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   port:
+    type: int
     description:
       - HTTP port on the Proxy server. This is a mandatory parameter for both IP address
         and service name based configuration.
-    type: int
   proxyauthservice:
+    type: str
     description:
       - Name of the service that represents the proxy server.
-    type: str
   proxymode:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -66,23 +77,12 @@ options:
       - Enables or disables the proxy mode. The proxy server can be set by either
         specifying the IP address of the server or the name of the service representing
         the proxy server.
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | callhome
-      delegate_to: localhost
-      netscaler.adc.callhome:
-        state: present
-        hbcustominterval: '30'
-
 """
 
 RETURN = r"""

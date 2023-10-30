@@ -26,45 +26,57 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   name:
+    type: str
     description:
       - Timer name.
-    type: str
   policyname:
+    type: str
     description:
       - The timer policy associated with the timer.
-    type: str
   priority:
+    type: float
     description:
       - Specifies the priority of the timer policy.
-    type: float
   samplesize:
+    type: float
     description:
       - Denotes the sample size. Sample size value of 'x' means that previous '(x
         - 1)' policy's rule evaluation results and the current evaluation result are
         present with the binding. For example, sample size of 10 means that there
         is a state of previous 9 policy evaluation results and also the current policy
         evaluation result.
-    type: float
     default: 3
   threshold:
+    type: float
     description:
       - Denotes the threshold. If the rule of the policy in the binding relation evaluates
         'threshold size' number of times in 'sample size' to true, then the corresponding
         action is taken. Its value needs to be less than or equal to the sample size
         value.
-    type: float
     default: 3
   vserver:
+    type: str
     description:
       - Name of the vserver which provides the context for the rule in timer policy.
         When not specified it is treated as a Global Default context.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

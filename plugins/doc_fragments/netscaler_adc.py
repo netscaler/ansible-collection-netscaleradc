@@ -42,20 +42,8 @@ options:
         description:
             - If C(false), SSL certificates will not be validated. This should only be used on personally controlled sites using self-signed certificates.
         required: false
-        default: false
+        default: true
         type: bool
-
-    state:
-        choices: ['present', 'absent', 'enabled', 'disabled']
-        default: 'present'
-        description:
-            - The state of the resource being configured by the module on the NetScaler ADC node.
-            - C(enabled) and C(disabled) are only valid for resources that can be enabled or disabled.
-            - When C(present) the resource will be created if needed and configured according to the module's parameters.
-            - When C(absent) the resource will be deleted from the NetScaler ADC node.
-            - When C(enabled) the resource will be enabled on the NetScaler ADC node.
-            - When C(disabled) the resource will be disabled on the NetScaler ADC node.
-        type: str
 
     save_config:
         description:
@@ -75,6 +63,7 @@ options:
         description:
             - Base NITRO API path.
             - Define only in case of an ADM service proxy call
+        default: "nitro/v1/config"
 
 notes:
   - For more information on using Ansible to manage NetScaler ADC Network devices see U(https://www.ansible.com/integrations/networks/citrixadc).

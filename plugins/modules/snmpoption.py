@@ -24,16 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   partitionnameintrap:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send partition name as a varbind in traps. By default the partition names
         are not sent as a varbind.
-    type: str
     default: DISABLED
   severityinfointrap:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -41,18 +52,18 @@ options:
       - By default, the severity level info of the trap is not mentioned in the trap
         message. Enable this option to send severity level of trap as one of the varbind
         in the trap message.
-    type: str
     default: DISABLED
   snmpset:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Accept SNMP SET requests sent to the Citrix ADC, and allow SNMP managers to
         write values to MIB objects that are configured for write access.
-    type: str
     default: DISABLED
   snmptraplogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -60,9 +71,9 @@ options:
       - Log any SNMP trap events (for SNMP alarms in which logging is enabled) even
         if no trap listeners are configured. With the default setting, SNMP trap events
         are logged if at least one trap listener is configured on the appliance.
-    type: str
     default: DISABLED
   snmptraplogginglevel:
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -74,7 +85,6 @@ options:
       - DEBUG
     description:
       - Audit log level of SNMP trap logs. The default value is C(INFORMATIONAL).
-    type: str
     default: INFORMATIONAL
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

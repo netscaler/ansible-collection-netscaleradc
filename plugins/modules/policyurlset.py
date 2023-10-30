@@ -24,61 +24,72 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   canaryurl:
+    type: str
     description:
       - Add this URL to this urlset. Used for testing when contents of urlset is kept
         confidential.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this url set.
-    type: str
   delimiter:
+    type: str
     description:
       - CSV file record delimiter.
-    type: str
-    default: 44
   imported:
+    type: bool
     description:
       - when set, display shows all imported urlsets.
-    type: bool
   interval:
+    type: float
     description:
       - The interval, in seconds, rounded down to the nearest 15 minutes, at which
         the update of urlset occurs.
-    type: float
   matchedid:
+    type: float
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.
-    type: float
     default: 1
   name:
+    type: str
     description:
       - Unique name of the url set. Not case sensitive. Must begin with an ASCII letter
         or underscore (_) character and must contain only alphanumeric and underscore
         characters. Must not be the name of an existing named expression, pattern
         set, dataset, string map, or HTTP callout.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrites the existing file.
-    type: bool
   privateset:
+    type: bool
     description:
       - Prevent this urlset from being exported.
-    type: bool
   rowseparator:
+    type: str
     description:
       - CSV file row separator.
-    type: str
-    default: 10
   subdomainexactmatch:
+    type: bool
     description:
       - Force exact subdomain matching, ex. given an entry 'google.com' in the urlset,
         a request to 'news.google.com' won't match, if subdomainExactMatch is set.
-    type: bool
   url:
+    type: str
     description:
       - 'URL (protocol, host, path and file name) from where the CSV (comma separated
         file) file will be imported or exported. Each record/line will one entry within
@@ -86,7 +97,6 @@ options:
         the metadata, if available. HTTP, HTTPS and FTP protocols are supported. NOTE:
         The operation fails if the destination HTTPS server requires client certificate
         authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

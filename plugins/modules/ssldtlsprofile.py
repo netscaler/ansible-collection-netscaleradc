@@ -24,66 +24,78 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   helloverifyrequest:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send a Hello Verify request to validate the client.
-    type: str
     default: ENABLED
   maxbadmacignorecount:
+    type: float
     description:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
         Disabling parameter terminateSession terminates session immediately when bad
         MAC is detected in the connection.
-    type: float
     default: 100
   maxholdqlen:
+    type: float
     description:
       - Maximum number of datagrams that can be queued at DTLS layer for processing
-    type: float
     default: 32
   maxpacketsize:
+    type: float
     description:
       - Maximum number of packets to reassemble. This value helps protect against
         a fragmented packet attack.
-    type: float
     default: 120
   maxrecordsize:
+    type: float
     description:
       - Maximum size of records that can be sent if PMTU is disabled.
-    type: float
     default: 1459
   maxretrytime:
+    type: float
     description:
       - Wait for the specified time, in seconds, before resending the request.
-    type: float
     default: 3
   name:
+    type: str
     description:
       - Name for the DTLS profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-)
         characters. Cannot be changed after the profile is created.
-    type: str
   pmtudiscovery:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Source for the maximum record size value. If C(ENABLED), the value is taken
         from the PMTU table. If C(DISABLED), the value is taken from the profile.
-    type: str
     default: DISABLED
   terminatesession:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Terminate the session if the message authentication code (MAC) of the client
         and server do not match.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

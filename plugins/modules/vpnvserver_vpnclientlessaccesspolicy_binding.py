@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -36,41 +49,40 @@ options:
       - AAA_RESPONSE
     description:
       - Bindpoint to which the policy is bound.
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Next priority expression.
-    type: str
   groupextraction:
+    type: bool
     description:
       - Binds the authentication policy to a tertiary chain which will be used only
         for group extraction.  The user will not authenticate against this server,
         and this will only be called if primary and/or secondary authentication has
         succeeded.
-    type: bool
   name:
+    type: str
     description:
       - Name of the virtual server.
-    type: str
   policy:
+    type: str
     description:
       - The name of the policy, if any, bound to the VPN virtual server.
-    type: str
   priority:
+    type: float
     description:
       - Integer specifying the policy's priority. The lower the number, the higher
         the priority. Policies are evaluated in the order of their priority numbers.
         Maximum value for default syntax policies is 2147483647 and for classic policies
         is 64000.
-    type: float
   secondary:
+    type: bool
     description:
       - Binds the authentication policy as the secondary policy to use in a two-factor
         configuration. A user must then authenticate not only via a primary authentication
         method but also via a secondary authentication method. User groups are aggregated
         across both. The user name must be exactly the same for both authentication
         methods, but they can require different passwords.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

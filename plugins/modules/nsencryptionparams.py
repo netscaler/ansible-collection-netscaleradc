@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   keyvalue:
+    type: str
     description:
       - The base64-encoded key generation number, method, and key value.
       - 'Note:'
@@ -36,8 +47,8 @@ options:
         to the packet engines enables the appliance to save the key value to the configuration
         file and to propagate the key value to the secondary appliance in a high availability
         setup.'
-    type: str
   method:
+    type: str
     choices:
       - NONE
       - RC4
@@ -69,7 +80,6 @@ options:
     description:
       - Cipher method (and key length) to be used to encrypt and decrypt content.
         The default value is C(AES256).
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

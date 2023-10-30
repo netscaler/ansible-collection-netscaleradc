@@ -26,74 +26,74 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   customserverid:
+    type: str
     description:
       - Unique service identifier. Used when the persistency type for the virtual
         server is set to Custom Server ID.
-    type: str
     default: '"None"'
   dbsttl:
+    type: float
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: float
   hashid:
+    type: float
     description:
       - Unique numerical identifier used by hash based load balancing methods to identify
         a service.
-    type: float
   monitor_name:
+    type: str
     description:
       - Monitor name.
-    type: str
   monstate:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor state.
-    type: str
   nameserver:
+    type: str
     description:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the servicegroup member
-    type: float
   passive:
+    type: bool
     description:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
-    type: bool
-  port:
-    description:
-      - Port number of the service. Each service must have a unique port number.
-    type: int
   serverid:
+    type: float
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: float
   servicegroupname:
+    type: str
     description:
       - Name of the service group.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the service after binding.
-    type: str
-    default: ENABLED
   weight:
+    type: float
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

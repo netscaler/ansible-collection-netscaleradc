@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   aclaction:
+    type: str
     choices:
       - DENY
     description:
       - Drop incoming IPv4 packets that match the simple ACL rule.
-    type: str
   aclname:
+    type: str
     description:
       - Name for the simple ACL rule. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the simple ACL rule is created.
-    type: str
   destport:
+    type: int
     description:
       - Port number to match against the destination port number of an incoming IPv4
         packet.
@@ -46,34 +59,33 @@ options:
         protocol creates an all-ports  and all protocols simple ACL rule, which matches
         any port and any protocol. In that case, you cannot create another simple
         ACL rule specifying a specific port and the same source IPv4 address.
-    type: int
   estsessions:
+    type: bool
     description:
       - '0'
-    type: bool
   protocol:
+    type: str
     choices:
       - TCP
       - UDP
     description:
       - Protocol to match against the protocol of an incoming IPv4 packet. You must
         set this parameter if you have set the Destination Port parameter.
-    type: str
   srcip:
+    type: str
     description:
       - IP address to match against the source IP address of an incoming IPv4 packet.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   ttl:
+    type: float
     description:
       - Number of seconds, in multiples of four, after which the simple ACL rule expires.
         If you do not want the simple ACL rule to expire, do not specify a TTL value.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

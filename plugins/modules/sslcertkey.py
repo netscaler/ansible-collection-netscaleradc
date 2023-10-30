@@ -24,24 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bundle:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Parse the certificate chain as a single file after linking the server certificate
         to its issuer's certificate within the file.
-    type: str
     default: 'NO'
   cert:
+    type: str
     description:
       - Name of and, optionally, path to the X509 certificate file that is used to
         form the certificate-key pair. The certificate file should be present on the
         appliance's hard-disk drive or solid-state drive. Storing a certificate in
         any location other than the default might cause inconsistency in a high availability
         setup. /nsconfig/ssl/ is the default path.
-    type: str
   certkey:
+    type: str
     description:
       - Name for the certificate and private-key pair. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -51,29 +64,29 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cert" or 'my cert').
-    type: str
   deletefromdevice:
+    type: bool
     description:
       - Delete cert/key file from file system.
-    type: bool
   expirymonitor:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Issue an alert when the certificate is about to expire.
-    type: str
   fipskey:
+    type: str
     description:
       - Name of the FIPS key that was created inside the Hardware Security Module
         (HSM) of a FIPS appliance, or a key that was imported into the HSM.
-    type: str
   hsmkey:
+    type: str
     description:
       - Name of the HSM key that was created in the External Hardware Security Module
         (HSM) of a FIPS appliance.
-    type: str
   inform:
+    type: str
     choices:
       - DER
       - PEM
@@ -84,49 +97,49 @@ options:
       - C(PEM) - Privacy Enhanced Mail
       - C(DER) - Distinguished Encoding Rule
       - C(PFX) - Personal Information Exchange
-    type: str
     default: PEM
   key:
+    type: str
     description:
       - Name of and, optionally, path to the private-key file that is used to form
         the certificate-key pair. The certificate file should be present on the appliance's
         hard-disk drive or solid-state drive. Storing a certificate in any location
         other than the default might cause inconsistency in a high availability setup.
         /nsconfig/ssl/ is the default path.
-    type: str
   linkcertkeyname:
+    type: str
     description:
       - Name of the Certificate Authority certificate-key pair to which to link a
         certificate-key pair.
-    type: str
   nodomaincheck:
+    type: bool
     description:
       - Override the check for matching domain names during a certificate update operation.
-    type: bool
   notificationperiod:
+    type: float
     description:
       - Time, in number of days, before certificate expiration, at which to generate
         an alert that the certificate is about to expire.
-    type: float
   ocspstaplingcache:
+    type: bool
     description:
       - Clear cached ocspStapling response in certkey.
-    type: bool
   passplain:
+    type: str
     description:
       - Pass phrase used to encrypt the private-key. Required when adding an encrypted
         private-key in PEM format.
-    type: str
   password:
+    type: bool
     description:
       - Passphrase that was used to encrypt the private-key. Use this option to load
         encrypted private-keys in PEM format.
-    type: bool
   sslcertkey_sslocspresponder_binding:
     type: dict
     description: Bindings for sslcertkey_sslocspresponder_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -151,19 +164,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | sslcertKey
-      delegate_to: localhost
-      netscaler.adc.sslcertkey:
-        state: present
-        certkey: ns-server-certificate
-        cert: ns-server.cert
-        key: ns-server.key
-        password: false
-
 """
 
 RETURN = r"""

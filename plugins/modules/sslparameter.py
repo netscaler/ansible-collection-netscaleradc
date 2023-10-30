@@ -24,27 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   crlmemorysizemb:
+    type: float
     description:
       - Maximum memory size to use for certificate revocation lists (CRLs). This parameter
         reserves memory for a CRL but sets a limit to the maximum memory that the
         CRLs loaded on the appliance can consume.
-    type: float
     default: 256
   cryptodevdisablelimit:
+    type: float
     description:
       - Limit to the number of disabled SSL chips after which the ADC restarts. A
         value of zero implies that the ADC does not automatically restart.
-    type: float
   defaultprofile:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Global parameter used to enable default profile feature.
-    type: str
     default: DISABLED
   denysslreneg:
+    type: str
     choices:
       - 'NO'
       - FRONTEND_CLIENT
@@ -62,9 +73,9 @@ options:
       - '* C(ALL) - Deny all secure and nonsecure SSL renegotiation.'
       - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
-    type: str
     default: ALL
   dropreqwithnohostheader:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -73,51 +84,51 @@ options:
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
-    type: str
     default: 'NO'
   encrypttriggerpktcount:
+    type: float
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
-    type: float
     default: 45
   heterogeneoussslhw:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - To support both cavium and coleto based platforms in cluster environment,
         this mode has to be enabled.
-    type: str
     default: DISABLED
   hybridfipsmode:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - When this mode is enabled, system will use additional crypto hardware to accelerate
         symmetric crypto operations.
-    type: str
     default: DISABLED
   insertcertspace:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - To insert space between lines in the certificate header of request
-    type: str
     default: 'YES'
   insertionencoding:
+    type: str
     choices:
       - Unicode
       - UTF-8
     description:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
-    type: str
     default: Unicode
   ndcppcompliancecertcheck:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -127,30 +138,30 @@ options:
       - C(YES) - During certificate verification, ignore the common name if SAN is
         present in the certificate.
       - C(NO) - Do not ignore common name.
-    type: str
     default: 'NO'
   ocspcachesize:
+    type: float
     description:
       - Size, per packet engine, in megabytes, of the OCSP cache. A maximum of 10%
         of the packet engine memory can be assigned. Because the maximum allowed packet
         engine memory is 4GB, the maximum value that can be assigned to the OCSP cache
         is approximately 410 MB.
-    type: float
     default: 10
   operationqueuelimit:
+    type: float
     description:
       - Limit in percentage of capacity of the crypto operations queue beyond which
         new SSL connections are not accepted until the queue is reduced.
-    type: float
     default: 150
   pushenctriggertimeout:
+    type: float
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
-    type: float
     default: 1
   pushflag:
+    type: float
     description:
       - 'Insert PUSH flag into decrypted, encrypted, or all records. If the PUSH flag
         is set to a value other than 0, the buffered records are forwarded on the
@@ -159,27 +170,26 @@ options:
       - 1 - Insert PUSH flag into every decrypted record.
       - 2 -Insert PUSH flag into every encrypted record.
       - 3 - Insert PUSH flag into every decrypted and encrypted record.
-    type: float
   quantumsize:
+    type: str
     choices:
-      - 4096
-      - 8192
-      - 16384
+      - '4096'
+      - '8192'
+      - '16384'
     description:
       - Amount of data to collect before the data is pushed to the crypto hardware
         for encryption. For large downloads, a larger quantum size better utilizes
         the crypto resources.
-    type: str
-    default: 8192
   sendclosenotify:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send an SSL Close-Notify message to the client at the end of a transaction.
-    type: str
     default: 'YES'
   sigdigesttype:
+    type: list
     choices:
       - ALL
       - RSA-MD5
@@ -209,10 +219,10 @@ options:
         C(ECDSA-SHA384) C(ECDSA-SHA512)'
       - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
       - Note:C(ALL) doesnot include C(RSA-MD5) for any platform.
-    type: list
     elements: str
     default: ALL
   snihttphostmatch:
+    type: str
     choices:
       - 'NO'
       - CERT
@@ -234,15 +244,15 @@ options:
       - '         in ''Client Hello'' of the SSL connection.'
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
-    type: str
     default: CERT
   softwarecryptothreshold:
+    type: float
     description:
       - Citrix ADC CPU utilization threshold (in percentage) beyond which crypto operations
         are not done in software.
       - A value of zero implies that CPU is not utilized for doing crypto in software.
-    type: float
   sslierrorcache:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -250,41 +260,40 @@ options:
       - Enable or disable dynamically learning and caching the learned information
         to make the subsequent interception or bypass decision. When enabled, NS does
         the lookup of this cached data to do early bypass.
-    type: str
     default: DISABLED
   sslimaxerrorcachemem:
+    type: float
     description:
       - Specify the maximum memory that can be used for caching the learned data.
         This memory is used as a LRU cache so that the old entries gets replaced with
         new entry once the set memory limit is fully utilised. A value of 0 decides
         the limit automatically.
-    type: float
   ssltriggertimeout:
+    type: float
     description:
       - Time, in milliseconds, after which encryption is triggered for transactions
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
-    type: float
     default: 100
   strictcachecks:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
-    type: str
     default: 'NO'
   undefactioncontrol:
+    type: str
     description:
       - 'Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH,
         NOOP, RESET, or DROP.'
-    type: str
     default: '"CLIENTAUTH"'
   undefactiondata:
+    type: str
     description:
       - 'Name of the undefined built-in data action: NOOP, RESET or DROP.'
-    type: str
     default: '"NOOP"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

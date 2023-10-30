@@ -26,27 +26,40 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - If the current policy evaluates to TRUE, terminate evaluation of policies
         bound to the current policy label, and then forward the request to the specified
         virtual server or evaluate the specified policy label.
-    type: bool
   invoke_labelname:
+    type: str
     description:
       - Name of the policy label to invoke if the current policy evaluates to TRUE,
         the invoke parameter is set, and Label Type is set to Policy Label.
-    type: str
   labelname:
+    type: str
     description:
       - Name of the application firewall policy label.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - policylabel
@@ -56,18 +69,17 @@ options:
       - '* C(reqvserver). Invoke the unnamed policy label associated with the specified
         request virtual server.'
       - '* C(policylabel). Invoke the specified user-defined policy label.'
-    type: str
   policyname:
+    type: str
     description:
       - Name of the application firewall policy to bind to the policy label.
-    type: str
   priority:
+    type: float
     description:
       - Positive integer specifying the priority of the policy. A lower number specifies
         a higher priority. Must be unique within a group of policies that are bound
         to the same bind point or label. Policies are evaluated in the order of their
         priority numbers.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

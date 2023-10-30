@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cacheecsresponses:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -34,9 +47,9 @@ options:
         is relevant to proxy configuration. Enabling/disabling support of ECS option
         when Citrix ADC is authoritative for a GSLB domain is supported using a knob
         in GSLB vserver. In all other modes, ECS option is ignored.
-    type: str
     default: DISABLED
   cachenegativeresponses:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -46,9 +59,9 @@ options:
         - proxy, end resolver, and forwarder. However, cached responses are not flushed.
         The appliance does not serve negative responses from the cache until this
         parameter is enabled again.
-    type: str
     default: ENABLED
   cacherecords:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -59,48 +72,48 @@ options:
         When you disable record caching, the appliance stops caching server responses.
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
-    type: str
     default: ENABLED
   dnsanswerseclogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS answer section; if enabled, answer section in the response will be logged.
-    type: str
     default: DISABLED
   dnserrorlogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS error logging; if enabled, whenever error is encountered in DNS module
         reason for the error will be logged.
-    type: str
     default: DISABLED
   dnsextendedlogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS extended logging; if enabled, authority and additional section in the
         response will be logged.
-    type: str
     default: DISABLED
   dnsprofilename:
+    type: str
     description:
       - Name of the DNS profile
-    type: str
   dnsquerylogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - DNS query logging; if enabled, DNS query information such as DNS query id,
         DNS query flags , DNS domain name and DNS query type will be logged
-    type: str
     default: DISABLED
   dropmultiqueryrequest:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -110,7 +123,6 @@ options:
         by default the DNS request containing multiple queries is forwarded to the
         backend and in case of ADNS and Resolver configuration NOCODE error response
         will be sent to the client.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

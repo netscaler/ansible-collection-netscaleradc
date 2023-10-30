@@ -24,74 +24,91 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   Internal:
+    type: bool
     description:
       - Display names of the servers that have been created for internal use.
-    type: bool
   comment:
+    type: str
     description:
       - Any information about the server.
-    type: str
   delay:
+    type: float
     description:
       - Time, in seconds, after which all the services configured on the server are
         disabled.
-    type: float
   domain:
+    type: str
     description:
       - Domain name of the server. For a domain based configuration, you must create
         the server first.
-    type: str
   domainresolvenow:
+    type: bool
     description:
       - Immediately send a DNS query to resolve the server's domain name.
-    type: bool
   domainresolveretry:
+    type: int
     description:
       - Time, in seconds, for which the Citrix ADC must wait, after DNS resolution
         fails, before sending the next DNS query to resolve the domain name.
-    type: int
     default: 5
   graceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Shut down gracefully, without accepting any new connections, and disabling
         each service when all of its connections are closed.
-    type: str
     default: 'NO'
   ipaddress:
+    type: str
     description:
       - 'IPv4 or IPv6 address of the server. If you create an IP address based server,
         you can specify the name of the server, instead of its IP address, when creating
         a service. Note: If you do not create a server entry, the server IP address
         that you enter when you create a service becomes the name of the server.'
-    type: str
   ipv6address:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
-    type: str
     default: 'NO'
   name:
+    type: str
     description:
-      - 'Name for the server. '
+      - Name for the server.
       - Must begin with an ASCII alphabetic or underscore (_) character, and must
         contain only ASCII alphanumeric, underscore, hash (#), period (.), space,
         colon (:), at (@), equals (=), and hyphen (-) characters.
       - Can be changed after the name is created.
-    type: str
   newname:
+    type: str
     description:
       - New name for the server. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-    type: str
   querytype:
+    type: str
     choices:
       - A
       - AAAA
@@ -101,46 +118,26 @@ options:
         get the backend services. Valid query types are C(A), C(AAAA) and C(SRV) with
         C(A) being the default querytype. The type of DNS resolution done on the domains
         in C(SRV) records is inherited from ipv6 argument.
-    type: str
     default: A
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the server.
-    type: str
-    default: ENABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   translationip:
+    type: str
     description:
       - IP address used to transform the server's DNS-resolved IP address.
-    type: str
   translationmask:
+    type: str
     description:
       - The netmask of the translation ip
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | server
-      delegate_to: localhost
-      netscaler.adc.server:
-        state: present
-        name: 10.10.10.10
-        ipaddress: 10.10.10.10
-
 """
 
 RETURN = r"""

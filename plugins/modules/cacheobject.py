@@ -24,33 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   group:
+    type: str
     description:
       - Name of the content group whose objects should be listed.
-    type: str
   groupname:
+    type: str
     description:
       - Name of the content group to which the object belongs. It will display only
         the objects belonging to the specified content group. You must also set the
         Host parameter.
-    type: str
   host:
+    type: str
     description:
       - Host name of the object. Parameter "url" must be specified.
-    type: str
   httpmethod:
+    type: str
     choices:
       - GET
       - POST
     description:
       - HTTP request method that caused the object to be stored.
-    type: str
     default: GET
   httpstatus:
+    type: float
     description:
       - HTTP status of the object.
-    type: float
   ignoremarkerobjects:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -58,41 +66,40 @@ options:
       - Ignore marker objects. Marker objects are created when a response exceeds
         the maximum or minimum response size for the content group or has not yet
         received the minimum number of hits for the content group.
-    type: str
   includenotreadyobjects:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Include responses that have not yet reached a minimum number of hits before
         being cached.
-    type: str
   locator:
+    type: float
     description:
       - ID of the cached object.
-    type: float
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   port:
+    type: int
     description:
       - Host port of the object. You must also set the Host parameter.
-    type: int
     default: 80
   tosecondary:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Object will be saved onto Secondary.
-    type: str
     default: 'NO'
   url:
+    type: str
     description:
       - URL of the particular object whose details is required. Parameter "host" must
         be specified along with the URL.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

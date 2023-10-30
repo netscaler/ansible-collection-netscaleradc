@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   allowboundsvcremoval:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -33,9 +44,9 @@ options:
         is bound to one or more vserver. If it is enabled, the svc/svcgroup can be
         removed, even if it bound to vservers. If disabled, an error will be thrown,
         when the user tries to remove a svc/svcgroup without unbinding from its vservers.
-    type: str
     default: ENABLED
   computedadccookieattribute:
+    type: str
     description:
       - 'ComputedADCCookieAttribute accepts ns variable as input in form of string
         starting with $ (to understand how to configure ns variable, please check
@@ -54,8 +65,8 @@ options:
       - '             set lb param -ComputedADCCookieAttribute "$lbvar"'
       - '             For incoming client request, if above policy evaluates TRUE,
         then SameSite=Strict will be appended to ADC generated cookie'
-    type: str
   consolidatedlconn:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -64,28 +75,28 @@ options:
         consolidated connection statistics from all the packet engines. The C(NO)
         setting allows consideration of only the number of connections on the packet
         engine that received the new connection.
-    type: str
     default: 'YES'
   cookiepassphrase:
+    type: str
     description:
       - Use this parameter to specify the passphrase used to generate secured persistence
         cookie value. It specifies the passphrase with a maximum of 31 characters.
-    type: str
   dbsttl:
+    type: float
     description:
       - Specify the TTL for DNS record for domain based service. The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: float
   dropmqttjumbomessage:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
-    type: str
     default: 'YES'
   httponlycookieflag:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -93,9 +104,9 @@ options:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
-    type: str
     default: ENABLED
   lbhashalgorithm:
+    type: str
     choices:
       - DEFAULT
       - PRAC
@@ -104,16 +115,16 @@ options:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
-    type: str
     default: DEFAULT
   lbhashfingers:
+    type: float
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory
-    type: float
     default: 256
   literaladccookieattribute:
+    type: str
     description:
       - 'String configured as LiteralADCCookieAttribute will be appended as attribute
         for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence,
@@ -121,25 +132,25 @@ options:
       - ''
       - Sample usage -
       - '             set lb parameter -LiteralADCCookieAttribute ";SameSite=None"'
-    type: str
   maxpipelinenat:
+    type: float
     description:
       - Maximum number of concurrent requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. This parameter
         is applicable to ANY service type and all UDP service types (except DNS) and
         only when "svrTimeout" is set to zero. A value of 0 (zero) applies no limit
         to the number of concurrent requests allowed on a single client connection
-    type: float
   monitorconnectionclose:
+    type: str
     choices:
       - RESET
       - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
-    type: str
     default: FIN
   monitorskipmaxclient:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -148,9 +159,9 @@ options:
         whether the number of connections to the service has reached the limit specified
         by the service's Max Clients setting. Enables monitoring to continue even
         if the service has reached its connection limit.
-    type: str
     default: DISABLED
   preferdirectroute:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -161,18 +172,18 @@ options:
         intermediary device, such as a firewall, even if their destination is directly
         connected to the appliance. Route lookup is performed after the packets have
         been processed and returned by the intermediary device.
-    type: str
     default: 'YES'
   retainservicestate:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
-    type: str
     default: 'OFF'
   startuprrfactor:
+    type: float
     description:
       - 'Number of requests, per service, for which to apply the round robin load
         balancing method before switching to the configured load balancing method,
@@ -181,7 +192,7 @@ options:
         the slow start mode (or startup round robin). Implemented for a virtual server
         when one of the following is true:'
       - '* The virtual server is newly created.'
-      - '* One or more services are newly bound to the virtual server. '
+      - '* One or more services are newly bound to the virtual server.'
       - '* One or more services bound to the virtual server are enabled.'
       - '* The load balancing method is changed.'
       - 'This parameter applies to all the load balancing virtual servers configured
@@ -202,17 +213,17 @@ options:
         200 requests.'
       - Not applicable to a virtual server for which a hash based load balancing method
         is configured.
-    type: float
   storemqttclientidandusername:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
-    type: str
     default: 'NO'
   undefaction:
+    type: str
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
         settings function as follows:'
@@ -220,17 +231,17 @@ options:
       - '* RESET - Reset the request and notify the user, so that the user can resend
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
-    type: str
     default: '"NOLBACTION"'
   useencryptedpersistencecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    type: str
     default: DISABLED
   useportforhashlb:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -238,17 +249,17 @@ options:
       - Include the port number of the service when creating a hash for hash based
         load balancing methods. With the C(NO) setting, only the IP address of the
         service is considered when creating a hash.
-    type: str
     default: 'YES'
   usesecuredpersistencecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    type: str
     default: DISABLED
   vserverspecificmac:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -262,36 +273,12 @@ options:
         of intermediary devices, such as another set of firewalls. If necessary, you
         can configure multiple MAC-mode virtual servers to pass traffic successively
         through multiple sets of intermediary devices.'
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-
-- name: Sample Task
-  hosts: demo_netscalers
-
-  gather_facts: false
-
-  tasks:
-
-    - name: Sample playbook
-      delegate_to: localhost
-      netscaler.adc.lbparameter:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        allowboundsvcremoval: DISABLED
-
 """
 
 RETURN = r"""

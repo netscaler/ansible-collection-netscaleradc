@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - 'Action to perform if the policy matches: either allow or deny the request.'
-    type: str
   name:
+    type: str
     description:
       - 'Name for the new authorization policy. '
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -40,22 +53,22 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authorization policy" or 'my authorization
         policy').
-    type: str
   newname:
+    type: str
     description:
       - The new name of the author policy.
-    type: str
   rule:
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to perform the authentication.
-    type: str
   authorizationpolicylabel_authorizationpolicy_binding:
     type: dict
     description: Bindings for authorizationpolicylabel_authorizationpolicy_binding
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

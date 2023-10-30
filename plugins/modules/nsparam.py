@@ -24,24 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   advancedanalyticsstats:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable advanace analytics stats
-    type: str
     default: DISABLED
   aftpallowrandomsourceport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow the FTP server to come from a random source port for active FTP data
         connections
-    type: str
     default: DISABLED
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -53,60 +64,62 @@ options:
       - '* If the CIP header is specified, it will be used as the client IP header.'
       - '* If the CIP header is not specified, the value that has been set will be
         used as the client IP header.'
-    type: str
   cipheader:
+    type: str
     description:
       - Text that will be used as the client IP address header.
-    type: str
   cookieversion:
+    type: str
     choices:
-      - 0
-      - 1
+      - '0'
+      - '1'
     description:
       - Version of the cookie inserted by the system.
-    type: str
   crportrange:
+    type: str
     description:
       - Port range for cache redirection services.
-    type: str
   exclusivequotamaxclient:
+    type: float
     description:
       - Percentage of maxClient to be given to PEs.
-    type: float
     default: 80
   exclusivequotaspillover:
+    type: float
     description:
       - Percentage of maximum limit to be given to PEs.
-    type: float
     default: 80
   ftpportrange:
+    type: str
     description:
       - Minimum and maximum port (port range) that FTP services are allowed to use.
-    type: str
   grantquotamaxclient:
+    type: float
     description:
       - Percentage of shared quota to be granted at a time for maxClient.
-    type: float
     default: 10
   grantquotaspillover:
+    type: float
     description:
       - Percentage of shared quota to be granted at a time for spillover.
-    type: float
     default: 10
   httpport:
+    type: list
     description:
       - HTTP ports on the web server. This allows the system to perform connection
         off-load for any client request that has a destination port matching one of
         these configured ports.
-    type: list
+    elements: int
   icaports:
+    type: list
     description:
       - The ICA ports on the Web server. This allows the system to perform connection
         off-load for any
       - '                      client request that has a destination port matching
         one of these configured ports.'
-    type: list
+    elements: int
   internaluserlogin:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -114,77 +127,78 @@ options:
       - Enables/disables the internal user from logging in to the appliance. Before
         disabling internal user login, you must have key-based authentication set
         up on the appliance. The file name for the key pair must be "ns_comm_key".
-    type: str
     default: ENABLED
   ipttl:
+    type: float
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
-    type: float
     default: 255
   maxconn:
+    type: float
     description:
       - Maximum number of connections that will be made from the appliance to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
-    type: float
   maxreq:
+    type: float
     description:
       - Maximum number of requests that the system can pass on a particular connection
         between the appliance and a server attached to it. Setting this value to 0
         allows an unlimited number of requests to be passed. This value is overridden
         by the maximum number of requests configured on the individual service.
-    type: float
   mgmthttpport:
+    type: int
     description:
       - This allow the configuration of management HTTP port.
-    type: int
     default: 80
   mgmthttpsport:
+    type: int
     description:
       - This allows the configuration of management HTTPS port.
-    type: int
     default: 443
   pmtumin:
+    type: float
     description:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
-    type: float
     default: 576
   pmtutimeout:
+    type: float
     description:
       - Interval, in minutes, for flushing the PMTU entries.
-    type: float
     default: 10
   proxyprotocol:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Disable/Enable v1 or v2 proxy protocol header for client info insertion
-    type: str
     default: DISABLED
   securecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable secure flag for persistence cookie.
-    type: str
     default: ENABLED
   secureicaports:
+    type: list
     description:
       - The Secure ICA ports on the Web server. This allows the system to perform
         connection off-load for any
       - '            client request that has a destination port matching one of these
         configured ports.'
-    type: list
+    elements: int
   servicepathingressvlan:
+    type: float
     description:
       - VLAN on which the subscriber traffic arrives on the appliance.
-    type: float
   tcpcip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -193,37 +207,26 @@ options:
         passed from the client to one, some, or all servers attached to the system.
         The passed address can then be accessed through a minor modification to the
         server.
-    type: str
     default: DISABLED
   timezone:
+    type: str
     description:
       - Time zone for the Citrix ADC. Name of the time zone should be specified as
         argument.
-    type: str
     default: CoordinatedUniversalTime
   useproxyport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable use_proxy_port setting
-    type: str
     default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsparam
-      delegate_to: localhost
-      netscaler.adc.nsparam:
-        state: present
-        timezone: GMT+09:00-KST-Asia/Seoul
-
 """
 
 RETURN = r"""

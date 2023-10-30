@@ -24,24 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   bits:
+    type: float
     description:
       - Size, in bits, of the DH key being generated.
-    type: float
   dhfile:
+    type: str
     description:
       - Name of and, optionally, path to the DH key file. /nsconfig/ssl/ is the default
         path.
-    type: str
   gen:
+    type: str
     choices:
-      - 2
-      - 5
+      - '2'
+      - '5'
     description:
       - Random number required for generating the DH key. Required as part of the
         DH key generation algorithm.
-    type: str
-    default: 2
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,17 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the policy for later reference.
-    type: str
   logaction:
+    type: str
     description:
       - Where to log information for connections that match this policy.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the policy. '
+      - Name for the policy.
       - Must begin with a letter, number, or the underscore character \(_\), and must
         contain only letters, numbers, and the hyphen \(-\), period \(.\) pound \(\#\),
         space \( \), at (@), equals \(=\), colon \(:\), and underscore characters.
@@ -43,8 +56,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks \(for example, "my policy" or 'my policy'\).
-    type: str
   newname:
+    type: str
     description:
       - New name for the policy. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -54,22 +67,22 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
-    type: str
   profilename:
+    type: str
     description:
       - Name of the application firewall profile to use if the policy matches.
-    type: str
   rule:
+    type: str
     description:
       - Name of the Citrix ADC named rule, or a Citrix ADC expression, that the policy
         uses to determine whether to filter the connection through the application
         firewall with the designated profile.
-    type: str
   appfwpolicylabel_appfwpolicy_binding:
     type: dict
     description: Bindings for appfwpolicylabel_appfwpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

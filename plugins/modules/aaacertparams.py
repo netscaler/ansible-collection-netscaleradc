@@ -24,19 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   groupnamefield:
+    type: str
     description:
       - Client certificate field that specifies the group, in the format <field>:<subfield>.
-    type: str
   usernamefield:
+    type: str
     description:
       - Client certificate field that contains the username, in the format <field>:<subfield>.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

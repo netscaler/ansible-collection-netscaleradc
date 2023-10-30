@@ -24,104 +24,115 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   automaticconfigsync:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - GSLB configuration will be synced automatically to remote gslb sites if enabled.
-    type: str
     default: DISABLED
   dropldnsreq:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Drop LDNS requests if round-trip time (RTT) information is not available.
-    type: str
     default: DISABLED
   gslbconfigsyncmonitor:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If enabled, remote gslb site's rsync port will be monitored and site is considered
         for configuration sync only when the monitor is successful.
-    type: str
     default: DISABLED
   gslbsvcstatedelaytime:
+    type: float
     description:
       - Amount of delay in updating the state of GSLB service to DOWN when MEP goes
         down.
       - "\t\t\tThis parameter is applicable only if monitors are not bound to GSLB\
         \ services"
-    type: float
   gslbsyncinterval:
+    type: float
     description:
       - Time duartion (in seconds) for which the gslb sync process will wait before
         checking for config changes.
-    type: float
     default: 10
   gslbsynclocfiles:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If disabled, Location files will not be synced to the remote sites as part
         of automatic sync.
-    type: str
     default: ENABLED
   gslbsyncmode:
+    type: str
     choices:
       - IncrementalSync
       - FullSync
     description:
       - Mode in which configuration will be synced from master site to remote sites.
-    type: str
     default: IncrementalSync
   gslbsyncsaveconfigcommand:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If enabled, 'save ns config' command will be treated as other GSLB commands
         and synced to GSLB nodes when auto gslb sync option is enabled.
-    type: str
     default: DISABLED
   ldnsentrytimeout:
+    type: float
     description:
       - Time, in seconds, after which an inactive LDNS entry is removed.
-    type: float
     default: 180
   ldnsmask:
+    type: str
     description:
       - The IPv4 network mask with which to create LDNS entries.
-    type: str
   ldnsprobeorder:
+    type: list
     choices:
       - PING
       - DNS
       - TCP
     description:
       - Order in which monitors should be initiated to calculate RTT.
-    type: list
     elements: str
   mepkeepalivetimeout:
+    type: float
     description:
       - Time duartion (in seconds) during which if no new packets received by Local
         gslb site from Remote gslb site then mark the MEP connection DOWN
-    type: float
     default: 10
   rtttolerance:
+    type: float
     description:
       - Tolerance, in milliseconds, for newly learned round-trip time (RTT) values.
         If the difference between the old RTT value and the newly computed RTT value
         is less than or equal to the specified tolerance value, the LDNS entry in
         the network metric table is not updated with the new RTT value. Prevents the
         exchange of metrics when variations in RTT values are negligible.
-    type: float
     default: 5
   svcstatelearningtime:
+    type: float
     description:
       - Time (in seconds) within which local or child site services remain in learning
         phase. GSLB site will enter the learning phase after reboot, HA failover,
@@ -130,8 +141,8 @@ options:
         to learning phase when primary parent goes down. While a service is in learning
         period, remote site will not honour the state and stats got through MEP for
         that service. State can be learnt from health monitor if bound explicitly.
-    type: float
   undefaction:
+    type: str
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
         settings function as follows:'
@@ -139,14 +150,13 @@ options:
       - '* RESET - Reset the request and notify the user, so that the user can resend
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
-    type: str
     default: '"NOLBACTION"'
   v6ldnsmasklen:
+    type: float
     description:
       - Mask for creating LDNS entries for IPv6 source addresses. The mask is defined
         as the number of leading bits to consider, in the source IP address, when
         creating an LDNS entry.
-    type: float
     default: 128
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

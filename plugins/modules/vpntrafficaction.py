@@ -24,37 +24,50 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   apptimeout:
+    type: float
     description:
       - Maximum amount of time, in minutes, a user can stay logged on to the web application.
-    type: float
   formssoaction:
+    type: str
     description:
       - Name of the form-based single sign-on profile. Form-based single sign-on allows
         users to log on one time to all protected applications in your network, instead
         of requiring them to log on separately to access each one.
-    type: str
   fta:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Specify file type association, which is a list of file extensions that users
         are allowed to open.
-    type: str
   hdx:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Provide hdx proxy to the ICA traffic
-    type: str
   kcdaccount:
+    type: str
     description:
       - Kerberos constrained delegation account name
-    type: str
     default: '"Default"'
   name:
+    type: str
     description:
       - Name for the traffic action. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -64,28 +77,28 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   passwdexpression:
+    type: str
     description:
       - expression that will be evaluated to obtain password for SingleSignOn
-    type: str
   proxy:
+    type: str
     description:
       - IP address and Port of the proxy server to be used for HTTP access for this
         request.
-    type: str
   qual:
+    type: str
     choices:
       - http
       - tcp
     description:
       - Protocol, either HTTP or TCP, to be used with the action.
-    type: str
   samlssoprofile:
+    type: str
     description:
       - Profile to be used for doing SAML SSO to remote relying party
-    type: str
   sso:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -94,18 +107,17 @@ options:
       - "\t    NOTE : Authentication mechanisms like Basic-authentication  require\
         \ the user credentials to be sent in plaintext which is not secure if the\
         \ server is running on HTTP (instead of HTTPS)."
-    type: str
   userexpression:
+    type: str
     description:
       - expression that will be evaluated to obtain username for SingleSignOn
-    type: str
   wanscaler:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use the Repeater Plug-in to optimize network traffic.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -34,25 +47,25 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - If the current policy evaluates to TRUE, terminate evaluation of policies
         bound to the current policy label, and then forward the request to the specified
         virtual server or evaluate the specified policy label.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the policy label to invoke. If the current policy evaluates to TRUE,
         the invoke parameter is set, and Label Type is policylabel.
-    type: str
   labeltype:
+    type: str
     choices:
       - vserver
       - policylabel
@@ -60,16 +73,16 @@ options:
       - 'Type of invocation, Available settings function as follows:'
       - '* C(vserver) - Forward the request to the specified virtual server.'
       - '* C(policylabel) - Invoke the specified policy label.'
-    type: str
   policyname:
+    type: str
     description:
       - Name of the responder policy.
-    type: str
   priority:
+    type: float
     description:
       - Specifies the priority of the policy.
-    type: float
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -130,7 +143,6 @@ options:
         queue.'
       - '* C(HTTPQUIC_REQ_DEFAULT) - Binds the policy to the HTTP_QUIC default response
         queue.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

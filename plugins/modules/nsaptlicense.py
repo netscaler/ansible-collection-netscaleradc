@@ -24,39 +24,46 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   bindtype:
+    type: str
     description:
       - Bind type
-    type: str
   countavailable:
+    type: str
     description:
       - The user can allocate one or more licenses. Ensure the value is less than
         (for partial allocation) or equal to the total number of available licenses
-    type: str
   id:
+    type: str
     description:
       - License ID
-    type: str
   licensedir:
+    type: str
     description:
       - License Directory
-    type: str
   serialno:
+    type: str
     description:
       - Hardware Serial Number/License Activation Code(LAC)
-    type: str
   sessionid:
+    type: str
     description:
       - Session ID
-    type: str
   useproxy:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Specifies whether to use the licenseproxyserver to reach the internet. Make
         sure to configure licenseproxyserver to use this option.
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

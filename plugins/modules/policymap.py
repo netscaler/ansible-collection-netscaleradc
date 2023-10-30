@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   mappolicyname:
+    type: str
     description:
       - Name for the map policy. Must begin with a letter, number, or the underscore
         (_) character and must consist only of letters, numbers, and the hash (#),
@@ -33,27 +46,26 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my map" or ''my map'').'
-    type: str
   sd:
+    type: str
     description:
       - Publicly known source domain name. This is the domain name with which a client
         request arrives at a reverse proxy virtual server for cache redirection. If
         you specify a source domain, you must specify a target domain.
-    type: str
   su:
+    type: str
     description:
       - 'Source URL. Specify all or part of the source URL, in the following format:
         /[[prefix] [*]] [.suffix].'
-    type: str
   td:
+    type: str
     description:
       - Target domain name sent to the server. The source domain name is replaced
         with this domain name.
-    type: str
   tu:
+    type: str
     description:
       - 'Target URL. Specify the target URL in the following format: /[[prefix] [*]][.suffix].'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

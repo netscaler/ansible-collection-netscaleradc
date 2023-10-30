@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actionname:
+    type: str
     description:
       - Name of the dns action.
-    type: str
   actiontype:
+    type: str
     choices:
       - ViewName
       - GslbPrefLoc
@@ -38,34 +51,33 @@ options:
       - Rewrite_Response
     description:
       - The type of DNS action that is being configured.
-    type: str
   dnsprofilename:
+    type: str
     description:
       - Name of the DNS profile to be associated with the transaction for which the
         action is chosen
-    type: str
   ipaddress:
+    type: list
     description:
       - List of IP address to be returned in case of rewrite_response actiontype.
         They can be of IPV4 or IPV6 type.
       - "\t    In case of set command We will remove all the IP address previously\
         \ present in the action and will add new once given in set dns action command."
-    type: list
     elements: str
   preferredloclist:
+    type: list
     description:
       - The location list in priority order used for the given action.
-    type: list
     elements: str
   ttl:
+    type: float
     description:
       - Time to live, in seconds.
-    type: float
     default: 3600
   viewname:
+    type: str
     description:
       - The view name that must be used for the given action.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

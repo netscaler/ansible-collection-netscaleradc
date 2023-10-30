@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   mbf:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -34,54 +47,54 @@ options:
         (available in the enable ns mode and disable ns mode CLI commands, or in the
         System > Settings > Configure modes > Configure Modes dialog box). However,
         you can override this setting after you create the netprofile
-    type: str
   name:
+    type: str
     description:
       - Name for the net profile. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
         (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore
         characters. Cannot be changed after the profile is created. Choose a name
         that helps identify the net profile.
-    type: str
   overridelsn:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - USNIP/USIP settings override LSN settings for configured
       - '              service/virtual server traffic..'
-    type: str
     default: DISABLED
   proxyprotocol:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Proxy Protocol Action (Enabled/Disabled)
-    type: str
     default: DISABLED
   proxyprotocolaftertlshandshake:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ADC doesnt look for proxy header before TLS handshake, if enabled. Proxy protocol
         parsed after TLS handshake
-    type: str
     default: DISABLED
   proxyprotocoltxversion:
+    type: str
     choices:
       - V1
       - V2
     description:
       - Proxy Protocol Version (C(V1)/C(V2))
-    type: str
     default: V1
   srcip:
+    type: str
     description:
       - IP address or the name of an IP set.
-    type: str
   srcippersistency:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -90,19 +103,19 @@ options:
         this option enables the Citrix ADC to use the same  address, specified in
         the net profile, to communicate to servers for all sessions initiated from
         a particular client to the virtual server.
-    type: str
     default: DISABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   netprofile_natrule_binding:
     type: dict
     description: Bindings for netprofile_natrule_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -127,6 +140,7 @@ options:
     description: Bindings for netprofile_srcportset_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -151,18 +165,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | netProfile
-      delegate_to: localhost
-      netscaler.adc.netprofile:
-        state: present
-        name: netprofile-001
-        srcip: ipset-001
-        mbf: DISABLED
-
 """
 
 RETURN = r"""

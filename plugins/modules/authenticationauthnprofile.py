@@ -24,35 +24,47 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   authenticationdomain:
+    type: str
     description:
       - Domain for which TM cookie must to be set. If unspecified, cookie will be
         set for FQDN.
-    type: str
   authenticationhost:
+    type: str
     description:
       - Hostname of the authentication vserver to which user must be redirected for
         authentication.
-    type: str
   authenticationlevel:
+    type: float
     description:
       - Authentication weight or level of the vserver to which this will bound. This
         is used to order TM vservers based on the protection required. A session that
         is created by authenticating against TM vserver at given level cannot be used
         to access TM vserver at a higher level.
-    type: float
   authnvsname:
+    type: str
     description:
       - Name of the authentication vserver at which authentication should be done.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the authentication profile. '
+      - Name for the authentication profile.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
         after the RADIUS action is added.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

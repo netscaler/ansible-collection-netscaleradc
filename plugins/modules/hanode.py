@@ -24,13 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   deadinterval:
+    type: float
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
-    type: float
     default: 3
   failsafe:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -38,9 +51,9 @@ options:
       - Keep one node primary if both nodes fail the health check, so that a partially
         available node can back up data and handle traffic. This mode is set independently
         on each node.
-    type: str
     default: 'OFF'
   haprop:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -48,7 +61,7 @@ options:
       - 'Automatically propagate all commands from the primary to the secondary node,
         except the following:'
       - '* All HA configuration related commands. For example, add ha node, set ha
-        node, and bind ha node. '
+        node, and bind ha node.'
       - '* All Interface related commands. For example, set interface and unset interface.'
       - '* All channels related commands. For example, add channel, set channel, and
         bind channel.'
@@ -57,9 +70,9 @@ options:
         on the secondary, the primary node executes the command and logs an error.  Command
         propagation uses port 3010.
       - 'Note: After enabling propagation, run force synchronization on either node.'
-    type: str
     default: ENABLED
   hastatus:
+    type: str
     choices:
       - ENABLED
       - STAYSECONDARY
@@ -81,8 +94,8 @@ options:
         \ new primary and the older node becomes secondary. C(ENABLED) state means\
         \ normal HA operation without any constraints/preferences. C(DISABLED) state\
         \ disables the normal HA operation of the node."
-    type: str
   hasync:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -91,20 +104,20 @@ options:
         the primary node on the secondary node. This setting is not propagated. Automatic
         synchronization requires that this setting be enabled (the default) on the
         current secondary node. Synchronization uses TCP port 3010.
-    type: str
     default: ENABLED
   hellointerval:
+    type: float
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
-    type: float
     default: 200
   id:
+    type: float
     description:
       - Number that uniquely identifies the node. For self node, it will always be
         0. Peer node values can range from 1-64.
-    type: float
   inc:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -115,40 +128,40 @@ options:
         (except LLB routes), route monitors, RNAT rules (except any RNAT rule with
         a VIP as the NAT IP), and dynamic routing configurations. They are maintained
         independently on each node.'
-    type: str
     default: DISABLED
   ipaddress:
+    type: str
     description:
       - The NSIP or NSIP6 address of the node to be added for an HA configuration.
         This setting is neither propagated nor synchronized.
-    type: str
   maxflips:
+    type: float
     description:
       - Max number of flips allowed before becoming sticky primary
-    type: float
   maxfliptime:
+    type: float
     description:
       - Interval after which flipping of node states can again start
-    type: float
   syncstatusstrictmode:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - strict mode flag for sync status
-    type: str
     default: DISABLED
   syncvlan:
+    type: float
     description:
       - Vlan on which HA related communication is sent. This include sync, propagation
         , connection mirroring , LB persistency config sync, persistent session sync
         and session state sync. However HA heartbeats can go all interfaces.
-    type: float
   hanode_routemonitor6_binding:
     type: dict
     description: Bindings for hanode_routemonitor6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -173,6 +186,7 @@ options:
     description: Bindings for hanode_routemonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -197,17 +211,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | HAnode
-      delegate_to: localhost
-      netscaler.adc.hanode:
-        state: present
-        id: 1
-        ipaddress: 10.222.74.141
-
 """
 
 RETURN = r"""

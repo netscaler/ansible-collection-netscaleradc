@@ -24,93 +24,103 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   anyclient:
+    type: float
     description:
       - Global idle timeout, in seconds, for non-TCP client connections. This value
         is over ridden by the client timeout that is configured on individual entities.
-    type: float
   anyserver:
+    type: float
     description:
       - Global idle timeout, in seconds, for non TCP server connections. This value
         is over ridden by the server timeout that is configured on individual entities.
-    type: float
   anytcpclient:
+    type: float
     description:
       - Global idle timeout, in seconds, for TCP client connections. This value takes
         precedence over  entity level timeout settings (vserver/service). This is
         applicable only to transport protocol TCP.
-    type: float
   anytcpserver:
+    type: float
     description:
       - Global idle timeout, in seconds, for TCP server connections. This value takes
         precedence over entity level timeout settings ( vserver/service). This is
         applicable only to transport protocol TCP.
-    type: float
   client:
+    type: float
     description:
       - Client idle timeout (in seconds). If zero, the service-type default value
         is taken when service is created.
-    type: float
   halfclose:
+    type: float
     description:
       - Idle timeout, in seconds, for connections that are in TCP half-closed state.
-    type: float
     default: 10
   httpclient:
+    type: float
     description:
       - Global idle timeout, in seconds, for client connections of HTTP service type.
         This value is over ridden by the client timeout that is configured on individual
         entities.
-    type: float
   httpserver:
+    type: float
     description:
       - Global idle timeout, in seconds, for server connections of HTTP service type.
         This value is over ridden by the server timeout that is configured on individual
         entities.
-    type: float
   newconnidletimeout:
+    type: float
     description:
       - Timer interval, in seconds, for new TCP NATPCB connections on which no data
         was received.
-    type: float
     default: 4
   nontcpzombie:
+    type: float
     description:
       - Interval at which the zombie clean-up process for non-TCP connections should
         run. Inactive IP NAT connections will be cleaned up.
-    type: float
     default: 60
   reducedfintimeout:
+    type: float
     description:
       - Alternative idle timeout, in seconds, for closed TCP NATPCB connections.
-    type: float
     default: 30
   reducedrsttimeout:
+    type: float
     description:
       - Timer interval, in seconds, for abruptly terminated TCP NATPCB connections.
-    type: float
   server:
+    type: float
     description:
       - Server idle timeout (in seconds).  If zero, the service-type default value
         is taken when service is created.
-    type: float
   tcpclient:
+    type: float
     description:
       - Global idle timeout, in seconds, for non-HTTP client connections of TCP service
         type. This value is over ridden by the client timeout that is configured on
         individual entities.
-    type: float
   tcpserver:
+    type: float
     description:
       - Global idle timeout, in seconds, for non-HTTP server connections of TCP service
         type. This value is over ridden by the server timeout that is configured on
         entities.
-    type: float
   zombie:
+    type: float
     description:
       - Interval, in seconds, at which the Citrix ADC zombie cleanup process must
         run. This process cleans up inactive TCP connections.
-    type: float
     default: 120
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

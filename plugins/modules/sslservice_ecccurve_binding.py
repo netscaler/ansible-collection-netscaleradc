@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ecccurvename:
+    type: str
     choices:
       - ALL
       - P_224
@@ -35,11 +48,10 @@ options:
       - P_521
     description:
       - Named ECC curve bound to service/vserver.
-    type: str
   servicename:
+    type: str
     description:
       - Name of the SSL service for which to set advanced configuration.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

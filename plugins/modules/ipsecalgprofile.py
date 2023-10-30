@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   connfailover:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -32,27 +45,26 @@ options:
       - Mode in which the connection failover feature must operate for the IPSec Alg.
         After a failover, established UDP connections and ESP packet flows are kept
         active and resumed on the secondary appliance. Recomended setting is C(ENABLED).
-    type: str
     default: ENABLED
   espgatetimeout:
+    type: float
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation
-    type: float
     default: 30
   espsessiontimeout:
+    type: float
     description:
       - ESP session timeout in minutes.
-    type: float
     default: 60
   ikesessiontimeout:
+    type: float
     description:
       - IKE session timeout in minutes
-    type: float
     default: 60
   name:
+    type: str
     description:
       - The name of the ipsec alg profile
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

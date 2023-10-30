@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   addvaryheader:
+    type: str
     choices:
       - GLOBAL
       - DISABLED
@@ -33,59 +46,58 @@ options:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
-    type: str
     default: GLOBAL
   cmptype:
+    type: str
     choices:
       - compress
       - gzip
       - deflate
       - nocompress
     description:
-      - 'Type of compression performed by this action. '
-      - 'Available settings function as follows: '
+      - Type of compression performed by this action.
+      - 'Available settings function as follows:'
       - '* COMPRESS - Apply GZIP or DEFLATE compression to the response, depending
         on the request header. Prefer GZIP.'
       - '* GZIP - Apply GZIP compression.'
       - '* DEFLATE - Apply DEFLATE compression.'
       - '* NOCOMPRESS - Do not C(compress) the response if the request matches a policy
         that uses this action.'
-    type: str
   deltatype:
+    type: str
     choices:
       - PERURL
       - PERPOLICY
     description:
       - The type of delta action (if delta type compression action is defined).
-    type: str
     default: PERURL
   name:
+    type: str
     description:
-      - 'Name of the compression action. Must begin with an ASCII alphabetic or underscore
+      - Name of the compression action. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-        Can be changed after the action is added. '
+        Can be changed after the action is added.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cmp action" or 'my cmp action').
-    type: str
   newname:
+    type: str
     description:
       - New name for the compression action. Must begin with an ASCII alphabetic or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at
-      - '(@), equals (=), and hyphen (-) characters. '
-      - 'Choose a name that can be correlated with the function that the action performs. '
+      - (@), equals (=), and hyphen (-) characters.
+      - Choose a name that can be correlated with the function that the action performs.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cmp action" or 'my cmp action').
-    type: str
   varyheadervalue:
+    type: str
     description:
       - The value of the HTTP Vary header for compressed responses.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

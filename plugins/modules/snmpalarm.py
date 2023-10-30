@@ -24,22 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   logging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
-    type: str
     default: ENABLED
   normalvalue:
+    type: float
     description:
       - Value for the normal threshold. A trap message is generated if the value of
         the respective attribute falls to or below this value after exceeding the
         high threshold.
-    type: float
   severity:
+    type: str
     choices:
       - Critical
       - Major
@@ -54,25 +69,14 @@ options:
         to a trap listener on the basis of severity level. Trap messages with a severity
         level lower than the specified level (in the trap listener entry) are not
         sent.
-    type: str
-    default: Unknown
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Current state of the SNMP alarm. The Citrix ADC generates trap messages only
-        for SNMP alarms that are enabled. Some alarms are enabled by default, but
-        you can disable them.
-    type: str
-    default: ENABLED
   thresholdvalue:
+    type: float
     description:
       - Value for the high threshold. The Citrix ADC generates an SNMP trap message
         when the value of the attribute associated with the alarm is greater than
         or equal to the specified high threshold value.
-    type: float
   time:
+    type: float
     description:
       - 'Interval, in seconds, at which the Citrix ADC generates SNMP trap messages
         when the conditions specified in the SNMP alarm are met.Can be specified for
@@ -82,9 +86,9 @@ options:
         traps. Default trap time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED
         = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), Other Traps = 86400sec(1
         day)'
-    type: float
     default: 1
   trapname:
+    type: str
     choices:
       - CPU-USAGE
       - AVERAGE-CPU
@@ -139,11 +143,11 @@ options:
       - APPFW-BUFFER-OVERFLOW
       - APPFW-FIELD-FORMAT
       - APPFW-FILE-UPLOAD-TYPE
+      - APPFW-GRPC
+      - APPFW-GRPC-WEB-JSON
+      - APPFW-GRPC-WEB-TEXT
       - APPFW-JSON-DOS
       - APPFW-JSON-SQL
-      - APPFW-GRPC
-      - APPFW-GRPC-WEB-TEXT
-      - APPFW-GRPC-WEB-JSON
       - APPFW-JSON-XSS
       - APPFW-SAFE-COMMERCE
       - APPFW-SAFE-OBJECT
@@ -172,6 +176,8 @@ options:
       - APPFW-JSON-CMD-GRAM
       - APPFW-BLOCK-KEYWORD
       - APPFW-JSON-BLOCKKEYWORD
+      - APPFW-BYPASS-LIST
+      - APPFW-DENY-LIST
       - DNSKEY-EXPIRY
       - HA-LICENSE-MISMATCH
       - SSL-CARD-FAILED
@@ -229,10 +235,11 @@ options:
       - PORT-ALLOC-EXCEED
       - KEK_UPDATE_SUCCESS
       - KEK_UPDATE_FAILURE
+      - ADC-ANOMALY
+      - SYSLOG-CONNECTION-DROPPED
     description:
       - Name of the SNMP alarm. This parameter is required for identifying the SNMP
         alarm and cannot be modified.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

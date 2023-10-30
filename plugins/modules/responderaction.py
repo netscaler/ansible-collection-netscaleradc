@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bypasssafetycheck:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -33,26 +46,26 @@ options:
         expression in a response is one that contains references to request elements
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
-    type: str
     default: 'NO'
   comment:
+    type: str
     description:
       - Comment. Any type of information about this responder action.
-    type: str
   headers:
+    type: list
     description:
       - One or more headers to insert into the HTTP response. Each header is specified
         as "name(expr)", where expr is an expression that is evaluated at runtime
         to provide the value for the named header. You can configure a maximum of
         eight headers for a responder action.
-    type: list
     elements: str
   htmlpage:
+    type: str
     description:
       - For respondwithhtmlpage policies, name of the HTML page object to use as the
         response. You must first import the page object.
-    type: str
   name:
+    type: str
     description:
       - Name for the responder action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -62,8 +75,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder action" or 'my responder action').
-    type: str
   newname:
+    type: str
     description:
       - New name for the responder action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -73,27 +86,27 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder action" or my responder action').
-    type: str
   reasonphrase:
+    type: str
     description:
       - 'Expression specifying the reason phrase of the HTTP response. The reason
         phrase may be a string literal with quotes or a PI expression. For example:
         "Invalid URL: " + HTTP.REQ.URL'
-    type: str
   responsestatuscode:
+    type: float
     description:
       - HTTP response status code, for example 200, 302, 404, etc. The default value
         for the redirect action type is 302 and for respondwithhtmlpage is 200
-    type: float
   target:
+    type: str
     description:
-      - 'Expression specifying what to respond with. Typically a URL for redirect
-        policies or a default-syntax expression.  In addition to Citrix ADC default-syntax
+      - Expression specifying what to respond with. Typically a URL for redirect policies
+        or a default-syntax expression.  In addition to Citrix ADC default-syntax
         expressions that refer to information in the request, a stringbuilder expression
         can contain text and HTML, and simple escape codes that define new lines and
         paragraphs. Enclose each stringbuilder expression element (either a Citrix
         ADC default-syntax expression or a string) in double quotation marks. Use
-        the plus (+) character to join the elements. '
+        the plus (+) character to join the elements.
       - ''
       - 'Examples:'
       - '1) Respondwith expression that sends an HTTP 1.1 200 OK response:'
@@ -112,8 +125,8 @@ options:
       - Enclose the entire expression in single quotation marks. (Citrix ADC expression
         elements should be included inside the single quotation marks for the entire
         expression, but do not need to be enclosed in double quotation marks.)
-    type: str
   type:
+    type: str
     choices:
       - noop
       - respondwith
@@ -130,7 +143,6 @@ options:
       - '* C(redirect) - Redirect the request to the URL specified as the target.'
       - '* C(sqlresponse_ok) - Send an SQL OK response.'
       - '* C(sqlresponse_error) - Send an SQL ERROR response.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

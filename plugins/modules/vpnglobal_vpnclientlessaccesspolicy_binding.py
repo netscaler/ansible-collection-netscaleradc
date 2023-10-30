@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   builtin:
+    type: list
     choices:
       - MODIFIABLE
       - DELETABLE
@@ -34,9 +47,9 @@ options:
       - PARTITION_ALL
     description:
       - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
     elements: str
   feature:
+    type: str
     choices:
       - WL
       - WebLogging
@@ -111,8 +124,8 @@ options:
       - APIGateway
     description:
       - The feature to be checked while applying this config
-    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -120,31 +133,31 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Applicable only to advance vpn session policy. An expression or other value
         specifying the priority of the next policy which will get evaluated if the
         current policy rule evaluates to TRUE.
-    type: str
   groupextraction:
+    type: bool
     description:
       - Bind the Authentication policy to a tertiary chain which will be used only
         for group extraction.  The user will not authenticate against this server,
         and this will only be called it primary and/or secondary authentication has
         succeeded.
-    type: bool
   policyname:
+    type: str
     description:
       - The name of the policy.
-    type: str
   priority:
+    type: float
     description:
       - Integer specifying the policy's priority. The lower the priority number, the
         higher the policy's priority. Maximum value for default syntax policies is
         2147483647 and for classic policies is 64000.
-    type: float
   secondary:
+    type: bool
     description:
       - Bind the authentication policy as the secondary policy to use in a two-factor
         configuration. A user must then authenticate not only to a primary authentication
@@ -152,8 +165,8 @@ options:
         across both authentication servers. The user name must be exactly the same
         on both authentication servers, but the authentication servers can require
         different passwords.
-    type: bool
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -161,7 +174,6 @@ options:
       - RES_DEFAULT
     description:
       - Bindpoint to which the policy is bound
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

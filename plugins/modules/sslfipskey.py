@@ -24,26 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   curve:
+    type: str
     choices:
       - P_256
       - P_384
     description:
       - Only p_256 (prime256v1) and C(P_384) (secp384r1) are supported.
-    type: str
     default: P_256
   exponent:
+    type: str
     choices:
-      - 3
+      - '3'
       - F4
     description:
       - 'Exponent value for the FIPS key to be created. Available values function
         as follows:'
       - ' 3=3 (hexadecimal)'
       - F4=10001 (hexadecimal)
-    type: str
-    default: 3
   fipskeyname:
+    type: str
     description:
       - Name for the FIPS key. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -53,8 +62,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my fipskey" or 'my fipskey').
-    type: str
   inform:
+    type: str
     choices:
       - SIM
       - DER
@@ -64,35 +73,34 @@ options:
       - C(SIM) - Secure Information Management; select when importing a FIPS key.
         If the external FIPS key is encrypted, first decrypt it, and then import it.
       - C(PEM) - Privacy Enhanced Mail; select when importing a non-FIPS key.
-    type: str
     default: SIM
   iv:
+    type: str
     description:
       - Initialization Vector (IV) to use for importing the key. Required for importing
         a non-FIPS key.
-    type: str
   key:
+    type: str
     description:
       - Name of and, optionally, path to the key file to be imported.
       - ' /nsconfig/ssl/ is the default path.'
-    type: str
   keytype:
+    type: str
     choices:
       - RSA
       - ECDSA
     description:
       - Only C(RSA) key and C(ECDSA) Key are supported.
-    type: str
     default: RSA
   modulus:
+    type: float
     description:
       - Modulus, in multiples of 64, of the FIPS key to be created.
-    type: float
   wrapkeyname:
+    type: str
     description:
       - Name of the wrap key to use for importing the key. Required for importing
         a non-FIPS key.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,23 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Action to be applied by the new urlPolicy if the rule criteria are met.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this policy.
-    type: str
   logaction:
+    type: str
     description:
       - Name of messagelog action to use when a request matches this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the new urlPolicy.
-    type: str
   newname:
+    type: str
     description:
       - New name for the vpn urlPolicy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -50,8 +63,8 @@ options:
       - 'The following requirement applies only to the NetScaler CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my vpnurl policy" or 'my vpnurl policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression, or name of a named expression, specifying the traffic that matches
         the policy.
@@ -63,7 +76,6 @@ options:
         by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,39 +24,51 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipfrom:
+    type: str
     description:
       - First IP address in the range, in dotted decimal notation.
-    type: str
   ipto:
+    type: str
     description:
       - Last IP address in the range, in dotted decimal notation.
-    type: str
   latitude:
+    type: int
     description:
-      - 'Numerical value, in degrees, specifying the latitude of the geographical
-        location of the IP address-range. '
+      - Numerical value, in degrees, specifying the latitude of the geographical location
+        of the IP address-range.
       - 'Note: Longitude and latitude parameters are used for selecting a service
         with the static proximity GSLB method. If they are not specified, selection
         is based on the qualifiers specified for the location.'
-    type: int
   longitude:
+    type: int
     description:
-      - 'Numerical value, in degrees, specifying the longitude of the geographical
-        location of the IP address-range. '
+      - Numerical value, in degrees, specifying the longitude of the geographical
+        location of the IP address-range.
       - 'Note: Longitude and latitude parameters are used for selecting a service
         with the static proximity GSLB method. If they are not specified, selection
         is based on the qualifiers specified for the location.'
-    type: int
   preferredlocation:
+    type: str
     description:
-      - 'String of qualifiers, in dotted notation, describing the geographical location
+      - String of qualifiers, in dotted notation, describing the geographical location
         of the IP address range. Each qualifier is more specific than the one that
         precedes it, as in continent.country.region.city.isp.organization. For example,
-        "NA.US.CA.San Jose.ATT.citrix". '
+        "NA.US.CA.San Jose.ATT.citrix".
       - 'Note: A qualifier that includes a dot (.) or space ( ) must be enclosed in
         double quotation marks.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,27 +26,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   monitor_name:
+    type: str
     description:
       - Monitor name.
-    type: str
   monstate:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of the monitor bound to gslb service.
-    type: str
   servicename:
+    type: str
     description:
       - Name of the GSLB service.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
         the state of the service.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

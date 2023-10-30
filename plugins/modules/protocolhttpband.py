@@ -24,11 +24,22 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   reqbandsize:
+    type: int
     description:
       - 'Band size, in bytes, for HTTP request band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed
@@ -36,9 +47,9 @@ options:
       - 0 - 99 bytes
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
-    type: int
     default: 100
   respbandsize:
+    type: int
     description:
       - 'Band size, in bytes, for HTTP response band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed
@@ -46,16 +57,15 @@ options:
       - 0 - 99 bytes
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
-    type: int
     default: 1024
   type:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
     description:
       - Type of statistics to display.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

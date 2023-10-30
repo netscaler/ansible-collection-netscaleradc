@@ -24,30 +24,43 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   egressinterface:
+    type: str
     description:
       - Egress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of type INLINEINSPECTION or MIRROR.
-    type: str
   egressvlan:
+    type: float
     description:
       - Egress Vlan for CI
-    type: float
   ingressinterface:
+    type: str
     description:
       - Ingress interface for CI profile.It is a mandatory argument while creating
         an ContentInspection profile of IPS type.
-    type: str
   ingressvlan:
+    type: float
     description:
       - Ingress Vlan for CI
-    type: float
   iptunnel:
+    type: str
     description:
       - IP Tunnel for CI profile. It is used while creating a ContentInspection profile
         of type MIRROR when the IDS device is in a different network
-    type: str
   name:
+    type: str
     description:
       - Name of a ContentInspection profile. Must begin with a letter, number, or
         the underscore \(_\) character. Other characters allowed, after the first
@@ -57,8 +70,8 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my ips profile" or ''my ips profile''\).'
-    type: str
   type:
+    type: str
     choices:
       - InlineInspection
       - Mirror
@@ -66,7 +79,6 @@ options:
       - 'Type of ContentInspection profile. Following types are available to configure:'
       - '           INLINEINSPECTION : To inspect the packets/requests using IPS.'
       - "\t   MIRROR : To forward cloned packets."
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

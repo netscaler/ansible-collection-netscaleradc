@@ -24,34 +24,47 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Name of the videooptimization pacing action to perform if the request matches
         this videooptimization pacing policy.
-    type: str
   comment:
+    type: str
     description:
       - Any type of information about this videooptimization pacing policy.
-    type: str
   logaction:
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the videooptimization pacing policy. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
         the hyphen (-), period (.) pound (#), space ( ), at (@), equals (=), colon
         (:), and underscore characters.Can be modified, removed or renamed.
-    type: str
   newname:
+    type: str
     description:
       - New name for the videooptimization pacing policy. Must begin with a letter,
         number, or the underscore character (_), and must contain only letters, numbers,
         and the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon
         (:), and underscore characters.
-    type: str
   rule:
+    type: str
     description:
       - Expression that determines which request or response match the video optimization
         pacing policy.
@@ -63,19 +76,19 @@ options:
         by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   undefaction:
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
         actions can be used.
-    type: str
   videooptimizationpacingpolicylabel_videooptimizationpacingpolicy_binding:
     type: dict
     description: Bindings for videooptimizationpacingpolicylabel_videooptimizationpacingpolicy_binding
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

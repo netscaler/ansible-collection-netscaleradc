@@ -24,51 +24,68 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   adfsproxyprofile:
+    type: str
     description:
       - Name of the adfsProxy profile to be used to support ADFSPIP protocol for ADFS
         servers.
-    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Apply AppFlow logging to the virtual server.
-    type: str
     default: ENABLED
   authentication:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable user authentication.
-    type: str
     default: 'OFF'
   authenticationhost:
+    type: str
     description:
       - Fully qualified domain name (FQDN) of the authentication virtual server to
         which the user must be redirected for authentication. Make sure that the Authentication
         parameter is set to ENABLED.
-    type: str
   authn401:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable user authentication with HTTP 401 responses.
-    type: str
     default: 'OFF'
   authnprofile:
+    type: str
     description:
       - Name of the authentication profile to be used when authentication is turned
         on.
-    type: str
   authnvsname:
+    type: str
     description:
       - Name of an authentication virtual server with which to authenticate users.
-    type: str
   backuplbmethod:
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -83,28 +100,28 @@ options:
       - thod fails or cannot be used.
       - '                       Valid only if the primary method is based on static
         proximity.'
-    type: str
     default: ROUNDROBIN
   backuppersistencetimeout:
+    type: float
     description:
       - Time period for which backup persistence is in effect.
-    type: float
     default: 2
   backupvserver:
+    type: str
     description:
       - Name of the backup virtual server to which to forward requests if the primary
         virtual server goes DOWN or reaches its spillover threshold.
-    type: str
   bypassaaaa:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - If this option is enabled while resolving DNS64 query AAAA queries are not
         sent to back end dns server
-    type: str
     default: 'NO'
   cacheable:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -113,17 +130,17 @@ options:
         virtual server can forward requests only to a transparent cache redirection
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
-    type: str
     default: 'NO'
   clttimeout:
+    type: float
     description:
       - Idle time, in seconds, after which a client connection is terminated.
-    type: float
   comment:
+    type: str
     description:
       - Any comments that you might want to associate with the virtual server.
-    type: str
   connfailover:
+    type: str
     choices:
       - DISABLED
       - STATEFUL
@@ -134,67 +151,67 @@ options:
         are kept active and resumed on the secondary appliance. Clients remain connected
         to the same servers. Available settings function as follows:'
       - '* C(STATEFUL) - The primary appliance shares state information with the secondary
-        appliance, in real time, resulting in some runtime processing overhead. '
+        appliance, in real time, resulting in some runtime processing overhead.'
       - '* C(STATELESS) - State information is not shared, and the new primary appliance
         tries to re-create the packet flow on the basis of the information contained
-        in the packets it receives. '
+        in the packets it receives.'
       - '* C(DISABLED) - Connection failover does not occur.'
-    type: str
     default: DISABLED
   cookiename:
+    type: str
     description:
       - Use this parameter to specify the cookie name for COOKIE peristence type.
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
-    type: str
   datalength:
+    type: float
     description:
       - Length of the token to be extracted from the data segment of an incoming packet,
         for use in the token method of load balancing. The length of the token, specified
         in bytes, must not be greater than 24 KB. Applicable to virtual servers of
         type TCP.
-    type: float
   dataoffset:
+    type: float
     description:
       - Offset to be considered when extracting a token from the TCP payload. Applicable
         to virtual servers, of type TCP, using the token method of load balancing.
         Must be within the first 24 KB of the TCP payload.
-    type: float
   dbprofilename:
+    type: str
     description:
       - Name of the DB profile whose settings are to be applied to the virtual server.
-    type: str
   dbslb:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
-    type: str
     default: DISABLED
   disableprimaryondown:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If the primary virtual server goes down, do not allow it to return to primary
         status until manually enabled.
-    type: str
     default: DISABLED
   dns64:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This argument is for enabling/disabling the dns64 on lbvserver
-    type: str
   dnsprofilename:
+    type: str
     description:
       - Name of the DNS profile to be associated with the VServer. DNS profile properties
         will be applied to the transactions processed by a VServer. This parameter
         is valid only for DNS and DNS-TCP VServers.
-    type: str
   downstateflush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -202,30 +219,30 @@ options:
       - Flush all active transactions associated with a virtual server whose state
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
-    type: str
     default: ENABLED
   hashlength:
+    type: float
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
         load balancing methods.
-    type: float
     default: 80
   healththreshold:
+    type: float
     description:
       - Threshold in percent of active services below which vserver state is made
         down. If this threshold is 0, vserver state will be up even if one bound service
         is up.
-    type: float
   httpprofilename:
+    type: str
     description:
       - Name of the HTTP profile whose settings are to be applied to the virtual server.
-    type: str
   httpsredirecturl:
+    type: str
     description:
       - URL to which all HTTP traffic received on the port specified in the -redirectFromPort
         parameter is redirected.
-    type: str
   icmpvsrresponse:
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -244,9 +261,9 @@ options:
         parameter, ICMP Response, is available at the IP address level, for IPv4 addresses
         of type VIP. To set that parameter, use the add ip command in the CLI or the
         Create IP dialog box in the GUI.'
-    type: str
     default: PASSIVE
   insertvserveripport:
+    type: str
     choices:
       - 'OFF'
       - VIPADDR
@@ -267,8 +284,8 @@ options:
         server''s IPv6 address. If a mapped IPv4 address is not configured, insert
         the IPv6 address.'
       - '* C(OFF) - Disable header insertion.'
-    type: str
   ipmask:
+    type: str
     description:
       - IP mask, in dotted decimal notation, for the IP Pattern parameter. Can have
         leading or trailing non-zero octets (for example, 255.255.240.0 or 0.0.255.255).
@@ -276,13 +293,13 @@ options:
         of the destination IP address in a client request are to be matched with the
         corresponding bits in the IP pattern. The former is called a forward mask.
         The latter is called a reverse mask.
-    type: str
   ippattern:
+    type: str
     description:
-      - 'IP address pattern, in dotted decimal notation, for identifying packets to
+      - IP address pattern, in dotted decimal notation, for identifying packets to
         be accepted by the virtual server. The IP Mask parameter specifies which part
         of the destination IP address is matched against the pattern.  Mutually exclusive
-        with the IP Address parameter. '
+        with the IP Address parameter.
       - For example, if the IP pattern assigned to the virtual server is 198.51.100.0
         and the IP mask is 255.255.240.0 (a forward mask), the first 20 bits in the
         destination IP addresses are matched with the first 20 bits in the pattern.
@@ -297,17 +314,17 @@ options:
         IP pattern of vs1. If a destination IP address matches two or more virtual
         servers to the same extent, the request is processed by the virtual server
         whose port number matches the port number in the request.
-    type: str
   ipset:
+    type: str
     description:
       - The list of IPv4/IPv6 addresses bound to ipset would form a part of listening
         service on the current lb vserver
-    type: str
   ipv46:
+    type: str
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
-    type: str
   l2conn:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -316,8 +333,8 @@ options:
         to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination port>)
         that is used to identify a connection. Allows multiple TCP and non-TCP connections
         with the same 4-tuple to co-exist on the Citrix ADC.
-    type: str
   lbmethod:
+    type: str
     choices:
       - ROUNDROBIN
       - LEASTCONNECTION
@@ -342,9 +359,9 @@ options:
       - 'Load balancing method.  The available settings function as follows:'
       - '* C(ROUNDROBIN) - Distribute requests in rotation, regardless of the load.
         Weights can be assigned to services to enforce weighted round robin distribution.'
-      - '* C(LEASTCONNECTION) (default) - Select the service with the fewest connections. '
+      - '* C(LEASTCONNECTION) (default) - Select the service with the fewest connections.'
       - '* C(LEASTRESPONSETIME) - Select the service with the lowest average response
-        time. '
+        time.'
       - '* C(LEASTBANDWIDTH) - Select the service currently handling the least traffic.'
       - '* C(LEASTPACKETS) - Select the service currently serving the lowest number
         of packets per second.'
@@ -357,7 +374,7 @@ options:
         a predetermined portion of the request, creates a hash of the portion, and
         then checks whether any previous requests had the same hash value. If it finds
         a match, it forwards the request to the service that served those previous
-        requests. Following are the hashing methods: '
+        requests. Following are the hashing methods:'
       - '* C(URLHASH) - Create a hash of the request URL (or part of the URL).'
       - '* C(DOMAINHASH) - Create a hash of the domain name in the request (or part
         of the domain name). The domain name is taken from either the URL or the Host
@@ -365,41 +382,41 @@ options:
         If the request does not contain a domain name, the load balancing method defaults
         to C(LEASTCONNECTION).'
       - '* C(DESTINATIONIPHASH) - Create a hash of the destination IP address in the
-        IP header. '
-      - '* C(SOURCEIPHASH) - Create a hash of the source IP address in the IP header.  '
+        IP header.'
+      - '* C(SOURCEIPHASH) - Create a hash of the source IP address in the IP header.'
       - '* C(TOKEN) - Extract a token from the request, create a hash of the token,
         and then select the service to which any previous requests with the same token
-        hash value were sent. '
+        hash value were sent.'
       - '* C(SRCIPDESTIPHASH) - Create a hash of the string obtained by concatenating
-        the source IP address and destination IP address in the IP header.  '
+        the source IP address and destination IP address in the IP header.'
       - '* C(SRCIPSRCPORTHASH) - Create a hash of the source IP address and source
-        port in the IP header.  '
+        port in the IP header.'
       - '* C(CALLIDHASH) - Create a hash of the SIP Call-ID header.'
       - '* C(USER_TOKEN) - Same as C(TOKEN) LB method but token needs to be provided
         from an extension.'
-    type: str
     default: LEASTCONNECTION
   lbprofilename:
+    type: str
     description:
       - Name of the LB profile which is associated to the vserver
-    type: str
   listenpolicy:
+    type: str
     description:
       - Expression identifying traffic accepted by the virtual server. Can be either
         an expression (for example, CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24) or the name
         of a named expression. In the above example, the virtual server accepts all
         requests whose destination IP address is in the 192.0.2.0/24 subnet.
-    type: str
     default: '"NONE"'
   listenpriority:
+    type: float
     description:
       - Integer specifying the priority of the listen policy. A higher number specifies
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    type: float
     default: 101
   m:
+    type: str
     choices:
       - IP
       - MAC
@@ -408,74 +425,74 @@ options:
     description:
       - 'Redirection mode for load balancing. Available settings function as follows:'
       - '* C(IP) - Before forwarding a request to a server, change the destination
-        C(IP) address to the server''s C(IP) address. '
+        C(IP) address to the server''s C(IP) address.'
       - '* C(MAC) - Before forwarding a request to a server, change the destination
         C(MAC) address to the server''s C(MAC) address.  The destination C(IP) address
         is not changed. C(MAC)-based redirection mode is used mostly in firewall load
-        balancing deployments. '
+        balancing deployments.'
       - '* C(IPTUNNEL) - Perform C(IP)-in-C(IP) encapsulation for client C(IP) packets.
         In the outer C(IP) headers, set the destination C(IP) address to the C(IP)
         address of the server and the source C(IP) address to the subnet C(IP) (SNIP).
         The client C(IP) packets are not modified. Applicable to both IPv4 and IPv6
-        packets. '
+        packets.'
       - '* C(TOS) - Encode the virtual server''s C(TOS) ID in the C(TOS) field of
-        the C(IP) header. '
+        the C(IP) header.'
       - You can use either the C(IPTUNNEL) or the C(TOS) option to implement Direct
         Server Return (DSR).
-    type: str
     default: IP
   macmoderetainvlan:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option is used to retain vlan information of incoming packet when macmode
         is enabled
-    type: str
     default: DISABLED
   maxautoscalemembers:
+    type: float
     description:
       - Maximum number of members expected to be present when vserver is used in Autoscale.
-    type: float
   minautoscalemembers:
+    type: float
     description:
       - Minimum number of members expected to be present when vserver is used in Autoscale.
-    type: float
   mssqlserverversion:
+    type: str
     choices:
-      - 70
-      - 2000
+      - '70'
+      - '2000'
       - 2000SP1
-      - 2005
-      - 2008
+      - '2005'
+      - '2008'
       - 2008R2
-      - 2012
-      - 2014
+      - '2012'
+      - '2014'
     description:
       - For a load balancing virtual server of type MSSQL, the Microsoft SQL Server
         version. Set this parameter if you expect some clients to run a version different
         from the version of the database. This setting provides compatibility between
         the client-side and server-side connections by ensuring that all communication
         conforms to the server's version.
-    type: str
     default: 2008R2
   mysqlcharacterset:
+    type: float
     description:
       - Character set that the virtual server advertises to clients.
-    type: float
   mysqlprotocolversion:
+    type: float
     description:
       - MySQL protocol version that the virtual server advertises to clients.
-    type: float
   mysqlservercapabilities:
+    type: float
     description:
       - Server capabilities that the virtual server advertises to clients.
-    type: float
   mysqlserverversion:
+    type: str
     description:
       - MySQL server version string that the virtual server advertises to clients.
-    type: str
   name:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -484,23 +501,23 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   netmask:
+    type: str
     description:
       - IPv4 subnet mask to apply to the destination IP address or source IP address
         when the load balancing method is DESTINATIONIPHASH or SOURCEIPHASH.
-    type: str
   netprofile:
+    type: str
     description:
       - Name of the network profile to associate with the virtual server. If you set
         this parameter, the virtual server uses only the IP addresses in the network
         profile as source IP addresses when initiating connections with servers.
-    type: str
   newname:
+    type: str
     description:
       - New name for the virtual server.
-    type: str
   newservicerequest:
+    type: float
     description:
       - Number of requests, or percentage of the load on existing services, by which
         to increase the load on a new service at each interval in slow-start mode.
@@ -509,57 +526,58 @@ options:
         will cause services currently in slow start to take the full traffic as determined
         by the LB method. Subsequently, any new services added will use the global
         RR factor.
-    type: float
   newservicerequestincrementinterval:
+    type: float
     description:
       - Interval, in seconds, between successive increments in the load on a new service
         or a service whose state has just changed from DOWN to UP. A value of 0 (zero)
         specifies manual slow start.
-    type: float
   newservicerequestunit:
+    type: str
     choices:
       - PER_SECOND
       - PERCENT
     description:
       - Units in which to increment load at each interval in slow-start mode.
-    type: str
     default: PER_SECOND
   oracleserverversion:
+    type: str
     choices:
       - 10G
       - 11G
     description:
       - Oracle server version
-    type: str
     default: 10G
   order:
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: float
   orderthreshold:
+    type: float
     description:
       - This option is used to to specify the threshold of minimum number of services
         to be UP in an order, for it to be considered in Lb decision.
-    type: float
   persistavpno:
+    type: list
     description:
-      - 'Persist AVP number for Diameter Persistency. '
+      - Persist AVP number for Diameter Persistency.
       - '            In case this AVP is not defined in Base RFC 3588 and it is nested
-        inside a Grouped AVP, '
+        inside a Grouped AVP,'
       - '            define a sequence of AVP numbers (max 3) in order of parent to
-        child. So say persist AVP number X '
+        child. So say persist AVP number X'
       - '            is nested inside AVP Y which is nested in Z, then define the
         list as  Z Y X'
-    type: list
+    elements: int
   persistencebackup:
+    type: str
     choices:
       - SOURCEIP
       - NONE
     description:
       - Backup persistence type for the virtual server. Becomes operational if the
         primary persistence mechanism fails.
-    type: str
   persistencetype:
+    type: str
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -581,7 +599,7 @@ options:
       - '* C(SOURCEIP) - Connections from the same client IP address belong to the
         same persistence session.'
       - '* C(COOKIEINSERT) - Connections that have the same HTTP Cookie, inserted
-        by a Set-Cookie directive from a server, belong to the same persistence session. '
+        by a Set-Cookie directive from a server, belong to the same persistence session.'
       - '* C(SSLSESSION) - Connections that have the same SSL Session ID belong to
         the same persistence session.'
       - '* C(CUSTOMSERVERID) - Connections with the same server ID form part of the
@@ -589,11 +607,11 @@ options:
         parameter for each service and configure the Rule parameter to identify the
         server ID in a request.'
       - '* C(RULE) - All connections that match a user defined rule belong to the
-        same persistence session. '
+        same persistence session.'
       - '* C(URLPASSIVE) - Requests that have the same server ID in the URL query
         belong to the same persistence session. The server ID is the hexadecimal representation
         of the IP address and port of the service to which the request must be forwarded.
-        This persistence type requires a rule to identify the server ID in the request. '
+        This persistence type requires a rule to identify the server ID in the request.'
       - '* C(DESTIP) - Connections to the same destination IP address belong to the
         same persistence session.'
       - '* C(SRCIPDESTIP) - Connections that have the same source IP address and destination
@@ -606,34 +624,34 @@ options:
         values belong to the same persistence session.'
       - '* C(USERSESSION) - Persistence session is created based on the persistence
         parameter value provided from an extension.'
-    type: str
   persistmask:
+    type: str
     description:
       - Persistence mask for IP based persistence types, for IPv4 virtual servers.
-    type: str
   port:
+    type: int
     description:
       - Port number for the virtual server.
-    type: int
   probeport:
+    type: int
     description:
       - Citrix ADC provides support for external health check of the vserver status.
         Select port for HTTP/TCP monitring
-    type: int
   probeprotocol:
+    type: str
     choices:
       - TCP
       - HTTP
     description:
       - Citrix ADC provides support for external health check of the vserver status.
         Select C(HTTP) or C(TCP) probes for healthcheck
-    type: str
   probesuccessresponsecode:
+    type: str
     description:
       - HTTP code to return in SUCCESS case.
-    type: str
     default: '"200 OK"'
   processlocal:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -642,55 +660,55 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
-    type: str
     default: DISABLED
   push:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Process traffic with the push virtual server that is bound to this load balancing
         virtual server.
-    type: str
     default: DISABLED
   pushlabel:
+    type: str
     description:
       - Expression for extracting a label from the server's response. Can be either
         an expression or the name of a named expression.
-    type: str
     default: '"none"'
   pushmulticlients:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
-    type: str
     default: 'NO'
   pushvserver:
+    type: str
     description:
       - Name of the load balancing virtual server, of type PUSH or SSL_PUSH, to which
         the server pushes updates received on the load balancing virtual server that
         you are configuring.
-    type: str
   quicbridgeprofilename:
+    type: str
     description:
       - Name of the QUIC Bridge profile whose settings are to be applied to the virtual
         server.
-    type: str
   quicprofilename:
+    type: str
     description:
       - Name of QUIC profile which will be attached to the VServer.
-    type: str
   range:
+    type: float
     description:
       - 'Number of IP addresses that the appliance must generate and assign to the
         virtual server. The virtual server then functions as a network virtual server,
         accepting traffic on any of the generated IP addresses. The IP addresses are
-        generated automatically, as follows: '
+        generated automatically, as follows:'
       - '* For a range of n, the last octet of the address specified by the IP Address
-        parameter increments n-1 times. '
+        parameter increments n-1 times.'
       - '* If the last octet exceeds 255, it rolls over to 0 and the third octet increments
         by 1.'
       - 'Note: The Range parameter assigns multiple IP addresses to one virtual server.
@@ -698,9 +716,9 @@ options:
         use brackets in the IP Address and Name parameters to specify the range. For
         example:'
       - add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80
-    type: float
     default: 1
   recursionavailable:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -709,43 +727,43 @@ options:
         have the RA bit turned on. Typically one would set this option to C(YES),
         when the vserver is load balancing a set of DNS servers thatsupport recursive
         queries.
-    type: str
     default: 'NO'
   redirectfromport:
+    type: int
     description:
       - Port number for the virtual server, from which we absorb the traffic for http
         redirect
-    type: int
   redirectportrewrite:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Rewrite the port and change the protocol to ensure successful HTTP redirects
         from services.
-    type: str
     default: DISABLED
   redirurl:
+    type: str
     description:
-      - 'URL to which to redirect traffic if the virtual server becomes unavailable. '
+      - URL to which to redirect traffic if the virtual server becomes unavailable.
       - WARNING! Make sure that the domain in the URL does not match the domain specified
         for a content switching policy. If it does, requests are continuously redirected
         to the unavailable virtual server.
-    type: str
   redirurlflags:
+    type: bool
     description:
       - The redirect URL to be unset.
-    type: bool
   resrule:
+    type: str
     description:
       - Expression specifying which part of a server's response to use for creating
         rule based persistence sessions (persistence type RULE). Can be either an
         expression or the name of a named expression.
       - 'Example:'
       - HTTP.RES.HEADER("setcookie").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE("server1").
-    type: str
     default: '"none"'
   retainconnectionsoncluster:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -753,9 +771,9 @@ options:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
-    type: str
     default: 'NO'
   rhistate:
+    type: str
     choices:
       - PASSIVE
       - ACTIVE
@@ -773,33 +791,33 @@ options:
       - '* If you set RHI STATE to C(ACTIVE) on some and C(PASSIVE) on others, the
         Citrix ADC advertises the route for the VIP address if at least one of the
         associated virtual servers, whose RHI STATE set to C(ACTIVE), is in UP state.'
-    type: str
     default: PASSIVE
   rtspnat:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use network address translation (NAT) for RTSP data connections.
-    type: str
     default: 'OFF'
   rule:
+    type: str
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - 'The following requirements apply only to the Citrix ADC CLI:'
       - '* If the expression includes one or more spaces, enclose the entire expression
         in double quotation marks.'
       - '* If the expression itself includes double quotation marks, escape the quotations
-        by using the \ character. '
+        by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
     default: '"none"'
   servicename:
+    type: str
     description:
       - Service to bind to the virtual server.
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -847,8 +865,8 @@ options:
       - HTTP_QUIC
     description:
       - Protocol used by the service (also called the service type).
-    type: str
   sessionless:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -857,9 +875,9 @@ options:
         Recommended for load balancing of intrusion detection system (IDS) servers
         and scenarios involving direct server return (DSR), where session information
         is unnecessary.
-    type: str
     default: DISABLED
   skippersistency:
+    type: str
     choices:
       - Bypass
       - ReLb
@@ -867,9 +885,9 @@ options:
     description:
       - This argument decides the behavior incase the service which is selected from
         an existing persistence session has reached threshold.
-    type: str
     default: None
   sobackupaction:
+    type: str
     choices:
       - DROP
       - ACCEPT
@@ -877,8 +895,8 @@ options:
     description:
       - Action to be performed if spillover is to take effect, but no backup chain
         to spillover is usable or exists
-    type: str
   somethod:
+    type: str
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -896,111 +914,103 @@ options:
         setting, because the threshold is implied by the Max Clients settings of bound
         services.'
       - '* C(BANDWIDTH) - Spillover occurs when the bandwidth consumed by the virtual
-        server''s incoming and outgoing traffic exceeds the threshold. '
+        server''s incoming and outgoing traffic exceeds the threshold.'
       - '* C(HEALTH) - Spillover occurs when the percentage of weights of the services
         that are UP drops below the threshold. For example, if services svc1, svc2,
         and svc3 are bound to a virtual server, with weights 1, 2, and 3, and the
         spillover threshold is 50%, spillover occurs if svc1 and svc3 or svc2 and
-        svc3 transition to DOWN. '
+        svc3 transition to DOWN.'
       - '* C(NONE) - Spillover does not occur.'
-    type: str
   sopersistence:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup virtual servers.
-    type: str
     default: DISABLED
   sopersistencetimeout:
+    type: float
     description:
       - Timeout for spillover persistence, in minutes.
-    type: float
     default: 2
   sothreshold:
+    type: float
     description:
       - Threshold at which spillover occurs. Specify an integer for the CONNECTION
         spillover method, a bandwidth value in kilobits per second for the BANDWIDTH
         method (do not enter the units), or a percentage for the HEALTH method (do
         not enter the percentage symbol).
-    type: float
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - State of the load balancing virtual server.
-    type: str
-    default: ENABLED
   tcpprobeport:
+    type: int
     description:
       - Port number for external TCP probe. NetScaler provides support for external
         TCP health check of the vserver status over the selected port. This option
         is only supported for vservers assigned with an IPAddress or ipset.
-    type: int
   tcpprofilename:
+    type: str
     description:
       - Name of the TCP profile whose settings are to be applied to the virtual server.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   timeout:
+    type: float
     description:
       - Time period for which a persistence session is in effect.
-    type: float
     default: 2
   toggleorder:
+    type: str
     choices:
       - ASCENDING
       - DESCENDING
     description:
       - Configure this option to toggle order preference
-    type: str
     default: ASCENDING
   tosid:
+    type: float
     description:
       - TOS ID of the virtual server. Applicable only when the load balancing redirection
         mode is set to TOS.
-    type: float
   trofspersistence:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - When value is C(ENABLED), Trofs persistence is honored. When value is C(DISABLED),
         Trofs persistence is not honored.
-    type: str
     default: ENABLED
   v6netmasklen:
+    type: float
     description:
       - Number of bits to consider in an IPv6 destination or source IP address, for
         creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH
         load balancing methods.
-    type: float
     default: 128
   v6persistmasklen:
+    type: float
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
-    type: float
     default: 128
   vipheader:
+    type: str
     description:
       - Name for the inserted header. The default name is vip-header.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the specified service.
-    type: float
   lbvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for lbvserver_analyticsprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1025,6 +1035,7 @@ options:
     description: Bindings for lbvserver_appflowpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1049,6 +1060,7 @@ options:
     description: Bindings for lbvserver_appfwpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1073,6 +1085,7 @@ options:
     description: Bindings for lbvserver_appqoepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1097,6 +1110,7 @@ options:
     description: Bindings for lbvserver_auditnslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1121,6 +1135,7 @@ options:
     description: Bindings for lbvserver_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1145,6 +1160,7 @@ options:
     description: Bindings for lbvserver_authorizationpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1169,6 +1185,7 @@ options:
     description: Bindings for lbvserver_botpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1193,6 +1210,7 @@ options:
     description: Bindings for lbvserver_cachepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1217,6 +1235,7 @@ options:
     description: Bindings for lbvserver_cmppolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1241,6 +1260,7 @@ options:
     description: Bindings for lbvserver_contentinspectionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1265,6 +1285,7 @@ options:
     description: Bindings for lbvserver_dnspolicy64_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1289,6 +1310,7 @@ options:
     description: Bindings for lbvserver_feopolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1313,6 +1335,7 @@ options:
     description: Bindings for lbvserver_lbpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1337,6 +1360,7 @@ options:
     description: Bindings for lbvserver_responderpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1361,6 +1385,7 @@ options:
     description: Bindings for lbvserver_rewritepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1385,6 +1410,7 @@ options:
     description: Bindings for lbvserver_service_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1409,6 +1435,7 @@ options:
     description: Bindings for lbvserver_servicegroup_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1433,6 +1460,7 @@ options:
     description: Bindings for lbvserver_spilloverpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1457,6 +1485,7 @@ options:
     description: Bindings for lbvserver_tmtrafficpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1481,6 +1510,7 @@ options:
     description: Bindings for lbvserver_transformpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1505,6 +1535,7 @@ options:
     description: Bindings for lbvserver_videooptimizationdetectionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1529,6 +1560,7 @@ options:
     description: Bindings for lbvserver_videooptimizationpacingpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -1553,96 +1585,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-
-- name: Simple LBVserver playbook
-  hosts: demo_netscalers
-
-  gather_facts: false
-
-  tasks:
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: s1
-        ipaddress: 10.222.74.181
-        servicetype: HTTP
-        port: 80
-
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: s2
-        ipaddress: 10.10.10.10
-        servicetype: HTTP
-        port: 80
-
-    - name: Sample Task | servicegroup
-      delegate_to: localhost
-      netscaler.adc.servicegroup:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        servicegroupname: sg1
-        servicetype: HTTP
-
-    - name: Sample Task | lbvserver with bindings
-      delegate_to: localhost
-      netscaler.adc.lbvserver:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: enabled
-
-        name: test_lbvser
-        servicetype: HTTP
-        ipv46: 10.10.10.11
-        port: 80
-        lbmethod: LEASTCONNECTION
-
-        lbvserver_servicegroup_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: sg1
-        lbvserver_service_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: s1
-              weight: 16
-            - name: test_lbvser
-              servicename: s2
-              weight: 20
-
 """
 
 RETURN = r"""

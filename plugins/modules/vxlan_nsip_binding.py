@@ -26,19 +26,31 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: float
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
-    type: float
   ipaddress:
+    type: str
     description:
       - The IP address assigned to the VXLAN.
-    type: str
   netmask:
+    type: str
     description:
       - Subnet mask for the network address defined for this VXLAN.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

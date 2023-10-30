@@ -26,17 +26,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_tps:
+    type: bool
     description:
       - TPS binding. For each type only binding can be configured. To  update the
         values of an existing binding, user has to first unbind that binding, and
         then needs to bind again with new values.
-    type: bool
   bot_tps_action:
+    type: list
     choices:
       - NONE
       - LOG
@@ -48,18 +61,18 @@ options:
       - One to more actions to be taken if bot is detected based on this TPS binding.
         Only C(LOG) action can be combined with C(DROP), C(RESET), C(REDIRECT), or
         MITIGIATION action.
-    type: list
     elements: str
     default: NONE
   bot_tps_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enabled or disabled TPS binding.
-    type: str
     default: 'ON'
   bot_tps_type:
+    type: str
     choices:
       - SOURCE_IP
       - GEOLOCATION
@@ -67,12 +80,12 @@ options:
       - Host
     description:
       - Type of TPS binding.
-    type: str
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -82,17 +95,16 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
   percentage:
+    type: float
     description:
       - Maximum percentage increase in the requests from (or to) a IP, Geolocation,
         URL or Host in 30 minutes interval.
-    type: float
   threshold:
+    type: float
     description:
       - Maximum number of requests that are allowed from (or to) a IP, Geolocation,
         URL or Host in 1 second time interval.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

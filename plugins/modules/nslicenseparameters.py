@@ -24,22 +24,44 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   alert1gracetimeout:
+    type: float
     description:
       - If ADC remains in grace for the configured hours then first grace alert will
         be raised
-    type: float
     default: 6
   alert2gracetimeout:
+    type: float
     description:
       - If ADC remains in grace for the configured hours then major grace alert will
         be raised
-    type: float
     default: 240
+  heartbeatinterval:
+    type: float
+    description:
+      - Heartbeat between ADC and Licenseserver is configurable and applicable in
+        case of pooled licensing
+    default: 280
+  inventoryrefreshinterval:
+    type: float
+    description:
+      - Inventory refresh interval between ADC and Licenseserver is configurable and
+        applicable in case of pooled licensing
+    default: 360
   licenseexpiryalerttime:
+    type: float
     description:
       - If ADC termed license is nearer to expiry then SNMP expiry alert will be raised
-    type: float
     default: 30
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

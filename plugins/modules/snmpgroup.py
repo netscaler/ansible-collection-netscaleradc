@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - 'Name for the SNMPv3 group. Can consist of 1 to 31 characters that include
         uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound
@@ -34,16 +47,16 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
-    type: str
   readviewname:
+    type: str
     description:
       - Name of the configured SNMPv3 view that you want to bind to this SNMPv3 group.
         An SNMPv3 user bound to this group can access the subtrees that are bound
         to this SNMPv3 view as type INCLUDED, but cannot access the ones that are
         type EXCLUDED. If the Citrix ADC has multiple SNMPv3 view entries with the
         same name, all such entries are associated with the SNMPv3 group.
-    type: str
   securitylevel:
+    type: str
     choices:
       - noAuthNoPriv
       - authNoPriv
@@ -58,24 +71,11 @@ options:
         when you assign an SNMPv3 user to the group. If you also specify encryption,
         you must assign both an authentication and an encryption algorithm for each
         group member.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | snmpgroup
-      delegate_to: localhost
-      netscaler.adc.snmpgroup:
-        state: present
-        name: v3_grp
-        securitylevel: noAuthNoPriv
-        readviewname: v3_grp_view
-
 """
 
 RETURN = r"""

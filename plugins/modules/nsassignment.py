@@ -24,26 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   Add:
+    type: str
     description:
       - Right hand side of the assignment. The expression is evaluated and added to
         the left hand variable.
-    type: str
   append:
+    type: str
     description:
       - Right hand side of the assignment. The expression is evaluated and appended
         to the left hand variable.
-    type: str
   clear:
+    type: bool
     description:
       - Clear the variable value. Deallocates a text value, and for a map, the text
         key.
-    type: bool
   comment:
+    type: str
     description:
       - Comment. Can be used to preserve information about this rewrite action.
-    type: str
   name:
+    type: str
     description:
       - Name for the assignment. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -53,8 +66,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my assignment" or my assignment).
-    type: str
   newname:
+    type: str
     description:
       - New name for the assignment.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -65,23 +78,22 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my assignment" or my assignment).
-    type: str
   set:
+    type: str
     description:
       - Right hand side of the assignment. The expression is evaluated and assigned
         to the left hand variable.
-    type: str
   sub:
+    type: str
     description:
       - Right hand side of the assignment. The expression is evaluated and subtracted
         from the left hand variable.
-    type: str
   variable:
+    type: str
     description:
       - Left hand side of the assigment, of the form $variable-name (for a singleton
         variabled) or $variable-name[key-expression], where key-expression is an expression
         that evaluates to a text string and provides the key to select a map entry
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

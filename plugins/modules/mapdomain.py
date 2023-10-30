@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   mapdmrname:
+    type: str
     description:
       - Default Mapping rule name.
-    type: str
   name:
+    type: str
     description:
       - 'Name for the MAP Domain. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -37,12 +50,12 @@ options:
         applies only to the Citrix ADC CLI: If the name includes one or more spaces,
         enclose the name in double or single quotation marks (for example, "add network
         MapDomain map1").'
-    type: str
   mapdomain_mapbmr_binding:
     type: dict
     description: Bindings for mapdomain_mapbmr_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

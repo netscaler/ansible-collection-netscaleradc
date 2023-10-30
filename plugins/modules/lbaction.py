@@ -24,22 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comment. Any type of information about this LB action.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the LB action. Must begin with a letter, number, or the underscore
+      - Name for the LB action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
         period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore
-        characters. '
+        characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my lb action" or 'my lb action').
-    type: str
   newname:
+    type: str
     description:
       - New name for the LB action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -49,8 +62,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my lb action" or my lb action').
-    type: str
   type:
+    type: str
     choices:
       - NOLBACTION
       - SELECTIONORDER
@@ -59,8 +72,8 @@ options:
       - '* C(NOLBACTION) - Does not consider LB action in making LB decision.'
       - '* C(SELECTIONORDER) - services bound to vserver with order specified in value
         parameter is considerd for lb/gslb decision.'
-    type: str
   value:
+    type: list
     description:
       - 'The selection order list used during lb/gslb decision. Preference of services
         during lb/gslb decision is as follows - services corresponding to first order
@@ -70,7 +83,7 @@ options:
         1, service-2 bound to a vserver with order 2 and  service-3 bound to a vserver
         with order 3. Then preference of selecting services in LB decision is as follows:
         service-2, service-1, service-3.'
-    type: list
+    elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

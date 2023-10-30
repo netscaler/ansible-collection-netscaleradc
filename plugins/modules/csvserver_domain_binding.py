@@ -26,36 +26,48 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   backupip:
+    type: str
     description:
       - '0'
-    type: str
   cookiedomain:
-    description:
-      - '0'
     type: str
-  cookietimeout:
     description:
       - '0'
+  cookietimeout:
     type: float
+    description:
+      - '0'
   domainname:
+    type: str
     description:
       - Domain name for which to change the time to live (TTL) and/or backup service
         IP address.
-    type: str
   name:
+    type: str
     description:
       - Name of the content switching virtual server to which the content switching
         policy applies.
-    type: str
   sitedomainttl:
+    type: float
     description:
       - '0'
-    type: float
   ttl:
+    type: float
     description:
       - '0'
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

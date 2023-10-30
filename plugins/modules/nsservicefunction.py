@@ -24,16 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ingressvlan:
+    type: float
     description:
       - VLAN ID on which the traffic from service function reaches Citrix ADC.
-    type: float
   servicefunctionname:
+    type: str
     description:
       - 'Name of the service function to be created. Leading character must be a number
         or letter. Other characters allowed, after the first character, are @ _ -
         . (period) : (colon) # and space ( ).'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

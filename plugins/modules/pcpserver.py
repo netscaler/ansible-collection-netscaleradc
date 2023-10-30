@@ -24,25 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipaddress:
+    type: str
     description:
       - The IP address of the PCP server.
-    type: str
   name:
+    type: str
     description:
       - 'Name for the PCP server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore CLI Users:
         If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my pcpServer" or my pcpServer).'
-    type: str
   pcpprofile:
+    type: str
     description:
       - pcp profile name
-    type: str
   port:
+    type: int
     description:
       - Port number for the PCP server.
-    type: int
     default: 5351
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

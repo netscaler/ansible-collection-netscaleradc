@@ -24,125 +24,134 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   acllogtime:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter to tune acl logging time
-    type: float
-    default: 5000
   allowclasseipv4:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv4 Class E address clients
-    type: str
     default: DISABLED
   dropdfflag:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping the IP DF flag.
-    type: str
     default: DISABLED
   dropipfragments:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping of IP fragments.
-    type: str
     default: DISABLED
   dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable Dynamic routing on partition. This configuration is not applicable
         to default partition
-    type: str
     default: DISABLED
   externalloopback:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable external loopback.
-    type: str
     default: DISABLED
   forwardicmpfragments:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable forwarding of ICMP fragments.
-    type: str
     default: DISABLED
   icmpgenratethreshold:
+    type: float
     description:
       - NS generated ICMP pkts per 10ms rate threshold
-    type: float
     default: 100
   implicitaclallow:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Do not apply ACLs for internal ports
-    type: str
     default: ENABLED
   ipv6dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv6 Dynamic routing
-    type: str
     default: DISABLED
   miproundrobin:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable round robin usage of mapped IPs.
-    type: str
     default: ENABLED
   overridernat:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - USNIP/USIP settings override RNAT settings for configured
       - '              service/virtual server traffic..'
-    type: str
     default: DISABLED
   srcnat:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Perform NAT if only the source is in the private network
-    type: str
     default: ENABLED
   tnlpmtuwoconn:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable learning PMTU of IP tunnel when ICMP error does not contain
         connection information.
-    type: str
     default: ENABLED
   usipserverstraypkt:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable detection of stray server side pkts in USIP mode.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

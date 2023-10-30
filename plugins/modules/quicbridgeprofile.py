@@ -24,24 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the QUIC profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@),equals sign (=), and hyphen (-)
         characters. Cannot be changed after the profile is created.
-    type: str
   routingalgorithm:
+    type: str
     choices:
       - PLAINTEXT
     description:
       - Routing algorithm to generate routable connection IDs.
-    type: str
     default: PLAINTEXT
   serveridlength:
+    type: float
     description:
       - Length of serverid to encode/decode server information
-    type: float
     default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

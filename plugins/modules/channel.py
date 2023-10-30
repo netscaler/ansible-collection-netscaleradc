@@ -24,28 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bandwidthhigh:
+    type: float
     description:
       - High threshold value for the bandwidth usage of the LA channel, in Mbps. The
         Citrix ADC generates an SNMP trap message when the bandwidth usage of the
         LA channel is greater than or equal to the specified high threshold value.
-    type: float
   bandwidthnormal:
+    type: float
     description:
       - Normal threshold value for the bandwidth usage of the LA channel, in Mbps.
         When the bandwidth usage of the LA channel returns to less than or equal to
         the specified normal threshold after exceeding the high threshold, the Citrix
         ADC generates an SNMP trap message to indicate that the bandwidth usage has
         returned to normal.
-    type: float
   conndistr:
+    type: str
     choices:
       - DISABLED
       - ENABLED
     description:
       - The 'connection' distribution mode for the LA channel.
-    type: str
   flowctl:
+    type: str
     choices:
       - 'OFF'
       - RX
@@ -57,9 +70,9 @@ options:
         frames. Flow control is a function as mentioned in clause 31 of the IEEE 802.3
         standard. Flow control allows congested ports to pause traffic from the peer
         device. Flow control is achieved by sending PAUSE frames.
-    type: str
     default: 'OFF'
   haheartbeat:
+    type: str
     choices:
       - 'OFF'
       - 'ON'
@@ -67,36 +80,36 @@ options:
       - In a High Availability (HA) configuration, configure the LA channel for sending
         heartbeats. LA channel that has HA Heartbeat disabled should not send the
         heartbeats.
-    type: str
     default: 'ON'
   hamonitor:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - In a High Availability (HA) configuration, monitor the LA channel for failure
         events. Failure of any LA channel that has HA MON enabled triggers HA failover.
-    type: str
     default: 'ON'
   id:
+    type: str
     description:
       - ID for the LA channel or cluster LA channel or LR channel to be created. Specify
         an LA channel in LA/x notation, where x can range from 1 to 8 or cluster LA
         channel in CLA/x notation or Link redundant channel in LR/x notation, where
         x can range from 1 to 4. Cannot be changed after the LA channel is created.
-    type: str
   ifalias:
+    type: str
     description:
       - Alias name for the LA channel. Used only to enhance readability. To perform
         any operations, you have to specify the LA channel ID.
-    type: str
     default: '" "'
   ifnum:
+    type: list
     description:
       - Interfaces to be bound to the LA channel of a Citrix ADC or to the LA channel
         of a cluster configuration.
-      - 'For an LA channel of a Citrix ADC, specify an interface in C/U notation (for
-        example, 1/3). '
+      - For an LA channel of a Citrix ADC, specify an interface in C/U notation (for
+        example, 1/3).
       - For an LA channel of a cluster configuration, specify an interface in N/C/U
         notation (for example, 2/1/3).
       - 'where C can take one of the following values:'
@@ -106,24 +119,24 @@ options:
       - U is a unique integer for representing an interface in a particular port group.
       - N is the ID of the node to which an interface belongs in a cluster configuration.
       - Use spaces to separate multiple entries.
-    type: list
     elements: str
   lamac:
+    type: str
     description:
-      - 'Specifies a MAC address for the LA channels configured in Citrix ADC virtual
-        appliances (VPX). This MAC address is persistent after each reboot. '
+      - Specifies a MAC address for the LA channels configured in Citrix ADC virtual
+        appliances (VPX). This MAC address is persistent after each reboot.
       - If you don't specify this parameter, a MAC address is generated randomly for
         each LA channel. These MAC addresses change after each reboot.
-    type: str
   linkredundancy:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Link Redundancy for Cluster LAG.
-    type: str
     default: 'OFF'
   lrminthroughput:
+    type: float
     description:
       - Specifies the minimum throughput threshold (in Mbps) to be met by the active
         subchannel. Setting this parameter automatically divides an LACP channel into
@@ -131,23 +144,23 @@ options:
         mode.  When the maximum supported throughput of the active channel falls below
         the lrMinThroughput value, link failover occurs and a standby subchannel becomes
         active.
-    type: float
   macdistr:
+    type: str
     choices:
       - SOURCE
       - DESTINATION
       - BOTH
     description:
       - The  'MAC' distribution mode for the LA channel.
-    type: str
   mode:
+    type: str
     choices:
       - MANUAL
       - AUTO
     description:
       - The initital mode for the LA channel.
-    type: str
   mtu:
+    type: float
     description:
       - The Maximum Transmission Unit (MTU) is the largest packet size, measured in
         bytes excluding 14 bytes ethernet header and 4 bytes CRC, that can be transmitted
@@ -170,35 +183,27 @@ options:
         On certain Virtualized / Cloud Platforms, the maximum  possible MTU is restricted
         to a lesser value, Similar calculation can be applied, Maximum Data Plane
         MTU in Cluster = (Maximum possible MTU - 78).
-    type: float
     default: 1500
   speed:
+    type: str
     choices:
       - AUTO
-      - 10
-      - 100
-      - 1000
-      - 10000
-      - 25000
-      - 40000
-      - 50000
-      - 100000
+      - '10'
+      - '100'
+      - '1000'
+      - '10000'
+      - '25000'
+      - '40000'
+      - '50000'
+      - '100000'
     description:
       - Ethernet speed of the channel, in Mbps. If the speed of any bound interface
         is greater than or equal to the value set for this parameter, the state of
         the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose
         state is INACTIVE do not process any traffic.
-    type: str
     default: AUTO
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable the LA channel.
-    type: str
-    default: ENABLED
   tagall:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -206,27 +211,27 @@ options:
       - Adds a four-byte 802.1q tag to every packet sent on this channel.  The C(ON)
         setting applies tags for all VLANs that are bound to this channel. C(OFF)
         applies the tag for all VLANs other than the native VLAN.
-    type: str
     default: 'OFF'
   throughput:
+    type: float
     description:
       - Low threshold value for the throughput of the LA channel, in Mbps. In an high
         availability (HA) configuration, failover is triggered when the LA channel
         has HA MON enabled and the throughput is below the specified threshold.
-    type: float
   trunk:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - This is deprecated by tagall
-    type: str
     default: 'OFF'
   channel_interface_binding:
     type: dict
     description: Bindings for channel_interface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -251,20 +256,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | channel
-      delegate_to: localhost
-      netscaler.adc.channel:
-        state: present
-        id: LA/1
-        throughput: '0'
-        lrminthroughput: '0'
-        bandwidthhigh: '0'
-        bandwidthnormal: '0'
-
 """
 
 RETURN = r"""

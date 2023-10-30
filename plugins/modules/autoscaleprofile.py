@@ -24,28 +24,40 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   apikey:
+    type: str
     description:
       - api key for authentication with service
-    type: str
   name:
+    type: str
     description:
       - AutoScale profile name.
-    type: str
   sharedsecret:
+    type: str
     description:
       - shared secret for authentication with service
-    type: str
   type:
+    type: str
     choices:
       - CLOUDSTACK
     description:
       - The type of profile.
-    type: str
   url:
+    type: str
     description:
       - URL providing the service
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,32 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cacertfile:
+    type: str
     description:
       - CA certificate file name which will be used to verify the peer's certificate.
         The certificate should be imported using "import ssl certfile" CLI command
         or equivalent in API or GUI. If certificate name is not configured, then default
         root CA certificates are used for peer's certificate verification.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the HTML page object.
-    type: str
   name:
+    type: str
     description:
       - Name to assign to the HTML page object on the Citrix ADC.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrites the existing file
-    type: bool
   src:
+    type: str
     description:
       - Local path or URL (protocol, host, path, and file name) for the file from
         which to retrieve the imported HTML page.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

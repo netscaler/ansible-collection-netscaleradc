@@ -24,15 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   as_scan_location_sql:
+    type: str
     choices:
       - FORMFIELD
       - HEADER
       - COOKIE
     description:
       - Location of sql injection exception - form field, header or cookie.
-    type: str
   as_scan_location_xss:
+    type: str
     choices:
       - FORMFIELD
       - HEADER
@@ -41,90 +51,90 @@ options:
     description:
       - Location of cross-site scripting exception - form field, header, cookie or
         url.
-    type: str
   as_value_expr_sql:
+    type: str
     description:
       - SQL value expressions consistituting expressions for Keyword, SpecialString
         or Wildchar.
-    type: str
   as_value_expr_xss:
+    type: str
     description:
       - XSS value expressions consistituting expressions for Tag, Attribute or Pattern.
-    type: str
   as_value_type_sql:
+    type: str
     choices:
       - Keyword
       - SpecialString
       - Wildchar
     description:
       - SQL value type. C(Keyword), C(SpecialString) or C(Wildchar)
-    type: str
   as_value_type_xss:
+    type: str
     choices:
       - Tag
       - Attribute
       - Pattern
     description:
       - XSS value type. (C(Tag) | C(Attribute) | C(Pattern))
-    type: str
   contenttype:
+    type: str
     description:
       - Content Type Name.
-    type: str
   cookieconsistency:
+    type: str
     description:
       - Cookie Name.
-    type: str
   creditcardnumber:
+    type: str
     description:
       - The object expression that is to be excluded from safe commerce check.
-    type: str
   creditcardnumberurl:
+    type: str
     description:
       - The url for which the list of credit card numbers are needed to be bypassed
         from inspection
-    type: str
   crosssitescripting:
+    type: str
     description:
       - Cross-site scripting.
-    type: str
   csrfformoriginurl:
+    type: str
     description:
       - CSRF Form Origin URL.
-    type: str
   csrftag:
+    type: str
     description:
       - CSRF Form Action URL
-    type: str
   fieldconsistency:
+    type: str
     description:
       - Form field name.
-    type: str
   fieldformat:
+    type: str
     description:
       - Field format name.
-    type: str
   formactionurl_ff:
+    type: str
     description:
       - Form action URL.
-    type: str
   formactionurl_ffc:
+    type: str
     description:
       - Form action URL.
-    type: str
   formactionurl_sql:
+    type: str
     description:
       - Form action URL.
-    type: str
   formactionurl_xss:
+    type: str
     description:
       - Form action URL.
-    type: str
   profilename:
+    type: str
     description:
       - Name of the profile.
-    type: str
   securitycheck:
+    type: str
     choices:
       - startURL
       - cookieConsistency
@@ -141,28 +151,28 @@ options:
       - ContentType
     description:
       - Name of the security check.
-    type: str
   sqlinjection:
+    type: str
     description:
       - Form field name.
-    type: str
   starturl:
+    type: str
     description:
       - Start URL configuration.
-    type: str
   target:
+    type: str
     description:
       - Target filename for data to be exported.
-    type: str
   totalxmlrequests:
+    type: bool
     description:
       - Total XML requests.
-    type: bool
   xmlattachmentcheck:
+    type: str
     description:
       - XML Attachment Content-Type.
-    type: str
   xmldoscheck:
+    type: str
     description:
       - XML Denial of Service check, one of
       - "\tMaxAttributes"
@@ -184,11 +194,10 @@ options:
       - "\tMaxNamespaceUriLength"
       - "\tMaxSOAPArraySize"
       - "\tMaxSOAPArrayRank"
-    type: str
   xmlwsicheck:
+    type: str
     description:
       - Web Services Interoperability Rule ID.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

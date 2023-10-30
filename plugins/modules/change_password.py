@@ -24,6 +24,16 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   username:
     description:
       - Username of the user whose password to be changed
@@ -41,8 +51,8 @@ options:
     required: true
   first_boot:
     description:
-      - 'true' if the NetScaler ADC node is booting for the first time after installation.
-      - 'false' if the NetScaler ADC node is already configured and running.
+      - C(true) if the NetScaler ADC node is booting for the first time after installation.
+      - C(false) if the NetScaler ADC node is already configured and running.
     type: bool
     required: true
 extends_documentation_fragment: netscaler.adc.netscaler_adc

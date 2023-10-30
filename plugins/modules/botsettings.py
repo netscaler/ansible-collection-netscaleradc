@@ -24,27 +24,40 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   defaultnonintrusiveprofile:
+    type: str
     choices:
       - BOT_BYPASS
       - BOT_STATS
       - BOT_LOG
     description:
-      - Profile to use when the feature is not enabled but feature is licensed.
-    type: str
+      - Profile to use when the feature is not enabled but feature is licensed. NonIntrusive
+        checks will be disabled and IPRep cronjob(24 Hours) will be removed if this
+        is set to C(BOT_BYPASS).
     default: BOT_STATS
   defaultprofile:
+    type: str
     description:
       - Profile to use when a connection does not match any policy. Default setting
         is " ", which sends unmatched connections back to the Citrix ADC without attempting
         to filter them further.
-    type: str
   dfprequestlimit:
+    type: float
     description:
       - Number of requests to allow without bot session cookie if device fingerprint
         is enabled
-    type: float
   javascriptname:
+    type: str
     description:
       - Name of the JavaScript that the Bot Management feature  uses in response.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -53,17 +66,25 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
+  proxypassword:
     type: str
+    description:
+      - Password with which user logs on.
   proxyport:
+    type: int
     description:
       - Proxy Server Port to get updated signatures from AWS.
-    type: int
     default: 8080
   proxyserver:
+    type: str
     description:
       - Proxy Server IP to get updated signatures from AWS.
+  proxyusername:
     type: str
+    description:
+      - Proxy Username
   sessioncookiename:
+    type: str
     description:
       - Name of the SessionCookie that the Bot Management feature uses for tracking.
       - Must begin with a letter or number, and can consist of from 1 to 31 letters,
@@ -72,42 +93,41 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cookie name" or 'my cookie name').
-    type: str
   sessiontimeout:
+    type: float
     description:
       - Timeout, in seconds, after which a user session is terminated.
-    type: float
   signatureautoupdate:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable bot auto update signatures
-    type: str
     default: 'OFF'
   signatureurl:
+    type: str
     description:
       - URL to download the bot signature mapping file from server
-    type: str
     default: https://nsbotsignatures.s3.amazonaws.com/BotSignatureMapping.json
   trapurlautogenerate:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
-    type: str
     default: 'OFF'
   trapurlinterval:
+    type: float
     description:
       - Time in seconds after which trap URL is updated.
-    type: float
     default: 3600
   trapurllength:
+    type: float
     description:
       - Length of the auto-generated trap URL.
-    type: float
     default: 32
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

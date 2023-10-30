@@ -24,57 +24,68 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   accounting:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse accounting messages.
-    type: str
   authentication:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
-    type: str
     default: 'ON'
   authservretry:
+    type: float
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
-    type: float
     default: 3
   authtimeout:
+    type: float
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         RADIUS server.
-    type: float
     default: 3
   callingstationid:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send Calling-Station-ID of the client to the RADIUS server. IP Address of
         the client is sent as its Calling-Station-ID.
-    type: str
     default: DISABLED
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   ipattributetype:
+    type: float
     description:
       - IP attribute type in the RADIUS response.
-    type: float
   ipvendorid:
-    description:
-      - 'Vendor ID attribute in the RADIUS response. '
-      - If the attribute is not vendor-encoded, it is set to 0.
     type: float
+    description:
+      - Vendor ID attribute in the RADIUS response.
+      - If the attribute is not vendor-encoded, it is set to 0.
   passencoding:
+    type: str
     choices:
       - pap
       - chap
@@ -83,69 +94,68 @@ options:
     description:
       - Enable password encoding in RADIUS packets that the Citrix ADC sends to the
         RADIUS server.
-    type: str
     default: mschapv2
   pwdattributetype:
+    type: float
     description:
       - Attribute type of the Vendor ID in the RADIUS response.
-    type: float
   pwdvendorid:
+    type: float
     description:
       - Vendor ID of the password in the RADIUS response. Used to extract the user
         password.
-    type: float
   radattributetype:
+    type: float
     description:
       - Attribute type for RADIUS group extraction.
-    type: float
   radgroupseparator:
+    type: str
     description:
       - Group separator string that delimits group names within a RADIUS attribute
         for RADIUS group extraction.
-    type: str
   radgroupsprefix:
+    type: str
     description:
       - Prefix string that precedes group names within a RADIUS attribute for RADIUS
         group extraction.
-    type: str
   radkey:
-    description:
-      - 'The key shared between the RADIUS server and clients. '
-      - Required for allowing the Citrix ADC to communicate with the RADIUS server.
     type: str
+    description:
+      - The key shared between the RADIUS server and clients.
+      - Required for allowing the Citrix ADC to communicate with the RADIUS server.
   radnasid:
+    type: str
     description:
       - Send the Network Access Server ID (NASID) for your Citrix ADC to the RADIUS
         server as the nasid part of the Radius protocol.
-    type: str
   radnasip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send the Citrix ADC IP (NSIP) address to the RADIUS server as the Network
         Access Server IP (NASIP) part of the Radius protocol.
-    type: str
   radvendorid:
+    type: float
     description:
       - Vendor ID for RADIUS group extraction.
-    type: float
   serverip:
+    type: str
     description:
       - IP address of your RADIUS server.
-    type: str
   serverport:
+    type: int
     description:
       - Port number on which the RADIUS server listens for connections.
-    type: int
     default: 1812
   tunnelendpointclientip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send Tunnel Endpoint Client IP address to the RADIUS server.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

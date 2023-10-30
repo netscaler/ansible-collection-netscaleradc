@@ -24,42 +24,52 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   edtpmtuddf:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
-    type: str
-    default: DISABLED
+    default: ENABLED
   edtpmtuddftimeout:
+    type: float
     description:
       - DF enforcement timeout for EDTPMTUDDF
-    type: float
     default: 100
   enablesronhafailover:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
-    type: str
     default: 'NO'
   hdxinsightnonnsap:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
-    type: str
     default: 'YES'
   l7latencyfrequency:
+    type: float
     description:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.
         The default value is 0
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

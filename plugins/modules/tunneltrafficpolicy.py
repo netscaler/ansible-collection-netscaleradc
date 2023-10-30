@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Name of the built-in compression action to associate with the policy.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this policy.
-    type: str
   logaction:
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the tunnel traffic policy.
       - Must begin with an ASCII alphanumeric or underscore (_) character, and must
@@ -46,8 +59,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy)'.
-    type: str
   newname:
+    type: str
     description:
       - New name for the tunnel traffic policy. Must begin with an ASCII alphabetic
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -58,8 +71,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my tunnel policy" or 'my tunnel policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression, against which traffic is evaluated.
       - 'The following requirements apply only to the Citrix ADC CLI:'
@@ -69,7 +82,6 @@ options:
         the quotations by using the \ character. '
       - '*  Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,19 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   clip:
+    type: str
     description:
       - Cluster IP address to which to add the node.
-    type: str
   password:
+    type: str
     description:
       - Password for the nsroot account of the configuration coordinator (CCO).
-    type: str
   clusternode_routemonitor_binding:
     type: dict
     description: Bindings for clusternode_routemonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -61,6 +69,7 @@ options:
     description: Bindings for clusternodegroup_authenticationvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -85,6 +94,7 @@ options:
     description: Bindings for clusternodegroup_clusternode_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -109,6 +119,7 @@ options:
     description: Bindings for clusternodegroup_crvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -133,6 +144,7 @@ options:
     description: Bindings for clusternodegroup_csvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -157,6 +169,7 @@ options:
     description: Bindings for clusternodegroup_gslbsite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -181,6 +194,7 @@ options:
     description: Bindings for clusternodegroup_gslbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -205,6 +219,7 @@ options:
     description: Bindings for clusternodegroup_lbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -229,6 +244,7 @@ options:
     description: Bindings for clusternodegroup_nslimitidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -253,6 +269,7 @@ options:
     description: Bindings for clusternodegroup_service_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -277,6 +294,7 @@ options:
     description: Bindings for clusternodegroup_streamidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -301,6 +319,7 @@ options:
     description: Bindings for clusternodegroup_vpnvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

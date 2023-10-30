@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   groupnamefield:
+    type: str
     description:
       - Client-cert field from which the group is extracted.  Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
       - 'Format: <field>:<subfield>'
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the client cert authentication server profile (action). '
+      - Name for the client cert authentication server profile (action).
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -47,23 +60,22 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
-    type: str
   twofactor:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
-      - 'Enables or disables two-factor authentication. '
+      - Enables or disables two-factor authentication.
       - Two factor authentication is client cert authentication followed by password
         authentication.
-    type: str
     default: 'OFF'
   usernamefield:
+    type: str
     description:
       - Client-cert field from which the username is extracted. Must be set to either
         ""Subject"" and ""Issuer"" (include both sets of double quotation marks).
       - 'Format: <field>:<subfield>.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

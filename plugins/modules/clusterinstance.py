@@ -24,89 +24,106 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   backplanebasedview:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - View based on heartbeat only on bkplane interface
-    type: str
     default: DISABLED
   clid:
+    type: float
     description:
       - Unique number that identifies the cluster.
-    type: float
   clusterproxyarp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This field controls the proxy arp feature in cluster. By default the flag
         is enabled.
-    type: str
     default: ENABLED
   deadinterval:
+    type: float
     description:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
         are assumed to be down.If the value is less than 3 sec, set the helloInterval
         parameter to 200 msec
-    type: float
     default: 3
   dfdretainl2params:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - flag to add ext l2 header during steering. By default the flag is disabled.
-    type: str
     default: DISABLED
   hellointerval:
+    type: float
     description:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
         to check the health status.Set the value to 200 msec, if the deadInterval
         parameter is less than 3 sec
-    type: float
     default: 200
   inc:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - This option is required if the cluster nodes reside on different networks.
-    type: str
     default: DISABLED
   nodegroup:
+    type: str
     description:
       - The node group in a Cluster system used for transition from L2 to L3.
-    type: str
   preemption:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes
         available.
-    type: str
     default: DISABLED
   processlocal:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - By turning on this option packets destined to a service in a cluster will
         not under go any steering.
-    type: str
     default: DISABLED
   quorumtype:
+    type: str
     choices:
       - MAJORITY
       - NONE
     description:
       - Quorum Configuration Choices  - "Majority" (recommended) requires majority
         of nodes to be online for the cluster to be UP. "None" relaxes this requirement.
-    type: str
     default: MAJORITY
   retainconnectionsoncluster:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -114,9 +131,9 @@ options:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
-    type: str
     default: 'NO'
   syncstatusstrictmode:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -124,7 +141,6 @@ options:
       - strict mode for sync status of cluster. Depending on the the mode if there
         are any errors while applying config, sync status is displayed accordingly.
         By default the flag is disabled.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   builtin:
+    type: list
     choices:
       - MODIFIABLE
       - DELETABLE
@@ -34,9 +47,9 @@ options:
       - PARTITION_ALL
     description:
       - Indicates that a variable is a built-in (SYSTEM INTERNAL) type.
-    type: list
     elements: str
   feature:
+    type: str
     choices:
       - WL
       - WebLogging
@@ -111,8 +124,8 @@ options:
       - APIGateway
     description:
       - The feature to be checked while applying this config
-    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -120,29 +133,22 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   policyname:
+    type: str
     description:
       - Policy name.
-    type: str
   priority:
+    type: float
     description:
       - Priority.
-    type: float
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Current state of the binding. If the binding is enabled, the policy is active.
-    type: str
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -150,7 +156,6 @@ options:
       - RES_DEFAULT
     description:
       - Bind point to which the policy is bound.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

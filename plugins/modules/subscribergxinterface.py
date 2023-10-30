@@ -24,13 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cerrequesttimeout:
+    type: float
     description:
       - q!Healthcheck request timeout, in seconds, after which the Citrix ADC considers
         that no CCA packet received to the initiated CCR. After this time Citrix ADC
         should send again CCR to PCRF server. !
-    type: float
   healthcheck:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -38,16 +49,16 @@ options:
       - q!Set this setting to yes if Citrix ADC should send DWR packets to PCRF server.
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
-    type: str
     default: 'NO'
   healthcheckttl:
+    type: float
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
         the timer. !
-    type: float
     default: 30
   holdonsubscriberabsence:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -58,16 +69,16 @@ options:
         PCRF, default subscriber profile will be applied to this subscriber if configured.
         If default subscriber profile is also not configured an undef would be raised
         to expressions which use Subscriber attributes.
-    type: str
     default: 'YES'
   idlettl:
+    type: float
     description:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
-    type: float
     default: 900
   negativettl:
+    type: float
     description:
       - q!Negative TTL, in seconds, after which the Gx CCR-I request will be resent
         for sessions that have not been resolved by PCRF due to server being down
@@ -80,9 +91,9 @@ options:
         from Radius as well if Radius is configued.
       - Zero value disables the Negative Sessions. And Citrix ADC does not install
         Negative sessions even if subscriber session could not be fetched. !
-    type: float
     default: 600
   negativettllimitedsuccess:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -90,34 +101,34 @@ options:
       - Set this to C(YES) if Citrix ADC should create negative session for Result-Code
         DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to C(NO), regular
         session is created.
-    type: str
     default: 'NO'
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   pcrfrealm:
+    type: str
     description:
       - PCRF realm is of type DiameterIdentity and contains the realm of PCRF to which
         the message is to be routed. This is the realm used in Destination-Realm AVP
         by Citrix ADC Gx client (as a Diameter node).
-    type: str
   purgesdbongxfailure:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Set this setting to C(YES) if needed to purge Subscriber Database in case
         of Gx failure. By default set to C(NO).
-    type: str
     default: 'NO'
   requestretryattempts:
+    type: float
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
-    type: float
     default: 3
   requesttimeout:
+    type: float
     description:
       - q!Time, in seconds, within which the Gx CCR request must complete. If the
         request does not complete within this time, the request is retransmitted for
@@ -126,55 +137,42 @@ options:
         profile is also not configured an undef would be raised to expressions which
         use Subscriber attributes.
       - Zero disables the timeout. !
-    type: float
     default: 10
   revalidationtimeout:
+    type: float
     description:
       - q!Revalidation Timeout, in seconds, after which the Gx CCR-U request will
         be sent after any PCRF activity on a session. Any RAR or CCA message resets
         the timer.
       - Zero value disables the idle timeout. !
-    type: float
   service:
+    type: str
     description:
       - Name of DIAMETER/SSL_DIAMETER service corresponding to PCRF to which the Gx
         connection is established. The service type of the service must be DIAMETER/SSL_DIAMETER.
         Mutually exclusive with vserver parameter. Therefore, you cannot set both
         Service and the Virtual Server in the Gx Interface.
-    type: str
   servicepathavp:
+    type: list
     description:
       - The AVP code in which PCRF sends service path applicable for subscriber.
-    type: list
+    elements: int
   servicepathvendorid:
+    type: float
     description:
       - The vendorid of the AVP in which PCRF sends service path for subscriber.
-    type: float
   vserver:
+    type: str
     description:
       - Name of the load balancing, or content switching vserver to which the Gx connections
         are established. The service type of the virtual server must be DIAMETER/SSL_DIAMETER.
         Mutually exclusive with the service parameter. Therefore, you cannot set both
         service and the Virtual Server in the Gx Interface.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | subscribergxInterface
-      delegate_to: localhost
-      netscaler.adc.subscribergxinterface:
-        state: present
-        pcrfrealm: pcrf.com
-        servicepathavp:
-          - 262099
-        servicepathvendorid: 3845
-
 """
 
 RETURN = r"""

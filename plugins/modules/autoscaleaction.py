@@ -24,39 +24,51 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - ActionScale action name.
-    type: str
   parameters:
+    type: str
     description:
       - Parameters to use in the action
-    type: str
   profilename:
+    type: str
     description:
       - AutoScale profile name.
-    type: str
   quiettime:
+    type: float
     description:
       - Time in seconds no other policy is evaluated or action is taken
-    type: float
     default: 300
   type:
+    type: str
     choices:
       - SCALE_UP
       - SCALE_DOWN
     description:
       - The type of action.
-    type: str
   vmdestroygraceperiod:
+    type: float
     description:
       - Time in minutes a VM is kept in inactive state before destroying
-    type: float
     default: 10
   vserver:
+    type: str
     description:
       - Name of the vserver on which autoscale action has to be taken.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

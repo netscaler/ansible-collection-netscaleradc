@@ -24,15 +24,23 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   challengepassword:
+    type: str
     description:
       - Pass phrase, embedded in the certificate signing request that is shared only
         between the client or server requesting the certificate and the SSL certificate
         issuer (typically the certificate authority). This pass phrase can be used
         to authenticate a client or server that is requesting a certificate from the
         certificate authority.
-    type: str
   commonname:
+    type: str
     description:
       - Fully qualified domain name for the company or web site. The common name must
         match the name used by DNS servers to do a DNS lookup of your server. Most
@@ -43,53 +51,53 @@ options:
       - Do not use wildcard characters, such as asterisk (*) or question mark (?),
         and do not use an IP address as the common name. The common name must not
         contain the protocol specifier <http://> or <https://>.
-    type: str
   companyname:
+    type: str
     description:
       - Additional name for the company or web site.
-    type: str
   countryname:
+    type: str
     description:
       - Two letter ISO code for your country. For example, US for United States.
-    type: str
   digestmethod:
+    type: str
     choices:
       - SHA1
       - SHA256
     description:
       - Digest algorithm used in creating CSR
-    type: str
   emailaddress:
+    type: str
     description:
       - Contact person's e-mail address. This address is publically displayed as part
         of the certificate. Provide an e-mail address that is monitored by an administrator
         who can be contacted about the certificate.
-    type: str
   fipskeyname:
+    type: str
     description:
       - Name of the FIPS key used to create the certificate signing request. FIPS
         keys are created inside the Hardware Security Module of the FIPS card.
-    type: str
   keyfile:
+    type: str
     description:
       - Name of and, optionally, path to the private key used to create the certificate
         signing request, which then becomes part of the certificate-key pair. The
         private key can be either an RSA or a DSA key. The key must be present in
         the appliance's local storage. /nsconfig/ssl is the default path.
-    type: str
   keyform:
+    type: str
     choices:
       - DER
       - PEM
     description:
       - Format in which the key is stored on the appliance.
-    type: str
     default: PEM
   localityname:
+    type: str
     description:
       - Name of the city or town in which your organization's head office is located.
-    type: str
   organizationname:
+    type: str
     description:
       - Name of the organization that will use this certificate. The organization
         name (corporation, limited partnership, university, or government agency)
@@ -100,26 +108,26 @@ options:
       - Angle brackets (< >) tilde (~), exclamation mark, at (@), pound (#), zero
         (0), caret (^), asterisk (*), forward slash (/), square brackets ([ ]), question
         mark (?).
-    type: str
   organizationunitname:
+    type: str
     description:
       - Name of the division or section in the organization that will use the certificate.
-    type: str
   pempassphrase:
+    type: str
     description:
       - '0'
-    type: str
   reqfile:
+    type: str
     description:
       - Name for and, optionally, path to the certificate signing request (CSR). /nsconfig/ssl/
         is the default path.
-    type: str
   statename:
+    type: str
     description:
       - Full name of the state or province where your organization is located.
       - Do not abbreviate.
-    type: str
   subjectaltname:
+    type: str
     description:
       - 'Subject Alternative Name (SAN) is an extension to X.509 that allows various
         values to be associated with a security certificate using a subjectAltName
@@ -131,7 +139,6 @@ options:
         within the Subject field of the main certificate.)'
       - '      5. Directory names (alternative Distinguished Names to that given in
         the Subject)'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

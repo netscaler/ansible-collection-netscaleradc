@@ -24,41 +24,53 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   httphdrlogprofilename:
+    type: str
     description:
       - The name of the HTTP header logging Profile.
-    type: str
   loghost:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Host information is logged if option is enabled.
-    type: str
     default: ENABLED
   logmethod:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - HTTP method information is logged if option is enabled.
-    type: str
     default: ENABLED
   logurl:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - URL information is logged if option is enabled.
-    type: str
     default: ENABLED
   logversion:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Version information is logged if option is enabled.
-    type: str
     default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

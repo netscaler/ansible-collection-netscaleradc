@@ -24,9 +24,22 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
-  name:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
     description:
-      - 'Name for the negotiate authentication policy. '
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
+  name:
+    type: str
+    description:
+      - Name for the negotiate authentication policy.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -36,16 +49,15 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
-    type: str
   reqaction:
+    type: str
     description:
       - Name of the negotiate action to perform if the policy matches.
-    type: str
   rule:
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to determine whether to attempt to authenticate the user with the AD KCD server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

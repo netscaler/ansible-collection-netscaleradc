@@ -26,41 +26,53 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server or a user-defined policy label.
         After the invoked policies are evaluated, the flow returns to the policy with
         the next higher priority number in the original label.
-    type: bool
   invoke_labelname:
+    type: str
     description:
       - Name of the label to invoke if the current policy evaluates to TRUE.
-    type: str
   labelname:
+    type: str
     description:
       - Name of the HTTP compression policy label to which to bind the policy.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
     description:
       - Type of policy label invocation.
-    type: str
   policyname:
+    type: str
     description:
       - The compression policy name.
-    type: str
   priority:
+    type: float
     description:
       - Specifies the priority of the policy.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

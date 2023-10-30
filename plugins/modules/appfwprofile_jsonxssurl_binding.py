@@ -26,85 +26,90 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   as_value_expr_json_xss:
+    type: str
     description:
       - JSON_XSS key value expressions consistituting expressions for Keyword and
         SpecialString
-    type: str
   as_value_type_json_xss:
+    type: str
     choices:
       - Tag
       - Attribute
       - Pattern
     description:
       - JSON Command key value type. (Keyword | SpecialString)
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   iskeyregex_json_xss:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is a regular expression?
-    type: str
   isvalueregex_json_xss:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is a regular expression?
-    type: str
   jsonxssurl:
+    type: str
     description:
       - A regular expression that designates a URL on the Json XSS URL list for which
         XSS violations are relaxed.
       - Enclose URLs in double quotes to ensure preservation of any embedded spaces
         or non-alphanumeric characters.
-    type: str
   keyname_json_xss:
+    type: str
     description:
       - JSON XSS Key name
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

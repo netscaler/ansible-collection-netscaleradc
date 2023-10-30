@@ -24,35 +24,45 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   ipaddress:
+    type: str
     description:
       - IP address of the node. This has to be in the same subnet as the NSIP address.
-    type: str
   password:
+    type: str
     description:
       - Password to be used in authentication with the peer system node.
-    type: str
   secure:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - State of the channel when talking to the node.
-    type: str
     default: 'YES'
   srcip:
+    type: str
     description:
       - Source IP address to be used to communicate with the peer system node. The
         default value is 0, which means that the appliance uses the NSIP address as
         the source IP address.
-    type: str
   validatecert:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - validate the server certificate for secure SSL connections
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

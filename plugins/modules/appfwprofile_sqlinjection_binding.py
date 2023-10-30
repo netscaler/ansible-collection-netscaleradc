@@ -26,89 +26,94 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   as_scan_location_sql:
+    type: str
     choices:
       - FORMFIELD
       - HEADER
       - COOKIE
     description:
       - Location of SQL injection exception - form field, header or cookie.
-    type: str
   as_value_expr_sql:
+    type: str
     description:
       - The web form value expression.
-    type: str
   as_value_type_sql:
+    type: str
     choices:
       - Keyword
       - SpecialString
       - Wildchar
     description:
       - The web form value type.
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   formactionurl_sql:
+    type: str
     description:
       - The web form action URL.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   isregex_sql:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is the web form field name a regular expression?
-    type: str
   isvalueregex_sql:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is the web form field value a regular expression?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
   sqlinjection:
+    type: str
     description:
       - The web form field name.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

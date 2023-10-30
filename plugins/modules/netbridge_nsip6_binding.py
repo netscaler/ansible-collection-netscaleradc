@@ -26,18 +26,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipaddress:
+    type: str
     description:
       - The subnet that is extended by this network bridge.
-    type: str
   name:
+    type: str
     description:
       - The name of the network bridge.
-    type: str
   netmask:
+    type: str
     description:
       - The network mask for the subnet.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

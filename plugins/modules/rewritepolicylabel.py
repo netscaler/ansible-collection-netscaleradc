@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this rewrite policy label.
-    type: str
   labelname:
+    type: str
     description:
       - Name for the rewrite policy label. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and the
@@ -40,8 +53,8 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my rewrite policy label" or 'my rewrite policy
         label').
-    type: str
   newname:
+    type: str
     description:
       - 'New name for the rewrite policy label. '
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -51,8 +64,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy label" or 'my policy label').
-    type: str
   transform:
+    type: str
     choices:
       - http_req
       - http_res
@@ -97,12 +110,12 @@ options:
       - '* C(dns_res) - DNS responses'
       - '* C(mqtt_req) - MQTT requests'
       - '* C(mqtt_res) - MQTT responses'
-    type: str
   rewritepolicylabel_rewritepolicy_binding:
     type: dict
     description: Bindings for rewritepolicylabel_rewritepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

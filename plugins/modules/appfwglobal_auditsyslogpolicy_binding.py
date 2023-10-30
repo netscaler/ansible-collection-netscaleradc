@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the next policy to evaluate if the current
         policy evaluates to TRUE.  Specify one of the following values:'
@@ -56,19 +69,19 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   invoke:
+    type: bool
     description:
       - If the current policy evaluates to TRUE, terminate evaluation of policies
         bound to the current policy label, and then forward the request to the specified
         virtual server or evaluate the specified policy label.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the policy label to invoke if the current policy evaluates to TRUE,
         the invoke parameter is set, and Label Type is set to Policy Label.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - policylabel
@@ -78,24 +91,16 @@ options:
       - '* C(reqvserver). Invoke the unnamed policy label associated with the specified
         request virtual server.'
       - '* C(policylabel). Invoke the specified user-defined policy label.'
-    type: str
   policyname:
+    type: str
     description:
       - Name of the policy.
-    type: str
   priority:
+    type: float
     description:
       - The priority of the policy.
-    type: float
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable the binding to activate or deactivate the policy. This is
-        applicable to classic policies only.
-    type: str
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -104,7 +109,6 @@ options:
       - NONE
     description:
       - Bind point to which to policy is bound.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

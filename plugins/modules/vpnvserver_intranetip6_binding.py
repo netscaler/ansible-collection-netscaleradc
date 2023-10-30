@@ -26,19 +26,31 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   intranetip6:
+    type: str
     description:
       - The network id for the range of intranet IP6 addresses or individual intranet
         ip to be bound to the vserver.
-    type: str
   name:
+    type: str
     description:
       - Name of the virtual server.
-    type: str
   numaddr:
+    type: float
     description:
       - The number of ipv6 addresses
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

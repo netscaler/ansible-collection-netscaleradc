@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -36,47 +49,46 @@ options:
         parameter applies only to rewrite'
       - policies, because content switching policies are evaluated only at request
         time.
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke flag.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label invoked.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
     description:
       - The invocation type.
-    type: str
   name:
+    type: str
     description:
       - Name of the cache redirection virtual server to which to bind the cache redirection
         policy.
-    type: str
   policyname:
+    type: str
     description:
       - Policies bound to this vserver.
-    type: str
   priority:
+    type: float
     description:
       - The priority for the policy.
-    type: float
   targetvserver:
+    type: str
     description:
       - Name of the virtual server to which content is forwarded. Applicable only
         if the policy is a map policy and the cache redirection virtual server is
         of type REVERSE.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

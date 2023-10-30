@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ciphergroupname:
+    type: str
     description:
       - Name for the user-defined cipher group. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -36,12 +49,12 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my ciphergroup" or 'my ciphergroup').
-    type: str
   ciphername:
+    type: str
     description:
       - Cipher name.
-    type: str
   cipheroperation:
+    type: str
     choices:
       - ADD
       - REM
@@ -56,20 +69,19 @@ options:
         \ for the virtual server."
       - "\tC(ORD) - Overrides the current configured cipher-suite for the virtual\
         \ server with the given cipher-suite."
-    type: str
   cipherpriority:
+    type: float
     description:
       - This indicates priority assigned to the particular cipher
-    type: float
   ciphgrpals:
+    type: str
     description:
       - A cipher-suite can consist of an individual cipher name, the system predefined
         cipher-alias name, or user defined cipher-group name.
-    type: str
   description:
+    type: str
     description:
       - Cipher suite description.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

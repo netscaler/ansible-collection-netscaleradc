@@ -24,31 +24,31 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   hostname:
+    type: str
     description:
       - Host name for the Citrix ADC.
-    type: str
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which you are setting the hostname. Can be configured
         only through the cluster IP address.
-    type: float
     default: 255
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nshostName
-      delegate_to: localhost
-      netscaler.adc.nshostname:
-        state: present
-        hostname: HA-NetScaler-Pair
-
 """
 
 RETURN = r"""

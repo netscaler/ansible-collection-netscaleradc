@@ -26,33 +26,45 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   monitor_name:
+    type: str
     description:
       - The monitor Names.
-    type: str
   monstate:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - The configured state (enable/disable) of the monitor on this server.
-    type: str
   name:
+    type: str
     description:
       - Name of the service to which to bind a monitor.
-    type: str
   passive:
+    type: bool
     description:
       - Indicates if load monitor is passive. A passive load monitor does not remove
         service from LB decision when threshold is breached.
-    type: bool
   weight:
+    type: float
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
         weight assigned to its binding with the service determines how much the monitor
         contributes toward keeping the health of the service above the value configured
         for the Monitor Threshold parameter.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

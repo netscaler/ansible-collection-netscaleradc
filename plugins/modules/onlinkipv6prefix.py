@@ -26,51 +26,63 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   autonomusprefix:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
-    type: str
     default: 'YES'
   decrementprefixlifetimes:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
-    type: str
     default: 'NO'
   depricateprefix:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Depricate the prefix.
-    type: str
     default: 'NO'
   ipv6prefix:
+    type: str
     description:
       - Onlink prefixes for RA messages.
-    type: str
   onlinkprefix:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix onlink flag.
-    type: str
     default: 'YES'
   prefixpreferredlifetime:
+    type: float
     description:
       - Preferred life time of the prefix, in seconds.
-    type: float
     default: 604800
   prefixvalidelifetime:
+    type: float
     description:
       - Valide life time of the prefix, in seconds.
-    type: float
     default: 2592000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

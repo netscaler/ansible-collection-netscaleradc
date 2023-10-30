@@ -24,45 +24,57 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   analyticsprofile:
+    type: str
     description:
       - Name of the Analytics Profile attached to this lsn profile.
-    type: str
   logcompact:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in Compact Logging format if option is enabled.
-    type: str
     default: ENABLED
   logipfix:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in IPFIX  format if option is enabled.
-    type: str
     default: DISABLED
   logprofilename:
+    type: str
     description:
       - The name of the logging Profile.
-    type: str
   logsessdeletion:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - LSN Session deletion will not be logged if disabled.
-    type: str
     default: ENABLED
   logsubscrinfo:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Subscriber ID information is logged if option is enabled.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

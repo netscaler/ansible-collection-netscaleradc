@@ -24,12 +24,22 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   timeout:
+    type: float
     description:
       - Maximum time in milliseconds to allow for processing expressions and policies
         without interruption. If the timeout is reached then the evaluation causes
         an UNDEF to be raised and no further processing is performed.
-    type: float
     default: 3900
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -24,14 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   Locationfile:
+    type: str
     description:
       - Name of the location file, with or without absolute path. If the path is not
         included, the default path (/var/netscaler/locdb) is assumed. In a high availability
         setup, the static database must be stored in the same location on both Citrix
         ADCs.
-    type: str
   format:
+    type: str
     choices:
       - netscaler
       - ip-country
@@ -47,15 +60,14 @@ options:
     description:
       - Format of the location file. Required for the Citrix ADC to identify how to
         read the location file.
-    type: str
     default: netscaler
   src:
+    type: str
     description:
       - URL \(protocol, host, path, and file name\) from where the location file will
         be imported.
       - '            NOTE: The import fails if the object to be imported is on an
         HTTPS server that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actionurl:
+    type: str
     description:
       - URL to which the completed form is submitted.
-    type: str
   name:
+    type: str
     description:
       - Name for the new form-based single sign-on profile. Must begin with an ASCII
         alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric,
@@ -38,14 +51,14 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   namevaluepair:
+    type: str
     description:
       - Name-value pair attributes to send to the server in addition to sending the
         username and password. Value names are separated by an ampersand (&) (for
         example, name1=value1&name2=value2).
-    type: str
   nvtype:
+    type: str
     choices:
       - STATIC
       - DYNAMIC
@@ -53,34 +66,33 @@ options:
       - Type of processing of the name-value pair. If you specify C(STATIC), the values
         configured by the administrator are used. For C(DYNAMIC), the response is
         parsed, and the form is extracted and then submitted.
-    type: str
     default: DYNAMIC
   passwdfield:
+    type: str
     description:
       - Name of the form field in which the user types in the password.
-    type: str
   responsesize:
+    type: float
     description:
       - Number of bytes, in the response, to parse for extracting the forms.
-    type: float
     default: 8096
   ssosuccessrule:
+    type: str
     description:
       - Expression, that checks to see if single sign-on is successful.
-    type: str
   submitmethod:
+    type: str
     choices:
       - GET
       - POST
     description:
       - HTTP method used by the single sign-on form to send the logon credentials
         to the logon server. Applies only to STATIC name-value type.
-    type: str
     default: GET
   userfield:
+    type: str
     description:
       - Name of the form field in which the user types in the user ID.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

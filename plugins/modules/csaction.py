@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this cs action.
-    type: str
   name:
+    type: str
     description:
       - Name for the content switching action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -37,75 +50,34 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   newname:
+    type: str
     description:
-      - 'New name for the content switching action. Must begin with an ASCII alphanumeric
+      - New name for the content switching action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at sign (@), equal sign (=), and hyphen
-        (-) characters. '
+        (-) characters.
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my name" or 'my name').
-    type: str
   targetlbvserver:
+    type: str
     description:
       - Name of the load balancing virtual server to which the content is switched.
-    type: str
   targetvserver:
+    type: str
     description:
       - Name of the VPN, GSLB or Authentication virtual server to which the content
         is switched.
-    type: str
   targetvserverexpr:
+    type: str
     description:
       - Information about this content switching action.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-
-- name: Sample Playbook
-  hosts: demo_netscalers
-
-  gather_facts: false
-
-  tasks:
-    - name: Sample Task | lbvserver
-      delegate_to: localhost
-      netscaler.adc.lbvserver:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: lb-vserver-1
-        servicetype: HTTP
-        ipv46: 6.92.2.2
-        port: 80
-
-    - name: Sample Task | csaction
-      delegate_to: localhost
-      netscaler.adc.csaction:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: action1
-        targetlbvserver: lb-vserver-1
-
 """
 
 RETURN = r"""
