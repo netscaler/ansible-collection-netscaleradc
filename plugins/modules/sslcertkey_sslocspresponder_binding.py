@@ -26,25 +26,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ca:
+    type: bool
     description:
       - The certificate-key pair being unbound is a Certificate Authority (CA) certificate.
         If you choose this option, the certificate-key pair is unbound from the list
         of CA certificates that were bound to the specified SSL virtual server or
         SSL service.
-    type: bool
   certkey:
+    type: str
     description:
       - Name of the certificate-key pair.
-    type: str
   ocspresponder:
+    type: str
     description:
       - OCSP responders bound to this certkey
-    type: str
   priority:
+    type: float
     description:
       - ocsp priority
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

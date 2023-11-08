@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   allowedmanagementinterface:
+    type: list
     choices:
       - CLI
       - API
@@ -33,40 +46,38 @@ options:
         from both C(API) and C(CLI) interfaces. If management interface for a user
         is set to C(API), then user is not allowed to access NS through C(CLI). GUI
         interface will come under C(API) interface
-    type: list
     elements: str
-    default: NS_INTERFACE_ALL
   externalauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Whether to use external authentication servers for the system user authentication
         or not
-    type: str
     default: ENABLED
   logging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Users logging privilege
-    type: str
     default: DISABLED
   maxsession:
+    type: float
     description:
       - Maximum number of client connection allowed per user
-    type: float
-    default: 20
   password:
+    type: str
     description:
       - Password for the system user. Can include any ASCII character.
-    type: str
   promptstring:
+    type: str
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
-        underscore (_), and the following variables: '
+        underscore (_), and the following variables:'
       - '* %u - Will be replaced by the user name.'
       - '* %h - Will be replaced by the hostname of the Citrix ADC.'
       - '* %t - Will be replaced by the current time in 12-hour format.'
@@ -76,16 +87,16 @@ options:
       - ''
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
-    type: str
   timeout:
+    type: float
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
         seconds. If Restrictedtimeout argument of system parameter is disabled, Timeout
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
-    type: float
   username:
+    type: str
     description:
       - Name for a user. Must begin with a letter, number, or the underscore (_) character,
         and must contain only alphanumeric, hyphen (-), period (.), hash (#), space
@@ -94,12 +105,12 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my user" or ''my user'').'
-    type: str
   systemuser_nspartition_binding:
     type: dict
     description: Bindings for systemuser_nspartition_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -124,6 +135,7 @@ options:
     description: Bindings for systemuser_systemcmdpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -148,23 +160,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | systemuser
-      delegate_to: localhost
-      netscaler.adc.systemuser:
-        state: present
-        username: nsroot
-        timeout: 900
-    - name: Sample Task | systemuser | 2
-      delegate_to: localhost
-      netscaler.adc.systemuser:
-        state: present
-        username: user_adm1
-        password: pwd_adm1
-
 """
 
 RETURN = r"""

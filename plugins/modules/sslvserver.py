@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cipherredirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -33,18 +44,18 @@ options:
         an SSL virtual server or service to display meaningful error messages if the
         SSL handshake fails because of a cipher mismatch between the virtual server
         or service and the client.
-    type: str
     default: DISABLED
   cipherurl:
+    type: str
     description:
       - The redirect URL to be used with the Cipher Redirect feature.
-    type: str
   cleartextport:
+    type: int
     description:
       - Port on which clear-text data is sent by the appliance to the server. Do not
         specify this parameter for SSL offloading with end-to-end encryption.
-    type: int
   clientauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -52,9 +63,9 @@ options:
       - State of client authentication. If client authentication is enabled, the virtual
         server terminates the SSL handshake if the SSL client does not provide a valid
         certificate.
-    type: str
     default: DISABLED
   clientcert:
+    type: str
     choices:
       - Mandatory
       - Optional
@@ -66,22 +77,22 @@ options:
         presents an invalid certificate.
       - 'Caution: Define proper access control policies before changing this setting
         to C(Optional).'
-    type: str
   dh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of Diffie-Hellman (DH) key exchange.
-    type: str
     default: DISABLED
   dhcount:
+    type: float
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time.
-    type: float
   dhekeyexchangewithpsk:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -96,14 +107,14 @@ options:
       - If enabled, the server will require a DHE key exchange when a PSK is accepted
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
-    type: str
     default: 'NO'
   dhfile:
+    type: str
     description:
       - Name of and, optionally, path to the DH parameter file, in PEM format, to
         be installed. /nsconfig/ssl/ is the default path.
-    type: str
   dhkeyexpsizelimit:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -112,29 +123,29 @@ options:
         800-56A) bit size for private-key size. For example, for DH params of size
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
-    type: str
     default: DISABLED
   dtls1:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL Virtual Server.
-    type: str
     default: ENABLED
   dtls12:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL Virtual Server.
-    type: str
     default: DISABLED
   dtlsprofilename:
+    type: str
     description:
       - Name of the DTLS profile whose settings are to be applied to the virtual server.
-    type: str
   ersa:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -147,37 +158,37 @@ options:
         the eRSA key is not deleted. It is reused at a later date when another export
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
-    type: str
     default: ENABLED
   ersacount:
+    type: float
     description:
       - Refresh count for regeneration of the RSA public-key and private-key pair.
         Zero (0) specifies infinite usage (no refresh).
-    type: float
   hsts:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of HSTS protocol support for the SSL Virtual Server. Using HSTS, a server
         can enforce the use of an HTTPS connection for all communication with a client
-    type: str
     default: DISABLED
   includesubdomains:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
-    type: str
     default: 'NO'
   maxage:
+    type: float
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
-    type: float
   ocspstapling:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -190,17 +201,17 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    type: str
     default: DISABLED
   preload:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
-    type: str
     default: 'NO'
   pushenctrigger:
+    type: str
     choices:
       - Always
       - Merge
@@ -216,8 +227,8 @@ options:
       - '* TIMER - PUSH packet triggering encryption is delayed by the time defined
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
-    type: str
   redirectportrewrite:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -225,17 +236,17 @@ options:
       - State of the port rewrite while performing HTTPS redirect. If this parameter
         is C(ENABLED) and the URL from the server does not contain the standard port,
         the port is rewritten to the standard.
-    type: str
     default: DISABLED
   sendclosenotify:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    type: str
     default: 'YES'
   sessreuse:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -243,16 +254,16 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    type: str
     default: ENABLED
   sesstimeout:
+    type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: float
     default: 120
   snienable:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -262,17 +273,17 @@ options:
         on a single virtual server or service if the domains are controlled by the
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
-    type: str
     default: DISABLED
   ssl2:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of SSLv2 protocol support for the SSL Virtual Server.
-    type: str
     default: DISABLED
   ssl3:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -280,13 +291,13 @@ options:
       - State of SSLv3 protocol support for the SSL Virtual Server.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    type: str
     default: ENABLED
   sslprofile:
+    type: str
     description:
       - Name of the SSL profile that contains SSL settings for the virtual server.
-    type: str
   sslredirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -300,9 +311,9 @@ options:
         the user to continue or disconnect.
       - If SSL Redirect is C(ENABLED), the redirect message is automatically converted
         from http:// to https:// and the SSL session does not break.
-    type: str
     default: DISABLED
   sslv2redirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -311,15 +322,15 @@ options:
         SSL virtual server or service to display meaningful error messages if the
         SSL handshake fails because of a protocol version mismatch between the virtual
         server or service and the client.
-    type: str
     default: DISABLED
   sslv2url:
+    type: str
     description:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
-    type: str
   strictsigdigestcheck:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -327,41 +338,41 @@ options:
       - Parameter indicating to check whether peer entity certificate during TLS1.2
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
-    type: str
     default: DISABLED
   tls1:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL Virtual Server.
-    type: str
     default: ENABLED
   tls11:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL Virtual Server.
-    type: str
     default: ENABLED
   tls12:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL Virtual Server.
-    type: str
     default: ENABLED
   tls13:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL Virtual Server.
-    type: str
     default: DISABLED
   tls13sessionticketsperauthcontext:
+    type: float
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
         ticket-based resumption is enabled, and either (1) a handshake completes or
@@ -369,13 +380,13 @@ options:
       - This value can be increased to enable clients to open multiple parallel connections
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
-    type: float
     default: 1
   vservername:
+    type: str
     description:
       - Name of the SSL virtual server for which to set advanced configuration.
-    type: str
   zerorttearlydata:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -385,13 +396,13 @@ options:
         be sent along with an initial handshake.
       - Early application data has significantly different security properties - in
         particular there is no guarantee that the data cannot be replayed.
-    type: str
     default: DISABLED
   sslvserver_appfwpolicy_binding:
     type: dict
     description: Bindings for sslvserver_appfwpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -416,6 +427,7 @@ options:
     description: Bindings for sslvserver_auditnslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -440,6 +452,7 @@ options:
     description: Bindings for sslvserver_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -464,6 +477,7 @@ options:
     description: Bindings for sslvserver_authorizationpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -488,6 +502,7 @@ options:
     description: Bindings for sslvserver_cachepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -512,6 +527,7 @@ options:
     description: Bindings for sslvserver_cmppolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -536,6 +552,7 @@ options:
     description: Bindings for sslvserver_ecccurve_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -560,6 +577,7 @@ options:
     description: Bindings for sslvserver_responderpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -584,6 +602,7 @@ options:
     description: Bindings for sslvserver_rewritepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -608,6 +627,7 @@ options:
     description: Bindings for sslvserver_sslcertkey_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -632,6 +652,7 @@ options:
     description: Bindings for sslvserver_sslcertkeybundle_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -656,6 +677,7 @@ options:
     description: Bindings for sslvserver_sslcipher_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -680,6 +702,7 @@ options:
     description: Bindings for sslvserver_sslciphersuite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -704,6 +727,7 @@ options:
     description: Bindings for sslvserver_sslpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

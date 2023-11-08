@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - The name of the network bridge.
-    type: str
   vxlanvlanmap:
+    type: str
     description:
       - The vlan to vxlan mapping to be applied to this netbridge.
-    type: str
   netbridge_iptunnel_binding:
     type: dict
     description: Bindings for netbridge_iptunnel_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -61,6 +74,7 @@ options:
     description: Bindings for netbridge_nsip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -85,6 +99,7 @@ options:
     description: Bindings for netbridge_nsip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -109,6 +124,7 @@ options:
     description: Bindings for netbridge_vlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

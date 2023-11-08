@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this Content Inspection callout.
-    type: str
   name:
+    type: str
     description:
       - Name for the Content Inspection callout. Not case sensitive. Must begin with
         an ASCII letter or underscore (_) character, and must consist only of ASCII
@@ -36,21 +49,21 @@ options:
         be a word reserved for use as an expression qualifier prefix (such as HTTP)
         or enumeration value (such as ASCII). Must not be the name of an existing
         named expression, pattern set, dataset, stringmap, or callout.
-    type: str
   profilename:
+    type: str
     description:
       - Name of the Content Inspection profile. The type of the configured profile
         must match the type specified using -type argument.
-    type: str
   resultexpr:
+    type: str
     description:
       - 'Expression that extracts the callout results from the response sent by the
         CI callout agent. Must be a response based expression, that is, it must begin
         with ICAP.RES. The operations in this expression must match the return type.
         For example, if you configure a return type of TEXT, the result expression
         must be a text based expression, as in the following example: icap.res.header("ISTag")'
-    type: str
   returntype:
+    type: str
     choices:
       - BOOL
       - NUM
@@ -62,31 +75,30 @@ options:
       - '* C(NUM) - Treat the returned value as a number.'
       - '* C(BOOL) - Treat the returned value as a Boolean value.'
       - 'Note: You cannot change the return type after it is set.'
-    type: str
   serverip:
+    type: str
     description:
       - IP address of Content Inspection server. Mutually exclusive with the server
         name parameter.
-    type: str
   servername:
+    type: str
     description:
       - Name of the load balancing or content switching virtual server or service
         to which the Content Inspection request is issued. Mutually exclusive with
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
-    type: str
   serverport:
+    type: float
     description:
       - Port of the Content Inspection server.
-    type: float
     default: 1344
   type:
+    type: str
     choices:
       - ICAP
     description:
       - 'Type of the Content Inspection callout. It must be one of the following:'
       - '* C(ICAP) - Sends C(ICAP) request to the configured C(ICAP) server.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

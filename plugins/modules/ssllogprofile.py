@@ -24,41 +24,53 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - The name of the ssllogprofile.
-    type: str
   ssllogclauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL ClAuth events.
-    type: str
     default: DISABLED
   ssllogclauthfailures:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL ClAuth error events.
-    type: str
     default: DISABLED
   sslloghs:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL HS events.
-    type: str
     default: DISABLED
   sslloghsfailures:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL HS error events.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

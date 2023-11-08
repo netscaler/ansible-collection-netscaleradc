@@ -24,7 +24,15 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   level:
+    type: str
     choices:
       - basic
       - extended
@@ -37,7 +45,6 @@ options:
       - ns.conf, nscfg.db, all ns.conf for same release, in all partitions. While
         doing so
       - ' will block all config changes and once done shall respond back.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

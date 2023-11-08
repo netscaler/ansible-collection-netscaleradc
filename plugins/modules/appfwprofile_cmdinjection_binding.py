@@ -26,88 +26,93 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   as_scan_location_cmd:
+    type: str
     choices:
       - FORMFIELD
       - HEADER
       - COOKIE
     description:
       - Location of command injection exception - form field, header or cookie.
-    type: str
   as_value_expr_cmd:
+    type: str
     description:
       - The web form/header/cookie value expression.
-    type: str
   as_value_type_cmd:
+    type: str
     choices:
       - Keyword
       - SpecialString
     description:
       - Type of the relaxed web form value
-    type: str
   cmdinjection:
+    type: str
     description:
       - Name of the relaxed web form field/header/cookie
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   formactionurl_cmd:
+    type: str
     description:
       - The web form action URL.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   isregex_cmd:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is the relaxed web form field name/header/cookie a regular expression?
-    type: str
   isvalueregex_cmd:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is the web form field/header/cookie value a regular expression?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

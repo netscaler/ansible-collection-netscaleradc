@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   allowedmanagementinterface:
+    type: list
     choices:
       - CLI
       - API
@@ -33,10 +46,9 @@ options:
         allowed from both C(API) and C(CLI) interfaces. If management interface for
         a group is set to C(API), then all users under this group will not allowed
         to access NS through C(CLI). GUI interface will come under C(API) interface
-    type: list
     elements: str
-    default: NS_INTERFACE_ALL
   groupname:
+    type: str
     description:
       - Name for the group. Must begin with a letter, number, hash(#) or the underscore
         (_) character, and must contain only alphanumeric, hyphen (-), period (.),
@@ -45,12 +57,12 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my group" or ''my group'').'
-    type: str
   promptstring:
+    type: str
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
-        underscore (_), and the following variables: '
+        underscore (_), and the following variables:'
       - '* %u - Will be replaced by the user name.'
       - '* %h - Will be replaced by the hostname of the Citrix ADC.'
       - '* %t - Will be replaced by the current time in 12-hour format.'
@@ -60,20 +72,20 @@ options:
       - ''
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
-    type: str
   timeout:
+    type: float
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]
         seconds.If Restrictedtimeout argument of system parameter is disabled, Timeout
         can have values in the range [0, 10-100000000] seconds. Default value is 900
         seconds.
-    type: float
   systemgroup_nspartition_binding:
     type: dict
     description: Bindings for systemgroup_nspartition_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -98,6 +110,7 @@ options:
     description: Bindings for systemgroup_systemcmdpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -122,6 +135,7 @@ options:
     description: Bindings for systemgroup_systemuser_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -146,17 +160,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | systemgroup
-      delegate_to: localhost
-      netscaler.adc.systemgroup:
-        state: present
-        groupname: sys-group1
-        promptstring: '[%T] %u@%h/%s'
-
 """
 
 RETURN = r"""

@@ -25,95 +25,106 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   ceaserouteradv:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Cease router advertisements on this vlan.
-    type: str
     default: 'NO'
   currhoplimit:
+    type: float
     description:
       - Current Hop limit.
-    type: float
     default: 64
   defaultlifetime:
+    type: int
     description:
       - Default life time, in seconds.
-    type: int
     default: 1800
   linkmtu:
+    type: float
     description:
       - The Link MTU.
-    type: float
   managedaddrconfig:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Managed address configuration flag field.
-    type: str
     default: 'NO'
   maxrtadvinterval:
+    type: float
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
-    type: float
     default: 600
   minrtadvinterval:
+    type: float
     description:
       - Minimum time interval between RA messages, in seconds.
-    type: float
     default: 198
   onlyunicastrtadvresponse:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send only Unicast Router Advertisements in respond to Router Solicitations.
-    type: str
     default: 'NO'
   otheraddrconfig:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Value to be placed in the Other configuration flag field.
-    type: str
     default: 'NO'
   reachabletime:
+    type: float
     description:
       - Reachable time, in milliseconds.
-    type: float
   retranstime:
+    type: float
     description:
       - Retransmission time, in milliseconds.
-    type: float
   sendrouteradv:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - whether the router sends periodic RAs and responds to Router Solicitations.
-    type: str
     default: 'NO'
   srclinklayeraddroption:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Include source link layer address option in RA messages.
-    type: str
     default: 'YES'
   vlan:
+    type: float
     description:
       - The VLAN number.
-    type: float
   nd6ravariables_onlinkipv6prefix_binding:
     type: dict
     description: Bindings for nd6ravariables_onlinkipv6prefix_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -138,16 +149,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nd6RAvariables
-      delegate_to: localhost
-      netscaler.adc.nd6ravariables:
-        state: present
-        vlan: '1'
-
 """
 
 RETURN = r"""

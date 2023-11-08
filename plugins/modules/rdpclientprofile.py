@@ -24,24 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   addusernameinrdpfile:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Add username in rdp file.
-    type: str
     default: 'NO'
   audiocapturemode:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the selections in the Remote audio area on the
         Local Resources tab under Options in RDC.
-    type: str
     default: DISABLE
   keyboardhook:
+    type: str
     choices:
       - OnLocal
       - OnRemote
@@ -49,25 +62,25 @@ options:
     description:
       - This setting corresponds to the selection in the Keyboard drop-down list on
         the Local Resources tab under Options in RDC.
-    type: str
     default: InFullScreenMode
   multimonitorsupport:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).
-    type: str
     default: ENABLE
   name:
+    type: str
     description:
       - The name of the rdp profile
-    type: str
   psk:
+    type: str
     description:
       - Pre shared key value
-    type: str
   randomizerdpfilename:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -76,29 +89,29 @@ options:
         output of time() function in the format <rdpfileName>_<time>.rdp. This tries
         to avoid the pop-up for replacement of existing rdp file during each rdp connection
         launch, hence providing better end-user experience.
-    type: str
     default: 'NO'
   rdpcookievalidity:
+    type: float
     description:
       - RDP cookie validity period. RDP cookie validity time is applicable for new
         connection and also for any re-connection that might happen, mostly due to
         network disruption or during fail-over.
-    type: float
     default: 60
   rdpcustomparams:
+    type: str
     description:
       - Option for RDP custom parameters settings (if any). Custom params needs to
         be separated by '&'
-    type: str
   rdpfilename:
+    type: str
     description:
       - RDP file name to be sent to End User
-    type: str
   rdphost:
+    type: str
     description:
       - Fully-qualified domain name (FQDN) of the RDP Listener.
-    type: str
   rdplinkattribute:
+    type: str
     description:
       - 'Citrix Gateway allows the configuration of rdpLinkAttribute parameter which
         can be used to fetch a list of RDP servers(IP/FQDN) that a user can access,
@@ -106,83 +119,82 @@ options:
         list received, the RDP links will be generated and displayed to the user.'
       - '            Note: The Attribute mentioned in the rdpLinkAttribute should
         be fetched through corresponding authentication method.'
-    type: str
   rdplistener:
+    type: str
     description:
       - IP address (or) Fully-qualified domain name(FQDN) of the RDP Listener with
         the port in the format IP:Port (or) FQDN:Port
-    type: str
   rdpurloverride:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting determines whether the RDP parameters supplied in the vpn url
         override those specified in the RDP profile.
-    type: str
     default: ENABLE
   rdpvalidateclientip:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting determines whether RDC launch is initiated by the valid client
         IP
-    type: str
     default: DISABLE
   redirectclipboard:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the Clipboard check box on the Local Resources
         tab under Options in RDC.
-    type: str
     default: ENABLE
   redirectcomports:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the selections for comports under More on the
         Local Resources tab under Options in RDC.
-    type: str
     default: DISABLE
   redirectdrives:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the selections for Drives under More on the Local
         Resources tab under Options in RDC.
-    type: str
     default: DISABLE
   redirectpnpdevices:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the selections for pnpdevices under More on the
         Local Resources tab under Options in RDC.
-    type: str
     default: DISABLE
   redirectprinters:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting corresponds to the selection in the Printers check box on the
         Local Resources tab under Options in RDC.
-    type: str
     default: ENABLE
   videoplaybackmode:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - This setting determines if Remote Desktop Connection (RDC) will use RDP efficient
         multimedia streaming for video playback.
-    type: str
     default: ENABLE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

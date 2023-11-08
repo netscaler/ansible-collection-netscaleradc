@@ -26,20 +26,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   servicename:
+    type: str
     description:
       - Name of the GSLB service.
-    type: str
   viewip:
+    type: str
     description:
       - IP address to be used for the given view
-    type: str
   viewname:
+    type: str
     description:
       - Name of the DNS view of the service. A DNS view is used in global server load
         balancing (GSLB) to return a predetermined IP address to a specific group
         of clients, which are identified by using a DNS policy.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

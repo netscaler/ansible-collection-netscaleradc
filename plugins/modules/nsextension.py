@@ -24,33 +24,46 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the extension object.
-    type: str
   detail:
+    type: str
     choices:
       - brief
       - all
     description:
       - Show detail for extension function.
-    type: str
   name:
+    type: str
     description:
       - Name to assign to the extension object on the Citrix ADC.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrites the existing file
-    type: bool
   src:
+    type: str
     description:
       - Local path to and name of, or URL (protocol, host, path, and file name) for,
         the file in which to store the imported extension.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
   trace:
+    type: str
     choices:
       - 'off'
       - calls
@@ -67,18 +80,17 @@ options:
         C(lines)'
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
-    type: str
     default: 'off'
   tracefunctions:
+    type: str
     description:
       - Comma-separated list of extension functions to trace. By default, all extension
         functions are traced.
-    type: str
   tracevariables:
+    type: str
     description:
       - Comma-separated list of variables (in traced extension functions) to trace.
         By default, all variables are traced.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

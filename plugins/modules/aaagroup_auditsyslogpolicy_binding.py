@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the next policy to evaluate if the current
         policy evaluates to TRUE.  Specify one of the following values:'
@@ -55,23 +68,23 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   groupname:
+    type: str
     description:
       - Name of the group that you are binding.
-    type: str
   policy:
+    type: str
     description:
       - The policy name.
-    type: str
   priority:
+    type: float
     description:
       - Integer specifying the priority of the policy. A lower number indicates a
         higher priority. Policies are evaluated in the order of their priority numbers.
         Maximum value for default syntax policies is 2147483647 and for classic policies
         is 64000.
-    type: float
   type:
+    type: str
     choices:
       - REQUEST
       - UDP_REQUEST
@@ -79,7 +92,6 @@ options:
       - ICMP_REQUEST
     description:
       - Bindpoint to which the policy is bound.
-    type: str
     default: REQUEST
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -24,26 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Name of the action to be associated with this policy.
-    type: str
   comment:
+    type: str
     description:
       - Any comments about this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at
-      - '(@), equals (=), and hyphen (-) characters. '
+      - (@), equals (=), and hyphen (-) characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow policy" or 'my appflow policy').
-    type: str
   newname:
+    type: str
     description:
       - New name for the policy. Must begin with an ASCII alphabetic or underscore
         (_)character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -52,8 +65,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow policy" or 'my appflow policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression or other value against which the traffic is evaluated. Must be
         a Boolean expression.
@@ -62,20 +75,20 @@ options:
       - '* If the expression includes one or more spaces, enclose the entire expression
         in double quotation marks.'
       - '* If the expression itself includes double quotation marks, escape the quotations
-        by using the \ character. '
+        by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   undefaction:
+    type: str
     description:
       - Name of the appflow action to be associated with this policy when an undef
         event occurs.
-    type: str
   appflowpolicylabel_appflowpolicy_binding:
     type: dict
     description: Bindings for appflowpolicylabel_appflowpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

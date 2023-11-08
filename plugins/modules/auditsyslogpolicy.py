@@ -24,14 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - Syslog server action to perform when this policy matches traffic.
       - 'NOTE: A syslog server action must be associated with a syslog audit policy.'
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the policy. '
+      - Name for the policy.
       - Must begin with a letter, number, or the underscore character (_), and must
         consist only of letters, numbers, and the hyphen (-), period (.) pound (#),
         space ( ), at sign (@), equals (=), colon (:), and underscore characters.
@@ -40,12 +53,11 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my syslog policy" or 'my syslog policy').
-    type: str
   rule:
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, that defines the messages
         to be logged to the syslog server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

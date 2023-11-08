@@ -24,28 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cssinlinethressize:
+    type: float
     description:
       - Threshold value of the file size (in bytes) for converting external CSS files
         to inline CSS files.
-    type: float
     default: 1024
   imginlinethressize:
+    type: float
     description:
       - Maximum file size of an image (in bytes), for coverting linked images to inline
         images.
-    type: float
     default: 1024
   jpegqualitypercent:
+    type: float
     description:
       - 'The percentage value of a JPEG image quality to be reduced. Range: 0 - 100'
-    type: float
     default: 75
   jsinlinethressize:
+    type: float
     description:
       - Threshold value of the file size (in bytes), for converting external JavaScript
         files to inline JavaScript files.
-    type: float
     default: 1024
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

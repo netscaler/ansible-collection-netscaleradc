@@ -26,11 +26,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_captcha_action:
+    type: list
     choices:
       - NONE
       - LOG
@@ -40,47 +53,47 @@ options:
     description:
       - One or more actions to be taken when client fails captcha challenge. Only,
         log action can be configured with C(DROP), C(REDIRECT) or C(RESET) action.
-    type: list
     elements: str
     default: NONE
   bot_captcha_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable the captcha binding.
-    type: str
     default: 'OFF'
   bot_captcha_url:
+    type: str
     description:
       - URL for which the Captcha action, if configured under IP reputation, TPS or
         device fingerprint, need to be applied.
-    type: str
   captcharesource:
+    type: bool
     description:
       - Captcha action binding. For each URL, only one binding is allowed. To update
         the values of an existing URL binding, user has to first unbind that binding,
         and then needs to bind the URL again with new values. Maximum 30 bindings
         can be configured per profile.
-    type: bool
   graceperiod:
+    type: float
     description:
       - Time (in seconds) duration for which no new captcha challenge is sent after
         current captcha challenge has been answered successfully.
-    type: float
     default: 900
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   muteperiod:
+    type: float
     description:
       - Time (in seconds) duration for which client which failed captcha need to wait
         until allowed to try again. The requests from this client are silently dropped
         during the mute period.
-    type: float
     default: 300
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -90,24 +103,23 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
   requestsizelimit:
+    type: float
     description:
       - Length of body request (in Bytes) up to (equal or less than) which captcha
         challenge will be provided to client. Above this length threshold the request
         will be dropped. This is to avoid DOS and DDOS attacks.
-    type: float
     default: 8000
   retryattempts:
+    type: float
     description:
       - Number of times client can retry solving the captcha.
-    type: float
     default: 3
   waittime:
+    type: float
     description:
       - Wait time in seconds for which ADC needs to wait for the Captcha response.
         This is to avoid DOS attacks.
-    type: float
     default: 15
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

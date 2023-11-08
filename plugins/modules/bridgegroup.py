@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing for this bridgegroup.
-    type: str
     default: DISABLED
   id:
+    type: float
     description:
       - An integer that uniquely identifies the bridge group.
-    type: float
   ipv6dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -44,13 +57,13 @@ options:
       - 'Enable all IPv6 dynamic routing protocols on all VLANs bound to this bridgegroup.
         Note: For the C(ENABLED) setting to work, you must configure IPv6 dynamic
         routing protocols from the VTYSH command line.'
-    type: str
     default: DISABLED
   bridgegroup_nsip6_binding:
     type: dict
     description: Bindings for bridgegroup_nsip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -75,6 +88,7 @@ options:
     description: Bindings for bridgegroup_nsip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -99,6 +113,7 @@ options:
     description: Bindings for bridgegroup_vlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,7 +24,19 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   mode:
+    type: list
     choices:
       - FR
       - FastRamp
@@ -55,7 +67,6 @@ options:
     description:
       - Mode to be enabled. Multiple modes can be specified by providing a blank space
         between each mode.
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

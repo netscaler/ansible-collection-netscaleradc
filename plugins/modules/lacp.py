@@ -24,34 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   ownernode:
+    type: float
     description:
       - The owner node in a cluster for which we want to set the lacp priority. Owner
         node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.
-    type: float
     default: 255
   syspriority:
+    type: float
     description:
       - Priority number that determines which peer device of an LACP LA channel can
         have control over the LA channel. This parameter is globally applied to all
         LACP channels on the Citrix ADC. The lower the number, the higher the priority.
-    type: float
     default: 32768
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | lacp
-      delegate_to: localhost
-      netscaler.adc.lacp:
-        state: present
-        syspriority: '32768'
-
 """
 
 RETURN = r"""

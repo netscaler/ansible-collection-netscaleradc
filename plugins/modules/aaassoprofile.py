@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the SSO Profile. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -34,13 +47,13 @@ options:
       - 'The following requirement applies only to the NetScaler CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   password:
+    type: str
     description:
       - Password with which the user logs on. Required for Single sign on to  external
         server.
-    type: str
   username:
+    type: str
     description:
       - Name for the user. Must begin with a letter, number, or the underscore (_)
         character, and must contain only alphanumeric, hyphen (-), period (.), hash
@@ -48,7 +61,6 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my group" or ''my group'').'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

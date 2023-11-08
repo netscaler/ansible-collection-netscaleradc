@@ -24,25 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   local:
+    type: str
     description:
       - An IPv6 address of the local Citrix ADC used to set up the tunnel.
-    type: str
   name:
+    type: str
     description:
       - 'Name for the IPv6 Tunnel. Cannot be changed after the service group is created.
         Must begin with a number or letter, and can consist of letters, numbers, and
         the @ _ - . (period) : (colon) # and space ( ) characters.'
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for the tunnel.
-    type: str
     default: DEFAULT_NG
   remote:
+    type: str
     description:
       - An IPv6 address of the remote Citrix ADC used to set up the tunnel.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

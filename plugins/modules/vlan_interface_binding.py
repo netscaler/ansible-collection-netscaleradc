@@ -26,27 +26,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: float
     description:
       - Specifies the virtual LAN ID.
-    type: float
   ifnum:
+    type: str
     description:
       - The interface to be bound to the VLAN, specified in slot/port notation (for
         example, 1/3).
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for this vlan.
-    type: str
     default: DEFAULT_NG
   tagged:
+    type: bool
     description:
       - Make the interface an 802.1q tagged interface. Packets sent on this interface
         on this VLAN have an additional 4-byte 802.1q tag, which identifies the VLAN.
         To use 802.1q tagging, you must also configure the switch connected to the
         appliance's interfaces.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,28 +24,45 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   advertiseondefaultpartition:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition.
-    type: str
     default: DISABLED
   arp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ARP requests for this IP address.
-    type: str
     default: ENABLED
   arpowner:
+    type: float
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
-    type: float
     default: 255
   arpresponse:
+    type: str
     choices:
       - NONE
       - ONE_VSERVER
@@ -61,72 +78,70 @@ options:
         if at least one of the associated virtual servers is in UP state.'
       - '* ALL VSERVER - The Citrix ADC responds to any ARP request for the VIP address
         if all of the associated virtual servers are in UP state.'
-    type: str
-    default: 5
   bgp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use this option to enable or disable BGP on this IP address for the entity.
-    type: str
     default: DISABLED
   decrementttl:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Decrement TTL by 1 when C(ENABLED).This setting is applicable only for UDP
         traffic.
-    type: str
     default: DISABLED
   dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IP (SNIP) address.
-    type: str
     default: DISABLED
   ftp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
-    type: str
     default: ENABLED
   gui:
+    type: str
     choices:
       - ENABLED
       - SECUREONLY
       - DISABLED
     description:
       - Allow graphical user interface (GUI) access to this IP address.
-    type: str
     default: ENABLED
   hostroute:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to push the VIP to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols
-    type: str
   hostrtgw:
+    type: str
     description:
       - IP address of the gateway of the route for this VIP address.
-    type: str
-    default: -1
   icmp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
-    type: str
     default: ENABLED
   icmpresponse:
+    type: str
     choices:
       - NONE
       - ONE_VSERVER
@@ -153,88 +168,87 @@ options:
         ADC responds if even one virtual server is UP.'
       - '* When you set ICMP VSERVER RESPONSE to ACTIVE on some and PASSIVE on others,
         Citrix ADC responds if even one virtual server set to ACTIVE is UP.'
-    type: str
-    default: 5
   ipaddress:
+    type: str
     description:
       - IPv4 address to create on the Citrix ADC. Cannot be changed after the IP address
         is created.
-    type: str
   metric:
+    type: int
     description:
       - Integer value to add to or subtract from the cost of the route advertised
         for the VIP address.
-    type: int
   mgmtaccess:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow access to management applications on this IP address.
-    type: str
     default: DISABLED
   mptcpadvertise:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
-    type: str
     default: 'NO'
   netmask:
+    type: str
     description:
       - Subnet mask associated with the IP address.
-    type: str
   networkroute:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to push the SNIP subnet to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocol.
-    type: str
   ospf:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use this option to enable or disable OSPF on this IP address for the entity.
-    type: str
     default: DISABLED
   ospfarea:
+    type: float
     description:
       - ID of the area in which the type1 link-state advertisements (LSAs) are to
         be advertised for this virtual IP (VIP)  address by the OSPF protocol running
         on the Citrix ADC.  When this parameter is not set, the VIP is advertised
         on all areas.
-    type: float
     default: -1
   ospflsatype:
+    type: str
     choices:
       - TYPE1
       - TYPE5
     description:
       - Type of LSAs to be used by the OSPF protocol, running on the Citrix ADC, for
         advertising the route for this VIP address.
-    type: str
     default: TYPE5
   ownerdownresponse:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
-    type: str
     default: 'YES'
   ownernode:
+    type: float
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from
         0 to 31. If ownernode is not specified then the IP is treated as Striped IP.
-    type: float
     default: 255
   restrictaccess:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -242,60 +256,52 @@ options:
       - Block access to nonmanagement applications on this IP. This option is applicable
         for MIPs, SNIPs, and NSIP, and is disabled by default. Nonmanagement applications
         can run on the underlying Citrix ADC Free BSD operating system.
-    type: str
     default: DISABLED
   rip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use this option to enable or disable RIP on this IP address for the entity.
-    type: str
     default: DISABLED
   snmp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
-    type: str
     default: ENABLED
   ssh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow secure shell (SSH) access to this IP address.
-    type: str
-    default: ENABLED
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable the IP address.
-    type: str
     default: ENABLED
   tag:
+    type: float
     description:
       - Tag value for the network/host route associated with this IP.
-    type: float
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0. TD id 4095 is used reserved
         for  LSN use
-    type: float
   telnet:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Telnet access to this IP address.
-    type: str
     default: ENABLED
   type:
+    type: str
     choices:
       - SNIP
       - VIP
@@ -322,24 +328,24 @@ options:
       - '* A Cluster IP (C(CLIP)) address is the management address of the cluster.
         All cluster configurations must be performed by accessing the cluster through
         this IP address.'
-    type: str
     default: SNIP
   vrid:
+    type: float
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
-    type: float
   vserver:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use this option to set (enable or disable) the virtual server attribute for
         this IP address.
-    type: str
     default: ENABLED
   vserverrhilevel:
+    type: str
     choices:
       - ONE_VSERVER
       - ALL_VSERVERS
@@ -369,51 +375,12 @@ options:
       - ' *If you set RHI STATE to ACTIVE on some and PASSIVE on others, the Citrix
         ADC advertises the route for the VIP address if at least one of the associated
         virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
-    type: str
     default: ONE_VSERVER
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsip
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 1.1.1.1
-        netmask: 255.255.255.192
-        type: VIP
-    - name: Sample Task | nsip | 2
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.1
-        netmask: 255.255.255.0
-        vserver: DISABLED
-        dynamicrouting: ENABLED
-    - name: Sample Task | nsip | 3
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.179.1.1
-        netmask: 255.255.255.255
-        type: VIP
-        arp: DISABLED
-        snmp: DISABLED
-        hostroute: ENABLED
-        hostrtgw: 0.0.0.0
-    - name: Sample Task | nsip | 4
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.2
-        netmask: 255.255.0.0
-        vserver: DISABLED
-
 """
 
 RETURN = r"""

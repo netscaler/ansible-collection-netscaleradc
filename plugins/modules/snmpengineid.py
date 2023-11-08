@@ -24,14 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   engineid:
+    type: str
     description:
       - A hexadecimal value of at least 10 characters, uniquely identifying the engineid
-    type: str
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which you are setting the engineid
-    type: float
     default: -1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

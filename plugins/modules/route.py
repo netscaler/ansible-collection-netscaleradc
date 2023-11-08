@@ -24,69 +24,82 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   advertise:
+    type: str
     choices:
       - DISABLED
       - ENABLED
     description:
       - Advertise this route.
-    type: str
   cost:
+    type: float
     description:
       - Positive integer used by the routing algorithms to determine preference for
         using this route. The lower the cost, the higher the preference.
-    type: float
   cost1:
+    type: float
     description:
       - 'The cost of a route is used to compare routes of the same type. The route
         having the lowest cost is the most preferred route. Possible values: 0 through
         65535. Default: 0.'
-    type: float
   detail:
+    type: bool
     description:
       - Display a detailed view.
-    type: bool
   distance:
+    type: float
     description:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
         protocols. A lower value is preferred.
-    type: float
     default: 1
   gateway:
+    type: str
     description:
       - IP address of the gateway for this route. Can be either the IP address of
         the gateway, or can be null to specify a null interface route.
-    type: str
   monitor:
+    type: str
     description:
       - Name of the monitor, of type ARP or PING, configured on the Citrix ADC to
         monitor this route.
-    type: str
   msr:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor this route using a monitor of type ARP or PING.
-    type: str
     default: DISABLED
   netmask:
+    type: str
     description:
       - The subnet mask associated with the network address.
-    type: str
   network:
+    type: str
     description:
       - IPv4 network address for which to add a route entry in the routing table of
         the Citrix ADC.
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for this route. If owner node group is not
         specified then the route is treated as Striped route.
-    type: str
     default: DEFAULT_NG
   protocol:
+    type: list
     choices:
       - OSPF
       - ISIS
@@ -94,10 +107,9 @@ options:
       - BGP
     description:
       - Routing protocol used for advertising this route.
-    type: list
     elements: str
-    default: ADV_ROUTE_FLAGS
   routetype:
+    type: str
     choices:
       - CONNECTED
       - STATIC
@@ -109,40 +121,28 @@ options:
     description:
       - Protocol used by routes that you want to remove from the routing table of
         the Citrix ADC.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   vlan:
+    type: float
     description:
       - VLAN as the gateway for this route.
-    type: float
   weight:
+    type: float
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    type: float
     default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | route
-      delegate_to: localhost
-      netscaler.adc.route:
-        state: present
-        network: 172.31.0.0
-        netmask: 255.255.0.0
-        gateway: 172.31.0.1
 """
 
 RETURN = r"""

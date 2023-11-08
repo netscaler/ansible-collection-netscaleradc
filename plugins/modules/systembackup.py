@@ -24,38 +24,50 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comment specified at the time of creation of the backup file(*.tgz).
-    type: str
   filename:
+    type: str
     description:
       - Name of the backup file(*.tgz) to be restored.
-    type: str
   includekernel:
+    type: str
     choices:
       - 'NO'
       - 'YES'
     description:
       - Use this option to add kernel in the backup file
-    type: str
     default: 'NO'
   level:
+    type: str
     choices:
       - basic
       - full
     description:
       - Level of data to be backed up.
-    type: str
     default: basic
   skipbackup:
+    type: bool
     description:
       - Use this option to skip taking backup during restore operation
-    type: bool
   uselocaltimezone:
+    type: bool
     description:
       - This option will create backup file with local timezone timestamp
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

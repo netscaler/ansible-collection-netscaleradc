@@ -133,7 +133,11 @@ class ModuleExecutor(object):
         self.module.exit_json(**self.module_result)
 
     @trace
-    def update_diff_list(self, existing=dict(), desired=dict(), delete=False, **kwargs):
+    def update_diff_list(self, existing=None, desired=None, delete=False, **kwargs):
+        if existing is None:
+            existing = {}
+        if desired is None:
+            desired = {}
         if "custom_msg" in kwargs:
             prepared_str = (
                 self.diff_dict.get("prepared", "") + os.linesep + kwargs["custom_msg"]
@@ -230,7 +234,10 @@ class ModuleExecutor(object):
             )
         if attribute_type == "str":
             # NITRO is case insensitive for string attribute values. So, convert both to lower case and compare
-            return str(existing_attribute_value).lower() == str(module_params_attribute_value).lower()
+            return (
+                str(existing_attribute_value).lower()
+                == str(module_params_attribute_value).lower()
+            )
         return existing_attribute_value == module_params_attribute_value
 
     @trace

@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation policy.
-    type: str
   logaction:
+    type: str
     description:
       - Log server to use to log connections that match this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the URL Transformation policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -43,8 +56,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform policy or my transform policy).
-    type: str
   newname:
+    type: str
     description:
       - New name for the policy. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -54,13 +67,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform policy or my transform policy).
-    type: str
   profilename:
+    type: str
     description:
       - Name of the URL Transformation profile to use to transform requests and responses
         that match the policy.
-    type: str
   rule:
+    type: str
     description:
       - Expression, or name of a named expression, against which to evaluate traffic.
       - ''
@@ -71,12 +84,12 @@ options:
         the quotations by using the \ character. '
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
   transformpolicylabel_transformpolicy_binding:
     type: dict
     description: Bindings for transformpolicylabel_transformpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

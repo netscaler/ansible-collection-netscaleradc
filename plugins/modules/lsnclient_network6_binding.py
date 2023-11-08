@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientname:
+    type: str
     description:
       - 'Name for the LSN client entity. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -35,28 +48,27 @@ options:
         requirement applies only to the Citrix ADC CLI: If the name includes one or
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn client1" or ''lsn client1'').'
-    type: str
   netmask:
+    type: str
     description:
       - Subnet mask for the IPv4 address specified in the Network parameter.
-    type: str
   network:
+    type: str
     description:
       - IPv4 address(es) of the LSN subscriber(s) or subscriber network(s) on whose
         traffic you want the Citrix ADC to perform Large Scale NAT.
-    type: str
   network6:
+    type: str
     description:
       - IPv6 address(es) of the LSN subscriber(s) or subscriber network(s) on whose
         traffic you want the Citrix ADC to perform Large Scale NAT.
-    type: str
   td:
+    type: float
     description:
       - 'ID of the traffic domain on which this subscriber or the subscriber network
         (as specified by the network parameter) belongs. '
       - If you do not specify an ID, the subscriber or the subscriber network becomes
         part of the default traffic domain.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

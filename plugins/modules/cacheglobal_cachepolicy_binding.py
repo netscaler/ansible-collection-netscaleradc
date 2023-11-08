@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -34,50 +47,50 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server or a user-defined policy label.
         After the invoked policies are evaluated, the flow returns to the policy with
         the next priority. Applicable only to default-syntax policies.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
         (To invoke a label associated with a virtual server, specify the name of the
         virtual server.)
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
     description:
       - Type of policy label to invoke.
-    type: str
   policy:
+    type: str
     description:
       - Name of the cache policy.
-    type: str
   precededefrules:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Specify whether this policy should be evaluated.
-    type: str
     default: 'NO'
   priority:
+    type: float
     description:
       - Specifies the priority of the policy.
-    type: float
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -90,7 +103,6 @@ options:
     description:
       - The bind point to which policy is bound. When you specify the type, detailed
         information about that bind point appears.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

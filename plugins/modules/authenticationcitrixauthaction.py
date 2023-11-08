@@ -24,25 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   authentication:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Authentication needs to be disabled for searching user object without performing
         authentication.
-    type: str
     default: ENABLED
   authenticationtype:
+    type: str
     choices:
       - CITRIXCONNECTOR
       - ATHENA
     description:
       - Type of the Citrix Authentication implementation. Default implementation uses
         Citrix Cloud Connector.
-    type: str
     default: CITRIXCONNECTOR
   name:
+    type: str
     description:
       - Name for the new Citrix Authentication action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -52,7 +65,6 @@ options:
       - 'The following requirement applies only to the NetScaler CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

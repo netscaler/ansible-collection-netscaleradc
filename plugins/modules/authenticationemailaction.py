@@ -24,23 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   content:
+    type: str
     description:
       - Content to be delivered to the user. "$code" string within the content will
         be replaced with the actual one-time-code to be sent.
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
-    type: str
   emailaddress:
+    type: str
     description:
       - An optional expression that yields user's email. When not configured, user's
         default mail address would be used. When configured, result of this expression
         is used as destination email address.
-    type: str
   name:
+    type: str
     description:
       - Name for the new email action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -50,34 +63,33 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   password:
+    type: str
     description:
       - Password/Clientsecret to use when authenticating to the server.
-    type: str
   serverurl:
+    type: str
     description:
       - Address of the server that delivers the message. It is fully qualified fqdn
         such as http(s):// or smtp(s):// for http and smtp protocols respectively.
         For SMTP, the port number is mandatory like smtps://smtp.example.com:25.
-    type: str
   timeout:
+    type: float
     description:
       - Time after which the code expires.
-    type: float
     default: 180
   type:
+    type: str
     choices:
       - SMTP
       - ATHENA
     description:
       - Type of the email action. Default type is C(SMTP).
-    type: str
     default: SMTP
   username:
+    type: str
     description:
       - Username/Clientid/EmailID to be used to authenticate to the server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

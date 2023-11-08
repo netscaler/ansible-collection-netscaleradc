@@ -24,24 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the WSDL.
-    type: str
   name:
+    type: str
     description:
       - Name of the WSDL file to remove.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrite any existing WSDL of the same name.
-    type: bool
   src:
+    type: str
     description:
       - URL (protocol, host, path, and name) of the WSDL file to be imported is stored.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

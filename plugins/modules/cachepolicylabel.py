@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   evaluates:
+    type: str
     choices:
       - REQ
       - RES
@@ -36,26 +49,26 @@ options:
       - HTTPQUIC_RES
     description:
       - 'When to evaluate policies bound to this label: request-time or response-time.'
-    type: str
   labelname:
+    type: str
     description:
       - Name for the label. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Can be changed after the label is created.
-    type: str
   newname:
+    type: str
     description:
       - New name for the cache-policy label. Must begin with an ASCII alphabetic or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
-    type: str
   cachepolicylabel_cachepolicy_binding:
     type: dict
     description: Bindings for cachepolicylabel_cachepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -80,17 +93,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | cachepolicylabel
-      delegate_to: localhost
-      netscaler.adc.cachepolicylabel:
-        state: present
-        labelname: _reqBuiltinDefaults
-        evaluates: REQ
-
 """
 
 RETURN = r"""

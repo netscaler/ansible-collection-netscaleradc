@@ -24,43 +24,53 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   nat64fragheader:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - When disabled, translator will not insert IPv6 fragmentation header for non
         fragmented IPv4 packets
-    type: str
     default: ENABLED
   nat64ignoretos:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Ignore TOS.
-    type: str
     default: 'NO'
   nat64v6mtu:
+    type: float
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
-    type: float
     default: 1280
   nat64zerochecksum:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Calculate checksum for UDP packets with zero checksum
-    type: str
     default: ENABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

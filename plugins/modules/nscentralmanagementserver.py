@@ -24,45 +24,58 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   activationcode:
+    type: str
     description:
       - Activation code is used to register to ADM service
-    type: str
   adcpassword:
+    type: str
     description:
       - ADC password used to create device profile on ADM
-    type: str
   adcusername:
+    type: str
     description:
       - ADC username used to create device profile on ADM
-    type: str
   deviceprofilename:
+    type: str
     description:
       - Device profile is created on ADM and contains the user name and password of
         the instance(s).
-    type: str
   ipaddress:
+    type: str
     description:
       - Ip Address of central management server.
-    type: str
   password:
+    type: str
     description:
       - Password for access to central management server. Required for any user account.
-    type: str
   servername:
+    type: str
     description:
       - Fully qualified domain name of the central management server or service-url
         to locate ADM service.
-    type: str
   type:
+    type: str
     choices:
       - CLOUD
       - ONPREM
     description:
       - Type of the central management server. Must be either C(CLOUD) or C(ONPREM)
         depending on whether the server is on the cloud or on premise.
-    type: str
   username:
+    type: str
     description:
       - Username for access to central management server. Must begin with a letter,
         number, or the underscore character (_), and must contain only letters, numbers,
@@ -72,14 +85,13 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or
       - single quotation marks (for example, "my ns centralmgmtserver" or "my ns centralmgmtserver").
-    type: str
   validatecert:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - validate the server certificate for secure SSL connections.
-    type: str
     default: 'YES'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

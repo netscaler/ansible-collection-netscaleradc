@@ -24,7 +24,15 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   negrectype:
+    type: str
     choices:
       - NXDOMAIN
       - NODATA
@@ -32,8 +40,8 @@ options:
       - Filter the Negative DNS records i.e C(NXDOMAIN) and C(NODATA) entries to be
         flushed. e.g flush dns proxyRecords C(NXDOMAIN) will flush only the C(NXDOMAIN)
         entries from the cache
-    type: str
   type:
+    type: str
     choices:
       - A
       - NS
@@ -52,7 +60,6 @@ options:
     description:
       - Filter the DNS records to be flushed.e.g flush dns proxyRecords -type C(A)   will
         flush only the C(A) records from the cache.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

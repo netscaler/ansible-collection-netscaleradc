@@ -24,34 +24,44 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   fipsfw:
+    type: str
     description:
       - Path to the FIPS firmware file.
-    type: str
   hsmlabel:
+    type: str
     description:
       - Label to identify the Hardware Security Module (HSM).
-    type: str
   inithsm:
+    type: str
     choices:
       - Level-2
     description:
       - FIPS initialization level. The appliance currently supports C(Level-2) (FIPS
         140-2).
-    type: str
   oldsopassword:
+    type: str
     description:
       - Old password for the security officer.
-    type: str
   sopassword:
+    type: str
     description:
       - Security officer password that will be in effect after you have configured
         the HSM.
-    type: str
   userpassword:
+    type: str
     description:
       - The Hardware Security Module's (HSM) User password.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

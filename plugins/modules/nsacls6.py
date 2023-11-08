@@ -24,7 +24,15 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   type:
+    type: str
     choices:
       - CLASSIC
       - DFD
@@ -34,7 +42,6 @@ options:
       - '* C(CLASSIC) - specifies the regular extended acls.'
       - '* C(DFD) - cluster specific acls,specifies hashmethod for steering of the
         packet in cluster .'
-    type: str
     default: CLASSIC
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -24,16 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: str
     description:
       - Unique identifier for the linkset. Must be of the form LS/x, where x can be
         an integer from 1 to 32.
-    type: str
   linkset_channel_binding:
     type: dict
     description: Bindings for linkset_channel_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -58,6 +71,7 @@ options:
     description: Bindings for linkset_interface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

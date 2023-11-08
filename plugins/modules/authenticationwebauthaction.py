@@ -24,101 +24,114 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   attribute1:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute1 from the webauth
         response
-    type: str
   attribute10:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute10 from the webauth
         response
-    type: str
   attribute11:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute11 from the webauth
         response
-    type: str
   attribute12:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute12 from the webauth
         response
-    type: str
   attribute13:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute13 from the webauth
         response
-    type: str
   attribute14:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute14 from the webauth
         response
-    type: str
   attribute15:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute15 from the webauth
         response
-    type: str
   attribute16:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute16 from the webauth
         response
-    type: str
   attribute2:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute2 from the webauth
         response
-    type: str
   attribute3:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute3 from the webauth
         response
-    type: str
   attribute4:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute4 from the webauth
         response
-    type: str
   attribute5:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute5 from the webauth
         response
-    type: str
   attribute6:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute6 from the webauth
         response
-    type: str
   attribute7:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute7 from the webauth
         response
-    type: str
   attribute8:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute8 from the webauth
         response
-    type: str
   attribute9:
+    type: str
     description:
       - Expression that would be evaluated to extract attribute9 from the webauth
         response
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   fullreqexpr:
+    type: str
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC sends
         to the authentication server.
       - The Citrix ADC does not check the validity of this request. One must manually
         validate the request.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the Web Authentication action. '
+      - Name for the Web Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -128,26 +141,25 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
-    type: str
   scheme:
+    type: str
     choices:
       - http
       - https
     description:
       - Type of scheme for the web server.
-    type: str
   serverip:
+    type: str
     description:
       - IP address of the web server to be used for authentication.
-    type: str
   serverport:
+    type: int
     description:
       - Port on which the web server accepts connections.
-    type: int
   successrule:
+    type: str
     description:
       - Expression, that checks to see if authentication is successful.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,37 +24,50 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this timer.
-    type: str
   interval:
+    type: int
     description:
       - The frequency at which the policies bound to this timer are invoked. The minimum
         value is 20 msec. The maximum value is 20940 in seconds and 349 in minutes
-    type: int
     default: 5
   name:
+    type: str
     description:
       - Timer name.
-    type: str
   newname:
+    type: str
     description:
       - The new name of the timer.
-    type: str
   unit:
+    type: str
     choices:
       - SEC
       - MIN
     description:
       - Timer interval unit
-    type: str
     default: SEC
   nstimer_autoscalepolicy_binding:
     type: dict
     description: Bindings for nstimer_autoscalepolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

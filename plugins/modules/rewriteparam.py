@@ -24,15 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   timeout:
+    type: float
     description:
       - Maximum time in milliseconds to allow for processing all the policies and
         their selected actions without interruption. If the timeout is reached then
         the evaluation causes an UNDEF to be raised and no further processing is performed.
         Note that some rewrites may have already been performed.
-    type: float
     default: 3900
   undefaction:
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an error condition in evaluating the expression.
@@ -41,7 +52,6 @@ options:
       - '* RESET - Reset the connection and notify the user''s browser, so that the
         user can resend the request.'
       - '* DROP - Drop the message without sending a response to the user.'
-    type: str
     default: '"NOREWRITE"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

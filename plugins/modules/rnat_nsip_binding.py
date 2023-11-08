@@ -26,11 +26,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name of the RNAT rule to which to bind NAT IPs.
-    type: str
   natip:
+    type: str
     description:
       - Any NetScaler-owned IPv4 address except the NSIP address. The NetScaler appliance
         replaces the source IP addresses of server-generated packets with the IP address
@@ -39,7 +52,6 @@ options:
         robin algorithm for each session. By specifying a range of IP addresses, you
         can specify all NetScaler-owned IP addresses, except the NSIP, that fall within
         the specified range.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

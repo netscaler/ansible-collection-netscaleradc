@@ -24,25 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   icmpthreshold:
+    type: float
     description:
       - Number of ICMP packets permitted per 10 milliseconds.
-    type: float
     default: 100
   tcprstthreshold:
+    type: float
     description:
       - The number of TCP RST packets permitted per 10 milli second. zero means rate
         control is disabled and 0xffffffff means every thing is rate controlled
-    type: float
     default: 100
   tcpthreshold:
+    type: float
     description:
       - Number of SYNs permitted per 10 milliseconds.
-    type: float
   udpthreshold:
+    type: float
     description:
       - Number of UDP packets permitted per 10 milliseconds.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

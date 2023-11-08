@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
@@ -48,31 +61,30 @@ options:
       - "\t\t-\tIf the gotoPriorityExpression evaluates to the priority of a policy\
         \ further ahead in the list then that policy will be evaluated next."
       - "\t\tThis field is applicable only to rewrite and responder policies."
-    type: str
   name:
+    type: str
     description:
       - Name of the virtual server on which to perform the binding operation.
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: float
   policyname:
+    type: str
     description:
       - Name of the policy bound to the GSLB vserver.
-    type: str
   priority:
+    type: float
     description:
       - Priority.
-    type: float
   type:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
       - MQTT_JUMBO_REQ
     description:
       - The bindpoint to which the policy is bound
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

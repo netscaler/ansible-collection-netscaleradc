@@ -26,14 +26,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: float
     description:
       - The integer that uniquely identifies the bridge group.
-    type: float
   vlan:
+    type: float
     description:
       - Names of all member VLANs.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

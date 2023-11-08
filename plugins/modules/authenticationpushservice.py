@@ -25,20 +25,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientid:
+    type: str
     description:
       - Unique identity for communicating with Citrix Push server in cloud.
-    type: str
   clientsecret:
+    type: str
     description:
       - Unique secret for communicating with Citrix Push server in cloud.
-    type: str
   customerid:
+    type: str
     description:
       - Customer id/name of the account in cloud that is used to create clientid/secret
         pair.
-    type: str
   name:
+    type: str
     description:
       - Name for the push service. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -47,11 +60,10 @@ options:
       - "\t    CLI Users: If the name includes one or more spaces, enclose the name\
         \ in double or single quotation marks (for example, \"my push service\" or\
         \ 'my push service')."
-    type: str
   refreshinterval:
+    type: float
     description:
       - Interval at which certificates or idtoken is refreshed.
-    type: float
     default: 50
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

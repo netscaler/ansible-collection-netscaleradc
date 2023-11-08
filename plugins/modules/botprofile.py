@@ -24,64 +24,77 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_enable_black_list:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable black-list bot detection.
-    type: str
     default: 'OFF'
   bot_enable_ip_reputation:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable IP-reputation bot detection.
-    type: str
     default: 'OFF'
   bot_enable_rate_limit:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable rate-limit bot detection.
-    type: str
     default: 'OFF'
   bot_enable_tps:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable TPS.
-    type: str
     default: 'OFF'
   bot_enable_white_list:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable white-list bot detection.
-    type: str
     default: 'OFF'
   clientipexpression:
+    type: str
     description:
       - Expression to get the client IP.
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   devicefingerprint:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable device-fingerprint bot detection
-    type: str
     default: 'OFF'
   devicefingerprintaction:
+    type: list
     choices:
       - NONE
       - LOG
@@ -91,44 +104,49 @@ options:
       - MITIGATION
     description:
       - Action to be taken for device-fingerprint based bot detection.
-    type: list
     elements: str
     default: NONE
   devicefingerprintmobile:
+    type: list
     choices:
       - NONE
       - Android
       - iOS
     description:
       - Enabling bot device fingerprint protection for mobile clients
-    type: list
     elements: str
     default: NONE
+  dfprequestlimit:
+    type: float
+    description:
+      - Number of requests to allow without bot session cookie if device fingerprint
+        is enabled
   errorurl:
+    type: str
     description:
       - URL that Bot protection uses as the Error URL.
-    type: str
   headlessbrowserdetection:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable Headless Browser detection.
-    type: str
     default: 'OFF'
   kmdetection:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable keyboard-mouse based bot detection.
-    type: str
     default: 'OFF'
   kmeventspostbodylimit:
+    type: float
     description:
       - Size of the KM data send by the browser, needs to be processed on ADC
-    type: float
   kmjavascriptname:
+    type: str
     description:
       - Name of the JavaScript file that the Bot Management feature will insert in
         the response for keyboard-mouse based detection.
@@ -140,8 +158,8 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my javascript file name" or 'my javascript
         file name').
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -151,12 +169,26 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
+  sessioncookiename:
     type: str
+    description:
+      - Name of the SessionCookie that the Bot Management feature uses for tracking.
+      - Must begin with a letter or number, and can consist of from 1 to 31 letters,
+        numbers, and the hyphen (-) and underscore (_) symbols.
+      - ''
+      - 'The following requirement applies only to the Citrix ADC CLI:'
+      - If the name includes one or more spaces, enclose the name in double or single
+        quotation marks (for example, "my cookie name" or 'my cookie name').
+  sessiontimeout:
+    type: float
+    description:
+      - Timeout, in seconds, after which a user session is terminated.
   signature:
+    type: str
     description:
       - Name of object containing bot static signature details.
-    type: str
   signaturemultipleuseragentheaderaction:
+    type: list
     choices:
       - CHECKLAST
       - LOG
@@ -166,10 +198,10 @@ options:
     description:
       - Actions to be taken if multiple User-Agent headers are seen in a request (Applicable
         if Signature check is enabled). Log action should be combined with other actions
-    type: list
     elements: str
     default: CHECKLAST
   signaturenouseragentheaderaction:
+    type: list
     choices:
       - NONE
       - LOG
@@ -179,10 +211,10 @@ options:
     description:
       - Actions to be taken if no User-Agent header in the request (Applicable if
         Signature check is enabled).
-    type: list
     elements: str
     default: DROP
   spoofedreqaction:
+    type: list
     choices:
       - NONE
       - LOG
@@ -192,18 +224,18 @@ options:
     description:
       - Actions to be taken on a spoofed request (A request spoofing good bot user
         agent string).
-    type: list
     elements: str
     default: LOG
   trap:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable trap bot detection.
-    type: str
     default: 'OFF'
   trapaction:
+    type: list
     choices:
       - NONE
       - LOG
@@ -212,27 +244,27 @@ options:
       - RESET
     description:
       - Action to be taken for bot trap based bot detection.
-    type: list
     elements: str
     default: NONE
   trapurl:
+    type: str
     description:
       - URL that Bot protection uses as the Trap URL.
-    type: str
   verboseloglevel:
+    type: str
     choices:
       - NONE
       - HTTP_FULL_HEADER
     description:
       - Bot verbose Logging. Based on the log level, ADC will log additional information
         whenever client is detected as a bot.
-    type: str
     default: NONE
   botprofile_blacklist_binding:
     type: dict
     description: Bindings for botprofile_blacklist_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -257,6 +289,7 @@ options:
     description: Bindings for botprofile_captcha_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -281,6 +314,7 @@ options:
     description: Bindings for botprofile_ipreputation_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -305,6 +339,7 @@ options:
     description: Bindings for botprofile_kmdetectionexpr_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -329,6 +364,7 @@ options:
     description: Bindings for botprofile_logexpression_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -353,6 +389,7 @@ options:
     description: Bindings for botprofile_ratelimit_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -377,6 +414,7 @@ options:
     description: Bindings for botprofile_tps_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -401,6 +439,7 @@ options:
     description: Bindings for botprofile_trapinsertionurl_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -425,6 +464,7 @@ options:
     description: Bindings for botprofile_whitelist_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

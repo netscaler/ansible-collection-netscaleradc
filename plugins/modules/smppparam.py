@@ -24,22 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   addrnpi:
+    type: float
     description:
       - Numbering Plan Indicator, such as landline, data, or WAP client, used in the
         ESME address sent in the bind request.
-    type: float
   addrrange:
+    type: str
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
-    type: str
     default: '"\\d*"'
   addrton:
+    type: float
     description:
       - Type of Number, such as an international number or a national number, used
         in the ESME address sent in the bind request.
-    type: float
   clientmode:
+    type: str
     choices:
       - TRANSCEIVER
       - TRANSMITTERONLY
@@ -51,23 +62,22 @@ options:
         center.'
       - '* C(TRANSMITTERONLY) - Client can only send messages.'
       - '* C(RECEIVERONLY) - Client can only receive messages.'
-    type: str
     default: TRANSCEIVER
   msgqueue:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
-    type: str
     default: 'OFF'
   msgqueuesize:
+    type: float
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,
         to the message center.
-    type: float
     default: 10000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

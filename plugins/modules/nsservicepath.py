@@ -24,19 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   servicepathname:
+    type: str
     description:
       - Name for the Service path. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must
       - '      contain only ASCII alphanumeric, underscore, hash (#), period (.),
         space, colon (:), at (@), equals (=), and hyphen (-)'
       - '      characters.'
-    type: str
   nsservicepath_nsservicefunction_binding:
     type: dict
     description: Bindings for nsservicepath_nsservicefunction_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,42 +24,55 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   destport:
+    type: int
     description:
       - Specifies UDP destination port for Geneve packets. Default port is 6081.
-    type: int
     default: 6081
   grepayload:
+    type: str
     choices:
       - ETHERNETwithDOT1Q
       - ETHERNET
       - IP
     description:
       - The payload GRE will carry
-    type: str
     default: ETHERNETwithDOT1Q
   ipsecprofilename:
+    type: str
     description:
       - Name of IPSec profile to be associated.
-    type: str
     default: '"ns_ipsec_default_profile"'
   local:
+    type: str
     description:
       - Type of Citrix ADC owned public IPv4 address, configured on the local Citrix
         ADC and used to set up the tunnel.
-    type: str
   name:
+    type: str
     description:
       - 'Name for the IP tunnel. Leading character must be a number or letter. Other
         characters allowed, after the first character, are @ _ - . (period) : (colon)
         # and space ( ).'
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for the iptunnel.
-    type: str
     default: DEFAULT_NG
   protocol:
+    type: str
     choices:
       - IPIP
       - GRE
@@ -68,18 +81,18 @@ options:
       - GENEVE
     description:
       - Name of the protocol to be used on this tunnel.
-    type: str
     default: IPIP
   remote:
+    type: str
     description:
       - Public IPv4 address, of the remote device, used to set up the tunnel. For
         this parameter, you can alternatively specify a network address.
-    type: str
   remotesubnetmask:
+    type: str
     description:
       - Subnet mask of the remote IP address of the tunnel.
-    type: str
   tosinherit:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -87,25 +100,24 @@ options:
       - Default behavior is to copy the ToS field of the internal IP Packet (Payload)
         to the outer IP packet (Transport packet). But the user can configure a new
         ToS field using this option.
-    type: str
     default: ENABLED
   vlan:
+    type: float
     description:
       - The vlan for mulicast packets
-    type: float
   vlantagging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to select Vlan Tagging.
-    type: str
     default: DISABLED
   vnid:
+    type: float
     description:
       - Virtual network identifier (VNID) is the value that identifies a specific
         virtual network in the data plane.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

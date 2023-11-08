@@ -24,21 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation action.
-    type: str
   cookiedomainfrom:
+    type: str
     description:
       - Pattern that matches the domain to be transformed in Set-Cookie headers.
-    type: str
   cookiedomaininto:
+    type: str
     description:
       - 'PCRE-format regular expression that describes the transformation to be performed
         on cookie domains that match the cookieDomainFrom pattern. '
       - 'NOTE: The cookie domain to be transformed is extracted from the request.'
-    type: str
   name:
+    type: str
     description:
       - Name for the URL transformation action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -49,46 +62,37 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform action or my transform action).
-    type: str
   priority:
+    type: float
     description:
       - Positive integer specifying the priority of the action within the profile.
         A lower number specifies a higher priority. Must be unique within the list
         of actions bound to the profile. Policies are evaluated in the order of their
         priority numbers, and the first policy that matches is applied.
-    type: float
   profilename:
+    type: str
     description:
       - Name of the URL Transformation profile with which to associate this action.
-    type: str
   requrlfrom:
+    type: str
     description:
       - PCRE-format regular expression that describes the request URL pattern to be
         transformed.
-    type: str
   requrlinto:
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the reqUrlFrom pattern.
-    type: str
   resurlfrom:
+    type: str
     description:
       - PCRE-format regular expression that describes the response URL pattern to
         be transformed.
-    type: str
   resurlinto:
+    type: str
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the resUrlFrom pattern.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable this action.
-    type: str
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

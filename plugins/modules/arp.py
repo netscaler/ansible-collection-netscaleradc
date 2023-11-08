@@ -24,51 +24,63 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Remove all ARP entries from the ARP table of the Citrix ADC.
-    type: bool
   ifnum:
+    type: str
     description:
       - Interface through which the network device is accessible. Specify the interface
         in (slot/port) notation. For example, 1/3.
-    type: str
   ipaddress:
+    type: str
     description:
       - IP address of the network device that you want to add to the ARP table.
-    type: str
   mac:
+    type: str
     description:
       - MAC address of the network device.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   ownernode:
+    type: float
     description:
       - The owner node for the Arp entry.
-    type: float
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   vlan:
+    type: float
     description:
       - The VLAN ID through which packets are to be sent after matching the ARP entry.
         This is a numeric value.
-    type: float
   vtep:
+    type: str
     description:
       - IP address of the VXLAN tunnel endpoint (VTEP) through which the IP address
         of this ARP entry is reachable.
-    type: str
   vxlan:
+    type: float
     description:
       - ID of the VXLAN on which the IP address of this ARP entry is reachable.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

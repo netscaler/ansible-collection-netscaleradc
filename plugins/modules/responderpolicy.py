@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     description:
       - 'Name of the responder action to perform if the request matches this responder
         policy. There are also some built-in actions which can be used. These are:'
@@ -34,20 +47,20 @@ options:
         such as a browser, will handle this and may inform the user. The client may
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
-    type: str
   appflowaction:
+    type: str
     description:
       - AppFlow action to invoke for requests that match this policy.
-    type: str
   comment:
+    type: str
     description:
       - Any type of information about this responder policy.
-    type: str
   logaction:
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the responder policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -58,34 +71,34 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder policy" or 'my responder policy').
-    type: str
   newname:
+    type: str
     description:
-      - 'New name for the responder policy. Must begin with a letter, number, or the
+      - New name for the responder policy. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and the
         hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon (:),
-        and underscore characters. '
+        and underscore characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my responder policy" or 'my responder policy').
-    type: str
   rule:
+    type: str
     description:
       - Expression that the policy uses to determine whether to respond to the specified
         request.
-    type: str
   undefaction:
+    type: str
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in
         actions can be used.
-    type: str
   responderpolicylabel_responderpolicy_binding:
     type: dict
     description: Bindings for responderpolicylabel_responderpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

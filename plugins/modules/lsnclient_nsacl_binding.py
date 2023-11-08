@@ -26,13 +26,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   aclname:
+    type: str
     description:
       - Name(s) of any configured extended ACL(s) whose action is ALLOW.
       - The condition specified in the extended ACL rule identifies the traffic from
         an LSN subscriber for which the Citrix ADC is to perform large scale NAT.
-    type: str
   clientname:
+    type: str
     description:
       - 'Name for the LSN client entity. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -41,14 +54,13 @@ options:
         requirement applies only to the Citrix ADC CLI: If the name includes one or
         more spaces, enclose the name in double or single quotation marks (for example,
         "lsn client1" or ''lsn client1'').'
-    type: str
   td:
+    type: float
     description:
       - 'ID of the traffic domain on which this subscriber or the subscriber network
         (as specified by the network parameter) belongs. '
       - If you do not specify an ID, the subscriber or the subscriber network becomes
         part of the default traffic domain.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

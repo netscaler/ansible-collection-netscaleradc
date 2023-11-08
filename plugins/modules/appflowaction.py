@@ -24,58 +24,71 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   botinsight:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the bot insight records
         to the configured collectors.
-    type: str
     default: DISABLED
   ciinsight:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the ContentInspection Insight
         records to the configured collectors.
-    type: str
     default: DISABLED
   clientsidemeasurements:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will collect the time required to
         load and render the mainpage on the client.
-    type: str
     default: DISABLED
   collectors:
+    type: list
     description:
       - Name(s) of collector(s) to be associated with the AppFlow action.
-    type: list
     elements: str
   comment:
+    type: str
     description:
       - Any comments about this action.  In the CLI, if including spaces between words,
         enclose the comment in quotation marks. (The quotation marks are not required
         in the configuration utility.)
-    type: str
   distributionalgorithm:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will distribute records among the
         collectors. Else, all records will be sent to all the collectors.
-    type: str
     default: DISABLED
   metricslog:
+    type: bool
     description:
       - If only the stats records are to be exported, turn on this option.
-    type: bool
   name:
+    type: str
     description:
       - Name for the action. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -84,67 +97,67 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow action" or 'my appflow action').
-    type: str
   newname:
+    type: str
     description:
       - New name for the AppFlow action. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at
-      - '(@), equals (=), and hyphen (-) characters. '
+      - (@), equals (=), and hyphen (-) characters.
       - ''
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow action" or 'my appflow action').
-    type: str
   pagetracking:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will start tracking the page for waterfall
         chart by inserting a NS_ESNS cookie in the response.
-    type: str
     default: DISABLED
   securityinsight:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the security insight records
         to the configured collectors.
-    type: str
     default: DISABLED
   transactionlog:
+    type: str
     choices:
       - ALL
       - ANOMALOUS
     description:
       - Log C(ANOMALOUS) or C(ALL) transactions
-    type: str
     default: ALL
   videoanalytics:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the videoinsight records
         to the configured collectors.
-    type: str
     default: DISABLED
   webinsight:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the webinsight records to
         the configured collectors.
-    type: str
     default: ENABLED
   appflowaction_analyticsprofile_binding:
     type: dict
     description: Bindings for appflowaction_analyticsprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

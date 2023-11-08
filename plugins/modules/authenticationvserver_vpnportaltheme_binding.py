@@ -26,14 +26,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name of the authentication virtual server to which to bind the policy.
-    type: str
   portaltheme:
+    type: str
     description:
       - Theme for Authentication virtual server Login portal
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

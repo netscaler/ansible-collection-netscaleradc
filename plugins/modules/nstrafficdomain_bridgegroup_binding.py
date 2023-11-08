@@ -26,16 +26,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bridgegroup:
+    type: float
     description:
       - ID of the configured bridge to bind to this traffic domain. More than one
         bridge group can be bound to a traffic domain, but the same bridge group cannot
         be a part of multiple traffic domains.
-    type: float
   td:
+    type: float
     description:
       - Integer value that uniquely identifies a traffic domain.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

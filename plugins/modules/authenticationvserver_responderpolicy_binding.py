@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -36,39 +49,38 @@ options:
       - AAA_RESPONSE
     description:
       - Bindpoint to which the policy is bound.
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   groupextraction:
+    type: bool
     description:
       - Applicable only while bindind classic authentication policy as advance authentication
         policy use nFactor
-    type: bool
   name:
+    type: str
     description:
       - Name of the authentication virtual server to which to bind the policy.
-    type: str
   nextfactor:
+    type: str
     description:
       - Applicable only while binding advance authentication policy as classic authentication
         policy does not support nFactor
-    type: str
   policy:
+    type: str
     description:
       - The name of the policy, if any, bound to the authentication vserver.
-    type: str
   priority:
+    type: float
     description:
       - The priority, if any, of the vpn vserver policy.
-    type: float
   secondary:
+    type: bool
     description:
       - Applicable only while bindind classic authentication policy as advance authentication
         policy use nFactor
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

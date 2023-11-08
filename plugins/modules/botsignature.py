@@ -24,25 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the signature file object.
-    type: str
   name:
+    type: str
     description:
       - Name to assign to the bot signature file object on the Citrix ADC.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrites the existing file
-    type: bool
   src:
+    type: str
     description:
       - Local path to and name of, or URL (protocol, host, path, and file name) for,
         the file in which to store the imported signature file.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

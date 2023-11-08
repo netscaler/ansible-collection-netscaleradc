@@ -24,26 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   conserverurl:
+    type: str
     description:
       - Connection server URL
-    type: str
   icvverification:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - ICV verification for PCOIP transport packets.
-    type: str
     default: DISABLED
   name:
+    type: str
     description:
       - name of PCoIP profile
-    type: str
   sessionidletimeout:
+    type: float
     description:
       - PCOIP Idle Session timeout
-    type: float
     default: 180
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

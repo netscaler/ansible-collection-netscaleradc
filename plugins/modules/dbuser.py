@@ -24,21 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   loggedin:
+    type: bool
     description:
       - Display the names of all database users currently logged on to the Citrix
         ADC.
-    type: bool
   password:
+    type: str
     description:
       - Password for logging on to the database. Must be the same as the password
         specified in the database.
-    type: str
   username:
+    type: str
     description:
       - Name of the database user. Must be the same as the user name specified in
         the database.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

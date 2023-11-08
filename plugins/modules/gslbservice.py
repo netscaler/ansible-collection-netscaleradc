@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging appflow flow information
-    type: str
     default: ENABLED
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -40,35 +53,35 @@ options:
       - In the request that is forwarded to the GSLB service, insert a header that
         stores the client's IP address. Client IP header insertion is used in connection-proxy
         based site persistence.
-    type: str
     default: DISABLED
   cipheader:
+    type: str
     description:
       - Name for the HTTP header that stores the client's IP address. Used with the
         Client IP option. If client IP header insertion is enabled on the service
         and a name is not specified for the header, the Citrix ADC uses the name specified
         by the cipHeader parameter in the set ns param command or, in the GUI, the
         Client IP Header parameter in the Configure HTTP Parameters dialog box.
-    type: str
   clttimeout:
+    type: float
     description:
       - Idle time, in seconds, after which a client connection is terminated. Applicable
         if connection proxy based site persistence is used.
-    type: float
   cnameentry:
+    type: str
     description:
       - Canonical name of the GSLB service. Used in CNAME-based GSLB.
-    type: str
   comment:
+    type: str
     description:
       - Any comments that you might want to associate with the GSLB service.
-    type: str
   cookietimeout:
+    type: float
     description:
       - Timeout value, in minutes, for the cookie, when cookie based site persistence
         is enabled.
-    type: float
   downstateflush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -77,111 +90,111 @@ options:
         transitions from UP to DOWN. Do not enable this option for services that must
         complete their transactions. Applicable if connection proxy based site persistence
         is used.
-    type: str
   hashid:
+    type: float
     description:
       - Unique hash identifier for the GSLB service, used by hash based load balancing
         methods.
-    type: float
   healthmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Monitor the health of the GSLB service.
-    type: str
     default: 'YES'
   ip:
+    type: str
     description:
       - IP address for the GSLB service. Should represent a load balancing, content
         switching, or VPN virtual server on the Citrix ADC, or the IP address of another
         load balancing device.
-    type: str
   ipaddress:
+    type: str
     description:
       - The new IP address of the service.
-    type: str
   maxaaausers:
+    type: float
     description:
       - Maximum number of SSL VPN users that can be logged on concurrently to the
         VPN virtual server that is represented by this GSLB service. A GSLB service
         whose user count reaches the maximum is not considered when a GSLB decision
         is made, until the count drops below the maximum.
-    type: float
   maxbandwidth:
+    type: float
     description:
       - Integer specifying the maximum bandwidth allowed for the service. A GSLB service
         whose bandwidth reaches the maximum is not considered when a GSLB decision
         is made, until its bandwidth consumption drops below the maximum.
-    type: float
   maxclient:
+    type: float
     description:
       - The maximum number of open connections that the service can support at any
         given time. A GSLB service whose connection count reaches the maximum is not
         considered when a GSLB decision is made, until the connection count drops
         below the maximum.
-    type: float
   monitor_name_svc:
+    type: str
     description:
       - Name of the monitor to bind to the service.
-    type: str
   monthreshold:
+    type: float
     description:
       - Monitoring threshold value for the GSLB service. If the sum of the weights
         of the monitors that are bound to this GSLB service and are in the UP state
         is not equal to or greater than this threshold value, the service is marked
         as DOWN.
-    type: float
   naptrdomainttl:
+    type: float
     description:
       - Modify the TTL of the internally created naptr domain
-    type: float
     default: 3600
   naptrorder:
+    type: float
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
-    type: float
     default: 1
   naptrpreference:
+    type: float
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
-    type: float
     default: 1
   naptrreplacement:
+    type: str
     description:
       - The replacement domain name for this NAPTR.
-    type: str
   naptrservices:
+    type: str
     description:
       - Service Parameters applicable to this delegation path.
-    type: str
   newname:
+    type: str
     description:
       - New name for the GSLB service.
-    type: str
   port:
+    type: int
     description:
       - Port on which the load balancing entity represented by this GSLB service listens.
-    type: int
   publicip:
+    type: str
     description:
       - The public IP address that a NAT device translates to the GSLB service's private
         IP address. Optional.
-    type: str
   publicport:
+    type: int
     description:
       - The public port associated with the GSLB service's public IP address. The
         port is mapped to the service's private port number. Applicable to the local
         GSLB service. Optional.
-    type: int
   servername:
+    type: str
     description:
       - Name of the server hosting the GSLB service.
-    type: str
   servicename:
+    type: str
     description:
       - Name for the GSLB service. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -190,8 +203,8 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my gslbsvc" or ''my gslbsvc'').'
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -213,21 +226,20 @@ options:
       - ORACLE
     description:
       - Type of service to create.
-    type: str
-    default: NSSVC_SERVICE_UNKNOWN
   sitename:
+    type: str
     description:
       - Name of the GSLB site to which the service belongs.
-    type: str
   sitepersistence:
+    type: str
     choices:
       - ConnectionProxy
       - HTTPRedirect
       - NONE
     description:
       - Use cookie-based site persistence. Applicable only to HTTP and SSL GSLB services.
-    type: str
   siteprefix:
+    type: str
     description:
       - The site's prefix string. When the service is bound to a GSLB virtual server,
         a GSLB site domain is generated internally for each bound service-domain pair
@@ -235,41 +247,33 @@ options:
         If the special string NONE is specified, the site-prefix string is unset.
         When implementing HTTP redirect site persistence, the Citrix ADC redirects
         GSLB requests to GSLB services by using their site domains.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable the service.
-    type: str
-    default: ENABLED
   svrtimeout:
+    type: float
     description:
       - Idle time, in seconds, after which a server connection is terminated. Applicable
         if connection proxy based site persistence is used.
-    type: float
   viewip:
+    type: str
     description:
       - IP address to be used for the given view
-    type: str
   viewname:
+    type: str
     description:
       - Name of the DNS view of the service. A DNS view is used in global server load
         balancing (GSLB) to return a predetermined IP address to a specific group
         of clients, which are identified by using a DNS policy.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the monitor-service binding. A larger number specifies
         a greater weight. Contributes to the monitoring threshold, which determines
         the state of the service.
-    type: float
   gslbservice_dnsview_binding:
     type: dict
     description: Bindings for gslbservice_dnsview_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -294,6 +298,7 @@ options:
     description: Bindings for gslbservice_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -318,6 +323,7 @@ options:
     description: Bindings for gslbservicegroup_gslbservicegroupmember_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -342,6 +348,7 @@ options:
     description: Bindings for gslbservicegroup_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,18 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   all:
+    type: bool
     description:
       - Use this option to do saveconfig for all partitions
-    type: bool
   changedpassword:
+    type: bool
     description:
       - Option to list all passwords changed which would not work when downgraded
         to older releases. Takes config file as input, if no input specified, running
         configuration is considered. Command => query ns config -changedpassword /
         query ns config -changedpassword /nsconfig/ns.conf
-    type: bool
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -48,84 +59,85 @@ options:
       - l    If cipHeader is specified, it will be used as the client IP header.
       - l    If it is not specified, then the value that has been set by the set ns
         config CLI command will be used as the client IP header.
-    type: str
   cipheader:
+    type: str
     description:
       - The text that will be used as the client IP header.
-    type: str
   config:
+    type: str
     description:
       - configuration File to be used to find weak passwords, if not specified, running
         config is taken as input.
-    type: str
   config1:
+    type: str
     description:
       - Location of the configurations.
-    type: str
   config2:
+    type: str
     description:
       - Location of the configurations.
-    type: str
   cookieversion:
+    type: str
     choices:
-      - 0
-      - 1
+      - '0'
+      - '1'
     description:
       - The version of the cookie inserted by system.
-    type: str
   crportrange:
+    type: str
     description:
       - Port range for cache redirection services.
-    type: str
   exclusivequotamaxclient:
+    type: float
     description:
       - The percentage of maxClient to be given to PEs
-    type: float
     default: 80
   exclusivequotaspillover:
+    type: float
     description:
       - The percentage of max limit to be given to PEs
-    type: float
     default: 80
   force:
+    type: bool
     description:
       - Configurations will be cleared without prompting for confirmation.
-    type: bool
   ftpportrange:
+    type: str
     description:
       - Port range configured for FTP services.
-    type: str
   grantquotamaxclient:
+    type: float
     description:
       - The percentage of shared quota to be granted at a time for maxClient
-    type: float
     default: 10
   grantquotaspillover:
+    type: float
     description:
       - The percentage of shared quota to be granted at a time for spillover
-    type: float
     default: 10
   httpport:
+    type: list
     description:
       - The HTTP ports on the Web server. This allows the system to perform connection
         off-load for any client request that has a destination port matching one of
         these configured ports.
-    type: list
+    elements: int
   ifnum:
+    type: list
     description:
       - Interfaces of the appliances that must be bound to the NSVLAN.
-    type: list
     elements: str
   ignoredevicespecific:
+    type: bool
     description:
       - Suppress device specific differences.
-    type: bool
   ipaddress:
+    type: str
     description:
       - IP address of the Citrix ADC. Commonly referred to as NSIP address. This parameter
         is mandatory to bring up the appliance.
-    type: str
   level:
+    type: str
     choices:
       - basic
       - extended
@@ -147,46 +159,46 @@ options:
         specifying the level as ''C(full)'', the cluster is deleted and all cluster
         nodes become standalone appliances. The ''C(basic)'' and ''C(extended)'' levels
         are propagated to the cluster nodes.'
-    type: str
   maxconn:
+    type: float
     description:
       - The maximum number of connections that will be made from the system to the
         web server(s) attached to it. The value entered here is applied globally to
         all attached servers.
-    type: float
   maxreq:
+    type: float
     description:
       - The maximum number of requests that the system can pass on a particular connection
         between the system and a server attached to it. Setting this value to 0 allows
         an unlimited number of requests to be passed.
-    type: float
   netmask:
+    type: str
     description:
       - Netmask corresponding to the IP address. This parameter is mandatory to bring
         up the appliance.
-    type: str
   nsvlan:
+    type: float
     description:
       - VLAN (NSVLAN) for the subnet on which the IP address resides.
-    type: float
   outtype:
+    type: str
     choices:
       - cli
       - xml
     description:
       - Format to display the difference in configurations.
-    type: str
   pmtumin:
+    type: float
     description:
       - The minimum Path MTU.
-    type: float
     default: 576
   pmtutimeout:
+    type: float
     description:
       - The timeout value in minutes.
-    type: float
     default: 10
   rbaconfig:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -194,17 +206,17 @@ options:
       - RBA configurations and TACACS policies bound to system global will not be
         cleared if RBA is set to C(NO).This option is applicable only for BASIC level
         of clear configuration.Default is C(YES), which will clear rba configurations.
-    type: str
     default: 'YES'
   securecookie:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - enable/disable secure flag for persistence cookie
-    type: str
     default: ENABLED
   tagged:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -214,40 +226,28 @@ options:
         tag which identifies the VLAN.
       - To use 802.1q tagging, the switch connected to the appliance's interfaces
         must also be configured for tagging.
-    type: str
     default: 'YES'
   template:
+    type: bool
     description:
       - File that contains the commands to be compared.
-    type: bool
   timezone:
+    type: str
     description:
       - Name of the timezone
-    type: str
     default: CoordinatedUniversalTime
   weakpassword:
+    type: bool
     description:
       - Option to list all weak passwords (not adhering to strong password requirements).
         Takes config file as input, if no input specified, running configuration is
         considered. Command => query ns config -weakpassword  / query ns config -weakpassword
         /nsconfig/ns.conf
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsconfig
-      delegate_to: localhost
-      netscaler.adc.nsconfig:
-        state: present
-        ipaddress: 10.10.10.10
-        netmask: 255.255.255.0
-
 """
 
 RETURN = r"""

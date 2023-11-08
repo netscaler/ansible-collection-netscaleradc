@@ -26,74 +26,79 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   fieldformat:
+    type: str
     description:
       - Name of the form field to which a field format will be assigned.
-    type: str
   fieldformatmaxlength:
+    type: float
     description:
       - The maximum allowed length for data in this form field.
-    type: float
   fieldformatminlength:
+    type: float
     description:
       - The minimum allowed length for data in this form field.
-    type: float
   fieldtype:
+    type: str
     description:
       - The field type you are assigning to this form field.
-    type: str
   formactionurl_ff:
+    type: str
     description:
       - Action URL of the form field to which a field format will be assigned.
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   isregex_ff:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is the form field name a regular expression?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

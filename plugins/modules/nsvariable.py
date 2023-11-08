@@ -24,16 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this variable.
-    type: str
   expires:
+    type: float
     description:
       - Value expiration in seconds. If the value is not referenced within the expiration
         period it will be deleted. 0 (the default) means no expiration.
-    type: float
   iffull:
+    type: str
     choices:
       - undef
       - lru
@@ -42,9 +55,9 @@ options:
       - '   C(lru) - (default) reuse the least recently used entry in the map.'
       - '   C(undef) - force the assignment to return an undefined (Undef) result
         to the policy executing the assignment.'
-    type: str
     default: lru
   ifnovalue:
+    type: str
     choices:
       - undef
       - init
@@ -57,9 +70,9 @@ options:
       - using the -C(init) value or its default.
       - '   C(undef) - force the expression evaluation to return an undefined (Undef)
         result to the policy executing the expression.'
-    type: str
     default: init
   ifvaluetoobig:
+    type: str
     choices:
       - undef
       - truncate
@@ -71,17 +84,17 @@ options:
         bytes and proceed.'
       - '   C(undef) - force the assignment or expression evaluation to return an
         undefined (Undef) result to the policy executing the assignment or expression.'
-    type: str
     default: truncate
   init:
+    type: str
     description:
       - 'Initialization value for this variable, to which a singleton variable or
         map entry will be set if it is referenced before an assignment action has
         assigned it a value. If the singleton variable or map entry already has been
         assigned a value, setting this parameter will have no effect on that variable
         value. Default: 0 for ulong, NULL for text'
-    type: str
   name:
+    type: str
     description:
       - 'Variable name.  This follows the same syntax rules as other expression entity
         names:'
@@ -91,8 +104,8 @@ options:
       - '   It cannot be an expression reserved word (e.g. SYS or HTTP).'
       - '   It cannot be used for an existing expression object (HTTP callout, patset,
         dataset, stringmap, or named expression).'
-    type: str
   scope:
+    type: str
     choices:
       - global
       - transaction
@@ -102,9 +115,9 @@ options:
         on a standalone Citrix ADC, an HA pair, or all nodes of a cluster'
       - '   C(transaction) - one value for each request-response C(transaction) (singleton
         variables only; no expiration)'
-    type: str
     default: global
   type:
+    type: str
     description:
       - 'Specification of the variable type; one of the following:'
       - '   ulong - singleton variable with an unsigned 64-bit value.'
@@ -131,7 +144,6 @@ options:
       - 'Example:'
       - '   map(text(10),text(20),100) specifies a map of text string keys (max size
         10 bytes) to text string values (max size 20 bytes), with 100 max entries.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

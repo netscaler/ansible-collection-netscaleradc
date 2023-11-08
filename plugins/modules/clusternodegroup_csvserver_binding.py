@@ -26,14 +26,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
-    type: str
   vserver:
+    type: str
     description:
       - vserver that need to be bound to this nodegroup.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

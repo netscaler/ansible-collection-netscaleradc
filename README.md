@@ -31,7 +31,7 @@ The collection provides Ansible modules to configure and manage NetScaler ADC ap
 ### ansible-galaxy
 
 ```bash
-ansible-galaxy collection install netscaler.adc 
+ansible-galaxy collection install netscaler.adc
 ```
 
 ### via github (to have the latest updated which are yet to be released in ansible-galaxy)
@@ -97,7 +97,7 @@ echo $NETSCALER_NITRO_AUTH_TOKEN
 
 ## Supported Ansible Versions
 
-This collection supports Ansible version 2.9 and above.
+This collection supports Ansible version 2.14 and above.
 
 > Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
 

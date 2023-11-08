@@ -24,27 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   backupparentlist:
+    type: list
     description:
       - The list of backup gslb sites configured in preferred order. Need to be parent
         gsb sites.
-    type: list
     elements: str
-    default: '"None"'
   clip:
+    type: str
     description:
       - 'Cluster IP address. Specify this parameter to connect to the remote cluster
         site for GSLB auto-sync. Note: The cluster IP address is defined when creating
         the cluster.'
-    type: str
   metricexchange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
-      - 'Exchange metrics with other sites. Metrics are exchanged by using Metric
-        Exchange Protocol (MEP). The appliances in the GSLB setup exchange health
-        information once every second. '
+      - Exchange metrics with other sites. Metrics are exchanged by using Metric Exchange
+        Protocol (MEP). The appliances in the GSLB setup exchange health information
+        once every second.
       - ''
       - If you disable metrics exchange, you can use only static load balancing methods
         (such as round robin, static proximity, or the hash-based methods), and if
@@ -52,14 +64,14 @@ options:
         least connection) is in operation, the appliance falls back to round robin.
         Also, if you disable metrics exchange, you must use a monitor to determine
         the state of GSLB services. Otherwise, the service is marked as DOWN.
-    type: str
     default: ENABLED
   naptrreplacementsuffix:
+    type: str
     description:
       - The naptr replacement suffix configured here will be used to construct the
         naptr replacement field in NAPTR record.
-    type: str
   nwmetricexchange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -68,39 +80,39 @@ options:
         learned from communications with various local DNS (LDNS) servers used by
         clients. RTT information is used in the dynamic RTT load balancing method,
         and is exchanged every 5 seconds.
-    type: str
     default: ENABLED
   parentsite:
+    type: str
     description:
       - Parent site of the GSLB site, in a parent-child topology.
-    type: str
   publicclip:
+    type: str
     description:
       - IP address to be used to globally access the remote cluster when it is deployed
         behind a NAT. It can be same as the normal cluster IP address.
-    type: str
   publicip:
+    type: str
     description:
       - Public IP address for the local site. Required only if the appliance is deployed
         in a private address space and the site has a public IP address hosted on
         an external firewall or a NAT device.
-    type: str
   sessionexchange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Exchange persistent session entries with other GSLB sites every five seconds.
-    type: str
     default: ENABLED
   siteipaddress:
+    type: str
     description:
       - IP address for the GSLB site. The GSLB site uses this IP address to communicate
         with other GSLB sites. For a local site, use any IP address that is owned
         by the appliance (for example, a SNIP or MIP address, or the IP address of
         the ADNS service).
-    type: str
   sitename:
+    type: str
     description:
       - Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -109,8 +121,8 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my gslbsite" or ''my gslbsite'').'
-    type: str
   sitetype:
+    type: str
     choices:
       - REMOTE
       - LOCAL
@@ -120,9 +132,8 @@ options:
         the site. If the specified site IP address is owned by the appliance (for
         example, a MIP address or SNIP address), the site is a local site. Otherwise,
         it is a remote site.
-    type: str
-    default: NONE
   triggermonitor:
+    type: str
     choices:
       - ALWAYS
       - MEPDOWN
@@ -133,11 +144,10 @@ options:
       - '* C(ALWAYS) - Monitor the GSLB service at all times.'
       - '* C(MEPDOWN) - Monitor the GSLB service only when the exchange of metrics
         through the Metrics Exchange Protocol (MEP) is disabled.'
-      - 'C(MEPDOWN_SVCDOWN) - Monitor the service in either of the following situations: '
+      - 'C(MEPDOWN_SVCDOWN) - Monitor the service in either of the following situations:'
       - '* The exchange of metrics through MEP is disabled.'
       - '* The exchange of metrics through MEP is enabled but the status of the service,
         learned through metrics exchange, is DOWN.'
-    type: str
     default: ALWAYS
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

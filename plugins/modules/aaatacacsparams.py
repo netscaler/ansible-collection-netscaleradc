@@ -24,56 +24,66 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   accounting:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send accounting messages to the TACACS+ server.
-    type: str
   auditfailedcmds:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - The option for sending accounting messages to the TACACS+ server.
-    type: str
   authorization:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use streaming authorization on the TACACS+ server.
-    type: str
   authtimeout:
+    type: float
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.
-    type: float
     default: 3
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   groupattrname:
+    type: str
     description:
       - TACACS+ group attribute name.Used for group extraction on the TACACS+ server.
-    type: str
   serverip:
+    type: str
     description:
       - IP address of your TACACS+ server.
-    type: str
   serverport:
+    type: int
     description:
       - Port number on which the TACACS+ server listens for connections.
-    type: int
     default: 49
   tacacssecret:
+    type: str
     description:
       - Key shared between the TACACS+ server and clients. Required for allowing the
         Citrix ADC to communicate with the TACACS+ server.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

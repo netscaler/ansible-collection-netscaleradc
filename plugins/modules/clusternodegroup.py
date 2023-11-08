@@ -24,25 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
-    type: str
   priority:
+    type: float
     description:
       - Priority of Nodegroup. This priority is used for all the nodes bound to the
         nodegroup for Nodegroup selection
-    type: float
-  state:
-    choices:
-      - ACTIVE
-      - SPARE
-      - PASSIVE
-    description:
-      - State of the nodegroup. All the nodes binding to this nodegroup must have
-        the same state. C(ACTIVE)/C(SPARE)/C(PASSIVE)
-    type: str
   sticky:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -58,9 +62,9 @@ options:
       - '  * Disabled - When one of the nodes goes down, a non-nodegroup cluster node
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
-    type: str
     default: 'NO'
   strict:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -73,13 +77,13 @@ options:
       - '  * Disabled - When one of the nodes goes down, a non-nodegroup cluster node
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
-    type: str
     default: 'NO'
   clusternodegroup_authenticationvserver_binding:
     type: dict
     description: Bindings for clusternodegroup_authenticationvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -104,6 +108,7 @@ options:
     description: Bindings for clusternodegroup_clusternode_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -128,6 +133,7 @@ options:
     description: Bindings for clusternodegroup_crvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -152,6 +158,7 @@ options:
     description: Bindings for clusternodegroup_csvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -176,6 +183,7 @@ options:
     description: Bindings for clusternodegroup_gslbsite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -200,6 +208,7 @@ options:
     description: Bindings for clusternodegroup_gslbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -224,6 +233,7 @@ options:
     description: Bindings for clusternodegroup_lbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -248,6 +258,7 @@ options:
     description: Bindings for clusternodegroup_nslimitidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -272,6 +283,7 @@ options:
     description: Bindings for clusternodegroup_service_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -296,6 +308,7 @@ options:
     description: Bindings for clusternodegroup_streamidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -320,6 +333,7 @@ options:
     description: Bindings for clusternodegroup_vpnvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

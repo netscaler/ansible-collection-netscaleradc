@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bypasssafetycheck:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Bypass the safety check and allow unsafe expressions.
-    type: str
     default: 'NO'
   loglevel:
+    type: str
     choices:
       - EMERGENCY
       - ALERT
@@ -43,9 +56,9 @@ options:
       - INFORMATIONAL
       - DEBUG
     description:
-      - 'Audit log level, which specifies the severity level of the log message being
-        generated.. '
-      - 'The following loglevels are valid: '
+      - Audit log level, which specifies the severity level of the log message being
+        generated..
+      - 'The following loglevels are valid:'
       - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
       - '* C(ALERT) - Events that might require action.'
       - '* C(CRITICAL) - Events that indicate an imminent server crisis.'
@@ -54,15 +67,15 @@ options:
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
-    type: str
   logtonewnslog:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Send the message to the new nslog.
-    type: str
   name:
+    type: str
     description:
       - Name of the audit message action. Must begin with a letter, number, or the
         underscore character (_), and must contain only letters, numbers, and the
@@ -72,11 +85,10 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my message action" or 'my message action').
-    type: str
   stringbuilderexpr:
+    type: str
     description:
       - Default-syntax expression that defines the format and content of the log message.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

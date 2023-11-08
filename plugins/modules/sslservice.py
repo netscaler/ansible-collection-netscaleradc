@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cipherredirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -34,16 +45,16 @@ options:
         if the SSL handshake fails because of a cipher mismatch between the virtual
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   cipherurl:
+    type: str
     description:
       - URL of the page to which to redirect the client in case of a cipher mismatch.
         Typically, this page has a clear explanation of the error or an alternative
         location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
-    type: str
   clientauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -51,9 +62,9 @@ options:
       - State of client authentication. In service-based SSL offload, the service
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   clientcert:
+    type: str
     choices:
       - Mandatory
       - Optional
@@ -66,35 +77,35 @@ options:
       - This parameter is not applicable when configuring a backend SSL service.
       - 'Caution: Define proper access control policies before changing this setting
         to C(Optional).'
-    type: str
   commonname:
+    type: str
     description:
       - Name to be checked against the CommonName (CN) field in the server certificate
         bound to the SSL server
-    type: str
   dh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of Diffie-Hellman (DH) key exchange. This parameter is not applicable
         when configuring a backend service.
-    type: str
     default: DISABLED
   dhcount:
+    type: float
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time. This parameter is not applicable when configuring a backend service.
         Allowed DH count values are 0 and >= 500.
-    type: float
   dhfile:
+    type: str
     description:
       - Name for and, optionally, path to the PEM-format DH parameter file to be installed.
         /nsconfig/ssl/ is the default path. This parameter is not applicable when
         configuring a backend service.
-    type: str
   dhkeyexpsizelimit:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -103,29 +114,29 @@ options:
         800-56A) bit size for private-key size. For example, for DH params of size
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
-    type: str
     default: DISABLED
   dtls1:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL service.
-    type: str
     default: ENABLED
   dtls12:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL service.
-    type: str
     default: DISABLED
   dtlsprofilename:
+    type: str
     description:
       - Name of the DTLS profile that contains DTLS settings for the service.
-    type: str
   ersa:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -139,15 +150,15 @@ options:
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   ersacount:
+    type: float
     description:
       - Refresh count for regeneration of RSA public-key and private-key pair. Zero
         (0) specifies infinite usage (no refresh).
       - This parameter is not applicable when configuring a backend service.
-    type: float
   ocspstapling:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -160,9 +171,9 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    type: str
     default: DISABLED
   pushenctrigger:
+    type: str
     choices:
       - Always
       - Merge
@@ -178,8 +189,8 @@ options:
       - '* TIMER - PUSH packet triggering encryption is delayed by the time defined
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
-    type: str
   redirectportrewrite:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -187,29 +198,29 @@ options:
       - State of the port rewrite while performing HTTPS redirect. If this parameter
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
-    type: str
     default: DISABLED
   sendclosenotify:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    type: str
     default: 'YES'
   serverauth:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of server authentication support for the SSL service.
-    type: str
     default: DISABLED
   servicename:
+    type: str
     description:
       - Name of the SSL service.
-    type: str
   sessreuse:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -217,16 +228,16 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    type: str
     default: ENABLED
   sesstimeout:
+    type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    type: float
     default: 300
   snienable:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -236,18 +247,18 @@ options:
         on a single virtual server or service if the domains are controlled by the
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
-    type: str
     default: DISABLED
   ssl2:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of SSLv2 protocol support for the SSL service.
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   ssl3:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -255,13 +266,13 @@ options:
       - State of SSLv3 protocol support for the SSL service.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    type: str
     default: ENABLED
   sslprofile:
+    type: str
     description:
       - Name of the SSL profile that contains SSL settings for the service.
-    type: str
   sslredirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -277,9 +288,9 @@ options:
         from http:// to https:// and the SSL session does not break.
       - ''
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   sslv2redirect:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -289,61 +300,61 @@ options:
         SSL handshake fails because of a protocol version mismatch between the virtual
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
-    type: str
     default: DISABLED
   sslv2url:
+    type: str
     description:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
       - This parameter is not applicable when configuring a backend service.
-    type: str
   strictsigdigestcheck:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Parameter indicating to check whether peer's certificate during TLS1.2 handshake
         is signed with one of signature-hash combination supported by Citrix ADC
-    type: str
     default: DISABLED
   tls1:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service.
-    type: str
     default: ENABLED
   tls11:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service.
-    type: str
     default: ENABLED
   tls12:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service.
-    type: str
     default: ENABLED
   tls13:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL service.
-    type: str
     default: DISABLED
   sslservice_ecccurve_binding:
     type: dict
     description: Bindings for sslservice_ecccurve_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -368,6 +379,7 @@ options:
     description: Bindings for sslservice_sslcertkey_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -392,6 +404,7 @@ options:
     description: Bindings for sslservice_sslcipher_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -416,6 +429,7 @@ options:
     description: Bindings for sslservice_sslciphersuite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -440,6 +454,7 @@ options:
     description: Bindings for sslservice_sslpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -464,6 +479,7 @@ options:
     description: Bindings for sslservicegroup_ecccurve_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -488,6 +504,7 @@ options:
     description: Bindings for sslservicegroup_sslcertkey_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -512,6 +529,7 @@ options:
     description: Bindings for sslservicegroup_sslcipher_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -536,6 +554,7 @@ options:
     description: Bindings for sslservicegroup_sslciphersuite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -560,22 +579,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | sslservice
-      delegate_to: localhost
-      netscaler.adc.sslservice:
-        state: present
-        servicename: nsrnatsip-127.0.0.1-5061
-        ersa: ENABLED
-        sessreuse: DISABLED
-        ssl3: DISABLED
-        tls1: DISABLED
-        tls11: DISABLED
-        dtls1: DISABLED
-
 """
 
 RETURN = r"""

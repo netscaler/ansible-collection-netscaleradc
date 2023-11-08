@@ -24,26 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cloudhost:
+    type: str
     description:
       - URL Filtering Cloud host.
-    type: str
   hoursbetweendbupdates:
+    type: float
     description:
       - URL Filtering hours between DB updates.
-    type: float
   localdatabasethreads:
+    type: float
     description:
       - URL Filtering Local DB number of threads.
-    type: float
   seeddbpath:
+    type: str
     description:
       - URL Filtering Seed DB path.
-    type: str
   timeofdaytoupdatedb:
+    type: str
     description:
       - URL Filtering time of day to update DB.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

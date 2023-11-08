@@ -24,15 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   holdtimetxmult:
+    type: float
     description:
       - A multiplier for calculating the duration for which the receiving device stores
         the LLDP information in its database before discarding or removing it. The
         duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter
         value multiplied by the timer (Timer) parameter value.
-    type: float
     default: 4
   mode:
+    type: str
     choices:
       - NONE
       - TRANSMITTER
@@ -42,12 +53,11 @@ options:
       - Global mode of Link Layer Discovery Protocol (LLDP) on the Citrix ADC. The
         resultant LLDP mode of an interface depends on the LLDP mode configured at
         the global and the interface levels.
-    type: str
   timer:
+    type: float
     description:
       - Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the
         Citrix ADC sends to a directly connected device.
-    type: float
     default: 30
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

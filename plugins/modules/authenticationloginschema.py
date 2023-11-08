@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   authenticationschema:
+    type: str
     description:
       - Name of the file for reading authentication schema to be sent for Login Page
         UI. This file should contain xml definition of elements as per Citrix Forms
@@ -33,12 +46,12 @@ options:
         previously obtained credentials, then "noschema" can be given as argument.
         Please note that this applies only to loginSchemas that are used with user-defined
         factors, and not the vserver factor.
-    type: str
   authenticationstrength:
+    type: float
     description:
       - Weight of the current authentication
-    type: float
   name:
+    type: str
     description:
       - Name for the new login schema. Login schema defines the way login form is
         rendered. It provides a way to customize the fields that are shown to the
@@ -50,34 +63,33 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   passwdexpression:
+    type: str
     description:
       - Expression for password extraction during login. This can be any relevant
         advanced policy expression.
-    type: str
   passwordcredentialindex:
+    type: float
     description:
       - The index at which user entered password should be stored in session.
-    type: float
   ssocredentials:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
-    type: str
     default: 'NO'
   usercredentialindex:
+    type: float
     description:
       - The index at which user entered username should be stored in session.
-    type: float
   userexpression:
+    type: str
     description:
       - Expression for username extraction during login. This can be any relevant
         advanced policy expression.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

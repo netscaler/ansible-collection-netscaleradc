@@ -68,7 +68,7 @@ def get_bindings(client, binding_name, binding_id=None):
 def is_resource_exists(
     client, resource_name, resource_id=None, args=None, attrs=None, filter=None
 ):
-    status_code, _ = client.get(
+    status_code, resources = client.get(
         resource=resource_name,
         id=resource_id,
         args=args,

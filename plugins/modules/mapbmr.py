@@ -24,14 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
-  eabitlength:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
     description:
-      - 'The Embedded Address (EA) bit field encodes the CE-specific IPv4 address
-        and port information.  The EA bit field, which is unique for a '
-      - "\t\t\t          given Rule IPv6 prefix."
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
+  eabitlength:
     type: float
+    description:
+      - The Embedded Address (EA) bit field encodes the CE-specific IPv4 address and
+        port information.  The EA bit field, which is unique for a
+      - "\t\t\t          given Rule IPv6 prefix."
     default: 16
   name:
+    type: str
     description:
       - 'Name for the Basic Mapping Rule. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -45,29 +58,29 @@ options:
         \ IPv4 address from the IPv6 packet sent from MAP CE device."
       - "\t\t\tAlso it allows to determine destination IPv6 address of MAP CE before\
         \ sending packets to MAP CE"
-    type: str
   psidlength:
+    type: float
     description:
       - Length of Port Set IdentifierPort Set Identifier(PSID) in Embedded Address
         (EA) bits
-    type: float
     default: 8
   psidoffset:
+    type: float
     description:
       - Start bit position  of Port Set Identifier(PSID) value in Embedded Address
         (EA) bits.
-    type: float
     default: 6
   ruleipv6prefix:
+    type: str
     description:
       - IPv6 prefix of Customer Edge(CE) device.MAP-T CE will send ipv6 packets with
         this ipv6 prefix as source ipv6 address prefix
-    type: str
   mapbmr_bmrv4network_binding:
     type: dict
     description: Bindings for mapbmr_bmrv4network_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

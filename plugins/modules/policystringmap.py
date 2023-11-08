@@ -24,12 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with the string map or key-value pair bound to this string
         map.
-    type: str
   name:
+    type: str
     description:
       - Unique name for the string map. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric
@@ -37,12 +50,12 @@ options:
         for use as an expression qualifier prefix (such as HTTP) or enumeration value
         (such as ASCII). Must not be the name of an existing named expression, pattern
         set, dataset, string map, or HTTP callout.
-    type: str
   policystringmap_pattern_binding:
     type: dict
     description: Bindings for policystringmap_pattern_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,66 +24,79 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   acceptancethreshold:
+    type: str
     description:
       - Non-Breaching transactions to Total transactions threshold expressed in percent.
       - Maximum of 6 decimal places is supported.
-    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable Appflow logging for stream identifier
-    type: str
     default: DISABLED
   breachthreshold:
+    type: float
     description:
       - Breaching transactions threshold calculated over interval.
-    type: float
   interval:
+    type: float
     description:
       - Number of minutes of data to use when calculating session statistics (number
         of requests, bandwidth, and response times). The interval is a moving window
         that keeps the most recently collected data. Older data is discarded at regular
         intervals.
-    type: float
     default: 1
   maxtransactionthreshold:
+    type: float
     description:
       - Maximum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
-    type: float
   mintransactionthreshold:
+    type: float
     description:
       - Minimum per transcation value of metric. Metric to be tracked is specified
         by tracktransactions attribute.
-    type: float
   name:
+    type: str
     description:
       - The name of stream identifier.
-    type: str
   samplecount:
+    type: float
     description:
       - Size of the sample from which to select a request for evaluation. The smaller
         the sample count, the more accurate is the statistical data. To evaluate all
         requests, set the sample count to 1. However, such a low setting can result
         in excessive consumption of memory and processing resources.
-    type: float
     default: 1
   selectorname:
+    type: str
     description:
       - Name of the selector to use with the stream identifier.
-    type: str
   snmptrap:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/disable SNMP trap for stream identifier
-    type: str
     default: DISABLED
   sort:
+    type: str
     choices:
       - REQUESTS
       - CONNECTIONS
@@ -96,18 +109,18 @@ options:
         Performed during data collection, the sorting enables real-time data evaluation
         through Citrix ADC policies (for example, compression and caching policies)
         that use functions such as IS_TOP(n).
-    type: str
     default: REQUESTS
   trackackonlypackets:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Track ack only packets as well. This setting is applicable only when packet
         rate limiting is being used.
-    type: str
     default: DISABLED
   tracktransactions:
+    type: str
     choices:
       - RESPTIME
       - NONE
@@ -115,7 +128,6 @@ options:
       - 'Track transactions exceeding configured threshold. Transaction tracking can
         be enabled for following metric: ResponseTime.'
       - By default transaction tracking is disabled
-    type: str
     default: NONE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

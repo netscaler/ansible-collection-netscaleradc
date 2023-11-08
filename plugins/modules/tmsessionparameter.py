@@ -24,35 +24,46 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   defaultauthorizationaction:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Allow or deny access to content for which there is no specific authorization
         policy.
-    type: str
     default: DENY
   homepage:
+    type: str
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
-    type: str
     default: '"None"'
   httponlycookie:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
-    type: str
     default: 'YES'
   kcdaccount:
+    type: str
     description:
       - Kerberos constrained delegation account name
-    type: str
   persistentcookie:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -60,20 +71,20 @@ options:
       - Use persistent SSO cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
-    type: str
     default: 'OFF'
   persistentcookievalidity:
+    type: float
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistence cookie setting is enabled.
-    type: float
   sesstimeout:
+    type: float
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access the intranet resources.
-    type: float
     default: 30
   sso:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -84,20 +95,19 @@ options:
         for security reason. BASIC, DIGEST, and NTLM (without Negotiate NTLM2 Key
         or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication
         types.
-    type: str
     default: 'OFF'
   ssocredential:
+    type: str
     choices:
       - PRIMARY
       - SECONDARY
     description:
       - Use primary or secondary authentication credentials for single sign-on.
-    type: str
     default: PRIMARY
   ssodomain:
+    type: str
     description:
       - Domain to use for single sign-on.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

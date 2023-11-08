@@ -24,27 +24,37 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   deletefiles:
+    type: str
     description:
       - String specifying the path(s) to and name(s) of the files to be deleted by
         the EPA tool, as a string of between 1 and 1023 characters.
-    type: str
   killprocess:
+    type: str
     description:
       - String specifying the name of a process to be terminated by the EPA tool.
-    type: str
   preauthenticationaction:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Deny or allow login on the basis of end point analysis results.
-    type: str
   rule:
+    type: str
     description:
       - Name of the Citrix ADC named rule, or an expression, to be evaluated by the
         EPA tool.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

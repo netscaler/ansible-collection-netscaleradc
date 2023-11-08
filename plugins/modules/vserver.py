@@ -24,11 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   backupvserver:
+    type: str
     description:
       - The name of the backup virtual server for this virtual server.
-    type: str
   cacheable:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -36,26 +53,26 @@ options:
       - Use this option to specify whether a virtual server (used for load balancing
         or content switching) routes requests to the cache redirection virtual server
         before sending it to the configured servers.
-    type: str
   clttimeout:
+    type: float
     description:
       - The timeout value in seconds for idle client connection
-    type: float
   name:
+    type: str
     description:
       - The name of the virtual server to be removed.
-    type: str
   pushvserver:
+    type: str
     description:
       - The lb vserver of type PUSH/SSL_PUSH to which server pushes the updates received
         on the client facing non-push lb vserver.
-    type: str
   redirecturl:
+    type: str
     description:
       - The URL where traffic is redirected if the virtual server in the system becomes
         unavailable.
-    type: str
   somethod:
+    type: str
     choices:
       - CONNECTION
       - DYNAMICCONNECTION
@@ -66,24 +83,23 @@ options:
       - The spillover factor. The system will use this value to determine if it should
         send traffic to the backupvserver when the main virtual server reaches the
         spillover threshold.
-    type: str
   sopersistence:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - The state of the spillover persistence.
-    type: str
     default: DISABLED
   sopersistencetimeout:
+    type: float
     description:
       - The spillover persistence entry timeout.
-    type: float
     default: 2
   sothreshold:
+    type: float
     description:
       - The spillver threshold value.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

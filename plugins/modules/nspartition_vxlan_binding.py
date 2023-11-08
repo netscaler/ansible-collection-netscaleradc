@@ -26,16 +26,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   partitionname:
+    type: str
     description:
       - Name of the Partition. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-    type: str
   vxlan:
+    type: float
     description:
       - Identifier of the vxlan that is assigned to this partition.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

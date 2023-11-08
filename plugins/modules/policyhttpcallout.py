@@ -24,13 +24,26 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bodyexpr:
+    type: str
     description:
       - An advanced string expression for generating the body of the request. The
         expression can contain a literal string or an expression that derives the
         value (for example, client.ip.src). Mutually exclusive with -fullReqExpr.
-    type: str
   cacheforsecs:
+    type: float
     description:
       - Duration, in seconds, for which the callout response is cached. The cached
         responses are stored in an integrated caching content group named "calloutContentGroup".
@@ -40,12 +53,12 @@ options:
         responses.
       - "\t   Note that the calloutContentGroup definition may not be modified or\
         \ removed nor may it be used with other cache policies."
-    type: float
   comment:
+    type: str
     description:
       - Any comments to preserve information about this HTTP callout.
-    type: str
   fullreqexpr:
+    type: str
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC sends
         to the callout agent. If you set this parameter, you must not include HTTP
@@ -55,39 +68,39 @@ options:
         policy bank or in a TCP content switching policy bank.
       - The Citrix ADC does not check the validity of this request. You must manually
         validate the request.
-    type: str
   headers:
+    type: list
     description:
       - One or more headers to insert into the HTTP request. Each header is specified
         as "name(expr)", where expr is an expression that is evaluated at runtime
         to provide the value for the named header. You can configure a maximum of
         eight headers for an HTTP callout. Mutually exclusive with the full HTTP request
         expression.
-    type: list
     elements: str
   hostexpr:
+    type: str
     description:
       - String expression to configure the Host header. Can contain a literal value
         (for example, 10.101.10.11) or a derived value (for example, http.req.header("Host")).
         The literal value can be an IP address or a fully qualified domain name. Mutually
         exclusive with the full HTTP request expression.
-    type: str
   httpmethod:
+    type: str
     choices:
       - GET
       - POST
     description:
       - Method used in the HTTP request that this callout sends.  Mutually exclusive
         with the full HTTP request expression.
-    type: str
   ipaddress:
+    type: str
     description:
       - IP Address of the server (callout agent) to which the callout is sent. Can
         be an IPv4 or IPv6 address.
       - Mutually exclusive with the Virtual Server parameter. Therefore, you cannot
         set the <IP Address, Port> and the Virtual Server in the same HTTP callout.
-    type: str
   name:
+    type: str
     description:
       - Name for the HTTP callout. Not case sensitive. Must begin with an ASCII letter
         or underscore (_) character, and must consist only of ASCII alphanumeric or
@@ -95,23 +108,23 @@ options:
         for use as an expression qualifier prefix (such as HTTP) or enumeration value
         (such as ASCII). Must not be the name of an existing named expression, pattern
         set, dataset, stringmap, or HTTP callout.
-    type: str
   parameters:
+    type: list
     description:
       - One or more query parameters to insert into the HTTP request URL (for a GET
         request) or into the request body (for a POST request). Each parameter is
         specified as "name(expr)", where expr is an expression that is evaluated at
         run time to provide the value for the named parameter (name=value). The parameter
         values are URL encoded. Mutually exclusive with the full HTTP request expression.
-    type: list
     elements: str
   port:
+    type: int
     description:
       - Server port to which the HTTP callout agent is mapped. Mutually exclusive
         with the Virtual Server parameter. Therefore, you cannot set the <IP Address,
         Port> and the Virtual Server in the same HTTP callout.
-    type: int
   resultexpr:
+    type: str
     description:
       - 'Expression that extracts the callout results from the response sent by the
         HTTP callout agent. Must be a response based expression, that is, it must
@@ -119,8 +132,8 @@ options:
         type. For example, if you configure a return type of TEXT, the result expression
         must be a text based expression. If the return type is NUM, the result expression
         (resultExpr) must return a numeric value, as in the following example: http.res.body(10000).length.'
-    type: str
   returntype:
+    type: str
     choices:
       - BOOL
       - NUM
@@ -132,29 +145,28 @@ options:
       - '* C(NUM) - Treat the returned value as a number.'
       - '* C(BOOL) - Treat the returned value as a Boolean value. '
       - 'Note: You cannot change the return type after it is set.'
-    type: str
   scheme:
+    type: str
     choices:
       - http
       - https
     description:
       - Type of scheme for the callout server.
-    type: str
   urlstemexpr:
+    type: str
     description:
       - String expression for generating the URL stem. Can contain a literal string
         (for example, "/mysite/index.html") or an expression that derives the value
         (for example, http.req.url). Mutually exclusive with the full HTTP request
         expression.
-    type: str
   vserver:
+    type: str
     description:
       - Name of the load balancing, content switching, or cache redirection virtual
         server (the callout agent) to which the HTTP callout is sent. The service
         type of the virtual server must be HTTP. Mutually exclusive with the IP address
         and port parameters. Therefore, you cannot set the <IP Address, Port> and
         the Virtual Server in the same HTTP callout.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

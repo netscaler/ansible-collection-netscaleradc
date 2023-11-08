@@ -24,43 +24,56 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   backuppersistencetimeout:
+    type: float
     description:
       - Time period, in minutes, for which backup persistence is in effect.
-    type: float
     default: 2
   cookiedomain:
+    type: str
     description:
       - Domain attribute for the HTTP cookie.
-    type: str
   cookiename:
+    type: str
     description:
       - Use this parameter to specify the cookie name for COOKIE peristence type.
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
-    type: str
   mastervserver:
+    type: str
     description:
       - When USE_VSERVER_PERSISTENCE is enabled, one can use this setting to designate
         a member vserver as master which is responsible to create the persistence
         sessions
-    type: str
   name:
+    type: str
     description:
       - Name of the load balancing virtual server group.
-    type: str
   newname:
+    type: str
     description:
       - New name for the load balancing virtual server group.
-    type: str
   persistencebackup:
+    type: str
     choices:
       - SOURCEIP
       - NONE
     description:
       - Type of backup persistence for the group.
-    type: str
   persistencetype:
+    type: str
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -74,13 +87,13 @@ options:
         in its first response to a client.'
       - '* C(RULE) - Create persistence sessions based on a user defined rule.'
       - '* C(NONE) - Disable persistence for the group.'
-    type: str
   persistmask:
+    type: str
     description:
       - Persistence mask to apply to source IPv4 addresses when creating source IP
         based persistence sessions.
-    type: str
   rule:
+    type: str
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - ''
@@ -88,17 +101,17 @@ options:
       - '* If the expression includes one or more spaces, enclose the entire expression
         in double quotation marks.'
       - '* If the expression itself includes double quotation marks, escape the quotations
-        by using the \ character. '
+        by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    type: str
     default: '"None"'
   timeout:
+    type: float
     description:
       - Time period for which a persistence session is in effect.
-    type: float
     default: 2
   usevserverpersistency:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -107,19 +120,19 @@ options:
         allows member vservers to have their own persistence, but need to be compatible
         with other members persistence rules. When this setting is enabled persistence
         sessions created by any of the members can be shared by other member vservers.
-    type: str
     default: DISABLED
   v6persistmasklen:
+    type: float
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.
-    type: float
     default: 128
   lbgroup_lbvserver_binding:
     type: dict
     description: Bindings for lbgroup_lbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,7 +24,19 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   feature:
+    type: list
     choices:
       - WL
       - WebLogging
@@ -100,24 +112,12 @@ options:
     description:
       - Feature to be enabled. Multiple features can be specified by providing a blank
         space between each feature.
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsfeature
-      delegate_to: localhost
-      netscaler.adc.nsfeature:
-        state: enabled
-        feature:
-          - CS
-          - LB
 """
 
 RETURN = r"""

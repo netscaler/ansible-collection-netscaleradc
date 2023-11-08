@@ -24,17 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   encalgo:
+    type: list
     choices:
       - AES
       - AES192
       - AES256
     description:
       - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
-    type: list
     elements: str
     default: AES
   hashalgo:
+    type: list
     choices:
       - HMAC_SHA1
       - HMAC_SHA256
@@ -43,50 +54,49 @@ options:
       - HMAC_MD5
     description:
       - Type of hashing algorithm
-    type: list
     elements: str
     default: HMAC_SHA256
   ikeretryinterval:
+    type: float
     description:
       - IKE retry interval for bringing up the connection
-    type: float
   ikeversion:
+    type: str
     choices:
       - V1
       - V2
     description:
       - IKE Protocol Version
-    type: str
     default: V2
   lifetime:
+    type: float
     description:
       - Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE
         SA/8)
-    type: float
   livenesscheckinterval:
+    type: float
     description:
       - Number of seconds after which a notify payload is sent to check the liveliness
         of the peer. Additional retries are done as per retransmit interval setting.
         Zero value disables liveliness checks.
-    type: float
   perfectforwardsecrecy:
+    type: str
     choices:
       - ENABLE
       - DISABLE
     description:
       - Enable/Disable PFS.
-    type: str
     default: DISABLE
   replaywindowsize:
+    type: float
     description:
       - IPSec Replay window size for the data traffic
-    type: float
   retransmissiontime:
+    type: float
     description:
       - The interval in seconds to retry sending the IKE messages to peer, three consecutive
         attempts are done with doubled interval after every failure,
       - increases for every retransmit till 6 retransmits.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

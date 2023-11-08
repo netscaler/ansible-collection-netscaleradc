@@ -24,37 +24,49 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   charset:
+    type: str
     choices:
       - ASCII
       - UTF_8
     description:
       - Character set associated with the characters in the string.
-    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this patsetfile.
-    type: str
   delimiter:
+    type: str
     description:
       - patset file patterns delimiter.
-    type: str
-    default: 10
   imported:
+    type: bool
     description:
       - When set, display only shows all imported patsetfiles.
-    type: bool
   name:
+    type: str
     description:
       - Name to assign to the imported patset file. Unique name of the pattern set.
         Not case sensitive. Must begin with an ASCII letter or underscore (_) character
         and must contain only alphanumeric and underscore characters.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrites the existing file
-    type: bool
   src:
+    type: str
     description:
       - URL in protocol, host, path, and file name format from where the patset file
         will be imported. If file is already present, then it can be imported using
@@ -62,7 +74,6 @@ options:
       - '                      NOTE: The import fails if the object to be imported
         is on an HTTPS server that requires client certificate authentication for
         access'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

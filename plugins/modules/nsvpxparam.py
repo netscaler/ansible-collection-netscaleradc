@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   cpuyield:
+    type: str
     choices:
       - DEFAULT
       - 'YES'
@@ -45,36 +56,25 @@ options:
       - 2. In cluster setup, use '-ownerNode' to specify ID of the cluster node.
       - 3. This setting is a system wide implementation and not granular to vCPUs.
       - 4. No effect on the management PE.
-    type: str
     default: DEFAULT
   masterclockcpu1:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - This argument is deprecated.
-    type: str
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which you are setting the cpuyield. It can be configured
         only through the cluster IP address.
-    type: float
     default: 255
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsvpxparam
-      delegate_to: localhost
-      netscaler.adc.nsvpxparam:
-        state: present
-        cpuyield: 'YES'
-
 """
 
 RETURN = r"""

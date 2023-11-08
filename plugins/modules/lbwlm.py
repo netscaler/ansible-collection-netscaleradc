@@ -24,33 +24,46 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipaddress:
+    type: str
     description:
       - The IP address of the WLM.
-    type: str
   katimeout:
+    type: float
     description:
       - The idle time period after which Citrix ADC would probe the WLM. The value
         ranges from 1 to 1440 minutes.
-    type: float
     default: 2
   lbuid:
+    type: str
     description:
       - The LBUID for the Load Balancer to communicate to the Work Load Manager.
-    type: str
   port:
+    type: int
     description:
       - The port of the WLM.
-    type: int
   wlmname:
+    type: str
     description:
       - The name of the Work Load Manager.
-    type: str
   lbwlm_lbvserver_binding:
     type: dict
     description: Bindings for lbwlm_lbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

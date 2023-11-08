@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -35,26 +48,25 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: float
   servicegroupname:
+    type: str
     description:
       - The service group name bound to the selected load balancing virtual server.
-    type: str
   servicename:
+    type: str
     description:
       - Service to bind to the virtual server.
-    type: str
   weight:
+    type: float
     description:
       - Integer specifying the weight of the service. A larger number specifies a
         greater weight. Defines the capacity of the service relative to the other
         services in the load balancing configuration. Determines the priority given
         to the service in load balancing decisions.
-    type: float
     default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

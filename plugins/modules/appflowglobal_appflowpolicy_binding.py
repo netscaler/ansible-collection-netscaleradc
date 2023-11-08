@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -34,40 +47,40 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - Expression specifying the priority of the next policy which will get evaluated
         if the current policy rule evaluates to TRUE.
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server or a user-defined policy label.
         After the invoked policies are evaluated, the flow returns to the policy with
         the next priority.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label to invoke if the current policy evaluates to TRUE.
-    type: str
   labeltype:
+    type: str
     choices:
       - vserver
       - policylabel
     description:
       - Type of policy label to invoke. Specify C(vserver) for a policy label associated
         with a virtual server, or C(policylabel) for a user-defined policy label.
-    type: str
   policyname:
+    type: str
     description:
       - Name of the AppFlow policy.
-    type: str
   priority:
+    type: float
     description:
       - Specifies the priority of the policy.
-    type: float
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -88,7 +101,6 @@ options:
     description:
       - Global bind point for which to show detailed information about the policies
         bound to the bind point.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this authentication policy label.
-    type: str
   labelname:
+    type: str
     description:
       - Name for the new authentication policy label.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -39,26 +52,25 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication policy label" or 'authentication
         policy label').
-    type: str
   loginschema:
+    type: str
     description:
       - Login schema associated with authentication policy label. Login schema defines
         the UI rendering by providing customization option of the fields. If user
         intervention is not needed for a given factor such as group extraction, a
         loginSchema whose authentication schema is "noschema" should be used.
-    type: str
   newname:
+    type: str
     description:
       - The new name of the auth policy label
-    type: str
   type:
+    type: str
     choices:
       - AAATM_REQ
       - RBA_REQ
     description:
       - Type of feature (aaatm or rba) against which to match the policies bound to
         this policy label.
-    type: str
     default: AAATM_REQ
   authenticationpolicylabel_authenticationpolicy_binding:
     type: dict
@@ -66,6 +78,7 @@ options:
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,97 +24,109 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   allowedalgorithms:
+    type: list
     choices:
       - HS256
       - RS256
       - RS512
     description:
       - Multivalued option to specify allowed token verification algorithms.
-    type: list
     elements: str
-    default: OAUTH_ALG_ALL
   attribute1:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute1
-    type: str
   attribute10:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute10
-    type: str
   attribute11:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute11
-    type: str
   attribute12:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute12
-    type: str
   attribute13:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute13
-    type: str
   attribute14:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute14
-    type: str
   attribute15:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute15
-    type: str
   attribute16:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute16
-    type: str
   attribute2:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute2
-    type: str
   attribute3:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute3
-    type: str
   attribute4:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute4
-    type: str
   attribute5:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute5
-    type: str
   attribute6:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute6
-    type: str
   attribute7:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute7
-    type: str
   attribute8:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute8
-    type: str
   attribute9:
+    type: str
     description:
       - Name of the attribute to be extracted from OAuth Token and to be stored in
         the attribute9
-    type: str
   attributes:
+    type: str
     description:
       - List of attribute names separated by ',' which needs to be extracted.
       - Note that preceding and trailing spaces will be removed.
@@ -122,86 +134,86 @@ options:
         cross 1023 bytes.
       - These attributes have multi-value support separated by ',' and stored as key-value
         pair in AAA session
-    type: str
   audience:
+    type: str
     description:
       - Audience for which token sent by Authorization server is applicable. This
         is typically entity name or url that represents the recipient
-    type: str
   authentication:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - If authentication is disabled, password is not sent in the request.
-    type: str
     default: ENABLED
   authorizationendpoint:
+    type: str
     description:
       - Authorization endpoint/url to which unauthenticated user will be redirected.
         Citrix ADC redirects user to this endpoint by adding query parameters including
         clientid. If this parameter not specified then as default value we take Token
         Endpoint/URL value. Please note that Authorization Endpoint or Token Endpoint
         is mandatory for oauthAction
-    type: str
   certendpoint:
+    type: str
     description:
       - URL of the endpoint that contains JWKs (Json Web Key) for JWT (Json Web Token)
         verification.
-    type: str
   certfilepath:
+    type: str
     description:
       - Path to the file that contains JWKs (Json Web Key) for JWT (Json Web Token)
         verification.
-    type: str
   clientid:
+    type: str
     description:
       - Unique identity of the client/user who is getting authenticated. Authorization
         server infers client configuration using this ID
-    type: str
   clientsecret:
+    type: str
     description:
       - Secret string established by user and authorization server
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   granttype:
+    type: str
     choices:
       - CODE
       - PASSWORD
     description:
       - Grant type support. value can be code or password
-    type: str
     default: CODE
   graphendpoint:
+    type: str
     description:
       - URL of the Graph API service to learn Enterprise Mobility Services (EMS) endpoints.
-    type: str
   idtokendecryptendpoint:
+    type: str
     description:
       - URL to which obtained idtoken will be posted to get a decrypted user identity.
         Encrypted idtoken will be obtained by posting OAuth token to token endpoint.
         In order to decrypt idtoken, Citrix ADC posts request to the URL configured
-    type: str
   introspecturl:
+    type: str
     description:
       - URL to which access token would be posted for validation
-    type: str
   issuer:
+    type: str
     description:
       - Identity of the server whose tokens are to be accepted.
-    type: str
   metadataurl:
+    type: str
     description:
       - Well-known configuration endpoint of the Authorization Server. Citrix ADC
         fetches server details from this endpoint.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the OAuth Authentication action. '
+      - Name for the OAuth Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -211,8 +223,8 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'my authentication
         action').
-    type: str
   oauthtype:
+    type: str
     choices:
       - GENERIC
       - INTUNE
@@ -220,45 +232,45 @@ options:
     description:
       - Type of the OAuth implementation. Default value is generic implementation
         that is applicable for most deployments.
-    type: str
     default: GENERIC
   pkce:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to enable/disable PKCE flow during authentication.
-    type: str
     default: ENABLED
   refreshinterval:
+    type: float
     description:
       - Interval at which services are monitored for necessary configuration.
-    type: float
     default: 1440
   resourceuri:
+    type: str
     description:
       - Resource URL for Oauth configuration.
-    type: str
   skewtime:
+    type: float
     description:
       - This option specifies the allowed clock skew in number of minutes that Citrix
         ADC allows on an incoming token. For example, if skewTime is 10, then token
         would be valid from (current time - 10) min to (current time + 10) min, ie
         20min in all.
-    type: float
     default: 5
   tenantid:
+    type: str
     description:
       - TenantID of the application. This is usually specific to providers such as
         Microsoft and usually refers to the deployment identifier.
-    type: str
   tokenendpoint:
+    type: str
     description:
       - URL to which OAuth token will be posted to verify its authenticity. User obtains
         this token from Authorization server upon successful authentication. Citrix
         ADC will validate presented token by posting it to the URL configured
-    type: str
   tokenendpointauthmethod:
+    type: str
     choices:
       - client_secret_post
       - client_secret_jwt
@@ -267,16 +279,15 @@ options:
     description:
       - Option to select the variant of token authentication method. This method is
         used while exchanging code with IdP.
-    type: str
     default: client_secret_post
   userinfourl:
+    type: str
     description:
       - URL to which OAuth access token will be posted to obtain user information.
-    type: str
   usernamefield:
+    type: str
     description:
       - Attribute in the token from which username should be extracted.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

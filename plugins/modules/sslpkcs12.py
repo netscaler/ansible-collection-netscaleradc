@@ -24,60 +24,68 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   Import:
+    type: bool
     description:
       - Convert the certificate and private-key from PKCS#12 format to PEM format.
-    type: bool
   aes256:
+    type: bool
     description:
       - Encrypt the private key by using the AES algorithm (256-bit key) during the
         import operation. On the command line, you are prompted to enter the pass
         phrase.
-    type: bool
   certfile:
+    type: str
     description:
       - Certificate file to be converted from PEM to PKCS#12 format.
-    type: str
   des:
+    type: bool
     description:
       - Encrypt the private key by using the DES algorithm in CBC mode during the
         import operation. On the command line, you are prompted to enter the pass
         phrase.
-    type: bool
   des3:
+    type: bool
     description:
       - Encrypt the private key by using the Triple-DES algorithm in EDE CBC mode
         (168-bit key) during the import operation. On the command line, you are prompted
         to enter the pass phrase.
-    type: bool
   export:
+    type: bool
     description:
       - Convert the certificate and private key from PEM format to PKCS#12 format.
         On the command line, you are prompted to enter the pass phrase.
-    type: bool
   keyfile:
+    type: str
     description:
       - Name of the private key file to be converted from PEM to PKCS#12 format. If
         the key file is encrypted, you are prompted to enter the pass phrase used
         for encrypting the key.
-    type: str
   outfile:
+    type: str
     description:
       - Name for and, optionally, path to, the output file that contains the certificate
         and the private key after converting from PKCS#12 to PEM format. /nsconfig/ssl/
         is the default path.
       - If importing, the certificate-key pair is stored in PEM format. If exporting,
         the certificate-key pair is stored in PKCS#12 format.
-    type: str
   password:
+    type: str
     description:
       - '0'
-    type: str
   pempassphrase:
+    type: str
     description:
       - '0'
-    type: str
   pkcs12file:
+    type: str
     description:
       - Name for and, optionally, path to, the PKCS#12 file. If importing, specify
         the input file name that contains the certificate and the private key in PKCS#12
@@ -86,7 +94,6 @@ options:
       - PKCS#12 format. /nsconfig/ssl/ is the default path.
       - During the import operation, if the key is encrypted, you are prompted to
         enter the pass phrase used for encrypting the key.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

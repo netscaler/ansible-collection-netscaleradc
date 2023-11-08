@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comment describing the type of field that this field type is intended to match.
-    type: str
   name:
+    type: str
     description:
       - Name for the field type.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -39,23 +52,22 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my field type" or 'my field type').
-    type: str
   nocharmaps:
+    type: bool
     description:
       - will not show internal field types added as part of FieldFormat learn rules
         deployment
-    type: bool
   priority:
+    type: float
     description:
       - Positive integer specifying the priority of the field type. A lower number
         specifies a higher priority. Field types are checked in the order of their
         priority numbers.
-    type: float
   regex:
+    type: str
     description:
       - PCRE - format regular expression defining the characters and length allowed
         for this field type.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

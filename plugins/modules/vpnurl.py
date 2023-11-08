@@ -24,23 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actualurl:
+    type: str
     description:
       - Web address for the bookmark link.
-    type: str
   appjson:
+    type: str
     description:
       - To store the template details in the json format.
-    type: str
   applicationtype:
+    type: str
     choices:
       - CVPN
       - VPN
       - SaaS
     description:
       - The type of application this C(VPN) URL represents. Possible values are C(CVPN)/C(SaaS)/C(VPN)
-    type: str
   clientlessaccess:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -49,40 +62,39 @@ options:
         clientless access for the bookmarked web address in the Secure Client Access
         based session. Allows single sign-on and other HTTP processing on Citrix Gateway
         for HTTPS resources.
-    type: str
     default: 'OFF'
   comment:
+    type: str
     description:
       - Any comments associated with the bookmark link.
-    type: str
   iconurl:
+    type: str
     description:
       - URL to fetch icon file for displaying this resource.
-    type: str
   linkname:
+    type: str
     description:
       - Description of the bookmark link. The description appears in the Access Interface.
-    type: str
   samlssoprofile:
+    type: str
     description:
       - Profile to be used for doing SAML SSO
-    type: str
   ssotype:
+    type: str
     choices:
       - unifiedgateway
       - selfauth
       - samlauth
     description:
       - Single sign on type for unified gateway
-    type: str
   urlname:
+    type: str
     description:
       - Name of the bookmark link.
-    type: str
   vservername:
+    type: str
     description:
       - Name of the associated LB/CS vserver
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

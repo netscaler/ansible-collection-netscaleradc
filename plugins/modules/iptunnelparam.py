@@ -24,48 +24,59 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   dropfrag:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
-    type: str
     default: 'NO'
   dropfragcputhreshold:
+    type: float
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation to use the IP tunnel. Applies only if dropFragparameter
         is set to NO. The default value, 0, specifies that this parameter is not set.
-    type: float
   enablestrictrx:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
-    type: str
     default: 'NO'
   enablestricttx:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
-    type: str
     default: 'NO'
   mac:
+    type: str
     description:
       - The shared MAC used for shared IP between cluster nodes/HA peers
-    type: str
   srcip:
+    type: str
     description:
       - Common source-IP address for all tunnels. For a specific tunnel, this global
         setting is overridden if you have specified another source IP address. Must
         be a MIP or SNIP address.
-    type: str
   srciproundrobin:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -75,15 +86,14 @@ options:
         This setting is ignored if a common global source IP address has been specified
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
-    type: str
     default: 'NO'
   useclientsourceip:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Use client source IP as source IP for outer tunnel IP header
-    type: str
     default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

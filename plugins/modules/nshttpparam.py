@@ -24,83 +24,93 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   conmultiplex:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
-    type: str
     default: ENABLED
   dropinvalreqs:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Drop invalid HTTP requests or responses.
-    type: str
     default: 'OFF'
   http2serverside:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable/Disable HTTP/2 on server side
-    type: str
     default: 'OFF'
   ignoreconnectcodingscheme:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Ignore Coding scheme in CONNECT request.
-    type: str
     default: DISABLED
   insnssrvrhdr:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable Citrix ADC server header insertion for Citrix ADC generated
         HTTP responses.
-    type: str
     default: 'OFF'
   logerrresp:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Server header value to be inserted.
-    type: str
     default: 'ON'
   markconnreqinval:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark CONNECT requests as invalid.
-    type: str
     default: 'OFF'
   markhttp09inval:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark HTTP/0.9 requests as invalid.
-    type: str
     default: 'OFF'
   maxreusepool:
+    type: float
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time.
-    type: float
   nssrvrhdr:
+    type: str
     description:
       - The server header value to be inserted. If no explicit header is specified
         then NSBUILD.RELEASE is used as default server header.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

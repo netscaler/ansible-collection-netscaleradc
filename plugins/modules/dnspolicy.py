@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actionname:
+    type: str
     description:
       - 'Name of the DNS action to perform when the rule evaluates to TRUE. The built
         in actions function as follows:'
@@ -34,60 +47,60 @@ options:
       - You can create custom actions by using the add dns action command in the CLI
         or the DNS > Actions > Create DNS Action dialog box in the Citrix ADC configuration
         utility.
-    type: str
   cachebypass:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - By pass dns cache for this.
-    type: str
   drop:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - The dns packet must be dropped.
-    type: str
   logaction:
+    type: str
     description:
       - Name of the messagelog action to use for requests that match this policy.
-    type: str
   name:
+    type: str
     description:
       - Name for the DNS policy.
-    type: str
   preferredlocation:
+    type: str
     description:
       - The location used for the given policy. This is deprecated attribute. Please
         use -prefLocList
-    type: str
   preferredloclist:
+    type: list
     description:
       - The location list in priority order used for the given policy.
-    type: list
     elements: str
   rule:
+    type: str
     description:
       - Expression against which DNS traffic is evaluated.
       - 'Note:'
       - '* On the command line interface, if the expression includes blank spaces,
         the entire expression must be enclosed in double quotation marks.'
       - '* If the expression itself includes double quotation marks, you must escape
-        the quotations by using the  character. '
+        the quotations by using the  character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
-        in which case you do not have to escape the double quotation marks. '
+        in which case you do not have to escape the double quotation marks.'
       - 'Example: CLIENT.UDP.DNS.DOMAIN.EQ("domainname")'
-    type: str
   viewname:
+    type: str
     description:
       - The view name that must be used for the given policy.
-    type: str
   dnspolicylabel_dnspolicy_binding:
     type: dict
     description: Bindings for dnspolicylabel_dnspolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

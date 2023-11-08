@@ -24,50 +24,62 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   dnssecoffload:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dnssec offload for this zone.
-    type: str
     default: DISABLED
   keyname:
+    type: list
     description:
       - Name of the public/private DNS key pair with which to sign the zone. You can
         sign a zone with up to four keys.
-    type: list
     elements: str
   nsec:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable nsec generation for dnssec offload.
-    type: str
     default: DISABLED
   proxymode:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - 'Deploy the zone in proxy mode. Enable in the following scenarios:'
       - '* The load balanced DNS servers are authoritative for the zone and all resource
-        records that are part of the zone. '
+        records that are part of the zone.'
       - '* The load balanced DNS servers are authoritative for the zone, but the Citrix
         ADC owns a subset of the resource records that belong to the zone (partial
         zone ownership configuration). Typically seen in global server load balancing
         (GSLB) configurations, in which the appliance responds authoritatively to
         queries for GSLB domain names but forwards queries for other domain names
         in the zone to the load balanced servers.'
-      - 'In either scenario, do not create the zone''s Start of Authority (SOA) and
-        name server (NS) resource records on the appliance. '
+      - In either scenario, do not create the zone's Start of Authority (SOA) and
+        name server (NS) resource records on the appliance.
       - Disable if the appliance is authoritative for the zone, but make sure that
         you have created the SOA and NS records on the appliance before you create
         the zone.
-    type: str
-    default: ENABLED
   type:
+    type: str
     choices:
       - ALL
       - ADNS
@@ -79,11 +91,10 @@ options:
       - '* C(PROXY) - Display all the zones for which the Citrix ADC is functioning
         as a proxy server.'
       - '* C(ALL) - Display all the zones configured on the appliance.'
-    type: str
   zonename:
+    type: str
     description:
       - Name of the zone to create.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,23 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - 'Name for the FIS to be created. Leading character must be a number or letter.
         Other characters allowed, after the first character, are @ _ - . (period)
         : (colon) # and space ( ). Note: In a cluster setup, the FIS name on each
         node must be unique.'
-    type: str
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which you are creating the FIS. Can be configured
         only through the cluster IP address.
-    type: float
   fis_channel_binding:
     type: dict
     description: Bindings for fis_channel_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -65,6 +78,7 @@ options:
     description: Bindings for fis_interface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

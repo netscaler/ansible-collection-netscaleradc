@@ -26,13 +26,14 @@ author:
 options:
   state:
     choices:
-      - DISABLE
-      - ENABLE
+      - present
+    default: present
     description:
-      - Enables or disables Precision Time Protocol (PTP) on the appliance. If you
-        disable PTP, make sure you enable Network Time Protocol (NTP) on the cluster.
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
     type: str
-    default: ENABLE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,51 +24,61 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alldeleted:
+    type: bool
     description:
       - Specify this if you would like to delete information about all deleted entities
         from the database.
-    type: bool
   allinactive:
+    type: bool
     description:
       - Specify this if you would like to delete information about all inactive entities
         from the database.
-    type: bool
   core:
+    type: int
     description:
       - Specify core ID of the PE in nCore.
-    type: int
   counters:
+    type: str
     description:
       - Specify the counters to be collected.
-    type: str
   datasource:
+    type: str
     description:
       - Specifies the source which contains all the stored counter values.
-    type: str
   endtime:
+    type: str
     description:
       - Specify end time in mmddyyyyhhmm upto which values have to be collected.
-    type: str
   last:
+    type: int
     description:
       - 'Last is literal way of saying a certain time period from the current moment.
         Example: -last 1 hour, -last 1 day, et cetera.'
-    type: int
     default: 1
   name:
+    type: str
     description:
       - Specify the entity name.
-    type: str
   starttime:
+    type: str
     description:
       - Specify start time in mmddyyyyhhmm to start collecting values from that timestamp.
-    type: str
   type:
+    type: str
     description:
       - Specify the entity type.
-    type: str
   unit:
+    type: str
     choices:
       - HOURS
       - DAYS
@@ -76,7 +86,6 @@ options:
     description:
       - Specify the time period from current moment. Example 1 x where x = hours/
         days/ years.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

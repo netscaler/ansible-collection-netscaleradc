@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   authentication:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -32,22 +45,22 @@ options:
       - If authentication is disabled, otp checks are not performed after azure vault
         keys are obtained. This is useful to distinguish whether user has registered
         devices.
-    type: str
     default: ENABLED
   clientid:
+    type: str
     description:
       - Unique identity of the relying party requesting for authentication.
-    type: str
   clientsecret:
+    type: str
     description:
       - Unique secret string to authorize relying party at authorization server.
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
-    type: str
   name:
+    type: str
     description:
       - Name for the new Azure Key Vault profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -57,40 +70,39 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   pushservice:
+    type: str
     description:
       - Name of the service used to send push notifications
-    type: str
   refreshinterval:
+    type: float
     description:
       - Interval at which access token in obtained.
-    type: float
     default: 50
   servicekeyname:
+    type: str
     description:
       - Friendly name of the Key to be used to compute signature.
-    type: str
   signaturealg:
+    type: str
     choices:
       - RS256
     description:
       - Algorithm to be used to sign/verify transactions
-    type: str
     default: RS256
   tenantid:
+    type: str
     description:
       - TenantID of the application. This is usually specific to providers such as
         Microsoft and usually refers to the deployment identifier.
-    type: str
   tokenendpoint:
+    type: str
     description:
       - URL endpoint on relying party to which the OAuth token is to be sent.
-    type: str
   vaultname:
+    type: str
     description:
       - Name of the Azure vault account as configured in azure portal.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,39 +26,52 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   securitylevel:
+    type: str
     choices:
       - noAuthNoPriv
       - authNoPriv
       - authPriv
     description:
       - Security level of the SNMPv3 trap.
-    type: str
     default: authNoPriv
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   trapclass:
+    type: str
     choices:
       - generic
       - specific
     description:
       - 'Type of trap messages that the Citrix ADC sends to the trap listener: Generic
         or the enterprise-C(specific) messages defined in the MIB file.'
-    type: str
   trapdestination:
+    type: str
     description:
       - IPv4 or the IPv6 address of the trap listener to which the Citrix ADC is to
         send SNMP trap messages.
-    type: str
   username:
+    type: str
     description:
       - Name of the SNMP user that will send the SNMPv3 traps.
-    type: str
   version:
+    type: str
     choices:
       - V1
       - V2
@@ -68,7 +81,6 @@ options:
         listener. '
       - This setting must match the setting on the trap listener. Otherwise, the listener
         drops the trap messages.
-    type: str
     default: V3
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

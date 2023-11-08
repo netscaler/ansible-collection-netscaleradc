@@ -24,7 +24,15 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   mode:
+    type: list
     choices:
       - all
       - bookmarks
@@ -75,7 +83,6 @@ options:
       - '                       /nsconfig/rc.conf'
       - C(all_plus_misc)    Includes *C(all)* files and /nsconfig/license/ and /nsconfig/rc.conf.
       - 'Default value: C(all)'
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

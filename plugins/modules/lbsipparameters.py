@@ -24,55 +24,65 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   addrportvip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Add the rport parameter to the VIA headers of SIP requests that virtual servers
         receive from clients or servers.
-    type: str
     default: ENABLED
   retrydur:
+    type: int
     description:
       - Time, in seconds, for which a client must wait before initiating a connection
         after receiving a 503 Service Unavailable response from the SIP server. The
         time value is sent in the "Retry-After" header in the 503 response.
-    type: int
     default: 120
   rnatdstport:
+    type: int
     description:
       - Port number with which to match the destination port in server-initiated SIP
         traffic. The rport parameter is added, without a value, to SIP packets that
         have a matching destination port number, and CALL-ID based persistence is
         implemented for the responses received by the virtual server.
-    type: int
   rnatsecuredstport:
+    type: int
     description:
       - Port number with which to match the destination port in server-initiated SIP
         over SSL traffic. The rport parameter is added, without a value, to SIP packets
         that have a matching destination port number, and CALL-ID based persistence
         is implemented for the responses received by the virtual server.
-    type: int
   rnatsecuresrcport:
+    type: int
     description:
       - Port number with which to match the source port in server-initiated SIP over
         SSL traffic. The rport parameter is added, without a value, to SIP packets
         that have a matching source port number, and CALL-ID based persistence is
         implemented for the responses received by the virtual server.
-    type: int
   rnatsrcport:
+    type: int
     description:
       - Port number with which to match the source port in server-initiated SIP traffic.
         The rport parameter is added, without a value, to SIP packets that have a
         matching source port number, and CALL-ID based persistence is implemented
         for the responses received by the virtual server.
-    type: int
   sip503ratethreshold:
+    type: float
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.
-    type: float
     default: 100
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

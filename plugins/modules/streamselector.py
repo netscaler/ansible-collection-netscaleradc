@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the selector. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -32,15 +45,14 @@ options:
         If the name includes one or more spaces, and you are using the Citrix ADC
         CLI, enclose the name in double or single quotation marks (for example, "my
         selector" or 'my selector').
-    type: str
   rule:
+    type: list
     description:
       - 'Set of up to five expressions. Maximum length: 7499 characters. Each expression
         must identify a specific request characteristic, such as the client''s IP
         address (with CLIENT.IP.SRC) or requested server resource (with HTTP.REQ.URL).'
       - 'Note: If two or more selectors contain the same expressions in different
         order, a separate set of records is created for each selector.'
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

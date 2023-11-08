@@ -24,26 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   rtspalgprofilename:
+    type: str
     description:
       - The name of the RTSPALG Profile.
-    type: str
   rtspidletimeout:
+    type: float
     description:
       - Idle timeout for the rtsp sessions in seconds.
-    type: float
     default: 120
   rtspportrange:
+    type: str
     description:
       - port for the RTSP
-    type: str
   rtsptransportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
     description:
       - RTSP ALG Profile transport protocol type.
-    type: str
     default: TCP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

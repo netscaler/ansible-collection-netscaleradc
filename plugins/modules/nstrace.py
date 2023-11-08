@@ -24,15 +24,23 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   capdroppkt:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Captures Dropped Packets if set to C(ENABLED).
-    type: str
     default: DISABLED
   capsslkeys:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -41,32 +49,32 @@ options:
       - '                Warning: The captured keys can be used to decrypt information
         that may be confidential. The captured key files have to be stored in a secure
         environment'
-    type: str
     default: DISABLED
   doruntimecleanup:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable runtime temp file cleanup
-    type: str
     default: ENABLED
   fileid:
+    type: str
     description:
       - ID for the trace file name for uniqueness. Should be used only with -name
         option.
-    type: str
   filename:
+    type: str
     description:
       - Name of the trace file.
-    type: str
   filesize:
+    type: float
     description:
       - File size, in MB, treshold for rollover. If free disk space is less than 2GB
         at the time of rollover, trace will stop
-    type: float
     default: 1024
   filter:
+    type: str
     description:
       - 'Filter expression for nstrace. Maximum length of filter is 255 and it can
         be of following format:'
@@ -141,11 +149,11 @@ options:
       - '     <qualifier-method> = [ EQ | NE | GT | GE | LT | LE'
       - '                         | BETWEEN ]'
       - '     <qualifier-value>  = A valid core ID.'
-      - '       example = CONNECTION.PPEID.EQ(0)    '
+      - '       example = CONNECTION.PPEID.EQ(0)'
       - ''
       - '     <qualifier> = SVCNAME'
-      - '     <qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH '
-      - '                         | ENDSWITH ] '
+      - '     <qualifier-method> = [ EQ | NE | CONTAINS | STARTSWITH'
+      - '                         | ENDSWITH ]'
       - '     <qualifier-value>  = A valid text string.'
       - '     example = CONNECTION.SVCNAME.EQ("name")'
       - ''
@@ -185,7 +193,7 @@ options:
       - ''
       - '     eg: start nstrace -filter "CONNECTION.SRCIP.EQ(127.0.0.1) || (CONNECTION.SVCNAME.NE("s1")
         && CONNECTION.SRCPORT.EQ(80))"'
-      - '     The filter expression should be given in double quotes. '
+      - '     The filter expression should be given in double quotes.'
       - ''
       - 'common use cases:'
       - ''
@@ -193,7 +201,7 @@ options:
         traffic
       - start nstrace -size 0 -filter "CONNECTION.IP.NE(127.0.0.1) && CONNECTION.IP.EQ(10.102.44.111)"
       - ''
-      - 'Trace capturing all traffic to (terminating at) port 80 or 443 '
+      - Trace capturing all traffic to (terminating at) port 80 or 443
       - start nstrace -size 0 -filter "CONNECTION.DSTPORT.EQ(443) || CONNECTION.DSTPORT.EQ(80)"
       - ''
       - Trace capturing all backend traffic specific to service service1 along with
@@ -210,33 +218,33 @@ options:
         vserver1 along with corresponding server side traffic
       - start nstrace -size 0 -filter "CONNECTION.LB_VSERVER.NAME.EQ("vserver1")"
         -link ENABLED
-    type: str
   inmemorytrace:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs packets in appliance's memory and dumps the trace file on stopping the
         nstrace operation
-    type: str
     default: DISABLED
   link:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Includes filtered connection's peer traffic.
-    type: str
     default: DISABLED
   merge:
+    type: str
     choices:
       - ONSTOP
       - ONTHEFLY
       - NOMERGE
     description:
       - Specify how traces across PE's are merged
-    type: str
   mode:
+    type: list
     choices:
       - TX
       - TXB
@@ -263,68 +271,67 @@ options:
       - '      C(MPTCP)       C(MPTCP) master flow'
       - '      C(HTTP_QUIC)   HTTP-over-QUIC stream data and stream events'
       - '      Default mode: C(NEW_RX) C(TXB)'
-    type: list
     elements: str
-    default: DEFAULT_MODE
   nf:
+    type: float
     description:
       - Number of files to be generated in cycle.
-    type: float
     default: 24
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   nodes:
+    type: list
     description:
       - Nodes on which tracing is started.
-    type: list
+    elements: int
   pernic:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use separate trace files for each interface. Works only with cap format.
-    type: str
     default: DISABLED
   size:
+    type: float
     description:
       - Size of the captured data. Set 0 for full packet trace.
-    type: float
     default: 164
   skiplocalssh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - skip local SSH packets
-    type: str
     default: DISABLED
   skiprpc:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - skip RPC packets
-    type: str
     default: DISABLED
   time:
+    type: float
     description:
       - Time per file (sec).
-    type: float
     default: 3600
   tracebuffers:
+    type: float
     description:
       - Number of 16KB trace buffers
-    type: float
     default: 5000
   traceformat:
+    type: str
     choices:
       - NSCAP
       - PCAP
     description:
       - Format in which trace will be generated
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

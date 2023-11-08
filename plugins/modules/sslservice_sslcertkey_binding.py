@@ -26,22 +26,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ca:
+    type: bool
     description:
       - CA certificate.
-    type: bool
   certkeyname:
+    type: str
     description:
       - The certificate key pair binding.
-    type: str
   crlcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
-    type: str
   ocspcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
@@ -52,22 +65,21 @@ options:
         or any other reason that prevents the OCSP check. With the OPTIONAL setting,
         allow SSL clients even if the OCSP check fails except when the client certificate
         is revoked.
-    type: str
   servicename:
+    type: str
     description:
       - Name of the SSL service for which to set advanced configuration.
-    type: str
   skipcaname:
+    type: bool
     description:
       - The flag is used to indicate whether this particular CA certificate's CA_Name
         needs to be sent to the SSL client while requesting      for client certificate
         in a SSL handshake
-    type: bool
   snicert:
+    type: bool
     description:
       - The name of the CertKey. Use this option to bind Certkey(s) which will be
         used in SNI processing.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

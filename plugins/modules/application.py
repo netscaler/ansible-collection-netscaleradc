@@ -24,19 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   appname:
+    type: str
     description:
       - Name to assign to the application on the Citrix ADC. If you do not provide
         a name, the appliance assigns the application the name of the template file.
-    type: str
   apptemplatefilename:
+    type: str
     description:
       - Name of the AppExpert application template file.
-    type: str
   deploymentfilename:
+    type: str
     description:
       - Name of the deployment file.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

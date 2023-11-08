@@ -24,17 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   listeningservice:
+    type: str
     description:
       - Name of RADIUS LISTENING service that will process RADIUS accounting requests.
-    type: str
   radiusinterimasstart:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Treat radius interim message as start radius messages.
-    type: str
     default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

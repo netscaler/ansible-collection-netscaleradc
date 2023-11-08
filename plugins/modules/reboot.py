@@ -24,14 +24,21 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   warm:
+    type: bool
     description:
       - Restarts the Citrix ADC software without rebooting the underlying operating
         system. The session terminates and you must log on to the appliance after
         it has restarted.
       - 'Note: This argument is required only for nCore appliances. Classic appliances
         ignore this argument.'
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

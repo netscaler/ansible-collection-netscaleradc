@@ -24,26 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - enabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+    type: str
   certfile:
+    type: str
     description:
       - Name of and, optionally, path to the source FIPS appliance's certificate file.
         /nsconfig/ssl/ is the default path.
-    type: str
   keyvector:
+    type: str
     description:
       - Name of and, optionally, path to the target FIPS appliance's key vector. /nsconfig/ssl/
         is the default path.
-    type: str
   sourcesecret:
+    type: str
     description:
       - Name of and, optionally, path to the source FIPS appliance's secret data.
         /nsconfig/ssl/ is the default path.
-    type: str
   targetsecret:
+    type: str
     description:
       - Name for and, optionally, path to the target FIPS appliance's secret data.
         The default input path for the secret data is /nsconfig/ssl/.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

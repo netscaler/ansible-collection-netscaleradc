@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   contact:
+    type: str
     description:
       - Name of the administrator for this Citrix ADC. Along with the name, you can
         include information on how to contact this person, such as a phone number
@@ -35,9 +46,9 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the information includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my contact" or 'my contact').
-    type: str
     default: '"WebMaster (default)"'
   customid:
+    type: str
     description:
       - Custom identification number for the Citrix ADC. Can consist of 1 to 127 characters
         that include uppercase and lowercase letters, numbers, and the hyphen (-),
@@ -48,9 +59,9 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the ID includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my ID" or 'my ID').
-    type: str
     default: '"Default"'
   location:
+    type: str
     description:
       - Physical location of the Citrix ADC. For example, you can specify building
         name, lab number, and rack number. Can consist of 1 to 127 characters that
@@ -61,9 +72,9 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the location includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my location" or 'my location').
-    type: str
     default: '"POP (default)"'
   name:
+    type: str
     description:
       - Name for this Citrix ADC. Can consist of 1 to 127 characters that include
         uppercase and lowercase letters, numbers, and the hyphen (-), period (.) pound
@@ -73,13 +84,12 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
-    type: str
     default: '"NetScaler"'
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which we are setting the mib. This is a mandatory
         argument to set snmp mib on CLIP.
-    type: float
     default: -1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

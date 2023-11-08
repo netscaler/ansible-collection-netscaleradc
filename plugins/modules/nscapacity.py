@@ -24,23 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   bandwidth:
+    type: float
     description:
       - System bandwidth limit.
-    type: float
   edition:
+    type: str
     choices:
       - Standard
       - Enterprise
       - Platinum
     description:
       - Product edition.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   platform:
+    type: str
     choices:
       - VS10
       - VE10
@@ -84,18 +95,17 @@ options:
       - CP1000
     description:
       - appliance platform type.
-    type: str
   unit:
+    type: str
     choices:
       - Gbps
       - Mbps
     description:
       - Bandwidth unit.
-    type: str
   vcpu:
+    type: bool
     description:
       - licensed using vcpu pool.
-    type: bool
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

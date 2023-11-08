@@ -24,39 +24,51 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   hsmkeyname:
+    type: str
     description:
       - '0'
-    type: str
   hsmtype:
+    type: str
     choices:
       - THALES
       - SAFENET
       - KEYVAULT
     description:
       - Type of HSM.
-    type: str
     default: THALES
   key:
+    type: str
     description:
       - Name of the key. optionally, for Thales, path to the HSM key file; /var/opt/nfast/kmdata/local/
         is the default path. Applies when HSMTYPE is THALES or KEYVAULT.
-    type: str
   keystore:
+    type: str
     description:
       - Name of keystore object representing HSM where key is stored. For example,
         name of keyvault object or azurekeyvault authentication object. Applies only
         to KEYVAULT type HSM.
-    type: str
   password:
+    type: str
     description:
       - Password for a partition. Applies only to SafeNet HSM.
-    type: str
   serialnum:
+    type: str
     description:
       - Serial number of the partition on which the key is present. Applies only to
         SafeNet HSM.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

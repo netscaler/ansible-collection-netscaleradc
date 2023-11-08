@@ -24,25 +24,42 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   Params:
+    type: str
     description:
       - Any comments associated with the protocol.
-    type: str
   comment:
+    type: str
     description:
       - Any comments that you might want to associate with the virtual server.
-    type: str
   defaultlb:
+    type: str
     description:
       - Name of the default Load Balancing virtual server used for load balancing
         of services. The protocol type of default Load Balancing virtual server should
         be a user type.
-    type: str
   ipaddress:
+    type: str
     description:
       - IPv4 or IPv6 address to assign to the virtual server.
-    type: str
   name:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -51,23 +68,14 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   port:
+    type: int
     description:
       - Port number for the virtual server.
-    type: int
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the user vserver.
-    type: str
-    default: ENABLED
   userprotocol:
+    type: str
     description:
       - User protocol uesd by the service.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

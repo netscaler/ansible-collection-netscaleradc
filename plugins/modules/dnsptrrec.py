@@ -24,25 +24,38 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   domain:
+    type: str
     description:
       - Domain name for which to configure reverse mapping.
-    type: str
   ecssubnet:
+    type: str
     description:
       - Subnet for which the cached PTR record need to be removed.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   reversedomain:
+    type: str
     description:
       - Reversed domain name representation of the IPv4 or IPv6 address for which
         to create the PTR record. Use the "in-addr.arpa." suffix for IPv4 addresses
         and the "ip6.arpa." suffix for IPv6 addresses.
-    type: str
   ttl:
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -52,9 +65,9 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: float
     default: 3600
   type:
+    type: str
     choices:
       - ALL
       - ADNS
@@ -64,7 +77,6 @@ options:
       - '* C(ADNS) - Display all authoritative address records.'
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

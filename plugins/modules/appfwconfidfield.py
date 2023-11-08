@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about the form field designation.
-    type: str
   fieldname:
+    type: str
     description:
       - Name of the form field to designate as confidential.
-    type: str
   isregex:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
@@ -41,20 +54,11 @@ options:
         follows:'
       - '* C(REGEX). Form field is a regular expression.'
       - '* C(NOTREGEX). Form field is a literal string.'
-    type: str
     default: NOTREGEX
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enable or disable the confidential field designation.
-    type: str
-    default: ENABLED
   url:
+    type: str
     description:
       - URL of the web page that contains the web form.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

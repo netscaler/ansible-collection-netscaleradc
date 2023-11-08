@@ -24,28 +24,40 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comment. Any type of information about this video optimization detection action.
-    type: str
   name:
+    type: str
     description:
       - Name for the video optimization pacing action. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
         the hyphen (-), period (.) hash (#), space ( ), at (@), equals (=), colon
         (:), and underscore characters.
-    type: str
   newname:
+    type: str
     description:
       - New name for the videooptimization pacing action.
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) hash (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters.
-    type: str
   rate:
+    type: int
     description:
       - ABR Video Optimization Pacing Rate (in Kbps)
-    type: int
     default: 1000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

@@ -24,15 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this archive.
-    type: str
   name:
+    type: str
     description:
       - Name of tar archive
-    type: str
   src:
+    type: str
     description:
       - Indicates the source of the tar archive file as a URL
       - of the form
@@ -47,11 +57,10 @@ options:
       - ''
       - Import will fail if an https server requires client
       - certificate authentication.
-    type: str
   target:
+    type: str
     description:
       - Path to the file to be exported
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

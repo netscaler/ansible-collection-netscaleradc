@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   addvaryheader:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -32,15 +43,15 @@ options:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
-    type: str
     default: DISABLED
   cmpbypasspct:
+    type: float
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
-    type: float
     default: 100
   cmplevel:
+    type: str
     choices:
       - optimal
       - bestspeed
@@ -50,9 +61,9 @@ options:
       - ' * Optimal - Corresponds to a gzip GZIP level of 5-7.'
       - ' * Best speed - Corresponds to a gzip level of 1.'
       - ' * Best compression - Corresponds to a gzip level of 9.'
-    type: str
     default: optimal
   cmponpush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -60,9 +71,9 @@ options:
       - Citrix ADC does not wait for the quantum to be filled before starting to compress
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
-    type: str
     default: DISABLED
   externalcache:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -70,60 +81,59 @@ options:
       - 'Enable insertion of  Cache-Control: private response directive to indicate
         response message is intended for a single user and must not be cached by a
         shared or proxy cache.'
-    type: str
     default: 'NO'
   heurexpiry:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Heuristic basefile expiry.
-    type: str
     default: 'OFF'
   heurexpiryhistwt:
+    type: float
     description:
       - For heuristic basefile expiry, weightage to be given to historical delta compression
         ratio, specified as percentage.  For example, to give 25% weightage to historical
         ratio (and therefore 75% weightage to the ratio for current delta compression
         transaction), specify 25.
-    type: float
     default: 50
   heurexpirythres:
+    type: float
     description:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
-    type: float
     default: 100
   minressize:
+    type: float
     description:
       - Smallest response size, in bytes, to be compressed.
-    type: float
   policytype:
+    type: str
     choices:
       - ADVANCED
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
-    type: str
     default: ADVANCED
   quantumsize:
+    type: float
     description:
       - Minimum quantum of data to be filled before compression begins.
-    type: float
     default: 57344
   servercmp:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
-    type: str
     default: 'ON'
   varyheadervalue:
+    type: str
     description:
       - The value of the HTTP Vary header for compressed responses. If this argument
         is not specified, a default value of "Accept-Encoding" will be used.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

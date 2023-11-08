@@ -26,11 +26,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bot_bind_comment:
+    type: str
     description:
       - Any comments about this binding.
-    type: str
   bot_rate_limit_action:
+    type: list
     choices:
       - NONE
       - LOG
@@ -41,35 +54,36 @@ options:
       - One or more actions to be taken when the current rate becomes more than the
         configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT)
         or C(RESET) action.
-    type: list
     elements: str
     default: NONE
   bot_rate_limit_enabled:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable or disable rate-limit binding.
-    type: str
     default: 'OFF'
   bot_rate_limit_type:
+    type: str
     choices:
       - SESSION
       - SOURCE_IP
       - URL
       - GEOLOCATION
+      - JA3_FINGERPRINT
     description:
       - 'Rate-limiting type Following rate-limiting types are allowed:'
       - '*C(SOURCE_IP) - Rate-limiting based on the client IP.'
       - '*C(SESSION) - Rate-limiting based on the configured cookie name.'
       - '*C(URL) - Rate-limiting based on the configured C(URL).'
       - '*C(GEOLOCATION) - Rate-limiting based on the configured country name.'
-    type: str
   bot_rate_limit_url:
+    type: str
     description:
       - URL for the resource based rate-limiting.
-    type: str
   bot_ratelimit:
+    type: bool
     description:
       - Rate-limit binding. Maximum 30 bindings can be configured per profile for
         rate-limit detection. For SOURCE_IP type, only one binding can be configured,
@@ -77,12 +91,12 @@ options:
         only one binding is allowed for a cookie name. To update the values of an
         existing binding, user has to first unbind that binding, and then needs to
         bind again with new values.
-    type: bool
   cookiename:
+    type: str
     description:
       - Cookie name which is used to identify the session for session rate-limiting.
-    type: str
   countrycode:
+    type: str
     choices:
       - AF
       - AX
@@ -335,12 +349,12 @@ options:
       - ZW
     description:
       - Country name which is used for geolocation rate-limiting.
-    type: str
   logmessage:
+    type: str
     description:
       - Message to be logged for this binding.
-    type: str
   name:
+    type: str
     description:
       - Name for the profile. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -350,18 +364,17 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my profile" or 'my profile').
-    type: str
   rate:
+    type: float
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
-    type: float
     default: 1
   timeslice:
+    type: float
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.
-    type: float
     default: 1000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

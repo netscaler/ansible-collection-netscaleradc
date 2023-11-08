@@ -24,25 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Terminate all active icaconnections.
-    type: bool
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   transproto:
+    type: str
     choices:
       - TCP
       - UDP
     description:
       - Transport type for the existing Existing ICA conenction.
-    type: str
   username:
+    type: str
     description:
       - User name for which to display connections.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -26,74 +26,79 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   alertonly:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Send SNMP alert?
-    type: str
   as_blockkeyword_formurl:
+    type: str
     description:
       - The blockkeyword form action URL.
-    type: str
   as_fieldname_isregex_blockkeyword:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is block keyword field name regular expression?
-    type: str
     default: NOTREGEX
   blockkeyword:
+    type: str
     description:
       - Field name of the block keyword binding.
-    type: str
   blockkeywordtype:
+    type: str
     choices:
       - literal
       - PCRE
     description:
       - block keyword type(C(literal)|C(PCRE))
-    type: str
   comment:
+    type: str
     description:
       - Any comments about the purpose of profile, or other useful information about
         the profile.
-    type: str
   fieldname:
+    type: str
     description:
       - A block keyword field name
-    type: str
   isautodeployed:
+    type: str
     choices:
       - AUTODEPLOYED
       - NOTAUTODEPLOYED
     description:
       - Is the rule auto deployed by dynamic profile ?
-    type: str
   name:
+    type: str
     description:
       - Name of the profile to which to bind an exemption or rule.
-    type: str
   resourceid:
+    type: str
     description:
       - A "id" that identifies the rule.
-    type: str
   ruletype:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Specifies rule type of binding
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Enabled.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,40 +24,53 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   backplane:
+    type: str
     description:
       - Interface through which the node communicates with the other nodes in the
         cluster. Must be specified in the three-tuple form n/c/u, where n represents
         the node ID and c/u refers to the interface on the appliance.
-    type: str
   clearnodegroupconfig:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Option to remove nodegroup config
-    type: str
     default: 'YES'
   delay:
+    type: float
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in
         minutes)
-    type: float
   ipaddress:
+    type: str
     description:
       - Citrix ADC IP (NSIP) address of the appliance to add to the cluster. Must
         be an IPv4 address.
-    type: str
   nodegroup:
+    type: str
     description:
       - The default node group in a Cluster system.
-    type: str
     default: DEFAULT_NG
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   priority:
+    type: float
     description:
       - Preference for selecting a node as the configuration coordinator. The node
         with the lowest priority value is selected as the configuration coordinator.
@@ -68,37 +81,22 @@ options:
       - 'Note: When priority is not configured for any of the nodes or if multiple
         nodes have the same priority, the cluster elects one of the nodes as the configuration
         coordinator.'
-    type: float
     default: 31
-  state:
-    choices:
-      - ACTIVE
-      - SPARE
-      - PASSIVE
-    description:
-      - 'Admin state of the cluster node. The available settings function as follows:'
-      - C(ACTIVE) - The node serves traffic.
-      - C(SPARE) - The node does not serve traffic unless an C(ACTIVE) node goes down.
-      - C(PASSIVE) - The node does not serve traffic, unless you change its state.
-        C(PASSIVE) state is useful during temporary maintenance activities in which
-        you want the node to take part in the consensus protocol but not to serve
-        traffic.
-    type: str
-    default: PASSIVE
   tunnelmode:
+    type: str
     choices:
       - NONE
       - GRE
       - UDP
     description:
       - To set the tunnel mode
-    type: str
     default: NONE
   clusternode_routemonitor_binding:
     type: dict
     description: Bindings for clusternode_routemonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -123,6 +121,7 @@ options:
     description: Bindings for clusternodegroup_authenticationvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -147,6 +146,7 @@ options:
     description: Bindings for clusternodegroup_clusternode_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -171,6 +171,7 @@ options:
     description: Bindings for clusternodegroup_crvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -195,6 +196,7 @@ options:
     description: Bindings for clusternodegroup_csvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -219,6 +221,7 @@ options:
     description: Bindings for clusternodegroup_gslbsite_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -243,6 +246,7 @@ options:
     description: Bindings for clusternodegroup_gslbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -267,6 +271,7 @@ options:
     description: Bindings for clusternodegroup_lbvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -291,6 +296,7 @@ options:
     description: Bindings for clusternodegroup_nslimitidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -315,6 +321,7 @@ options:
     description: Bindings for clusternodegroup_service_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -339,6 +346,7 @@ options:
     description: Bindings for clusternodegroup_streamidentifier_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -363,6 +371,7 @@ options:
     description: Bindings for clusternodegroup_vpnvserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

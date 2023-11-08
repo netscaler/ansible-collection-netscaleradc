@@ -24,13 +24,23 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   quicsecrettimeout:
+    type: float
     description:
       - Rotation frequency, in seconds, for the secret used to generate address validation
         tokens that will be issued in QUIC Retry packets and QUIC NEW_TOKEN frames
         sent by the Citrix ADC. A value of 0 can be configured if secret rotation
         is not desired.
-    type: float
     default: 3600
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

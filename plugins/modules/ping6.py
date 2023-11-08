@@ -24,67 +24,74 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   I:
+    type: str
     description:
       - Network interface on which to ping, if you have multiple interfaces.
-    type: str
   S:
+    type: str
     description:
       - Source IP address to be used in the outgoing query packets.
-    type: str
   T:
+    type: float
     description:
       - Traffic Domain Id
-    type: float
   V:
+    type: float
     description:
       - VLAN ID for link local address.
-    type: float
   b:
+    type: float
     description:
       - Set socket buffer size. If used, should be used with roughly +100 then the
         datalen (-s option). The default value is 8192.
-    type: float
   c:
+    type: float
     description:
       - Number of packets to send. The default value is infinite. For Nitro API, defalut
         value is taken as 5.
-    type: float
   hostName:
+    type: str
     description:
       - Address of host to ping.
-    type: str
   i:
+    type: float
     description:
       - Waiting time, in seconds. The default value is 1 second.
-    type: float
   m:
+    type: bool
     description:
       - By default, ping6 asks the kernel to fragment packets to fit into the minimum
         IPv6 MTU.The -m option will suppress the behavior for unicast packets.
-    type: bool
   n:
+    type: bool
     description:
       - Numeric output only. No name resolution.
-    type: bool
   p:
+    type: str
     description:
       - Pattern to fill in packets. Can be up to 16 bytes, useful for diagnosing data-dependent
         problems.
-    type: str
   q:
+    type: bool
     description:
       - Quiet output. Only summary is printed. For Nitro API, this flag is set by
         default
-    type: bool
   s:
+    type: float
     description:
       - Data size, in bytes. The default value is 32.
-    type: float
   t:
+    type: float
     description:
       - Timeout in seconds before ping6 exits
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

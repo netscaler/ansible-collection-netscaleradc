@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   allocpolicy:
+    type: str
     choices:
       - PORTS
       - IPADDRS
@@ -53,16 +66,16 @@ options:
       - 2.2.2.1 => 4.4.4.1:PB1
       - 2.2.2.2 => 4.4.4.2:PB1
       - 2.2.2.3 => 4.4.4.1:PB2
-    type: str
     default: PORTS
   clientname:
+    type: str
     description:
       - Name of the LSN client entity to be associated with the LSN group. You can
         associate only one LSN client entity with an LSN group.You cannot remove this
         association or replace with another LSN client entity once the LSN group is
         created.
-    type: str
   ftp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -78,9 +91,9 @@ options:
         automatically for an LSN group when you bind a UDP LSN application profile,
         with endpoint-independent-mapping, endpoint-independent filtering, and destination
         port as 69 (well-known port for TFTP), to the LSN group.'
-    type: str
     default: ENABLED
   ftpcm:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -88,9 +101,9 @@ options:
       - Enable the FTP connection mirroring for specified LSN group. Connection mirroring
         (CM or connection failover) refers to keeping active an established TCP or
         UDP connection when a failover occurs.
-    type: str
     default: DISABLED
   groupname:
+    type: str
     description:
       - 'Name for the LSN group. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -99,16 +112,16 @@ options:
         applies only to the Citrix ADC CLI: If the name includes one or more spaces,
         enclose the name in double or single quotation marks (for example, "lsn group1"
         or ''lsn group1'').'
-    type: str
   ip6profile:
+    type: str
     description:
       - Name of the LSN ip6 profile to associate with the specified LSN group. An
         ip6 profile can be associated with a group only during group creation.
       - ''
       - By default, no LSN ip6 profile is associated with an LSN group during its
         creation. Only one ip6profile can be associated with a group.
-    type: str
   logging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -140,9 +153,9 @@ options:
         mapping'
       - '** Destination IP address and port are logged for Address-Port-Dependent
         mapping'
-    type: str
     default: DISABLED
   nattype:
+    type: str
     choices:
       - DYNAMIC
       - DETERMINISTIC
@@ -175,9 +188,9 @@ options:
         connections from this subscriber. If all the ports are allocated (for different
         subscriber''s connections) from the subscriber''s allocated port block, the
         ADC allocates a new random port block for the subscriber.'
-    type: str
     default: DYNAMIC
   portblocksize:
+    type: float
     description:
       - Size of the NAT port block to be allocated for each subscriber.
       - ''
@@ -192,24 +205,24 @@ options:
       - ''
       - The default port block size is 256 for Deterministic NAT, and 0 for Dynamic
         NAT.
-    type: float
   pptp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the PPTP Application Layer Gateway.
-    type: str
     default: DISABLED
   rtspalg:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the RTSP ALG.
-    type: str
     default: DISABLED
   sessionlogging:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -227,9 +240,9 @@ options:
       - '* NAT IP address and port'
       - '* Protocol name'
       - '* Destination IP address, port, and traffic domain ID'
-    type: str
     default: DISABLED
   sessionsync:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -241,27 +254,27 @@ options:
       - ''
       - For this setting to work, you must enable the global session synchronization
         parameter.
-    type: str
     default: ENABLED
   sipalg:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the SIP ALG.
-    type: str
     default: DISABLED
   snmptraplimit:
+    type: float
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.
-    type: float
     default: 100
   lsngroup_ipsecalgprofile_binding:
     type: dict
     description: Bindings for lsngroup_ipsecalgprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -286,6 +299,7 @@ options:
     description: Bindings for lsngroup_lsnappsprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -310,6 +324,7 @@ options:
     description: Bindings for lsngroup_lsnhttphdrlogprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -334,6 +349,7 @@ options:
     description: Bindings for lsngroup_lsnlogprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -358,6 +374,7 @@ options:
     description: Bindings for lsngroup_lsnpool_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -382,6 +399,7 @@ options:
     description: Bindings for lsngroup_lsnrtspalgprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -406,6 +424,7 @@ options:
     description: Bindings for lsngroup_lsnsipalgprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -430,6 +449,7 @@ options:
     description: Bindings for lsngroup_lsntransportprofile_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -454,6 +474,7 @@ options:
     description: Bindings for lsngroup_pcpserver_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   idleaction:
+    type: str
     choices:
       - ccrTerminate
       - delete
@@ -37,9 +48,9 @@ options:
       - '2. C(delete): Just C(delete) the subscriber session without informing PCRF.'
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
-    type: str
     default: ccrTerminate
   idlettl:
+    type: float
     description:
       - 'q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction
         on a subscriber session (refer to ''idleAction'' arguement in ''set subscriber
@@ -48,8 +59,8 @@ options:
         delete the session'' or ''delete and CCR-T'' (if PCRF is configured) or ''do
         not delete but send a CCR-U''. '
       - Zero value disables the idle timeout. !
-    type: float
   interfacetype:
+    type: str
     choices:
       - None
       - RadiusOnly
@@ -66,14 +77,15 @@ options:
         to query PCRF. Subscriber information is obtained from both RADIUS and PCRF.'
       - 'C(GxOnly): RADIUS interface is absent. Subscriber information is queried
         using Subscriber IP or IP+VLAN.'
-    type: str
     default: None
   ipv6prefixlookuplist:
+    type: list
     description:
       - The ipv6PrefixLookupList should consist of all the ipv6 prefix lengths assigned
         to the UE's'
-    type: list
+    elements: int
   keytype:
+    type: str
     choices:
       - IP
       - IPANDVLAN
@@ -82,7 +94,6 @@ options:
         be used only when the interfaceType is set to gxOnly.
       - Changing the lookup method should result to the subscriber session database
         being flushed.
-    type: str
     default: IP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

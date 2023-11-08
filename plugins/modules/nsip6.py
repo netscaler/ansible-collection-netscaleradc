@@ -24,155 +24,168 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   advertiseondefaultpartition:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition
-    type: str
     default: DISABLED
   decrementhoplimit:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Decrement Hop Limit by 1 when C(ENABLED).This setting is applicable only for
         UDP traffic.
-    type: str
     default: DISABLED
   dynamicrouting:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IPv6 (SNIP6)
         address.
-    type: str
     default: DISABLED
   ftp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
-    type: str
     default: ENABLED
   gui:
+    type: str
     choices:
       - ENABLED
       - SECUREONLY
       - DISABLED
     description:
       - Allow graphical user interface (GUI) access to this IP address.
-    type: str
     default: ENABLED
   hostroute:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to push the VIP6 to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocols.
-    type: str
   icmp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
-    type: str
     default: ENABLED
   ip6hostrtgw:
+    type: str
     description:
       - 'IPv6 address of the gateway for the route. If Gateway is not set, VIP uses
         :: as the gateway.'
-    type: str
   ipv6address:
+    type: str
     description:
       - IPv6 address to create on the Citrix ADC.
-    type: str
   map:
+    type: str
     description:
       - Mapped IPV4 address for the IPV6 address.
-    type: str
   metric:
+    type: int
     description:
       - Integer value to add to or subtract from the cost of the route advertised
         for the VIP6 address.
-    type: int
   mgmtaccess:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow access to management applications on this IP address.
-    type: str
     default: DISABLED
   mptcpadvertise:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
-    type: str
     default: 'NO'
   nd:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Respond to Neighbor Discovery (ND) requests for this IP address.
-    type: str
     default: ENABLED
   ndowner:
+    type: float
     description:
       - NdOwner in Cluster for VIPS and Striped SNIPS
-    type: float
     default: 255
   networkroute:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Option to push the SNIP6 subnet to ZebOS routing table for Kernel route redistribution
         through dynamic routing protocol.
-    type: str
   ospf6lsatype:
+    type: str
     choices:
       - INTRA_AREA
       - EXTERNAL
     description:
       - Type of LSAs to be used by the IPv6 OSPF protocol, running on the Citrix ADC,
         for advertising the route for the VIP6 address.
-    type: str
     default: EXTERNAL
   ospfarea:
+    type: float
     description:
       - ID of the area in which the Intra-Area-Prefix LSAs are to be advertised for
         the VIP6 address by the IPv6 OSPF protocol running on the Citrix ADC. When
         ospfArea is not set, VIP6 is advertised on all areas.
-    type: float
     default: -1
   ownerdownresponse:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
-    type: str
     default: 'YES'
   ownernode:
+    type: float
     description:
       - ID of the cluster node for which you are adding the IP address. Must be used
         if you want the IP address to be active only on the specific node. Can be
         configured only through the cluster IP address. Cannot be changed after the
         IP address is created.
-    type: float
     default: 255
   restrictaccess:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -180,60 +193,52 @@ options:
       - Block access to nonmanagement applications on this IP address. This option
         is applicable forMIP6s, SNIP6s, and NSIP6s, and is disabled by default. Nonmanagement
         applications can run on the underlying Citrix ADC Free BSD operating system.
-    type: str
     default: DISABLED
   scope:
+    type: str
     choices:
       - global
       - link-local
     description:
       - Scope of the IPv6 address to be created. Cannot be changed after the IP address
         is created.
-    type: str
     default: global
   snmp:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
-    type: str
     default: ENABLED
   ssh:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow secure Shell (SSH) access to this IP address.
-    type: str
-    default: ENABLED
-  state:
-    choices:
-      - DISABLED
-      - ENABLED
-    description:
-      - Enable or disable the IP address.
-    type: str
     default: ENABLED
   tag:
+    type: float
     description:
       - Tag value for the network/host route associated with this IP.
-    type: float
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   telnet:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Allow Telnet access to this IP address.
-    type: str
     default: ENABLED
   type:
+    type: str
     choices:
       - NSIP
       - VIP
@@ -245,28 +250,28 @@ options:
     description:
       - Type of IP address to be created on the Citrix ADC. Cannot be changed after
         the IP address is created.
-    type: str
     default: SNIP
   vlan:
+    type: float
     description:
       - The VLAN number.
-    type: float
   vrid6:
+    type: float
     description:
       - A positive integer that uniquely identifies a VMAC address for binding to
         this VIP address. This binding is used to set up Citrix ADCs in an active-active
         configuration using VRRP.
-    type: float
   vserver:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable the state of all the virtual servers associated with this
         VIP6 address.
-    type: str
     default: ENABLED
   vserverrhilevel:
+    type: str
     choices:
       - ONE_VSERVER
       - ALL_VSERVERS
@@ -296,29 +301,12 @@ options:
       - ' *If you set RHI STATE to ACTIVE on some and PASSIVE on others, the Citrix
         ADC advertises the route for the VIP address if at least one of the associated
         virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
-    type: str
     default: ONE_VSERVER
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsip6
-      delegate_to: localhost
-      netscaler.adc.nsip6:
-        state: present
-        ipv6address: ae80::1024:45aa:fe3b:9843/64
-        scope: link-local
-        type: SNIP
-        vlan: '1'
-        vserver: DISABLED
-        mgmtaccess: DISABLED
-        dynamicrouting: ENABLED
-
 """
 
 RETURN = r"""

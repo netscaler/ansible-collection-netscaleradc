@@ -24,18 +24,31 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   action:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Action to perform when a request matches the policy.
-    type: str
   cmdspec:
+    type: str
     description:
       - Regular expression specifying the data that matches the policy.
-    type: str
   policyname:
+    type: str
     description:
       - Name for a command policy. Must begin with a letter, number, or the underscore
         (_) character, and must contain only alphanumeric, hyphen (-), period (.),
@@ -44,7 +57,6 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my policy" or ''my policy'').'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

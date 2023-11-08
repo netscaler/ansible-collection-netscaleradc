@@ -26,17 +26,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   id:
+    type: float
     description:
       - Integer that uniquely identifies the VMAC address. The generic VMAC address
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with
         a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c,
         where 3c is the hexadecimal representation of 60.
-    type: float
   trackifnum:
+    type: str
     description:
       - Interfaces which need to be tracked for this vrID.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

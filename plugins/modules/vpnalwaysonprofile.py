@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientcontrol:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Allow/Deny user to log off and connect to another Gateway
-    type: str
     default: DENY
   locationbasedvpn:
+    type: str
     choices:
       - Remote
       - Everywhere
@@ -45,13 +58,13 @@ options:
         DNS suffix results in private IP, client is said to be in enterprise network.
         When set to EveryWhere, the client skips the check to detect if it is on the
         enterprise network and tries to establish the tunnel
-    type: str
     default: Remote
   name:
+    type: str
     description:
       - name of AlwaysON profile
-    type: str
   networkaccessonvpnfailure:
+    type: str
     choices:
       - onlyToGateway
       - fullAccess
@@ -60,7 +73,6 @@ options:
         requires that tunnel be established). When set to C(onlyToGateway), the network
         traffic to and from the client (except Gateway IP) is blocked. When set to
         C(fullAccess), the network traffic is not blocked
-    type: str
     default: fullAccess
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

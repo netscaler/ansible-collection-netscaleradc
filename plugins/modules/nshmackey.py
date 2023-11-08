@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with this encryption key.
-    type: str
   digest:
+    type: str
     choices:
       - MD2
       - MD4
@@ -40,8 +53,8 @@ options:
       - SHA512
     description:
       - Digest (hash) function to be used in the HMAC computation.
-    type: str
   keyvalue:
+    type: str
     description:
       - 'The hex-encoded key to be used in the HMAC computation. The key can be any
         length (up to a Citrix ADC-imposed maximum of 255 bytes). If the length is
@@ -62,8 +75,8 @@ options:
         specified digest. This kind of key is
       - intended for use cases where the NetScaler both generates and verifies an
         HMAC on  the same data.
-    type: str
   name:
+    type: str
     description:
       - 'Key name.  This follows the same syntax rules as other expression entity
         names:'
@@ -73,7 +86,6 @@ options:
       - '   It cannot be an expression reserved word (e.g. SYS or HTTP).'
       - '   It cannot be used for an existing expression object (HTTP callout, patset,
         dataset, stringmap, or named expression).'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

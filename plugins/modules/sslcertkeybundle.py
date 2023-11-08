@@ -24,15 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bundlefile:
+    type: str
     description:
       - Name of and, optionally, path to the X509 certificate bundle file that is
         used to form the certificate-key bundle. The certificate bundle file should
         be present on the appliance's hard-disk drive or solid-state drive. /nsconfig/ssl/
         is the default path. The certificate bundle file consists of list of certificates
         and one key in PEM format.
-    type: str
   certkeybundlename:
+    type: str
     description:
       - 'Name given to the cerKeyBundle. The name will be used to bind/unbind certkey
         bundle to vip. Must begin with an ASCII alphanumeric or underscore (_) character,
@@ -41,12 +54,11 @@ options:
         requirement applies only to the Citrix ADC CLI: If the name includes one or
         more spaces, enclose the name in double or single quotation marks (for example,
         "my file" or ''my file'').'
-    type: str
   passplain:
+    type: str
     description:
       - Pass phrase used to encrypt the private-key. Required when certificate bundle
         file contains encrypted private-key in PEM format.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

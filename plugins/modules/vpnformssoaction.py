@@ -24,21 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   actionurl:
+    type: str
     description:
       - Root-relative URL to which the completed form is submitted.
-    type: str
   name:
+    type: str
     description:
       - Name for the form based single sign-on profile.
-    type: str
   namevaluepair:
+    type: str
     description:
       - Other name-value pair attributes to send to the server, in addition to sending
         the user name and password. Value names are separated by an ampersand (&),
         such as in name1=value1&name2=value2.
-    type: str
   nvtype:
+    type: str
     choices:
       - STATIC
       - DYNAMIC
@@ -46,36 +59,35 @@ options:
       - 'How to process the name-value pair. Available settings function as follows:'
       - '* C(STATIC) - The administrator-configured values are used.'
       - '* C(DYNAMIC) - The response is parsed, the form is extracted, and then submitted.'
-    type: str
     default: DYNAMIC
   passwdfield:
+    type: str
     description:
       - Name of the form field in which the user types in the password.
-    type: str
   responsesize:
+    type: float
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.
-    type: float
     default: 8096
   ssosuccessrule:
+    type: str
     description:
       - Expression that defines the criteria for SSO success. Expression such as checking
         for cookie in the response is a common example.
-    type: str
   submitmethod:
+    type: str
     choices:
       - GET
       - POST
     description:
       - HTTP method (C(GET) or C(POST)) used by the single sign-on form to send the
         logon credentials to the logon server.
-    type: str
     default: GET
   userfield:
+    type: str
     description:
       - Name of the form field in which the user types in the user ID.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,20 +24,33 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   loggedin:
+    type: bool
     description:
       - Show whether the user is logged in or not.
-    type: bool
   password:
+    type: str
     description:
-      - 'Password with which the user logs on. Required for any user account that
-        does not exist on an external authentication server. '
+      - Password with which the user logs on. Required for any user account that does
+        not exist on an external authentication server.
       - If you are not using an external authentication server, all user accounts
         must have a password. If you are using an external authentication server,
         you must provide a password for local user accounts that do not exist on the
         authentication server.
-    type: str
   username:
+    type: str
     description:
       - Name for the user. Must begin with a letter, number, or the underscore character
         (_), and must contain only letters, numbers, and the hyphen (-), period (.)
@@ -47,12 +60,12 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or
       - single quotation marks (for example, "my aaa user" or "my aaa user").
-    type: str
   aaauser_auditnslogpolicy_binding:
     type: dict
     description: Bindings for aaauser_auditnslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -77,6 +90,7 @@ options:
     description: Bindings for aaauser_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -101,6 +115,7 @@ options:
     description: Bindings for aaauser_authorizationpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -125,6 +140,7 @@ options:
     description: Bindings for aaauser_intranetip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -149,6 +165,7 @@ options:
     description: Bindings for aaauser_intranetip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -173,6 +190,7 @@ options:
     description: Bindings for aaauser_tmsessionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -197,6 +215,7 @@ options:
     description: Bindings for aaauser_vpnintranetapplication_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -221,6 +240,7 @@ options:
     description: Bindings for aaauser_vpnsessionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -245,6 +265,7 @@ options:
     description: Bindings for aaauser_vpntrafficpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -269,6 +290,7 @@ options:
     description: Bindings for aaauser_vpnurl_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -293,6 +315,7 @@ options:
     description: Bindings for aaauser_vpnurlpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

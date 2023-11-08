@@ -24,21 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this dataset or a data bound to
         this dataset.
-    type: str
   name:
+    type: str
     description:
       - Name of the dataset. Must not exceed 127 characters.
-    type: str
   patsetfile:
+    type: str
     description:
       - File which contains list of patterns that needs to be bound to the dataset.
         A patsetfile cannot be associated with multiple datasets.
-    type: str
   type:
+    type: str
     choices:
       - ipv4
       - number
@@ -48,12 +61,12 @@ options:
       - mac
     description:
       - Type of value to bind to the dataset.
-    type: str
   policydataset_value_binding:
     type: dict
     description: Bindings for policydataset_value_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

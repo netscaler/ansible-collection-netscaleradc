@@ -24,20 +24,27 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name of a virtual server, service or service group for which the SurgeQ must
         be flushed.
-    type: str
   port:
+    type: int
     description:
       - port on which server is bound to the entity(Servicegroup).
-    type: int
   servername:
+    type: str
     description:
       - Name of a service group member. This argument is needed when you want to flush
         the SurgeQ of a service group.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

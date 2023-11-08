@@ -24,39 +24,39 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   buffersizemb:
+    type: float
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
-    type: float
     default: 16
   customreqhdrs:
+    type: list
     description:
       - Name(s) of HTTP request headers whose values should be exported by the Web
         Logging feature.
-    type: list
     elements: str
   customrsphdrs:
+    type: list
     description:
       - Name(s) of HTTP response headers whose values should be exported by the Web
         Logging feature.
-    type: list
     elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsweblogparam
-      delegate_to: localhost
-      netscaler.adc.nsweblogparam:
-        state: present
-        buffersizemb: '3'
-
 """
 
 RETURN = r"""

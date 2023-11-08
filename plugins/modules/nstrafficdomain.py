@@ -24,15 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   aliasname:
+    type: str
     description:
       - Name of traffic domain  being added.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies a traffic domain.
-    type: float
   vmac:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -45,13 +62,13 @@ options:
         VMAC address of the traffic domain. After creating entities on a traffic domain,
         you can easily manage and monitor them by performing traffic domain level
         operations.
-    type: str
     default: DISABLED
   nstrafficdomain_bridgegroup_binding:
     type: dict
     description: Bindings for nstrafficdomain_bridgegroup_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -76,6 +93,7 @@ options:
     description: Bindings for nstrafficdomain_vlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -100,6 +118,7 @@ options:
     description: Bindings for nstrafficdomain_vxlan_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

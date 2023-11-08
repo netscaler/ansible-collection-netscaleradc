@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   cacertgroupname:
+    type: str
     description:
       - 'Name given to the CA certificate group. The name will be used to add the
         CA certificates to the group. Must begin with an ASCII alphanumeric or underscore
@@ -35,8 +48,8 @@ options:
         The following requirement applies only to the Citrix ADC CLI: If the name
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "my file" or ''my file'').'
-    type: str
   certkeyname:
+    type: str
     description:
       - 'Name for the certkey added to the Citrix ADC. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -45,21 +58,20 @@ options:
         following requirement applies only to the Citrix ADC CLI: If the name includes
         one or more spaces, enclose the name in double or single quotation marks (for
         example, "my cert" or ''my cert'').'
-    type: str
   crlcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the CRL check parameter. (C(Mandatory)/C(Optional))
-    type: str
   ocspcheck:
+    type: str
     choices:
       - Mandatory
       - Optional
     description:
       - The state of the OCSP check parameter. (C(Mandatory)/C(Optional))
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

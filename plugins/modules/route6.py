@@ -24,58 +24,71 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   advertise:
+    type: str
     choices:
       - DISABLED
       - ENABLED
     description:
       - Advertise this route.
-    type: str
   cost:
+    type: float
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route. The lower the cost, the higher the preference.
-    type: float
     default: 1
   detail:
+    type: bool
     description:
       - To get a detailed view.
-    type: bool
   distance:
+    type: float
     description:
       - Administrative distance of this route from the appliance.
-    type: float
     default: 1
   gateway:
+    type: str
     description:
       - The gateway for this route. The value for this parameter is either an IPv6
         address or null.
-    type: str
   monitor:
+    type: str
     description:
       - Name of the monitor, of type ND6 or PING, configured on the Citrix ADC to
         monitor this route.
-    type: str
   msr:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor this route with a monitor of type ND6 or PING.
-    type: str
     default: DISABLED
   network:
+    type: str
     description:
       - IPv6 network address for which to add a route entry to the routing table of
         the Citrix ADC.
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for this route6. If owner node group is
         not specified then the route is treated as Striped route.
-    type: str
     default: DEFAULT_NG
   routetype:
+    type: str
     choices:
       - CONNECTED
       - STATIC
@@ -88,29 +101,28 @@ options:
       - FIB6
     description:
       - Type of IPv6 routes to remove from the routing table of the Citrix ADC.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   vlan:
+    type: float
     description:
       - Integer value that uniquely identifies a VLAN through which the Citrix ADC
         forwards the packets for this route.
-    type: float
   vxlan:
+    type: float
     description:
       - Integer value that uniquely identifies a VXLAN through which the Citrix ADC
         forwards the packets for this route.
-    type: float
   weight:
+    type: float
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    type: float
     default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

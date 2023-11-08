@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   attributes:
+    type: str
     description:
       - Name-Value pairs of attributes to be inserted in idtoken. Configuration format
         is name=value_expr@@@name2=value2_expr@@@.
@@ -32,46 +45,46 @@ options:
         string whose value is 127 characters and does not contain ''='' character.'
       - Value is advanced policy expression terminated by @@@ delimiter. Last value
         need not contain the delimiter.
-    type: str
   audience:
+    type: str
     description:
       - Audience for which token is being sent by Citrix ADC IdP. This is typically
         entity name or url that represents the recipient
-    type: str
   clientid:
+    type: str
     description:
       - Unique identity of the relying party requesting for authentication.
-    type: str
   clientsecret:
+    type: str
     description:
       - Unique secret string to authorize relying party at authorization server.
-    type: str
   configservice:
+    type: str
     description:
       - Name of the entity that is used to obtain configuration for the current authentication
         request. It is used only in Citrix Cloud.
-    type: str
   defaultauthenticationgroup:
+    type: str
     description:
       - This group will be part of AAA session's internal group list. This will be
         helpful to admin in Nfactor flow to decide right AAA configuration for Relaying
         Party. In authentication policy AAA.USER.IS_MEMBER_OF("<default_auth_group>")  is
         way to use this feature.
-    type: str
   encrypttoken:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to encrypt token when Citrix ADC IDP sends one.
-    type: str
     default: 'OFF'
   issuer:
+    type: str
     description:
       - "The name to be used in requests sent from\tCitrix ADC to IdP to uniquely\
         \ identify Citrix ADC."
-    type: str
   name:
+    type: str
     description:
       - Name for the new OAuth Identity Provider (IdP) single sign-on profile. Must
         begin with an ASCII alphanumeric or underscore (_) character, and must contain
@@ -82,49 +95,48 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   redirecturl:
+    type: str
     description:
       - URL endpoint on relying party to which the OAuth token is to be sent.
-    type: str
   refreshinterval:
+    type: float
     description:
       - Interval at which Relying Party metadata is refreshed.
-    type: float
     default: 50
   relyingpartymetadataurl:
+    type: str
     description:
       - This is the endpoint at which Citrix ADC IdP can get details about Relying
         Party (RP) being configured. Metadata response should include endpoints for
         jwks_uri for RP public key(s).
-    type: str
   sendpassword:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Option to send encrypted password in idtoken.
-    type: str
     default: 'OFF'
   signaturealg:
+    type: str
     choices:
       - RS256
       - RS512
     description:
       - Algorithm to be used to sign OpenID tokens.
-    type: str
     default: RS256
   signatureservice:
+    type: str
     description:
       - Name of the service in cloud used to sign the data. This is applicable only
         if signature if offloaded to cloud.
-    type: str
   skewtime:
+    type: float
     description:
       - This option specifies the duration for which the token sent by Citrix ADC
         IdP is valid. For example, if skewTime is 10, then token would be valid from
         (current time - 10) min to (current time + 10) min, ie 20min in all.
-    type: float
     default: 5
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 

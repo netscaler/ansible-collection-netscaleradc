@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comment. Can be used to preserve information about this rewrite action.
-    type: str
   name:
+    type: str
     description:
       - Name for the user-defined rewrite action. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
@@ -39,8 +52,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my rewrite action" or 'my rewrite action').
-    type: str
   newname:
+    type: str
     description:
       - 'New name for the rewrite action. '
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -51,8 +64,8 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my rewrite action" or 'my rewrite action').
-    type: str
   refinesearch:
+    type: str
     description:
       - 'Specify additional criteria to refine the results of the search. '
       - Always starts with the "extend(m,n)" operation, where 'm' specifies number
@@ -61,8 +74,8 @@ options:
       - You can use refineSearch only on body expressions, and for the INSERT_BEFORE_ALL,
         INSERT_AFTER_ALL, REPLACE_ALL, and DELETE_ALL action types.
       - 'Example: -refineSearch ''EXTEND(10, 20).REGEX_SELECT(re~0x[0-9a-zA-Z]+~).'
-    type: str
   search:
+    type: str
     description:
       - 'Search facility that is used to match multiple strings in the request or
         response. Used in the INSERT_BEFORE_ALL, INSERT_AFTER_ALL, REPLACE_ALL, and
@@ -100,17 +113,17 @@ options:
         to specify the text that was selected by the -search parameter, optionally
         adjusted by the -refineSearch parameter.'
       - 'Example: TARGET.BEFORE_STR(",")'
-    type: str
   stringbuilderexpr:
+    type: str
     description:
       - Expression that specifies the content to insert into the request or response
         at the specified location, or that replaces the specified string.
-    type: str
   target:
+    type: str
     description:
       - Expression that specifies which part of the request or response to rewrite.
-    type: str
   type:
+    type: str
     choices:
       - noop
       - delete
@@ -198,7 +211,6 @@ options:
         specified in <string_builder_expr> in the MQTT Subscribe or Unsubscribe message
         before the specified target_expr.'
       - '* DELETE_MQTT <target> : Deletes the specified target in the MQTT message.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

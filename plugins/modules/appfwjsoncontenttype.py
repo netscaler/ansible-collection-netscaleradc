@@ -24,34 +24,35 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   isregex:
+    type: str
     choices:
       - REGEX
       - NOTREGEX
     description:
       - Is json content type a regular expression?
-    type: str
     default: NOTREGEX
   jsoncontenttypevalue:
+    type: str
     description:
       - Content type to be classified as JSON
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | appfwJSONContentType
-      delegate_to: localhost
-      netscaler.adc.appfwjsoncontenttype:
-        state: present
-        jsoncontenttypevalue: "^application/json$"
-        isregex: REGEX
-
 """
 
 RETURN = r"""

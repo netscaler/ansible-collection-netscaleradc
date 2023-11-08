@@ -24,33 +24,46 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   defaultauthorizationaction:
+    type: str
     choices:
       - ALLOW
       - DENY
     description:
       - Allow or deny access to content for which there is no specific authorization
         policy.
-    type: str
   homepage:
+    type: str
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
-    type: str
   httponlycookie:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
-    type: str
     default: 'YES'
   kcdaccount:
+    type: str
     description:
       - Kerberos constrained delegation account name
-    type: str
   name:
+    type: str
     description:
       - Name for the session action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -60,30 +73,30 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
-    type: str
   persistentcookie:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
-      - 'Enable or disable persistent SSO cookies for the traffic management (TM)
-        session. A persistent cookie remains on the user device and is sent with each
-        HTTP request. The cookie becomes stale if the session ends. This setting is
-        overwritten if a traffic action sets persistent cookie to C(OFF). '
+      - Enable or disable persistent SSO cookies for the traffic management (TM) session.
+        A persistent cookie remains on the user device and is sent with each HTTP
+        request. The cookie becomes stale if the session ends. This setting is overwritten
+        if a traffic action sets persistent cookie to C(OFF).
       - 'Note: If persistent cookie is enabled, make sure you set the persistent cookie
         validity.'
-    type: str
   persistentcookievalidity:
+    type: float
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistent cookie setting is enabled.
-    type: float
   sesstimeout:
+    type: float
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access intranet resources.
-    type: float
   sso:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
@@ -94,20 +107,19 @@ options:
         does not honor the following authentication types for security reason. BASIC,
         DIGEST, and NTLM (without Negotiate NTLM2 Key or Negotiate Sign Flag). Use
         TM TrafficAction to configure SSO for these authentication types.
-    type: str
     default: 'OFF'
   ssocredential:
+    type: str
     choices:
       - PRIMARY
       - SECONDARY
     description:
       - Use the primary or secondary authentication credentials for single sign-on
         (SSO).
-    type: str
   ssodomain:
+    type: str
     description:
       - Domain to use for single sign-on (SSO).
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

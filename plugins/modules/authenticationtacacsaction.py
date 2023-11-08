@@ -24,135 +24,148 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   accounting:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Whether the TACACS+ server is currently accepting accounting messages.
-    type: str
   attribute1:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '1' (where '1' changes for each attribute)
-    type: str
   attribute10:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '10' (where '10' changes for each attribute)
-    type: str
   attribute11:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '11' (where '11' changes for each attribute)
-    type: str
   attribute12:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '12' (where '12' changes for each attribute)
-    type: str
   attribute13:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '13' (where '13' changes for each attribute)
-    type: str
   attribute14:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '14' (where '14' changes for each attribute)
-    type: str
   attribute15:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '15' (where '15' changes for each attribute)
-    type: str
   attribute16:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '16' (where '16' changes for each attribute)
-    type: str
   attribute2:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '2' (where '2' changes for each attribute)
-    type: str
   attribute3:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '3' (where '3' changes for each attribute)
-    type: str
   attribute4:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '4' (where '4' changes for each attribute)
-    type: str
   attribute5:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '5' (where '5' changes for each attribute)
-    type: str
   attribute6:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '6' (where '6' changes for each attribute)
-    type: str
   attribute7:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '7' (where '7' changes for each attribute)
-    type: str
   attribute8:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '8' (where '8' changes for each attribute)
-    type: str
   attribute9:
+    type: str
     description:
       - Name of the custom attribute to be extracted from server and stored at index
         '9' (where '9' changes for each attribute)
-    type: str
   attributes:
+    type: str
     description:
-      - 'List of attribute names separated by '','' which needs to be fetched from
-        tacacs server. '
-      - 'Note that preceeding and trailing spaces will be removed. '
+      - List of attribute names separated by ',' which needs to be fetched from tacacs
+        server.
+      - Note that preceeding and trailing spaces will be removed.
       - Attribute name can be 127 bytes and total length of this string should not
         cross 2047 bytes.
       - These attributes have multi-value support separated by ',' and stored as key-value
         pair in AAA session
-    type: str
   auditfailedcmds:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - The state of the TACACS+ server that will receive accounting messages.
-    type: str
   authorization:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Use streaming authorization on the TACACS+ server.
-    type: str
   authtimeout:
+    type: float
     description:
       - Number of seconds the Citrix ADC waits for a response from the TACACS+ server.
-    type: float
     default: 3
   defaultauthenticationgroup:
+    type: str
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
-    type: str
   groupattrname:
+    type: str
     description:
       - TACACS+ group attribute name.
       - Used for group extraction on the TACACS+ server.
-    type: str
   name:
+    type: str
     description:
-      - 'Name for the TACACS+ profile (action). '
+      - Name for the TACACS+ profile (action).
       - Must begin with a letter, number, or the underscore character (_), and must
         contain only letters, numbers, and the hyphen (-), period (.) pound (#), space
         ( ), at (@), equals (=), colon (:), and underscore characters. Cannot be changed
@@ -162,21 +175,20 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my authentication action" or 'y authentication
         action').
-    type: str
   serverip:
+    type: str
     description:
       - IP address assigned to the TACACS+ server.
-    type: str
   serverport:
+    type: int
     description:
       - Port number on which the TACACS+ server listens for connections.
-    type: int
     default: 49
   tacacssecret:
-    description:
-      - 'Key shared between the TACACS+ server and the Citrix ADC. '
-      - Required for allowing the Citrix ADC to communicate with the TACACS+ server.
     type: str
+    description:
+      - Key shared between the TACACS+ server and the Citrix ADC.
+      - Required for allowing the Citrix ADC to communicate with the TACACS+ server.
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

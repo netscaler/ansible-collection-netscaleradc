@@ -24,34 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Terminate all active AAA-TM/VPN sessions.
-    type: bool
   groupname:
+    type: str
     description:
       - Name of the AAA group.
-    type: str
   iip:
+    type: str
     description:
       - IP address or the first address in the intranet IP range.
-    type: str
   netmask:
+    type: str
     description:
       - Subnet mask for the intranet IP range.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   sessionkey:
+    type: str
     description:
       - Show aaa session associated with given session key
-    type: str
   username:
+    type: str
     description:
       - Name of the AAA user.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this URL Transformation profile.
-    type: str
   name:
+    type: str
     description:
       - Name for the URL transformation profile. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
@@ -39,20 +52,19 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform profile or my transform profile).
-    type: str
   onlytransformabsurlinbody:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - In the HTTP body, transform only absolute URLs. Relative URLs are ignored.
-    type: str
   type:
+    type: str
     choices:
       - URL
     description:
       - Type of transformation. Always C(URL) for C(URL) Transformation profiles.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

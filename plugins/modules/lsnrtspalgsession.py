@@ -24,14 +24,21 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices: []
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   sessionid:
+    type: str
     description:
       - Session ID for the RTSP call.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

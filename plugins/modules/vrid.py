@@ -24,63 +24,76 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   all:
+    type: bool
     description:
       - Remove all the configured VMAC addresses from the Citrix ADC.
-    type: bool
   id:
+    type: float
     description:
       - Integer that uniquely identifies the VMAC address. The generic VMAC address
         is in the form of 00:00:5e:00:01:<VRID>. For example, if you add a VRID with
         a value of 60 and bind it to an interface, the resulting VMAC address is 00:00:5e:00:01:3c,
         where 3c is the hexadecimal representation of 60.
-    type: float
   ownernode:
+    type: float
     description:
       - In a cluster setup, assign a cluster node as the owner of this VMAC address
         for IP based VRRP configuration. If no owner is configured, owner node is
         displayed as ALL and one node is dynamically elected as the owner.
-    type: float
   preemption:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
-      - 'In an active-active mode configuration, make a backup VIP address the master
+      - In an active-active mode configuration, make a backup VIP address the master
         if its priority becomes higher than that of a master VIP address bound to
-        this VMAC address. '
+        this VMAC address.
       - If you disable pre-emption while a backup VIP address is the master, the backup
         VIP address remains master until the original master VIP's priority becomes
         higher than that of the current master.
-    type: str
     default: ENABLED
   preemptiondelaytimer:
+    type: float
     description:
       - Preemption delay time, in seconds, in an active-active configuration. If any
         high priority node will come in network, it will wait for these many seconds
         before becoming master.
-    type: float
   priority:
+    type: float
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
-    type: float
     default: 255
   sharing:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
-    type: str
     default: DISABLED
   trackifnumpriority:
+    type: float
     description:
       - Priority by which the Effective priority will be reduced if any of the tracked
         interfaces goes down in an active-active configuration.
-    type: float
   tracking:
+    type: str
     choices:
       - NONE
       - ONE
@@ -101,13 +114,13 @@ options:
         K/N), where N is the total number of virtual servers associated with the VIP
         address and K is the number of virtual servers for which the status is DOWN.'
       - 'Default: C(NONE).'
-    type: str
     default: NONE
   vrid6_channel_binding:
     type: dict
     description: Bindings for vrid6_channel_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -132,6 +145,7 @@ options:
     description: Bindings for vrid6_interface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -156,6 +170,7 @@ options:
     description: Bindings for vrid6_trackinterface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -180,6 +195,7 @@ options:
     description: Bindings for vrid_channel_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -204,6 +220,7 @@ options:
     description: Bindings for vrid_interface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -228,6 +245,7 @@ options:
     description: Bindings for vrid_trackinterface_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

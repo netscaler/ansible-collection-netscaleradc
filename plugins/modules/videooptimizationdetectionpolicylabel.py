@@ -24,12 +24,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Any comments to preserve information about this videooptimization detection
         policy label.
-    type: str
   labelname:
+    type: str
     description:
       - Name for the Video optimization detection policy label. Must begin with a
         letter, number, or the underscore character (_), and must contain only letters,
@@ -41,16 +54,16 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my videooptimization detection policy label"
         or my videooptimization detection policy label').
-    type: str
   newname:
+    type: str
     description:
       - New name for the videooptimization detection policy label. Must begin with
         a letter, number, or the underscore character (_), and must contain only letters,
         numbers, and the hyphen (
       - -), period (.) hash (#), space ( ), at (@), equals (=), colon (:), and underscore
         characters.
-    type: str
   policylabeltype:
+    type: str
     choices:
       - videoopt_req
       - videoopt_res
@@ -59,14 +72,13 @@ options:
         are:'
       - '* HTTP - HTTP responses.'
       - '* OTHERTCP - NON-HTTP TCP responses.'
-    type: str
-    default: NS_PLTMAP_RSP_REQ
   videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding:
     type: dict
     description: Bindings for videooptimizationdetectionpolicylabel_videooptimizationdetectionpolicy_binding
       resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

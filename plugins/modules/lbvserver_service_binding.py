@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   name:
+    type: str
     description:
       - Name for the virtual server. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -35,52 +48,27 @@ options:
       - ''
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my vserver" or ''my vserver'').'
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the service when it is bound to the lb vserver.
-    type: float
   servicegroupname:
+    type: str
     description:
       - Name of the service group.
-    type: str
   servicename:
+    type: str
     description:
       - Service to bind to the virtual server.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the specified service.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
----
-
-- name: Simple lbvserver_service_binding playbook
-  hosts: demo_netscalers
-
-  gather_facts: false
-
-  tasks:
-    - name: Sample Task | lbvserver_service_binding
-      delegate_to: localhost
-      netscaler.adc.lbvserver_service_binding:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: test_lbvser
-        servicename: s1
-        weight: 16
-
 """
 
 RETURN = r"""

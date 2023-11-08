@@ -24,22 +24,32 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   controllerfqdn:
+    type: str
     description:
       - '0'
-    type: str
   fqdn:
+    type: str
     description:
       - '0'
-    type: str
   resourcelocation:
+    type: str
     description:
       - '0'
-    type: str
   subnetresourcelocationmappings:
+    type: str
     description:
       - '0'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

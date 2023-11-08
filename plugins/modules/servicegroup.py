@@ -24,15 +24,42 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information for the specified service group.
-    type: str
     default: ENABLED
+  autodelayedtrofs:
+    type: str
+    choices:
+      - 'YES'
+      - 'NO'
+    description:
+      - Indicates graceful movement of IP-Port binding/s to TROFS when IP addresses
+        are removed from DNS response. System will wait for monitor response timeout
+        period before moving to TROFS .
+    default: 'NO'
   autodisabledelay:
+    type: float
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
         new connections or requests will continue to be sent to this service for clients
@@ -41,17 +68,17 @@ options:
         system will not be sent to the service. Instead, they will be load balanced
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
-    type: float
   autodisablegraceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
-    type: str
     default: 'NO'
   autoscale:
+    type: str
     choices:
       - DISABLED
       - DNS
@@ -60,9 +87,9 @@ options:
       - API
     description:
       - Auto scale option for a servicegroup
-    type: str
     default: DISABLED
   cacheable:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -70,65 +97,65 @@ options:
       - Use the transparent cache redirection virtual server to forward the request
         to the cache server.
       - 'Note: Do not set this parameter if you set the Cache Type.'
-    type: str
     default: 'NO'
   cachetype:
+    type: str
     choices:
       - TRANSPARENT
       - REVERSE
       - FORWARD
     description:
       - Cache type supported by the cache server.
-    type: str
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Insert the Client IP header in requests forwarded to the service.
-    type: str
   cipheader:
+    type: str
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
         Used with the Client IP parameter. If client IP insertion is enabled, and
         the client IP header is not specified, the value of Client IP Header parameter
         or the value set by the set ns config command is used as client's IP header
         name.
-    type: str
   cka:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable client keep-alive for the service group.
-    type: str
   clttimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: float
   cmp:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable compression for the specified service.
-    type: str
   comment:
+    type: str
     description:
       - Any information about the service group.
-    type: str
   customserverid:
+    type: str
     description:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
-    type: str
     default: '"None"'
   dbsttl:
+    type: float
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
-    type: float
   delay:
+    type: float
     description:
       - Time, in seconds, allocated for a shutdown of the services in the service
         group. During this period, new requests are sent to the service only for clients
@@ -136,8 +163,8 @@ options:
         are load balanced among other available services. After the delay time expires,
         no requests are sent to the service, and the service is marked as unavailable
         (OUT OF SERVICE).
-    type: float
   downstateflush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -145,27 +172,27 @@ options:
       - Flush all active transactions associated with all the services in the service
         group whose state transitions from UP to DOWN. Do not enable this option for
         applications that must complete their transactions.
-    type: str
     default: ENABLED
   dup_weight:
+    type: float
     description:
       - weight of the monitor that is bound to servicegroup.
-    type: float
   graceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
-    type: str
     default: 'NO'
   hashid:
+    type: float
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
-    type: float
   healthmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -174,119 +201,118 @@ options:
       - C(YES) - Send probes to check the health of the service.
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
-    type: str
     default: 'YES'
   httpprofilename:
+    type: str
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
         service group.
-    type: str
   includemembers:
+    type: bool
     description:
       - Display the members of the listed service groups in addition to their settings.
         Can be specified when no service group name is provided in the command. In
         that case, the details displayed for each service group are identical to the
         details displayed when a service group name is provided, except that bound
         monitors are not displayed.
-    type: bool
   maxbandwidth:
+    type: float
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the service
         group.
-    type: float
   maxclient:
+    type: float
     description:
       - Maximum number of simultaneous open connections for the service group.
-    type: float
   maxreq:
-    description:
-      - 'Maximum number of requests that can be sent on a persistent connection to
-        the service group. '
-      - 'Note: Connection requests beyond this value are rejected.'
     type: float
+    description:
+      - Maximum number of requests that can be sent on a persistent connection to
+        the service group.
+      - 'Note: Connection requests beyond this value are rejected.'
   memberport:
+    type: int
     description:
       - member port
-    type: int
   monconnectionclose:
+    type: str
     choices:
       - RESET
       - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
-    type: str
-    default: NONE
   monitor_name_svc:
+    type: str
     description:
       - Name of the monitor bound to the service group. Used to assign a weight to
         the monitor.
-    type: str
   monthreshold:
+    type: float
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
-    type: float
   nameserver:
+    type: str
     description:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
-    type: str
   netprofile:
+    type: str
     description:
       - Network profile for the service group.
-    type: str
   newname:
+    type: str
     description:
       - New name for the service group.
-    type: str
   order:
+    type: float
     description:
       - Order number to be assigned to the servicegroup member
-    type: float
   pathmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Path monitoring for clustering
-    type: str
   pathmonitorindv:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Individual Path monitoring decisions.
-    type: str
   port:
+    type: int
     description:
       - Server port number.
-    type: int
   rtspsessionidremap:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service group.
-    type: str
     default: 'OFF'
   serverid:
+    type: float
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: float
   servername:
+    type: str
     description:
       - Name of the server to which to bind the service group.
-    type: str
   servicegroupname:
+    type: str
     description:
       - Name of the service group. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Can be changed after the name is created.
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -338,57 +364,49 @@ options:
       - QUIC_BRIDGE
     description:
       - Protocol used to exchange data with the service.
-    type: str
   sp:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable surge protection for the service group.
-    type: str
     default: 'OFF'
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the service group.
-    type: str
-    default: ENABLED
   svrtimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: float
   tcpb:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable TCP buffering for the service group.
-    type: str
   tcpprofilename:
+    type: str
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service
         group.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   useproxyport:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
-      - 'Use the proxy port as the source port when initiating connections with the
+      - Use the proxy port as the source port when initiating connections with the
         server. With the C(NO) setting, the client-side connection port is used as
-        the source port for the server-side connection. '
+        the source port for the server-side connection.
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to C(YES).'
-    type: str
   usip:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -397,18 +415,18 @@ options:
         to the server. With the C(NO) setting, which is the default, a mapped IP (MIP)
         address or subnet IP (SNIP) address is used as the source IP address to initiate
         server side connections.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.
         The higher the weight, the higher the percentage of requests sent to the service.
-    type: float
   servicegroup_lbmonitor_binding:
     type: dict
     description: Bindings for servicegroup_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -433,6 +451,7 @@ options:
     description: Bindings for servicegroup_servicegroupmember_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

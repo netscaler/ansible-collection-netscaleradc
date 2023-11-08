@@ -24,11 +24,24 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   icapprofilename:
+    type: str
     description:
       - Name of the ICAP profile to be attached to the contentInspection action.
-    type: str
   ifserverdown:
+    type: str
     choices:
       - CONTINUE
       - DROP
@@ -43,29 +56,29 @@ options:
       - '* C(DROP) - Drop the request without sending a response to the user.'
       - '* C(CONTINUE) - It bypasses the ContentIsnpection and Continues/resumes the
         Traffic-Flow to Client/Server.'
-    type: str
     default: RESET
   name:
+    type: str
     description:
       - Name of the remote service action. Must begin with an ASCII alphabetic or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
-    type: str
   serverip:
+    type: str
     description:
       - IP address of remoteService
-    type: str
   servername:
+    type: str
     description:
       - Name of the LB vserver or service
-    type: str
   serverport:
+    type: float
     description:
       - Port of remoteService
-    type: float
     default: 1344
   type:
+    type: str
     choices:
       - ICAP
       - INLINEINSPECTION
@@ -82,7 +95,6 @@ options:
       - '* C(NOINSPECTION) - This does not forward incoming and outgoing packets to
         the Inspection device.'
       - '* NSTRACE - capture current and further incoming packets on this transaction.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

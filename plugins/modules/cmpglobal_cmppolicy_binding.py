@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -34,9 +47,9 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the priority of the next policy, within
         the policy label, to evaluate if the current policy evaluates to TRUE.  Specify
@@ -49,7 +62,7 @@ options:
         policy label performs a NEXT.'
       - '* An expression that evaluates to a number.'
       - 'If you specify an expression, it''s evaluation result determines the next
-        policy to evaluate, as follows: '
+        policy to evaluate, as follows:'
       - '* If the expression evaluates to a higher numbered priority, that policy
         is evaluated next.'
       - '* If the expression evaluates to the priority of the current policy, the
@@ -66,29 +79,29 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server or a policy label. After the invoked
         policies are evaluated, the flow returns to the policy with the next priority.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label to invoke if the current policy rule evaluates to TRUE.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
     description:
       - Type of policy label invocation.
-    type: str
   policyname:
+    type: str
     description:
       - The name of the globally bound HTTP compression policy.
-    type: str
   priority:
+    type: float
     description:
       - Positive integer specifying the priority of the policy. The lower the number,
         the higher the priority. By default, polices within a label are evaluated
@@ -96,8 +109,8 @@ options:
       - In the configuration utility, you can click the Priority field and edit the
         priority level or drag the entry to a new position in the list. If you drag
         the entry to a new position, the priority level is updated automatically.
-    type: float
   type:
+    type: str
     choices:
       - REQ_OVERRIDE
       - REQ_DEFAULT
@@ -110,7 +123,6 @@ options:
       - NONE
     description:
       - Bind point to which the policy is bound.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

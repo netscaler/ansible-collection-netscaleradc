@@ -24,7 +24,18 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   context:
+    type: str
     choices:
       - geographic
       - custom
@@ -33,8 +44,8 @@ options:
         are assigned by default in the following sequence: Continent.Country.Region.City.ISP.Organization.
         In C(custom) context, the qualifiers labels can have any meaning that you
         designate.'
-    type: str
   matchwildcardtoany:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -51,38 +62,37 @@ options:
       - '          match any qualifier in an LDNS location,'
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
-    type: str
     default: 'NO'
   q1label:
+    type: str
     description:
       - Label specifying the meaning of the first qualifier. Can be specified for
         custom context only.
-    type: str
   q2label:
+    type: str
     description:
       - Label specifying the meaning of the second qualifier. Can be specified for
         custom context only.
-    type: str
   q3label:
+    type: str
     description:
       - Label specifying the meaning of the third qualifier. Can be specified for
         custom context only.
-    type: str
   q4label:
+    type: str
     description:
       - Label specifying the meaning of the fourth qualifier. Can be specified for
         custom context only.
-    type: str
   q5label:
+    type: str
     description:
       - Label specifying the meaning of the fifth qualifier. Can be specified for
         custom context only.
-    type: str
   q6label:
+    type: str
     description:
       - Label specifying the meaning of the sixth qualifier. Can be specified for
         custom context only.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,17 +24,29 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ipaddress:
+    type: str
     description:
       - IP address of the Citrix ADC or a cache server for which the cache acts as
         a proxy. Requests coming to the Citrix ADC with the configured IP address
         are forwarded to the particular address, without involving the Integrated
         Cache in any way.
-    type: str
   port:
+    type: int
     description:
       - Port on the Citrix ADC or a server for which the cache acts as a proxy
-    type: int
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

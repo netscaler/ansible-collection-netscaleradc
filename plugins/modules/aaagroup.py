@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   groupname:
+    type: str
     description:
       - Name for the group. Must begin with a letter, number, or the underscore character
         (_), and must consist only of letters, numbers, and the hyphen (-), period
@@ -34,22 +47,22 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or
       - single quotation marks (for example, "my aaa group" or 'my aaa group').
-    type: str
   loggedin:
+    type: bool
     description:
       - Display only the group members who are currently logged in. If there are large
         number of sessions, this command may provide partial details.
-    type: bool
   weight:
+    type: float
     description:
       - Weight of this group with respect to other configured aaa groups (lower the
         number higher the weight)
-    type: float
   aaagroup_aaauser_binding:
     type: dict
     description: Bindings for aaagroup_aaauser_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -74,6 +87,7 @@ options:
     description: Bindings for aaagroup_auditnslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -98,6 +112,7 @@ options:
     description: Bindings for aaagroup_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -122,6 +137,7 @@ options:
     description: Bindings for aaagroup_authorizationpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -146,6 +162,7 @@ options:
     description: Bindings for aaagroup_intranetip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -170,6 +187,7 @@ options:
     description: Bindings for aaagroup_intranetip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -194,6 +212,7 @@ options:
     description: Bindings for aaagroup_tmsessionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -218,6 +237,7 @@ options:
     description: Bindings for aaagroup_vpnintranetapplication_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -242,6 +262,7 @@ options:
     description: Bindings for aaagroup_vpnsessionpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -266,6 +287,7 @@ options:
     description: Bindings for aaagroup_vpntrafficpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -290,6 +312,7 @@ options:
     description: Bindings for aaagroup_vpnurl_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -314,6 +337,7 @@ options:
     description: Bindings for aaagroup_vpnurlpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

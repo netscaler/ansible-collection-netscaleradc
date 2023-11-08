@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bindpoint:
+    type: str
     choices:
       - REQUEST
       - RESPONSE
@@ -36,8 +49,8 @@ options:
     description:
       - 'Bind point at which policy needs to be bound. Note: Content switching policies
         are evaluated only at request time.'
-    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the next policy to be evaluated if the
         current policy evaluates to TRUE.  Specify one of the following values:'
@@ -66,44 +79,43 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   invoke:
+    type: bool
     description:
       - Invoke a policy label if this policy's rule evaluates to TRUE.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the label to be invoked.
-    type: str
   labeltype:
+    type: str
     choices:
       - reqvserver
       - resvserver
       - policylabel
     description:
       - Type of label to be invoked.
-    type: str
   name:
+    type: str
     description:
       - Name of the content switching virtual server to which the content switching
         policy applies.
-    type: str
   policyname:
+    type: str
     description:
       - Policies bound to this vserver.
-    type: str
   priority:
+    type: float
     description:
       - Priority for the policy.
-    type: float
   targetlbvserver:
+    type: str
     description:
       - Name of the Load Balancing virtual server to which the content is switched,
         if policy rule is evaluated to be TRUE.
       - 'Example: bind cs vs cs1 -policyname pol1 -priority 101 -targetLBVserver lb1'
       - 'Note: Use this parameter only in case of Content Switching policy bind operations
         to a CS vserver'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

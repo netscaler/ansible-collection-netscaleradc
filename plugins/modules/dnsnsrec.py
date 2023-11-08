@@ -24,23 +24,36 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   domain:
+    type: str
     description:
       - Domain name.
-    type: str
   ecssubnet:
+    type: str
     description:
       - Subnet for which the cached name server record need to be removed.
-    type: str
   nameserver:
+    type: str
     description:
       - Host name of the name server to add to the domain.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   ttl:
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to
@@ -50,9 +63,9 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    type: float
     default: 3600
   type:
+    type: str
     choices:
       - ALL
       - ADNS
@@ -62,24 +75,11 @@ options:
       - '* C(ADNS) - Display all authoritative address records.'
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | dnsnsRec
-      delegate_to: localhost
-      netscaler.adc.dnsnsrec:
-        state: present
-        domain: .
-        nameserver: a.root-servers.net
-        ttl: 3600000
-
 """
 
 RETURN = r"""

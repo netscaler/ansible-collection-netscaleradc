@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   globalbindtype:
+    type: str
     choices:
       - SYSTEM_GLOBAL
       - VPN_GLOBAL
@@ -34,9 +47,9 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    type: str
     default: SYSTEM_GLOBAL
   gotopriorityexpression:
+    type: str
     description:
       - 'Expression or other value specifying the next policy to be evaluated if the
         current policy evaluates to TRUE.  Specify one of the following values:'
@@ -65,20 +78,20 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
     default: '"END"'
   invoke:
+    type: bool
     description:
       - Invoke policies bound to a virtual server, service, or policy label. After
         the invoked policies are evaluated, the flow returns to the policy with the
         next priority.
-    type: bool
   labelname:
+    type: str
     description:
       - Name of the virtual server or user-defined policy label to invoke if the policy
         evaluates to TRUE.
-    type: str
   labeltype:
+    type: str
     choices:
       - vserver
       - service
@@ -87,16 +100,16 @@ options:
       - Type of policy label to invoke. Specify virtual server for a policy label
         associated with a virtual server, or policy label for a user-defined policy
         label.
-    type: str
   policyname:
+    type: str
     description:
       - The name for the SSL policy.
-    type: str
   priority:
+    type: float
     description:
       - The priority of the policy binding.
-    type: float
   type:
+    type: str
     choices:
       - CONTROL_OVERRIDE
       - CONTROL_DEFAULT
@@ -108,7 +121,6 @@ options:
       - HTTPQUIC_DATA_DEFAULT
     description:
       - Global bind point to which the policy is bound.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

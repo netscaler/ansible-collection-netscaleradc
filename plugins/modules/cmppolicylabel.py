@@ -24,32 +24,45 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
-  labelname:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
     description:
-      - 'Name of the HTTP compression policy label. Must begin with a letter, number,
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
+  labelname:
+    type: str
+    description:
+      - Name of the HTTP compression policy label. Must begin with a letter, number,
         or the underscore character (_). Additional characters allowed, after the
         first character, are the hyphen (-), period (.) pound sign (#), space ( ),
         at sign (@), equals (=), and colon (:). The name must be unique within the
         list of policy labels for compression policies. Can be renamed after the policy
-        label is created. '
-      - '            '
+        label is created.
+      - ''
       - '            The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').
-    type: str
   newname:
+    type: str
     description:
       - New name for the compression policy label. Must begin with an ASCII alphabetic
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
-      - '                        '
+      - ''
       - '                        The following requirement applies only to the Citrix
         ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my cmp policylabel" or 'my cmp policylabel').
-    type: str
   type:
+    type: str
     choices:
       - REQ
       - RES
@@ -58,12 +71,12 @@ options:
     description:
       - Type of packets (request packets or response) against which to match the policies
         bound to this policy label.
-    type: str
   cmppolicylabel_cmppolicy_binding:
     type: dict
     description: Bindings for cmppolicylabel_cmppolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

@@ -24,11 +24,22 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+    type: str
   activationcode:
+    type: str
     description:
       - Activation code for the NGS Connector instance
-    type: str
   connectorresidence:
+    type: str
     choices:
       - None
       - Onprem
@@ -37,20 +48,20 @@ options:
       - Cpx
     description:
       - Identifies whether the connector is located C(Onprem), C(Aws) or C(Azure)
-    type: str
   controllerfqdn:
+    type: str
     description:
       - FQDN of the controller to which the Citrix ADC SDProxy Connects
-    type: str
   controllerport:
+    type: int
     description:
       - Port number of the controller to which the Citrix ADC SDProxy connects
-    type: int
   customerid:
+    type: str
     description:
       - Customer ID of the citrix cloud customer
-    type: str
   deployment:
+    type: str
     choices:
       - Production
       - Staging
@@ -58,15 +69,14 @@ options:
     description:
       - Describes if the customer is a C(Staging)/C(Production) or C(Dev) Citrix Cloud
         customer
-    type: str
   instanceid:
+    type: str
     description:
       - Instance ID of the customer provided by Trust
-    type: str
   resourcelocation:
+    type: str
     description:
       - Resource Location of the customer provided by Trust
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

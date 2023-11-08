@@ -24,17 +24,30 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   clientsecuritymessage:
+    type: str
     description:
       - Message to display if the expression fails. Allowed for classic end-point
         check expressions only.
-    type: str
   comment:
+    type: str
     description:
       - Any comments associated with the expression. Displayed upon viewing the policy
         expression.
-    type: str
   name:
+    type: str
     description:
       - Unique name for the expression. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric
@@ -42,18 +55,17 @@ options:
         for use as an expression qualifier prefix (such as HTTP) or enumeration value
         (such as ASCII). Must not be the name of an existing named expression, pattern
         set, dataset, stringmap, or HTTP callout.
-    type: str
   type:
+    type: str
     choices:
       - CLASSIC
       - ADVANCED
     description:
       - Type of expression. Can be a classic or default syntax (advanced) expression.
-    type: str
   value:
+    type: str
     description:
       - 'Expression string. For example: http.req.body(100).contains("this").'
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -24,11 +24,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+      - enabled
+      - disabled
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+    type: str
   Internal:
+    type: bool
     description:
       - Display only dynamically learned services.
-    type: bool
   accessdown:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -36,21 +53,21 @@ options:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
-    type: str
     default: 'NO'
   all:
+    type: bool
     description:
       - Display both user-configured and dynamically learned services.
-    type: bool
   appflowlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information.
-    type: str
     default: ENABLED
   cacheable:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -58,17 +75,17 @@ options:
       - Use the transparent cache redirection virtual server to forward requests to
         the cache server.
       - 'Note: Do not specify this parameter if you set the Cache Type parameter.'
-    type: str
     default: 'NO'
   cachetype:
+    type: str
     choices:
       - TRANSPARENT
       - REVERSE
       - FORWARD
     description:
       - Cache type supported by the cache server.
-    type: str
   cip:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -77,8 +94,8 @@ options:
         client's IPv4 or IPv6 address as its value. Used if the server needs the client's
         IP address for security, accounting, or other purposes, and setting the Use
         Source IP parameter is not a viable option.
-    type: str
   cipheader:
+    type: str
     description:
       - Name for the HTTP header whose value must be set to the IP address of the
         client. Used with the Client IP parameter. If you set the Client IP parameter,
@@ -88,46 +105,46 @@ options:
         HTTP Parameters dialog box at System > Settings > Change HTTP parameters).
         If the global Client IP Header parameter is not specified, the appliance inserts
         a header with the name "client-ip."
-    type: str
   cka:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable client keep-alive for the service.
-    type: str
   cleartextport:
+    type: int
     description:
       - Port to which clear text data must be sent after the appliance decrypts incoming
         SSL traffic. Applicable to transparent SSL services.
-    type: int
   clttimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle client connection.
-    type: float
   cmp:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable compression for the service.
-    type: str
   comment:
+    type: str
     description:
       - Any information about the service.
-    type: str
   contentinspectionprofilename:
+    type: str
     description:
       - Name of the ContentInspection profile that contains IPS/IDS communication
         related setting for the service
-    type: str
   customserverid:
+    type: str
     description:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
-    type: str
     default: '"None"'
   delay:
+    type: float
     description:
       - Time, in seconds, allocated to the Citrix ADC for a graceful shutdown of the
         service. During this period, new requests are sent to the service only for
@@ -135,14 +152,14 @@ options:
         new clients are load balanced among other available services. After the delay
         time expires, no requests are sent to the service, and the service is marked
         as unavailable (OUT OF SERVICE).
-    type: float
   dnsprofilename:
+    type: str
     description:
       - Name of the DNS profile to be associated with the service. DNS profile properties
         will applied to the transactions processed by a service. This parameter is
         valid only for ADNS and ADNS-TCP services.
-    type: str
   downstateflush:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -150,23 +167,23 @@ options:
       - Flush all active transactions associated with a service whose state transitions
         from UP to DOWN. Do not enable this option for applications that must complete
         their transactions.
-    type: str
     default: ENABLED
   graceful:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
-    type: str
     default: 'NO'
   hashid:
+    type: float
     description:
       - A numerical identifier that can be used by hash based load balancing methods.
         Must be unique for each service.
-    type: float
   healthmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -175,89 +192,88 @@ options:
       - C(YES) - Send probes to check the health of the service.
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
-    type: str
     default: 'YES'
   httpprofilename:
+    type: str
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
         service.
-    type: str
   ip:
+    type: str
     description:
       - IP to assign to the service.
-    type: str
   ipaddress:
+    type: str
     description:
       - The new IP address of the service.
-    type: str
   maxbandwidth:
+    type: float
     description:
       - Maximum bandwidth, in Kbps, allocated to the service.
-    type: float
   maxclient:
+    type: float
     description:
       - Maximum number of simultaneous open connections to the service.
-    type: float
   maxreq:
-    description:
-      - 'Maximum number of requests that can be sent on a persistent connection to
-        the service. '
-      - 'Note: Connection requests beyond this value are rejected.'
     type: float
+    description:
+      - Maximum number of requests that can be sent on a persistent connection to
+        the service.
+      - 'Note: Connection requests beyond this value are rejected.'
   monconnectionclose:
+    type: str
     choices:
       - RESET
       - FIN
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
-    type: str
-    default: NONE
   monitor_name_svc:
+    type: str
     description:
       - Name of the monitor bound to the specified service.
-    type: str
   monthreshold:
+    type: float
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
-    type: float
   name:
+    type: str
     description:
       - Name for the service. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
         period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the service has been created.
-    type: str
   netprofile:
+    type: str
     description:
       - Network profile to use for the service.
-    type: str
   newname:
+    type: str
     description:
       - New name for the service. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
-    type: str
   pathmonitor:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Path monitoring for clustering
-    type: str
   pathmonitorindv:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Individual Path monitoring decisions
-    type: str
   port:
+    type: int
     description:
       - Port number of the service.
-    type: int
   processlocal:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -266,26 +282,26 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
-    type: str
     default: DISABLED
   rtspsessionidremap:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service.
-    type: str
     default: 'OFF'
   serverid:
+    type: float
     description:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
-    type: float
   servername:
+    type: str
     description:
       - Name of the server that hosts the service.
-    type: str
   servicetype:
+    type: str
     choices:
       - HTTP
       - FTP
@@ -337,55 +353,47 @@ options:
       - QUIC_BRIDGE
     description:
       - Protocol in which data is exchanged with the service.
-    type: str
   sp:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable surge protection for the service.
-    type: str
-  state:
-    choices:
-      - ENABLED
-      - DISABLED
-    description:
-      - Initial state of the service.
-    type: str
-    default: ENABLED
   svrtimeout:
+    type: float
     description:
       - Time, in seconds, after which to terminate an idle server connection.
-    type: float
   tcpb:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable TCP buffering for the service.
-    type: str
   tcpprofilename:
+    type: str
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service.
-    type: str
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   useproxyport:
+    type: str
     choices:
       - 'YES'
       - 'NO'
     description:
-      - 'Use the proxy port as the source port when initiating connections with the
+      - Use the proxy port as the source port when initiating connections with the
         server. With the C(NO) setting, the client-side connection port is used as
-        the source port for the server-side connection. '
+        the source port for the server-side connection.
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to C(YES).'
-    type: str
   usip:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -396,19 +404,19 @@ options:
         ns mode and disable ns mode CLI commands, or in the System > Settings > Configure
         modes > Configure Modes dialog box). However, you can override this setting
         after you create the service.
-    type: str
   weight:
+    type: float
     description:
       - Weight to assign to the monitor-service binding. When a monitor is UP, the
         weight assigned to its binding with the service determines how much the monitor
         contributes toward keeping the health of the service above the value configured
         for the Monitor Threshold parameter.
-    type: float
   service_lbmonitor_binding:
     type: dict
     description: Bindings for service_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -433,6 +441,7 @@ options:
     description: Bindings for servicegroup_lbmonitor_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -457,6 +466,7 @@ options:
     description: Bindings for servicegroup_servicegroupmember_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -481,19 +491,6 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: demo_netscalers
-  gather_facts: false
-  tasks:
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        state: present
-        name: service-http
-        servicetype: HTTP
-        ipaddress: 172.18.0.4
-        port: 5000
-
 """
 
 RETURN = r"""

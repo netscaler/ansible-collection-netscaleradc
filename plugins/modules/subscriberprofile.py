@@ -24,21 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   ip:
+    type: str
     description:
       - Subscriber ip address
-    type: str
   servicepath:
+    type: str
     description:
       - Name of the servicepath to be taken for this subscriber.
-    type: str
   subscriberrules:
+    type: list
     description:
       - Rules configured for this subscriber. This is similar to rules received from
         PCRF for dynamic subscriber sessions.
-    type: list
     elements: str
   subscriptionidtype:
+    type: str
     choices:
       - E164
       - IMSI
@@ -47,15 +60,14 @@ options:
       - PRIVATE
     description:
       - Subscription-Id type
-    type: str
   subscriptionidvalue:
+    type: str
     description:
       - Subscription-Id value
-    type: str
   vlan:
+    type: float
     description:
       - The vlan number on which the subscriber is located.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

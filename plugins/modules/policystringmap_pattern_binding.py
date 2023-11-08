@@ -26,12 +26,25 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   comment:
+    type: str
     description:
       - Comments associated with the string map or key-value pair bound to this string
         map.
-    type: str
   key:
+    type: str
     description:
       - Character string constituting the key to be bound to the string map. The key
         is matched against the data processed by the operation that uses the string
@@ -39,17 +52,16 @@ options:
         if the character set is UTF-8.  UTF-8 characters can be entered directly (if
         the UI supports it) or can be encoded as a sequence of hexadecimal bytes '\xNN'.
         For example, the UTF-8 character '' can be encoded as '\xC3\xBC'.
-    type: str
   name:
+    type: str
     description:
       - Name of the string map to which to bind the key-value pair.
-    type: str
   value:
+    type: str
     description:
       - Character string constituting the value associated with the key. This value
         is returned when processed data matches the associated key. Refer to the key
         parameter for details of the value character set.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

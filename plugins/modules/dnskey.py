@@ -24,39 +24,52 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   algorithm:
+    type: str
     choices:
       - RSASHA1
       - RSASHA256
       - RSASHA512
     description:
       - Algorithm to generate for zone signing.
-    type: str
     default: RSASHA1
   expires:
+    type: float
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
-    type: float
     default: 120
   filenameprefix:
+    type: str
     description:
       - Common prefix for the names of the generated public and private key files
         and the Delegation Signer (DS) resource record. During key generation, the
         .key, .private, and .ds suffixes are appended automatically to the file name
         prefix to produce the names of the public key, the private key, and the DS
         record, respectively.
-    type: str
   keyname:
+    type: str
     description:
       - Name of the public-private key pair to publish in the zone.
-    type: str
   keysize:
+    type: float
     description:
       - Size of the key, in bits.
-    type: float
     default: 512
   keytype:
+    type: str
     choices:
       - KSK
       - KeySigningKey
@@ -64,65 +77,64 @@ options:
       - ZoneSigningKey
     description:
       - Type of key to create.
-    type: str
     default: ZSK
   notificationperiod:
+    type: float
     description:
       - Time at which to generate notification of key expiration, specified as number
         of days, hours, or minutes before expiry. Must be less than the expiry period.
         The notification is an SNMP trap sent to an SNMP manager. To enable the appliance
         to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.
-    type: float
     default: 7
   password:
+    type: str
     description:
       - Passphrase for reading the encrypted public/private DNS keys
-    type: str
   privatekey:
+    type: str
     description:
       - File name of the private key.
-    type: str
   publickey:
+    type: str
     description:
       - File name of the public key.
-    type: str
   src:
+    type: str
     description:
       - 'URL (protocol, host, path, and file name) from where the DNS key file will
         be imported. NOTE: The import fails if the object to be imported is on an
         HTTPS server that requires client certificate authentication for access. This
         is a mandatory argument'
-    type: str
   ttl:
+    type: float
     description:
       - Time to Live (TTL), in seconds, for the DNSKEY resource record created in
         the zone. TTL is the time for which the record must be cached by the DNS proxies.
         If the TTL is not specified, either the DNS zone's minimum TTL or the default
         value of 3600 is used.
-    type: float
     default: 3600
   units1:
+    type: str
     choices:
       - MINUTES
       - HOURS
       - DAYS
     description:
       - Units for the expiry period.
-    type: str
     default: DAYS
   units2:
+    type: str
     choices:
       - MINUTES
       - HOURS
       - DAYS
     description:
       - Units for the notification period.
-    type: str
     default: DAYS
   zonename:
+    type: str
     description:
       - Name of the zone for which to create a key.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

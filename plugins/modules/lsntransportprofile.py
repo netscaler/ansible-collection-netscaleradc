@@ -24,7 +24,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   finrsttimeout:
+    type: float
     description:
       - Timeout, in seconds, for a TCP LSN session after a FIN or RST message is received
         from one of the endpoints.
@@ -36,9 +49,9 @@ options:
         of any TCP LSN sessions, this timeout accommodates the transmission of the
         FIN or RST, and ACK messages from the other endpoint so that both endpoints
         can properly close the connection.
-    type: float
     default: 30
   groupsessionlimit:
+    type: float
     description:
       - Maximum number of concurrent LSN sessions(for the specified protocol) allowed
         for all subscriber of a group to which this profile has bound. This limit
@@ -46,8 +59,8 @@ options:
         the number of LSN sessions reaches the limit for a group in packet engine,
         the Citrix ADC does not allow the subscriber of that group to open additional
         sessions through that packet engine.
-    type: float
   portpreserveparity:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -58,9 +71,9 @@ options:
       - You must set this parameter for proper functioning of protocols that require
         the source port to be even or odd numbered, for example, in peer-to-peer applications
         that use RTP or RTCP protocol.
-    type: str
     default: DISABLED
   portpreserverange:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -77,37 +90,37 @@ options:
       - When all the well-known ports of all the available NAT IP addresses are used
         in different subscriber's connections (LSN sessions), and a subscriber initiates
         a connection from a well-known port, the Citrix ADC drops this connection.
-    type: str
     default: DISABLED
   portquota:
+    type: float
     description:
       - Maximum number of LSN NAT ports to be used at a time by each subscriber for
         the specified protocol. For example, each subscriber can be limited to a maximum
         of 500 TCP NAT ports. When the LSN NAT mappings for a subscriber reach the
         limit, the Citrix ADC does not allocate additional NAT ports for that subscriber.
-    type: float
   sessionquota:
+    type: float
     description:
       - 'Maximum number of concurrent LSN sessions allowed for each subscriber for
         the specified protocol. '
       - When the number of LSN sessions reaches the limit for a subscriber, the Citrix
         ADC does not allow the subscriber to open additional sessions.
-    type: float
   sessiontimeout:
+    type: float
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
         a time that exceeds this value, the Citrix ADC removes the session.
       - ''
       - This timeout does not apply for a TCP LSN session when a FIN or RST message
         is received from either of the endpoints.
-    type: float
     default: 120
   stuntimeout:
+    type: float
     description:
       - STUN protocol timeout
-    type: float
     default: 600
   syncheck:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -124,14 +137,14 @@ options:
         because the LSN session was idle for a time that exceeded the configured session
         timeout.'
       - '* Such packets can be a part of a DoS attack.'
-    type: str
     default: ENABLED
   synidletimeout:
+    type: float
     description:
       - SYN Idle timeout
-    type: float
     default: 60
   transportprofilename:
+    type: str
     description:
       - 'Name for the LSN transport profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -140,15 +153,14 @@ options:
         The following requirement applies only to the Citrix ADC CLI: If the name
         includes one or more spaces, enclose the name in double or single quotation
         marks (for example, "lsn transport profile1" or ''lsn transport profile1'').'
-    type: str
   transportprotocol:
+    type: str
     choices:
       - TCP
       - UDP
       - ICMP
     description:
       - Protocol for which to set the LSN transport profile parameters.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

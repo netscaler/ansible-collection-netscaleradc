@@ -24,50 +24,62 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   bridgeage:
+    type: float
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
-    type: float
     default: 300
   devicevlan:
+    type: float
     description:
       - The vlan on which to send multicast packets when the VXLAN tunnel endpoint
         is a muticast group address.
-    type: float
   ifnum:
+    type: str
     description:
       - INTERFACE  whose entries are to be removed.
-    type: str
   mac:
+    type: str
     description:
       - The MAC address of the target.
-    type: str
   nodeid:
+    type: float
     description:
       - Unique number that identifies the cluster node.
-    type: float
   vlan:
+    type: float
     description:
       - VLAN  whose entries are to be removed.
-    type: float
   vni:
+    type: float
     description:
       - The VXLAN VNI Network Identifier (or VXLAN Segment ID) to use to connect to
         the remote VXLAN tunnel endpoint.  If omitted the value specified as vxlan
         will be used.
-    type: float
   vtep:
+    type: str
     description:
       - The IP address of the destination VXLAN tunnel endpoint where the Ethernet
         MAC ADDRESS resides.
-    type: str
   vxlan:
+    type: float
     description:
       - The VXLAN to which this address is associated.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

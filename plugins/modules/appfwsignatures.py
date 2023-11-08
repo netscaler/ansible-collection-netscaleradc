@@ -25,59 +25,95 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
+  action:
+    type: list
+    choices:
+      - none
+      - block
+      - log
+      - stats
+    description:
+      - Signature action
+    elements: str
   autoenablenewsignatures:
+    type: str
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Flag used to enable/disable auto enable new signatures
-    type: str
     default: 'OFF'
+  category:
+    type: str
+    description:
+      - Signature category to be Enabled/Disabled
   comment:
+    type: str
     description:
       - Any comments to preserve information about the signatures object.
+  enabled:
     type: str
+    choices:
+      - 'ON'
+      - 'OFF'
+    description:
+      - Flag used to enable/disable enable signature rule IDs/Signature Category
+    default: 'ON'
   merge:
+    type: bool
     description:
       - Merges the existing Signature with new signature rules
-    type: bool
   mergedefault:
+    type: bool
     description:
       - Merges signature file with default signature file.
-    type: bool
   name:
+    type: str
     description:
       - Name of the signature object.
-    type: str
   overwrite:
+    type: bool
     description:
       - Overwrite any existing signatures object of the same name.
-    type: bool
   preservedefactions:
+    type: bool
     description:
       - preserves def actions of signature rules
-    type: bool
+  ruleid:
+    type: list
+    description:
+      - Signature rule IDs to be Enabled/Disabled
+    elements: int
   sha1:
+    type: str
     description:
       - File path for sha1 file to validate signature file
-    type: str
   src:
+    type: str
     description:
       - URL (protocol, host, path, and file name) for the location at which to store
         the imported signatures object.
       - 'NOTE: The import fails if the object to be imported is on an HTTPS server
         that requires client certificate authentication for access.'
-    type: str
   vendortype:
+    type: str
     choices:
       - Snort
     description:
       - Third party vendor type for which WAF signatures has to be generated.
-    type: str
   xslt:
+    type: str
     description:
       - XSLT file source.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

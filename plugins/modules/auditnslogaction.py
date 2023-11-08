@@ -24,21 +24,34 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   acl:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log access control list (ACL) messages.
-    type: str
   alg:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the ALG messages
-    type: str
   appflowexport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
@@ -46,37 +59,37 @@ options:
       - Export log messages to AppFlow collectors.
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
-    type: str
   contentinspectionlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event information
-    type: str
   dateformat:
+    type: str
     choices:
       - MMDDYYYY
       - DDMMYYYY
       - YYYYMMDD
     description:
       - Format of dates in the logs.
-      - 'Supported formats are: '
+      - 'Supported formats are:'
       - '* C(MMDDYYYY) - U.S. style month/date/year format.'
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
-    type: str
   domainresolvenow:
+    type: bool
     description:
       - Immediately send a DNS query to resolve the server's domain name.
-    type: bool
   domainresolveretry:
+    type: int
     description:
       - Time, in seconds, for which the Citrix ADC waits before sending another DNS
         query to resolve the host name of the audit server if the last query failed.
-    type: int
     default: 5
   logfacility:
+    type: str
     choices:
       - LOCAL0
       - LOCAL1
@@ -87,12 +100,12 @@ options:
       - LOCAL6
       - LOCAL7
     description:
-      - 'Facility value, as defined in RFC 3164, assigned to the log message. '
+      - Facility value, as defined in RFC 3164, assigned to the log message.
       - Log facility values are numbers 0 to 7 (C(LOCAL0) through C(LOCAL7)). Each
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
-    type: str
   loglevel:
+    type: list
     choices:
       - ALL
       - EMERGENCY
@@ -105,8 +118,8 @@ options:
       - DEBUG
       - NONE
     description:
-      - 'Audit log level, which specifies the types of events to log. '
-      - 'Available settings function as follows: '
+      - Audit log level, which specifies the types of events to log.
+      - 'Available settings function as follows:'
       - '* C(ALL) - All events.'
       - '* C(EMERGENCY) - Events that indicate an immediate crisis on the server.'
       - '* C(ALERT) - Events that might require action.'
@@ -117,16 +130,16 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
-    type: list
     elements: str
   lsn:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log the LSN messages
-    type: str
   name:
+    type: str
     description:
       - Name of the nslog action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -136,58 +149,58 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my nslog action" or 'my nslog action').
-    type: str
   serverdomainname:
+    type: str
     description:
       - Auditserver name as a FQDN. Mutually exclusive with serverIP
-    type: str
   serverip:
+    type: str
     description:
       - IP address of the nslog server.
-    type: str
   serverport:
+    type: int
     description:
       - Port on which the nslog server accepts connections.
-    type: int
   sslinterception:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interception event information
-    type: str
   subscriberlog:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
-    type: str
   tcp:
+    type: str
     choices:
       - NONE
       - ALL
     description:
       - Log TCP messages.
-    type: str
   timezone:
+    type: str
     choices:
       - GMT_TIME
       - LOCAL_TIME
     description:
-      - 'Time zone used for date and timestamps in the logs. '
-      - 'Available settings function as follows: '
+      - Time zone used for date and timestamps in the logs.
+      - 'Available settings function as follows:'
       - '* C(GMT_TIME). Coordinated Universal Time.'
       - '* C(LOCAL_TIME). The server''s timezone setting.'
-    type: str
   urlfiltering:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
-    type: str
   userdefinedauditlog:
+    type: str
     choices:
       - 'YES'
       - 'NO'
@@ -196,7 +209,6 @@ options:
       - Setting this parameter to C(NO) causes auditing to ignore all user-configured
         message actions. Setting this parameter to C(YES) causes auditing to log user-configured
         message actions that meet the other logging criteria.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

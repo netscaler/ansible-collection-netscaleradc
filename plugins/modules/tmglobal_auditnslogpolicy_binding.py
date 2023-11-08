@@ -26,7 +26,20 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - 'Applicable only to advance tmsession policy. Expression or other value specifying
         the next policy to be evaluated if the current policy evaluates to TRUE.  Specify
@@ -52,15 +65,14 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    type: str
   policyname:
+    type: str
     description:
       - The name of the policy.
-    type: str
   priority:
+    type: float
     description:
       - The priority of the policy.
-    type: float
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

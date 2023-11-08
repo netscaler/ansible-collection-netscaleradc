@@ -24,28 +24,41 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   aclname:
+    type: str
     description:
       - An extended ACL defined for the RNAT entry.
-    type: str
   connfailover:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Synchronize all connection-related information for the RNAT sessions with
         the secondary ADC in a high availability (HA) pair.
-    type: str
     default: DISABLED
   name:
+    type: str
     description:
       - Name for the RNAT4 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
         (.) pound (#), space ( ), at sign (@), equals (=), colon (:), and underscore
         characters. Cannot be changed after the rule is created. Choose a name that
         helps identify the RNAT4 rule.
-    type: str
   natip:
+    type: str
     description:
       - Any NetScaler-owned IPv4 address except the NSIP address. The NetScaler appliance
         replaces the source IP addresses of server-generated packets with the IP address
@@ -54,61 +67,61 @@ options:
         robin algorithm for each session. By specifying a range of IP addresses, you
         can specify all NetScaler-owned IP addresses, except the NSIP, that fall within
         the specified range.
-    type: str
   netmask:
+    type: str
     description:
       - The subnet mask for the network address.
-    type: str
   network:
+    type: str
     description:
       - The network address defined for the RNAT entry.
-    type: str
   newname:
+    type: str
     description:
       - New name for the RNAT4 rule. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain       only ASCII alphanumeric, underscore,
         hash (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-)
         characters.
-    type: str
   ownergroup:
+    type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
-    type: str
     default: DEFAULT_NG
   redirectport:
+    type: int
     description:
       - Port number to which the IPv4 packets are redirected. Applicable to TCP and
         UDP protocols.
-    type: int
   srcippersistency:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
-    type: str
     default: DISABLED
   td:
+    type: float
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
-    type: float
   useproxyport:
+    type: str
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable source port proxying, which enables the Citrix ADC to use the RNAT
         ips using proxied source port.
-    type: str
     default: ENABLED
   rnat6_nsip6_binding:
     type: dict
     description: Bindings for rnat6_nsip6_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -133,6 +146,7 @@ options:
     description: Bindings for rnat_nsip_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -157,6 +171,7 @@ options:
     description: Bindings for rnat_retainsourceportset_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.
@@ -181,6 +196,7 @@ options:
     description: Bindings for rnatglobal_auditsyslogpolicy_binding resource
     suboptions:
       mode:
+        type: str
         default: desired
         description:
           - The mode in which to configure the bindings.

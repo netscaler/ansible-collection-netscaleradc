@@ -26,16 +26,28 @@ version_added: 2.0.0
 author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
+  state:
+    choices:
+      - present
+      - absent
+    default: present
+    description:
+      - The state of the resource being configured by the module on the NetScaler
+        ADC node.
+      - When C(present) the resource will be created if needed and configured according
+        to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+    type: str
   gotopriorityexpression:
+    type: str
     description:
       - Applicable only to advance vpn session policy. An expression or other value
         specifying the priority of the next policy which will get evaluated if the
         current policy rule evaluates to TRUE.
-    type: str
   intranetdomain:
+    type: str
     description:
       - The conflicting intranet domain name.
-    type: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
