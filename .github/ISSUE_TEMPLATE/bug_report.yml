@@ -24,7 +24,7 @@ body:
 - type: textarea
   attributes:
     label: Summary
-    description: Explain the problem briefly below.
+    description: Explain the problem briefly.
     placeholder: >-
       When I try to do X with the collection, Y breaks in a way Z under
       the env E. Here are all the details I know about this problem...
