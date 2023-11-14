@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.3] - 2023-11-14
+
+> No module specific changes in this release
+
+- updated documentation
+- updated supported_modules_matrix.md
+- added GitHub workflows
+- updated GitHub issue and feature template 
+
 ## [2.0.2] - 2023-11-08
 
 ### Fixed
@@ -26,7 +35,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.2...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.3...HEAD
+[2.0.3]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/netscaler/ansible-collection-netscaleradc/releases/tag/2.0.0
