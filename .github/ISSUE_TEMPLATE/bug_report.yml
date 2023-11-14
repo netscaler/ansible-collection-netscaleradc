@@ -10,171 +10,170 @@ assignees:
   - sumanth-lingappa
 
 body:
-- type: markdown
-  attributes:
-    value: |
-      ⚠
-      Verify first that your issue is not [already reported on GitHub][issue search].
-      Also please test if the latest release is affected too.
-      *Complete **all** sections as described, this form is processed automatically.*
+  - type: markdown
+    attributes:
+      value: |
+        ⚠
+        Verify first that your issue is not [already reported on GitHub][issue search].
+        Also please test if the latest release is affected too.
+        *Complete **all** sections as described, this form is processed automatically.*
 
-      [issue search]: https://github.com/netscaler/ansible-collection-netscaleradc/search?q=is%3Aissue&type=issues
+        [issue search]: https://github.com/netscaler/ansible-collection-netscaleradc/search?q=is%3Aissue&type=issues
 
+  - type: textarea
+    attributes:
+      label: Summary
+      description: Explain the problem briefly.
+      placeholder: >-
+        When I try to do X with the collection, Y breaks in a way Z under
+        the env E. Here are all the details I know about this problem...
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Summary
-    description: Explain the problem briefly.
-    placeholder: >-
-      When I try to do X with the collection, Y breaks in a way Z under
-      the env E. Here are all the details I know about this problem...
-  validations:
-    required: true
+  - type: dropdown
+    attributes:
+      label: Issue Type
+      # FIXME: Once GitHub allows defining the default choice, update this
+      options:
+        - Bug Report
+    validations:
+      required: true
 
-- type: dropdown
-  attributes:
-    label: Issue Type
-    # FIXME: Once GitHub allows defining the default choice, update this
-    options:
-    - Bug Report
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Component Name
+      description: >-
+        Write the short name of the module, plugin, task or feature below,
+        *use your best guess if unsure*. Do not include `netscaler.adc.`!
+      placeholder: service, nsip, vpnvserver, csvserver_lbvserver_binding etc.
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Component Name
-    description: >-
-      Write the short name of the module, plugin, task or feature below,
-      *use your best guess if unsure*. Do not include `netscaler.adc.`!
-    placeholder: service, nsip, vpnvserver, csvserver_lbvserver_binding etc.
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Python Version
+      description: >-
+        Paste verbatim output from `python --version` between
+        tripple backticks.
+      value: |
+        ```console (paste below)
+        $ python --version # or python3 --version
 
-- type: textarea
-  attributes:
-    label: Python Version
-    description: >-
-      Paste verbatim output from `python --version` between
-      tripple backticks.
-    value: |
-      ```console (paste below)
-      $ python --version # or python3 --version
+        ```
+    validations:
+      required: true
 
-      ```
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Ansible Version
+      description: >-
+        Paste verbatim output from `ansible --version` between
+        tripple backticks.
+      value: |
+        ```console (paste below)
+        $ ansible --version
 
-- type: textarea
-  attributes:
-    label: Ansible Version
-    description: >-
-      Paste verbatim output from `ansible --version` between
-      tripple backticks.
-    value: |
-      ```console (paste below)
-      $ ansible --version
+        ```
+    validations:
+      required: true
 
-      ```
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Ansible Configuration
+      description: >-
+        If this issue has an example piece of YAML that can help to reproduce this problem, please provide it.
+        This can be a piece of YAML from, e.g., an automation, script, scene or configuration.
+        Paste verbatim output from `ansible-config dump --only-changed` between quotes
+      value: |
+        ```console (paste below)
+        $ ansible-config dump --only-changed
 
-- type: textarea
-  attributes:
-    label: Ansible Configuration
-    description: >-
-      If this issue has an example piece of YAML that can help to reproduce this problem, please provide it.
-      This can be a piece of YAML from, e.g., an automation, script, scene or configuration.
-      Paste verbatim output from `ansible-config dump --only-changed` between quotes
-    value: |
-      ```console (paste below)
-      $ ansible-config dump --only-changed
+        ```
 
-      ```
+  - type: textarea
+    attributes:
+      label: netscaler.adc Collection Version
+      description: >-
+        Paste verbatim output from "ansible-galaxy collection list netscaler.adc"
+        between tripple backticks.
+      value: |
+        ```console (paste below)
+        $ ansible-galaxy collection list netscaler.adc
 
-- type: textarea
-  attributes:
-    label: netscaler.adc Collection Version
-    description: >-
-      Paste verbatim output from "ansible-galaxy collection list netscaler.adc"
-      between tripple backticks.
-    value: |
-      ```console (paste below)
-      $ ansible-galaxy collection list netscaler.adc
+        ```
+    validations:
+      required: true
 
-      ```
-  validations:
-    required: true
+  - type: textarea
+    attributes:
+      label: Target NetScaler Version
+      description: >-
+        Provide all relevant information regarding the target NetScaler version,
+        form factor (MPX, CPX, BLX, VPX)
+      value: |
+        ```console (paste below)
+        > show ns version
 
-- type: textarea
-  attributes:
-    label: Target NetScaler Version
-    description: >-
-      Provide all relevant information regarding the target NetScaler version,
-      form factor (MPX, CPX, BLX, VPX)
-    value: |
-      ```console (paste below)
-      > show ns version
-      
-      ```
-  validations:
-    required: false
+        ```
+    validations:
+      required: false
 
-- type: textarea
-  attributes:
-    label: Equivalent NetScaler CLI Command
-    description: >-
-      Please specify the equivalent NSCLI command, if you were to manually configure via CLI
-    value: |
-      ```console (paste below)
-      
-      ```
-  validations:
-    required: false
+  - type: textarea
+    attributes:
+      label: Equivalent NetScaler CLI Command
+      description: >-
+        Please specify the equivalent NSCLI command, if you were to manually configure via CLI
+      value: |
+        ```console (paste below)
 
-- type: textarea
-  attributes:
-    label: Steps to Reproduce
-    description: |
-      Describe exactly how to reproduce the problem, using a minimal test-case. 
-      It would *really* help us understand your problem if you could 
-      also passed any playbooks, configs and commands you used.
+        ```
+    validations:
+      required: false
 
-      **HINT:** You can paste https://gist.github.com links for larger files.
-    value: |
-      <!--- Paste example playbooks or commands between quotes below -->
-      ```yaml (paste below)
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        Describe exactly how to reproduce the problem, using a minimal test-case.
+        It would *really* help us understand your problem if you could
+        also passed any playbooks, configs and commands you used.
 
-      ```
-  validations:
-    required: true
+        **HINT:** You can paste https://gist.github.com links for larger files.
+      value: |
+        <!--- Paste example playbooks or commands between quotes below -->
+        ```yaml (paste below)
 
-- type: textarea
-  attributes:
-    label: Expected Results
-    description: >-
-      Describe what you expected to happen when running the steps above.
-    placeholder: >-
-      I expected X to happen because I assumed Y.
-      that it did not.
-  validations:
-    required: true
+        ```
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Actual Results
-    description: |
-      Describe what actually happened. If possible run with extra verbosity (`-vvvv`).
+  - type: textarea
+    attributes:
+      label: Expected Results
+      description: >-
+        Describe what you expected to happen when running the steps above.
+      placeholder: >-
+        I expected X to happen because I assumed Y.
+        that it did not.
+    validations:
+      required: true
 
-      Paste verbatim command output between quotes.
-    value: |
-      ```console (paste below)
+  - type: textarea
+    attributes:
+      label: Actual Results
+      description: |
+        Describe what actually happened. If possible run with extra verbosity (`-vvvv`).
 
-      ```
-- type: textarea
-  attributes:
-    label: Additioinal Notes
-    description: |
-      Add any other context about the problem
+        Paste verbatim command output between quotes.
+      value: |
+        ```console (paste below)
+
+        ```
+  - type: textarea
+    attributes:
+      label: Additioinal Notes
+      description: |
+        Add any other context about the problem
 
 # - type: checkboxes
 #   attributes:
@@ -184,4 +183,3 @@ body:
 #     options:
 #     - label: I agree to follow the NetSclaer Code of Conduct
 #       required: true
-...
