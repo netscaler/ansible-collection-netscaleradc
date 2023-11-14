@@ -1,0 +1,86 @@
+---
+# Copyright (c) 2023 Cloud Software Group, Inc.
+# MIT License (see LICENSE or https://opensource.org/licenses/MIT)
+
+name: Feature Request
+description: Suggest an idea for this project
+title: "[FEATURE REQUEST]: "
+labels: ["enhancement", "triage"]
+assignees:
+  - sumanth-lingappa
+
+body:
+- type: markdown
+  attributes:
+    value: |
+      ⚠
+      Verify first that your request is not [already reported on GitHub][issue search].
+      *Complete **all** sections as described, this form is processed automatically.*
+
+      [issue search]: https://github.com/netscaler/ansible-collection-netscaleradc/search?q=is%3Aissue&type=issues
+
+
+- type: textarea
+  attributes:
+    label: Summary
+    description: Describe the new feature/improvement briefly below.
+    placeholder: >-
+      I am trying to do X with the collection and
+      I think that implementing a feature Y would be very helpful for me and
+      every other user of `netscaler.adc` because of Z.
+  validations:
+    required: true
+
+- type: dropdown
+  attributes:
+    label: Issue Type
+    # FIXME: Once GitHub allows defining the default choice, update this
+    options:
+    - Feature Idea
+  validations:
+    required: true
+
+- type: input
+  attributes:
+    label: Component Name
+    description: >-
+      Write the short name of the module or plugin, or which other part(s) of the collection this feature affects.
+      *use your best guess if unsure*. Do not include `netscaler.adc.`!
+    placeholder: service, nsip, vpnvserver, csvserver_lbvserver_binding etc.
+  validations:
+    required: true
+
+- type: textarea
+  attributes:
+    label: Describe alternatives you've considered 
+    description: |
+      A clear and concise description of any alternative solutions or features you've considered.
+
+      **HINT:** You can paste https://gist.github.com links for larger files.
+  validations:
+    required: false
+
+- type: textarea
+  attributes:
+    label: Additional Information
+    description: |
+      Describe how the feature would be used, why it is needed and what it would solve.
+
+      **HINT:** You can paste https://gist.github.com links for larger files.
+    value: |
+      <!--- Paste example playbooks or commands between quotes below -->
+      ```yaml (paste below)
+
+      ```
+  validations:
+    required: false
+
+# - type: checkboxes
+#   attributes:
+#     label: Code of Conduct
+#     description: |
+#     # FIXME update the code of conduct
+#     options:
+#     - label: I agree to follow the NetSclaer Code of Conduct
+#       required: true
+...
