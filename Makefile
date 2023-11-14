@@ -36,6 +36,8 @@ lint: install
 	ansible-test sanity --docker default -v
 
 # build_docs:
+# 	rm -rf _built_docs
+#   mkdir -p _built_docs
 # 	antsibull-docs sphinx-init --use-current --dest-dir _built_docs netscaler.adc
 # 	cd _built_docs
 # 	pip3 install -r requirements.txt
