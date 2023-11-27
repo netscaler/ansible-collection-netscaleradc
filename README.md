@@ -45,13 +45,17 @@ git clone --single-branch https://github.com/netscaler/ansible-collection-netsca
 ### Verify the installation
 
 ```bash
-ansible-galaxy collection list | grep netscaler.adc
+ansible-galaxy collection list netscaler.adc
 ```
 
 The above command should display the following output:
 
 ```text
-netscaler.adc 2.x.x
+
+# /Users/netscaleruser/.ansible/collections/ansible_collections
+Collection    Version
+------------- -------
+netscaler.adc 2.0.x
 ```
 
 ## Collection Modules Documentation
