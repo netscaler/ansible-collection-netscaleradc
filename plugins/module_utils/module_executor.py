@@ -17,6 +17,7 @@ from .common import (
     adc_logout,
     bind_resource,
     create_resource,
+    create_resource_with_action,
     delete_resource,
     disable_resource,
     enable_resource,
@@ -24,12 +25,15 @@ from .common import (
     get_netscaler_version,
     get_resource,
     get_valid_desired_states,
+    is_global_binding,
+    is_singleton_resource,
     save_config,
     unbind_resource,
     update_resource,
 )
 from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NETSCALER_NO_GET_RESOURCE,
 )
@@ -738,6 +742,24 @@ class ModuleExecutor(object):
             self.return_failure(msg)
 
     @trace
+    def act_on_resource(self, action):
+        self.module_result["changed"] = True
+        ok, err = create_resource_with_action(
+            self.client,
+            self.resource_name,
+            self.resource_module_params,
+            action=action,
+        )
+        if ok:
+            if (
+                "status_code" in err
+                and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
+            ):
+                self.module_result["changed"] = False
+        else:
+            self.return_failure(err)
+
+    @trace
     def main(self):
         try:
             if self.module.params["state"] in {"present", "enabled", "disabled"}:
@@ -758,6 +780,14 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
+            elif self.module.params["state"] in {"created", "imported"}:
+                state_action_map = {
+                    "created": "create",
+                    "imported": "import",
+                }
+                self.act_on_resource(
+                    action=state_action_map[self.module.params["state"]]
+                )
             elif self.module.params["state"] in {"absent"}:
                 if self.resource_primary_key:
                     # Bindings
@@ -765,11 +795,33 @@ class ModuleExecutor(object):
                         self.sync_all_bindings()
                     self.delete()
                 else:
-                    # `primary_key` will not be present for `update-only` resources such as
-                    # `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
-                    # for such resources.
-                    # FIXME: Should we `unset` the resource instead?
-                    pass
+                    # `primary_key` will not be present for
+                    # 1. `update-only` resources such as `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
+                    # FIXME: for such resources. Should we `unset` the resource instead?
+                    # 2. Few other resources -- `appfwlearningdata`, `application`, `bridgetable`, `gslbldnsentry`, `locationfile`, `locationfile6`, `routerdynamicrouting`, `sslcertbundle`, `sslcertfile`, `sslcrlfile`, `ssldhfile`, `sslkeyfile`, `systementitydata` and global bindings
+                    # FIXME: challenge is there is no `primary_key` and in most cases `get_args_keys`. How can we get the exact resource to GET before DELETE for itempotency?
+                    # ASK-SWETHA
+
+                    if is_global_binding(self.resource_name):
+                        self.delete()
+                    elif is_singleton_resource(self.resource_name):
+                        if "delete" in self.supported_operations:
+                            self.delete()
+                        elif "unset" in self.supported_operations:
+                            # unset action
+                            self.act_on_resource(action="unset")
+                        else:
+                            msg = (
+                                "ERROR: `state=absent` is not supported for resource `%s`"
+                                % self.resource_name
+                            )
+                            self.return_failure(msg)
+                    else:
+                        msg = (
+                            "ERROR: `state=absent` is not supported for resource `%s`"
+                            % self.resource_name
+                        )
+                        self.return_failure(msg)
             else:
                 msg = "Unknown state `%s`. Valid states are %s" % (
                     self.module.params["state"],

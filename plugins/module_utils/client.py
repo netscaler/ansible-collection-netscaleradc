@@ -52,6 +52,7 @@ class NitroAPIClient(object):
             self._headers["X-NITRO-USER"] = self._module.params["nitro_user"]
             self._headers["X-NITRO-PASS"] = self._module.params["nitro_pass"]
 
+    @trace
     def url_builder(
         self,
         resource,
@@ -170,10 +171,12 @@ class NitroAPIClient(object):
                     log("DEBUG: Traceback = %s" % traceback.format_exc())
                     return status_code, {}
 
+    @trace
     def get(self, resource, id=None, args=None, attrs=None, filter=None):
         url = self.url_builder(resource, id=id, args=args, attrs=attrs, filter=filter)
         return self.send("GET", url)
 
+    @trace
     def post(self, post_data, resource, action=None):
         url = self.url_builder(resource, action=action)
         data = self._module.jsonify(post_data)
@@ -184,11 +187,13 @@ class NitroAPIClient(object):
             self._headers.pop("Cookie", None)
         return self.send("POST", url, data)
 
+    @trace
     def put(self, put_data, resource=None, id=None):
         url = self.url_builder(resource, id=id)
         data = self._module.jsonify(put_data)
         return self.send("PUT", url, data)
 
+    @trace
     def delete(self, resource, id=None, args=None):
         url = self.url_builder(resource, id=id, args=args)
         return self.send("DELETE", url)

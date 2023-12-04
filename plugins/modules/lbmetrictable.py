@@ -36,7 +36,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Snmpoid:
+  snmpoid:
     type: str
     description:
       - New SNMP OID of the metric.

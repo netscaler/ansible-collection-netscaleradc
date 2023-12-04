@@ -40,7 +40,7 @@ options:
       - When C(enabled) the resource will be enabled on the NetScaler ADC node.
       - When C(disabled) the resource will be disabled on the NetScaler ADC node.
     type: str
-  Snmpoid:
+  snmpoid:
     type: str
     description:
       - SNMP OID for SNMP monitors.

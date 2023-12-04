@@ -28,6 +28,7 @@ options:
     choices:
       - present
       - absent
+      - imported
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -36,7 +37,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Locationfile:
+  locationfile:
     type: str
     description:
       - Name of the location file, with or without absolute path. If the path is not
