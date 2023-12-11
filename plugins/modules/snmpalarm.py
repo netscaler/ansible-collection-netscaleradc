@@ -27,6 +27,7 @@ options:
   state:
     choices:
       - present
+      - absent
       - enabled
       - disabled
     default: present
@@ -35,6 +36,7 @@ options:
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
       - When C(enabled) the resource will be enabled on the NetScaler ADC node.
       - When C(disabled) the resource will be disabled on the NetScaler ADC node.
     type: str
