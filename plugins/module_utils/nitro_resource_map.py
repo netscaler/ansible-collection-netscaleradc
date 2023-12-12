@@ -26432,11 +26432,7 @@ NITRO_RESOURCE_MAP = {
         "password_keys": [],
         "primary_key": "",
         "readwrite_arguments": {
-            "acllogtime": {
-                "choices": ["DISABLED", "ENABLED"],
-                "no_log": False,
-                "type": "str",
-            },
+            "acllogtime": {"no_log": False, "type": "str"},
             "allowclasseipv4": {
                 "choices": ["DISABLED", "ENABLED"],
                 "default": "DISABLED",
