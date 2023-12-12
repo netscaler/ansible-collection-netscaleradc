@@ -38,9 +38,6 @@ options:
     type: str
   acllogtime:
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
     description:
       - Parameter to tune acl logging time
   allowclasseipv4:
