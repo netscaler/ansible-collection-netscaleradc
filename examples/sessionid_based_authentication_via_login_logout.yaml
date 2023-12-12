@@ -1,6 +1,6 @@
 ---
 - name: Sample login  and logout playbook
-  hosts: demo_netscalers
+  hosts: localhost
 
   gather_facts: false
 

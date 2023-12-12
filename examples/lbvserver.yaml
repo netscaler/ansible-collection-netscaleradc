@@ -1,7 +1,7 @@
 ---
 
 - name: Simple LBVserver playbook
-  hosts: demo_netscalers
+  hosts: localhost
 
   gather_facts: false
 

@@ -1,5 +1,5 @@
 - name: Sample Playbook
-  hosts: demo_netscalers
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Sample Task | server

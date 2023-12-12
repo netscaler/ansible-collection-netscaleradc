@@ -1,7 +1,7 @@
 ---
 
 - name: Sample Task
-  hosts: demo_netscalers
+  hosts: localhost
 
   gather_facts: false
 
