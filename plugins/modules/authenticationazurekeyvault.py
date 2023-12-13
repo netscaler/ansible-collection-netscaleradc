@@ -45,7 +45,6 @@ options:
       - If authentication is disabled, otp checks are not performed after azure vault
         keys are obtained. This is useful to distinguish whether user has registered
         devices.
-    default: ENABLED
   clientid:
     type: str
     description:
@@ -78,7 +77,6 @@ options:
     type: float
     description:
       - Interval at which access token in obtained.
-    default: 50
   servicekeyname:
     type: str
     description:
@@ -89,7 +87,6 @@ options:
       - RS256
     description:
       - Algorithm to be used to sign/verify transactions
-    default: RS256
   tenantid:
     type: str
     description:

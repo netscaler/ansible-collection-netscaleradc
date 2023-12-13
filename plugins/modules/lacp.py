@@ -39,14 +39,12 @@ options:
     description:
       - The owner node in a cluster for which we want to set the lacp priority. Owner
         node can vary from 0 to 31. Ownernode value of 254 is used for Cluster.
-    default: 255
   syspriority:
     type: float
     description:
       - Priority number that determines which peer device of an LACP LA channel can
         have control over the LA channel. This parameter is globally applied to all
         LACP channels on the Citrix ADC. The lower the number, the higher the priority.
-    default: 32768
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

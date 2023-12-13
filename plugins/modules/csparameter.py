@@ -44,7 +44,6 @@ options:
     description:
       - Specifies whether the virtual server checks the attached load balancing server
         for state information.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

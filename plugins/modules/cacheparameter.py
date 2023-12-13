@@ -58,14 +58,12 @@ options:
       - The HA object persisting parameter. When this value is set to C(YES), cache
         objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
         will never be synced to Secondary node.
-    default: 'NO'
   maxpostlen:
     type: float
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
-    default: 4096
   memlimit:
     type: float
     description:

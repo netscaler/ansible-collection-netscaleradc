@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable logging appflow flow information
-    default: ENABLED
   authentication:
     type: str
     choices:
@@ -56,7 +55,6 @@ options:
     description:
       - Authenticate users who request a connection to the content switching virtual
         server.
-    default: 'OFF'
   authenticationhost:
     type: str
     description:
@@ -69,7 +67,6 @@ options:
       - 'OFF'
     description:
       - Enable HTTP 401-response based authentication.
-    default: 'OFF'
   authnprofile:
     type: str
     description:
@@ -88,7 +85,6 @@ options:
     type: float
     description:
       - Time period for which backup persistence is in effect.
-    default: 2
   backupvserver:
     type: str
     description:
@@ -110,7 +106,6 @@ options:
       - Use this option to specify whether a virtual server, used for load balancing
         or content switching, routes requests to the cache redirection virtual server
         before sending it to the configured servers.
-    default: 'NO'
   casesensitive:
     type: str
     choices:
@@ -121,7 +116,6 @@ options:
         with the C(ON) setting, the URLs /a/1.html and /A/1.HTML are treated differently
         and can have different targets (set by content switching policies). With the
         C(OFF) setting, /a/1.html and /A/1.HTML are switched to the same target.
-    default: 'ON'
   clttimeout:
     type: float
     description:
@@ -161,7 +155,6 @@ options:
     description:
       - Continue forwarding the traffic to backup virtual server even after the primary
         server comes UP from the DOWN state.
-    default: DISABLED
   dnsprofilename:
     type: str
     description:
@@ -191,7 +184,6 @@ options:
       - Flush all active transactions associated with a virtual server whose state
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
-    default: ENABLED
   dtls:
     type: str
     choices:
@@ -199,7 +191,6 @@ options:
       - 'OFF'
     description:
       - This option starts/stops the dtls service on the vserver
-    default: 'OFF'
   httpprofilename:
     type: str
     description:
@@ -217,7 +208,6 @@ options:
       - ACTIVE
     description:
       - Can be active or passive
-    default: PASSIVE
   insertvserveripport:
     type: str
     choices:
@@ -284,7 +274,6 @@ options:
     description:
       - String specifying the listen policy for the content switching virtual server.
         Can be either the name of an existing expression or an in-line expression.
-    default: '"NONE"'
   listenpriority:
     type: float
     description:
@@ -292,7 +281,6 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    default: 101
   mssqlserverversion:
     type: str
     choices:
@@ -306,22 +294,18 @@ options:
       - '2014'
     description:
       - The version of the MSSQL server
-    default: 2008R2
   mysqlcharacterset:
     type: float
     description:
       - The character set returned by the mysql vserver.
-    default: 8
   mysqlprotocolversion:
     type: float
     description:
       - The protocol version returned by the mysql vserver.
-    default: 10
   mysqlservercapabilities:
     type: float
     description:
       - The server capabilities returned by the mysql vserver.
-    default: 41613
   mysqlserverversion:
     type: str
     description:
@@ -358,7 +342,6 @@ options:
       - 11G
     description:
       - Oracle server version
-    default: 10G
   persistencebackup:
     type: str
     choices:
@@ -406,7 +389,6 @@ options:
         incoming requests are evaluated against the rule-based content switching policies.
         If none of the rules match, the C(URL) in the request is evaluated against
         the C(URL)-based content switching policies.
-    default: RULE
   probeport:
     type: int
     description:
@@ -424,7 +406,6 @@ options:
     type: str
     description:
       - HTTP code to return in SUCCESS case.
-    default: '"200 OK"'
   push:
     type: str
     choices:
@@ -434,14 +415,12 @@ options:
       - Process traffic with the push virtual server that is bound to this content
         switching virtual server (specified by the Push VServer parameter). The service
         type of the push virtual server should be either HTTP or SSL.
-    default: DISABLED
   pushlabel:
     type: str
     description:
       - Expression for extracting the label from the response received from server.
         This string can be either an existing rule name or an inline expression. The
         service type of the virtual server should be either HTTP or SSL.
-    default: '"none"'
   pushmulticlients:
     type: str
     choices:
@@ -450,7 +429,6 @@ options:
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
-    default: 'NO'
   pushvserver:
     type: str
     description:
@@ -467,7 +445,6 @@ options:
       - Number of consecutive IP addresses, starting with the address specified by
         the IP Address parameter, to include in a range of addresses assigned to this
         virtual server.
-    default: 1
   redirectfromport:
     type: int
     description:
@@ -480,7 +457,6 @@ options:
       - DISABLED
     description:
       - State of port rewrite while performing HTTP redirect.
-    default: DISABLED
   redirecturl:
     type: str
     description:
@@ -503,7 +479,6 @@ options:
       - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
         on the others, the appliance, injects even if one virtual server set to C(ACTIVE)
         is UP.'
-    default: PASSIVE
   rtspnat:
     type: str
     choices:
@@ -512,7 +487,6 @@ options:
     description:
       - Enable network address translation (NAT) for real-time streaming protocol
         (RTSP) connections.
-    default: 'OFF'
   servicetype:
     type: str
     choices:
@@ -578,12 +552,10 @@ options:
       - DISABLED
     description:
       - Maintain source-IP based persistence on primary and backup virtual servers.
-    default: DISABLED
   sopersistencetimeout:
     type: float
     description:
       - Time-out value, in minutes, for spillover persistence.
-    default: 2
   sothreshold:
     type: float
     description:
@@ -608,7 +580,6 @@ options:
       - C(DISABLED)     C(DISABLED)       C(DISABLED)
       - If you want to enable state updates for only some content switching virtual
         servers, be sure to disable the state update parameter.
-    default: DISABLED
   targettype:
     type: str
     choices:
@@ -636,7 +607,6 @@ options:
     type: float
     description:
       - Time period for which a persistence session is in effect.
-    default: 2
   ttl:
     type: float
     description:
@@ -645,7 +615,6 @@ options:
     type: float
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
-    default: 128
   vipheader:
     type: str
     description:

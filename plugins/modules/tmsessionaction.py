@@ -57,7 +57,6 @@ options:
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
-    default: 'YES'
   kcdaccount:
     type: str
     description:
@@ -107,7 +106,6 @@ options:
         does not honor the following authentication types for security reason. BASIC,
         DIGEST, and NTLM (without Negotiate NTLM2 Key or Negotiate Sign Flag). Use
         TM TrafficAction to configure SSO for these authentication types.
-    default: 'OFF'
   ssocredential:
     type: str
     choices:

@@ -56,7 +56,6 @@ options:
       - NOTREGEX
     description:
       - Is block keyword field name regular expression?
-    default: NOTREGEX
   blockkeyword:
     type: str
     description:

@@ -47,7 +47,6 @@ options:
       - connection parameters. EMS must be supported by both the TLS client and server
       - in order to be enabled during a handshake. This setting applies to both
       - frontend and backend SSL profiles.
-    default: 'NO'
   allowunknownsni:
     type: str
     choices:
@@ -62,7 +61,6 @@ options:
       - C(ENABLED)   - handshakes with an unknown SNI are allowed to continue, if
         a default cert is bound.
       - DISLABED  - handshakes with an unknown SNI are not allowed to continue.
-    default: DISABLED
   alpnprotocol:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
         Default value is C(NONE) which implies application protocol is not enabled
         hence remain unknown to the TLS layer. This parameter is relevant only if
         SSL connection is handled by the virtual server of the type SSL_TCP.
-    default: NONE
   ciphername:
     type: str
     description:
@@ -95,7 +92,6 @@ options:
         if the SSL handshake fails because of a cipher mismatch between the virtual
         server or service and the client.
       - This parameter is not applicable when configuring a backend profile.
-    default: DISABLED
   cipherurl:
     type: str
     description:
@@ -114,7 +110,6 @@ options:
       - State of client authentication. In service-based SSL offload, the service
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend profile.
-    default: DISABLED
   clientauthuseboundcachain:
     type: str
     choices:
@@ -123,7 +118,6 @@ options:
     description:
       - Certficates bound on the VIP are used for validating the client cert. Certficates
         came along with client cert are not used for validating the client cert
-    default: DISABLED
   clientcert:
     type: str
     choices:
@@ -155,7 +149,6 @@ options:
       - '* C(ALL) - Deny all secure and nonsecure SSL renegotiation.'
       - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
-    default: ALL
   dh:
     type: str
     choices:
@@ -164,7 +157,6 @@ options:
     description:
       - State of Diffie-Hellman (DH) key exchange.
       - This parameter is not applicable when configuring a backend profile.
-    default: DISABLED
   dhcount:
     type: float
     description:
@@ -189,7 +181,6 @@ options:
       - If enabled, the server will require a DHE key exchange when a PSK is accepted
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
-    default: 'NO'
   dhfile:
     type: str
     description:
@@ -204,7 +195,6 @@ options:
         800-56A) bit size for private-key size. For example, for DH params of size
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
-    default: DISABLED
   dropreqwithnohostheader:
     type: str
     choices:
@@ -215,14 +205,12 @@ options:
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
-    default: 'NO'
   encrypttriggerpktcount:
     type: float
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
-    default: 45
   ersa:
     type: str
     choices:
@@ -238,7 +226,6 @@ options:
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend profile.
-    default: ENABLED
   ersacount:
     type: float
     description:
@@ -252,7 +239,6 @@ options:
     description:
       - State of HSTS protocol support for the SSL profile. Using HSTS, a server can
         enforce the use of an HTTPS connection for all communication with a client
-    default: DISABLED
   includesubdomains:
     type: str
     choices:
@@ -261,7 +247,6 @@ options:
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
-    default: 'NO'
   insertionencoding:
     type: str
     choices:
@@ -270,7 +255,6 @@ options:
     description:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
-    default: Unicode
   maxage:
     type: float
     description:
@@ -297,7 +281,6 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    default: DISABLED
   preload:
     type: str
     choices:
@@ -305,7 +288,6 @@ options:
       - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
-    default: 'NO'
   prevsessionkeylifetime:
     type: float
     description:
@@ -334,7 +316,6 @@ options:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
-    default: 1
   pushflag:
     type: float
     description:
@@ -364,7 +345,6 @@ options:
       - State of the port rewrite while performing HTTPS redirect. If this parameter
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
-    default: DISABLED
   sendclosenotify:
     type: str
     choices:
@@ -372,7 +352,6 @@ options:
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction.
-    default: 'YES'
   serverauth:
     type: str
     choices:
@@ -380,13 +359,11 @@ options:
       - DISABLED
     description:
       - State of server authentication support for the SSL Backend profile.
-    default: DISABLED
   sessionkeylifetime:
     type: float
     description:
       - This option sets the life time of symm key used to generate session tickets
         issued by NS in secs
-    default: 3000
   sessionticket:
     type: str
     choices:
@@ -394,7 +371,6 @@ options:
       - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
-    default: DISABLED
   sessionticketkeydata:
     type: str
     description:
@@ -406,12 +382,10 @@ options:
       - DISABLED
     description:
       - This option enables the use of session tickets, as per the RFC 5077
-    default: ENABLED
   sessionticketlifetime:
     type: float
     description:
       - This option sets the life time of session tickets issued by NS in secs
-    default: 300
   sessreuse:
     type: str
     choices:
@@ -421,7 +395,6 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    default: ENABLED
   sesstimeout:
     type: float
     description:
@@ -436,7 +409,6 @@ options:
         is Enabled, then the policy check in Client authentication will be skipped.
         This option can be used only when Client Authentication is Enabled and ClientCert
         is set to Mandatory
-    default: DISABLED
   snienable:
     type: str
     choices:
@@ -448,7 +420,6 @@ options:
         on a single virtual server or service if the domains are controlled by the
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
-    default: DISABLED
   snihttphostmatch:
     type: str
     choices:
@@ -472,7 +443,6 @@ options:
       - '         in ''Client Hello'' of the SSL connection.'
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
-    default: CERT
   ssl3:
     type: str
     choices:
@@ -482,14 +452,12 @@ options:
       - State of SSLv3 protocol support for the SSL profile.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    default: DISABLED
   sslimaxsessperserver:
     type: float
     description:
       - Maximum ssl session to be cached per dynamic origin server. A unique ssl session
         is created for each SNI received from the client on ClientHello and the matching
         session is used for server session reuse.
-    default: 10
   sslinterception:
     type: str
     choices:
@@ -497,7 +465,6 @@ options:
       - DISABLED
     description:
       - Enable or disable transparent interception of SSL sessions.
-    default: DISABLED
   ssliocspcheck:
     type: str
     choices:
@@ -505,7 +472,6 @@ options:
       - DISABLED
     description:
       - Enable or disable OCSP check for origin server certificate.
-    default: ENABLED
   sslireneg:
     type: str
     choices:
@@ -514,7 +480,6 @@ options:
     description:
       - Enable or disable triggering the client renegotiation when renegotiation request
         is received from the origin server.
-    default: ENABLED
   ssllogprofile:
     type: str
     description:
@@ -529,7 +494,6 @@ options:
       - Type of profile. Front end profiles apply to the entity that receives requests
         from a client. Backend profiles apply to the entity that sends client requests
         to a server.
-    default: FrontEnd
   sslredirect:
     type: str
     choices:
@@ -545,7 +509,6 @@ options:
       - If SSL Redirect is C(ENABLED), the redirect message is automatically converted
         from http:// to https:// and the SSL session does not break.
       - This parameter is not applicable when configuring a backend profile.
-    default: DISABLED
   ssltriggertimeout:
     type: float
     description:
@@ -553,7 +516,6 @@ options:
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
-    default: 100
   strictcachecks:
     type: str
     choices:
@@ -561,7 +523,6 @@ options:
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
-    default: 'NO'
   strictsigdigestcheck:
     type: str
     choices:
@@ -571,7 +532,6 @@ options:
       - Parameter indicating to check whether peer entity certificate during TLS1.2
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
-    default: DISABLED
   tls1:
     type: str
     choices:
@@ -579,7 +539,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL profile.
-    default: ENABLED
   tls11:
     type: str
     choices:
@@ -587,7 +546,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL profile.
-    default: ENABLED
   tls12:
     type: str
     choices:
@@ -595,7 +553,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL profile.
-    default: ENABLED
   tls13:
     type: str
     choices:
@@ -603,7 +560,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL profile.
-    default: DISABLED
   tls13sessionticketsperauthcontext:
     type: float
     description:
@@ -613,7 +569,6 @@ options:
       - This value can be increased to enable clients to open multiple parallel connections
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
-    default: 1
   zerorttearlydata:
     type: str
     choices:
@@ -625,7 +580,6 @@ options:
         be sent along with an initial handshake.
       - Early application data has significantly different security properties - in
         particular there is no guarantee that the data cannot be replayed.
-    default: DISABLED
   sslprofile_ecccurve_binding:
     type: dict
     description: Bindings for sslprofile_ecccurve_binding resource

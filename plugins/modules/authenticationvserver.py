@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Log AppFlow flow information.
-    default: ENABLED
   authentication:
     type: str
     choices:
@@ -56,7 +55,6 @@ options:
     description:
       - Require users to be authenticated before sending traffic through this virtual
         server.
-    default: 'ON'
   authenticationdomain:
     type: str
     description:
@@ -122,7 +120,6 @@ options:
       - The new range of authentication virtual servers will have IP addresses consecutively
         numbered, starting with the primary address specified with the IP Address
         parameter.
-    default: 1
   samesite:
     type: str
     choices:
@@ -139,7 +136,6 @@ options:
       - SSL
     description:
       - Protocol type of the authentication virtual server. Always C(SSL).
-    default: SSL
   td:
     type: float
     description:

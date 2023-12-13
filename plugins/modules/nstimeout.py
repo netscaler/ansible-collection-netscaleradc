@@ -67,7 +67,6 @@ options:
     type: float
     description:
       - Idle timeout, in seconds, for connections that are in TCP half-closed state.
-    default: 10
   httpclient:
     type: float
     description:
@@ -85,18 +84,15 @@ options:
     description:
       - Timer interval, in seconds, for new TCP NATPCB connections on which no data
         was received.
-    default: 4
   nontcpzombie:
     type: float
     description:
       - Interval at which the zombie clean-up process for non-TCP connections should
         run. Inactive IP NAT connections will be cleaned up.
-    default: 60
   reducedfintimeout:
     type: float
     description:
       - Alternative idle timeout, in seconds, for closed TCP NATPCB connections.
-    default: 30
   reducedrsttimeout:
     type: float
     description:
@@ -123,7 +119,6 @@ options:
     description:
       - Interval, in seconds, at which the Citrix ADC zombie cleanup process must
         run. This process cleans up inactive TCP connections.
-    default: 120
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

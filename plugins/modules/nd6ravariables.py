@@ -44,17 +44,14 @@ options:
       - 'NO'
     description:
       - Cease router advertisements on this vlan.
-    default: 'NO'
   currhoplimit:
     type: float
     description:
       - Current Hop limit.
-    default: 64
   defaultlifetime:
     type: int
     description:
       - Default life time, in seconds.
-    default: 1800
   linkmtu:
     type: float
     description:
@@ -66,17 +63,14 @@ options:
       - 'NO'
     description:
       - Value to be placed in the Managed address configuration flag field.
-    default: 'NO'
   maxrtadvinterval:
     type: float
     description:
       - Maximum time allowed between unsolicited multicast RAs, in seconds.
-    default: 600
   minrtadvinterval:
     type: float
     description:
       - Minimum time interval between RA messages, in seconds.
-    default: 198
   onlyunicastrtadvresponse:
     type: str
     choices:
@@ -84,7 +78,6 @@ options:
       - 'NO'
     description:
       - Send only Unicast Router Advertisements in respond to Router Solicitations.
-    default: 'NO'
   otheraddrconfig:
     type: str
     choices:
@@ -92,7 +85,6 @@ options:
       - 'NO'
     description:
       - Value to be placed in the Other configuration flag field.
-    default: 'NO'
   reachabletime:
     type: float
     description:
@@ -108,7 +100,6 @@ options:
       - 'NO'
     description:
       - whether the router sends periodic RAs and responds to Router Solicitations.
-    default: 'NO'
   srclinklayeraddroption:
     type: str
     choices:
@@ -116,7 +107,6 @@ options:
       - 'NO'
     description:
       - Include source link layer address option in RA messages.
-    default: 'YES'
   vlan:
     type: float
     description:

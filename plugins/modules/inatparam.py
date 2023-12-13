@@ -44,7 +44,6 @@ options:
     description:
       - When disabled, translator will not insert IPv6 fragmentation header for non
         fragmented IPv4 packets
-    default: ENABLED
   nat46ignoretos:
     type: str
     choices:
@@ -52,13 +51,11 @@ options:
       - 'NO'
     description:
       - Ignore TOS.
-    default: 'NO'
   nat46v6mtu:
     type: float
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
-    default: 1280
   nat46v6prefix:
     type: str
     description:
@@ -76,7 +73,6 @@ options:
       - DISABLED
     description:
       - Calculate checksum for UDP packets with zero checksum
-    default: ENABLED
   td:
     type: float
     description:

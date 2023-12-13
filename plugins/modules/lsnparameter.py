@@ -63,7 +63,6 @@ options:
       - For a group, when both the global level and the group level LSN session synchronization
         parameters are enabled, the primary node synchronizes information of all LSN
         sessions related to this LSN group with the secondary node.
-    default: ENABLED
   subscrsessionremoval:
     type: str
     choices:
@@ -75,7 +74,6 @@ options:
         database, sessions corresponding to that subscriber will be removed. if this
         setting is disabled, subscriber sessions will be timed out as per the idle
         time out settings.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

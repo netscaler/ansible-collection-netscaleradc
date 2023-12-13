@@ -61,7 +61,6 @@ options:
     description:
       - Format of the location file. Required for the Citrix ADC to identify how to
         read the location file.
-    default: netscaler
   src:
     type: str
     description:

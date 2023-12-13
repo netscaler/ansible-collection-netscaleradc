@@ -48,7 +48,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the information includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my contact" or 'my contact').
-    default: '"WebMaster (default)"'
   customid:
     type: str
     description:
@@ -61,7 +60,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the ID includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my ID" or 'my ID').
-    default: '"Default"'
   location:
     type: str
     description:
@@ -74,7 +72,6 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the location includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my location" or 'my location').
-    default: '"POP (default)"'
   name:
     type: str
     description:
@@ -86,13 +83,11 @@ options:
       - 'The following requirement applies only to the Citrix ADC CLI:'
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my name" or 'my name').
-    default: '"NetScaler"'
   ownernode:
     type: float
     description:
       - ID of the cluster node for which we are setting the mib. This is a mandatory
         argument to set snmp mib on CLIP.
-    default: -1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

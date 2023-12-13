@@ -43,7 +43,6 @@ options:
       - 'OFF'
     description:
       - Enable black-list bot detection.
-    default: 'OFF'
   bot_enable_ip_reputation:
     type: str
     choices:
@@ -51,7 +50,6 @@ options:
       - 'OFF'
     description:
       - Enable IP-reputation bot detection.
-    default: 'OFF'
   bot_enable_rate_limit:
     type: str
     choices:
@@ -59,7 +57,6 @@ options:
       - 'OFF'
     description:
       - Enable rate-limit bot detection.
-    default: 'OFF'
   bot_enable_tps:
     type: str
     choices:
@@ -67,7 +64,6 @@ options:
       - 'OFF'
     description:
       - Enable TPS.
-    default: 'OFF'
   bot_enable_white_list:
     type: str
     choices:
@@ -75,7 +71,6 @@ options:
       - 'OFF'
     description:
       - Enable white-list bot detection.
-    default: 'OFF'
   clientipexpression:
     type: str
     description:
@@ -92,7 +87,6 @@ options:
       - 'OFF'
     description:
       - Enable device-fingerprint bot detection
-    default: 'OFF'
   devicefingerprintaction:
     type: list
     choices:
@@ -105,7 +99,6 @@ options:
     description:
       - Action to be taken for device-fingerprint based bot detection.
     elements: str
-    default: NONE
   devicefingerprintmobile:
     type: list
     choices:
@@ -115,7 +108,6 @@ options:
     description:
       - Enabling bot device fingerprint protection for mobile clients
     elements: str
-    default: NONE
   dfprequestlimit:
     type: float
     description:
@@ -132,7 +124,6 @@ options:
       - 'OFF'
     description:
       - Enable Headless Browser detection.
-    default: 'OFF'
   kmdetection:
     type: str
     choices:
@@ -140,7 +131,6 @@ options:
       - 'OFF'
     description:
       - Enable keyboard-mouse based bot detection.
-    default: 'OFF'
   kmeventspostbodylimit:
     type: float
     description:
@@ -199,7 +189,6 @@ options:
       - Actions to be taken if multiple User-Agent headers are seen in a request (Applicable
         if Signature check is enabled). Log action should be combined with other actions
     elements: str
-    default: CHECKLAST
   signaturenouseragentheaderaction:
     type: list
     choices:
@@ -212,7 +201,6 @@ options:
       - Actions to be taken if no User-Agent header in the request (Applicable if
         Signature check is enabled).
     elements: str
-    default: DROP
   spoofedreqaction:
     type: list
     choices:
@@ -225,7 +213,6 @@ options:
       - Actions to be taken on a spoofed request (A request spoofing good bot user
         agent string).
     elements: str
-    default: LOG
   trap:
     type: str
     choices:
@@ -233,7 +220,6 @@ options:
       - 'OFF'
     description:
       - Enable trap bot detection.
-    default: 'OFF'
   trapaction:
     type: list
     choices:
@@ -245,7 +231,6 @@ options:
     description:
       - Action to be taken for bot trap based bot detection.
     elements: str
-    default: NONE
   trapurl:
     type: str
     description:
@@ -258,7 +243,6 @@ options:
     description:
       - Bot verbose Logging. Based on the log level, ADC will log additional information
         whenever client is detected as a bot.
-    default: NONE
   botprofile_blacklist_binding:
     type: dict
     description: Bindings for botprofile_blacklist_binding resource

@@ -146,7 +146,6 @@ options:
       - DISABLED
     description:
       - If authentication is disabled, password is not sent in the request.
-    default: ENABLED
   authorizationendpoint:
     type: str
     description:
@@ -186,7 +185,6 @@ options:
       - PASSWORD
     description:
       - Grant type support. value can be code or password
-    default: CODE
   graphendpoint:
     type: str
     description:
@@ -232,7 +230,6 @@ options:
     description:
       - Type of the OAuth implementation. Default value is generic implementation
         that is applicable for most deployments.
-    default: GENERIC
   pkce:
     type: str
     choices:
@@ -240,12 +237,10 @@ options:
       - DISABLED
     description:
       - Option to enable/disable PKCE flow during authentication.
-    default: ENABLED
   refreshinterval:
     type: float
     description:
       - Interval at which services are monitored for necessary configuration.
-    default: 1440
   resourceuri:
     type: str
     description:
@@ -257,7 +252,6 @@ options:
         ADC allows on an incoming token. For example, if skewTime is 10, then token
         would be valid from (current time - 10) min to (current time + 10) min, ie
         20min in all.
-    default: 5
   tenantid:
     type: str
     description:
@@ -279,7 +273,6 @@ options:
     description:
       - Option to select the variant of token authentication method. This method is
         used while exchanging code with IdP.
-    default: client_secret_post
   userinfourl:
     type: str
     description:

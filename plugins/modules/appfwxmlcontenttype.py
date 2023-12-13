@@ -43,7 +43,6 @@ options:
       - NOTREGEX
     description:
       - Is field name a regular expression?
-    default: NOTREGEX
   xmlcontenttypevalue:
     type: str
     description:

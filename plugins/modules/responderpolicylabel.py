@@ -89,7 +89,6 @@ options:
       - '* C(NAT) - C(NAT) response.'
       - '* C(MQTT) - Trigger policies bind with C(MQTT) type.'
       - '* C(MQTT_JUMBO) - Trigger policies bind with C(MQTT) Jumbo type.'
-    default: HTTP
   responderpolicylabel_responderpolicy_binding:
     type: dict
     description: Bindings for responderpolicylabel_responderpolicy_binding resource

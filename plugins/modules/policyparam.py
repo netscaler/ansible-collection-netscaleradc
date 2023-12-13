@@ -42,7 +42,6 @@ options:
       - Maximum time in milliseconds to allow for processing expressions and policies
         without interruption. If the timeout is reached then the evaluation causes
         an UNDEF to be raised and no further processing is performed.
-    default: 3900
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

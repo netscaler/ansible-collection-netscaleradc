@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Integer value that identify the number announce message to be send.
-    default: 10
   mapping:
     type: str
     choices:
@@ -48,7 +47,6 @@ options:
       - DISABLED
     description:
       - This argument is for enabling/disabling the MAP opcode  of current PCP Profile
-    default: ENABLED
   maxmaplife:
     type: float
     description:
@@ -73,7 +71,6 @@ options:
       - DISABLED
     description:
       - This argument is for enabling/disabling the PEER opcode of current PCP Profile
-    default: ENABLED
   thirdparty:
     type: str
     choices:
@@ -82,7 +79,6 @@ options:
     description:
       - This argument is for enabling/disabling the THIRD PARTY opcode of current
         PCP Profile
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

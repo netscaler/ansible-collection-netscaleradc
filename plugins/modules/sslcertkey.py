@@ -44,7 +44,6 @@ options:
     description:
       - Parse the certificate chain as a single file after linking the server certificate
         to its issuer's certificate within the file.
-    default: 'NO'
   cert:
     type: str
     description:
@@ -97,7 +96,6 @@ options:
       - C(PEM) - Privacy Enhanced Mail
       - C(DER) - Distinguished Encoding Rule
       - C(PFX) - Personal Information Exchange
-    default: PEM
   key:
     type: str
     description:

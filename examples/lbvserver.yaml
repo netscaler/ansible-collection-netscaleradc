@@ -65,7 +65,7 @@
         # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
         # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
 
-        state: enabled
+        state: absent
 
         name: test_lbvser
         servicetype: HTTP

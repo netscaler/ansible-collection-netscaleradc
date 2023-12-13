@@ -63,7 +63,6 @@ options:
     description:
       - USNIP/USIP settings override LSN settings for configured
       - '              service/virtual server traffic..'
-    default: DISABLED
   proxyprotocol:
     type: str
     choices:
@@ -71,7 +70,6 @@ options:
       - DISABLED
     description:
       - Proxy Protocol Action (Enabled/Disabled)
-    default: DISABLED
   proxyprotocolaftertlshandshake:
     type: str
     choices:
@@ -80,7 +78,6 @@ options:
     description:
       - ADC doesnt look for proxy header before TLS handshake, if enabled. Proxy protocol
         parsed after TLS handshake
-    default: DISABLED
   proxyprotocoltxversion:
     type: str
     choices:
@@ -88,7 +85,6 @@ options:
       - V2
     description:
       - Proxy Protocol Version (C(V1)/C(V2))
-    default: V1
   srcip:
     type: str
     description:
@@ -103,7 +99,6 @@ options:
         this option enables the Citrix ADC to use the same  address, specified in
         the net profile, to communicate to servers for all sessions initiated from
         a particular client to the virtual server.
-    default: DISABLED
   td:
     type: float
     description:

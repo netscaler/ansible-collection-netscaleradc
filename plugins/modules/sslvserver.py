@@ -46,7 +46,6 @@ options:
         an SSL virtual server or service to display meaningful error messages if the
         SSL handshake fails because of a cipher mismatch between the virtual server
         or service and the client.
-    default: DISABLED
   cipherurl:
     type: str
     description:
@@ -65,7 +64,6 @@ options:
       - State of client authentication. If client authentication is enabled, the virtual
         server terminates the SSL handshake if the SSL client does not provide a valid
         certificate.
-    default: DISABLED
   clientcert:
     type: str
     choices:
@@ -86,7 +84,6 @@ options:
       - DISABLED
     description:
       - State of Diffie-Hellman (DH) key exchange.
-    default: DISABLED
   dhcount:
     type: float
     description:
@@ -109,7 +106,6 @@ options:
       - If enabled, the server will require a DHE key exchange when a PSK is accepted
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
-    default: 'NO'
   dhfile:
     type: str
     description:
@@ -125,7 +121,6 @@ options:
         800-56A) bit size for private-key size. For example, for DH params of size
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
-    default: DISABLED
   dtls1:
     type: str
     choices:
@@ -133,7 +128,6 @@ options:
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL Virtual Server.
-    default: ENABLED
   dtls12:
     type: str
     choices:
@@ -141,7 +135,6 @@ options:
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL Virtual Server.
-    default: DISABLED
   dtlsprofilename:
     type: str
     description:
@@ -160,7 +153,6 @@ options:
         the eRSA key is not deleted. It is reused at a later date when another export
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
-    default: ENABLED
   ersacount:
     type: float
     description:
@@ -174,7 +166,6 @@ options:
     description:
       - State of HSTS protocol support for the SSL Virtual Server. Using HSTS, a server
         can enforce the use of an HTTPS connection for all communication with a client
-    default: DISABLED
   includesubdomains:
     type: str
     choices:
@@ -183,7 +174,6 @@ options:
     description:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
-    default: 'NO'
   maxage:
     type: float
     description:
@@ -203,7 +193,6 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    default: DISABLED
   preload:
     type: str
     choices:
@@ -211,7 +200,6 @@ options:
       - 'NO'
     description:
       - Flag indicates the consent of the site owner to have their domain preloaded.
-    default: 'NO'
   pushenctrigger:
     type: str
     choices:
@@ -238,7 +226,6 @@ options:
       - State of the port rewrite while performing HTTPS redirect. If this parameter
         is C(ENABLED) and the URL from the server does not contain the standard port,
         the port is rewritten to the standard.
-    default: DISABLED
   sendclosenotify:
     type: str
     choices:
@@ -246,7 +233,6 @@ options:
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    default: 'YES'
   sessreuse:
     type: str
     choices:
@@ -256,14 +242,12 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    default: ENABLED
   sesstimeout:
     type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    default: 120
   snienable:
     type: str
     choices:
@@ -275,7 +259,6 @@ options:
         on a single virtual server or service if the domains are controlled by the
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
-    default: DISABLED
   ssl2:
     type: str
     choices:
@@ -283,7 +266,6 @@ options:
       - DISABLED
     description:
       - State of SSLv2 protocol support for the SSL Virtual Server.
-    default: DISABLED
   ssl3:
     type: str
     choices:
@@ -293,7 +275,6 @@ options:
       - State of SSLv3 protocol support for the SSL Virtual Server.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    default: ENABLED
   sslprofile:
     type: str
     description:
@@ -313,7 +294,6 @@ options:
         the user to continue or disconnect.
       - If SSL Redirect is C(ENABLED), the redirect message is automatically converted
         from http:// to https:// and the SSL session does not break.
-    default: DISABLED
   sslv2redirect:
     type: str
     choices:
@@ -324,7 +304,6 @@ options:
         SSL virtual server or service to display meaningful error messages if the
         SSL handshake fails because of a protocol version mismatch between the virtual
         server or service and the client.
-    default: DISABLED
   sslv2url:
     type: str
     description:
@@ -340,7 +319,6 @@ options:
       - Parameter indicating to check whether peer entity certificate during TLS1.2
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
-    default: DISABLED
   tls1:
     type: str
     choices:
@@ -348,7 +326,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL Virtual Server.
-    default: ENABLED
   tls11:
     type: str
     choices:
@@ -356,7 +333,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL Virtual Server.
-    default: ENABLED
   tls12:
     type: str
     choices:
@@ -364,7 +340,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL Virtual Server.
-    default: ENABLED
   tls13:
     type: str
     choices:
@@ -372,7 +347,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL Virtual Server.
-    default: DISABLED
   tls13sessionticketsperauthcontext:
     type: float
     description:
@@ -382,7 +356,6 @@ options:
       - This value can be increased to enable clients to open multiple parallel connections
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
-    default: 1
   vservername:
     type: str
     description:
@@ -398,7 +371,6 @@ options:
         be sent along with an initial handshake.
       - Early application data has significantly different security properties - in
         particular there is no guarantee that the data cannot be replayed.
-    default: DISABLED
   sslvserver_appfwpolicy_binding:
     type: dict
     description: Bindings for sslvserver_appfwpolicy_binding resource

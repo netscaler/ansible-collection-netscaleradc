@@ -42,7 +42,6 @@ options:
       - P_384
     description:
       - Only p_256 (prime256v1) and C(P_384) (secp384r1) are supported.
-    default: P_256
   exponent:
     type: str
     choices:
@@ -75,7 +74,6 @@ options:
       - C(SIM) - Secure Information Management; select when importing a FIPS key.
         If the external FIPS key is encrypted, first decrypt it, and then import it.
       - C(PEM) - Privacy Enhanced Mail; select when importing a non-FIPS key.
-    default: SIM
   iv:
     type: str
     description:
@@ -93,7 +91,6 @@ options:
       - ECDSA
     description:
       - Only C(RSA) key and C(ECDSA) Key are supported.
-    default: RSA
   modulus:
     type: float
     description:

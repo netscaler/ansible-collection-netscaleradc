@@ -55,7 +55,6 @@ options:
       - '   C(lru) - (default) reuse the least recently used entry in the map.'
       - '   C(undef) - force the assignment to return an undefined (Undef) result
         to the policy executing the assignment.'
-    default: lru
   ifnovalue:
     type: str
     choices:
@@ -70,7 +69,6 @@ options:
       - using the -C(init) value or its default.
       - '   C(undef) - force the expression evaluation to return an undefined (Undef)
         result to the policy executing the expression.'
-    default: init
   ifvaluetoobig:
     type: str
     choices:
@@ -84,7 +82,6 @@ options:
         bytes and proceed.'
       - '   C(undef) - force the assignment or expression evaluation to return an
         undefined (Undef) result to the policy executing the assignment or expression.'
-    default: truncate
   init:
     type: str
     description:
@@ -115,7 +112,6 @@ options:
         on a standalone Citrix ADC, an HA pair, or all nodes of a cluster'
       - '   C(transaction) - one value for each request-response C(transaction) (singleton
         variables only; no expiration)'
-    default: global
   type:
     type: str
     description:

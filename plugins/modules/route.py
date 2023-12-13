@@ -64,7 +64,6 @@ options:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
         protocols. A lower value is preferred.
-    default: 1
   gateway:
     type: str
     description:
@@ -82,7 +81,6 @@ options:
       - DISABLED
     description:
       - Monitor this route using a monitor of type ARP or PING.
-    default: DISABLED
   netmask:
     type: str
     description:
@@ -97,7 +95,6 @@ options:
     description:
       - The owner node group in a Cluster for this route. If owner node group is not
         specified then the route is treated as Striped route.
-    default: DEFAULT_NG
   protocol:
     type: list
     choices:
@@ -137,7 +134,6 @@ options:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -52,7 +52,6 @@ options:
     description:
       - Format of the IPv6 location file. Required for the Citrix ADC to identify
         how to read the location file.
-    default: netscaler6
   src:
     type: str
     description:

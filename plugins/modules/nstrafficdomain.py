@@ -62,7 +62,6 @@ options:
         VMAC address of the traffic domain. After creating entities on a traffic domain,
         you can easily manage and monitor them by performing traffic domain level
         operations.
-    default: DISABLED
   nstrafficdomain_bridgegroup_binding:
     type: dict
     description: Bindings for nstrafficdomain_bridgegroup_binding resource

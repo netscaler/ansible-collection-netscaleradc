@@ -83,7 +83,6 @@ options:
       - NOTREGEX
     description:
       - Is field name a regular expression?
-    default: NOTREGEX
   isregex_fileuploadtypes_url:
     type: str
     choices:

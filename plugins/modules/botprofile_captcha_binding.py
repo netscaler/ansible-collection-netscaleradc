@@ -54,7 +54,6 @@ options:
       - One or more actions to be taken when client fails captcha challenge. Only,
         log action can be configured with C(DROP), C(REDIRECT) or C(RESET) action.
     elements: str
-    default: NONE
   bot_captcha_enabled:
     type: str
     choices:
@@ -62,7 +61,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable the captcha binding.
-    default: 'OFF'
   bot_captcha_url:
     type: str
     description:
@@ -80,7 +78,6 @@ options:
     description:
       - Time (in seconds) duration for which no new captcha challenge is sent after
         current captcha challenge has been answered successfully.
-    default: 900
   logmessage:
     type: str
     description:
@@ -91,7 +88,6 @@ options:
       - Time (in seconds) duration for which client which failed captcha need to wait
         until allowed to try again. The requests from this client are silently dropped
         during the mute period.
-    default: 300
   name:
     type: str
     description:
@@ -109,18 +105,15 @@ options:
       - Length of body request (in Bytes) up to (equal or less than) which captcha
         challenge will be provided to client. Above this length threshold the request
         will be dropped. This is to avoid DOS and DDOS attacks.
-    default: 8000
   retryattempts:
     type: float
     description:
       - Number of times client can retry solving the captcha.
-    default: 3
   waittime:
     type: float
     description:
       - Wait time in seconds for which ADC needs to wait for the Captcha response.
         This is to avoid DOS attacks.
-    default: 15
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

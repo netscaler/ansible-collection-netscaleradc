@@ -55,7 +55,6 @@ options:
       - Synchronize connection information with the secondary appliance in a high
         availability (HA) pair. That is, synchronize all connection-related information
         for the forwarding session.
-    default: DISABLED
   name:
     type: str
     description:
@@ -83,7 +82,6 @@ options:
     description:
       - Enabling this option on forwarding session will not steer the packet to flow
         processor. Instead, packet will be routed.
-    default: DISABLED
   sourceroutecache:
     type: str
     choices:
@@ -91,7 +89,6 @@ options:
       - DISABLED
     description:
       - Cache the source ip address and mac address of the DA servers.
-    default: DISABLED
   td:
     type: float
     description:

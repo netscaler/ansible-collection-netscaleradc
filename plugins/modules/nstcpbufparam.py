@@ -40,12 +40,10 @@ options:
     type: float
     description:
       - Maximum memory, in megabytes, that can be used for buffering.
-    default: 64
   size:
     type: float
     description:
       - TCP buffering size per connection, in kilobytes.
-    default: 64
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

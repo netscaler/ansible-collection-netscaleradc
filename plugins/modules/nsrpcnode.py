@@ -51,7 +51,6 @@ options:
       - 'NO'
     description:
       - State of the channel when talking to the node.
-    default: 'YES'
   srcip:
     type: str
     description:
@@ -65,7 +64,6 @@ options:
       - 'NO'
     description:
       - validate the server certificate for secure SSL connections
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

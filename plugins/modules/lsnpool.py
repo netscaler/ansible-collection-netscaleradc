@@ -45,7 +45,6 @@ options:
       - ''
       - When the queue size is full, the next port deallocated is reallocated immediately
         for a new LSN session.
-    default: 65536
   nattype:
     type: str
     choices:
@@ -82,7 +81,6 @@ options:
       - Only LSN Pools and LSN groups with the same NAT type settings can be bound
         together. Multiples LSN pools can be bound to an LSN group. A maximum of 16
         LSN pools can be bound to an LSN group.
-    default: DYNAMIC
   poolname:
     type: str
     description:
@@ -111,7 +109,6 @@ options:
       - ''
       - For Deterministic NAT, this parameter is enabled by default, and you cannot
         disable it.
-    default: DISABLED
   portrealloctimeout:
     type: float
     description:

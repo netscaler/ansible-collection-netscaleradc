@@ -63,7 +63,6 @@ options:
         present with the binding. For example, sample size of 10 means that there
         is a state of previous 9 policy evaluation results and also the current policy
         evaluation result.
-    default: 3
   threshold:
     type: float
     description:
@@ -71,7 +70,6 @@ options:
         'threshold size' number of times in 'sample size' to true, then the corresponding
         action is taken. Its value needs to be less than or equal to the sample size
         value.
-    default: 3
   vserver:
     type: str
     description:

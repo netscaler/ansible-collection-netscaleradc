@@ -42,7 +42,6 @@ options:
       - The Embedded Address (EA) bit field encodes the CE-specific IPv4 address and
         port information.  The EA bit field, which is unique for a
       - "\t\t\t          given Rule IPv6 prefix."
-    default: 16
   name:
     type: str
     description:
@@ -63,13 +62,11 @@ options:
     description:
       - Length of Port Set IdentifierPort Set Identifier(PSID) in Embedded Address
         (EA) bits
-    default: 8
   psidoffset:
     type: float
     description:
       - Start bit position  of Port Set Identifier(PSID) value in Embedded Address
         (EA) bits.
-    default: 6
   ruleipv6prefix:
     type: str
     description:

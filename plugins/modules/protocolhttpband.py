@@ -49,7 +49,6 @@ options:
       - 0 - 99 bytes
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
-    default: 100
   respbandsize:
     type: int
     description:
@@ -59,7 +58,6 @@ options:
       - 0 - 99 bytes
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
-    default: 1024
   type:
     type: str
     choices:

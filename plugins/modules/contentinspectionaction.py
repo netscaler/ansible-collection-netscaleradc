@@ -56,7 +56,6 @@ options:
       - '* C(DROP) - Drop the request without sending a response to the user.'
       - '* C(CONTINUE) - It bypasses the ContentIsnpection and Continues/resumes the
         Traffic-Flow to Client/Server.'
-    default: RESET
   name:
     type: str
     description:
@@ -76,7 +75,6 @@ options:
     type: float
     description:
       - Port of remoteService
-    default: 1344
   type:
     type: str
     choices:

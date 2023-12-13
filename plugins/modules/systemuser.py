@@ -55,7 +55,6 @@ options:
     description:
       - Whether to use external authentication servers for the system user authentication
         or not
-    default: ENABLED
   logging:
     type: str
     choices:
@@ -63,7 +62,6 @@ options:
       - DISABLED
     description:
       - Users logging privilege
-    default: DISABLED
   maxsession:
     type: float
     description:

@@ -65,7 +65,6 @@ options:
     type: str
     description:
       - Kerberos constrained delegation account name
-    default: '"Default"'
   name:
     type: str
     description:

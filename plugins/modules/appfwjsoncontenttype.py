@@ -43,7 +43,6 @@ options:
       - NOTREGEX
     description:
       - Is json content type a regular expression?
-    default: NOTREGEX
   jsoncontenttypevalue:
     type: str
     description:

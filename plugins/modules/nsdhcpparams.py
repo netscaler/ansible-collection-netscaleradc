@@ -44,7 +44,6 @@ options:
     description:
       - Enables DHCP client to acquire IP address from the DHCP server in the next
         boot. When set to C(OFF), disables the DHCP client in the next boot.
-    default: 'OFF'
   saveroute:
     type: str
     choices:
@@ -52,7 +51,6 @@ options:
       - 'OFF'
     description:
       - DHCP acquired routes are saved on the Citrix ADC.
-    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

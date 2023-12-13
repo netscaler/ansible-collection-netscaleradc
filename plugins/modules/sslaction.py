@@ -183,7 +183,6 @@ options:
       - Optional
     description:
       - Client certificate verification is mandatory or optional.
-    default: Mandatory
   forward:
     type: str
     description:

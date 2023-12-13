@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Send traps of all partitions to this destination.
-    default: DISABLED
   communityname:
     type: str
     description:
@@ -63,7 +62,6 @@ options:
       - UDP port at which the trap listener listens for trap messages. This setting
         must match the setting on the trap listener. Otherwise, the listener drops
         the trap messages.
-    default: 162
   severity:
     type: str
     choices:
@@ -119,7 +117,6 @@ options:
         listener. '
       - This setting must match the setting on the trap listener. Otherwise, the listener
         drops the trap messages.
-    default: V2
   snmptrap_snmpuser_binding:
     type: dict
     description: Bindings for snmptrap_snmpuser_binding resource

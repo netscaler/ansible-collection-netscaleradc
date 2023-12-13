@@ -64,7 +64,6 @@ options:
       - '          match any qualifier in an LDNS location,'
       - '          wildcard qualifiers in the LDNS location do not match'
       - '          non-wildcard qualifiers in an expression'
-    default: 'NO'
   q1label:
     type: str
     description:

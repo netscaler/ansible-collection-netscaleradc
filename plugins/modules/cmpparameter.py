@@ -45,13 +45,11 @@ options:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
-    default: DISABLED
   cmpbypasspct:
     type: float
     description:
       - 'Citrix ADC CPU threshold after which compression is not performed. Range:
         0 - 100'
-    default: 100
   cmplevel:
     type: str
     choices:
@@ -63,7 +61,6 @@ options:
       - ' * Optimal - Corresponds to a gzip GZIP level of 5-7.'
       - ' * Best speed - Corresponds to a gzip level of 1.'
       - ' * Best compression - Corresponds to a gzip level of 9.'
-    default: optimal
   cmponpush:
     type: str
     choices:
@@ -73,7 +70,6 @@ options:
       - Citrix ADC does not wait for the quantum to be filled before starting to compress
         data. Upon receipt of a packet with a PUSH flag, the appliance immediately
         begins compression of the accumulated packets.
-    default: DISABLED
   externalcache:
     type: str
     choices:
@@ -83,7 +79,6 @@ options:
       - 'Enable insertion of  Cache-Control: private response directive to indicate
         response message is intended for a single user and must not be cached by a
         shared or proxy cache.'
-    default: 'NO'
   heurexpiry:
     type: str
     choices:
@@ -91,7 +86,6 @@ options:
       - 'OFF'
     description:
       - Heuristic basefile expiry.
-    default: 'OFF'
   heurexpiryhistwt:
     type: float
     description:
@@ -99,13 +93,11 @@ options:
         ratio, specified as percentage.  For example, to give 25% weightage to historical
         ratio (and therefore 75% weightage to the ratio for current delta compression
         transaction), specify 25.
-    default: 50
   heurexpirythres:
     type: float
     description:
       - Threshold compression ratio for heuristic basefile expiry, multiplied by 100.
         For example, to set the threshold ratio to 1.25, specify 125.
-    default: 100
   minressize:
     type: float
     description:
@@ -116,12 +108,10 @@ options:
       - ADVANCED
     description:
       - Type of the policy. The only possible value is C(ADVANCED)
-    default: ADVANCED
   quantumsize:
     type: float
     description:
       - Minimum quantum of data to be filled before compression begins.
-    default: 57344
   servercmp:
     type: str
     choices:
@@ -130,7 +120,6 @@ options:
     description:
       - Allow the server to send compressed data to the Citrix ADC. With the default
         setting, the Citrix ADC appliance handles all compression.
-    default: 'ON'
   varyheadervalue:
     type: str
     description:

@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable dynamic routing for this bridgegroup.
-    default: DISABLED
   id:
     type: float
     description:
@@ -57,7 +56,6 @@ options:
       - 'Enable all IPv6 dynamic routing protocols on all VLANs bound to this bridgegroup.
         Note: For the C(ENABLED) setting to work, you must configure IPv6 dynamic
         routing protocols from the VTYSH command line.'
-    default: DISABLED
   bridgegroup_nsip6_binding:
     type: dict
     description: Bindings for bridgegroup_nsip6_binding resource

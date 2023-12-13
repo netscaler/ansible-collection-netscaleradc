@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - log all SSL ClAuth events.
-    default: DISABLED
   ssllogclauthfailures:
     type: str
     choices:
@@ -55,7 +54,6 @@ options:
       - DISABLED
     description:
       - log all SSL ClAuth error events.
-    default: DISABLED
   sslloghs:
     type: str
     choices:
@@ -63,7 +61,6 @@ options:
       - DISABLED
     description:
       - log all SSL HS events.
-    default: DISABLED
   sslloghsfailures:
     type: str
     choices:
@@ -71,7 +68,6 @@ options:
       - DISABLED
     description:
       - log all SSL HS error events.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

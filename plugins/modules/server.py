@@ -67,7 +67,6 @@ options:
     description:
       - Time, in seconds, for which the Citrix ADC must wait, after DNS resolution
         fails, before sending the next DNS query to resolve the domain name.
-    default: 5
   graceful:
     type: str
     choices:
@@ -76,7 +75,6 @@ options:
     description:
       - Shut down gracefully, without accepting any new connections, and disabling
         each service when all of its connections are closed.
-    default: 'NO'
   ipaddress:
     type: str
     description:
@@ -92,7 +90,6 @@ options:
     description:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
-    default: 'NO'
   name:
     type: str
     description:
@@ -118,7 +115,6 @@ options:
         get the backend services. Valid query types are C(A), C(AAAA) and C(SRV) with
         C(A) being the default querytype. The type of DNS resolution done on the domains
         in C(SRV) records is inherited from ipv6 argument.
-    default: A
   td:
     type: float
     description:

@@ -47,7 +47,6 @@ options:
       - 'OFF'
     description:
       - This option tells whether advanced EPA is enabled on this virtual server
-    default: 'OFF'
   appflowlog:
     type: str
     choices:
@@ -59,7 +58,6 @@ options:
         count. Also log records that contain application-level information, such as
         HTTP web addresses, HTTP request methods and response status codes, server
         response time, and latency.
-    default: ENABLED
   authentication:
     type: str
     choices:
@@ -67,7 +65,6 @@ options:
       - 'OFF'
     description:
       - Require authentication for users connecting to Citrix Gateway.
-    default: 'ON'
   authnprofile:
     type: str
     description:
@@ -88,7 +85,6 @@ options:
         user is unauthenticated or the user session has expired, disabling this option
         takes the user to the originally requested ShareFile resource after authentication
         (instead of taking the user to the default VPN home page)
-    default: ENABLED
   comment:
     type: str
     description:
@@ -109,7 +105,6 @@ options:
       - 'OFF'
     description:
       - Indicates whether device certificate check as a part of EPA is on or off.
-    default: 'OFF'
   doublehop:
     type: str
     choices:
@@ -120,7 +115,6 @@ options:
         deployment provides an extra layer of security for the internal network by
         using three firewalls to divide the DMZ into two stages. Such a deployment
         can have one appliance in the DMZ and one appliance in the secure network.
-    default: DISABLED
   downstateflush:
     type: str
     choices:
@@ -133,7 +127,6 @@ options:
         setups. Enable this setting on servers in which the connections can safely
         be closed when they are marked DOWN.  Do not enable DOWN state flush on servers
         that must complete their transactions.
-    default: ENABLED
   dtls:
     type: str
     choices:
@@ -141,7 +134,6 @@ options:
       - 'OFF'
     description:
       - This option starts/stops the turn service on the vserver
-    default: 'ON'
   failedlogintimeout:
     type: float
     description:
@@ -151,7 +143,6 @@ options:
     type: str
     description:
       - Name of the HTTP profile to assign to this virtual server.
-    default: '"nshttp_default_strict_validation"'
   icaonly:
     type: str
     choices:
@@ -172,7 +163,6 @@ options:
         the client can connect to the gateway in other client modes namely VPN and
         CVPN. Number of users that can log in and access the resources are limited
         by the CCU licenses in this mode.'
-    default: 'OFF'
   icaproxysessionmigration:
     type: str
     choices:
@@ -181,7 +171,6 @@ options:
     description:
       - This option determines if an existing ICA Proxy session is transferred when
         the user logs on from another device.
-    default: 'OFF'
   icmpvsrresponse:
     type: str
     choices:
@@ -192,7 +181,6 @@ options:
         this parameter is set to C(ACTIVE), respond only if the virtual server is
         available. With the C(PASSIVE) setting, respond even if the virtual server
         is not available.
-    default: PASSIVE
   ipset:
     type: str
     description:
@@ -227,7 +215,6 @@ options:
       - String specifying the listen policy for the Citrix Gateway virtual server.
         Can be either a named expression or an expression. The Citrix Gateway virtual
         server processes only the traffic for which the expression evaluates to true.
-    default: '"none"'
   listenpriority:
     type: float
     description:
@@ -235,7 +222,6 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    default: 101
   loginonce:
     type: str
     choices:
@@ -243,7 +229,6 @@ options:
       - 'OFF'
     description:
       - This option enables/disables seamless SSO for this Vserver.
-    default: 'OFF'
   logoutonsmartcardremoval:
     type: str
     choices:
@@ -251,7 +236,6 @@ options:
       - 'OFF'
     description:
       - Option to VPN plugin behavior when smartcard or its reader is removed
-    default: 'OFF'
   macepapluginupgrade:
     type: str
     choices:
@@ -311,7 +295,6 @@ options:
         range of IP addresses begins with the address specified by the IP Address
         parameter.
       - In the configuration utility, select Network VServer to enter a range.
-    default: 1
   rdpserverprofilename:
     type: str
     description:
@@ -330,7 +313,6 @@ options:
       - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
         on the others, the appliance injects even if one virtual server set to C(ACTIVE)
         is UP.'
-    default: PASSIVE
   samesite:
     type: str
     choices:
@@ -348,7 +330,6 @@ options:
       - DTLS
     description:
       - Protocol used by the Citrix Gateway virtual server.
-    default: SSL
   tcpprofilename:
     type: str
     description:

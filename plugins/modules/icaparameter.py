@@ -43,12 +43,10 @@ options:
       - DISABLED
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
-    default: ENABLED
   edtpmtuddftimeout:
     type: float
     description:
       - DF enforcement timeout for EDTPMTUDDF
-    default: 100
   enablesronhafailover:
     type: str
     choices:
@@ -56,7 +54,6 @@ options:
       - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
-    default: 'NO'
   hdxinsightnonnsap:
     type: str
     choices:
@@ -65,7 +62,6 @@ options:
     description:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
-    default: 'YES'
   l7latencyfrequency:
     type: float
     description:

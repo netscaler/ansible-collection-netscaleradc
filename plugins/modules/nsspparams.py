@@ -41,7 +41,6 @@ options:
     description:
       - Maximum number of server connections that can be opened before surge protection
         is activated.
-    default: 200
   throttle:
     type: str
     choices:
@@ -50,7 +49,6 @@ options:
       - Relaxed
     description:
       - Rate at which the system opens connections to the server.
-    default: Normal
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

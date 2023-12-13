@@ -52,7 +52,6 @@ options:
     type: float
     description:
       - Time in seconds no other policy is evaluated or action is taken
-    default: 300
   type:
     type: str
     choices:
@@ -64,7 +63,6 @@ options:
     type: float
     description:
       - Time in minutes a VM is kept in inactive state before destroying
-    default: 10
   vserver:
     type: str
     description:

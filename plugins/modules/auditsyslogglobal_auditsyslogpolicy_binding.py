@@ -133,7 +133,6 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    default: SYSTEM_GLOBAL
   policyname:
     type: str
     description:

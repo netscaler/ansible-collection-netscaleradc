@@ -81,7 +81,6 @@ options:
         C(lines)'
       - Note that the DEBUG log level must be enabled to see extension tracing.
       - This can be done by set audit syslogParams -loglevel ALL or -loglevel DEBUG.
-    default: 'off'
   tracefunctions:
     type: str
     description:

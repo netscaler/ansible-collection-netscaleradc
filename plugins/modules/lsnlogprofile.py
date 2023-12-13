@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Logs in Compact Logging format if option is enabled.
-    default: ENABLED
   logipfix:
     type: str
     choices:
@@ -55,7 +54,6 @@ options:
       - DISABLED
     description:
       - Logs in IPFIX  format if option is enabled.
-    default: DISABLED
   logprofilename:
     type: str
     description:
@@ -67,7 +65,6 @@ options:
       - DISABLED
     description:
       - LSN Session deletion will not be logged if disabled.
-    default: ENABLED
   logsubscrinfo:
     type: str
     choices:
@@ -75,7 +72,6 @@ options:
       - DISABLED
     description:
       - Subscriber ID information is logged if option is enabled.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

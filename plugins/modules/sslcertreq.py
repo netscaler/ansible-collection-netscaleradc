@@ -92,7 +92,6 @@ options:
       - PEM
     description:
       - Format in which the key is stored on the appliance.
-    default: PEM
   localityname:
     type: str
     description:

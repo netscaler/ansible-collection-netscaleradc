@@ -41,24 +41,20 @@ options:
     description:
       - Threshold value of the file size (in bytes) for converting external CSS files
         to inline CSS files.
-    default: 1024
   imginlinethressize:
     type: float
     description:
       - Maximum file size of an image (in bytes), for coverting linked images to inline
         images.
-    default: 1024
   jpegqualitypercent:
     type: float
     description:
       - 'The percentage value of a JPEG image quality to be reduced. Range: 0 - 100'
-    default: 75
   jsinlinethressize:
     type: float
     description:
       - Threshold value of the file size (in bytes), for converting external JavaScript
         files to inline JavaScript files.
-    default: 1024
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

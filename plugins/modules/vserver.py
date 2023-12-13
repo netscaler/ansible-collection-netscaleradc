@@ -90,12 +90,10 @@ options:
       - DISABLED
     description:
       - The state of the spillover persistence.
-    default: DISABLED
   sopersistencetimeout:
     type: float
     description:
       - The spillover persistence entry timeout.
-    default: 2
   sothreshold:
     type: float
     description:

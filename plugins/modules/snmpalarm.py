@@ -48,7 +48,6 @@ options:
     description:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
-    default: ENABLED
   normalvalue:
     type: float
     description:
@@ -88,7 +87,6 @@ options:
         traps. Default trap time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED
         = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), Other Traps = 86400sec(1
         day)'
-    default: 1
   trapname:
     type: str
     choices:

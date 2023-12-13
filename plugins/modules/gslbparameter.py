@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - GSLB configuration will be synced automatically to remote gslb sites if enabled.
-    default: DISABLED
   dropldnsreq:
     type: str
     choices:
@@ -51,7 +50,6 @@ options:
       - DISABLED
     description:
       - Drop LDNS requests if round-trip time (RTT) information is not available.
-    default: DISABLED
   gslbconfigsyncmonitor:
     type: str
     choices:
@@ -60,7 +58,6 @@ options:
     description:
       - If enabled, remote gslb site's rsync port will be monitored and site is considered
         for configuration sync only when the monitor is successful.
-    default: DISABLED
   gslbsvcstatedelaytime:
     type: float
     description:
@@ -73,7 +70,6 @@ options:
     description:
       - Time duartion (in seconds) for which the gslb sync process will wait before
         checking for config changes.
-    default: 10
   gslbsynclocfiles:
     type: str
     choices:
@@ -82,7 +78,6 @@ options:
     description:
       - If disabled, Location files will not be synced to the remote sites as part
         of automatic sync.
-    default: ENABLED
   gslbsyncmode:
     type: str
     choices:
@@ -90,7 +85,6 @@ options:
       - FullSync
     description:
       - Mode in which configuration will be synced from master site to remote sites.
-    default: IncrementalSync
   gslbsyncsaveconfigcommand:
     type: str
     choices:
@@ -99,12 +93,10 @@ options:
     description:
       - If enabled, 'save ns config' command will be treated as other GSLB commands
         and synced to GSLB nodes when auto gslb sync option is enabled.
-    default: DISABLED
   ldnsentrytimeout:
     type: float
     description:
       - Time, in seconds, after which an inactive LDNS entry is removed.
-    default: 180
   ldnsmask:
     type: str
     description:
@@ -123,7 +115,6 @@ options:
     description:
       - Time duartion (in seconds) during which if no new packets received by Local
         gslb site from Remote gslb site then mark the MEP connection DOWN
-    default: 10
   rtttolerance:
     type: float
     description:
@@ -132,7 +123,6 @@ options:
         is less than or equal to the specified tolerance value, the LDNS entry in
         the network metric table is not updated with the new RTT value. Prevents the
         exchange of metrics when variations in RTT values are negligible.
-    default: 5
   svcstatelearningtime:
     type: float
     description:
@@ -152,14 +142,12 @@ options:
       - '* RESET - Reset the request and notify the user, so that the user can resend
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
-    default: '"NOLBACTION"'
   v6ldnsmasklen:
     type: float
     description:
       - Mask for creating LDNS entries for IPv6 source addresses. The mask is defined
         as the number of leading bits to consider, in the source IP address, when
         creating an LDNS entry.
-    default: 128
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

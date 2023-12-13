@@ -58,7 +58,6 @@ options:
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
-    default: INFORMATIONAL
   aaadnatip:
     type: str
     description:
@@ -93,7 +92,6 @@ options:
       - DISABLED
     description:
       - Option to enable/disable API cache feature.
-    default: DISABLED
   defaultauthtype:
     type: str
     choices:
@@ -104,7 +102,6 @@ options:
       - CERT
     description:
       - The default authentication server type.
-    default: LOCAL
   defaultcspheader:
     type: str
     choices:
@@ -112,7 +109,6 @@ options:
       - DISABLED
     description:
       - Parameter to enable/disable default CSP header
-    default: DISABLED
   dynaddr:
     type: str
     choices:
@@ -120,7 +116,6 @@ options:
       - 'OFF'
     description:
       - Set by the DHCP client when the IP address was fetched dynamically.
-    default: 'OFF'
   enableenhancedauthfeedback:
     type: str
     choices:
@@ -129,7 +124,6 @@ options:
     description:
       - Enhanced auth feedback provides more information to the end user about the
         reason for an authentication failure.  The default value is set to C(NO).
-    default: 'NO'
   enablesessionstickiness:
     type: str
     choices:
@@ -137,7 +131,6 @@ options:
       - 'NO'
     description:
       - Enables/Disables stickiness to authentication servers
-    default: 'NO'
   enablestaticpagecaching:
     type: str
     choices:
@@ -146,7 +139,6 @@ options:
     description:
       - The default state of VPN Static Page caching. Static Page caching is enabled
         by default.
-    default: 'YES'
   failedlogintimeout:
     type: float
     description:
@@ -161,7 +153,6 @@ options:
     description:
       - First time user mode determines which configuration options are shown by default
         when logging in to the GUI. This setting is controlled by the GUI.
-    default: 'ON'
   httponlycookie:
     type: str
     choices:
@@ -169,7 +160,6 @@ options:
       - DISABLED
     description:
       - Parameter to set/reset HttpOnly Flag for NSC_AAAC/NSC_TMAS cookies in nfactor
-    default: DISABLED
   loginencryption:
     type: str
     choices:
@@ -177,7 +167,6 @@ options:
       - DISABLED
     description:
       - Parameter to encrypt login information for nFactor flow
-    default: DISABLED
   maxaaausers:
     type: float
     description:
@@ -202,7 +191,6 @@ options:
       - DISABLED
     description:
       - Persistent storage of unsuccessful user login attempts
-    default: DISABLED
   pwdexpirynotificationdays:
     type: float
     description:

@@ -46,7 +46,6 @@ options:
       - authPriv
     description:
       - Security level of the SNMPv3 trap.
-    default: authNoPriv
   td:
     type: float
     description:
@@ -81,7 +80,6 @@ options:
         listener. '
       - This setting must match the setting on the trap listener. Otherwise, the listener
         drops the trap messages.
-    default: V3
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

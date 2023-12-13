@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Interval in sec, after which data sessions of PPTP GRE is cleared.
-    default: 9000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -55,7 +55,6 @@ options:
         configured rate. Only C(LOG) action can be combined with C(DROP), C(REDIRECT)
         or C(RESET) action.
     elements: str
-    default: NONE
   bot_rate_limit_enabled:
     type: str
     choices:
@@ -63,7 +62,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable rate-limit binding.
-    default: 'OFF'
   bot_rate_limit_type:
     type: str
     choices:
@@ -369,13 +367,11 @@ options:
     description:
       - Maximum number of requests that are allowed in this session in the given period
         time.
-    default: 1
   timeslice:
     type: float
     description:
       - Time interval during which requests are tracked to check if they cross the
         given rate.
-    default: 1000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

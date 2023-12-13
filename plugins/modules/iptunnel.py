@@ -40,7 +40,6 @@ options:
     type: int
     description:
       - Specifies UDP destination port for Geneve packets. Default port is 6081.
-    default: 6081
   grepayload:
     type: str
     choices:
@@ -49,12 +48,10 @@ options:
       - IP
     description:
       - The payload GRE will carry
-    default: ETHERNETwithDOT1Q
   ipsecprofilename:
     type: str
     description:
       - Name of IPSec profile to be associated.
-    default: '"ns_ipsec_default_profile"'
   local:
     type: str
     description:
@@ -70,7 +67,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for the iptunnel.
-    default: DEFAULT_NG
   protocol:
     type: str
     choices:
@@ -81,7 +77,6 @@ options:
       - GENEVE
     description:
       - Name of the protocol to be used on this tunnel.
-    default: IPIP
   remote:
     type: str
     description:
@@ -100,7 +95,6 @@ options:
       - Default behavior is to copy the ToS field of the internal IP Packet (Payload)
         to the outer IP packet (Transport packet). But the user can configure a new
         ToS field using this option.
-    default: ENABLED
   vlan:
     type: float
     description:
@@ -112,7 +106,6 @@ options:
       - DISABLED
     description:
       - Option to select Vlan Tagging.
-    default: DISABLED
   vnid:
     type: float
     description:

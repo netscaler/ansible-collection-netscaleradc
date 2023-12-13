@@ -44,7 +44,6 @@ options:
     description:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
-    default: DISABLED
   tcpproxy:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

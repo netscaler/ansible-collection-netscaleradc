@@ -50,7 +50,6 @@ options:
       - '2. C(delete): Just C(delete) the subscriber session without informing PCRF.'
       - '3. C(ccrUpdate): Do not C(delete) the session and instead send a CCR-U to
         PCRF requesting for an updated session. !'
-    default: ccrTerminate
   idlettl:
     type: float
     description:
@@ -79,7 +78,6 @@ options:
         to query PCRF. Subscriber information is obtained from both RADIUS and PCRF.'
       - 'C(GxOnly): RADIUS interface is absent. Subscriber information is queried
         using Subscriber IP or IP+VLAN.'
-    default: None
   ipv6prefixlookuplist:
     type: list
     description:
@@ -96,7 +94,6 @@ options:
         be used only when the interfaceType is set to gxOnly.
       - Changing the lookup method should result to the subscriber session database
         being flushed.
-    default: IP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

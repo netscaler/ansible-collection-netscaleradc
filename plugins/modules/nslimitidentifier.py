@@ -54,7 +54,6 @@ options:
       - '* C(BURSTY) - When you want the permitted number of requests to exhaust the
         quota anytime within the timeslice.'
       - This argument is needed only when the mode is set to REQUEST_RATE.
-    default: BURSTY
   maxbandwidth:
     type: float
     description:
@@ -91,7 +90,6 @@ options:
       - '5. To permit 5000 requests in 1000 ms and 200 traps in 1000 ms:'
       - set limitidentifier limit_req  -mode request_rate -timeslice 1000 -Threshold
         5000 -limitType BURSTY
-    default: REQUEST_RATE
   selectorname:
     type: str
     description:
@@ -106,14 +104,12 @@ options:
         (mode is set as REQUEST_RATE) are tracked per timeslice.
       - When connections (mode is set as CONNECTION) are tracked, it is the total
         number of connections that would be let through.
-    default: 1
   timeslice:
     type: float
     description:
       - Time interval, in milliseconds, specified in multiples of 10, during which
         requests are tracked to check if they cross the threshold. This argument is
         needed only when the mode is set to REQUEST_RATE.
-    default: 1000
   trapsintimeslice:
     type: float
     description:

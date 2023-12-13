@@ -46,7 +46,6 @@ options:
       - '* RESET - Reset the connection and notify the user''s browser, so that the
         user can resend the request.'
       - '* DROP - Drop the message without sending a response to the user.'
-    default: '"NOINSPECTION"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

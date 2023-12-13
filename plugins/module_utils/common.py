@@ -79,6 +79,7 @@ def is_resource_exists(
         attrs=attrs,
         filter=filter,
     )
+    # FIXME: Handle the case where invalid argument caused 599 status code
     return True if status_code in HTTP_SUCCESS_CODES else False
 
 
@@ -335,6 +336,7 @@ def delete_resource(client, resource_name, resource_module_params):
 
     args = {}
     for arg_key in NITRO_RESOURCE_MAP[resource_name]["delete_arg_keys"]:
+        log("DEBUG: arg_key: {}".format(arg_key))
         # FIXME: after discussion with Nitro team
         if (
             resource_name == "lbvserver_servicegroup_binding"
@@ -353,11 +355,17 @@ def delete_resource(client, resource_name, resource_module_params):
             )
             continue
 
-    resource_id = resource_module_params[
-        NITRO_RESOURCE_MAP[resource_name]["primary_key"]
-    ]
+    if NITRO_RESOURCE_MAP[resource_name]["primary_key"]:
+        resource_id = resource_module_params[
+            NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+        ]
+    else:
+        resource_id = None
 
     if resource_name.endswith("_binding"):
+        if not is_resource_exists(client, resource_name, resource_id, filter=args):
+            return True, None
+    elif resource_name in {"sslcertfile"}:
         if not is_resource_exists(client, resource_name, resource_id, filter=args):
             return True, None
     else:
@@ -567,5 +575,6 @@ def is_global_binding(resource_name):
     )
 
 
+@trace
 def is_singleton_resource(resource_name):
     return NITRO_RESOURCE_MAP[resource_name]["singleton"]

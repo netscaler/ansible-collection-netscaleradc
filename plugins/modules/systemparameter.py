@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable or disable basic authentication for Nitro API.
-    default: ENABLED
   cliloglevel:
     type: str
     choices:
@@ -67,7 +66,6 @@ options:
       - '* C(NOTICE) - Events that the administrator should know about.'
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
-    default: INFORMATIONAL
   doppler:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
       - DISABLED
     description:
       - Enable or disable Doppler
-    default: ENABLED
   fipsusermode:
     type: str
     choices:
@@ -88,7 +85,6 @@ options:
       - With a FIPS license, it is enabled by default and cannot be disabled.
       - Without a FIPS license, it is disabled by default, wherein these user-land
         processes will not operate in FIPS mode.
-    default: DISABLED
   forcepasswordchange:
     type: str
     choices:
@@ -96,7 +92,6 @@ options:
       - DISABLED
     description:
       - Enable or disable force password change for nsroot user
-    default: DISABLED
   googleanalytics:
     type: str
     choices:
@@ -104,7 +99,6 @@ options:
       - DISABLED
     description:
       - Enable or disable Google analytics
-    default: DISABLED
   localauth:
     type: str
     choices:
@@ -116,7 +110,6 @@ options:
         ADC, Local users can access the Citrix ADC only when the configured external
         authentication servers are unavailable. This parameter is not applicable to
         SSH Key-based authentication
-    default: ENABLED
   maxsessionperuser:
     type: float
     description:
@@ -134,7 +127,6 @@ options:
     description:
       - Flush the system if the number of Network Address Translation Protocol Control
         Blocks (NATPCBs) exceeds this value.
-    default: 2147483647
   natpcbrstontimeout:
     type: str
     choices:
@@ -143,7 +135,6 @@ options:
     description:
       - Send a reset signal to client and server connections when their NATPCBs time
         out. Avoids the buildup of idle TCP connections on both the sides.
-    default: DISABLED
   promptstring:
     type: str
     description:
@@ -166,7 +157,6 @@ options:
       - DISABLED
     description:
       - Enable or disable Role-Based Authentication (RBA) on responses.
-    default: ENABLED
   reauthonauthparamchange:
     type: str
     choices:
@@ -175,7 +165,6 @@ options:
     description:
       - Enable or disable External user reauthentication when authentication parameter
         changes
-    default: DISABLED
   removesensitivefiles:
     type: str
     choices:
@@ -186,7 +175,6 @@ options:
         keys, public keys etc. The commands which will remove sensitive files when
         this system paramter is enabled are rm cluster instance, rm cluster node,
         rm ha node, clear config full, join cluster and add cluster instance.
-    default: DISABLED
   restrictedtimeout:
     type: str
     choices:
@@ -197,7 +185,6 @@ options:
         be configured beyond admin configured timeout  and also it will have the [minimum
         - maximum] range check. When disabled, timeout will have the old behaviour.
         By default the value is disabled
-    default: DISABLED
   strongpassword:
     type: str
     choices:
@@ -214,7 +201,6 @@ options:
         NS_TACACS, NS_TACACSACTION, NS_RADIUS, NS_RADIUSACTION, NS_ENCRYPTION_PARAMS.
         So no Strong Password checks will be performed on these ObjectType commands
         for C(enablelocal) case.'
-    default: disabled
   timeout:
     type: float
     description:
@@ -226,7 +212,6 @@ options:
     type: float
     description:
       - Total time a request can take for authentication/authorization
-    default: 20
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

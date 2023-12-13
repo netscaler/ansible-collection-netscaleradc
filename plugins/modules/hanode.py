@@ -41,7 +41,6 @@ options:
     description:
       - Number of seconds after which a peer node is marked DOWN if heartbeat messages
         are not received from the peer node.
-    default: 3
   failsafe:
     type: str
     choices:
@@ -51,7 +50,6 @@ options:
       - Keep one node primary if both nodes fail the health check, so that a partially
         available node can back up data and handle traffic. This mode is set independently
         on each node.
-    default: 'OFF'
   haprop:
     type: str
     choices:
@@ -70,7 +68,6 @@ options:
         on the secondary, the primary node executes the command and logs an error.  Command
         propagation uses port 3010.
       - 'Note: After enabling propagation, run force synchronization on either node.'
-    default: ENABLED
   hastatus:
     type: str
     choices:
@@ -104,13 +101,11 @@ options:
         the primary node on the secondary node. This setting is not propagated. Automatic
         synchronization requires that this setting be enabled (the default) on the
         current secondary node. Synchronization uses TCP port 3010.
-    default: ENABLED
   hellointerval:
     type: float
     description:
       - Interval, in milliseconds, between heartbeat messages sent to the peer node.
         The heartbeat messages are UDP packets sent to port 3003 of the peer node.
-    default: 200
   id:
     type: float
     description:
@@ -128,7 +123,6 @@ options:
         (except LLB routes), route monitors, RNAT rules (except any RNAT rule with
         a VIP as the NAT IP), and dynamic routing configurations. They are maintained
         independently on each node.'
-    default: DISABLED
   ipaddress:
     type: str
     description:
@@ -149,7 +143,6 @@ options:
       - DISABLED
     description:
       - strict mode flag for sync status
-    default: DISABLED
   syncvlan:
     type: float
     description:

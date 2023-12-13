@@ -42,7 +42,6 @@ options:
       - Maximum memory size to use for certificate revocation lists (CRLs). This parameter
         reserves memory for a CRL but sets a limit to the maximum memory that the
         CRLs loaded on the appliance can consume.
-    default: 256
   cryptodevdisablelimit:
     type: float
     description:
@@ -55,7 +54,6 @@ options:
       - DISABLED
     description:
       - Global parameter used to enable default profile feature.
-    default: DISABLED
   denysslreneg:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
       - '* C(ALL) - Deny all secure and nonsecure SSL renegotiation.'
       - '* C(NONSECURE) - Deny nonsecure SSL renegotiation. Allows only clients that
         support RFC 5746.'
-    default: ALL
   dropreqwithnohostheader:
     type: str
     choices:
@@ -86,14 +83,12 @@ options:
         HTTP request does not contain the host header for SNI enabled sessions(i.e
         vserver or profile bound to vserver has SNI enabled and 'Client Hello' arrived
         with SNI extension), the request is dropped.
-    default: 'NO'
   encrypttriggerpktcount:
     type: float
     description:
       - Maximum number of queued packets after which encryption is triggered. Use
         this setting for SSL transactions that send small packets from server to Citrix
         ADC.
-    default: 45
   heterogeneoussslhw:
     type: str
     choices:
@@ -102,7 +97,6 @@ options:
     description:
       - To support both cavium and coleto based platforms in cluster environment,
         this mode has to be enabled.
-    default: DISABLED
   hybridfipsmode:
     type: str
     choices:
@@ -111,7 +105,6 @@ options:
     description:
       - When this mode is enabled, system will use additional crypto hardware to accelerate
         symmetric crypto operations.
-    default: DISABLED
   insertcertspace:
     type: str
     choices:
@@ -119,7 +112,6 @@ options:
       - 'NO'
     description:
       - To insert space between lines in the certificate header of request
-    default: 'YES'
   insertionencoding:
     type: str
     choices:
@@ -128,7 +120,6 @@ options:
     description:
       - Encoding method used to insert the subject or issuer's name in HTTP requests
         to servers.
-    default: Unicode
   ndcppcompliancecertcheck:
     type: str
     choices:
@@ -140,7 +131,6 @@ options:
       - C(YES) - During certificate verification, ignore the common name if SAN is
         present in the certificate.
       - C(NO) - Do not ignore common name.
-    default: 'NO'
   ocspcachesize:
     type: float
     description:
@@ -148,20 +138,17 @@ options:
         of the packet engine memory can be assigned. Because the maximum allowed packet
         engine memory is 4GB, the maximum value that can be assigned to the OCSP cache
         is approximately 410 MB.
-    default: 10
   operationqueuelimit:
     type: float
     description:
       - Limit in percentage of capacity of the crypto operations queue beyond which
         new SSL connections are not accepted until the queue is reduced.
-    default: 150
   pushenctriggertimeout:
     type: float
     description:
       - PUSH encryption trigger timeout value. The timeout value is applied only if
         you set the Push Encryption Trigger parameter to Timer in the SSL virtual
         server settings.
-    default: 1
   pushflag:
     type: float
     description:
@@ -189,7 +176,6 @@ options:
       - 'NO'
     description:
       - Send an SSL Close-Notify message to the client at the end of a transaction.
-    default: 'YES'
   sigdigesttype:
     type: list
     choices:
@@ -222,7 +208,6 @@ options:
       - 'Others: C(RSA-SHA1) C(RSA-SHA224) C(RSA-SHA256) C(RSA-SHA384) C(RSA-SHA512).'
       - Note:C(ALL) doesnot include C(RSA-MD5) for any platform.
     elements: str
-    default: ALL
   snihttphostmatch:
     type: str
     choices:
@@ -246,7 +231,6 @@ options:
       - '         in ''Client Hello'' of the SSL connection.'
       - C(NO)     - No validation is performed on the HTTP 'Host'
       - '         header value.'
-    default: CERT
   softwarecryptothreshold:
     type: float
     description:
@@ -262,7 +246,6 @@ options:
       - Enable or disable dynamically learning and caching the learned information
         to make the subsequent interception or bypass decision. When enabled, NS does
         the lookup of this cached data to do early bypass.
-    default: DISABLED
   sslimaxerrorcachemem:
     type: float
     description:
@@ -277,7 +260,6 @@ options:
         that are not tracked on the Citrix ADC because their length is not known.
         There can be a delay of up to 10ms from the specified timeout value before
         the packet is pushed into the queue.
-    default: 100
   strictcachecks:
     type: str
     choices:
@@ -285,18 +267,15 @@ options:
       - 'NO'
     description:
       - Enable strict CA certificate checks on the appliance.
-    default: 'NO'
   undefactioncontrol:
     type: str
     description:
       - 'Name of the undefined built-in control action: CLIENTAUTH, NOCLIENTAUTH,
         NOOP, RESET, or DROP.'
-    default: '"CLIENTAUTH"'
   undefactiondata:
     type: str
     description:
       - 'Name of the undefined built-in data action: NOOP, RESET or DROP.'
-    default: '"NOOP"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -56,7 +56,6 @@ options:
         binding. Only C(LOG) action can be combinded with C(DROP), C(RESET), C(REDIRECT)
         or C(MITIGATION) action.
     elements: str
-    default: NONE
   bot_iprep_enabled:
     type: str
     choices:
@@ -64,7 +63,6 @@ options:
       - 'OFF'
     description:
       - Enabled or disabled IP-repuation binding.
-    default: 'OFF'
   bot_ipreputation:
     type: bool
     description:

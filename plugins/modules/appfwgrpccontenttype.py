@@ -47,7 +47,6 @@ options:
       - NOTREGEX
     description:
       - Is gRPC content type a regular expression?
-    default: NOTREGEX
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

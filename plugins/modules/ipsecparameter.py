@@ -45,7 +45,6 @@ options:
     description:
       - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
     elements: str
-    default: AES
   hashalgo:
     type: list
     choices:
@@ -57,7 +56,6 @@ options:
     description:
       - Type of hashing algorithm
     elements: str
-    default: HMAC_SHA256
   ikeretryinterval:
     type: float
     description:
@@ -69,7 +67,6 @@ options:
       - V2
     description:
       - IKE Protocol Version
-    default: V2
   lifetime:
     type: float
     description:
@@ -88,7 +85,6 @@ options:
       - DISABLE
     description:
       - Enable/Disable PFS.
-    default: DISABLE
   replaywindowsize:
     type: float
     description:

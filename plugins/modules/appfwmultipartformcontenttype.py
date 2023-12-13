@@ -43,7 +43,6 @@ options:
       - NOTREGEX
     description:
       - Is multipart_form content type a regular expression?
-    default: NOTREGEX
   multipartformcontenttypevalue:
     type: str
     description:

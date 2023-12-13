@@ -43,7 +43,6 @@ options:
       - DENY
     description:
       - Allow/Deny user to log off and connect to another Gateway
-    default: DENY
   locationbasedvpn:
     type: str
     choices:
@@ -58,7 +57,6 @@ options:
         DNS suffix results in private IP, client is said to be in enterprise network.
         When set to EveryWhere, the client skips the check to detect if it is on the
         enterprise network and tries to establish the tunnel
-    default: Remote
   name:
     type: str
     description:
@@ -73,7 +71,6 @@ options:
         requires that tunnel be established). When set to C(onlyToGateway), the network
         traffic to and from the client (except Gateway IP) is blocked. When set to
         C(fullAccess), the network traffic is not blocked
-    default: fullAccess
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

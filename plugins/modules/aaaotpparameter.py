@@ -43,13 +43,11 @@ options:
       - 'OFF'
     description:
       - To encrypt otp secret in AD or not. Default value is C(OFF)
-    default: 'OFF'
   maxotpdevices:
     type: float
     description:
       - Maximum number of otp devices user can register. Default value is 4. Max value
         is 255
-    default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

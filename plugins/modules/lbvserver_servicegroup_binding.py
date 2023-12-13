@@ -67,7 +67,6 @@ options:
         greater weight. Defines the capacity of the service relative to the other
         services in the load balancing configuration. Determines the priority given
         to the service in load balancing decisions.
-    default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

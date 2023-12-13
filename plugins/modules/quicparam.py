@@ -43,7 +43,6 @@ options:
         tokens that will be issued in QUIC Retry packets and QUIC NEW_TOKEN frames
         sent by the Citrix ADC. A value of 0 can be configured if secret rotation
         is not desired.
-    default: 3600
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

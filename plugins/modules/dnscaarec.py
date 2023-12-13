@@ -68,7 +68,6 @@ options:
       - String that represents the identifier of the property represented by the CAA
         record. The RFC currently defines three available tags - issue, issuwild and
         iodef.
-    default: '"issue"'
   ttl:
     type: float
     description:
@@ -80,7 +79,6 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    default: 3600
   type:
     type: str
     choices:
@@ -92,7 +90,6 @@ options:
       - '* C(ADNS) - Display all authoritative address records.'
       - '* C(PROXY) - Display all proxy address records.'
       - '* C(ALL) - Display all address records.'
-    default: ADNS
   valuestring:
     type: str
     description:

@@ -42,7 +42,6 @@ options:
       - '* C(CLASSIC) - specifies the regular extended acls.'
       - '* C(DFD) - cluster specific acls,specifies hashmethod for steering of the
         packet in cluster .'
-    default: CLASSIC
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

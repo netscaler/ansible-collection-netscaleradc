@@ -45,7 +45,6 @@ options:
       - Synchronize connection information with the secondary appliance in a high
         availability (HA) pair. That is, synchronize all connection-related information
         for the INAT session
-    default: DISABLED
   ftp:
     type: str
     choices:
@@ -54,7 +53,6 @@ options:
     description:
       - Enable the FTP protocol on the server for transferring files between the client
         and the server.
-    default: DISABLED
   mode:
     type: str
     choices:
@@ -90,7 +88,6 @@ options:
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the RNAT TCP traffic
         by using Layer 4 features.
-    default: DISABLED
   td:
     type: float
     description:
@@ -104,7 +101,6 @@ options:
       - DISABLED
     description:
       - To enable/disable TFTP (Default C(DISABLED)).
-    default: DISABLED
   useproxyport:
     type: str
     choices:
@@ -113,7 +109,6 @@ options:
     description:
       - Enable the Citrix ADC to proxy the source port of packets before sending the
         packets to the server.
-    default: ENABLED
   usip:
     type: str
     choices:

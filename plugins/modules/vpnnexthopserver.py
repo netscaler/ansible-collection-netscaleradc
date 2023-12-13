@@ -66,7 +66,6 @@ options:
       - 'OFF'
     description:
       - Use of a secure port, such as 443, for the double-hop configuration.
-    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

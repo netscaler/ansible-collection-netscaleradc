@@ -40,13 +40,11 @@ options:
     type: float
     description:
       - Number of ICMP packets permitted per 10 milliseconds.
-    default: 100
   tcprstthreshold:
     type: float
     description:
       - The number of TCP RST packets permitted per 10 milli second. zero means rate
         control is disabled and 0xffffffff means every thing is rate controlled
-    default: 100
   tcpthreshold:
     type: float
     description:

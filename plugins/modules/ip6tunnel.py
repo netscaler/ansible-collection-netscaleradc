@@ -50,7 +50,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for the tunnel.
-    default: DEFAULT_NG
   remote:
     type: str
     description:

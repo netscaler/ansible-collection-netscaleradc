@@ -85,7 +85,6 @@ options:
       - '3. C(CLIENTHELLO_REQ): Policy evaluation will be done during handling of
         Client Hello Request. Action allowed with this type is: RESET, FORWARD and
         PICKCACERTGRP.'
-    default: REQUEST
   vservername:
     type: str
     description:

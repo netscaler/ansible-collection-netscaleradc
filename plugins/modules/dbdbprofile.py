@@ -44,7 +44,6 @@ options:
     description:
       - Use the same server-side connection for multiple client-side requests. Default
         is enabled.
-    default: ENABLED
   enablecachingconmuxoff:
     type: str
     choices:
@@ -52,7 +51,6 @@ options:
       - DISABLED
     description:
       - Enable caching when connection multiplexing is OFF.
-    default: DISABLED
   interpretquery:
     type: str
     choices:
@@ -61,7 +59,6 @@ options:
     description:
       - If ENABLED, inspect the query and update the connection information, if required.
         If DISABLED, forward the query to the server.
-    default: 'YES'
   kcdaccount:
     type: str
     description:
@@ -83,7 +80,6 @@ options:
       - 'NO'
     description:
       - If the queries are related to each other, forward to the same backend server.
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

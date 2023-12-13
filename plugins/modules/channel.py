@@ -70,7 +70,6 @@ options:
         frames. Flow control is a function as mentioned in clause 31 of the IEEE 802.3
         standard. Flow control allows congested ports to pause traffic from the peer
         device. Flow control is achieved by sending PAUSE frames.
-    default: 'OFF'
   haheartbeat:
     type: str
     choices:
@@ -80,7 +79,6 @@ options:
       - In a High Availability (HA) configuration, configure the LA channel for sending
         heartbeats. LA channel that has HA Heartbeat disabled should not send the
         heartbeats.
-    default: 'ON'
   hamonitor:
     type: str
     choices:
@@ -89,7 +87,6 @@ options:
     description:
       - In a High Availability (HA) configuration, monitor the LA channel for failure
         events. Failure of any LA channel that has HA MON enabled triggers HA failover.
-    default: 'ON'
   id:
     type: str
     description:
@@ -102,7 +99,6 @@ options:
     description:
       - Alias name for the LA channel. Used only to enhance readability. To perform
         any operations, you have to specify the LA channel ID.
-    default: '" "'
   ifnum:
     type: list
     description:
@@ -134,7 +130,6 @@ options:
       - 'OFF'
     description:
       - Link Redundancy for Cluster LAG.
-    default: 'OFF'
   lrminthroughput:
     type: float
     description:
@@ -183,7 +178,6 @@ options:
         On certain Virtualized / Cloud Platforms, the maximum  possible MTU is restricted
         to a lesser value, Similar calculation can be applied, Maximum Data Plane
         MTU in Cluster = (Maximum possible MTU - 78).
-    default: 1500
   speed:
     type: str
     choices:
@@ -201,7 +195,6 @@ options:
         is greater than or equal to the value set for this parameter, the state of
         the interface is UP. Otherwise, the state is INACTIVE. Bound Interfaces whose
         state is INACTIVE do not process any traffic.
-    default: AUTO
   tagall:
     type: str
     choices:
@@ -211,7 +204,6 @@ options:
       - Adds a four-byte 802.1q tag to every packet sent on this channel.  The C(ON)
         setting applies tags for all VLANs that are bound to this channel. C(OFF)
         applies the tag for all VLANs other than the native VLAN.
-    default: 'OFF'
   throughput:
     type: float
     description:
@@ -225,7 +217,6 @@ options:
       - 'OFF'
     description:
       - This is deprecated by tagall
-    default: 'OFF'
   channel_interface_binding:
     type: dict
     description: Bindings for channel_interface_binding resource

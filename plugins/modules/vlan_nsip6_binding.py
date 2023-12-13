@@ -54,7 +54,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for this vlan.
-    default: DEFAULT_NG
   td:
     type: float
     description:

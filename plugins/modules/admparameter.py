@@ -49,7 +49,6 @@ options:
         send system, usage and telemetry data to Citrix ADM service. View here [https://docs.citrix.com/en-us/citrix-adc/13/data-governance.html]
         to learn more about this feature. Use of this feature is subject to the Citrix
         End User ServiceAgreement. View here [https://www.citrix.com/buy/licensing/agreements.html]
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

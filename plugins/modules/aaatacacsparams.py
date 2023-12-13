@@ -62,7 +62,6 @@ options:
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.
-    default: 3
   defaultauthenticationgroup:
     type: str
     description:
@@ -80,7 +79,6 @@ options:
     type: int
     description:
       - Port number on which the TACACS+ server listens for connections.
-    default: 49
   tacacssecret:
     type: str
     description:

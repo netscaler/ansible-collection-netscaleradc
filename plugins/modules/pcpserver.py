@@ -55,7 +55,6 @@ options:
     type: int
     description:
       - Port number for the PCP server.
-    default: 5351
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -48,7 +48,6 @@ options:
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route. The lower the cost, the higher the preference.
-    default: 1
   detail:
     type: bool
     description:
@@ -57,7 +56,6 @@ options:
     type: float
     description:
       - Administrative distance of this route from the appliance.
-    default: 1
   gateway:
     type: str
     description:
@@ -75,7 +73,6 @@ options:
       - DISABLED
     description:
       - Monitor this route with a monitor of type ND6 or PING.
-    default: DISABLED
   network:
     type: str
     description:
@@ -86,7 +83,6 @@ options:
     description:
       - The owner node group in a Cluster for this route6. If owner node group is
         not specified then the route is treated as Striped route.
-    default: DEFAULT_NG
   routetype:
     type: str
     choices:
@@ -123,7 +119,6 @@ options:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the
         preference.
-    default: 1
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -47,7 +47,6 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     type: str
     description:
@@ -84,7 +83,6 @@ options:
       - 'NO'
     description:
       - Specify whether this policy should be evaluated.
-    default: 'NO'
   priority:
     type: float
     description:

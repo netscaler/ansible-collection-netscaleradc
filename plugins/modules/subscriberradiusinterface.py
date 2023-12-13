@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Treat radius interim message as start radius messages.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

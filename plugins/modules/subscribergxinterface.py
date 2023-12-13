@@ -51,14 +51,12 @@ options:
       - q!Set this setting to yes if Citrix ADC should send DWR packets to PCRF server.
         When the session is idle, healthcheck timer expires and DWR packets are initiated
         in order to check that PCRF server is active. By default set to No. !
-    default: 'NO'
   healthcheckttl:
     type: float
     description:
       - q!Healthcheck timeout, in seconds, after which the DWR will be sent in order
         to ensure the state of the PCRF server. Any CCR, CCA, RAR or RRA message resets
         the timer. !
-    default: 30
   holdonsubscriberabsence:
     type: str
     choices:
@@ -71,14 +69,12 @@ options:
         PCRF, default subscriber profile will be applied to this subscriber if configured.
         If default subscriber profile is also not configured an undef would be raised
         to expressions which use Subscriber attributes.
-    default: 'YES'
   idlettl:
     type: float
     description:
       - q!Idle Time, in seconds, after which the Gx CCR-U request will be sent after
         any PCRF activity on a session. Any RAR or CCA message resets the timer.
       - Zero value disables the idle timeout. !
-    default: 900
   negativettl:
     type: float
     description:
@@ -93,7 +89,6 @@ options:
         from Radius as well if Radius is configued.
       - Zero value disables the Negative Sessions. And Citrix ADC does not install
         Negative sessions even if subscriber session could not be fetched. !
-    default: 600
   negativettllimitedsuccess:
     type: str
     choices:
@@ -103,7 +98,6 @@ options:
       - Set this to C(YES) if Citrix ADC should create negative session for Result-Code
         DIAMETER_LIMITED_SUCCESS (2002) received in CCA-I. If set to C(NO), regular
         session is created.
-    default: 'NO'
   nodeid:
     type: float
     description:
@@ -122,13 +116,11 @@ options:
     description:
       - Set this setting to C(YES) if needed to purge Subscriber Database in case
         of Gx failure. By default set to C(NO).
-    default: 'NO'
   requestretryattempts:
     type: float
     description:
       - If the request does not complete within requestTimeout time, the request is
         retransmitted for requestRetryAttempts time.
-    default: 3
   requesttimeout:
     type: float
     description:
@@ -139,7 +131,6 @@ options:
         profile is also not configured an undef would be raised to expressions which
         use Subscriber attributes.
       - Zero disables the timeout. !
-    default: 10
   revalidationtimeout:
     type: float
     description:

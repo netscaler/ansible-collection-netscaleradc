@@ -43,35 +43,29 @@ options:
       - DISABLED
     description:
       - Send a Hello Verify request to validate the client.
-    default: ENABLED
   maxbadmacignorecount:
     type: float
     description:
       - Maximum number of bad MAC errors to ignore for a connection prior disconnect.
         Disabling parameter terminateSession terminates session immediately when bad
         MAC is detected in the connection.
-    default: 100
   maxholdqlen:
     type: float
     description:
       - Maximum number of datagrams that can be queued at DTLS layer for processing
-    default: 32
   maxpacketsize:
     type: float
     description:
       - Maximum number of packets to reassemble. This value helps protect against
         a fragmented packet attack.
-    default: 120
   maxrecordsize:
     type: float
     description:
       - Maximum size of records that can be sent if PMTU is disabled.
-    default: 1459
   maxretrytime:
     type: float
     description:
       - Wait for the specified time, in seconds, before resending the request.
-    default: 3
   name:
     type: str
     description:
@@ -87,7 +81,6 @@ options:
     description:
       - Source for the maximum record size value. If C(ENABLED), the value is taken
         from the PMTU table. If C(DISABLED), the value is taken from the profile.
-    default: DISABLED
   terminatesession:
     type: str
     choices:
@@ -96,7 +89,6 @@ options:
     description:
       - Terminate the session if the message authentication code (MAC) of the client
         and server do not match.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -47,7 +47,6 @@ options:
       - APPFW_GLOBAL
     description:
       - '0'
-    default: SYSTEM_GLOBAL
   gotopriorityexpression:
     type: str
     description:
@@ -78,7 +77,6 @@ options:
         expression evaluates to the number 85). This example assumes that the priority
         number increments by 10 for every successive policy, and therefore a priority
         number of 85 does not exist in the policy label.'
-    default: '"END"'
   invoke:
     type: bool
     description:

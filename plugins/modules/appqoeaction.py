@@ -84,7 +84,6 @@ options:
     type: float
     description:
       - Retry count
-    default: 3
   polqdepth:
     type: float
     description:
@@ -131,7 +130,6 @@ options:
       - 'NO'
     description:
       - Retry on TCP Reset
-    default: 'NO'
   retryontimeout:
     type: float
     description:

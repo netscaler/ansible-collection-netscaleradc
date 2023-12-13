@@ -176,7 +176,9 @@ class ModuleExecutor(object):
 
     @trace
     def _filter_resource_module_params(self):
+        log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
+            log("DEBUG: k: %s, v: %s" % (k, v))
             if (not k.endswith("_binding")) and (
                 k
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
@@ -816,6 +818,8 @@ class ModuleExecutor(object):
                                 % self.resource_name
                             )
                             self.return_failure(msg)
+                    elif NITRO_RESOURCE_MAP[self.resource_name]["delete_arg_keys"]:
+                        self.delete()
                     else:
                         msg = (
                             "ERROR: `state=absent` is not supported for resource `%s`"

@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Azure polling period (in seconds)
-    default: 60
   azuretagname:
     type: str
     description:
@@ -115,7 +114,6 @@ options:
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
-    default: 'NO'
   ipaddress:
     type: str
     description:

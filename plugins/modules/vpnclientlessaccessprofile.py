@@ -102,7 +102,6 @@ options:
         access. If this parameter is set to C(ON), COM objects, such as MSOffice,
         which are invoked by the browser can access the files using clientless access.
         Use caution because the persistent cookie is stored on the disk.
-    default: 'OFF'
   reshdrrewritepolicylabel:
     type: str
     description:

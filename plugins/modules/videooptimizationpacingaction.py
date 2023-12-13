@@ -58,7 +58,6 @@ options:
     type: int
     description:
       - ABR Video Optimization Pacing Rate (in Kbps)
-    default: 1000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

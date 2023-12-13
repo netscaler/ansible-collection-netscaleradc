@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable logging appflow flow information
-    default: ENABLED
   backupip:
     type: str
     description:
@@ -103,7 +102,6 @@ options:
         virtual server to serve traffic. The effective state of the load balancing
         virtual server, which is transferred to the GSLB service, is UP even if only
         one virtual server in the backup chain of virtual servers is in the UP state.
-    default: NONE
   cookie_domain:
     type: str
     description:
@@ -122,7 +120,6 @@ options:
       - Continue to direct traffic to the backup chain even after the primary GSLB
         virtual server returns to the UP state. Used when spillover is configured
         for the virtual server.
-    default: DISABLED
   dnsrecordtype:
     type: str
     choices:
@@ -132,7 +129,6 @@ options:
       - NAPTR
     description:
       - DNS record type to associate with the GSLB virtual server's domain name.
-    default: A
   domainname:
     type: str
     description:
@@ -149,7 +145,6 @@ options:
         or ignore both when using weight-based load balancing methods. The state of
         the number of services bound to the virtual server help the appliance to select
         the service.
-    default: DISABLED
   ecs:
     type: str
     choices:
@@ -160,7 +155,6 @@ options:
         a DNS query with ECS. The ECS address will be used for persistence and spillover
         persistence (if enabled) instead of the LDNS address. Persistence mask is
         ignored if ECS is enabled.
-    default: DISABLED
   ecsaddrvalidation:
     type: str
     choices:
@@ -169,7 +163,6 @@ options:
     description:
       - Validate if ECS address is a private or unroutable address and in such cases,
         use the LDNS IP.
-    default: DISABLED
   edr:
     type: str
     choices:
@@ -177,7 +170,6 @@ options:
       - DISABLED
     description:
       - Send clients an empty DNS response when the GSLB virtual server is DOWN.
-    default: DISABLED
   iptype:
     type: str
     choices:
@@ -185,7 +177,6 @@ options:
       - IPV6
     description:
       - The IP type for this GSLB vserver.
-    default: IPV4
   lbmethod:
     type: str
     choices:
@@ -201,7 +192,6 @@ options:
       - API
     description:
       - Load balancing method for the GSLB virtual server.
-    default: LEASTCONNECTION
   mir:
     type: str
     choices:
@@ -209,7 +199,6 @@ options:
       - DISABLED
     description:
       - Include multiple IP addresses in the DNS responses sent to clients.
-    default: DISABLED
   name:
     type: str
     description:
@@ -273,7 +262,6 @@ options:
         by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    default: '"none"'
   servicegroupname:
     type: str
     description:
@@ -354,12 +342,10 @@ options:
     description:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup GSLB virtual servers.
-    default: DISABLED
   sopersistencetimeout:
     type: float
     description:
       - Timeout for spillover persistence, in minutes.
-    default: 2
   sothreshold:
     type: float
     description:
@@ -371,7 +357,6 @@ options:
     type: float
     description:
       - Idle time, in minutes, after which a persistence entry is cleared.
-    default: 2
   toggleorder:
     type: str
     choices:
@@ -379,7 +364,6 @@ options:
       - DESCENDING
     description:
       - Configure this option to toggle order preference
-    default: ASCENDING
   tolerance:
     type: float
     description:
@@ -399,13 +383,11 @@ options:
     description:
       - Number of bits to consider, in an IPv6 source IP address, for creating the
         hash that is required by the SOURCEIPHASH load balancing method.
-    default: 128
   v6persistmasklen:
     type: float
     description:
       - Number of bits to consider in an IPv6 source IP address when creating source
         IP address based persistence sessions.
-    default: 128
   weight:
     type: float
     description:

@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable logging of AppFlow information.
-    default: ENABLED
   arp:
     type: str
     choices:
@@ -63,7 +62,6 @@ options:
     description:
       - Decides whether the backend connection made by Citrix ADC to the origin server
         will be HTTP or SSL. Applicable only for SSL type CR Forward proxy vserver.
-    default: DISABLED
   backupvserver:
     type: str
     description:
@@ -116,7 +114,6 @@ options:
     description:
       - Continue sending traffic to a backup virtual server even after the primary
         virtual server comes UP from the DOWN state.
-    default: DISABLED
   disallowserviceaccess:
     type: str
     choices:
@@ -126,7 +123,6 @@ options:
       - This is effective when a FORWARD type cr vserver is added. By default, this
         parameter is C(DISABLED). When it is C(ENABLED), backend services cannot be
         accessed through a FORWARD type cr vserver.
-    default: DISABLED
   dnsvservername:
     type: str
     description:
@@ -150,7 +146,6 @@ options:
       - DISABLED
     description:
       - Perform delayed cleanup of connections to this virtual server.
-    default: ENABLED
   format:
     type: str
     choices:
@@ -179,7 +174,6 @@ options:
       - Criterion for responding to PING requests sent to this virtual server. If
         C(ACTIVE), respond only if the virtual server is available. If C(PASSIVE),
         respond even if the virtual server is not available.
-    default: PASSIVE
   ipset:
     type: str
     description:
@@ -204,13 +198,11 @@ options:
     description:
       - String specifying the listen policy for the cache redirection virtual server.
         Can be either an in-line expression or the name of a named expression.
-    default: '"NONE"'
   listenpriority:
     type: float
     description:
       - Priority of the listen policy specified by the Listen Policy parameter. The
         lower the number, higher the priority.
-    default: 101
   map:
     type: str
     choices:
@@ -253,7 +245,6 @@ options:
         server, as specified.
       - 'Note: For this option to work, you must set the cache redirection type to
         POLICY.'
-    default: ORIGIN
   originusip:
     type: str
     choices:
@@ -267,7 +258,6 @@ options:
     type: int
     description:
       - Port number of the virtual server.
-    default: 80
   precedence:
     type: str
     choices:
@@ -290,7 +280,6 @@ options:
       - 10.  Default
       - If you specify C(RULE), the rule based policies are applied before C(URL)
         based policies are applied.
-    default: RULE
   probeport:
     type: int
     description:
@@ -308,14 +297,12 @@ options:
     type: str
     description:
       - HTTP code to return in SUCCESS case.
-    default: '"200 OK"'
   range:
     type: float
     description:
       - Number of consecutive IP addresses, starting with the address specified by
         the IPAddress parameter, to include in a range of addresses assigned to this
         virtual server.
-    default: 1
   redirect:
     type: str
     choices:
@@ -329,7 +316,6 @@ options:
       - '* C(POLICY) - Apply the cache redirection policy to determine whether the
         request should be directed to the cache or to the origin.'
       - '* C(ORIGIN) - Direct all requests to the origin server.'
-    default: POLICY
   redirecturl:
     type: str
     description:
@@ -350,7 +336,6 @@ options:
       - '* POLICY - TCP connections to the origin servers are not reused.'
       - If you set the Reuse parameter to C(ON), connections to origin servers and
         connections to cache servers are reused.
-    default: 'ON'
   rhistate:
     type: str
     choices:
@@ -365,7 +350,6 @@ options:
       - '            * If set to C(ACTIVE) on some virtual servers and C(PASSIVE)
         on the others, the appliance, injects even if one virtual server set to C(ACTIVE)
         is UP.'
-    default: PASSIVE
   servicetype:
     type: str
     choices:
@@ -419,7 +403,6 @@ options:
       - Use origin ip/port while forwarding request to the cache. Change the destination
         IP, destination port of the request came to CR vserver to Origin IP and Origin
         Port and forward it to Cache
-    default: 'NO'
   useportrange:
     type: str
     choices:
@@ -429,7 +412,6 @@ options:
       - Use a port number from the port range (set by using the set ns param command,
         or in the Create Virtual Server (Cache Redirection) dialog box) as the source
         port in the requests sent to the origin server.
-    default: 'OFF'
   via:
     type: str
     choices:
@@ -439,7 +421,6 @@ options:
       - Insert a via header in each HTTP request. In the case of a cache miss, the
         request is redirected from the cache server to the origin server. This header
         indicates whether the request is being sent from a cache server.
-    default: 'ON'
   crvserver_analyticsprofile_binding:
     type: dict
     description: Bindings for crvserver_analyticsprofile_binding resource

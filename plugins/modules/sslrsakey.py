@@ -60,7 +60,6 @@ options:
     description:
       - Public exponent for the RSA key. The exponent is part of the cipher algorithm
         and is required for creating the RSA key.
-    default: F4
   keyfile:
     type: str
     description:
@@ -73,7 +72,6 @@ options:
       - PEM
     description:
       - Format in which the RSA key file is stored on the appliance.
-    default: PEM
   password:
     type: str
     description:

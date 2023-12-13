@@ -43,7 +43,6 @@ options:
       - 'OFF'
     description:
       - Enable CEF format logs.
-    default: 'OFF'
   centralizedlearning:
     type: str
     choices:
@@ -51,7 +50,6 @@ options:
       - 'OFF'
     description:
       - Flag used to enable/disable ADM centralized learning
-    default: 'OFF'
   clientiploggingheader:
     type: str
     description:
@@ -67,7 +65,6 @@ options:
       - Profile to use when a connection does not match any policy. Default setting
         is APPFW_BYPASS, which sends unmatched connections back to the Citrix ADC
         without attempting to filter them further.
-    default: APPFW_BYPASS
   entitydecoding:
     type: str
     choices:
@@ -75,7 +72,6 @@ options:
       - 'OFF'
     description:
       - Transform multibyte (double- or half-width) characters to single width characters.
-    default: 'OFF'
   geolocationlogging:
     type: str
     choices:
@@ -83,14 +79,12 @@ options:
       - 'OFF'
     description:
       - Enable Geo-Location Logging in CEF format logs.
-    default: 'OFF'
   importsizelimit:
     type: float
     description:
       - Cumulative total maximum number of bytes in web forms imported to a protected
         web site. If a user attempts to upload files with a total byte count higher
         than the specified limit, the application firewall blocks the request.
-    default: 134217728
   learnratelimit:
     type: float
     description:
@@ -98,7 +92,6 @@ options:
         engine examines to generate new relaxations for learning-enabled security
         checks. The application firewall drops any connections above this limit from
         the list of connections used by the learning engine.
-    default: 400
   logmalformedreq:
     type: str
     choices:
@@ -107,7 +100,6 @@ options:
     description:
       - Log requests that are so malformed that application firewall parsing doesn't
         occur.
-    default: 'ON'
   malformedreqaction:
     type: list
     choices:
@@ -127,7 +119,6 @@ options:
     type: int
     description:
       - Proxy Server Port to get updated signatures from AWS.
-    default: 8080
   proxyserver:
     type: str
     description:
@@ -161,14 +152,12 @@ options:
       - Maximum number of sessions that the application firewall allows to be active,
         regardless of user activity. After the max_limit reaches, No more user session
         will be created .
-    default: 100000
   sessiontimeout:
     type: float
     description:
       - Timeout, in seconds, after which a user session is terminated. Before continuing
         to use the protected web site, the user must establish a new session by opening
         a designated start URL.
-    default: 900
   signatureautoupdate:
     type: str
     choices:
@@ -176,12 +165,10 @@ options:
       - 'OFF'
     description:
       - Flag used to enable/disable auto update signatures
-    default: 'OFF'
   signatureurl:
     type: str
     description:
       - URL to download the mapping file from server
-    default: https://s3.amazonaws.com/NSAppFwSignatures/SignaturesMapping.xml
   undefaction:
     type: str
     description:
@@ -190,7 +177,6 @@ options:
       - An UNDEF event indicates an internal error condition. The APPFW_BLOCK built-in
         profile is the default setting. You can specify a different built-in or user-created
         profile as the UNDEF profile.
-    default: APPFW_BLOCK
   useconfigurablesecretkey:
     type: str
     choices:
@@ -198,7 +184,6 @@ options:
       - 'OFF'
     description:
       - Use configurable secret key in AppFw operations
-    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

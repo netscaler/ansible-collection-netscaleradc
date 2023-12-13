@@ -68,7 +68,6 @@ options:
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
-    default: DISABLED
   httponlycookieflag:
     type: str
     choices:
@@ -78,7 +77,6 @@ options:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
-    default: ENABLED
   lbhashalgorithm:
     type: str
     choices:
@@ -89,14 +87,12 @@ options:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
-    default: DEFAULT
   lbhashfingers:
     type: float
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory.
-    default: 256
   lbprofilename:
     type: str
     description:
@@ -120,7 +116,6 @@ options:
         not under go any steering. Turn this option for single pa
       - cket request response mode or when the upstream device is performing a proper
         RSS for connection based distribution.
-    default: DISABLED
   storemqttclientidandusername:
     type: str
     choices:
@@ -129,7 +124,6 @@ options:
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
-    default: 'NO'
   useencryptedpersistencecookie:
     type: str
     choices:
@@ -137,7 +131,6 @@ options:
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    default: DISABLED
   usesecuredpersistencecookie:
     type: str
     choices:
@@ -145,7 +138,6 @@ options:
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

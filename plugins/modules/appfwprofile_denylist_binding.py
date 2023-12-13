@@ -52,7 +52,6 @@ options:
     description:
       - Deny List Action. Default value = C(REDIRECT)
     elements: str
-    default: REDIRECT
   as_deny_list_location:
     type: str
     choices:
@@ -69,7 +68,6 @@ options:
       - Expression
     description:
       - Deny List value type
-    default: literal
   comment:
     type: str
     description:

@@ -45,7 +45,6 @@ options:
     type: str
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
-    default: '"\\d*"'
   addrton:
     type: float
     description:
@@ -64,7 +63,6 @@ options:
         center.'
       - '* C(TRANSMITTERONLY) - Client can only send messages.'
       - '* C(RECEIVERONLY) - Client can only receive messages.'
-    default: TRANSCEIVER
   msgqueue:
     type: str
     choices:
@@ -73,14 +71,12 @@ options:
     description:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
-    default: 'OFF'
   msgqueuesize:
     type: float
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,
         to the message center.
-    default: 10000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable logging of AppFlow information for the specified service group.
-    default: ENABLED
   autodelayedtrofs:
     type: str
     choices:
@@ -57,7 +56,6 @@ options:
       - Indicates graceful movement of IP-Port binding/s to TROFS when IP addresses
         are removed from DNS response. System will wait for monitor response timeout
         period before moving to TROFS .
-    default: 'NO'
   autodisabledelay:
     type: float
     description:
@@ -76,7 +74,6 @@ options:
     description:
       - Indicates graceful shutdown of the service. System will wait for all outstanding
         connections to this service to be closed before disabling the service.
-    default: 'NO'
   autoscale:
     type: str
     choices:
@@ -87,7 +84,6 @@ options:
       - API
     description:
       - Auto scale option for a servicegroup
-    default: DISABLED
   cacheable:
     type: str
     choices:
@@ -97,7 +93,6 @@ options:
       - Use the transparent cache redirection virtual server to forward the request
         to the cache server.
       - 'Note: Do not set this parameter if you set the Cache Type.'
-    default: 'NO'
   cachetype:
     type: str
     choices:
@@ -148,7 +143,6 @@ options:
     description:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
-    default: '"None"'
   dbsttl:
     type: float
     description:
@@ -172,7 +166,6 @@ options:
       - Flush all active transactions associated with all the services in the service
         group whose state transitions from UP to DOWN. Do not enable this option for
         applications that must complete their transactions.
-    default: ENABLED
   dup_weight:
     type: float
     description:
@@ -185,7 +178,6 @@ options:
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
-    default: 'NO'
   hashid:
     type: float
     description:
@@ -201,7 +193,6 @@ options:
       - C(YES) - Send probes to check the health of the service.
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
-    default: 'YES'
   httpprofilename:
     type: str
     description:
@@ -294,7 +285,6 @@ options:
       - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service group.
-    default: 'OFF'
   serverid:
     type: float
     description:
@@ -371,7 +361,6 @@ options:
       - 'OFF'
     description:
       - Enable surge protection for the service group.
-    default: 'OFF'
   svrtimeout:
     type: float
     description:

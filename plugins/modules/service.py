@@ -53,7 +53,6 @@ options:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
-    default: 'NO'
   all:
     type: bool
     description:
@@ -65,7 +64,6 @@ options:
       - DISABLED
     description:
       - Enable logging of AppFlow information.
-    default: ENABLED
   cacheable:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
       - Use the transparent cache redirection virtual server to forward requests to
         the cache server.
       - 'Note: Do not specify this parameter if you set the Cache Type parameter.'
-    default: 'NO'
   cachetype:
     type: str
     choices:
@@ -142,7 +139,6 @@ options:
     description:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
-    default: '"None"'
   delay:
     type: float
     description:
@@ -167,7 +163,6 @@ options:
       - Flush all active transactions associated with a service whose state transitions
         from UP to DOWN. Do not enable this option for applications that must complete
         their transactions.
-    default: ENABLED
   graceful:
     type: str
     choices:
@@ -176,7 +171,6 @@ options:
     description:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
-    default: 'NO'
   hashid:
     type: float
     description:
@@ -192,7 +186,6 @@ options:
       - C(YES) - Send probes to check the health of the service.
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
-    default: 'YES'
   httpprofilename:
     type: str
     description:
@@ -282,7 +275,6 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
-    default: DISABLED
   rtspsessionidremap:
     type: str
     choices:
@@ -290,7 +282,6 @@ options:
       - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service.
-    default: 'OFF'
   serverid:
     type: float
     description:

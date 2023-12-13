@@ -45,7 +45,6 @@ options:
     description:
       - Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be
         set to C(STRICT) to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
-    default: DISABLED
   allowedlogingroups:
     type: str
     description:

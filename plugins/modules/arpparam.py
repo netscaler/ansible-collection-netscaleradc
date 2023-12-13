@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - enable/disable arp spoofing validation
-    default: DISABLED
   timeout:
     type: float
     description:
@@ -51,7 +50,6 @@ options:
         The new value applies only to ARP entries that are dynamically learned after
         the new value is set. Previously existing ARP entries expire after the previously
         configured aging time.
-    default: 1200
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

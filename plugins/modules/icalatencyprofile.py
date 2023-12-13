@@ -42,7 +42,6 @@ options:
       - L7 Latency Max notify Count. This is the upper limit on the number of notifications
         sent to the Insight Center within an interval where the Latency is above the
         threshold.
-    default: 5
   l7latencymonitoring:
     type: str
     choices:
@@ -50,27 +49,23 @@ options:
       - DISABLED
     description:
       - Enable/Disable L7 Latency monitoring for L7 latency notifications
-    default: DISABLED
   l7latencynotifyinterval:
     type: float
     description:
       - L7 Latency Notify Interval. This is the interval at which the Citrix ADC sends
         out notifications to the Insight Center after the wait time has passed.
-    default: 20
   l7latencythresholdfactor:
     type: float
     description:
       - L7 Latency threshold factor. This is the factor by which the active latency
         should be greater than the minimum observed value to determine that the latency
         is high and may need to be reported
-    default: 4
   l7latencywaittime:
     type: float
     description:
       - L7 Latency Wait time. This is the time for which the Citrix ADC waits after
         the threshold is exceeded before it sends out a Notification to the Insight
         Center.
-    default: 20
   name:
     type: str
     description:

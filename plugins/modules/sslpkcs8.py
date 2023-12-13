@@ -43,7 +43,6 @@ options:
       - PEM
     description:
       - Format in which the key file is stored on the appliance.
-    default: PEM
   password:
     type: str
     description:

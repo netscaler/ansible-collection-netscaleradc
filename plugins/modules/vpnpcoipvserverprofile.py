@@ -48,7 +48,6 @@ options:
     type: int
     description:
       - UDP port for PCoIP data traffic
-    default: 4172
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

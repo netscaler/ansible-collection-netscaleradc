@@ -66,7 +66,6 @@ options:
       - 'C(PROTO) '
       - C(OAS)/Swagger
       - C(GRAPHQL)
-    default: PROTO
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

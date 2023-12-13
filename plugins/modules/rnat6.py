@@ -58,7 +58,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
-    default: DEFAULT_NG
   redirectport:
     type: int
     description:
@@ -72,7 +71,6 @@ options:
     description:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
-    default: DISABLED
   td:
     type: float
     description:

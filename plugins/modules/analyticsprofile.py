@@ -44,7 +44,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will log all the request and response
         headers.
-    default: DISABLED
   analyticsauthtoken:
     type: str
     description:
@@ -73,7 +72,6 @@ options:
       - DISABLED
     description:
       - This option indicates the whether auditlog should be sent to the REST collector.
-    default: DISABLED
   collectors:
     type: str
     description:
@@ -90,7 +88,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP CQA parameters.
-    default: DISABLED
   events:
     type: str
     choices:
@@ -98,7 +95,6 @@ options:
       - DISABLED
     description:
       - This option indicates the whether events should be sent to the REST collector.
-    default: DISABLED
   grpcstatus:
     type: str
     choices:
@@ -106,7 +102,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the gRPC status headers
-    default: DISABLED
   httpauthentication:
     type: str
     choices:
@@ -114,7 +109,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log Authentication header.
-    default: DISABLED
   httpclientsidemeasurements:
     type: str
     choices:
@@ -124,7 +118,6 @@ options:
       - On enabling this option, the Citrix ADC will insert a javascript into the
         HTTP response to collect the client side page-timings and will send the same
         to the configured collectors.
-    default: DISABLED
   httpcontenttype:
     type: str
     choices:
@@ -132,7 +125,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log content-length header.
-    default: DISABLED
   httpcookie:
     type: str
     choices:
@@ -140,7 +132,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log cookie header.
-    default: DISABLED
   httpdomainname:
     type: str
     choices:
@@ -148,7 +139,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log domain name.
-    default: DISABLED
   httphost:
     type: str
     choices:
@@ -157,7 +147,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will log the Host header in appflow
         records
-    default: DISABLED
   httplocation:
     type: str
     choices:
@@ -165,7 +154,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log location header.
-    default: DISABLED
   httpmethod:
     type: str
     choices:
@@ -174,7 +162,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will log the method header in appflow
         records
-    default: DISABLED
   httppagetracking:
     type: str
     choices:
@@ -183,7 +170,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will link the embedded objects of
         a page together.
-    default: DISABLED
   httpreferer:
     type: str
     choices:
@@ -192,7 +178,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will log the referer header in appflow
         records
-    default: DISABLED
   httpsetcookie:
     type: str
     choices:
@@ -200,7 +185,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie header.
-    default: DISABLED
   httpsetcookie2:
     type: str
     choices:
@@ -208,7 +192,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log set-cookie2 header.
-    default: DISABLED
   httpurl:
     type: str
     choices:
@@ -216,7 +199,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log the URL in appflow records
-    default: DISABLED
   httpurlquery:
     type: str
     choices:
@@ -224,7 +206,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log URL Query.
-    default: DISABLED
   httpuseragent:
     type: str
     choices:
@@ -232,7 +213,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log User-Agent header.
-    default: DISABLED
   httpvia:
     type: str
     choices:
@@ -240,7 +220,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will Via header.
-    default: DISABLED
   httpxforwardedforheader:
     type: str
     choices:
@@ -248,7 +227,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log X-Forwarded-For header.
-    default: DISABLED
   integratedcache:
     type: str
     choices:
@@ -257,7 +235,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will log the Integrated Caching appflow
         records
-    default: DISABLED
   metrics:
     type: str
     choices:
@@ -265,13 +242,11 @@ options:
       - DISABLED
     description:
       - This option indicates the whether metrics should be sent to the REST collector.
-    default: DISABLED
   metricsexportfrequency:
     type: float
     description:
       - This option is for configuring the metrics export frequency in seconds, frequency
         value must be in [30,300] seconds range
-    default: 30
   name:
     type: str
     description:
@@ -292,7 +267,6 @@ options:
     description:
       - This option indicates the format of REST API POST body. It depends on the
         consumer of the analytics data.
-    default: avro
   schemafile:
     type: str
     description:
@@ -305,7 +279,6 @@ options:
       - Pull
     description:
       - This option is for setting the mode of how data is provided
-    default: Push
   tcpburstreporting:
     type: str
     choices:
@@ -313,7 +286,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will log TCP burst parameters.
-    default: ENABLED
   type:
     type: str
     choices:
@@ -338,7 +310,6 @@ options:
       - DISABLED
     description:
       - On enabling this option, the Citrix ADC will send the URL category record.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

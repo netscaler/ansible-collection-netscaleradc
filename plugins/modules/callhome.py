@@ -44,7 +44,6 @@ options:
     type: float
     description:
       - Interval (in days) between CallHome heartbeats
-    default: 7
   ipaddress:
     type: str
     description:
@@ -56,7 +55,6 @@ options:
       - CSP
     description:
       - CallHome mode of operation
-    default: Default
   nodeid:
     type: float
     description:
@@ -79,7 +77,6 @@ options:
       - Enables or disables the proxy mode. The proxy server can be set by either
         specifying the IP address of the server or the name of the service representing
         the proxy server.
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

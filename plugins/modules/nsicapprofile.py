@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - 'Enable or Disable sending Allow: 204 header in ICAP request.'
-    default: ENABLED
   connectionkeepalive:
     type: str
     choices:
@@ -52,7 +51,6 @@ options:
     description:
       - If enabled, Citrix ADC keeps the ICAP connection alive after a transaction
         to reuse it to send next ICAP request.
-    default: ENABLED
   hostheader:
     type: str
     description:
@@ -109,13 +107,11 @@ options:
         ICAP server to see the beginning of a transaction, then decide if it wants
         to opt-out of the transaction early instead of receiving the remainder of
         the request message.
-    default: DISABLED
   previewlength:
     type: float
     description:
       - Value of Preview Header field. Citrix ADC uses the minimum of this set value
         and the preview size received on OPTIONS response.
-    default: 4096
   queryparams:
     type: str
     description:
@@ -147,7 +143,6 @@ options:
         such as a browser, will handle this and may inform the user. The client may
         then resend the request if desired.'
       - '* C(DROP) - Drop the request without sending a response to the user.'
-    default: RESET
   uri:
     type: str
     description:

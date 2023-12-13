@@ -52,7 +52,6 @@ options:
       - 'OFF'
     description:
       - Flag used to enable/disable auto enable new signatures
-    default: 'OFF'
   category:
     type: str
     description:
@@ -68,7 +67,6 @@ options:
       - 'OFF'
     description:
       - Flag used to enable/disable enable signature rule IDs/Signature Category
-    default: 'ON'
   merge:
     type: bool
     description:

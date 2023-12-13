@@ -43,7 +43,6 @@ options:
       - NOTREGEX
     description:
       - Is urlencoded form content type a regular expression?
-    default: NOTREGEX
   urlencodedformcontenttypevalue:
     type: str
     description:

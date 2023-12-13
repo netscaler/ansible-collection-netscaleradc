@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Advertise VIPs from Shared VLAN on Default Partition.
-    default: DISABLED
   arp:
     type: str
     choices:
@@ -55,12 +54,10 @@ options:
       - DISABLED
     description:
       - Respond to ARP requests for this IP address.
-    default: ENABLED
   arpowner:
     type: float
     description:
       - The arp owner in a Cluster for this IP address. It can vary from 0 to 31.
-    default: 255
   arpresponse:
     type: str
     choices:
@@ -85,7 +82,6 @@ options:
       - DISABLED
     description:
       - Use this option to enable or disable BGP on this IP address for the entity.
-    default: DISABLED
   decrementttl:
     type: str
     choices:
@@ -94,7 +90,6 @@ options:
     description:
       - Decrement TTL by 1 when C(ENABLED).This setting is applicable only for UDP
         traffic.
-    default: DISABLED
   dynamicrouting:
     type: str
     choices:
@@ -102,7 +97,6 @@ options:
       - DISABLED
     description:
       - Allow dynamic routing on this IP address. Specific to Subnet IP (SNIP) address.
-    default: DISABLED
   ftp:
     type: str
     choices:
@@ -110,7 +104,6 @@ options:
       - DISABLED
     description:
       - Allow File Transfer Protocol (FTP) access to this IP address.
-    default: ENABLED
   gui:
     type: str
     choices:
@@ -119,7 +112,6 @@ options:
       - DISABLED
     description:
       - Allow graphical user interface (GUI) access to this IP address.
-    default: ENABLED
   hostroute:
     type: str
     choices:
@@ -139,7 +131,6 @@ options:
       - DISABLED
     description:
       - Respond to ICMP requests for this IP address.
-    default: ENABLED
   icmpresponse:
     type: str
     choices:
@@ -185,7 +176,6 @@ options:
       - DISABLED
     description:
       - Allow access to management applications on this IP address.
-    default: DISABLED
   mptcpadvertise:
     type: str
     choices:
@@ -194,7 +184,6 @@ options:
     description:
       - If enabled, this IP will be advertised by Citrix ADC to MPTCP enabled clients
         as part of ADD_ADDR option.
-    default: 'NO'
   netmask:
     type: str
     description:
@@ -214,7 +203,6 @@ options:
       - DISABLED
     description:
       - Use this option to enable or disable OSPF on this IP address for the entity.
-    default: DISABLED
   ospfarea:
     type: float
     description:
@@ -222,7 +210,6 @@ options:
         be advertised for this virtual IP (VIP)  address by the OSPF protocol running
         on the Citrix ADC.  When this parameter is not set, the VIP is advertised
         on all areas.
-    default: -1
   ospflsatype:
     type: str
     choices:
@@ -231,7 +218,6 @@ options:
     description:
       - Type of LSAs to be used by the OSPF protocol, running on the Citrix ADC, for
         advertising the route for this VIP address.
-    default: TYPE5
   ownerdownresponse:
     type: str
     choices:
@@ -240,13 +226,11 @@ options:
     description:
       - in cluster system, if the owner node is down, whether should it respond to
         icmp/arp
-    default: 'YES'
   ownernode:
     type: float
     description:
       - The owner node in a Cluster for this IP address. Owner node can vary from
         0 to 31. If ownernode is not specified then the IP is treated as Striped IP.
-    default: 255
   restrictaccess:
     type: str
     choices:
@@ -256,7 +240,6 @@ options:
       - Block access to nonmanagement applications on this IP. This option is applicable
         for MIPs, SNIPs, and NSIP, and is disabled by default. Nonmanagement applications
         can run on the underlying Citrix ADC Free BSD operating system.
-    default: DISABLED
   rip:
     type: str
     choices:
@@ -264,7 +247,6 @@ options:
       - DISABLED
     description:
       - Use this option to enable or disable RIP on this IP address for the entity.
-    default: DISABLED
   snmp:
     type: str
     choices:
@@ -272,7 +254,6 @@ options:
       - DISABLED
     description:
       - Allow Simple Network Management Protocol (SNMP) access to this IP address.
-    default: ENABLED
   ssh:
     type: str
     choices:
@@ -280,7 +261,6 @@ options:
       - DISABLED
     description:
       - Allow secure shell (SSH) access to this IP address.
-    default: ENABLED
   tag:
     type: float
     description:
@@ -299,7 +279,6 @@ options:
       - DISABLED
     description:
       - Allow Telnet access to this IP address.
-    default: ENABLED
   type:
     type: str
     choices:
@@ -328,7 +307,6 @@ options:
       - '* A Cluster IP (C(CLIP)) address is the management address of the cluster.
         All cluster configurations must be performed by accessing the cluster through
         this IP address.'
-    default: SNIP
   vrid:
     type: float
     description:
@@ -343,7 +321,6 @@ options:
     description:
       - Use this option to set (enable or disable) the virtual server attribute for
         this IP address.
-    default: ENABLED
   vserverrhilevel:
     type: str
     choices:
@@ -375,7 +352,6 @@ options:
       - ' *If you set RHI STATE to ACTIVE on some and PASSIVE on others, the Citrix
         ADC advertises the route for the VIP address if at least one of the associated
         virtual servers, whose RHI STATE set to ACTIVE, is in UP state.'
-    default: ONE_VSERVER
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

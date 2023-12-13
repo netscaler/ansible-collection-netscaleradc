@@ -54,7 +54,6 @@ options:
       - 'OFF'
     description:
       - Enabled or disabled white-list binding.
-    default: 'OFF'
   bot_whitelist_type:
     type: str
     choices:
@@ -76,7 +75,6 @@ options:
       - 'OFF'
     description:
       - Enable logging for Whitelist binding.
-    default: 'OFF'
   logmessage:
     type: str
     description:

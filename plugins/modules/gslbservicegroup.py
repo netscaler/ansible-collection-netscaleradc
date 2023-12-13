@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable logging of AppFlow information for the specified GSLB service group.
-    default: ENABLED
   autodelayedtrofs:
     type: str
     choices:
@@ -56,7 +55,6 @@ options:
     description:
       - Indicates graceful movement of the service to TROFS. System will wait for
         monitor response time out before moving to TROFS
-    default: 'NO'
   autoscale:
     type: str
     choices:
@@ -64,7 +62,6 @@ options:
       - DNS
     description:
       - Auto scale option for a GSLB servicegroup
-    default: DISABLED
   cip:
     type: str
     choices:
@@ -107,7 +104,6 @@ options:
       - Flush all active transactions associated with all the services in the GSLB
         service group whose state transitions from UP to DOWN. Do not enable this
         option for applications that must complete their transactions.
-    default: ENABLED
   dup_weight:
     type: float
     description:
@@ -120,7 +116,6 @@ options:
     description:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
-    default: 'NO'
   hashid:
     type: float
     description:
@@ -137,7 +132,6 @@ options:
       - C(YES) - Send probes to check the health of the GSLB service.
       - C(NO) - Do not send probes to check the health of the GSLB service. With the
         C(NO) option, the appliance shows the service as UP at all times.
-    default: 'YES'
   includemembers:
     type: bool
     description:

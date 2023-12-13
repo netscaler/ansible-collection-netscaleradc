@@ -67,7 +67,6 @@ options:
       - PEM
     description:
       - Format in which the ECDSA key file is stored on the appliance.
-    default: PEM
   password:
     type: str
     description:

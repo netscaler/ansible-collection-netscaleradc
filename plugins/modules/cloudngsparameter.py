@@ -43,7 +43,6 @@ options:
       - 'NO'
     description:
       - Enables DTLS1.2 for client connections on CGS
-    default: 'NO'
   allowedudtversion:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
       - V7
     description:
       - Enables the required UDT version to EDT connections in the CGS deployment
-    default: V4
   blockonallowedngstktprof:
     type: str
     choices:
@@ -62,7 +60,6 @@ options:
     description:
       - Enables blocking connections authenticated with a ticket createdby by an entity
         not whitelisted in allowedngstktprofile
-    default: 'NO'
   csvserverticketingdecouple:
     type: str
     choices:
@@ -71,7 +68,6 @@ options:
     description:
       - Enables Decoupling CSVSERVER state from Ticketing Service state in the CGS
         deployment
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
-    default: ENABLED
   dropinvalreqs:
     type: str
     choices:
@@ -51,7 +50,6 @@ options:
       - 'OFF'
     description:
       - Drop invalid HTTP requests or responses.
-    default: 'OFF'
   http2serverside:
     type: str
     choices:
@@ -59,7 +57,6 @@ options:
       - 'OFF'
     description:
       - Enable/Disable HTTP/2 on server side
-    default: 'OFF'
   ignoreconnectcodingscheme:
     type: str
     choices:
@@ -67,7 +64,6 @@ options:
       - DISABLED
     description:
       - Ignore Coding scheme in CONNECT request.
-    default: DISABLED
   insnssrvrhdr:
     type: str
     choices:
@@ -76,7 +72,6 @@ options:
     description:
       - Enable or disable Citrix ADC server header insertion for Citrix ADC generated
         HTTP responses.
-    default: 'OFF'
   logerrresp:
     type: str
     choices:
@@ -84,7 +79,6 @@ options:
       - 'OFF'
     description:
       - Server header value to be inserted.
-    default: 'ON'
   markconnreqinval:
     type: str
     choices:
@@ -92,7 +86,6 @@ options:
       - 'OFF'
     description:
       - Mark CONNECT requests as invalid.
-    default: 'OFF'
   markhttp09inval:
     type: str
     choices:
@@ -100,7 +93,6 @@ options:
       - 'OFF'
     description:
       - Mark HTTP/0.9 requests as invalid.
-    default: 'OFF'
   maxreusepool:
     type: float
     description:

@@ -41,7 +41,6 @@ options:
       - SYMMETRIC
     description:
       - Type of RSS key, possible values are C(SYMMETRIC) and C(ASYMMETRIC).
-    default: ASYMMETRIC
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

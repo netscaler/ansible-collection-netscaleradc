@@ -49,12 +49,10 @@ options:
       - PLAINTEXT
     description:
       - Routing algorithm to generate routable connection IDs.
-    default: PLAINTEXT
   serveridlength:
     type: float
     description:
       - Length of serverid to encode/decode server information
-    default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

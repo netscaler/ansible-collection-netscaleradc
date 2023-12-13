@@ -51,7 +51,6 @@ options:
     description:
       - ID of the cluster node for which the diameter id is set, can be configured
         only through CLIP
-    default: -1
   realm:
     type: str
     description:
@@ -68,7 +67,6 @@ options:
     description:
       - when a Server connection goes down, whether to close the corresponding client
         connection if there were requests pending on the server.
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

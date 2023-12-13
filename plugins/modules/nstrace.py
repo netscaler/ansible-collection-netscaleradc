@@ -38,7 +38,6 @@ options:
       - DISABLED
     description:
       - Captures Dropped Packets if set to C(ENABLED).
-    default: DISABLED
   capsslkeys:
     type: str
     choices:
@@ -49,7 +48,6 @@ options:
       - '                Warning: The captured keys can be used to decrypt information
         that may be confidential. The captured key files have to be stored in a secure
         environment'
-    default: DISABLED
   doruntimecleanup:
     type: str
     choices:
@@ -57,7 +55,6 @@ options:
       - DISABLED
     description:
       - Enable or disable runtime temp file cleanup
-    default: ENABLED
   fileid:
     type: str
     description:
@@ -72,7 +69,6 @@ options:
     description:
       - File size, in MB, treshold for rollover. If free disk space is less than 2GB
         at the time of rollover, trace will stop
-    default: 1024
   filter:
     type: str
     description:
@@ -226,7 +222,6 @@ options:
     description:
       - Logs packets in appliance's memory and dumps the trace file on stopping the
         nstrace operation
-    default: DISABLED
   link:
     type: str
     choices:
@@ -234,7 +229,6 @@ options:
       - DISABLED
     description:
       - Includes filtered connection's peer traffic.
-    default: DISABLED
   merge:
     type: str
     choices:
@@ -276,7 +270,6 @@ options:
     type: float
     description:
       - Number of files to be generated in cycle.
-    default: 24
   nodeid:
     type: float
     description:
@@ -293,12 +286,10 @@ options:
       - DISABLED
     description:
       - Use separate trace files for each interface. Works only with cap format.
-    default: DISABLED
   size:
     type: float
     description:
       - Size of the captured data. Set 0 for full packet trace.
-    default: 164
   skiplocalssh:
     type: str
     choices:
@@ -306,7 +297,6 @@ options:
       - DISABLED
     description:
       - skip local SSH packets
-    default: DISABLED
   skiprpc:
     type: str
     choices:
@@ -314,17 +304,14 @@ options:
       - DISABLED
     description:
       - skip RPC packets
-    default: DISABLED
   time:
     type: float
     description:
       - Time per file (sec).
-    default: 3600
   tracebuffers:
     type: float
     description:
       - Number of 16KB trace buffers
-    default: 5000
   traceformat:
     type: str
     choices:

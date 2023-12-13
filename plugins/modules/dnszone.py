@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable dnssec offload for this zone.
-    default: DISABLED
   keyname:
     type: list
     description:
@@ -57,7 +56,6 @@ options:
       - DISABLED
     description:
       - Enable nsec generation for dnssec offload.
-    default: DISABLED
   proxymode:
     type: str
     choices:
