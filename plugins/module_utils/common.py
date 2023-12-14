@@ -147,54 +147,7 @@ def create_resource_with_action(client, resource_name, resource_module_params, a
     if not ok:
         return False, err
 
-    # default_dir_path = {
-    #     "sslcert": {
-    #         "certfile": "/nsconfig/ssl/",
-    #         "reqfile": "/nsconfig/ssl/",
-    #         "cacert": "/nsconfig/ssl/",
-    #         "cakey": "/nsconfig/ssl/",
-    #         "caserial": "/nsconfig/ssl/",
-    #     },
-    #     "locationfile": {
-    #         "locationfile": "/var/netscaler/locdb/",
-    #     },
-    #     "locationfile6": {
-    #         "locationfile": "/var/netscaler/locdb/",
-    #     },
-    #     "sslcertfile": {
-
-    #     },
-    # }
-    # if action == "create":
-    #     # check if the file is already present using `systemfile` resource
-    #     if resource_name == "sslcert":
-    #         if "certfile" in post_data:
-    #             # `certfile` will either have only file name (test1-sni.crt) or file location (/nsconfig/ssl/test1-sni.crt). extract the filename and filelocation from certfile
-    #             args = {
-    #                 "filename": post_data["certfile"].split("/")[-1],
-    #                 "filelocation": os.path.dirname(post_data["certfile"]) or default_dir_path[resource_name]["certfile"],
-    #             }
-    #             # Check if the file is already present using `systemfile` resource
-    #             status_code, response_body = client.get(
-    #                 resource="systemfile", id=None, args=args
-    #             )
-    #             if status_code == 200:
-    #                 return True, response_body
-    # elif action == "import":
-    #     # check if the file is already present using `systemfile` resource
-    #     if resource_name == "locationfile":
-    #         if "locationfile" in post_data:
-    #             # `locationfile` will either have only file name (file.txt) or file location (/var/netscaler/locdb/file.txt). extract the filename and filelocation from locationfile
-    #             args = {
-    #                 "filename": post_data["locationfile"].split("/")[-1],
-    #                 "filelocation": os.path.dirname(post_data["locationfile"]) or default_dir_path[resource_name]["locationfile"],
-    #             }
-    #             # Check if the file is already present using `systemfile` resource
-    #             status_code, response_body = client.get(
-    #                 resource="systemfile", id=None, args=args
-    #             )
-    #             if status_code == 200:
-    #                 return True, response_body
+    # FIXME: if action=unset, check for idempotency, as of now, unset always leads to changed state
 
     post_data = {resource_name: post_data}
     status_code, response_body = client.post(
