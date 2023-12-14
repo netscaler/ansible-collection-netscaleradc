@@ -117,10 +117,10 @@ To install the available collections from the repository directly:
 
 ```bash
 # ADC modules and connection plugin
-ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adc
+ansible-galaxy collection install "git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adc,citrix.adc"
 
 # ADM modules
-ansible-galaxy collection install git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adm
+ansible-galaxy collection install "git+https://github.com/citrix/citrix-adc-ansible-modules.git#/ansible-collections/adm,citrix.adc"
 ```
 
 To install the available collections from a local checkout of the repository:
