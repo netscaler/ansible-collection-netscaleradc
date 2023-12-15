@@ -565,19 +565,9 @@ class ModuleExecutor(object):
             # we will delete the existing bindings. If there are no existing and desired bindings,
             # we will do nothing.
 
-            log("DEBUG: To be deleted bindings: %s" % to_be_deleted_bindings)
-            log("DEBUG: To be added bindings: %s" % to_be_added_bindings)
-            log("DEBUG: To be updated bindings: %s" % to_be_updated_bindings)
-
-            if to_be_deleted_bindings:
-                ok, err = self.delete_bindings(
-                    binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_deleted_bindings=to_be_deleted_bindings,
-                    existing_bindings=existing_bindings,
-                )
-                if not ok:
-                    self.return_failure(err)
+            log("DEBUG: to_be_deleted_bindings bindings: %s" % to_be_deleted_bindings)
+            log("DEBUG: to_be_added_bindings bindings: %s" % to_be_added_bindings)
+            log("DEBUG: to_be_updated_bindings bindings: %s" % to_be_updated_bindings)
 
             if to_be_added_bindings:
                 ok, err = self.add_bindings(
@@ -585,6 +575,35 @@ class ModuleExecutor(object):
                     bindprimary_key=bindprimary_key,
                     to_be_added_bindings=to_be_added_bindings,
                     desired_bindings=desired_binding_members,
+                )
+                if not ok:
+                    self.return_failure(err)
+
+            # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
+            # Hence GET the existing bindings again and construct the `to_be_deleted_bindings` list
+            existing_bindings = get_bindings(
+                self.client,
+                binding_name=binding_name,
+                binding_id=self.resource_id,
+            )
+            existing_binding_members_bindprimary_keys = {
+                x[bindprimary_key] for x in existing_bindings
+            }
+            to_be_deleted_bindings = (
+                existing_binding_members_bindprimary_keys
+                - desired_binding_members_bindprimary_keys
+            )
+            log(
+                "DEBUG: New to_be_deleted_bindings bindings: %s"
+                % to_be_deleted_bindings
+            )
+
+            if to_be_deleted_bindings:
+                ok, err = self.delete_bindings(
+                    binding_name=binding_name,
+                    bindprimary_key=bindprimary_key,
+                    to_be_deleted_bindings=to_be_deleted_bindings,
+                    existing_bindings=existing_bindings,
                 )
                 if not ok:
                     self.return_failure(err)
