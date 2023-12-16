@@ -392,6 +392,19 @@ class ModuleExecutor(object):
                 )
                 log(msg)
                 continue
+
+            # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
+            # The `ip` and `servername` are mutually exclusive args in the `servicegroup_servicegroupmember_binding` resource
+            #  Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serverName, IP]', 'severity': 'ERROR'}"
+            if binding_name == "servicegroup_servicegroupmember_binding":
+                try:
+                    if (
+                        deleting_binding["ip"] == "0.0.0.0"
+                        and deleting_binding["servername"]
+                    ):
+                        deleting_binding.pop("ip")
+                except KeyError:
+                    pass
             ok, err = unbind_resource(
                 self.client,
                 binding_name=binding_name,
@@ -523,6 +536,14 @@ class ModuleExecutor(object):
             binding_id=self.resource_id,
         )
         log("DEBUG: Existing `%s` bindings: %s" % (binding_name, existing_bindings))
+
+        # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
+        # In the NITRO API spec, bind_primary_key of `servicegroup_servicegroupmember_binding` resource's wrongly documented as `ip`.
+        # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
+        if binding_name == "servicegroup_servicegroupmember_binding":
+            for x in desired_binding_members:
+                if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
+                    bindprimary_key = "servername"
 
         desired_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in desired_binding_members
