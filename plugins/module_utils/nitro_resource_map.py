@@ -34327,7 +34327,7 @@ NITRO_RESOURCE_MAP = {
             "ownernode": {"no_log": False, "type": "float"},
         },
         "singleton": False,
-        "update_payload_keys": [],
+        "update_payload_keys": ["hostname", "ownernode"],
     },
     "nshttpparam": {
         "_supported_operations": ["get", "unset", "update"],
