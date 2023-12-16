@@ -37339,7 +37339,7 @@ NITRO_RESOURCE_MAP = {
         "get_arg_keys": [],
         "immutable_keys": [],
         "password_keys": [],
-        "primary_key": "ownernode",
+        "primary_key": "",
         "readwrite_arguments": {
             "cpuyield": {
                 "choices": ["DEFAULT", "NO", "YES"],
