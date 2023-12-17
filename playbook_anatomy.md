@@ -23,7 +23,7 @@ This is how a typical playbook for `netscaler.adc` collection looks like:
         # Should the module save the config after making the changes. This is optional. Default is false.
         save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
 
-        state: present # This is the desired state of the resource. The module will make sure that the resource is in this state. Valid values are `present`, `absent`, `enabled`, `disabled`. However, not all modules support all the states. Refer to the module documentation for the supported states.
+        state: present # This is the desired state of the resource. The module will make sure that the resource is in this state. Valid values are `present`, `absent`, `enabled`, `disabled`, `imported`, `created`. However, not all modules support all the states. Refer to the module documentation for the supported states.
 
         # The following are the module parameters. Refer to the module documentation for the list of supported parameters.
         name: s1

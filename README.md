@@ -1,8 +1,8 @@
 # NetScaler Ansible Collection `version2` - netscaler.adc
 
-
 > ⚠️ Note:
 > The earlier `citrix.adc` ansible collection is replaced with the new `netscaler.adc` ansible collection.
+
 > The `citrix.adc` ansible collection is backed up by a seperate branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
 
 
@@ -10,7 +10,7 @@
 
 The vision of the `netscaler.adc` collection is to provide a complete declarative interface to configure and manage NetScaler ADC.
 
-If you need any feature or flexibility that is not available in the collection, please raise issues/enhancement-requests/recommendations at <https://github.com/netscaler/ansible-collection-netscaleradc/issues>
+If you need any feature or flexibility that is not available in the collection at the moment, please raise issues/enhancement-requests/recommendations at <https://github.com/netscaler/ansible-collection-netscaleradc/issues>
 
 > :envelope: For any immediate issues or help , reach out to us at <NetScaler-AutomationToolkit@cloud.com> !
 
@@ -20,9 +20,9 @@ We refer the earlier `citrix.adc` ansible collection as `version1` and the new `
 
 This is the `version2` of the NetScaler Ansible Collection. It is a complete rewrite of the collection. The collection is not backward compatible with the `version1` of the collection.
 
-`citrix.adc` collection will be deprecated soon and will not be maintained further. Please migrate to `netscaler.adc` of the collection.
+`citrix.adc` collection will be deprecated soon and will not be maintained further. It is recommended to migrate to the `netscaler.adc` collection.
 
-## About the collection (version2)
+## About the `netscaler.adc` collection (version2)
 
 The collection provides Ansible modules to configure and manage NetScaler ADC appliances. The modules are written using the NITRO API. The modules are idempotent and can be used to configure the NetScaler ADC appliances in declarative manner.
 
@@ -38,14 +38,15 @@ ansible-galaxy collection install netscaler.adc
 
 
 ```bash
-git clone --single-branch https://github.com/netscaler/ansible-collection-netscaleradc.git /tmp/ansible-collection-netscaleradc && ansible-galaxy collection install /tmp/ansible-collection-netscaleradc --force
+ansible-galaxy collection install "git+https://github.com/citrix/citrix-adc-ansible-modules.git" [--force]
 ```
 
+> `--force` option is required if you have already installed the collection via ansible-galaxy. This will overwrite the existing collection with the latest collection from github.
 
 ### Verify the installation
 
 ```bash
-ansible-galaxy collection list | grep netscaler.adc
+ansible-galaxy collection list netscaler.adc
 ```
 
 The above command should display the following output:
@@ -128,12 +129,10 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [ ] Add more examples
 - [ ] Write a python script which converts examples/playbook.yaml to module's EXAMPLE documentation
 - [ ] SSH Connection module
-- [ ] Run `ansible-test` on the collection.
-- [ ] Run `ansible-lint` on the collection for Python 2.7, 3.6, 3.7, 3.8 and 3.9.
 - [ ] Test modules against all NetScaler ADC versions.
-- [ ] Test modules againsts ansible versions 2.9+
-- [ ] Configure GitHub Actions to automate the collection build and release process.
+- [x] Test modules againsts ansible versions 2.9+
+- [x] Configure GitHub Actions to automate the collection build and release process.
 - [ ] Configure GitHub Actions to automate the collection documentation build and release process.
 - [ ] Configure GitHub Actions to automate the collection testing process.
-- [ ] Configure GitHub Actions to automate the collection linting process.
+- [x] Configure GitHub Actions to automate the collection linting process.
 - [x] Collect NetScaler info (version, etc) and store it in the `facts` dictionary
