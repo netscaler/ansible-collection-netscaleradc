@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   advancedanalyticsstats:
     type: str
@@ -41,7 +43,6 @@ options:
       - DISABLED
     description:
       - Disable/Enable advanace analytics stats
-    default: DISABLED
   aftpallowrandomsourceport:
     type: str
     choices:
@@ -50,7 +51,6 @@ options:
     description:
       - Allow the FTP server to come from a random source port for active FTP data
         connections
-    default: DISABLED
   cip:
     type: str
     choices:
@@ -83,12 +83,10 @@ options:
     type: float
     description:
       - Percentage of maxClient to be given to PEs.
-    default: 80
   exclusivequotaspillover:
     type: float
     description:
       - Percentage of maximum limit to be given to PEs.
-    default: 80
   ftpportrange:
     type: str
     description:
@@ -97,12 +95,10 @@ options:
     type: float
     description:
       - Percentage of shared quota to be granted at a time for maxClient.
-    default: 10
   grantquotaspillover:
     type: float
     description:
       - Percentage of shared quota to be granted at a time for spillover.
-    default: 10
   httpport:
     type: list
     description:
@@ -127,13 +123,11 @@ options:
       - Enables/disables the internal user from logging in to the appliance. Before
         disabling internal user login, you must have key-based authentication set
         up on the appliance. The file name for the key pair must be "ns_comm_key".
-    default: ENABLED
   ipttl:
     type: float
     description:
       - Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets
         from Citrix ADC.
-    default: 255
   maxconn:
     type: float
     description:
@@ -151,24 +145,20 @@ options:
     type: int
     description:
       - This allow the configuration of management HTTP port.
-    default: 80
   mgmthttpsport:
     type: int
     description:
       - This allows the configuration of management HTTPS port.
-    default: 443
   pmtumin:
     type: float
     description:
       - Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation
         needed message. If the ICMP message contains a value less than this value,
         then this value is used instead.
-    default: 576
   pmtutimeout:
     type: float
     description:
       - Interval, in minutes, for flushing the PMTU entries.
-    default: 10
   proxyprotocol:
     type: str
     choices:
@@ -176,7 +166,6 @@ options:
       - DISABLED
     description:
       - Disable/Enable v1 or v2 proxy protocol header for client info insertion
-    default: DISABLED
   securecookie:
     type: str
     choices:
@@ -184,7 +173,6 @@ options:
       - DISABLED
     description:
       - Enable or disable secure flag for persistence cookie.
-    default: ENABLED
   secureicaports:
     type: list
     description:
@@ -207,13 +195,11 @@ options:
         passed from the client to one, some, or all servers attached to the system.
         The passed address can then be accessed through a minor modification to the
         server.
-    default: DISABLED
   timezone:
     type: str
     description:
       - Time zone for the Citrix ADC. Name of the time zone should be specified as
         argument.
-    default: CoordinatedUniversalTime
   useproxyport:
     type: str
     choices:
@@ -221,12 +207,20 @@ options:
       - DISABLED
     description:
       - Enable/Disable use_proxy_port setting
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsparam
+      delegate_to: localhost
+      netscaler.adc.nsparam:
+        state: present
+        timezone: GMT+09:00-KST-Asia/Seoul
 """
 
 RETURN = r"""

@@ -42,7 +42,6 @@ options:
       - String specifying the listen policy for the Cloud Tunnel virtual server. Can
         be either a named expression or an expression. The Cloud Tunnel virtual server
         processes only the traffic for which the expression evaluates to true.
-    default: '"none"'
   listenpriority:
     type: float
     description:
@@ -50,7 +49,6 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server, the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    default: 101
   name:
     type: str
     description:

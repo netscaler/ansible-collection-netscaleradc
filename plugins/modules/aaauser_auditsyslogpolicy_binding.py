@@ -88,7 +88,6 @@ options:
       - ICMP_REQUEST
     description:
       - Bindpoint to which the policy is bound.
-    default: REQUEST
   username:
     type: str
     description:

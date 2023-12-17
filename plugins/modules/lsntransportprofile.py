@@ -49,7 +49,6 @@ options:
         of any TCP LSN sessions, this timeout accommodates the transmission of the
         FIN or RST, and ACK messages from the other endpoint so that both endpoints
         can properly close the connection.
-    default: 30
   groupsessionlimit:
     type: float
     description:
@@ -71,7 +70,6 @@ options:
       - You must set this parameter for proper functioning of protocols that require
         the source port to be even or odd numbered, for example, in peer-to-peer applications
         that use RTP or RTCP protocol.
-    default: DISABLED
   portpreserverange:
     type: str
     choices:
@@ -90,7 +88,6 @@ options:
       - When all the well-known ports of all the available NAT IP addresses are used
         in different subscriber's connections (LSN sessions), and a subscriber initiates
         a connection from a well-known port, the Citrix ADC drops this connection.
-    default: DISABLED
   portquota:
     type: float
     description:
@@ -113,12 +110,10 @@ options:
       - ''
       - This timeout does not apply for a TCP LSN session when a FIN or RST message
         is received from either of the endpoints.
-    default: 120
   stuntimeout:
     type: float
     description:
       - STUN protocol timeout
-    default: 600
   syncheck:
     type: str
     choices:
@@ -137,12 +132,10 @@ options:
         because the LSN session was idle for a time that exceeded the configured session
         timeout.'
       - '* Such packets can be a part of a DoS attack.'
-    default: ENABLED
   synidletimeout:
     type: float
     description:
       - SYN Idle timeout
-    default: 60
   transportprofilename:
     type: str
     description:

@@ -69,7 +69,6 @@ options:
     description:
       - Preferred NTP server. The Citrix ADC chooses this NTP server for time synchronization
         among a set of correctly operating hosts.
-    default: 'NO'
   serverip:
     type: str
     description:

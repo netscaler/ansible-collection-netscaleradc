@@ -45,7 +45,6 @@ options:
       - Allow Default access/Disable applications hosted on the server to play sounds
         through a sound device installed on the client computer, also allows or prevents
         users to record audio input
-    default: DISABLED
   clientclipboardredirection:
     type: str
     choices:
@@ -54,7 +53,6 @@ options:
     description:
       - Allow Default access/Disable the clipboard on the client device to be mapped
         to the clipboard on the server
-    default: DISABLED
   clientcomportredirection:
     type: str
     choices:
@@ -62,7 +60,6 @@ options:
       - DISABLED
     description:
       - Allow Default access/Disable COM port redirection to and from the client
-    default: DISABLED
   clientdriveredirection:
     type: str
     choices:
@@ -70,7 +67,6 @@ options:
       - DISABLED
     description:
       - Allow Default access/Disables drive redirection to and from the client
-    default: DISABLED
   clientprinterredirection:
     type: str
     choices:
@@ -79,7 +75,6 @@ options:
     description:
       - Allow Default access/Disable client printers to be mapped to a server when
         a user logs on to a session
-    default: DISABLED
   clientusbdriveredirection:
     type: str
     choices:
@@ -88,7 +83,6 @@ options:
     description:
       - Allow Default access/Disable the redirection of USB devices to and from the
         client
-    default: DISABLED
   connectclientlptports:
     type: str
     choices:
@@ -97,7 +91,6 @@ options:
     description:
       - Allow Default access/Disable automatic connection of LPT ports from the client
         when the user logs on
-    default: DISABLED
   localremotedatasharing:
     type: str
     choices:
@@ -105,7 +98,6 @@ options:
       - DISABLED
     description:
       - Allow Default access/Disable file/data sharing via the Receiver for HTML5
-    default: DISABLED
   multistream:
     type: str
     choices:
@@ -113,7 +105,6 @@ options:
       - DISABLED
     description:
       - Allow Default access/Disable the multistream feature for the specified users
-    default: DISABLED
   name:
     type: str
     description:

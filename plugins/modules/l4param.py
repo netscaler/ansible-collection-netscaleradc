@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   l2connmethod:
     type: str
@@ -50,7 +52,6 @@ options:
         lb vserver is ON then method specified here will be used to identify a connection
         in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination
         port>).
-    default: MacVlanChannel
   l4switch:
     type: str
     choices:
@@ -59,7 +60,6 @@ options:
     description:
       - In L4 switch topology, always clients and servers are on the same side. Enable
         l4switch to allow such connections.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   quicsecrettimeout:
     type: float
@@ -41,7 +43,6 @@ options:
         tokens that will be issued in QUIC Retry packets and QUIC NEW_TOKEN frames
         sent by the Citrix ADC. A value of 0 can be configured if secret rotation
         is not desired.
-    default: 3600
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

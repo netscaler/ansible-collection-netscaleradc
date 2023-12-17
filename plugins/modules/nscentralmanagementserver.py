@@ -92,7 +92,6 @@ options:
       - 'NO'
     description:
       - validate the server certificate for secure SSL connections.
-    default: 'YES'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

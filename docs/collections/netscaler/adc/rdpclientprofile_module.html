@@ -131,7 +131,7 @@
 <h1>netscaler.adc.rdpclientprofile module – Configuration for RDP clientprofile resource.<a class="headerlink" href="#netscaler-adc-rdpclientprofile-module-configuration-for-rdp-clientprofile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.0.2).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.1.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -170,7 +170,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;NO&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -191,7 +191,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;DISABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -204,7 +204,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OnLocal&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;OnRemote&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;InFullScreenMode&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;InFullScreenMode&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -215,7 +215,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <td><div class="ansible-option-cell"><p>Enable/Disable Multiple Monitor Support for Remote Desktop Connection (RDC).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;ENABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
@@ -284,7 +284,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;YES&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;NO&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;NO&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -293,7 +293,6 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <a class="ansibleOptionLink" href="#parameter-rdpcookievalidity" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>RDP cookie validity period. RDP cookie validity time is applicable for new connection and also for any re-connection that might happen, mostly due to network disruption or during fail-over.</p>
-<p class="ansible-option-line"><strong class="ansible-option-default-bold">Default:</strong> <code class="ansible-option-default docutils literal notranslate"><span class="pre">60.0</span></code></p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
@@ -341,7 +340,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <td><div class="ansible-option-cell"><p>This setting determines whether the RDP parameters supplied in the vpn url override those specified in the RDP profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;ENABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
@@ -354,7 +353,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;DISABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -365,7 +364,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <td><div class="ansible-option-cell"><p>This setting corresponds to the Clipboard check box on the Local Resources tab under Options in RDC.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;ENABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
@@ -378,7 +377,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;DISABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -390,7 +389,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;DISABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -402,7 +401,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;DISABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
 </tr>
@@ -413,7 +412,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <td><div class="ansible-option-cell"><p>This setting corresponds to the selection in the Printers check box on the Local Resources tab under Options in RDC.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;ENABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>
@@ -464,7 +463,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <td><div class="ansible-option-cell"><p>This setting determines if Remote Desktop Connection (RDC) will use RDP efficient multimedia streaming for video playback.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-default-bold docutils literal notranslate"><strong><span class="pre">&quot;ENABLE&quot;</span></strong></code> <span class="ansible-option-choices-default-mark">← (default)</span></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;ENABLE&quot;</span></code></p></li>
 <li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;DISABLE&quot;</span></code></p></li>
 </ul>
 </div></td>

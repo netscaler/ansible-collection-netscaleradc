@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   admserviceconnect:
     type: str
@@ -47,7 +49,6 @@ options:
         send system, usage and telemetry data to Citrix ADM service. View here [https://docs.citrix.com/en-us/citrix-adc/13/data-governance.html]
         to learn more about this feature. Use of this feature is subject to the Citrix
         End User ServiceAgreement. View here [https://www.citrix.com/buy/licensing/agreements.html]
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

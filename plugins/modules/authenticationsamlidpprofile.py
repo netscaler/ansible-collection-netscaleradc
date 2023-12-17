@@ -384,7 +384,6 @@ options:
       - SHA256
     description:
       - Algorithm to be used to compute/verify digest for SAML transactions
-    default: SHA256
   encryptassertion:
     type: str
     choices:
@@ -392,7 +391,6 @@ options:
       - 'OFF'
     description:
       - Option to encrypt assertion when Citrix ADC IDP sends one.
-    default: 'OFF'
   encryptionalgorithm:
     type: str
     choices:
@@ -402,7 +400,6 @@ options:
       - AES256
     description:
       - Algorithm to be used to encrypt SAML assertion
-    default: AES256
   keytransportalg:
     type: str
     choices:
@@ -410,7 +407,6 @@ options:
       - RSA_OAEP
     description:
       - Key transport algorithm to be used in encryption of SAML assertion
-    default: RSA_OAEP
   logoutbinding:
     type: str
     choices:
@@ -418,12 +414,10 @@ options:
       - POST
     description:
       - This element specifies the transport mechanism of saml logout messages.
-    default: POST
   metadatarefreshinterval:
     type: float
     description:
       - Interval in minute for fetching metadata from specified metadata URL
-    default: 3600
   metadataurl:
     type: str
     description:
@@ -456,7 +450,6 @@ options:
       - transient
     description:
       - Format of Name Identifier sent in Assertion.
-    default: transient
   rejectunsignedrequests:
     type: str
     choices:
@@ -465,7 +458,6 @@ options:
     description:
       - Option to Reject unsigned SAML Requests. C(ON) option denies any authentication
         requests that arrive without signature.
-    default: 'ON'
   samlbinding:
     type: str
     choices:
@@ -474,7 +466,6 @@ options:
       - ARTIFACT
     description:
       - This element specifies the transport mechanism of saml messages.
-    default: POST
   samlidpcertname:
     type: str
     description:
@@ -508,7 +499,6 @@ options:
       - 'OFF'
     description:
       - Option to send password in assertion.
-    default: 'OFF'
   serviceproviderid:
     type: str
     description:
@@ -527,7 +517,6 @@ options:
       - Option to sign portions of assertion when Citrix ADC IDP sends one. Based
         on the user selection, either Assertion or Response or Both or none can be
         signed
-    default: ASSERTION
   signaturealg:
     type: str
     choices:
@@ -535,7 +524,6 @@ options:
       - RSA-SHA256
     description:
       - Algorithm to be used to sign/verify SAML transactions
-    default: RSA-SHA256
   signatureservice:
     type: str
     description:
@@ -547,7 +535,6 @@ options:
         that the assertion would be valid. For example, if skewTime is 10, then assertion
         would be valid from (current time - 10) min to (current time + 10) min, ie
         20min in all.
-    default: 5
   splogouturl:
     type: str
     description:

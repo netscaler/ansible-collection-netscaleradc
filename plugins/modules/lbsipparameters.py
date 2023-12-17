@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   addrportvip:
     type: str
@@ -42,14 +44,12 @@ options:
     description:
       - Add the rport parameter to the VIA headers of SIP requests that virtual servers
         receive from clients or servers.
-    default: ENABLED
   retrydur:
     type: int
     description:
       - Time, in seconds, for which a client must wait before initiating a connection
         after receiving a 503 Service Unavailable response from the SIP server. The
         time value is sent in the "Retry-After" header in the 503 response.
-    default: 120
   rnatdstport:
     type: int
     description:
@@ -83,7 +83,6 @@ options:
     description:
       - Maximum number of 503 Service Unavailable responses to generate, once every
         10 milliseconds, when a SIP virtual server becomes unavailable.
-    default: 100
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

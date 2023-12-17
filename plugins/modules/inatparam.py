@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   nat46fragheader:
     type: str
@@ -42,7 +44,6 @@ options:
     description:
       - When disabled, translator will not insert IPv6 fragmentation header for non
         fragmented IPv4 packets
-    default: ENABLED
   nat46ignoretos:
     type: str
     choices:
@@ -50,13 +51,11 @@ options:
       - 'NO'
     description:
       - Ignore TOS.
-    default: 'NO'
   nat46v6mtu:
     type: float
     description:
       - MTU setting for the IPv6 side. If the incoming IPv4 packet greater than this,
         either fragment or send icmp need fragmentation error.
-    default: 1280
   nat46v6prefix:
     type: str
     description:
@@ -74,7 +73,6 @@ options:
       - DISABLED
     description:
       - Calculate checksum for UDP packets with zero checksum
-    default: ENABLED
   td:
     type: float
     description:

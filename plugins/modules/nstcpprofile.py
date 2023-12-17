@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable or disable ACK Aggregation.
-    default: DISABLED
   ackonpush:
     type: str
     choices:
@@ -52,7 +51,6 @@ options:
     description:
       - Send immediate positive acknowledgement (ACK) on receipt of TCP packets with
         PUSH flag.
-    default: ENABLED
   applyadaptivetcp:
     type: str
     choices:
@@ -60,12 +58,10 @@ options:
       - DISABLED
     description:
       - Apply Adaptive TCP optimizations
-    default: DISABLED
   buffersize:
     type: float
     description:
       - TCP buffering size, in bytes.
-    default: 8190
   burstratecontrol:
     type: str
     choices:
@@ -75,7 +71,6 @@ options:
     description:
       - TCP Burst Rate Control C(DISABLED)/C(FIXED)/C(DYNAMIC). C(FIXED) requires
         a TCP rate to be set.
-    default: DISABLED
   clientiptcpoption:
     type: str
     choices:
@@ -83,7 +78,6 @@ options:
       - DISABLED
     description:
       - Client IP in TCP options
-    default: DISABLED
   clientiptcpoptionnumber:
     type: float
     description:
@@ -92,7 +86,6 @@ options:
     type: float
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
-    default: 100
   dropestconnontimeout:
     type: str
     choices:
@@ -100,7 +93,6 @@ options:
       - DISABLED
     description:
       - Silently drop tcp established connections on idle timeout
-    default: DISABLED
   drophalfclosedconnontimeout:
     type: str
     choices:
@@ -108,7 +100,6 @@ options:
       - DISABLED
     description:
       - Silently drop tcp half closed connections on idle timeout
-    default: DISABLED
   dsack:
     type: str
     choices:
@@ -116,12 +107,10 @@ options:
       - DISABLED
     description:
       - Enable or disable DSACK.
-    default: ENABLED
   dupackthresh:
     type: float
     description:
       - TCP dupack threshold.
-    default: 3
   dynamicreceivebuffering:
     type: str
     choices:
@@ -132,7 +121,6 @@ options:
         buffer to be adjusted dynamically based on memory and network conditions.
       - 'Note: The buffer size argument must be set for dynamic adjustments to take
         place.'
-    default: DISABLED
   ecn:
     type: str
     choices:
@@ -140,7 +128,6 @@ options:
       - DISABLED
     description:
       - Enable or disable TCP Explicit Congestion Notification.
-    default: DISABLED
   establishclientconn:
     type: str
     choices:
@@ -149,7 +136,6 @@ options:
       - ON_FIRST_DATA
     description:
       - Establishing Client Client connection on First data/ Final-ACK / Automatic
-    default: AUTOMATIC
   fack:
     type: str
     choices:
@@ -157,7 +143,6 @@ options:
       - DISABLED
     description:
       - Enable or disable FACK (Forward ACK).
-    default: DISABLED
   flavor:
     type: str
     choices:
@@ -168,7 +153,6 @@ options:
       - Nile
     description:
       - Set TCP congestion control algorithm.
-    default: Default
   frto:
     type: str
     choices:
@@ -176,7 +160,6 @@ options:
       - DISABLED
     description:
       - Enable or disable FRTO (Forward RTO-Recovery).
-    default: DISABLED
   hystart:
     type: str
     choices:
@@ -184,13 +167,11 @@ options:
       - DISABLED
     description:
       - Enable or disable CUBIC Hystart
-    default: DISABLED
   initialcwnd:
     type: float
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
-    default: 4
   ka:
     type: str
     choices:
@@ -198,7 +179,6 @@ options:
       - DISABLED
     description:
       - Send periodic TCP keep-alive (KA) probes to check if peer is still up.
-    default: DISABLED
   kaconnidletime:
     type: float
     description:
@@ -221,17 +201,14 @@ options:
       - DISABLED
     description:
       - Update last activity for the connection after receiving keep-alive (KA) probes.
-    default: ENABLED
   maxburst:
     type: float
     description:
       - Maximum number of TCP segments allowed in a burst.
-    default: 6
   maxcwnd:
     type: float
     description:
       - TCP Maximum Congestion Window.
-    default: 524288
   maxpktpermss:
     type: float
     description:
@@ -241,7 +218,6 @@ options:
     description:
       - Minimum retransmission timeout, in milliseconds, specified in 10-millisecond
         increments (value must yield a whole number if divided by  10).
-    default: 1000
   mpcapablecbit:
     type: str
     choices:
@@ -249,7 +225,6 @@ options:
       - DISABLED
     description:
       - Set C bit in MP-CAPABLE Syn-Ack sent by Citrix ADC
-    default: DISABLED
   mptcp:
     type: str
     choices:
@@ -257,7 +232,6 @@ options:
       - DISABLED
     description:
       - Enable or disable Multipath TCP.
-    default: DISABLED
   mptcpdropdataonpreestsf:
     type: str
     choices:
@@ -267,7 +241,6 @@ options:
       - Enable or disable silently dropping the data on Pre-Established subflow. When
         enabled, DSS data packets are dropped silently instead of dropping the connection
         when data is received on pre established subflow.
-    default: DISABLED
   mptcpfastopen:
     type: str
     choices:
@@ -276,7 +249,6 @@ options:
     description:
       - Enable or disable Multipath TCP fastopen. When enabled, DSS data packets are
         accepted before receiving the third ack of SYN handshake.
-    default: DISABLED
   mptcpsessiontimeout:
     type: float
     description:
@@ -293,7 +265,6 @@ options:
       - DISABLED
     description:
       - Enable or disable the Nagle algorithm on TCP connections.
-    default: DISABLED
   name:
     type: str
     description:
@@ -309,13 +280,11 @@ options:
     type: float
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
-    default: 64
   pktperretx:
     type: float
     description:
       - Maximum limit on the number of packets that should be retransmitted on receiving
         a partial ACK.
-    default: 1
   rateqmax:
     type: float
     description:
@@ -328,7 +297,6 @@ options:
     description:
       - Enable or disable acceptance of RST that is out of window yet echoes highest
         ACK sequence number. Useful only in proxy mode.
-    default: DISABLED
   rstwindowattenuate:
     type: str
     choices:
@@ -337,7 +305,6 @@ options:
     description:
       - Enable or disable RST window attenuation to protect against spoofing. When
         enabled, will reply with corrective ACK when a sequence number is invalid.
-    default: DISABLED
   sack:
     type: str
     choices:
@@ -345,12 +312,10 @@ options:
       - DISABLED
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
-    default: DISABLED
   sendbuffsize:
     type: float
     description:
       - TCP Send Buffer Size
-    default: 8190
   sendclientportintcpoption:
     type: str
     choices:
@@ -359,18 +324,15 @@ options:
     description:
       - Send Client Port number along with Client IP in TCP-Options. ClientIpTcpOption
         must be C(ENABLED)
-    default: DISABLED
   slowstartincr:
     type: float
     description:
       - Multiplier that determines the rate at which slow start increases the size
         of the TCP transmission window after each acknowledgement of successful transmission.
-    default: 2
   slowstartthreshold:
     type: float
     description:
       - TCP Slow Start Threhsold Value.
-    default: 524288
   spoofsyndrop:
     type: str
     choices:
@@ -380,7 +342,6 @@ options:
       - Enable or disable drop of invalid SYN packets to protect against spoofing.
         When disabled, established connections will be reset when a SYN packet is
         received.
-    default: ENABLED
   syncookie:
     type: str
     choices:
@@ -389,7 +350,6 @@ options:
     description:
       - Enable or disable the SYNCOOKIE mechanism for TCP handshake with clients.
         Disabling SYNCOOKIE prevents SYN attack protection on the Citrix ADC.
-    default: ENABLED
   taillossprobe:
     type: str
     choices:
@@ -397,7 +357,6 @@ options:
       - DISABLED
     description:
       - TCP tail loss probe optimizations
-    default: DISABLED
   tcpfastopen:
     type: str
     choices:
@@ -406,13 +365,11 @@ options:
     description:
       - Enable or disable TCP Fastopen. When enabled, NS can receive or send Data
         in SYN or SYN-ACK packets.
-    default: DISABLED
   tcpfastopencookiesize:
     type: float
     description:
       - TCP FastOpen Cookie size. This accepts only even numbers. Odd number is trimmed
         down to nearest even number.
-    default: 8
   tcpmode:
     type: str
     choices:
@@ -420,7 +377,6 @@ options:
       - ENDPOINT
     description:
       - TCP Optimization modes C(TRANSPARENT) / C(ENDPOINT).
-    default: TRANSPARENT
   tcprate:
     type: float
     description:
@@ -433,7 +389,6 @@ options:
     description:
       - Offload TCP segmentation to the NIC. If set to C(AUTOMATIC), TCP segmentation
         will be offloaded to the NIC, if the NIC supports it.
-    default: AUTOMATIC
   timestamp:
     type: str
     choices:
@@ -441,7 +396,6 @@ options:
       - DISABLED
     description:
       - Enable or Disable TCP Timestamp option (RFC 1323)
-    default: DISABLED
   ws:
     type: str
     choices:
@@ -449,18 +403,26 @@ options:
       - DISABLED
     description:
       - Enable or disable window scaling.
-    default: DISABLED
   wsval:
     type: float
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when window scaling is enabled.
-    default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nstcpProfile
+      delegate_to: localhost
+      netscaler.adc.nstcpprofile:
+        state: present
+        name: tcpprofile-mptcp
+        mptcp: ENABLED
 """
 
 RETURN = r"""

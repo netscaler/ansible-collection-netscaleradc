@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   acl6name:
     type: str
@@ -56,7 +58,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
-    default: DEFAULT_NG
   redirectport:
     type: int
     description:
@@ -70,7 +71,6 @@ options:
     description:
       - Enable source ip persistency, which enables the Citrix ADC to use the RNAT
         ips using source ip.
-    default: DISABLED
   td:
     type: float
     description:

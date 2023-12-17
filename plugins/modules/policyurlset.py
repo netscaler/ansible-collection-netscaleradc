@@ -28,6 +28,7 @@ options:
     choices:
       - present
       - absent
+      - imported
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -63,7 +64,6 @@ options:
     description:
       - An ID that would be sent to AppFlow to indicate which URLSet was the last
         one that matched the requested URL.
-    default: 1
   name:
     type: str
     description:

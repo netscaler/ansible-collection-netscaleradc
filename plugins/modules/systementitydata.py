@@ -64,7 +64,6 @@ options:
     description:
       - 'Last is literal way of saying a certain time period from the current moment.
         Example: -last 1 hour, -last 1 day, et cetera.'
-    default: 1
   name:
     type: str
     description:

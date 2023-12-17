@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   commonname:
     type: str
@@ -53,7 +55,6 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    default: DISABLED
   sendclosenotify:
     type: str
     choices:
@@ -61,7 +62,6 @@ options:
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    default: 'YES'
   serverauth:
     type: str
     choices:
@@ -69,7 +69,6 @@ options:
       - DISABLED
     description:
       - State of server authentication support for the SSL service group.
-    default: DISABLED
   servicegroupname:
     type: str
     description:
@@ -83,14 +82,12 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    default: ENABLED
   sesstimeout:
     type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    default: 300
   snienable:
     type: str
     choices:
@@ -102,7 +99,6 @@ options:
         service if the domains are controlled by the same organization and share the
         same second-level domain name. For example, *.sports.net can be used to secure
         domains such as login.sports.net and help.sports.net.
-    default: DISABLED
   ssl3:
     type: str
     choices:
@@ -112,7 +108,6 @@ options:
       - State of SSLv3 protocol support for the SSL service group.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    default: ENABLED
   sslprofile:
     type: str
     description:
@@ -125,7 +120,6 @@ options:
     description:
       - Parameter indicating to check whether peer's certificate is signed with one
         of signature-hash combination supported by Citrix ADC
-    default: DISABLED
   tls1:
     type: str
     choices:
@@ -133,7 +127,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service group.
-    default: ENABLED
   tls11:
     type: str
     choices:
@@ -141,7 +134,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service group.
-    default: ENABLED
   tls12:
     type: str
     choices:
@@ -149,7 +141,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service group.
-    default: ENABLED
   tls13:
     type: str
     choices:
@@ -157,7 +148,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL service group.
-    default: DISABLED
   sslservicegroup_ecccurve_binding:
     type: dict
     description: Bindings for sslservicegroup_ecccurve_binding resource

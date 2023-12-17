@@ -39,7 +39,6 @@ options:
     description:
       - Displays the current active migrated session details, if DUMPSESSION option
         is C(YES).
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

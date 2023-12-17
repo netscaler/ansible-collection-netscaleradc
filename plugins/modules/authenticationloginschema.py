@@ -80,7 +80,6 @@ options:
     description:
       - This option indicates whether current factor credentials are the default SSO
         (SingleSignOn) credentials.
-    default: 'NO'
   usercredentialindex:
     type: float
     description:

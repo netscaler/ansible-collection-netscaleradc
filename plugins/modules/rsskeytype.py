@@ -41,12 +41,20 @@ options:
       - SYMMETRIC
     description:
       - Type of RSS key, possible values are C(SYMMETRIC) and C(ASYMMETRIC).
-    default: ASYMMETRIC
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | rsskeytype
+      delegate_to: localhost
+      netscaler.adc.rsskeytype:
+        state: present
+        rsstype: ASYMMETRIC
 """
 
 RETURN = r"""

@@ -1,5 +1,5 @@
 - name: Sample Playbook
-  hosts: demo_netscalers
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Sample Task | HAnode
@@ -7,4 +7,4 @@
       netscaler.adc.hanode:
         state: present
         id: 1
-        ipaddress: 10.222.74.141
+        ipaddress: 10.10.10.141

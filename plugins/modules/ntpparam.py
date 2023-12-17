@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   authentication:
     type: str
@@ -42,20 +44,17 @@ options:
     description:
       - Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify
         that the server is in fact known and trusted.
-    default: 'YES'
   autokeylogsec:
     type: float
     description:
       - Autokey protocol requires the keys to be refreshed periodically. This parameter
         specifies the interval between regenerations of new session keys. In seconds,
         expressed as a power of 2.
-    default: 12
   revokelogsec:
     type: float
     description:
       - Interval between re-randomizations of the autokey seeds to prevent brute-force
         attacks on the autokey algorithms.
-    default: 16
   trustedkey:
     type: list
     description:

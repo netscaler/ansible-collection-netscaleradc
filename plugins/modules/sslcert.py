@@ -25,7 +25,8 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   state:
-    choices: []
+    choices:
+      - created
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -43,7 +44,6 @@ options:
       - PEM
     description:
       - Format of the CA certificate.
-    default: PEM
   cakey:
     type: str
     description:
@@ -58,7 +58,6 @@ options:
       - PEM
     description:
       - Format for the CA certificate.
-    default: PEM
   caserial:
     type: str
     description:
@@ -81,7 +80,6 @@ options:
       - PEM
     description:
       - Format in which the certificate is stored on the appliance.
-    default: PEM
   certtype:
     type: str
     choices:
@@ -103,7 +101,6 @@ options:
     description:
       - Number of days for which the certificate will be valid, beginning with the
         time and day (system time) of creation.
-    default: 365
   keyfile:
     type: str
     description:
@@ -120,7 +117,6 @@ options:
       - PEM
     description:
       - Format in which the key is stored on the appliance.
-    default: PEM
   pempassphrase:
     type: str
     description:
@@ -173,6 +169,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcert
+      delegate_to: localhost
+      netscaler.adc.sslcert:
+        state: created
+
+        certfile: test1-sni.crt
+        reqfile: test1-sni.csr
+        certtype: SRVR_CERT
+        keyform: PEM
+        days: 1480
+        certform: PEM
+        cacert: ns-root.cert
+        cacertform: PEM
+        cakey: ns-root.key
+        cakeyform: PEM
+        caserial: ns-root.srl
 """
 
 RETURN = r"""

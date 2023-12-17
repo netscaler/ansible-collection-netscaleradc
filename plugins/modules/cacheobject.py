@@ -52,7 +52,6 @@ options:
       - POST
     description:
       - HTTP request method that caused the object to be stored.
-    default: GET
   httpstatus:
     type: float
     description:
@@ -86,7 +85,6 @@ options:
     type: int
     description:
       - Host port of the object. You must also set the Host parameter.
-    default: 80
   tosecondary:
     type: str
     choices:
@@ -94,7 +92,6 @@ options:
       - 'NO'
     description:
       - Object will be saved onto Secondary.
-    default: 'NO'
   url:
     type: str
     description:

@@ -62,7 +62,6 @@ options:
       - '             If you disable pre-emption while a backup VIP address is the
         master, the backup VIP address remains master until the original master VIP''s
         priority becomes higher than that of the current master.'
-    default: ENABLED
   preemptiondelaytimer:
     type: float
     description:
@@ -74,7 +73,6 @@ options:
     description:
       - Base priority (BP), in an active-active mode configuration, which ordinarily
         determines the master VIP address.
-    default: 255
   sharing:
     type: str
     choices:
@@ -83,7 +81,6 @@ options:
     description:
       - In an active-active mode configuration, enable the backup VIP address to process
         any traffic instead of dropping it.
-    default: DISABLED
   trackifnumpriority:
     type: float
     description:
@@ -111,7 +108,6 @@ options:
         K/N), where N is the total number of virtual servers associated with the VIP
         address and K is the number of virtual servers for which the status is DOWN.'
       - 'Default: C(NONE).'
-    default: NONE
   vrid6_channel_binding:
     type: dict
     description: Bindings for vrid6_channel_binding resource

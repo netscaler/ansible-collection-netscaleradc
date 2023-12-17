@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   cacheecszeroprefix:
     type: str
@@ -45,7 +47,6 @@ options:
         ECS responses with Scope Prefix length of zero will be cached, but not tied
         to any subnet. This option has no effect if caching of ECS responses is disabled
         in the corresponding DNS profile.
-    default: ENABLED
   cachehitbypass:
     type: str
     choices:
@@ -55,7 +56,6 @@ options:
       - This parameter is applicable only in proxy mode and if this parameter is enabled  we
         will forward all the client requests to the backend DNS server and the response
         served will be cached on Citrix ADC
-    default: DISABLED
   cachenoexpire:
     type: str
     choices:
@@ -64,7 +64,6 @@ options:
     description:
       - If this flag is set to YES, the existing entries in cache do not age out.
         On reaching the max limit the cache records are frozen
-    default: DISABLED
   cacherecords:
     type: str
     choices:
@@ -77,7 +76,6 @@ options:
         When you disable record caching, the appliance stops caching server responses.
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
-    default: 'YES'
   dns64timeout:
     type: float
     description:
@@ -96,7 +94,6 @@ options:
         to domains for which the appliance is authoritative. Disable the parameter
         when the appliance is under attack from a client that is sending a flood of
         queries for unrelated domains.
-    default: DISABLED
   dnssec:
     type: str
     choices:
@@ -108,7 +105,6 @@ options:
         configurations (used by internal Citrix ADC features such as SSL VPN and Cache
         Redirection for name resolution) do not support the DNSSEC OK (DO) bit in
         the EDNS0 OPT header.'
-    default: ENABLED
   ecsmaxsubnets:
     type: float
     description:
@@ -137,7 +133,6 @@ options:
         before caching. When you modify this setting, the new value is applied only
         to those records that are cached after the modification. The TTL values of
         existing records are not changed.
-    default: 604800
   maxpipeline:
     type: float
     description:
@@ -154,7 +149,6 @@ options:
         of the record is set to the value of maxTTL before caching. When you modify
         this setting, the new value is applied only to those records that are cached
         after the modification. The TTL values of existing records are not changed.
-    default: 604800
   maxudppacketsize:
     type: float
     description:
@@ -164,7 +158,6 @@ options:
         acting as a proxy, requests from clients are limited by this parameter - if
         a request contains a size greater than this value in the OPT record, it will
         be replaced.
-    default: 1280
   minttl:
     type: float
     description:
@@ -184,7 +177,6 @@ options:
       - Type of lookup (C(DNS) or C(WINS)) to attempt first. If the first-priority
         lookup fails, the second-priority lookup is attempted. Used only by the SSL
         VPN feature.
-    default: WINS
   nxdomainratelimitthreshold:
     type: float
     description:
@@ -205,7 +197,6 @@ options:
         are unavailable. When external name servers are unavailable, the appliance
         queries a root server and resolves the request recursively, as it does for
         an end resolver configuration.
-    default: DISABLED
   resolutionorder:
     type: str
     choices:
@@ -228,13 +219,11 @@ options:
       - '* C(AAAAThenAQuery). Send a query for an AAAA record, and then send a query
         for an A record if the query for the AAAA record results in a NODATA response
         from the name server.'
-    default: OnlyAQuery
   retries:
     type: float
     description:
       - Maximum number of retry attempts when no response is received for a query
         sent to a name server. Applies to end resolver and forwarder configurations.
-    default: 5
   splitpktqueryprocessing:
     type: str
     choices:
@@ -242,7 +231,6 @@ options:
       - DROP
     description:
       - Processing requests split across multiple packets
-    default: ALLOW
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

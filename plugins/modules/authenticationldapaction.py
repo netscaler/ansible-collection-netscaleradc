@@ -127,12 +127,10 @@ options:
       - CAUTION! Authentication should be disabled only for authorization group extraction
         or where other (non-LDAP) authentication methods are in use and either bound
         to a primary list or flagged as secondary.
-    default: ENABLED
   authtimeout:
     type: float
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
-    default: 3
   cloudattributes:
     type: str
     choices:
@@ -141,7 +139,6 @@ options:
     description:
       - The Citrix ADC uses the cloud attributes to extract additional attributes
         from LDAP servers required for Citrix Cloud operations
-    default: DISABLED
   defaultauthenticationgroup:
     type: str
     description:
@@ -152,7 +149,6 @@ options:
     description:
       - The Citrix ADC uses the email attribute to query the Active Directory for
         the email id of a user
-    default: mail
   followreferrals:
     type: str
     choices:
@@ -161,7 +157,6 @@ options:
     description:
       - Setting this option to C(ON) enables following LDAP referrals received from
         the LDAP server.
-    default: 'OFF'
   groupattrname:
     type: str
     description:
@@ -229,13 +224,11 @@ options:
     type: float
     description:
       - Specifies the maximum number of nested referrals to follow.
-    default: 1
   maxnestinglevel:
     type: float
     description:
       - If nested group extraction is ON, specifies the number of levels up to which
         group extraction is performed.
-    default: 2
   mssrvrecordlocation:
     type: str
     description:
@@ -264,7 +257,6 @@ options:
     description:
       - Allow nested group extraction, in which the Citrix ADC queries external LDAP
         servers to determine whether a group is part of another group.
-    default: 'OFF'
   otpsecret:
     type: str
     description:
@@ -277,7 +269,6 @@ options:
       - DISABLED
     description:
       - Allow password change requests.
-    default: DISABLED
   pushservice:
     type: str
     description:
@@ -290,7 +281,6 @@ options:
       - MSSRV-REC
     description:
       - Specifies the DNS Record lookup Type for the referrals
-    default: A-REC
   requireuser:
     type: str
     choices:
@@ -302,7 +292,6 @@ options:
         [Both username validation as well as password validation skipped] and (non-LDAP)
         authentication methods are in use and either bound to a primary list or flagged
         as secondary.
-    default: 'YES'
   searchfilter:
     type: str
     description:
@@ -321,7 +310,6 @@ options:
     description:
       - Type of security used for communications between the Citrix ADC and the LDAP
         server. For the C(PLAINTEXT) setting, no encryption is required.
-    default: PLAINTEXT
   serverip:
     type: str
     description:
@@ -334,7 +322,6 @@ options:
     type: int
     description:
       - Port on which the LDAP server accepts connections.
-    default: 389
   sshpublickey:
     type: str
     description:
@@ -365,7 +352,6 @@ options:
       - 'NO'
     description:
       - When to validate LDAP server certs
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

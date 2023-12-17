@@ -38,7 +38,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  String:
+  string:
     type: str
     description:
       - String of characters that constitutes a pattern. For more information about

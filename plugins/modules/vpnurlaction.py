@@ -58,7 +58,6 @@ options:
         clientless access for the bookmarked web address in the Secure Client Access
         based session. Allows single sign-on and other HTTP processing on NetScaler
         Gateway for HTTPS resources.
-    default: 'OFF'
   comment:
     type: str
     description:

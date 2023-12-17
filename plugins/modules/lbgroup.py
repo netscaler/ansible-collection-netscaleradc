@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Time period, in minutes, for which backup persistence is in effect.
-    default: 2
   cookiedomain:
     type: str
     description:
@@ -104,12 +103,10 @@ options:
         by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    default: '"None"'
   timeout:
     type: float
     description:
       - Time period for which a persistence session is in effect.
-    default: 2
   usevserverpersistency:
     type: str
     choices:
@@ -120,13 +117,11 @@ options:
         allows member vservers to have their own persistence, but need to be compatible
         with other members persistence rules. When this setting is enabled persistence
         sessions created by any of the members can be shared by other member vservers.
-    default: DISABLED
   v6persistmasklen:
     type: float
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.
-    default: 128
   lbgroup_lbvserver_binding:
     type: dict
     description: Bindings for lbgroup_lbvserver_binding resource

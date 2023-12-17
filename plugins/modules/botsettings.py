@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   defaultnonintrusiveprofile:
     type: str
@@ -44,7 +46,6 @@ options:
       - Profile to use when the feature is not enabled but feature is licensed. NonIntrusive
         checks will be disabled and IPRep cronjob(24 Hours) will be removed if this
         is set to C(BOT_BYPASS).
-    default: BOT_STATS
   defaultprofile:
     type: str
     description:
@@ -74,7 +75,6 @@ options:
     type: int
     description:
       - Proxy Server Port to get updated signatures from AWS.
-    default: 8080
   proxyserver:
     type: str
     description:
@@ -104,12 +104,10 @@ options:
       - 'OFF'
     description:
       - Flag used to enable/disable bot auto update signatures
-    default: 'OFF'
   signatureurl:
     type: str
     description:
       - URL to download the bot signature mapping file from server
-    default: https://nsbotsignatures.s3.amazonaws.com/BotSignatureMapping.json
   trapurlautogenerate:
     type: str
     choices:
@@ -118,17 +116,14 @@ options:
     description:
       - Enable/disable trap URL auto generation. When enabled, trap URL is updated
         within the configured interval.
-    default: 'OFF'
   trapurlinterval:
     type: float
     description:
       - Time in seconds after which trap URL is updated.
-    default: 3600
   trapurllength:
     type: float
     description:
       - Length of the auto-generated trap URL.
-    default: 32
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

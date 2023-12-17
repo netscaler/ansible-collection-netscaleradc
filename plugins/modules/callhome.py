@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   emailaddress:
     type: str
@@ -42,7 +44,6 @@ options:
     type: float
     description:
       - Interval (in days) between CallHome heartbeats
-    default: 7
   ipaddress:
     type: str
     description:
@@ -54,7 +55,6 @@ options:
       - CSP
     description:
       - CallHome mode of operation
-    default: Default
   nodeid:
     type: float
     description:
@@ -77,12 +77,20 @@ options:
       - Enables or disables the proxy mode. The proxy server can be set by either
         specifying the IP address of the server or the name of the service representing
         the proxy server.
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | callhome
+      delegate_to: localhost
+      netscaler.adc.callhome:
+        state: present
+        hbcustominterval: '30'
 """
 
 RETURN = r"""

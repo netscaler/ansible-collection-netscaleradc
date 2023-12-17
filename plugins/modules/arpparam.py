@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   spoofvalidation:
     type: str
@@ -41,7 +43,6 @@ options:
       - DISABLED
     description:
       - enable/disable arp spoofing validation
-    default: DISABLED
   timeout:
     type: float
     description:
@@ -49,7 +50,6 @@ options:
         The new value applies only to ARP entries that are dynamically learned after
         the new value is set. Previously existing ARP entries expire after the previously
         configured aging time.
-    default: 1200
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

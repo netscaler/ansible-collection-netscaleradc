@@ -44,7 +44,6 @@ options:
     type: str
     description:
       - encoding type of the file content.
-    default: '"BASE64"'
   filelocation:
     type: str
     description:

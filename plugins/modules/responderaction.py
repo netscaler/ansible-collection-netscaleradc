@@ -46,7 +46,6 @@ options:
         expression in a response is one that contains references to request elements
         that might not be present in all requests. If a response refers to a missing
         request element, an empty string is used instead.
-    default: 'NO'
   comment:
     type: str
     description:

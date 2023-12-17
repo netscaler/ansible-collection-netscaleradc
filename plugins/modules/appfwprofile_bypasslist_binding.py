@@ -65,7 +65,6 @@ options:
       - Expression
     description:
       - Bypass List value type
-    default: literal
   comment:
     type: str
     description:

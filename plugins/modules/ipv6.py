@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   dodad:
     type: str
@@ -44,7 +46,6 @@ options:
       - Detection (DAD) for all the Citrix ADC owned IPv6 addresses regardless of
         whether they are obtained through stateless auto configuration, DHCPv6, or
         manual configuration.
-    default: DISABLED
   natprefix:
     type: str
     description:
@@ -61,14 +62,12 @@ options:
       - Base reachable time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, that the Citrix ADC assumes an adjacent device is reachable
         after receiving a reachability confirmation.
-    default: 30000
   ndretransmissiontime:
     type: float
     description:
       - Retransmission time of the Neighbor Discovery (ND6) protocol. The time, in
         milliseconds, between retransmitted Neighbor Solicitation (NS) messages, to
         an adjacent device.
-    default: 1000
   ralearning:
     type: str
     choices:
@@ -77,7 +76,6 @@ options:
     description:
       - Enable the Citrix ADC to learn about various routes from Router Advertisement
         (RA) and Router Solicitation (RS) messages sent by the routers.
-    default: DISABLED
   routerredirection:
     type: str
     choices:
@@ -85,7 +83,6 @@ options:
       - DISABLED
     description:
       - Enable the Citrix ADC to do Router Redirection.
-    default: DISABLED
   td:
     type: float
     description:

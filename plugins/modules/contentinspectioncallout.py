@@ -91,7 +91,6 @@ options:
     type: float
     description:
       - Port of the Content Inspection server.
-    default: 1344
   type:
     type: str
     choices:

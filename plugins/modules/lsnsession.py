@@ -51,7 +51,6 @@ options:
       - NAT64
     description:
       - Type of sessions to be displayed.
-    default: NAT44
   netmask:
     type: str
     description:

@@ -27,24 +27,24 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   contenttypeautodeploygraceperiod:
     type: float
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   contenttypeminthreshold:
     type: float
     description:
       - Minimum threshold to learn Content Type information.
-    default: 1
   contenttypepercentthreshold:
     type: float
     description:
@@ -54,13 +54,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   cookieconsistencyminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cookies.
-    default: 1
   cookieconsistencypercentthreshold:
     type: float
     description:
@@ -70,7 +68,6 @@ options:
     type: float
     description:
       - Minimum threshold to learn Credit Card information.
-    default: 1
   creditcardnumberpercentthreshold:
     type: float
     description:
@@ -80,13 +77,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   crosssitescriptingminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML cross-site scripting patterns.
-    default: 1
   crosssitescriptingpercentthreshold:
     type: float
     description:
@@ -98,13 +93,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   csrftagminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn cross-site request forgery (CSRF) tags.
-    default: 1
   csrftagpercentthreshold:
     type: float
     description:
@@ -115,13 +108,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   fieldconsistencyminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field consistency information.
-    default: 1
   fieldconsistencypercentthreshold:
     type: float
     description:
@@ -133,13 +124,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   fieldformatminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn field formats.
-    default: 1
   fieldformatpercentthreshold:
     type: float
     description:
@@ -155,13 +144,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   sqlinjectionminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn HTML SQL injection patterns.
-    default: 1
   sqlinjectionpercentthreshold:
     type: float
     description:
@@ -173,13 +160,11 @@ options:
     description:
       - The number of minutes after the threshold hit alert the learned rule will
         be deployed
-    default: 10080
   starturlminthreshold:
     type: float
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn start URLs.
-    default: 1
   starturlpercentthreshold:
     type: float
     description:
@@ -190,7 +175,6 @@ options:
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn XML attachment patterns.
-    default: 1
   xmlattachmentpercentthreshold:
     type: float
     description:
@@ -202,7 +186,6 @@ options:
     description:
       - Minimum number of application firewall sessions that the learning engine must
         observe to learn web services interoperability (WSI) information.
-    default: 1
   xmlwsipercentthreshold:
     type: float
     description:

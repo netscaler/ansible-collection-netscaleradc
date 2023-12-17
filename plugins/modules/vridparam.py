@@ -27,25 +27,25 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   deadinterval:
     type: float
     description:
       - Number of seconds after which a peer node in active-active mode is marked
         down if vrrp advertisements are not received from the peer node.
-    default: 3
   hellointerval:
     type: float
     description:
       - Interval, in milliseconds, between vrrp advertisement messages sent to the
         peer node in active-active mode.
-    default: 1000
   sendtomaster:
     type: str
     choices:
@@ -54,7 +54,6 @@ options:
     description:
       - Forward packets to the master node, in an active-active mode configuration,
         if the virtual server is in the backup state and sharing is disabled.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

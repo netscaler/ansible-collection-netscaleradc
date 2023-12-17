@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   accounting:
     type: str
@@ -60,7 +62,6 @@ options:
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         TACACS+ server.
-    default: 3
   defaultauthenticationgroup:
     type: str
     description:
@@ -78,7 +79,6 @@ options:
     type: int
     description:
       - Port number on which the TACACS+ server listens for connections.
-    default: 49
   tacacssecret:
     type: str
     description:

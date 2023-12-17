@@ -73,7 +73,6 @@ options:
     description:
       - Protocol used by the name server. C(UDP_TCP) is not valid if the name server
         is a DNS virtual server configured on the appliance.
-    default: UDP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

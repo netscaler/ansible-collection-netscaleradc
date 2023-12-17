@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - View based on heartbeat only on bkplane interface
-    default: DISABLED
   clid:
     type: float
     description:
@@ -60,14 +59,12 @@ options:
     description:
       - This field controls the proxy arp feature in cluster. By default the flag
         is enabled.
-    default: ENABLED
   deadinterval:
     type: float
     description:
       - Amount of time, in seconds, after which nodes that do not respond to the heartbeats
         are assumed to be down.If the value is less than 3 sec, set the helloInterval
         parameter to 200 msec
-    default: 3
   dfdretainl2params:
     type: str
     choices:
@@ -75,14 +72,12 @@ options:
       - DISABLED
     description:
       - flag to add ext l2 header during steering. By default the flag is disabled.
-    default: DISABLED
   hellointerval:
     type: float
     description:
       - Interval, in milliseconds, at which heartbeats are sent to each cluster node
         to check the health status.Set the value to 200 msec, if the deadInterval
         parameter is less than 3 sec
-    default: 200
   inc:
     type: str
     choices:
@@ -90,7 +85,6 @@ options:
       - DISABLED
     description:
       - This option is required if the cluster nodes reside on different networks.
-    default: DISABLED
   nodegroup:
     type: str
     description:
@@ -103,7 +97,6 @@ options:
     description:
       - Preempt a cluster node that is configured as a SPARE if an ACTIVE node becomes
         available.
-    default: DISABLED
   processlocal:
     type: str
     choices:
@@ -112,7 +105,6 @@ options:
     description:
       - By turning on this option packets destined to a service in a cluster will
         not under go any steering.
-    default: DISABLED
   quorumtype:
     type: str
     choices:
@@ -121,7 +113,6 @@ options:
     description:
       - Quorum Configuration Choices  - "Majority" (recommended) requires majority
         of nodes to be online for the cluster to be UP. "None" relaxes this requirement.
-    default: MAJORITY
   retainconnectionsoncluster:
     type: str
     choices:
@@ -131,7 +122,6 @@ options:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
-    default: 'NO'
   syncstatusstrictmode:
     type: str
     choices:
@@ -141,7 +131,6 @@ options:
       - strict mode for sync status of cluster. Depending on the the mode if there
         are any errors while applying config, sync status is displayed accordingly.
         By default the flag is disabled.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

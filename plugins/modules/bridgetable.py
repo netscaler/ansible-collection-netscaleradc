@@ -43,7 +43,6 @@ options:
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
-    default: 300
   devicevlan:
     type: float
     description:

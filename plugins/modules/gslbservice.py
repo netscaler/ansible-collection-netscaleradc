@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable logging appflow flow information
-    default: ENABLED
   cip:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
       - In the request that is forwarded to the GSLB service, insert a header that
         stores the client's IP address. Client IP header insertion is used in connection-proxy
         based site persistence.
-    default: DISABLED
   cipheader:
     type: str
     description:
@@ -102,7 +100,6 @@ options:
       - 'NO'
     description:
       - Monitor the health of the GSLB service.
-    default: 'YES'
   ip:
     type: str
     description:
@@ -148,20 +145,17 @@ options:
     type: float
     description:
       - Modify the TTL of the internally created naptr domain
-    default: 3600
   naptrorder:
     type: float
     description:
       - An integer specifying the order in which the NAPTR records MUST be processed
         in order to accurately represent the ordered list of Rules. The ordering is
         from lowest to highest
-    default: 1
   naptrpreference:
     type: float
     description:
       - An integer specifying the preference of this NAPTR among NAPTR records having
         same order. lower the number, higher the preference.
-    default: 1
   naptrreplacement:
     type: str
     description:

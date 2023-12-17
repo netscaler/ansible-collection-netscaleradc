@@ -25,7 +25,8 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   state:
-    choices: []
+    choices:
+      - created
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -91,7 +92,6 @@ options:
       - PEM
     description:
       - Format in which the key is stored on the appliance.
-    default: PEM
   localityname:
     type: str
     description:

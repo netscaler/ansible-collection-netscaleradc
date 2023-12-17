@@ -77,7 +77,6 @@ options:
       - 'OFF'
     description:
       - Option to encrypt token when Citrix ADC IDP sends one.
-    default: 'OFF'
   issuer:
     type: str
     description:
@@ -103,7 +102,6 @@ options:
     type: float
     description:
       - Interval at which Relying Party metadata is refreshed.
-    default: 50
   relyingpartymetadataurl:
     type: str
     description:
@@ -117,7 +115,6 @@ options:
       - 'OFF'
     description:
       - Option to send encrypted password in idtoken.
-    default: 'OFF'
   signaturealg:
     type: str
     choices:
@@ -125,7 +122,6 @@ options:
       - RS512
     description:
       - Algorithm to be used to sign OpenID tokens.
-    default: RS256
   signatureservice:
     type: str
     description:
@@ -137,7 +133,6 @@ options:
       - This option specifies the duration for which the token sent by Citrix ADC
         IdP is valid. For example, if skewTime is 10, then token would be valid from
         (current time - 10) min to (current time + 10) min, ie 20min in all.
-    default: 5
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

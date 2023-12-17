@@ -28,6 +28,7 @@ options:
     choices:
       - present
       - absent
+      - created
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -50,7 +51,6 @@ options:
       - 'NO'
     description:
       - Set the LDAP-based CRL retrieval mode to binary.
-    default: 'NO'
   binddn:
     type: str
     description:
@@ -117,7 +117,6 @@ options:
         are:'
       - C(PEM) - Privacy Enhanced Mail.
       - C(DER) - Distinguished Encoding Rule.
-    default: PEM
   interval:
     type: str
     choices:
@@ -168,7 +167,6 @@ options:
         as follows:'
       - C(One) - C(One) level below C(Base) DN.
       - C(Base) - Exactly the same level as C(Base) DN.
-    default: One
   server:
     type: str
     description:

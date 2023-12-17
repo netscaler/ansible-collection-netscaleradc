@@ -52,7 +52,6 @@ options:
       - DISABLED
     description:
       - Apply AppFlow logging to the virtual server.
-    default: ENABLED
   authentication:
     type: str
     choices:
@@ -60,7 +59,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable user authentication.
-    default: 'OFF'
   authenticationhost:
     type: str
     description:
@@ -74,7 +72,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable user authentication with HTTP 401 responses.
-    default: 'OFF'
   authnprofile:
     type: str
     description:
@@ -100,12 +97,10 @@ options:
       - thod fails or cannot be used.
       - '                       Valid only if the primary method is based on static
         proximity.'
-    default: ROUNDROBIN
   backuppersistencetimeout:
     type: float
     description:
       - Time period for which backup persistence is in effect.
-    default: 2
   backupvserver:
     type: str
     description:
@@ -119,7 +114,6 @@ options:
     description:
       - If this option is enabled while resolving DNS64 query AAAA queries are not
         sent to back end dns server
-    default: 'NO'
   cacheable:
     type: str
     choices:
@@ -130,7 +124,6 @@ options:
         virtual server can forward requests only to a transparent cache redirection
         virtual server that has an IP address and port combination of *:80, so such
         a cache redirection virtual server must be configured on the appliance.
-    default: 'NO'
   clttimeout:
     type: float
     description:
@@ -156,7 +149,6 @@ options:
         tries to re-create the packet flow on the basis of the information contained
         in the packets it receives.'
       - '* C(DISABLED) - Connection failover does not occur.'
-    default: DISABLED
   cookiename:
     type: str
     description:
@@ -187,7 +179,6 @@ options:
       - DISABLED
     description:
       - Enable database specific load balancing for MySQL and MSSQL service types.
-    default: DISABLED
   disableprimaryondown:
     type: str
     choices:
@@ -196,7 +187,6 @@ options:
     description:
       - If the primary virtual server goes down, do not allow it to return to primary
         status until manually enabled.
-    default: DISABLED
   dns64:
     type: str
     choices:
@@ -219,13 +209,11 @@ options:
       - Flush all active transactions associated with a virtual server whose state
         transitions from UP to DOWN. Do not enable this option for applications that
         must complete their transactions.
-    default: ENABLED
   hashlength:
     type: float
     description:
       - Number of bytes to consider for the hash value used in the URLHASH and DOMAINHASH
         load balancing methods.
-    default: 80
   healththreshold:
     type: float
     description:
@@ -261,7 +249,6 @@ options:
         parameter, ICMP Response, is available at the IP address level, for IPv4 addresses
         of type VIP. To set that parameter, use the add ip command in the CLI or the
         Create IP dialog box in the GUI.'
-    default: PASSIVE
   insertvserveripport:
     type: str
     choices:
@@ -394,7 +381,6 @@ options:
       - '* C(CALLIDHASH) - Create a hash of the SIP Call-ID header.'
       - '* C(USER_TOKEN) - Same as C(TOKEN) LB method but token needs to be provided
         from an extension.'
-    default: LEASTCONNECTION
   lbprofilename:
     type: str
     description:
@@ -406,7 +392,6 @@ options:
         an expression (for example, CLIENT.IP.DST.IN_SUBNET(192.0.2.0/24) or the name
         of a named expression. In the above example, the virtual server accepts all
         requests whose destination IP address is in the 192.0.2.0/24 subnet.
-    default: '"NONE"'
   listenpriority:
     type: float
     description:
@@ -414,7 +399,6 @@ options:
         a lower priority. If a request matches the listen policies of more than one
         virtual server the virtual server whose listen policy has the highest priority
         (the lowest priority number) accepts the request.
-    default: 101
   m:
     type: str
     choices:
@@ -439,7 +423,6 @@ options:
         the C(IP) header.'
       - You can use either the C(IPTUNNEL) or the C(TOS) option to implement Direct
         Server Return (DSR).
-    default: IP
   macmoderetainvlan:
     type: str
     choices:
@@ -448,7 +431,6 @@ options:
     description:
       - This option is used to retain vlan information of incoming packet when macmode
         is enabled
-    default: DISABLED
   maxautoscalemembers:
     type: float
     description:
@@ -474,7 +456,6 @@ options:
         from the version of the database. This setting provides compatibility between
         the client-side and server-side connections by ensuring that all communication
         conforms to the server's version.
-    default: 2008R2
   mysqlcharacterset:
     type: float
     description:
@@ -539,7 +520,6 @@ options:
       - PERCENT
     description:
       - Units in which to increment load at each interval in slow-start mode.
-    default: PER_SECOND
   oracleserverversion:
     type: str
     choices:
@@ -547,7 +527,6 @@ options:
       - 11G
     description:
       - Oracle server version
-    default: 10G
   order:
     type: float
     description:
@@ -649,7 +628,6 @@ options:
     type: str
     description:
       - HTTP code to return in SUCCESS case.
-    default: '"200 OK"'
   processlocal:
     type: str
     choices:
@@ -660,7 +638,6 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
-    default: DISABLED
   push:
     type: str
     choices:
@@ -669,13 +646,11 @@ options:
     description:
       - Process traffic with the push virtual server that is bound to this load balancing
         virtual server.
-    default: DISABLED
   pushlabel:
     type: str
     description:
       - Expression for extracting a label from the server's response. Can be either
         an expression or the name of a named expression.
-    default: '"none"'
   pushmulticlients:
     type: str
     choices:
@@ -684,7 +659,6 @@ options:
     description:
       - Allow multiple Web 2.0 connections from the same client to connect to the
         virtual server and expect updates.
-    default: 'NO'
   pushvserver:
     type: str
     description:
@@ -716,7 +690,6 @@ options:
         use brackets in the IP Address and Name parameters to specify the range. For
         example:'
       - add lb vserver my_vserver[1-3] HTTP 192.0.2.[1-3] 80
-    default: 1
   recursionavailable:
     type: str
     choices:
@@ -727,7 +700,6 @@ options:
         have the RA bit turned on. Typically one would set this option to C(YES),
         when the vserver is load balancing a set of DNS servers thatsupport recursive
         queries.
-    default: 'NO'
   redirectfromport:
     type: int
     description:
@@ -741,7 +713,6 @@ options:
     description:
       - Rewrite the port and change the protocol to ensure successful HTTP redirects
         from services.
-    default: DISABLED
   redirurl:
     type: str
     description:
@@ -761,7 +732,6 @@ options:
         expression or the name of a named expression.
       - 'Example:'
       - HTTP.RES.HEADER("setcookie").VALUE(0).TYPECAST_NVLIST_T('=',';').VALUE("server1").
-    default: '"none"'
   retainconnectionsoncluster:
     type: str
     choices:
@@ -771,7 +741,6 @@ options:
       - This option enables you to retain existing connections on a node joining a
         Cluster system or when a node is being configured for passive timeout. By
         default, this option is disabled.
-    default: 'NO'
   rhistate:
     type: str
     choices:
@@ -791,7 +760,6 @@ options:
       - '* If you set RHI STATE to C(ACTIVE) on some and C(PASSIVE) on others, the
         Citrix ADC advertises the route for the VIP address if at least one of the
         associated virtual servers, whose RHI STATE set to C(ACTIVE), is in UP state.'
-    default: PASSIVE
   rtspnat:
     type: str
     choices:
@@ -799,7 +767,6 @@ options:
       - 'OFF'
     description:
       - Use network address translation (NAT) for RTSP data connections.
-    default: 'OFF'
   rule:
     type: str
     description:
@@ -811,7 +778,6 @@ options:
         by using the \ character.'
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
-    default: '"none"'
   servicename:
     type: str
     description:
@@ -875,7 +841,6 @@ options:
         Recommended for load balancing of intrusion detection system (IDS) servers
         and scenarios involving direct server return (DSR), where session information
         is unnecessary.
-    default: DISABLED
   skippersistency:
     type: str
     choices:
@@ -885,7 +850,6 @@ options:
     description:
       - This argument decides the behavior incase the service which is selected from
         an existing persistence session has reached threshold.
-    default: None
   sobackupaction:
     type: str
     choices:
@@ -929,12 +893,10 @@ options:
     description:
       - If spillover occurs, maintain source IP address based persistence for both
         primary and backup virtual servers.
-    default: DISABLED
   sopersistencetimeout:
     type: float
     description:
       - Timeout for spillover persistence, in minutes.
-    default: 2
   sothreshold:
     type: float
     description:
@@ -962,7 +924,6 @@ options:
     type: float
     description:
       - Time period for which a persistence session is in effect.
-    default: 2
   toggleorder:
     type: str
     choices:
@@ -970,7 +931,6 @@ options:
       - DESCENDING
     description:
       - Configure this option to toggle order preference
-    default: ASCENDING
   tosid:
     type: float
     description:
@@ -984,19 +944,16 @@ options:
     description:
       - When value is C(ENABLED), Trofs persistence is honored. When value is C(DISABLED),
         Trofs persistence is not honored.
-    default: ENABLED
   v6netmasklen:
     type: float
     description:
       - Number of bits to consider in an IPv6 destination or source IP address, for
         creating the hash that is required by the DESTINATIONIPHASH and SOURCEIPHASH
         load balancing methods.
-    default: 128
   v6persistmasklen:
     type: float
     description:
       - Persistence mask for IP based persistence types, for IPv6 virtual servers.
-    default: 128
   vipheader:
     type: str
     description:
@@ -1585,6 +1542,95 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+
+- name: Simple LBVserver playbook
+  hosts: localhost
+
+  gather_facts: false
+
+  tasks:
+    - name: Sample Task | service
+      delegate_to: localhost
+      netscaler.adc.service:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        name: s1
+        ipaddress: 10.222.74.181
+        servicetype: HTTP
+        port: 80
+
+    - name: Sample Task | service
+      delegate_to: localhost
+      netscaler.adc.service:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        name: s2
+        ipaddress: 10.10.10.10
+        servicetype: HTTP
+        port: 80
+
+    - name: Sample Task | servicegroup
+      delegate_to: localhost
+      netscaler.adc.servicegroup:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        servicegroupname: sg1
+        servicetype: HTTP
+
+    - name: Sample Task | lbvserver with bindings
+      delegate_to: localhost
+      netscaler.adc.lbvserver:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        name: test_lbvser
+        servicetype: HTTP
+        ipv46: 10.10.10.11
+        port: 80
+        lbmethod: LEASTCONNECTION
+
+        lbvserver_servicegroup_binding:
+          # mode: desired # bind | unbind | desired
+          binding_members:
+            - name: test_lbvser
+              servicename: sg1
+        lbvserver_service_binding:
+          # mode: desired # bind | unbind | desired
+          binding_members:
+            - name: test_lbvser
+              servicename: s1
+              weight: 16
+            - name: test_lbvser
+              servicename: s2
+              weight: 20
 """
 
 RETURN = r"""

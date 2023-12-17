@@ -71,7 +71,6 @@ options:
     description:
       - Type of feature (aaatm or rba) against which to match the policies bound to
         this policy label.
-    default: AAATM_REQ
   authenticationpolicylabel_authenticationpolicy_binding:
     type: dict
     description: Bindings for authenticationpolicylabel_authenticationpolicy_binding

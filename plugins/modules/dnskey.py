@@ -28,6 +28,8 @@ options:
     choices:
       - present
       - absent
+      - created
+      - imported
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -44,13 +46,11 @@ options:
       - RSASHA512
     description:
       - Algorithm to generate for zone signing.
-    default: RSASHA1
   expires:
     type: float
     description:
       - Time period for which to consider the key valid, after the key is used to
         sign a zone.
-    default: 120
   filenameprefix:
     type: str
     description:
@@ -67,7 +67,6 @@ options:
     type: float
     description:
       - Size of the key, in bits.
-    default: 512
   keytype:
     type: str
     choices:
@@ -77,7 +76,6 @@ options:
       - ZoneSigningKey
     description:
       - Type of key to create.
-    default: ZSK
   notificationperiod:
     type: float
     description:
@@ -85,7 +83,6 @@ options:
         of days, hours, or minutes before expiry. Must be less than the expiry period.
         The notification is an SNMP trap sent to an SNMP manager. To enable the appliance
         to send the trap, enable the DNSKEY-EXPIRY SNMP alarm.
-    default: 7
   password:
     type: str
     description:
@@ -112,7 +109,6 @@ options:
         the zone. TTL is the time for which the record must be cached by the DNS proxies.
         If the TTL is not specified, either the DNS zone's minimum TTL or the default
         value of 3600 is used.
-    default: 3600
   units1:
     type: str
     choices:
@@ -121,7 +117,6 @@ options:
       - DAYS
     description:
       - Units for the expiry period.
-    default: DAYS
   units2:
     type: str
     choices:
@@ -130,7 +125,6 @@ options:
       - DAYS
     description:
       - Units for the notification period.
-    default: DAYS
   zonename:
     type: str
     description:

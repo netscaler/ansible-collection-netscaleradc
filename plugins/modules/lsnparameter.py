@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   memlimit:
     type: float
@@ -61,7 +63,6 @@ options:
       - For a group, when both the global level and the group level LSN session synchronization
         parameters are enabled, the primary node synchronizes information of all LSN
         sessions related to this LSN group with the secondary node.
-    default: ENABLED
   subscrsessionremoval:
     type: str
     choices:
@@ -73,7 +74,6 @@ options:
         database, sessions corresponding to that subscriber will be removed. if this
         setting is disabled, subscriber sessions will be timed out as per the idle
         time out settings.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -43,7 +43,6 @@ options:
       - 'NO'
     description:
       - Bypass the safety check and allow unsafe expressions.
-    default: 'NO'
   loglevel:
     type: str
     choices:

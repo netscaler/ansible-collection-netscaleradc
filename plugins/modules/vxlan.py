@@ -43,7 +43,6 @@ options:
       - DISABLED
     description:
       - Enable dynamic routing on this VXLAN.
-    default: DISABLED
   id:
     type: float
     description:
@@ -57,7 +56,6 @@ options:
     description:
       - Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN
         tag.
-    default: DISABLED
   ipv6dynamicrouting:
     type: str
     choices:
@@ -67,12 +65,10 @@ options:
       - 'Enable all IPv6 dynamic routing protocols on this VXLAN. Note: For the C(ENABLED)
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
-    default: DISABLED
   port:
     type: int
     description:
       - Specifies UDP destination port for VXLAN packets.
-    default: 4789
   protocol:
     type: str
     choices:
@@ -82,7 +78,6 @@ options:
       - NSH
     description:
       - VXLAN-GPE next protocol. RESERVED, C(IPv4), C(IPv6), C(ETHERNET), C(NSH)
-    default: ETHERNET
   type:
     type: str
     choices:
@@ -90,7 +85,6 @@ options:
       - VXLANGPE
     description:
       - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
-    default: VXLAN
   vlan:
     type: float
     description:

@@ -99,7 +99,6 @@ options:
     description:
       - IP address that the intranet application will use to route the connection
         through the virtual adapter.
-    default: 'ON'
   srcip:
     type: str
     description:

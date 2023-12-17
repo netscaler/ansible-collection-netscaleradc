@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   holdtimetxmult:
     type: float
@@ -41,7 +43,6 @@ options:
         the LLDP information in its database before discarding or removing it. The
         duration is calculated as the holdtimeTxMult (Holdtime Multiplier) parameter
         value multiplied by the timer (Timer) parameter value.
-    default: 4
   mode:
     type: str
     choices:
@@ -58,7 +59,6 @@ options:
     description:
       - Interval, in seconds, between LLDP packet data units (LLDPDUs).  that the
         Citrix ADC sends to a directly connected device.
-    default: 30
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

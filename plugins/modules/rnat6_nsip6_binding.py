@@ -50,7 +50,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
-    default: DEFAULT_NG
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

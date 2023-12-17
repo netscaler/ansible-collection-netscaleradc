@@ -64,7 +64,6 @@ options:
     type: float
     description:
       - Interval at which certificates or idtoken is refreshed.
-    default: 50
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

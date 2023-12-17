@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   clienttrafficonly:
     type: str
@@ -41,7 +43,6 @@ options:
       - 'NO'
     description:
       - Control whether AppFlow records should be generated only for client-side traffic.
-    default: 'NO'
   httpcookie:
     type: str
     choices:
@@ -49,7 +50,6 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP cookie logging.
-    default: DISABLED
   httphost:
     type: str
     choices:
@@ -57,7 +57,6 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP host logging.
-    default: DISABLED
   httpmethod:
     type: str
     choices:
@@ -65,7 +64,6 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP method logging.
-    default: DISABLED
   httpreferer:
     type: str
     choices:
@@ -73,7 +71,6 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP referer logging.
-    default: DISABLED
   httpurl:
     type: str
     choices:
@@ -81,7 +78,6 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP URL logging.
-    default: DISABLED
   httpuseragent:
     type: str
     choices:
@@ -89,17 +85,14 @@ options:
       - DISABLED
     description:
       - Enable AppFlow HTTP user-agent logging.
-    default: DISABLED
   templaterefresh:
     type: float
     description:
       - IPFIX template refresh interval (in seconds).
-    default: 600
   udppmtu:
     type: float
     description:
       - MTU to be used for IPFIX UDP packets.
-    default: 1472
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

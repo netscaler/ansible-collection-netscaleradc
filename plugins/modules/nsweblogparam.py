@@ -27,19 +27,20 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   buffersizemb:
     type: float
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
-    default: 16
   customreqhdrs:
     type: list
     description:
@@ -57,6 +58,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsweblogparam
+      delegate_to: localhost
+      netscaler.adc.nsweblogparam:
+        state: present
+        buffersizemb: '3'
 """
 
 RETURN = r"""

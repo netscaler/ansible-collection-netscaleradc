@@ -27,6 +27,7 @@ options:
   state:
     choices:
       - present
+      - absent
       - enabled
       - disabled
     default: present
@@ -35,6 +36,7 @@ options:
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
       - When C(enabled) the resource will be enabled on the NetScaler ADC node.
       - When C(disabled) the resource will be disabled on the NetScaler ADC node.
     type: str
@@ -46,7 +48,6 @@ options:
     description:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
-    default: ENABLED
   normalvalue:
     type: float
     description:
@@ -86,7 +87,6 @@ options:
         traps. Default trap time intervals: SYNFLOOD and APPFW traps = 1sec, PORT-ALLOC-FAILED
         = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), Other Traps = 86400sec(1
         day)'
-    default: 1
   trapname:
     type: str
     choices:

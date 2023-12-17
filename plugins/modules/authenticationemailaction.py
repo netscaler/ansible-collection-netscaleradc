@@ -77,7 +77,6 @@ options:
     type: float
     description:
       - Time after which the code expires.
-    default: 180
   type:
     type: str
     choices:
@@ -85,7 +84,6 @@ options:
       - ATHENA
     description:
       - Type of the email action. Default type is C(SMTP).
-    default: SMTP
   username:
     type: str
     description:

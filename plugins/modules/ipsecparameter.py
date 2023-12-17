@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   encalgo:
     type: list
@@ -43,7 +45,6 @@ options:
     description:
       - 'Type of encryption algorithm (Note: Selection of C(AES) enables AES128)'
     elements: str
-    default: AES
   hashalgo:
     type: list
     choices:
@@ -55,7 +56,6 @@ options:
     description:
       - Type of hashing algorithm
     elements: str
-    default: HMAC_SHA256
   ikeretryinterval:
     type: float
     description:
@@ -67,7 +67,6 @@ options:
       - V2
     description:
       - IKE Protocol Version
-    default: V2
   lifetime:
     type: float
     description:
@@ -86,7 +85,6 @@ options:
       - DISABLE
     description:
       - Enable/Disable PFS.
-    default: DISABLE
   replaywindowsize:
     type: float
     description:

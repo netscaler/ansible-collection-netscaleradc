@@ -36,7 +36,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Namespace:
+  namespace:
     type: str
     description:
       - Expanded namespace for which the XML prefix is provided.

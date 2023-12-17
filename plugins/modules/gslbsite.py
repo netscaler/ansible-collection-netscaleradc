@@ -64,7 +64,6 @@ options:
         least connection) is in operation, the appliance falls back to round robin.
         Also, if you disable metrics exchange, you must use a monitor to determine
         the state of GSLB services. Otherwise, the service is marked as DOWN.
-    default: ENABLED
   naptrreplacementsuffix:
     type: str
     description:
@@ -80,7 +79,6 @@ options:
         learned from communications with various local DNS (LDNS) servers used by
         clients. RTT information is used in the dynamic RTT load balancing method,
         and is exchanged every 5 seconds.
-    default: ENABLED
   parentsite:
     type: str
     description:
@@ -103,7 +101,6 @@ options:
       - DISABLED
     description:
       - Exchange persistent session entries with other GSLB sites every five seconds.
-    default: ENABLED
   siteipaddress:
     type: str
     description:
@@ -148,7 +145,6 @@ options:
       - '* The exchange of metrics through MEP is disabled.'
       - '* The exchange of metrics through MEP is enabled but the status of the service,
         learned through metrics exchange, is DOWN.'
-    default: ALWAYS
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

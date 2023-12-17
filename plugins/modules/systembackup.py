@@ -28,6 +28,7 @@ options:
     choices:
       - present
       - absent
+      - created
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -51,7 +52,6 @@ options:
       - 'YES'
     description:
       - Use this option to add kernel in the backup file
-    default: 'NO'
   level:
     type: str
     choices:
@@ -59,7 +59,6 @@ options:
       - full
     description:
       - Level of data to be backed up.
-    default: basic
   skipbackup:
     type: bool
     description:

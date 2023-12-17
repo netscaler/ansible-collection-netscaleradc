@@ -64,7 +64,6 @@ options:
     description:
       - Force policy evaluation for each response arriving from the origin server.
         Cannot be set to C(YES) if the Prefetch parameter is also set to C(YES).
-    default: 'NO'
   cachecontrol:
     type: str
     description:
@@ -78,7 +77,6 @@ options:
       - Force expiration of the content immediately after the response is downloaded
         (upon receipt of the last byte of the response body). Applicable only to positive
         responses.
-    default: 'NO'
   flashcache:
     type: str
     choices:
@@ -87,7 +85,6 @@ options:
     description:
       - Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the
         same content group.
-    default: 'NO'
   heurexpiryparam:
     type: float
     description:
@@ -127,7 +124,6 @@ options:
       - Ignore any request to reload a cached object from the origin server.
       - To guard against Denial of Service attacks, set this parameter to C(YES).
         For RFC-compliant behavior, set it to C(NO).
-    default: 'YES'
   ignorereqcachinghdrs:
     type: str
     choices:
@@ -135,7 +131,6 @@ options:
       - 'NO'
     description:
       - Ignore Cache-Control and Pragma headers in the incoming request.
-    default: 'YES'
   insertage:
     type: str
     choices:
@@ -144,7 +139,6 @@ options:
     description:
       - Insert an Age header into the response. An Age header contains information
         about the age of the object, in seconds, as calculated by the integrated cache.
-    default: 'YES'
   insertetag:
     type: str
     choices:
@@ -153,7 +147,6 @@ options:
     description:
       - Insert an ETag header in the response. With ETag header insertion, the integrated
         cache does not serve full responses on repeat requests.
-    default: 'YES'
   insertvia:
     type: str
     choices:
@@ -161,7 +154,6 @@ options:
       - 'NO'
     description:
       - Insert a Via header into the response.
-    default: 'YES'
   invalparams:
     type: list
     description:
@@ -188,7 +180,6 @@ options:
     description:
       - Perform DNS resolution for responses only if the destination IP address in
         the request does not match the destination IP address of the cached response.
-    default: 'YES'
   matchcookies:
     type: str
     choices:
@@ -200,13 +191,11 @@ options:
     type: float
     description:
       - Maximum size of a response that can be cached in this content group.
-    default: 80
   memlimit:
     type: float
     description:
       - Maximum amount of memory that the cache can use. The effective limit is based
         on the available memory of the Citrix ADC.
-    default: 65536
   minhits:
     type: int
     description:
@@ -231,7 +220,6 @@ options:
     description:
       - Setting persistHA to C(YES) causes IC to save objects in contentgroup to Secondary
         node in HA deployment.
-    default: 'NO'
   pinned:
     type: str
     choices:
@@ -239,7 +227,6 @@ options:
       - 'NO'
     description:
       - Do not flush objects from this content group under memory pressure.
-    default: 'NO'
   polleverytime:
     type: str
     choices:
@@ -248,7 +235,6 @@ options:
     description:
       - Always poll for the objects in this content group. That is, retrieve the objects
         from the origin server whenever they are requested.
-    default: 'NO'
   prefetch:
     type: str
     choices:
@@ -256,7 +242,6 @@ options:
       - 'NO'
     description:
       - Attempt to refresh objects that are about to go stale.
-    default: 'YES'
   prefetchmaxpending:
     type: float
     description:
@@ -285,7 +270,6 @@ options:
         the quick abort value, and a client aborts during the download, the cache
         stops downloading the response. If the object is larger than the quick abort
         size, the cache continues to download the response.
-    default: 4194303
   relexpiry:
     type: float
     description:
@@ -303,7 +287,6 @@ options:
       - 'NO'
     description:
       - Remove cookies from responses.
-    default: 'YES'
   selectorvalue:
     type: str
     description:
@@ -316,7 +299,6 @@ options:
       - 'NO'
     description:
       - content group whose objects are to be sent to secondary.
-    default: 'NO'
   type:
     type: str
     choices:
@@ -325,7 +307,6 @@ options:
       - MSSQL
     description:
       - The type of the content group.
-    default: HTTP
   weaknegrelexpiry:
     type: float
     description:
@@ -343,6 +324,41 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cachecontentgroup
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: DEFAULT
+    - name: Sample Task | cachecontentgroup | 2
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: BASEFILE
+        relexpiry: 86000
+        weaknegrelexpiry: 600
+        maxressize: 256
+        memlimit: 2
+    - name: Sample Task | cachecontentgroup | 3
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: DELTAJS
+        relexpiry: 86000
+        weaknegrelexpiry: 600
+        insertage: 'NO'
+        maxressize: 256
+        memlimit: 1
+        pinned: 'YES'
+    - name: Sample Task | cachecontentgroup | 4
+      delegate_to: localhost
+      netscaler.adc.cachecontentgroup:
+        state: present
+        name: NSFEO
+        maxressize: 1994752
 """
 
 RETURN = r"""

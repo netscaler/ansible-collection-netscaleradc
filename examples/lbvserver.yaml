@@ -1,7 +1,7 @@
 ---
 
 - name: Simple LBVserver playbook
-  hosts: demo_netscalers
+  hosts: localhost
 
   gather_facts: false
 
@@ -19,7 +19,7 @@
         state: present
 
         name: s1
-        ipaddress: 10.222.74.181
+        ipaddress: 10.10.10.181
         servicetype: HTTP
         port: 80
 
@@ -65,7 +65,7 @@
         # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
         # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
 
-        state: enabled
+        state: present
 
         name: test_lbvser
         servicetype: HTTP

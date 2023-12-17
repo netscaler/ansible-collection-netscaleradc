@@ -94,7 +94,6 @@ options:
     description:
       - Time, in seconds, for which the Citrix ADC waits before sending another DNS
         query to resolve the host name of the syslog server if the last query failed.
-    default: 5
   lbvservername:
     type: str
     description:
@@ -153,7 +152,6 @@ options:
     type: float
     description:
       - Max size of log data that can be held in NSB chain of server info.
-    default: 500
   name:
     type: str
     description:

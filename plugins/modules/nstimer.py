@@ -45,7 +45,6 @@ options:
     description:
       - The frequency at which the policies bound to this timer are invoked. The minimum
         value is 20 msec. The maximum value is 20940 in seconds and 349 in minutes
-    default: 5
   name:
     type: str
     description:
@@ -61,7 +60,6 @@ options:
       - MIN
     description:
       - Timer interval unit
-    default: SEC
   nstimer_autoscalepolicy_binding:
     type: dict
     description: Bindings for nstimer_autoscalepolicy_binding resource

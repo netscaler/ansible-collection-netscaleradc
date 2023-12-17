@@ -17,6 +17,7 @@ from .common import (
     adc_logout,
     bind_resource,
     create_resource,
+    create_resource_with_action,
     delete_resource,
     disable_resource,
     enable_resource,
@@ -24,12 +25,15 @@ from .common import (
     get_netscaler_version,
     get_resource,
     get_valid_desired_states,
+    is_global_binding,
+    is_singleton_resource,
     save_config,
     unbind_resource,
     update_resource,
 )
 from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
+    HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
     NETSCALER_NO_GET_RESOURCE,
 )
@@ -172,7 +176,9 @@ class ModuleExecutor(object):
 
     @trace
     def _filter_resource_module_params(self):
+        log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
+            log("DEBUG: k: %s, v: %s" % (k, v))
             if (not k.endswith("_binding")) and (
                 k
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
@@ -386,6 +392,19 @@ class ModuleExecutor(object):
                 )
                 log(msg)
                 continue
+
+            # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
+            # The `ip` and `servername` are mutually exclusive args in the `servicegroup_servicegroupmember_binding` resource
+            #  Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serverName, IP]', 'severity': 'ERROR'}"
+            if binding_name == "servicegroup_servicegroupmember_binding":
+                try:
+                    if (
+                        deleting_binding["ip"] == "0.0.0.0"
+                        and deleting_binding["servername"]
+                    ):
+                        deleting_binding.pop("ip")
+                except KeyError:
+                    pass
             ok, err = unbind_resource(
                 self.client,
                 binding_name=binding_name,
@@ -518,6 +537,14 @@ class ModuleExecutor(object):
         )
         log("DEBUG: Existing `%s` bindings: %s" % (binding_name, existing_bindings))
 
+        # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
+        # In the NITRO API spec, bind_primary_key of `servicegroup_servicegroupmember_binding` resource's wrongly documented as `ip`.
+        # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
+        if binding_name == "servicegroup_servicegroupmember_binding":
+            for x in desired_binding_members:
+                if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
+                    bindprimary_key = "servername"
+
         desired_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in desired_binding_members
         }
@@ -559,19 +586,9 @@ class ModuleExecutor(object):
             # we will delete the existing bindings. If there are no existing and desired bindings,
             # we will do nothing.
 
-            log("DEBUG: To be deleted bindings: %s" % to_be_deleted_bindings)
-            log("DEBUG: To be added bindings: %s" % to_be_added_bindings)
-            log("DEBUG: To be updated bindings: %s" % to_be_updated_bindings)
-
-            if to_be_deleted_bindings:
-                ok, err = self.delete_bindings(
-                    binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_deleted_bindings=to_be_deleted_bindings,
-                    existing_bindings=existing_bindings,
-                )
-                if not ok:
-                    self.return_failure(err)
+            log("DEBUG: to_be_deleted_bindings bindings: %s" % to_be_deleted_bindings)
+            log("DEBUG: to_be_added_bindings bindings: %s" % to_be_added_bindings)
+            log("DEBUG: to_be_updated_bindings bindings: %s" % to_be_updated_bindings)
 
             if to_be_added_bindings:
                 ok, err = self.add_bindings(
@@ -579,6 +596,35 @@ class ModuleExecutor(object):
                     bindprimary_key=bindprimary_key,
                     to_be_added_bindings=to_be_added_bindings,
                     desired_bindings=desired_binding_members,
+                )
+                if not ok:
+                    self.return_failure(err)
+
+            # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
+            # Hence GET the existing bindings again and construct the `to_be_deleted_bindings` list
+            existing_bindings = get_bindings(
+                self.client,
+                binding_name=binding_name,
+                binding_id=self.resource_id,
+            )
+            existing_binding_members_bindprimary_keys = {
+                x[bindprimary_key] for x in existing_bindings
+            }
+            to_be_deleted_bindings = (
+                existing_binding_members_bindprimary_keys
+                - desired_binding_members_bindprimary_keys
+            )
+            log(
+                "DEBUG: New to_be_deleted_bindings bindings: %s"
+                % to_be_deleted_bindings
+            )
+
+            if to_be_deleted_bindings:
+                ok, err = self.delete_bindings(
+                    binding_name=binding_name,
+                    bindprimary_key=bindprimary_key,
+                    to_be_deleted_bindings=to_be_deleted_bindings,
+                    existing_bindings=existing_bindings,
                 )
                 if not ok:
                     self.return_failure(err)
@@ -738,6 +784,24 @@ class ModuleExecutor(object):
             self.return_failure(msg)
 
     @trace
+    def act_on_resource(self, action):
+        self.module_result["changed"] = True
+        ok, err = create_resource_with_action(
+            self.client,
+            self.resource_name,
+            self.resource_module_params,
+            action=action,
+        )
+        if ok:
+            if (
+                "status_code" in err
+                and err["status_code"] == HTTP_RESOURCE_ALREADY_EXISTS
+            ):
+                self.module_result["changed"] = False
+        else:
+            self.return_failure(err)
+
+    @trace
     def main(self):
         try:
             if self.module.params["state"] in {"present", "enabled", "disabled"}:
@@ -758,6 +822,14 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
+            elif self.module.params["state"] in {"created", "imported"}:
+                state_action_map = {
+                    "created": "create",
+                    "imported": "import",
+                }
+                self.act_on_resource(
+                    action=state_action_map[self.module.params["state"]]
+                )
             elif self.module.params["state"] in {"absent"}:
                 if self.resource_primary_key:
                     # Bindings
@@ -765,11 +837,35 @@ class ModuleExecutor(object):
                         self.sync_all_bindings()
                     self.delete()
                 else:
-                    # `primary_key` will not be present for `update-only` resources such as
-                    # `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
-                    # for such resources.
-                    # FIXME: Should we `unset` the resource instead?
-                    pass
+                    # `primary_key` will not be present for
+                    # 1. `update-only` resources such as `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
+                    # FIXME: for such resources. Should we `unset` the resource instead?
+                    # 2. Few other resources -- `appfwlearningdata`, `application`, `bridgetable`, `gslbldnsentry`, `locationfile`, `locationfile6`, `routerdynamicrouting`, `sslcertbundle`, `sslcertfile`, `sslcrlfile`, `ssldhfile`, `sslkeyfile`, `systementitydata` and global bindings
+                    # FIXME: challenge is there is no `primary_key` and in most cases `get_args_keys`. How can we get the exact resource to GET before DELETE for itempotency?
+                    # ASK-SWETHA
+
+                    if is_global_binding(self.resource_name):
+                        self.delete()
+                    elif is_singleton_resource(self.resource_name):
+                        if "delete" in self.supported_operations:
+                            self.delete()
+                        elif "unset" in self.supported_operations:
+                            # unset action
+                            self.act_on_resource(action="unset")
+                        else:
+                            msg = (
+                                "ERROR: `state=absent` is not supported for resource `%s`"
+                                % self.resource_name
+                            )
+                            self.return_failure(msg)
+                    elif NITRO_RESOURCE_MAP[self.resource_name]["delete_arg_keys"]:
+                        self.delete()
+                    else:
+                        msg = (
+                            "ERROR: `state=absent` is not supported for resource `%s`"
+                            % self.resource_name
+                        )
+                        self.return_failure(msg)
             else:
                 msg = "Unknown state `%s`. Valid states are %s" % (
                     self.module.params["state"],

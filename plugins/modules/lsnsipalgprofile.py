@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Idle timeout for the data channel sessions in seconds.
-    default: 120
   opencontactpinhole:
     type: str
     choices:
@@ -48,7 +47,6 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE ContactPinhole creation.
-    default: ENABLED
   openrecordroutepinhole:
     type: str
     choices:
@@ -56,7 +54,6 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE RecordRoutePinhole creation.
-    default: ENABLED
   openregisterpinhole:
     type: str
     choices:
@@ -64,7 +61,6 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE RegisterPinhole creation.
-    default: ENABLED
   openroutepinhole:
     type: str
     choices:
@@ -72,7 +68,6 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE RoutePinhole creation.
-    default: ENABLED
   openviapinhole:
     type: str
     choices:
@@ -80,12 +75,10 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE ViaPinhole creation.
-    default: ENABLED
   registrationtimeout:
     type: float
     description:
       - SIP registration timeout in seconds.
-    default: 60
   rport:
     type: str
     choices:
@@ -93,7 +86,6 @@ options:
       - DISABLED
     description:
       - ENABLE/DISABLE rport.
-    default: ENABLED
   sipalgprofilename:
     type: str
     description:
@@ -106,7 +98,6 @@ options:
     type: float
     description:
       - SIP control channel session timeout in seconds.
-    default: 600
   sipsrcportrange:
     type: str
     description:

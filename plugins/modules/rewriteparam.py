@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   timeout:
     type: float
@@ -41,7 +43,6 @@ options:
         their selected actions without interruption. If the timeout is reached then
         the evaluation causes an UNDEF to be raised and no further processing is performed.
         Note that some rewrites may have already been performed.
-    default: 3900
   undefaction:
     type: str
     description:
@@ -52,7 +53,6 @@ options:
       - '* RESET - Reset the connection and notify the user''s browser, so that the
         user can resend the request.'
       - '* DROP - Drop the message without sending a response to the user.'
-    default: '"NOREWRITE"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

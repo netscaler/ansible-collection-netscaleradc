@@ -62,7 +62,6 @@ options:
         a time that exceeds this value, the Citrix ADC removes the session.This timeout
         does not apply for a TCP LSN session when a FIN or RST message is received
         from either of the endpoints.
-    default: 30
   transportprotocol:
     type: str
     choices:

@@ -44,7 +44,6 @@ options:
     description:
       - Adapts the configured request timeout based on flow conditions. The timeout
         is increased or decreased internally and applied on the flow.
-    default: DISABLED
   allowonlywordcharactersandhyphen:
     type: str
     choices:
@@ -55,7 +54,6 @@ options:
         the request/response header names and the connection will be reset for the
         other characters. When disabled allows any visible (printing) characters (%21-%7E)
         except delimiters (double quotes and "(),/:;<=>?@[]{}").
-    default: DISABLED
   altsvc:
     type: str
     choices:
@@ -63,7 +61,6 @@ options:
       - DISABLED
     description:
       - Choose whether to enable support for Alternative Services.
-    default: DISABLED
   altsvcvalue:
     type: str
     description:
@@ -79,7 +76,6 @@ options:
         than 4*T time is considered frustrating. Citrix ADC maintains stats for such
         tolerable and frustrating transcations. And client response time related apdex
         counters are only updated on a vserver which receives clients traffic.
-    default: 500
   clientiphdrexpr:
     type: str
     description:
@@ -91,7 +87,6 @@ options:
       - DISABLED
     description:
       - Start data compression on receiving a TCP packet with PUSH flag set.
-    default: DISABLED
   conmultiplex:
     type: str
     choices:
@@ -99,7 +94,6 @@ options:
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
-    default: ENABLED
   dropextracrlf:
     type: str
     choices:
@@ -107,7 +101,6 @@ options:
       - DISABLED
     description:
       - Drop any extra 'CR' and 'LF' characters present after the header.
-    default: ENABLED
   dropextradata:
     type: str
     choices:
@@ -115,7 +108,6 @@ options:
       - DISABLED
     description:
       - Drop any extra data when server sends more data than the specified content-length.
-    default: DISABLED
   dropinvalreqs:
     type: str
     choices:
@@ -123,18 +115,15 @@ options:
       - DISABLED
     description:
       - Drop invalid HTTP requests or responses.
-    default: DISABLED
   grpcholdlimit:
     type: float
     description:
       - Maximum size in bytes allowed to buffer gRPC packets till trailer is received
-    default: 131072
   grpcholdtimeout:
     type: float
     description:
       - Maximum time in milliseconds allowed to buffer gRPC packets till trailer is
         received. The value should be in multiples of 100
-    default: 1000
   grpclengthdelimitation:
     type: str
     choices:
@@ -142,7 +131,6 @@ options:
       - DISABLED
     description:
       - Set to C(DISABLED) for gRPC without a length delimitation.
-    default: ENABLED
   http2:
     type: str
     choices:
@@ -150,7 +138,6 @@ options:
       - DISABLED
     description:
       - Choose whether to enable support for HTTP/2.
-    default: DISABLED
   http2altsvcframe:
     type: str
     choices:
@@ -160,7 +147,6 @@ options:
       - Choose whether to enable support for sending HTTP/2 ALTSVC frames. When enabled,
         the ADC sends HTTP/2 ALTSVC frames to HTTP/2 clients, instead of the Alt-Svc
         response header field. Not applicable to servers.
-    default: DISABLED
   http2direct:
     type: str
     choices:
@@ -168,39 +154,32 @@ options:
       - DISABLED
     description:
       - Choose whether to enable support for Direct HTTP/2.
-    default: DISABLED
   http2headertablesize:
     type: float
     description:
       - Maximum size of the header compression table used to decode header blocks,
         in bytes.
-    default: 4096
   http2initialconnwindowsize:
     type: float
     description:
       - Initial window size for connection level flow control, in bytes.
-    default: 65535
   http2initialwindowsize:
     type: float
     description:
       - Initial window size for stream level flow control, in bytes.
-    default: 65535
   http2maxconcurrentstreams:
     type: float
     description:
       - Maximum number of concurrent streams that is allowed per connection.
-    default: 100
   http2maxemptyframespermin:
     type: float
     description:
       - Maximum number of empty  frames allowed in HTTP2 connection per minute
-    default: 60
   http2maxframesize:
     type: float
     description:
       - Maximum size of the frame payload that the Citrix ADC is willing to receive,
         in bytes.
-    default: 16384
   http2maxheaderlistsize:
     type: float
     description:
@@ -208,29 +187,24 @@ options:
         bytes. NOTE: The actual plain text header size that the Citrix ADC accepts
         is limited by maxHeaderLen. Please change maxHeaderLen parameter as well when
         modifying http2MaxHeaderListSize.'
-    default: 24576
   http2maxpingframespermin:
     type: float
     description:
       - Maximum number of ping frames allowed in HTTP2 connection per minute
-    default: 60
   http2maxresetframespermin:
     type: float
     description:
       - Maximum number of reset frames allowed in HTTP/2 connection per minute
-    default: 90
   http2maxsettingsframespermin:
     type: float
     description:
       - Maximum number of settings frames allowed in HTTP2 connection per minute
-    default: 15
   http2minseverconn:
     type: float
     description:
       - Minimum number of HTTP2 connections established to backend server, on receiving
         HTTP requests from client before multiplexing the streams into the available
         HTTP/2 connections.
-    default: 20
   http2strictcipher:
     type: str
     choices:
@@ -238,7 +212,6 @@ options:
       - DISABLED
     description:
       - Choose whether to enable strict HTTP/2 cipher selection
-    default: ENABLED
   http3:
     type: str
     choices:
@@ -246,35 +219,29 @@ options:
       - DISABLED
     description:
       - Choose whether to enable support for HTTP/3.
-    default: DISABLED
   http3maxheaderblockedstreams:
     type: float
     description:
       - Maximum number of HTTP/3 streams that can be blocked while HTTP/3 headers
         are being decoded.
-    default: 100
   http3maxheaderfieldsectionsize:
     type: float
     description:
       - Maximum size of the HTTP/3 header field section, in bytes.
-    default: 24576
   http3maxheadertablesize:
     type: float
     description:
       - Maximum size of the HTTP/3 QPACK dynamic header table, in bytes.
-    default: 4096
   httppipelinebuffsize:
     type: float
     description:
       - Application pipeline request buffering size, in bytes.
-    default: 131072
   incomphdrdelay:
     type: float
     description:
       - Maximum time to wait, in milliseconds, between incomplete header packets.
         If the header packets take longer to arrive at Citrix ADC, the connection
         is silently dropped.
-    default: 7000
   markconnreqinval:
     type: str
     choices:
@@ -282,7 +249,6 @@ options:
       - DISABLED
     description:
       - Mark CONNECT requests as invalid.
-    default: DISABLED
   markhttp09inval:
     type: str
     choices:
@@ -290,7 +256,6 @@ options:
       - DISABLED
     description:
       - Mark HTTP/0.9 requests as invalid.
-    default: DISABLED
   markhttpheaderextrawserror:
     type: str
     choices:
@@ -298,7 +263,6 @@ options:
       - DISABLED
     description:
       - Mark Http header with extra white space as invalid
-    default: DISABLED
   markrfc7230noncompliantinval:
     type: str
     choices:
@@ -306,7 +270,6 @@ options:
       - DISABLED
     description:
       - Mark RFC7230 non-compliant transaction as invalid
-    default: DISABLED
   marktracereqinval:
     type: str
     choices:
@@ -314,13 +277,11 @@ options:
       - DISABLED
     description:
       - Mark TRACE requests as invalid.
-    default: DISABLED
   maxheaderfieldlen:
     type: float
     description:
       - Number of bytes allowed for header field for HTTP header. If number of bytes
         exceeds beyond configured value, then request will be marked invalid
-    default: 24820
   maxheaderlen:
     type: float
     description:
@@ -328,7 +289,6 @@ options:
         error. If complete header is not obtained after queuing these many bytes,
         request will be marked as invalid and no L7 processing will be done for that
         TCP connection.
-    default: 24820
   maxreq:
     type: float
     description:
@@ -368,7 +328,6 @@ options:
       - DISABLED
     description:
       - Pass protocol upgrade request to the server.
-    default: ENABLED
   persistentetag:
     type: str
     choices:
@@ -377,7 +336,6 @@ options:
     description:
       - Generate the persistent Citrix ADC specific ETag for the HTTP response with
         ETag header.
-    default: DISABLED
   reqtimeout:
     type: float
     description:
@@ -407,7 +365,6 @@ options:
       - Allow RTSP tunnel in HTTP. Once application/x-rtsp-tunnelled is seen in Accept
         or Content-Type header, Citrix ADC does not process Layer 7 traffic on this
         connection.
-    default: DISABLED
   weblog:
     type: str
     choices:
@@ -415,7 +372,6 @@ options:
       - DISABLED
     description:
       - Enable or disable web logging.
-    default: ENABLED
   websocket:
     type: str
     choices:
@@ -424,12 +380,21 @@ options:
     description:
       - HTTP connection to be upgraded to a web socket connection. Once upgraded,
         Citrix ADC does not process Layer 7 traffic on this connection.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nshttpProfile
+      delegate_to: localhost
+      netscaler.adc.nshttpprofile:
+        state: present
+        name: httpprofile-HTTP2-0
+        http2: ENABLED
 """
 
 RETURN = r"""

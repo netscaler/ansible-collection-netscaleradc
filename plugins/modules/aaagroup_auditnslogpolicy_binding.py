@@ -92,7 +92,6 @@ options:
       - ICMP_REQUEST
     description:
       - Bindpoint to which the policy is bound.
-    default: REQUEST
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

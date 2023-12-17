@@ -59,7 +59,6 @@ options:
       - 'How to process the name-value pair. Available settings function as follows:'
       - '* C(STATIC) - The administrator-configured values are used.'
       - '* C(DYNAMIC) - The response is parsed, the form is extracted, and then submitted.'
-    default: DYNAMIC
   passwdfield:
     type: str
     description:
@@ -69,7 +68,6 @@ options:
     description:
       - Maximum number of bytes to allow in the response size. Specifies the number
         of bytes in the response to be parsed for extracting the forms.
-    default: 8096
   ssosuccessrule:
     type: str
     description:
@@ -83,7 +81,6 @@ options:
     description:
       - HTTP method (C(GET) or C(POST)) used by the single sign-on form to send the
         logon credentials to the logon server.
-    default: GET
   userfield:
     type: str
     description:

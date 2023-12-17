@@ -43,7 +43,6 @@ options:
     description:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
-    default: '"None"'
   dbsttl:
     type: float
     description:

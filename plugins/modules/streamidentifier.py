@@ -48,7 +48,6 @@ options:
       - DISABLED
     description:
       - Enable/disable Appflow logging for stream identifier
-    default: DISABLED
   breachthreshold:
     type: float
     description:
@@ -60,7 +59,6 @@ options:
         of requests, bandwidth, and response times). The interval is a moving window
         that keeps the most recently collected data. Older data is discarded at regular
         intervals.
-    default: 1
   maxtransactionthreshold:
     type: float
     description:
@@ -82,7 +80,6 @@ options:
         the sample count, the more accurate is the statistical data. To evaluate all
         requests, set the sample count to 1. However, such a low setting can result
         in excessive consumption of memory and processing resources.
-    default: 1
   selectorname:
     type: str
     description:
@@ -94,7 +91,6 @@ options:
       - DISABLED
     description:
       - Enable/disable SNMP trap for stream identifier
-    default: DISABLED
   sort:
     type: str
     choices:
@@ -109,7 +105,6 @@ options:
         Performed during data collection, the sorting enables real-time data evaluation
         through Citrix ADC policies (for example, compression and caching policies)
         that use functions such as IS_TOP(n).
-    default: REQUESTS
   trackackonlypackets:
     type: str
     choices:
@@ -118,7 +113,6 @@ options:
     description:
       - Track ack only packets as well. This setting is applicable only when packet
         rate limiting is being used.
-    default: DISABLED
   tracktransactions:
     type: str
     choices:
@@ -128,7 +122,6 @@ options:
       - 'Track transactions exceeding configured threshold. Transaction tracking can
         be enabled for following metric: ResponseTime.'
       - By default transaction tracking is disabled
-    default: NONE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -28,6 +28,7 @@ options:
     choices:
       - present
       - absent
+      - imported
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -36,7 +37,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Locationfile:
+  locationfile:
     type: str
     description:
       - Name of the location file, with or without absolute path. If the path is not
@@ -60,7 +61,6 @@ options:
     description:
       - Format of the location file. Required for the Citrix ADC to identify how to
         read the location file.
-    default: netscaler
   src:
     type: str
     description:
@@ -73,6 +73,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcert
+      delegate_to: localhost
+      netscaler.adc.locationfile:
+        state: imported
+
+        locationfile: my_file
+        src: local:my_location_file
 """
 
 RETURN = r"""

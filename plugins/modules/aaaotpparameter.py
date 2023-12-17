@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   encryption:
     type: str
@@ -41,13 +43,11 @@ options:
       - 'OFF'
     description:
       - To encrypt otp secret in AD or not. Default value is C(OFF)
-    default: 'OFF'
   maxotpdevices:
     type: float
     description:
       - Maximum number of otp devices user can register. Default value is 4. Max value
         is 255
-    default: 4
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

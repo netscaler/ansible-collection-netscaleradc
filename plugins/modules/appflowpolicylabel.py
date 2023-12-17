@@ -66,7 +66,6 @@ options:
       - HTTP_QUIC
     description:
       - Type of traffic evaluated by the policies bound to the policy label.
-    default: HTTP
   appflowpolicylabel_appflowpolicy_binding:
     type: dict
     description: Bindings for appflowpolicylabel_appflowpolicy_binding resource

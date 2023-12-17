@@ -53,7 +53,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable the request URL pattern.
-    default: 'OFF'
   logmessage:
     type: str
     description:

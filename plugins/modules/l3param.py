@@ -27,18 +27,17 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   acllogtime:
     type: str
-    choices:
-      - ENABLED
-      - DISABLED
     description:
       - Parameter to tune acl logging time
   allowclasseipv4:
@@ -48,7 +47,6 @@ options:
       - DISABLED
     description:
       - Enable/Disable IPv4 Class E address clients
-    default: DISABLED
   dropdfflag:
     type: str
     choices:
@@ -56,7 +54,6 @@ options:
       - DISABLED
     description:
       - Enable dropping the IP DF flag.
-    default: DISABLED
   dropipfragments:
     type: str
     choices:
@@ -64,7 +61,6 @@ options:
       - DISABLED
     description:
       - Enable dropping of IP fragments.
-    default: DISABLED
   dynamicrouting:
     type: str
     choices:
@@ -73,7 +69,6 @@ options:
     description:
       - Enable/Disable Dynamic routing on partition. This configuration is not applicable
         to default partition
-    default: DISABLED
   externalloopback:
     type: str
     choices:
@@ -81,7 +76,6 @@ options:
       - DISABLED
     description:
       - Enable external loopback.
-    default: DISABLED
   forwardicmpfragments:
     type: str
     choices:
@@ -89,12 +83,10 @@ options:
       - DISABLED
     description:
       - Enable forwarding of ICMP fragments.
-    default: DISABLED
   icmpgenratethreshold:
     type: float
     description:
       - NS generated ICMP pkts per 10ms rate threshold
-    default: 100
   implicitaclallow:
     type: str
     choices:
@@ -102,7 +94,6 @@ options:
       - DISABLED
     description:
       - Do not apply ACLs for internal ports
-    default: ENABLED
   ipv6dynamicrouting:
     type: str
     choices:
@@ -110,7 +101,6 @@ options:
       - DISABLED
     description:
       - Enable/Disable IPv6 Dynamic routing
-    default: DISABLED
   miproundrobin:
     type: str
     choices:
@@ -118,7 +108,6 @@ options:
       - DISABLED
     description:
       - Enable round robin usage of mapped IPs.
-    default: ENABLED
   overridernat:
     type: str
     choices:
@@ -127,7 +116,6 @@ options:
     description:
       - USNIP/USIP settings override RNAT settings for configured
       - '              service/virtual server traffic..'
-    default: DISABLED
   srcnat:
     type: str
     choices:
@@ -135,7 +123,6 @@ options:
       - DISABLED
     description:
       - Perform NAT if only the source is in the private network
-    default: ENABLED
   tnlpmtuwoconn:
     type: str
     choices:
@@ -144,7 +131,6 @@ options:
     description:
       - Enable/Disable learning PMTU of IP tunnel when ICMP error does not contain
         connection information.
-    default: ENABLED
   usipserverstraypkt:
     type: str
     choices:
@@ -152,12 +138,28 @@ options:
       - DISABLED
     description:
       - Enable detection of stray server side pkts in USIP mode.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Task
+  hosts: localhost
+
+  gather_facts: false
+
+  tasks:
+    - name: Sample task | set l3param
+      delegate_to: localhost
+      netscaler.adc.l3param:
+        state: present
+        acllogtime: 3000
+    - name: Sample task | unset l3param
+      delegate_to: localhost
+      netscaler.adc.l3param:
+        state: absent # absent for l3param calls unset action
+        acllogtime: "true"
 """
 
 RETURN = r"""

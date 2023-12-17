@@ -50,18 +50,15 @@ options:
       - 'OFF'
     description:
       - Configure the RADIUS server state to accept or refuse authentication messages.
-    default: 'ON'
   authservretry:
     type: float
     description:
       - Number of retry by the Citrix ADC before getting response from the RADIUS
         server.
-    default: 3
   authtimeout:
     type: float
     description:
       - Number of seconds the Citrix ADC waits for a response from the RADIUS server.
-    default: 3
   callingstationid:
     type: str
     choices:
@@ -70,7 +67,6 @@ options:
     description:
       - Send Calling-Station-ID of the client to the RADIUS server. IP Address of
         the client is sent as its Calling-Station-ID.
-    default: DISABLED
   defaultauthenticationgroup:
     type: str
     description:
@@ -103,7 +99,6 @@ options:
     description:
       - Encoding type for passwords in RADIUS packets that the Citrix ADC sends to
         the RADIUS server.
-    default: pap
   pwdattributetype:
     type: float
     description:
@@ -177,7 +172,6 @@ options:
       - TLS
     description:
       - Transport mode to RADIUS server.
-    default: UDP
   tunnelendpointclientip:
     type: str
     choices:
@@ -185,7 +179,6 @@ options:
       - DISABLED
     description:
       - Send Tunnel Endpoint Client IP address to the RADIUS server.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

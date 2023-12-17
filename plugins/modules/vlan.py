@@ -52,7 +52,6 @@ options:
       - DISABLED
     description:
       - Enable dynamic routing on this VLAN.
-    default: DISABLED
   id:
     type: float
     description:
@@ -66,7 +65,6 @@ options:
       - 'Enable all IPv6 dynamic routing protocols on this VLAN. Note: For the C(ENABLED)
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
-    default: DISABLED
   mtu:
     type: float
     description:
@@ -82,7 +80,6 @@ options:
       - If sharing is enabled, then this vlan can be shared across multiple partitions
         by binding it to all those partitions. If sharing is disabled, then this vlan
         can be bound to only one of the partitions.
-    default: DISABLED
   vlan_channel_binding:
     type: dict
     description: Bindings for vlan_channel_binding resource
@@ -213,6 +210,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | vlan
+      delegate_to: localhost
+      netscaler.adc.vlan:
+        state: present
+        id: '301'
+        aliasname: client_side_network
 """
 
 RETURN = r"""

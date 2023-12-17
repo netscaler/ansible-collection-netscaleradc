@@ -52,7 +52,6 @@ options:
     type: float
     description:
       - TCP port on which the RDP connection is established.
-    default: 3389
   rdpredirection:
     type: str
     choices:
@@ -62,7 +61,6 @@ options:
       - Enable/Disable RDP redirection support. This needs to be enabled in presence
         of connection broker or session directory with IP cookie(msts cookie) based
         redirection support
-    default: DISABLE
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

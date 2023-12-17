@@ -50,7 +50,6 @@ options:
         accessing cookies.'
       - '* Secure - Add Secure flag to cookies.'
       - '* All - Add both HTTPOnly and Secure flags to cookies.'
-    default: none
   apispec:
     type: str
     description:
@@ -66,7 +65,6 @@ options:
       - 'OFF'
     description:
       - Enable bypass list for the profile.
-    default: 'OFF'
   as_prof_deny_list_enable:
     type: str
     choices:
@@ -74,7 +72,6 @@ options:
       - 'OFF'
     description:
       - Enable deny list for the profile.
-    default: 'OFF'
   augment:
     type: bool
     description:
@@ -97,7 +94,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -blockKeywordAction C(none)".'
     elements: str
-    default: none
   bufferoverflowaction:
     type: list
     choices:
@@ -121,32 +117,27 @@ options:
     description:
       - Maximum length, in characters, for cookies sent to your protected web sites.
         Requests with longer cookies are blocked.
-    default: 4096
   bufferoverflowmaxheaderlength:
     type: float
     description:
       - Maximum length, in characters, for HTTP headers in requests sent to your protected
         web sites. Requests with longer headers are blocked.
-    default: 4096
   bufferoverflowmaxquerylength:
     type: float
     description:
       - Maximum length, in bytes, for query string sent to your protected web sites.
         Requests with longer query strings are blocked.
-    default: 65535
   bufferoverflowmaxtotalheaderlength:
     type: float
     description:
       - Maximum length, in bytes, for the total HTTP header length in requests sent
         to your protected web sites. The minimum value of this and maxHeaderLen in
         httpProfile will be used. Requests with longer length are blocked.
-    default: 65535
   bufferoverflowmaxurllength:
     type: float
     description:
       - Maximum length, in characters, for URLs on your protected web sites. Requests
         with longer URLs are blocked.
-    default: 1024
   canonicalizehtmlresponse:
     type: str
     choices:
@@ -155,7 +146,6 @@ options:
     description:
       - Perform HTML entity encoding for any special characters in responses sent
         by your protected web sites.
-    default: 'ON'
   ceflogging:
     type: str
     choices:
@@ -171,7 +161,6 @@ options:
     description:
       - Check request headers as well as web forms for injected SQL and cross-site
         scripts.
-    default: 'OFF'
   clientipexpression:
     type: str
     description:
@@ -194,7 +183,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cmdInjectionAction C(none)".'
     elements: str
-    default: none
   cmdinjectiongrammar:
     type: str
     choices:
@@ -202,7 +190,6 @@ options:
       - 'OFF'
     description:
       - Check for CMD injection using CMD grammar
-    default: 'OFF'
   cmdinjectiontype:
     type: str
     choices:
@@ -219,7 +206,6 @@ options:
       - '-C(CMDSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
       - '-C(None)                    : Disables checking using both CMD Special Char
         and Keyword'
-    default: CMDSplCharANDKeyword
   comment:
     type: str
     description:
@@ -267,7 +253,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cookieConsistencyAction C(none)".'
     elements: str
-    default: none
   cookieencryption:
     type: str
     choices:
@@ -281,7 +266,6 @@ options:
       - '* Decrypt Only - Decrypt encrypted cookies, but do not encrypt cookies.'
       - '* Encrypt Session Only - Encrypt session cookies, but not permanent cookies.'
       - '* Encrypt All - Encrypt all cookies.'
-    default: none
   cookiehijackingaction:
     type: list
     choices:
@@ -302,7 +286,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -cookieHijackingAction C(none)".'
     elements: str
-    default: none
   cookieproxying:
     type: str
     choices:
@@ -313,7 +296,6 @@ options:
       - '* None - Do not proxy cookies.'
       - '* Session Only - Proxy session cookies by using the Citrix ADC session ID,
         but do not proxy permanent cookies.'
-    default: none
   cookiesamesiteattribute:
     type: str
     choices:
@@ -324,7 +306,6 @@ options:
       - Cookie Samesite attribute added to support adding cookie SameSite attribute
         for all set-cookies including appfw session cookies. Default value will be
         "SameSite=Lax".
-    default: LAX
   cookietransforms:
     type: str
     choices:
@@ -340,7 +321,6 @@ options:
       - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
         any cookie transformations. If it is set to C(OFF), no cookie transformations
         are performed regardless of any other settings.'
-    default: 'OFF'
   creditcard:
     type: list
     choices:
@@ -354,7 +334,6 @@ options:
     description:
       - Credit card types that the application firewall should protect.
     elements: str
-    default: none
   creditcardaction:
     type: list
     choices:
@@ -374,7 +353,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -creditCardAction C(none)".'
     elements: str
-    default: none
   creditcardmaxallowed:
     type: float
     description:
@@ -389,7 +367,6 @@ options:
     description:
       - Mask any credit card number detected in a response by replacing each digit,
         except the digits in the final group, with the letter "X."
-    default: 'OFF'
   crosssitescriptingaction:
     type: list
     choices:
@@ -420,7 +397,6 @@ options:
     description:
       - Check complete URLs for cross-site scripts, instead of just the query portions
         of URLs.
-    default: 'OFF'
   crosssitescriptingtransformunsafehtml:
     type: str
     choices:
@@ -432,7 +408,6 @@ options:
       - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
         any cross-site scripting transformations. If it is set to C(OFF), no cross-site
         scripting transformations are performed regardless of any other settings.'
-    default: 'OFF'
   csrftagaction:
     type: list
     choices:
@@ -455,7 +430,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -CSRFTagAction C(none)".'
     elements: str
-    default: none
   customsettings:
     type: str
     description:
@@ -481,7 +455,6 @@ options:
     description:
       - Maximum length, in characters, for data entered into a field that is assigned
         the default field type.
-    default: 65535
   defaultfieldformatminlength:
     type: float
     description:
@@ -543,7 +516,6 @@ options:
     description:
       - Setting this option logs credit card numbers in the response when the match
         is found.
-    default: 'ON'
   dynamiclearning:
     type: list
     choices:
@@ -578,7 +550,6 @@ options:
     description:
       - Enable tagging of web form fields for use by the Form Field Consistency and
         CSRF Form Tagging checks.
-    default: 'ON'
   errorurl:
     type: str
     description:
@@ -590,7 +561,6 @@ options:
       - 'OFF'
     description:
       - Exclude uploaded files from Form checks.
-    default: 'OFF'
   exemptclosureurlsfromsecuritychecks:
     type: str
     choices:
@@ -600,7 +570,6 @@ options:
       - Exempt URLs that pass the Start URL closure check from SQL injection, cross-site
         script, field format and field consistency security checks at locations other
         than headers.
-    default: 'ON'
   fakeaccountdetection:
     type: str
     choices:
@@ -609,7 +578,6 @@ options:
     description:
       - 'Fake account detection flag : C(ON)/C(OFF). If set to C(ON) fake account
         detection in enabled on ADC, if set to C(OFF) fake account detection is disabled.'
-    default: 'OFF'
   fieldconsistencyaction:
     type: list
     choices:
@@ -632,7 +600,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -fieldConsistencyAction C(none)".'
     elements: str
-    default: none
   fieldformataction:
     type: list
     choices:
@@ -659,7 +626,6 @@ options:
     description:
       - Maximum allowed number of file uploads per form-submission request. The maximum
         setting (65535) allows an unlimited number of uploads.
-    default: 65535
   fileuploadtypesaction:
     type: list
     choices:
@@ -713,7 +679,6 @@ options:
       - Response status code associated with HTML error page. Non-empty HTML error
         object must be imported to the application firewall profile for the status
         code.
-    default: 200
   htmlerrorstatusmessage:
     type: str
     description:
@@ -754,7 +719,6 @@ options:
       - 'OFF'
     description:
       - Configure whether application firewall should add samesite attribute for set-cookies
-    default: 'OFF'
   inspectcontenttypes:
     type: list
     choices:
@@ -795,7 +759,6 @@ options:
         names and values. Available settings function as follows:'
       - '* C(asp_mode) - Microsoft ASP format.'
       - '* C(secure_mode) - Secure format.'
-    default: secure_mode
   jsonblockkeywordaction:
     type: list
     choices:
@@ -814,7 +777,6 @@ options:
         followed by the actions to be enabled. To turn off all actions, type "set
         appfw profile -JSONBlockKeywordAction C(none)".'
     elements: str
-    default: none
   jsoncmdinjectionaction:
     type: list
     choices:
@@ -840,7 +802,6 @@ options:
       - 'OFF'
     description:
       - Check for CMD injection using CMD grammar in JSON
-    default: 'OFF'
   jsoncmdinjectiontype:
     type: str
     choices:
@@ -857,7 +818,6 @@ options:
       - '-C(CMDSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
-    default: CMDSplCharANDKeyword
   jsondosaction:
     type: list
     choices:
@@ -891,7 +851,6 @@ options:
       - Response status code associated with JSON error page. Non-empty JSON error
         object must be imported to the application firewall profile for the status
         code.
-    default: 200
   jsonerrorstatusmessage:
     type: str
     description:
@@ -921,7 +880,6 @@ options:
       - 'OFF'
     description:
       - Check for SQL injection using SQL grammar in JSON
-    default: 'OFF'
   jsonsqlinjectiontype:
     type: str
     choices:
@@ -938,7 +896,6 @@ options:
       - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found,'
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
-    default: SQLSplCharANDKeyword
   jsonxssaction:
     type: list
     choices:
@@ -965,7 +922,6 @@ options:
       - 'OFF'
     description:
       - Log every profile match, regardless of security checks results.
-    default: 'OFF'
   matchurlstring:
     type: str
     description:
@@ -1018,7 +974,6 @@ options:
         backend server in most cases.'
       - '* C(OFF) - Partial requests by the client are changed to full requests to
         the backend server'
-    default: 'ON'
   overwrite:
     type: bool
     description:
@@ -1031,14 +986,12 @@ options:
     description:
       - Configure whether the application firewall should use percentage recursive
         decoding
-    default: 'ON'
   postbodylimit:
     type: float
     description:
       - Maximum allowed HTTP post body size, in bytes. Maximum supported value is
         10GB. Citrix recommends enabling streaming option for large values of post
         body limit (>20MB).
-    default: 20000000
   postbodylimitaction:
     type: list
     choices:
@@ -1061,7 +1014,6 @@ options:
       - Maximum allowed HTTP post body size for signature inspection for location
         HTTP_POST_BODY in the signatures, in bytes. Note that the changes in value
         could impact CPU and latency profile.
-    default: 2048
   protofileobject:
     type: str
     description:
@@ -1080,7 +1032,6 @@ options:
       - Although this parameter is part of the Start URL check, referer validation
         protects against cross-site request forgery (CSRF) attacks, not Start URL
         attacks.
-    default: 'OFF'
   relaxationrules:
     type: bool
     description:
@@ -1123,7 +1074,6 @@ options:
       - 'OFF'
     description:
       - Allow ';' as a form field separator in URL queries and POST form bodies.
-    default: 'OFF'
   sessioncookiename:
     type: str
     description:
@@ -1143,7 +1093,6 @@ options:
       - postOnly
     description:
       - Perform sessionless Field Consistency Checks.
-    default: 'OFF'
   sessionlessurlclosure:
     type: str
     choices:
@@ -1152,7 +1101,6 @@ options:
     description:
       - Enable session less URL Closure Checks.
       - 'This check is applicable to Profile Type: HTML.'
-    default: 'OFF'
   signatures:
     type: str
     description:
@@ -1186,7 +1134,6 @@ options:
       - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
-    default: 'OFF'
   sqlinjectiongrammar:
     type: str
     choices:
@@ -1194,7 +1141,6 @@ options:
       - 'OFF'
     description:
       - Check for SQL injection using SQL grammar
-    default: 'OFF'
   sqlinjectiononlycheckfieldswithsqlchars:
     type: str
     choices:
@@ -1205,7 +1151,6 @@ options:
         SQL code.
       - Most SQL servers require a special string to activate an SQL request, so SQL
         code without a special string is harmless to most SQL servers.
-    default: 'ON'
   sqlinjectionparsecomments:
     type: str
     choices:
@@ -1230,7 +1175,6 @@ options:
       - 'Specifies SQL Injection rule type: C(ALLOW)/C(DENY). If C(ALLOW) rule type
         is configured then allow list rules are used, if C(DENY) rule type is configured
         then deny rules are used.'
-    default: ALLOW
   sqlinjectiontransformspecialchars:
     type: str
     choices:
@@ -1244,7 +1188,6 @@ options:
       - 'CAUTION: Make sure that this parameter is set to C(ON) if you are configuring
         any SQL injection transformations. If it is set to C(OFF), no SQL injection
         transformations are performed regardless of any other settings.'
-    default: 'OFF'
   sqlinjectiontype:
     type: str
     choices:
@@ -1261,7 +1204,6 @@ options:
       - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found'
       - '-C(None)                    : Disables checking using both SQL Special Char
         and Keyword'
-    default: SQLSplCharANDKeyword
   starturlaction:
     type: list
     choices:
@@ -1290,7 +1232,6 @@ options:
       - 'OFF'
     description:
       - Toggle  the state of Start URL Closure.
-    default: 'OFF'
   streaming:
     type: str
     choices:
@@ -1304,7 +1245,6 @@ options:
         starturl closure, CSRF tagging, JSON SQL, JSON XSS, JSON DOS is enabled. Please
         make sure that the backend server accepts chunked requests before enabling
         this option. Citrix recommends enabling this option for large request sizes(>20MB).'
-    default: 'OFF'
   stripcomments:
     type: str
     choices:
@@ -1313,7 +1253,6 @@ options:
     description:
       - Strip HTML comments.
       - 'This check is applicable to Profile Type: HTML.'
-    default: 'OFF'
   striphtmlcomments:
     type: str
     choices:
@@ -1323,7 +1262,6 @@ options:
     description:
       - Strip HTML comments before forwarding a web page sent by a protected web site
         in response to a user request.
-    default: none
   stripxmlcomments:
     type: str
     choices:
@@ -1332,7 +1270,6 @@ options:
     description:
       - Strip XML comments before forwarding a web page sent by a protected web site
         in response to a user request.
-    default: none
   trace:
     type: str
     choices:
@@ -1340,7 +1277,6 @@ options:
       - 'OFF'
     description:
       - Toggle  the state of trace
-    default: 'OFF'
   type:
     type: list
     choices:
@@ -1361,7 +1297,6 @@ options:
       - '* C(HTML) C(XML) C(JSON)   - Sites that contain C(HTML), C(XML) and C(JSON)
         content.'
     elements: str
-    default: HTML
   urldecoderequestcookies:
     type: str
     choices:
@@ -1370,7 +1305,6 @@ options:
     description:
       - URL Decode request cookies before subjecting them to SQL and cross-site scripting
         checks.
-    default: 'OFF'
   usehtmlerrorobject:
     type: str
     choices:
@@ -1379,7 +1313,6 @@ options:
     description:
       - Send an imported HTML Error object to a user when a request is blocked, instead
         of redirecting the user to the designated Error URL.
-    default: 'OFF'
   verboseloglevel:
     type: str
     choices:
@@ -1388,7 +1321,6 @@ options:
       - patternPayloadHeader
     description:
       - Detailed Logging Verbose Log Level.
-    default: pattern
   xmlattachmentaction:
     type: list
     choices:
@@ -1450,7 +1382,6 @@ options:
     description:
       - Response status code associated with XML error page. Non-empty XML error object
         must be imported to the application firewall profile for the status code.
-    default: 200
   xmlerrorstatusmessage:
     type: str
     description:
@@ -1519,7 +1450,6 @@ options:
       - 'OFF'
     description:
       - Check for form fields that contain SQL wild chars .
-    default: 'OFF'
   xmlsqlinjectiononlycheckfieldswithsqlchars:
     type: str
     choices:
@@ -1528,7 +1458,6 @@ options:
     description:
       - Check only form fields that contain SQL special characters, which most SQL
         servers require before accepting an SQL command, for injected SQL.
-    default: 'ON'
   xmlsqlinjectionparsecomments:
     type: str
     choices:
@@ -1545,7 +1474,6 @@ options:
       - '* ANSI - Exempt content that is part of an ANSI (Mozilla-style) comment.'
       - '* Nested - Exempt content that is part of a C(nested) (Microsoft-style) comment.'
       - '* ANSI Nested - Exempt content that is part of any type of comment.'
-    default: checkall
   xmlsqlinjectiontype:
     type: str
     choices:
@@ -1560,7 +1488,6 @@ options:
       - '-C(SQLKeyword)              : Checks for SQL Keywords'
       - '-C(SQLSplCharANDKeyword)    : Checks for both and blocks if both are found'
       - '-C(SQLSplCharORKeyword)     : Checks for both and blocks if anyone is found'
-    default: SQLSplCharANDKeyword
   xmlvalidationaction:
     type: list
     choices:

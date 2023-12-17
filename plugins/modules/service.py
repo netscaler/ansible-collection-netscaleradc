@@ -40,7 +40,7 @@ options:
       - When C(enabled) the resource will be enabled on the NetScaler ADC node.
       - When C(disabled) the resource will be disabled on the NetScaler ADC node.
     type: str
-  Internal:
+  internal:
     type: bool
     description:
       - Display only dynamically learned services.
@@ -53,7 +53,6 @@ options:
       - Use Layer 2 mode to bridge the packets sent to this service if it is marked
         as DOWN. If the service is DOWN, and this parameter is disabled, the packets
         are dropped.
-    default: 'NO'
   all:
     type: bool
     description:
@@ -65,7 +64,6 @@ options:
       - DISABLED
     description:
       - Enable logging of AppFlow information.
-    default: ENABLED
   cacheable:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
       - Use the transparent cache redirection virtual server to forward requests to
         the cache server.
       - 'Note: Do not specify this parameter if you set the Cache Type parameter.'
-    default: 'NO'
   cachetype:
     type: str
     choices:
@@ -142,7 +139,6 @@ options:
     description:
       - Unique identifier for the service. Used when the persistency type for the
         virtual server is set to Custom Server ID.
-    default: '"None"'
   delay:
     type: float
     description:
@@ -167,7 +163,6 @@ options:
       - Flush all active transactions associated with a service whose state transitions
         from UP to DOWN. Do not enable this option for applications that must complete
         their transactions.
-    default: ENABLED
   graceful:
     type: str
     choices:
@@ -176,7 +171,6 @@ options:
     description:
       - Shut down gracefully, not accepting any new connections, and disabling the
         service when all of its connections are closed.
-    default: 'NO'
   hashid:
     type: float
     description:
@@ -192,7 +186,6 @@ options:
       - C(YES) - Send probes to check the health of the service.
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
-    default: 'YES'
   httpprofilename:
     type: str
     description:
@@ -282,7 +275,6 @@ options:
         not under go any steering. Turn this option for single packet request response
         mode or when the upstream device is performing a proper RSS for connection
         based distribution.
-    default: DISABLED
   rtspsessionidremap:
     type: str
     choices:
@@ -290,7 +282,6 @@ options:
       - 'OFF'
     description:
       - Enable RTSP session ID mapping for the service.
-    default: 'OFF'
   serverid:
     type: float
     description:
@@ -491,6 +482,54 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | service
+      delegate_to: localhost
+      netscaler.adc.service:
+        state: present
+        name: service-http
+        servicetype: HTTP
+        ipaddress: 172.18.0.4
+        port: 5000
+    - name: Sample Task | ipset-001
+      delegate_to: localhost
+      netscaler.adc.ipset:
+        state: present
+        name: ipset-001
+    - name: Sample Task | netProfile
+      delegate_to: localhost
+      netscaler.adc.netprofile:
+        state: present
+        name: test-netprofile
+        srcip: ipset-001
+        mbf: DISABLED
+    - name: Sample Task | lbmonitor | 3
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: test-monitor
+        type: TCP
+        interval: 15
+        retries: 20
+    - name: Setup services
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.service:
+        state: present
+        name: 10.123.123.123-tcp-12345
+        servicetype: TCP
+        ipaddress: 10.123.123.123
+        port: 12345
+        healthmonitor: "NO"
+        netprofile: test-netprofile
+        service_lbmonitor_binding:
+          binding_members:
+            - monitor_name: test-monitor
+              name: 10.123.123.123-tcp-12345
 """
 
 RETURN = r"""

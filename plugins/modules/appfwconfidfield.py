@@ -54,7 +54,6 @@ options:
         follows:'
       - '* C(REGEX). Form field is a regular expression.'
       - '* C(NOTREGEX). Form field is a literal string.'
-    default: NOTREGEX
   url:
     type: str
     description:

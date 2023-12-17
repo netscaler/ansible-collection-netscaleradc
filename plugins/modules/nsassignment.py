@@ -36,7 +36,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Add:
+  add:
     type: str
     description:
       - Right hand side of the assignment. The expression is evaluated and added to

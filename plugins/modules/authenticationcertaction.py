@@ -69,7 +69,6 @@ options:
       - Enables or disables two-factor authentication.
       - Two factor authentication is client cert authentication followed by password
         authentication.
-    default: 'OFF'
   usernamefield:
     type: str
     description:

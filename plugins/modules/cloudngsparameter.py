@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   allowdtls12:
     type: str
@@ -41,7 +43,6 @@ options:
       - 'NO'
     description:
       - Enables DTLS1.2 for client connections on CGS
-    default: 'NO'
   allowedudtversion:
     type: str
     choices:
@@ -51,7 +52,6 @@ options:
       - V7
     description:
       - Enables the required UDT version to EDT connections in the CGS deployment
-    default: V4
   blockonallowedngstktprof:
     type: str
     choices:
@@ -60,7 +60,6 @@ options:
     description:
       - Enables blocking connections authenticated with a ticket createdby by an entity
         not whitelisted in allowedngstktprofile
-    default: 'NO'
   csvserverticketingdecouple:
     type: str
     choices:
@@ -69,7 +68,6 @@ options:
     description:
       - Enables Decoupling CSVSERVER state from Ticketing Service state in the CGS
         deployment
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

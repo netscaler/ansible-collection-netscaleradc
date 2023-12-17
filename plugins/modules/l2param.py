@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   bdggrpproxyarp:
     type: str
@@ -41,7 +43,6 @@ options:
       - DISABLED
     description:
       - Set/reset proxy ARP in bridge group deployment
-    default: ENABLED
   bdgsetting:
     type: str
     choices:
@@ -51,7 +52,6 @@ options:
       - Bridging settings for C2C behavior. If enabled, each PE will learn MAC entries
         independently. Otherwise, when L2 mode is ON, learned MAC entries on a PE
         will be broadcasted to all other PEs.
-    default: DISABLED
   bridgeagetimeout:
     type: float
     description:
@@ -59,7 +59,6 @@ options:
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
-    default: 300
   garponvridintf:
     type: str
     choices:
@@ -67,7 +66,6 @@ options:
       - DISABLED
     description:
       - Send GARP messagess on VRID-configured interfaces upon failover
-    default: ENABLED
   garpreply:
     type: str
     choices:
@@ -75,7 +73,6 @@ options:
       - DISABLED
     description:
       - Set/reset REPLY form of GARP
-    default: DISABLED
   macmodefwdmypkt:
     type: str
     choices:
@@ -84,12 +81,10 @@ options:
     description:
       - Allows MAC mode vserver to pick and forward the packets even if it is destined
         to Citrix ADC owned VIP.
-    default: DISABLED
   maxbridgecollision:
     type: float
     description:
       - Maximum bridge collision for loop detection
-    default: 20
   mbfinstlearning:
     type: str
     choices:
@@ -97,13 +92,11 @@ options:
       - DISABLED
     description:
       - Enable instant learning of MAC changes in MBF mode.
-    default: DISABLED
   mbfpeermacupdate:
     type: float
     description:
       - When mbf_instant_learning is enabled, learn any changes in peer's MAC after
         this time interval, which is in 10ms ticks.
-    default: 10
   proxyarp:
     type: str
     choices:
@@ -111,7 +104,6 @@ options:
       - DISABLED
     description:
       - Proxies the ARP as Citrix ADC MAC for FreeBSD.
-    default: ENABLED
   returntoethernetsender:
     type: str
     choices:
@@ -119,7 +111,6 @@ options:
       - DISABLED
     description:
       - Return to ethernet sender.
-    default: DISABLED
   rstintfonhafo:
     type: str
     choices:
@@ -127,7 +118,6 @@ options:
       - DISABLED
     description:
       - Enable the reset interface upon HA failover.
-    default: DISABLED
   skipproxyingbsdtraffic:
     type: str
     choices:
@@ -137,7 +127,6 @@ options:
       - Control source parameters (IP and Port) for FreeBSD initiated traffic. If
         Enabled, source parameters are retained. Else proxy the source parameters
         based on next hop.
-    default: DISABLED
   stopmacmoveupdate:
     type: str
     choices:
@@ -145,7 +134,6 @@ options:
       - DISABLED
     description:
       - Stop Update of server mac change to NAT sessions.
-    default: DISABLED
   usemymac:
     type: str
     choices:
@@ -153,7 +141,6 @@ options:
       - DISABLED
     description:
       - Use Citrix ADC MAC for all outgoing packets.
-    default: DISABLED
   usenetprofilebsdtraffic:
     type: str
     choices:
@@ -163,7 +150,6 @@ options:
       - Control source parameters (IP and Port) for FreeBSD initiated traffic. If
         enabled proxy the source parameters based on netprofile source ip. If netprofile
         does not have ip configured, then it will continue to use NSIP as earlier.
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

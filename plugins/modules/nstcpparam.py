@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   ackonpush:
     type: str
@@ -42,14 +44,12 @@ options:
     description:
       - Send immediate positive acknowledgement (ACK) on receipt of TCP packets with
         PUSH flag.
-    default: ENABLED
   autosyncookietimeout:
     type: float
     description:
       - Timeout for the server to function in syncookie mode after the synattack.
         This is valid if TCP syncookie is disabled on the profile and server acts
         in non syncookie mode by default.
-    default: 30
   compacttcpoptionnoop:
     type: str
     choices:
@@ -60,7 +60,6 @@ options:
         while proxying it. By default, non-negotiated TCP options would be replaced
         by NOPs in the proxied packets. This option is not applicable for Citrix ADC
         generated packets.
-    default: DISABLED
   connflushifnomem:
     type: str
     choices:
@@ -93,7 +92,6 @@ options:
     type: float
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
-    default: 100
   delinkclientserveronrst:
     type: str
     choices:
@@ -102,7 +100,6 @@ options:
     description:
       - If enabled, Delink client and server connection, when there is outstanding
         data to be sent to the other side.
-    default: DISABLED
   downstaterst:
     type: str
     choices:
@@ -110,13 +107,11 @@ options:
       - DISABLED
     description:
       - Flag to switch on RST on down services.
-    default: DISABLED
   initialcwnd:
     type: float
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
-    default: 10
   kaprobeupdatelastactivity:
     type: str
     choices:
@@ -124,7 +119,6 @@ options:
       - DISABLED
     description:
       - Update last activity for KA probes
-    default: ENABLED
   learnvsvrmss:
     type: str
     choices:
@@ -132,7 +126,6 @@ options:
       - DISABLED
     description:
       - Enable or disable maximum segment size (MSS) learning for virtual servers.
-    default: DISABLED
   limitedpersist:
     type: str
     choices:
@@ -140,19 +133,16 @@ options:
       - DISABLED
     description:
       - Limit the number of persist (zero window) probes.
-    default: ENABLED
   maxburst:
     type: float
     description:
       - Maximum number of TCP segments allowed in a burst.
-    default: 6
   maxdynserverprobes:
     type: float
     description:
       - Maximum number of probes that Citrix ADC can send out in 10 milliseconds,
         to dynamically learn a service. Citrix ADC probes for the existence of the
         origin in case of wildcard virtual server or services.
-    default: 7
   maxpktpermss:
     type: float
     description:
@@ -164,31 +154,26 @@ options:
         server or service, and the number of TCP SYN+ACK retransmission by Citrix
         ADC for that virtual server or service crosses this threshold, the Citrix
         ADC responds by using the TCP SYN-Cookie mechanism.
-    default: 100
   maxsynhold:
     type: float
     description:
       - Limit the number of client connections (SYN) waiting for status of probe system
         wide. Any new SYN packets will be dropped.
-    default: 16384
   maxsynholdperprobe:
     type: float
     description:
       - Limit the number of client connections (SYN) waiting for status of single
         probe. Any new SYN packets will be dropped.
-    default: 128
   maxtimewaitconn:
     type: float
     description:
       - Maximum number of connections to hold in the TCP TIME_WAIT state on a packet
         engine. New connections entering TIME_WAIT state are proactively cleaned up.
-    default: 7000
   minrto:
     type: int
     description:
       - Minimum retransmission timeout, in milliseconds, specified in 10-millisecond
         increments (value must yield a whole number if divided by 10).
-    default: 1000
   mptcpchecksum:
     type: str
     choices:
@@ -196,7 +181,6 @@ options:
       - DISABLED
     description:
       - Use MPTCP DSS checksum
-    default: ENABLED
   mptcpclosemptcpsessiononlastsfclose:
     type: str
     choices:
@@ -205,7 +189,6 @@ options:
     description:
       - Allow to send DATA FIN or FAST CLOSE on mptcp connection while sending FIN
         or RST on the last subflow.
-    default: DISABLED
   mptcpconcloseonpassivesf:
     type: str
     choices:
@@ -213,7 +196,6 @@ options:
       - DISABLED
     description:
       - Accept DATA_FIN/FAST_CLOSE on passive subflow
-    default: ENABLED
   mptcpfastcloseoption:
     type: str
     choices:
@@ -222,7 +204,6 @@ options:
     description:
       - Allow to select option C(ACK) or C(RESET) to force the closure of an MPTCP
         connection abruptly.
-    default: ACK
   mptcpimmediatesfcloseonfin:
     type: str
     choices:
@@ -231,19 +212,16 @@ options:
     description:
       - Allow subflows to close immediately on FIN before the DATA_FIN exchange is
         completed at mptcp level.
-    default: DISABLED
   mptcpmaxpendingsf:
     type: float
     description:
       - Maximum number of subflow connections supported in pending join state per
         mptcp connection.
-    default: 4
   mptcpmaxsf:
     type: float
     description:
       - Maximum number of subflow connections supported in established state per mptcp
         connection.
-    default: 4
   mptcppendingjointhreshold:
     type: float
     description:
@@ -257,13 +235,11 @@ options:
       - If enabled, Citrix ADC retransmits MPTCP ADD-ADDR option if echo response
         is not received within the timeout interval. The retransmission is attempted
         only once.
-    default: DISABLED
   mptcprtostoswitchsf:
     type: float
     description:
       - Number of RTO's at subflow level, after which MPCTP should start using other
         subflow.
-    default: 2
   mptcpsendsfresetoption:
     type: str
     choices:
@@ -272,7 +248,6 @@ options:
     description:
       - Allow MPTCP subflows to send TCP RST Reason (MP_TCPRST) Option while sending
         TCP RST.
-    default: DISABLED
   mptcpsfreplacetimeout:
     type: float
     description:
@@ -280,7 +255,6 @@ options:
         the sublow is replaced by new incoming subflow if maximum subflow limit is
         reached. The priority for replacement is given to those subflow without any
         transaction
-    default: 10
   mptcpsftimeout:
     type: float
     description:
@@ -296,14 +270,12 @@ options:
         that subflow to send data. And if disabled, NS will continue to transmit on
         current chosen subflow. In case there is some error on a subflow (like RTO's/RST
         etc.) then NS can choose a backup subflow irrespective of this tunable.
-    default: ENABLED
   msslearndelay:
     type: float
     description:
       - Frequency, in seconds, at which the virtual servers learn the Maximum segment
         size (MSS) from the services. The argument to enable maximum segment size
         (MSS) for virtual servers must be enabled.
-    default: 3600
   msslearninterval:
     type: float
     description:
@@ -311,7 +283,6 @@ options:
         The Citrix ADC determines the best MSS to set for the virtual server based
         on this sampling. The argument to enable maximum segment size (MSS) for virtual
         servers must be enabled.
-    default: 180
   nagle:
     type: str
     choices:
@@ -319,23 +290,19 @@ options:
       - DISABLED
     description:
       - Enable or disable the Nagle algorithm on TCP connections.
-    default: DISABLED
   oooqsize:
     type: float
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
-    default: 300
   pktperretx:
     type: int
     description:
       - Maximum limit on the number of packets that should be retransmitted on receiving
         a partial ACK.
-    default: 1
   recvbuffsize:
     type: float
     description:
       - TCP Receive buffer size
-    default: 8190
   sack:
     type: str
     choices:
@@ -343,13 +310,11 @@ options:
       - DISABLED
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
-    default: ENABLED
   slowstartincr:
     type: int
     description:
       - Multiplier that determines the rate at which slow start increases the size
         of the TCP transmission window after each acknowledgement of successful transmission.
-    default: 2
   synattackdetection:
     type: str
     choices:
@@ -357,14 +322,12 @@ options:
       - DISABLED
     description:
       - Detect TCP SYN packet flood and send an SNMP trap.
-    default: ENABLED
   synholdfastgiveup:
     type: float
     description:
       - Maximum threshold. After crossing this threshold number of outstanding probes
         for origin, the Citrix ADC reduces the number of connection retries for probe
         connections.
-    default: 1024
   tcpfastopencookietimeout:
     type: float
     description:
@@ -376,12 +339,10 @@ options:
     description:
       - The amount of time in seconds, after which a TCP connnection in the TCP TIME-WAIT
         state is flushed.
-    default: 40
   tcpmaxretries:
     type: float
     description:
       - Number of RTO's after which a connection should be freed.
-    default: 7
   ws:
     type: str
     choices:
@@ -389,13 +350,11 @@ options:
       - DISABLED
     description:
       - Enable or disable window scaling.
-    default: ENABLED
   wsval:
     type: float
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when the window scaling is enabled.
-    default: 8
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

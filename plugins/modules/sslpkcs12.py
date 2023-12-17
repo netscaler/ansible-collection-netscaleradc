@@ -31,7 +31,7 @@ options:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
     type: str
-  Import:
+  import:
     type: bool
     description:
       - Convert the certificate and private-key from PKCS#12 format to PEM format.

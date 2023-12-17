@@ -143,7 +143,6 @@ options:
       - Index/ID of the attribute specification at Identity Provider (IdP). IdP will
         locate attributes requested by SP using this index and send those attributes
         in Assertion
-    default: 255
   attributes:
     type: str
     description:
@@ -272,7 +271,6 @@ options:
       - SHA256
     description:
       - Algorithm to be used to compute/verify digest for SAML transactions
-    default: SHA256
   enforceusername:
     type: str
     choices:
@@ -281,7 +279,6 @@ options:
     description:
       - Option to choose whether the username that is extracted from SAML assertion
         can be edited in login page while doing second factor
-    default: 'ON'
   forceauthn:
     type: str
     choices:
@@ -290,7 +287,6 @@ options:
     description:
       - Option that forces authentication at the Identity Provider (IdP) that receives
         Citrix ADC's request
-    default: 'OFF'
   groupnamefield:
     type: str
     description:
@@ -302,7 +298,6 @@ options:
       - POST
     description:
       - This element specifies the transport mechanism of saml logout messages.
-    default: POST
   logouturl:
     type: str
     description:
@@ -312,7 +307,6 @@ options:
     type: float
     description:
       - Interval in minutes for fetching metadata from specified metadata URL
-    default: 3600
   metadataurl:
     type: str
     description:
@@ -351,12 +345,10 @@ options:
     description:
       - This element specifies the authentication context requirements of authentication
         statements returned in the response.
-    default: exact
   samlacsindex:
     type: float
     description:
       - Index/ID of the metadata entry corresponding to this configuration.
-    default: 255
   samlbinding:
     type: str
     choices:
@@ -365,7 +357,6 @@ options:
       - ARTIFACT
     description:
       - This element specifies the transport mechanism of saml messages.
-    default: POST
   samlidpcertname:
     type: str
     description:
@@ -391,7 +382,6 @@ options:
       - Reject unsigned SAML assertions. C(ON) option results in rejection of Assertion
         that is received without signature. C(STRICT) option ensures that both Response
         and Assertion are signed. C(OFF) allows unsigned Assertions.
-    default: 'ON'
   samlsigningcertname:
     type: str
     description:
@@ -404,7 +394,6 @@ options:
       - 'OFF'
     description:
       - Option to enable second factor after SAML
-    default: 'OFF'
   samluserfield:
     type: str
     description:
@@ -416,7 +405,6 @@ options:
       - 'OFF'
     description:
       - Option to send thumbprint instead of x509 certificate in SAML request
-    default: 'OFF'
   signaturealg:
     type: str
     choices:
@@ -424,7 +412,6 @@ options:
       - RSA-SHA256
     description:
       - Algorithm to be used to sign/verify SAML transactions
-    default: RSA-SHA256
   skewtime:
     type: float
     description:
@@ -432,7 +419,6 @@ options:
         ADC ServiceProvider allows on an incoming assertion. For example, if skewTime
         is 10, then assertion would be valid from (current time - 10) min to (current
         time + 10) min, ie 20min in all.
-    default: 5
   statechecks:
     type: str
     description:
@@ -447,7 +433,6 @@ options:
       - 'OFF'
     description:
       - Option to store entire SAML Response through the life of user session.
-    default: 'OFF'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

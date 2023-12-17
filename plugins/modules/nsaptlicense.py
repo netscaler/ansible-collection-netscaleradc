@@ -64,7 +64,6 @@ options:
     description:
       - Specifies whether to use the licenseproxyserver to reach the internet. Make
         sure to configure licenseproxyserver to use this option.
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

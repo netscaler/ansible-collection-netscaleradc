@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   enablebypass:
     type: str
@@ -56,14 +58,12 @@ options:
       - The HA object persisting parameter. When this value is set to C(YES), cache
         objects can be synced to Secondary in a HA deployment.  If set to C(NO), objects
         will never be synced to Secondary node.
-    default: 'NO'
   maxpostlen:
     type: float
     description:
       - Maximum number of POST body bytes to consider when evaluating parameters for
         a content group for which you have configured hit parameters and invalidation
         parameters.
-    default: 4096
   memlimit:
     type: float
     description:
@@ -112,6 +112,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cacheparameter
+      delegate_to: localhost
+      netscaler.adc.cacheparameter:
+        state: present
+        via: 'NS-CACHE-10.0: 141'
 """
 
 RETURN = r"""

@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   advancedclientlessvpnmode:
     type: str
@@ -43,7 +45,6 @@ options:
     description:
       - Option to enable/disable Advanced ClientlessVpnMode. Additionaly, it can be
         set to C(STRICT) to block Classic ClientlessVpnMode while in AdvancedClientlessMode.
-    default: DISABLED
   allowedlogingroups:
     type: str
     description:
@@ -64,7 +65,6 @@ options:
     type: float
     description:
       - The timeout value in seconds for tokens to access XenMobile applications
-    default: 100
   authorizationgroup:
     type: str
     description:
@@ -82,7 +82,6 @@ options:
       - DISABLED
     description:
       - enables backend server certificate validation
-    default: DISABLED
   backendserversni:
     type: str
     choices:
@@ -90,7 +89,6 @@ options:
       - DISABLED
     description:
       - enables sni extension for backend server handshakes
-    default: DISABLED
   citrixreceiverhome:
     type: str
     description:
@@ -109,7 +107,6 @@ options:
         one location. Depending on how Citrix Gateway is configured, users are presented
         with up to three icons for logon choices. The most common are the Citrix Gateway
         Plug-in for Windows, Web Interface, and clientless access.
-    default: 'OFF'
   clientcleanupprompt:
     type: str
     choices:
@@ -117,7 +114,6 @@ options:
       - 'OFF'
     description:
       - Prompt for client-side cache clean-up when a client-initiated session closes.
-    default: 'ON'
   clientconfiguration:
     type: list
     choices:
@@ -146,7 +142,6 @@ options:
         file.'
       - '* C(OFF) - Only critical C(events) are logged into the Windows Application
         Log.'
-    default: 'OFF'
   clientidletimeout:
     type: float
     description:
@@ -172,7 +167,6 @@ options:
         address when they log on and use the bookmark. If users save the encrypted
         bookmark in the Access Interface during their session, the bookmark works
         each time the user logs on.'
-    default: OPAQUE
   clientlesspersistentcookie:
     type: str
     choices:
@@ -195,7 +189,6 @@ options:
       - '* C(PROMPT) - Prompt users to allow or deny persistent cookies during the
         session. Persistent cookies are not required for clientless access if users
         do not connect to SharePoint.'
-    default: DENY
   clientlessvpnmode:
     type: str
     choices:
@@ -210,7 +203,6 @@ options:
       - '* C(OFF) - Allow clientless access after users log on with the Citrix Gateway
         Plug-in.'
       - '* C(DISABLED) - Do not allow clientless access.'
-    default: 'OFF'
   clientoptions:
     type: list
     choices:
@@ -243,7 +235,6 @@ options:
     description:
       - Specifies whether or not to display all failed Client Security scans to the
         end user
-    default: 'OFF'
   clientsecuritymessage:
     type: str
     description:
@@ -265,7 +256,6 @@ options:
         and then creating authorization policies to define the network resources users
         can access. If you set the default authorization policy to C(DENY), you must
         explicitly authorize access to any network resource, which improves security.
-    default: DENY
   dnsvservername:
     type: str
     description:
@@ -281,7 +271,6 @@ options:
       - DISABLED
     description:
       - Enable encryption of client security expressions.
-    default: ENABLED
   epaclienttype:
     type: str
     choices:
@@ -360,7 +349,6 @@ options:
       - Enable ICA proxy to configure secure Internet access to servers running Citrix
         XenApp or XenDesktop by using Citrix Receiver instead of the Citrix Gateway
         Plug-in.
-    default: 'OFF'
   icasessiontimeout:
     type: str
     choices:
@@ -369,7 +357,6 @@ options:
     description:
       - Enable or disable ica session timeout. If enabled and in case AAA session
         gets terminated, ICA connections associated with that will also get terminated
-    default: 'OFF'
   icauseraccounting:
     type: str
     description:
@@ -382,7 +369,6 @@ options:
       - 'OFF'
     description:
       - Option to decide whether to show plugin icon along with receiver icon
-    default: 'OFF'
   iipdnssuffix:
     type: str
     description:
@@ -408,7 +394,6 @@ options:
         Citrix Gateway, and prevent new incoming connections on the Citrix Gateway
         Plug-in for Windows and MAC when the user is connected to Citrix Gateway and
         split tunneling is disabled.
-    default: 'OFF'
   linuxpluginupgrade:
     type: str
     choices:
@@ -417,7 +402,6 @@ options:
       - Never
     description:
       - Option to set plugin upgrade behaviour for Linux
-    default: Always
   locallanaccess:
     type: str
     choices:
@@ -430,7 +414,6 @@ options:
         When the local area network switch is specified, this combination of switches
         is useful. The client can allow local LAN access to devices that commonly
         have non-routable addresses, such as local printers or local file servers.
-    default: 'OFF'
   loginscript:
     type: str
     description:
@@ -450,13 +433,11 @@ options:
       - Never
     description:
       - Option to set plugin upgrade behaviour for Mac
-    default: Always
   mdxtokentimeout:
     type: float
     description:
       - Validity of MDX Token in minutes. This token is used for mdx services to access
         backend and valid  HEAD and GET request.
-    default: 10
   netmask:
     type: str
     description:
@@ -497,7 +478,6 @@ options:
     description:
       - Bypass proxy server for local addresses option in Internet Explorer and Firefox
         proxy server settings.
-    default: DISABLED
   rdpclientprofilename:
     type: str
     description:
@@ -514,7 +494,6 @@ options:
       - '* 10.*.*.*,'
       - '* 172.16.*.*,'
       - '* 192.168.*.*'
-    default: 'OFF'
   samesite:
     type: str
     choices:
@@ -534,12 +513,10 @@ options:
       - Allow users to connect through Citrix Gateway to network resources from iOS
         and Android mobile devices with Citrix Receiver. Users do not need to establish
         a full VPN tunnel to access resources in the secure network.
-    default: ENABLED
   sesstimeout:
     type: float
     description:
       - Number of minutes after which the session times out.
-    default: 30
   smartgroup:
     type: str
     description:
@@ -575,7 +552,6 @@ options:
         be used to log all non-local LAN traffic. For example, if users have a home
         network and are logged on through the Citrix Gateway Plug-in, network traffic
         destined to a printer or another device within the home network is not intercepted.
-    default: 'OFF'
   spoofiip:
     type: str
     choices:
@@ -584,7 +560,6 @@ options:
     description:
       - Indicate whether or not the application requires IP spoofing, which routes
         the connection to the intranet application through the virtual adapter.
-    default: 'ON'
   sslproxy:
     type: str
     description:
@@ -602,7 +577,6 @@ options:
         \ types for security reason. BASIC, DIGEST, and NTLM (without Negotiate NTLM2\
         \ Key or Negotiate Sign Flag). Use VPN TrafficAction to configure SSO for\
         \ these authentication types."
-    default: 'OFF'
   ssocredential:
     type: str
     choices:
@@ -611,7 +585,6 @@ options:
     description:
       - Specify whether to use the primary or secondary authentication credentials
         for single sign-on to the server.
-    default: PRIMARY
   storefronturl:
     type: str
     description:
@@ -629,7 +602,6 @@ options:
         If you are using the Citrix Gateway Plug-in for Windows, set this parameter
         to C(ON), in which the mode is set to transparent. If you are using the Citrix
         Gateway Plug-in for Java, set this parameter to C(OFF).
-    default: 'OFF'
   uitheme:
     type: str
     choices:
@@ -653,7 +625,6 @@ options:
         IP address is not used, the Transfer Login page appears for users who have
         used all available intranet IP addresses.'
       - '* C(OFF) - Address pool is not configured.'
-    default: NOSPILLOVER
   usemip:
     type: str
     choices:
@@ -667,7 +638,6 @@ options:
       - When IP pooling is configured and the mapped IP is used as an intranet IP
         address, the mapped IP address is used when an intranet IP address cannot
         be assigned.
-    default: NS
   userdomains:
     type: str
     description:
@@ -700,7 +670,6 @@ options:
       - Enable or disable the Windows Auto Logon for the session. If a VPN session
         is established after this setting is enabled, the user is automatically logged
         on by using Windows credentials after the system is restarted.
-    default: 'OFF'
   windowsclienttype:
     type: str
     choices:
@@ -711,7 +680,6 @@ options:
       - a) Application Agent - which always runs in the task bar as a standalone application
         and also has a supporting service which runs permanently when installed\
       - b) Activex Control - ActiveX control run by Microsoft Internet Explorer.
-    default: AGENT
   windowspluginupgrade:
     type: str
     choices:
@@ -720,7 +688,6 @@ options:
       - Never
     description:
       - Option to set plugin upgrade behaviour for Win
-    default: Always
   winsip:
     type: str
     description:
@@ -738,6 +705,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | vpnparameter
+      delegate_to: localhost
+      netscaler.adc.vpnparameter:
+        state: present
+        forcecleanup:
+          - none
+        clientconfiguration:
+          - trace
 """
 
 RETURN = r"""

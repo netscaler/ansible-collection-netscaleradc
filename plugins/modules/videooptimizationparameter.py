@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   quicpacingrate:
     type: float
@@ -47,6 +49,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | videooptimizationparameter
+      delegate_to: localhost
+      netscaler.adc.videooptimizationparameter:
+        state: present
+        randomsamplingpercentage: 0.0
 """
 
 RETURN = r"""

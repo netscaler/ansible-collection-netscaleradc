@@ -44,7 +44,6 @@ options:
     type: float
     description:
       - Idle timeout for the rtsp sessions in seconds.
-    default: 120
   rtspportrange:
     type: str
     description:
@@ -56,7 +55,6 @@ options:
       - UDP
     description:
       - RTSP ALG Profile transport protocol type.
-    default: TCP
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

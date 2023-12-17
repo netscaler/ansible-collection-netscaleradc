@@ -73,7 +73,6 @@ options:
     type: float
     description:
       - Time to live, in seconds.
-    default: 3600
   viewname:
     type: str
     description:

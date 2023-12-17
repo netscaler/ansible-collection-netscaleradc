@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   defaultauthorizationaction:
     type: str
@@ -42,13 +44,11 @@ options:
     description:
       - Allow or deny access to content for which there is no specific authorization
         policy.
-    default: DENY
   homepage:
     type: str
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
-    default: '"None"'
   httponlycookie:
     type: str
     choices:
@@ -57,7 +57,6 @@ options:
     description:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
-    default: 'YES'
   kcdaccount:
     type: str
     description:
@@ -71,7 +70,6 @@ options:
       - Use persistent SSO cookies for the traffic session. A persistent cookie remains
         on the user device and is sent with each HTTP request. The cookie becomes
         stale if the session ends.
-    default: 'OFF'
   persistentcookievalidity:
     type: float
     description:
@@ -82,7 +80,6 @@ options:
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access the intranet resources.
-    default: 30
   sso:
     type: str
     choices:
@@ -95,7 +92,6 @@ options:
         for security reason. BASIC, DIGEST, and NTLM (without Negotiate NTLM2 Key
         or Negotiate Sign Flag). Use TM TrafficAction to configure SSO for these authentication
         types.
-    default: 'OFF'
   ssocredential:
     type: str
     choices:
@@ -103,7 +99,6 @@ options:
       - SECONDARY
     description:
       - Use primary or secondary authentication credentials for single sign-on.
-    default: PRIMARY
   ssodomain:
     type: str
     description:

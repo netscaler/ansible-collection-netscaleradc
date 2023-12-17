@@ -48,7 +48,6 @@ options:
       - KEYVAULT
     description:
       - Type of HSM.
-    default: THALES
   key:
     type: str
     description:

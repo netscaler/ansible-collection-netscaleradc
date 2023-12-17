@@ -48,7 +48,6 @@ options:
     description:
       - Synchronize all connection-related information for the RNAT sessions with
         the secondary ADC in a high availability (HA) pair.
-    default: DISABLED
   name:
     type: str
     description:
@@ -86,7 +85,6 @@ options:
     type: str
     description:
       - The owner node group in a Cluster for this rnat rule.
-    default: DEFAULT_NG
   redirectport:
     type: int
     description:
@@ -100,7 +98,6 @@ options:
     description:
       - Enables the Citrix ADC to use the same NAT IP address for all RNAT sessions
         initiated from a particular server.
-    default: DISABLED
   td:
     type: float
     description:
@@ -115,7 +112,6 @@ options:
     description:
       - Enable source port proxying, which enables the Citrix ADC to use the RNAT
         ips using proxied source port.
-    default: ENABLED
   rnat6_nsip6_binding:
     type: dict
     description: Bindings for rnat6_nsip6_binding resource

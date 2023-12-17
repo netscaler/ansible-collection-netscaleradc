@@ -63,7 +63,6 @@ options:
         of example.com are changed to 36000. If the TTL is not specified, the Citrix
         ADC uses either the DNS zone's minimum TTL or, if the SOA record is not available
         on the appliance, the default value of 3600.
-    default: 3600
   type:
     type: str
     choices:
@@ -80,6 +79,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | dnsnsRec
+      delegate_to: localhost
+      netscaler.adc.dnsnsrec:
+        state: present
+        domain: .
+        nameserver: a.root-servers.net
+        ttl: 3600000
 """
 
 RETURN = r"""

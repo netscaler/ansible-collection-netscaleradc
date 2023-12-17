@@ -27,19 +27,20 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   authtimeout:
     type: float
     description:
       - Maximum number of seconds that the Citrix ADC waits for a response from the
         LDAP server.
-    default: 3
   defaultauthenticationgroup:
     type: str
     description:
@@ -92,7 +93,6 @@ options:
     type: float
     description:
       - Number of levels up to which the system can query nested LDAP groups.
-    default: 2
   nestedgroupextraction:
     type: str
     choices:
@@ -101,7 +101,6 @@ options:
     description:
       - Queries the external LDAP server to determine whether the specified group
         belongs to another group.
-    default: 'OFF'
   passwdchange:
     type: str
     choices:
@@ -109,7 +108,6 @@ options:
       - DISABLED
     description:
       - Accept password change requests.
-    default: DISABLED
   searchfilter:
     type: str
     description:
@@ -130,7 +128,6 @@ options:
     description:
       - Type of security used for communications between the Citrix ADC and the LDAP
         server. For the C(PLAINTEXT) setting, no encryption is required.
-    default: TLS
   serverip:
     type: str
     description:
@@ -139,7 +136,6 @@ options:
     type: int
     description:
       - Port number on which the LDAP server listens for connections.
-    default: 389
   ssonameattribute:
     type: str
     description:

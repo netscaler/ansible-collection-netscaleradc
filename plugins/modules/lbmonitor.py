@@ -40,7 +40,7 @@ options:
       - When C(enabled) the resource will be enabled on the NetScaler ADC node.
       - When C(disabled) the resource will be disabled on the NetScaler ADC node.
     type: str
-  Snmpoid:
+  snmpoid:
     type: str
     description:
       - SNMP OID for SNMP monitors.
@@ -72,7 +72,6 @@ options:
         to the service until the configured down time has expired. Persistent connections
         to the service are terminated as soon as the service is marked as C(DOWN).
         Also, log the event in NSLOG or SYSLOG.'
-    default: DOWN
   alertretries:
     type: int
     description:
@@ -156,7 +155,6 @@ options:
     description:
       - Time duration for which to wait before probing a service that has been marked
         as DOWN. Expressed in milliseconds, seconds, or minutes.
-    default: 30
   evalrule:
     type: str
     description:
@@ -204,7 +202,6 @@ options:
       - 'NO'
     description:
       - Option to enable or disable gRPC health check service.
-    default: 'NO'
   grpcservicename:
     type: str
     description:
@@ -246,7 +243,6 @@ options:
     description:
       - Time interval between two successive probes. Must be greater than the value
         of Response Time-out.
-    default: 5
   ipaddress:
     type: list
     description:
@@ -261,7 +257,6 @@ options:
     description:
       - Send the monitoring probe to the service through an IP tunnel. A destination
         IP address must be specified.
-    default: 'NO'
   kcdaccount:
     type: str
     description:
@@ -292,7 +287,6 @@ options:
     description:
       - Maximum number of hops that the SIP request used for monitoring can traverse
         to reach the server. Applicable only to monitors of type SIP-UDP.
-    default: 1
   metric:
     type: str
     description:
@@ -328,7 +322,6 @@ options:
     description:
       - Version of MQTT protocol used in connect message, default is version 3.1.1
         [4]
-    default: 4
   mssqlprotocolversion:
     type: str
     choices:
@@ -398,7 +391,6 @@ options:
     description:
       - Account Type to be used in Account Request Packet. Applicable to monitors
         of type RADIUS_ACCOUNTING.
-    default: 1
   radapn:
     type: str
     description:
@@ -452,7 +444,6 @@ options:
         response timeout does not apply. For UDP-ECV monitors with no receive string,
         probe failure is indicated by an ICMP port unreachable error received from
         the service.'
-    default: 2
   resptimeoutthresh:
     type: float
     description:
@@ -467,7 +458,6 @@ options:
     description:
       - Maximum number of probes to send to establish the state of a service for which
         a monitoring probe failed.
-    default: 3
   reverse:
     type: str
     choices:
@@ -476,7 +466,6 @@ options:
     description:
       - Mark a service as DOWN, instead of UP, when probe criteria are satisfied,
         and as UP instead of DOWN when probe criteria are not satisfied.
-    default: 'NO'
   rtsprequest:
     type: str
     description:
@@ -505,7 +494,6 @@ options:
       - Use a secure SSL connection when monitoring a service. Applicable only to
         TCP based monitors. The secure option cannot be used with a CITRIX-AG monitor,
         because a CITRIX-AG monitor uses a secure connection by default.
-    default: 'NO'
   secureargs:
     type: str
     description:
@@ -579,7 +567,6 @@ options:
     description:
       - Store the database list populated with the responses to monitor probes. Used
         in database specific load balancing if MSSQL-ECV/MYSQL-ECV  monitor is configured.
-    default: DISABLED
   storefrontacctservice:
     type: str
     choices:
@@ -588,7 +575,6 @@ options:
     description:
       - Enable/Disable probing for Account Service. Applicable only to Store Front
         monitors. For multi-tenancy configuration users my skip account service
-    default: 'YES'
   storefrontcheckbackendservices:
     type: str
     choices:
@@ -599,7 +585,6 @@ options:
         Storefront services are monitored by probing to a Windows service that runs
         on the Storefront server and exposes details of which storefront services
         are running.
-    default: 'NO'
   storename:
     type: str
     description:
@@ -610,7 +595,6 @@ options:
     description:
       - Number of consecutive successful probes required to transition a service's
         state from DOWN to UP.
-    default: 1
   supportedvendorids:
     type: list
     description:
@@ -642,7 +626,6 @@ options:
         behind it. If a transparent device is being monitored, a destination IP address
         must be specified. The probe is sent to the specified IP address by using
         the MAC address of the transparent device.
-    default: 'NO'
   trofscode:
     type: float
     description:
@@ -715,7 +698,6 @@ options:
     description:
       - Unit of measurement for the Deviation parameter. Cannot be changed after the
         monitor is created.
-    default: SEC
   units2:
     type: str
     choices:
@@ -725,7 +707,6 @@ options:
     description:
       - Unit of measurement for the Down Time parameter. Cannot be changed after the
         monitor is created.
-    default: SEC
   units3:
     type: str
     choices:
@@ -734,7 +715,6 @@ options:
       - MIN
     description:
       - monitor interval units
-    default: SEC
   units4:
     type: str
     choices:
@@ -743,7 +723,6 @@ options:
       - MIN
     description:
       - monitor response timeout units
-    default: SEC
   username:
     type: str
     description:
@@ -758,7 +737,6 @@ options:
     description:
       - Validate the credentials of the Xen Desktop DDC server user. Applicable to
         monitors of type CITRIX-XD-DDC.
-    default: 'NO'
   vendorid:
     type: float
     description:
@@ -845,6 +823,42 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | lbmonitor
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: ldns-dns
+        type: LDNS-DNS
+        query: .
+        querytype: Address
+        deviation: '0'
+        interval: 6
+        resptimeout: 3
+        downtime: 20
+    - name: Sample Task | lbmonitor | 2
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: stasecure
+        type: CITRIX-STA-SERVICE
+        deviation: '0'
+        interval: 2
+        units3: MIN
+        resptimeout: 4
+        downtime: 5
+    - name: Sample Task | lbmonitor | 3
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: test-monitor1
+        type: TCP
+        interval: 15
+        retries: 20
 """
 
 RETURN = r"""

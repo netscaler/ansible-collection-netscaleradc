@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   undefaction:
     type: str
@@ -44,7 +46,6 @@ options:
       - '* RESET - Reset the connection and notify the user''s browser, so that the
         user can resend the request.'
       - '* DROP - Drop the message without sending a response to the user.'
-    default: '"NOINSPECTION"'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

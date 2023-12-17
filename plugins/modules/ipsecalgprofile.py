@@ -45,22 +45,18 @@ options:
       - Mode in which the connection failover feature must operate for the IPSec Alg.
         After a failover, established UDP connections and ESP packet flows are kept
         active and resumed on the secondary appliance. Recomended setting is C(ENABLED).
-    default: ENABLED
   espgatetimeout:
     type: float
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation
-    default: 30
   espsessiontimeout:
     type: float
     description:
       - ESP session timeout in minutes.
-    default: 60
   ikesessiontimeout:
     type: float
     description:
       - IKE session timeout in minutes
-    default: 60
   name:
     type: str
     description:

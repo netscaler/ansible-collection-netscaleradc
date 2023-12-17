@@ -40,7 +40,6 @@ options:
     type: float
     description:
       - Maxage for cache extension.
-    default: 30
   clientsidemeasurements:
     type: bool
     description:

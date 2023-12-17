@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   all:
     type: bool
@@ -91,12 +93,10 @@ options:
     type: float
     description:
       - The percentage of maxClient to be given to PEs
-    default: 80
   exclusivequotaspillover:
     type: float
     description:
       - The percentage of max limit to be given to PEs
-    default: 80
   force:
     type: bool
     description:
@@ -109,12 +109,10 @@ options:
     type: float
     description:
       - The percentage of shared quota to be granted at a time for maxClient
-    default: 10
   grantquotaspillover:
     type: float
     description:
       - The percentage of shared quota to be granted at a time for spillover
-    default: 10
   httpport:
     type: list
     description:
@@ -191,12 +189,10 @@ options:
     type: float
     description:
       - The minimum Path MTU.
-    default: 576
   pmtutimeout:
     type: float
     description:
       - The timeout value in minutes.
-    default: 10
   rbaconfig:
     type: str
     choices:
@@ -206,7 +202,6 @@ options:
       - RBA configurations and TACACS policies bound to system global will not be
         cleared if RBA is set to C(NO).This option is applicable only for BASIC level
         of clear configuration.Default is C(YES), which will clear rba configurations.
-    default: 'YES'
   securecookie:
     type: str
     choices:
@@ -214,7 +209,6 @@ options:
       - DISABLED
     description:
       - enable/disable secure flag for persistence cookie
-    default: ENABLED
   tagged:
     type: str
     choices:
@@ -226,7 +220,6 @@ options:
         tag which identifies the VLAN.
       - To use 802.1q tagging, the switch connected to the appliance's interfaces
         must also be configured for tagging.
-    default: 'YES'
   template:
     type: bool
     description:
@@ -235,7 +228,6 @@ options:
     type: str
     description:
       - Name of the timezone
-    default: CoordinatedUniversalTime
   weakpassword:
     type: bool
     description:
@@ -248,6 +240,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsconfig
+      delegate_to: localhost
+      netscaler.adc.nsconfig:
+        state: present
+        ipaddress: 10.10.10.10
+        netmask: 255.255.255.0
 """
 
 RETURN = r"""

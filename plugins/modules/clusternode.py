@@ -49,7 +49,6 @@ options:
       - 'NO'
     description:
       - Option to remove nodegroup config
-    default: 'YES'
   delay:
     type: float
     description:
@@ -64,7 +63,6 @@ options:
     type: str
     description:
       - The default node group in a Cluster system.
-    default: DEFAULT_NG
   nodeid:
     type: float
     description:
@@ -81,7 +79,6 @@ options:
       - 'Note: When priority is not configured for any of the nodes or if multiple
         nodes have the same priority, the cluster elects one of the nodes as the configuration
         coordinator.'
-    default: 31
   tunnelmode:
     type: str
     choices:
@@ -90,7 +87,6 @@ options:
       - UDP
     description:
       - To set the tunnel mode
-    default: NONE
   clusternode_routemonitor_binding:
     type: dict
     description: Bindings for clusternode_routemonitor_binding resource

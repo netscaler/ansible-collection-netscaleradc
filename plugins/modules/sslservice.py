@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   cipherredirect:
     type: str
@@ -45,7 +47,6 @@ options:
         if the SSL handshake fails because of a cipher mismatch between the virtual
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   cipherurl:
     type: str
     description:
@@ -62,7 +63,6 @@ options:
       - State of client authentication. In service-based SSL offload, the service
         terminates the SSL handshake if the SSL client does not provide a valid certificate.
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   clientcert:
     type: str
     choices:
@@ -90,7 +90,6 @@ options:
     description:
       - State of Diffie-Hellman (DH) key exchange. This parameter is not applicable
         when configuring a backend service.
-    default: DISABLED
   dhcount:
     type: float
     description:
@@ -114,7 +113,6 @@ options:
         800-56A) bit size for private-key size. For example, for DH params of size
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
-    default: DISABLED
   dtls1:
     type: str
     choices:
@@ -122,7 +120,6 @@ options:
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL service.
-    default: ENABLED
   dtls12:
     type: str
     choices:
@@ -130,7 +127,6 @@ options:
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL service.
-    default: DISABLED
   dtlsprofilename:
     type: str
     description:
@@ -150,7 +146,6 @@ options:
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   ersacount:
     type: float
     description:
@@ -171,7 +166,6 @@ options:
         the OCSP-based server certificate status is sent to the client during the
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
-    default: DISABLED
   pushenctrigger:
     type: str
     choices:
@@ -198,7 +192,6 @@ options:
       - State of the port rewrite while performing HTTPS redirect. If this parameter
         is set to C(ENABLED), and the URL from the server does not contain the standard
         port, the port is rewritten to the standard.
-    default: DISABLED
   sendclosenotify:
     type: str
     choices:
@@ -206,7 +199,6 @@ options:
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
-    default: 'YES'
   serverauth:
     type: str
     choices:
@@ -214,7 +206,6 @@ options:
       - DISABLED
     description:
       - State of server authentication support for the SSL service.
-    default: DISABLED
   servicename:
     type: str
     description:
@@ -228,14 +219,12 @@ options:
       - State of session reuse. Establishing the initial handshake requires CPU-intensive
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
-    default: ENABLED
   sesstimeout:
     type: float
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
-    default: 300
   snienable:
     type: str
     choices:
@@ -247,7 +236,6 @@ options:
         on a single virtual server or service if the domains are controlled by the
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
-    default: DISABLED
   ssl2:
     type: str
     choices:
@@ -256,7 +244,6 @@ options:
     description:
       - State of SSLv2 protocol support for the SSL service.
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   ssl3:
     type: str
     choices:
@@ -266,7 +253,6 @@ options:
       - State of SSLv3 protocol support for the SSL service.
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
-    default: ENABLED
   sslprofile:
     type: str
     description:
@@ -288,7 +274,6 @@ options:
         from http:// to https:// and the SSL session does not break.
       - ''
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   sslv2redirect:
     type: str
     choices:
@@ -300,7 +285,6 @@ options:
         SSL handshake fails because of a protocol version mismatch between the virtual
         server or service and the client.
       - This parameter is not applicable when configuring a backend service.
-    default: DISABLED
   sslv2url:
     type: str
     description:
@@ -316,7 +300,6 @@ options:
     description:
       - Parameter indicating to check whether peer's certificate during TLS1.2 handshake
         is signed with one of signature-hash combination supported by Citrix ADC
-    default: DISABLED
   tls1:
     type: str
     choices:
@@ -324,7 +307,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL service.
-    default: ENABLED
   tls11:
     type: str
     choices:
@@ -332,7 +314,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL service.
-    default: ENABLED
   tls12:
     type: str
     choices:
@@ -340,7 +321,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL service.
-    default: ENABLED
   tls13:
     type: str
     choices:
@@ -348,7 +328,6 @@ options:
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL service.
-    default: DISABLED
   sslservice_ecccurve_binding:
     type: dict
     description: Bindings for sslservice_ecccurve_binding resource
@@ -579,6 +558,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslservice
+      delegate_to: localhost
+      netscaler.adc.sslservice:
+        state: present
+        servicename: nsrnatsip-127.0.0.1-5061
+        ersa: ENABLED
+        sessreuse: DISABLED
+        ssl3: DISABLED
+        tls1: DISABLED
+        tls11: DISABLED
+        dtls1: DISABLED
 """
 
 RETURN = r"""

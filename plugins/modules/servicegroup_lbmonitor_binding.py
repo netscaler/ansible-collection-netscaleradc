@@ -43,7 +43,6 @@ options:
     description:
       - Unique service identifier. Used when the persistency type for the virtual
         server is set to Custom Server ID.
-    default: '"None"'
   dbsttl:
     type: float
     description:

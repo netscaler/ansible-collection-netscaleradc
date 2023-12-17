@@ -42,7 +42,6 @@ options:
       - IP
     description:
       - Endpoint kind. Currently, C(IP) endpoints are supported
-    default: IP
   endpointlabelsjson:
     type: str
     description:

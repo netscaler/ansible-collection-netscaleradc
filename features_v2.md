@@ -14,9 +14,11 @@ The `netscaler.adc` collection supports 4 modes of operation.
 | `absent` | Resource will be deleted from the target NetScaler ADC nodes |
 | `enabled` | Resource will be enalbed on the NetScaler ADC nodes |
 | `disabled` | Resource will be disabled on the NetScaler ADC nodes |
+| `created` | Resource will be created on the NetScaler ADC nodes |
+| `imported` | Resource will be imported on the NetScaler ADC nodes |
+| `switched` | TBD: Resource will be switched on the NetScaler ADC nodes. Eg: Partition switch |
 
-> NOTE: The `enabled` and `disabled` modes are supported only for the modules that have `enable` and `disable` operations in the NetScaler ADC NITRO API.
-
+> NOTE: The `enabled`, `disabled`, `created`, `imported`, `switched` modes are supported only for the modules that have `enable`, `disable`, `create`, `import`, `switch` operations in the NetScaler ADC NITRO API.
 
 ## `--diff` support
 
@@ -36,8 +38,7 @@ The `netscaler.adc` collection supports 4 modes of operation.
 
 `--check` mode is support for all the modules.
 
-
-## in-built bindings support
+## In-built bindings support
 
 The `netscaler.adc` collection provides in-built bindings support for all the modules.
 

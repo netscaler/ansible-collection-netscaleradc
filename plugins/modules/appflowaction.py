@@ -44,7 +44,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will send the bot insight records
         to the configured collectors.
-    default: DISABLED
   ciinsight:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will send the ContentInspection Insight
         records to the configured collectors.
-    default: DISABLED
   clientsidemeasurements:
     type: str
     choices:
@@ -62,7 +60,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will collect the time required to
         load and render the mainpage on the client.
-    default: DISABLED
   collectors:
     type: list
     description:
@@ -82,7 +79,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will distribute records among the
         collectors. Else, all records will be sent to all the collectors.
-    default: DISABLED
   metricslog:
     type: bool
     description:
@@ -116,7 +112,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will start tracking the page for waterfall
         chart by inserting a NS_ESNS cookie in the response.
-    default: DISABLED
   securityinsight:
     type: str
     choices:
@@ -125,7 +120,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will send the security insight records
         to the configured collectors.
-    default: DISABLED
   transactionlog:
     type: str
     choices:
@@ -133,7 +127,6 @@ options:
       - ANOMALOUS
     description:
       - Log C(ANOMALOUS) or C(ALL) transactions
-    default: ALL
   videoanalytics:
     type: str
     choices:
@@ -142,7 +135,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will send the videoinsight records
         to the configured collectors.
-    default: DISABLED
   webinsight:
     type: str
     choices:
@@ -151,7 +143,6 @@ options:
     description:
       - On enabling this option, the Citrix ADC will send the webinsight records to
         the configured collectors.
-    default: ENABLED
   appflowaction_analyticsprofile_binding:
     type: dict
     description: Bindings for appflowaction_analyticsprofile_binding resource

@@ -56,14 +56,12 @@ options:
     description:
       - Enable caching of responses. Caching of responses received from the OCSP responder
         enables faster responses to the clients and reduces the load on the OCSP responder.
-    default: DISABLED
   cachetimeout:
     type: float
     description:
       - Timeout for caching the OCSP response. After the timeout, the Citrix ADC sends
         a fresh request to the OCSP responder for the certificate status. If a timeout
         is not specified, the timeout provided in the OCSP response applies.
-    default: 1
   httpmethod:
     type: str
     choices:
@@ -72,7 +70,6 @@ options:
     description:
       - HTTP method used to send ocsp request. C(POST) is the default httpmethod.
         If request length is > 255, C(POST) wil be used even if C(GET) is set as httpMethod
-    default: POST
   insertclientcert:
     type: str
     choices:
@@ -104,7 +101,6 @@ options:
         as invalid. The response is considered invalid if the Produced At time stamp
         in the OCSP response exceeds or precedes the current Citrix ADC clock time
         by the amount of time specified.
-    default: 300
   respondercert:
     type: str
     description:

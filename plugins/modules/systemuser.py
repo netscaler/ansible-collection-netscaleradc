@@ -55,7 +55,6 @@ options:
     description:
       - Whether to use external authentication servers for the system user authentication
         or not
-    default: ENABLED
   logging:
     type: str
     choices:
@@ -63,7 +62,6 @@ options:
       - DISABLED
     description:
       - Users logging privilege
-    default: DISABLED
   maxsession:
     type: float
     description:
@@ -160,6 +158,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | systemuser
+      delegate_to: localhost
+      netscaler.adc.systemuser:
+        state: present
+        username: nsroot
+        timeout: 900
+    - name: Sample Task | systemuser | 2
+      delegate_to: localhost
+      netscaler.adc.systemuser:
+        state: present
+        username: user_adm1
+        password: pwd_adm1
 """
 
 RETURN = r"""

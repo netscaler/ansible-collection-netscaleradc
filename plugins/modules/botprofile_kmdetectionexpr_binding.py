@@ -49,7 +49,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable the keyboard-mouse based binding.
-    default: 'OFF'
   bot_km_expression_name:
     type: str
     description:

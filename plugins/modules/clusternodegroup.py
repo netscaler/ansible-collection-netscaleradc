@@ -62,7 +62,6 @@ options:
       - '  * Disabled - When one of the nodes goes down, a non-nodegroup cluster node
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
-    default: 'NO'
   strict:
     type: str
     choices:
@@ -77,7 +76,6 @@ options:
       - '  * Disabled - When one of the nodes goes down, a non-nodegroup cluster node
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
-    default: 'NO'
   clusternodegroup_authenticationvserver_binding:
     type: dict
     description: Bindings for clusternodegroup_authenticationvserver_binding resource

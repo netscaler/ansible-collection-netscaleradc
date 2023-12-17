@@ -36,7 +36,7 @@ options:
         to the module's parameters.
       - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
-  Dnssuffix:
+  dnssuffix:
     type: str
     description:
       - Suffix to be appended when resolving domain names that are not fully qualified.

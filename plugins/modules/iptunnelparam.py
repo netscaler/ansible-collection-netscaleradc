@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   dropfrag:
     type: str
@@ -42,7 +44,6 @@ options:
     description:
       - Drop any IP packet that requires fragmentation before it is sent through the
         tunnel.
-    default: 'NO'
   dropfragcputhreshold:
     type: float
     description:
@@ -56,7 +57,6 @@ options:
       - 'NO'
     description:
       - Strict PBR check for IPSec packets received through tunnel
-    default: 'NO'
   enablestricttx:
     type: str
     choices:
@@ -64,7 +64,6 @@ options:
       - 'NO'
     description:
       - Strict PBR check for packets to be sent IPSec protected
-    default: 'NO'
   mac:
     type: str
     description:
@@ -86,7 +85,6 @@ options:
         This setting is ignored if a common global source IP address has been specified
         for all the IP tunnels. This setting does not apply to a tunnel for which
         a source IP address has been specified.
-    default: 'NO'
   useclientsourceip:
     type: str
     choices:
@@ -94,7 +92,6 @@ options:
       - 'NO'
     description:
       - Use client source IP as source IP for outer tunnel IP header
-    default: 'NO'
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

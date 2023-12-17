@@ -9,7 +9,11 @@ __metaclass__ = type
 
 import re
 
-from .constants import HTTP_RESOURCE_NOT_FOUND, HTTP_SUCCESS_CODES
+from .constants import (
+    HTTP_RESOURCE_ALREADY_EXISTS,
+    HTTP_RESOURCE_NOT_FOUND,
+    HTTP_SUCCESS_CODES,
+)
 from .decorators import trace
 from .logger import log
 from .nitro_resource_map import NITRO_RESOURCE_MAP
@@ -75,11 +79,12 @@ def is_resource_exists(
         attrs=attrs,
         filter=filter,
     )
+    # FIXME: Handle the case where invalid argument caused 599 status code
     return True if status_code in HTTP_SUCCESS_CODES else False
 
 
 @trace
-def _check_create_resource_params(resource_name, resource_module_params):
+def _check_create_resource_params(resource_name, resource_module_params, action=None):
     # check if resource_module_params contains any key other than allowed keys for the resource
     # check also if resource_module_params contains all the required keys for the resource
     # if not, return False, err
@@ -87,9 +92,18 @@ def _check_create_resource_params(resource_name, resource_module_params):
     post_data = {}
 
     resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
+    try:
+        resource_action_keys = NITRO_RESOURCE_MAP[resource_name]["action_payload_keys"][
+            action
+        ]
+    except KeyError:
+        resource_action_keys = []
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
 
-    if resource_primary_key not in resource_module_params.keys():
+    if (
+        resource_primary_key
+        and resource_primary_key not in resource_module_params.keys()
+    ):
         err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
             resource_primary_key, resource_name
         )
@@ -101,18 +115,57 @@ def _check_create_resource_params(resource_name, resource_module_params):
 
     # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
     for key in resource_module_params.keys():
-        if key in resource_add_keys:
-            post_data[key] = resource_module_params[key]
-        elif resource_name == "service" and key == "ipaddress":
-            post_data["ip"] = resource_module_params[key]
-        else:
-            log(
-                "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                    key, resource_name
+        if not action:
+            if key in resource_add_keys:
+                post_data[key] = resource_module_params[key]
+            elif resource_name == "service" and key == "ipaddress":
+                post_data["ip"] = resource_module_params[key]
+            else:
+                log(
+                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                        key, resource_name
+                    )
                 )
-            )
+        else:
+            if key in resource_action_keys:
+                post_data[key] = resource_module_params[key]
+            else:
+                log(
+                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
+                        key, resource_name
+                    )
+                )
 
     return True, None, post_data
+
+
+@trace
+def create_resource_with_action(client, resource_name, resource_module_params, action):
+    ok, err, post_data = _check_create_resource_params(
+        resource_name, resource_module_params, action=action
+    )
+    if not ok:
+        return False, err
+
+    # FIXME: if action=unset, check for idempotency, as of now, unset always leads to changed state
+
+    post_data = {resource_name: post_data}
+    status_code, response_body = client.post(
+        post_data=post_data,
+        resource=resource_name,
+        action=action,
+    )
+
+    if status_code == HTTP_RESOURCE_ALREADY_EXISTS:
+        response_body.update({"status_code": status_code})
+        return True, response_body
+
+    return return_response(
+        status_code=status_code,
+        response_body=response_body,
+        operation="create_resource",
+        resource_name=resource_name,
+    )
 
 
 @trace
@@ -215,7 +268,10 @@ def _check_delete_resource_params(resource_name, resource_module_params):
 
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
 
-    if resource_primary_key not in resource_module_params.keys():
+    if (
+        resource_primary_key
+        and resource_primary_key not in resource_module_params.keys()
+    ):
         err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
             resource_primary_key, resource_name
         )
@@ -233,6 +289,7 @@ def delete_resource(client, resource_name, resource_module_params):
 
     args = {}
     for arg_key in NITRO_RESOURCE_MAP[resource_name]["delete_arg_keys"]:
+        log("DEBUG: arg_key: {}".format(arg_key))
         # FIXME: after discussion with Nitro team
         if (
             resource_name == "lbvserver_servicegroup_binding"
@@ -251,11 +308,17 @@ def delete_resource(client, resource_name, resource_module_params):
             )
             continue
 
-    resource_id = resource_module_params[
-        NITRO_RESOURCE_MAP[resource_name]["primary_key"]
-    ]
+    if NITRO_RESOURCE_MAP[resource_name]["primary_key"]:
+        resource_id = resource_module_params[
+            NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+        ]
+    else:
+        resource_id = None
 
     if resource_name.endswith("_binding"):
+        if not is_resource_exists(client, resource_name, resource_id, filter=args):
+            return True, None
+    elif resource_name in {"sslcertfile"}:
         if not is_resource_exists(client, resource_name, resource_id, filter=args):
             return True, None
     else:
@@ -436,13 +499,35 @@ def get_supported_operations(resource_name):
 def get_valid_desired_states(resource_name):
     desired_states = set()
     # Read the desired states from the resource map
+    # All supported operations are
+    # {'delete', 'change', 'Ping6', 'get-byname', 'enable', 'Switch', 'Force', 'init', 'Traceroute6', 'kill', 'Traceroute', 'add', 'check', 'reset', 'rename', 'convert', 'unset', 'send', 'clear', 'update', 'Reboot', 'unsign', 'Install', 'Ping', 'export', 'save', 'expire', 'get-all', 'flush', 'unlock', 'diff', 'Import', 'disable', 'create', 'sign', 'get', 'apply', 'restore', 'unlink', 'link', 'count', 'join', 'renumber', 'sync'}
     supported_operations = NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
     if "add" in supported_operations or "update" in supported_operations:
         desired_states.add("present")
-    if "delete" in supported_operations:
+    if "delete" in supported_operations or "unset" in supported_operations:
         desired_states.add("absent")
     if "enable" in supported_operations:
         desired_states.add("enabled")
     if "disable" in supported_operations:
         desired_states.add("disabled")
+    if "create" in supported_operations:
+        desired_states.add("created")
+    if "import" in supported_operations or "Import" in supported_operations:
+        desired_states.add("imported")
+    if "Switch" in supported_operations:
+        desired_states.add("switched")
     return desired_states
+
+
+@trace
+def is_global_binding(resource_name):
+    return (
+        True
+        if (resource_name.endswith("_binding") and "global" in resource_name)
+        else False
+    )
+
+
+@trace
+def is_singleton_resource(resource_name):
+    return NITRO_RESOURCE_MAP[resource_name]["singleton"]

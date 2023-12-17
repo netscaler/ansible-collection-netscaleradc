@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - ICV verification for PCOIP transport packets.
-    default: DISABLED
   name:
     type: str
     description:
@@ -56,7 +55,6 @@ options:
     type: float
     description:
       - PCOIP Idle Session timeout
-    default: 180
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

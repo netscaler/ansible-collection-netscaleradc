@@ -91,7 +91,6 @@ options:
       - '* C(MQTT) - C(MQTT) request.'
       - '* C(QUIC_BRIDGE) - C(QUIC_BRIDGE) request.'
       - '* C(HTTP_QUIC) - C(HTTP_QUIC) request.'
-    default: HTTP
   lbpolicylabel_lbpolicy_binding:
     type: dict
     description: Bindings for lbpolicylabel_lbpolicy_binding resource

@@ -66,7 +66,6 @@ options:
       - 2.2.2.1 => 4.4.4.1:PB1
       - 2.2.2.2 => 4.4.4.2:PB1
       - 2.2.2.3 => 4.4.4.1:PB2
-    default: PORTS
   clientname:
     type: str
     description:
@@ -91,7 +90,6 @@ options:
         automatically for an LSN group when you bind a UDP LSN application profile,
         with endpoint-independent-mapping, endpoint-independent filtering, and destination
         port as 69 (well-known port for TFTP), to the LSN group.'
-    default: ENABLED
   ftpcm:
     type: str
     choices:
@@ -101,7 +99,6 @@ options:
       - Enable the FTP connection mirroring for specified LSN group. Connection mirroring
         (CM or connection failover) refers to keeping active an established TCP or
         UDP connection when a failover occurs.
-    default: DISABLED
   groupname:
     type: str
     description:
@@ -153,7 +150,6 @@ options:
         mapping'
       - '** Destination IP address and port are logged for Address-Port-Dependent
         mapping'
-    default: DISABLED
   nattype:
     type: str
     choices:
@@ -188,7 +184,6 @@ options:
         connections from this subscriber. If all the ports are allocated (for different
         subscriber''s connections) from the subscriber''s allocated port block, the
         ADC allocates a new random port block for the subscriber.'
-    default: DYNAMIC
   portblocksize:
     type: float
     description:
@@ -212,7 +207,6 @@ options:
       - DISABLED
     description:
       - Enable the PPTP Application Layer Gateway.
-    default: DISABLED
   rtspalg:
     type: str
     choices:
@@ -220,7 +214,6 @@ options:
       - DISABLED
     description:
       - Enable the RTSP ALG.
-    default: DISABLED
   sessionlogging:
     type: str
     choices:
@@ -240,7 +233,6 @@ options:
       - '* NAT IP address and port'
       - '* Protocol name'
       - '* Destination IP address, port, and traffic domain ID'
-    default: DISABLED
   sessionsync:
     type: str
     choices:
@@ -254,7 +246,6 @@ options:
       - ''
       - For this setting to work, you must enable the global session synchronization
         parameter.
-    default: ENABLED
   sipalg:
     type: str
     choices:
@@ -262,13 +253,11 @@ options:
       - DISABLED
     description:
       - Enable the SIP ALG.
-    default: DISABLED
   snmptraplimit:
     type: float
     description:
       - Maximum number of SNMP Trap messages that can be generated for the LSN group
         in one minute.
-    default: 100
   lsngroup_ipsecalgprofile_binding:
     type: dict
     description: Bindings for lsngroup_ipsecalgprofile_binding resource

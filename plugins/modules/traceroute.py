@@ -35,7 +35,6 @@ options:
     type: float
     description:
       - Minimum TTL value used in outgoing probe packets.
-    default: 1
   P:
     type: str
     description:
@@ -58,7 +57,6 @@ options:
     description:
       - Maximum TTL value used in outgoing probe packets. For Nitro API, default value
         is taken as 10.
-    default: 64
   n:
     type: bool
     description:
@@ -67,17 +65,14 @@ options:
     type: int
     description:
       - Base port number used in probes.
-    default: 33434
   packetlen:
     type: int
     description:
       - Length (in bytes) of the query packets.
-    default: 44
   q:
     type: int
     description:
       - Number of queries per hop. For Nitro API, defalut value is taken as 1.
-    default: 3
   r:
     type: bool
     description:
@@ -101,7 +96,6 @@ options:
     description:
       - Time (in seconds) to wait for a response to a query. For Nitro API, defalut
         value is set to 3.
-    default: 5
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

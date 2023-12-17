@@ -45,7 +45,6 @@ options:
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
-    default: 'YES'
   decrementprefixlifetimes:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
-    default: 'NO'
   depricateprefix:
     type: str
     choices:
@@ -61,7 +59,6 @@ options:
       - 'NO'
     description:
       - Depricate the prefix.
-    default: 'NO'
   ipv6prefix:
     type: str
     description:
@@ -73,17 +70,14 @@ options:
       - 'NO'
     description:
       - RA Prefix onlink flag.
-    default: 'YES'
   prefixpreferredlifetime:
     type: float
     description:
       - Preferred life time of the prefix, in seconds.
-    default: 604800
   prefixvalidelifetime:
     type: float
     description:
       - Valide life time of the prefix, in seconds.
-    default: 2592000
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

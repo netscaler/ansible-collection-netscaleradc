@@ -64,7 +64,6 @@ options:
       - NOTREGEX
     description:
       - Is JSON blockkeyword key a regular expression?
-    default: NOTREGEX
   jsonblockkeyword:
     type: str
     description:

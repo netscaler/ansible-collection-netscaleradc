@@ -62,7 +62,6 @@ options:
         Only C(LOG) action can be combined with C(DROP), C(RESET), C(REDIRECT), or
         MITIGIATION action.
     elements: str
-    default: NONE
   bot_tps_enabled:
     type: str
     choices:
@@ -70,7 +69,6 @@ options:
       - 'OFF'
     description:
       - Enabled or disabled TPS binding.
-    default: 'ON'
   bot_tps_type:
     type: str
     choices:

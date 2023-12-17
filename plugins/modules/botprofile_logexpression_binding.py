@@ -49,7 +49,6 @@ options:
       - 'OFF'
     description:
       - Enable or disable the log expression binding.
-    default: 'OFF'
   bot_log_expression_name:
     type: str
     description:

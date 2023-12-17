@@ -46,7 +46,6 @@ options:
       - Control insertion of the Vary header in HTTP responses compressed by Citrix
         ADC. Intermediate caches store different versions of the response for different
         values of the headers present in the Vary response header.
-    default: GLOBAL
   cmptype:
     type: str
     choices:
@@ -70,7 +69,6 @@ options:
       - PERPOLICY
     description:
       - The type of delta action (if delta type compression action is defined).
-    default: PERURL
   name:
     type: str
     description:

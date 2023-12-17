@@ -59,7 +59,6 @@ options:
       - One or more actions to be taken if  bot is detected based on this Blacklist
         binding. Only C(LOG) action can be combined with C(DROP) or C(RESET) action.
     elements: str
-    default: NONE
   bot_blacklist_enabled:
     type: str
     choices:
@@ -67,7 +66,6 @@ options:
       - 'OFF'
     description:
       - Enabled or disbaled black-list binding.
-    default: 'OFF'
   bot_blacklist_type:
     type: str
     choices:

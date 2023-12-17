@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   edtpmtuddf:
     type: str
@@ -41,12 +43,10 @@ options:
       - DISABLED
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
-    default: ENABLED
   edtpmtuddftimeout:
     type: float
     description:
       - DF enforcement timeout for EDTPMTUDDF
-    default: 100
   enablesronhafailover:
     type: str
     choices:
@@ -54,7 +54,6 @@ options:
       - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
-    default: 'NO'
   hdxinsightnonnsap:
     type: str
     choices:
@@ -63,7 +62,6 @@ options:
     description:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
-    default: 'YES'
   l7latencyfrequency:
     type: float
     description:

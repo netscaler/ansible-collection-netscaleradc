@@ -1,5 +1,5 @@
 - name: Sample Playbook
-  hosts: demo_netscalers
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Sample Task | lbmonitor
@@ -25,3 +25,12 @@
         units3: MIN
         resptimeout: 4
         downtime: 5
+    - name: Sample Task | lbmonitor | 3
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: test-monitor1
+        type: TCP
+        interval: 15
+        retries: 20

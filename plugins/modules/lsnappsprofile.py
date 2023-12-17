@@ -78,7 +78,6 @@ options:
         not previously sent packets to Y:y.  In other words, receiving packets from
         a specific external host requires that the subscriber first send packets first
         to that external IP address and port.'
-    default: ADDRESS-PORT-DEPENDENT
   ippooling:
     type: str
     choices:
@@ -96,7 +95,6 @@ options:
         for different sessions associated with the same subscriber.'
       - ''
       - This parameter is applicable to dynamic NAT allocation only.
-    default: RANDOM
   l2info:
     type: str
     choices:
@@ -105,7 +103,6 @@ options:
     description:
       - Enable l2info by creating natpcbs for LSN, which enables the Citrix ADC to
         use L2CONN/MBF with LSN.
-    default: DISABLED
   mapping:
     type: str
     choices:
@@ -132,7 +129,6 @@ options:
       - '* C(ADDRESS-PORT-DEPENDENT) - Reuse the LSN mapping for subsequent packets
         sent from the same internal IP address and port (X:x) to the same external
         IP address and port (Y:y) while the mapping is still active.'
-    default: ADDRESS-PORT-DEPENDENT
   tcpproxy:
     type: str
     choices:
@@ -141,7 +137,6 @@ options:
     description:
       - Enable TCP proxy, which enables the Citrix ADC to optimize the  TCP traffic
         by using Layer 4 features.
-    default: DISABLED
   td:
     type: float
     description:
@@ -150,7 +145,6 @@ options:
       - ''
       - If you do not specify an ID, the ADC sends the outbound traffic through the
         default traffic domain, which has an ID of 0.
-    default: 4095
   transportprotocol:
     type: str
     choices:

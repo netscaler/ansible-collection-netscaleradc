@@ -27,12 +27,14 @@ options:
   state:
     choices:
       - present
+      - absent
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
       - When C(present) the resource will be created if needed and configured according
         to the module's parameters.
+      - When C(absent) the resource will be deleted from the NetScaler ADC node.
     type: str
   allowboundsvcremoval:
     type: str
@@ -44,7 +46,6 @@ options:
         is bound to one or more vserver. If it is enabled, the svc/svcgroup can be
         removed, even if it bound to vservers. If disabled, an error will be thrown,
         when the user tries to remove a svc/svcgroup without unbinding from its vservers.
-    default: ENABLED
   computedadccookieattribute:
     type: str
     description:
@@ -75,7 +76,6 @@ options:
         consolidated connection statistics from all the packet engines. The C(NO)
         setting allows consideration of only the number of connections on the packet
         engine that received the new connection.
-    default: 'YES'
   cookiepassphrase:
     type: str
     description:
@@ -94,7 +94,6 @@ options:
     description:
       - When this option is enabled, MQTT messages of length greater than 64k will
         be dropped and the client/server connections will be reset.
-    default: 'YES'
   httponlycookieflag:
     type: str
     choices:
@@ -104,7 +103,6 @@ options:
       - Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute
         limits the scope of a cookie to HTTP requests and helps mitigate the risk
         of cross-site scripting attacks.
-    default: ENABLED
   lbhashalgorithm:
     type: str
     choices:
@@ -115,14 +113,12 @@ options:
       - This option dictates the hashing algorithm used for hash based LB methods
         (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH,
         TOKEN, USER_TOKEN, CALLIDHASH).
-    default: DEFAULT
   lbhashfingers:
     type: float
     description:
       - This option is used to specify the number of fingers to be used in PRAC and
         JARH algorithms for hash based LB methods. Increasing the number of fingers
         might give better distribution of traffic at the expense of additional memory
-    default: 256
   literaladccookieattribute:
     type: str
     description:
@@ -148,7 +144,6 @@ options:
     description:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
-    default: FIN
   monitorskipmaxclient:
     type: str
     choices:
@@ -159,7 +154,6 @@ options:
         whether the number of connections to the service has reached the limit specified
         by the service's Max Clients setting. Enables monitoring to continue even
         if the service has reached its connection limit.
-    default: DISABLED
   preferdirectroute:
     type: str
     choices:
@@ -172,7 +166,6 @@ options:
         intermediary device, such as a firewall, even if their destination is directly
         connected to the appliance. Route lookup is performed after the packets have
         been processed and returned by the intermediary device.
-    default: 'YES'
   retainservicestate:
     type: str
     choices:
@@ -181,7 +174,6 @@ options:
     description:
       - This option is used to retain the original state of service or servicegroup
         member when an enable server command is issued.
-    default: 'OFF'
   startuprrfactor:
     type: float
     description:
@@ -221,7 +213,6 @@ options:
     description:
       - This option allows to store the MQTT clientid and username in transactional
         logs
-    default: 'NO'
   undefaction:
     type: str
     description:
@@ -231,7 +222,6 @@ options:
       - '* RESET - Reset the request and notify the user, so that the user can resend
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
-    default: '"NOLBACTION"'
   useencryptedpersistencecookie:
     type: str
     choices:
@@ -239,7 +229,6 @@ options:
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    default: DISABLED
   useportforhashlb:
     type: str
     choices:
@@ -249,7 +238,6 @@ options:
       - Include the port number of the service when creating a hash for hash based
         load balancing methods. With the C(NO) setting, only the IP address of the
         service is considered when creating a hash.
-    default: 'YES'
   usesecuredpersistencecookie:
     type: str
     choices:
@@ -257,7 +245,6 @@ options:
       - DISABLED
     description:
       - Encode persistence cookie values using SHA2 hash.
-    default: DISABLED
   vserverspecificmac:
     type: str
     choices:
@@ -273,12 +260,33 @@ options:
         of intermediary devices, such as another set of firewalls. If necessary, you
         can configure multiple MAC-mode virtual servers to pass traffic successively
         through multiple sets of intermediary devices.'
-    default: DISABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
 
 EXAMPLES = r"""
+---
+
+- name: Sample Task
+  hosts: localhost
+
+  gather_facts: false
+
+  tasks:
+
+    - name: Sample playbook
+      delegate_to: localhost
+      netscaler.adc.lbparameter:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+
+        state: present
+
+        allowboundsvcremoval: DISABLED
 """
 
 RETURN = r"""

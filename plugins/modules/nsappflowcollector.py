@@ -48,7 +48,6 @@ options:
     type: int
     description:
       - The UDP port on which the AppFlow collector is listening.
-    default: 4739
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

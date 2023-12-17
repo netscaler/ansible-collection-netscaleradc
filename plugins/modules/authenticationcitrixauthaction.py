@@ -44,7 +44,6 @@ options:
     description:
       - Authentication needs to be disabled for searching user object without performing
         authentication.
-    default: ENABLED
   authenticationtype:
     type: str
     choices:
@@ -53,7 +52,6 @@ options:
     description:
       - Type of the Citrix Authentication implementation. Default implementation uses
         Citrix Cloud Connector.
-    default: CITRIXCONNECTOR
   name:
     type: str
     description:

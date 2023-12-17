@@ -47,7 +47,6 @@ options:
       - DISABLED
     description:
       - Host information is logged if option is enabled.
-    default: ENABLED
   logmethod:
     type: str
     choices:
@@ -55,7 +54,6 @@ options:
       - DISABLED
     description:
       - HTTP method information is logged if option is enabled.
-    default: ENABLED
   logurl:
     type: str
     choices:
@@ -63,7 +61,6 @@ options:
       - DISABLED
     description:
       - URL information is logged if option is enabled.
-    default: ENABLED
   logversion:
     type: str
     choices:
@@ -71,7 +68,6 @@ options:
       - DISABLED
     description:
       - Version information is logged if option is enabled.
-    default: ENABLED
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """
