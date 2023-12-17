@@ -401,7 +401,6 @@ EXAMPLES = r"""
       netscaler.adc.appflowparam:
         state: present
         observationpointid: '2370493962'
-
 """
 
 RETURN = r"""

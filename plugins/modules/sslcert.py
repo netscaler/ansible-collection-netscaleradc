@@ -189,7 +189,6 @@ EXAMPLES = r"""
         cakey: ns-root.key
         cakeyform: PEM
         caserial: ns-root.srl
-
 """
 
 RETURN = r"""

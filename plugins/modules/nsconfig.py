@@ -250,7 +250,6 @@ EXAMPLES = r"""
         state: present
         ipaddress: 10.10.10.10
         netmask: 255.255.255.0
-
 """
 
 RETURN = r"""

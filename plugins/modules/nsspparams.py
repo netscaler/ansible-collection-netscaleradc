@@ -77,7 +77,6 @@ EXAMPLES = r"""
 
         basethreshold: 200
         throttle: Aggressive
-
 """
 
 RETURN = r"""

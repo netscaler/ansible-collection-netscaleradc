@@ -359,7 +359,6 @@ EXAMPLES = r"""
         state: present
         name: NSFEO
         maxressize: 1994752
-
 """
 
 RETURN = r"""

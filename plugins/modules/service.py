@@ -530,7 +530,6 @@ EXAMPLES = r"""
           binding_members:
             - monitor_name: test-monitor
               name: 10.123.123.123-tcp-12345
-
 """
 
 RETURN = r"""

@@ -55,7 +55,6 @@ EXAMPLES = r"""
       netscaler.adc.rsskeytype:
         state: present
         rsstype: ASYMMETRIC
-
 """
 
 RETURN = r"""

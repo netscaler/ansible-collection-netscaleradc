@@ -160,7 +160,6 @@ EXAMPLES = r"""
       netscaler.adc.l3param:
         state: absent # absent for l3param calls unset action
         acllogtime: "true"
-
 """
 
 RETURN = r"""

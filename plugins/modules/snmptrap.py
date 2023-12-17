@@ -159,7 +159,6 @@ EXAMPLES = r"""
         trapdestination: 10.10.10.10
         version: V3
         allpartitions: ENABLED
-
 """
 
 RETURN = r"""

@@ -117,7 +117,6 @@ EXAMPLES = r"""
 
         name: action1
         targetlbvserver: lb-vserver-1
-
 """
 
 RETURN = r"""

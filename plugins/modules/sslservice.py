@@ -573,7 +573,6 @@ EXAMPLES = r"""
         tls1: DISABLED
         tls11: DISABLED
         dtls1: DISABLED
-
 """
 
 RETURN = r"""

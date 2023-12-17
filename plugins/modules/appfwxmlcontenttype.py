@@ -62,7 +62,6 @@ EXAMPLES = r"""
         state: present
         xmlcontenttypevalue: .*/xml
         isregex: REGEX
-
 """
 
 RETURN = r"""

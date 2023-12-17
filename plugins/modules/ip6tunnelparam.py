@@ -85,7 +85,6 @@ EXAMPLES = r"""
       netscaler.adc.ip6tunnelparam:
         state: present
         srcip: '::'
-
 """
 
 RETURN = r"""

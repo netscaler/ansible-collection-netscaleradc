@@ -84,7 +84,6 @@ EXAMPLES = r"""
       netscaler.adc.nsvpxparam:
         state: present
         cpuyield: 'YES'
-
 """
 
 RETURN = r"""

@@ -717,7 +717,6 @@ EXAMPLES = r"""
           - none
         clientconfiguration:
           - trace
-
 """
 
 RETURN = r"""

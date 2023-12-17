@@ -395,7 +395,6 @@ EXAMPLES = r"""
         state: present
         name: httpprofile-HTTP2-0
         http2: ENABLED
-
 """
 
 RETURN = r"""

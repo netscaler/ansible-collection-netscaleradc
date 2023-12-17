@@ -287,7 +287,6 @@ EXAMPLES = r"""
         state: present
 
         allowboundsvcremoval: DISABLED
-
 """
 
 RETURN = r"""

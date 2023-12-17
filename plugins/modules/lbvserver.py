@@ -1631,7 +1631,6 @@ EXAMPLES = r"""
             - name: test_lbvser
               servicename: s2
               weight: 20
-
 """
 
 RETURN = r"""

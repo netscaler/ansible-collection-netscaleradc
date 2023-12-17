@@ -859,7 +859,6 @@ EXAMPLES = r"""
         type: TCP
         interval: 15
         retries: 20
-
 """
 
 RETURN = r"""

@@ -87,7 +87,6 @@ EXAMPLES = r"""
         name: v3_grp
         securitylevel: noAuthNoPriv
         readviewname: v3_grp_view
-
 """
 
 RETURN = r"""

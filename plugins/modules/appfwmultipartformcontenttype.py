@@ -67,7 +67,6 @@ EXAMPLES = r"""
         state: present
         multipartformcontenttypevalue: multipart/form-data.*
         isregex: REGEX
-
 """
 
 RETURN = r"""

@@ -150,7 +150,6 @@ EXAMPLES = r"""
       netscaler.adc.nd6ravariables:
         state: present
         vlan: 1
-
 """
 
 RETURN = r"""

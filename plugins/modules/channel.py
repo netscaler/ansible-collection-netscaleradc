@@ -260,7 +260,6 @@ EXAMPLES = r"""
         lrminthroughput: '0'
         bandwidthhigh: '0'
         bandwidthnormal: '0'
-
 """
 
 RETURN = r"""

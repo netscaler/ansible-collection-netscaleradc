@@ -84,7 +84,6 @@ EXAMPLES = r"""
 
         locationfile: my_file
         src: local:my_location_file
-
 """
 
 RETURN = r"""

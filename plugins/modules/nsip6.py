@@ -300,7 +300,6 @@ EXAMPLES = r"""
         vserver: DISABLED
         mgmtaccess: DISABLED
         dynamicrouting: ENABLED
-
 """
 
 RETURN = r"""

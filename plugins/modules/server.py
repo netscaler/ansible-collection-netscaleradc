@@ -151,7 +151,6 @@ EXAMPLES = r"""
         state: present
         domain: test.ap-southeast-1.example.com
         name: test.ap-southeast-1.example.com
-
 """
 
 RETURN = r"""

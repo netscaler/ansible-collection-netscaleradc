@@ -58,7 +58,6 @@ EXAMPLES = r"""
       netscaler.adc.videooptimizationparameter:
         state: present
         randomsamplingpercentage: 0.0
-
 """
 
 RETURN = r"""

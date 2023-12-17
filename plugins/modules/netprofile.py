@@ -171,7 +171,6 @@ EXAMPLES = r"""
         name: netprofile-001
         srcip: ipset-001
         mbf: DISABLED
-
 """
 
 RETURN = r"""

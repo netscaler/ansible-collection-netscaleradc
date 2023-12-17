@@ -114,7 +114,6 @@ EXAMPLES = r"""
       netscaler.adc.ipset:
         state: present
         name: ipset-001
-
 """
 
 RETURN = r"""

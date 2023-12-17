@@ -82,7 +82,6 @@ EXAMPLES = r"""
         state: present
         identity: netscaler.com
         realm: com
-
 """
 
 RETURN = r"""

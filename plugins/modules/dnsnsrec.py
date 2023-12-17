@@ -90,7 +90,6 @@ EXAMPLES = r"""
         domain: .
         nameserver: a.root-servers.net
         ttl: 3600000
-
 """
 
 RETURN = r"""

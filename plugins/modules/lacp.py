@@ -59,7 +59,6 @@ EXAMPLES = r"""
       netscaler.adc.lacp:
         state: present
         syspriority: '32768'
-
 """
 
 RETURN = r"""

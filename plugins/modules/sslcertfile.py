@@ -75,7 +75,6 @@ EXAMPLES = r"""
         name: ansible-test.crt
         src: http://10.10.10.10:8000/test-certfile.crt
         # src: local:test-certfile.crt # `local:` means `/var/tmp/` in netscaler
-
 """
 
 RETURN = r"""

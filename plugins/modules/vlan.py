@@ -220,7 +220,6 @@ EXAMPLES = r"""
         state: present
         id: '301'
         aliasname: client_side_network
-
 """
 
 RETURN = r"""

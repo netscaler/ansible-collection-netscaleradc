@@ -1241,7 +1241,6 @@ EXAMPLES = r"""
               policyname: policy_1
               targetlbvserver: lbvserver_1
               priority: 1
-
 """
 
 RETURN = r"""

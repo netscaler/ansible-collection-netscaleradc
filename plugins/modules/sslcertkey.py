@@ -174,7 +174,6 @@ EXAMPLES = r"""
         cert: ns-server.cert
         key: ns-server.key
         password: false
-
 """
 
 RETURN = r"""

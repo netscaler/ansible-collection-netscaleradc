@@ -67,7 +67,6 @@ EXAMPLES = r"""
       netscaler.adc.nsweblogparam:
         state: present
         buffersizemb: '3'
-
 """
 
 RETURN = r"""

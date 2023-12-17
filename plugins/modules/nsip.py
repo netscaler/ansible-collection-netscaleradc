@@ -394,7 +394,6 @@ EXAMPLES = r"""
         ipaddress: 192.188.1.2
         netmask: 255.255.0.0
         vserver: DISABLED
-
 """
 
 RETURN = r"""

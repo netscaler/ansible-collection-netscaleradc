@@ -108,7 +108,6 @@ EXAMPLES = r"""
         state: present
         name: v3
         group: v3_grp
-
 """
 
 RETURN = r"""

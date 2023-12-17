@@ -91,7 +91,6 @@ EXAMPLES = r"""
       netscaler.adc.callhome:
         state: present
         hbcustominterval: '30'
-
 """
 
 RETURN = r"""

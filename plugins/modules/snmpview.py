@@ -78,7 +78,6 @@ EXAMPLES = r"""
         name: v3_grp_view
         subtree: '1'
         type: included
-
 """
 
 RETURN = r"""

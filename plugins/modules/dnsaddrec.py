@@ -92,7 +92,6 @@ EXAMPLES = r"""
         hostname: k.root-servers.net
         ipaddress: 193.0.14.129
         ttl: 3600000
-
 """
 
 RETURN = r"""

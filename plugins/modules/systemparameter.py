@@ -226,7 +226,6 @@ EXAMPLES = r"""
       netscaler.adc.systemparameter:
         state: present
         promptstring: '%u@%s'
-
 """
 
 RETURN = r"""

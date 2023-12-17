@@ -129,7 +129,6 @@ EXAMPLES = r"""
         feature:
           - CS
           - LB
-
 """
 
 RETURN = r"""

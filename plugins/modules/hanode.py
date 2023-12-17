@@ -214,7 +214,6 @@ EXAMPLES = r"""
         state: present
         id: 1
         ipaddress: 10.222.74.141
-
 """
 
 RETURN = r"""

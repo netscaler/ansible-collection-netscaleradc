@@ -57,7 +57,6 @@ EXAMPLES = r"""
       netscaler.adc.nshostname:
         state: present
         hostname: ansible-test
-
 """
 
 RETURN = r"""

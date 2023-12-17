@@ -423,7 +423,6 @@ EXAMPLES = r"""
         state: present
         name: tcpprofile-mptcp
         mptcp: ENABLED
-
 """
 
 RETURN = r"""

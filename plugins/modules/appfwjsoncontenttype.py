@@ -62,7 +62,6 @@ EXAMPLES = r"""
         state: present
         jsoncontenttypevalue: "^application/json$"
         isregex: REGEX
-
 """
 
 RETURN = r"""

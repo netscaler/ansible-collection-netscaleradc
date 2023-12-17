@@ -174,7 +174,6 @@ EXAMPLES = r"""
         state: present
         username: user_adm1
         password: pwd_adm1
-
 """
 
 RETURN = r"""

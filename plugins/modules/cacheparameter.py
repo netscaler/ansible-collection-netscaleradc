@@ -121,7 +121,6 @@ EXAMPLES = r"""
       netscaler.adc.cacheparameter:
         state: present
         via: 'NS-CACHE-10.0: 141'
-
 """
 
 RETURN = r"""

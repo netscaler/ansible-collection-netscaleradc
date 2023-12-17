@@ -225,7 +225,6 @@ EXAMPLES = r"""
       netscaler.adc.aaaparameter:
         state: present
         maxaaausers: '4294967295'
-
 """
 
 RETURN = r"""

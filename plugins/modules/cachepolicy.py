@@ -150,7 +150,6 @@ EXAMPLES = r"""
           || (HTTP.RES.CACHE_CONTROL.IS_S_MAXAGE))
         action: CACHE
         storeingroup: DEFAULT
-
 """
 
 RETURN = r"""

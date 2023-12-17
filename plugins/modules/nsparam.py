@@ -221,7 +221,6 @@ EXAMPLES = r"""
       netscaler.adc.nsparam:
         state: present
         timezone: GMT+09:00-KST-Asia/Seoul
-
 """
 
 RETURN = r"""

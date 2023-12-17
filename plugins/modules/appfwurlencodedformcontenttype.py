@@ -67,7 +67,6 @@ EXAMPLES = r"""
         state: present
         urlencodedformcontenttypevalue: application/x-www-form-urlencoded.*
         isregex: REGEX
-
 """
 
 RETURN = r"""

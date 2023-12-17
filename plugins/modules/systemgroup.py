@@ -170,7 +170,6 @@ EXAMPLES = r"""
         state: present
         groupname: sys-group1
         promptstring: '[%T] %u@%h/%s'
-
 """
 
 RETURN = r"""

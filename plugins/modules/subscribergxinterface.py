@@ -178,7 +178,6 @@ EXAMPLES = r"""
         servicepathavp:
           - 262099
         servicepathvendorid: 3845
-
 """
 
 RETURN = r"""

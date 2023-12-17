@@ -103,7 +103,6 @@ EXAMPLES = r"""
         state: present
         labelname: _reqBuiltinDefaults
         evaluates: REQ
-
 """
 
 RETURN = r"""

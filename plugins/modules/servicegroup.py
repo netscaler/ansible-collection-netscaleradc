@@ -490,7 +490,6 @@ EXAMPLES = r"""
             - servername: foo.example.com
               port: 443
               servicegroupname: test1-1
-
 """
 
 RETURN = r"""
