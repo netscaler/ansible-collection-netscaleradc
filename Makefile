@@ -43,7 +43,8 @@ lint: install
 # 	pip3 install -r requirements.txt
 # 	./build.sh
 # 	cd ..
-# 	rsync -cprv _built_docs/build/html/ docs/ # Do not use --delete-after as this will delete .nojekyll file
+# 	rsync -cprv _built_docs/build/html/ docs/ --delete-after # Do not use --delete-after as this will delete .nojekyll file
+# 	git restore docs/.nojekyll
 
 
 # Run examples/*.yaml playbooks individually
