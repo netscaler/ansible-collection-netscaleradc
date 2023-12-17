@@ -162,6 +162,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcertKey
+      delegate_to: localhost
+      netscaler.adc.sslcertkey:
+        state: present
+        certkey: ns-server-certificate
+        cert: ns-server.cert
+        key: ns-server.key
+        password: false
+
 """
 
 RETURN = r"""

@@ -8,7 +8,7 @@
         state: imported
 
         name: ansible-test.crt
-        src: http://10.106.210.16:8000/test-certfile.crt
+        src: http://10.06.10.10:8000/test-certfile.crt
         # src: local:test-certfile.crt # `local:` means `/var/tmp/` in netscaler
     - name: Sample Task | remove sslcertfile
       delegate_to: localhost
@@ -16,5 +16,5 @@
         state: absent
 
         name: ansible-test.crt
-        src: http://10.106.210.16:8000/test-certfile.crt
+        src: http://10.10.10.10:8000/test-certfile.crt
         # src: local:test-certfile.crt # `local:` means `/var/tmp/` in netscaler

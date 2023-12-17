@@ -52,6 +52,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | appfwmultipartFormContentType
+      delegate_to: localhost
+      netscaler.adc.appfwmultipartformcontenttype:
+        state: present
+        multipartformcontenttypevalue: multipart/form-data
+    - name: Sample Task | appfwmultipartFormContentType | 2
+      delegate_to: localhost
+      netscaler.adc.appfwmultipartformcontenttype:
+        state: present
+        multipartformcontenttypevalue: multipart/form-data.*
+        isregex: REGEX
+
 """
 
 RETURN = r"""

@@ -212,6 +212,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsparam
+      delegate_to: localhost
+      netscaler.adc.nsparam:
+        state: present
+        timezone: GMT+09:00-KST-Asia/Seoul
+
 """
 
 RETURN = r"""

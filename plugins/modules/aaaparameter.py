@@ -216,6 +216,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | aaaparameter
+      delegate_to: localhost
+      netscaler.adc.aaaparameter:
+        state: present
+        maxaaausers: '4294967295'
+
 """
 
 RETURN = r"""

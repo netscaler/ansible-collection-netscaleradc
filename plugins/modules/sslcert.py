@@ -169,6 +169,27 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcert
+      delegate_to: localhost
+      netscaler.adc.sslcert:
+        state: created
+
+        certfile: test1-sni.crt
+        reqfile: test1-sni.csr
+        certtype: SRVR_CERT
+        keyform: PEM
+        days: 1480
+        certform: PEM
+        cacert: ns-root.cert
+        cacertform: PEM
+        cakey: ns-root.key
+        cakeyform: PEM
+        caserial: ns-root.srl
+
 """
 
 RETURN = r"""

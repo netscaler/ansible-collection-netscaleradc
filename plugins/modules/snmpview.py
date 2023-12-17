@@ -67,6 +67,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | snmpview
+      delegate_to: localhost
+      netscaler.adc.snmpview:
+        state: present
+        name: v3_grp_view
+        subtree: '1'
+        type: included
+
 """
 
 RETURN = r"""

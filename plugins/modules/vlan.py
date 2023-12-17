@@ -210,6 +210,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | vlan
+      delegate_to: localhost
+      netscaler.adc.vlan:
+        state: present
+        id: '301'
+        aliasname: client_side_network
+
 """
 
 RETURN = r"""

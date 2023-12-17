@@ -46,6 +46,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | rsskeytype
+      delegate_to: localhost
+      netscaler.adc.rsskeytype:
+        state: present
+        rsstype: ASYMMETRIC
+
 """
 
 RETURN = r"""

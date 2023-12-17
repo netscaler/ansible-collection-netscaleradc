@@ -134,6 +134,24 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | server
+      delegate_to: localhost
+      netscaler.adc.server:
+        state: present
+        name: 10.10.10.10
+        ipaddress: 10.10.10.10
+    - name: Sample Task | server 2
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.server:
+        state: present
+        domain: test.ap-southeast-1.example.com
+        name: test.ap-southeast-1.example.com
+
 """
 
 RETURN = r"""

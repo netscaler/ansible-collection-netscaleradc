@@ -48,6 +48,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nshostName
+      delegate_to: localhost
+      netscaler.adc.nshostname:
+        state: present
+        hostname: ansible-test
+
 """
 
 RETURN = r"""

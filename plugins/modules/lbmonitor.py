@@ -823,6 +823,43 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | lbmonitor
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: ldns-dns
+        type: LDNS-DNS
+        query: .
+        querytype: Address
+        deviation: '0'
+        interval: 6
+        resptimeout: 3
+        downtime: 20
+    - name: Sample Task | lbmonitor | 2
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: stasecure
+        type: CITRIX-STA-SERVICE
+        deviation: '0'
+        interval: 2
+        units3: MIN
+        resptimeout: 4
+        downtime: 5
+    - name: Sample Task | lbmonitor | 3
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: test-monitor1
+        type: TCP
+        interval: 15
+        retries: 20
+
 """
 
 RETURN = r"""

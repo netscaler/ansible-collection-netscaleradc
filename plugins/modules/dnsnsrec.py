@@ -79,6 +79,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | dnsnsRec
+      delegate_to: localhost
+      netscaler.adc.dnsnsrec:
+        state: present
+        domain: .
+        nameserver: a.root-servers.net
+        ttl: 3600000
+
 """
 
 RETURN = r"""

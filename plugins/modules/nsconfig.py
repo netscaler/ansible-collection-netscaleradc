@@ -240,6 +240,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsconfig
+      delegate_to: localhost
+      netscaler.adc.nsconfig:
+        state: present
+        ipaddress: 10.10.10.10
+        netmask: 255.255.255.0
+
 """
 
 RETURN = r"""

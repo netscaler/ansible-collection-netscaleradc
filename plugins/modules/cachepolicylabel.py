@@ -93,6 +93,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | cachepolicylabel
+      delegate_to: localhost
+      netscaler.adc.cachepolicylabel:
+        state: present
+        labelname: _reqBuiltinDefaults
+        evaluates: REQ
+
 """
 
 RETURN = r"""

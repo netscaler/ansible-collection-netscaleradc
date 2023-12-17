@@ -147,6 +147,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | snmptrap
+      delegate_to: localhost
+      netscaler.adc.snmptrap:
+        state: present
+        trapclass: generic
+        trapdestination: 10.10.10.10
+        version: V3
+        allpartitions: ENABLED
+
 """
 
 RETURN = r"""

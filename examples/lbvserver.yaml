@@ -19,7 +19,7 @@
         state: present
 
         name: s1
-        ipaddress: 10.222.74.181
+        ipaddress: 10.10.10.181
         servicetype: HTTP
         port: 80
 

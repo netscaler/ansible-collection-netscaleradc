@@ -558,6 +558,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslservice
+      delegate_to: localhost
+      netscaler.adc.sslservice:
+        state: present
+        servicename: nsrnatsip-127.0.0.1-5061
+        ersa: ENABLED
+        sessreuse: DISABLED
+        ssl3: DISABLED
+        tls1: DISABLED
+        tls11: DISABLED
+        dtls1: DISABLED
+
 """
 
 RETURN = r"""
