@@ -6,4 +6,4 @@
       delegate_to: localhost
       netscaler.adc.nshostname:
         state: present
-        hostname: HA-NetScaler-Pair
+        hostname: ansible-test

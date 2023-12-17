@@ -10,6 +10,7 @@
         ipaddress: 10.10.10.10
     - name: Sample Task | server 2
       delegate_to: localhost
+      tags: test
       netscaler.adc.server:
         state: present
         domain: test.ap-southeast-1.example.com
