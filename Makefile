@@ -31,9 +31,22 @@ generate_modules:
 install:
 	ansible-galaxy collection install . --force
 
-lint: install
+line_length:
+	grep -l '.\{159,\}' -R plugins --include='*.py'
+
+lint: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
 	ansible-test sanity --docker default -v
+
+int_test: install
+	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
+	ansible-test integration # --docker default -v
+
+build:
+	ansible-galaxy collection build
+
+galaxy_importer: build
+	python3 -m galaxy_importer.main netscaler-adc-2.1.0.tar.gz
 
 # build_docs:
 # 	rm -rf _built_docs
