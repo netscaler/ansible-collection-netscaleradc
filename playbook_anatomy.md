@@ -27,7 +27,7 @@ This is how a typical playbook for `netscaler.adc` collection looks like:
 
         # The following are the module parameters. Refer to the module documentation for the list of supported parameters.
         name: s1
-        ipaddress: 10.222.74.181
+        ipaddress: 10.10.10.10
         servicetype: HTTP
         port: 80
 ```
