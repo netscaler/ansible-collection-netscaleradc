@@ -295,7 +295,8 @@ def delete_resource(client, resource_name, resource_module_params):
             resource_name == "lbvserver_servicegroup_binding"
             and arg_key == "servicename"
         ):
-            # status_code: 400; Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
+            # status_code: 400;
+            # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
             continue
         try:
             args[arg_key] = resource_module_params[arg_key]
@@ -500,7 +501,10 @@ def get_valid_desired_states(resource_name):
     desired_states = set()
     # Read the desired states from the resource map
     # All supported operations are
-    # {'delete', 'change', 'Ping6', 'get-byname', 'enable', 'Switch', 'Force', 'init', 'Traceroute6', 'kill', 'Traceroute', 'add', 'check', 'reset', 'rename', 'convert', 'unset', 'send', 'clear', 'update', 'Reboot', 'unsign', 'Install', 'Ping', 'export', 'save', 'expire', 'get-all', 'flush', 'unlock', 'diff', 'Import', 'disable', 'create', 'sign', 'get', 'apply', 'restore', 'unlink', 'link', 'count', 'join', 'renumber', 'sync'}
+    # 'delete', 'change', 'Ping6', 'get-byname', 'enable', 'Switch', 'Force', 'init', 'Traceroute6', 'kill',
+    # 'Traceroute', 'add', 'check', 'reset', 'rename', 'convert', 'unset', 'send', 'clear', 'update', 'Reboot',
+    # 'unsign', 'Install', 'Ping', 'export', 'save', 'expire', 'get-all', 'flush', 'unlock', 'diff', 'Import',
+    # 'disable', 'create', 'sign', 'get', 'apply', 'restore', 'unlink', 'link', 'count', 'join', 'renumber', 'sync'
     supported_operations = NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
     if "add" in supported_operations or "update" in supported_operations:
         desired_states.add("present")
