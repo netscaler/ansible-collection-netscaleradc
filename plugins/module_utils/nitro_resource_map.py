@@ -52,6 +52,29 @@ NITRO_RESOURCE_MAP = {
         "singleton": False,
         "update_payload_keys": [],
     },
+    "save_config": {
+        "_supported_operations": ["add"],
+        "add_payload_keys": [
+            "all",
+        ],
+        "bindings": [],
+        "bindprimary_key": "",
+        "delete_arg_keys": [],
+        "disable_payload_keys": [],
+        "enable_payload_keys": [],
+        "get_arg_keys": [],
+        "immutable_keys": [],
+        "primary_key": "",
+        "readwrite_arguments": {
+            "all": {
+                "type": "bool",
+                "required": False,
+                "no_log": False,
+            },
+        },
+        "singleton": False,
+        "update_payload_keys": [],
+    },
     "change_password": {
         "_supported_operations": ["add", "update"],
         "add_payload_keys": [

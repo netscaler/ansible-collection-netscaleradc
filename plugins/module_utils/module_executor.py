@@ -802,6 +802,20 @@ class ModuleExecutor(object):
             self.return_failure(err)
 
     @trace
+    def config_save(self):
+        all = False
+        if (
+            "all" in self.resource_module_params
+            and self.resource_module_params["all"] is True
+        ):
+            all = True
+        ok, err = save_config(self.client, all)
+        if not ok:
+            self.return_failure(err)
+        self.module_result["changed"] = True
+        self.return_success()
+
+    @trace
     def main(self):
         try:
             if self.module.params["state"] in {"present", "enabled", "disabled"}:

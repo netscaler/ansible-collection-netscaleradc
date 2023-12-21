@@ -393,9 +393,9 @@ def return_response(
 
 
 @trace
-def save_config(client):
+def save_config(client, all=False):
     # Save the config in the current partition.
-    post_payload = {"nsconfig": {}}
+    post_payload = {"nsconfig": {} if not all else {"all": True}}
     status_code, response_body = client.post(
         post_data=post_payload, resource="nsconfig", action="save"
     )
