@@ -627,6 +627,7 @@ plugins/modules/route.py validate-modules:missing-gplv3-license # We use MIT lic
 plugins/modules/route6.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/routerdynamicrouting.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/rsskeytype.py validate-modules:missing-gplv3-license # We use MIT license
+plugins/modules/save_config.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/server.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/service.py validate-modules:missing-gplv3-license # We use MIT license
 plugins/modules/service_lbmonitor_binding.py validate-modules:missing-gplv3-license # We use MIT license
