@@ -802,6 +802,20 @@ class ModuleExecutor(object):
             self.return_failure(err)
 
     @trace
+    def config_save(self):
+        all = False
+        if (
+            "all" in self.resource_module_params
+            and self.resource_module_params["all"] is True
+        ):
+            all = True
+        ok, err = save_config(self.client, all)
+        if not ok:
+            self.return_failure(err)
+        self.module_result["changed"] = True
+        self.return_success()
+
+    @trace
     def main(self):
         try:
             if self.module.params["state"] in {"present", "enabled", "disabled"}:
@@ -839,11 +853,12 @@ class ModuleExecutor(object):
                 else:
                     # `primary_key` will not be present for
                     # 1. `update-only` resources such as `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
-                    # FIXME: for such resources. Should we `unset` the resource instead?
-                    # 2. Few other resources -- `appfwlearningdata`, `application`, `bridgetable`, `gslbldnsentry`, `locationfile`, `locationfile6`, `routerdynamicrouting`, `sslcertbundle`, `sslcertfile`, `sslcrlfile`, `ssldhfile`, `sslkeyfile`, `systementitydata` and global bindings
-                    # FIXME: challenge is there is no `primary_key` and in most cases `get_args_keys`. How can we get the exact resource to GET before DELETE for itempotency?
-                    # ASK-SWETHA
-
+                    #   FIXME: for such resources. Should we `unset` the resource instead?
+                    # 2. Few other resources -- `appfwlearningdata`, `application`, `bridgetable`,
+                    #   `gslbldnsentry`, `locationfile`, `locationfile6`, `routerdynamicrouting`, `sslcertbundle`,
+                    #   `sslcertfile`, `sslcrlfile`, `ssldhfile`, `sslkeyfile`, `systementitydata` and global bindings
+                    #   FIXME: challenge is there is no `primary_key` and in most cases `get_args_keys`.
+                    #   How can we get the exact resource to GET before DELETE for itempotency?
                     if is_global_binding(self.resource_name):
                         self.delete()
                     elif is_singleton_resource(self.resource_name):

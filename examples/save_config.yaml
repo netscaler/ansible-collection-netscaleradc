@@ -1,0 +1,12 @@
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | save config
+      delegate_to: localhost
+      netscaler.adc.save_config: {}
+    - name: Sample Task | save config for all partitions
+      delegate_to: localhost
+      netscaler.adc.save_config:
+        all: true
+      register: result
