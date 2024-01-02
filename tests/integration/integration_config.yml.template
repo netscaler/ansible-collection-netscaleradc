@@ -1,0 +1,7 @@
+---
+nsip: 10.10.10.10
+nitro_user: nsroot
+nitro_pass: verysecretpassword
+nitro_protocol: https
+validate_certs: false
+save_config: false

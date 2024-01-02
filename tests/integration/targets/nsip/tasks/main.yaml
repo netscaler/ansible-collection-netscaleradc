@@ -1,0 +1,133 @@
+- name: NSIP | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: present
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | ADD | --check
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSIP | ADD
+  delegate_to: localhost
+  register: result
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: present
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSIP | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: present
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | ADD | idempotent
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+
+- name: NSIP | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: absent
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | DELETE | --check
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSIP | DELETE
+  delegate_to: localhost
+  register: result
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: absent
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: NSIP | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  netscaler.adc.nsip:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+
+    state: absent
+    ipaddress: 1.1.1.1
+    netmask: 255.255.255.0
+    type: VIP
+
+- name: Assert | NSIP | DELETE | idempotent
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
