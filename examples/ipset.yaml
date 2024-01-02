@@ -7,3 +7,9 @@
       netscaler.adc.ipset:
         state: present
         name: ipset-001
+
+    - name: Sample Task | ipset delete
+      delegate_to: localhost
+      netscaler.adc.ipset:
+        state: absent
+        name: ipset-001

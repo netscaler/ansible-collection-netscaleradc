@@ -38,7 +38,7 @@ lint: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
 	ansible-test sanity --docker default -v
 
-int_test: install
+test_int: install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
 	ansible-test integration # --docker default -v
 
@@ -73,3 +73,7 @@ run_examples:
 		ansible-playbook -i examples/inventory.ini $$playbook || \
 		ansible-playbook -i examples/inventory.ini $$playbook -vvv > $$playbook.out; \
 	done
+
+action:
+	act -list
+	act --remote-name gh -j ansible-sanity-test
