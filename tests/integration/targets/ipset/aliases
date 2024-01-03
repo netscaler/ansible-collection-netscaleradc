@@ -1,2 +1,3 @@
 needs/file/tests/integration/init.sh
 needs/file/examples/ipset.yaml
+gather_facts/no

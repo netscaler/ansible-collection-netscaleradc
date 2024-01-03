@@ -1,0 +1,52 @@
+name: Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  integration-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Start NetScaler CPX container
+        run: |
+          docker-compose -f "docker-compose.yml" up -d
+          sleep 10
+
+      - name: export NetScaler vars to environment
+        run: |
+          bash tests/integration/generate_integration_config_yml.sh
+          # export NS_NITRO_PORT=$(docker port netscaler 9080 | cut -d ':' -f2)
+          # export NETSCALER_NSIP=localhost:$NS_NITRO_PORT
+          # export NETSCALER_NITRO_PASS=$(docker exec netscaler cat /var/random_id)
+          # export NETSCALER_NITR_USER=nsroot
+          # export NETSCALER_NITRO_PROTOCOL=http
+          # export NETSCALER_VALIDATE_CERTS=false
+
+          # echo "NS_NITRO_PORT=$NS_NITRO_PORT" >> $GITHUB_ENV
+          # echo "NETSCALER_NSIP=$NETSCALER_NSIP" >> $GITHUB_ENV
+          # echo "NETSCALER_NITRO_PASS=$NETSCALER_NITRO_PASS" >> $GITHUB_ENV
+
+          # env
+          # echo "end of env\n\n\n\n\n"
+          # echo $GITHUB_ENV
+
+      # - name: Run `curl` to check if netscaler is up
+      #   run: |
+      #     curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS
+
+      - name: Run `ansible-test integration`
+        run: |
+          pwd
+          tree . || ls -R
+          mkdir -p ansible_collections/netscaler/adc
+          rsync -av . ansible_collections/netscaler/adc --exclude ansible_collection/netscaler/adc
+          cd ansible_collections/netscaler/adc
+          ansible-test integration -v --color --docker
+
+      - name: Stop containers
+        if: always()
+        run: docker-compose -f "docker-compose.yml" down

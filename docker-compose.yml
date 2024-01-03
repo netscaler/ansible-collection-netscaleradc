@@ -1,0 +1,20 @@
+services:
+  netscaler:
+    container_name: netscaler
+    image: quay.io/netscaler/netscaler-cpx:14.1-4.42
+    ports:
+      - "33443:9443"
+      - "33022:22"
+      - "33080:9080"
+      - 161/udp
+      - "33888:8888"
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    ulimits:
+      core: -1
+    # volumes:
+    #   - ./docker_volumes/cpx_volume:/cpx
+    environment:
+      - CPX_CORES=2
+      - EULA=yes
