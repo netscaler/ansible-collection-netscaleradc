@@ -1,3 +1,4 @@
+---
 - name: Sample Playbook
   hosts: localhost
   gather_facts: false
@@ -6,7 +7,6 @@
       delegate_to: localhost
       netscaler.adc.sslcertfile:
         state: imported
-
         name: ansible-test.crt
         src: http://10.06.10.10:8000/test-certfile.crt
         # src: local:test-certfile.crt # `local:` means `/var/tmp/` in netscaler
@@ -14,7 +14,6 @@
       delegate_to: localhost
       netscaler.adc.sslcertfile:
         state: absent
-
         name: ansible-test.crt
         src: http://10.10.10.10:8000/test-certfile.crt
         # src: local:test-certfile.crt # `local:` means `/var/tmp/` in netscaler

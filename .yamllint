@@ -1,0 +1,16 @@
+---
+extends: default
+
+rules:
+  # 120 chars should be enough, but don't fail if a line is longer
+  line-length:
+    max: 120
+    level: error
+
+  truthy:
+    # "on" as a key in github-workflows is valid
+    ignore: |
+      .github/workflows/*
+
+ignore-from-file:
+  - .gitignore

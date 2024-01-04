@@ -75,7 +75,8 @@ EXAMPLES = r"""
     - name: V2 | Sample Task | nsip
       delegate_to: localhost
       netscaler.adc.nsip:
-        nitro_auth_token: "{{ login_result.sessionid }}" # This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
+        # `nitro_auth_token` can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
+        nitro_auth_token: "{{ login_result.sessionid }}"
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
         # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
         # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
@@ -90,7 +91,8 @@ EXAMPLES = r"""
     - name: V2 | Sample Task | logout
       delegate_to: localhost
       netscaler.adc.logout:
-        nitro_auth_token: "{{ login_result.sessionid }}" # This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
+        # `nitro_auth_token` can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable
+        nitro_auth_token: "{{ login_result.sessionid }}"
         # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
         # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
         # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable

@@ -158,7 +158,7 @@ EXAMPLES = r"""
     - name: Sample task | unset l3param
       delegate_to: localhost
       netscaler.adc.l3param:
-        state: absent # absent for l3param calls unset action
+        state: absent  # absent for l3param calls unset action
         acllogtime: "true"
 """
 

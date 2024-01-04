@@ -1,3 +1,4 @@
+---
 - name: NSIP | ADD | --check
   delegate_to: localhost
   register: result

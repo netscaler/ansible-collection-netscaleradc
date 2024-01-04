@@ -1,8 +1,8 @@
+---
 name: Release the ansible collection to Ansible Galaxy and Ansible Automation Hub
 on:
   release:
     types: [published]
-
 jobs:
   release:
     uses: ansible/devtools/.github/workflows/release_collection.yml@main

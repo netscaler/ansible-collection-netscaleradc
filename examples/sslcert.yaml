@@ -1,3 +1,4 @@
+---
 - name: Sample Playbook
   hosts: localhost
   gather_facts: false
@@ -6,7 +7,6 @@
       delegate_to: localhost
       netscaler.adc.sslcert:
         state: created
-
         certfile: test1-sni.crt
         reqfile: test1-sni.csr
         certtype: SRVR_CERT
