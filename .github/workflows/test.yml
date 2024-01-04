@@ -12,8 +12,6 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.9"
-          - "3.10"
           - "3.11"
     steps:
       - name: Checkout the repo
@@ -54,18 +52,9 @@ jobs:
     strategy:
       matrix:
         ansible:
-          - stable-2.14
           - stable-2.15
-          - stable-2.16
         python-version:
-          - "3.9"
-          - "3.10"
           - "3.11"
-          # exclude:
-          #   - python-version: 3.9
-          #     ansible: stable-2.16
-          #   - python-version: 3.9
-          #     ansible: devel
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
@@ -111,18 +100,9 @@ jobs:
     strategy:
       matrix:
         ansible:
-          - stable-2.14
           - stable-2.15
-          - stable-2.16
         python-version:
-          - "3.9"
-          - "3.10"
           - "3.11"
-          # exclude:
-          #   - python-version: 3.9
-          #     ansible: stable-2.16
-          #   - python-version: 3.9
-          #     ansible: devel
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
