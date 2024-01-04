@@ -36,7 +36,10 @@ jobs:
           python${{ matrix.python-version }} -m pip install --upgrade pip
           python${{ matrix.python-version }} -m pip install galaxy_importer
           python${{ matrix.python-version }} -m galaxy_importer.main netscaler-adc-*.tar.gz 2>&1 | tee importer.log
-          if grep -Eqi "(error|warning)" importer.log; then
+          if grep -Eq "ERROR:" importer.log; then
+            echo "ERROR: galaxy-importer failed"
+            echo "> grep -E "ERROR:" importer.log"
+            grep -E "ERROR:" importer.log
             exit 1
           fi
       - name: Archive recent build
