@@ -41,7 +41,7 @@ jobs:
             exit 1
           fi
       - name: Archive recent build
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: collection-build
           path: netscaler-adc-*.tar.gz
