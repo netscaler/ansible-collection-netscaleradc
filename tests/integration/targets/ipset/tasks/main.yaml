@@ -1,9 +1,10 @@
 ---
-- name: NSIP | ADD | --check
+- name: IPSET | ADD | --check
   delegate_to: localhost
   register: result
   check_mode: true
-  netscaler.adc.nsip:
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -11,18 +12,19 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | ADD | --check
+    name: ipset-001
+- name: Assert | IPSET | ADD | --check
+  tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: NSIP | ADD
+- name: IPSET | ADD
   delegate_to: localhost
   register: result
-  netscaler.adc.nsip:
+  check_mode: false
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -30,18 +32,18 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | ADD
+    name: ipset-001
+- name: Assert | IPSET | ADD
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: NSIP | ADD | idempotent
+- name: IPSET | ADD | idempotent
   delegate_to: localhost
   register: result
-  netscaler.adc.nsip:
+  check_mode: false
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -49,19 +51,19 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | ADD | idempotent
+    name: ipset-001
+- name: Assert | IPSET | ADD | idempotent
+  tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==false"
-- name: NSIP | DELETE | --check
+- name: IPSET | DELETE | --check
   delegate_to: localhost
   register: result
   check_mode: true
-  netscaler.adc.nsip:
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -69,18 +71,19 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | DELETE | --check
+    name: ipset-001
+- name: Assert | IPSET | DELETE | --check
+  tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: NSIP | DELETE
+- name: IPSET | DELETE
   delegate_to: localhost
   register: result
-  netscaler.adc.nsip:
+  check_mode: false
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -88,18 +91,18 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | DELETE
+    name: ipset-001
+- name: Assert | IPSET | DELETE
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: NSIP | DELETE | idempotent
+- name: IPSET | DELETE | idempotent
   delegate_to: localhost
   register: result
-  netscaler.adc.nsip:
+  check_mode: false
+  tags: test
+  netscaler.adc.ipset:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -107,10 +110,9 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    ipaddress: 1.1.1.1
-    netmask: 255.255.255.0
-    type: VIP
-- name: Assert | NSIP | DELETE | idempotent
+    name: ipset-001
+- name: Assert | IPSET | DELETE | idempotent
+  tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
