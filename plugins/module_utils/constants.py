@@ -21,6 +21,7 @@ HTTP_STATUS_CODES = {
 NETSCALER_NO_GET_RESOURCE = [
     "login",
     "logout",
+    "save_config",
 ]
 
 NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
