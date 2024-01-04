@@ -1,3 +1,4 @@
+---
 - name: Sample Playbook
   hosts: localhost
   gather_facts: false
@@ -6,6 +7,5 @@
       delegate_to: localhost
       netscaler.adc.locationfile:
         state: imported
-
         locationfile: my_file
         src: local:my_location_file

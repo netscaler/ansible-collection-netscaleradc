@@ -18,3 +18,9 @@ examples/*.out
 
 TODO.md
 Dockerfile
+
+# tests
+tests/integration/integration_config.yml
+
+importer_result.json
+ansible-test-integration.help

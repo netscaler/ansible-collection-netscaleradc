@@ -34,13 +34,18 @@ install:
 line_length:
 	grep -l '.\{159,\}' -R plugins --include='*.py'
 
-lint: galaxy_importer install
-	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
-	ansible-test sanity --docker default -v
+lint:
+	ansible-lint
 
-int_test: install
+test_sanity: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
-	ansible-test integration # --docker default -v
+	ansible-test sanity --docker default
+	# ansible-test sanity --test shellcheck --docker default
+
+test_int: install
+	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
+	ansible-test integration
+	# ansible-test integration nsip
 
 build:
 	ansible-galaxy collection build --force
@@ -73,3 +78,7 @@ run_examples:
 		ansible-playbook -i examples/inventory.ini $$playbook || \
 		ansible-playbook -i examples/inventory.ini $$playbook -vvv > $$playbook.out; \
 	done
+
+action:
+	act -list
+	act --remote-name gh -j ansible-sanity-test

@@ -1,14 +1,12 @@
 ---
 # Copyright (c) 2023 Cloud Software Group, Inc.
 # MIT License (see LICENSE or https://opensource.org/licenses/MIT)
-
 name: Bug report
 description: Create a report to help us improve
 title: "[Bug]: "
 labels: ["bug", "triage"]
 assignees:
   - sumanth-lingappa
-
 body:
   - type: markdown
     attributes:
@@ -19,17 +17,15 @@ body:
         *Complete **all** sections as described, this form is processed automatically.*
 
         [issue search]: https://github.com/netscaler/ansible-collection-netscaleradc/search?q=is%3Aissue&type=issues
-
   - type: textarea
     attributes:
       label: Summary
       description: Explain the problem briefly.
       placeholder: >-
-        When I try to do X with the collection, Y breaks in a way Z under
-        the env E. Here are all the details I know about this problem...
+        When I try to do X with the collection, Y breaks in a way Z under the env E.
+        Here are all the details I know about this problem...
     validations:
       required: true
-
   - type: dropdown
     attributes:
       label: Issue Type
@@ -38,23 +34,20 @@ body:
         - Bug Report
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Component Name
       description: >-
-        Write the short name of the module, plugin, task or feature below,
-        *use your best guess if unsure*. Do not include `netscaler.adc.`!
+        Write the short name of the module, plugin, task or feature below, *use your best guess if unsure*.
+        Do not include `netscaler.adc.`!
       placeholder: service, nsip, vpnvserver, csvserver_lbvserver_binding etc.
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Python Version
       description: >-
-        Paste verbatim output from `python --version` between
-        tripple backticks.
+        Paste verbatim output from `python --version` between tripple backticks.
       value: |
         ```console (paste below)
         $ python --version # or python3 --version
@@ -62,13 +55,11 @@ body:
         ```
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Ansible Version
       description: >-
-        Paste verbatim output from `ansible --version` between
-        tripple backticks.
+        Paste verbatim output from `ansible --version` between tripple backticks.
       value: |
         ```console (paste below)
         $ ansible --version
@@ -76,7 +67,6 @@ body:
         ```
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Ansible Configuration
@@ -89,13 +79,11 @@ body:
         $ ansible-config dump --only-changed
 
         ```
-
   - type: textarea
     attributes:
       label: netscaler.adc Collection Version
       description: >-
-        Paste verbatim output from "ansible-galaxy collection list netscaler.adc"
-        between tripple backticks.
+        Paste verbatim output from "ansible-galaxy collection list netscaler.adc" between tripple backticks.
       value: |
         ```console (paste below)
         $ ansible-galaxy collection list netscaler.adc
@@ -103,13 +91,11 @@ body:
         ```
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Target NetScaler Version
       description: >-
-        Provide all relevant information regarding the target NetScaler version,
-        form factor (MPX, CPX, BLX, VPX)
+        Provide all relevant information regarding the target NetScaler version, form factor (MPX, CPX, BLX, VPX)
       value: |
         ```console (paste below)
         > show ns version
@@ -117,7 +103,6 @@ body:
         ```
     validations:
       required: false
-
   - type: textarea
     attributes:
       label: Equivalent NetScaler CLI Command
@@ -129,7 +114,6 @@ body:
         ```
     validations:
       required: false
-
   - type: textarea
     attributes:
       label: Steps to Reproduce
@@ -146,18 +130,15 @@ body:
         ```
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Expected Results
       description: >-
         Describe what you expected to happen when running the steps above.
       placeholder: >-
-        I expected X to happen because I assumed Y.
-        that it did not.
+        I expected X to happen because I assumed Y. that it did not.
     validations:
       required: true
-
   - type: textarea
     attributes:
       label: Actual Results

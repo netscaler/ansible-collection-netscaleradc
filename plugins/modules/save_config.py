@@ -57,6 +57,7 @@ EXAMPLES = r"""
         # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
         # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
         # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+        all: false  # default is false. If true, save config for all partitions
 
 
     - name: V2 | Sample Task | Save config for all partitions

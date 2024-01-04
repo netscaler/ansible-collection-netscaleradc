@@ -1,0 +1,178 @@
+---
+name: ansible-test
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+
+jobs:
+  ansible-galaxy-importer:
+    name: ansible-galaxy-importer
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version:
+          - "3.11"
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+      - name: Build the collection
+        run: |
+          echo "> ansible-galaxy collection build --force"
+          ansible-galaxy collection build --force
+      - name: Setup Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+      - name: Test importer on generated tarball
+        run: |
+          # export GALAXY_IMPORTER_CONFIG=./galaxy-importer.cfg
+          # python -m pip install -r requirements.txt
+          echo "> python --version"
+          python --version
+          python${{ matrix.python-version }} -m pip install --upgrade pip
+          python${{ matrix.python-version }} -m pip install galaxy_importer
+          python${{ matrix.python-version }} -m galaxy_importer.main netscaler-adc-*.tar.gz 2>&1 | tee importer.log
+          if grep -Eq "ERROR:" importer.log; then
+            echo "ERROR: galaxy-importer failed"
+            echo "> grep -E "ERROR:" importer.log"
+            grep -E "ERROR:" importer.log
+            exit 1
+          fi
+      - name: Archive recent build
+        uses: actions/upload-artifact@v3
+        with:
+          name: collection-build
+          path: netscaler-adc-*.tar.gz
+          retention-days: 1
+  sanity-test:
+    name: Sanity test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ansible:
+          - stable-2.15
+        python-version:
+          - "3.11"
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python${{ matrix.python-version }} -m pip install --upgrade pip
+          python${{ matrix.python-version }} -m pip install \
+            https://github.com/ansible/ansible/archive/${{ matrix.ansible }}.tar.gz \
+            --disable-pip-version-check
+      - name: Run `ansible-test sanity`
+        run: |
+          echo "> pwd"
+          pwd
+          # tree . || ls -R
+          echo "> mkdir -p ansible_collections/netscaler/adc"
+          mkdir -p ansible_collections/netscaler/adc
+          echo "> rsync -av . ansible_collections/netscaler/adc \
+            --exclude ansible_collection/netscaler/adc \
+            --exclude .git \
+            --exclude .github \
+            --exclude .gitignore \
+            --exclude docs"
+          rsync -av . ansible_collections/netscaler/adc \
+            --exclude ansible_collection/netscaler/adc \
+            --exclude .git \
+            --exclude .github \
+            --exclude .gitignore \
+            --exclude docs
+          echo "> cd ansible_collections/netscaler/adc"
+          cd ansible_collections/netscaler/adc
+
+          echo "> ansible-test --version"
+          ansible-test --version
+          echo "> ansible-test sanity -v --color yes"
+          ansible-test sanity -v --color yes
+  integration-test:
+    name: Integration test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ansible:
+          - stable-2.15
+        python-version:
+          - "3.11"
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+      - name: Start NetScaler CPX container
+        run: |
+          docker-compose -f "docker-compose.yml" up -d
+          sleep 30
+      - name: export NetScaler vars to environment
+        run: |
+          bash tests/integration/generate_integration_config_yml.sh
+          export NS_NITRO_PORT=$(docker port netscaler 9080 | cut -d ':' -f2)
+          export NETSCALER_NSIP=localhost:$NS_NITRO_PORT
+          export NETSCALER_NITRO_PASS=$(docker exec netscaler cat /var/random_id)
+          export NETSCALER_NITRO_USER=nsroot
+          export NETSCALER_NITRO_PROTOCOL=http
+          export NETSCALER_VALIDATE_CERTS=false
+          export NETSCALER_SAVE_CONFIG=false
+
+          # save vars to github environment variables for use in next steps
+          echo "NS_NITRO_PORT=$NS_NITRO_PORT" >> $GITHUB_ENV
+          echo "NETSCALER_NSIP=$NETSCALER_NSIP" >> $GITHUB_ENV
+          echo "NETSCALER_NITRO_PASS=$NETSCALER_NITRO_PASS" >> $GITHUB_ENV
+
+          env
+          echo "end of env\n\n\n\n\n"
+          echo $GITHUB_ENV
+      - name: Run `curl` to check if netscaler is up
+        run: |
+          echo "> curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS"
+          curl -kL http://$NETSCALER_NSIP/nitro/v1/config/nsip -u nsroot:$NETSCALER_NITRO_PASS
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v3
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python${{ matrix.python-version }} -m pip install --upgrade pip
+          python${{ matrix.python-version }} -m pip install \
+            https://github.com/ansible/ansible/archive/${{ matrix.ansible }}.tar.gz \
+            --disable-pip-version-check
+      - name: Run `ansible-test integration`
+        run: |
+          echo "> pwd"
+          pwd
+          # tree . || ls -R
+          echo "> mkdir -p ansible_collections/netscaler/adc"
+          mkdir -p ansible_collections/netscaler/adc
+          echo "> rsync -av . ansible_collections/netscaler/adc \
+            --exclude ansible_collection/netscaler/adc \
+            --exclude .git \
+            --exclude .github \
+            --exclude .gitignore \
+            --exclude docs"
+          rsync -av . ansible_collections/netscaler/adc \
+            --exclude ansible_collection/netscaler/adc \
+            --exclude .git \
+            --exclude .github \
+            --exclude .gitignore \
+            --exclude docs
+          echo "> cd ansible_collections/netscaler/adc"
+          cd ansible_collections/netscaler/adc
+          echo "> cat tests/integration/integration_config.yml || \
+            echo \"tests/integration/integration_config.yml is not present\""
+          cat tests/integration/integration_config.yml || \
+            echo "tests/integration/integration_config.yml is not present"
+
+          echo "> ansible-test --version"
+          ansible-test --version
+          echo "> ansible-test integration -v --color yes"
+          ansible-test integration -v --color yes
+      - name: Stop containers
+        if: always()
+        run: docker-compose -f "docker-compose.yml" down
