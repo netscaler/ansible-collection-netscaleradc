@@ -34,13 +34,17 @@ install:
 line_length:
 	grep -l '.\{159,\}' -R plugins --include='*.py'
 
-lint: galaxy_importer install
+lint:
+	ansible-lint
+
+test_sanity: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
-	ansible-test sanity --docker default -v
+	ansible-test sanity --docker default
+	# ansible-test sanity --test shellcheck --docker default
 
 test_int: install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
-	ansible-test integration # --docker default -v
+	ansible-test integration nsip
 
 build:
 	ansible-galaxy collection build --force

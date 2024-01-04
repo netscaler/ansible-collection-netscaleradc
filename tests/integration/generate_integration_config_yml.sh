@@ -18,7 +18,7 @@ HERE="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 integration_config_yml_path="$HERE/integration_config.yml"
 
-cat << EOF > $integration_config_yml_path
+cat << EOF > "$integration_config_yml_path"
 ---
 nsip: $NETSCALER_NSIP
 nitro_user: $NETSCALER_NITRO_USER

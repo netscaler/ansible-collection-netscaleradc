@@ -1,9 +1,9 @@
-name: CI
-
+---
+name: ansible-lint
 on:
+  workflow_dispatch:
   pull_request:
   push:
-
 jobs:
   ansible-lint:
     name: ansible-lint
@@ -11,6 +11,5 @@ jobs:
     steps:
       # Important: This sets up your GITHUB_WORKSPACE environment variable
       - uses: actions/checkout@v4
-
       - name: Run ansible-lint
         uses: ansible/ansible-lint@main
