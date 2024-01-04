@@ -44,7 +44,8 @@ test_sanity: galaxy_importer install
 
 test_int: install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
-	ansible-test integration nsip
+	ansible-test integration
+	# ansible-test integration nsip
 
 build:
 	ansible-galaxy collection build --force
