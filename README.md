@@ -38,7 +38,7 @@ ansible-galaxy collection install netscaler.adc
 
 
 ```bash
-ansible-galaxy collection install "git+https://github.com/citrix/citrix-adc-ansible-modules.git" [--force]
+ansible-galaxy collection install "git+https://github.com/netscaler/ansible-collection-netscaleradc.git" [--force]
 ```
 
 > `--force` option is required if you have already installed the collection via ansible-galaxy. This will overwrite the existing collection with the latest collection from github.
