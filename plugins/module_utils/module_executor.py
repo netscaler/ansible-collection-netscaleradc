@@ -219,6 +219,24 @@ class ModuleExecutor(object):
             self.return_failure(msg)
 
         self.existing_resource = existing_resource[0] if existing_resource else {}
+        # FIXME: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
+        # Hence, we will set it to `SEC` to make it idempotent
+        # Refer Issue: #324 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/324)
+        if self.resource_name == "lbmonitor":
+            # default value for `units3` is `SEC`
+            if (
+                "units3" not in self.resource_module_params
+                or self.resource_module_params["units3"] == "SEC"
+            ):
+                if (
+                    "units3" in self.existing_resource
+                    and self.existing_resource["units3"] == "MIN"
+                ):
+                    self.existing_resource["interval"] = (
+                        int(self.existing_resource["interval"]) * 60
+                    )
+                    self.existing_resource["units3"] = "SEC"
+
         return self.existing_resource
 
     @trace

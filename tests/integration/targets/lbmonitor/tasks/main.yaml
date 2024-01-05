@@ -1,0 +1,137 @@
+---
+- name: LBMONITOR | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBMONITOR | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBMONITOR | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: LBMONITOR | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBMONITOR | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBMONITOR | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbmonitor:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    monitorname: test-lb-monitor
+    interval: 60
+    type: HTTP
+    deviation: 0
+- name: Assert | LBMONITOR | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
