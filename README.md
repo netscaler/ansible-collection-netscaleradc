@@ -362,7 +362,7 @@ token for all subsequent module calls.
 
 Also the option `is_cloud: true` must be set as well as having the `adm_ip: adm.cloud.com`.
 
-Examples can be found in this [folder](sample_playbooks/citrix_adm).
+Examples can be found in this [folder](sample_playbooks/citrix_adm_service).
 
 ### Configure CPX via Ansible
 
@@ -404,7 +404,7 @@ This a module that is a thin wrapper around the NITRO REST API.
 It provides a number of operations which it then translates into HTTP requests
 and provides the resulting NITRO API response in a well defined return value.
 
-You can find examples of using the module in this [folder](sample_playbooks/nitro_request)
+You can find examples of using the module in this [folder](sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_request)
 
 ### Use the citrix\_adc\_nitro\_resource module.
 
@@ -420,7 +420,7 @@ for the NITRO resource.
 
 The workflows dictionaries published so far can be found [here](deps/workflows.yaml).
 
-Examples can be found in this [folder](sample_playbooks/nitro_resource).
+Examples can be found in this [folder](sample_playbooks/citrix_adc/special_citrix_adc_modules/nitro_resource).
 
 Extended documentation can be found [here](https://netscaler-ansible.readthedocs.io/en/latest/generic_modules/nitro_resource.html).
 
@@ -467,7 +467,7 @@ scp_if_ssh = True
 ```
 
 
-You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc_connection_plugin).
+You can find usage sample_playbooks in this [folder](sample_playbooks/citrix_adc/citrix_adc_connection_plugin).
 
 ### Security notice
 
@@ -497,9 +497,9 @@ There are some conflicting configuration options when using a standard Ansible m
 
 To have such a playbook execute correctly the following solutions are proposed.
 
-* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc_connection_plugin/multiple_plays.yaml) ).
-* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
-* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
+* Have a single playbook with multiple plays ( [sample_playbook](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/multiple_plays.yaml) ).
+* Have a single play configured for standard Ansible modules and define the neeeded overrides in the Citrix ADC specific tasks ( [sample](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/override_citrix_adc_tasks.yaml) ).
+* Have a single play configured for Citrix ADC specific modules and define the needed overrides for the generic Ansible tasks ( [sample](sample_playbooks/citrix_adc/citrix_adc_connection_plugin/override_generic_tasks.yaml) ).
 
 ## Module renaming
 
