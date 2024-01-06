@@ -30,7 +30,7 @@
         interval: 6
         resptimeout: 3
         downtime: 20
-    - name: ipset
+    - name: Sample Task | ipset
       delegate_to: localhost
       netscaler.adc.ipset:
         state: present
