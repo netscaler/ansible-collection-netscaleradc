@@ -3,7 +3,7 @@
 > ⚠️ Note:
 > The earlier `citrix.adc` ansible collection is replaced with the new `netscaler.adc` ansible collection.
 
-> The `citrix.adc` ansible collection is backed up by a seperate branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
+> The `citrix.adc` ansible collection is backed up by a se branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
 
 
 ## Vision
@@ -63,7 +63,7 @@ netscaler.adc 2.0.x
 
 <https://netscaler.github.io/ansible-collection-netscaleradc/>
 
-> Click on the desired module name in the [supported_modules_matrix.md](supported_modules_matrix.md) file to go to the specific module documentation
+> You can also click on the desired module name in the [supported_modules_matrix.md](supported_modules_matrix.md) file to go to the specific module documentation
 
 ## Examples
 
@@ -79,7 +79,19 @@ Every module in the collection requires the user to authenticate to the NetScale
 
 Refer to the [playbook_anatomy.md](playbook_anatomy.md) and [examples](examples) directory for the sample playbooks.
 
-### Authenticate to NetScaler via token (passwordless)
+### Authenticate to NetScaler
+
+#### Password based authentication
+
+Every task in the collection requires the user to authenticate to the NetScaler ADC appliance. The authentication can be done using the `nsip`, `nitro_user` and `nitro_pass` parameters. These parameters can also be passed as environment variables `NETSCALER_NSIP`, `NETSCALER_NITRO_USER` and `NETSCALER_NITRO_PASS`.
+
+#### Using `netscaler.adc.module_defaults` group
+
+To avoid having to specify common parameters for all the modules in every task, you can use the `netscaler.adc.module_defaults` [module defaults](https://docs.ansible.com/ansible/devel/playbook_guide/playbooks_module_defaults.html#module-defaults-groups) group:
+
+> Refer [examples/module_default_args_action_group.yaml](./examples/module_default_args_action_group.yaml) for an example playbook.
+
+#### Passwordless via `nitro_auth_token` parameter (SESSIONID based authentication)
 
 The collection also supports authentication to NetScaler ADC appliance via token. The token can be generated using the `login` module. The token can be passed to other modules using the `nitro_auth_token` parameter. The `nitro_token` parameter can also be passed as environment variable `NETSCALER_NITRO_AUTH_TOKEN`.
 
@@ -102,7 +114,7 @@ echo $NETSCALER_NITRO_AUTH_TOKEN
 
 ## Supported Ansible Versions
 
-This collection supports Ansible version 2.14 and above.
+This collection is tested for Ansible version 2.14 and above.
 
 > Please raise issues at <https://github.com/netscaler/ansible-collection-netscaleradc/issues> if you face any issues with the collection.
 
@@ -132,11 +144,9 @@ Refer to the [supported_modules_matrix.md](supported_modules_matrix.md) file for
 - [ ] migration tool to convert `citrix.adc` playbooks (including generic `citrix.adc.nitro_request` and `citrix.adc.nitro_resource` modules) to `netscaler.adc` modules
 - [ ] Add more examples
 - [ ] Write a python script which converts examples/playbook.yaml to module's EXAMPLE documentation
-- [ ] SSH Connection module
 - [ ] Test modules against all NetScaler ADC versions.
 - [x] Test modules againsts ansible versions 2.9+
 - [x] Configure GitHub Actions to automate the collection build and release process.
-- [ ] Configure GitHub Actions to automate the collection documentation build and release process.
 - [ ] Configure GitHub Actions to automate the collection testing process.
 - [x] Configure GitHub Actions to automate the collection linting process.
 - [x] Collect NetScaler info (version, etc) and store it in the `facts` dictionary
