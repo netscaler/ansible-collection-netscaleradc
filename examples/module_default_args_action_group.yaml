@@ -1,0 +1,37 @@
+---
+- name: Sample Playbook to use module_defaults to skip the need to specify common arguments
+  hosts: localhost
+  gather_facts: false
+  module_defaults:
+    group/netscaler.adc.default_args:
+      nsip: 10.10.10.10
+      nitro_user: nsroot
+      nitro_pass: verysecretpassword
+      nitro_protocol: http
+      validate_certs: false
+      save_config: false
+  tasks:
+    - name: Sample Task | nsip
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        state: present
+        ipaddress: 1.1.1.1
+        netmask: 255.255.255.192
+        type: VIP
+    - name: Sample Task | lbmonitor
+      delegate_to: localhost
+      netscaler.adc.lbmonitor:
+        state: present
+        monitorname: ldns-dns
+        type: LDNS-DNS
+        query: .
+        querytype: Address
+        deviation: "0"
+        interval: 6
+        resptimeout: 3
+        downtime: 20
+    - name: Sample Task | ipset
+      delegate_to: localhost
+      netscaler.adc.ipset:
+        state: present
+        name: test_ipset
