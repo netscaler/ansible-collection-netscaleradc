@@ -11,6 +11,8 @@ fmt:
 	isort plugins/module_utils/*.py
 	isort tools/module_generator.py
 
+	yamlfmt .
+
 fmt_tools:
 	# ignore if file not found
 	-autoflake tools/generated_modules/*.py
@@ -35,6 +37,8 @@ line_length:
 	grep -l '.\{159,\}' -R plugins --include='*.py'
 
 lint:
+	yamllint .
+	echo "\n\n\n\n\n\n\n\n\n\n"
 	ansible-lint
 
 test_sanity: galaxy_importer install
