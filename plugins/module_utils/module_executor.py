@@ -200,6 +200,13 @@ class ModuleExecutor(object):
             if attr in self.resource_module_params:
                 get_args[attr] = self.resource_module_params[attr]
 
+        # FIXME: NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
+        # Below is a hack to fix it.
+        if self.resource_name == "sslprofile_sslcipher_binding":
+            if "ciphername" in get_args:
+                get_args["cipheraliasname"] = get_args["ciphername"]
+                del get_args["ciphername"]
+
         # binding resources require `filter` instead of `args` to uniquely identify a resource
         existing_resource = get_resource(
             self.client,
@@ -219,7 +226,7 @@ class ModuleExecutor(object):
             self.return_failure(msg)
 
         self.existing_resource = existing_resource[0] if existing_resource else {}
-        # FIXME: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
+        # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
         # Hence, we will set it to `SEC` to make it idempotent
         # Refer Issue: #324 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/324)
         if self.resource_name == "lbmonitor":
@@ -236,6 +243,17 @@ class ModuleExecutor(object):
                         int(self.existing_resource["interval"]) * 60
                     )
                     self.existing_resource["units3"] = "SEC"
+
+        # FIXME:NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
+        # Below is a hack to fix it.
+        elif self.resource_name == "sslprofile_sslcipher_binding":
+            if (
+                "ciphername" not in self.existing_resource
+                and "cipheraliasname" in self.existing_resource
+            ):
+                self.existing_resource["ciphername"] = self.existing_resource[
+                    "cipheraliasname"
+                ]
 
         return self.existing_resource
 
