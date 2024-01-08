@@ -1,0 +1,27 @@
+---
+# - name: DISABLE default profile in SSLPARAMETER | DELETE
+#   delegate_to: localhost
+#   register: result
+#   check_mode: false
+#   tags: test
+#   netscaler.adc.sslparameter:
+#     nsip: "{{ nsip }}"
+#     nitro_user: "{{ nitro_user }}"
+#     nitro_pass: "{{ nitro_pass }}"
+#     nitro_protocol: "{{ nitro_protocol }}"
+#     validate_certs: "{{ validate_certs }}"
+#     defaultprofile: DISABLED
+
+- name: SSLPROFILE | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslprofile:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    name: "test-sslprofile"
