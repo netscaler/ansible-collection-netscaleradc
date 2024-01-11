@@ -1,0 +1,125 @@
+---
+- name: NTPSERVER | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: NTPSERVER | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: NTPSERVER | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: NTPSERVER | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: NTPSERVER | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: NTPSERVER | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.ntpserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    servername: pool.ntp.org
+    preferredntpserver: "YES"
+- name: Assert | NTPSERVER | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
