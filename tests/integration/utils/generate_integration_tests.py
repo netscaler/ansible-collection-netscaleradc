@@ -1,7 +1,9 @@
 import os
+
 from jinja2 import Template
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+
 
 def generate_yaml(module_name, module_specific_params, template_str):
     template = Template(template_str)
@@ -13,19 +15,24 @@ def generate_yaml(module_name, module_specific_params, template_str):
         nitro_protocol="{{ nitro_protocol }}",
         validate_certs="{{ validate_certs }}",
         save_config="{{ save_config }}",
-        module_specific_params = module_specific_params,
+        module_specific_params=module_specific_params,
     )
 
     return yaml_content
+
 
 def read_template_str(filename):
     with open(filename, "r") as template_file:
         return template_file.read()
 
+
 def generate_tasks_main_yaml(module_name, module_specific_params):
-    template_str = read_template_str(HERE + os.sep + "integration_test_tasks_main_yaml.j2")
+    template_str = read_template_str(
+        HERE + os.sep + "integration_test_tasks_main_yaml.j2"
+    )
     yaml_content = generate_yaml(module_name, module_specific_params, template_str)
     return yaml_content
+
 
 def main(module_name, module_specific_params):
     tasks_main_yaml = generate_tasks_main_yaml(module_name, module_specific_params)
@@ -49,10 +56,11 @@ def main(module_name, module_specific_params):
     with open(target_dir + os.sep + "aliases", "w") as aliases_file:
         aliases_file.write("gather_facts: no\n")
 
+
 if __name__ == "__main__":
     module_name = "ntpserver"
     module_specific_params = {
         "servername": "pool.ntp.org",
-        "preferredntpserver": "\"YES\"",
+        "preferredntpserver": '"YES"',
     }
     main(module_name, module_specific_params)

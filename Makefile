@@ -2,14 +2,17 @@ fmt:
 	autoflake plugins/modules/*.py
 	autoflake plugins/module_utils/*.py
 	autoflake tools/module_generator.py
+	autoflake --recursive tests/
 
 	black plugins/modules/*.py
 	black plugins/module_utils/*.py
 	black tools/module_generator.py
+	black tests/
 
 	isort plugins/modules/*.py
 	isort plugins/module_utils/*.py
 	isort tools/module_generator.py
+	isort tests/
 
 	yamlfmt .
 
