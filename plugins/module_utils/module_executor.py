@@ -357,8 +357,8 @@ class ModuleExecutor(object):
                 self.return_failure(err)
 
             # There can be module_params in the playbook which are not part of `add_payload_keys`, but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
-            # For example, `ntpserver` resource has `preferredntpserver` attribute which is not part of `add_payload_keys`, but part of `update_payload_keys`
-            # To make it true desired state, we will update the resource with the module_params
+            # For example, `ntpserver` resource has `preferredntpserver` attribute which is not part of `add_payload_keys`, but part of `update_payload_keys`.
+            # If `preferredntpserver` is also part of the playbook-task, to make it true desired state, we will update the resource with the module_params
             add_payload_keys = NITRO_RESOURCE_MAP[self.resource_name][
                 "add_payload_keys"
             ]
@@ -370,7 +370,13 @@ class ModuleExecutor(object):
                 update_payload_keys
             ) - set(add_payload_keys)
 
-            if keys_in_upload_payload_and_not_in_add_payload:
+            is_module_params_contain_update_params = bool(
+                set(keys_in_upload_payload_and_not_in_add_payload).intersection(
+                    set(self.resource_module_params.keys())
+                )
+            )
+
+            if is_module_params_contain_update_params:
                 log(
                     "INFO: module_params has keys %s which are not part of `add_payload_keys`. Hence updating the resource again"
                     % keys_in_upload_payload_and_not_in_add_payload
