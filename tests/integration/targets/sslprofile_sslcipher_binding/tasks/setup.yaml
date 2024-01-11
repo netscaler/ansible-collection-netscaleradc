@@ -11,7 +11,6 @@
     nitro_protocol: "{{ nitro_protocol }}"
     validate_certs: "{{ validate_certs }}"
     defaultprofile: ENABLED
-
 - name: SSLPROFILE | ADD
   delegate_to: localhost
   register: result

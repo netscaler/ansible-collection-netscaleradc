@@ -1,7 +1,6 @@
 ---
 - name: Include prerequisite tasks
   ansible.builtin.include_tasks: setup.yaml
-
 - name: SSLPROFILE_SSLCIPHER_BINDING | ADD | --check
   delegate_to: localhost
   register: result
@@ -17,14 +16,12 @@
     name: "test-sslprofile"
     ciphername: "TLSv1.3"
     cipherpriority: 1
-
 - name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD | --check
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-
 - name: SSLPROFILE_SSLCIPHER_BINDING | ADD
   delegate_to: localhost
   register: result
@@ -41,13 +38,11 @@
     name: "test-sslprofile"
     ciphername: "TLSv1.3"
     cipherpriority: 1
-
 - name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-
 - name: SSLPROFILE_SSLCIPHER_BINDING | ADD | idempotent
   delegate_to: localhost
   register: result
@@ -64,14 +59,12 @@
     name: "test-sslprofile"
     ciphername: "TLSv1.3"
     cipherpriority: 1
-
 - name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD | idempotent
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==false"
-
 - name: SSLPROFILE_SSLCIPHER_BINDING | DELETE | --check
   delegate_to: localhost
   register: result
@@ -88,14 +81,12 @@
     name: "test-sslprofile"
     ciphername: "TLSv1.3"
     cipherpriority: 1
-
 - name: Assert | SSLPROFILE_SSLCIPHER_BINDING | DELETE | --check
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-
 - name: SSLPROFILE_SSLCIPHER_BINDING | DELETE
   delegate_to: localhost
   register: result
@@ -139,6 +130,5 @@
     that:
       - "result.failed==false"
       - "result.changed==false"
-
 - name: Include prerequisite tasks
   ansible.builtin.include_tasks: teardown.yaml
