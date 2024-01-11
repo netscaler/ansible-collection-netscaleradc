@@ -355,6 +355,31 @@ class ModuleExecutor(object):
             )
             if not ok:
                 self.return_failure(err)
+
+            # There can be module_params in the playbook which are not part of `add_payload_keys`, but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
+            # For example, `ntpserver` resource has `preferredntpserver` attribute which is not part of `add_payload_keys`, but part of `update_payload_keys`
+            # To make it true desired state, we will update the resource with the module_params
+            add_payload_keys = NITRO_RESOURCE_MAP[self.resource_name][
+                "add_payload_keys"
+            ]
+            update_payload_keys = NITRO_RESOURCE_MAP[self.resource_name][
+                "update_payload_keys"
+            ]
+
+            keys_in_upload_payload_and_not_in_add_payload = set(
+                update_payload_keys
+            ) - set(add_payload_keys)
+
+            if keys_in_upload_payload_and_not_in_add_payload:
+                log(
+                    "INFO: module_params has keys %s which are not part of `add_payload_keys`. Hence updating the resource again"
+                    % keys_in_upload_payload_and_not_in_add_payload
+                )
+                ok, err = update_resource(
+                    self.client, self.resource_name, self.resource_module_params
+                )
+                if not ok:
+                    self.return_failure(err)
         else:
             # Update only if resource is not identical (idempotent)
             if self.is_resource_identical():
