@@ -1,33 +1,10 @@
 ---
-- name: Include prerequisite tasks
-  ansible.builtin.include_tasks: setup.yaml
-- name: SSLPROFILE_SSLCIPHER_BINDING | ADD | --check
+- name: {{ module_name | upper }} | ADD | --check
   delegate_to: localhost
   register: result
   check_mode: true
   tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
-    nsip: "{{ nsip }}"
-    nitro_user: "{{ nitro_user }}"
-    nitro_pass: "{{ nitro_pass }}"
-    nitro_protocol: "{{ nitro_protocol }}"
-    validate_certs: "{{ validate_certs }}"
-    state: present
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD | --check
-  tags: test
-  ansible.builtin.assert:
-    that:
-      - "result.failed==false"
-      - "result.changed==true"
-- name: SSLPROFILE_SSLCIPHER_BINDING | ADD
-  delegate_to: localhost
-  register: result
-  check_mode: false
-  tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
+  netscaler.adc.{{ module_name }}:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -35,20 +12,22 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | ADD | --check
+  tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: SSLPROFILE_SSLCIPHER_BINDING | ADD | idempotent
+
+- name: {{ module_name | upper }} | ADD
   delegate_to: localhost
   register: result
   check_mode: false
   tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
+  netscaler.adc.{{ module_name }}:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -56,21 +35,44 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: present
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | ADD | idempotent
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+
+- name: {{ module_name | upper }} | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.{{ module_name }}:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | ADD | idempotent
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==false"
-- name: SSLPROFILE_SSLCIPHER_BINDING | DELETE | --check
+
+- name: {{ module_name | upper }} | DELETE | --check
   delegate_to: localhost
   register: result
   check_mode: true
   tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
+  netscaler.adc.{{ module_name }}:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -78,21 +80,22 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | DELETE | --check
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | DELETE | --check
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: SSLPROFILE_SSLCIPHER_BINDING | DELETE
+
+- name: {{ module_name | upper }} | DELETE
   delegate_to: localhost
   register: result
   check_mode: false
   tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
+  netscaler.adc.{{ module_name }}:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -100,20 +103,21 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | DELETE
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | DELETE
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==true"
-- name: SSLPROFILE_SSLCIPHER_BINDING | DELETE | idempotent
+
+- name: {{ module_name | upper }} | DELETE | idempotent
   delegate_to: localhost
   register: result
   check_mode: false
   tags: test
-  netscaler.adc.sslprofile_sslcipher_binding:
+  netscaler.adc.{{ module_name }}:
     nsip: "{{ nsip }}"
     nitro_user: "{{ nitro_user }}"
     nitro_pass: "{{ nitro_pass }}"
@@ -121,14 +125,12 @@
     validate_certs: "{{ validate_certs }}"
     save_config: "{{ save_config }}"
     state: absent
-    name: "test-sslprofile"
-    ciphername: "TLSv1.3"
-    cipherpriority: 1
-- name: Assert | SSLPROFILE_SSLCIPHER_BINDING | DELETE | idempotent
+    {% for key, value in module_specific_params.items() %}
+    {{ key }}: {{ value }}{% endfor %}
+
+- name: Assert | {{ module_name | upper }} | DELETE | idempotent
   tags: test
   ansible.builtin.assert:
     that:
       - "result.failed==false"
       - "result.changed==false"
-- name: Include prerequisite tasks
-  ansible.builtin.include_tasks: teardown.yaml

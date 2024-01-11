@@ -100,6 +100,10 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         resource_action_keys = []
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
 
+    resource_primary_key = change_primary_key(
+        resource_name, resource_module_params, resource_primary_key
+    )
+
     if (
         resource_primary_key
         and resource_primary_key not in resource_module_params.keys()
@@ -191,6 +195,19 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
+def change_primary_key(resource_name, resource_module_params, resource_primary_key):
+    # FIXME: This is a temporary fix for ntpserver resource
+    # `ntpserver` has two possible primary keys: `serverip` and `servername`
+    # But, the schema has only `serverip` as the primary key
+    # So, we are checking for `serverip` as the primary key and if it is not present, we are checking for `servername`
+    # This is a temporary fix until the schema is updated
+    if resource_name == "ntpserver":
+        if "serverip" not in resource_module_params.keys():
+            resource_primary_key = "servername"
+    return resource_primary_key
+
+
+@trace
 def _check_update_resource_params(resource_name, resource_module_params):
     # check if resource_module_params contains any key other than allowed keys for the resource
     # check also if resource_module_params contains all the required keys for the resource
@@ -204,6 +221,10 @@ def _check_update_resource_params(resource_name, resource_module_params):
         resource_update_keys = NITRO_RESOURCE_MAP[resource_name]["update_payload_keys"]
 
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+
+    resource_primary_key = change_primary_key(
+        resource_name, resource_module_params, resource_primary_key
+    )
 
     if resource_primary_key and (
         resource_primary_key not in resource_module_params.keys()
@@ -268,6 +289,10 @@ def _check_delete_resource_params(resource_name, resource_module_params):
 
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
 
+    resource_primary_key = change_primary_key(
+        resource_name, resource_module_params, resource_primary_key
+    )
+
     if (
         resource_primary_key
         and resource_primary_key not in resource_module_params.keys()
@@ -287,6 +312,16 @@ def delete_resource(client, resource_name, resource_module_params):
     if not ok:
         return False, err
 
+    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+    if resource_primary_key:
+        resource_primary_key = change_primary_key(
+            resource_name, resource_module_params, resource_primary_key
+        )
+
+        resource_id = resource_module_params[resource_primary_key]
+    else:
+        resource_id = None
+
     args = {}
     for arg_key in NITRO_RESOURCE_MAP[resource_name]["delete_arg_keys"]:
         log("DEBUG: arg_key: {}".format(arg_key))
@@ -298,6 +333,16 @@ def delete_resource(client, resource_name, resource_module_params):
             # status_code: 400;
             # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
             continue
+        elif (
+            resource_name == "ntpserver"
+            and resource_primary_key == "servername"
+            and arg_key == "servername"
+        ):
+            # for `ntpserver`, there are two possible primary keys: `serverip` and `servername`
+            # But, the schema has only `serverip` as the primary key
+            # if `servername` is the primary_key, it will be resource_id and not arg_key
+            # so, we are skipping arg_key `servername` for `ntpserver`
+            continue
         try:
             args[arg_key] = resource_module_params[arg_key]
         except KeyError:
@@ -308,13 +353,6 @@ def delete_resource(client, resource_name, resource_module_params):
                 )
             )
             continue
-
-    if NITRO_RESOURCE_MAP[resource_name]["primary_key"]:
-        resource_id = resource_module_params[
-            NITRO_RESOURCE_MAP[resource_name]["primary_key"]
-        ]
-    else:
-        resource_id = None
 
     if resource_name.endswith("_binding"):
         if not is_resource_exists(client, resource_name, resource_id, filter=args):

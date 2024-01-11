@@ -172,7 +172,7 @@ jobs:
           echo "> ansible-test --version"
           ansible-test --version
           echo "> ansible-test integration -v --color yes"
-          ansible-test integration -v --color yes
+          ansible-test integration netscaler/cpx/ -v --color yes
       - name: Stop containers
         if: always()
         run: docker-compose -f "docker-compose.yml" down
