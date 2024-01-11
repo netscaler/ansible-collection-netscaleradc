@@ -10,11 +10,11 @@ The `netscaler.adc` collection supports 4 modes of operation.
 
 | Mode (`state` option) | Description |
 | ---- | ----------- |
-| `present` | Default. Resource will be created if needed and configured according to the module's parameters |
+| `present` | This is the default state. Resource will be added/updated and configured according to the module's parameters |
 | `absent` | Resource will be deleted from the target NetScaler ADC nodes |
-| `enabled` | Resource will be enalbed on the NetScaler ADC nodes |
-| `disabled` | Resource will be disabled on the NetScaler ADC nodes |
-| `created` | Resource will be created on the NetScaler ADC nodes |
+| `enabled` | Resource will be enalbed on the NetScaler ADC nodes. Not all resources have enable operation |
+| `disabled` | Resource will be disabled on the NetScaler ADC nodes. Not all resources have disable operation |
+| `created` | Some of the NITRO resources support `create` operation. This state will "create" those resources on the NetScaler. Eg: `create sslcert`, `create dnskey` etc |
 | `imported` | Resource will be imported on the NetScaler ADC nodes |
 | `switched` | TBD: Resource will be switched on the NetScaler ADC nodes. Eg: Partition switch |
 
