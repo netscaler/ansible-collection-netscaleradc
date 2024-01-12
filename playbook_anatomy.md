@@ -8,6 +8,15 @@ This is how a typical playbook for `netscaler.adc` collection looks like:
 
   gather_facts: false # Since the module runs on localhost, we don't need to gather facts
 
+  module_defaults: # If we are using `module_defaults`, then these common arguments (`nsip`, `nitro_user`, etc) can be skipped from the tasks below.
+    group/netscaler.adc.default_args:
+      nsip: 10.10.10.10
+      nitro_user: nsroot
+      nitro_pass: verysecretpassword
+      nitro_protocol: http
+      validate_certs: false
+      save_config: false
+
   tasks:
     - name: Name of the task
       delegate_to: localhost # Since the module runs on localhost, we need to delegate the task to localhost
@@ -39,3 +48,5 @@ This is how a typical playbook for `netscaler.adc` collection looks like:
 - `nitro_protocol` is optional. If it is not given, the module will try to read the value from the environment variable `NETSCALER_NITRO_PROTOCOL`. If the environment variable is not set, the module will use `https`.
 - `validate_certs` is optional. If it is not given, the module will try to read the value from the environment variable `NETSCALER_VALIDATE_CERTS`. If the environment variable is not set, the module will use `true`.
 - `nsip` is required. If it is not given, the module will try to read the value from the environment variable `NETSCALER_NSIP`. If the environment variable is not set, the module will fail.
+- `module_defaults`: Refer [`netscaler.adc.module_defaults` group](https://github.com/netscaler/ansible-collection-netscaleradc/tree/main?tab=readme-ov-file#using-netscaleradcmodule_defaults-group) for more details
+- `state`: Refer [modes of operation](https://github.com/netscaler/ansible-collection-netscaleradc/blob/main/features_v2.md#modes-of-operation-state-option-in-the-module-task) for more details
