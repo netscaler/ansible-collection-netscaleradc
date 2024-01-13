@@ -43,6 +43,7 @@ lint:
 	yamllint .
 	echo "\n\n\n\n\n\n\n\n\n\n"
 	ansible-lint
+	python3 -m pycodestyle --max-line-length 160 --config /dev/null --ignore E203,E402,E741,W503,W504 plugins tests 
 
 test_sanity: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \

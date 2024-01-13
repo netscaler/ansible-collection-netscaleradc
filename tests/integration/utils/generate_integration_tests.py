@@ -58,8 +58,8 @@ def main(module_name, module_specific_params):
         aliases_file.write("netscaler/cpx/\n")
         aliases_file.write("netscaler/vpx/\n")
 
+
 if __name__ == "__main__":
     module_name = "dnsproxyrecords"
-    module_specific_params = {
-    }
+    module_specific_params = {}
     main(module_name, module_specific_params)
