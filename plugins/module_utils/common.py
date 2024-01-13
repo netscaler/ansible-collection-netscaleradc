@@ -554,6 +554,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("disabled")
     if "create" in supported_operations:
         desired_states.add("created")
+    if "flush" in supported_operations:
+        desired_states.add("flushed")
     if "import" in supported_operations or "Import" in supported_operations:
         desired_states.add("imported")
     if "Switch" in supported_operations:
