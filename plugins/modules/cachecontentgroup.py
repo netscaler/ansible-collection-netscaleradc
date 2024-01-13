@@ -324,69 +324,38 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Sample Task | cachecontentgroup
-      delegate_to: localhost
-      netscaler.adc.cachecontentgroup:
-        state: present
-        name: DEFAULT
-    - name: Sample Task | cachecontentgroup | 2
-      delegate_to: localhost
-      netscaler.adc.cachecontentgroup:
-        state: present
-        name: BASEFILE
-        relexpiry: 86000
-        weaknegrelexpiry: 600
-        maxressize: 256
-        memlimit: 2
-    - name: Sample Task | cachecontentgroup | 3
-      delegate_to: localhost
-      netscaler.adc.cachecontentgroup:
-        state: present
-        name: DELTAJS
-        relexpiry: 86000
-        weaknegrelexpiry: 600
-        insertage: 'NO'
-        maxressize: 256
-        memlimit: 1
-        pinned: 'YES'
-    - name: Sample Task | cachecontentgroup | 4
-      delegate_to: localhost
-      netscaler.adc.cachecontentgroup:
-        state: present
-        name: NSFEO
-        maxressize: 1994752
 """
 
 RETURN = r"""
+---
 changed:
-    description: Indicates if any change is made by the module
-    returned: always
-    type: bool
-    sample: true
+  description: Indicates if any change is made by the module
+  returned: always
+  type: bool
+  sample: true
 diff:
-    description: Dictionary of before and after changes
-    returned: always
-    type: dict
-    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+  description: Dictionary of before and after changes
+  returned: always
+  type: dict
+  sample: {'before': {'key1': 'xyz'}, 'after': {'key2': 'pqr'}, 'prepared': 'changes
+      done'}
 diff_list:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: when changed
-    type: list
-    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+  description: List of differences between the actual configured object and the configuration
+    specified in the module
+  returned: when changed
+  type: list
+  sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class
+      'str'>) PQR"]
 failed:
-    description: Indicates if the module failed or not
-    returned: always
-    type: bool
-    sample: false
+  description: Indicates if the module failed or not
+  returned: always
+  type: bool
+  sample: false
 loglines:
-    description: list of logged messages by the module
-    returned: always
-    type: list
-    sample: ['message 1', 'message 2']
+  description: list of logged messages by the module
+  returned: always
+  type: list
+  sample: ['message 1', 'message 2']
 
 """
 

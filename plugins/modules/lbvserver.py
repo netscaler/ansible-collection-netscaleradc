@@ -1542,123 +1542,38 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
----
-
-- name: Simple LBVserver playbook
-  hosts: localhost
-
-  gather_facts: false
-
-  tasks:
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: s1
-        ipaddress: 10.222.74.181
-        servicetype: HTTP
-        port: 80
-
-    - name: Sample Task | service
-      delegate_to: localhost
-      netscaler.adc.service:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: s2
-        ipaddress: 10.10.10.10
-        servicetype: HTTP
-        port: 80
-
-    - name: Sample Task | servicegroup
-      delegate_to: localhost
-      netscaler.adc.servicegroup:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        servicegroupname: sg1
-        servicetype: HTTP
-
-    - name: Sample Task | lbvserver with bindings
-      delegate_to: localhost
-      netscaler.adc.lbvserver:
-        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
-        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
-        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
-        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
-        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
-        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
-
-        state: present
-
-        name: test_lbvser
-        servicetype: HTTP
-        ipv46: 10.10.10.11
-        port: 80
-        lbmethod: LEASTCONNECTION
-
-        lbvserver_servicegroup_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: sg1
-        lbvserver_service_binding:
-          # mode: desired # bind | unbind | desired
-          binding_members:
-            - name: test_lbvser
-              servicename: s1
-              weight: 16
-            - name: test_lbvser
-              servicename: s2
-              weight: 20
 """
 
 RETURN = r"""
+---
 changed:
-    description: Indicates if any change is made by the module
-    returned: always
-    type: bool
-    sample: true
+  description: Indicates if any change is made by the module
+  returned: always
+  type: bool
+  sample: true
 diff:
-    description: Dictionary of before and after changes
-    returned: always
-    type: dict
-    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+  description: Dictionary of before and after changes
+  returned: always
+  type: dict
+  sample: {'before': {'key1': 'xyz'}, 'after': {'key2': 'pqr'}, 'prepared': 'changes
+      done'}
 diff_list:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: when changed
-    type: list
-    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+  description: List of differences between the actual configured object and the configuration
+    specified in the module
+  returned: when changed
+  type: list
+  sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class
+      'str'>) PQR"]
 failed:
-    description: Indicates if the module failed or not
-    returned: always
-    type: bool
-    sample: false
+  description: Indicates if the module failed or not
+  returned: always
+  type: bool
+  sample: false
 loglines:
-    description: list of logged messages by the module
-    returned: always
-    type: list
-    sample: ['message 1', 'message 2']
+  description: list of logged messages by the module
+  returned: always
+  type: list
+  sample: ['message 1', 'message 2']
 
 """
 
