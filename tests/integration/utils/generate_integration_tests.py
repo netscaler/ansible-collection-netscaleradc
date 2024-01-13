@@ -54,13 +54,12 @@ def main(module_name, module_specific_params):
     # abcdefghijklmnopqrstuvwxyz
 
     with open(target_dir + os.sep + "aliases", "w") as aliases_file:
-        aliases_file.write("gather_facts: no\n")
+        aliases_file.write("gather_facts/no\n")
+        aliases_file.write("netscaler/cpx/\n")
+        aliases_file.write("netscaler/vpx/\n")
 
 
 if __name__ == "__main__":
-    module_name = "ntpserver"
-    module_specific_params = {
-        "servername": "pool.ntp.org",
-        "preferredntpserver": '"YES"',
-    }
+    module_name = "dnsproxyrecords"
+    module_specific_params = {}
     main(module_name, module_specific_params)

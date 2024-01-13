@@ -903,10 +903,11 @@ class ModuleExecutor(object):
                 if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
                     self.sync_all_bindings()
 
-            elif self.module.params["state"] in {"created", "imported"}:
+            elif self.module.params["state"] in {"created", "imported", "flushed"}:
                 state_action_map = {
                     "created": "create",
                     "imported": "import",
+                    "flushed": "flush",
                 }
                 self.act_on_resource(
                     action=state_action_map[self.module.params["state"]]
