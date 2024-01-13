@@ -25,14 +25,11 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   state:
-    choices:
-      - present
+    choices: []
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(present) the resource will be created if needed and configured according
-        to the module's parameters.
     type: str
   warm:
     type: bool
