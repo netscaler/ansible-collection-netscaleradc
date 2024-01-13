@@ -357,71 +357,38 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Sample Task | nsip
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 1.1.1.1
-        netmask: 255.255.255.192
-        type: VIP
-    - name: Sample Task | nsip | 2
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.1
-        netmask: 255.255.255.0
-        vserver: DISABLED
-        dynamicrouting: ENABLED
-    - name: Sample Task | nsip | 3
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.179.1.1
-        netmask: 255.255.255.255
-        type: VIP
-        arp: DISABLED
-        snmp: DISABLED
-        hostroute: ENABLED
-        hostrtgw: 0.0.0.0
-    - name: Sample Task | nsip | 4
-      delegate_to: localhost
-      netscaler.adc.nsip:
-        state: present
-        ipaddress: 192.188.1.2
-        netmask: 255.255.0.0
-        vserver: DISABLED
 """
 
 RETURN = r"""
+---
 changed:
-    description: Indicates if any change is made by the module
-    returned: always
-    type: bool
-    sample: true
+  description: Indicates if any change is made by the module
+  returned: always
+  type: bool
+  sample: true
 diff:
-    description: Dictionary of before and after changes
-    returned: always
-    type: dict
-    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+  description: Dictionary of before and after changes
+  returned: always
+  type: dict
+  sample: {'before': {'key1': 'xyz'}, 'after': {'key2': 'pqr'}, 'prepared': 'changes
+      done'}
 diff_list:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: when changed
-    type: list
-    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+  description: List of differences between the actual configured object and the configuration
+    specified in the module
+  returned: when changed
+  type: list
+  sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class
+      'str'>) PQR"]
 failed:
-    description: Indicates if the module failed or not
-    returned: always
-    type: bool
-    sample: false
+  description: Indicates if the module failed or not
+  returned: always
+  type: bool
+  sample: false
 loglines:
-    description: list of logged messages by the module
-    returned: always
-    type: list
-    sample: ['message 1', 'message 2']
+  description: list of logged messages by the module
+  returned: always
+  type: list
+  sample: ['message 1', 'message 2']
 
 """
 

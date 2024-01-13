@@ -143,31 +143,35 @@ EXAMPLES = r"""
 """
 
 RETURN = r"""
+---
 changed:
-    description: Indicates if any change is made by the module
-    returned: always
-    type: bool
-    sample: true
+  description: Indicates if any change is made by the module
+  returned: always
+  type: bool
+  sample: true
 diff:
-    description: Dictionary of before and after changes
-    returned: always
-    type: dict
-    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+  description: Dictionary of before and after changes
+  returned: always
+  type: dict
+  sample: {'before': {'key1': 'xyz'}, 'after': {'key2': 'pqr'}, 'prepared': 'changes
+      done'}
 diff_list:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: when changed
-    type: list
-    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+  description: List of differences between the actual configured object and the configuration
+    specified in the module
+  returned: when changed
+  type: list
+  sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class
+      'str'>) PQR"]
 failed:
-    description: Indicates if the module failed or not
-    returned: always
-    type: bool
-    sample: false
+  description: Indicates if the module failed or not
+  returned: always
+  type: bool
+  sample: false
 loglines:
-    description: list of logged messages by the module
-    returned: always
-    type: list
-    sample: ['message 1', 'message 2']
+  description: list of logged messages by the module
+  returned: always
+  type: list
+  sample: ['message 1', 'message 2']
 
 """
 

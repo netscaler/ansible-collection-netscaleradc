@@ -1,5 +1,5 @@
 ---
-- name: Sample Playbook to use module_defaults to skip the need to specify common arguments
+- name: Sample Playbook to use module_defaults to specify common arguments
   hosts: localhost
   gather_facts: false
   module_defaults:

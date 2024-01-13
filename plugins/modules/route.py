@@ -139,45 +139,38 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
-- name: Sample Playbook
-  hosts: localhost
-  gather_facts: false
-  tasks:
-    - name: Sample Task | route
-      delegate_to: localhost
-      netscaler.adc.route:
-        state: present
-        network: 172.31.0.0
-        netmask: 255.255.0.0
-        gateway: 172.31.0.1
 """
 
 RETURN = r"""
+---
 changed:
-    description: Indicates if any change is made by the module
-    returned: always
-    type: bool
-    sample: true
+  description: Indicates if any change is made by the module
+  returned: always
+  type: bool
+  sample: true
 diff:
-    description: Dictionary of before and after changes
-    returned: always
-    type: dict
-    sample: { 'before': { 'key1': 'xyz' }, 'after': { 'key2': 'pqr' }, 'prepared': 'changes done' }
+  description: Dictionary of before and after changes
+  returned: always
+  type: dict
+  sample: {'before': {'key1': 'xyz'}, 'after': {'key2': 'pqr'}, 'prepared': 'changes
+      done'}
 diff_list:
-    description: List of differences between the actual configured object and the configuration specified in the module
-    returned: when changed
-    type: list
-    sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class 'str'>) PQR"]
+  description: List of differences between the actual configured object and the configuration
+    specified in the module
+  returned: when changed
+  type: list
+  sample: ["Attribute `key1` differs. Desired: (<class 'str'>) XYZ. Existing: (<class
+      'str'>) PQR"]
 failed:
-    description: Indicates if the module failed or not
-    returned: always
-    type: bool
-    sample: false
+  description: Indicates if the module failed or not
+  returned: always
+  type: bool
+  sample: false
 loglines:
-    description: list of logged messages by the module
-    returned: always
-    type: list
-    sample: ['message 1', 'message 2']
+  description: list of logged messages by the module
+  returned: always
+  type: list
+  sample: ['message 1', 'message 2']
 
 """
 
