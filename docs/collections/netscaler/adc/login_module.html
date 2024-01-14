@@ -131,7 +131,7 @@
 <h1>netscaler.adc.login module – Login to a NetScaler ADC node.<a class="headerlink" href="#netscaler-adc-login-module-login-to-a-netscaler-adc-node" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.2.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.3.0).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -304,7 +304,8 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V2 | Sample Task | nsip</span>
 <span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">      </span><span class="nt">netscaler.adc.nsip</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">nitro_auth_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">login_result.sessionid</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="w"> </span><span class="c1"># This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable</span>
+<span class="w">        </span><span class="c1"># `nitro_auth_token` can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable</span>
+<span class="w">        </span><span class="nt">nitro_auth_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">login_result.sessionid</span> <span class="cp">}}</span><span class="s">&quot;</span>
 <span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
 <span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
 <span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
@@ -319,7 +320,8 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V2 | Sample Task | logout</span>
 <span class="w">      </span><span class="nt">delegate_to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">localhost</span>
 <span class="w">      </span><span class="nt">netscaler.adc.logout</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">nitro_auth_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">login_result.sessionid</span> <span class="cp">}}</span><span class="s">&quot;</span><span class="w"> </span><span class="c1"># This can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable</span>
+<span class="w">        </span><span class="c1"># `nitro_auth_token` can also be given via NETSCALER_NITRO_AUTH_TOKEN environment variable</span>
+<span class="w">        </span><span class="nt">nitro_auth_token</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;</span><span class="cp">{{</span> <span class="nv">login_result.sessionid</span> <span class="cp">}}</span><span class="s">&quot;</span>
 <span class="w">        </span><span class="c1"># nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable</span>
 <span class="w">        </span><span class="c1"># nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable</span>
 <span class="w">        </span><span class="c1"># validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable</span>
