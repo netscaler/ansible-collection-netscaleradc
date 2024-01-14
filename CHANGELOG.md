@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.3.0] - 2024-01-14
+
+### Added
+
+- New states added - `switched`, `flushed` ([#339], [#310])
+- `module_defaults` action groups added ([#307])
+- Integration tests added
+
+### Fixed
+
+- Fixed `ntpserver`'s dual primary_key issue ([#322])
+- Fixed `sslprofile_sslcipher_binding`'s idempotency issue ([#292])
+- Fixed `lbmonitor`'s idempotency issue ([#324])
+- Removed calling of GET method for `save_config` ([#326])
+
 ## [2.2.0] - 2023-12-21
 
 ### Added
@@ -58,19 +73,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.2.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.3.0...HEAD
+[2.3.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.3...2.1.0
 [2.0.3]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.2...2.0.3
 [2.0.2]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.1...2.0.2
 [2.0.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.0...2.0.1
 [2.0.0]: https://github.com/netscaler/ansible-collection-netscaleradc/releases/tag/2.0.0
-[#288]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/288
 [#286]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/286
+[#288]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/288
+[#292]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/292
 [#295]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/295
 [#297]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/297
+[#307]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/307
+[#310]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/310
 [#311]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/311
 [#312]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/312
 [#313]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/313
 [#314]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/314
+[#322]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/322
+[#324]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/324
 [#326]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/326
+[#339]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/339
