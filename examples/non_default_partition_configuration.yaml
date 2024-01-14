@@ -1,0 +1,50 @@
+---
+- name: Sample Playbook to show non-default partition configuration
+  hosts: localhost
+  gather_facts: false
+  vars:
+    partitionname: part1
+  module_defaults:
+    group/netscaler.adc.default_args:
+      nsip: 10.10.10.10
+      nitro_user: nsroot
+      nitro_protocol: http
+      validate_certs: false
+  tasks:
+    - name: Login to netscaler and get sessionid
+      delegate_to: localhost
+      register: login_result
+      netscaler.adc.login:
+        username: nsroot
+        password: notnsroot
+    - name: Print login sessionid
+      ansible.builtin.debug:
+        var: login_result.sessionid
+    - name: Add partition {{ partitionname }}
+      delegate_to: localhost
+      netscaler.adc.nspartition:
+        nitro_auth_token: "{{ login_result.sessionid }}"
+        partitionname: "{{ partitionname }}"
+        state: present
+    - name: Switch to partition {{ partitionname }}
+      delegate_to: localhost
+      netscaler.adc.nspartition:
+        nitro_auth_token: "{{ login_result.sessionid }}"
+        state: switched
+        partitionname: "{{ partitionname }}"
+    - name: Add nsip in partition {{ partitionname }}
+      delegate_to: localhost
+      netscaler.adc.nsip:
+        nitro_auth_token: "{{ login_result.sessionid }}"
+        state: present
+        ipaddress: 1.1.1.1
+        netmask: 255.255.255.0
+        type: VIP
+    - name: Save config in partition {{ partitionname }}
+      delegate_to: localhost
+      netscaler.adc.save_config:
+        nitro_auth_token: "{{ login_result.sessionid }}"
+    - name: Logout from netscaler
+      delegate_to: localhost
+      netscaler.adc.logout:
+        nitro_auth_token: "{{ login_result.sessionid }}"

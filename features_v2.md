@@ -17,7 +17,7 @@ The `netscaler.adc` collection supports 4 modes of operation.
 | `created` | Some of the NITRO resources support `create` operation. This state will "create" those resources on the NetScaler. Eg: `create sslcert`, `create dnskey` etc |
 | `imported` | Resource will be imported on the NetScaler ADC nodes |
 | `flushed` | Resources will be flushed on the NetScaler ADC nodes. Eg., `flush dns proxyrecords` |
-| `switched` | TBD: Resource will be switched on the NetScaler ADC nodes. Eg: Partition switch |
+| `switched` | Switch partition |
 
 > NOTE: The `enabled`, `disabled`, `created`, `imported`, `switched` modes are supported only for the modules that have `enable`, `disable`, `create`, `import`, `switch` operations in the NetScaler ADC NITRO API.
 
