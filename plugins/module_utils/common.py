@@ -135,8 +135,8 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
                 post_data[key] = resource_module_params[key]
             else:
                 log(
-                    "WARNING: Key `{}` is not allowed for the resource `{}` for CREATE operation. Skipping the key for the operation".format(
-                        key, resource_name
+                    "WARNING: Key `{}` is not allowed for the resource `{}` for `{}` action. Skipping the key for the operation".format(
+                        key, resource_name, action.upper()
                     )
                 )
 
@@ -558,7 +558,7 @@ def get_valid_desired_states(resource_name):
         desired_states.add("flushed")
     if "import" in supported_operations or "Import" in supported_operations:
         desired_states.add("imported")
-    if "Switch" in supported_operations:
+    if "Switch" in supported_operations or "switch" in supported_operations:
         desired_states.add("switched")
     return desired_states
 
