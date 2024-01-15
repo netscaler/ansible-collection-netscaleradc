@@ -1,5 +1,9 @@
 # NetScaler Ansible Collection `version2` - netscaler.adc
 
+[![ansible-lint](https://github.com/netscaler/ansible-collection-netscaleradc/actions/workflows/lint.yml/badge.svg)](https://github.com/netscaler/ansible-collection-netscaleradc/actions)
+[![ansible-test](https://github.com/netscaler/ansible-collection-netscaleradc/actions/workflows/test.yml/badge.svg)](https://github.com/netscaler/ansible-collection-netscaleradc/actions)
+[![collection-release](https://github.com/netscaler/ansible-collection-netscaleradc/actions/workflows/release.yml/badge.svg)](https://github.com/netscaler/ansible-collection-netscaleradc/actions)
+
 > ⚠️ Note:
 > The earlier `citrix.adc` ansible collection is replaced with the new `netscaler.adc` ansible collection.
 
