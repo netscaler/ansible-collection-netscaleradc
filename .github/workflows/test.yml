@@ -95,20 +95,39 @@ jobs:
           echo "> ansible-test sanity -v --color yes"
           ansible-test sanity -v --color yes
   integration-test:
-    name: Integration test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
+    name: >
+      Integration test with Ansible ${{ matrix.ansible }} and Python ${{ matrix.python-version }}
+      against NetScaler ${{ matrix.netscaler-version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
         ansible:
           - stable-2.15
         python-version:
-          - "3.11"
+          - 3.11
+        netscaler-version:
+          - 13.1-49.15
+          - 14.1-4.42
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v4
       - name: Start NetScaler CPX container
         run: |
-          docker-compose -f "docker-compose.yml" up -d
+          # docker-compose -f "docker-compose.yml" up -d
+          docker run -d \
+            --name netscaler \
+            -p 33443:9443 \
+            -p 33022:22 \
+            -p 33080:9080 \
+            -p 161/udp \
+            -p 33888:8888 \
+            --tty \
+            --cap-add NET_ADMIN \
+            --ulimit core=-1 \
+            --env CPX_CORES=2 \
+            --env EULA=yes \
+            quay.io/netscaler/netscaler-cpx:${{ matrix.netscaler-version }}
+
           sleep 30
       - name: export NetScaler vars to environment
         run: |
@@ -175,4 +194,7 @@ jobs:
           ansible-test integration netscaler/cpx/ -v --color yes
       - name: Stop containers
         if: always()
-        run: docker-compose -f "docker-compose.yml" down
+        run: |
+          # docker-compose -f "docker-compose.yml" down
+          docker stop netscaler
+          docker rm netscaler
