@@ -43,7 +43,7 @@ lint:
 	yamllint .
 	echo "\n\n\n\n\n\n\n\n\n\n"
 	ansible-lint
-	python3 -m pycodestyle --max-line-length 160 --config /dev/null --ignore E203,E402,E741,W503,W504 plugins tests 
+	python3 -m pycodestyle --max-line-length 160 --config /dev/null --ignore E203,E402,E741,W503,W504 plugins tests
 
 test_sanity: galaxy_importer install
 	cd ~/.ansible/collections/ansible_collections/netscaler/adc && \
@@ -64,6 +64,7 @@ galaxy_importer: build
 # build_docs:
 # 	rm -rf _built_docs
 #   mkdir -p _built_docs
+#   make install
 # 	antsibull-docs sphinx-init --use-current --dest-dir _built_docs netscaler.adc
 # 	cd _built_docs
 # 	pip3 install -r requirements.txt
