@@ -14,6 +14,7 @@ The `netscaler.adc` collection supports 4 modes of operation.
 | `absent` | Resource will be deleted from the target NetScaler ADC nodes |
 | `enabled` | Resource will be enalbed on the NetScaler ADC nodes. Not all resources have enable operation |
 | `disabled` | Resource will be disabled on the NetScaler ADC nodes. Not all resources have disable operation |
+| `unset` | Resource will be unset on the NetScaler ADC node. |
 | `created` | Some of the NITRO resources support `create` operation. This state will "create" those resources on the NetScaler. Eg: `create sslcert`, `create dnskey` etc |
 | `imported` | Resource will be imported on the NetScaler ADC nodes |
 | `flushed` | Resources will be flushed on the NetScaler ADC nodes. Eg., `flush dns proxyrecords` |

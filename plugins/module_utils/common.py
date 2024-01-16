@@ -151,8 +151,6 @@ def create_resource_with_action(client, resource_name, resource_module_params, a
     if not ok:
         return False, err
 
-    # FIXME: if action=unset, check for idempotency, as of now, unset always leads to changed state
-
     post_data = {resource_name: post_data}
     status_code, response_body = client.post(
         post_data=post_data,
@@ -546,7 +544,7 @@ def get_valid_desired_states(resource_name):
     supported_operations = NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
     if "add" in supported_operations or "update" in supported_operations:
         desired_states.add("present")
-    if "delete" in supported_operations or "unset" in supported_operations:
+    if "delete" in supported_operations:
         desired_states.add("absent")
     if "enable" in supported_operations:
         desired_states.add("enabled")
@@ -560,6 +558,8 @@ def get_valid_desired_states(resource_name):
         desired_states.add("imported")
     if "Switch" in supported_operations or "switch" in supported_operations:
         desired_states.add("switched")
+    if "unset" in supported_operations:
+        desired_states.add("unset")
     return desired_states
 
 

@@ -1,3 +1,6 @@
 {
-  "MD024": false // ignore no-duplicate-heading (Multiple headings with the same content)
+  "MD024": false, // ignore no-duplicate-heading (Multiple headings with the same content)
+  "MD013": false, // ignore line-length (Line length)
+  "MD033": false // ignore no-inline-html (Inline HTML)
+
 }

@@ -29,13 +29,16 @@ options:
       - present
       - absent
       - created
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(present) the resource will be created if needed and configured according
-        to the module's parameters.
-      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(present), the resource will be added/updated configured according to
+        the module's parameters.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(created), the `create` operation will be applied on the resource.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   basedn:
     type: str

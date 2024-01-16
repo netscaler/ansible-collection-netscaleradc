@@ -31,7 +31,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
     type: str
   certfile:
     type: str

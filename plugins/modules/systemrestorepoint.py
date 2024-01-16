@@ -32,7 +32,8 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(created), the `create` operation will be applied on the resource.
     type: str
   filename:
     type: str

@@ -30,15 +30,17 @@ options:
       - absent
       - enabled
       - disabled
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(present) the resource will be created if needed and configured according
-        to the module's parameters.
-      - When C(absent) the resource will be deleted from the NetScaler ADC node.
-      - When C(enabled) the resource will be enabled on the NetScaler ADC node.
-      - When C(disabled) the resource will be disabled on the NetScaler ADC node.
+      - When C(present), the resource will be added/updated configured according to
+        the module's parameters.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(enabled), the resource will be enabled on the NetScaler ADC node.
+      - When C(disabled), the resource will be disabled on the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dnsprofilename:
     type: str
