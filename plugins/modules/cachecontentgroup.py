@@ -33,9 +33,10 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
-      - When C(present) the resource will be created if needed and configured according
-        to the module's parameters.
-      - When C(absent) the resource will be deleted from the NetScaler ADC node.
+      - When C(present), the resource will be added/updated configured according to
+        the module's parameters.
+      - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(flushed), the resource will be flushed on the NetScaler ADC node.
     type: str
   absexpiry:
     type: list

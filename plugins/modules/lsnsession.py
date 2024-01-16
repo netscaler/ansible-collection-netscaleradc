@@ -31,6 +31,7 @@ options:
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(flushed), the resource will be flushed on the NetScaler ADC node.
     type: str
   clientname:
     type: str
