@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.0] - 2024-01-16
+
 ### Added
 
 - New state `unset` added for `unset` action ([#346])
@@ -83,7 +85,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.3.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.4.0...HEAD
+[2.4.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.2.0...2.3.0
 [2.2.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.1.0...2.2.0
 [2.1.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.0.3...2.1.0
