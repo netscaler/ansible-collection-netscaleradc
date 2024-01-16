@@ -30,6 +30,7 @@ options:
       - absent
       - created
       - imported
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(created), the `create` operation will be applied on the resource.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   algorithm:
     type: str

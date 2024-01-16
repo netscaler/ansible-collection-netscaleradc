@@ -30,6 +30,7 @@ options:
       - absent
       - enabled
       - disabled
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -39,6 +40,7 @@ options:
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(enabled), the resource will be enabled on the NetScaler ADC node.
       - When C(disabled), the resource will be disabled on the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advancedepa:
     type: str

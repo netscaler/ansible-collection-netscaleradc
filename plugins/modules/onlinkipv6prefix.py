@@ -30,6 +30,7 @@ options:
     choices:
       - present
       - absent
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,6 +38,7 @@ options:
       - When C(present), the resource will be added/updated configured according to
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   autonomusprefix:
     type: str

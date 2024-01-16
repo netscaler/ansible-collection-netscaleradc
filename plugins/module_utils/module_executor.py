@@ -908,12 +908,14 @@ class ModuleExecutor(object):
                 "imported",
                 "flushed",
                 "switched",
+                "unset",
             }:
                 state_action_map = {
                     "created": "create",
                     "imported": "import",
                     "flushed": "flush",
                     "switched": "switch",
+                    "unset": "unset",
                 }
                 self.act_on_resource(
                     action=state_action_map[self.module.params["state"]]
@@ -926,8 +928,8 @@ class ModuleExecutor(object):
                     self.delete()
                 else:
                     # `primary_key` will not be present for
+
                     # 1. `update-only` resources such as `sslparameter`, `lbparameter`, etc. Hence `DELETE` is not supported
-                    #   FIXME: for such resources. Should we `unset` the resource instead?
                     # 2. Few other resources -- `appfwlearningdata`, `application`, `bridgetable`,
                     #   `gslbldnsentry`, `locationfile`, `locationfile6`, `routerdynamicrouting`, `sslcertbundle`,
                     #   `sslcertfile`, `sslcrlfile`, `ssldhfile`, `sslkeyfile`, `systementitydata` and global bindings
@@ -938,12 +940,10 @@ class ModuleExecutor(object):
                     elif is_singleton_resource(self.resource_name):
                         if "delete" in self.supported_operations:
                             self.delete()
-                        elif "unset" in self.supported_operations:
-                            # unset action
-                            self.act_on_resource(action="unset")
                         else:
                             msg = (
-                                "ERROR: `state=absent` is not supported for resource `%s`"
+                                "ERROR: For now, `state=absent` is not supported for the resource `%s`. \
+                                    Please raise an issue at https://github.com/netscaler/ansible-collection-netscaleradc/issues"
                                 % self.resource_name
                             )
                             self.return_failure(msg)

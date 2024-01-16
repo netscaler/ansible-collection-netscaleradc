@@ -29,6 +29,7 @@ options:
       - present
       - absent
       - imported
+      - unset
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
@@ -37,6 +38,7 @@ options:
         the module's parameters.
       - When C(absent), the resource will be deleted from the NetScaler ADC node.
       - When C(imported), the resource will be imported on the NetScaler ADC node.
+      - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
     type: str

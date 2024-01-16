@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- New state `unset` added for `unset` action ([#346])
+
+### Fixed
+
+### Breaking Changes
+
+- Playbook tasks with `absent` state for `unset` action will now fail. A new state `unset` has been introduced for `unset` action. ([#346])
+
 ## [2.3.0] - 2024-01-14
 
 ### Added
@@ -96,3 +106,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#324]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/324
 [#326]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/326
 [#339]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/339
+[#346]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/346
