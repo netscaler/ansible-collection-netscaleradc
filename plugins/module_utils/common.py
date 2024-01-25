@@ -98,21 +98,18 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         ]
     except KeyError:
         resource_action_keys = []
-    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
 
-    resource_primary_key = change_primary_key(
-        resource_name, resource_module_params, resource_primary_key
-    )
+    # resource_primary_key = get_primary_key(resource_name, resource_module_params)
 
-    if (
-        resource_primary_key
-        and resource_primary_key not in resource_module_params.keys()
-    ):
-        err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-            resource_primary_key, resource_name
-        )
-        log(err)
-        return False, err, {}
+    # if (
+    #     resource_primary_key
+    #     and resource_primary_key not in resource_module_params.keys()
+    # ):
+    #     err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
+    #         resource_primary_key, resource_name
+    #     )
+    #     log(err)
+    #     return False, err, {}
 
     # TODO: check for other mandatory keys for the resource
     # This will be checked by ansible itself by reading the `required` field in the schema
@@ -193,16 +190,24 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
-def change_primary_key(resource_name, resource_module_params, resource_primary_key):
+def get_primary_key(resource_name, resource_module_params):
+    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+
     # FIXME: This is a temporary fix for ntpserver resource
     # `ntpserver` has two possible primary keys: `serverip` and `servername`
     # But, the schema has only `serverip` as the primary key
     # So, we are checking for `serverip` as the primary key and if it is not present, we are checking for `servername`
     # This is a temporary fix until the schema is updated
-    if resource_name == "ntpserver":
-        if "serverip" not in resource_module_params.keys():
-            resource_primary_key = "servername"
-    return resource_primary_key
+
+    if resource_primary_key in resource_module_params.keys():
+        return resource_primary_key
+
+    return None
+
+    # if resource_name == "ntpserver":
+    #     if "serverip" not in resource_module_params.keys():
+    #         resource_primary_key = "servername"
+    # return resource_primary_key
 
 
 @trace
@@ -218,20 +223,16 @@ def _check_update_resource_params(resource_name, resource_module_params):
     else:
         resource_update_keys = NITRO_RESOURCE_MAP[resource_name]["update_payload_keys"]
 
-    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+    # resource_primary_key = get_primary_key(resource_name, resource_module_params)
 
-    resource_primary_key = change_primary_key(
-        resource_name, resource_module_params, resource_primary_key
-    )
-
-    if resource_primary_key and (
-        resource_primary_key not in resource_module_params.keys()
-    ):
-        err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-            resource_primary_key, resource_name
-        )
-        log(err)
-        return False, err, {}
+    # if resource_primary_key and (
+    #     resource_primary_key not in resource_module_params.keys()
+    # ):
+    #     err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
+    #         resource_primary_key, resource_name
+    #     )
+    #     log(err)
+    #     return False, err, {}
 
     # TODO: check for other mandatory keys for the resource
 
@@ -279,68 +280,62 @@ def update_resource(client, resource_name, resource_module_params):
     )
 
 
-@trace
-def _check_delete_resource_params(resource_name, resource_module_params):
-    # check if resource_module_params contains any key other than allowed keys for the resource
-    # check also if resource_module_params contains all the required keys for the resource
-    # if not, return False, err
+# @trace
+# def _check_delete_resource_params(resource_name, resource_module_params):
+#     # check if resource_module_params contains any key other than allowed keys for the resource
+#     # check also if resource_module_params contains all the required keys for the resource
+#     # if not, return False, err
 
-    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+#     resource_primary_key = get_primary_key(resource_name, resource_module_params)
 
-    resource_primary_key = change_primary_key(
-        resource_name, resource_module_params, resource_primary_key
-    )
+#     if (
+#         resource_primary_key
+#         and resource_primary_key not in resource_module_params.keys()
+#     ):
+#         err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
+#             resource_primary_key, resource_name
+#         )
+#         log(err)
+#         return False, err
 
-    if (
-        resource_primary_key
-        and resource_primary_key not in resource_module_params.keys()
-    ):
-        err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-            resource_primary_key, resource_name
-        )
-        log(err)
-        return False, err
-
-    return True, None
+#     return True, None
 
 
 @trace
 def delete_resource(client, resource_name, resource_module_params):
-    ok, err = _check_delete_resource_params(resource_name, resource_module_params)
-    if not ok:
-        return False, err
+    # ok, err = _check_delete_resource_params(resource_name, resource_module_params)
+    # if not ok:
+    #     return False, err
 
-    resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
-    if resource_primary_key:
-        resource_primary_key = change_primary_key(
-            resource_name, resource_module_params, resource_primary_key
-        )
+    resource_primary_key = get_primary_key(resource_name, resource_module_params)
 
-        resource_id = resource_module_params[resource_primary_key]
-    else:
-        resource_id = None
+    resource_id = (
+        resource_module_params[resource_primary_key] if resource_primary_key else None
+    )
 
     args = {}
     for arg_key in NITRO_RESOURCE_MAP[resource_name]["delete_arg_keys"]:
-        log("DEBUG: arg_key: {}".format(arg_key))
         # FIXME: after discussion with Nitro team
-        if (
-            resource_name == "lbvserver_servicegroup_binding"
-            and arg_key == "servicename"
-        ):
-            # status_code: 400;
-            # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
+        if resource_primary_key == arg_key:
             continue
-        elif (
-            resource_name == "ntpserver"
-            and resource_primary_key == "servername"
-            and arg_key == "servername"
-        ):
-            # for `ntpserver`, there are two possible primary keys: `serverip` and `servername`
-            # But, the schema has only `serverip` as the primary key
-            # if `servername` is the primary_key, it will be resource_id and not arg_key
-            # so, we are skipping arg_key `servername` for `ntpserver`
-            continue
+        # if (
+        #     resource_name == "lbvserver_servicegroup_binding"
+        #     and resource_primary_key == "servicename"
+        #     and arg_key == "servicename"
+        # ):
+        #     # status_code: 400;
+        #     # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
+        #     continue
+        # elif (
+        #     resource_name == "ntpserver"
+        #     and resource_primary_key == "servername"
+        #     and arg_key == "servername"
+        # ):
+        #     # for `ntpserver`, there are two possible primary keys: `serverip` and `servername`
+        #     # But, the schema has only `serverip` as the primary key
+        #     # if `servername` is the primary_key, it will be resource_id and not arg_key
+        #     # so, we are skipping arg_key `servername` for `ntpserver`
+        #     continue
         try:
             args[arg_key] = resource_module_params[arg_key]
         except KeyError:
