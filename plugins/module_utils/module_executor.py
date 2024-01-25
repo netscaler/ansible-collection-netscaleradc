@@ -341,7 +341,7 @@ class ModuleExecutor(object):
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
-        if not self.existing_resource:
+        if not self.existing_resource and "add" in self.supported_operations:
             self.module_result["changed"] = True
             log(
                 "INFO: Resource %s:%s does not exist. Will be CREATED."
