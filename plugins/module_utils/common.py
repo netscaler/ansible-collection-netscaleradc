@@ -400,7 +400,11 @@ def bind_resource(client, binding_name, binding_module_params):
 
 
 @trace
-def unbind_resource(client, binding_name, binding_module_params):
+def unbind_resource(client, binding_name, bindprimary_key, binding_module_params):
+    # delete all the binding_module_params key:value pairs except the bindprimary_key
+    for key in binding_module_params.copy().keys():
+        if key != bindprimary_key:
+            del binding_module_params[key]
     return delete_resource(
         client=client,
         resource_name=binding_name,

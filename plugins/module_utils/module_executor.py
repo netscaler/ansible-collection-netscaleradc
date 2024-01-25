@@ -477,6 +477,7 @@ class ModuleExecutor(object):
             ok, err = unbind_resource(
                 self.client,
                 binding_name=binding_name,
+                bindprimary_key=bindprimary_key,
                 binding_module_params=existing_binding_to_delete,
             )
             if not ok:
@@ -552,6 +553,7 @@ class ModuleExecutor(object):
                 ok, err = unbind_resource(
                     self.client,
                     binding_name=binding_name,
+                    bindprimary_key=bindprimary_key,
                     binding_module_params=existing_binding,
                 )
                 if not ok:
