@@ -1,0 +1,183 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+- name: SERVICEGROUP | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICEGROUP | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICEGROUP | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: present
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: SERVICEGROUP | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICEGROUP | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SERVICEGROUP | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.servicegroup:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    servicegroupname: "{{ servicegroup_name }}"
+    servicetype: TCP
+    autoscale: DNS
+    servicegroup_servicegroupmember_binding:
+      mode: desired
+      binding_members:
+        - port: 443
+          servername: "{{ server1_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+        - port: 443
+          servername: "{{ server2_name }}"
+          servicegroupname: "{{ servicegroup_name }}"
+- name: Assert | SERVICEGROUP | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: teardown.yaml

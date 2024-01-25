@@ -3,6 +3,11 @@
   hosts: localhost
   gather_facts: false
   tasks:
+    - name: Add IPSet
+      delegate_to: localhost
+      netscaler.adc.ipset:
+        state: present
+        name: ipset-001
     - name: Sample Task | netProfile
       delegate_to: localhost
       netscaler.adc.netprofile:

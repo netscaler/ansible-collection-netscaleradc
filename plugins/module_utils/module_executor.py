@@ -102,7 +102,7 @@ class ModuleExecutor(object):
         else:
             self.resource_id = self.module.params[self.resource_primary_key]
         self.resource_module_params = {}
-        self.desired_bindings = []
+        self.desired_bindings = {}
         self.existing_resource = dict()
 
         self.module_result = dict(
@@ -168,7 +168,7 @@ class ModuleExecutor(object):
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
             ):
                 if v:
-                    self.desired_bindings.append(k)
+                    self.desired_bindings.update({k: v})
         log(
             "DEBUG: Desired `%s` module specific bindings are: %s"
             % (self.resource_name, self.desired_bindings)
@@ -341,7 +341,7 @@ class ModuleExecutor(object):
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
-        if not self.existing_resource:
+        if not self.existing_resource and "add" in self.supported_operations:
             self.module_result["changed"] = True
             log(
                 "INFO: Resource %s:%s does not exist. Will be CREATED."
@@ -448,12 +448,12 @@ class ModuleExecutor(object):
         self, binding_name, bindprimary_key, to_be_deleted_bindings, existing_bindings
     ):
         for d in list(to_be_deleted_bindings):
-            deleting_binding = {}
+            existing_binding_to_delete = {}
             for e in existing_bindings:
                 if d == e[bindprimary_key]:
-                    deleting_binding = e
+                    existing_binding_to_delete = e
                     break
-            if not deleting_binding:
+            if not existing_binding_to_delete:
                 msg = (
                     "Binding %s not found in the existing resources. Continuing..." % d
                 )
@@ -466,16 +466,19 @@ class ModuleExecutor(object):
             if binding_name == "servicegroup_servicegroupmember_binding":
                 try:
                     if (
-                        deleting_binding["ip"] == "0.0.0.0"
-                        and deleting_binding["servername"]
+                        existing_binding_to_delete["ip"] == "0.0.0.0"
+                        and existing_binding_to_delete["servername"]
                     ):
-                        deleting_binding.pop("ip")
+                        existing_binding_to_delete.pop("ip")
                 except KeyError:
                     pass
+
+            # Remove all the key:value from deleting_existing_binding which are not part of the playbook
             ok, err = unbind_resource(
                 self.client,
                 binding_name=binding_name,
-                binding_module_params=deleting_binding,
+                bindprimary_key=bindprimary_key,
+                binding_module_params=existing_binding_to_delete,
             )
             if not ok:
                 return False, err
@@ -550,6 +553,7 @@ class ModuleExecutor(object):
                 ok, err = unbind_resource(
                     self.client,
                     binding_name=binding_name,
+                    bindprimary_key=bindprimary_key,
                     binding_module_params=existing_binding,
                 )
                 if not ok:
@@ -581,7 +585,7 @@ class ModuleExecutor(object):
 
     @trace
     def sync_all_bindings(self):
-        for binding_name in self.desired_bindings:
+        for binding_name in self.desired_bindings.keys():
             self.sync_single_binding(binding_name)
 
     @trace
@@ -621,11 +625,10 @@ class ModuleExecutor(object):
 
         if self.module.params["state"] == "absent":
             # In `absent` state, we will delete all the existing bindings
-            to_be_deleted_bindings = existing_binding_members_bindprimary_keys
             ok, err = self.delete_bindings(
                 binding_name=binding_name,
                 bindprimary_key=bindprimary_key,
-                to_be_deleted_bindings=to_be_deleted_bindings,
+                to_be_deleted_bindings=existing_binding_members_bindprimary_keys,
                 existing_bindings=existing_bindings,
             )
             if not ok:
@@ -923,7 +926,10 @@ class ModuleExecutor(object):
             elif self.module.params["state"] in {"absent"}:
                 if self.resource_primary_key:
                     # Bindings
-                    if "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys():
+                    if (
+                        "bindings" in NITRO_RESOURCE_MAP[self.resource_name].keys()
+                        and NITRO_RESOURCE_MAP[self.resource_name]["bindings"]
+                    ):
                         self.sync_all_bindings()
                     self.delete()
                 else:

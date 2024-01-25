@@ -1,0 +1,23 @@
+---
+- name: Delete Server1
+  delegate_to: localhost
+  netscaler.adc.server:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    domain: test.foo.com
+    name: "{{ server1_name }}"
+- name: Delete Server2
+  delegate_to: localhost
+  netscaler.adc.server:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    ipaddress: 1.2.3.4
+    name: "{{ server2_name }}"

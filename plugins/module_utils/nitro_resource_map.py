@@ -22,6 +22,7 @@ NITRO_RESOURCE_MAP = {
         "get_arg_keys": [],
         "immutable_keys": ["username", "password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "username": {
                 "type": "str",
@@ -48,6 +49,7 @@ NITRO_RESOURCE_MAP = {
         "get_arg_keys": [],
         "immutable_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {},
         "singleton": False,
         "update_payload_keys": [],
@@ -65,6 +67,7 @@ NITRO_RESOURCE_MAP = {
         "get_arg_keys": [],
         "immutable_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {
                 "type": "bool",
@@ -91,6 +94,7 @@ NITRO_RESOURCE_MAP = {
         "get_arg_keys": [],
         "immutable_keys": ["username", "password", "new_password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "username": {
                 "type": "str",
@@ -134,6 +138,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "groupnamefield": {"no_log": False, "type": "str"},
@@ -158,6 +163,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["policy", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -183,6 +189,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["windowsprofile"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"windowsprofile": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -213,6 +220,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "weight"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aaagroup_aaauser_binding": {
                 "no_log": False,
@@ -425,6 +433,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "groupname", "username"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -457,6 +466,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -495,6 +505,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -533,6 +544,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -569,6 +581,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -600,6 +613,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -633,6 +647,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -667,6 +682,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -699,6 +715,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -737,6 +754,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -763,6 +781,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "groupname", "urlname"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -795,6 +814,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -855,6 +875,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["kcdpassword"],
         "primary_key": "kcdaccount",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacert": {"no_log": False, "type": "str"},
             "delegateduser": {"no_log": False, "type": "str"},
@@ -921,6 +942,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["ldapbinddnpassword"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authtimeout": {"no_log": False, "type": "float"},
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
@@ -999,6 +1021,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "encryption": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "maxotpdevices": {"no_log": False, "type": "float"},
@@ -1046,6 +1069,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aaadloglevel": {
                 "choices": [
@@ -1194,6 +1218,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultepagroup": {"no_log": False, "type": "str"},
             "deletefiles": {"no_log": False, "type": "str"},
@@ -1232,6 +1257,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "deletefiles": {"no_log": False, "type": "str"},
             "killprocess": {"no_log": False, "type": "str"},
@@ -1270,6 +1296,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -1317,6 +1344,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["radkey"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accounting": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "authentication": {
@@ -1398,6 +1426,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "groupname": {"no_log": False, "type": "str"},
@@ -1430,6 +1459,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "password": {"no_log": True, "type": "str"},
@@ -1466,6 +1496,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["tacacssecret"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accounting": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "auditfailedcmds": {
@@ -1527,6 +1558,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aaauser_auditnslogpolicy_binding": {
                 "no_log": False,
@@ -1735,6 +1767,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -1773,6 +1806,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -1811,6 +1845,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -1847,6 +1882,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetip6": {"no_log": False, "type": "str"},
@@ -1878,6 +1914,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetip": {"no_log": False, "type": "str"},
@@ -1911,6 +1948,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -1941,6 +1979,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "intranetapplication", "username"],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetapplication": {"no_log": False, "type": "str"},
@@ -1973,6 +2012,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -2011,6 +2051,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -2037,6 +2078,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "urlname", "username"],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "urlname": {"no_log": False, "type": "str"},
@@ -2069,6 +2111,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policy": {"no_log": False, "type": "str"},
@@ -2101,6 +2144,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "admserviceconnect": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -2123,6 +2167,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"analyticsprofile": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -2229,6 +2274,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["analyticsauthtoken"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allhttpheaders": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -2454,6 +2500,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["file", "name", "type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "file": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -2484,6 +2531,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "password": {"no_log": False, "type": "str"},
@@ -2510,6 +2558,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "pptpgreidletimeout": {"no_log": False, "type": "float"}
         },
@@ -2568,6 +2617,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["metricslog", "transactionlog"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowaction_analyticsprofile_binding": {
                 "no_log": False,
@@ -2663,6 +2713,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -2697,6 +2748,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["transport"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -2740,6 +2792,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -2857,6 +2910,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["analyticsauthtoken"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aaausername": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -3148,6 +3202,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "appflowpolicylabel_appflowpolicy_binding": {
@@ -3195,6 +3250,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowpolicylabel_appflowpolicy_binding": {
                 "no_log": False,
@@ -3251,6 +3307,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -3285,6 +3342,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -3312,6 +3370,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "fieldname",
+        "primary_key_composite": ["url"],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "fieldname": {"no_log": False, "type": "str"},
@@ -3338,6 +3397,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "target": {"no_log": False, "type": "str"},
@@ -3365,6 +3425,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -3403,6 +3464,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -3467,6 +3529,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -3521,6 +3584,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -3560,6 +3624,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["grpccontenttypevalue", "isregex"],
         "password_keys": [],
         "primary_key": "grpccontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "grpccontenttypevalue": {"no_log": False, "type": "str"},
             "isregex": {
@@ -3584,6 +3649,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["grpcwebjsoncontenttypevalue", "isregex"],
         "password_keys": [],
         "primary_key": "grpcwebjsoncontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "grpcwebjsoncontenttypevalue": {"no_log": False, "type": "str"},
             "isregex": {
@@ -3608,6 +3674,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["grpcwebtextcontenttypevalue", "isregex"],
         "password_keys": [],
         "primary_key": "grpcwebtextcontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "grpcwebtextcontenttypevalue": {"no_log": False, "type": "str"},
             "isregex": {
@@ -3637,6 +3704,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -3659,6 +3727,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["isregex", "jsoncontenttypevalue"],
         "password_keys": [],
         "primary_key": "jsoncontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "isregex": {
                 "choices": ["NOTREGEX", "REGEX"],
@@ -3688,6 +3757,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -3737,6 +3807,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "as_scan_location_sql": {
                 "choices": ["COOKIE", "FORMFIELD", "HEADER"],
@@ -3854,6 +3925,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "profilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "contenttypeautodeploygraceperiod": {"no_log": False, "type": "float"},
             "contenttypeminthreshold": {"no_log": False, "type": "float"},
@@ -3941,6 +4013,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["isregex", "multipartformcontenttypevalue"],
         "password_keys": [],
         "primary_key": "multipartformcontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "isregex": {
                 "choices": ["NOTREGEX", "REGEX"],
@@ -3979,6 +4052,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appfwpolicylabel_appfwpolicy_binding": {
                 "no_log": False,
@@ -4026,6 +4100,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appfwpolicylabel_appfwpolicy_binding": {
                 "no_log": False,
@@ -4082,6 +4157,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -4409,6 +4485,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["defaults"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addcookieflags": {
                 "choices": ["all", "httpOnly", "none", "secure"],
@@ -5670,6 +5747,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "cffield_url": {"no_log": False, "type": "str"},
@@ -5736,6 +5814,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_blockkeyword_formurl": {"no_log": False, "type": "str"},
@@ -5796,6 +5875,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "as_bypass_list": {"no_log": False, "type": "str"},
             "as_bypass_list_action": {
@@ -5878,6 +5958,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_scan_location_cmd": {
@@ -5942,6 +6023,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -5986,6 +6068,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6035,6 +6118,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6104,6 +6188,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_scan_location_xss": {
@@ -6170,6 +6255,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6219,6 +6305,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "as_deny_list": {"no_log": False, "type": "str"},
             "as_deny_list_action": {
@@ -6276,6 +6363,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6318,6 +6406,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6380,6 +6469,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6434,6 +6524,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6492,6 +6583,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6561,6 +6653,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_fileuploadtypes_url": {"no_log": False, "type": "str"},
@@ -6638,6 +6731,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6714,6 +6808,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_value_expr_json_cmd": {"no_log": False, "type": "str"},
@@ -6797,6 +6892,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -6897,6 +6993,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_value_expr_json_sql": {"no_log": False, "type": "str"},
@@ -6978,6 +7075,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_value_expr_json_xss": {"no_log": False, "type": "str"},
@@ -7039,6 +7137,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_logexpression": {"no_log": False, "type": "str"},
@@ -7088,6 +7187,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {
                 "choices": ["block", "log", "none", "remove", "stats", "xout"],
@@ -7164,6 +7264,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_scan_location_sql": {
@@ -7228,6 +7329,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7270,6 +7372,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7320,6 +7423,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7446,6 +7550,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7596,6 +7701,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_scan_location_xmlsql": {
@@ -7662,6 +7768,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7729,6 +7836,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -7776,6 +7884,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alertonly": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "as_scan_location_xmlxss": {
@@ -7820,6 +7929,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -7870,6 +7980,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["proxypassword"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ceflogging": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "centralizedlearning": {
@@ -7983,6 +8094,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {
                 "choices": ["block", "log", "none", "stats"],
@@ -8025,6 +8137,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["isregex", "urlencodedformcontenttypevalue"],
         "password_keys": [],
         "primary_key": "urlencodedformcontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "isregex": {
                 "choices": ["NOTREGEX", "REGEX"],
@@ -8054,6 +8167,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -8076,6 +8190,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["isregex", "xmlcontenttypevalue"],
         "password_keys": [],
         "primary_key": "xmlcontenttypevalue",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "isregex": {
                 "choices": ["NOTREGEX", "REGEX"],
@@ -8105,6 +8220,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -8132,6 +8248,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -8159,6 +8276,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appname": {"no_log": False, "type": "str"},
             "apptemplatefilename": {"no_log": False, "type": "str"},
@@ -8224,6 +8342,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["customfile", "respondwith"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "altcontentpath": {"no_log": False, "type": "str"},
             "altcontentsvcname": {"no_log": False, "type": "str"},
@@ -8286,6 +8405,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -8316,6 +8436,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "avgwaitingclient": {"no_log": False, "type": "float"},
             "dosattackthresh": {"no_log": False, "type": "float"},
@@ -8350,6 +8471,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -8389,6 +8511,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "ipaddress",
+        "primary_key_composite": ["ownernode", "td"],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -8422,6 +8545,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "spoofvalidation": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -8465,6 +8589,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bypasssafetycheck": {
                 "choices": ["NO", "YES"],
@@ -8561,6 +8686,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
             "alg": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
@@ -8680,6 +8806,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["globalbindtype", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -8738,6 +8865,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
             "alg": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
@@ -8857,6 +8985,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -8938,6 +9067,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["transport"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
             "alg": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
@@ -9068,6 +9198,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["globalbindtype", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -9204,6 +9335,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
             "alg": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
@@ -9325,6 +9457,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -9359,6 +9492,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "certkeyname": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -9407,6 +9541,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authenticationdomain": {"no_log": False, "type": "str"},
             "authenticationhost": {"no_log": False, "type": "str"},
@@ -9469,6 +9604,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["clientsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authentication": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -9535,6 +9671,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["secretkey", "sitekey"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -9589,6 +9726,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "groupnamefield": {"no_log": False, "type": "str"},
@@ -9631,6 +9769,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -9665,6 +9804,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authentication": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -9713,6 +9853,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["passphrase"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientid": {"no_log": False, "type": "str"},
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
@@ -9749,6 +9890,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -9800,6 +9942,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "content": {"no_log": False, "type": "str"},
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
@@ -9863,6 +10006,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "csecexpr": {"no_log": False, "type": "str"},
             "defaultepagroup": {"no_log": False, "type": "str"},
@@ -10016,6 +10160,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["ldapbinddnpassword"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alternateemailattr": {"no_log": False, "type": "str"},
             "attribute1": {"no_log": False, "type": "str"},
@@ -10190,6 +10335,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -10218,6 +10364,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "rule": {"no_log": False, "type": "str"},
@@ -10268,6 +10415,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authenticationschema": {"no_log": False, "type": "str"},
             "authenticationstrength": {"no_log": False, "type": "float"},
@@ -10328,6 +10476,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -10390,6 +10539,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["domainuserpasswd"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "domain": {"no_log": False, "type": "str"},
@@ -10432,6 +10582,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -10466,6 +10617,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -10581,6 +10733,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["clientsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowedalgorithms": {
                 "choices": ["HS256", "RS256", "RS512"],
@@ -10737,6 +10890,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -10813,6 +10967,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["clientsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "attributes": {"no_log": False, "type": "str"},
             "audience": {"no_log": False, "type": "str"},
@@ -10889,6 +11044,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "authenticationpolicylabel_authenticationpolicy_binding": {
@@ -10944,6 +11100,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "loginschema", "type"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authenticationpolicylabel_authenticationpolicy_binding": {
                 "no_log": False,
@@ -10998,6 +11155,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -11040,6 +11198,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["clientsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientid": {"no_log": False, "type": "str"},
             "clientsecret": {"no_log": True, "type": "str"},
@@ -11131,6 +11290,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["radkey"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accounting": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "authentication": {
@@ -11237,6 +11397,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -11368,6 +11529,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "artifactresolutionserviceurl": {"no_log": False, "type": "str"},
             "attribute1": {"no_log": False, "type": "str"},
@@ -11572,6 +11734,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -11787,6 +11950,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acsurlrule": {"no_log": False, "type": "str"},
             "assertionconsumerserviceurl": {"no_log": False, "type": "str"},
@@ -12116,6 +12280,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -12150,6 +12315,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -12185,6 +12351,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -12224,6 +12391,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthenticationgroup": {"no_log": False, "type": "str"},
             "domain": {"no_log": False, "type": "str"},
@@ -12320,6 +12488,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["tacacssecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accounting": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "attribute1": {"no_log": False, "type": "str"},
@@ -12410,6 +12579,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "reqaction": {"no_log": False, "type": "str"},
@@ -12495,6 +12665,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nodefaultbindings", "port", "range", "servicetype", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -12904,6 +13075,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -12958,6 +13130,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13012,6 +13185,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13066,6 +13240,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13120,6 +13295,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13174,6 +13350,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13228,6 +13405,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13282,6 +13460,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13336,6 +13515,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13390,6 +13570,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13444,6 +13625,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13498,6 +13680,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13552,6 +13735,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13606,6 +13790,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13660,6 +13845,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13714,6 +13900,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13768,6 +13955,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13822,6 +14010,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13876,6 +14065,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13930,6 +14120,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -13966,6 +14157,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "portaltheme"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "portaltheme": {"no_log": False, "type": "str"},
@@ -14045,6 +14237,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "attribute1": {"no_log": False, "type": "str"},
             "attribute10": {"no_log": False, "type": "str"},
@@ -14117,6 +14310,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -14146,6 +14340,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "authorizationpolicylabel_authorizationpolicy_binding": {
@@ -14191,6 +14386,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authorizationpolicylabel_authorizationpolicy_binding": {
                 "no_log": False,
@@ -14242,6 +14438,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -14292,6 +14489,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "parameters": {"no_log": False, "type": "str"},
@@ -14342,6 +14540,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -14373,6 +14572,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": ["apikey", "sharedsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "apikey": {"no_log": True, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -14410,6 +14610,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": ["clientsecret"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientid": {"no_log": False, "type": "str"},
             "clientsecret": {"no_log": True, "type": "str"},
@@ -14434,6 +14635,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["azureapplication", "azurevaultname", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "azureapplication": {"no_log": False, "type": "str"},
             "azurevaultname": {"no_log": False, "type": "str"},
@@ -14470,6 +14672,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -14534,6 +14737,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "botpolicylabel_botpolicy_binding": {
                 "no_log": False,
@@ -14589,6 +14793,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "botpolicylabel_botpolicy_binding": {
                 "no_log": False,
@@ -14641,6 +14846,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -14749,6 +14955,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_enable_black_list": {
                 "choices": ["OFF", "ON"],
@@ -15045,6 +15252,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_blacklist": {"no_log": False, "type": "bool"},
@@ -15109,6 +15317,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_captcha_action": {
@@ -15163,6 +15372,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_iprep_action": {
@@ -15237,6 +15447,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_km_detection_enabled": {
@@ -15281,6 +15492,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_log_expression_enabled": {
@@ -15347,6 +15559,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_rate_limit_action": {
@@ -15669,6 +15882,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_tps": {"no_log": False, "type": "bool"},
@@ -15722,6 +15936,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_trap_url": {"no_log": False, "type": "str"},
@@ -15767,6 +15982,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bot_bind_comment": {"no_log": False, "type": "str"},
             "bot_whitelist": {"no_log": False, "type": "bool"},
@@ -15822,6 +16038,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["proxypassword"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultnonintrusiveprofile": {
                 "choices": ["BOT_BYPASS", "BOT_LOG", "BOT_STATS"],
@@ -15888,6 +16105,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -15927,6 +16145,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bridgegroup_nsip6_binding": {
                 "no_log": False,
@@ -16003,6 +16222,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask", "ownergroup", "td"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -16025,6 +16245,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask", "ownergroup", "td"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -16047,6 +16268,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "vlan"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "vlan": {"no_log": False, "type": "float"},
@@ -16080,6 +16302,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["devicevlan", "mac", "vni", "vtep", "vxlan"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bridgeage": {"no_log": False, "type": "float"},
             "devicevlan": {"no_log": False, "type": "float"},
@@ -16202,6 +16425,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "absexpiry": {"elements": "str", "no_log": False, "type": "list"},
             "absexpirygmt": {"elements": "str", "no_log": False, "type": "list"},
@@ -16334,6 +16558,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "port"],
         "password_keys": [],
         "primary_key": "ipaddress",
+        "primary_key_composite": ["port"],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "port": {"no_log": False, "type": "int"},
@@ -16371,6 +16596,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -16439,6 +16665,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "group": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -16491,6 +16718,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "enablebypass": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "enablehaobjpersist": {
@@ -16566,6 +16794,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "policyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {
                 "choices": ["CACHE", "INVAL", "MAY_CACHE", "MAY_NOCACHE", "NOCACHE"],
@@ -16631,6 +16860,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["evaluates", "labelname"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cachepolicylabel_cachepolicy_binding": {
                 "no_log": False,
@@ -16696,6 +16926,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -16732,6 +16963,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "selectorname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "rule": {"elements": "str", "no_log": False, "type": "list"},
             "selectorname": {"no_log": False, "type": "str"},
@@ -16765,6 +16997,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "emailaddress": {"no_log": False, "type": "str"},
             "hbcustominterval": {"no_log": False, "type": "float"},
@@ -16839,6 +17072,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bandwidthhigh": {"no_log": False, "type": "float"},
             "bandwidthnormal": {"no_log": False, "type": "float"},
@@ -16936,6 +17170,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "str"},
             "ifnum": {"elements": "str", "no_log": False, "type": "list"},
@@ -16964,6 +17199,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "creator": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -16989,6 +17225,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"rolearn": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": ["rolearn"],
@@ -17006,6 +17243,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["applicationsecret"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "applicationid": {"no_log": False, "type": "str"},
             "applicationsecret": {"no_log": True, "type": "str"},
@@ -17041,6 +17279,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowdtls12": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "allowedudtversion": {
@@ -17085,6 +17324,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "activationcode": {"no_log": False, "type": "str"},
             "connectorresidence": {
@@ -17128,6 +17368,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nonftumode": {"choices": ["NO", "YES"], "no_log": False, "type": "str"}
         },
@@ -17177,6 +17418,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "azurepollperiod": {"no_log": False, "type": "float"},
             "azuretagname": {"no_log": False, "type": "str"},
@@ -17320,6 +17562,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "controllerfqdn": {"no_log": False, "type": "str"},
             "fqdn": {"no_log": False, "type": "str"},
@@ -17354,6 +17597,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["servicetype"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "listenpolicy": {"no_log": False, "type": "str"},
             "listenpriority": {"no_log": False, "type": "float"},
@@ -17389,6 +17633,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "clip",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clip": {"no_log": False, "type": "str"},
             "clusternode_routemonitor_binding": {
@@ -17601,6 +17846,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mode": {
                 "choices": [
@@ -17679,6 +17925,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "clid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backplanebasedview": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -17790,6 +18037,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "nodegroup"],
         "password_keys": [],
         "primary_key": "nodeid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backplane": {"no_log": False, "type": "str"},
             "clearnodegroupconfig": {
@@ -18021,6 +18269,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["netmask", "nodeid", "routemonitor"],
         "password_keys": [],
         "primary_key": "nodeid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "netmask": {"no_log": False, "type": "str"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -18067,6 +18316,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["sticky"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clusternodegroup_authenticationvserver_binding": {
                 "no_log": False,
@@ -18264,6 +18514,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18283,6 +18534,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "node"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "node": {"no_log": False, "type": "float"},
@@ -18302,6 +18554,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18321,6 +18574,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18340,6 +18594,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gslbsite", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gslbsite": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -18359,6 +18614,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18378,6 +18634,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18397,6 +18654,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["identifiername", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "identifiername": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -18416,6 +18674,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "service"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "service": {"no_log": False, "type": "str"},
@@ -18435,6 +18694,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["identifiername", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "identifiername": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -18454,6 +18714,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -18474,6 +18735,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"nodeid": {"no_log": False, "type": "float"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -18505,6 +18767,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addvaryheader": {
                 "choices": ["DISABLED", "ENABLED", "GLOBAL"],
@@ -18556,6 +18819,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -18625,6 +18889,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addvaryheader": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -18687,6 +18952,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cmppolicylabel_cmppolicy_binding": {
                 "no_log": False,
@@ -18732,6 +18998,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "type"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cmppolicylabel_cmppolicy_binding": {
                 "no_log": False,
@@ -18788,6 +19055,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -18838,6 +19106,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "icapprofilename": {"no_log": False, "type": "str"},
             "ifserverdown": {
@@ -18901,6 +19170,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -18956,6 +19226,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -19009,6 +19280,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"undefaction": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": ["undefaction"],
@@ -19047,6 +19319,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -19102,6 +19375,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "type"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "contentinspectionpolicylabel_contentinspectionpolicy_binding": {
@@ -19155,6 +19429,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -19205,6 +19480,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "egressinterface": {"no_log": False, "type": "str"},
             "egressvlan": {"no_log": False, "type": "float"},
@@ -19255,6 +19531,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "policyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "logaction": {"no_log": False, "type": "str"},
@@ -19405,6 +19682,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -19801,6 +20079,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -19840,6 +20119,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -19894,6 +20174,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -19948,6 +20229,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20002,6 +20284,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20056,6 +20339,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20110,6 +20394,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20164,6 +20449,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20218,6 +20504,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20272,6 +20559,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20306,6 +20594,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["lbvserver", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "lbvserver": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -20345,6 +20634,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20399,6 +20689,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20453,6 +20744,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20507,6 +20799,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["ICA_REQUEST", "REQUEST", "RESPONSE"],
@@ -20562,6 +20855,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -20597,6 +20891,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "stateupdate": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -20634,6 +20929,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "policyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "cspolicylabel_cspolicy_binding": {
@@ -20680,6 +20976,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["cspolicylabeltype", "labelname"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cspolicylabel_cspolicy_binding": {
                 "no_log": False,
@@ -20762,6 +21059,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -20972,6 +21270,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -21621,6 +21920,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -21660,6 +21960,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -21720,6 +22021,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -21780,6 +22082,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -21840,6 +22143,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -21900,6 +22204,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -21960,6 +22265,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22020,6 +22326,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22080,6 +22387,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22140,6 +22448,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22200,6 +22509,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22260,6 +22570,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22308,6 +22619,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backupip": {"no_log": False, "type": "str"},
             "cookiedomain": {"no_log": False, "type": "str"},
@@ -22360,6 +22672,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22400,6 +22713,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -22419,6 +22733,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["lbvserver", "name", "targetvserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "lbvserver": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -22459,6 +22774,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22519,6 +22835,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22579,6 +22896,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22639,6 +22957,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22699,6 +23018,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -22739,6 +23059,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vserver": {"no_log": False, "type": "str"},
@@ -22786,6 +23107,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "conmultiplex": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -22836,6 +23158,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "loggedin": {"no_log": False, "type": "bool"},
             "password": {"no_log": True, "type": "str"},
@@ -22857,6 +23180,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["hostname", "ipv6address", "ttl"],
         "password_keys": [],
         "primary_key": "hostname",
+        "primary_key_composite": ["ipv6address"],
         "readwrite_arguments": {
             "ecssubnet": {"no_log": False, "type": "str"},
             "hostname": {"no_log": False, "type": "str"},
@@ -22906,6 +23230,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["actiontype"],
         "password_keys": [],
         "primary_key": "actionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actionname": {"no_log": False, "type": "str"},
             "actiontype": {
@@ -22962,6 +23287,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "actionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actionname": {"no_log": False, "type": "str"},
             "excluderule": {"no_log": False, "type": "str"},
@@ -22984,6 +23310,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["hostname", "ipaddress", "ttl"],
         "password_keys": [],
         "primary_key": "hostname",
+        "primary_key_composite": ["ipaddress"],
         "readwrite_arguments": {
             "ecssubnet": {"no_log": False, "type": "str"},
             "hostname": {"no_log": False, "type": "str"},
@@ -23012,6 +23339,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["domain", "flag", "tag", "ttl", "valuestring"],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": ["tag", "valuestring"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23043,6 +23371,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["aliasname", "canonicalname", "ttl"],
         "password_keys": [],
         "primary_key": "aliasname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aliasname": {"no_log": False, "type": "str"},
             "canonicalname": {"no_log": False, "type": "str"},
@@ -23086,6 +23415,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -23169,6 +23499,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["password", "privatekey", "publickey"],
         "password_keys": ["password"],
         "primary_key": "keyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "algorithm": {
                 "choices": ["RSASHA1", "RSASHA256", "RSASHA512"],
@@ -23238,6 +23569,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": ["mx"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23281,6 +23613,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["dnsvservername", "local"],
         "password_keys": [],
         "primary_key": "ip",
+        "primary_key_composite": ["dnsvservername", "type"],
         "readwrite_arguments": {
             "dnsprofilename": {"no_log": False, "type": "str"},
             "dnsvservername": {"no_log": False, "type": "str"},
@@ -23335,6 +23668,14 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": [
+            "flags",
+            "order",
+            "preference",
+            "regexp",
+            "replacement",
+            "services",
+        ],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23369,6 +23710,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["domain", "nameserver", "ttl"],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": ["nameserver"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23424,6 +23766,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacheecszeroprefix": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -23539,6 +23882,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actionname": {"no_log": False, "type": "str"},
             "cachebypass": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
@@ -23589,6 +23933,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -23617,6 +23962,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "transform"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dnspolicylabel_dnspolicy_binding": {
                 "no_log": False,
@@ -23673,6 +24019,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -23731,6 +24078,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "dnsprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacheecsresponses": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -23800,6 +24148,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "negrectype": {
                 "choices": ["NODATA", "NXDOMAIN"],
@@ -23843,6 +24192,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["domain", "reversedomain", "ttl"],
         "password_keys": [],
         "primary_key": "reversedomain",
+        "primary_key_composite": ["domain"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23902,6 +24252,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "contact": {"no_log": False, "type": "str"},
             "domain": {"no_log": False, "type": "str"},
@@ -23951,6 +24302,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": ["target"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -23989,6 +24341,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ecssubnet",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -24010,6 +24363,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["dnssuffix"],
         "password_keys": [],
         "primary_key": "dnssuffix",
+        "primary_key_composite": [],
         "readwrite_arguments": {"dnssuffix": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -24027,6 +24381,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["domain", "string", "ttl"],
         "password_keys": [],
         "primary_key": "domain",
+        "primary_key_composite": ["string"],
         "readwrite_arguments": {
             "domain": {"no_log": False, "type": "str"},
             "ecssubnet": {"no_log": False, "type": "str"},
@@ -24056,6 +24411,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["viewname"],
         "password_keys": [],
         "primary_key": "viewname",
+        "primary_key_composite": [],
         "readwrite_arguments": {"viewname": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -24088,6 +24444,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "zonename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dnssecoffload": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -24147,6 +24504,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "endpointkind",
+        "primary_key_composite": ["endpointname"],
         "readwrite_arguments": {
             "endpointkind": {"choices": ["IP"], "no_log": False, "type": "str"},
             "endpointlabelsjson": {"no_log": False, "type": "str"},
@@ -24179,6 +24537,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"memlimit": {"no_log": False, "type": "float"}},
         "singleton": True,
         "update_payload_keys": ["memlimit"],
@@ -24255,6 +24614,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cachemaxage": {"no_log": False, "type": "float"},
             "clientsidemeasurements": {"no_log": False, "type": "bool"},
@@ -24324,6 +24684,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority", "type"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -24378,6 +24739,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cssinlinethressize": {"no_log": False, "type": "float"},
             "imginlinethressize": {"no_log": False, "type": "float"},
@@ -24418,6 +24780,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -24439,6 +24802,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "ownernode"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "fis_channel_binding": {
                 "no_log": False,
@@ -24490,6 +24854,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ifnum", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ifnum": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -24510,6 +24875,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ifnum", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ifnum": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -24548,6 +24914,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["netmask", "network", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl6name": {"no_log": False, "type": "str"},
             "aclname": {"no_log": False, "type": "str"},
@@ -24594,6 +24961,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "command": {"no_log": False, "type": "str"},
             "debug": {"no_log": False, "type": "bool"},
@@ -24618,6 +24986,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"nodeid": {"no_log": False, "type": "float"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -24635,6 +25004,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"ipaddress": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -24674,6 +25044,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "automaticconfigsync": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -24838,6 +25209,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -25017,6 +25389,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["servicename"],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "servicename": {"no_log": False, "type": "str"},
             "viewip": {"no_log": False, "type": "str"},
@@ -25037,6 +25410,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["monitor_name", "monstate", "servicename", "weight"],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "monitor_name": {"no_log": False, "type": "str"},
             "monstate": {
@@ -25137,6 +25511,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -25306,6 +25681,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "hashid": {"no_log": False, "type": "float"},
             "ip": {"no_log": False, "type": "str"},
@@ -25357,6 +25733,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "hashid": {"no_log": False, "type": "float"},
             "monitor_name": {"no_log": False, "type": "str"},
@@ -25432,6 +25809,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "sitename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backupparentlist": {"elements": "str", "no_log": False, "type": "list"},
             "clip": {"no_log": False, "type": "str"},
@@ -25580,6 +25958,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nodefaultbindings", "servicetype"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -25874,6 +26253,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backupip": {"no_log": False, "type": "str"},
             "backupipflag": {"no_log": False, "type": "bool"},
@@ -25910,6 +26290,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "domainname": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -25932,6 +26313,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "order": {"no_log": False, "type": "float"},
@@ -25966,6 +26348,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -26007,6 +26390,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -26035,6 +26419,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"force": {"no_log": False, "type": "bool"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -26052,6 +26437,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mode": {
                 "choices": [
@@ -26113,6 +26499,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["inc", "ipaddress"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "deadinterval": {"no_log": False, "type": "float"},
             "failsafe": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
@@ -26203,6 +26590,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "netmask", "routemonitor"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "netmask": {"no_log": False, "type": "str"},
@@ -26223,6 +26611,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "netmask", "routemonitor"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "netmask": {"no_log": False, "type": "str"},
@@ -26244,6 +26633,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "force": {"no_log": False, "type": "bool"},
             "save": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
@@ -26299,6 +26689,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientaudioredirection": {
                 "choices": ["DEFAULT", "DISABLED"],
@@ -26388,6 +26779,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accessprofilename": {"no_log": False, "type": "str"},
             "latencyprofilename": {"no_log": False, "type": "str"},
@@ -26414,6 +26806,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority", "type"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -26477,6 +26870,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "l7latencymaxnotifycount": {"no_log": False, "type": "float"},
             "l7latencymonitoring": {
@@ -26523,6 +26917,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "edtpmtuddf": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -26578,6 +26973,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -26640,6 +27036,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["publicip", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "connfailover": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -26704,6 +27101,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nat46fragheader": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -26747,6 +27145,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "a": {"no_log": False, "type": "bool"},
             "async": {"no_log": False, "type": "bool"},
@@ -26772,6 +27171,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"elements": "str", "no_log": False, "type": "list"},
@@ -26792,6 +27192,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["local", "name", "ownergroup", "remote"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "local": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -26825,6 +27226,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dropfrag": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "dropfragcputhreshold": {"no_log": False, "type": "float"},
@@ -26887,6 +27289,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "connfailover": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -26920,6 +27323,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "destip": {"no_log": False, "type": "str"},
             "destip_alg": {"no_log": False, "type": "str"},
@@ -26959,6 +27363,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "encalgo": {
                 "choices": ["AES", "AES192", "AES256"],
@@ -27046,6 +27451,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": ["psk"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "encalgo": {
                 "choices": ["AES", "AES192", "AES256"],
@@ -27098,6 +27504,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipset_nsip6_binding": {
                 "no_log": False,
@@ -27149,6 +27556,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -27168,6 +27576,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -27225,6 +27634,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "destport": {"no_log": False, "type": "int"},
             "grepayload": {
@@ -27286,6 +27696,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dropfrag": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "dropfragcputhreshold": {"no_log": False, "type": "float"},
@@ -27351,6 +27762,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dodad": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -27420,6 +27832,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bdggrpproxyarp": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -27544,6 +27957,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acllogtime": {"no_log": False, "type": "str"},
             "allowclasseipv4": {
@@ -27650,6 +28064,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "l2connmethod": {
                 "choices": [
@@ -27686,6 +28101,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ownernode",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ownernode": {"no_log": False, "type": "float"},
             "syspriority": {"no_log": False, "type": "float"},
@@ -27720,6 +28136,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -27762,6 +28179,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -27876,6 +28294,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backuppersistencetimeout": {"no_log": False, "type": "float"},
             "cookiedomain": {"no_log": False, "type": "str"},
@@ -27947,6 +28366,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vservername"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vservername": {"no_log": False, "type": "str"},
@@ -27974,6 +28394,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "metrictable",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "lbmetrictable_metric_binding": {
                 "no_log": False,
@@ -28010,6 +28431,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["metrictable"],
         "password_keys": [],
         "primary_key": "metrictable",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "metric": {"no_log": False, "type": "str"},
             "metrictable": {"no_log": False, "type": "str"},
@@ -28243,6 +28665,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password", "radkey", "secondarypassword", "secureargs"],
         "primary_key": "monitorname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acctapplicationid": {"elements": "int", "no_log": False, "type": "list"},
             "action": {
@@ -28640,6 +29063,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["monitorname"],
         "password_keys": [],
         "primary_key": "monitorname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "metric": {"no_log": False, "type": "str"},
             "metricthreshold": {"no_log": False, "type": "float"},
@@ -28667,6 +29091,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ca", "certkeyname", "crlcheck", "monitorname", "ocspcheck"],
         "password_keys": [],
         "primary_key": "monitorname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ca": {"no_log": False, "type": "bool"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -28726,6 +29151,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["cookiepassphrase"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowboundsvcremoval": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -28845,6 +29271,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nodeid": {"no_log": False, "type": "float"},
             "persistenceparameter": {"no_log": False, "type": "str"},
@@ -28887,6 +29314,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -28942,6 +29370,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -29014,6 +29443,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -29082,6 +29512,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["cookiepassphrase"],
         "primary_key": "lbprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "computedadccookieattribute": {"no_log": False, "type": "str"},
             "cookiepassphrase": {"no_log": True, "type": "str"},
@@ -29153,6 +29584,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gatewayname", "netmask", "network", "td"],
         "password_keys": [],
         "primary_key": "network",
+        "primary_key_composite": ["netmask"],
         "readwrite_arguments": {
             "gatewayname": {"no_log": False, "type": "str"},
             "netmask": {"no_log": False, "type": "str"},
@@ -29175,6 +29607,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gatewayname", "network", "td"],
         "password_keys": [],
         "primary_key": "network",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gatewayname": {"no_log": False, "type": "str"},
             "network": {"no_log": False, "type": "str"},
@@ -29209,6 +29642,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addrportvip": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -29478,6 +29912,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nodefaultbindings", "port", "range", "servicetype", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "adfsproxyprofile": {"no_log": False, "type": "str"},
             "appflowlog": {
@@ -30305,6 +30740,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile", "name", "order"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -30345,6 +30781,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30399,6 +30836,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30453,6 +30891,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30507,6 +30946,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30561,6 +31001,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30615,6 +31056,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30669,6 +31111,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30723,6 +31166,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30777,6 +31221,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30831,6 +31276,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30885,6 +31331,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30939,6 +31386,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -30993,6 +31441,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31047,6 +31496,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31101,6 +31551,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31141,6 +31592,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "servicegroupname"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "order": {"no_log": False, "type": "float"},
@@ -31169,6 +31621,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "servicegroupname"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "order": {"no_log": False, "type": "float"},
@@ -31211,6 +31664,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31265,6 +31719,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31319,6 +31774,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31373,6 +31829,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31427,6 +31884,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": ["MQTT_JUMBO_REQ", "REQUEST", "RESPONSE"],
@@ -31475,6 +31933,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "lbuid", "port"],
         "password_keys": [],
         "primary_key": "wlmname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "katimeout": {"no_log": False, "type": "float"},
@@ -31513,6 +31972,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["vservername", "wlmname"],
         "password_keys": [],
         "primary_key": "wlmname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "vservername": {"no_log": False, "type": "str"},
             "wlmname": {"no_log": False, "type": "str"},
@@ -31533,6 +31993,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "str"},
             "linkset_channel_binding": {
@@ -31583,6 +32044,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "str"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -31602,6 +32064,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "str"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -31622,6 +32085,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ifnum",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ifnum": {"no_log": False, "type": "str"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -31647,6 +32111,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "holdtimetxmult": {"no_log": False, "type": "float"},
             "mode": {
@@ -31684,6 +32149,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "ipfrom",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipfrom": {"no_log": False, "type": "str"},
             "ipto": {"no_log": False, "type": "str"},
@@ -31712,6 +32178,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["format", "locationfile"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "format": {
                 "choices": [
@@ -31754,6 +32221,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["format", "locationfile"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "format": {
                 "choices": ["geoip-country6", "netscaler6"],
@@ -31793,6 +32261,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "context": {
                 "choices": ["custom", "geographic"],
@@ -31849,6 +32318,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["port", "transportprotocol"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "port": {"no_log": False, "type": "str"},
@@ -31908,6 +32378,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["transportprotocol"],
         "password_keys": [],
         "primary_key": "appsprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appsprofilename": {"no_log": False, "type": "str"},
             "filtering": {
@@ -32005,6 +32476,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["appsattributesname", "appsprofilename"],
         "password_keys": [],
         "primary_key": "appsprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appsattributesname": {"no_log": False, "type": "str"},
             "appsprofilename": {"no_log": False, "type": "str"},
@@ -32024,6 +32496,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["appsprofilename", "lsnport"],
         "password_keys": [],
         "primary_key": "appsprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appsprofilename": {"no_log": False, "type": "str"},
             "lsnport": {"no_log": False, "type": "str"},
@@ -32049,6 +32522,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["clientname"],
         "password_keys": [],
         "primary_key": "clientname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientname": {"no_log": False, "type": "str"},
             "lsnclient_network6_binding": {
@@ -32131,6 +32605,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["clientname", "network6", "td"],
         "password_keys": [],
         "primary_key": "clientname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientname": {"no_log": False, "type": "str"},
             "netmask": {"no_log": False, "type": "str"},
@@ -32153,6 +32628,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["clientname", "netmask", "network", "td"],
         "password_keys": [],
         "primary_key": "clientname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientname": {"no_log": False, "type": "str"},
             "netmask": {"no_log": False, "type": "str"},
@@ -32174,6 +32650,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["acl6name", "clientname", "td"],
         "password_keys": [],
         "primary_key": "clientname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl6name": {"no_log": False, "type": "str"},
             "clientname": {"no_log": False, "type": "str"},
@@ -32194,6 +32671,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["aclname", "clientname", "td"],
         "password_keys": [],
         "primary_key": "clientname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aclname": {"no_log": False, "type": "str"},
             "clientname": {"no_log": False, "type": "str"},
@@ -32266,6 +32744,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["allocpolicy", "clientname", "ip6profile", "nattype"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allocpolicy": {
                 "choices": ["IPADDRS", "PORTS"],
@@ -32490,6 +32969,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "ipsecalgprofile"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "ipsecalgprofile": {"no_log": False, "type": "str"},
@@ -32509,6 +32989,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["appsprofilename", "groupname"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appsprofilename": {"no_log": False, "type": "str"},
             "groupname": {"no_log": False, "type": "str"},
@@ -32528,6 +33009,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "httphdrlogprofilename"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "httphdrlogprofilename": {"no_log": False, "type": "str"},
@@ -32547,6 +33029,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "logprofilename"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "logprofilename": {"no_log": False, "type": "str"},
@@ -32566,6 +33049,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "poolname"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "poolname": {"no_log": False, "type": "str"},
@@ -32585,6 +33069,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "rtspalgprofilename"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "rtspalgprofilename": {"no_log": False, "type": "str"},
@@ -32604,6 +33089,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "sipalgprofilename"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "sipalgprofilename": {"no_log": False, "type": "str"},
@@ -32623,6 +33109,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "transportprofilename"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "transportprofilename": {"no_log": False, "type": "str"},
@@ -32642,6 +33129,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "pcpserver"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "pcpserver": {"no_log": False, "type": "str"},
@@ -32687,6 +33175,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "httphdrlogprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "httphdrlogprofilename": {"no_log": False, "type": "str"},
             "loghost": {
@@ -32732,6 +33221,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "natprefix", "network6", "type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "natprefix": {"no_log": False, "type": "str"},
@@ -32781,6 +33271,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "logprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "logcompact": {
@@ -32833,6 +33324,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "memlimit": {"no_log": False, "type": "float"},
             "sessionsync": {
@@ -32881,6 +33373,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nattype", "portblockallocation"],
         "password_keys": [],
         "primary_key": "poolname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "lsnpool_lsnip_binding": {
                 "no_log": False,
@@ -32927,6 +33420,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["lsnip", "ownernode", "poolname"],
         "password_keys": [],
         "primary_key": "poolname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "lsnip": {"no_log": False, "type": "str"},
             "ownernode": {"no_log": False, "type": "float"},
@@ -32971,6 +33465,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "rtspalgprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "rtspalgprofilename": {"no_log": False, "type": "str"},
             "rtspidletimeout": {"no_log": False, "type": "float"},
@@ -33002,6 +33497,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "sessionid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nodeid": {"no_log": False, "type": "float"},
             "sessionid": {"no_log": False, "type": "str"},
@@ -33030,6 +33526,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientname": {"no_log": False, "type": "str"},
             "natip": {"no_log": False, "type": "str"},
@@ -33061,6 +33558,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "callid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "callid": {"no_log": False, "type": "str"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -33122,6 +33620,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "sipalgprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "datasessionidletimeout": {"no_log": False, "type": "float"},
             "opencontactpinhole": {
@@ -33217,6 +33716,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "destip": {"no_log": False, "type": "str"},
             "dsttd": {"no_log": False, "type": "float"},
@@ -33292,6 +33792,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["transportprotocol"],
         "password_keys": [],
         "primary_key": "transportprofilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "finrsttimeout": {"no_log": False, "type": "float"},
             "groupsessionlimit": {"no_log": False, "type": "float"},
@@ -33362,6 +33863,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "eabitlength": {"no_log": False, "type": "float"},
             "mapbmr_bmrv4network_binding": {
@@ -33400,6 +33902,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "netmask", "network"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "netmask": {"no_log": False, "type": "str"},
@@ -33421,6 +33924,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["bripv6prefix", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bripv6prefix": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -33441,6 +33945,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["mapdmrname", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mapdmrname": {"no_log": False, "type": "str"},
             "mapdomain_mapbmr_binding": {
@@ -33476,6 +33981,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["mapbmrname", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mapbmrname": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -33509,6 +34015,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl6name": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -33541,6 +34048,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nat64fragheader": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -33582,6 +34090,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ifnum", "mac", "neighbor", "td", "vlan", "vtep", "vxlan"],
         "password_keys": [],
         "primary_key": "neighbor",
+        "primary_key_composite": ["td"],
         "readwrite_arguments": {
             "ifnum": {"no_log": False, "type": "str"},
             "mac": {"no_log": False, "type": "str"},
@@ -33644,6 +34153,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "vlan",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ceaserouteradv": {
                 "choices": ["NO", "YES"],
@@ -33726,6 +34236,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipv6prefix", "vlan"],
         "password_keys": [],
         "primary_key": "vlan",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipv6prefix": {"no_log": False, "type": "str"},
             "vlan": {"no_log": False, "type": "float"},
@@ -33764,6 +34275,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "netbridge_iptunnel_binding": {
@@ -33847,6 +34359,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "tunnel"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "tunnel": {"no_log": False, "type": "str"},
@@ -33866,6 +34379,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "name", "netmask"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -33886,6 +34400,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "name", "netmask"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -33906,6 +34421,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vlan"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vlan": {"no_log": False, "type": "float"},
@@ -33958,6 +34474,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mbf": {"choices": ["DISABLED", "ENABLED"], "no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -34045,6 +34562,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "natrule", "netmask", "rewriteip"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "natrule": {"no_log": False, "type": "str"},
@@ -34066,6 +34584,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "srcportrange"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "srcportrange": {"no_log": False, "type": "str"},
@@ -34086,6 +34605,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "type": {"choices": ["CLASSIC", "DFD"], "no_log": False, "type": "str"}
         },
@@ -34105,6 +34625,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "type": {"choices": ["CLASSIC", "DFD"], "no_log": False, "type": "str"}
         },
@@ -34124,6 +34645,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress", "name", "port"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -34160,6 +34682,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clienttrafficonly": {
                 "choices": ["NO", "YES"],
@@ -34225,6 +34748,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindtype": {"no_log": False, "type": "str"},
             "countavailable": {"no_log": False, "type": "str"},
@@ -34273,6 +34797,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "add": {"no_log": False, "type": "str"},
             "append": {"no_log": False, "type": "str"},
@@ -34314,6 +34839,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bandwidth": {"no_log": False, "type": "float"},
             "edition": {
@@ -34409,6 +34935,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": ["adcpassword", "password"],
         "primary_key": "type",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "activationcode": {"no_log": False, "type": "str"},
             "adcpassword": {"no_log": True, "type": "str"},
@@ -34442,6 +34969,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "changedpassword": {"no_log": False, "type": "bool"},
@@ -34506,6 +35034,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"promptstring": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": ["promptstring"],
@@ -34547,6 +35076,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "harqretxdelay": {"no_log": False, "type": "float"},
             "lr1coeflist": {"no_log": False, "type": "str"},
@@ -34611,6 +35141,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dhcpclient": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "saveroute": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
@@ -34636,6 +35167,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ownernode",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "identity": {"no_log": False, "type": "str"},
             "ownernode": {"no_log": False, "type": "float"},
@@ -34680,6 +35212,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["keyvalue"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "iv": {"no_log": False, "type": "str"},
@@ -34743,6 +35276,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["keyvalue"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "keyvalue": {"no_log": True, "type": "str"},
             "method": {
@@ -34810,6 +35344,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "detail": {"choices": ["all", "brief"], "no_log": False, "type": "str"},
@@ -34846,6 +35381,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "feature": {
                 "choices": [
@@ -34955,6 +35491,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["keyvalue"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "digest": {
@@ -34990,6 +35527,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "hostname": {"no_log": False, "type": "str"},
             "ownernode": {"no_log": False, "type": "float"},
@@ -35026,6 +35564,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "conmultiplex": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -35208,6 +35747,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "adpttimeout": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -35474,6 +36014,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allow204": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -35617,6 +36158,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ownernode", "type"],
         "password_keys": [],
         "primary_key": "ipaddress",
+        "primary_key_composite": ["td"],
         "readwrite_arguments": {
             "advertiseondefaultpartition": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -35848,6 +36390,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ownernode", "scope", "type", "vlan"],
         "password_keys": [],
         "primary_key": "ipv6address",
+        "primary_key_composite": ["td"],
         "readwrite_arguments": {
             "advertiseondefaultpartition": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -36018,6 +36561,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alert1gracetimeout": {"no_log": False, "type": "float"},
             "alert2gracetimeout": {"no_log": False, "type": "float"},
@@ -36047,6 +36591,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "serverip",
+        "primary_key_composite": ["servername"],
         "readwrite_arguments": {
             "port": {"no_log": False, "type": "float"},
             "serverip": {"no_log": False, "type": "str"},
@@ -36074,6 +36619,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["forceupdateip"],
         "password_keys": [],
         "primary_key": "licenseserverip",
+        "primary_key_composite": ["servername"],
         "readwrite_arguments": {
             "forceupdateip": {"no_log": False, "type": "bool"},
             "licensemode": {
@@ -36139,6 +36685,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "limitidentifier",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "limitidentifier": {"no_log": False, "type": "str"},
             "limittype": {
@@ -36195,6 +36742,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "selectorname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "rule": {"elements": "str", "no_log": False, "type": "list"},
             "selectorname": {"no_log": False, "type": "str"},
@@ -36215,6 +36763,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "detail": {"no_log": False, "type": "bool"},
             "limitidentifier": {"no_log": False, "type": "str"},
@@ -36235,6 +36784,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dumpsession": {"choices": ["NO", "YES"], "no_log": False, "type": "str"}
         },
@@ -36254,6 +36804,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mode": {
                 "choices": [
@@ -36339,6 +36890,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "advancedanalyticsstats": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -36474,6 +37026,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "partitionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "force": {"no_log": False, "type": "bool"},
             "maxbandwidth": {"no_log": False, "type": "float"},
@@ -36554,6 +37107,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["bridgegroup", "partitionname"],
         "password_keys": [],
         "primary_key": "partitionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bridgegroup": {"no_log": False, "type": "float"},
             "partitionname": {"no_log": False, "type": "str"},
@@ -36573,6 +37127,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["partitionname", "vlan"],
         "password_keys": [],
         "primary_key": "partitionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "partitionname": {"no_log": False, "type": "str"},
             "vlan": {"no_log": False, "type": "float"},
@@ -36592,6 +37147,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["partitionname", "vxlan"],
         "password_keys": [],
         "primary_key": "partitionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "partitionname": {"no_log": False, "type": "str"},
             "vxlan": {"no_log": False, "type": "float"},
@@ -36622,6 +37178,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "icmpthreshold": {"no_log": False, "type": "float"},
             "tcprstthreshold": {"no_log": False, "type": "float"},
@@ -36654,6 +37211,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "ipaddress",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "password": {"no_log": True, "type": "str"},
@@ -36690,6 +37248,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "servicefunctionname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ingressvlan": {"no_log": False, "type": "float"},
             "servicefunctionname": {"no_log": False, "type": "str"},
@@ -36710,6 +37269,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["servicepathname"],
         "password_keys": [],
         "primary_key": "servicepathname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nsservicepath_nsservicefunction_binding": {
                 "no_log": False,
@@ -36744,6 +37304,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["index", "servicefunction", "servicepathname"],
         "password_keys": [],
         "primary_key": "servicepathname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "index": {"no_log": False, "type": "float"},
             "servicefunction": {"no_log": False, "type": "str"},
@@ -36789,6 +37350,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "aclname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aclaction": {"choices": ["DENY"], "no_log": False, "type": "str"},
             "aclname": {"no_log": False, "type": "str"},
@@ -36839,6 +37401,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "aclname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aclaction": {"choices": ["DENY"], "no_log": False, "type": "str"},
             "aclname": {"no_log": False, "type": "str"},
@@ -36870,6 +37433,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "basethreshold": {"no_log": False, "type": "int"},
             "throttle": {
@@ -36894,6 +37458,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cleanuplevel": {
                 "choices": ["all", "global"],
@@ -36917,6 +37482,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "port": {"no_log": False, "type": "int"},
@@ -36943,6 +37509,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "memlimit": {"no_log": False, "type": "float"},
             "size": {"no_log": False, "type": "float"},
@@ -37016,6 +37583,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ackonpush": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -37338,6 +37906,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ackaggregation": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -37617,6 +38186,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "anyclient": {"no_log": False, "type": "float"},
             "anyserver": {"no_log": False, "type": "float"},
@@ -37680,6 +38250,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "interval": {"no_log": False, "type": "int"},
@@ -37734,6 +38305,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -37759,6 +38331,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "capdroppkt": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -37868,6 +38441,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["aliasname", "td", "vmac"],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aliasname": {"no_log": False, "type": "str"},
             "nstrafficdomain_bridgegroup_binding": {
@@ -37940,6 +38514,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["bridgegroup", "td"],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bridgegroup": {"no_log": False, "type": "float"},
             "td": {"no_log": False, "type": "float"},
@@ -37959,6 +38534,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["td", "vlan"],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "td": {"no_log": False, "type": "float"},
             "vlan": {"no_log": False, "type": "float"},
@@ -37978,6 +38554,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["td", "vxlan"],
         "password_keys": [],
         "primary_key": "td",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "td": {"no_log": False, "type": "float"},
             "vxlan": {"no_log": False, "type": "float"},
@@ -38029,6 +38606,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["scope"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "expires": {"no_log": False, "type": "float"},
@@ -38078,6 +38656,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cpuyield": {
                 "choices": ["DEFAULT", "NO", "YES"],
@@ -38112,6 +38691,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "buffersizemb": {"no_log": False, "type": "float"},
             "customreqhdrs": {"elements": "str", "no_log": False, "type": "list"},
@@ -38146,6 +38726,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "prefix",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "description": {"no_log": False, "type": "str"},
             "namespace": {"no_log": False, "type": "str"},
@@ -38172,6 +38753,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authentication": {
                 "choices": ["NO", "YES"],
@@ -38223,6 +38805,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "serverip",
+        "primary_key_composite": ["servername"],
         "readwrite_arguments": {
             "autokey": {"no_log": False, "type": "bool"},
             "key": {"no_log": False, "type": "float"},
@@ -38289,6 +38872,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ipv6prefix",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "autonomusprefix": {
                 "choices": ["NO", "YES"],
@@ -38363,6 +38947,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "announcemulticount": {"no_log": False, "type": "float"},
             "mapping": {
@@ -38421,6 +39006,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ipaddress"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ipaddress": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -38443,6 +39029,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "I": {"no_log": False, "type": "str"},
             "S": {"no_log": False, "type": "str"},
@@ -38472,6 +39059,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "I": {"no_log": False, "type": "str"},
             "S": {"no_log": False, "type": "str"},
@@ -38504,6 +39092,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "name", "patsetfile", "type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -38545,6 +39134,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "endrange", "index", "name", "value"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "endrange": {"no_log": False, "type": "str"},
@@ -38581,6 +39171,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientsecuritymessage": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -38653,6 +39244,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bodyexpr": {"no_log": False, "type": "str"},
             "cacheforsecs": {"no_log": False, "type": "float"},
@@ -38708,6 +39300,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["mappolicyname", "sd", "su", "td", "tu"],
         "password_keys": [],
         "primary_key": "mappolicyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "mappolicyname": {"no_log": False, "type": "str"},
             "sd": {"no_log": False, "type": "str"},
@@ -38736,6 +39329,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"timeout": {"no_log": False, "type": "float"}},
         "singleton": True,
         "update_payload_keys": ["timeout"],
@@ -38753,6 +39347,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "name", "patsetfile"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -38789,6 +39384,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["charset", "comment", "index", "name", "string"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -38908,6 +39504,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "charset": {"choices": ["ASCII", "UTF_8"], "no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -38946,6 +39543,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -38981,6 +39579,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "key", "name", "value"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "key": {"no_log": False, "type": "str"},
@@ -39028,6 +39627,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "name"],
         "password_keys": ["url"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "canaryurl": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -39063,6 +39663,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nodeid": {"no_log": False, "type": "float"},
             "reqbandsize": {"no_log": False, "type": "int"},
@@ -39089,6 +39690,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {},
         "singleton": True,
         "update_payload_keys": [],
@@ -39119,6 +39721,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "routingalgorithm": {
@@ -39149,6 +39752,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "quicsecrettimeout": {"no_log": False, "type": "float"}
         },
@@ -39219,6 +39823,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ackdelayexponent": {"no_log": False, "type": "float"},
             "activeconnectionidlimit": {"no_log": False, "type": "float"},
@@ -39293,6 +39898,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["radkey"],
         "primary_key": "nodeprefix",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "nodeprefix": {"no_log": False, "type": "str"},
             "radkey": {"no_log": True, "type": "str"},
@@ -39370,6 +39976,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["psk"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addusernameinrdpfile": {
                 "choices": ["NO", "YES"],
@@ -39483,6 +40090,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "username": {"no_log": False, "type": "str"},
@@ -39516,6 +40124,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["psk"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "psk": {"no_log": True, "type": "str"},
@@ -39543,6 +40152,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"warm": {"no_log": False, "type": "bool"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -39560,6 +40170,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["entitytypes", "name"],
         "password_keys": [],
         "primary_key": "entitytypes",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "entitytypes": {
                 "choices": [
@@ -39654,6 +40265,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["proxypassword"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "proxypassword": {"no_log": True, "type": "str"},
             "proxyport": {"no_log": False, "type": "float"},
@@ -39711,6 +40323,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bypasssafetycheck": {
                 "choices": ["NO", "YES"],
@@ -39778,6 +40391,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -39857,6 +40471,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacertfile": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -39885,6 +40500,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "timeout": {"no_log": False, "type": "float"},
             "undefaction": {"no_log": False, "type": "str"},
@@ -39927,6 +40543,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "appflowaction": {"no_log": False, "type": "str"},
@@ -39984,6 +40601,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -40056,6 +40674,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -40107,6 +40726,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["type"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -40189,6 +40809,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -40274,6 +40895,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "timeout": {"no_log": False, "type": "float"},
             "undefaction": {"no_log": False, "type": "str"},
@@ -40315,6 +40937,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -40370,6 +40993,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "transform"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -40450,6 +41074,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -40521,6 +41146,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aclname": {"no_log": False, "type": "str"},
             "connfailover": {
@@ -40659,6 +41285,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["acl6name", "network", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acl6name": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -40708,6 +41335,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "natip6", "ownergroup"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "natip6": {"no_log": False, "type": "str"},
@@ -40728,6 +41356,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "natip"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "natip": {"no_log": False, "type": "str"},
@@ -40747,6 +41376,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "retainsourceportrange"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "retainsourceportrange": {"no_log": False, "type": "str"},
@@ -40766,6 +41396,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["policy", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "policy": {"no_log": False, "type": "str"},
@@ -40792,6 +41423,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "srcippersistency": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -40820,6 +41452,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aclname": {"no_log": False, "type": "str"},
             "natip": {"no_log": False, "type": "str"},
@@ -40881,6 +41514,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ownergroup", "vlan"],
         "password_keys": [],
         "primary_key": "network",
+        "primary_key_composite": ["gateway", "netmask", "ownergroup", "td", "vlan"],
         "readwrite_arguments": {
             "advertise": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -40986,6 +41620,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ownergroup"],
         "password_keys": [],
         "primary_key": "network",
+        "primary_key_composite": ["gateway", "ownergroup", "td", "vlan", "vxlan"],
         "readwrite_arguments": {
             "advertise": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -41061,6 +41696,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "commandstring": {"no_log": False, "type": "str"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -41081,6 +41717,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "rsstype": {
                 "choices": ["ASYMMETRIC", "SYMMETRIC"],
@@ -41131,6 +41768,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["domain", "ipv6address", "querytype", "td"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "delay": {"no_log": False, "type": "float"},
@@ -41280,6 +41918,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "accessdown": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "all": {"no_log": False, "type": "bool"},
@@ -41512,6 +42151,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["monitor_name", "monstate", "name", "passive", "weight"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "monitor_name": {"no_log": False, "type": "str"},
             "monstate": {
@@ -41648,6 +42288,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appflowlog": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -41902,6 +42543,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "customserverid": {"no_log": False, "type": "str"},
             "dbsttl": {"no_log": False, "type": "float"},
@@ -41959,6 +42601,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "customserverid": {"no_log": False, "type": "str"},
             "dbsttl": {"no_log": False, "type": "float"},
@@ -42000,6 +42643,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "addrnpi": {"no_log": False, "type": "float"},
             "addrrange": {"no_log": False, "type": "str"},
@@ -42042,6 +42686,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "password": {"no_log": True, "type": "str"},
             "username": {"no_log": False, "type": "str"},
@@ -42082,6 +42727,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "trapname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "logging": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -42273,6 +42919,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["communityname", "permissions"],
         "password_keys": [],
         "primary_key": "communityname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "communityname": {"no_log": False, "type": "str"},
             "permissions": {
@@ -42302,6 +42949,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ownernode",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "engineid": {"no_log": False, "type": "str"},
             "ownernode": {"no_log": False, "type": "float"},
@@ -42322,6 +42970,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": ["securitylevel"],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "readviewname": {"no_log": False, "type": "str"},
@@ -42352,6 +43001,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ipaddress",
+        "primary_key_composite": ["netmask"],
         "readwrite_arguments": {
             "domainresolveretry": {"no_log": False, "type": "int"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -42378,6 +43028,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ownernode",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "contact": {"no_log": False, "type": "str"},
             "customid": {"no_log": False, "type": "str"},
@@ -42412,6 +43063,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "partitionnameintrap": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -42495,6 +43147,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "trapclass",
+        "primary_key_composite": ["td", "trapdestination", "version"],
         "readwrite_arguments": {
             "allpartitions": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -42573,6 +43226,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "trapclass",
+        "primary_key_composite": ["td", "trapdestination", "version"],
         "readwrite_arguments": {
             "securitylevel": {
                 "choices": ["authNoPriv", "authPriv", "noAuthNoPriv"],
@@ -42625,6 +43279,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["authpasswd", "privpasswd"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "authpasswd": {"no_log": True, "type": "str"},
             "authtype": {"choices": ["MD5", "SHA"], "no_log": False, "type": "str"},
@@ -42656,6 +43311,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": ["subtree"],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "subtree": {"no_log": False, "type": "str"},
@@ -42688,6 +43344,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["action", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"choices": ["SPILLOVER"], "no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -42723,6 +43380,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -42804,6 +43462,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacertgrpname": {"no_log": False, "type": "str"},
             "certfingerprintdigest": {
@@ -42906,6 +43565,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["cacertgroupname"],
         "password_keys": [],
         "primary_key": "cacertgroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacertgroupname": {"no_log": False, "type": "str"},
             "sslcacertgroup_sslcertkey_binding": {
@@ -42940,6 +43600,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["cacertgroupname", "certkeyname", "crlcheck", "ocspcheck"],
         "password_keys": [],
         "primary_key": "cacertgroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacertgroupname": {"no_log": False, "type": "str"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -42990,6 +43651,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["pempassphrase"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacert": {"no_log": False, "type": "str"},
             "cacertform": {"choices": ["DER", "PEM"], "no_log": False, "type": "str"},
@@ -43054,6 +43716,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -43079,6 +43742,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -43099,6 +43763,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["certkeyname"],
         "password_keys": [],
         "primary_key": "certkeyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {"certkeyname": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -43154,6 +43819,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": ["passplain"],
         "primary_key": "certkey",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bundle": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
             "cert": {"no_log": False, "type": "str"},
@@ -43210,6 +43876,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["certkey", "ocspresponder", "priority"],
         "password_keys": [],
         "primary_key": "certkey",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ca": {"no_log": False, "type": "bool"},
             "certkey": {"no_log": False, "type": "str"},
@@ -43232,6 +43899,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["bundlefile", "certkeybundlename", "passplain"],
         "password_keys": ["passplain"],
         "primary_key": "certkeybundlename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bundlefile": {"no_log": False, "type": "str"},
             "certkeybundlename": {"no_log": False, "type": "str"},
@@ -43275,6 +43943,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["challengepassword", "pempassphrase"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "challengepassword": {"no_log": True, "type": "str"},
             "commonname": {"no_log": False, "type": "str"},
@@ -43326,6 +43995,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ciphergroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphergroupname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -43370,6 +44040,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphergroupname", "cipheroperation", "ciphgrpals"],
         "password_keys": [],
         "primary_key": "ciphergroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphergroupname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -43453,6 +44124,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["crlpath", "inform"],
         "password_keys": ["password"],
         "primary_key": "crlname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "basedn": {"no_log": False, "type": "str"},
             "binary": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
@@ -43522,6 +44194,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -43547,6 +44220,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -43572,6 +44246,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bits": {"no_log": False, "type": "float"},
             "dhfile": {"no_log": False, "type": "str"},
@@ -43626,6 +44301,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "helloverifyrequest": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -43689,6 +44365,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aes256": {"no_log": False, "type": "bool"},
             "curve": {"choices": ["P_256", "P_384"], "no_log": False, "type": "str"},
@@ -43720,6 +44397,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["oldsopassword", "sopassword", "userpassword"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "fipsfw": {"no_log": False, "type": "str"},
             "hsmlabel": {"no_log": False, "type": "str"},
@@ -43763,6 +44441,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "fipskeyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "curve": {"choices": ["P_256", "P_384"], "no_log": False, "type": "str"},
             "exponent": {"choices": ["3", "F4"], "no_log": False, "type": "str"},
@@ -43794,6 +44473,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "certfile": {"no_log": False, "type": "str"},
             "sourcesecret": {"no_log": False, "type": "str"},
@@ -43815,6 +44495,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "certfile": {"no_log": False, "type": "str"},
             "keyvector": {"no_log": False, "type": "str"},
@@ -43852,6 +44533,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -43918,6 +44600,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": ["password"],
         "primary_key": "hsmkeyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "hsmkeyname": {"no_log": False, "type": "str"},
             "hsmtype": {
@@ -43951,6 +44634,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "password": {"no_log": True, "type": "str"},
@@ -43997,6 +44681,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "ssllogclauth": {
@@ -44086,6 +44771,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "batchingdelay": {"no_log": False, "type": "float"},
             "batchingdepth": {"no_log": False, "type": "float"},
@@ -44175,6 +44861,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "crlmemorysizemb": {"no_log": False, "type": "float"},
             "cryptodevdisablelimit": {"no_log": False, "type": "float"},
@@ -44327,6 +45014,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password", "pempassphrase"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aes256": {"no_log": False, "type": "bool"},
             "certfile": {"no_log": False, "type": "str"},
@@ -44356,6 +45044,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "keyfile": {"no_log": False, "type": "str"},
             "keyform": {"choices": ["DER", "PEM"], "no_log": False, "type": "str"},
@@ -44391,6 +45080,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -44431,6 +45121,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "type"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "labelname": {"no_log": False, "type": "str"},
             "sslpolicylabel_sslpolicy_binding": {
@@ -44486,6 +45177,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -44660,6 +45352,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nodefaultbindings", "sslprofiletype"],
         "password_keys": ["sessionticketkeydata"],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowextendedmastersecret": {
                 "choices": ["NO", "YES"],
@@ -45035,6 +45728,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["cipherpriority", "ecccurvename", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipherpriority": {"no_log": False, "type": "float"},
             "ecccurvename": {
@@ -45059,6 +45753,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["cipherpriority", "name", "sslicacertkey"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipherpriority": {"no_log": False, "type": "float"},
             "name": {"no_log": False, "type": "str"},
@@ -45079,6 +45774,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipheraliasname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -45101,6 +45797,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphername": {"no_log": False, "type": "str"},
             "cipherpriority": {"no_log": False, "type": "float"},
@@ -45138,6 +45835,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aes256": {"no_log": False, "type": "bool"},
             "bits": {"no_log": False, "type": "float"},
@@ -45214,6 +45912,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipherredirect": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -45536,6 +46235,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ecccurvename", "servicename"],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ecccurvename": {
                 "choices": ["ALL", "P_224", "P_256", "P_384", "P_521"],
@@ -45575,6 +46275,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ca": {"no_log": False, "type": "bool"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -45607,6 +46308,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "servicename"],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipheraliasname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -45628,6 +46330,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "servicename"],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphername": {"no_log": False, "type": "str"},
             "description": {"no_log": False, "type": "str"},
@@ -45664,6 +46367,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -45719,6 +46423,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "commonname": {"no_log": False, "type": "str"},
             "ocspstapling": {
@@ -45875,6 +46580,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ecccurvename", "servicegroupname"],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ecccurvename": {
                 "choices": ["ALL", "P_224", "P_256", "P_384", "P_521"],
@@ -45912,6 +46618,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ca": {"no_log": False, "type": "bool"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -45943,6 +46650,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "servicegroupname"],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipheraliasname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -45964,6 +46672,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "servicegroupname"],
         "password_keys": [],
         "primary_key": "servicegroupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphername": {"no_log": False, "type": "str"},
             "description": {"no_log": False, "type": "str"},
@@ -46045,6 +46754,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipherredirect": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -46471,6 +47181,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ecccurvename", "vservername"],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ecccurvename": {
                 "choices": ["ALL", "P_224", "P_256", "P_384", "P_521"],
@@ -46510,6 +47221,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ca": {"no_log": False, "type": "bool"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -46542,6 +47254,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["certkeybundlename", "snicertkeybundle", "vservername"],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "certkeybundlename": {"no_log": False, "type": "str"},
             "snicertkeybundle": {"no_log": False, "type": "bool"},
@@ -46562,6 +47275,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "vservername"],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cipheraliasname": {"no_log": False, "type": "str"},
             "ciphername": {"no_log": False, "type": "str"},
@@ -46583,6 +47297,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["ciphername", "vservername"],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "ciphername": {"no_log": False, "type": "str"},
             "description": {"no_log": False, "type": "str"},
@@ -46621,6 +47336,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "vservername",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -46660,6 +47376,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password", "salt"],
         "primary_key": "wrapkeyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "password": {"no_log": True, "type": "str"},
             "salt": {"no_log": True, "type": "str"},
@@ -46722,6 +47439,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "acceptancethreshold": {"no_log": False, "type": "str"},
             "appflowlog": {
@@ -46801,6 +47519,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "rule": {"elements": "str", "no_log": False, "type": "list"},
@@ -46821,6 +47540,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"name": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -46858,6 +47578,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cerrequesttimeout": {"no_log": False, "type": "float"},
             "healthcheck": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
@@ -46926,6 +47647,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "idleaction": {
                 "choices": ["ccrTerminate", "ccrUpdate", "delete"],
@@ -46979,6 +47701,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ip",
+        "primary_key_composite": ["vlan"],
         "readwrite_arguments": {
             "ip": {"no_log": False, "type": "str"},
             "servicepath": {"no_log": False, "type": "str"},
@@ -47019,6 +47742,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "listeningservice": {"no_log": False, "type": "str"},
             "radiusinterimasstart": {
@@ -47043,6 +47767,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "ip",
+        "primary_key_composite": ["vlan"],
         "readwrite_arguments": {
             "ip": {"no_log": False, "type": "str"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -47064,6 +47789,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"username": {"no_log": False, "type": "str"}},
         "singleton": True,
         "update_payload_keys": ["username"],
@@ -47100,6 +47826,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["filename"],
         "password_keys": [],
         "primary_key": "filename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "filename": {"no_log": False, "type": "str"},
@@ -47131,6 +47858,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "policyname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"choices": ["ALLOW", "DENY"], "no_log": False, "type": "str"},
             "cmdspec": {"no_log": False, "type": "str"},
@@ -47157,6 +47885,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "communityname": {"no_log": False, "type": "str"},
             "datapath": {"no_log": False, "type": "str"},
@@ -47183,6 +47912,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "pemode": {
                 "choices": ["CPUBOUND", "DEFAULT"],
@@ -47223,6 +47953,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "alldeleted": {"no_log": False, "type": "bool"},
             "allinactive": {"no_log": False, "type": "bool"},
@@ -47256,6 +47987,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"nodeid": {"no_log": False, "type": "float"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -47273,6 +48005,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["filecontent", "fileencoding", "filelocation", "filename"],
         "password_keys": [],
         "primary_key": "filename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "filecontent": {"no_log": False, "type": "str"},
             "fileencoding": {"no_log": False, "type": "str"},
@@ -47304,6 +48037,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -47428,6 +48162,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -47552,6 +48287,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -47676,6 +48412,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -47800,6 +48537,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -47924,6 +48662,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -48048,6 +48787,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -48190,6 +48930,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowedmanagementinterface": {
                 "choices": ["API", "CLI"],
@@ -48269,6 +49010,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "partitionname"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "partitionname": {"no_log": False, "type": "str"},
@@ -48288,6 +49030,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "policyname": {"no_log": False, "type": "str"},
@@ -48308,6 +49051,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["groupname", "username"],
         "password_keys": [],
         "primary_key": "groupname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "groupname": {"no_log": False, "type": "str"},
             "username": {"no_log": False, "type": "str"},
@@ -48328,6 +49072,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"diskcheck": {"no_log": False, "type": "bool"}},
         "singleton": True,
         "update_payload_keys": [],
@@ -48345,6 +49090,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "level": {"choices": ["basic", "extended"], "no_log": False, "type": "str"}
         },
@@ -48389,6 +49135,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "basicauth": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -48512,6 +49259,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "filename",
+        "primary_key_composite": [],
         "readwrite_arguments": {"filename": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -48529,6 +49277,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "sid",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "sid": {"no_log": False, "type": "float"},
@@ -48554,6 +49303,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "src": {"no_log": False, "type": "str"},
@@ -48612,6 +49362,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": ["password"],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "allowedmanagementinterface": {
                 "choices": ["API", "CLI"],
@@ -48691,6 +49442,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["partitionname", "username"],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "partitionname": {"no_log": False, "type": "str"},
             "username": {"no_log": False, "type": "str"},
@@ -48710,6 +49462,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["policyname", "priority", "username"],
         "password_keys": [],
         "primary_key": "username",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "policyname": {"no_log": False, "type": "str"},
             "priority": {"no_log": False, "type": "float"},
@@ -48760,6 +49513,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actionurl": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -48804,6 +49558,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policyname": {"no_log": False, "type": "str"},
@@ -48824,6 +49579,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "policyname": {"no_log": False, "type": "str"},
@@ -48844,6 +49600,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -48947,6 +49704,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -49146,6 +49904,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "assertionconsumerserviceurl": {"no_log": False, "type": "str"},
             "attribute1": {"no_log": False, "type": "str"},
@@ -49459,6 +50218,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthorizationaction": {
                 "choices": ["ALLOW", "DENY"],
@@ -49532,6 +50292,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "defaultauthorizationaction": {
                 "choices": ["ALLOW", "DENY"],
@@ -49600,6 +50361,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -49654,6 +50416,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "apptimeout": {"no_log": False, "type": "float"},
             "forcedtimeout": {
@@ -49722,6 +50485,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -49743,6 +50507,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "M": {"no_log": False, "type": "float"},
             "P": {"no_log": False, "type": "str"},
@@ -49776,6 +50541,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "I": {"no_log": False, "type": "bool"},
             "T": {"no_log": False, "type": "float"},
@@ -49828,6 +50594,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["profilename"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "cookiedomainfrom": {"no_log": False, "type": "str"},
@@ -49881,6 +50648,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -49943,6 +50711,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "logaction": {"no_log": False, "type": "str"},
@@ -49990,6 +50759,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "labelname": {"no_log": False, "type": "str"},
             "newname": {"no_log": False, "type": "str"},
@@ -50046,6 +50816,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -50088,6 +50859,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -50118,6 +50890,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "policyname", "priority", "type"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -50256,6 +51029,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -50280,6 +51054,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["loggerip"],
         "password_keys": [],
         "primary_key": "loggerip",
+        "primary_key_composite": [],
         "readwrite_arguments": {"loggerip": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -50297,6 +51072,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["url"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {"url": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -50325,6 +51101,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cloudhost": {"no_log": False, "type": "str"},
             "hoursbetweendbupdates": {"no_log": False, "type": "float"},
@@ -50367,6 +51144,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["extension", "transport"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "extension": {"no_log": False, "type": "str"},
@@ -50413,6 +51191,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["nodefaultbindings", "port", "userprotocol"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "defaultlb": {"no_log": False, "type": "str"},
@@ -50452,6 +51231,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -50507,6 +51287,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -50564,6 +51345,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -50621,6 +51403,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -50665,6 +51448,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -50728,6 +51512,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "globalbindtype": {
                 "choices": [
@@ -50790,6 +51575,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -50835,6 +51621,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -50892,6 +51679,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["comment", "labelname", "policylabeltype"],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "comment": {"no_log": False, "type": "str"},
             "labelname": {"no_log": False, "type": "str"},
@@ -50949,6 +51737,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "labelname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "invoke": {"no_log": False, "type": "bool"},
@@ -50983,6 +51772,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "quicpacingrate": {"no_log": False, "type": "float"},
             "randomsamplingpercentage": {"no_log": False, "type": "float"},
@@ -51036,6 +51826,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "aliasname": {"no_log": False, "type": "str"},
             "dynamicrouting": {
@@ -51158,6 +51949,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum", "ownergroup", "tagged"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -51179,6 +51971,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum", "ownergroup", "tagged"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -51200,6 +51993,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum", "ownergroup", "tagged"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -51221,6 +52015,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask", "ownergroup", "td"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -51243,6 +52038,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask", "ownergroup", "td"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -51289,6 +52085,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientcontrol": {
                 "choices": ["ALLOW", "DENY"],
@@ -51335,6 +52132,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "profilename": {"no_log": False, "type": "str"},
@@ -51382,6 +52180,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "profilename",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientconsumedcookies": {"no_log": False, "type": "str"},
             "javascriptrewritepolicylabel": {"no_log": False, "type": "str"},
@@ -51429,6 +52228,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["data", "filename", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "data": {"no_log": False, "type": "str"},
             "filename": {"no_log": False, "type": "str"},
@@ -51450,6 +52250,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {"name": {"no_log": False, "type": "str"}},
         "singleton": False,
         "update_payload_keys": [],
@@ -51496,6 +52297,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actionurl": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -51540,6 +52342,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["appcontroller", "gotopriorityexpression"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appcontroller": {"no_log": False, "type": "str"},
             "gotopriorityexpression": {"no_log": False, "type": "str"},
@@ -51571,6 +52374,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51605,6 +52409,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51639,6 +52444,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51673,6 +52479,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51707,6 +52514,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51741,6 +52549,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51775,6 +52584,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51809,6 +52619,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51843,6 +52654,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51877,6 +52689,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -51899,6 +52712,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "intranetdomain"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetdomain": {"no_log": False, "type": "str"},
@@ -51918,6 +52732,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "intranetip6", "numaddr"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetip6": {"no_log": False, "type": "str"},
@@ -51938,6 +52753,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "intranetip", "netmask"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetip": {"no_log": False, "type": "str"},
@@ -51958,6 +52774,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "sharefile"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "sharefile": {"no_log": False, "type": "str"},
@@ -51991,6 +52808,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "cacert": {"no_log": False, "type": "str"},
             "certkeyname": {"no_log": False, "type": "str"},
@@ -52022,6 +52840,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "staaddresstype", "staserver"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "staaddresstype": {
@@ -52058,6 +52877,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -52183,6 +53003,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["eula", "gotopriorityexpression"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "eula": {"no_log": False, "type": "str"},
             "gotopriorityexpression": {"no_log": False, "type": "str"},
@@ -52202,6 +53023,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "intranetapplication"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "intranetapplication": {"no_log": False, "type": "str"},
@@ -52221,6 +53043,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "nexthopserver"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "nexthopserver": {"no_log": False, "type": "str"},
@@ -52240,6 +53063,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "portaltheme"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "portaltheme": {"no_log": False, "type": "str"},
@@ -52271,6 +53095,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -52388,6 +53213,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "groupextraction": {"no_log": False, "type": "bool"},
@@ -52410,6 +53236,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["gotopriorityexpression", "urlname"],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "gotopriorityexpression": {"no_log": False, "type": "str"},
             "urlname": {"no_log": False, "type": "str"},
@@ -52441,6 +53268,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "builtin": {
                 "choices": ["DELETABLE", "IMMUTABLE", "MODIFIABLE", "PARTITION_ALL"],
@@ -52470,6 +53298,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -52518,6 +53347,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "intranetapplication",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "clientapplication": {"elements": "str", "no_log": False, "type": "list"},
             "destip": {"no_log": False, "type": "str"},
@@ -52570,6 +53400,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "nexthopfqdn": {"no_log": False, "type": "str"},
@@ -52684,6 +53515,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "advancedclientlessvpnmode": {
                 "choices": ["DISABLED", "ENABLED", "STRICT"],
@@ -53026,6 +53858,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "nodeid": {"no_log": False, "type": "float"},
@@ -53065,6 +53898,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "conserverurl": {"no_log": False, "type": "str"},
             "icvverification": {
@@ -53109,6 +53943,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "logindomain": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -53130,6 +53965,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["basetheme", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "basetheme": {
                 "choices": ["Default", "Greenbubble", "RfWebUI", "X1"],
@@ -53314,6 +54150,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "assertionconsumerserviceurl": {"no_log": False, "type": "str"},
             "attribute1": {"no_log": False, "type": "str"},
@@ -53752,6 +54589,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "advancedclientlessvpnmode": {
                 "choices": ["DISABLED", "ENABLED", "STRICT"],
@@ -54078,6 +54916,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -54133,6 +54972,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["qual"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "apptimeout": {"no_log": False, "type": "float"},
             "formssoaction": {"no_log": False, "type": "str"},
@@ -54190,6 +55030,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -54246,6 +55087,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "urlname",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actualurl": {"no_log": False, "type": "str"},
             "appjson": {"no_log": False, "type": "str"},
@@ -54333,6 +55175,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "actualurl": {"no_log": False, "type": "str"},
             "applicationtype": {
@@ -54399,6 +55242,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "action": {"no_log": False, "type": "str"},
             "comment": {"no_log": False, "type": "str"},
@@ -54565,6 +55409,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "advancedepa": {"choices": ["OFF", "ON"], "no_log": False, "type": "str"},
             "appflowlog": {
@@ -55358,6 +56203,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55393,6 +56239,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["analyticsprofile", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "analyticsprofile": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -55412,6 +56259,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["appcontroller", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "appcontroller": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -55447,6 +56295,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55498,6 +56347,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55549,6 +56399,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55600,6 +56451,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55651,6 +56503,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55702,6 +56555,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55753,6 +56607,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55804,6 +56659,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55855,6 +56711,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55906,6 +56763,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -55957,6 +56815,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56008,6 +56867,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56059,6 +56919,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56110,6 +56971,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56161,6 +57023,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56212,6 +57075,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56263,6 +57127,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56314,6 +57179,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56365,6 +57231,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56416,6 +57283,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56451,6 +57319,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["intranetip6", "name", "numaddr"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "intranetip6": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -56471,6 +57340,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["intranetip", "name", "netmask"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "intranetip": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -56507,6 +57377,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56558,6 +57429,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56593,6 +57465,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "sharefile"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "sharefile": {"no_log": False, "type": "str"},
@@ -56612,6 +57485,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "staaddresstype", "staserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "staaddresstype": {
@@ -56652,6 +57526,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56687,6 +57562,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["epaprofile", "epaprofileoptional", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "epaprofile": {"no_log": False, "type": "str"},
             "epaprofileoptional": {"no_log": False, "type": "bool"},
@@ -56707,6 +57583,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["eula", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "eula": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -56726,6 +57603,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["intranetapplication", "name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "intranetapplication": {"no_log": False, "type": "str"},
             "name": {"no_log": False, "type": "str"},
@@ -56745,6 +57623,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "nexthopserver"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "nexthopserver": {"no_log": False, "type": "str"},
@@ -56764,6 +57643,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "portaltheme"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "portaltheme": {"no_log": False, "type": "str"},
@@ -56799,6 +57679,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56850,6 +57731,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56885,6 +57767,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "urlname"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "urlname": {"no_log": False, "type": "str"},
@@ -56920,6 +57803,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "bindpoint": {
                 "choices": [
@@ -56994,6 +57878,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "id": {"no_log": False, "type": "float"},
@@ -57173,6 +58058,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "all": {"no_log": False, "type": "bool"},
             "id": {"no_log": False, "type": "float"},
@@ -57268,6 +58154,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -57287,6 +58174,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -57306,6 +58194,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "trackifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "trackifnum": {"no_log": False, "type": "str"},
@@ -57325,6 +58214,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -57344,6 +58234,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ifnum": {"no_log": False, "type": "str"},
@@ -57363,6 +58254,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "trackifnum"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "trackifnum": {"no_log": False, "type": "str"},
@@ -57388,6 +58280,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "deadinterval": {"no_log": False, "type": "float"},
             "hellointerval": {"no_log": False, "type": "float"},
@@ -57413,6 +58306,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": [],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "backupvserver": {"no_log": False, "type": "str"},
             "cacheable": {"choices": ["NO", "YES"], "no_log": False, "type": "str"},
@@ -57489,6 +58383,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["protocol", "type"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "dynamicrouting": {
                 "choices": ["DISABLED", "ENABLED"],
@@ -57601,6 +58496,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -57621,6 +58517,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "ipaddress", "netmask"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "ipaddress": {"no_log": False, "type": "str"},
@@ -57641,6 +58538,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["id", "srcip"],
         "password_keys": [],
         "primary_key": "id",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "id": {"no_log": False, "type": "float"},
             "srcip": {"no_log": False, "type": "str"},
@@ -57661,6 +58559,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vxlanvlanmap_vxlan_binding": {
@@ -57695,6 +58594,7 @@ NITRO_RESOURCE_MAP = {
         "immutable_keys": ["name", "vlan", "vxlan"],
         "password_keys": [],
         "primary_key": "name",
+        "primary_key_composite": [],
         "readwrite_arguments": {
             "name": {"no_log": False, "type": "str"},
             "vlan": {"elements": "str", "no_log": False, "type": "list"},
