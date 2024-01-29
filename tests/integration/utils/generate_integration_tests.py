@@ -60,6 +60,11 @@ def main(module_name, module_specific_params):
 
 
 if __name__ == "__main__":
-    module_name = "dnsproxyrecords"
-    module_specific_params = {}
+    module_name = "service"
+    module_specific_params = {
+        "name": "service-http",
+        "servicetype": "HTTP",
+        "ip": "172.18.0.4",
+        "port": "5000",
+    }
     main(module_name, module_specific_params)
