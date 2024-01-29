@@ -15,6 +15,7 @@ from ansible.module_utils._text import to_text
 from ansible.module_utils.six.moves.urllib.parse import quote
 from ansible.module_utils.urls import fetch_url
 
+from .constants import HTTP_SUCCESS_CODES
 from .decorators import trace
 from .logger import log
 
@@ -174,7 +175,14 @@ class NitroAPIClient(object):
     @trace
     def get(self, resource, id=None, args=None, attrs=None, filter=None):
         url = self.url_builder(resource, id=id, args=args, attrs=attrs, filter=filter)
-        return self.send("GET", url)
+        status_code, response_body = self.send("GET", url)
+        if status_code not in HTTP_SUCCESS_CODES:
+            return status_code, response_body
+        if "service" in response_body.keys():
+            for service in response_body["service"]:
+                if "ip" not in service.keys() and "ipaddress" in service.keys():
+                    service["ip"] = service["ipaddress"]
+        return status_code, response_body
 
     @trace
     def post(self, post_data, resource, action=None):
