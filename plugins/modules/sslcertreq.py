@@ -145,6 +145,18 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Create ssl certReq certname.csr
+  delegate_to: localhost
+  netscaler.adc.sslcertreq:
+    state: created
+    reqfile: certname.csr
+    keyfile: certname.key
+    keyform: PEM
+    countryname: IN
+    statename: KAR
+    organizationname: example
+    commonname: example
+    emailaddress: test1@example.com
 """
 
 RETURN = r"""

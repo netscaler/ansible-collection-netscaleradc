@@ -170,6 +170,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Create ssl cert certname.cert
+  delegate_to: localhost
+  netscaler.adc.sslcert:
+    state: created
+    certfile: certname.cert
+    reqfile: certname.csr
+    keyform: PEM
+    days: 1480
+    certform: PEM
+    cacert: root_cert.cert
+    cacertform: PEM
+    cakey: root_cert.key
+    cakeyform: PEM
+    caserial: root_cert.srl
+    certtype: SRVR_CERT
 """
 
 RETURN = r"""

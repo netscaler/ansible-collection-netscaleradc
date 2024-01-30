@@ -894,6 +894,8 @@ class ModuleExecutor(object):
                     or "update" in self.supported_operations
                 ):
                     self.create_or_update()
+                    if "linkcertkeyname" in self.resource_module_params:
+                        self.act_on_resource(action="link")
                 if self.module.params["state"] in {"enabled", "disabled"}:
                     if self.module.check_mode:
                         log(
@@ -931,6 +933,9 @@ class ModuleExecutor(object):
                         and NITRO_RESOURCE_MAP[self.resource_name]["bindings"]
                     ):
                         self.sync_all_bindings()
+                    # FIXME: commenting the below code as we cannot achieve idempotency for `linkcertkeyname` attribute
+                    # if "linkcertkeyname" in self.resource_module_params:
+                    #     self.act_on_resource(action="unlink")
                     self.delete()
                 else:
                     # `primary_key` will not be present for

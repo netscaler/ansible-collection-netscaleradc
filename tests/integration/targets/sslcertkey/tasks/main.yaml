@@ -1,0 +1,141 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+- name: SSLCERTKEY | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SSLCERTKEY | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SSLCERTKEY | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: SSLCERTKEY | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SSLCERTKEY | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: SSLCERTKEY | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    certkey: "{{ intermediate_cert }}"
+    cert: "{{ intermediate_cert }}.crt"
+    key: "{{ intermediate_cert }}.key"
+    linkcertkeyname: "{{ root_cert }}"
+- name: Assert | SSLCERTKEY | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: teardown.yaml
