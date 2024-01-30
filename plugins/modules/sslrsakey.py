@@ -94,7 +94,6 @@ EXAMPLES = r"""
     bits: 2048
     exponent: F4
     keyform: PEM
-
 """
 
 RETURN = r"""

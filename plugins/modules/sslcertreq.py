@@ -157,7 +157,6 @@ EXAMPLES = r"""
     organizationname: example
     commonname: example
     emailaddress: test1@example.com
-
 """
 
 RETURN = r"""

@@ -185,7 +185,6 @@ EXAMPLES = r"""
     cakeyform: PEM
     caserial: root_cert.srl
     certtype: SRVR_CERT
-
 """
 
 RETURN = r"""

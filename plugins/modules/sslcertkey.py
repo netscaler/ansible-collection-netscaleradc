@@ -171,8 +171,7 @@ EXAMPLES = r"""
     certkey: test-certkey
     cert: test-cert.cert
     key: test-cert.key
-    linkcertkeyname: root-certkey # This will link the root certkey to the server certkey
-
+    linkcertkeyname: root-certkey  # This will link the root certkey to the server certkey
 """
 
 RETURN = r"""
