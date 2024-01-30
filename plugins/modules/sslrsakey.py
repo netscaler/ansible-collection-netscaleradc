@@ -86,6 +86,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Create ssl rsakey intermediate_cert
+  delegate_to: localhost
+  netscaler.adc.sslrsakey:
+    state: created
+    keyfile: certname.key
+    bits: 2048
+    exponent: F4
+    keyform: PEM
+
 """
 
 RETURN = r"""

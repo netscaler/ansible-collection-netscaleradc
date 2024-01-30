@@ -164,6 +164,15 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Create and link server ssl certkey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    state: present
+    certkey: test-certkey
+    cert: test-cert.cert
+    key: test-cert.key
+    linkcertkeyname: root-certkey # This will link the root certkey to the server certkey
+
 """
 
 RETURN = r"""
