@@ -1,0 +1,67 @@
+---
+- name: Create ssl rsakey intermediate_cert
+  delegate_to: localhost
+  netscaler.adc.sslrsakey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: created
+    keyfile: "{{ intermediate_cert }}.key"
+    bits: 2048
+    exponent: F4
+    keyform: PEM
+- name: Create ssl certReq intermediate_cert.csr
+  delegate_to: localhost
+  netscaler.adc.sslcertreq:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: created
+    reqfile: "{{ intermediate_cert }}.csr"
+    keyfile: "{{ intermediate_cert }}.key"
+    keyform: PEM
+    countryname: IN
+    statename: KAR
+    organizationname: example
+    commonname: example
+    emailaddress: test1@example.com
+- name: Create ssl cert intermediate_cert.crt
+  delegate_to: localhost
+  netscaler.adc.sslcert:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: created
+    certfile: "{{ intermediate_cert }}.crt"
+    reqfile: "{{ intermediate_cert }}.csr"
+    keyform: PEM
+    days: 1480
+    certform: PEM
+    cacert: "{{ root_cert }}.cert"
+    cacertform: PEM
+    cakey: "{{ root_cert }}.key"
+    cakeyform: PEM
+    caserial: "{{ root_cert }}.srl"
+    certtype: SRVR_CERT
+- name: Create Root SSL CertKey
+  delegate_to: localhost
+  netscaler.adc.sslcertkey:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    certkey: "{{ root_cert }}"
+    cert: "{{ root_cert }}.cert"
+    key: "{{ root_cert }}.key"
