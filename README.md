@@ -8,7 +8,7 @@
 > ⚠️ Note:
 > The earlier `citrix.adc` ansible collection is replaced with the new `netscaler.adc` ansible collection.
 
-> The `citrix.adc` ansible collection is backed up by a se branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
+> The `citrix.adc` ansible collection is backed up by a separate branch [citrix.adc](https://github.com/netscaler/ansible-collection-netscaleradc/tree/citrix.adc)
 
 
 ## Vision
