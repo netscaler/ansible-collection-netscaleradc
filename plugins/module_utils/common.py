@@ -21,7 +21,10 @@ from .nitro_resource_map import NITRO_RESOURCE_MAP
 
 @trace
 def get_netscaler_version(client):
-    response = get_resource(client, "nsversion")
+    is_exist, response = get_resource(client, "nsversion")
+    if not is_exist:
+        log("ERROR: Failed to get NetScaler version")
+        return (0.0, 0.0)
     # response = [{'installedversion': True, 'version': 'NetScaler NS13.0: Build 79.1002.nc, Date: Jul  7 2021, 10:31:36   (64-bit)', 'mode': '1'}]
     try:
         # send a tuple of (major, minor) version. i.e. (13.0, 79.1002)
@@ -46,17 +49,22 @@ def get_resource(
         filter=filter,
     )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
-        return []
-    try:
-        # `update-only` resources return a dict instead of a list.
-        return_response = response_body[resource_name]
-        return (
-            return_response if isinstance(return_response, list) else [return_response]
-        )
-    except (
-        KeyError
-    ):  # for zero bindings, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
-        return []
+        return False, []
+    if status_code in HTTP_SUCCESS_CODES:
+        try:
+            # `update-only` resources return a dict instead of a list.
+            return_response = response_body[resource_name]
+            return (
+                True,
+                return_response
+                if isinstance(return_response, list)
+                else [return_response],
+            )
+        except (
+            KeyError
+        ):  # for zero bindings, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
+            return True, []
+    return False, []
 
 
 @trace

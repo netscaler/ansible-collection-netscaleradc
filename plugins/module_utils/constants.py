@@ -18,12 +18,6 @@ HTTP_STATUS_CODES = {
     409: "Resource already exists",
 }
 
-NETSCALER_NO_GET_RESOURCE = [
-    "login",
-    "logout",
-    "save_config",
-]
-
 NETSCALER_EMPTY_ADD_PAYLOAD_RESOURCES = [
     "logout",
 ]

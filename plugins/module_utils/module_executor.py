@@ -35,7 +35,6 @@ from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
-    NETSCALER_NO_GET_RESOURCE,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -120,7 +119,7 @@ class ModuleExecutor(object):
         self._filter_resource_module_params()
         if not self.resource_name.endswith("_binding"):
             self._filter_desired_bindings()
-        if self.resource_name not in NETSCALER_NO_GET_RESOURCE:
+        if {"get", "get-byname", "get-all"} & set(self.supported_operations):
             self.get_existing_resource()
 
     @trace
@@ -208,13 +207,23 @@ class ModuleExecutor(object):
                 del get_args["ciphername"]
 
         # binding resources require `filter` instead of `args` to uniquely identify a resource
-        existing_resource = get_resource(
+        is_exist, existing_resource = get_resource(
             self.client,
             resource_name=self.resource_name,
             resource_id=self.resource_id,
             args=get_args if not self.resource_name.endswith("_binding") else {},
             filter=get_args if self.resource_name.endswith("_binding") else {},
         )
+        if is_exist is False:
+            return {}
+        if is_exist and not existing_resource:
+            if self.resource_name == "sslcipher":
+                # FIXME: NITRO-BUG: Some resources like `sslcipher` sends only { "errorcode": 0, "message": "Done", "severity": "NONE" }, without any resource details
+                self.existing_resource[self.resource_primary_key] = self.resource_id
+            else:
+                self.existing_resource = {}
+            return self.existing_resource
+
         if len(existing_resource) > 1:
             msg = (
                 "ERROR: Found more than one resource with the same primary key %s and get arguments %s"
@@ -601,7 +610,7 @@ class ModuleExecutor(object):
             err = "`%s.binding_members` should be a `list`" % binding_name
             self.return_failure(err)
 
-        existing_bindings = get_bindings(
+        _, existing_bindings = get_bindings(
             self.client,
             binding_name=binding_name,
             binding_id=self.resource_id,
@@ -672,7 +681,7 @@ class ModuleExecutor(object):
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
             # Hence GET the existing bindings again and construct the `to_be_deleted_bindings` list
-            existing_bindings = get_bindings(
+            _, existing_bindings = get_bindings(
                 self.client,
                 binding_name=binding_name,
                 binding_id=self.resource_id,
