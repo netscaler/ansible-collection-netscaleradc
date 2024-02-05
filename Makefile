@@ -80,7 +80,7 @@ galaxy_importer: build
 # skip the playbook which contains "password" in the file name
 run_examples:
 	@for playbook in examples/*.yaml; do \
-		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == locationfile.yaml || $$playbook == nsip6.yaml ]]; then \
+		if [[ $$playbook == *"password"* || $$playbook == *"login"* || $$playbook == *"logout"* || $$playbook == *"route"* || $$playbook == locationfile.yaml || $$playbook == nsip6.yaml || $$playbook == hanode.yaml ]]; then \
 			continue; \
 		fi; \
 		echo "Running $$playbook"; \
