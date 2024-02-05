@@ -409,16 +409,27 @@ class ModuleExecutor(object):
                 )
             else:
                 self.module_result["changed"] = True
-                log(
-                    "INFO: Resource %s:%s exists. Will be UPDATED."
-                    % (
-                        self.resource_name,
-                        self.resource_id,
+                if self.resource_name.endswith("_binding"):
+                    # Generally bindings are not updated. They are removed and added again.
+                    log(
+                        "INFO: Resource %s:%s exists and is different. Will be REMOVED and ADDED."
+                        % (self.resource_name, self.resource_id)
                     )
-                )
-                ok, err = update_resource(
-                    self.client, self.resource_name, self.resource_module_params
-                )
+                    self.delete()
+                    ok, err = create_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
+                else:
+                    log(
+                        "INFO: Resource %s:%s exists. Will be UPDATED."
+                        % (
+                            self.resource_name,
+                            self.resource_id,
+                        )
+                    )
+                    ok, err = update_resource(
+                        self.client, self.resource_name, self.resource_module_params
+                    )
                 if not ok:
                     self.return_failure(err)
 

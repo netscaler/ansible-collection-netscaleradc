@@ -72,6 +72,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: Create a lb
+  delegate_to: localhost
+  netscaler.adc.lbvserver:
+    name: test_lb
+    servicetype: SSL
+- name: Create a servicegroup
+  delegate_to: localhost
+  netscaler.adc.servicegroup:
+    servicegroupname: test_sg
+    servicetype: SSL
+- name: Create a servicegroup
+  delegate_to: localhost
+  netscaler.adc.lbvserver_servicegroup_binding:
+    weight: 1
+    name: test_lb
+    servicename: test_sg
 """
 
 RETURN = r"""
