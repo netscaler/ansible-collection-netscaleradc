@@ -218,7 +218,9 @@ class ModuleExecutor(object):
             return {}
         if is_exist and not existing_resource:
             if self.resource_name == "sslcipher":
-                # FIXME: NITRO-BUG: Some resources like `sslcipher` sends only { "errorcode": 0, "message": "Done", "severity": "NONE" }, without any resource details
+                # FIXME: NITRO-BUG: Some resources like `sslcipher` sends only
+                # { "errorcode": 0, "message": "Done", "severity": "NONE" },
+                # without any resource details
                 self.existing_resource[self.resource_primary_key] = self.resource_id
             else:
                 self.existing_resource = {}
@@ -610,7 +612,7 @@ class ModuleExecutor(object):
             err = "`%s.binding_members` should be a `list`" % binding_name
             self.return_failure(err)
 
-        _, existing_bindings = get_bindings(
+        is_exists, existing_bindings = get_bindings(
             self.client,
             binding_name=binding_name,
             binding_id=self.resource_id,
@@ -681,7 +683,7 @@ class ModuleExecutor(object):
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
             # Hence GET the existing bindings again and construct the `to_be_deleted_bindings` list
-            _, existing_bindings = get_bindings(
+            is_exists, existing_bindings = get_bindings(
                 self.client,
                 binding_name=binding_name,
                 binding_id=self.resource_id,
