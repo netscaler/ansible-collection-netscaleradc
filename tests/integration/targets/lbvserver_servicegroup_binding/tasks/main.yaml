@@ -1,0 +1,135 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+- name: LBVSERVER_SERVICEGROUP_BINDING | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER_SERVICEGROUP_BINDING | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER_SERVICEGROUP_BINDING | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER_SERVICEGROUP_BINDING | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER_SERVICEGROUP_BINDING | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER_SERVICEGROUP_BINDING | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver_servicegroup_binding:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    weight: 1
+    name: "{{ lb_name }}"
+    servicename: "{{ servicegroup_name }}"
+- name: Assert | LBVSERVER_SERVICEGROUP_BINDING | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: teardown.yaml

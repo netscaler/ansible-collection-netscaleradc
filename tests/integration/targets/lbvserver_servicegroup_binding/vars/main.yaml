@@ -1,0 +1,3 @@
+---
+lb_name: test_lb
+servicegroup_name: test_sg
