@@ -1,0 +1,7 @@
+---
+intermediate_cert: test1-sni
+root_cert: ns-root
+auth_tacacs_policy_name: test-auth-tacacs-policy
+auth_tacacs_action_name: test-auth-tacacs-action
+server_name: test-tacacs-server
+server_ip: 1.1.1.1
