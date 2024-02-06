@@ -77,7 +77,7 @@ class NitroAPIClient(object):
         )
 
         # Append resource id
-        if id is not None:
+        if id:
             # if id is float type and it is equal to int(id) then convert it to int
             # Reason: nd6ravariables module has a primary key (vlan) of type float
             # however, the Nitro API expects the id to be of type int

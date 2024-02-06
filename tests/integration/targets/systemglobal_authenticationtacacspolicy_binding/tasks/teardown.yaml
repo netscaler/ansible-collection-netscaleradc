@@ -1,0 +1,44 @@
+---
+- name: Delete TACACS Policy
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.authenticationtacacspolicy:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    name: "{{ auth_tacacs_policy_name }}"
+    rule: ns_true
+    reqaction: "{{ auth_tacacs_action_name }}"
+- name: Delete TACACS Action
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.authenticationtacacsaction:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    name: "{{ auth_tacacs_action_name }}"
+    serverip: "{{ server_ip }}"
+- name: Delete Server
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.server:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    state: absent
+    name: "{{ server_name }}"
+    ipaddress: "{{ server_ip }}"
