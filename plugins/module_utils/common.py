@@ -54,6 +54,23 @@ def get_resource(
         try:
             # `update-only` resources return a dict instead of a list.
             return_response = response_body[resource_name]
+            # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
+            # So, we are converting the keys to lowercase.
+            # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
+            # These `ping` and `traceroute` do not have GET operation. So, we are not handling them here.
+            if isinstance(return_response, dict):
+                return_response = {k.lower(): v for k, v in return_response.items()}
+            elif isinstance(return_response, list):
+                return_response = [
+                    {k.lower(): v for k, v in resource.items()}
+                    for resource in return_response
+                ]
+            else:
+                log(
+                    "WARNING: Unexpected response for resource `{}`. Expected a list or a dict, but got: {}".format(
+                        resource_name, return_response
+                    )
+                )
             return (
                 True,
                 return_response
