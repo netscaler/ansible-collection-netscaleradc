@@ -38,65 +38,139 @@ def get_netscaler_version(client):
 
 
 @trace
-def get_resource(
-    client, resource_name, resource_id=None, args=None, attrs=None, filter=None
-):
-    status_code, response_body = client.get(
-        resource=resource_name,
-        id=resource_id,
-        args=args,
-        attrs=attrs,
-        filter=filter,
-    )
+def get_resource(client, resource_name, resource_id=None, resource_module_params=None):
+    if resource_module_params is None:
+        resource_module_params = {}
+    get_args = {}
+    try:
+        for k in NITRO_RESOURCE_MAP[resource_name]["get_arg_keys"]:
+            if k in resource_module_params:
+                get_args[k] = resource_module_params[k]
+    except KeyError:
+        log(
+            "WARNING: Resource name %s not found in NITRO_RESOURCE_MAP to get get_arg_keys"
+            % resource_name
+        )
+
+    # FIXME: NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
+    # Below is a hack to fix it.
+    if resource_name == "sslprofile_sslcipher_binding":
+        if "ciphername" in get_args:
+            get_args["cipheraliasname"] = get_args["ciphername"]
+            del get_args["ciphername"]
+
+    if resource_name.endswith("_binding"):
+        # binding resources require `filter` instead of `args` to uniquely identify a resource
+        status_code, response_body = client.get(
+            resource=resource_name,
+            id=resource_id,
+            filter=get_args,
+        )
+    elif resource_name in {"sslcertfile"}:
+        status_code, response_body = client.get(
+            resource=resource_name,
+            id=resource_id,
+            filter=get_args,
+        )
+    else:
+        status_code, response_body = client.get(
+            resource=resource_name,
+            id=resource_id,
+            args=get_args,
+        )
     if status_code in {HTTP_RESOURCE_NOT_FOUND}:
         return False, []
     if status_code in HTTP_SUCCESS_CODES:
-        try:
-            # `update-only` resources return a dict instead of a list.
-            return_response = response_body[resource_name]
-            return (
-                True,
-                return_response
-                if isinstance(return_response, list)
-                else [return_response],
+        # for zero bindings and some resources, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
+        if resource_name not in response_body:
+            if resource_name == "sslcipher":
+                resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
+                return True, [
+                    {resource_primary_key: resource_module_params[resource_primary_key]}
+                ]
+
+            return False, []
+        # `update-only` resources return a dict instead of a list.
+        return_response = response_body[resource_name]
+        # FIXME: NITRO-BUG: for some resources like `policypatset_pattern_binding`, NITRO returns keys with uppercase. eg: `String` for `string`.
+        # So, we are converting the keys to lowercase.
+        # except for `ping` and `traceroute`, all the othe resources returns a keys with lowercase.
+        # These `ping` and `traceroute` do not have GET operation. So, we are not handling them here.
+        if isinstance(return_response, dict):
+            return_response = [{k.lower(): v for k, v in return_response.items()}]
+        elif isinstance(return_response, list):
+            return_response = [
+                {k.lower(): v for k, v in resource.items()}
+                for resource in return_response
+            ]
+        else:
+            log(
+                "WARNING: Unexpected response for resource `{}`. Expected a list or a dict, but got: {}".format(
+                    resource_name, return_response
+                )
             )
-        except (
-            KeyError
-        ):  # for zero bindings, the response_body will be {'errorcode': 0, 'message': 'Done', 'severity': 'NONE'}
-            return True, []
+
+        # Take care of NITRO Anomolies
+        return_response = fix_nitro_anomolies(
+            resource_name, resource_module_params, return_response
+        )
+        return (True, return_response)
     return False, []
 
 
 @trace
-def get_bindings(client, binding_name, binding_id=None):
+def fix_nitro_anomolies(resource_name, resource_module_params, return_response):
+    for resource in return_response:
+        # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
+        # Hence, we will set it to `SEC` to make it idempotent
+        # Refer Issue: #324 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/324)
+        if resource_name == "lbmonitor":
+            # default value for `units3` is `SEC`
+            if (
+                "units3" not in resource_module_params
+                or resource_module_params["units3"] == "SEC"
+            ):
+                if "units3" in resource and resource["units3"] == "MIN":
+                    resource["interval"] = int(resource["interval"]) * 60
+                    resource["units3"] = "SEC"
+
+        # FIXME:NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
+        # Below is a hack to fix it.
+        elif resource_name == "sslprofile_sslcipher_binding":
+            if "ciphername" not in resource and "cipheraliasname" in resource:
+                resource["ciphername"] = resource["cipheraliasname"]
+    return return_response
+
+
+@trace
+def get_bindings(client, binding_name, binding_id, resource_module_params):
     return get_resource(
         client,
         resource_name=binding_name,
         resource_id=binding_id,
+        resource_module_params=resource_module_params,
     )
 
 
 @trace
-def is_resource_exists(
-    client, resource_name, resource_id=None, args=None, attrs=None, filter=None
-):
-    status_code, resources = client.get(
-        resource=resource_name,
-        id=resource_id,
-        args=args,
-        attrs=attrs,
-        filter=filter,
+def is_resource_exists(client, resource_name, resource_module_params):
+    resource_primary_key = get_primary_key(resource_name, resource_module_params)
+
+    resource_id = (
+        resource_module_params[resource_primary_key] if resource_primary_key else None
     )
-    # FIXME: Handle the case where invalid argument caused 599 status code
-    return True if status_code in HTTP_SUCCESS_CODES else False
+
+    is_exists, resources = get_resource(
+        client,
+        resource_name=resource_name,
+        resource_id=resource_id,
+        resource_module_params=resource_module_params,
+    )
+    return is_exists
 
 
 @trace
 def _check_create_resource_params(resource_name, resource_module_params, action=None):
-    # check if resource_module_params contains any key other than allowed keys for the resource
-    # check also if resource_module_params contains all the required keys for the resource
-    # if not, return False, err
-
     post_data = {}
 
     resource_add_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
@@ -106,21 +180,6 @@ def _check_create_resource_params(resource_name, resource_module_params, action=
         ]
     except KeyError:
         resource_action_keys = []
-
-    # resource_primary_key = get_primary_key(resource_name, resource_module_params)
-
-    # if (
-    #     resource_primary_key
-    #     and resource_primary_key not in resource_module_params.keys()
-    # ):
-    #     err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-    #         resource_primary_key, resource_name
-    #     )
-    #     log(err)
-    #     return False, err, {}
-
-    # TODO: check for other mandatory keys for the resource
-    # This will be checked by ansible itself by reading the `required` field in the schema
 
     # TODO: Should we allow non-add keys for the resource? OR should we error out if any non-add key is passed?
     for key in resource_module_params.keys():
@@ -198,51 +257,35 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
+def get_bindprimary_key(binding_name, binding_members):
+    bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
+
+    # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
+    if binding_name == "servicegroup_servicegroupmember_binding":
+        for x in binding_members:
+            if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
+                bindprimary_key = "servername"
+
+    return bindprimary_key
+
+
+@trace
 def get_primary_key(resource_name, resource_module_params):
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
-
-    # FIXME: This is a temporary fix for ntpserver resource
-    # `ntpserver` has two possible primary keys: `serverip` and `servername`
-    # But, the schema has only `serverip` as the primary key
-    # So, we are checking for `serverip` as the primary key and if it is not present, we are checking for `servername`
-    # This is a temporary fix until the schema is updated
-
     if resource_primary_key in resource_module_params.keys():
         return resource_primary_key
 
     return None
 
-    # if resource_name == "ntpserver":
-    #     if "serverip" not in resource_module_params.keys():
-    #         resource_primary_key = "servername"
-    # return resource_primary_key
-
 
 @trace
 def _check_update_resource_params(resource_name, resource_module_params):
-    # check if resource_module_params contains any key other than allowed keys for the resource
-    # check also if resource_module_params contains all the required keys for the resource
-    # if not, return False, err
-
     put_data = {}
 
     if resource_name.endswith("_binding"):
         resource_update_keys = NITRO_RESOURCE_MAP[resource_name]["add_payload_keys"]
     else:
         resource_update_keys = NITRO_RESOURCE_MAP[resource_name]["update_payload_keys"]
-
-    # resource_primary_key = get_primary_key(resource_name, resource_module_params)
-
-    # if resource_primary_key and (
-    #     resource_primary_key not in resource_module_params.keys()
-    # ):
-    #     err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-    #         resource_primary_key, resource_name
-    #     )
-    #     log(err)
-    #     return False, err, {}
-
-    # TODO: check for other mandatory keys for the resource
 
     # TODO: Should we allow non-update keys for the resource? OR should we error out if any non-update key is passed?
     for key in resource_module_params.copy().keys():
@@ -268,11 +311,6 @@ def update_resource(client, resource_name, resource_module_params):
     if not ok:
         return False, err
 
-    # if non_updatable_attributes:
-    #     for attribute in resource_module_params.keys():
-    #         if attribute in non_updatable_attributes:
-    #             del put_payload[attribute]
-
     put_data = {resource_name: put_payload}
 
     status_code, response_body = client.put(
@@ -288,33 +326,8 @@ def update_resource(client, resource_name, resource_module_params):
     )
 
 
-# @trace
-# def _check_delete_resource_params(resource_name, resource_module_params):
-#     # check if resource_module_params contains any key other than allowed keys for the resource
-#     # check also if resource_module_params contains all the required keys for the resource
-#     # if not, return False, err
-
-#     resource_primary_key = get_primary_key(resource_name, resource_module_params)
-
-#     if (
-#         resource_primary_key
-#         and resource_primary_key not in resource_module_params.keys()
-#     ):
-#         err = "ERROR: Primary key `{}` is missing for the resource `{}`".format(
-#             resource_primary_key, resource_name
-#         )
-#         log(err)
-#         return False, err
-
-#     return True, None
-
-
 @trace
 def delete_resource(client, resource_name, resource_module_params):
-    # ok, err = _check_delete_resource_params(resource_name, resource_module_params)
-    # if not ok:
-    #     return False, err
-
     resource_primary_key = get_primary_key(resource_name, resource_module_params)
 
     resource_id = (
@@ -323,27 +336,20 @@ def delete_resource(client, resource_name, resource_module_params):
 
     args = {}
     for arg_key in NITRO_RESOURCE_MAP[resource_name]["delete_arg_keys"]:
-        # FIXME: after discussion with Nitro team
         if resource_primary_key == arg_key:
             continue
-        # if (
-        #     resource_name == "lbvserver_servicegroup_binding"
-        #     and resource_primary_key == "servicename"
-        #     and arg_key == "servicename"
-        # ):
-        #     # status_code: 400;
-        #     # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceGroupName, serviceName]', 'severity': 'ERROR'}
-        #     continue
-        # elif (
-        #     resource_name == "ntpserver"
-        #     and resource_primary_key == "servername"
-        #     and arg_key == "servername"
-        # ):
-        #     # for `ntpserver`, there are two possible primary keys: `serverip` and `servername`
-        #     # But, the schema has only `serverip` as the primary key
-        #     # if `servername` is the primary_key, it will be resource_id and not arg_key
-        #     # so, we are skipping arg_key `servername` for `ntpserver`
-        #     continue
+        if resource_name == "servicegroup_servicegroupmember_binding":
+            if arg_key == "ip":
+                # Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serverName, IP]', 'severity': 'ERROR'}"
+                if "servername" in resource_module_params:
+                    if resource_module_params["servername"]:
+                        continue
+                    else:
+                        err = "ERROR: `servername` cannnot be empty for the resource `{}`".format(
+                            resource_name
+                        )
+                        return False, err
+
         try:
             args[arg_key] = resource_module_params[arg_key]
         except KeyError:
@@ -355,17 +361,8 @@ def delete_resource(client, resource_name, resource_module_params):
             )
             continue
 
-    if resource_name.endswith("_binding"):
-        if not is_resource_exists(client, resource_name, resource_id, filter=args):
-            return True, None
-    elif resource_name in {"sslcertfile"}:
-        if not is_resource_exists(client, resource_name, resource_id, filter=args):
-            return True, None
-    else:
-        if not is_resource_exists(client, resource_name, resource_id, args=args):
-            return True, None
-    # send() returned (599, {'errorcode': 278, 'message': 'Invalid argument [servicename]', 'severity': 'ERROR'})",
-    # In the above case, we can't tell if the resource exists or not. So, we are not checking for resource existence.
+    if not is_resource_exists(client, resource_name, resource_module_params):
+        return True, None
 
     status_code, response_body = client.delete(
         resource=resource_name,
@@ -403,11 +400,7 @@ def bind_resource(client, binding_name, binding_module_params):
 
 
 @trace
-def unbind_resource(client, binding_name, bindprimary_key, binding_module_params):
-    # delete all the binding_module_params key:value pairs except the bindprimary_key
-    for key in binding_module_params.copy().keys():
-        if key != bindprimary_key:
-            del binding_module_params[key]
+def unbind_resource(client, binding_name, binding_module_params):
     return delete_resource(
         client=client,
         resource_name=binding_name,

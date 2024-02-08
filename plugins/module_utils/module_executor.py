@@ -22,10 +22,12 @@ from .common import (
     disable_resource,
     enable_resource,
     get_bindings,
+    get_bindprimary_key,
     get_netscaler_version,
     get_resource,
     get_valid_desired_states,
     is_global_binding,
+    is_resource_exists,
     is_singleton_resource,
     save_config,
     unbind_resource,
@@ -177,7 +179,6 @@ class ModuleExecutor(object):
     def _filter_resource_module_params(self):
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
-            log("DEBUG: k: %s, v: %s" % (k, v))
             if (not k.endswith("_binding")) and (
                 k
                 in NITRO_RESOURCE_MAP[self.resource_name]["readwrite_arguments"].keys()
@@ -194,78 +195,28 @@ class ModuleExecutor(object):
 
     @trace
     def get_existing_resource(self):
-        get_args = {}
-        for attr in NITRO_RESOURCE_MAP[self.resource_name]["get_arg_keys"]:
-            if attr in self.resource_module_params:
-                get_args[attr] = self.resource_module_params[attr]
-
-        # FIXME: NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
-        # Below is a hack to fix it.
-        if self.resource_name == "sslprofile_sslcipher_binding":
-            if "ciphername" in get_args:
-                get_args["cipheraliasname"] = get_args["ciphername"]
-                del get_args["ciphername"]
-
-        # binding resources require `filter` instead of `args` to uniquely identify a resource
         is_exist, existing_resource = get_resource(
             self.client,
             resource_name=self.resource_name,
             resource_id=self.resource_id,
-            args=get_args if not self.resource_name.endswith("_binding") else {},
-            filter=get_args if self.resource_name.endswith("_binding") else {},
+            resource_module_params=self.resource_module_params,
         )
         if is_exist is False:
             return {}
-        if is_exist and not existing_resource:
-            if self.resource_name == "sslcipher":
-                # FIXME: NITRO-BUG: Some resources like `sslcipher` sends only
-                # { "errorcode": 0, "message": "Done", "severity": "NONE" },
-                # without any resource details
-                self.existing_resource[self.resource_primary_key] = self.resource_id
-            else:
-                self.existing_resource = {}
-            return self.existing_resource
-
         if len(existing_resource) > 1:
             msg = (
-                "ERROR: Found more than one resource with the same primary key %s and get arguments %s"
+                "ERROR: For resource `%s` Found more than one resource with the same primary key `%s` and resource_module_params %s"
                 % (
+                    self.resource_name,
                     self.resource_id,
-                    get_args,
+                    self.resource_module_params,
                 )
             )
             self.return_failure(msg)
 
-        self.existing_resource = existing_resource[0] if existing_resource else {}
-        # FIXME: NITRO-BUG: in lbmonitor, for `interval=60`, the `units3` will wrongly be set to `MIN` by the NetScaler.
-        # Hence, we will set it to `SEC` to make it idempotent
-        # Refer Issue: #324 (https://github.com/netscaler/ansible-collection-netscaleradc/issues/324)
-        if self.resource_name == "lbmonitor":
-            # default value for `units3` is `SEC`
-            if (
-                "units3" not in self.resource_module_params
-                or self.resource_module_params["units3"] == "SEC"
-            ):
-                if (
-                    "units3" in self.existing_resource
-                    and self.existing_resource["units3"] == "MIN"
-                ):
-                    self.existing_resource["interval"] = (
-                        int(self.existing_resource["interval"]) * 60
-                    )
-                    self.existing_resource["units3"] = "SEC"
+        self.existing_resource = existing_resource[0]
 
-        # FIXME:NITRO-BUG: in `sslprofile_sslcipher_binding`, the NITRO is not returning the `ciphername` attribute. It's a bug in NITRO.
-        # Below is a hack to fix it.
-        elif self.resource_name == "sslprofile_sslcipher_binding":
-            if (
-                "ciphername" not in self.existing_resource
-                and "cipheraliasname" in self.existing_resource
-            ):
-                self.existing_resource["ciphername"] = self.existing_resource[
-                    "cipheraliasname"
-                ]
-
+        # The below return is not mandatory. However, required for debugging purpose
         return self.existing_resource
 
     @trace
@@ -348,7 +299,6 @@ class ModuleExecutor(object):
 
     @trace
     def create_or_update(self):
-        # self.get_existing_resource()
         self.update_diff_list(
             existing=self.existing_resource, desired=self.resource_module_params
         )
@@ -367,9 +317,12 @@ class ModuleExecutor(object):
             if not ok:
                 self.return_failure(err)
 
-            # There can be module_params in the playbook which are not part of `add_payload_keys`, but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
-            # For example, `ntpserver` resource has `preferredntpserver` attribute which is not part of `add_payload_keys`, but part of `update_payload_keys`.
-            # If `preferredntpserver` is also part of the playbook-task, to make it true desired state, we will update the resource with the module_params
+            # There can be module_params in the playbook which are not part of `add_payload_keys`,
+            # but part of `update_payload_keys` in the NITRO_RESOURCE_MAP
+            # For example, `ntpserver` resource has `preferredntpserver` attribute
+            # which is not part of `add_payload_keys`, but part of `update_payload_keys`.
+            # If `preferredntpserver` is also part of the playbook-task, to make it true desired state,
+            # we will update the resource with the module_params
             add_payload_keys = NITRO_RESOURCE_MAP[self.resource_name][
                 "add_payload_keys"
             ]
@@ -449,7 +402,6 @@ class ModuleExecutor(object):
                 self.client, self.resource_name, self.resource_module_params
             )
         if not ok:
-            # FIXME: Should we rollback create/update?
             self.return_failure(err)
 
     @trace
@@ -467,87 +419,47 @@ class ModuleExecutor(object):
 
     @trace
     def delete_bindings(
-        self, binding_name, bindprimary_key, to_be_deleted_bindings, existing_bindings
+        self,
+        binding_name,
+        bindings_to_delete,
     ):
-        for d in list(to_be_deleted_bindings):
-            existing_binding_to_delete = {}
-            for e in existing_bindings:
-                if d == e[bindprimary_key]:
-                    existing_binding_to_delete = e
-                    break
-            if not existing_binding_to_delete:
-                msg = (
-                    "Binding %s not found in the existing resources. Continuing..." % d
+        for b in bindings_to_delete:
+            if is_resource_exists(self.client, binding_name, b):
+                ok, err = unbind_resource(
+                    self.client,
+                    binding_name=binding_name,
+                    binding_module_params=b,
                 )
-                log(msg)
-                continue
-
-            # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
-            # The `ip` and `servername` are mutually exclusive args in the `servicegroup_servicegroupmember_binding` resource
-            #  Reason:{'errorcode': 1092, 'message': 'Arguments cannot both be specified [serverName, IP]', 'severity': 'ERROR'}"
-            if binding_name == "servicegroup_servicegroupmember_binding":
-                try:
-                    if (
-                        existing_binding_to_delete["ip"] == "0.0.0.0"
-                        and existing_binding_to_delete["servername"]
-                    ):
-                        existing_binding_to_delete.pop("ip")
-                except KeyError:
-                    pass
-
-            # Remove all the key:value from deleting_existing_binding which are not part of the playbook
-            ok, err = unbind_resource(
-                self.client,
-                binding_name=binding_name,
-                bindprimary_key=bindprimary_key,
-                binding_module_params=existing_binding_to_delete,
-            )
-            if not ok:
-                return False, err
-            self.module_result["changed"] = True
-            self.update_diff_list(
-                custom_msg="-   %s--%s:%s DELETED" % (binding_name, self.resource_id, d)
-            )
-        return True, None
+                if not ok:
+                    self.return_failure(err)
+                self.module_result["changed"] = True
+                self.update_diff_list(
+                    custom_msg="-   DELETED %s--%s" % (binding_name, b)
+                )
 
     @trace
-    def add_bindings(
-        self, binding_name, bindprimary_key, to_be_added_bindings, desired_bindings
-    ):
-        for b in list(to_be_added_bindings):
-            desired_binding = {}
-            for d in desired_bindings:
-                if b == d[bindprimary_key]:
-                    desired_binding = d
-                    break
-            if not desired_binding:
-                msg = (
-                    "Binding %s not found in the module_params" % b
-                )  # This code should not hit
-                return False, msg
+    def add_bindings(self, binding_name, desired_bindings):
+        for b in desired_bindings:
             ok, err = bind_resource(
                 self.client,
                 binding_name=binding_name,
-                binding_module_params=desired_binding,
+                binding_module_params=b,
             )
             if not ok:
-                return False, err
-            self.update_diff_list(
-                custom_msg="+   %s--%s:%s ADDED" % (binding_name, self.resource_id, b)
-            )
-            self.module_result["changed"] = True
-        return True, None
+                self.return_failure(err)
+            self.update_diff_list(custom_msg="+   ADDED %s--%s" % (binding_name, b))
+        self.module_result["changed"] = True
 
     @trace
     def update_bindings(
         self,
         binding_name,
         bindprimary_key,
-        to_be_updated_bindings,
+        to_be_updated_bindprimary_keys,
         desired_bindings,
         existing_bindings,
     ):
-        for b in list(to_be_updated_bindings):
+        for b in list(to_be_updated_bindprimary_keys):
             desired_binding = {}
             for x in desired_bindings:
                 if b == x[bindprimary_key]:
@@ -575,11 +487,14 @@ class ModuleExecutor(object):
                 ok, err = unbind_resource(
                     self.client,
                     binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
                     binding_module_params=existing_binding,
                 )
                 if not ok:
                     self.return_failure(err)
+
+                self.update_diff_list(
+                    custom_msg="-   DELETED %s--%s" % (binding_name, existing_binding)
+                )
 
                 ok, err = bind_resource(
                     self.client,
@@ -588,11 +503,13 @@ class ModuleExecutor(object):
                 )
                 if not ok:
                     self.return_failure(err)
+
                 self.module_result["changed"] = True
+
                 self.update_diff_list(
-                    custom_msg="~   %s--%s:%s` UPDATED"
-                    % (binding_name, self.resource_id, b)
+                    custom_msg="+   ADDED %s--%s" % (binding_name, desired_binding)
                 )
+
             else:
                 log(
                     "INFO: Resource %s:%s's binding %s:%s exists and is identical. No change required."
@@ -612,31 +529,32 @@ class ModuleExecutor(object):
 
     @trace
     def sync_single_binding(self, binding_name):
-        bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
+        is_exists, existing_bindings = get_bindings(
+            self.client,
+            binding_name=binding_name,
+            binding_id=self.resource_id,
+            resource_module_params=self.resource_module_params,
+        )
+        log("DEBUG: Existing `%s` bindings: %s" % (binding_name, existing_bindings))
+
+        if self.module.params["state"] == "absent":
+            # In `absent` state, we will delete all the existing bindings
+            self.delete_bindings(
+                binding_name=binding_name,
+                bindings_to_delete=existing_bindings,
+            )
+            return
+
         binding_module_params = self.module.params[binding_name]
         binding_mode = binding_module_params["mode"]
-        log("INFO: Binding mode is `%s`" % binding_mode)
         desired_binding_members = binding_module_params["binding_members"]
+        bindprimary_key = get_bindprimary_key(binding_name, desired_binding_members)
+        log("INFO: Binding mode is `%s`" % binding_mode)
         log("DEBUG: Desired binding members: %s" % desired_binding_members)
 
         if not isinstance(desired_binding_members, list):
             err = "`%s.binding_members` should be a `list`" % binding_name
             self.return_failure(err)
-
-        is_exists, existing_bindings = get_bindings(
-            self.client,
-            binding_name=binding_name,
-            binding_id=self.resource_id,
-        )
-        log("DEBUG: Existing `%s` bindings: %s" % (binding_name, existing_bindings))
-
-        # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
-        # In the NITRO API spec, bind_primary_key of `servicegroup_servicegroupmember_binding` resource's wrongly documented as `ip`.
-        # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
-        if binding_name == "servicegroup_servicegroupmember_binding":
-            for x in desired_binding_members:
-                if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
-                    bindprimary_key = "servername"
 
         desired_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in desired_binding_members
@@ -644,28 +562,15 @@ class ModuleExecutor(object):
         existing_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in existing_bindings
         }
-
-        if self.module.params["state"] == "absent":
-            # In `absent` state, we will delete all the existing bindings
-            ok, err = self.delete_bindings(
-                binding_name=binding_name,
-                bindprimary_key=bindprimary_key,
-                to_be_deleted_bindings=existing_binding_members_bindprimary_keys,
-                existing_bindings=existing_bindings,
-            )
-            if not ok:
-                self.return_failure(err)
-            return
-
-        to_be_deleted_bindings = (
+        to_be_deleted_bindprimary_keys = (
             existing_binding_members_bindprimary_keys
             - desired_binding_members_bindprimary_keys
         )
-        to_be_added_bindings = (
+        to_be_added_bindprimary_keys = (
             desired_binding_members_bindprimary_keys
             - existing_binding_members_bindprimary_keys
         )
-        to_be_updated_bindings = (
+        to_be_updated_bindprimary_keys = (
             desired_binding_members_bindprimary_keys
             & existing_binding_members_bindprimary_keys
         )
@@ -678,103 +583,94 @@ class ModuleExecutor(object):
             # we will delete the existing bindings. If there are no existing and desired bindings,
             # we will do nothing.
 
-            log("DEBUG: to_be_deleted_bindings bindings: %s" % to_be_deleted_bindings)
-            log("DEBUG: to_be_added_bindings bindings: %s" % to_be_added_bindings)
-            log("DEBUG: to_be_updated_bindings bindings: %s" % to_be_updated_bindings)
+            log(
+                "INFO: to_be_deleted_bindprimary_keys bindings: %s"
+                % to_be_deleted_bindprimary_keys
+            )
+            log(
+                "INFO: to_be_added_bindprimary_keys bindings: %s"
+                % to_be_added_bindprimary_keys
+            )
+            log(
+                "INFO: to_be_updated_bindprimary_keys bindings: %s"
+                % to_be_updated_bindprimary_keys
+            )
 
-            if to_be_added_bindings:
-                ok, err = self.add_bindings(
+            if to_be_added_bindprimary_keys:
+                self.add_bindings(
                     binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_added_bindings=to_be_added_bindings,
                     desired_bindings=desired_binding_members,
                 )
-                if not ok:
-                    self.return_failure(err)
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
-            # Hence GET the existing bindings again and construct the `to_be_deleted_bindings` list
+            # Hence GET the existing bindings again and construct the `to_be_deleted_bindprimary_keys` list
             is_exists, existing_bindings = get_bindings(
                 self.client,
                 binding_name=binding_name,
                 binding_id=self.resource_id,
+                resource_module_params=self.resource_module_params,
             )
             existing_binding_members_bindprimary_keys = {
                 x[bindprimary_key] for x in existing_bindings
             }
-            to_be_deleted_bindings = (
+            to_be_deleted_bindprimary_keys = (
                 existing_binding_members_bindprimary_keys
                 - desired_binding_members_bindprimary_keys
             )
             log(
-                "DEBUG: New to_be_deleted_bindings bindings: %s"
-                % to_be_deleted_bindings
+                "INFO: New to_be_deleted_bindprimary_keys bindings: %s"
+                % to_be_deleted_bindprimary_keys
             )
 
-            if to_be_deleted_bindings:
-                ok, err = self.delete_bindings(
-                    binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_deleted_bindings=to_be_deleted_bindings,
-                    existing_bindings=existing_bindings,
-                )
-                if not ok:
-                    self.return_failure(err)
+            to_be_deleted_bindings = []
+            for b in existing_bindings:
+                if b[bindprimary_key] in to_be_deleted_bindprimary_keys:
+                    to_be_deleted_bindings.append(b)
 
-            if to_be_updated_bindings:
-                ok, err = self.update_bindings(
+            if to_be_deleted_bindprimary_keys:
+                self.delete_bindings(
+                    binding_name=binding_name,
+                    bindings_to_delete=to_be_deleted_bindings,
+                )
+
+            if to_be_updated_bindprimary_keys:
+                self.update_bindings(
                     binding_name=binding_name,
                     bindprimary_key=bindprimary_key,
-                    to_be_updated_bindings=to_be_updated_bindings,
+                    to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
                 )
-                if not ok:
-                    self.return_failure(err)
 
         elif binding_mode == "bind":
             # In `bind` mode, we will only add the bindings specified in the playbook. If a binding already exists, we will update it
 
-            log("DEBUG: To be added bindings: %s" % to_be_added_bindings)
-            log("DEBUG: To be updated bindings: %s" % to_be_updated_bindings)
+            log("INFO: To be added bindings: %s" % to_be_added_bindprimary_keys)
+            log("INFO: To be updated bindings: %s" % to_be_updated_bindprimary_keys)
 
-            if to_be_added_bindings:
-                ok, err = self.add_bindings(
+            if to_be_added_bindprimary_keys:
+                self.add_bindings(
                     binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_added_bindings=to_be_added_bindings,
                     desired_bindings=desired_binding_members,
                 )
-                if not ok:
-                    self.return_failure(err)
 
-            if to_be_updated_bindings:
-                ok, err = self.update_bindings(
+            if to_be_updated_bindprimary_keys:
+                self.update_bindings(
                     binding_name=binding_name,
                     bindprimary_key=bindprimary_key,
-                    to_be_updated_bindings=to_be_updated_bindings,
+                    to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
                 )
-                if not ok:
-                    self.return_failure(err)
 
         elif binding_mode == "unbind":
-            # In `unbind` mode, we will only delete the bindings specified in the playbook
+            # In `unbind` mode, we will only delete the bindings specified in the playbook-task
+            log("INFO: To be deleted bindings: %s" % desired_binding_members)
 
-            to_be_deleted_bindings = desired_binding_members_bindprimary_keys
-
-            log("DEBUG: To be deleted bindings: %s" % to_be_deleted_bindings)
-
-            if to_be_deleted_bindings:
-                ok, err = self.delete_bindings(
-                    binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
-                    to_be_deleted_bindings=to_be_deleted_bindings,
-                    existing_bindings=existing_bindings,
-                )
-                if not ok:
-                    self.return_failure(err)
+            self.delete_bindings(
+                binding_name=binding_name,
+                bindings_to_delete=desired_binding_members,
+            )
 
     @trace
     def is_binding_identical(
