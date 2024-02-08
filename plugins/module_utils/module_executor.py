@@ -430,12 +430,11 @@ class ModuleExecutor(object):
                     binding_module_params=b,
                 )
                 if not ok:
-                    return False, err
+                    self.return_failure(err)
                 self.module_result["changed"] = True
                 self.update_diff_list(
                     custom_msg="-   DELETED %s--%s" % (binding_name, b)
                 )
-        return True, None
 
     @trace
     def add_bindings(self, binding_name, desired_bindings):
@@ -446,10 +445,9 @@ class ModuleExecutor(object):
                 binding_module_params=b,
             )
             if not ok:
-                return False, err
+                self.return_failure(err)
             self.update_diff_list(custom_msg="+   ADDED %s--%s" % (binding_name, b))
-            self.module_result["changed"] = True
-        return True, None
+        self.module_result["changed"] = True
 
     @trace
     def update_bindings(
@@ -557,20 +555,17 @@ class ModuleExecutor(object):
                 if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
                     bindprimary_key = "servername"
 
-        desired_binding_members_bindprimary_keys = {
-            x[bindprimary_key] for x in desired_binding_members
-        }
-
         if self.module.params["state"] == "absent":
             # In `absent` state, we will delete all the existing bindings
-            ok, err = self.delete_bindings(
+            self.delete_bindings(
                 binding_name=binding_name,
                 bindings_to_delete=existing_bindings,
             )
-            if not ok:
-                self.return_failure(err)
             return
 
+        desired_binding_members_bindprimary_keys = {
+            x[bindprimary_key] for x in desired_binding_members
+        }
         existing_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in existing_bindings
         }
@@ -609,12 +604,10 @@ class ModuleExecutor(object):
             )
 
             if to_be_added_bindprimary_keys:
-                ok, err = self.add_bindings(
+                self.add_bindings(
                     binding_name=binding_name,
                     desired_bindings=desired_binding_members,
                 )
-                if not ok:
-                    self.return_failure(err)
 
             # If there is any default bindings, after adding the custom bindings, the default bindings will be deleted automatically
             # Hence GET the existing bindings again and construct the `to_be_deleted_bindprimary_keys` list
@@ -642,23 +635,19 @@ class ModuleExecutor(object):
                     to_be_deleted_bindings.append(b)
 
             if to_be_deleted_bindprimary_keys:
-                ok, err = self.delete_bindings(
+                self.delete_bindings(
                     binding_name=binding_name,
                     bindings_to_delete=to_be_deleted_bindings,
                 )
-                if not ok:
-                    self.return_failure(err)
 
             if to_be_updated_bindprimary_keys:
-                ok, err = self.update_bindings(
+                self.update_bindings(
                     binding_name=binding_name,
                     bindprimary_key=bindprimary_key,
                     to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
                 )
-                if not ok:
-                    self.return_failure(err)
 
         elif binding_mode == "bind":
             # In `bind` mode, we will only add the bindings specified in the playbook. If a binding already exists, we will update it
@@ -667,34 +656,28 @@ class ModuleExecutor(object):
             log("DEBUG: To be updated bindings: %s" % to_be_updated_bindprimary_keys)
 
             if to_be_added_bindprimary_keys:
-                ok, err = self.add_bindings(
+                self.add_bindings(
                     binding_name=binding_name,
                     desired_bindings=desired_binding_members,
                 )
-                if not ok:
-                    self.return_failure(err)
 
             if to_be_updated_bindprimary_keys:
-                ok, err = self.update_bindings(
+                self.update_bindings(
                     binding_name=binding_name,
                     bindprimary_key=bindprimary_key,
                     to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
                 )
-                if not ok:
-                    self.return_failure(err)
 
         elif binding_mode == "unbind":
             # In `unbind` mode, we will only delete the bindings specified in the playbook-task
             log("DEBUG: To be deleted bindings: %s" % desired_binding_members)
 
-            ok, err = self.delete_bindings(
+            self.delete_bindings(
                 binding_name=binding_name,
                 bindings_to_delete=desired_binding_members,
             )
-            if not ok:
-                self.return_failure(err)
 
     @trace
     def is_binding_identical(
