@@ -135,7 +135,7 @@ class NitroAPIClient(object):
         r, info = fetch_url(
             self._module, url=url, headers=self._headers, method=method, data=data
         )
-        log("DEBUG: fetch_url()-resonse-info=%s" % info)
+        log("DEBUG: fetch_url()-resonse-info= %s: %s" % (method, info))
         status_code = info["status"]
         # if status_code == -1:
         #     log("ERROR: Could not connect to the target Netscaler instance: %s" % url)
