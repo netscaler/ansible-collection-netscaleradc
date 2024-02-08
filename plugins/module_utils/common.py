@@ -257,6 +257,19 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
+def get_bindprimary_key(binding_name, binding_members):
+    bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
+
+    # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
+    if binding_name == "servicegroup_servicegroupmember_binding":
+        for x in binding_members:
+            if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
+                bindprimary_key = "servername"
+
+    return bindprimary_key
+
+
+@trace
 def get_primary_key(resource_name, resource_module_params):
     resource_primary_key = NITRO_RESOURCE_MAP[resource_name]["primary_key"]
     if resource_primary_key in resource_module_params.keys():

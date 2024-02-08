@@ -22,6 +22,7 @@ from .common import (
     disable_resource,
     enable_resource,
     get_bindings,
+    get_bindprimary_key,
     get_netscaler_version,
     get_resource,
     get_valid_desired_states,
@@ -528,17 +529,6 @@ class ModuleExecutor(object):
 
     @trace
     def sync_single_binding(self, binding_name):
-        bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
-        binding_module_params = self.module.params[binding_name]
-        binding_mode = binding_module_params["mode"]
-        log("INFO: Binding mode is `%s`" % binding_mode)
-        desired_binding_members = binding_module_params["binding_members"]
-        log("DEBUG: Desired binding members: %s" % desired_binding_members)
-
-        if not isinstance(desired_binding_members, list):
-            err = "`%s.binding_members` should be a `list`" % binding_name
-            self.return_failure(err)
-
         is_exists, existing_bindings = get_bindings(
             self.client,
             binding_name=binding_name,
@@ -547,14 +537,6 @@ class ModuleExecutor(object):
         )
         log("DEBUG: Existing `%s` bindings: %s" % (binding_name, existing_bindings))
 
-        # FIXME: This is a hack to handle `servicegroup_servicegroupmember_binding` resource
-        # In the NITRO API spec, bind_primary_key of `servicegroup_servicegroupmember_binding` resource's wrongly documented as `ip`.
-        # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
-        if binding_name == "servicegroup_servicegroupmember_binding":
-            for x in desired_binding_members:
-                if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
-                    bindprimary_key = "servername"
-
         if self.module.params["state"] == "absent":
             # In `absent` state, we will delete all the existing bindings
             self.delete_bindings(
@@ -562,6 +544,17 @@ class ModuleExecutor(object):
                 bindings_to_delete=existing_bindings,
             )
             return
+
+        binding_module_params = self.module.params[binding_name]
+        binding_mode = binding_module_params["mode"]
+        desired_binding_members = binding_module_params["binding_members"]
+        bindprimary_key = get_bindprimary_key(binding_name, desired_binding_members)
+        log("INFO: Binding mode is `%s`" % binding_mode)
+        log("DEBUG: Desired binding members: %s" % desired_binding_members)
+
+        if not isinstance(desired_binding_members, list):
+            err = "`%s.binding_members` should be a `list`" % binding_name
+            self.return_failure(err)
 
         desired_binding_members_bindprimary_keys = {
             x[bindprimary_key] for x in desired_binding_members
@@ -591,15 +584,15 @@ class ModuleExecutor(object):
             # we will do nothing.
 
             log(
-                "DEBUG: to_be_deleted_bindprimary_keys bindings: %s"
+                "INFO: to_be_deleted_bindprimary_keys bindings: %s"
                 % to_be_deleted_bindprimary_keys
             )
             log(
-                "DEBUG: to_be_added_bindprimary_keys bindings: %s"
+                "INFO: to_be_added_bindprimary_keys bindings: %s"
                 % to_be_added_bindprimary_keys
             )
             log(
-                "DEBUG: to_be_updated_bindprimary_keys bindings: %s"
+                "INFO: to_be_updated_bindprimary_keys bindings: %s"
                 % to_be_updated_bindprimary_keys
             )
 
@@ -625,7 +618,7 @@ class ModuleExecutor(object):
                 - desired_binding_members_bindprimary_keys
             )
             log(
-                "DEBUG: New to_be_deleted_bindprimary_keys bindings: %s"
+                "INFO: New to_be_deleted_bindprimary_keys bindings: %s"
                 % to_be_deleted_bindprimary_keys
             )
 
@@ -652,8 +645,8 @@ class ModuleExecutor(object):
         elif binding_mode == "bind":
             # In `bind` mode, we will only add the bindings specified in the playbook. If a binding already exists, we will update it
 
-            log("DEBUG: To be added bindings: %s" % to_be_added_bindprimary_keys)
-            log("DEBUG: To be updated bindings: %s" % to_be_updated_bindprimary_keys)
+            log("INFO: To be added bindings: %s" % to_be_added_bindprimary_keys)
+            log("INFO: To be updated bindings: %s" % to_be_updated_bindprimary_keys)
 
             if to_be_added_bindprimary_keys:
                 self.add_bindings(
@@ -672,7 +665,7 @@ class ModuleExecutor(object):
 
         elif binding_mode == "unbind":
             # In `unbind` mode, we will only delete the bindings specified in the playbook-task
-            log("DEBUG: To be deleted bindings: %s" % desired_binding_members)
+            log("INFO: To be deleted bindings: %s" % desired_binding_members)
 
             self.delete_bindings(
                 binding_name=binding_name,
