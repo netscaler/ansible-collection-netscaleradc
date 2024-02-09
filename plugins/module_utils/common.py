@@ -257,13 +257,15 @@ def create_resource(client, resource_name, resource_module_params, action=None):
 
 
 @trace
-def get_bindprimary_key(binding_name, binding_members):
+def get_bindprimary_key(binding_name, binding_member):
     bindprimary_key = NITRO_RESOURCE_MAP[binding_name]["bindprimary_key"]
 
     # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
     if binding_name == "servicegroup_servicegroupmember_binding":
-        for x in binding_members:
-            if bindprimary_key == "ip" and ("ip" not in x or x["ip"] == ""):
+        if bindprimary_key == "ip":
+            if "ip" not in binding_member or binding_member["ip"] == "0.0.0.0":
+                bindprimary_key = "servername"
+            elif "servername" in binding_member and binding_member["servername"]:
                 bindprimary_key = "servername"
 
     return bindprimary_key
@@ -346,6 +348,17 @@ def delete_resource(client, resource_name, resource_module_params):
                         continue
                     else:
                         err = "ERROR: `servername` cannnot be empty for the resource `{}`".format(
+                            resource_name
+                        )
+                        return False, err
+        if resource_name == "lbvserver_servicegroup_binding":
+            if arg_key == "servicename":
+                # Reason: {'errorcode': 1092, 'message': 'Arguments cannot both be specified [serviceName, serviceGroupName]', 'severity': 'ERROR'}
+                if "servicegroupname" in resource_module_params:
+                    if resource_module_params["servicegroupname"]:
+                        continue
+                    else:
+                        err = "ERROR: `servicegroupname` cannnot be empty for the resource `{}`".format(
                             resource_name
                         )
                         return False, err

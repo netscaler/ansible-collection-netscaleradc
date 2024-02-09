@@ -454,7 +454,6 @@ class ModuleExecutor(object):
     def update_bindings(
         self,
         binding_name,
-        bindprimary_key,
         to_be_updated_bindprimary_keys,
         desired_bindings,
         existing_bindings,
@@ -462,13 +461,13 @@ class ModuleExecutor(object):
         for b in list(to_be_updated_bindprimary_keys):
             desired_binding = {}
             for x in desired_bindings:
-                if b == x[bindprimary_key]:
+                if b == x[get_bindprimary_key(binding_name, x)]:
                     desired_binding = x
                     break
 
             existing_binding = {}
             for x in existing_bindings:
-                if b == x[bindprimary_key]:
+                if b == x[get_bindprimary_key(binding_name, x)]:
                     existing_binding = x
                     break
 
@@ -548,7 +547,6 @@ class ModuleExecutor(object):
         binding_module_params = self.module.params[binding_name]
         binding_mode = binding_module_params["mode"]
         desired_binding_members = binding_module_params["binding_members"]
-        bindprimary_key = get_bindprimary_key(binding_name, desired_binding_members)
         log("INFO: Binding mode is `%s`" % binding_mode)
         log("DEBUG: Desired binding members: %s" % desired_binding_members)
 
@@ -557,11 +555,19 @@ class ModuleExecutor(object):
             self.return_failure(err)
 
         desired_binding_members_bindprimary_keys = {
-            x[bindprimary_key] for x in desired_binding_members
+            x[get_bindprimary_key(binding_name, x)] for x in desired_binding_members
         }
         existing_binding_members_bindprimary_keys = {
-            x[bindprimary_key] for x in existing_bindings
+            x[get_bindprimary_key(binding_name, x)] for x in existing_bindings
         }
+        log(
+            "DEBUG: Existing binding members bindprimary keys: %s"
+            % existing_binding_members_bindprimary_keys
+        )
+        log(
+            "DEBUG: Desired binding members bindprimary keys: %s"
+            % desired_binding_members_bindprimary_keys
+        )
         to_be_deleted_bindprimary_keys = (
             existing_binding_members_bindprimary_keys
             - desired_binding_members_bindprimary_keys
@@ -611,7 +617,7 @@ class ModuleExecutor(object):
                 resource_module_params=self.resource_module_params,
             )
             existing_binding_members_bindprimary_keys = {
-                x[bindprimary_key] for x in existing_bindings
+                x[get_bindprimary_key(binding_name, x)] for x in existing_bindings
             }
             to_be_deleted_bindprimary_keys = (
                 existing_binding_members_bindprimary_keys
@@ -624,7 +630,10 @@ class ModuleExecutor(object):
 
             to_be_deleted_bindings = []
             for b in existing_bindings:
-                if b[bindprimary_key] in to_be_deleted_bindprimary_keys:
+                if (
+                    b[get_bindprimary_key(binding_name, b)]
+                    in to_be_deleted_bindprimary_keys
+                ):
                     to_be_deleted_bindings.append(b)
 
             if to_be_deleted_bindprimary_keys:
@@ -636,7 +645,6 @@ class ModuleExecutor(object):
             if to_be_updated_bindprimary_keys:
                 self.update_bindings(
                     binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
                     to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
@@ -657,7 +665,6 @@ class ModuleExecutor(object):
             if to_be_updated_bindprimary_keys:
                 self.update_bindings(
                     binding_name=binding_name,
-                    bindprimary_key=bindprimary_key,
                     to_be_updated_bindprimary_keys=to_be_updated_bindprimary_keys,
                     desired_bindings=desired_binding_members,
                     existing_bindings=existing_bindings,
