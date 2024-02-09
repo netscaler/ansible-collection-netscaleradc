@@ -1,3 +1,4 @@
+import copy
 import os
 
 from jinja2 import Template
@@ -5,7 +6,21 @@ from jinja2 import Template
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 
-def generate_yaml(module_name, module_specific_params, template_str):
+def generate_yaml(module_name, module_specific_params, bindings, template_str):
+    total_bindings = {}
+    if bindings:
+        total_bindings["desired"] = copy.deepcopy(bindings)
+        # change the mode in bindings to unbind and store it in total_bindings["unbind"]
+        total_bindings["unbind"] = copy.deepcopy(bindings)
+        for key in total_bindings["unbind"]:
+            total_bindings["unbind"][key]["mode"] = "unbind"
+        total_bindings["unbind"] = copy.deepcopy(bindings)
+        for key in total_bindings["unbind"]:
+            total_bindings["unbind"][key]["mode"] = "unbind"
+        total_bindings["bind"] = copy.deepcopy(bindings)
+        for key in total_bindings["bind"]:
+            total_bindings["bind"][key]["mode"] = "bind"
+
     template = Template(template_str)
     yaml_content = template.render(
         module_name=module_name,
@@ -16,6 +31,7 @@ def generate_yaml(module_name, module_specific_params, template_str):
         validate_certs="{{ validate_certs }}",
         save_config="{{ save_config }}",
         module_specific_params=module_specific_params,
+        bindings=total_bindings,
     )
 
     return yaml_content
@@ -26,16 +42,22 @@ def read_template_str(filename):
         return template_file.read()
 
 
-def generate_tasks_main_yaml(module_name, module_specific_params):
-    template_str = read_template_str(
-        HERE + os.sep + "integration_test_tasks_main_yaml.j2"
+def generate_tasks_main_yaml(module_name, module_specific_params, bindings):
+    if bindings:
+        template_file = "integration_test_tasks_main_with_bindings_yaml.j2"
+    else:
+        template_file = "integration_test_tasks_main_yaml.j2"
+    template_str = read_template_str(HERE + os.sep + template_file)
+    yaml_content = generate_yaml(
+        module_name, module_specific_params, bindings, template_str
     )
-    yaml_content = generate_yaml(module_name, module_specific_params, template_str)
     return yaml_content
 
 
-def main(module_name, module_specific_params):
-    tasks_main_yaml = generate_tasks_main_yaml(module_name, module_specific_params)
+def main(module_name, module_specific_params, bindings):
+    tasks_main_yaml = generate_tasks_main_yaml(
+        module_name, module_specific_params, bindings
+    )
 
     # mkdir -p HERE + ../targets/module_name/tasks
     target_dir = HERE + os.sep + ".." + os.sep + "targets" + os.sep + module_name
@@ -60,11 +82,39 @@ def main(module_name, module_specific_params):
 
 
 if __name__ == "__main__":
-    module_name = "service"
+    module_name = "lbvserver"
     module_specific_params = {
-        "name": "service-http",
+        "name": "lb1",
         "servicetype": "HTTP",
-        "ip": "172.18.0.4",
-        "port": "5000",
+        "ipv46": "10.10.10.11",
+        "port": "80",
+        "lbmethod": "LEASTCONNECTION",
     }
-    main(module_name, module_specific_params)
+    bindings = {
+        "lbvserver_servicegroup_binding": {
+            "mode": "desired",
+            "binding_members": [
+                {
+                    "name": "lb1",
+                    "servicename": "sg1",
+                },
+            ],
+        },
+        "lbvserver_service_binding": {
+            "mode": "desired",
+            "binding_members": [
+                {
+                    "name": "lb1",
+                    "servicename": "s1",
+                    "weight": 10,
+                },
+                {
+                    "name": "lb1",
+                    "servicename": "s2",
+                    "weight": 20,
+                },
+            ],
+        },
+    }
+
+    main(module_name, module_specific_params, bindings)

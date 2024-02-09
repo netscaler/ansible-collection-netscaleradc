@@ -1,0 +1,495 @@
+---
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: setup.yaml
+- name: LBVSERVER | ADD | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | ADD | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | ADD
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | ADD
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | ADD | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | ADD | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: LBVSERVER | UNBIND | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | UNBIND | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | UNBIND
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | UNBIND
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | UNBIND | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: unbind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | UNBIND | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: LBVSERVER | BIND | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | BIND | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | BIND
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | BIND
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | BIND | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: present
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: bind
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | BIND | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: LBVSERVER | DELETE | --check
+  delegate_to: localhost
+  register: result
+  check_mode: true
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | DELETE | --check
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | DELETE
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | DELETE
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==true"
+- name: LBVSERVER | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: LBVSERVER | DELETE | idempotent
+  delegate_to: localhost
+  register: result
+  check_mode: false
+  tags: test
+  netscaler.adc.lbvserver:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    name: lb1
+    servicetype: HTTP
+    ipv46: 10.10.10.11
+    port: 80
+    lbmethod: LEASTCONNECTION
+    lbvserver_servicegroup_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: sg1
+    lbvserver_service_binding:
+      mode: desired
+      binding_members:
+        - name: lb1
+          servicename: s1
+          weight: 10
+        - name: lb1
+          servicename: s2
+          weight: 20
+- name: Assert | LBVSERVER | DELETE | idempotent
+  tags: test
+  ansible.builtin.assert:
+    that:
+      - "result.failed==false"
+      - "result.changed==false"
+- name: Include prerequisite tasks
+  ansible.builtin.include_tasks: teardown.yaml
