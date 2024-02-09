@@ -808,6 +808,17 @@ class ModuleExecutor(object):
         if not ok:
             self.return_failure(err)
         self.module_result["changed"] = True
+        self.update_diff_list(custom_msg="+   CONFIG SAVED")
+        self.return_success()
+
+    @trace
+    def force(self):
+        # resources like hasync, hafailover, clustersync have `force` action
+        self.act_on_resource(action="force")
+        self.module_result["changed"] = True
+        self.update_diff_list(
+            custom_msg="+   %s applied" % (self.resource_name.upper())
+        )
         self.return_success()
 
     @trace
@@ -902,6 +913,7 @@ class ModuleExecutor(object):
                 ok, err = save_config(self.client)
                 if not ok:
                     self.return_failure(err)
+                self.update_diff_list(custom_msg="+   CONFIG SAVED")
             self.return_success()
         except Exception as e:
             msg = "Exception %s: %s" % (type(e), str(e))
