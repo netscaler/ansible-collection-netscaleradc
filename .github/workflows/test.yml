@@ -61,6 +61,7 @@ jobs:
       matrix:
         ansible:
           - stable-2.15
+          - stable-2.16
         python-version:
           - "3.11"
     steps:
