@@ -555,7 +555,12 @@ def get_valid_desired_states(resource_name):
     # 'unsign', 'Install', 'Ping', 'export', 'save', 'expire', 'get-all', 'flush', 'unlock', 'diff', 'Import',
     # 'disable', 'create', 'sign', 'get', 'apply', 'restore', 'unlink', 'link', 'count', 'join', 'renumber', 'sync'
     supported_operations = NITRO_RESOURCE_MAP[resource_name]["_supported_operations"]
-    if "add" in supported_operations or "update" in supported_operations:
+    if (
+        "add" in supported_operations
+        or "update" in supported_operations
+        or "Force" in supported_operations
+        or "force" in supported_operations
+    ):
         desired_states.add("present")
     if "delete" in supported_operations:
         desired_states.add("absent")

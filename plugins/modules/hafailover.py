@@ -25,11 +25,14 @@ author:
   - Sumanth Lingappa (@sumanth-lingappa)
 options:
   state:
-    choices: []
+    choices:
+      - present
     default: present
     description:
       - The state of the resource being configured by the module on the NetScaler
         ADC node.
+      - When C(present), the resource will be added/updated configured according to
+        the module's parameters.
     type: str
   force:
     type: bool
@@ -40,6 +43,9 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+- name: HA failover
+  netscaler.adc.hafailover:
+    force: true
 """
 
 RETURN = r"""
@@ -85,7 +91,7 @@ RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
 
 def main():
     executor = ModuleExecutor(RESOURCE_NAME)
-    executor.main()
+    executor.force()
 
 
 if __name__ == "__main__":

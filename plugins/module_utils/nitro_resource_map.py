@@ -124,6 +124,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -157,6 +158,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -190,6 +192,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -214,6 +217,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -448,6 +452,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -476,6 +481,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -522,6 +528,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -568,6 +575,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -614,6 +622,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -653,6 +662,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -692,6 +702,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -738,6 +749,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -774,6 +786,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -820,6 +833,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -866,6 +880,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -894,6 +909,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -949,6 +965,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1015,6 +1032,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1118,6 +1136,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1146,6 +1165,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1313,6 +1333,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1360,6 +1381,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1406,6 +1428,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1435,6 +1458,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1545,6 +1569,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1585,6 +1610,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1614,6 +1640,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1681,6 +1708,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1898,6 +1926,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1944,6 +1973,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -1990,6 +2020,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2036,6 +2067,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2075,6 +2107,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2114,6 +2147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2160,6 +2194,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2192,6 +2227,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2238,6 +2274,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2284,6 +2321,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2312,6 +2350,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2358,6 +2397,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2389,6 +2429,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2421,6 +2462,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2730,6 +2772,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2763,6 +2806,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "password", "src"],
             "link": [],
             "switch": [],
@@ -2792,6 +2836,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2828,6 +2873,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2957,6 +3003,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -2993,6 +3040,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3029,6 +3077,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3112,6 +3161,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3458,6 +3508,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3513,6 +3564,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3562,6 +3614,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3614,6 +3667,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "export", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "src"],
             "link": [],
             "switch": [],
@@ -3644,6 +3698,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3678,6 +3733,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["export"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3713,6 +3769,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3744,6 +3801,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3816,6 +3874,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3878,6 +3937,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3940,6 +4000,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -3972,6 +4033,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4004,6 +4066,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4036,6 +4099,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -4066,6 +4130,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4098,6 +4163,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -4128,6 +4194,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "delete", "export", "get", "reset"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4243,6 +4310,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4370,6 +4438,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4411,6 +4480,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4466,6 +4536,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4515,6 +4586,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -4576,6 +4648,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6112,6 +6185,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6172,6 +6246,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6252,6 +6327,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6322,6 +6398,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6420,6 +6497,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6470,6 +6548,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6527,6 +6606,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6580,6 +6660,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6678,6 +6759,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6731,6 +6813,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6802,6 +6885,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6852,6 +6936,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6902,6 +6987,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -6980,6 +7066,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7040,6 +7127,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7109,6 +7197,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7194,6 +7283,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7274,6 +7364,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7363,6 +7454,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7473,6 +7565,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7562,6 +7655,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7651,6 +7745,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7704,6 +7799,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7768,6 +7864,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7866,6 +7963,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7916,6 +8014,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -7966,6 +8065,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8036,6 +8136,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8262,6 +8363,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8326,6 +8428,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8413,6 +8516,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8466,6 +8570,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8530,6 +8635,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -8560,6 +8666,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8684,6 +8791,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [
                 "action",
                 "autoenablenewsignatures",
@@ -8749,6 +8857,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8781,6 +8890,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -8811,6 +8921,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -8843,6 +8954,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -8873,6 +8985,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -8903,6 +9016,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "export"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["appname", "apptemplatefilename", "deploymentfilename"],
             "link": [],
             "switch": [],
@@ -8940,6 +9054,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9036,6 +9151,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src"],
             "link": [],
             "switch": [],
@@ -9064,6 +9180,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9111,6 +9228,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9140,6 +9258,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "send"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9194,6 +9313,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9234,6 +9354,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9302,6 +9423,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9467,6 +9589,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9510,6 +9633,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9654,6 +9778,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9691,6 +9816,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9877,6 +10003,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -9997,6 +10124,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10144,6 +10272,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10180,6 +10309,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10231,6 +10361,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10282,6 +10413,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10365,6 +10497,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10416,6 +10549,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10473,6 +10607,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10510,6 +10645,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10555,6 +10691,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10605,6 +10742,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10642,6 +10780,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10712,6 +10851,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -10772,6 +10912,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11058,6 +11199,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11094,6 +11236,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11130,6 +11273,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11203,6 +11347,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11258,6 +11403,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11325,6 +11471,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11362,6 +11509,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11398,6 +11546,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11632,6 +11781,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11687,6 +11837,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11790,6 +11941,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11860,6 +12012,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11911,6 +12064,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -11961,6 +12115,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -12012,6 +12167,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -12170,6 +12326,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -12207,6 +12364,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -12504,6 +12662,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -12559,6 +12718,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13061,6 +13221,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13098,6 +13259,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13136,6 +13298,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13173,6 +13336,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13221,6 +13385,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13370,6 +13535,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13410,6 +13576,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13858,6 +14025,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13920,6 +14088,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -13982,6 +14151,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14044,6 +14214,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14106,6 +14277,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14168,6 +14340,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14230,6 +14403,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14292,6 +14466,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14354,6 +14529,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14416,6 +14592,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14478,6 +14655,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14540,6 +14718,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14602,6 +14781,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14664,6 +14844,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14726,6 +14907,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14788,6 +14970,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14850,6 +15033,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14912,6 +15096,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -14974,6 +15159,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15036,6 +15222,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15098,6 +15285,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15133,6 +15321,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15259,6 +15448,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15296,6 +15486,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15349,6 +15540,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15393,6 +15585,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15453,6 +15646,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15514,6 +15708,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15553,6 +15748,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15584,6 +15780,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15630,6 +15827,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15659,6 +15857,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15734,6 +15933,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15804,6 +16004,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15849,6 +16050,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -15909,6 +16111,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16262,6 +16465,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16326,6 +16530,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16398,6 +16603,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16480,6 +16686,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16532,6 +16739,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16584,6 +16792,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16932,6 +17141,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -16999,6 +17209,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17048,6 +17259,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17107,6 +17319,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17192,6 +17405,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -17230,6 +17444,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17319,6 +17534,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17349,6 +17565,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17379,6 +17596,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17414,6 +17632,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17460,6 +17679,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17679,6 +17899,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17707,6 +17928,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17789,6 +18011,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "expire", "flush", "get", "save"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17846,6 +18069,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -17919,6 +18143,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18006,6 +18231,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18064,6 +18290,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18123,6 +18350,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18151,6 +18379,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18209,6 +18438,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18342,6 +18572,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18377,6 +18608,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18405,6 +18637,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18430,6 +18663,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18463,6 +18697,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18515,6 +18750,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18566,6 +18802,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18593,6 +18830,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18769,6 +19007,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18811,6 +19050,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -18841,6 +19081,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["join"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19074,6 +19315,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19128,6 +19370,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19248,6 +19491,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19509,6 +19753,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19545,6 +19790,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19763,6 +20009,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19790,6 +20037,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19817,6 +20065,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19844,6 +20093,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19871,6 +20121,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19898,6 +20149,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19925,6 +20177,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19952,6 +20205,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -19979,6 +20233,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20006,6 +20261,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20033,6 +20289,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20060,6 +20317,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20094,6 +20352,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20138,6 +20397,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20214,6 +20474,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20295,6 +20556,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20348,6 +20610,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20397,6 +20660,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20457,6 +20721,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20521,6 +20786,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20579,6 +20845,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20650,6 +20917,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20684,6 +20952,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20754,6 +21023,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20800,6 +21070,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20860,6 +21131,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20921,6 +21193,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -20963,6 +21236,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21479,6 +21753,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21506,6 +21781,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21568,6 +21844,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21630,6 +21907,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21692,6 +21970,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21754,6 +22033,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21816,6 +22096,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21878,6 +22159,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -21940,6 +22222,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22002,6 +22285,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22064,6 +22348,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22091,6 +22376,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22153,6 +22439,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22215,6 +22502,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22277,6 +22565,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22348,6 +22637,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22392,6 +22682,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22432,6 +22723,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22486,6 +22778,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22559,6 +22852,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -22621,6 +22915,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23447,6 +23742,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23474,6 +23770,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23542,6 +23839,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23610,6 +23908,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23678,6 +23977,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23746,6 +24046,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23814,6 +24115,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23882,6 +24184,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -23950,6 +24253,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24018,6 +24322,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24086,6 +24391,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24154,6 +24460,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24222,6 +24529,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24270,6 +24578,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24338,6 +24647,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24365,6 +24675,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24393,6 +24704,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24461,6 +24773,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24529,6 +24842,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24597,6 +24911,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24665,6 +24980,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24733,6 +25049,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24768,6 +25085,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24840,6 +25158,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24869,6 +25188,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24913,6 +25233,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -24980,6 +25301,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25010,6 +25332,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25046,6 +25369,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25085,6 +25409,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25121,6 +25446,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25205,6 +25531,7 @@ NITRO_RESOURCE_MAP = {
                 "password",
                 "zonename",
             ],
+            "force": [],
             "import": ["keyname", "src"],
             "link": [],
             "switch": [],
@@ -25294,6 +25621,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25340,6 +25668,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25375,6 +25704,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25451,6 +25781,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25487,6 +25818,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25627,6 +25959,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25685,6 +26018,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25721,6 +26055,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25770,6 +26105,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25826,6 +26162,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25923,6 +26260,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -25974,6 +26312,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26018,6 +26357,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26088,6 +26428,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26134,6 +26475,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26163,6 +26505,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26188,6 +26531,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26225,6 +26569,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26260,6 +26605,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26312,6 +26658,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26357,6 +26704,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26390,6 +26738,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26509,6 +26858,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26565,6 +26915,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26613,6 +26964,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26642,6 +26994,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26702,6 +27055,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26730,6 +27084,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "delete"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26765,6 +27120,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26829,6 +27185,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26861,6 +27218,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26886,6 +27244,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["delete"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -26911,6 +27270,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27025,6 +27385,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27283,6 +27644,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27311,6 +27673,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27355,6 +27718,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27569,6 +27933,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27626,6 +27991,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27698,6 +28064,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -27805,6 +28172,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28172,6 +28540,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28225,6 +28594,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28255,6 +28625,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28283,6 +28654,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28332,6 +28704,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28381,6 +28754,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
             "create": [],
+            "force": ["force"],
             "import": [],
             "link": [],
             "switch": [],
@@ -28406,6 +28780,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["sync"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28458,6 +28833,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28569,6 +28945,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28597,6 +28974,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28625,6 +29003,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Force"],
         "action_payload_keys": {
             "create": [],
+            "force": ["force", "save"],
             "import": [],
             "link": [],
             "switch": [],
@@ -28661,6 +29040,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28775,6 +29155,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28805,6 +29186,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28861,6 +29243,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28918,6 +29301,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -28982,6 +29366,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29022,6 +29407,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29114,6 +29500,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29165,6 +29552,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Install"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29198,6 +29586,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29226,6 +29615,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29256,6 +29646,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29315,6 +29706,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29368,6 +29760,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29400,6 +29793,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29475,6 +29869,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29565,6 +29960,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29625,6 +30021,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29652,6 +30049,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29687,6 +30085,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29766,6 +30165,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29834,6 +30234,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -29898,6 +30299,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30026,6 +30428,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30151,6 +30554,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30195,6 +30599,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30232,6 +30637,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30267,6 +30673,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30373,6 +30780,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30479,6 +30887,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30513,6 +30922,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30558,6 +30968,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -30596,6 +31007,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31194,6 +31606,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31228,6 +31641,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31272,6 +31686,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31422,6 +31837,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31460,6 +31876,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31530,6 +31947,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31595,6 +32013,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31655,6 +32074,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31760,6 +32180,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31790,6 +32211,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31819,6 +32241,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -31883,6 +32306,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -32935,6 +33359,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -32963,6 +33388,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33025,6 +33451,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33087,6 +33514,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33149,6 +33577,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33211,6 +33640,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33273,6 +33703,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33335,6 +33766,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33397,6 +33829,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33459,6 +33892,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33521,6 +33955,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33583,6 +34018,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33645,6 +34081,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33707,6 +34144,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33769,6 +34207,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33831,6 +34270,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33893,6 +34333,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33929,6 +34370,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -33965,6 +34407,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34027,6 +34470,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34089,6 +34533,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34151,6 +34596,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34213,6 +34659,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34283,6 +34730,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34330,6 +34778,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34357,6 +34806,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34416,6 +34866,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34443,6 +34894,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34470,6 +34922,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34498,6 +34951,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34531,6 +34985,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34574,6 +35029,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "add", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["locationfile", "src"],
             "link": [],
             "switch": [],
@@ -34619,6 +35075,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["locationfile", "src"],
             "link": [],
             "switch": [],
@@ -34652,6 +35109,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34720,6 +35178,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34762,6 +35221,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34888,6 +35348,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34915,6 +35376,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -34942,6 +35404,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35038,6 +35501,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35068,6 +35532,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35097,6 +35562,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35125,6 +35591,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35161,6 +35628,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35432,6 +35900,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35459,6 +35928,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35486,6 +35956,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35513,6 +35984,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35540,6 +36012,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35567,6 +36040,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35594,6 +36068,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35621,6 +36096,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35648,6 +36124,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35683,6 +36160,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35748,6 +36226,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35786,6 +36265,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35855,6 +36335,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35900,6 +36381,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35961,6 +36443,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -35997,6 +36480,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36046,6 +36530,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36074,6 +36559,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36121,6 +36607,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "flush", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36157,6 +36644,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36266,6 +36754,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36341,6 +36830,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36432,6 +36922,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36491,6 +36982,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36519,6 +37011,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36547,6 +37040,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36591,6 +37085,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36626,6 +37121,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36655,6 +37151,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36710,6 +37207,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "clear", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36760,6 +37258,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36866,6 +37365,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36901,6 +37401,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -36998,6 +37499,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37025,6 +37527,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37053,6 +37556,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37081,6 +37585,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37116,6 +37621,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37231,6 +37737,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37260,6 +37767,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37287,6 +37795,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37314,6 +37823,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["apply", "clear", "renumber"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37341,6 +37851,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37370,6 +37881,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37453,6 +37965,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37495,6 +38008,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37548,6 +38062,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37629,6 +38144,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37687,6 +38203,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "diff", "get", "save", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37754,6 +38271,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37779,6 +38297,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37865,6 +38384,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37893,6 +38413,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -37940,6 +38461,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38011,6 +38533,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38081,6 +38604,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -38125,6 +38649,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38237,6 +38762,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38280,6 +38806,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38308,6 +38835,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38394,6 +38922,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38743,6 +39272,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -38855,6 +39385,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39091,6 +39622,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39320,6 +39852,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39363,6 +39896,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39392,6 +39926,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39448,6 +39983,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39525,6 +40061,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39553,6 +40090,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39581,6 +40119,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39608,6 +40147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39667,6 +40207,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39816,6 +40357,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": ["force", "partitionname", "save"],
@@ -39923,6 +40465,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39950,6 +40493,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -39977,6 +40521,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40004,6 +40549,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40044,6 +40590,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40088,6 +40635,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40116,6 +40664,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40159,6 +40708,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40195,6 +40745,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40253,6 +40804,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40303,6 +40855,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40335,6 +40888,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40366,6 +40920,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40395,6 +40950,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40423,6 +40979,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -40678,6 +41235,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41063,6 +41621,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41144,6 +41703,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41191,6 +41751,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41239,6 +41800,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41352,6 +41914,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41437,6 +42000,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41464,6 +42028,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41491,6 +42056,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41526,6 +42092,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41596,6 +42163,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41633,6 +42201,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41670,6 +42239,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41699,6 +42269,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41738,6 +42309,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41806,6 +42378,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41883,6 +42456,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41960,6 +42534,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -41990,6 +42565,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Ping"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42027,6 +42603,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Ping6"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42067,6 +42644,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42117,6 +42695,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42155,6 +42734,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42198,6 +42778,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42293,6 +42874,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42324,6 +42906,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42349,6 +42932,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42394,6 +42978,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42515,6 +43100,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["charset", "delimiter", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -42556,6 +43142,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42600,6 +43187,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42638,6 +43226,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [
                 "canaryurl",
                 "delimiter",
@@ -42687,6 +43276,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42721,6 +43311,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42754,6 +43345,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42787,6 +43379,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42822,6 +43415,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42942,6 +43536,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -42978,6 +43573,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43143,6 +43739,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43179,6 +43776,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43214,6 +43812,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Reboot"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43239,6 +43838,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43336,6 +43936,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43380,6 +43981,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43456,6 +44058,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43553,6 +44156,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "change", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["cacertfile", "comment", "name", "overwrite", "src"],
             "link": [],
             "switch": [],
@@ -43584,6 +44188,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43621,6 +44226,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43694,6 +44300,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43759,6 +44366,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43820,6 +44428,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -43903,6 +44512,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44006,6 +44616,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44043,6 +44654,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44113,6 +44725,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44186,6 +44799,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44248,6 +44862,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44408,6 +45023,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44474,6 +45090,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44502,6 +45119,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44529,6 +45147,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44556,6 +45175,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44584,6 +45204,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44620,6 +45241,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["flush"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44658,6 +45280,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44767,6 +45390,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44870,6 +45494,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44898,6 +45523,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -44940,6 +45566,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45015,6 +45642,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45344,6 +45972,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45389,6 +46018,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45721,6 +46351,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45785,6 +46416,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45846,6 +46478,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45903,6 +46536,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -45939,6 +46573,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46145,6 +46780,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46177,6 +46813,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46205,6 +46842,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46238,6 +46876,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46267,6 +46906,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46298,6 +46938,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46370,6 +47011,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46463,6 +47105,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46524,6 +47167,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46570,6 +47214,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46610,6 +47255,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46648,6 +47294,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46679,6 +47326,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46847,6 +47495,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46890,6 +47539,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -46942,6 +47592,7 @@ NITRO_RESOURCE_MAP = {
                 "reqfile",
                 "subjectaltname",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47009,6 +47660,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src"],
             "link": [],
             "switch": [],
@@ -47037,6 +47689,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src"],
             "link": [],
             "switch": [],
@@ -47065,6 +47718,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47102,6 +47756,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": ["certkey", "linkcertkeyname"],
             "switch": [],
@@ -47188,6 +47843,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47217,6 +47873,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47263,6 +47920,7 @@ NITRO_RESOURCE_MAP = {
                 "statename",
                 "subjectaltname",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47317,6 +47975,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47364,6 +48023,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47421,6 +48081,7 @@ NITRO_RESOURCE_MAP = {
                 "password",
                 "revoke",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47527,6 +48188,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src"],
             "link": [],
             "switch": [],
@@ -47555,6 +48217,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src"],
             "link": [],
             "switch": [],
@@ -47583,6 +48246,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["create"],
         "action_payload_keys": {
             "create": ["bits", "dhfile", "gen"],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47620,6 +48284,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47706,6 +48371,7 @@ NITRO_RESOURCE_MAP = {
                 "password",
                 "pkcs8",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47740,6 +48406,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change", "get", "reset", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47786,6 +48453,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": ["curve", "exponent", "fipskeyname", "keytype", "modulus"],
+            "force": [],
             "import": ["exponent", "fipskeyname", "inform", "iv", "key", "wrapkeyname"],
             "link": [],
             "switch": [],
@@ -47825,6 +48493,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47854,6 +48523,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["enable", "init"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47884,6 +48554,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -47959,6 +48630,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48009,6 +48681,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "password", "src"],
             "link": [],
             "switch": [],
@@ -48046,6 +48719,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48119,6 +48793,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48215,6 +48890,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48402,6 +49078,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48439,6 +49116,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["convert"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48477,6 +49155,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48525,6 +49204,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48573,6 +49253,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -48633,6 +49314,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49149,6 +49831,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49181,6 +49864,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49209,6 +49893,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49239,6 +49924,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49278,6 +49964,7 @@ NITRO_RESOURCE_MAP = {
                 "password",
                 "pkcs8",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49313,6 +50000,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49688,6 +50376,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49719,6 +50408,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49775,6 +50465,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49804,6 +50495,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49832,6 +50524,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -49884,6 +50577,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50070,6 +50764,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50101,6 +50796,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50154,6 +50850,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50183,6 +50880,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50211,6 +50909,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50701,6 +51400,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50732,6 +51432,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50788,6 +51489,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50816,6 +51518,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50845,6 +51548,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50873,6 +51577,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50932,6 +51637,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "create", "delete", "get"],
         "action_payload_keys": {
             "create": ["password", "salt", "wrapkeyname"],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -50969,6 +51675,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51084,6 +51791,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51112,6 +51820,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51137,6 +51846,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51223,6 +51933,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51272,6 +51983,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51322,6 +52034,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51354,6 +52067,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51383,6 +52097,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51422,6 +52137,7 @@ NITRO_RESOURCE_MAP = {
                 "level",
                 "uselocaltimezone",
             ],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51461,6 +52177,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51490,6 +52207,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51519,6 +52237,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51550,6 +52269,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51608,6 +52328,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["disable", "enable", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51633,6 +52354,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51663,6 +52385,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51795,6 +52518,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -51927,6 +52651,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52059,6 +52784,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52191,6 +52917,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52323,6 +53050,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52455,6 +53183,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52595,6 +53324,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52697,6 +53427,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52724,6 +53455,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52752,6 +53484,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52779,6 +53512,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["check"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52804,6 +53538,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["change"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52831,6 +53566,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -52977,6 +53713,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "create", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": ["filename"],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53002,6 +53739,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "get-byname", "kill"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53030,6 +53768,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Import", "delete", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": ["name", "src", "sshkeytype"],
             "link": [],
             "switch": [],
@@ -53071,6 +53810,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53179,6 +53919,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53206,6 +53947,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53242,6 +53984,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53311,6 +54054,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53339,6 +54083,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53367,6 +54112,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53478,6 +54224,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53534,6 +54281,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -53971,6 +54719,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54060,6 +54809,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54142,6 +54892,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54179,6 +54930,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54270,6 +55022,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54299,6 +55052,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Traceroute"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54340,6 +55094,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["Traceroute6"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54386,6 +55141,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54441,6 +55197,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54521,6 +55278,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54576,6 +55334,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54625,6 +55384,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54685,6 +55445,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54719,6 +55480,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54864,6 +55626,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54896,6 +55659,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54921,6 +55685,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "clear", "count", "get"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54946,6 +55711,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -54997,6 +55763,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55037,6 +55804,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55088,6 +55856,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55137,6 +55906,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55209,6 +55979,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55261,6 +56032,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55313,6 +56085,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55384,6 +56157,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55464,6 +56238,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55503,6 +56278,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55575,6 +56351,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55627,6 +56404,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55679,6 +56457,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55715,6 +56494,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55866,6 +56646,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55895,6 +56676,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55924,6 +56706,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55953,6 +56736,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -55983,6 +56767,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56021,6 +56806,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56085,6 +56871,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56122,6 +56909,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56190,6 +56978,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56219,6 +57008,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56252,6 +57042,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56321,6 +57112,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56348,6 +57140,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56390,6 +57183,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56432,6 +57226,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56474,6 +57269,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56516,6 +57312,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56558,6 +57355,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56600,6 +57398,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56642,6 +57441,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56684,6 +57484,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56726,6 +57527,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56768,6 +57570,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56795,6 +57598,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56823,6 +57627,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56851,6 +57656,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56878,6 +57684,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56931,6 +57738,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -56963,6 +57771,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57108,6 +57917,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57135,6 +57945,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57162,6 +57973,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57189,6 +58001,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57216,6 +58029,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57341,6 +58155,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57383,6 +58198,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57410,6 +58226,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-all"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57458,6 +58275,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57488,6 +58306,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57560,6 +58379,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -57610,6 +58430,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58041,6 +58862,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["count", "get", "kill"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58078,6 +58900,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58130,6 +58953,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58159,6 +58983,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58199,6 +59024,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -58640,6 +59466,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59116,6 +59943,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59153,6 +59981,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59234,6 +60063,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59271,6 +60101,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59363,6 +60194,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59452,6 +60284,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -59496,6 +60329,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60407,6 +61241,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60466,6 +61301,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60493,6 +61329,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60520,6 +61357,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60579,6 +61417,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60638,6 +61477,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60697,6 +61537,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60756,6 +61597,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60815,6 +61657,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60874,6 +61717,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60933,6 +61777,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -60992,6 +61837,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61051,6 +61897,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61110,6 +61957,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61169,6 +62017,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61228,6 +62077,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61287,6 +62137,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61346,6 +62197,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61405,6 +62257,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61464,6 +62317,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61523,6 +62377,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61582,6 +62437,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61641,6 +62497,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61700,6 +62557,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61728,6 +62586,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61756,6 +62615,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61815,6 +62675,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61874,6 +62735,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61901,6 +62763,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61933,6 +62796,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -61992,6 +62856,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62020,6 +62885,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62047,6 +62913,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62074,6 +62941,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62101,6 +62969,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62128,6 +62997,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62187,6 +63057,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62246,6 +63117,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62273,6 +63145,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62340,6 +63213,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62525,6 +63399,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62651,6 +63526,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62678,6 +63554,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62705,6 +63582,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62732,6 +63610,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62759,6 +63638,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62786,6 +63666,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62813,6 +63694,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["get", "unset", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62846,6 +63728,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["delete", "disable", "enable", "update"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -62904,6 +63787,7 @@ NITRO_RESOURCE_MAP = {
         ],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -63046,6 +63930,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -63074,6 +63959,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -63102,6 +63988,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -63129,6 +64016,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
@@ -63172,6 +64060,7 @@ NITRO_RESOURCE_MAP = {
         "_supported_operations": ["add", "count", "delete", "get-all", "get-byname"],
         "action_payload_keys": {
             "create": [],
+            "force": [],
             "import": [],
             "link": [],
             "switch": [],
