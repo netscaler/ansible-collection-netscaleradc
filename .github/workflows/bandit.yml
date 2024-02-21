@@ -22,23 +22,23 @@ jobs:
         with:
           # Can be "open", "closed", or "all".  Defaults to "open".
           state: open
-      - name: Find Comment
-        uses: peter-evans/find-comment@v2
-        id: fc
-        with:
-          issue-number: ${{ steps.find-pull-request.outputs.number }}
-          comment-author: 'github-actions[bot]'
-          body-includes: Bandit found some security issues in your code.
-
-      - if: steps.fc.outputs.comment-id != ''
-        uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.deleteComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              comment_id: ${{ steps.fc.outputs.comment-id }}
-            })
+    #   - name: Find Comment
+    #     uses: peter-evans/find-comment@v2
+    #     id: fc
+    #     with:
+    #       issue-number: ${{ steps.find-pull-request.outputs.number }}
+    #       comment-author: 'github-actions[bot]'
+    #       body-includes: Bandit found some security issues in your code.
+    #   - name: Delete previous comment
+    #     if: steps.fc.outputs.comment-id != ''
+    #     uses: actions/github-script@v6
+    #     with:
+    #       script: |
+    #         github.rest.issues.deleteComment({
+    #           owner: context.repo.owner,
+    #           repo: context.repo.repo,
+    #           comment_id: ${{ steps.fc.outputs.comment-id }}
+    #         })
       - name: Install Bandit
         run: pip install bandit
       - name: Run Bandit
