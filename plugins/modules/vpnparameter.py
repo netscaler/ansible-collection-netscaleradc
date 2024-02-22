@@ -705,6 +705,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | vpnparameter
+      delegate_to: localhost
+      netscaler.adc.vpnparameter:
+        state: present
+        forcecleanup:
+          - none
+        clientconfiguration:
+          - trace
 """
 
 RETURN = r"""

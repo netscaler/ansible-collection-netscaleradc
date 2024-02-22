@@ -58,6 +58,16 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | nsweblogparam
+      delegate_to: localhost
+      netscaler.adc.nsweblogparam:
+        state: present
+        buffersizemb: '3'
 """
 
 RETURN = r"""

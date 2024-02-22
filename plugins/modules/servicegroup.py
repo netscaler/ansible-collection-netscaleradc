@@ -467,6 +467,31 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Setup servers
+      delegate_to: localhost
+      netscaler.adc.server:
+        state: present
+        name: foo.example.com
+        domain: foo.example.com
+    - name: Setup servicegroups
+      delegate_to: localhost
+      tags: test
+      netscaler.adc.servicegroup:
+        state: absent
+        servicegroupname: test1-1
+        servicetype: TCP
+        autoscale: DNS
+        healthmonitor: "YES"
+        servicegroup_servicegroupmember_binding:
+          binding_members:
+            - servername: foo.example.com
+              port: 443
+              servicegroupname: test1-1
 """
 
 RETURN = r"""
