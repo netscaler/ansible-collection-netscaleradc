@@ -80,6 +80,37 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | lbvserver
+      delegate_to: localhost
+      netscaler.adc.lbvserver:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+        state: present
+        name: lb-vserver-1
+        servicetype: HTTP
+        ipv46: 6.92.2.2
+        port: 80
+    - name: Sample Task | csaction
+      delegate_to: localhost
+      netscaler.adc.csaction:
+        # nsip: 10.0.0.1 # This can also be given via NETSCALER_NSIP environment variable
+        # nitro_user: nitrouser # This can also be given via NETSCALER_NITRO_USER environment variable
+        # nitro_pass: verysecretpassword # This can also be given via NETSCALER_NITRO_PASS environment variable
+        # nitro_protocol: https # This can also be given via NETSCALER_NITRO_PROTOCOL environment variable
+        # validate_certs: false # This can also be given via NETSCALER_VALIDATE_CERTS environment variable
+        # save_config: false # This can also be given via NETSCALER_SAVE_CONFIG environment variable
+        state: present
+        name: action1
+        targetlbvserver: lb-vserver-1
 """
 
 RETURN = r"""

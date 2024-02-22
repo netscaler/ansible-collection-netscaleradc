@@ -162,6 +162,23 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Add IPSet
+      delegate_to: localhost
+      netscaler.adc.ipset:
+        state: present
+        name: ipset-001
+    - name: Sample Task | netProfile
+      delegate_to: localhost
+      netscaler.adc.netprofile:
+        state: present
+        name: netprofile-001
+        srcip: ipset-001
+        mbf: DISABLED
 """
 
 RETURN = r"""

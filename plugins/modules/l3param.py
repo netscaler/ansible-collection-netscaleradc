@@ -143,6 +143,21 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Task
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample task | set l3param
+      delegate_to: localhost
+      netscaler.adc.l3param:
+        state: present
+        acllogtime: 3000
+    - name: Sample task | unset l3param
+      delegate_to: localhost
+      netscaler.adc.l3param:
+        state: unset
+        acllogtime: "true"
 """
 
 RETURN = r"""

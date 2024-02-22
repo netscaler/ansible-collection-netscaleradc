@@ -105,6 +105,26 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: IPSET | ADD
+      delegate_to: localhost
+      register: result
+      tags: test
+      netscaler.adc.ipset:
+        state: present
+        name: ipset-001
+    - name: IPSET | DELETE
+      delegate_to: localhost
+      register: result
+      check_mode: false
+      tags: test
+      netscaler.adc.ipset:
+        state: absent
+        name: ipset-001
 """
 
 RETURN = r"""

@@ -74,6 +74,17 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | sslcert
+      delegate_to: localhost
+      netscaler.adc.locationfile:
+        state: imported
+        locationfile: my_file
+        src: local:my_location_file
 """
 
 RETURN = r"""

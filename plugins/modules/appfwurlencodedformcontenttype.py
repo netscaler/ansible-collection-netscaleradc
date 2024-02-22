@@ -52,6 +52,22 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | appfwurlEncodedFormContentType
+      delegate_to: localhost
+      netscaler.adc.appfwurlencodedformcontenttype:
+        state: present
+        urlencodedformcontenttypevalue: application/x-www-form-urlencoded
+    - name: Sample Task | appfwurlEncodedFormContentType | 2
+      delegate_to: localhost
+      netscaler.adc.appfwurlencodedformcontenttype:
+        state: present
+        urlencodedformcontenttypevalue: application/x-www-form-urlencoded.*
+        isregex: REGEX
 """
 
 RETURN = r"""

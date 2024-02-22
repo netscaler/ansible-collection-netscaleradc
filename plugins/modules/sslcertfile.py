@@ -56,6 +56,31 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | Copy certfile to netscaler
+      delegate_to: localhost
+      netscaler.adc.systemfile:
+        state: present
+        filecontent: "{{ lookup('file', '../tests/data/test-certfile.crt') | b64encode
+          }}"
+        filelocation: /var/tmp/
+        filename: test-certfile.crt
+    - name: Sample Task | import sslcertfile
+      delegate_to: localhost
+      netscaler.adc.sslcertfile:
+        state: imported
+        name: ansible-test.crt
+        src: local:test-certfile.crt  # `local:` means `/var/tmp/` in netscaler
+        # src: http://10.06.10.10:8000/test-certfile.crt
+    - name: Sample Task | remove sslcertfile
+      delegate_to: localhost
+      netscaler.adc.sslcertfile:
+        state: absent
+        name: ansible-test.crt
 """
 
 RETURN = r"""

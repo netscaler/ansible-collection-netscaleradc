@@ -166,6 +166,19 @@ extends_documentation_fragment: netscaler.adc.netscaler_adc
 """
 
 EXAMPLES = r"""
+---
+- name: Sample Playbook
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Sample Task | subscribergxInterface
+      delegate_to: localhost
+      netscaler.adc.subscribergxinterface:
+        state: present
+        pcrfrealm: pcrf.com
+        servicepathavp:
+          - 262099
+        servicepathvendorid: 3845
 """
 
 RETURN = r"""
