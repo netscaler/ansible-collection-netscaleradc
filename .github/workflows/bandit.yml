@@ -1,0 +1,74 @@
+---
+name: Bandit Security Check
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+jobs:
+  bandit-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Find Pull Request
+        id: find-pull-request
+        uses: jwalton/gh-find-current-pr@v1
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: open
+          #   - name: Find Comment
+          #     uses: peter-evans/find-comment@v2
+          #     id: fc
+          #     with:
+          #       issue-number: ${{ steps.find-pull-request.outputs.number }}
+          #       comment-author: 'github-actions[bot]'
+          #       body-includes: Bandit found some security issues in your code.
+          #   - name: Delete previous comment
+          #     if: steps.fc.outputs.comment-id != ''
+          #     uses: actions/github-script@v6
+          #     with:
+          #       script: |
+          #         github.rest.issues.deleteComment({
+          #           owner: context.repo.owner,
+          #           repo: context.repo.repo,
+          #           comment_id: ${{ steps.fc.outputs.comment-id }}
+          #         })
+      - name: Install Bandit
+        run: pip install bandit
+      - name: Run Bandit
+        id: bandit
+        continue-on-error: true
+        run: |
+          set +e
+          set +x
+          bandit -r . -f csv -o bandit-output.csv
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          OUTPUT=$(cat bandit-output.csv)
+          cat bandit-output.csv
+          echo "report<<EOF"$'\n'"$OUTPUT"$'\n'EOF >> $GITHUB_OUTPUT
+      - name: Convert CSV to Markdown
+        if: steps.bandit.outputs.exit_code != 0
+        uses: petems/csv-to-md-table-action@master
+        id: csv-table-output
+        with:
+          csvinput: ${{ steps.bandit.outputs.report }}
+      - name: Create comment
+        if: steps.bandit.outputs.exit_code != 0
+        id: create-comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
+          body: |
+            Bandit found some security issues in your code. Please fix them to ensure the security of your code.
+            ${{steps.csv-table-output.outputs.markdown-table}}
+          reactions: rocket
+
+      - name: Fail if Bandit run had errors
+        if: steps.bandit.outputs.exit_code != 0
+        run: exit 1

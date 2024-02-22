@@ -263,7 +263,9 @@ def get_bindprimary_key(binding_name, binding_member):
     # `ip` and `servername` are the two possible bind_primary_keys for `servicegroup_servicegroupmember_binding` resource.
     if binding_name == "servicegroup_servicegroupmember_binding":
         if bindprimary_key == "ip":
-            if "ip" not in binding_member or binding_member["ip"] == "0.0.0.0":
+            if (
+                "ip" not in binding_member or binding_member["ip"] == "0.0.0.0"  # nosec: B104
+            ):
                 bindprimary_key = "servername"
             elif "servername" in binding_member and binding_member["servername"]:
                 bindprimary_key = "servername"
