@@ -8,6 +8,7 @@ multi_line_output = 3
 in-place = true
 remove-unused-variables = true
 remove-all-unused-imports = true
+quiet = true
 
 [tool.docformatter]
 in-place = true

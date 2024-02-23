@@ -1,0 +1,70 @@
+---
+name: Fmt Check
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches:
+      - main
+jobs:
+  fmtcheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Find Pull Request
+        id: find-pull-request
+        uses: jwalton/gh-find-current-pr@v1
+        with:
+          # Can be "open", "closed", or "all".  Defaults to "open".
+          state: open
+      - name: Find Comment
+        uses: peter-evans/find-comment@v2
+        id: fc
+        with:
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
+          comment-author: 'github-actions[bot]'
+          body-includes: There are some formatting issues in your code.
+      - name: Delete previous comment
+        if: steps.fc.outputs.comment-id != ''
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.deleteComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              comment_id: ${{ steps.fc.outputs.comment-id }}
+            })
+      - name: Install prerequisites
+        run: pip install -r requirements.txt
+      - name: Run Fmtcheck
+        id: fmtcheck
+        continue-on-error: true
+        run: |
+          set +e
+          set +x
+          make fmtcheck >fmtcheck.log 2>&1
+          echo "exit_code=$?" >> $GITHUB_OUTPUT
+          OUTPUT=$(cat fmtcheck.log)
+          cat fmtcheck.log
+          echo "report<<EOF"$'\n'"$OUTPUT"$'\n'EOF >> $GITHUB_OUTPUT
+      - name: Create comment
+        if: steps.fmtcheck.outputs.exit_code != 0
+        id: create-comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
+          body: |
+            There are some formatting issues in your code. Please fix them to ensure the quality of your code.
+            ${{steps.fmtcheck.outputs.report}}
+          reactions: rocket
+
+      - name: Fail if fmtcheck run had errors
+        if: steps.fmtcheck.outputs.exit_code != 0
+        run: exit 1

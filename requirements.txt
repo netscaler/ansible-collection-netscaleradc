@@ -5,4 +5,7 @@ sphinx_rtd_theme
 antsibull-docs
 sphinx
 sphinx-ansible-theme
-galaxy-importer
+autoflake
+black
+isort
+pycodestyle

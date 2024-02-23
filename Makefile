@@ -16,6 +16,24 @@ fmt:
 
 	yamlfmt .
 
+fmtcheck:
+	autoflake --check plugins/modules/*.py
+	autoflake --check plugins/module_utils/*.py
+	autoflake --check tools/module_generator.py
+	autoflake --check --recursive tests/
+
+	black --check plugins/modules/*.py
+	black --check plugins/module_utils/*.py
+	black --check tools/module_generator.py
+	black --check tests/
+
+	isort --check-only plugins/modules/*.py
+	isort --check-only plugins/module_utils/*.py
+	isort --check-only tools/module_generator.py
+	isort --check-only tests/
+
+	yamllint .
+
 fmt_tools:
 	# ignore if file not found
 	-autoflake tools/generated_modules/*.py
