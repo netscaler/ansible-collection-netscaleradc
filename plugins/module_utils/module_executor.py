@@ -37,6 +37,7 @@ from .constants import (
     ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE,
     HTTP_RESOURCE_ALREADY_EXISTS,
     NETSCALER_COMMON_ARGUMENTS,
+    NITRO_ATTRIBUTES_ALIASES,
 )
 from .decorators import trace
 from .logger import log, loglines
@@ -176,6 +177,18 @@ class ModuleExecutor(object):
         )
 
     @trace
+    def _add_nitro_attributes_aliases(self, payload):
+        for k, v in payload.copy().items():
+            if k in NITRO_ATTRIBUTES_ALIASES[self.resource_name]:
+                alias_key = NITRO_ATTRIBUTES_ALIASES[self.resource_name][k]
+                log(
+                    "DEBUG: Found alias key `%s` for `%s`. Adding the alias key to resource_module_params"
+                    % (alias_key, k)
+                )
+                payload[alias_key] = v
+        return payload
+
+    @trace
     def _filter_resource_module_params(self):
         log("DEBUG: self.module.params: %s" % self.module.params)
         for k, v in self.module.params.items():
@@ -188,6 +201,11 @@ class ModuleExecutor(object):
                 # Also, filter out attributes ending with `_binding` as they are handled separately
                 if v is not None:
                     self.resource_module_params[k] = v
+
+        if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
+            self.resource_module_params = self._add_nitro_attributes_aliases(
+                self.resource_module_params
+            )
         log(
             "DEBUG: Desired `%s` module specific params are: %s"
             % (self.resource_name, self.resource_module_params)
@@ -215,6 +233,11 @@ class ModuleExecutor(object):
             self.return_failure(msg)
 
         self.existing_resource = existing_resource[0]
+
+        if self.resource_name in NITRO_ATTRIBUTES_ALIASES:
+            self.existing_resource = self._add_nitro_attributes_aliases(
+                self.existing_resource
+            )
 
         # The below return is not mandatory. However, required for debugging purpose
         return self.existing_resource
