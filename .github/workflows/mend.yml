@@ -48,7 +48,7 @@ jobs:
           MEND_API_KEY: ${{ secrets.MEND_API_KEY }}
         run: |
           set +e
-          mend scan --user-key $MEND_USER_KEY --api-key $MEND_API_KEY
+          mend sca --user-key $MEND_USER_KEY --api-key $MEND_API_KEY
           echo "mend_exit_code=$?" >> $GITHUB_ENV
           # Adapt the command according to how you extract Mend scan results
           MEND_OUTPUT=$(cat mend-scan-output.txt) # This is a placeholder
