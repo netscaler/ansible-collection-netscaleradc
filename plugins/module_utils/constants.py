@@ -35,7 +35,7 @@ NITRO_ATTRIBUTES_ALIASES = {
     # }
     "gslbservice": {
         "ip": "ipaddress",
-        "ipaddress": "ip", # For PUT payloads and GET responses
+        "ipaddress": "ip",  # For PUT payloads and GET responses
     }
 }
 
