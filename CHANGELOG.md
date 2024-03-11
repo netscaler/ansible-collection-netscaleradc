@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.1] - 2024-03-11
+
+### Fixed
+
+- Fixed gslbservice idempotency issues ([#377])
+
 ## [2.5.0] - 2024-02-22
 
 ### Added
@@ -104,7 +110,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial Release
 
-[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.0...HEAD
+[unreleased]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.1...HEAD
+[2.5.1]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.5.0...2.5.1
 [2.5.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.4.0...2.5.0
 [2.4.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.3.0...2.4.0
 [2.3.0]: https://github.com/netscaler/ansible-collection-netscaleradc/compare/2.2.0...2.3.0
@@ -138,3 +145,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#362]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/362
 [#365]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/365
 [#367]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/367
+[#377]: https://github.com/netscaler/ansible-collection-netscaleradc/issues/377

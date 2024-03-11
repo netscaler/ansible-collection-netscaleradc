@@ -26,6 +26,19 @@ ATTRIBUTES_NOT_PRESENT_IN_GET_RESPONSE = {
     "sslcertkey": {"password"},
 }
 
+# NITRO accepts some attributes with a name and responsds with a different name in its GET reponse.
+# Eg: For "gslbservice" resource, NITRO expects "ip" in POST request
+# but expects "ipaddress" in PUT payload and returns "ipaddress" in GET response.
+NITRO_ATTRIBUTES_ALIASES = {
+    # "resource": {
+    #     "attribute": "attribute_alias",
+    # }
+    "gslbservice": {
+        "ip": "ipaddress",
+        "ipaddress": "ip",  # For PUT payloads and GET responses
+    }
+}
+
 # https://docs.ansible.com/ansible/latest/dev_guide/developing_program_flow_modules.html#argument-spec
 NETSCALER_COMMON_ARGUMENTS = dict(
     nsip=dict(
