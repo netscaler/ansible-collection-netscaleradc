@@ -1,0 +1,81 @@
+name: Bandit and Mend Security Check
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - plugins/**
+      - tests/**
+  push:
+    paths:
+      - plugins/**
+      - tests/**
+
+jobs:
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Find Pull Request
+        id: find-pull-request
+        uses: jwalton/gh-find-current-pr@v1
+        with:
+          state: open
+
+      - name: Install Bandit
+        run: pip install bandit
+
+      - name: Run Bandit
+        id: bandit
+        continue-on-error: true
+        run: |
+          set +e
+          bandit -r . -f csv -o bandit-output.csv
+          echo "bandit_exit_code=$?" >> $GITHUB_ENV
+          OUTPUT=$(cat bandit-output.csv)
+          echo "bandit_report<<EOF"$'\n'"$OUTPUT"$'\n'EOF >> $GITHUB_ENV
+
+      - name: Install Mend CLI
+        run: |
+          curl https://downloads.mend.io/cli/linux_amd64/mend -o /usr/local/bin/mend && sudo chmod +x /usr/local/bin/mend
+
+      - name: Run Mend Scan
+        id: mend
+        continue-on-error: true
+        env:
+          MEND_USER_KEY: ${{ secrets.MEND_USER_KEY }}
+          MEND_API_KEY: ${{ secrets.MEND_API_KEY }}
+        run: |
+          set +e
+          mend scan --user-key $MEND_USER_KEY --api-key $MEND_API_KEY
+          echo "mend_exit_code=$?" >> $GITHUB_ENV
+          # Adapt the command according to how you extract Mend scan results
+          MEND_OUTPUT=$(cat mend-scan-output.txt) # This is a placeholder
+          echo "mend_report<<EOF"$'\n'"$MEND_OUTPUT"$'\n'EOF >> $GITHUB_ENV
+
+      - name: Create Bandit comment
+        if: env.bandit_exit_code != 0
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ steps.find-pull-request.outputs.number }}
+          body: |
+            Bandit found some security issues in your code. Please fix them to ensure the security of your code.
+            ${{steps.csv-table-output.outputs.markdown-table}}
+          reactions: rocket
+
+      - name: Create Mend comment
+        if: env.mend_exit_code != 0
+        run: |
+          # Placeholder for processing Mend results and creating a comment
+          # Adapt this step as needed, similar to how Bandit results are handled
+
+      - name: Fail if any security checks had errors
+        if: env.bandit_exit_code != 0 || env.mend_exit_code != 0
+        run: exit 1
