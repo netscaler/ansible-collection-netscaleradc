@@ -1,0 +1,13 @@
+---
+- name: Sample Task | service
+  delegate_to: localhost
+  netscaler.adc.gslbsite:
+    nsip: "{{ nsip }}"
+    nitro_user: "{{ nitro_user }}"
+    nitro_pass: "{{ nitro_pass }}"
+    nitro_protocol: "{{ nitro_protocol }}"
+    validate_certs: "{{ validate_certs }}"
+    save_config: "{{ save_config }}"
+    state: absent
+    sitename: test-gslbsite
+    siteipaddress: 10.10.10.10
