@@ -1,0 +1,7 @@
+---
+profile: production
+exclude_paths:
+  - .github/
+# Allows dumping of results in SARIF format
+sarif_file: ansible_lint_result.sarif
+var_naming_pattern: "^[a-z_][a-z0-9_]*$"
