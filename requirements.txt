@@ -1,5 +1,5 @@
 antsibull
-aiohttp==3.9.0
+aiohttp==3.9.3
 ansible-pygments
 sphinx-notfound-page
 sphinx_rtd_theme
