@@ -3,7 +3,21 @@ name: ansible-lint
 on:
   workflow_dispatch:
   pull_request:
+    paths-ignore:
+      - .github/**
+      - assets/**
+      - docs/**
+      - .whitesource
+      - .yamlfmt
+      - .yamllint
   push:
+    paths-ignore:
+      - .github/**
+      - assets/**
+      - docs/**
+      - .whitesource
+      - .yamlfmt
+      - .yamllint
 jobs:
   ansible-lint:
     name: ansible-lint
