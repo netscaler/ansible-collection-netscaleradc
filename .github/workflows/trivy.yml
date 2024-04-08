@@ -6,9 +6,8 @@ on:
       - main
   pull_request:
 jobs:
-  build:
-    name: Trivy vulnerability scan
-    runs-on: ubuntu-20.04
+  trivy-check:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
