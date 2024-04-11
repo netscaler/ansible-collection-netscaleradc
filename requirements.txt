@@ -1,10 +1,10 @@
 antsibull
-aiohttp==3.9.2
+aiohttp
 ansible-pygments
 sphinx-notfound-page
 sphinx_rtd_theme
 antsibull-docs
 sphinx
 sphinx-ansible-theme
-galaxy-importer==0.5.0
-ansible-core==2.15.9
+galaxy-importer
+ansible-core
