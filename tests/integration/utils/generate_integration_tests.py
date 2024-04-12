@@ -22,7 +22,7 @@ def generate_yaml(module_name, module_specific_params, bindings, template_str):
             total_bindings["bind"][key]["mode"] = "bind"
 
     template = Template(template_str)
-    yaml_content = template.render(  # nosec: B106
+    yaml_content = template.render(
         module_name=module_name,
         nsip="{{ nsip }}",
         nitro_user="{{ nitro_user }}",
