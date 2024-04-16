@@ -131,7 +131,7 @@
 <h1>netscaler.adc.auditnslogparams module – Configuration for ns log parameters resource.<a class="headerlink" href="#netscaler-adc-auditnslogparams-module-configuration-for-ns-log-parameters-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-acl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-acl"><strong>acl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-acl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-acl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure auditing to log access control list (ACL) messages.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -176,7 +176,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-alg"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-alg"><strong>alg</strong></p>
-<a class="ansibleOptionLink" href="#parameter-alg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-alg" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log the ALG messages</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +197,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appflowexport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-appflowexport"><strong>appflowexport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-appflowexport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-appflowexport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Export log messages to AppFlow collectors.</p>
 <p>Appflow collectors are entities to which log messages can be sent so that some action can be performed on them.</p>
@@ -210,7 +210,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-contentinspectionlog"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-contentinspectionlog"><strong>contentinspectionlog</strong></p>
-<a class="ansibleOptionLink" href="#parameter-contentinspectionlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-contentinspectionlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log Content Inspection event information</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -222,7 +222,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dateformat"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-dateformat"><strong>dateformat</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dateformat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dateformat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Format of dates in the logs.</p>
 <p>Supported formats are:</p>
@@ -239,7 +239,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-logfacility"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-logfacility"><strong>logfacility</strong></p>
-<a class="ansibleOptionLink" href="#parameter-logfacility" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-logfacility" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Facility value, as defined in RFC 3164, assigned to the log message.</p>
 <p>Log facility values are numbers 0 to 7 (<code class="docutils literal notranslate"><span class="pre">LOCAL0</span></code> through <code class="docutils literal notranslate"><span class="pre">LOCAL7</span></code>). Each number indicates where a specific message originated from, such as the Citrix ADC itself, the VPN, or external.</p>
@@ -258,7 +258,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-loglevel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-loglevel"><strong>loglevel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-loglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-loglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Types of information to be logged.</p>
 <p>Available settings function as follows:</p>
@@ -289,7 +289,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lsn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-lsn"><strong>lsn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lsn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lsn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log the LSN messages</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -356,21 +356,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-serverip"><strong>serverip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP address of the nslog server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-serverport"><strong>serverport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port on which the nslog server accepts connections.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sslinterception"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-sslinterception"><strong>sslinterception</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sslinterception" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sslinterception" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log SSL Interception event information</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -396,7 +396,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-subscriberlog"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-subscriberlog"><strong>subscriberlog</strong></p>
-<a class="ansibleOptionLink" href="#parameter-subscriberlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-subscriberlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log subscriber session event information</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -408,7 +408,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-tcp"><strong>tcp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Configure auditing to log TCP messages.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -420,7 +420,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timezone"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-timezone"><strong>timezone</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timezone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-timezone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time zone used for date and timestamps in the logs.</p>
 <p>Supported settings are:</p>
@@ -435,7 +435,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urlfiltering"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-urlfiltering"><strong>urlfiltering</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urlfiltering" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-urlfiltering" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log URL filtering event information</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -447,7 +447,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-userdefinedauditlog"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-auditnslogparams-module-parameter-userdefinedauditlog"><strong>userdefinedauditlog</strong></p>
-<a class="ansibleOptionLink" href="#parameter-userdefinedauditlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-userdefinedauditlog" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Log user-configurable log messages to nslog.</p>
 <p>Setting this parameter to <code class="docutils literal notranslate"><span class="pre">NO</span></code> causes auditing to ignore all user-configured message actions. Setting this parameter to <code class="docutils literal notranslate"><span class="pre">YES</span></code> causes auditing to log user-configured message actions that meet the other logging criteria.</p>

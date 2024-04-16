@@ -131,7 +131,7 @@
 <h1>netscaler.adc.ssldtlsprofile module – Configuration for DTLS profile resource.<a class="headerlink" href="#netscaler-adc-ssldtlsprofile-module-configuration-for-dtls-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-helloverifyrequest"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-helloverifyrequest"><strong>helloverifyrequest</strong></p>
-<a class="ansibleOptionLink" href="#parameter-helloverifyrequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-helloverifyrequest" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send a Hello Verify request to validate the client.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,42 +185,42 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxbadmacignorecount"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-maxbadmacignorecount"><strong>maxbadmacignorecount</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxbadmacignorecount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxbadmacignorecount" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of bad MAC errors to ignore for a connection prior disconnect. Disabling parameter terminateSession terminates session immediately when bad MAC is detected in the connection.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxholdqlen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-maxholdqlen"><strong>maxholdqlen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxholdqlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxholdqlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of datagrams that can be queued at DTLS layer for processing</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpacketsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-maxpacketsize"><strong>maxpacketsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxpacketsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxpacketsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of packets to reassemble. This value helps protect against a fragmented packet attack.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxrecordsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-maxrecordsize"><strong>maxrecordsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxrecordsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxrecordsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum size of records that can be sent if PMTU is disabled.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxretrytime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-maxretrytime"><strong>maxretrytime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxretrytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxretrytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Wait for the specified time, in seconds, before resending the request.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-name"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-name"><strong>name</strong></p>
-<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-name" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name for the DTLS profile. Must begin with an ASCII alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric, underscore, hash (#), period (.), space, colon (:), at (&#64;),equals sign (=), and hyphen (-) characters. Cannot be changed after the profile is created.</p>
 </div></td>
@@ -269,7 +269,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pmtudiscovery"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-pmtudiscovery"><strong>pmtudiscovery</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pmtudiscovery" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-pmtudiscovery" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Source for the maximum record size value. If <code class="docutils literal notranslate"><span class="pre">ENABLED</span></code>, the value is taken from the PMTU table. If <code class="docutils literal notranslate"><span class="pre">DISABLED</span></code>, the value is taken from the profile.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -310,7 +310,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-terminatesession"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ssldtlsprofile-module-parameter-terminatesession"><strong>terminatesession</strong></p>
-<a class="ansibleOptionLink" href="#parameter-terminatesession" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-terminatesession" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Terminate the session if the message authentication code (MAC) of the client and server do not match.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

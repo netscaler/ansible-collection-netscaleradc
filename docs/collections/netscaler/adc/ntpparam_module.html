@@ -131,7 +131,7 @@
 <h1>netscaler.adc.ntpparam module – Configuration for NTP parameter resource.<a class="headerlink" href="#netscaler-adc-ntpparam-module-configuration-for-ntp-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authentication"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ntpparam-module-parameter-authentication"><strong>authentication</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-authentication" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Apply NTP authentication, which enables the NTP client (Citrix ADC) to verify that the server is in fact known and trusted.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-autokeylogsec"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ntpparam-module-parameter-autokeylogsec"><strong>autokeylogsec</strong></p>
-<a class="ansibleOptionLink" href="#parameter-autokeylogsec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-autokeylogsec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Autokey protocol requires the keys to be refreshed periodically. This parameter specifies the interval between regenerations of new session keys. In seconds, expressed as a power of 2.</p>
 </div></td>
@@ -234,7 +234,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-revokelogsec"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ntpparam-module-parameter-revokelogsec"><strong>revokelogsec</strong></p>
-<a class="ansibleOptionLink" href="#parameter-revokelogsec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-revokelogsec" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval between re-randomizations of the autokey seeds to prevent brute-force attacks on the autokey algorithms.</p>
 </div></td>
@@ -268,7 +268,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trustedkey"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ntpparam-module-parameter-trustedkey"><strong>trustedkey</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trustedkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-trustedkey" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Key identifiers that are trusted for server authentication with symmetric key cryptography in the keys file.</p>
 </div></td>

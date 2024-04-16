@@ -131,7 +131,7 @@
 <h1>netscaler.adc.iptunnelparam module – Configuration for ip tunnel parameter resource.<a class="headerlink" href="#netscaler-adc-iptunnelparam-module-configuration-for-ip-tunnel-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropfrag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-dropfrag"><strong>dropfrag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropfrag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropfrag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Drop any IP packet that requires fragmentation before it is sent through the tunnel.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,14 +185,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropfragcputhreshold"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-dropfragcputhreshold"><strong>dropfragcputhreshold</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropfragcputhreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropfragcputhreshold" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Threshold value, as a percentage of CPU usage, at which to drop packets that require fragmentation to use the IP tunnel. Applies only if dropFragparameter is set to NO. The default value, 0, specifies that this parameter is not set.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enablestrictrx"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-enablestrictrx"><strong>enablestrictrx</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enablestrictrx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-enablestrictrx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Strict PBR check for IPSec packets received through tunnel</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -204,7 +204,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enablestricttx"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-enablestricttx"><strong>enablestricttx</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enablestricttx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-enablestricttx" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Strict PBR check for packets to be sent IPSec protected</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -216,7 +216,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mac"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-mac"><strong>mac</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-mac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The shared MAC used for shared IP between cluster nodes/HA peers</p>
 </div></td>
@@ -278,14 +278,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-srcip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-srcip"><strong>srcip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-srcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-srcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Common source-IP address for all tunnels. For a specific tunnel, this global setting is overridden if you have specified another source IP address. Must be a MIP or SNIP address.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-srciproundrobin"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-srciproundrobin"><strong>srciproundrobin</strong></p>
-<a class="ansibleOptionLink" href="#parameter-srciproundrobin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-srciproundrobin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use a different source IP address for each new session through a particular IP tunnel, as determined by round robin selection of one of the SNIP addresses. This setting is ignored if a common global source IP address has been specified for all the IP tunnels. This setting does not apply to a tunnel for which a source IP address has been specified.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -311,7 +311,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useclientsourceip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-iptunnelparam-module-parameter-useclientsourceip"><strong>useclientsourceip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useclientsourceip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useclientsourceip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use client source IP as source IP for outer tunnel IP header</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.botsettings module – Configuration for Bot engine settings resource.<a class="headerlink" href="#netscaler-adc-botsettings-module-configuration-for-bot-engine-settings-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultnonintrusiveprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-defaultnonintrusiveprofile"><strong>defaultnonintrusiveprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultnonintrusiveprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultnonintrusiveprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Profile to use when the feature is not enabled but feature is licensed. NonIntrusive checks will be disabled and IPRep cronjob(24 Hours) will be removed if this is set to <code class="docutils literal notranslate"><span class="pre">BOT_BYPASS</span></code>.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -186,21 +186,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-defaultprofile"><strong>defaultprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Profile to use when a connection does not match any policy. Default setting is “ “, which sends unmatched connections back to the Citrix ADC without attempting to filter them further.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dfprequestlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-dfprequestlimit"><strong>dfprequestlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dfprequestlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-dfprequestlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of requests to allow without bot session cookie if device fingerprint is enabled</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-javascriptname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-javascriptname"><strong>javascriptname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-javascriptname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-javascriptname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the JavaScript that the Bot Management feature  uses in response.</p>
 <p>Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.</p>
@@ -252,28 +252,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxypassword"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-proxypassword"><strong>proxypassword</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxypassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxypassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Password with which user logs on.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-proxyport"><strong>proxyport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Server Port to get updated signatures from AWS.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-proxyserver"><strong>proxyserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Server IP to get updated signatures from AWS.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyusername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-proxyusername"><strong>proxyusername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxy Username</p>
 </div></td>
@@ -293,7 +293,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessioncookiename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-sessioncookiename"><strong>sessioncookiename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessioncookiename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the SessionCookie that the Bot Management feature uses for tracking.</p>
 <p>Must begin with a letter or number, and can consist of from 1 to 31 letters, numbers, and the hyphen (-) and underscore (_) symbols.</p>
@@ -303,14 +303,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sessiontimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-sessiontimeout"><strong>sessiontimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-sessiontimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timeout, in seconds, after which a user session is terminated.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatureautoupdate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-signatureautoupdate"><strong>signatureautoupdate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatureautoupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatureautoupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Flag used to enable/disable bot auto update signatures</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -322,7 +322,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-signatureurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-signatureurl"><strong>signatureurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-signatureurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-signatureurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL to download the bot signature mapping file from server</p>
 </div></td>
@@ -343,7 +343,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trapurlautogenerate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-trapurlautogenerate"><strong>trapurlautogenerate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trapurlautogenerate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-trapurlautogenerate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable/disable trap URL auto generation. When enabled, trap URL is updated within the configured interval.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -355,14 +355,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trapurlinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-trapurlinterval"><strong>trapurlinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trapurlinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-trapurlinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time in seconds after which trap URL is updated.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-trapurllength"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-botsettings-module-parameter-trapurllength"><strong>trapurllength</strong></p>
-<a class="ansibleOptionLink" href="#parameter-trapurllength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-trapurllength" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Length of the auto-generated trap URL.</p>
 </div></td>

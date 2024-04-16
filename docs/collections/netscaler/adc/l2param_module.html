@@ -131,7 +131,7 @@
 <h1>netscaler.adc.l2param module – Configuration for Layer 2 related parameter resource.<a class="headerlink" href="#netscaler-adc-l2param-module-configuration-for-layer-2-related-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bdggrpproxyarp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-bdggrpproxyarp"><strong>bdggrpproxyarp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bdggrpproxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-bdggrpproxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set/reset proxy ARP in bridge group deployment</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bdgsetting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-bdgsetting"><strong>bdgsetting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bdgsetting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-bdgsetting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Bridging settings for C2C behavior. If enabled, each PE will learn MAC entries independently. Otherwise, when L2 mode is ON, learned MAC entries on a PE will be broadcasted to all other PEs.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,14 +197,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-bridgeagetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-bridgeagetimeout"><strong>bridgeagetimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-bridgeagetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-bridgeagetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time-out value for the bridge table entries, in seconds. The new value applies only to the entries that are dynamically learned after the new value is set. Previously existing bridge table entries expire after the previously configured time-out value.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-garponvridintf"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-garponvridintf"><strong>garponvridintf</strong></p>
-<a class="ansibleOptionLink" href="#parameter-garponvridintf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-garponvridintf" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send GARP messagess on VRID-configured interfaces upon failover</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -216,7 +216,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-garpreply"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-garpreply"><strong>garpreply</strong></p>
-<a class="ansibleOptionLink" href="#parameter-garpreply" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-garpreply" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set/reset REPLY form of GARP</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -228,7 +228,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-macmodefwdmypkt"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-macmodefwdmypkt"><strong>macmodefwdmypkt</strong></p>
-<a class="ansibleOptionLink" href="#parameter-macmodefwdmypkt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-macmodefwdmypkt" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Allows MAC mode vserver to pick and forward the packets even if it is destined to Citrix ADC owned VIP.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -240,14 +240,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxbridgecollision"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-maxbridgecollision"><strong>maxbridgecollision</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxbridgecollision" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxbridgecollision" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum bridge collision for loop detection</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mbfinstlearning"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-mbfinstlearning"><strong>mbfinstlearning</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mbfinstlearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-mbfinstlearning" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable instant learning of MAC changes in MBF mode.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -259,7 +259,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mbfpeermacupdate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-mbfpeermacupdate"><strong>mbfpeermacupdate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mbfpeermacupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-mbfpeermacupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When mbf_instant_learning is enabled, learn any changes in peer’s MAC after this time interval, which is in 10ms ticks.</p>
 </div></td>
@@ -308,7 +308,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyarp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-proxyarp"><strong>proxyarp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyarp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Proxies the ARP as Citrix ADC MAC for FreeBSD.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -320,7 +320,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-returntoethernetsender"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-returntoethernetsender"><strong>returntoethernetsender</strong></p>
-<a class="ansibleOptionLink" href="#parameter-returntoethernetsender" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-returntoethernetsender" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Return to ethernet sender.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -332,7 +332,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rstintfonhafo"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-rstintfonhafo"><strong>rstintfonhafo</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rstintfonhafo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-rstintfonhafo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable the reset interface upon HA failover.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -357,7 +357,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-skipproxyingbsdtraffic"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-skipproxyingbsdtraffic"><strong>skipproxyingbsdtraffic</strong></p>
-<a class="ansibleOptionLink" href="#parameter-skipproxyingbsdtraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-skipproxyingbsdtraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Control source parameters (IP and Port) for FreeBSD initiated traffic. If Enabled, source parameters are retained. Else proxy the source parameters based on next hop.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -383,7 +383,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-stopmacmoveupdate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-stopmacmoveupdate"><strong>stopmacmoveupdate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-stopmacmoveupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-stopmacmoveupdate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Stop Update of server mac change to NAT sessions.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -395,7 +395,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usemymac"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-usemymac"><strong>usemymac</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usemymac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-usemymac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use Citrix ADC MAC for all outgoing packets.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -407,7 +407,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usenetprofilebsdtraffic"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-l2param-module-parameter-usenetprofilebsdtraffic"><strong>usenetprofilebsdtraffic</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usenetprofilebsdtraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-usenetprofilebsdtraffic" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Control source parameters (IP and Port) for FreeBSD initiated traffic. If enabled proxy the source parameters based on netprofile source ip. If netprofile does not have ip configured, then it will continue to use NSIP as earlier.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

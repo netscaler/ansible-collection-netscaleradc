@@ -131,7 +131,7 @@
 <h1>netscaler.adc.gslbparameter module – Configuration for GSLB parameter resource.<a class="headerlink" href="#netscaler-adc-gslbparameter-module-configuration-for-gslb-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-automaticconfigsync"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-automaticconfigsync"><strong>automaticconfigsync</strong></p>
-<a class="ansibleOptionLink" href="#parameter-automaticconfigsync" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-automaticconfigsync" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>GSLB configuration will be synced automatically to remote gslb sites if enabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropldnsreq"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-dropldnsreq"><strong>dropldnsreq</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropldnsreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropldnsreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Drop LDNS requests if round-trip time (RTT) information is not available.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +197,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbconfigsyncmonitor"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbconfigsyncmonitor"><strong>gslbconfigsyncmonitor</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbconfigsyncmonitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbconfigsyncmonitor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If enabled, remote gslb site’s rsync port will be monitored and site is considered for configuration sync only when the monitor is successful.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -209,7 +209,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbsvcstatedelaytime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbsvcstatedelaytime"><strong>gslbsvcstatedelaytime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbsvcstatedelaytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbsvcstatedelaytime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Amount of delay in updating the state of GSLB service to DOWN when MEP goes down.</p>
 <blockquote>
@@ -219,14 +219,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbsyncinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbsyncinterval"><strong>gslbsyncinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbsyncinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbsyncinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time duartion (in seconds) for which the gslb sync process will wait before checking for config changes.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbsynclocfiles"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbsynclocfiles"><strong>gslbsynclocfiles</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbsynclocfiles" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbsynclocfiles" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If disabled, Location files will not be synced to the remote sites as part of automatic sync.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -238,7 +238,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbsyncmode"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbsyncmode"><strong>gslbsyncmode</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbsyncmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbsyncmode" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Mode in which configuration will be synced from master site to remote sites.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -250,7 +250,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-gslbsyncsaveconfigcommand"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-gslbsyncsaveconfigcommand"><strong>gslbsyncsaveconfigcommand</strong></p>
-<a class="ansibleOptionLink" href="#parameter-gslbsyncsaveconfigcommand" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-gslbsyncsaveconfigcommand" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If enabled, ‘save ns config’ command will be treated as other GSLB commands and synced to GSLB nodes when auto gslb sync option is enabled.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -262,21 +262,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldnsentrytimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-ldnsentrytimeout"><strong>ldnsentrytimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldnsentrytimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldnsentrytimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time, in seconds, after which an inactive LDNS entry is removed.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldnsmask"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-ldnsmask"><strong>ldnsmask</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldnsmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldnsmask" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The IPv4 network mask with which to create LDNS entries.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldnsprobeorder"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-ldnsprobeorder"><strong>ldnsprobeorder</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldnsprobeorder" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldnsprobeorder" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Order in which monitors should be initiated to calculate RTT.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -289,7 +289,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mepkeepalivetimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-mepkeepalivetimeout"><strong>mepkeepalivetimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mepkeepalivetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-mepkeepalivetimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time duartion (in seconds) during which if no new packets received by Local gslb site from Remote gslb site then mark the MEP connection DOWN</p>
 </div></td>
@@ -338,7 +338,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-rtttolerance"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-rtttolerance"><strong>rtttolerance</strong></p>
-<a class="ansibleOptionLink" href="#parameter-rtttolerance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-rtttolerance" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Tolerance, in milliseconds, for newly learned round-trip time (RTT) values. If the difference between the old RTT value and the newly computed RTT value is less than or equal to the specified tolerance value, the LDNS entry in the network metric table is not updated with the new RTT value. Prevents the exchange of metrics when variations in RTT values are negligible.</p>
 </div></td>
@@ -372,14 +372,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-svcstatelearningtime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-svcstatelearningtime"><strong>svcstatelearningtime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-svcstatelearningtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-svcstatelearningtime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time (in seconds) within which local or child site services remain in learning phase. GSLB site will enter the learning phase after reboot, HA failover, Cluster GSLB owner node changes or MEP being enabled on local node.  Backup parent (if configured) will selectively move the adopted children’s GSLB services to learning phase when primary parent goes down. While a service is in learning period, remote site will not honour the state and stats got through MEP for that service. State can be learnt from health monitor if bound explicitly.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-undefaction"><strong>undefaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Action to perform when policy evaluation creates an UNDEF condition. Available settings function as follows:</p>
 <p>* NOLBACTION - Does not consider LB action in making LB decision.</p>
@@ -389,7 +389,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-v6ldnsmasklen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-gslbparameter-module-parameter-v6ldnsmasklen"><strong>v6ldnsmasklen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-v6ldnsmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-v6ldnsmasklen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Mask for creating LDNS entries for IPv6 source addresses. The mask is defined as the number of leading bits to consider, in the source IP address, when creating an LDNS entry.</p>
 </div></td>

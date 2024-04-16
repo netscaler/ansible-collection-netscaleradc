@@ -131,7 +131,7 @@
 <h1>netscaler.adc.vpnurl module – Configuration for VPN URL resource.<a class="headerlink" href="#netscaler-adc-vpnurl-module-configuration-for-vpn-url-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -180,14 +180,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-appjson"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-appjson"><strong>appjson</strong></p>
-<a class="ansibleOptionLink" href="#parameter-appjson" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-appjson" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To store the template details in the json format.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-applicationtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-applicationtype"><strong>applicationtype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-applicationtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-applicationtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The type of application this <code class="docutils literal notranslate"><span class="pre">VPN</span></code> URL represents. Possible values are <code class="docutils literal notranslate"><span class="pre">CVPN</span></code>/<code class="docutils literal notranslate"><span class="pre">SaaS</span></code>/<code class="docutils literal notranslate"><span class="pre">VPN</span></code></p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -200,7 +200,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-clientlessaccess"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-clientlessaccess"><strong>clientlessaccess</strong></p>
-<a class="ansibleOptionLink" href="#parameter-clientlessaccess" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-clientlessaccess" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>If clientless access to the resource hosting the link is allowed, also use clientless access for the bookmarked web address in the Secure Client Access based session. Allows single sign-on and other HTTP processing on Citrix Gateway for HTTPS resources.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -212,14 +212,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-comment"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-comment"><strong>comment</strong></p>
-<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-comment" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Any comments associated with the bookmark link.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-iconurl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-iconurl"><strong>iconurl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-iconurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-iconurl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>URL to fetch icon file for displaying this resource.</p>
 </div></td>
@@ -275,7 +275,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-samlssoprofile"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-samlssoprofile"><strong>samlssoprofile</strong></p>
-<a class="ansibleOptionLink" href="#parameter-samlssoprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-samlssoprofile" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Profile to be used for doing SAML SSO</p>
 </div></td>
@@ -295,7 +295,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssotype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-ssotype"><strong>ssotype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssotype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssotype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Single sign on type for unified gateway</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -324,7 +324,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-urlname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-urlname"><strong>urlname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-urlname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-urlname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the bookmark link.</p>
 </div></td>
@@ -343,7 +343,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-vservername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-vpnurl-module-parameter-vservername"><strong>vservername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-vservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-vservername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the associated LB/CS vserver</p>
 </div></td>

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nstimeout module – Configuration for timeout resource.<a class="headerlink" href="#netscaler-adc-nstimeout-module-configuration-for-timeout-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,28 +164,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-anyclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-anyclient"><strong>anyclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-anyclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-anyclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for non-TCP client connections. This value is over ridden by the client timeout that is configured on individual entities.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-anyserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-anyserver"><strong>anyserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-anyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-anyserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for non TCP server connections. This value is over ridden by the server timeout that is configured on individual entities.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-anytcpclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-anytcpclient"><strong>anytcpclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-anytcpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-anytcpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for TCP client connections. This value takes precedence over  entity level timeout settings (vserver/service). This is applicable only to transport protocol TCP.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-anytcpserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-anytcpserver"><strong>anytcpserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-anytcpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-anytcpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for TCP server connections. This value takes precedence over entity level timeout settings ( vserver/service). This is applicable only to transport protocol TCP.</p>
 </div></td>
@@ -208,28 +208,28 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-halfclose"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-halfclose"><strong>halfclose</strong></p>
-<a class="ansibleOptionLink" href="#parameter-halfclose" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-halfclose" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Idle timeout, in seconds, for connections that are in TCP half-closed state.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-httpclient"><strong>httpclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for client connections of HTTP service type. This value is over ridden by the client timeout that is configured on individual entities.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-httpserver"><strong>httpserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for server connections of HTTP service type. This value is over ridden by the server timeout that is configured on individual entities.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-newconnidletimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-newconnidletimeout"><strong>newconnidletimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-newconnidletimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-newconnidletimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timer interval, in seconds, for new TCP NATPCB connections on which no data was received.</p>
 </div></td>
@@ -270,7 +270,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nontcpzombie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-nontcpzombie"><strong>nontcpzombie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nontcpzombie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-nontcpzombie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval at which the zombie clean-up process for non-TCP connections should run. Inactive IP NAT connections will be cleaned up.</p>
 </div></td>
@@ -285,14 +285,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reducedfintimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-reducedfintimeout"><strong>reducedfintimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reducedfintimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-reducedfintimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Alternative idle timeout, in seconds, for closed TCP NATPCB connections.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-reducedrsttimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-reducedrsttimeout"><strong>reducedrsttimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-reducedrsttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-reducedrsttimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Timer interval, in seconds, for abruptly terminated TCP NATPCB connections.</p>
 </div></td>
@@ -333,14 +333,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-tcpclient"><strong>tcpclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for non-HTTP client connections of TCP service type. This value is over ridden by the client timeout that is configured on individual entities.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpserver"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-tcpserver"><strong>tcpserver</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpserver" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Global idle timeout, in seconds, for non-HTTP server connections of TCP service type. This value is over ridden by the server timeout that is configured on entities.</p>
 </div></td>
@@ -359,7 +359,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-zombie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nstimeout-module-parameter-zombie"><strong>zombie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-zombie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-zombie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in seconds, at which the Citrix ADC zombie cleanup process must run. This process cleans up inactive TCP connections.</p>
 </div></td>

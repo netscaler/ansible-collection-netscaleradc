@@ -131,7 +131,7 @@
 <h1>netscaler.adc.cacheparameter module – Configuration for cache parameter resource.<a class="headerlink" href="#netscaler-adc-cacheparameter-module-configuration-for-cache-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enablebypass"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-enablebypass"><strong>enablebypass</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enablebypass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-enablebypass" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Evaluate the request-time policies before attempting hit selection. If set to <code class="docutils literal notranslate"><span class="pre">NO</span></code>, an incoming request for which a matching object is found in cache storage results in a response regardless of the policy configuration.</p>
 <p>If the request matches a policy with a NOCACHE action, the request bypasses all cache processing.</p>
@@ -187,7 +187,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-enablehaobjpersist"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-enablehaobjpersist"><strong>enablehaobjpersist</strong></p>
-<a class="ansibleOptionLink" href="#parameter-enablehaobjpersist" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-enablehaobjpersist" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The HA object persisting parameter. When this value is set to <code class="docutils literal notranslate"><span class="pre">YES</span></code>, cache objects can be synced to Secondary in a HA deployment.  If set to <code class="docutils literal notranslate"><span class="pre">NO</span></code>, objects will never be synced to Secondary node.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -199,14 +199,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpostlen"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-maxpostlen"><strong>maxpostlen</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxpostlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxpostlen" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of POST body bytes to consider when evaluating parameters for a content group for which you have configured hit parameters and invalidation parameters.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-memlimit"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-memlimit"><strong>memlimit</strong></p>
-<a class="ansibleOptionLink" href="#parameter-memlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-memlimit" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Amount of memory available for storing the cache objects. In practice, the amount of memory available for caching can be less than half the total memory of the Citrix ADC.</p>
 </div></td>
@@ -255,7 +255,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-prefetchmaxpending"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-prefetchmaxpending"><strong>prefetchmaxpending</strong></p>
-<a class="ansibleOptionLink" href="#parameter-prefetchmaxpending" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-prefetchmaxpending" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of outstanding prefetches in the Integrated Cache.</p>
 </div></td>
@@ -289,7 +289,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-undefaction"><strong>undefaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Action to take when a policy cannot be evaluated.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -313,7 +313,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-verifyusing"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-verifyusing"><strong>verifyusing</strong></p>
-<a class="ansibleOptionLink" href="#parameter-verifyusing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-verifyusing" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Criteria for deciding whether a cached object can be served for an incoming HTTP request. Available settings function as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">HOSTNAME</span></code> - The URL, host name, and host port values in the incoming HTTP request header must match the cache policy. The IP address and the TCP port of the destination host are not evaluated. Do not use the <code class="docutils literal notranslate"><span class="pre">HOSTNAME</span></code> setting unless you are certain that no rogue client can access a rogue server through the cache.</p>
@@ -330,7 +330,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-via"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cacheparameter-module-parameter-via"><strong>via</strong></p>
-<a class="ansibleOptionLink" href="#parameter-via" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-via" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String to include in the Via header. A Via header is inserted into all responses served from a content group if its Insert Via flag is set.</p>
 </div></td>

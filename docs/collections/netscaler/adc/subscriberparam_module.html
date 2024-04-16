@@ -131,7 +131,7 @@
 <h1>netscaler.adc.subscriberparam module – Configuration for Subscriber Params resource.<a class="headerlink" href="#netscaler-adc-subscriberparam-module-configuration-for-subscriber-params-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-idleaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-subscriberparam-module-parameter-idleaction"><strong>idleaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-idleaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-idleaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>q!Once idleTTL exprires on a subscriber session, Citrix ADC will take an idle action on that session. idleAction could be chosen from one of these ==&gt;</p>
 <ol class="arabic simple">
@@ -191,7 +191,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-idlettl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-subscriberparam-module-parameter-idlettl"><strong>idlettl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-idlettl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-idlettl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>q!Idle Timeout, in seconds, after which Citrix ADC will take an idleAction on a subscriber session (refer to ‘idleAction’ arguement in ‘set subscriber param’ for more details on idleAction). Any data-plane or control plane activity updates the idleTimeout on subscriber session. idleAction could be to ‘just delete the session’ or ‘delete and CCR-T’ (if PCRF is configured) or ‘do not delete but send a CCR-U’.</p>
 <p>Zero value disables the idle timeout. !</p>
@@ -199,7 +199,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-interfacetype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-subscriberparam-module-parameter-interfacetype"><strong>interfacetype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-interfacetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-interfacetype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Subscriber Interface refers to Citrix ADC interaction with control plane protocols, RADIUS and GX.</p>
 <p>Types of subscriber interface: NONE, <code class="docutils literal notranslate"><span class="pre">RadiusOnly</span></code>, <code class="docutils literal notranslate"><span class="pre">RadiusAndGx</span></code>, <code class="docutils literal notranslate"><span class="pre">GxOnly</span></code>.</p>
@@ -225,7 +225,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-keytype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-subscriberparam-module-parameter-keytype"><strong>keytype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-keytype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-keytype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of subscriber key type <code class="docutils literal notranslate"><span class="pre">IP</span></code> or <code class="docutils literal notranslate"><span class="pre">IPANDVLAN</span></code>. <code class="docutils literal notranslate"><span class="pre">IPANDVLAN</span></code> option can be used only when the interfaceType is set to gxOnly.</p>
 <p>Changing the lookup method should result to the subscriber session database being flushed.</p>

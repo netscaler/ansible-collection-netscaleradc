@@ -131,7 +131,7 @@
 <h1>netscaler.adc.lbparameter module – Configuration for LB parameter resource.<a class="headerlink" href="#netscaler-adc-lbparameter-module-configuration-for-lb-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-allowboundsvcremoval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-allowboundsvcremoval"><strong>allowboundsvcremoval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-allowboundsvcremoval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-allowboundsvcremoval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is used, to enable/disable the option of svc/svcgroup removal, if it is bound to one or more vserver. If it is enabled, the svc/svcgroup can be removed, even if it bound to vservers. If disabled, an error will be thrown, when the user tries to remove a svc/svcgroup without unbinding from its vservers.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-computedadccookieattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-computedadccookieattribute"><strong>computedadccookieattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-computedadccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-computedadccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>ComputedADCCookieAttribute accepts ns variable as input in form of string starting with $ (to understand how to configure ns variable, please check man add ns variable). policies can be configured to modify this variable for every transaction and the final value of the variable after policy evaluation will be appended as attribute to Citrix ADC cookie (for example: LB cookie persistence , GSLB sitepersistence, CS cookie persistence, LB group cookie persistence). Only one of ComputedADCCookieAttribute, LiteralADCCookieAttribute can be set.</p>
 <p>Sample usage -</p>
@@ -201,7 +201,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-consolidatedlconn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-consolidatedlconn"><strong>consolidatedlconn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-consolidatedlconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-consolidatedlconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>To find the service with the fewest connections, the virtual server uses the consolidated connection statistics from all the packet engines. The <code class="docutils literal notranslate"><span class="pre">NO</span></code> setting allows consideration of only the number of connections on the packet engine that received the new connection.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -213,21 +213,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookiepassphrase"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-cookiepassphrase"><strong>cookiepassphrase</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookiepassphrase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookiepassphrase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use this parameter to specify the passphrase used to generate secured persistence cookie value. It specifies the passphrase with a maximum of 31 characters.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dbsttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-dbsttl"><strong>dbsttl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dbsttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-dbsttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify the TTL for DNS record for domain based service. The default value of ttl is 0 which indicates to use the TTL received in DNS response for monitors</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dropmqttjumbomessage"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-dropmqttjumbomessage"><strong>dropmqttjumbomessage</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dropmqttjumbomessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dropmqttjumbomessage" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When this option is enabled, MQTT messages of length greater than 64k will be dropped and the client/server connections will be reset.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -239,7 +239,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httponlycookieflag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-httponlycookieflag"><strong>httponlycookieflag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httponlycookieflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httponlycookieflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute limits the scope of a cookie to HTTP requests and helps mitigate the risk of cross-site scripting attacks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -251,7 +251,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lbhashalgorithm"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-lbhashalgorithm"><strong>lbhashalgorithm</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lbhashalgorithm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lbhashalgorithm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option dictates the hashing algorithm used for hash based LB methods (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH, TOKEN, USER_TOKEN, CALLIDHASH).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -264,14 +264,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lbhashfingers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-lbhashfingers"><strong>lbhashfingers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lbhashfingers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-lbhashfingers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is used to specify the number of fingers to be used in PRAC and JARH algorithms for hash based LB methods. Increasing the number of fingers might give better distribution of traffic at the expense of additional memory</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-literaladccookieattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-literaladccookieattribute"><strong>literaladccookieattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-literaladccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-literaladccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String configured as LiteralADCCookieAttribute will be appended as attribute for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence, CS cookie persistence, LB group cookie persistence).</p>
 <p>Sample usage -</p>
@@ -282,14 +282,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxpipelinenat"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-maxpipelinenat"><strong>maxpipelinenat</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxpipelinenat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxpipelinenat" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of concurrent requests to allow on a single client connection, which is identified by the &lt;clientip:port&gt;-&lt;vserver ip:port&gt; tuple. This parameter is applicable to ANY service type and all UDP service types (except DNS) and only when “svrTimeout” is set to zero. A value of 0 (zero) applies no limit to the number of concurrent requests allowed on a single client connection</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-monitorconnectionclose"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-monitorconnectionclose"><strong>monitorconnectionclose</strong></p>
-<a class="ansibleOptionLink" href="#parameter-monitorconnectionclose" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-monitorconnectionclose" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Close monitoring connections by sending the service a connection termination message with the specified bit set.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -301,7 +301,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-monitorskipmaxclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-monitorskipmaxclient"><strong>monitorskipmaxclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-monitorskipmaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-monitorskipmaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>When a monitor initiates a connection to a service, do not check to determine whether the number of connections to the service has reached the limit specified by the service’s Max Clients setting. Enables monitoring to continue even if the service has reached its connection limit.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -355,7 +355,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-preferdirectroute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-preferdirectroute"><strong>preferdirectroute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-preferdirectroute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-preferdirectroute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Perform route lookup for traffic received by the Citrix ADC, and forward the traffic according to configured routes. Do not set this parameter if you want a wildcard virtual server to direct packets received by the appliance to an intermediary device, such as a firewall, even if their destination is directly connected to the appliance. Route lookup is performed after the packets have been processed and returned by the intermediary device.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -367,7 +367,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-retainservicestate"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-retainservicestate"><strong>retainservicestate</strong></p>
-<a class="ansibleOptionLink" href="#parameter-retainservicestate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-retainservicestate" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is used to retain the original state of service or servicegroup member when an enable server command is issued.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -392,7 +392,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-startuprrfactor"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-startuprrfactor"><strong>startuprrfactor</strong></p>
-<a class="ansibleOptionLink" href="#parameter-startuprrfactor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-startuprrfactor" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of requests, per service, for which to apply the round robin load balancing method before switching to the configured load balancing method, thus allowing services to ramp up gradually to full load. Until the specified number of requests is distributed, the Citrix ADC is said to be implementing the slow start mode (or startup round robin). Implemented for a virtual server when one of the following is true:</p>
 <p>* The virtual server is newly created.</p>
@@ -421,7 +421,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-storemqttclientidandusername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-storemqttclientidandusername"><strong>storemqttclientidandusername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-storemqttclientidandusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-storemqttclientidandusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option allows to store the MQTT clientid and username in transactional logs</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -433,7 +433,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-undefaction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-undefaction"><strong>undefaction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-undefaction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Action to perform when policy evaluation creates an UNDEF condition. Available settings function as follows:</p>
 <p>* NOLBACTION - Does not consider LB action in making LB decision.</p>
@@ -443,7 +443,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useencryptedpersistencecookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-useencryptedpersistencecookie"><strong>useencryptedpersistencecookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useencryptedpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useencryptedpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Encode persistence cookie values using SHA2 hash.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -455,7 +455,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useportforhashlb"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-useportforhashlb"><strong>useportforhashlb</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useportforhashlb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useportforhashlb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the port number of the service when creating a hash for hash based load balancing methods. With the <code class="docutils literal notranslate"><span class="pre">NO</span></code> setting, only the IP address of the service is considered when creating a hash.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -467,7 +467,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usesecuredpersistencecookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-usesecuredpersistencecookie"><strong>usesecuredpersistencecookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usesecuredpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-usesecuredpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Encode persistence cookie values using SHA2 hash.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -491,7 +491,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-vserverspecificmac"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbparameter-module-parameter-vserverspecificmac"><strong>vserverspecificmac</strong></p>
-<a class="ansibleOptionLink" href="#parameter-vserverspecificmac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-vserverspecificmac" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Allow a MAC-mode virtual server to accept traffic returned by an intermediary device, such as a firewall, to which the traffic was previously forwarded by another MAC-mode virtual server. The second virtual server can then distribute that traffic across the destination server farm. Also useful when load balancing Branch Repeater appliances.</p>
 <p>Note: The second virtual server can also send the traffic to another set of intermediary devices, such as another set of firewalls. If necessary, you can configure multiple MAC-mode virtual servers to pass traffic successively through multiple sets of intermediary devices.</p>

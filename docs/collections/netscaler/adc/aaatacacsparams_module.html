@@ -131,7 +131,7 @@
 <h1>netscaler.adc.aaatacacsparams module – Configuration for tacacs parameters resource.<a class="headerlink" href="#netscaler-adc-aaatacacsparams-module-configuration-for-tacacs-parameters-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-accounting"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-accounting"><strong>accounting</strong></p>
-<a class="ansibleOptionLink" href="#parameter-accounting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-accounting" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Send accounting messages to the TACACS+ server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,7 +185,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-auditfailedcmds"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-auditfailedcmds"><strong>auditfailedcmds</strong></p>
-<a class="ansibleOptionLink" href="#parameter-auditfailedcmds" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-auditfailedcmds" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The option for sending accounting messages to the TACACS+ server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +197,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authorization"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-authorization"><strong>authorization</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authorization" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-authorization" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use streaming authorization on the TACACS+ server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -209,21 +209,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authtimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-authtimeout"><strong>authtimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of seconds that the Citrix ADC waits for a response from the TACACS+ server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultauthenticationgroup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-defaultauthenticationgroup"><strong>defaultauthenticationgroup</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is the default group that is chosen when the authentication succeeds in addition to extracted groups.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupattrname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-groupattrname"><strong>groupattrname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupattrname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupattrname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>TACACS+ group attribute name.Used for group extraction on the TACACS+ server.</p>
 </div></td>
@@ -285,14 +285,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-serverip"><strong>serverip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP address of your TACACS+ server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-serverport"><strong>serverport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port number on which the TACACS+ server listens for connections.</p>
 </div></td>
@@ -313,7 +313,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tacacssecret"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaatacacsparams-module-parameter-tacacssecret"><strong>tacacssecret</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tacacssecret" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tacacssecret" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Key shared between the TACACS+ server and clients. Required for allowing the Citrix ADC to communicate with the TACACS+ server.</p>
 </div></td>

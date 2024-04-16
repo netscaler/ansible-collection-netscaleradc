@@ -131,7 +131,7 @@
 <h1>netscaler.adc.nsparam module – Configuration for Citrix ADC parameters resource.<a class="headerlink" href="#netscaler-adc-nsparam-module-configuration-for-citrix-adc-parameters-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-advancedanalyticsstats"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-advancedanalyticsstats"><strong>advancedanalyticsstats</strong></p>
-<a class="ansibleOptionLink" href="#parameter-advancedanalyticsstats" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-advancedanalyticsstats" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Disable/Enable advanace analytics stats</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -176,7 +176,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-aftpallowrandomsourceport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-aftpallowrandomsourceport"><strong>aftpallowrandomsourceport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-aftpallowrandomsourceport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-aftpallowrandomsourceport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Allow the FTP server to come from a random source port for active FTP data connections</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -197,7 +197,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-cip"><strong>cip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable the insertion of the actual client IP address into the HTTP header request passed from the client to one, some, or all servers attached to the system. The passed address can then be accessed through a minor modification to the server.</p>
 <p>* If the CIP header is specified, it will be used as the client IP header.</p>
@@ -211,75 +211,75 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cipheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-cipheader"><strong>cipheader</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cipheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cipheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Text that will be used as the client IP address header.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookieversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-cookieversion"><strong>cookieversion</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookieversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookieversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Version of the cookie inserted by the system.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
 <ul class="simple">
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code></p></li>
-<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">&quot;1&quot;</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">0</span></code></p></li>
+<li><p><code class="ansible-option-choices-entry docutils literal notranslate"><span class="pre">1</span></code></p></li>
 </ul>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-crportrange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-crportrange"><strong>crportrange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-crportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-crportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port range for cache redirection services.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-exclusivequotamaxclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-exclusivequotamaxclient"><strong>exclusivequotamaxclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-exclusivequotamaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-exclusivequotamaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Percentage of maxClient to be given to PEs.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-exclusivequotaspillover"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-exclusivequotaspillover"><strong>exclusivequotaspillover</strong></p>
-<a class="ansibleOptionLink" href="#parameter-exclusivequotaspillover" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-exclusivequotaspillover" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Percentage of maximum limit to be given to PEs.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ftpportrange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-ftpportrange"><strong>ftpportrange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ftpportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ftpportrange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum and maximum port (port range) that FTP services are allowed to use.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-grantquotamaxclient"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-grantquotamaxclient"><strong>grantquotamaxclient</strong></p>
-<a class="ansibleOptionLink" href="#parameter-grantquotamaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-grantquotamaxclient" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Percentage of shared quota to be granted at a time for maxClient.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-grantquotaspillover"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-grantquotaspillover"><strong>grantquotaspillover</strong></p>
-<a class="ansibleOptionLink" href="#parameter-grantquotaspillover" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-grantquotaspillover" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Percentage of shared quota to be granted at a time for spillover.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httpport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-httpport"><strong>httpport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httpport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-httpport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>HTTP ports on the web server. This allows the system to perform connection off-load for any client request that has a destination port matching one of these configured ports.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-icaports"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-icaports"><strong>icaports</strong></p>
-<a class="ansibleOptionLink" href="#parameter-icaports" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-icaports" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The ICA ports on the Web server. This allows the system to perform connection off-load for any</p>
 <blockquote>
@@ -289,7 +289,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-internaluserlogin"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-internaluserlogin"><strong>internaluserlogin</strong></p>
-<a class="ansibleOptionLink" href="#parameter-internaluserlogin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-internaluserlogin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enables/disables the internal user from logging in to the appliance. Before disabling internal user login, you must have key-based authentication set up on the appliance. The file name for the key pair must be “ns_comm_key”.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -301,35 +301,35 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ipttl"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-ipttl"><strong>ipttl</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ipttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ipttl" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Set the IP Time to Live (TTL) and Hop Limit value for all outgoing packets from Citrix ADC.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxconn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-maxconn"><strong>maxconn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxconn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of connections that will be made from the appliance to the web server(s) attached to it. The value entered here is applied globally to all attached servers.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxreq"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-maxreq"><strong>maxreq</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxreq" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of requests that the system can pass on a particular connection between the appliance and a server attached to it. Setting this value to 0 allows an unlimited number of requests to be passed. This value is overridden by the maximum number of requests configured on the individual service.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mgmthttpport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-mgmthttpport"><strong>mgmthttpport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mgmthttpport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-mgmthttpport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This allow the configuration of management HTTP port.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-mgmthttpsport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-mgmthttpsport"><strong>mgmthttpsport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-mgmthttpsport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-mgmthttpsport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This allows the configuration of management HTTPS port.</p>
 </div></td>
@@ -378,21 +378,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pmtumin"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-pmtumin"><strong>pmtumin</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pmtumin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pmtumin" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum path MTU value that Citrix ADC will process in the ICMP fragmentation needed message. If the ICMP message contains a value less than this value, then this value is used instead.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-pmtutimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-pmtutimeout"><strong>pmtutimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-pmtutimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-pmtutimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Interval, in minutes, for flushing the PMTU entries.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-proxyprotocol"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-proxyprotocol"><strong>proxyprotocol</strong></p>
-<a class="ansibleOptionLink" href="#parameter-proxyprotocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-proxyprotocol" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Disable/Enable v1 or v2 proxy protocol header for client info insertion</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -417,7 +417,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-securecookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-securecookie"><strong>securecookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-securecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-securecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable secure flag for persistence cookie.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -429,7 +429,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-secureicaports"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-secureicaports"><strong>secureicaports</strong></p>
-<a class="ansibleOptionLink" href="#parameter-secureicaports" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-secureicaports" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The Secure ICA ports on the Web server. This allows the system to perform connection off-load for any</p>
 <blockquote>
@@ -439,7 +439,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-servicepathingressvlan"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-servicepathingressvlan"><strong>servicepathingressvlan</strong></p>
-<a class="ansibleOptionLink" href="#parameter-servicepathingressvlan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-servicepathingressvlan" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>VLAN on which the subscriber traffic arrives on the appliance.</p>
 </div></td>
@@ -460,7 +460,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-tcpcip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-tcpcip"><strong>tcpcip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-tcpcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-tcpcip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable or disable the insertion of the client TCP/IP header in TCP payload passed from the client to one, some, or all servers attached to the system. The passed address can then be accessed through a minor modification to the server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -472,14 +472,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-timezone"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-timezone"><strong>timezone</strong></p>
-<a class="ansibleOptionLink" href="#parameter-timezone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-timezone" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Time zone for the Citrix ADC. Name of the time zone should be specified as argument.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useproxyport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-nsparam-module-parameter-useproxyport"><strong>useproxyport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useproxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useproxyport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable/Disable use_proxy_port setting</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

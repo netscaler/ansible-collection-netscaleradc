@@ -131,7 +131,7 @@
 <h1>netscaler.adc.aaaldapparams module – Configuration for LDAP parameter resource.<a class="headerlink" href="#netscaler-adc-aaaldapparams-module-configuration-for-ldap-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,56 +173,56 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-authtimeout"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-authtimeout"><strong>authtimeout</strong></p>
-<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-authtimeout" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Maximum number of seconds that the Citrix ADC waits for a response from the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-defaultauthenticationgroup"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-defaultauthenticationgroup"><strong>defaultauthenticationgroup</strong></p>
-<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-defaultauthenticationgroup" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This is the default group that is chosen when the authentication succeeds in addition to extracted groups.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupattrname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-groupattrname"><strong>groupattrname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupattrname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupattrname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Attribute name used for group extraction from the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupnameidentifier"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-groupnameidentifier"><strong>groupnameidentifier</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupnameidentifier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupnameidentifier" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>LDAP-group attribute that uniquely identifies the group. No two groups on one LDAP server can have the same group name identifier.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupsearchattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-groupsearchattribute"><strong>groupsearchattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupsearchattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupsearchattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>LDAP-group attribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupsearchfilter"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-groupsearchfilter"><strong>groupsearchfilter</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupsearchfilter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupsearchfilter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Search-expression that can be specified for sending group-search requests to the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-groupsearchsubattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-groupsearchsubattribute"><strong>groupsearchsubattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-groupsearchsubattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-groupsearchsubattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>LDAP-group subattribute that designates the parent group of the specified group. Use this attribute to search for a group’s parent group.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldapbase"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-ldapbase"><strong>ldapbase</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldapbase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldapbase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Base (the server and location) from which LDAP search commands should start.</p>
 <p>If the LDAP server is running locally, the default value of base is dc=netscaler, dc=com.</p>
@@ -230,35 +230,35 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldapbinddn"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-ldapbinddn"><strong>ldapbinddn</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldapbinddn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldapbinddn" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Complete distinguished name (DN) string used for binding to the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldapbinddnpassword"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-ldapbinddnpassword"><strong>ldapbinddnpassword</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldapbinddnpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldapbinddnpassword" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Password for binding to the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ldaploginname"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-ldaploginname"><strong>ldaploginname</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ldaploginname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ldaploginname" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name attribute that the Citrix ADC uses to query the external LDAP server or an Active Directory.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-maxnestinglevel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-maxnestinglevel"><strong>maxnestinglevel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-maxnestinglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-maxnestinglevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of levels up to which the system can query nested LDAP groups.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-nestedgroupextraction"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-nestedgroupextraction"><strong>nestedgroupextraction</strong></p>
-<a class="ansibleOptionLink" href="#parameter-nestedgroupextraction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-nestedgroupextraction" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Queries the external LDAP server to determine whether the specified group belongs to another group.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -312,7 +312,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-passwdchange"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-passwdchange"><strong>passwdchange</strong></p>
-<a class="ansibleOptionLink" href="#parameter-passwdchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-passwdchange" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Accept password change requests.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -337,7 +337,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-searchfilter"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-searchfilter"><strong>searchfilter</strong></p>
-<a class="ansibleOptionLink" href="#parameter-searchfilter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-searchfilter" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String to be combined with the default LDAP user search string to form the value to use when executing an LDAP search.</p>
 <p>For example, the following values:</p>
@@ -349,7 +349,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-sectype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-sectype"><strong>sectype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-sectype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-sectype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of security used for communications between the Citrix ADC and the LDAP server. For the <code class="docutils literal notranslate"><span class="pre">PLAINTEXT</span></code> setting, no encryption is required.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -362,21 +362,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverip"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-serverip"><strong>serverip</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverip" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IP address of your LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-serverport"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-serverport"><strong>serverport</strong></p>
-<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">integer</span></p>
+<a class="ansibleOptionLink" href="#parameter-serverport" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Port number on which the LDAP server listens for connections.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ssonameattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-ssonameattribute"><strong>ssonameattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ssonameattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ssonameattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Attribute used by the Citrix ADC to query an external LDAP server or Active Directory for an alternative username.</p>
 <p>This alternative username is then used for single sign-on (SSO).</p>
@@ -398,14 +398,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-subattributename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-subattributename"><strong>subattributename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-subattributename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-subattributename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Subattribute name used for group extraction from the LDAP server.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-svrtype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-aaaldapparams-module-parameter-svrtype"><strong>svrtype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-svrtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-svrtype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The type of LDAP server.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

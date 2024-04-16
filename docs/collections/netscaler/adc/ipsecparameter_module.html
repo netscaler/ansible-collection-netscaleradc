@@ -131,7 +131,7 @@
 <h1>netscaler.adc.ipsecparameter module – Configuration for IPSEC paramter resource.<a class="headerlink" href="#netscaler-adc-ipsecparameter-module-configuration-for-ipsec-paramter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-encalgo"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-encalgo"><strong>encalgo</strong></p>
-<a class="ansibleOptionLink" href="#parameter-encalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-encalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of encryption algorithm (Note: Selection of <code class="docutils literal notranslate"><span class="pre">AES</span></code> enables AES128)</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -186,7 +186,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-hashalgo"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-hashalgo"><strong>hashalgo</strong></p>
-<a class="ansibleOptionLink" href="#parameter-hashalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">list</span> / <span class="ansible-option-elements">elements=string</span></p>
+<a class="ansibleOptionLink" href="#parameter-hashalgo" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of hashing algorithm</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -201,14 +201,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ikeretryinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-ikeretryinterval"><strong>ikeretryinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ikeretryinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-ikeretryinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IKE retry interval for bringing up the connection</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-ikeversion"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-ikeversion"><strong>ikeversion</strong></p>
-<a class="ansibleOptionLink" href="#parameter-ikeversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-ikeversion" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IKE Protocol Version</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -220,14 +220,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lifetime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-lifetime"><strong>lifetime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-lifetime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Lifetime of IKE SA in seconds. Lifetime of IPSec SA will be (lifetime of IKE SA/8)</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-livenesscheckinterval"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-livenesscheckinterval"><strong>livenesscheckinterval</strong></p>
-<a class="ansibleOptionLink" href="#parameter-livenesscheckinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-livenesscheckinterval" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Number of seconds after which a notify payload is sent to check the liveliness of the peer. Additional retries are done as per retransmit interval setting. Zero value disables liveliness checks.</p>
 </div></td>
@@ -276,7 +276,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-perfectforwardsecrecy"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-perfectforwardsecrecy"><strong>perfectforwardsecrecy</strong></p>
-<a class="ansibleOptionLink" href="#parameter-perfectforwardsecrecy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-perfectforwardsecrecy" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable/Disable PFS.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -288,14 +288,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-replaywindowsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-replaywindowsize"><strong>replaywindowsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-replaywindowsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-replaywindowsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>IPSec Replay window size for the data traffic</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-retransmissiontime"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-ipsecparameter-module-parameter-retransmissiontime"><strong>retransmissiontime</strong></p>
-<a class="ansibleOptionLink" href="#parameter-retransmissiontime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-retransmissiontime" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The interval in seconds to retry sending the IKE messages to peer, three consecutive attempts are done with doubled interval after every failure,</p>
 <p>increases for every retransmit till 6 retransmits.</p>

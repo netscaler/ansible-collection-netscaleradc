@@ -131,7 +131,7 @@
 <h1>netscaler.adc.lbprofile module – Configuration for LB profile resource.<a class="headerlink" href="#netscaler-adc-lbprofile-module-configuration-for-lb-profile-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -173,7 +173,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-computedadccookieattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-computedadccookieattribute"><strong>computedadccookieattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-computedadccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-computedadccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>ComputedADCCookieAttribute accepts ns variable as input in form of string starting with $ (to understand how to configure ns variable, please check man add ns variable). policies can be configured to modify this variable for every transaction and the final value of the variable after policy evaluation will be appended as attribute to Citrix ADC cookie (for example: LB cookie persistence , GSLB sitepersistence, CS cookie persistence, LB group cookie persistence). Only one of ComputedADCCookieAttribute, LiteralADCCookieAttribute can be set.</p>
 <p>Sample usage -</p>
@@ -189,14 +189,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cookiepassphrase"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-cookiepassphrase"><strong>cookiepassphrase</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cookiepassphrase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cookiepassphrase" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Use this parameter to specify the passphrase used to generate secured persistence cookie value. It specifies the passphrase with a maximum of 31 characters.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-dbslb"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-dbslb"><strong>dbslb</strong></p>
-<a class="ansibleOptionLink" href="#parameter-dbslb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-dbslb" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable database specific load balancing for MySQL and MSSQL service types.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -208,7 +208,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-httponlycookieflag"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-httponlycookieflag"><strong>httponlycookieflag</strong></p>
-<a class="ansibleOptionLink" href="#parameter-httponlycookieflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-httponlycookieflag" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Include the HttpOnly attribute in persistence cookies. The HttpOnly attribute limits the scope of a cookie to HTTP requests and helps mitigate the risk of cross-site scripting attacks.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -220,7 +220,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lbhashalgorithm"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-lbhashalgorithm"><strong>lbhashalgorithm</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lbhashalgorithm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lbhashalgorithm" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option dictates the hashing algorithm used for hash based LB methods (URLHASH, DOMAINHASH, SOURCEIPHASH, DESTINATIONIPHASH, SRCIPDESTIPHASH, SRCIPSRCPORTHASH, TOKEN, USER_TOKEN, CALLIDHASH).</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -233,21 +233,21 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lbhashfingers"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-lbhashfingers"><strong>lbhashfingers</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lbhashfingers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-lbhashfingers" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option is used to specify the number of fingers to be used in PRAC and JARH algorithms for hash based LB methods. Increasing the number of fingers might give better distribution of traffic at the expense of additional memory.</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-lbprofilename"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-lbprofilename"><strong>lbprofilename</strong></p>
-<a class="ansibleOptionLink" href="#parameter-lbprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-lbprofilename" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Name of the LB profile.</p>
 </div></td>
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-literaladccookieattribute"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-literaladccookieattribute"><strong>literaladccookieattribute</strong></p>
-<a class="ansibleOptionLink" href="#parameter-literaladccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-literaladccookieattribute" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>String configured as LiteralADCCookieAttribute will be appended as attribute for Citrix ADC cookie (for example: LB cookie persistence , GSLB site persistence, CS cookie persistence, LB group cookie persistence).</p>
 <p>Sample usage -</p>
@@ -300,7 +300,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-processlocal"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-processlocal"><strong>processlocal</strong></p>
-<a class="ansibleOptionLink" href="#parameter-processlocal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-processlocal" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>By turning on this option packets destined to a vserver in a cluster will not under go any steering. Turn this option for single pa</p>
 <p>cket request response mode or when the upstream device is performing a proper RSS for connection based distribution.</p>
@@ -342,7 +342,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-storemqttclientidandusername"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-storemqttclientidandusername"><strong>storemqttclientidandusername</strong></p>
-<a class="ansibleOptionLink" href="#parameter-storemqttclientidandusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-storemqttclientidandusername" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>This option allows to store the MQTT clientid and username in transactional logs</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -354,7 +354,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-useencryptedpersistencecookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-useencryptedpersistencecookie"><strong>useencryptedpersistencecookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-useencryptedpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-useencryptedpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Encode persistence cookie values using SHA2 hash.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -366,7 +366,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-usesecuredpersistencecookie"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-lbprofile-module-parameter-usesecuredpersistencecookie"><strong>usesecuredpersistencecookie</strong></p>
-<a class="ansibleOptionLink" href="#parameter-usesecuredpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-usesecuredpersistencecookie" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Encode persistence cookie values using SHA2 hash.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>

@@ -131,7 +131,7 @@
 <h1>netscaler.adc.cmpparameter module – Configuration for CMP parameter resource.<a class="headerlink" href="#netscaler-adc-cmpparameter-module-configuration-for-cmp-parameter-resource" title="Link to this heading"></a></h1>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.0).</p>
+<p>This module is part of the <a class="reference external" href="https://galaxy.ansible.com/ui/repo/published/netscaler/adc/">netscaler.adc collection</a> (version 2.5.2).</p>
 <p>It is not included in <code class="docutils literal notranslate"><span class="pre">ansible-core</span></code>.
 To check whether it is installed, run <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">list</span></code>.</p>
 <p>To install it, use: <code class="code docutils literal notranslate"><span class="pre">ansible-galaxy</span> <span class="pre">collection</span> <span class="pre">install</span> <span class="pre">netscaler.adc</span></code>.</p>
@@ -164,7 +164,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 <tbody>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-addvaryheader"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-addvaryheader"><strong>addvaryheader</strong></p>
-<a class="ansibleOptionLink" href="#parameter-addvaryheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-addvaryheader" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Control insertion of the Vary header in HTTP responses compressed by Citrix ADC. Intermediate caches store different versions of the response for different values of the headers present in the Vary response header.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -185,14 +185,14 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmpbypasspct"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-cmpbypasspct"><strong>cmpbypasspct</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmpbypasspct" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmpbypasspct" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Citrix ADC CPU threshold after which compression is not performed. Range: 0 - 100</p>
 </div></td>
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmplevel"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-cmplevel"><strong>cmplevel</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmplevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmplevel" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Specify a compression level. Available settings function as follows:</p>
 <blockquote>
@@ -210,7 +210,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-cmponpush"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-cmponpush"><strong>cmponpush</strong></p>
-<a class="ansibleOptionLink" href="#parameter-cmponpush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-cmponpush" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Citrix ADC does not wait for the quantum to be filled before starting to compress data. Upon receipt of a packet with a PUSH flag, the appliance immediately begins compression of the accumulated packets.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -222,7 +222,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-externalcache"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-externalcache"><strong>externalcache</strong></p>
-<a class="ansibleOptionLink" href="#parameter-externalcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-externalcache" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Enable insertion of  Cache-Control: private response directive to indicate response message is intended for a single user and must not be cached by a shared or proxy cache.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -260,7 +260,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-minressize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-minressize"><strong>minressize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-minressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-minressize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Smallest response size, in bytes, to be compressed.</p>
 </div></td>
@@ -309,7 +309,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-policytype"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-policytype"><strong>policytype</strong></p>
-<a class="ansibleOptionLink" href="#parameter-policytype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-policytype" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Type of the policy. The only possible value is <code class="docutils literal notranslate"><span class="pre">ADVANCED</span></code></p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -320,7 +320,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-quantumsize"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-quantumsize"><strong>quantumsize</strong></p>
-<a class="ansibleOptionLink" href="#parameter-quantumsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">float</span></p>
+<a class="ansibleOptionLink" href="#parameter-quantumsize" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Minimum quantum of data to be filled before compression begins.</p>
 </div></td>
@@ -340,7 +340,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-even"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-servercmp"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-servercmp"><strong>servercmp</strong></p>
-<a class="ansibleOptionLink" href="#parameter-servercmp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-servercmp" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>Allow the server to send compressed data to the Citrix ADC. With the default setting, the Citrix ADC appliance handles all compression.</p>
 <p class="ansible-option-line"><strong class="ansible-option-choices">Choices:</strong></p>
@@ -378,7 +378,7 @@ To check whether it is installed, run <code class="code docutils literal notrans
 </tr>
 <tr class="row-odd"><td><div class="ansible-option-cell">
 <div class="ansibleOptionAnchor" id="parameter-varyheadervalue"></div><p class="ansible-option-title" id="ansible-collections-netscaler-adc-cmpparameter-module-parameter-varyheadervalue"><strong>varyheadervalue</strong></p>
-<a class="ansibleOptionLink" href="#parameter-varyheadervalue" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">string</span></p>
+<a class="ansibleOptionLink" href="#parameter-varyheadervalue" title="Permalink to this option"></a><p class="ansible-option-type-line"><span class="ansible-option-type">any</span></p>
 </div></td>
 <td><div class="ansible-option-cell"><p>The value of the HTTP Vary header for compressed responses. If this argument is not specified, a default value of “Accept-Encoding” will be used.</p>
 </div></td>
