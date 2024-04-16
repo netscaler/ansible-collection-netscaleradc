@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowedmanagementinterface:
-    type: list
+    type: raw
     choices:
       - CLI
       - API
@@ -48,9 +48,8 @@ options:
         allowed from both C(API) and C(CLI) interfaces. If management interface for
         a group is set to C(API), then all users under this group will not allowed
         to access NS through C(CLI). GUI interface will come under C(API) interface
-    elements: str
   groupname:
-    type: str
+    type: raw
     description:
       - Name for the group. Must begin with a letter, number, hash(#) or the underscore
         (_) character, and must contain only alphanumeric, hyphen (-), period (.),
@@ -60,7 +59,7 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks (for example, "my group" or ''my group'').'
   promptstring:
-    type: str
+    type: raw
     description:
       - 'String to display at the command-line prompt. Can consist of letters, numbers,
         hyphen (-), period (.), hash (#), space ( ), at (@), equal (=), colon (:),
@@ -75,7 +74,7 @@ options:
       - 'Note: The 63-character limit for the length of the string does not apply
         to the characters that replace the variables.'
   timeout:
-    type: float
+    type: raw
     description:
       - CLI session inactivity timeout, in seconds. If Restrictedtimeout argument
         of system parameter is enabled, Timeout can have values in the range [300-86400]

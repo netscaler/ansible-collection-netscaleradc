@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   absexpiry:
-    type: list
+    type: raw
     description:
       - Local time, up to 4 times a day, at which all objects in the content group
         must expire.
@@ -53,15 +53,13 @@ options:
       - 'To specify that the objects in the content group should expire at 10:00 AM,
         3 PM, 6 PM, and 11:00 PM, type: add cache contentgroup <contentgroup name>
         -absexpiry 10:00 15:00 18:00 23:00'
-    elements: str
   absexpirygmt:
-    type: list
+    type: raw
     description:
       - Coordinated Universal Time (GMT), up to 4 times a day, when all objects in
         the content group must expire.
-    elements: str
   alwaysevalpolicies:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -69,11 +67,11 @@ options:
       - Force policy evaluation for each response arriving from the origin server.
         Cannot be set to C(YES) if the Prefetch parameter is also set to C(YES).
   cachecontrol:
-    type: str
+    type: raw
     description:
       - Insert a Cache-Control header into the response.
   expireatlastbyte:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -82,7 +80,7 @@ options:
         (upon receipt of the last byte of the response body). Applicable only to positive
         responses.
   flashcache:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -90,18 +88,17 @@ options:
       - Perform flash cache. Mutually exclusive with Poll Every Time (PET) on the
         same content group.
   heurexpiryparam:
-    type: float
+    type: raw
     description:
       - Heuristic expiry time, in percent of the duration, since the object was last
         modified.
   hitparams:
-    type: list
+    type: raw
     description:
       - Parameters to use for parameterized hit evaluation of an object. Up to 128
         parameters can be specified. Mutually exclusive with the Hit Selector parameter.
-    elements: str
   hitselector:
-    type: str
+    type: raw
     description:
       - Selector for evaluating whether an object gets stored in a particular content
         group. A selector is an abstraction for a collection of PIXL expressions.
@@ -112,7 +109,7 @@ options:
         parameterized invalidation. Also, the Invalidation Restricted to Host parameter
         for the group must be set to YES.
   ignoreparamvaluecase:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -120,7 +117,7 @@ options:
       - Ignore case when comparing parameter values during parameterized hit evaluation.
         (Parameter value case is ignored by default during parameterized invalidation.)
   ignorereloadreq:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -129,14 +126,14 @@ options:
       - To guard against Denial of Service attacks, set this parameter to C(YES).
         For RFC-compliant behavior, set it to C(NO).
   ignorereqcachinghdrs:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Ignore Cache-Control and Pragma headers in the incoming request.
   insertage:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -144,7 +141,7 @@ options:
       - Insert an Age header into the response. An Age header contains information
         about the age of the object, in seconds, as calculated by the integrated cache.
   insertetag:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -152,32 +149,31 @@ options:
       - Insert an ETag header in the response. With ETag header insertion, the integrated
         cache does not serve full responses on repeat requests.
   insertvia:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Insert a Via header into the response.
   invalparams:
-    type: list
+    type: raw
     description:
       - Parameters for parameterized invalidation of an object. You can specify up
         to 8 parameters. Mutually exclusive with invalSelector.
-    elements: str
   invalrestrictedtohost:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Take the host header into account during parameterized invalidation.
   invalselector:
-    type: str
+    type: raw
     description:
       - Selector for invalidating objects in the content group. A selector is an abstraction
         for a collection of PIXL expressions.
   lazydnsresolve:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -185,39 +181,39 @@ options:
       - Perform DNS resolution for responses only if the destination IP address in
         the request does not match the destination IP address of the cached response.
   matchcookies:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Evaluate for parameters in the cookie header also.
   maxressize:
-    type: float
+    type: raw
     description:
       - Maximum size of a response that can be cached in this content group.
   memlimit:
-    type: float
+    type: raw
     description:
       - Maximum amount of memory that the cache can use. The effective limit is based
         on the available memory of the Citrix ADC.
   minhits:
-    type: int
+    type: raw
     description:
       - Number of hits that qualifies a response for storage in this content group.
   minressize:
-    type: float
+    type: raw
     description:
       - Minimum size of a response that can be cached in this content group.
       - ' Default minimum response size is 0.'
   name:
-    type: str
+    type: raw
     description:
       - Name for the content group.  Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
         (#), period (.), space, colon (:), at (@), equals (=), and hyphen (-) characters.
         Cannot be changed after the content group is created.
   persistha:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -225,14 +221,14 @@ options:
       - Setting persistHA to C(YES) causes IC to save objects in contentgroup to Secondary
         node in HA deployment.
   pinned:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Do not flush objects from this content group under memory pressure.
   polleverytime:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -240,24 +236,24 @@ options:
       - Always poll for the objects in this content group. That is, retrieve the objects
         from the origin server whenever they are requested.
   prefetch:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Attempt to refresh objects that are about to go stale.
   prefetchmaxpending:
-    type: float
+    type: raw
     description:
       - Maximum number of outstanding prefetches that can be queued for the content
         group.
   prefetchperiod:
-    type: float
+    type: raw
     description:
       - Time period, in seconds before an object's calculated expiry time, during
         which to attempt prefetch.
   prefetchperiodmillisec:
-    type: float
+    type: raw
     description:
       - Time period, in milliseconds before an object's calculated expiry time, during
         which to attempt prefetch.
@@ -268,24 +264,24 @@ options:
         parameterized invalidation. If this parameter is not set, all objects are
         flushed from the group.
   quickabortsize:
-    type: float
+    type: raw
     description:
       - If the size of an object that is being downloaded is less than or equal to
         the quick abort value, and a client aborts during the download, the cache
         stops downloading the response. If the object is larger than the quick abort
         size, the cache continues to download the response.
   relexpiry:
-    type: float
+    type: raw
     description:
       - Relative expiry time, in seconds, after which to expire an object cached in
         this content group.
   relexpirymillisec:
-    type: float
+    type: raw
     description:
       - Relative expiry time, in milliseconds, after which to expire an object cached
         in this content group.
   removecookies:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -312,13 +308,13 @@ options:
     description:
       - The type of the content group.
   weaknegrelexpiry:
-    type: float
+    type: raw
     description:
       - 'Relative expiry time, in seconds, for expiring negative responses. This value
         is used only if the expiry time cannot be determined from any other source.
         It is applicable only to the following status codes: 307, 403, 404, and 410.'
   weakposrelexpiry:
-    type: float
+    type: raw
     description:
       - Relative expiry time, in seconds, for expiring positive responses with response
         codes between 200 and 399. Cannot be used in combination with other Expiry

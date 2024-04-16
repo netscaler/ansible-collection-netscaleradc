@@ -43,15 +43,15 @@ options:
     description:
       - Action to be applied by the new urlPolicy if the rule criteria are met.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new urlPolicy.
   newname:

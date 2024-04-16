@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cipherredirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -47,16 +47,16 @@ options:
         SSL handshake fails because of a cipher mismatch between the virtual server
         or service and the client.
   cipherurl:
-    type: str
+    type: raw
     description:
       - The redirect URL to be used with the Cipher Redirect feature.
   cleartextport:
-    type: int
+    type: raw
     description:
       - Port on which clear-text data is sent by the appliance to the server. Do not
         specify this parameter for SSL offloading with end-to-end encryption.
   clientauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -65,7 +65,7 @@ options:
         server terminates the SSL handshake if the SSL client does not provide a valid
         certificate.
   clientcert:
-    type: str
+    type: raw
     choices:
       - Mandatory
       - Optional
@@ -78,20 +78,20 @@ options:
       - 'Caution: Define proper access control policies before changing this setting
         to C(Optional).'
   dh:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of Diffie-Hellman (DH) key exchange.
   dhcount:
-    type: float
+    type: raw
     description:
       - Number of interactions, between the client and the Citrix ADC, after which
         the DH private-public pair is regenerated. A value of zero (0) specifies refresh
         every time.
   dhekeyexchangewithpsk:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -107,12 +107,12 @@ options:
         regardless of whether the client supports combined PSK-DHE key exchange. This
         setting only has an effect when resumption is enabled.
   dhfile:
-    type: str
+    type: raw
     description:
       - Name of and, optionally, path to the DH parameter file, in PEM format, to
         be installed. /nsconfig/ssl/ is the default path.
   dhkeyexpsizelimit:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -122,25 +122,25 @@ options:
         2048bit, the private-key size recommended is 224bits. This is rounded-up to
         256bits.
   dtls1:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.0 protocol support for the SSL Virtual Server.
   dtls12:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of DTLSv1.2 protocol support for the SSL Virtual Server.
   dtlsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DTLS profile whose settings are to be applied to the virtual server.
   ersa:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -154,12 +154,12 @@ options:
         cipher is bound to an SSL or TCP-based SSL virtual server or service. The
         eRSA key is deleted when the appliance restarts.
   ersacount:
-    type: float
+    type: raw
     description:
       - Refresh count for regeneration of the RSA public-key and private-key pair.
         Zero (0) specifies infinite usage (no refresh).
   hsts:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -167,7 +167,7 @@ options:
       - State of HSTS protocol support for the SSL Virtual Server. Using HSTS, a server
         can enforce the use of an HTTPS connection for all communication with a client
   includesubdomains:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -175,12 +175,12 @@ options:
       - Enable HSTS for subdomains. If set to Yes, a client must send only HTTPS requests
         for subdomains.
   maxage:
-    type: float
+    type: raw
     description:
       - Set the maximum time, in seconds, in the strict transport security (STS) header
         during which the client must send only HTTPS requests to the server
   ocspstapling:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -194,7 +194,7 @@ options:
         handshake.'
       - 'C(DISABLED): The appliance does not check the status of the server certificate.'
   preload:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -218,7 +218,7 @@ options:
         in the set ssl parameter command or in the Change Advanced SSL Settings dialog
         box.'
   redirectportrewrite:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -227,14 +227,14 @@ options:
         is C(ENABLED) and the URL from the server does not contain the standard port,
         the port is rewritten to the standard.
   sendclosenotify:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable sending SSL Close-Notify at the end of a transaction
   sessreuse:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -243,13 +243,13 @@ options:
         public key encryption operations. With the C(ENABLED) setting, session key
         exchange is avoided for session resumption requests received from the client.
   sesstimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, for which to keep the session active. Any session resumption
         request received after the timeout period will require a fresh SSL handshake
         and establishment of a new SSL session.
   snienable:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -260,14 +260,14 @@ options:
         same organization and share the same second-level domain name. For example,
         *.sports.net can be used to secure domains such as login.sports.net and help.sports.net.
   ssl2:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of SSLv2 protocol support for the SSL Virtual Server.
   ssl3:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -276,11 +276,11 @@ options:
       - 'Note: On platforms with SSL acceleration chips, if the SSL chip does not
         support SSLv3, this parameter cannot be set to C(ENABLED).'
   sslprofile:
-    type: str
+    type: raw
     description:
       - Name of the SSL profile that contains SSL settings for the virtual server.
   sslredirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -295,7 +295,7 @@ options:
       - If SSL Redirect is C(ENABLED), the redirect message is automatically converted
         from http:// to https:// and the SSL session does not break.
   sslv2redirect:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -305,13 +305,13 @@ options:
         SSL handshake fails because of a protocol version mismatch between the virtual
         server or service and the client.
   sslv2url:
-    type: str
+    type: raw
     description:
       - URL of the page to which to redirect the client in case of a protocol version
         mismatch. Typically, this page has a clear explanation of the error or an
         alternative location that the transaction can continue from.
   strictsigdigestcheck:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -320,35 +320,35 @@ options:
         handshake is signed with one of signature-hash combination supported by Citrix
         ADC.
   tls1:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.0 protocol support for the SSL Virtual Server.
   tls11:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.1 protocol support for the SSL Virtual Server.
   tls12:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.2 protocol support for the SSL Virtual Server.
   tls13:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - State of TLSv1.3 protocol support for the SSL Virtual Server.
   tls13sessionticketsperauthcontext:
-    type: float
+    type: raw
     description:
       - Number of tickets the SSL Virtual Server will issue anytime TLS 1.3 is negotiated,
         ticket-based resumption is enabled, and either (1) a handshake completes or
@@ -357,11 +357,11 @@ options:
         using a fresh ticket for each connection.
       - No tickets are sent if resumption is disabled.
   vservername:
-    type: str
+    type: raw
     description:
       - Name of the SSL virtual server for which to set advanced configuration.
   zerorttearlydata:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

@@ -39,14 +39,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allow204:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - 'Enable or Disable sending Allow: 204 header in ICAP request.'
   connectionkeepalive:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -54,11 +54,11 @@ options:
       - If enabled, Citrix ADC keeps the ICAP connection alive after a transaction
         to reuse it to send next ICAP request.
   hostheader:
-    type: str
+    type: raw
     description:
       - ICAP Host Header
   inserthttprequest:
-    type: str
+    type: raw
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC encapsulates
         and sends to the ICAP server. If you set this parameter, the ICAP request
@@ -68,7 +68,7 @@ options:
       - The Citrix ADC does not check the validity of this request. You must manually
         validate the request.
   inserticapheaders:
-    type: str
+    type: raw
     description:
       - 'Insert custom ICAP headers in the ICAP request to send to ICAP server. The
         headers can be static or can be dynamically constructed using PI Policy Expression.
@@ -77,7 +77,7 @@ options:
       - The Citrix ADC does not check the validity of the specified header name-value.
         You must manually validate the specified header syntax.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the audit message action which would be evaluated on receiving the
         ICAP response to emit the logs.
@@ -89,7 +89,7 @@ options:
     description:
       - ICAP Mode of operation. It is a mandatory argument while creating an icapprofile.
   name:
-    type: str
+    type: raw
     description:
       - Name for an ICAP profile. Must begin with a letter, number, or the underscore
         \(_\) character. Other characters allowed, after the first character, are
@@ -100,7 +100,7 @@ options:
       - 'CLI Users: If the name includes one or more spaces, enclose the name in double
         or single quotation marks \(for example, "my icap profile" or ''my icap profile''\).'
   preview:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -110,24 +110,24 @@ options:
         to opt-out of the transaction early instead of receiving the remainder of
         the request message.
   previewlength:
-    type: float
+    type: raw
     description:
       - Value of Preview Header field. Citrix ADC uses the minimum of this set value
         and the preview size received on OPTIONS response.
   queryparams:
-    type: str
+    type: raw
     description:
       - 'Query parameters to be included with ICAP request URI. Entered values should
         be in arg=value format. For more than one parameters, add & separated values.
         e.g.: arg1=val1&arg2=val2.'
   reqtimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, within which the remote server should respond to the ICAP-request.
         If the Netscaler does not receive full response with this time, the specified
         request timeout action is performed. Zero value disables this timeout functionality.
   reqtimeoutaction:
-    type: str
+    type: raw
     choices:
       - BYPASS
       - DROP
@@ -151,7 +151,7 @@ options:
       - URI representing icap service. It is a mandatory argument while creating an
         icapprofile.
   useragent:
-    type: str
+    type: raw
     description:
       - ICAP User Agent Header String
 extends_documentation_fragment: netscaler.adc.netscaler_adc

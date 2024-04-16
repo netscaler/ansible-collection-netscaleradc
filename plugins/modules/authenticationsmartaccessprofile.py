@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Optional comment for the profile.
   name:
-    type: str
+    type: raw
     description:
       - Name of the Smartaccess profile
   tags:

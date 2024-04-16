@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authpasswd:
-    type: str
+    type: raw
     description:
       - Plain-text pass phrase to be used by the authentication algorithm specified
         by the authType (Authentication Type) parameter. Can consist of 1 to 31 characters
@@ -51,7 +51,7 @@ options:
       - If the pass phrase includes one or more spaces, enclose it in double or single
         quotation marks (for example, "my phrase" or 'my phrase').
   authtype:
-    type: str
+    type: raw
     choices:
       - MD5
       - SHA
@@ -66,7 +66,7 @@ options:
         access rights (bound SNMPv3 views) and security level set for this group are
         assigned to this user.
   name:
-    type: str
+    type: raw
     description:
       - Name for the SNMPv3 user. Can consist of 1 to 31 characters that include uppercase
         and lowercase letters, numbers, and the hyphen (-), period (.) pound (#),
@@ -76,7 +76,7 @@ options:
       - If the name includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my user" or 'my user').
   privpasswd:
-    type: str
+    type: raw
     description:
       - Encryption key to be used by the encryption algorithm specified by the privType
         (Encryption Type) parameter. Can consist of 1 to 31 characters that include
@@ -87,7 +87,7 @@ options:
       - If the key includes one or more spaces, enclose it in double or single quotation
         marks (for example, "my key" or 'my key').
   privtype:
-    type: str
+    type: raw
     choices:
       - DES
       - AES

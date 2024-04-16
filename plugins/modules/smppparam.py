@@ -37,21 +37,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   addrnpi:
-    type: float
+    type: raw
     description:
       - Numbering Plan Indicator, such as landline, data, or WAP client, used in the
         ESME address sent in the bind request.
   addrrange:
-    type: str
+    type: raw
     description:
       - Set of SME addresses, sent in the bind request, serviced by the ESME.
   addrton:
-    type: float
+    type: raw
     description:
       - Type of Number, such as an international number or a national number, used
         in the ESME address sent in the bind request.
   clientmode:
-    type: str
+    type: raw
     choices:
       - TRANSCEIVER
       - TRANSMITTERONLY
@@ -64,7 +64,7 @@ options:
       - '* C(TRANSMITTERONLY) - Client can only send messages.'
       - '* C(RECEIVERONLY) - Client can only receive messages.'
   msgqueue:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -72,7 +72,7 @@ options:
       - Queue SMPP messages if a client that is capable of receiving the destination
         address messages is not available.
   msgqueuesize:
-    type: float
+    type: raw
     description:
       - Maximum number of SMPP messages that can be queued. After the limit is reached,
         the Citrix ADC sends a deliver_sm_resp PDU, with an appropriate error message,

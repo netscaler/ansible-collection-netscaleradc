@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   altcontentpath:
-    type: str
+    type: raw
     description:
       - Path to the alternative content service to be used in the ACS
   altcontentsvcname:
-    type: str
+    type: raw
     description:
       - Name of the alternative content service to be used in the ACS
   customfile:
@@ -51,14 +51,14 @@ options:
     description:
       - name of the HTML page object to use as the response
   delay:
-    type: float
+    type: raw
     description:
       - Delay threshold, in microseconds, for requests that match the policy's rule.
         If the delay statistics gathered for the matching request exceed the specified
         delay, configured action triggered for that request, if there is no action
         then requests are dropped to the lowest priority level
   dosaction:
-    type: str
+    type: raw
     choices:
       - SimpleResponse
       - HICResponse
@@ -71,30 +71,30 @@ options:
       - Optional expression to add second level check to trigger DoS actions. Specifically
         used for Analytics based DoS response generation
   maxconn:
-    type: float
+    type: raw
     description:
       - Maximum number of concurrent connections that can be open for requests that
         matches with rule.
   name:
-    type: str
+    type: raw
     description:
       - Name for the AppQoE action. Must begin with a letter, number, or the underscore
         symbol (_). Other characters allowed, after the first character, are the hyphen
         (-), period (.) hash (#), space ( ), at (@), equals (=), and colon (:) characters.
         This is a mandatory argument
   numretries:
-    type: float
+    type: raw
     description:
       - Retry count
   polqdepth:
-    type: float
+    type: raw
     description:
       - Policy queue depth threshold value. When the policy queue size (number of
         requests queued for the policy binding this action is attached to) increases
         to the specified polqDepth value, subsequent requests are dropped to the lowest
         priority level.
   priority:
-    type: str
+    type: raw
     choices:
       - HIGH
       - MEDIUM
@@ -107,7 +107,7 @@ options:
         priority is not configured then Lowest priority will be used to queue the
         request.
   priqdepth:
-    type: float
+    type: raw
     description:
       - Queue depth threshold value per priorirty level. If the queue size (number
         of requests in the queue of that particular priorirty) on the virtual server
@@ -126,18 +126,18 @@ options:
       - '            C(NS) - Serve from the Citrix ADC (built-in response)'
       - '                 Threshold : maxConn or delay'
   retryonreset:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Retry on TCP Reset
   retryontimeout:
-    type: float
+    type: raw
     description:
       - Retry on request Timeout(in millisec) upon sending request to backend servers
   tcpprofile:
-    type: str
+    type: raw
     description:
       - Bind TCP Profile based on L2/L3/L7 parameters.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

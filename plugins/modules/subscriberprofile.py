@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ip:
-    type: str
+    type: raw
     description:
       - Subscriber ip address
   servicepath:
-    type: str
+    type: raw
     description:
       - Name of the servicepath to be taken for this subscriber.
   subscriberrules:

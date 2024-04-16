@@ -53,7 +53,7 @@ options:
       - Customer id/name of the account in cloud that is used to create clientid/secret
         pair.
   name:
-    type: str
+    type: raw
     description:
       - Name for the push service. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -63,7 +63,7 @@ options:
         \ in double or single quotation marks (for example, \"my push service\" or\
         \ 'my push service')."
   refreshinterval:
-    type: float
+    type: raw
     description:
       - Interval at which certificates or idtoken is refreshed.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

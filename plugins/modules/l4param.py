@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   l2connmethod:
-    type: str
+    type: raw
     choices:
       - Channel
       - Vlan
@@ -53,7 +53,7 @@ options:
         in addition to the 4-tuple (<source IP>:<source port>::<destination IP>:<destination
         port>).
   l4switch:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

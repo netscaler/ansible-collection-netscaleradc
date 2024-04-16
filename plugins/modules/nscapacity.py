@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bandwidth:
-    type: float
+    type: raw
     description:
       - System bandwidth limit.
   edition:
@@ -53,7 +53,7 @@ options:
     description:
       - Unique number that identifies the cluster node.
   platform:
-    type: str
+    type: raw
     choices:
       - VS10
       - VE10
@@ -105,7 +105,7 @@ options:
     description:
       - Bandwidth unit.
   vcpu:
-    type: bool
+    type: raw
     description:
       - licensed using vcpu pool.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

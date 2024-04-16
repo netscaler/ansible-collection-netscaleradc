@@ -39,23 +39,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - The name of the rdp server profile
   psk:
-    type: str
+    type: raw
     description:
       - Pre shared key value
   rdpip:
-    type: str
+    type: raw
     description:
       - IPv4 or IPv6 address of RDP listener. This terminates client RDP connections.
   rdpport:
-    type: float
+    type: raw
     description:
       - TCP port on which the RDP connection is established.
   rdpredirection:
-    type: str
+    type: raw
     choices:
       - ENABLE
       - DISABLE

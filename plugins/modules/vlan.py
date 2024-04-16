@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   aliasname:
-    type: str
+    type: raw
     description:
       - A name for the VLAN. Must begin with a letter, a number, or the underscore
         symbol, and can consist of from 1 to 31 letters, numbers, and the hyphen (-),
@@ -48,18 +48,18 @@ options:
         you cannot perform any VLAN operation by specifying this name instead of the
         VLAN ID.
   dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing on this VLAN.
   id:
-    type: float
+    type: raw
     description:
       - A positive integer that uniquely identifies a VLAN.
   ipv6dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -68,13 +68,13 @@ options:
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
   mtu:
-    type: float
+    type: raw
     description:
       - Specifies the maximum transmission unit (MTU), in bytes. The MTU is the largest
         packet size, excluding 14 bytes of ethernet header and 4 bytes of crc, that
         can be transmitted and received over this VLAN.
   sharing:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

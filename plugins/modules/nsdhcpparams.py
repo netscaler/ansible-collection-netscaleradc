@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dhcpclient:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -45,7 +45,7 @@ options:
       - Enables DHCP client to acquire IP address from the DHCP server in the next
         boot. When set to C(OFF), disables the DHCP client in the next boot.
   saveroute:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'

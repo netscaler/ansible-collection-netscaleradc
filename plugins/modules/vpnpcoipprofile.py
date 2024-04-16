@@ -43,18 +43,18 @@ options:
     description:
       - Connection server URL
   icvverification:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - ICV verification for PCOIP transport packets.
   name:
-    type: str
+    type: raw
     description:
       - name of PCoIP profile
   sessionidletimeout:
-    type: float
+    type: raw
     description:
       - PCOIP Idle Session timeout
 extends_documentation_fragment: netscaler.adc.netscaler_adc

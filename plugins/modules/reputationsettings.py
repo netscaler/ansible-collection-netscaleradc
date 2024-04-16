@@ -37,19 +37,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   proxypassword:
-    type: str
+    type: raw
     description:
       - Password with which user logs on.
   proxyport:
-    type: float
+    type: raw
     description:
       - Proxy server port.
   proxyserver:
-    type: str
+    type: raw
     description:
       - Proxy server IP to get Reputation data.
   proxyusername:
-    type: str
+    type: raw
     description:
       - Proxy Username
 extends_documentation_fragment: netscaler.adc.netscaler_adc

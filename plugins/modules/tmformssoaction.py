@@ -43,7 +43,7 @@ options:
     description:
       - URL to which the completed form is submitted.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new form-based single sign-on profile. Must begin with an ASCII
         alphanumeric or underscore (_) character, and must contain only ASCII alphanumeric,
@@ -54,13 +54,13 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   namevaluepair:
-    type: str
+    type: raw
     description:
       - Name-value pair attributes to send to the server in addition to sending the
         username and password. Value names are separated by an ampersand (&) (for
         example, name1=value1&name2=value2).
   nvtype:
-    type: str
+    type: raw
     choices:
       - STATIC
       - DYNAMIC
@@ -73,7 +73,7 @@ options:
     description:
       - Name of the form field in which the user types in the password.
   responsesize:
-    type: float
+    type: raw
     description:
       - Number of bytes, in the response, to parse for extracting the forms.
   ssosuccessrule:
@@ -81,7 +81,7 @@ options:
     description:
       - Expression, that checks to see if single sign-on is successful.
   submitmethod:
-    type: str
+    type: raw
     choices:
       - GET
       - POST

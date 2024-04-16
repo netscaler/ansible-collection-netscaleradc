@@ -41,7 +41,7 @@ options:
     description:
       - Name of RADIUS LISTENING service that will process RADIUS accounting requests.
   radiusinterimasstart:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

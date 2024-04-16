@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   timeout:
-    type: float
+    type: raw
     description:
       - Maximum time in milliseconds to allow for processing all the policies and
         their selected actions without interruption. If the timeout is reached then
         the evaluation causes an UNDEF to be raised and no further processing is performed.
         Note that some rewrites may have already been performed.
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an error condition in evaluating the expression.

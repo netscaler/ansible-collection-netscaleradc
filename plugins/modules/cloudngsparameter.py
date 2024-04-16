@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   allowdtls12:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enables DTLS1.2 for client connections on CGS
   allowedudtversion:
-    type: str
+    type: raw
     choices:
       - V4
       - V5
@@ -53,7 +53,7 @@ options:
     description:
       - Enables the required UDT version to EDT connections in the CGS deployment
   blockonallowedngstktprof:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -61,7 +61,7 @@ options:
       - Enables blocking connections authenticated with a ticket createdby by an entity
         not whitelisted in allowedngstktprofile
   csvserverticketingdecouple:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

@@ -41,43 +41,43 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   autonomusprefix:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
   decrementprefixlifetimes:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix Autonomus flag.
   depricateprefix:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Depricate the prefix.
   ipv6prefix:
-    type: str
+    type: raw
     description:
       - Onlink prefixes for RA messages.
   onlinkprefix:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - RA Prefix onlink flag.
   prefixpreferredlifetime:
-    type: float
+    type: raw
     description:
       - Preferred life time of the prefix, in seconds.
   prefixvalidelifetime:
-    type: float
+    type: raw
     description:
       - Valide life time of the prefix, in seconds.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -41,7 +41,7 @@ options:
     description:
       - Unique number that identifies the cluster node.
   reqbandsize:
-    type: int
+    type: raw
     description:
       - 'Band size, in bytes, for HTTP request band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed
@@ -50,7 +50,7 @@ options:
       - 100 - 199 bytes
       - 200 - 299 bytes and so on.
   respbandsize:
-    type: int
+    type: raw
     description:
       - 'Band size, in bytes, for HTTP response band statistics. For example, if you
         specify a band size of 100 bytes, statistics will be maintained and displayed

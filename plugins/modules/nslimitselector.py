@@ -39,12 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   rule:
-    type: list
+    type: raw
     description:
       - '0'
-    elements: str
   selectorname:
-    type: str
+    type: raw
     description:
       - '0'
 extends_documentation_fragment: netscaler.adc.netscaler_adc

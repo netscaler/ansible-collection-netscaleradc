@@ -37,28 +37,28 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ipaddress:
-    type: str
+    type: raw
     description:
       - IP address of the node. This has to be in the same subnet as the NSIP address.
   password:
-    type: str
+    type: raw
     description:
       - Password to be used in authentication with the peer system node.
   secure:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - State of the channel when talking to the node.
   srcip:
-    type: str
+    type: raw
     description:
       - Source IP address to be used to communicate with the peer system node. The
         default value is 0, which means that the appliance uses the NSIP address as
         the source IP address.
   validatecert:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

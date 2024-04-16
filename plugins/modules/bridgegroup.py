@@ -39,18 +39,18 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing for this bridgegroup.
   id:
-    type: float
+    type: raw
     description:
       - An integer that uniquely identifies the bridge group.
   ipv6dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

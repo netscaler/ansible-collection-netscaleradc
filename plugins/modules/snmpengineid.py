@@ -41,7 +41,7 @@ options:
     description:
       - A hexadecimal value of at least 10 characters, uniquely identifying the engineid
   ownernode:
-    type: float
+    type: raw
     description:
       - ID of the cluster node for which you are setting the engineid
 extends_documentation_fragment: netscaler.adc.netscaler_adc

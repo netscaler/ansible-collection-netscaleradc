@@ -45,11 +45,11 @@ options:
         built-in actions are NOOP, RESET, DROP, CLIENTAUTH, NOCLIENTAUTH, INTERCEPT
         AND BYPASS.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new SSL policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -78,7 +78,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: str
+    type: raw
     description:
       - 'Name of the action to be performed when the result of rule evaluation is
         undefined. Possible values for control policies: CLIENTAUTH, NOCLIENTAUTH,

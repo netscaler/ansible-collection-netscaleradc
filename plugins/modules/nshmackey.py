@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this encryption key.
   digest:
@@ -78,7 +78,7 @@ options:
       - intended for use cases where the NetScaler both generates and verifies an
         HMAC on  the same data.
   name:
-    type: str
+    type: raw
     description:
       - 'Key name.  This follows the same syntax rules as other expression entity
         names:'

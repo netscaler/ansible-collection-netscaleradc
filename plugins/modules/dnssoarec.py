@@ -45,7 +45,7 @@ options:
         email address, replace the @ sign with a period (.). For example, enter domainadmin.example.com
         instead of domainadmin@example.com.
   domain:
-    type: str
+    type: raw
     description:
       - Domain name for which to add the SOA record.
   ecssubnet:
@@ -53,7 +53,7 @@ options:
     description:
       - Subnet for which the cached SOA record need to be removed.
   expire:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which the zone data on a secondary name server can
         no longer be considered authoritative because all refresh and retry attempts
@@ -61,7 +61,7 @@ options:
         server stops serving the zone. Typically one week. Not used by the primary
         server.
   minimum:
-    type: float
+    type: raw
     description:
       - Default time to live (TTL) for all records in the zone. Can be overridden
         for individual records.
@@ -74,22 +74,22 @@ options:
     description:
       - Domain name of the name server that responds authoritatively for the domain.
   refresh:
-    type: float
+    type: raw
     description:
       - Time, in seconds, for which a secondary server must wait between successive
         checks on the value of the serial number.
   retry:
-    type: float
+    type: raw
     description:
       - Time, in seconds, between retries if a secondary server's attempt to contact
         the primary server for a zone refresh fails.
   serial:
-    type: float
+    type: raw
     description:
       - The secondary server uses this parameter to determine whether it requires
         a zone transfer from the primary server.
   ttl:
-    type: float
+    type: raw
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

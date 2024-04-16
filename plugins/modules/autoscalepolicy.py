@@ -39,19 +39,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: str
+    type: raw
     description:
       - The autoscale profile associated with the policy.
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this autoscale policy.
   logaction:
-    type: str
+    type: raw
     description:
       - The log action associated with the autoscale policy
   name:
-    type: str
+    type: raw
     description:
       - The name of the autoscale policy.
   newname:
@@ -59,7 +59,7 @@ options:
     description:
       - The new name of the autoscale policy.
   rule:
-    type: str
+    type: raw
     description:
       - The rule associated with the policy.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

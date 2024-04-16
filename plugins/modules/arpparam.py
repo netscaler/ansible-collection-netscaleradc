@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   spoofvalidation:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - enable/disable arp spoofing validation
   timeout:
-    type: float
+    type: raw
     description:
       - Time-out value (aging time) for the dynamically learned ARP entries, in seconds.
         The new value applies only to ARP entries that are dynamically learned after

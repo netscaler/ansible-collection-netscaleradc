@@ -37,12 +37,12 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   basethreshold:
-    type: int
+    type: raw
     description:
       - Maximum number of server connections that can be opened before surge protection
         is activated.
   throttle:
-    type: str
+    type: raw
     choices:
       - Aggressive
       - Normal

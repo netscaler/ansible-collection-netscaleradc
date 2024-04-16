@@ -43,15 +43,15 @@ options:
     description:
       - Name of action to use if the request matches this LB policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any type of information about this LB policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name of the LB policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -76,7 +76,7 @@ options:
     description:
       - Expression against which traffic is evaluated.
   undefaction:
-    type: str
+    type: raw
     description:
       - 'Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Available settings function

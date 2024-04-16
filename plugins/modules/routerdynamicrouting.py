@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   commandstring:
-    type: str
+    type: raw
     description:
       - command to be executed
   nodeid:

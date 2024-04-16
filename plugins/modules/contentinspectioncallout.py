@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this Content Inspection callout.
   name:
-    type: str
+    type: raw
     description:
       - Name for the Content Inspection callout. Not case sensitive. Must begin with
         an ASCII letter or underscore (_) character, and must consist only of ASCII
@@ -90,7 +90,7 @@ options:
         server IP address and port parameters. The service type must be TCP or SSL_TCP.
         If there are vservers and services with the same name, then vserver is selected.
   serverport:
-    type: float
+    type: raw
     description:
       - Port of the Content Inspection server.
   type:

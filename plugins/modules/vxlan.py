@@ -39,19 +39,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dynamic routing on this VXLAN.
   id:
-    type: float
+    type: raw
     description:
       - A positive integer, which is also called VXLAN Network Identifier (VNI), that
         uniquely identifies a VXLAN.
   innervlantagging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -59,7 +59,7 @@ options:
       - Specifies whether Citrix ADC should generate VXLAN packets with inner VLAN
         tag.
   ipv6dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -68,7 +68,7 @@ options:
         setting to work, you must configure IPv6 dynamic routing protocols from the
         VTYSH command line.'
   port:
-    type: int
+    type: raw
     description:
       - Specifies UDP destination port for VXLAN packets.
   protocol:
@@ -88,7 +88,7 @@ options:
     description:
       - C(VXLAN) encapsulation type. C(VXLAN), C(VXLANGPE)
   vlan:
-    type: float
+    type: raw
     description:
       - ID of VLANs whose traffic is allowed over this VXLAN. If you do not specify
         any VLAN IDs, the Citrix ADC allows traffic of all VLANs that are not part

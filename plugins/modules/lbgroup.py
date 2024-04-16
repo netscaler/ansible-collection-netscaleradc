@@ -39,27 +39,27 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   backuppersistencetimeout:
-    type: float
+    type: raw
     description:
       - Time period, in minutes, for which backup persistence is in effect.
   cookiedomain:
-    type: str
+    type: raw
     description:
       - Domain attribute for the HTTP cookie.
   cookiename:
-    type: str
+    type: raw
     description:
       - Use this parameter to specify the cookie name for COOKIE peristence type.
         It specifies the name of cookie with a maximum of 32 characters. If not specified,
         cookie name is internally generated.
   mastervserver:
-    type: str
+    type: raw
     description:
       - When USE_VSERVER_PERSISTENCE is enabled, one can use this setting to designate
         a member vserver as master which is responsible to create the persistence
         sessions
   name:
-    type: str
+    type: raw
     description:
       - Name of the load balancing virtual server group.
   newname:
@@ -67,14 +67,14 @@ options:
     description:
       - New name for the load balancing virtual server group.
   persistencebackup:
-    type: str
+    type: raw
     choices:
       - SOURCEIP
       - NONE
     description:
       - Type of backup persistence for the group.
   persistencetype:
-    type: str
+    type: raw
     choices:
       - SOURCEIP
       - COOKIEINSERT
@@ -89,12 +89,12 @@ options:
       - '* C(RULE) - Create persistence sessions based on a user defined rule.'
       - '* C(NONE) - Disable persistence for the group.'
   persistmask:
-    type: str
+    type: raw
     description:
       - Persistence mask to apply to source IPv4 addresses when creating source IP
         based persistence sessions.
   rule:
-    type: str
+    type: raw
     description:
       - Expression, or name of a named expression, against which traffic is evaluated.
       - ''
@@ -106,11 +106,11 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   timeout:
-    type: float
+    type: raw
     description:
       - Time period for which a persistence session is in effect.
   usevserverpersistency:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -120,7 +120,7 @@ options:
         with other members persistence rules. When this setting is enabled persistence
         sessions created by any of the members can be shared by other member vservers.
   v6persistmasklen:
-    type: float
+    type: raw
     description:
       - Persistence mask to apply to source IPv6 addresses when creating source IP
         based persistence sessions.

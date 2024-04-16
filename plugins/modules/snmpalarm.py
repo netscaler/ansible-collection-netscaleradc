@@ -41,7 +41,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   logging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -49,13 +49,13 @@ options:
       - Logging status of the alarm. When logging is enabled, the Citrix ADC logs
         every trap message that is generated for this alarm.
   normalvalue:
-    type: float
+    type: raw
     description:
       - Value for the normal threshold. A trap message is generated if the value of
         the respective attribute falls to or below this value after exceeding the
         high threshold.
   severity:
-    type: str
+    type: raw
     choices:
       - Critical
       - Major
@@ -71,13 +71,13 @@ options:
         level lower than the specified level (in the trap listener entry) are not
         sent.
   thresholdvalue:
-    type: float
+    type: raw
     description:
       - Value for the high threshold. The Citrix ADC generates an SNMP trap message
         when the value of the attribute associated with the alarm is greater than
         or equal to the specified high threshold value.
   time:
-    type: float
+    type: raw
     description:
       - 'Interval, in seconds, at which the Citrix ADC generates SNMP trap messages
         when the conditions specified in the SNMP alarm are met.Can be specified for
@@ -88,7 +88,7 @@ options:
         = 3600sec(1 hour), PORT-ALLOC-EXCEED = 3600sec(1 hour), Other Traps = 86400sec(1
         day)'
   trapname:
-    type: str
+    type: raw
     choices:
       - CPU-USAGE
       - AVERAGE-CPU

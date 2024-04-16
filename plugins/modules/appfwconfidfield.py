@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about the form field designation.
   fieldname:
-    type: str
+    type: raw
     description:
       - Name of the form field to designate as confidential.
   isregex:
-    type: str
+    type: raw
     choices:
       - REGEX
       - NOTREGEX
@@ -57,7 +57,7 @@ options:
       - '* C(REGEX). Form field is a regular expression.'
       - '* C(NOTREGEX). Form field is a literal string.'
   url:
-    type: str
+    type: raw
     description:
       - URL of the web page that contains the web form.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

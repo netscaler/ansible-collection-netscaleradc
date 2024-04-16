@@ -37,16 +37,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   groupnamefield:
-    type: str
+    type: raw
     description:
       - Client certificate field that specifies the group, in the format <field>:<subfield>.
   usernamefield:
-    type: str
+    type: raw
     description:
       - Client certificate field that contains the username, in the format <field>:<subfield>.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

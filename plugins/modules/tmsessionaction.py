@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthorizationaction:
-    type: str
+    type: raw
     choices:
       - ALLOW
       - DENY
@@ -47,12 +47,12 @@ options:
       - Allow or deny access to content for which there is no specific authorization
         policy.
   homepage:
-    type: str
+    type: raw
     description:
       - Web address of the home page that a user is displayed when authentication
         vserver is bookmarked and used to login.
   httponlycookie:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -60,11 +60,11 @@ options:
       - Allow only an HTTP session cookie, in which case the cookie cannot be accessed
         by scripts.
   kcdaccount:
-    type: str
+    type: raw
     description:
       - Kerberos constrained delegation account name
   name:
-    type: str
+    type: raw
     description:
       - Name for the session action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -75,7 +75,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   persistentcookie:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -87,17 +87,17 @@ options:
       - 'Note: If persistent cookie is enabled, make sure you set the persistent cookie
         validity.'
   persistentcookievalidity:
-    type: float
+    type: raw
     description:
       - Integer specifying the number of minutes for which the persistent cookie remains
         valid. Can be set only if the persistent cookie setting is enabled.
   sesstimeout:
-    type: float
+    type: raw
     description:
       - Session timeout, in minutes. If there is no traffic during the timeout period,
         the user is disconnected and must reauthenticate to access intranet resources.
   sso:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -109,7 +109,7 @@ options:
         DIGEST, and NTLM (without Negotiate NTLM2 Key or Negotiate Sign Flag). Use
         TM TrafficAction to configure SSO for these authentication types.
   ssocredential:
-    type: str
+    type: raw
     choices:
       - PRIMARY
       - SECONDARY
@@ -117,7 +117,7 @@ options:
       - Use the primary or secondary authentication credentials for single sign-on
         (SSO).
   ssodomain:
-    type: str
+    type: raw
     description:
       - Domain to use for single sign-on (SSO).
 extends_documentation_fragment: netscaler.adc.netscaler_adc

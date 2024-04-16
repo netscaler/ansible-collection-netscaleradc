@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ipaddress:
-    type: str
+    type: raw
     description:
       - IPv4 address of the collector.
   name:
-    type: str
+    type: raw
     description:
       - Name for the collector. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -55,7 +55,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow collector" or 'my appflow collector').
   netprofile:
-    type: str
+    type: raw
     description:
       - Netprofile to associate with the collector. The IP address defined in the
         profile is used as the source IP address for AppFlow traffic for this collector.  If
@@ -73,7 +73,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my appflow coll" or 'my appflow coll').
   port:
-    type: int
+    type: raw
     description:
       - Port on which the collector listens.
   transport:

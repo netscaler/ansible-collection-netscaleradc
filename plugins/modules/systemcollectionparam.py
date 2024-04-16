@@ -41,11 +41,11 @@ options:
     description:
       - SNMPv1 community name for authentication.
   datapath:
-    type: str
+    type: raw
     description:
       - specify the data path to the database.
   loglevel:
-    type: str
+    type: raw
     description:
       - specify the log level. Possible values CRITICAL,WARNING,INFO,DEBUG1,DEBUG2
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -37,25 +37,25 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   edtpmtuddf:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable DF enforcement for EDT PMTUD Control Blocks
   edtpmtuddftimeout:
-    type: float
+    type: raw
     description:
       - DF enforcement timeout for EDTPMTUDDF
   enablesronhafailover:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable/Disable Session Reliability on HA failover. The default value is No
   hdxinsightnonnsap:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -63,7 +63,7 @@ options:
       - Enable/Disable HDXInsight for Non NSAP ICA Sessions. The default value is
         Yes
   l7latencyfrequency:
-    type: float
+    type: raw
     description:
       - Specify the time interval/period for which L7 Client Latency value is to be
         calculated. By default, L7 Client Latency is calculated for every packet.

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   advertise:
-    type: str
+    type: raw
     choices:
       - DISABLED
       - ENABLED
@@ -51,7 +51,7 @@ options:
       - Positive integer used by the routing algorithms to determine preference for
         using this route. The lower the cost, the higher the preference.
   cost1:
-    type: float
+    type: raw
     description:
       - 'The cost of a route is used to compare routes of the same type. The route
         having the lowest cost is the most preferred route. Possible values: 0 through
@@ -61,34 +61,34 @@ options:
     description:
       - Display a detailed view.
   distance:
-    type: float
+    type: raw
     description:
       - Administrative distance of this route, which determines the preference of
         this route over other routes, with same destination, from different routing
         protocols. A lower value is preferred.
   gateway:
-    type: str
+    type: raw
     description:
       - IP address of the gateway for this route. Can be either the IP address of
         the gateway, or can be null to specify a null interface route.
   monitor:
-    type: str
+    type: raw
     description:
       - Name of the monitor, of type ARP or PING, configured on the Citrix ADC to
         monitor this route.
   msr:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Monitor this route using a monitor of type ARP or PING.
   netmask:
-    type: str
+    type: raw
     description:
       - The subnet mask associated with the network address.
   network:
-    type: str
+    type: raw
     description:
       - IPv4 network address for which to add a route entry in the routing table of
         the Citrix ADC.
@@ -98,7 +98,7 @@ options:
       - The owner node group in a Cluster for this route. If owner node group is not
         specified then the route is treated as Striped route.
   protocol:
-    type: list
+    type: raw
     choices:
       - OSPF
       - ISIS
@@ -106,7 +106,6 @@ options:
       - BGP
     description:
       - Routing protocol used for advertising this route.
-    elements: str
   routetype:
     type: str
     choices:
@@ -121,7 +120,7 @@ options:
       - Protocol used by routes that you want to remove from the routing table of
         the Citrix ADC.
   td:
-    type: float
+    type: raw
     description:
       - Integer value that uniquely identifies the traffic domain in which you want
         to configure the entity. If you do not specify an ID, the entity becomes part
@@ -131,7 +130,7 @@ options:
     description:
       - VLAN as the gateway for this route.
   weight:
-    type: float
+    type: raw
     description:
       - Positive integer used by the routing algorithms to determine preference for
         this route over others of equal cost. The lower the weight, the higher the

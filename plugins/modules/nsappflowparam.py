@@ -37,60 +37,60 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clienttrafficonly:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Control whether AppFlow records should be generated only for client-side traffic.
   httpcookie:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP cookie logging.
   httphost:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP host logging.
   httpmethod:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP method logging.
   httpreferer:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP referer logging.
   httpurl:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP URL logging.
   httpuseragent:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable AppFlow HTTP user-agent logging.
   templaterefresh:
-    type: float
+    type: raw
     description:
       - IPFIX template refresh interval (in seconds).
   udppmtu:
-    type: float
+    type: raw
     description:
       - MTU to be used for IPFIX UDP packets.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

@@ -49,15 +49,15 @@ options:
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of messagelog action to use when a request matches this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the LoginSchema policy. This is used for selecting parameters for
         user logon. Must begin with an ASCII alphanumeric or underscore (_) character,
@@ -93,7 +93,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

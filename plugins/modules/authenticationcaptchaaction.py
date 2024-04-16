@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the group that is added to user sessions that match current policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new captcha action. Must begin with an ASCII alphanumeric or
         underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -58,7 +58,7 @@ options:
     description:
       - Secret of gateway as established at the captcha source.
   serverurl:
-    type: str
+    type: raw
     description:
       - This is the endpoint at which captcha response is validated.
   sitekey:

@@ -43,14 +43,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   appflowlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable logging of AppFlow information for the specified service group.
   autodelayedtrofs:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -59,7 +59,7 @@ options:
         are removed from DNS response. System will wait for monitor response timeout
         period before moving to TROFS .
   autodisabledelay:
-    type: float
+    type: raw
     description:
       - The time allowed (in seconds) for a graceful shutdown. During this period,
         new connections or requests will continue to be sent to this service for clients
@@ -69,7 +69,7 @@ options:
         among other available services. After the delay time expires, no new requests
         or connections will be sent to the service.
   autodisablegraceful:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -87,7 +87,7 @@ options:
     description:
       - Auto scale option for a servicegroup
   cacheable:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -104,14 +104,14 @@ options:
     description:
       - Cache type supported by the cache server.
   cip:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Insert the Client IP header in requests forwarded to the service.
   cipheader:
-    type: str
+    type: raw
     description:
       - Name of the HTTP header whose value must be set to the IP address of the client.
         Used with the Client IP parameter. If client IP insertion is enabled, and
@@ -119,34 +119,34 @@ options:
         or the value set by the set ns config command is used as client's IP header
         name.
   cka:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable client keep-alive for the service group.
   clttimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle client connection.
   cmp:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable compression for the specified service.
   comment:
-    type: str
+    type: raw
     description:
       - Any information about the service group.
   customserverid:
-    type: str
+    type: raw
     description:
       - The identifier for this IP:Port pair. Used when the persistency type is set
         to Custom Server ID.
   dbsttl:
-    type: float
+    type: raw
     description:
       - Specify the TTL for DNS record for domain based service.The default value
         of ttl is 0 which indicates to use the TTL received in DNS response for monitors
@@ -160,7 +160,7 @@ options:
         no requests are sent to the service, and the service is marked as unavailable
         (OUT OF SERVICE).
   downstateflush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -169,7 +169,7 @@ options:
         group whose state transitions from UP to DOWN. Do not enable this option for
         applications that must complete their transactions.
   dup_weight:
-    type: float
+    type: raw
     description:
       - weight of the monitor that is bound to servicegroup.
   graceful:
@@ -181,12 +181,12 @@ options:
       - Wait for all existing connections to the service to terminate before shutting
         down the service.
   hashid:
-    type: float
+    type: raw
     description:
       - The hash identifier for the service. This must be unique for each service.
         This parameter is used by hash based load balancing methods.
   healthmonitor:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -196,7 +196,7 @@ options:
       - C(NO) - Do not send probes to check the health of the service. With the C(NO)
         option, the appliance shows the service as UP at all times.
   httpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the HTTP profile that contains HTTP configuration settings for the
         service group.
@@ -209,16 +209,16 @@ options:
         details displayed when a service group name is provided, except that bound
         monitors are not displayed.
   maxbandwidth:
-    type: float
+    type: raw
     description:
       - Maximum bandwidth, in Kbps, allocated for all the services in the service
         group.
   maxclient:
-    type: float
+    type: raw
     description:
       - Maximum number of simultaneous open connections for the service group.
   maxreq:
-    type: float
+    type: raw
     description:
       - Maximum number of requests that can be sent on a persistent connection to
         the service group.
@@ -228,7 +228,7 @@ options:
     description:
       - member port
   monconnectionclose:
-    type: str
+    type: raw
     choices:
       - RESET
       - FIN
@@ -236,22 +236,22 @@ options:
       - Close monitoring connections by sending the service a connection termination
         message with the specified bit set.
   monitor_name_svc:
-    type: str
+    type: raw
     description:
       - Name of the monitor bound to the service group. Used to assign a weight to
         the monitor.
   monthreshold:
-    type: float
+    type: raw
     description:
       - Minimum sum of weights of the monitors that are bound to this service. Used
         to determine whether to mark a service as UP or DOWN.
   nameserver:
-    type: str
+    type: raw
     description:
       - Specify the nameserver to which the query for bound domain needs to be sent.
         If not specified, use the global nameserver
   netprofile:
-    type: str
+    type: raw
     description:
       - Network profile for the service group.
   newname:
@@ -259,29 +259,29 @@ options:
     description:
       - New name for the service group.
   order:
-    type: float
+    type: raw
     description:
       - Order number to be assigned to the servicegroup member
   pathmonitor:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Path monitoring for clustering
   pathmonitorindv:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Individual Path monitoring decisions.
   port:
-    type: int
+    type: raw
     description:
       - Server port number.
   rtspsessionidremap:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -293,11 +293,11 @@ options:
       - The  identifier for the service. This is used when the persistency type is
         set to Custom Server ID.
   servername:
-    type: str
+    type: raw
     description:
       - Name of the server to which to bind the service group.
   servicegroupname:
-    type: str
+    type: raw
     description:
       - Name of the service group. Must begin with an ASCII alphabetic or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -357,25 +357,25 @@ options:
     description:
       - Protocol used to exchange data with the service.
   sp:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable surge protection for the service group.
   svrtimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which to terminate an idle server connection.
   tcpb:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Enable TCP buffering for the service group.
   tcpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the TCP profile that contains TCP configuration settings for the service
         group.
@@ -386,7 +386,7 @@ options:
         to configure the entity. If you do not specify an ID, the entity becomes part
         of the default traffic domain, which has an ID of 0.
   useproxyport:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -397,7 +397,7 @@ options:
       - 'Note: This parameter is available only when the Use Source IP (USIP) parameter
         is set to C(YES).'
   usip:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -407,7 +407,7 @@ options:
         address or subnet IP (SNIP) address is used as the source IP address to initiate
         server side connections.
   weight:
-    type: float
+    type: raw
     description:
       - Weight to assign to the servers in the service group. Specifies the capacity
         of the servers relative to the other servers in the load balancing configuration.

@@ -39,17 +39,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientid:
-    type: str
+    type: raw
     description:
       - If configured, this string is sent to the DFA server as the X-Citrix-Exchange
         header value.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   name:
-    type: str
+    type: raw
     description:
       - Name for the DFA action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -62,7 +62,7 @@ options:
       - Key shared between the DFA server and the Citrix ADC.
       - Required to allow the Citrix ADC to communicate with the DFA server.
   serverurl:
-    type: str
+    type: raw
     description:
       - DFA Server URL
 extends_documentation_fragment: netscaler.adc.netscaler_adc

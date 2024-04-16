@@ -47,7 +47,7 @@ options:
     description:
       - Display names of the servers that have been created for internal use.
   comment:
-    type: str
+    type: raw
     description:
       - Any information about the server.
   delay:
@@ -93,7 +93,7 @@ options:
       - Support IPv6 addressing mode. If you configure a server with the IPv6 addressing
         mode, you cannot use the server in the IPv4 addressing mode.
   name:
-    type: str
+    type: raw
     description:
       - Name for the server.
       - Must begin with an ASCII alphabetic or underscore (_) character, and must

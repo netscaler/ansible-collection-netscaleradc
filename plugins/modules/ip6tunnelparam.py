@@ -37,23 +37,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dropfrag:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
     description:
       - Drop any packet that requires fragmentation.
   dropfragcputhreshold:
-    type: float
+    type: raw
     description:
       - Threshold value, as a percentage of CPU usage, at which to drop packets that
         require fragmentation. Applies only if dropFragparameter is set to NO.
   srcip:
-    type: str
+    type: raw
     description:
       - Common source IPv6 address for all IPv6 tunnels. Must be a SNIP6 or VIP6 address.
   srciproundrobin:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -64,7 +64,7 @@ options:
         for all the IPv6 tunnels. This setting does not apply to a tunnel for which
         a source IPv6 address has been specified.
   useclientsourceipv6:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

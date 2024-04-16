@@ -121,16 +121,15 @@ options:
         these configured ports.
     elements: int
   ifnum:
-    type: list
+    type: raw
     description:
       - Interfaces of the appliances that must be bound to the NSVLAN.
-    elements: str
   ignoredevicespecific:
     type: bool
     description:
       - Suppress device specific differences.
   ipaddress:
-    type: str
+    type: raw
     description:
       - IP address of the Citrix ADC. Commonly referred to as NSIP address. This parameter
         is mandatory to bring up the appliance.
@@ -170,12 +169,12 @@ options:
         between the system and a server attached to it. Setting this value to 0 allows
         an unlimited number of requests to be passed.
   netmask:
-    type: str
+    type: raw
     description:
       - Netmask corresponding to the IP address. This parameter is mandatory to bring
         up the appliance.
   nsvlan:
-    type: float
+    type: raw
     description:
       - VLAN (NSVLAN) for the subnet on which the IP address resides.
   outtype:
@@ -210,7 +209,7 @@ options:
     description:
       - enable/disable secure flag for persistence cookie
   tagged:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

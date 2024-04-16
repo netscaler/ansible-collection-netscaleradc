@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about the policy for later reference.
   logaction:
-    type: str
+    type: raw
     description:
       - Where to log information for connections that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the policy.
       - Must begin with a letter, number, or the underscore character \(_\), and must

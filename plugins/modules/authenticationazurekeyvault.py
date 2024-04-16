@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authentication:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -56,12 +56,12 @@ options:
     description:
       - Unique secret string to authorize relying party at authorization server.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new Azure Key Vault profile. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -72,11 +72,11 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my action" or 'my action').
   pushservice:
-    type: str
+    type: raw
     description:
       - Name of the service used to send push notifications
   refreshinterval:
-    type: float
+    type: raw
     description:
       - Interval at which access token in obtained.
   servicekeyname:
@@ -84,7 +84,7 @@ options:
     description:
       - Friendly name of the Key to be used to compute signature.
   signaturealg:
-    type: str
+    type: raw
     choices:
       - RS256
     description:

@@ -37,22 +37,20 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   buffersizemb:
-    type: float
+    type: raw
     description:
       - Buffer size, in MB, allocated for log transaction data on the system. The
         maximum value is limited to the memory available on the system.
   customreqhdrs:
-    type: list
+    type: raw
     description:
       - Name(s) of HTTP request headers whose values should be exported by the Web
         Logging feature.
-    elements: str
   customrsphdrs:
-    type: list
+    type: raw
     description:
       - Name(s) of HTTP response headers whose values should be exported by the Web
         Logging feature.
-    elements: str
 extends_documentation_fragment: netscaler.adc.netscaler_adc
 
 """

@@ -43,11 +43,11 @@ options:
     description:
       - Name of the action to be associated with this policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments about this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),
@@ -81,7 +81,7 @@ options:
       - '* Alternatively, you can use single quotation marks to enclose the rule,
         in which case you do not have to escape the double quotation marks.'
   undefaction:
-    type: str
+    type: raw
     description:
       - Name of the appflow action to be associated with this policy when an undef
         event occurs.

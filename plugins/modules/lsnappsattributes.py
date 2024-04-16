@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - 'Name for the LSN Application Port ATTRIBUTES. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,
@@ -58,7 +58,7 @@ options:
         is applied for the LSN session. Separate a range of ports with a hyphen. For
         example, 40-90.
   sessiontimeout:
-    type: float
+    type: raw
     description:
       - Timeout, in seconds, for an idle LSN session. If an LSN session is idle for
         a time that exceeds this value, the Citrix ADC removes the session.This timeout

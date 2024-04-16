@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - Name of the nodegroup. The name uniquely identifies the nodegroup on the cluster.
   priority:
@@ -65,7 +65,7 @@ options:
         is picked up and acts as part of the nodegroup. When the original node of
         the nodegroup comes up, the backup node will be replaced.'
   strict:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

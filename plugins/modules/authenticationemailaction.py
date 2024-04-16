@@ -39,23 +39,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   content:
-    type: str
+    type: raw
     description:
       - Content to be delivered to the user. "$code" string within the content will
         be replaced with the actual one-time-code to be sent.
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the group that is added to user sessions that match current IdP policy.
         It can be used in policies to identify relying party trust.
   emailaddress:
-    type: str
+    type: raw
     description:
       - An optional expression that yields user's email. When not configured, user's
         default mail address would be used. When configured, result of this expression
         is used as destination email address.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new email action. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -76,11 +76,11 @@ options:
         such as http(s):// or smtp(s):// for http and smtp protocols respectively.
         For SMTP, the port number is mandatory like smtps://smtp.example.com:25.
   timeout:
-    type: float
+    type: raw
     description:
       - Time after which the code expires.
   type:
-    type: str
+    type: raw
     choices:
       - SMTP
       - ATHENA

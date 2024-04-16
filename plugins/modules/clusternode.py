@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   backplane:
-    type: str
+    type: raw
     description:
       - Interface through which the node communicates with the other nodes in the
         cluster. Must be specified in the three-tuple form n/c/u, where n represents
@@ -52,7 +52,7 @@ options:
     description:
       - Option to remove nodegroup config
   delay:
-    type: float
+    type: raw
     description:
       - Applicable for Passive node and node becomes passive after this timeout (in
         minutes)
@@ -66,11 +66,11 @@ options:
     description:
       - The default node group in a Cluster system.
   nodeid:
-    type: float
+    type: raw
     description:
       - Unique number that identifies the cluster node.
   priority:
-    type: float
+    type: raw
     description:
       - Preference for selecting a node as the configuration coordinator. The node
         with the lowest priority value is selected as the configuration coordinator.
@@ -82,7 +82,7 @@ options:
         nodes have the same priority, the cluster elects one of the nodes as the configuration
         coordinator.'
   tunnelmode:
-    type: str
+    type: raw
     choices:
       - NONE
       - GRE

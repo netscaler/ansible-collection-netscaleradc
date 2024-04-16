@@ -39,36 +39,36 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   analyticsprofile:
-    type: str
+    type: raw
     description:
       - Name of the Analytics Profile attached to this lsn profile.
   logcompact:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in Compact Logging format if option is enabled.
   logipfix:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Logs in IPFIX  format if option is enabled.
   logprofilename:
-    type: str
+    type: raw
     description:
       - The name of the logging Profile.
   logsessdeletion:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - LSN Session deletion will not be logged if disabled.
   logsubscrinfo:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

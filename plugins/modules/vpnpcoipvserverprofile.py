@@ -43,11 +43,11 @@ options:
     description:
       - Login domain for PCoIP users
   name:
-    type: str
+    type: raw
     description:
       - name of PCoIP vserver profile
   udpport:
-    type: int
+    type: raw
     description:
       - UDP port for PCoIP data traffic
 extends_documentation_fragment: netscaler.adc.netscaler_adc

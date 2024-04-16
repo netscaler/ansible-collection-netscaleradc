@@ -54,11 +54,11 @@ options:
       - Clear the variable value. Deallocates a text value, and for a map, the text
         key.
   comment:
-    type: str
+    type: raw
     description:
       - Comment. Can be used to preserve information about this rewrite action.
   name:
-    type: str
+    type: raw
     description:
       - Name for the assignment. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),

@@ -39,99 +39,99 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   attribute1:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute1 from the webauth
         response
   attribute10:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute10 from the webauth
         response
   attribute11:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute11 from the webauth
         response
   attribute12:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute12 from the webauth
         response
   attribute13:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute13 from the webauth
         response
   attribute14:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute14 from the webauth
         response
   attribute15:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute15 from the webauth
         response
   attribute16:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute16 from the webauth
         response
   attribute2:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute2 from the webauth
         response
   attribute3:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute3 from the webauth
         response
   attribute4:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute4 from the webauth
         response
   attribute5:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute5 from the webauth
         response
   attribute6:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute6 from the webauth
         response
   attribute7:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute7 from the webauth
         response
   attribute8:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute8 from the webauth
         response
   attribute9:
-    type: str
+    type: raw
     description:
       - Expression that would be evaluated to extract attribute9 from the webauth
         response
   defaultauthenticationgroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the authentication succeeds
         in addition to extracted groups.
   fullreqexpr:
-    type: str
+    type: raw
     description:
       - Exact HTTP request, in the form of an expression, which the Citrix ADC sends
         to the authentication server.
       - The Citrix ADC does not check the validity of this request. One must manually
         validate the request.
   name:
-    type: str
+    type: raw
     description:
       - Name for the Web Authentication action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -151,11 +151,11 @@ options:
     description:
       - Type of scheme for the web server.
   serverip:
-    type: str
+    type: raw
     description:
       - IP address of the web server to be used for authentication.
   serverport:
-    type: int
+    type: raw
     description:
       - Port on which the web server accepts connections.
   successrule:

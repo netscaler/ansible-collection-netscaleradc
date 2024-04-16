@@ -101,7 +101,7 @@ RESOURCE_NAME = os.path.basename(__file__).replace(".py", "")
 
 def main():
     executor = ModuleExecutor(RESOURCE_NAME)
-    executor.force()
+    executor.main()
 
 
 if __name__ == "__main__":

@@ -37,21 +37,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   automaticconfigsync:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - GSLB configuration will be synced automatically to remote gslb sites if enabled.
   dropldnsreq:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Drop LDNS requests if round-trip time (RTT) information is not available.
   gslbconfigsyncmonitor:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -59,19 +59,19 @@ options:
       - If enabled, remote gslb site's rsync port will be monitored and site is considered
         for configuration sync only when the monitor is successful.
   gslbsvcstatedelaytime:
-    type: float
+    type: raw
     description:
       - Amount of delay in updating the state of GSLB service to DOWN when MEP goes
         down.
       - "\t\t\tThis parameter is applicable only if monitors are not bound to GSLB\
         \ services"
   gslbsyncinterval:
-    type: float
+    type: raw
     description:
       - Time duartion (in seconds) for which the gslb sync process will wait before
         checking for config changes.
   gslbsynclocfiles:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -79,14 +79,14 @@ options:
       - If disabled, Location files will not be synced to the remote sites as part
         of automatic sync.
   gslbsyncmode:
-    type: str
+    type: raw
     choices:
       - IncrementalSync
       - FullSync
     description:
       - Mode in which configuration will be synced from master site to remote sites.
   gslbsyncsaveconfigcommand:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -94,29 +94,28 @@ options:
       - If enabled, 'save ns config' command will be treated as other GSLB commands
         and synced to GSLB nodes when auto gslb sync option is enabled.
   ldnsentrytimeout:
-    type: float
+    type: raw
     description:
       - Time, in seconds, after which an inactive LDNS entry is removed.
   ldnsmask:
-    type: str
+    type: raw
     description:
       - The IPv4 network mask with which to create LDNS entries.
   ldnsprobeorder:
-    type: list
+    type: raw
     choices:
       - PING
       - DNS
       - TCP
     description:
       - Order in which monitors should be initiated to calculate RTT.
-    elements: str
   mepkeepalivetimeout:
-    type: float
+    type: raw
     description:
       - Time duartion (in seconds) during which if no new packets received by Local
         gslb site from Remote gslb site then mark the MEP connection DOWN
   rtttolerance:
-    type: float
+    type: raw
     description:
       - Tolerance, in milliseconds, for newly learned round-trip time (RTT) values.
         If the difference between the old RTT value and the newly computed RTT value
@@ -124,7 +123,7 @@ options:
         the network metric table is not updated with the new RTT value. Prevents the
         exchange of metrics when variations in RTT values are negligible.
   svcstatelearningtime:
-    type: float
+    type: raw
     description:
       - Time (in seconds) within which local or child site services remain in learning
         phase. GSLB site will enter the learning phase after reboot, HA failover,
@@ -134,7 +133,7 @@ options:
         period, remote site will not honour the state and stats got through MEP for
         that service. State can be learnt from health monitor if bound explicitly.
   undefaction:
-    type: str
+    type: raw
     description:
       - 'Action to perform when policy evaluation creates an UNDEF condition. Available
         settings function as follows:'
@@ -143,7 +142,7 @@ options:
         the request.'
       - '* DROP - Drop the request without sending a response to the user.'
   v6ldnsmasklen:
-    type: float
+    type: raw
     description:
       - Mask for creating LDNS entries for IPv6 source addresses. The mask is defined
         as the number of leading bits to consider, in the source IP address, when

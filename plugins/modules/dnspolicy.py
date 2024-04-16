@@ -64,11 +64,11 @@ options:
     description:
       - The dns packet must be dropped.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the DNS policy.
   preferredlocation:

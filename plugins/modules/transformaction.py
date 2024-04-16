@@ -39,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this URL Transformation action.
   cookiedomainfrom:
-    type: str
+    type: raw
     description:
       - Pattern that matches the domain to be transformed in Set-Cookie headers.
   cookiedomaininto:
-    type: str
+    type: raw
     description:
       - 'PCRE-format regular expression that describes the transformation to be performed
         on cookie domains that match the cookieDomainFrom pattern. '
       - 'NOTE: The cookie domain to be transformed is extracted from the request.'
   name:
-    type: str
+    type: raw
     description:
       - Name for the URL transformation action.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -76,22 +76,22 @@ options:
     description:
       - Name of the URL Transformation profile with which to associate this action.
   requrlfrom:
-    type: str
+    type: raw
     description:
       - PCRE-format regular expression that describes the request URL pattern to be
         transformed.
   requrlinto:
-    type: str
+    type: raw
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the reqUrlFrom pattern.
   resurlfrom:
-    type: str
+    type: raw
     description:
       - PCRE-format regular expression that describes the response URL pattern to
         be transformed.
   resurlinto:
-    type: str
+    type: raw
     description:
       - PCRE-format regular expression that describes the transformation to be performed
         on URLs that match the resUrlFrom pattern.

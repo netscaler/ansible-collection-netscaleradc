@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   pemode:
-    type: str
+    type: raw
     choices:
       - DEFAULT
       - CPUBOUND

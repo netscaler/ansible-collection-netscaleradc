@@ -37,14 +37,14 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bdggrpproxyarp:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set/reset proxy ARP in bridge group deployment
   bdgsetting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -53,28 +53,28 @@ options:
         independently. Otherwise, when L2 mode is ON, learned MAC entries on a PE
         will be broadcasted to all other PEs.
   bridgeagetimeout:
-    type: float
+    type: raw
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.
         Previously existing bridge table entries expire after the previously configured
         time-out value.
   garponvridintf:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Send GARP messagess on VRID-configured interfaces upon failover
   garpreply:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Set/reset REPLY form of GARP
   macmodefwdmypkt:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -82,44 +82,44 @@ options:
       - Allows MAC mode vserver to pick and forward the packets even if it is destined
         to Citrix ADC owned VIP.
   maxbridgecollision:
-    type: float
+    type: raw
     description:
       - Maximum bridge collision for loop detection
   mbfinstlearning:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable instant learning of MAC changes in MBF mode.
   mbfpeermacupdate:
-    type: float
+    type: raw
     description:
       - When mbf_instant_learning is enabled, learn any changes in peer's MAC after
         this time interval, which is in 10ms ticks.
   proxyarp:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Proxies the ARP as Citrix ADC MAC for FreeBSD.
   returntoethernetsender:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Return to ethernet sender.
   rstintfonhafo:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable the reset interface upon HA failover.
   skipproxyingbsdtraffic:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -128,21 +128,21 @@ options:
         Enabled, source parameters are retained. Else proxy the source parameters
         based on next hop.
   stopmacmoveupdate:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Stop Update of server mac change to NAT sessions.
   usemymac:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use Citrix ADC MAC for all outgoing packets.
   usenetprofilebsdtraffic:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

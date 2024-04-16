@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   ackonpush:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -45,13 +45,13 @@ options:
       - Send immediate positive acknowledgement (ACK) on receipt of TCP packets with
         PUSH flag.
   autosyncookietimeout:
-    type: float
+    type: raw
     description:
       - Timeout for the server to function in syncookie mode after the synattack.
         This is valid if TCP syncookie is disabled on the profile and server acts
         in non syncookie mode by default.
   compacttcpoptionnoop:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -61,7 +61,7 @@ options:
         by NOPs in the proxied packets. This option is not applicable for Citrix ADC
         generated packets.
   connflushifnomem:
-    type: str
+    type: raw
     choices:
       - 'NONE '
       - HALFCLOSED_AND_IDLE
@@ -82,18 +82,18 @@ options:
       - ''
       - 'See Also: connFlushThres argument below.'
   connflushthres:
-    type: float
+    type: raw
     description:
       - 'Flush an existing connection (as configured through -connFlushIfNoMem FIFO)
         if the system has more than specified number of connections, and a new connection
         is to be established.  Note: This value may be rounded down to be a whole
         multiple of the number of packet engines running.'
   delayedack:
-    type: float
+    type: raw
     description:
       - Timeout for TCP delayed ACK, in milliseconds.
   delinkclientserveronrst:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -101,14 +101,14 @@ options:
       - If enabled, Delink client and server connection, when there is outstanding
         data to be sent to the other side.
   downstaterst:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Flag to switch on RST on down services.
   initialcwnd:
-    type: float
+    type: raw
     description:
       - Initial maximum upper limit on the number of TCP packets that can be outstanding
         on the TCP link to the server.
@@ -120,69 +120,69 @@ options:
     description:
       - Update last activity for KA probes
   learnvsvrmss:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable maximum segment size (MSS) learning for virtual servers.
   limitedpersist:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Limit the number of persist (zero window) probes.
   maxburst:
-    type: float
+    type: raw
     description:
       - Maximum number of TCP segments allowed in a burst.
   maxdynserverprobes:
-    type: float
+    type: raw
     description:
       - Maximum number of probes that Citrix ADC can send out in 10 milliseconds,
         to dynamically learn a service. Citrix ADC probes for the existence of the
         origin in case of wildcard virtual server or services.
   maxpktpermss:
-    type: float
+    type: raw
     description:
       - Maximum number of TCP packets allowed per maximum segment size (MSS).
   maxsynackretx:
-    type: float
+    type: raw
     description:
       - When 'syncookie' is disabled in the TCP profile that is bound to the virtual
         server or service, and the number of TCP SYN+ACK retransmission by Citrix
         ADC for that virtual server or service crosses this threshold, the Citrix
         ADC responds by using the TCP SYN-Cookie mechanism.
   maxsynhold:
-    type: float
+    type: raw
     description:
       - Limit the number of client connections (SYN) waiting for status of probe system
         wide. Any new SYN packets will be dropped.
   maxsynholdperprobe:
-    type: float
+    type: raw
     description:
       - Limit the number of client connections (SYN) waiting for status of single
         probe. Any new SYN packets will be dropped.
   maxtimewaitconn:
-    type: float
+    type: raw
     description:
       - Maximum number of connections to hold in the TCP TIME_WAIT state on a packet
         engine. New connections entering TIME_WAIT state are proactively cleaned up.
   minrto:
-    type: int
+    type: raw
     description:
       - Minimum retransmission timeout, in milliseconds, specified in 10-millisecond
         increments (value must yield a whole number if divided by 10).
   mptcpchecksum:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Use MPTCP DSS checksum
   mptcpclosemptcpsessiononlastsfclose:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -190,14 +190,14 @@ options:
       - Allow to send DATA FIN or FAST CLOSE on mptcp connection while sending FIN
         or RST on the last subflow.
   mptcpconcloseonpassivesf:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Accept DATA_FIN/FAST_CLOSE on passive subflow
   mptcpfastcloseoption:
-    type: str
+    type: raw
     choices:
       - ACK
       - RESET
@@ -205,7 +205,7 @@ options:
       - Allow to select option C(ACK) or C(RESET) to force the closure of an MPTCP
         connection abruptly.
   mptcpimmediatesfcloseonfin:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -213,21 +213,21 @@ options:
       - Allow subflows to close immediately on FIN before the DATA_FIN exchange is
         completed at mptcp level.
   mptcpmaxpendingsf:
-    type: float
+    type: raw
     description:
       - Maximum number of subflow connections supported in pending join state per
         mptcp connection.
   mptcpmaxsf:
-    type: float
+    type: raw
     description:
       - Maximum number of subflow connections supported in established state per mptcp
         connection.
   mptcppendingjointhreshold:
-    type: float
+    type: raw
     description:
       - Maximum system level pending join connections allowed.
   mptcpreliableaddaddr:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -236,12 +236,12 @@ options:
         is not received within the timeout interval. The retransmission is attempted
         only once.
   mptcprtostoswitchsf:
-    type: float
+    type: raw
     description:
       - Number of RTO's at subflow level, after which MPCTP should start using other
         subflow.
   mptcpsendsfresetoption:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -249,19 +249,19 @@ options:
       - Allow MPTCP subflows to send TCP RST Reason (MP_TCPRST) Option while sending
         TCP RST.
   mptcpsfreplacetimeout:
-    type: float
+    type: raw
     description:
       - The minimum idle time value in seconds for idle mptcp subflows after which
         the sublow is replaced by new incoming subflow if maximum subflow limit is
         reached. The priority for replacement is given to those subflow without any
         transaction
   mptcpsftimeout:
-    type: float
+    type: raw
     description:
       - The timeout value in seconds for idle mptcp subflows. If this timeout is not
         set, idle subflows are cleared after cltTimeout of vserver
   mptcpusebackupondss:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -271,31 +271,31 @@ options:
         current chosen subflow. In case there is some error on a subflow (like RTO's/RST
         etc.) then NS can choose a backup subflow irrespective of this tunable.
   msslearndelay:
-    type: float
+    type: raw
     description:
       - Frequency, in seconds, at which the virtual servers learn the Maximum segment
         size (MSS) from the services. The argument to enable maximum segment size
         (MSS) for virtual servers must be enabled.
   msslearninterval:
-    type: float
+    type: raw
     description:
       - Duration, in seconds, to sample the Maximum Segment Size (MSS) of the services.
         The Citrix ADC determines the best MSS to set for the virtual server based
         on this sampling. The argument to enable maximum segment size (MSS) for virtual
         servers must be enabled.
   nagle:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable the Nagle algorithm on TCP connections.
   oooqsize:
-    type: float
+    type: raw
     description:
       - Maximum size of out-of-order packets queue. A value of 0 means no limit.
   pktperretx:
-    type: int
+    type: raw
     description:
       - Maximum limit on the number of packets that should be retransmitted on receiving
         a partial ACK.
@@ -304,54 +304,54 @@ options:
     description:
       - TCP Receive buffer size
   sack:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable Selective ACKnowledgement (SACK).
   slowstartincr:
-    type: int
+    type: raw
     description:
       - Multiplier that determines the rate at which slow start increases the size
         of the TCP transmission window after each acknowledgement of successful transmission.
   synattackdetection:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Detect TCP SYN packet flood and send an SNMP trap.
   synholdfastgiveup:
-    type: float
+    type: raw
     description:
       - Maximum threshold. After crossing this threshold number of outstanding probes
         for origin, the Citrix ADC reduces the number of connection retries for probe
         connections.
   tcpfastopencookietimeout:
-    type: float
+    type: raw
     description:
       - Timeout in seconds after which a new TFO Key is computed for generating TFO
         Cookie. If zero, the same key is used always. If timeout is less than 120seconds,
         NS defaults to 120seconds timeout.
   tcpfintimeout:
-    type: float
+    type: raw
     description:
       - The amount of time in seconds, after which a TCP connnection in the TCP TIME-WAIT
         state is flushed.
   tcpmaxretries:
-    type: float
+    type: raw
     description:
       - Number of RTO's after which a connection should be freed.
   ws:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable or disable window scaling.
   wsval:
-    type: float
+    type: raw
     description:
       - Factor used to calculate the new window size.
       - This argument is needed only when the window scaling is enabled.

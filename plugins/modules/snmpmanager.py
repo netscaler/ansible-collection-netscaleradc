@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domainresolveretry:
-    type: int
+    type: raw
     description:
       - Amount of time, in seconds, for which the Citrix ADC waits before sending
         another DNS query to resolve the host name of the SNMP manager if the last
@@ -47,7 +47,7 @@ options:
         After a query succeeds, the TTL determines the wait time. The minimum and
         default value is 5.
   ipaddress:
-    type: str
+    type: raw
     description:
       - 'IP address of the SNMP manager. Can be an IPv4 or IPv6 address. You can instead
         specify an IPv4 network address or IPv6 network prefix if you want the Citrix
@@ -58,7 +58,7 @@ options:
       - 'Note: The Citrix ADC does not support host names for SNMP managers that have
         IPv6 addresses.'
   netmask:
-    type: str
+    type: raw
     description:
       - Subnet mask associated with an IPv4 network address. If the IP address specifies
         the address or host name of a specific host, accept the default value of 255.255.255.255.

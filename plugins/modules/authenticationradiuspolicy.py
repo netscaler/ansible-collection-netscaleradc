@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - Name for the RADIUS authentication policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -52,11 +52,11 @@ options:
         quotation marks (for example, "my authentication policy" or 'my authentication
         policy').
   reqaction:
-    type: str
+    type: raw
     description:
       - Name of the RADIUS action to perform if the policy matches.
   rule:
-    type: str
+    type: raw
     description:
       - Name of the Citrix ADC named rule, or an expression, that the policy uses
         to determine whether to attempt to authenticate the user with the RADIUS server.

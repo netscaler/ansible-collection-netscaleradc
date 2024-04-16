@@ -37,21 +37,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cssinlinethressize:
-    type: float
+    type: raw
     description:
       - Threshold value of the file size (in bytes) for converting external CSS files
         to inline CSS files.
   imginlinethressize:
-    type: float
+    type: raw
     description:
       - Maximum file size of an image (in bytes), for coverting linked images to inline
         images.
   jpegqualitypercent:
-    type: float
+    type: raw
     description:
       - 'The percentage value of a JPEG image quality to be reduced. Range: 0 - 100'
   jsinlinethressize:
-    type: float
+    type: raw
     description:
       - Threshold value of the file size (in bytes), for converting external JavaScript
         files to inline JavaScript files.

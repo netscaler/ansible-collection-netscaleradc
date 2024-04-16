@@ -43,15 +43,15 @@ options:
     description:
       - Name of the built-in compression action to associate with the policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the tunnel traffic policy.
       - Must begin with an ASCII alphanumeric or underscore (_) character, and must

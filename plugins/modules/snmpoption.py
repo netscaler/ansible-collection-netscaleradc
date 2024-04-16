@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   partitionnameintrap:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -45,7 +45,7 @@ options:
       - Send partition name as a varbind in traps. By default the partition names
         are not sent as a varbind.
   severityinfointrap:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -54,7 +54,7 @@ options:
         message. Enable this option to send severity level of trap as one of the varbind
         in the trap message.
   snmpset:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -62,7 +62,7 @@ options:
       - Accept SNMP SET requests sent to the Citrix ADC, and allow SNMP managers to
         write values to MIB objects that are configured for write access.
   snmptraplogging:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -71,7 +71,7 @@ options:
         if no trap listeners are configured. With the default setting, SNMP trap events
         are logged if at least one trap listener is configured on the appliance.
   snmptraplogginglevel:
-    type: str
+    type: raw
     choices:
       - EMERGENCY
       - ALERT

@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   authentication:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -47,7 +47,7 @@ options:
       - Authentication needs to be disabled for searching user object without performing
         authentication.
   authenticationtype:
-    type: str
+    type: raw
     choices:
       - CITRIXCONNECTOR
       - ATHENA
@@ -55,7 +55,7 @@ options:
       - Type of the Citrix Authentication implementation. Default implementation uses
         Citrix Cloud Connector.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new Citrix Authentication action. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

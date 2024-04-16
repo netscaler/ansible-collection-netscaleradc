@@ -42,7 +42,7 @@ options:
       - Name of any configured ACL6 whose action is ALLOW. The rule of the ACL6 is
         used as an RNAT6 rule.
   name:
-    type: str
+    type: raw
     description:
       - Name for the RNAT6 rule. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -55,16 +55,16 @@ options:
       - IPv6 address of the network on whose traffic you want the Citrix ADC to do
         RNAT processing.
   ownergroup:
-    type: str
+    type: raw
     description:
       - The owner node group in a Cluster for this rnat rule.
   redirectport:
-    type: int
+    type: raw
     description:
       - Port number to which the IPv6 packets are redirected. Applicable to TCP and
         UDP protocols.
   srcippersistency:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

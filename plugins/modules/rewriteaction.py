@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comment. Can be used to preserve information about this rewrite action.
   name:
-    type: str
+    type: raw
     description:
       - Name for the user-defined rewrite action. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
@@ -67,7 +67,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my rewrite action" or 'my rewrite action').
   refinesearch:
-    type: str
+    type: raw
     description:
       - 'Specify additional criteria to refine the results of the search. '
       - Always starts with the "extend(m,n)" operation, where 'm' specifies number
@@ -116,7 +116,7 @@ options:
         adjusted by the -refineSearch parameter.'
       - 'Example: TARGET.BEFORE_STR(",")'
   stringbuilderexpr:
-    type: str
+    type: raw
     description:
       - Expression that specifies the content to insert into the request or response
         at the specified location, or that replaces the specified string.

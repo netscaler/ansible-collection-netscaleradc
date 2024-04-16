@@ -39,42 +39,42 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   announcemulticount:
-    type: float
+    type: raw
     description:
       - Integer value that identify the number announce message to be send.
   mapping:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - This argument is for enabling/disabling the MAP opcode  of current PCP Profile
   maxmaplife:
-    type: float
+    type: raw
     description:
       - Integer value that identify the maximum mapping lifetime (in seconds) for
         a pcp profile. default(86400s = 24Hours).
   minmaplife:
-    type: float
+    type: raw
     description:
       - Integer value that identify the minimum mapping lifetime (in seconds) for
         a pcp profile. default(120s)
   name:
-    type: str
+    type: raw
     description:
       - 'Name for the PCP Profile. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore CLI Users:
         If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my pcpProfile" or my pcpProfile).'
   peer:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - This argument is for enabling/disabling the PEER opcode of current PCP Profile
   thirdparty:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

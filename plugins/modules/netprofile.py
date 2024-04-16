@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   mbf:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -50,7 +50,7 @@ options:
         System > Settings > Configure modes > Configure Modes dialog box). However,
         you can override this setting after you create the netprofile
   name:
-    type: str
+    type: raw
     description:
       - Name for the net profile. Must begin with a letter, number, or the underscore
         character (_), and can consist of letters, numbers, and the hyphen (-), period
@@ -58,7 +58,7 @@ options:
         characters. Cannot be changed after the profile is created. Choose a name
         that helps identify the net profile.
   overridelsn:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -66,14 +66,14 @@ options:
       - USNIP/USIP settings override LSN settings for configured
       - '              service/virtual server traffic..'
   proxyprotocol:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Proxy Protocol Action (Enabled/Disabled)
   proxyprotocolaftertlshandshake:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -81,18 +81,18 @@ options:
       - ADC doesnt look for proxy header before TLS handshake, if enabled. Proxy protocol
         parsed after TLS handshake
   proxyprotocoltxversion:
-    type: str
+    type: raw
     choices:
       - V1
       - V2
     description:
       - Proxy Protocol Version (C(V1)/C(V2))
   srcip:
-    type: str
+    type: raw
     description:
       - IP address or the name of an IP set.
   srcippersistency:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

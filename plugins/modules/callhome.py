@@ -37,19 +37,19 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   emailaddress:
-    type: str
+    type: raw
     description:
       - Email address of the contact administrator.
   hbcustominterval:
-    type: float
+    type: raw
     description:
       - Interval (in days) between CallHome heartbeats
   ipaddress:
-    type: str
+    type: raw
     description:
       - IP address of the proxy server.
   mode:
-    type: str
+    type: raw
     choices:
       - Default
       - CSP
@@ -60,16 +60,16 @@ options:
     description:
       - Unique number that identifies the cluster node.
   port:
-    type: int
+    type: raw
     description:
       - HTTP port on the Proxy server. This is a mandatory parameter for both IP address
         and service name based configuration.
   proxyauthservice:
-    type: str
+    type: raw
     description:
       - Name of the service that represents the proxy server.
   proxymode:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

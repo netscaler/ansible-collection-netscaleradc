@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   autokey:
-    type: bool
+    type: raw
     description:
       - Use the Autokey protocol for key management for this server, with the cryptographic
         values (for example, symmetric key, host and public certificate files, and
@@ -47,24 +47,24 @@ options:
         communication with the server, you must set either the value of this parameter
         or the key parameter.
   key:
-    type: float
+    type: raw
     description:
       - Key to use for encrypting authentication fields. All packets sent to and received
         from the server must include authentication fields encrypted by using this
         key. To require authentication for communication with the server, you must
         set either the value of this parameter or the autokey parameter.
   maxpoll:
-    type: float
+    type: raw
     description:
       - Maximum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
   minpoll:
-    type: float
+    type: raw
     description:
       - Minimum time after which the NTP server must poll the NTP messages. In seconds,
         expressed as a power of 2.
   preferredntpserver:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -72,11 +72,11 @@ options:
       - Preferred NTP server. The Citrix ADC chooses this NTP server for time synchronization
         among a set of correctly operating hosts.
   serverip:
-    type: str
+    type: raw
     description:
       - IP address of the NTP server.
   servername:
-    type: str
+    type: raw
     description:
       - Fully qualified domain name of the NTP server.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

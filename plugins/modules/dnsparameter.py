@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   cacheecszeroprefix:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -48,7 +48,7 @@ options:
         to any subnet. This option has no effect if caching of ECS responses is disabled
         in the corresponding DNS profile.
   cachehitbypass:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -57,7 +57,7 @@ options:
         will forward all the client requests to the backend DNS server and the response
         served will be cached on Citrix ADC
   cachenoexpire:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -65,7 +65,7 @@ options:
       - If this flag is set to YES, the existing entries in cache do not age out.
         On reaching the max limit the cache records are frozen
   cacherecords:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'
@@ -77,13 +77,13 @@ options:
         However, cached records are not flushed. The appliance does not serve requests
         from the cache until record caching is enabled again.
   dns64timeout:
-    type: float
+    type: raw
     description:
       - While doing DNS64 resolution, this parameter specifies the time to wait before
         sending an A query if no response is received from backend DNS server for
         AAAA query.
   dnsrootreferral:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -95,7 +95,7 @@ options:
         when the appliance is under attack from a client that is sending a flood of
         queries for unrelated domains.
   dnssec:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -106,7 +106,7 @@ options:
         Redirection for name resolution) do not support the DNSSEC OK (DO) bit in
         the EDNS0 OPT header.'
   ecsmaxsubnets:
-    type: float
+    type: raw
     description:
       - Maximum number of subnets that can be cached corresponding to a single domain.
         Subnet caching will occur for responses with EDNS Client Subnet (ECS) option.
@@ -114,17 +114,17 @@ options:
         of zero indicates that the number of subnets cached is limited only by existing
         memory constraints. The default value is zero.
   maxcachesize:
-    type: float
+    type: raw
     description:
       - Maximum memory, in megabytes, that can be used for dns caching per Packet
         Engine.
   maxnegativecachesize:
-    type: float
+    type: raw
     description:
       - Maximum memory, in megabytes, that can be used for caching of negative DNS
         responses per packet engine.
   maxnegcachettl:
-    type: float
+    type: raw
     description:
       - Maximum time to live (TTL) for all negative records ( NXDONAIN and NODATA
         ) cached in the DNS cache by DNS proxy, end resolver, and forwarder configurations.
@@ -134,14 +134,14 @@ options:
         to those records that are cached after the modification. The TTL values of
         existing records are not changed.
   maxpipeline:
-    type: float
+    type: raw
     description:
       - Maximum number of concurrent DNS requests to allow on a single client connection,
         which is identified by the <clientip:port>-<vserver ip:port> tuple. A value
         of 0 (zero) applies no limit to the number of concurrent DNS requests allowed
         on a single client connection.
   maxttl:
-    type: float
+    type: raw
     description:
       - Maximum time to live (TTL) for all records cached in the DNS cache by DNS
         proxy, end resolver, and forwarder configurations. If the TTL of a record
@@ -150,7 +150,7 @@ options:
         this setting, the new value is applied only to those records that are cached
         after the modification. The TTL values of existing records are not changed.
   maxudppacketsize:
-    type: float
+    type: raw
     description:
       - Maximum UDP packet size that can be handled by Citrix ADC. This is the value
         advertised by Citrix ADC when responding as an authoritative server and it
@@ -159,7 +159,7 @@ options:
         a request contains a size greater than this value in the OPT record, it will
         be replaced.
   minttl:
-    type: float
+    type: raw
     description:
       - Minimum permissible time to live (TTL) for all records cached in the DNS cache
         by DNS proxy, end resolver, and forwarder configurations. If the TTL of a
@@ -169,7 +169,7 @@ options:
         cached after the modification. The TTL values of existing records are not
         changed.
   namelookuppriority:
-    type: str
+    type: raw
     choices:
       - WINS
       - DNS
@@ -178,7 +178,7 @@ options:
         lookup fails, the second-priority lookup is attempted. Used only by the SSL
         VPN feature.
   nxdomainratelimitthreshold:
-    type: float
+    type: raw
     description:
       - Rate limit threshold for Non-Existant domain (NXDOMAIN) responses generated
         from Citrix ADC. Once the threshold is breached , DNS queries leading to NXDOMAIN
@@ -186,7 +186,7 @@ options:
         responses got from the backend. The threshold will be applied per packet engine
         and per second.
   recursion:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -198,7 +198,7 @@ options:
         queries a root server and resolves the request recursively, as it does for
         an end resolver configuration.
   resolutionorder:
-    type: str
+    type: raw
     choices:
       - OnlyAQuery
       - OnlyAAAAQuery
@@ -220,12 +220,12 @@ options:
         for an A record if the query for the AAAA record results in a NODATA response
         from the name server.'
   retries:
-    type: float
+    type: raw
     description:
       - Maximum number of retry attempts when no response is received for a query
         sent to a name server. Applies to end resolver and forwarder configurations.
   splitpktqueryprocessing:
-    type: str
+    type: raw
     choices:
       - ALLOW
       - DROP

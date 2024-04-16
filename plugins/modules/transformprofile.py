@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Any comments to preserve information about this URL Transformation profile.
   name:
-    type: str
+    type: raw
     description:
       - Name for the URL transformation profile. Must begin with a letter, number,
         or the underscore character (_), and must contain only letters, numbers, and
@@ -55,14 +55,14 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, my transform profile or my transform profile).
   onlytransformabsurlinbody:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - In the HTTP body, transform only absolute URLs. Relative URLs are ignored.
   type:
-    type: str
+    type: raw
     choices:
       - URL
     description:

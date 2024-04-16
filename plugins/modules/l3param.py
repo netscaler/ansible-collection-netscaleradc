@@ -37,32 +37,32 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acllogtime:
-    type: str
+    type: raw
     description:
       - Parameter to tune acl logging time
   allowclasseipv4:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv4 Class E address clients
   dropdfflag:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping the IP DF flag.
   dropipfragments:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable dropping of IP fragments.
   dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -70,46 +70,46 @@ options:
       - Enable/Disable Dynamic routing on partition. This configuration is not applicable
         to default partition
   externalloopback:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable external loopback.
   forwardicmpfragments:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable forwarding of ICMP fragments.
   icmpgenratethreshold:
-    type: float
+    type: raw
     description:
       - NS generated ICMP pkts per 10ms rate threshold
   implicitaclallow:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Do not apply ACLs for internal ports
   ipv6dynamicrouting:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable/Disable IPv6 Dynamic routing
   miproundrobin:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Enable round robin usage of mapped IPs.
   overridernat:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -117,14 +117,14 @@ options:
       - USNIP/USIP settings override RNAT settings for configured
       - '              service/virtual server traffic..'
   srcnat:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Perform NAT if only the source is in the private network
   tnlpmtuwoconn:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -132,7 +132,7 @@ options:
       - Enable/Disable learning PMTU of IP tunnel when ICMP error does not contain
         connection information.
   usipserverstraypkt:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

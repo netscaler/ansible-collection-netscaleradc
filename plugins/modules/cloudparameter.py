@@ -59,7 +59,7 @@ options:
     description:
       - Port number of the controller to which the Citrix ADC SDProxy connects
   customerid:
-    type: str
+    type: raw
     description:
       - Customer ID of the citrix cloud customer
   deployment:
@@ -72,11 +72,11 @@ options:
       - Describes if the customer is a C(Staging)/C(Production) or C(Dev) Citrix Cloud
         customer
   instanceid:
-    type: str
+    type: raw
     description:
       - Instance ID of the customer provided by Trust
   resourcelocation:
-    type: str
+    type: raw
     description:
       - Resource Location of the customer provided by Trust
 extends_documentation_fragment: netscaler.adc.netscaler_adc

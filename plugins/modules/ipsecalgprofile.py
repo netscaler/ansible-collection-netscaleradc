@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   connfailover:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -48,19 +48,19 @@ options:
         After a failover, established UDP connections and ESP packet flows are kept
         active and resumed on the secondary appliance. Recomended setting is C(ENABLED).
   espgatetimeout:
-    type: float
+    type: raw
     description:
       - Timeout ESP in seconds as no ESP packets are seen after IKE negotiation
   espsessiontimeout:
-    type: float
+    type: raw
     description:
       - ESP session timeout in minutes.
   ikesessiontimeout:
-    type: float
+    type: raw
     description:
       - IKE session timeout in minutes
   name:
-    type: str
+    type: raw
     description:
       - The name of the ipsec alg profile
 extends_documentation_fragment: netscaler.adc.netscaler_adc

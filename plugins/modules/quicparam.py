@@ -37,7 +37,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   quicsecrettimeout:
-    type: float
+    type: raw
     description:
       - Rotation frequency, in seconds, for the secret used to generate address validation
         tokens that will be issued in QUIC Retry packets and QUIC NEW_TOKEN frames

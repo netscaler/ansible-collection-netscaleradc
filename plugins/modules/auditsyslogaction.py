@@ -39,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   acl:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log access control list (ACL) messages.
   alg:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log alg info
   appflowexport:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -62,14 +62,14 @@ options:
       - Appflow collectors are entities to which log messages can be sent so that
         some action can be performed on them.
   contentinspectionlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log Content Inspection event information
   dateformat:
-    type: str
+    type: raw
     choices:
       - MMDDYYYY
       - DDMMYYYY
@@ -81,7 +81,7 @@ options:
       - '* C(DDMMYYYY) - European style date/month/year format.'
       - '* C(YYYYMMDD) - ISO style year/month/date format.'
   dns:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -101,7 +101,7 @@ options:
     description:
       - Name of the LB vserver. Mutually exclusive with syslog serverIP/serverName
   logfacility:
-    type: str
+    type: raw
     choices:
       - LOCAL0
       - LOCAL1
@@ -117,7 +117,7 @@ options:
         number indicates where a specific message originated from, such as the Citrix
         ADC itself, the VPN, or external.
   loglevel:
-    type: list
+    type: raw
     choices:
       - ALL
       - EMERGENCY
@@ -142,20 +142,19 @@ options:
       - '* C(INFORMATIONAL) - All but low-level events.'
       - '* C(DEBUG) - All events, in extreme detail.'
       - '* C(NONE) - No events.'
-    elements: str
   lsn:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log lsn info
   maxlogdatasizetohold:
-    type: float
+    type: raw
     description:
       - Max size of log data that can be held in NSB chain of server info.
   name:
-    type: str
+    type: raw
     description:
       - Name of the syslog action. Must begin with a letter, number, or the underscore
         character (_), and must contain only letters, numbers, and the hyphen (-),
@@ -166,7 +165,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my syslog action" or 'my syslog action').
   netprofile:
-    type: str
+    type: raw
     description:
       - Name of the network profile.
       - The SNIP configured in the network profile will be used as source IP while
@@ -180,37 +179,37 @@ options:
     description:
       - IP address of the syslog server.
   serverport:
-    type: int
+    type: raw
     description:
       - Port on which the syslog server accepts connections.
   sslinterception:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log SSL Interception event information
   subscriberlog:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log subscriber session event information
   tcp:
-    type: str
+    type: raw
     choices:
       - NONE
       - ALL
     description:
       - Log TCP messages.
   tcpprofilename:
-    type: str
+    type: raw
     description:
       - Name of the TCP profile whose settings are to be applied to the audit server
         info to tune the TCP connection parameters.
   timezone:
-    type: str
+    type: raw
     choices:
       - GMT_TIME
       - LOCAL_TIME
@@ -227,14 +226,14 @@ options:
     description:
       - Transport type used to send auditlogs to syslog server. Default type is C(UDP).
   urlfiltering:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Log URL filtering event information
   userdefinedauditlog:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

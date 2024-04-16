@@ -43,11 +43,11 @@ options:
     description:
       - Web address for the bookmark link.
   appjson:
-    type: str
+    type: raw
     description:
       - To store the template details in the json format.
   applicationtype:
-    type: str
+    type: raw
     choices:
       - CVPN
       - VPN
@@ -55,7 +55,7 @@ options:
     description:
       - The type of application this C(VPN) URL represents. Possible values are C(CVPN)/C(SaaS)/C(VPN)
   clientlessaccess:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -65,11 +65,11 @@ options:
         based session. Allows single sign-on and other HTTP processing on Citrix Gateway
         for HTTPS resources.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with the bookmark link.
   iconurl:
-    type: str
+    type: raw
     description:
       - URL to fetch icon file for displaying this resource.
   linkname:
@@ -77,11 +77,11 @@ options:
     description:
       - Description of the bookmark link. The description appears in the Access Interface.
   samlssoprofile:
-    type: str
+    type: raw
     description:
       - Profile to be used for doing SAML SSO
   ssotype:
-    type: str
+    type: raw
     choices:
       - unifiedgateway
       - selfauth
@@ -89,11 +89,11 @@ options:
     description:
       - Single sign on type for unified gateway
   urlname:
-    type: str
+    type: raw
     description:
       - Name of the bookmark link.
   vservername:
-    type: str
+    type: raw
     description:
       - Name of the associated LB/CS vserver
 extends_documentation_fragment: netscaler.adc.netscaler_adc

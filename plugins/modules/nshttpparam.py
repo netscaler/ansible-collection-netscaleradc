@@ -37,35 +37,35 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   conmultiplex:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Reuse server connections for requests from more than one client connections.
   dropinvalreqs:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Drop invalid HTTP requests or responses.
   http2serverside:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Enable/Disable HTTP/2 on server side
   ignoreconnectcodingscheme:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - Ignore Coding scheme in CONNECT request.
   insnssrvrhdr:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
@@ -73,35 +73,35 @@ options:
       - Enable or disable Citrix ADC server header insertion for Citrix ADC generated
         HTTP responses.
   logerrresp:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Server header value to be inserted.
   markconnreqinval:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark CONNECT requests as invalid.
   markhttp09inval:
-    type: str
+    type: raw
     choices:
       - 'ON'
       - 'OFF'
     description:
       - Mark HTTP/0.9 requests as invalid.
   maxreusepool:
-    type: float
+    type: raw
     description:
       - Maximum limit on the number of connections, from the Citrix ADC to a particular
         server that are kept in the reuse pool. This setting is helpful for optimal
         memory utilization and for reducing the idle connections to the server just
         after the peak time.
   nssrvrhdr:
-    type: str
+    type: raw
     description:
       - The server header value to be inserted. If no explicit header is specified
         then NSBUILD.RELEASE is used as default server header.

@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - The name of the network bridge.
   vxlanvlanmap:
-    type: str
+    type: raw
     description:
       - The vlan to vxlan mapping to be applied to this netbridge.
   netbridge_iptunnel_binding:

@@ -39,11 +39,11 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: str
+    type: raw
     description:
       - Action to be applied to connections that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the session policy. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -54,7 +54,7 @@ options:
       - If the name includes one or more spaces, enclose the name in double or single
         quotation marks (for example, "my policy" or 'my policy').
   rule:
-    type: str
+    type: raw
     description:
       - Expression, against which traffic is evaluated. Both classic and advance expressions
         are supported in default partition but only advance expressions in non-default

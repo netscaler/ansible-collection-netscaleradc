@@ -39,32 +39,32 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   name:
-    type: str
+    type: raw
     description:
       - The name of the ssllogprofile.
   ssllogclauth:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL ClAuth events.
   ssllogclauthfailures:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL ClAuth error events.
   sslloghs:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
     description:
       - log all SSL HS events.
   sslloghsfailures:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED

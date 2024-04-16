@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   domain:
-    type: str
+    type: raw
     description:
       - Domain name for which to add the MX record.
   ecssubnet:
@@ -47,7 +47,7 @@ options:
     description:
       - Subnet for which the cached MX record need to be removed.
   mx:
-    type: str
+    type: raw
     description:
       - Host name of the mail exchange server.
   nodeid:
@@ -64,7 +64,7 @@ options:
         the mail server with the lowest priority number, and use other configured
         mail servers, in priority order, as backups.
   ttl:
-    type: float
+    type: raw
     description:
       - Time to Live (TTL), in seconds, for the record. TTL is the time for which
         the record must be cached by DNS proxies. The specified TTL is applied to

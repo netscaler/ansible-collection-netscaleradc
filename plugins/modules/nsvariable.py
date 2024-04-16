@@ -39,16 +39,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   comment:
-    type: str
+    type: raw
     description:
       - Comments associated with this variable.
   expires:
-    type: float
+    type: raw
     description:
       - Value expiration in seconds. If the value is not referenced within the expiration
         period it will be deleted. 0 (the default) means no expiration.
   iffull:
-    type: str
+    type: raw
     choices:
       - undef
       - lru
@@ -58,7 +58,7 @@ options:
       - '   C(undef) - force the assignment to return an undefined (Undef) result
         to the policy executing the assignment.'
   ifnovalue:
-    type: str
+    type: raw
     choices:
       - undef
       - init
@@ -72,7 +72,7 @@ options:
       - '   C(undef) - force the expression evaluation to return an undefined (Undef)
         result to the policy executing the expression.'
   ifvaluetoobig:
-    type: str
+    type: raw
     choices:
       - undef
       - truncate
@@ -85,7 +85,7 @@ options:
       - '   C(undef) - force the assignment or expression evaluation to return an
         undefined (Undef) result to the policy executing the assignment or expression.'
   init:
-    type: str
+    type: raw
     description:
       - 'Initialization value for this variable, to which a singleton variable or
         map entry will be set if it is referenced before an assignment action has
@@ -93,7 +93,7 @@ options:
         assigned a value, setting this parameter will have no effect on that variable
         value. Default: 0 for ulong, NULL for text'
   name:
-    type: str
+    type: raw
     description:
       - 'Variable name.  This follows the same syntax rules as other expression entity
         names:'

@@ -39,11 +39,10 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   backupparentlist:
-    type: list
+    type: raw
     description:
       - The list of backup gslb sites configured in preferred order. Need to be parent
         gsb sites.
-    elements: str
   clip:
     type: str
     description:
@@ -51,7 +50,7 @@ options:
         site for GSLB auto-sync. Note: The cluster IP address is defined when creating
         the cluster.'
   metricexchange:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -67,12 +66,12 @@ options:
         Also, if you disable metrics exchange, you must use a monitor to determine
         the state of GSLB services. Otherwise, the service is marked as DOWN.
   naptrreplacementsuffix:
-    type: str
+    type: raw
     description:
       - The naptr replacement suffix configured here will be used to construct the
         naptr replacement field in NAPTR record.
   nwmetricexchange:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -97,7 +96,7 @@ options:
         in a private address space and the site has a public IP address hosted on
         an external firewall or a NAT device.
   sessionexchange:
-    type: str
+    type: raw
     choices:
       - ENABLED
       - DISABLED
@@ -111,7 +110,7 @@ options:
         by the appliance (for example, a SNIP or MIP address, or the IP address of
         the ADNS service).
   sitename:
-    type: str
+    type: raw
     description:
       - Name for the GSLB site. Must begin with an ASCII alphanumeric or underscore
         (_) character, and must contain only ASCII alphanumeric, underscore, hash
@@ -132,7 +131,7 @@ options:
         example, a MIP address or SNIP address), the site is a local site. Otherwise,
         it is a remote site.
   triggermonitor:
-    type: str
+    type: raw
     choices:
       - ALWAYS
       - MEPDOWN

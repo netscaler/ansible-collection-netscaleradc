@@ -39,7 +39,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   bridgeage:
-    type: float
+    type: raw
     description:
       - Time-out value for the bridge table entries, in seconds. The new value applies
         only to the entries that are dynamically learned after the new value is set.

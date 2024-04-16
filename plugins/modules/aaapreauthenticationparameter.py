@@ -37,23 +37,23 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   deletefiles:
-    type: str
+    type: raw
     description:
       - String specifying the path(s) to and name(s) of the files to be deleted by
         the EPA tool, as a string of between 1 and 1023 characters.
   killprocess:
-    type: str
+    type: raw
     description:
       - String specifying the name of a process to be terminated by the EPA tool.
   preauthenticationaction:
-    type: str
+    type: raw
     choices:
       - ALLOW
       - DENY
     description:
       - Deny or allow login on the basis of end point analysis results.
   rule:
-    type: str
+    type: raw
     description:
       - Name of the Citrix ADC named rule, or an expression, to be evaluated by the
         EPA tool.

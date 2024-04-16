@@ -39,17 +39,17 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   clientsecuritymessage:
-    type: str
+    type: raw
     description:
       - Message to display if the expression fails. Allowed for classic end-point
         check expressions only.
   comment:
-    type: str
+    type: raw
     description:
       - Any comments associated with the expression. Displayed upon viewing the policy
         expression.
   name:
-    type: str
+    type: raw
     description:
       - Unique name for the expression. Not case sensitive. Must begin with an ASCII
         letter or underscore (_) character, and must consist only of ASCII alphanumeric

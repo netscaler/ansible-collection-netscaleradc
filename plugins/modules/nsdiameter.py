@@ -47,7 +47,7 @@ options:
       - Now whenever Citrix ADC needs to use identity in diameter messages. It will
         use 'netscaler.com' as Origin-Host AVP as defined in RFC3588
   ownernode:
-    type: float
+    type: raw
     description:
       - ID of the cluster node for which the diameter id is set, can be configured
         only through CLIP
@@ -60,7 +60,7 @@ options:
       - Now whenever Citrix ADC system needs to use realm in diameter messages. It
         will use 'com' as Origin-Realm AVP as defined in RFC3588
   serverclosepropagation:
-    type: str
+    type: raw
     choices:
       - 'YES'
       - 'NO'

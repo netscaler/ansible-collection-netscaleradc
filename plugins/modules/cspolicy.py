@@ -44,7 +44,7 @@ options:
       - Content switching action that names the target load balancing virtual server
         to which the traffic is switched.
   logaction:
-    type: str
+    type: raw
     description:
       - The log action associated with the content switching policy
   newname:
@@ -52,7 +52,7 @@ options:
     description:
       - The new name of the content switching policy.
   policyname:
-    type: str
+    type: raw
     description:
       - Name for the content switching policy. Must begin with an ASCII alphanumeric
         or underscore (_) character, and must contain only ASCII alphanumeric, underscore,

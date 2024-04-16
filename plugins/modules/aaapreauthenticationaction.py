@@ -39,21 +39,21 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   defaultepagroup:
-    type: str
+    type: raw
     description:
       - This is the default group that is chosen when the EPA check succeeds.
   deletefiles:
-    type: str
+    type: raw
     description:
       - String specifying the path(s) and name(s) of the files to be deleted by the
         endpoint analysis (EPA) tool.
   killprocess:
-    type: str
+    type: raw
     description:
       - String specifying the name of a process to be terminated by the endpoint analysis
         (EPA) tool.
   name:
-    type: str
+    type: raw
     description:
       - Name for the preauthentication action. Must begin with a letter, number, or
         the underscore character (_), and must consist only of letters, numbers, and

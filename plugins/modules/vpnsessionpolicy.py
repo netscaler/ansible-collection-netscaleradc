@@ -39,16 +39,16 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   action:
-    type: str
+    type: raw
     description:
       - Action to be applied by the new session policy if the rule criteria are met.
   name:
-    type: str
+    type: raw
     description:
       - Name for the new session policy that is applied after the user logs on to
         Citrix Gateway.
   rule:
-    type: str
+    type: raw
     description:
       - Expression, or name of a named expression, specifying the traffic that matches
         the policy.

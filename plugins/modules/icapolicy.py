@@ -43,15 +43,15 @@ options:
     description:
       - Name of the ica action to be associated with this policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any type of information about this ICA policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the policy. Must begin with an ASCII alphabetic or underscore (_)
         character, and must contain only ASCII alphanumeric, underscore, hash (#),

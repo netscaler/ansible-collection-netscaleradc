@@ -50,19 +50,19 @@ options:
         then resend the request if desired.'
       - '* DROP - Drop the request without sending a response to the user.'
   appflowaction:
-    type: str
+    type: raw
     description:
       - AppFlow action to invoke for requests that match this policy.
   comment:
-    type: str
+    type: raw
     description:
       - Any type of information about this responder policy.
   logaction:
-    type: str
+    type: raw
     description:
       - Name of the messagelog action to use for requests that match this policy.
   name:
-    type: str
+    type: raw
     description:
       - Name for the responder policy.
       - Must begin with a letter, number, or the underscore character (_), and must
@@ -90,7 +90,7 @@ options:
       - Expression that the policy uses to determine whether to respond to the specified
         request.
   undefaction:
-    type: str
+    type: raw
     description:
       - Action to perform if the result of policy evaluation is undefined (UNDEF).
         An UNDEF event indicates an internal error condition. Only the above built-in

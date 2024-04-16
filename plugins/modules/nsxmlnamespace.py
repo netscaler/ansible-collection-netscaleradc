@@ -39,15 +39,15 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   namespace:
-    type: str
+    type: raw
     description:
       - Expanded namespace for which the XML prefix is provided.
   description:
-    type: str
+    type: raw
     description:
       - Description for the prefix.
   prefix:
-    type: str
+    type: raw
     description:
       - XML prefix.
 extends_documentation_fragment: netscaler.adc.netscaler_adc

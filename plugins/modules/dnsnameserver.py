@@ -43,7 +43,7 @@ options:
       - When C(unset), the resource will be unset on the NetScaler ADC node.
     type: str
   dnsprofilename:
-    type: str
+    type: raw
     description:
       - Name of the DNS profile to be associated with the name server
   dnsvservername:
@@ -52,7 +52,7 @@ options:
       - Name of a DNS virtual server. Overrides any IP address-based name servers
         configured on the Citrix ADC.
   ip:
-    type: str
+    type: raw
     description:
       - IP address of an external name server or, if the Local parameter is set, IP
         address of a local DNS server (LDNS).
@@ -67,7 +67,7 @@ options:
       - If no name server is marked as being local, the appliance functions as a stub
         resolver and load balances the name servers.
   type:
-    type: str
+    type: raw
     choices:
       - UDP
       - TCP
